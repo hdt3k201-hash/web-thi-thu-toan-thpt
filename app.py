@@ -14,7 +14,7 @@ with col1:
     st.info("Học sinh đọc đề thi tại đây. Thầy dán link file PDF đề thi trên Google Drive vào dòng bên dưới.")
     
     # Nơi thầy dán link file PDF đề thi (nhớ đổi chữ /view ở cuối link thành /preview)
-    pdf_link = "https://drive.google.com/file/d/VI_DU_LINK_PDF_CUA_THAY/preview"
+    pdf_link = "https://drive.google.com/drive/my-drive"
     
     # Nhúng khung nhìn PDF (Để chiều cao 1200 cho vừa với độ dài của phiếu điền đáp án)
     st.components.v1.iframe(pdf_link, height=1200)
