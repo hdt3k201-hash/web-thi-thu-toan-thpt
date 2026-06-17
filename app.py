@@ -9,8 +9,8 @@ st.set_page_config(page_title="Hệ Thống Thi Thử - Lớp Toán Thầy Tùng
 EXAMS_BANK = {
     "de_số_1": {
         "title": "Đề số 01: Ôn tập khảo sát chuyên đề Hình học & Giải tích 12",
-        "pdf_id": "1A2b3C4d5E6f7G8h9I",  # Thay bằng ID file ĐỀ trên Google Drive của thầy
-        "giai_id": "MÃ_ID_DRIVE_FILE_GIAI_1",  # Thay bằng ID file GIẢI CHI TIẾT trên Drive
+        "pdf_id": "1okC2WNLymDzTD66rtvaw5uiNp9TeVVpO",  # Thay bằng ID file ĐỀ trên Google Drive của thầy
+        "giai_id": "1RZb7MCLGg0JLw41MMOtWJJksm4kgryfx",  # Thay bằng ID file GIẢI CHI TIẾT trên Drive
         "key_p1": ["A", "B", "C", "D", "A", "B", "C", "D", "A", "B", "C", "D"],  # Đáp án 12 câu Phần I
         "key_p2": {  # Đáp án 4 câu Phần II (Đúng hoặc Sai cho các ý a, b, c, d)
             1: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
