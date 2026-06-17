@@ -3,56 +3,6 @@ import streamlit as st
 # Cấu hình giao diện trang web trải rộng toàn màn hình
 st.set_page_config(page_title="Phòng Thi Ảo - Lớp Toán Thầy Tùng", layout="wide")
 
-# ==========================================
-# KHỐI LỆNH ĐỒNG HỒ ĐẾM NGƯỢC 90 PHÚT (CHẠY NGẦM)
-# ==========================================
-timer_html = """
-<style>
-#timer {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    background-color: #ff4b4b;
-    color: white;
-    padding: 10px 20px;
-    font-size: 22px;
-    font-weight: bold;
-    border-radius: 8px;
-    z-index: 99999;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-}
-</style>
-<div id="timer">⏳ 90:00</div>
-<script>
-// Cài đặt thời gian: 90 phút
-var time_in_minutes = 90;
-var deadline = new Date(Date.parse(new Date()) + time_in_minutes * 60 * 1000);
-
-function update_clock(){
-    var t = Date.parse(deadline) - Date.parse(new Date());
-    var seconds = Math.floor( (t/1000) % 60 );
-    var total_minutes = Math.floor(t / 1000 / 60);
-    
-    var clock = document.getElementById('timer');
-    if(t <= 0){
-        clock.innerHTML = "HẾT GIỜ LÀM BÀI!";
-        clock.style.backgroundColor = "black";
-    } else {
-        var m = total_minutes < 10 ? "0" + total_minutes : total_minutes;
-        var s = seconds < 10 ? "0" + seconds : seconds;
-        clock.innerHTML = "⏳ " + m + ":" + s;
-    }
-}
-// Cập nhật đồng hồ mỗi giây
-setInterval(update_clock, 1000);
-</script>
-"""
-# Chèn đồng hồ vào trang web
-st.markdown(timer_html, unsafe_allow_html=True)
-
-# ==========================================
-# KHỐI LỆNH GIAO DIỆN PHÒNG THI CHÍNH
-# ==========================================
 st.title("THI THỬ MÔN TOÁN LỚP 12 - ĐỊNH DẠNG 2025")
 st.markdown("---")
 
@@ -74,6 +24,34 @@ with col1:
 
 with col2:
     st.subheader("✍️ Phiếu Điền Đáp Án")
+    
+    # KHỐI LỆNH ĐỒNG HỒ ĐẾM NGƯỢC 90 PHÚT (Bảo mật 100% không bị lỗi text)
+    timer_code = """
+    <div id="timer" style="background-color: #ff4b4b; color: white; padding: 12px; text-align: center; font-size: 26px; font-weight: bold; border-radius: 8px; font-family: Arial, sans-serif;">
+        ⏳ 90:00
+    </div>
+    <script>
+    var time_in_minutes = 90;
+    var deadline = new Date(Date.parse(new Date()) + time_in_minutes * 60 * 1000);
+    function update_clock(){
+        var t = Date.parse(deadline) - Date.parse(new Date());
+        var seconds = Math.floor( (t/1000) % 60 );
+        var total_minutes = Math.floor(t / 1000 / 60);
+        var clock = document.getElementById('timer');
+        if(t <= 0){
+            clock.innerHTML = "HẾT GIỜ LÀM BÀI!";
+            clock.style.backgroundColor = "black";
+        } else {
+            var m = total_minutes < 10 ? "0" + total_minutes : total_minutes;
+            var s = seconds < 10 ? "0" + seconds : seconds;
+            clock.innerHTML = "⏳ " + m + ":" + s;
+        }
+    }
+    setInterval(update_clock, 1000);
+    </script>
+    """
+    # Hiển thị đồng hồ bằng module chuyên dụng HTML của Streamlit
+    st.components.v1.html(timer_code, height=75)
     
     with st.form("answer_sheet"):
         # --- PHẦN I: 12 CÂU TRẮC NGHIỆM ---
