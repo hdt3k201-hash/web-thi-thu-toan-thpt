@@ -52,7 +52,7 @@ with col2:
         ⏳ 120:00
     </div>
     <script>
-    var time_in_minutes = 120;
+    var time_in_minutes = 60;
     var deadline = new Date(Date.parse(new Date()) + time_in_minutes * 60 * 1000);
     function update_clock(){
         var t = Date.parse(deadline) - Date.parse(new Date());
