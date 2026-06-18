@@ -36,7 +36,7 @@ EXAMS_BANK = {
 }
 
 # Giao diện chính
-st.title("🎯 PHÒNG THI THỬ TOÁN LÝ TƯỞNG - CẤU TRÚC 2025")
+st.title("🎯 PHÒNG THI THỬ TOÁN HỌC KỲ")
 st.markdown("---")
 
 # MENU CHỌN ĐỀ THI ĐỘNG
