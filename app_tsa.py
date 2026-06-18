@@ -144,7 +144,7 @@ with col2:
         st.markdown("---")
         
         # PHẦN IV
-        st.markdown("### **PHẦN IV. Hoàn thành chỗ trống (Câu 31 - 40)**")
+        st.markdown("### **PHẦN IV. Kéo thả phương án (Câu 31 - 40)**")
         p4_answers = {}
         for i in range(31, 41):
             p4_answers[i] = st.selectbox(f"Vị trí ô trống Câu {i}:", options=current_exam["options_p4"], key=f"p4_c{i}_{selected_exam_key}")
