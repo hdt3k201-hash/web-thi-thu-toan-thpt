@@ -49,7 +49,7 @@ with col2:
     # Đồng hồ đếm ngược 120 phút
     timer_code = """
     <div id="timer_tsa" style="background-color: #ff4b4b; color: white; padding: 12px; text-align: center; font-size: 26px; font-weight: bold; border-radius: 8px; margin-bottom: 15px;">
-        ⏳ 120:00
+        ⏳ 60:00
     </div>
     <script>
     var time_in_minutes = 60;
