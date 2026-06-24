@@ -53,7 +53,7 @@ pdf_link = f"https://drive.google.com/file/d/{current_exam['pdf_id']}/preview"
 giai_link = f"https://drive.google.com/file/d/{current_exam['giai_id']}/view"
 
 # Chia màn hình làm 2 cột: Đề thi (6) và Phiếu trả lời (4)
-col1, col2 = st.columns([6, 4])
+col1, col2 = st.columns([6.5, 3.5])
 
 with col1:
     st.subheader("📑 Nội dung Đề thi")
