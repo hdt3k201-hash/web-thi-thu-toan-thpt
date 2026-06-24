@@ -85,6 +85,19 @@ EXAMS_BANK = {
         },
         "key_p3": ["2.4", "7200", "2.34", "3", "2", "100"]
     },
+     "de_số_7": {
+        "title": "Đề số 07:Đường tiệm cận của hàm số 2026",
+        "pdf_id": "1CBsmjE7L3uB9VeeUe8y6_Po4eHl1Pmv1",  # Thay bằng ID file ĐỀ số 2
+        "giai_id": "1ZXtgPr6dFBwoUV_-nQBEtjG_6mCFq2YN",  # Thay bằng ID file GIẢI số 2
+        "key_p1": ["C", "D", "A", "C", "C", "A", "A", "B", "C", "D", "D", "C"],
+        "key_p2": {
+            1: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"},
+            2: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Sai"},
+            3: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Sai"},
+            4: {"a": "Đúng", "b": "Đúng", "c": "Đúng", "d": "Sai"},
+        },
+        "key_p3": ["-298", "150", "2", "2", "2", "29"]
+    },
 }
 
 # Giao diện chính
