@@ -32,7 +32,7 @@ EXAMS_BANK = {
             4: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Sai"},
         },
         "key_p3": ["-3", "1.41", "6.71", "52", "0", "158"]
-    }
+    },
     "de_số_3": {
         "title": "Đề số 03: Ôn tập đơn điệu và cực trị của hàm số 2026",
         "pdf_id": "1IJNKbYvKU0ZfjYl6JRL4vouz24XHF0mQ",  # Thay bằng ID file ĐỀ số 2
@@ -45,7 +45,7 @@ EXAMS_BANK = {
             4: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
         },
         "key_p3": ["2", "2", "28", "52", "10.6", "80"]
-    }
+    },
 }
 
 # Giao diện chính
