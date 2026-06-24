@@ -22,8 +22,8 @@ EXAMS_BANK = {
     },
     "de_số_2": {
         "title": "Đề số 02: Ôn tập đơn điệu và cực trị của hàm số 2026",
-        "pdf_id": "MÃ_ID_DRIVE_ĐỀ_2",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "MÃ_ID_DRIVE_FILE_GIAI_2",  # Thay bằng ID file GIẢI số 2
+        "pdf_id": "1IJNKbYvKU0ZfjYl6JRL4vouz24XHF0mQ",  # Thay bằng ID file ĐỀ số 2
+        "giai_id": "1b_i9-y1RyoUwkvqKyc51TrCHXlA6uj-8",  # Thay bằng ID file GIẢI số 2
         "key_p1": ["B", "D", "B", "D", "A", "D", "C", "B", "A", "C", "A", "C"],
         "key_p2": {
             1: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
