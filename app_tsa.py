@@ -20,21 +20,38 @@ TSA_EXAMS_BANK = {
             20: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},
         },
         "key_p3": ["15", "0", "-2", "3.14", "10", "5", "100", "0.5", "-1", "7"],
-        "options_p4": [ # Kho từ khóa của đề số 1
-            "--- Bấm để chọn phương án ---",
-            "Đồng biến trên R", "Nghịch biến trên R", "Có cực đại và cực tiểu", 
-            "Tập xác định D = R \ {1}", "Tiệm cận đứng x = 1", "Tiệm cận ngang y = 2"
-        ],
-        "key_p4": [
-            "Đồng biến trên R", "Tiệm cận đứng x = 1", "Tập xác định D = R \ {1}", 
-            "Có cực đại và cực tiểu", "Nghịch biến trên R", "Tiệm cận ngang y = 2",
-            "Đồng biến trên R", "Tiệm cận đứng x = 1", "Tập xác định D = R \ {1}", "Có cực đại và cực tiểu"
-        ]
+        
+        # [CẬP NHẬT] Kho từ khóa Phần 4: Đánh số từ 31 -> 40, mỗi câu một danh sách riêng
+        "options_p4": { 
+            31: ["--- Bấm để chọn phương án ---", "Đồng biến trên R", "Nghịch biến trên R"],
+            32: ["--- Bấm để chọn phương án ---", "Tiệm cận đứng x = 1", "Tiệm cận ngang y = 2"],
+            33: ["--- Bấm để chọn phương án ---", "Tập xác định D = R \ {1}", "Tập xác định D = R"],
+            34: ["--- Bấm để chọn phương án ---", "Có cực đại và cực tiểu", "Không có cực trị"],
+            35: ["--- Bấm để chọn phương án ---", "Đồng biến trên R", "Nghịch biến trên R"],
+            36: ["--- Bấm để chọn phương án ---", "Tiệm cận đứng x = 1", "Tiệm cận ngang y = 2"],
+            37: ["--- Bấm để chọn phương án ---", "Đồng biến trên R", "Nghịch biến trên R"],
+            38: ["--- Bấm để chọn phương án ---", "Tiệm cận đứng x = 1", "Tiệm cận ngang y = 2"],
+            39: ["--- Bấm để chọn phương án ---", "Tập xác định D = R \ {1}", "Tập xác định D = R"],
+            40: ["--- Bấm để chọn phương án ---", "Có cực đại và cực tiểu", "Không có cực trị"]
+        },
+        # [CẬP NHẬT] Đáp án Phần 4 cũng chuyển thành từ điển để đồng bộ
+        "key_p4": {
+            31: "Đồng biến trên R", 
+            32: "Tiệm cận đứng x = 1", 
+            33: "Tập xác định D = R \ {1}", 
+            34: "Có cực đại và cực tiểu", 
+            35: "Nghịch biến trên R", 
+            36: "Tiệm cận ngang y = 2",
+            37: "Đồng biến trên R", 
+            38: "Tiệm cận đứng x = 1", 
+            39: "Tập xác định D = R \ {1}", 
+            40: "Có cực đại và cực tiểu"
+        }
     },
     "de_tsa_2": {
         "title": "Đề TSA 02: Luyện đề Đánh giá Tư duy Bách Khoa",
-        "pdf_id": "ID_FILE_DE_TSA_2",  # Thay bằng ID file đề 2 trên Drive
-        "giai_id": "ID_FILE_GIAI_TSA_2", # Thay bằng ID file giải 2
+        "pdf_id": "ID_FILE_DE_TSA_2",  
+        "giai_id": "ID_FILE_GIAI_TSA_2", 
         "key_p1": ["B", "C", "A", "D", "B", "C", "A", "D", "B", "C", "A", "D", "B", "C", "A"],
         "key_p2": {
             16: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
@@ -44,16 +61,31 @@ TSA_EXAMS_BANK = {
             20: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
         },
         "key_p3": ["5", "10", "1", "0", "-5", "2", "50", "0.25", "3", "8"],
-        "options_p4": [ # Kho từ khóa của đề số 2 (có thể hoàn toàn khác đề 1)
-            "--- Bấm để chọn phương án ---",
-            "Hình chóp tam giác đều", "Mặt cầu ngoại tiếp", "Thể tích khối lăng trụ", 
-            "Bán kính R = 5", "Đường cao h = 3"
-        ],
-        "key_p4": [
-            "Hình chóp tam giác đều", "Mặt cầu ngoại tiếp", "Thể tích khối lăng trụ", 
-            "Bán kính R = 5", "Đường cao h = 3", "Hình chóp tam giác đều",
-            "Mặt cầu ngoại tiếp", "Thể tích khối lăng trụ", "Bán kính R = 5", "Đường cao h = 3"
-        ]
+        
+        "options_p4": { 
+            31: ["--- Bấm để chọn phương án ---", "Hình chóp tam giác đều", "Hình chóp tứ giác đều"],
+            32: ["--- Bấm để chọn phương án ---", "Mặt cầu ngoại tiếp", "Mặt cầu nội tiếp"],
+            33: ["--- Bấm để chọn phương án ---", "Thể tích khối lăng trụ", "Thể tích khối chóp"],
+            34: ["--- Bấm để chọn phương án ---", "Bán kính R = 5", "Bán kính R = 3"],
+            35: ["--- Bấm để chọn phương án ---", "Đường cao h = 3", "Đường cao h = 5"],
+            36: ["--- Bấm để chọn phương án ---", "Hình chóp tam giác đều", "Hình lăng trụ đứng"],
+            37: ["--- Bấm để chọn phương án ---", "Mặt cầu ngoại tiếp", "Mặt trụ ngoại tiếp"],
+            38: ["--- Bấm để chọn phương án ---", "Thể tích khối lăng trụ", "Diện tích xung quanh"],
+            39: ["--- Bấm để chọn phương án ---", "Bán kính R = 5", "Bán kính R = 10"],
+            40: ["--- Bấm để chọn phương án ---", "Đường cao h = 3", "Đường sinh l = 3"]
+        },
+        "key_p4": {
+            31: "Hình chóp tam giác đều", 
+            32: "Mặt cầu ngoại tiếp", 
+            33: "Thể tích khối lăng trụ", 
+            34: "Bán kính R = 5", 
+            35: "Đường cao h = 3", 
+            36: "Hình chóp tam giác đều",
+            37: "Mặt cầu ngoại tiếp", 
+            38: "Thể tích khối lăng trụ", 
+            39: "Bán kính R = 5", 
+            40: "Đường cao h = 3"
+        }
     }
 }
 
@@ -85,10 +117,10 @@ with col2:
     # Đồng hồ đếm ngược 120 phút tự động reset khi đổi đề
     timer_code = f"""
     <div id="timer_{selected_exam_key}" style="background-color: #ff4b4b; color: white; padding: 12px; text-align: center; font-size: 26px; font-weight: bold; border-radius: 8px; margin-bottom: 15px;">
-        ⏳ 60:00
+        ⏳ 120:00
     </div>
     <script>
-    var time_in_minutes = 60;
+    var time_in_minutes = 120;
     var deadline = new Date(Date.parse(new Date()) + time_in_minutes * 60 * 1000);
     function update_clock(){{
         var t = Date.parse(deadline) - Date.parse(new Date());
@@ -147,7 +179,8 @@ with col2:
         st.markdown("### **PHẦN IV. Kéo thả phương án (Câu 31 - 40)**")
         p4_answers = {}
         for i in range(31, 41):
-            p4_answers[i] = st.selectbox(f"Vị trí ô trống Câu {i}:", options=current_exam["options_p4"], key=f"p4_c{i}_{selected_exam_key}")
+            # [CẬP NHẬT] Lấy danh sách lựa chọn tương ứng với câu i
+            p4_answers[i] = st.selectbox(f"Vị trí ô trống Câu {i}:", options=current_exam["options_p4"][i], key=f"p4_c{i}_{selected_exam_key}")
 
         st.markdown("---")
         submitted = st.form_submit_button("NỘP BÀI & CHẤM ĐIỂM TỰ ĐỘNG", use_container_width=True)
@@ -165,7 +198,9 @@ with col2:
                     correct_p2_y += 1
                     
         correct_p3 = sum(1 for i in range(21, 31) if p3_answers[i].strip() == str(current_exam["key_p3"][i-21]))
-        correct_p4 = sum(1 for i in range(31, 41) if p4_answers[i] == current_exam["key_p4"][i-31])
+        
+        # [CẬP NHẬT] So sánh đáp án học sinh chọn với key_p4 (dạng từ điển)
+        correct_p4 = sum(1 for i in range(31, 41) if p4_answers[i] == current_exam["key_p4"][i])
                 
         total_correct_items = correct_p1 + correct_p2_y + correct_p3 + correct_p4
         total_items = 15 + 20 + 10 + 10 # Tổng 55 thao tác
