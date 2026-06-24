@@ -8,17 +8,17 @@ st.set_page_config(page_title="Hệ Thống Thi Thử - Lớp Toán Thầy Tùng
 # =========================================================================
 EXAMS_BANK = {
     "de_số_1": {
-        "title": "Đề số 01: Ôn tập khảo sát chuyên đề Hình học & Giải tích 12",
-        "pdf_id": "1A2b3C4d5E6f7G8h9I",  # Thay bằng ID file ĐỀ trên Google Drive của thầy
-        "giai_id": "MÃ_ID_DRIVE_FILE_GIAI_1",  # Thay bằng ID file GIẢI CHI TIẾT trên Drive
-        "key_p1": ["A", "B", "C", "D", "A", "B", "C", "D", "A", "B", "C", "D"],  # Đáp án 12 câu Phần I
+        "title": "Đề số 01: Ôn tập đơn điệu và cực trị của hàm số",
+        "pdf_id": "1u07mDClzYGhdjGmdziBm0Xbwqg6OxmMn",  # Thay bằng ID file ĐỀ trên Google Drive của thầy
+        "giai_id": "19iIiwKO5bOyTWQq4g8Hh6c9d5nPlTVlD",  # Thay bằng ID file GIẢI CHI TIẾT trên Drive
+        "key_p1": ["C", "C", "C", "B", "A", "B", "D", "B", "D", "A", "C", "B"],  # Đáp án 12 câu Phần I
         "key_p2": {  # Đáp án 4 câu Phần II (Đúng hoặc Sai cho các ý a, b, c, d)
-            1: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
-            2: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            3: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Sai"},
-            4: {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Đúng"},
+            1: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
+            2: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Sai"},
+            3: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
+            4: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
         },
-        "key_p3": ["15", "-2.5", "0", "1/2", "3", "100"]  # Đáp số chuẩn của 6 câu Phần III
+        "key_p3": ["6", "-35", "3", "3", "20", "1.61"]  # Đáp số chuẩn của 6 câu Phần III
     },
     "de_số_2": {
         "title": "Đề số 02: Thi thử THPT Quốc Gia năm 2026 - Cấu trúc mới BGD",
