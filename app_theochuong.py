@@ -163,6 +163,19 @@ EXAMS_BANK = {
         },
         "key_p3": ["-2", "7", "13", "2", "3", "9"]
     },
+     "de_số_13": {
+        "title": "Đề số 13 : Ứng dụng đạo hàm Khảo sát hàm số 2026",
+        "pdf_id": "1lG0Hri-P5nU3suMk2FlzWw40r0A39IFk",  # Thay bằng ID file ĐỀ số 2
+        "giai_id": "1iqUK2LGa5VqEP_tGuYebERrKyJFu0_5w",  # Thay bằng ID file GIẢI số 2
+        "key_p1": ["A", "B", "A", "A", "C", "A", "B", "B", "A", "C", "A", "A"],
+        "key_p2": {
+            1: {"a": "Đúng", "b": "Đúng", "c": "Đúng", "d": "Sai"},
+            2: {"a": "Đúng", "b": "Đúng", "c": "Đúng", "d": "Sai"},
+            3: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"},
+            4: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
+        },
+        "key_p3": ["2.4", "12", "226.2", "224", "12", "41"]
+    },
 }
 
 # Giao diện chính
