@@ -124,6 +124,19 @@ EXAMS_BANK = {
         },
         "key_p3": ["2025", "4", "3", "3", "2", "3"]
     },
+    "de_số_10": {
+        "title": "Đề số 10:Khảo sát hàm số 2026",
+        "pdf_id": "1vHotQ9T_-Fd4r5iHGv7m5Rcm1ZKZrFd_",  # Thay bằng ID file ĐỀ số 2
+        "giai_id": "1zhBstuiYKsypoudFBCSHoMqX2zcluRfv",  # Thay bằng ID file GIẢI số 2
+        "key_p1": ["A", "D", "D", "C", "D", "D", "D", "A", "D", "B", "D", "A"],
+        "key_p2": {
+            1: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Sai"},
+            2: {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Đúng"},
+            3: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
+            4: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
+        },
+        "key_p3": ["-2", "7", "13", "2", "3", "9"]
+    },
 }
 
 # Giao diện chính
