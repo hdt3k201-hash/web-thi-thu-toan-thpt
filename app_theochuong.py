@@ -8,7 +8,7 @@ st.set_page_config(page_title="Hệ Thống Thi Thử - Lớp Toán Thầy Tùng
 # =========================================================================
 EXAMS_BANK = {
     "de_số_1": {
-        "title": "Đề số 01: Ôn tập đơn điệu và cực trị của hàm số",
+        "title": "Đề số 01: Ôn tập đơn điệu và cực trị của hàm số 2026",
         "pdf_id": "1u07mDClzYGhdjGmdziBm0Xbwqg6OxmMn",  # Thay bằng ID file ĐỀ trên Google Drive của thầy
         "giai_id": "19iIiwKO5bOyTWQq4g8Hh6c9d5nPlTVlD",  # Thay bằng ID file GIẢI CHI TIẾT trên Drive
         "key_p1": ["C", "C", "C", "B", "A", "B", "D", "B", "D", "A", "C", "B"],  # Đáp án 12 câu Phần I
@@ -21,17 +21,17 @@ EXAMS_BANK = {
         "key_p3": ["6", "-35", "3", "3", "20", "1.61"]  # Đáp số chuẩn của 6 câu Phần III
     },
     "de_số_2": {
-        "title": "Đề số 02: Thi thử THPT Quốc Gia năm 2026 - Cấu trúc mới BGD",
+        "title": "Đề số 02: Ôn tập đơn điệu và cực trị của hàm số 2026",
         "pdf_id": "MÃ_ID_DRIVE_ĐỀ_2",  # Thay bằng ID file ĐỀ số 2
         "giai_id": "MÃ_ID_DRIVE_FILE_GIAI_2",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["B", "C", "D", "A", "B", "C", "D", "A", "B", "C", "D", "A"],
+        "key_p1": ["B", "D", "B", "D", "A", "D", "C", "B", "A", "C", "A", "C"],
         "key_p2": {
-            1: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-            2: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},
-            3: {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Sai"},
-            4: {"a": "Đúng", "b": "Đúng", "c": "Đúng", "d": "Sai"},
+            1: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
+            2: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Sai"},
+            3: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
+            4: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Sai"},
         },
-        "key_p3": ["5", "10", "-1", "2.25", "0", "7"]
+        "key_p3": ["-3", "1.41", "6.71", "52", "0", "158"]
     }
 }
 
