@@ -46,6 +46,19 @@ EXAMS_BANK = {
         },
         "key_p3": ["2", "2", "28", "52", "10.6", "80"]
     },
+    "de_số_4": {
+        "title": "Đề số 04: Giá trị lớn nhất ; nhỏ nhất của hàm số 2026",
+        "pdf_id": "1bH_wKqKQ1dqEpot9RPlK_9AiEm8xttsn",  # Thay bằng ID file ĐỀ số 2
+        "giai_id": "1aVISUkmQvC6ui6tTMZfDGbl9c0rpcFWT",  # Thay bằng ID file GIẢI số 2
+        "key_p1": ["D", "B", "A", "A", "D", "D", "D", "B", "A", "A", "A", "B"],
+        "key_p2": {
+            1: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"},
+            2: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Đúng"},
+            3: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},
+            4: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
+        },
+        "key_p3": ["3", "0.37", "1.125", "2.4", "7200", "2.34"]
+    },
 }
 
 # Giao diện chính
