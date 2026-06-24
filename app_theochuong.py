@@ -36,7 +36,7 @@ EXAMS_BANK = {
 }
 
 # Giao diện chính
-st.title("🎯 PHÒNG THI THỬ TOÁN THEO HỌC KỲ ")
+st.title("🎯 PHÒNG THI THỬ TOÁN THEO CHƯƠNG ")
 st.markdown("---")
 
 # MENU CHỌN ĐỀ THI ĐỘNG
