@@ -79,6 +79,7 @@ with col2:
         st.subheader("PHẦN II (16-20)")
         p2_answers = {}
         for i in range(16, 21):
+            st.markdown(f"**Câu {i}:**")
             branches = list(current_exam["key_p2"][i].keys())
             cols = st.columns(len(branches))
             p2_answers[i] = {b: cols[idx].radio(f"Ý {b}", ["Đúng", "Sai"], index=None, key=f"p2_{i}_{b}") for idx, b in enumerate(branches)}
