@@ -108,3 +108,21 @@ with col2:
         c4 = sum(1 for i in range(31, 41) for s, v in p4_answers[i].items() if v == current_exam["key_p4"][i].get(s))
         
         st.success(f"Kết quả: P1:{c1}/15 | P2:{c2} ý đúng | P3:{c3}/10 | P4:{c4} vị trí đúng!")
+
+
+
+
+
+
+st.markdown("---")
+        
+        # Chỉ tạo duy nhất 1 nút để xem lời giải
+        if st.button("📖 Xem lời giải chi tiết (PDF)"):
+            st.session_state.show_pdf = True
+            
+        # Nếu đã bấm nút, hiển thị file PDF
+        if "show_pdf" in st.session_state and st.session_state.show_pdf:
+            st.components.v1.iframe(
+                f"https://drive.google.com/file/d/{current_exam['giai_id']}/preview", 
+                height=800
+            )
