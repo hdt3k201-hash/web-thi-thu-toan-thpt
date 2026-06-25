@@ -9,19 +9,20 @@ st.set_page_config(page_title="Hệ Thống Thi TSA - Toán Thầy Tùng", layou
 TSA_EXAMS_BANK = {
     "de_tsa_1": {
         "title": "Đề TSA 01: Khảo sát chất lượng Toán Tư Duy",
-        "pdf_id": "ID_FILE_DE_TSA_1",  # Thay bằng ID file đề 1 trên Drive
-        "giai_id": "ID_FILE_GIAI_TSA_1", # Thay bằng ID file giải 1
+        "pdf_id": "ID_FILE_DE_TSA_1",  
+        "giai_id": "ID_FILE_GIAI_TSA_1", 
         "key_p1": ["A", "B", "C", "D", "A", "B", "C", "D", "A", "B", "C", "D", "A", "B", "C"],
+        
+        # [CẬP NHẬT] Số lượng phát biểu linh hoạt: câu 2 ý, câu 3 ý, câu 4 ý thoải mái
         "key_p2": {
-            16: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
-            17: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            18: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Sai"},
-            19: {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Đúng"},
-            20: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},
+            16: {"a": "Đúng", "b": "Sai"},                                 # Câu 16: Chỉ có 2 phát biểu
+            17: {"a": "Sai", "b": "Đúng", "c": "Sai"},                     # Câu 17: Có 3 phát biểu
+            18: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Sai"},         # Câu 18: Có 4 phát biểu
+            19: {"a": "Sai", "b": "Sai", "c": "Đúng"},                     # Câu 19: Có 3 phát biểu
+            20: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},         # Câu 20: Có 4 phát biểu
         },
         "key_p3": ["15", "0", "-2", "3.14", "10", "5", "100", "0.5", "-1", "7"],
         
-        # [CẬP NHẬT] Kho từ khóa Phần 4: Đánh số từ 31 -> 40, mỗi câu một danh sách riêng
         "options_p4": { 
             31: ["--- Bấm để chọn phương án ---", "Đồng biến trên R", "Nghịch biến trên R"],
             32: ["--- Bấm để chọn phương án ---", "Tiệm cận đứng x = 1", "Tiệm cận ngang y = 2"],
@@ -34,7 +35,6 @@ TSA_EXAMS_BANK = {
             39: ["--- Bấm để chọn phương án ---", "Tập xác định D = R \ {1}", "Tập xác định D = R"],
             40: ["--- Bấm để chọn phương án ---", "Có cực đại và cực tiểu", "Không có cực trị"]
         },
-        # [CẬP NHẬT] Đáp án Phần 4 cũng chuyển thành từ điển để đồng bộ
         "key_p4": {
             31: "Đồng biến trên R", 
             32: "Tiệm cận đứng x = 1", 
@@ -53,12 +53,14 @@ TSA_EXAMS_BANK = {
         "pdf_id": "ID_FILE_DE_TSA_2",  
         "giai_id": "ID_FILE_GIAI_TSA_2", 
         "key_p1": ["B", "C", "A", "D", "B", "C", "A", "D", "B", "C", "A", "D", "B", "C", "A"],
+        
+        # Đề 2 thiết lập số phát biểu khác hoàn toàn đề 1 vẫn chạy mượt mà
         "key_p2": {
-            16: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            17: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
-            18: {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Đúng"},
-            19: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Sai"},
-            20: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
+            16: {"a": "Sai", "b": "Đúng", "c": "Sai"},                     # 3 ý
+            17: {"a": "Đúng", "b": "Sai"},                                 # 2 ý
+            18: {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Đúng"},         # 4 ý
+            19: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Sai"},         # 4 ý
+            20: {"a": "Sai", "b": "Đúng"},                                 # 2 ý
         },
         "key_p3": ["5", "10", "1", "0", "-5", "2", "50", "0.25", "3", "8"],
         
@@ -152,17 +154,22 @@ with col2:
         
         st.markdown("---")
         
-        # PHẦN II
+        # PHẦN II - [CẬP NHẬT TỰ ĐỘNG THEO SỐ Ý]
         st.markdown("### **PHẦN II. Trắc nghiệm Đúng / Sai (Câu 16 - 20)**")
         p2_answers = {}
         for i in range(16, 21):
             st.markdown(f"**Câu {i}:**")
             p2_answers[i] = {}
-            col_a, col_b, col_c, col_d = st.columns(4)
-            with col_a: p2_answers[i]["a"] = st.radio("Ý a)", ["Đúng", "Sai"], index=None, key=f"p2_c{i}_a_{selected_exam_key}")
-            with col_b: p2_answers[i]["b"] = st.radio("Ý b)", ["Đúng", "Sai"], index=None, key=f"p2_c{i}_b_{selected_exam_key}")
-            with col_c: p2_answers[i]["c"] = st.radio("Ý c)", ["Đúng", "Sai"], index=None, key=f"p2_c{i}_c_{selected_exam_key}")
-            with col_d: p2_answers[i]["d"] = st.radio("Ý d)", ["Đúng", "Sai"], index=None, key=f"p2_c{i}_d_{selected_exam_key}")
+            
+            # Tự động lấy ra danh sách các phát biểu có trong đáp án (ví dụ: ['a', 'b'] hoặc ['a', 'b', 'c'])
+            list_branches = list(current_exam["key_p2"][i].keys())
+            
+            # Tự động chia số cột tương ứng với số phát biểu thực tế của câu đó
+            cols = st.columns(len(list_branches))
+            
+            for idx, branch in enumerate(list_branches):
+                with cols[idx]:
+                    p2_answers[i][branch] = st.radio(f"Ý {branch})", ["Đúng", "Sai"], index=None, key=f"p2_c{i}_{branch}_{selected_exam_key}")
             st.write("")
         
         st.markdown("---")
@@ -179,7 +186,6 @@ with col2:
         st.markdown("### **PHẦN IV. Kéo thả phương án (Câu 31 - 40)**")
         p4_answers = {}
         for i in range(31, 41):
-            # [CẬP NHẬT] Lấy danh sách lựa chọn tương ứng với câu i
             p4_answers[i] = st.selectbox(f"Vị trí ô trống Câu {i}:", options=current_exam["options_p4"][i], key=f"p4_c{i}_{selected_exam_key}")
 
         st.markdown("---")
@@ -191,19 +197,21 @@ with col2:
     if submitted:
         correct_p1 = sum(1 for i in range(1, 16) if p1_answers[i] == current_exam["key_p1"][i-1])
         
+        # [CẬP NHẬT] Đếm số ý đúng và tổng số ý làm bài động cho Phần II
         correct_p2_y = 0
+        total_p2_items = 0
         for i in range(16, 21):
-            for branch in ["a", "b", "c", "d"]:
+            for branch in current_exam["key_p2"][i].keys():
+                total_p2_items += 1  # Tăng tổng số lượng ý cần làm lên
                 if p2_answers[i][branch] == current_exam["key_p2"][i][branch]:
                     correct_p2_y += 1
                     
         correct_p3 = sum(1 for i in range(21, 31) if p3_answers[i].strip() == str(current_exam["key_p3"][i-21]))
-        
-        # [CẬP NHẬT] So sánh đáp án học sinh chọn với key_p4 (dạng từ điển)
         correct_p4 = sum(1 for i in range(31, 41) if p4_answers[i] == current_exam["key_p4"][i])
                 
+        # Tổng số thao tác đúng / Tổng số thao tác thực tế của đề thi
         total_correct_items = correct_p1 + correct_p2_y + correct_p3 + correct_p4
-        total_items = 15 + 20 + 10 + 10 # Tổng 55 thao tác
+        total_items = 15 + total_p2_items + 10 + 10 
         
         st.success("🎉 Bạn đã hoàn thành bài thi! Dưới đây là thống kê kết quả của bạn:")
         st.balloons()
@@ -213,7 +221,7 @@ with col2:
             st.metric("Phần I (Trắc nghiệm)", f"{correct_p1} / 15 câu")
             st.metric("Phần III (Điền đáp án)", f"{correct_p3} / 10 câu")
         with col_res2:
-            st.metric("Phần II (Đúng/Sai)", f"{correct_p2_y} / 20 ý")
+            st.metric("Phần II (Đúng/Sai)", f"{correct_p2_y} / {total_p2_items} ý")
             st.metric("Phần IV (Kéo thả)", f"{correct_p4} / 10 câu")
             
         st.markdown(f"### 🏆 TỔNG CỘNG: Đạt {total_correct_items} / {total_items} thao tác đúng!")
