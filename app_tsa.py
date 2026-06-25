@@ -117,7 +117,7 @@ with col2:
         # Nếu đã bấm nút, hiển thị file PDF
         if "show_pdf" in st.session_state and st.session_state.show_pdf:
             st.components.v1.iframe(
-                f"https://drive.google.com/file/d/{current_exam['1zqr0tGj-3dl64iI_RiPQsOkZ3fpBCLHr']}/preview", 
+                f"https://drive.google.com/file/d/{current_exam['giai_1zqr0tGj-3dl64iI_RiPQsOkZ3fpBCLHr']}/preview", 
                 height=800
             )
 
