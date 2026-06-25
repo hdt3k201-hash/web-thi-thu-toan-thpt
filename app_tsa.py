@@ -63,7 +63,7 @@ with col2:
     st.components.v1.html(f"""
     <div id="timer" style="background-color: #ff4b4b; color: white; padding: 12px; text-align: center; font-size: 26px; font-weight: bold; border-radius: 8px;">⏳ 120:00</div>
     <script>
-    var deadline = new Date(Date.now() + 120 * 60 * 1000);
+    var deadline = new Date(Date.now() + 60 * 60 * 1000);
     setInterval(() => {{
         var t = deadline - Date.now();
         var m = Math.floor(t / 60000), s = Math.floor((t/1000)%60);
