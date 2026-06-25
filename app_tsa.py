@@ -1,10 +1,10 @@
 import streamlit as st
 
-# Cấu hình giao diện trang web trải rộng toàn màn hình
+# Cấu hình giao diện
 st.set_page_config(page_title="Hệ Thống Thi TSA - Toán Thầy Tùng", layout="wide")
 
 # =========================================================================
-# KHO DỮ LIỆU ĐỀ THI TSA (Thầy thêm đề 3, 4, 5... tương tự cấu trúc này)
+# KHO DỮ LIỆU ĐỀ THI (Cấu hình chi tiết từng câu Phần IV)
 # =========================================================================
 TSA_EXAMS_BANK = {
     "de_tsa_1": {
@@ -12,219 +12,109 @@ TSA_EXAMS_BANK = {
         "pdf_id": "ID_FILE_DE_TSA_1",  
         "giai_id": "ID_FILE_GIAI_TSA_1", 
         "key_p1": ["A", "B", "C", "D", "A", "B", "C", "D", "A", "B", "C", "D", "A", "B", "C"],
-        
-        # [CẬP NHẬT] Số lượng phát biểu linh hoạt: câu 2 ý, câu 3 ý, câu 4 ý thoải mái
         "key_p2": {
-            16: {"a": "Đúng", "b": "Sai"},                                 # Câu 16: Chỉ có 2 phát biểu
-            17: {"a": "Sai", "b": "Đúng", "c": "Sai"},                     # Câu 17: Có 3 phát biểu
-            18: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Sai"},         # Câu 18: Có 4 phát biểu
-            19: {"a": "Sai", "b": "Sai", "c": "Đúng"},                     # Câu 19: Có 3 phát biểu
-            20: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},         # Câu 20: Có 4 phát biểu
+            16: {"a": "Đúng", "b": "Sai"},
+            17: {"a": "Sai", "b": "Đúng", "c": "Sai"},
+            18: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Sai"},
+            19: {"a": "Sai", "b": "Sai", "c": "Đúng"},
+            20: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},
         },
         "key_p3": ["15", "0", "-2", "3.14", "10", "5", "100", "0.5", "-1", "7"],
         
-        "options_p4": { 
-            31: ["--- Bấm để chọn phương án ---", "Đồng biến trên R", "Nghịch biến trên R"],
-            32: ["--- Bấm để chọn phương án ---", "Tiệm cận đứng x = 1", "Tiệm cận ngang y = 2"],
-            33: ["--- Bấm để chọn phương án ---", "Tập xác định D = R \ {1}", "Tập xác định D = R"],
-            34: ["--- Bấm để chọn phương án ---", "Có cực đại và cực tiểu", "Không có cực trị"],
-            35: ["--- Bấm để chọn phương án ---", "Đồng biến trên R", "Nghịch biến trên R"],
-            36: ["--- Bấm để chọn phương án ---", "Tiệm cận đứng x = 1", "Tiệm cận ngang y = 2"],
-            37: ["--- Bấm để chọn phương án ---", "Đồng biến trên R", "Nghịch biến trên R"],
-            38: ["--- Bấm để chọn phương án ---", "Tiệm cận đứng x = 1", "Tiệm cận ngang y = 2"],
-            39: ["--- Bấm để chọn phương án ---", "Tập xác định D = R \ {1}", "Tập xác định D = R"],
-            40: ["--- Bấm để chọn phương án ---", "Có cực đại và cực tiểu", "Không có cực trị"]
+        # Phần IV: Định nghĩa chi tiết từng câu từ 31 đến 40
+        "data_p4": {
+            31: {"options": ["--- Chọn ---", "Đồng biến", "Nghịch biến"], "slots": ["a", "b"]},
+            32: {"options": ["--- Chọn ---", "Tiệm cận đứng x=1", "Tiệm cận ngang y=2"], "slots": ["a", "b"]},
+            33: {"options": ["--- Chọn ---", "D = R", "D = R \\ {1}"], "slots": ["a"]},
+            34: {"options": ["--- Chọn ---", "Cực đại", "Cực tiểu", "Không có cực trị"], "slots": ["a", "b"]},
+            35: {"options": ["--- Chọn ---", "Đồng biến", "Nghịch biến"], "slots": ["a", "b"]},
+            36: {"options": ["--- Chọn ---", "Tiệm cận đứng x=1", "Tiệm cận ngang y=2"], "slots": ["a", "b"]},
+            37: {"options": ["--- Chọn ---", "D = R", "D = R \\ {1}"], "slots": ["a"]},
+            38: {"options": ["--- Chọn ---", "Cực đại", "Cực tiểu", "Không có cực trị"], "slots": ["a", "b"]},
+            39: {"options": ["--- Chọn ---", "Đồng biến", "Nghịch biến"], "slots": ["a"]},
+            40: {"options": ["--- Chọn ---", "Tiệm cận đứng x=1", "Tiệm cận ngang y=2"], "slots": ["a", "b"]}
         },
         "key_p4": {
-            31: "Đồng biến trên R", 
-            32: "Tiệm cận đứng x = 1", 
-            33: "Tập xác định D = R \ {1}", 
-            34: "Có cực đại và cực tiểu", 
-            35: "Nghịch biến trên R", 
-            36: "Tiệm cận ngang y = 2",
-            37: "Đồng biến trên R", 
-            38: "Tiệm cận đứng x = 1", 
-            39: "Tập xác định D = R \ {1}", 
-            40: "Có cực đại và cực tiểu"
-        }
-    },
-    "de_tsa_2": {
-        "title": "Đề TSA 02: Luyện đề Đánh giá Tư duy Bách Khoa",
-        "pdf_id": "ID_FILE_DE_TSA_2",  
-        "giai_id": "ID_FILE_GIAI_TSA_2", 
-        "key_p1": ["B", "C", "A", "D", "B", "C", "A", "D", "B", "C", "A", "D", "B", "C", "A"],
-        
-        # Đề 2 thiết lập số phát biểu khác hoàn toàn đề 1 vẫn chạy mượt mà
-        "key_p2": {
-            16: {"a": "Sai", "b": "Đúng", "c": "Sai"},                     # 3 ý
-            17: {"a": "Đúng", "b": "Sai"},                                 # 2 ý
-            18: {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Đúng"},         # 4 ý
-            19: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Sai"},         # 4 ý
-            20: {"a": "Sai", "b": "Đúng"},                                 # 2 ý
-        },
-        "key_p3": ["5", "10", "1", "0", "-5", "2", "50", "0.25", "3", "8"],
-        
-        "options_p4": { 
-            31: ["--- Bấm để chọn phương án ---", "Hình chóp tam giác đều", "Hình chóp tứ giác đều"],
-            32: ["--- Bấm để chọn phương án ---", "Mặt cầu ngoại tiếp", "Mặt cầu nội tiếp"],
-            33: ["--- Bấm để chọn phương án ---", "Thể tích khối lăng trụ", "Thể tích khối chóp"],
-            34: ["--- Bấm để chọn phương án ---", "Bán kính R = 5", "Bán kính R = 3"],
-            35: ["--- Bấm để chọn phương án ---", "Đường cao h = 3", "Đường cao h = 5"],
-            36: ["--- Bấm để chọn phương án ---", "Hình chóp tam giác đều", "Hình lăng trụ đứng"],
-            37: ["--- Bấm để chọn phương án ---", "Mặt cầu ngoại tiếp", "Mặt trụ ngoại tiếp"],
-            38: ["--- Bấm để chọn phương án ---", "Thể tích khối lăng trụ", "Diện tích xung quanh"],
-            39: ["--- Bấm để chọn phương án ---", "Bán kính R = 5", "Bán kính R = 10"],
-            40: ["--- Bấm để chọn phương án ---", "Đường cao h = 3", "Đường sinh l = 3"]
-        },
-        "key_p4": {
-            31: "Hình chóp tam giác đều", 
-            32: "Mặt cầu ngoại tiếp", 
-            33: "Thể tích khối lăng trụ", 
-            34: "Bán kính R = 5", 
-            35: "Đường cao h = 3", 
-            36: "Hình chóp tam giác đều",
-            37: "Mặt cầu ngoại tiếp", 
-            38: "Thể tích khối lăng trụ", 
-            39: "Bán kính R = 5", 
-            40: "Đường cao h = 3"
+            31: {"a": "Đồng biến", "b": "Nghịch biến"},
+            32: {"a": "Tiệm cận đứng x=1", "b": "Tiệm cận ngang y=2"},
+            33: {"a": "D = R \\ {1}"},
+            34: {"a": "Cực đại", "b": "Cực tiểu"},
+            35: {"a": "Đồng biến", "b": "Nghịch biến"},
+            36: {"a": "Tiệm cận đứng x=1", "b": "Tiệm cận ngang y=2"},
+            37: {"a": "D = R \\ {1}"},
+            38: {"a": "Cực đại", "b": "Cực tiểu"},
+            39: {"a": "Đồng biến"},
+            40: {"a": "Tiệm cận đứng x=1", "b": "Tiệm cận ngang y=2"}
         }
     }
 }
 
-st.title("🎯 HỆ THỐNG THI ĐÁNH GIÁ TƯ DUY (TSA) MÔN TOÁN")
-st.markdown("---")
-
-# MENU CHỌN ĐỀ THI
-st.sidebar.header("🗂️ DANH SÁCH ĐỀ THI TSA")
-selected_exam_key = st.sidebar.selectbox(
-    "Học sinh chọn đề thi tại đây:",
-    options=list(TSA_EXAMS_BANK.keys()),
-    format_func=lambda x: TSA_EXAMS_BANK[x]["title"]
-)
-
-# Lấy dữ liệu của đề đang được chọn
+# GIAO DIỆN
+st.title("🎯 HỆ THỐNG THI ĐÁNH GIÁ TƯ DUY (TSA)")
+selected_exam_key = st.sidebar.selectbox("Chọn đề:", options=list(TSA_EXAMS_BANK.keys()))
 current_exam = TSA_EXAMS_BANK[selected_exam_key]
-pdf_link = f"https://drive.google.com/file/d/{current_exam['pdf_id']}/preview"
-giai_link = f"https://drive.google.com/file/d/{current_exam['giai_id']}/view"
 
 col1, col2 = st.columns([6, 4])
-
 with col1:
-    st.subheader("📑 Nội dung Đề thi TSA")
-    st.components.v1.iframe(pdf_link, height=1400)
+    st.subheader("📑 Đề thi")
+    st.components.v1.iframe(f"https://drive.google.com/file/d/{current_exam['pdf_id']}/preview", height=1000)
 
 with col2:
-    st.subheader("✍️ Phiếu Điền Đáp Án")
-    
-    # Đồng hồ đếm ngược 120 phút tự động reset khi đổi đề
-    timer_code = f"""
-    <div id="timer_{selected_exam_key}" style="background-color: #ff4b4b; color: white; padding: 12px; text-align: center; font-size: 26px; font-weight: bold; border-radius: 8px; margin-bottom: 15px;">
-        ⏳ 120:00
-    </div>
-    <script>
-    var time_in_minutes = 120;
-    var deadline = new Date(Date.parse(new Date()) + time_in_minutes * 60 * 1000);
-    function update_clock(){{
-        var t = Date.parse(deadline) - Date.parse(new Date());
-        var seconds = Math.floor( (t/1000) % 60 );
-        var total_minutes = Math.floor(t / 1000 / 60);
-        var clock = document.getElementById('timer_{selected_exam_key}');
-        if(!clock) return;
-        if(t <= 0){{
-            clock.innerHTML = "HẾT GIỜ LÀM BÀI!";
-            clock.style.backgroundColor = "black";
-        }} else {{
-            var m = total_minutes < 10 ? "0" + total_minutes : total_minutes;
-            var s = seconds < 10 ? "0" + seconds : seconds;
-            clock.innerHTML = "⏳ " + m + ":" + s;
-        }}
-    }}
-    setInterval(update_clock, 1000);
-    </script>
-    """
-    st.components.v1.html(timer_code, height=75)
-    
-    with st.form(key=f"form_{selected_exam_key}"):
-        
+    with st.form(key="exam_form"):
         # PHẦN I
-        st.markdown("### **PHẦN I. Trắc nghiệm nhiều phương án (Câu 1 - 15)**")
-        p1_answers = {}
-        for i in range(1, 16):
-            p1_answers[i] = st.radio(f"Câu {i}:", ["A", "B", "C", "D"], horizontal=True, index=None, key=f"p1_c{i}_{selected_exam_key}")
+        st.subheader("PHẦN I (1-15)")
+        p1_answers = {i: st.radio(f"Câu {i}", ["A","B","C","D"], horizontal=True, index=None) for i in range(1, 16)}
         
-        st.markdown("---")
-        
-        # PHẦN II - [CẬP NHẬT TỰ ĐỘNG THEO SỐ Ý]
-        st.markdown("### **PHẦN II. Trắc nghiệm Đúng / Sai (Câu 16 - 20)**")
+        # PHẦN II
+        st.subheader("PHẦN II (16-20)")
         p2_answers = {}
         for i in range(16, 21):
-            st.markdown(f"**Câu {i}:**")
-            p2_answers[i] = {}
-            
-            # Tự động lấy ra danh sách các phát biểu có trong đáp án (ví dụ: ['a', 'b'] hoặc ['a', 'b', 'c'])
-            list_branches = list(current_exam["key_p2"][i].keys())
-            
-            # Tự động chia số cột tương ứng với số phát biểu thực tế của câu đó
-            cols = st.columns(len(list_branches))
-            
-            for idx, branch in enumerate(list_branches):
-                with cols[idx]:
-                    p2_answers[i][branch] = st.radio(f"Ý {branch})", ["Đúng", "Sai"], index=None, key=f"p2_c{i}_{branch}_{selected_exam_key}")
-            st.write("")
-        
-        st.markdown("---")
+            branches = list(current_exam["key_p2"][i].keys())
+            cols = st.columns(len(branches))
+            p2_answers[i] = {b: cols[idx].radio(f"Ý {b}", ["Đúng", "Sai"], index=None) for idx, b in enumerate(branches)}
         
         # PHẦN III
-        st.markdown("### **PHẦN III. Điền đáp án (Câu 21 - 30)**")
-        p3_answers = {}
-        for i in range(21, 31):
-            p3_answers[i] = st.text_input(f"Câu {i}: Nhập kết quả của bạn", key=f"p3_c{i}_{selected_exam_key}")
-            
-        st.markdown("---")
+        st.subheader("PHẦN III (21-30)")
+        p3_answers = {i: st.text_input(f"Câu {i}") for i in range(21, 31)}
         
-        # PHẦN IV
-        st.markdown("### **PHẦN IV. Kéo thả phương án (Câu 31 - 40)**")
+        # PHẦN IV (31-40)
+        st.subheader("PHẦN IV (31-40)")
         p4_answers = {}
-        for i in range(31, 41):
-            p4_answers[i] = st.selectbox(f"Vị trí ô trống Câu {i}:", options=current_exam["options_p4"][i], key=f"p4_c{i}_{selected_exam_key}")
+        for cau_id in range(31, 41):
+            data = current_exam["data_p4"].get(cau_id)
+            if data:
+                st.markdown(f"**Câu {cau_id}:**")
+                p4_answers[cau_id] = {}
+                cols = st.columns(len(data["slots"]))
+                for idx, slot in enumerate(data["slots"]):
+                    p4_answers[cau_id][slot] = cols[idx].selectbox(f"Ô {slot}", options=data["options"], key=f"p4_{cau_id}_{slot}")
 
-        st.markdown("---")
-        submitted = st.form_submit_button("NỘP BÀI & CHẤM ĐIỂM TỰ ĐỘNG", use_container_width=True)
+        submitted = st.form_submit_button("NỘP BÀI", use_container_width=True)
 
-    # ==========================================
-    # LOGIC CHẤM ĐIỂM TỰ ĐỘNG
-    # ==========================================
+    # CHẤM ĐIỂM
     if submitted:
         correct_p1 = sum(1 for i in range(1, 16) if p1_answers[i] == current_exam["key_p1"][i-1])
         
-        # [CẬP NHẬT] Đếm số ý đúng và tổng số ý làm bài động cho Phần II
-        correct_p2_y = 0
-        total_p2_items = 0
+        correct_p2 = 0
+        total_p2 = 0
         for i in range(16, 21):
-            for branch in current_exam["key_p2"][i].keys():
-                total_p2_items += 1  # Tăng tổng số lượng ý cần làm lên
-                if p2_answers[i][branch] == current_exam["key_p2"][i][branch]:
-                    correct_p2_y += 1
+            for b, val in p2_answers[i].items():
+                total_p2 += 1
+                if val == current_exam["key_p2"][i][b]: correct_p2 += 1
                     
         correct_p3 = sum(1 for i in range(21, 31) if p3_answers[i].strip() == str(current_exam["key_p3"][i-21]))
-        correct_p4 = sum(1 for i in range(31, 41) if p4_answers[i] == current_exam["key_p4"][i])
-                
-        # Tổng số thao tác đúng / Tổng số thao tác thực tế của đề thi
-        total_correct_items = correct_p1 + correct_p2_y + correct_p3 + correct_p4
-        total_items = 15 + total_p2_items + 10 + 10 
         
-        st.success("🎉 Bạn đã hoàn thành bài thi! Dưới đây là thống kê kết quả của bạn:")
-        st.balloons()
+        correct_p4 = 0
+        total_p4 = 0
+        for cau_id in range(31, 41):
+            if cau_id in current_exam["key_p4"]:
+                for slot, correct_val in current_exam["key_p4"][cau_id].items():
+                    total_p4 += 1
+                    if p4_answers[cau_id].get(slot) == correct_val:
+                        correct_p4 += 1
         
-        col_res1, col_res2 = st.columns(2)
-        with col_res1:
-            st.metric("Phần I (Trắc nghiệm)", f"{correct_p1} / 15 câu")
-            st.metric("Phần III (Điền đáp án)", f"{correct_p3} / 10 câu")
-        with col_res2:
-            st.metric("Phần II (Đúng/Sai)", f"{correct_p2_y} / {total_p2_items} ý")
-            st.metric("Phần IV (Kéo thả)", f"{correct_p4} / 10 câu")
-            
-        st.markdown(f"### 🏆 TỔNG CỘNG: Đạt {total_correct_items} / {total_items} thao tác đúng!")
-        
-        if current_exam['giai_id']:
-            st.info(f"👉 [BẤM VÀO ĐÂY ĐỂ XEM FILE LỜI GIẢI CHI TIẾT PDF]({giai_link})")
+        st.success("🎉 Kết quả bài thi:")
+        st.write(f"- Phần I: {correct_p1}/15")
+        st.write(f"- Phần II: {correct_p2}/{total_p2}")
+        st.write(f"- Phần III: {correct_p3}/10")
+        st.write(f"- Phần IV: {correct_p4}/{total_p4} vị trí")
