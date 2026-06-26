@@ -45,7 +45,20 @@ EXAMS_BANK = {
             4: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
         },
         "key_p3": ["9", "1005", "2", "0.3", "4.2", "1.794"]
-    }
+    },
+    "de_số_4": {
+        "title": "Đề số 04:  Đề thi học kỳ I 2026 - 2027",
+        "pdf_id": "1EX46P6er3vTenL_Wyv_e9yrU6IdQTOKH",  
+        "giai_id": "1eeKkqOPYrEP5R4Tn0mwiWPo4ZPgh6FUF",  
+        "key_p1": ["B", "C", "C", "B", "A", "D", "B", "B", "A", "A", "D", "C"],
+        "key_p2": {
+            1: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Sai"},
+            2: {"a": "Đúng", "b": "Đúng", "c": "Đúng", "d": "Sai"},
+            3: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
+            4: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
+        },
+        "key_p3": ["-4", "5", "1100", "5196", "1221", "0.53"]
+    },
 } # <-- Đã bổ sung dấu ngoặc nhọn bị thiếu ở đây để đóng EXAMS_BANK
 
 # Giao diện chính
