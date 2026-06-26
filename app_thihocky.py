@@ -48,7 +48,7 @@ EXAMS_BANK = {
     },
     "de_số_4": {
         "title": "Đề số 04:  Đề thi học kỳ I 2026 - 2027",
-        "pdf_id": "1EX46P6er3vTenL_Wyv_e9yrU6IdQTOKH",  
+        "pdf_id": "1Ise3qF3AcXS0s207jliF5dHKayIQeCUE",  
         "giai_id": "1eeKkqOPYrEP5R4Tn0mwiWPo4ZPgh6FUF",  
         "key_p1": ["B", "C", "C", "B", "A", "D", "B", "B", "A", "A", "D", "C"],
         "key_p2": {
