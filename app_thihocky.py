@@ -8,20 +8,20 @@ st.set_page_config(page_title="Hệ Thống Thi Thử - Lớp Toán Thầy Tùng
 # =========================================================================
 EXAMS_BANK = {
     "de_số_1": {
-        "title": "Đề số 01: Ôn tập khảo sát chuyên đề Hình học & Giải tích 12",
-        "pdf_id": "1A2b3C4d5E6f7G8h9I",  # Thay bằng ID file ĐỀ trên Google Drive của thầy
-        "giai_id": "MÃ_ID_DRIVE_FILE_GIAI_1",  # Thay bằng ID file GIẢI CHI TIẾT trên Drive
-        "key_p1": ["A", "B", "C", "D", "A", "B", "C", "D", "A", "B", "C", "D"],  # Đáp án 12 câu Phần I
+        "title": "Đề số 01: Đề thi học kỳ I 2026 - 2027",
+        "pdf_id": "1hUn9ELnaaLsi2TdU9rYGFRAMM0Bor9iB",  # Thay bằng ID file ĐỀ trên Google Drive của thầy
+        "giai_id": "13EHc1__reC2LE2yXtcP3F7yn94sm97Mo",  # Thay bằng ID file GIẢI CHI TIẾT trên Drive
+        "key_p1": ["D", "B", "B", "B", "D", "B", "A", "C", "D", "B", "A", "B"],  # Đáp án 12 câu Phần I
         "key_p2": {  # Đáp án 4 câu Phần II (Đúng hoặc Sai cho các ý a, b, c, d)
-            1: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
+            1: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"},
             2: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            3: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Sai"},
-            4: {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Đúng"},
+            3: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},
+            4: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"},
         },
-        "key_p3": ["15", "-2.5", "0", "1/2", "3", "100"]  # Đáp số chuẩn của 6 câu Phần III
+        "key_p3": ["14.7", "2", "26", "0", "0.53", "42"]  # Đáp số chuẩn của 6 câu Phần III
     },
     "de_số_2": {
-        "title": "Đề số 02: Thi thử THPT Quốc Gia năm 2026 - Cấu trúc mới BGD",
+        "title": "Đề số 02:  Đề thi học kỳ I 2026 - 2027",
         "pdf_id": "MÃ_ID_DRIVE_ĐỀ_2",  # Thay bằng ID file ĐỀ số 2
         "giai_id": "MÃ_ID_DRIVE_FILE_GIAI_2",  # Thay bằng ID file GIẢI số 2
         "key_p1": ["B", "C", "D", "A", "B", "C", "D", "A", "B", "C", "D", "A"],
