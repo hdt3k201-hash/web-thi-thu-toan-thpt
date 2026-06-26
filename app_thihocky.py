@@ -22,16 +22,16 @@ EXAMS_BANK = {
     },
     "de_số_2": {
         "title": "Đề số 02:  Đề thi học kỳ I 2026 - 2027",
-        "pdf_id": "MÃ_ID_DRIVE_ĐỀ_2",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "MÃ_ID_DRIVE_FILE_GIAI_2",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["B", "C", "D", "A", "B", "C", "D", "A", "B", "C", "D", "A"],
+        "pdf_id": "15WMjjoMvHxVxoVlmZbjCtA9FGAyekX6r",  # Thay bằng ID file ĐỀ số 2
+        "giai_id": "1N5ClNh2pno5bZ1dxhROUlHVTDx9FMAsk",  # Thay bằng ID file GIẢI số 2
+        "key_p1": ["C", "C", "A", "B", "B", "C", "A", "D", "A", "A", "D", "B"],
         "key_p2": {
-            1: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-            2: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},
-            3: {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Sai"},
-            4: {"a": "Đúng", "b": "Đúng", "c": "Đúng", "d": "Sai"},
+            1: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
+            2: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
+            3: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Đúng"},
+            4: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
         },
-        "key_p3": ["5", "10", "-1", "2.25", "0", "7"]
+        "key_p3": ["1005", "10", "11.25", "36", "3", "2"]
     }
 }
 
