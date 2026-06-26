@@ -32,7 +32,19 @@ EXAMS_BANK = {
             4: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
         },
         "key_p3": ["1005", "10", "11.25", "36", "3", "2"]
-    }
+    },
+     "de_số_3": {
+        "title": "Đề số 03:  Đề thi học kỳ I 2026 - 2027",
+        "pdf_id": "1DoVtv4CCPXgrOC01j-XlVK3Ydup2jZsp",  # Thay bằng ID file ĐỀ số 2
+        "giai_id": "1MJE5RXg4mPc6goz2YCweTLDFQ-HLRT92",  # Thay bằng ID file GIẢI số 2
+        "key_p1": ["B", "B", "C", "D", "B", "A", "B", "A", "A", "D", "A", "A"],
+        "key_p2": {
+            1: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Sai"},
+            2: {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Đúng"},
+            3: {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Sai"},
+            4: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
+        },
+        "key_p3": ["9", "1005", "2", "0.3", "4.2", "1.794"]
 }
 
 # Giao diện chính
