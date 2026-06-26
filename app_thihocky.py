@@ -35,7 +35,7 @@ EXAMS_BANK = {
     },
      "de_số_3": {
         "title": "Đề số 03:  Đề thi học kỳ I 2026 - 2027",
-        "pdf_id": "1DoVtv4CCPXgrOC01j-XlVK3Ydup2jZsp",  
+        "pdf_id": "1KZik0Mh5LXJD1CNVnTLUi_kEgcVQnjAw",  
         "giai_id": "1MJE5RXg4mPc6goz2YCweTLDFQ-HLRT92",  
         "key_p1": ["B", "B", "C", "D", "B", "A", "B", "A", "A", "D", "A", "A"],
         "key_p2": {
