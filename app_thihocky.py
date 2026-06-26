@@ -36,7 +36,7 @@ EXAMS_BANK = {
 }
 
 # Giao diện chính
-st.title("🎯 PHÒNG THI THỬ TOÁN HỌC KỲ")
+st.title("🎯 PHÒNG THI THỬ TOÁN HỌC KỲ 2026 - 2027")
 st.markdown("---")
 
 # MENU CHỌN ĐỀ THI ĐỘNG
