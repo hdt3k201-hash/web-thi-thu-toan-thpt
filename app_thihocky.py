@@ -4,26 +4,26 @@ import streamlit as st
 st.set_page_config(page_title="Hệ Thống Thi Thử - Lớp Toán Thầy Tùng", layout="wide")
 
 # =========================================================================
-# KHO DỮ LIỆU ĐỀ THI & ĐÁP ÁN (Thầy có thể thêm đề số 3, 4, 5... tương tự bên dưới)
+# KHO DỮ LIỆU ĐỀ THI & ĐÁP ÁN
 # =========================================================================
 EXAMS_BANK = {
     "de_số_1": {
         "title": "Đề số 01: Đề thi học kỳ I 2026 - 2027",
-        "pdf_id": "1hUn9ELnaaLsi2TdU9rYGFRAMM0Bor9iB",  # Thay bằng ID file ĐỀ trên Google Drive của thầy
-        "giai_id": "13EHc1__reC2LE2yXtcP3F7yn94sm97Mo",  # Thay bằng ID file GIẢI CHI TIẾT trên Drive
-        "key_p1": ["D", "B", "B", "B", "D", "B", "A", "C", "D", "B", "A", "B"],  # Đáp án 12 câu Phần I
-        "key_p2": {  # Đáp án 4 câu Phần II (Đúng hoặc Sai cho các ý a, b, c, d)
+        "pdf_id": "1hUn9ELnaaLsi2TdU9rYGFRAMM0Bor9iB",  
+        "giai_id": "13EHc1__reC2LE2yXtcP3F7yn94sm97Mo",  
+        "key_p1": ["D", "B", "B", "B", "D", "B", "A", "C", "D", "B", "A", "B"],  
+        "key_p2": {  
             1: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"},
             2: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
             3: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},
             4: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"},
         },
-        "key_p3": ["14.7", "2", "26", "0", "0.53", "42"]  # Đáp số chuẩn của 6 câu Phần III
+        "key_p3": ["14.7", "2", "26", "0", "0.53", "42"]  
     },
     "de_số_2": {
         "title": "Đề số 02:  Đề thi học kỳ I 2026 - 2027",
-        "pdf_id": "15WMjjoMvHxVxoVlmZbjCtA9FGAyekX6r",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "1N5ClNh2pno5bZ1dxhROUlHVTDx9FMAsk",  # Thay bằng ID file GIẢI số 2
+        "pdf_id": "15WMjjoMvHxVxoVlmZbjCtA9FGAyekX6r",  
+        "giai_id": "1N5ClNh2pno5bZ1dxhROUlHVTDx9FMAsk",  
         "key_p1": ["C", "C", "A", "B", "B", "C", "A", "D", "A", "A", "D", "B"],
         "key_p2": {
             1: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
@@ -35,8 +35,8 @@ EXAMS_BANK = {
     },
      "de_số_3": {
         "title": "Đề số 03:  Đề thi học kỳ I 2026 - 2027",
-        "pdf_id": "1DoVtv4CCPXgrOC01j-XlVK3Ydup2jZsp",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "1MJE5RXg4mPc6goz2YCweTLDFQ-HLRT92",  # Thay bằng ID file GIẢI số 2
+        "pdf_id": "1DoVtv4CCPXgrOC01j-XlVK3Ydup2jZsp",  
+        "giai_id": "1MJE5RXg4mPc6goz2YCweTLDFQ-HLRT92",  
         "key_p1": ["B", "B", "C", "D", "B", "A", "B", "A", "A", "D", "A", "A"],
         "key_p2": {
             1: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Sai"},
@@ -45,7 +45,8 @@ EXAMS_BANK = {
             4: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
         },
         "key_p3": ["9", "1005", "2", "0.3", "4.2", "1.794"]
-},
+    }
+} # <-- Đã bổ sung dấu ngoặc nhọn bị thiếu ở đây để đóng EXAMS_BANK
 
 # Giao diện chính
 st.title("🎯 PHÒNG THI THỬ TOÁN HỌC KỲ 2026 - 2027")
@@ -75,7 +76,7 @@ with col1:
 with col2:
     st.subheader("✍️ Phiếu Điền Đáp Án")
     
-    # Đồng hồ đếm ngược 90 phút (Sẽ tự động reset lại từ đầu khi học sinh chuyển đề mới)
+    # Đồng hồ đếm ngược 90 phút
     timer_code = f"""
     <div id="timer_{selected_key}" style="background-color: #ff4b4b; color: white; padding: 12px; text-align: center; font-size: 26px; font-weight: bold; border-radius: 8px; font-family: Arial, sans-serif; margin-bottom: 15px;">
         ⏳ 90:00
@@ -152,7 +153,7 @@ with col2:
                 score_p1 += 0.25
                 
         # 2. Chấm điểm Phần II (Barem điểm chéo chuẩn Bộ GD)
-        p2_score_matrix = {1: 0.1, 2: 0.2, 3: 0.5, 4: 1.0}
+        p2_score_matrix = {1: 0.1, 2: 0.25, 3: 0.5, 4: 1.0} # Đã sửa barem 2 ý đúng thành 0.25
         for i in range(1, 5):
             correct_branches = 0
             for branch in ["a", "b", "c", "d"]:
