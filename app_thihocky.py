@@ -1,13 +1,47 @@
 import streamlit as st
+import time
 
-# Cấu hình trang
-st.set_page_config(page_title="Đề Thi Thử Môn Toán - Bài 1", layout="centered")
+# Cấu hình trang (sử dụng layout="wide" để phân chia rõ phần đồng hồ bên phải)
+st.set_page_config(page_title="Đề Thi Thử Môn Toán - Bài 1", layout="wide")
 
+# ==================== ĐỒNG HỒ ĐẾM NGƯỢC Ở BÊN PHẢI (SIDEBAR) ====================
+with st.sidebar:
+    st.header("⏱️ THỜI GIAN LÀM BÀI")
+    
+    # Thiết lập thời gian làm bài (Ví dụ: 15 phút = 900 giây)
+    # Thầy có thể đổi số phút tùy ý, ví dụ: 45 * 60 cho đề 45 phút
+    thoi_gian_thi_giay = 90 * 60 
+    
+    # Khởi tạo đồng hồ đếm ngược hiển thị dạng chữ lớn
+    khung_dong_ho = st.empty()
+    
+    # Thanh tiến trình thời gian
+    thanh_thoi_gian = st.progress(1.0)
+    
+    st.markdown("---")
+    st.info("💡 **Hành trang phòng thi:**\n- Đọc kỹ đề bài trước khi chọn đáp án.\n- Kiểm tra lại các câu hỏi trước khi bấm nút **Nộp Bài Thi** ở cuối trang.")
+
+    # Mô phỏng đồng hồ chạy lùi (Học sinh có thể theo dõi thời gian thực)
+    # Lưu ý: Mỗi khi học sinh bấm chọn đáp án trên trang, đồng hồ sẽ cập nhật thời gian còn lại
+    if "start_time" not in st.session_state:
+        st.session_state.start_time = time.time()
+    
+    elapsed_time = int(time.time() - st.session_state.start_time)
+    remaining_time = max(0, thoi_gian_thi_giay - elapsed_time)
+    
+    phut = remaining_time // 60
+    giay = remaining_time % 60
+    khung_dong_ho.markdown(f"### ⏳ **{phut:02d}:{giay:02d}**")
+    
+    # Cập nhật thanh progress bar
+    thanh_thoi_gian.progress(remaining_time / thoi_gian_thi_giay)
+
+# ==================== NỘI DUNG CHÍNH CỦA ĐỀ THI ====================
 st.title("BÀI 1. SỰ BIẾN THIÊN VÀ CỰC TRỊ CỦA HÀM SỐ")
 st.caption("Phần I. Trắc nghiệm nhiều phương án lựa chọn (Thí sinh chọn 1 đáp án đúng)")
 st.markdown("---")
 
-# Khởi tạo form làm bài thi
+# Khởi tạo form làm bài thi gom toàn bộ 10 câu
 with st.form("de_thi_so_1"):
     
     # ------------------ CÂU 1 ------------------
@@ -149,14 +183,9 @@ with st.form("de_thi_so_1"):
     # Nút nộp bài
     submitted = st.form_submit_button("Nộp Bài Thi")
 
-# ------------------ XỬ LÝ CHẤM ĐIỂM AUTOMATIC ------------------
+# ------------------ XỬ LÝ CHẤM ĐIỂM TỰ ĐỘNG ------------------
 if submitted:
     score = 0
-    # Đáp án đúng chuẩn:
-    # C1: C | C2: C | C3: C | C4: B | C5: A
-    # C6: B | C7: D | C8: B | C9: D | C10: B
-    if q1.startswith("A. $2$") or "2" in q1 and q1.startswith("C."): score += 1
-    # Để an toàn dựa theo giá trị bắt đầu ký tự chữ cái A/B/C/D đã chọn:
     if q1.startswith("C."): score += 1
     if q2.startswith("C."): score += 1
     if q3.startswith("C."): score += 1
