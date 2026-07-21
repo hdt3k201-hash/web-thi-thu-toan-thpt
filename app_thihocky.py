@@ -1,15 +1,14 @@
 import streamlit as st
 import time
 
-# Cấu hình trang (sử dụng layout="wide" để phân chia rõ phần đồng hồ bên phải)
-st.set_page_config(page_title="Đề Thi Thử Môn Toán - Bài 1", layout="wide")
+# Cấu hình trang (sử dụng layout="wide" để tách rõ phần làm bài và đồng hồ bên phải)
+st.set_page_config(page_title="Đề Thi Thử Môn Toán - 90 Phút", layout="wide")
 
-# ==================== ĐỒNG HỒ ĐẾM NGƯỢC Ở BÊN PHẢI (SIDEBAR) ====================
+# ==================== ĐỒNG HỒ ĐẾM NGƯỢC 90 PHÚT Ở BÊN PHẢI (SIDEBAR) ====================
 with st.sidebar:
     st.header("⏱️ THỜI GIAN LÀM BÀI")
     
-    # Thiết lập thời gian làm bài (Ví dụ: 15 phút = 900 giây)
-    # Thầy có thể đổi số phút tùy ý, ví dụ: 45 * 60 cho đề 45 phút
+    # Thiết lập thời gian thi chính xác là 90 phút (90 * 60 = 5400 giây)
     thoi_gian_thi_giay = 90 * 60 
     
     # Khởi tạo đồng hồ đếm ngược hiển thị dạng chữ lớn
@@ -19,10 +18,9 @@ with st.sidebar:
     thanh_thoi_gian = st.progress(1.0)
     
     st.markdown("---")
-    st.info("💡 **Hành trang phòng thi:**\n- Đọc kỹ đề bài trước khi chọn đáp án.\n- Kiểm tra lại các câu hỏi trước khi bấm nút **Nộp Bài Thi** ở cuối trang.")
+    st.info("💡 **Quy chế phòng thi:**\n- Thời gian làm bài: **90 phút**.\n- Hệ thống sẽ tự động ghi nhận kết quả khi học sinh bấm nút **Nộp Bài Thi** ở cuối trang.")
 
-    # Mô phỏng đồng hồ chạy lùi (Học sinh có thể theo dõi thời gian thực)
-    # Lưu ý: Mỗi khi học sinh bấm chọn đáp án trên trang, đồng hồ sẽ cập nhật thời gian còn lại
+    # Xử lý logic đếm ngược thời gian thực
     if "start_time" not in st.session_state:
         st.session_state.start_time = time.time()
     
@@ -33,7 +31,7 @@ with st.sidebar:
     giay = remaining_time % 60
     khung_dong_ho.markdown(f"### ⏳ **{phut:02d}:{giay:02d}**")
     
-    # Cập nhật thanh progress bar
+    # Cập nhật thanh progress bar theo thời gian 90 phút
     thanh_thoi_gian.progress(remaining_time / thoi_gian_thi_giay)
 
 # ==================== NỘI DUNG CHÍNH CỦA ĐỀ THI ====================
@@ -161,7 +159,7 @@ with st.form("de_thi_so_1"):
     st.divider()
 
     # ------------------ CÂU 9 ------------------
-    st.markdown(r"**Câu 9:** Hàm số $y=\frac{x^2-3x+5}{x+1}$ nghịch biến trên các khoảng nào?")
+    st.markdown(r"**Câu 9:** Cho hàm số $y=\frac{x^2-3x+5}{x+1}$ nghịch biến trên các khoảng nào?")
     q9 = st.radio("C9:", [
         r"A. $(-4; 2)$",
         r"B. $(-\infty; -2)$",
