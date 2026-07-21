@@ -4,6 +4,22 @@ import time
 # ==================== CẤU HÌNH TRANG ====================
 st.set_page_config(page_title="Hệ Thống Thi Thử THPT Quốc Gia", layout="wide")
 
+# Chèn đoạn mã này ngay dưới phần cấu hình trang
+st.markdown("""
+    <style>
+    /* Ép toàn bộ chữ trên trang web sử dụng font Times New Roman */
+    html, body, [class*="css"] {
+        font-family: 'Times New Roman', Times, serif !important;
+        font-size: 18px !important; /* Thầy có thể chỉnh số 18 này to nhỏ tùy ý */
+    }
+    
+    /* Ép cả các công thức Toán học KaTeX dùng chung font này nếu muốn */
+    .katex {
+        font-family: 'Times New Roman', Times, serif !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # ==================== MENU CHỌN ĐỀ & ĐỒNG HỒ (SIDEBAR) ====================
 with st.sidebar:
     st.header("📂 DANH SÁCH ĐỀ THI")
