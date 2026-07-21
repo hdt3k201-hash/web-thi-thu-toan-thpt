@@ -1,39 +1,46 @@
 import streamlit as st
-import time
+import streamlit as st
 
-# Cấu hình trang (sử dụng layout="wide" để tách rõ phần làm bài và đồng hồ bên phải)
+# Cấu hình trang
 st.set_page_config(page_title="Đề Thi Thử Môn Toán - 90 Phút", layout="wide")
 
-# ==================== ĐỒNG HỒ ĐẾM NGƯỢC 90 PHÚT Ở BÊN PHẢI (SIDEBAR) ====================
+# ==================== ĐỒNG HỒ TỰ ĐỘNG ĐẾM NGƯỢC 90 PHÚT (DÙNG HTML/JS) ====================
 with st.sidebar:
     st.header("⏱️ THỜI GIAN LÀM BÀI")
     
-    # Thiết lập thời gian thi chính xác là 90 phút (90 * 60 = 5400 giây)
-    thoi_gian_thi_giay = 90 * 60 
+    # Nhúng đoạn mã JavaScript trực tiếp để đồng hồ tự động chạy lùi từng giây
+    from streamlit.components.v1 import html
     
-    # Khởi tạo đồng hồ đếm ngược hiển thị dạng chữ lớn
-    khung_dong_ho = st.empty()
-    
-    # Thanh tiến trình thời gian
-    thanh_thoi_gian = st.progress(1.0)
+    dong_ho_html = """
+    <div style="font-family: monospace; font-size: 28px; font-weight: bold; color: #d9534f; background-color: #f8f9fa; padding: 10px; border-radius: 5px; text-align: center; border: 1px solid #ddd;">
+        <span id="timer">90:00</span>
+    </div>
+    <script>
+        var totalSeconds = 90 * 60;
+        var timerElement = document.getElementById('timer');
+        
+        var timer = setInterval(function() {
+            var minutes = Math.floor(totalSeconds / 60);
+            var seconds = totalSeconds % 60;
+            
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            
+            timerElement.textContent = minutes + ":" + seconds;
+            
+            if (totalSeconds <= 0) {
+                clearInterval(timer);
+                timerElement.textContent = "HẾT GIỜ!";
+            } else {
+                totalSeconds--;
+            }
+        }, 1000);
+    </script>
+    """
+    html(dong_ho_html, height=70)
     
     st.markdown("---")
     st.info("💡 **Quy chế phòng thi:**\n- Thời gian làm bài: **90 phút**.\n- Hệ thống sẽ tự động ghi nhận kết quả khi học sinh bấm nút **Nộp Bài Thi** ở cuối trang.")
-
-    # Xử lý logic đếm ngược thời gian thực
-    if "start_time" not in st.session_state:
-        st.session_state.start_time = time.time()
-    
-    elapsed_time = int(time.time() - st.session_state.start_time)
-    remaining_time = max(0, thoi_gian_thi_giay - elapsed_time)
-    
-    phut = remaining_time // 60
-    giay = remaining_time % 60
-    khung_dong_ho.markdown(f"### ⏳ **{phut:02d}:{giay:02d}**")
-    
-    # Cập nhật thanh progress bar theo thời gian 90 phút
-    thanh_thoi_gian.progress(remaining_time / thoi_gian_thi_giay)
-
 # ==================== NỘI DUNG CHÍNH CỦA ĐỀ THI ====================
 st.title("BÀI 1. SỰ BIẾN THIÊN VÀ CỰC TRỊ CỦA HÀM SỐ")
 st.caption("Phần I. Trắc nghiệm nhiều phương án lựa chọn (Thí sinh chọn 1 đáp án đúng)")
