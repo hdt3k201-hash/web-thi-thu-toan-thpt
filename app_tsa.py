@@ -92,55 +92,43 @@ selected_exam = st.sidebar.selectbox(
 
 st.sidebar.markdown("---")
 
-# --- XỬ LÝ ĐỒNG HỒ ĐẾM NGƯỢC THỜI GIAN THỰC BẰNG JAVASCRIPT ---
+# --- ĐỒNG HỒ ĐẾM NGƯỢC CHUẨN PYTHON STREAMLIT ---
 EXAM_DURATION_MINUTES = 60
 
 if "start_time_tsa" not in st.session_state:
     st.session_state.start_time_tsa = time.time()
 
-# Tính số giây đã trôi qua
+# Tính thời gian còn lại
 elapsed_sec = int(time.time() - st.session_state.start_time_tsa)
 total_sec = EXAM_DURATION_MINUTES * 60
 remaining_sec = max(0, total_sec - elapsed_sec)
 
+mins, secs = divmod(remaining_sec, 60)
+
+# Khung hiển thị đồng hồ cố định
+timer_placeholder = st.sidebar.empty()
+
+timer_html = f"""
+<div style="background-color: #b71c1c; color: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 20px;">
+    <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">⏱️ Thời gian còn lại:</div>
+    <div style="font-size: 26px; font-weight: bold; letter-spacing: 2px;">{mins:02d}:{secs:02d}</div>
+</div>
+"""
+timer_placeholder.markdown(timer_html, unsafe_allow_html=True)
+
+# Kiểm tra hết giờ
 if remaining_sec == 0 and not st.session_state.exam_submitted:
     st.session_state.exam_submitted = True
     st.rerun()
 
-# Mã HTML + JavaScript chạy đồng hồ mượt mà từng giây
-timer_html = f"""
-<div style="background-color: #b71c1c; color: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 20px;">
-    <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">⏱️ Thời gian còn lại:</div>
-    <div id="countdown-timer" style="font-size: 26px; font-weight: bold; letter-spacing: 2px;">--:--</div>
-</div>
-
-<script>
-    let timeLeft = {remaining_sec};
-    const timerDisplay = document.getElementById("countdown-timer");
-
-    function updateTimer() {{
-        if (timeLeft <= 0) {{
-            timerDisplay.innerHTML = "00:00";
-            // Tự động load lại trang để nộp bài khi hết giờ
-            window.location.reload();
-            return;
-        }}
-        let m = Math.floor(timeLeft / 60);
-        let s = timeLeft % 60;
-        timerDisplay.innerHTML = (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
-        timeLeft--;
-    }}
-
-    updateTimer();
-    setInterval(updateTimer, 1000);
-</script>
-"""
-
-st.sidebar.markdown(timer_html, unsafe_allow_html=True)
-
 if st.sidebar.button("🔄 Làm lại bài thi", type="secondary"):
     st.session_state.start_time_tsa = time.time()
     st.session_state.exam_submitted = False
+    st.rerun()
+
+# Tự động kích hoạt làm mới trang mỗi 1 giây để đồng hồ đếm lùi chính xác
+if not st.session_state.exam_submitted and remaining_sec > 0:
+    time.sleep(1)
     st.rerun()
 
 # 5. TIÊU ĐỀ CHÍNH BÀI THI
