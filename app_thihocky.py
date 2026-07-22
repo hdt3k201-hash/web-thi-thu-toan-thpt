@@ -21,7 +21,11 @@ st.markdown("""
 # ==================== MENU & ĐỒNG HỒ 90 PHÚT (SIDEBAR) ====================
 with st.sidebar:
     st.header("📂 DANH SÁCH ĐỀ THI")
-    de_thi_chon = st.selectbox("Chọn đề thi:", ["Đề 1: Sự biến thiên và cực trị của hàm số"])
+    danh_sach_de = [
+        "Đề 1: Sự biến thiên và cực trị của hàm số",
+        "Đề 2: Khối đa diện và Thể tích (Ví dụ)"  # Thêm đề mới ở đây
+    ]
+    de_thi_chon = st.selectbox("Chọn đề thi:", danh_sach_de)
     
     key_nop_bai = "submitted_de1"
     if key_nop_bai not in st.session_state:
