@@ -27,7 +27,8 @@ with st.sidebar:
         "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhất của hàm số",
         "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhất của hàm số",
         "Đề 5: Đường tiệm cận của đồ thị hàm số",
-        "Đề 6: Đường tiệm cận của đồ thị hàm số"
+        "Đề 6: Đường tiệm cận của đồ thị hàm số",
+        "Đề 7: Khảo sát và vẽ đồ thị hàm số"
     ]
     de_thi_chon = st.selectbox("Chọn đề thi:", danh_sach_de)
         
@@ -2543,3 +2544,383 @@ elif de_thi_chon == "Đề 6: Đường tiệm cận của đồ thị hàm số
 
             - Do đó chỉ có duy nhất $1$ TCĐ là đường thẳng $x = -2$
             """)
+
+# ==================== XỬ LÝ NỘI DUNG ĐỀ 7 ====================
+elif de_thi_chon == "Đề 7: Khảo sát và vẽ đồ thị hàm số":
+    key_nop_bai = "submitted_de7"
+    if key_nop_bai not in st.session_state:
+        st.session_state[key_nop_bai] = False
+
+    st.markdown(
+        '<h1 style="text-align: center; color: #00a88f;">ĐỀ 7: KHẢO SÁT VÀ VẼ ĐỒ THỊ HÀM SỐ</h1>', 
+        unsafe_allow_html=True
+    )
+    st.markdown("---")
+
+    # MÀN HÌNH LÀM BÀI (KHI CHƯA NỘP BÀI)
+    if not st.session_state[key_nop_bai]:
+        with st.form("form_de_7"):
+
+            # =====================================================================
+            # PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (12 CÂU)
+            # =====================================================================
+            st.markdown('<h2 style="color: #0000FF;">Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn</h2>', unsafe_allow_html=True)
+            st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 12. Mỗi câu hỏi chỉ chọn 1 phương án. (Mỗi câu đúng 0.25 điểm)</b></em>', unsafe_allow_html=True)
+
+            # --- Câu 1 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Cho hàm số $y = f(x)$ có bảng biến thiên như hình bên. Bảng biến thiên trên là của hàm số nào sau đây?', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d7_cau1_p1.PNG", width=400)
+            except Exception: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d7_cau1_p1.PNG")
+            p1_q1_d7 = st.radio("C1_d7", [r"A. $y = x^3 - 3x^2 + 2$", r"B. $y = -x^3 + 3x^2 + 2$", r"C. $y = x^4 + 3x^2 + 2$", r"D. $y = \dfrac{x+1}{x-2}$"], key="p1_q1_d7", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 2 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Đường cong trong hình bên là đồ thị của hàm số nào dưới đây?', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d7_cau2_p1.PNG", width=400)
+            except Exception: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d7_cau2_p1.PNG")
+            p1_q2_d7 = st.radio("C2_d7", [r"A. $y = \dfrac{x-2}{x+2}$", r"B. $y = \dfrac{2x+4}{x-2}$", r"C. $y = \dfrac{x+1}{x-2}$", r"D. $y = \dfrac{x+2}{x-2}$"], key="p1_q2_d7", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 3 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Cho hàm số $y = f(x)$ có đồ thị như hình bên. Khẳng định nào sau đây SAI?', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d7_cau3_p1.PNG", width=400)
+            except Exception: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d7_cau3_p1.PNG")
+            p1_q3_d7 = st.radio("C3_d7", [
+                r"A. Đồ thị hàm số có tiệm cận đứng $x = 2$.", 
+                r"B. Đồ thị hàm số có tiệm cận xiên $y = x + 1$.", 
+                r"C. $\lim_{x \to +\infty} y = +\infty; \lim_{x \to -\infty} y = -\infty$.", 
+                r"D. Tọa độ giao điểm của đồ thị và trục $Ox$ là $A(0; 1)$."
+            ], key="p1_q3_d7", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 4 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 4:</span> Đường cong trong hình bên là đồ thị của hàm số nào dưới đây?', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d7_cau4_p1.PNG", width=400)
+            except Exception: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d7_cau4_p1.PNG")
+            p1_q4_d7 = st.radio("C4_d7", [r"A. $y = \dfrac{x-1}{x+1}$", r"B. $y = x^4 - 2x^2$", r"C. $y = \dfrac{x^2+4}{x}$", r"D. $y = x^3 - 3x^2$"], key="p1_q4_d7", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 5 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 5:</span> Cho hàm số $y = \dfrac{2x-4}{x-1}$. Tọa độ giao điểm của đồ thị và trục $Oy$ là:', unsafe_allow_html=True)
+            p1_q5_d7 = st.radio("C5_d7", [r"A. $(2; 0)$", r"B. $(0; 2)$", r"C. $(4; 0)$", r"D. $(0; 4)$"], key="p1_q5_d7", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 6 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 6:</span> Đường cong trong hình bên là đồ thị của hàm số nào dưới đây?', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d7_cau6_p1.PNG", width=400)
+            except Exception: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d7_cau6_p1.PNG")
+            p1_q6_d7 = st.radio("C6_d7", [r"A. $y = \dfrac{x-1}{x}$", r"B. $y = x^3 + 3x^2 - 4$", r"C. $y = -x^3 + 3x - 4$", r"D. $y = -x^3 + 3x^2 - 4$"], key="p1_q6_d7", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 7 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 7:</span> Cho hàm số $y = \dfrac{x^2+2x-1}{x-1}$ và $y = 2x-7$. Hai đồ thị cắt nhau tại hai điểm thì tổng hoành độ hai giao điểm bằng:', unsafe_allow_html=True)
+            p1_q7_d7 = st.radio("C7_d7", [r"A. $7$", r"B. $5$", r"C. $8$", r"D. $11$"], key="p1_q7_d7", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 8 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 8:</span> Cho hàm số $y=f(x)$ xác định trên $\mathbb{R} \setminus \{-1\}$, liên tục trên mỗi khoảng xác định và có bảng biến thiên như hình bên. Số giao điểm của đường thẳng $y = 1$ và đồ thị hàm số $y=f(x)$ là:', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d7_cau8_p1.PNG", width=400)
+            except Exception: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d7_cau8_p1.PNG")
+            p1_q8_d7 = st.radio("C8_d7", [r"A. $3$", r"B. $2$", r"C. $1$", r"D. $0$"], key="p1_q8_d7", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 9 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 9:</span> Cho hàm số $y = \dfrac{(a-1)x+b}{(c-1)x+d}$ với $d < 0$ có đồ thị như hình bên. Khẳng định nào dưới đây là đúng?', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d7_cau9_p1.PNG", width=400)
+            except Exception: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d7_cau9_p1.PNG")
+            p1_q9_d7 = st.radio("C9_d7", [
+                r"A. $a > 1, b > 0, c < 1$", 
+                r"B. $a > 1, b < 0, c > 1$", 
+                r"C. $a < 1, b > 0, c < 1$", 
+                r"D. $a > 1, b > 0, c > 1$"
+            ], key="p1_q9_d7", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 10 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 10:</span> Một công ty chuyên sản xuất thùng phi nhận được đơn đặt hàng với yêu cầu thùng phi dạng hình trụ chứa được $16\pi \text{ m}^3$ mỗi chiếc. Hỏi chiếc thùng phải có chiều cao $h$ và bán kính đáy $R$ bằng bao nhiêu để tiết kiệm vật liệu nhất?', unsafe_allow_html=True)
+            p1_q10_d7 = st.radio("C10_d7", [
+                r"A. $R = 4 \text{ m}, h = 2 \text{ m}$", 
+                r"B. $R = 2 \text{ m}, h = 4 \text{ m}$", 
+                r"C. $R = 2 \text{ m}, h = 2 \text{ m}$", 
+                r"D. $R = 4 \text{ m}, h = 4 \text{ m}$"
+            ], key="p1_q10_d7", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 11 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 11:</span> Gọi $S$ là tập hợp các giá trị $m$ để tiệm cận xiên của đồ thị hàm số $y = \dfrac{mx^2+x-3}{x-1}$ tạo với hai trục hệ tọa độ $Oxy$ một tam giác có diện tích bằng $2$. Khi đó tổng các giá trị của $S$ bằng:', unsafe_allow_html=True)
+            p1_q11_d7 = st.radio("C11_d7", [r"A. $\dfrac{7}{2}$", r"B. $-\dfrac{3}{2}$", r"C. $\dfrac{5}{2}$", r"D. $-\dfrac{11}{2}$"], key="p1_q11_d7", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 12 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 12:</span> Một bể ban đầu chứa $150$ lít nước. Cứ mỗi phút người ta bơm thêm $50$ lít nước, đồng thời cho vào $20$ gam chất khử trùng hòa tan. Đặt $f(t)$ gam/lít là nồng độ chất khử trùng sau $t$ phút ($t \geq 0$). Biết $f(t)$ tăng theo $t$ nhưng không vượt ngưỡng $p$ gam/lít. Tìm $p$.', unsafe_allow_html=True)
+            p1_q12_d7 = st.radio("C12_d7", [r"A. $p = 0.4$", r"B. $p = 0.3$", r"C. $p = 0.2$", r"D. $p = 0.1$"], key="p1_q12_d7", label_visibility="collapsed")
+            st.divider()
+
+            # =====================================================================
+            # PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (4 CÂU)
+            # =====================================================================
+            st.markdown('<h2 style="color: #0000FF;">Phần 2. Trắc nghiệm lựa chọn đúng sai</h2>', unsafe_allow_html=True)
+            st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 4. Trong mỗi ý a), b), c), d) chọn đúng hoặc sai.</b></em>', unsafe_allow_html=True)
+
+            # --- Câu 13 (Câu 1) ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Cho hàm số $y = f(x) = ax^3 + bx^2 + cx + d$ có đồ thị là $(C)$. Biết $(C)$ có một điểm cực trị là $A(1; -1)$ và tâm đối xứng là $I\left(\dfrac{2}{3}; -\dfrac{29}{27}\right)$. Các mệnh đề dưới đây đúng hay sai?', unsafe_allow_html=True)
+            p2_q1_d7 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"a) $(C)$ có một điểm cực trị là $B\left(\dfrac{1}{3}; -\dfrac{2}{27}\right)$."); p2_q1_d7["a"] = c2.radio("p2c1a_d7", ["Đúng", "Sai"], key="p2_q1_a_d7", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"b) $a + b + c + d = -1$."); p2_q1_d7["b"] = c2.radio("p2c1b_d7", ["Đúng", "Sai"], key="p2_q1_b_d7", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"c) Tiếp tuyến của $(C)$ tại $A$ song song với trục hoành."); p2_q1_d7["c"] = c2.radio("p2c1c_d7", ["Đúng", "Sai"], key="p2_q1_c_d7", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"d) $2a + 3b + 4c + 4d = 4$."); p2_q1_d7["d"] = c2.radio("p2c1d_d7", ["Đúng", "Sai"], key="p2_q1_d_d7", horizontal=True, label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 14 (Câu 2) ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Cho hàm số $y = \dfrac{ax+b}{cx+d}$ có đồ thị như hình vẽ bên dưới. Các mệnh đề dưới đây đúng hay sai?', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d7_cau14_p2.PNG", width=400)
+            except Exception: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d7_cau14_p2.PNG")
+            p2_q2_d7 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"a) Tâm đối xứng của đồ thị có tọa độ là $(2; 1)$."); p2_q2_d7["a"] = c2.radio("p2c2a_d7", ["Đúng", "Sai"], key="p2_q2_a_d7", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"b) $a - 2b + c = -5$."); p2_q2_d7["b"] = c2.radio("p2c2b_d7", ["Đúng", "Sai"], key="p2_q2_b_d7", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"c) Tiếp tuyến của đồ thị tại điểm có hoành độ $x = 2$ có phương trình là $y = -3x + 11$."); p2_q2_d7["c"] = c2.radio("p2c2c_d7", ["Đúng", "Sai"], key="p2_q2_c_d7", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"d) Có đúng $4$ điểm $M(m; n)$ với $m, n \in \mathbb{Z}$ thuộc đồ thị."); p2_q2_d7["d"] = c2.radio("p2c2d_d7", ["Đúng", "Sai"], key="p2_q2_d_d7", horizontal=True, label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 15 (Câu 3) ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Cho hàm số $y = \dfrac{x^2+2x+5}{x+1}$. Các mệnh đề dưới đây đúng hay sai?', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d7_cau15_p2.PNG", width=400)
+            except Exception: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d7_cau15_p2.PNG")
+            p2_q3_d7 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"a) $y' = \dfrac{x^2+2x-3}{(x+1)^2}$."); p2_q3_d7["a"] = c2.radio("p2c3a_d7", ["Đúng", "Sai"], key="p2_q3_a_d7", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"b) Phương trình đường thẳng đi qua hai điểm cực trị của hàm số là $y = 2x - 2$."); p2_q3_d7["b"] = c2.radio("p2c3b_d7", ["Đúng", "Sai"], key="p2_q3_b_d7", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"c) Đồ thị hàm số có đường tiệm cận xiên là $y = x + 1$."); p2_q3_d7["c"] = c2.radio("p2c3c_d7", ["Đúng", "Sai"], key="p2_q3_c_d7", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"d) Đồ thị của hàm số có hình vẽ dạng như trên."); p2_q3_d7["d"] = c2.radio("p2c3d_d7", ["Đúng", "Sai"], key="p2_q3_d_d7", horizontal=True, label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 16 (Câu 4) ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 4:</span> Nhà máy A sản xuất sản phẩm cho nhà máy B (tối đa $100$ tấn/tháng). Nếu đặt $x$ tấn thì giá bán $P(x) = 45 - 0.001x^2$ (triệu đồng/tấn). Chi phí sản xuất $C(x) = 100 + 30x$ (triệu đồng). Các mệnh đề dưới đây đúng hay sai?', unsafe_allow_html=True)
+            p2_q4_d7 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"a) Chi phí để A sản xuất 10 tấn sản phẩm trong một tháng là 400 triệu đồng."); p2_q4_d7["a"] = c2.radio("p2c4a_d7", ["Đúng", "Sai"], key="p2_q4_a_d7", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"b) Số tiền A thu được khi bán 10 tấn sản phẩm cho B là 600 triệu đồng."); p2_q4_d7["b"] = c2.radio("p2c4b_d7", ["Đúng", "Sai"], key="p2_q4_b_d7", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"c) Lợi nhuận $A$ thu được khi bán $x$ tấn ($0 \leq x \leq 100$) là $H(x) = -0.001x^3 + 15x - 100$."); p2_q4_d7["c"] = c2.radio("p2c4c_d7", ["Đúng", "Sai"], key="p2_q4_c_d7", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"d) A bán cho B khoảng $70.7$ tấn sản phẩm mỗi tháng thì thu được lợi nhuận lớn nhất."); p2_q4_d7["d"] = c2.radio("p2c4d_d7", ["Đúng", "Sai"], key="p2_q4_d_d7", horizontal=True, label_visibility="collapsed")
+            st.divider()
+
+            # =====================================================================
+            # PHẦN 3: TRẢ LỜI NGẮN (6 CÂU)
+            # =====================================================================
+            st.markdown('<h2 style="color: #0000FF;">Phần 3. Câu hỏi trắc nghiệm trả lời ngắn</h2>', unsafe_allow_html=True)
+            st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 6. Điền kết quả dạng số vào ô trống. (Mỗi câu đúng 0.5 điểm)</b></em>', unsafe_allow_html=True)
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Cho hàm số $y = x^3 - 3x^2 + 2$. Giá trị cực tiểu của hàm số đã cho bằng bao nhiêu?', unsafe_allow_html=True)
+            p3_q1_d7 = st.text_input("Nhập đáp án Câu 1:", key="p3_q1_d7")
+            st.divider()
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Cho hàm số $y = \dfrac{5x-3}{2x+6}$. Đồ thị hàm số có đường tiệm cận đứng và ngang lần lượt là các đường thẳng $x = a$ và $y = b$. Tính $a + 4b$.', unsafe_allow_html=True)
+            p3_q2_d7 = st.text_input("Nhập đáp án Câu 2:", key="p3_q2_d7")
+            st.divider()
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Cho đồ thị hàm số $f(x) = \dfrac{5x^2-6x+9}{x-1}$ có tâm đối xứng là $I(a; b)$. Giá trị của biểu thức $C = a + 3b$ là bao nhiêu?', unsafe_allow_html=True)
+            p3_q3_d7 = st.text_input("Nhập đáp án Câu 3:", key="p3_q3_d7")
+            st.divider()
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 4:</span> Cho hàm số $y = x^3 - 3x + 2$ có đồ thị $(C)$ và $y = \dfrac{x+2}{x-1}$ có đồ thị $(T)$. Số giao điểm của $(C)$ với $(T)$ là bao nhiêu?', unsafe_allow_html=True)
+            p3_q4_d7 = st.text_input("Nhập đáp án Câu 4:", key="p3_q4_d7")
+            st.divider()
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 5:</span> Cho hàm số $y = f(x) = 2024^x - 2024^{-x} + x + \sin x$. Có bao nhiêu giá trị nguyên của tham số $m$ để phương trình $f(x+3) + f(x^3-4x+m) = 0$ có đúng $3$ nghiệm phân biệt?', unsafe_allow_html=True)
+            p3_q5_d7 = st.text_input("Nhập đáp án Câu 5:", key="p3_q5_d7")
+            st.divider()
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 6:</span> Một cốc chứa $25\text{ ml}$ dung dịch $\text{NaOH}$ nồng độ $100\text{ mg/ml}$. Trộn thêm $x\text{ (ml)}$ dung dịch $\text{NaOH}$ khác có nồng độ $9\text{ mg/ml}$. Nồng độ $\text{NaOH}$ trong cốc $C(x)$ luôn giảm theo $x$ nhưng luôn lớn hơn một số $a$. Tính $a$.', unsafe_allow_html=True)
+            p3_q6_d7 = st.text_input("Nhập đáp án Câu 6:", key="p3_q6_d7")
+            st.divider()
+
+            # NÚT NỘP BÀI
+            submitted_7 = st.form_submit_button("Nộp Bài Thi Đề 7", type="primary")
+
+            if submitted_7:
+                st.session_state[key_nop_bai] = True
+                st.session_state.p1_d7 = [p1_q1_d7, p1_q2_d7, p1_q3_d7, p1_q4_d7, p1_q5_d7, p1_q6_d7, p1_q7_d7, p1_q8_d7, p1_q9_d7, p1_q10_d7, p1_q11_d7, p1_q12_d7]
+                st.session_state.p2_d7 = [p2_q1_d7, p2_q2_d7, p2_q3_d7, p2_q4_d7]
+                st.session_state.p3_d7 = [p3_q1_d7, p3_q2_d7, p3_q3_d7, p3_q4_d7, p3_q5_d7, p3_q6_d7]
+                st.rerun()
+
+    # MÀN HÌNH HIỂN THỊ ĐÁP ÁN VÀ CHẤM ĐIỂM (KHI ĐÃ NỘP BÀI)
+    else:
+        tong_diem_d7 = 0.0
+
+        # Chấm điểm Phần 1
+        p1_ans_key_d7 = ["A", "D", "D", "C", "D", "D", "D", "A", "D", "B", "D", "A"]
+        for i in range(12):
+            if st.session_state.p1_d7[i].startswith(f"{p1_ans_key_d7[i]}."):
+                tong_diem_d7 += 0.25
+
+        # Chấm điểm Phần 2
+        p2_ans_key_d7 = [
+            {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Sai"},
+            {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Đúng"},
+            {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
+            {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"}
+        ]
+        for i in range(4):
+            dung_so_y = 0
+            for k in ["a", "b", "c", "d"]:
+                if st.session_state.p2_d7[i][k] == p2_ans_key_d7[i][k]:
+                    dung_so_y += 1
+            if dung_so_y == 1: tong_diem_d7 += 0.1
+            elif dung_so_y == 2: tong_diem_d7 += 0.25
+            elif dung_so_y == 3: tong_diem_d7 += 0.5
+            elif dung_so_y == 4: tong_diem_d7 += 1.0
+
+        # Chấm điểm Phần 3
+        p3_ans_key_d7 = ["-2", "7", "13", "2", "3", "9"]
+        for i in range(6):
+            ans_hs = st.session_state.p3_d7[i].strip().replace(",", ".")
+            if ans_hs == p3_ans_key_d7[i]:
+                tong_diem_d7 += 0.5
+
+        st.balloons()
+        st.success(f"🎉 BẠN ĐÃ HOÀN THÀNH BÀI THI! Tổng điểm: **{tong_diem_d7:.2f} / 10.0**")
+
+        if st.button("🔄 Làm lại Đề 7"):
+            st.session_state[key_nop_bai] = False
+            st.rerun()
+
+        st.markdown("---")
+        st.markdown('<h2 style="color: #0000FF;">📖 ĐÁP ÁN & LỜI GIẢI CHI TIẾT ĐỀ 7</h2>', unsafe_allow_html=True)
+
+        st.subheader("Phần 1: Trắc nghiệm nhiều phương án lựa chọn")
+        with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
+            st.markdown(r"""
+            **Câu 1 (A):** Dáng điệu bảng biến thiên thuộc hàm số bậc ba hệ số $a > 0$ có $\lim_{x \to +\infty} y = +\infty$ và $\lim_{x \to -\infty} y = -\infty$. Thỏa mãn duy nhất đáp án $y = x^3 - 3x^2 + 2$.
+
+            **Câu 2 (D):** Đồ thị có tiệm cận đứng $x = 2$, tiệm cận ngang $y = 1$, cắt $Oy$ tại $(0; -1)$ và cắt $Ox$ tại $(-2; 0)$. Hàm số phù hợp là $y = \dfrac{x+2}{x-2}$.
+
+            **Câu 3 (D):** Căn cứ vào đồ thị, đồ thị hàm số cắt $Ox$ tại điểm có hoành độ $0 < x_0 < 1$, do đó khẳng định giao điểm là $A(0;1)$ (thuộc $Oy$) là SAI.
+
+            **Câu 4 (C):** Đồ thị có tiệm cận xiên $y = x$ và tiệm cận đứng $x = 0$. Hàm số thỏa mãn là $y = \dfrac{x^2+4}{x} = x + \dfrac{4}{x}$.
+
+            **Câu 5 (D):** Thay $x = 0 \Rightarrow y = \dfrac{-4}{-1} = 4$. Tọa độ giao điểm với trục $Oy$ là $(0; 4)$.
+
+            **Câu 6 (D):** Đồ thị hàm bậc ba có hệ số $a < 0$, cắt $Oy$ tại $(0; -4)$ và có 2 điểm cực trị $x = 0, x = 2$. Suy ra hàm số là $y = -x^3 + 3x^2 - 4$.
+            """)
+
+        with st.expander("🔍 Lời giải Câu 7 - Câu 12"):
+            st.markdown(r"""
+            **Câu 7 (D):** Phương trình hoành độ giao điểm: $\dfrac{x^2+2x-1}{x-1} = 2x - 7 \Leftrightarrow x^2 - 11x + 8 = 0$ ($x \neq 1$). Tổng hoành độ hai giao điểm $x_1 + x_2 = 11$.
+
+            **Câu 8 (A):** Dựa vào bảng biến thiên, đường thẳng $y = 1$ cắt đồ thị hàm số tại $3$ điểm phân biệt.
+
+            **Câu 9 (D):** 
+            - Tiệm cận đứng $x = -\dfrac{d}{c-1} > 0 \xrightarrow{d < 0} c - 1 > 0 \Rightarrow c > 1$.
+            - Tiệm cận ngang $y = \dfrac{a-1}{c-1} > 0 \Rightarrow a - 1 > 0 \Rightarrow a > 1$.
+            - Cắt $Oy$ tại $\dfrac{b}{d} < 0 \xrightarrow{d < 0} b > 0$.
+
+            **Câu 10 (B):** Thể tích $V = \pi R^2 h = 16\pi \Rightarrow h = \dfrac{16}{R^2}$.
+            - $S_{tp} = 2\pi R^2 + 2\pi R h = 2\pi \left(R^2 + \dfrac{16}{R}\right)$.
+            - $S'_{tp} = 0 \Leftrightarrow R = 2 \text{ m} \Rightarrow h = 4 \text{ m}$.
+
+            **Câu 11 (D):** Tiệm cận xiên $y = mx + m + 1$ ($m \neq 0, m \neq 2$).
+            - Cắt 2 trục tại $A\left(\dfrac{-m-1}{m}; 0\right)$ và $B(0; m+1)$.
+            - $S_{OAB} = \dfrac{1}{2} |m+1| \cdot \left|\dfrac{-m-1}{m}\right| = 2 \Leftrightarrow (m+1)^2 = 4|m|$. Giải ra tìm được tổng các giá trị $m$ bằng $-\dfrac{11}{2}$.
+
+            **Câu 12 (A):** Nồng độ $f(t) = \dfrac{20t}{50t + 150}$ (gam/lít).
+            - $\lim_{t \to +\infty} f(t) = \lim_{t \to +\infty} \dfrac{20t}{50t+150} = \dfrac{20}{50} = 0.4$. Suy ra $p = 0.4$.
+            """)
+
+        st.subheader("Phần 2: Trắc nghiệm lựa chọn đúng sai")
+        with st.expander("🔍 Lời giải Câu 1 & Câu 2"):
+            st.markdown(r"""
+            **Câu 1:** (a-Sai, b-Đúng, c-Đúng, d-Sai)
+            - a) $I$ là trung điểm $AB \Rightarrow B = 2I - A = \left(\dfrac{1}{3}; -\dfrac{31}{27}\right) \Rightarrow$ Câu a Sai.
+            - b) $A(1; -1) \in (C) \Rightarrow a + b + c + d = -1 \Rightarrow$ Câu b Đúng.
+            - c) $A$ là điểm cực trị nên $f'(x_A) = 0 \Rightarrow$ Tiếp tuyến song song với $Ox \Rightarrow$ Câu c Đúng.
+            - d) Giải hệ hệ số: $a = 2, b = -4, c = 2, d = -1 \Rightarrow 2a + 3b + 4c + 4d = -4 \neq 4 \Rightarrow$ Câu d Sai.
+
+            **Câu 2:** (a-Sai, b-Sai, c-Đúng, d-Đúng)
+            - a) Tiệm cận đứng $x = 1$, tiệm cận ngang $y = 2 \Rightarrow$ Tâm đối xứng $(1; 2) \Rightarrow$ Câu a Sai.
+            - b) Xác định được $a = -2, b = -1, c = -1 \Rightarrow a - 2b + c = -1 \Rightarrow$ Câu b Sai.
+            - c) $y' = \dfrac{-3}{(-x+1)^2} \Rightarrow y'(2) = -3, y(2) = 5 \Rightarrow y = -3(x-2) + 5 = -3x + 11 \Rightarrow$ Câu c Đúng.
+            - d) $n = 2 - \dfrac{3}{-m+1} \in \mathbb{Z} \Rightarrow (-m+1) \in \{-3; -1; 1; 3\} \Rightarrow m \in \{4; 2; 0; -2\} \Rightarrow$ Có 4 điểm nguyên $\Rightarrow$ Câu d Đúng.
+            """)
+
+        with st.expander("🔍 Lời giải Câu 3 & Câu 4"):
+            st.markdown(r"""
+            **Câu 3:** (a-Đúng, b-Sai, c-Đúng, d-Đúng)
+            - a) $y' = \dfrac{(2x+2)(x+1) - (x^2+2x+5)}{(x+1)^2} = \dfrac{x^2+2x-3}{(x+1)^2} \Rightarrow$ Câu a Đúng.
+            - b) $y' = 0 \Leftrightarrow x = 1, x = -3 \Rightarrow A(1; 4), B(-3; -4) \Rightarrow$ Đường thẳng qua 2 cực trị là $y = 2x + 2 \Rightarrow$ Câu b Sai.
+            - c) $y = x + 1 + \dfrac{4}{x+1} \Rightarrow$ TCX $y = x + 1 \Rightarrow$ Câu c Đúng.
+            - d) Đồ thị có TCĐ $x = -1$, TCX $y = x + 1$, các điểm cực trị khớp với hình vẽ $\Rightarrow$ Câu d Đúng.
+
+            **Câu 4:** (a-Đúng, b-Sai, c-Đúng, d-Đúng)
+            - a) $C(10) = 100 + 30 \times 10 = 400$ triệu đồng $\Rightarrow$ Câu a Đúng.
+            - b) $R(10) = 10 \times P(10) = 10 \times (45 - 0.001 \times 10^2) = 449$ triệu đồng $\neq 600 \Rightarrow$ Câu b Sai.
+            - c) $H(x) = x P(x) - C(x) = -0.001x^3 + 15x - 100 \Rightarrow$ Câu c Đúng.
+            - d) $H'(x) = -0.003x^2 + 15 = 0 \Leftrightarrow x = 50\sqrt{2} \approx 70.7$ tấn $\Rightarrow$ Câu d Đúng.
+            """)
+
+        st.subheader("Phần 3: Câu hỏi trả lời ngắn")
+        with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
+            st.markdown(r"""
+            **Câu 1 (Đáp án: -2):**
+            - $y' = 3x^2 - 6x = 0 \Leftrightarrow x = 0$ hoặc $x = 2$.
+            - $y(0) = 2$ (cực đại), $y(2) = -2$ (cực tiểu). Giá trị cực tiểu là $-2$.
+
+            **Câu 2 (Đáp án: 7):**
+            - TCĐ $x = -3 \Rightarrow a = -3$.
+            - TCN $y = \dfrac{5}{2} \Rightarrow b = \dfrac{5}{2}$.
+            - $a + 4b = -3 + 4 \times \dfrac{5}{2} = 7$.
+
+            **Câu 3 (Đáp án: 13):**
+            - $f(x) = 5x - 1 + \dfrac{8}{x-1} \Rightarrow$ TCĐ $x = 1$, TCX $y = 5x - 1$.
+            - Giao điểm tiệm cận $I(1; 4) \Rightarrow a = 1, b = 4$.
+            - $C = a + 3b = 1 + 3 \times 4 = 13$.
+
+            **Câu 4 (Đáp án: 2):**
+            - Phương trình hoành độ giao điểm: $x^3 - 3x + 2 = \dfrac{x+2}{x-1} \Leftrightarrow (x+2)(x-1)^2 - \dfrac{x+2}{x-1} = 0$.
+            - Rút gọn thu được 2 nghiệm $x = -2$ và $x = 2$. Vậy có 2 giao điểm.
+
+            **Câu 5 (Đáp án: 3):**
+            - $f(x)$ là hàm số lẻ và đồng biến trên $\mathbb{R}$.
+            - $f(x+3) + f(x^3-4x+m) = 0 \Leftrightarrow f(x+3) = f(-x^3+4x-m) \Leftrightarrow x^3 - 3x + 3 = -m$.
+            - Khảo sát $g(x) = x^3 - 3x + 3$, phương trình có 3 nghiệm phân biệt khi $1 < -m < 5 \Leftrightarrow -5 < m < -1 \Rightarrow m \in \{-4; -3; -2\}$ (có $3$ giá trị nguyên).
+
+            **Câu 6 (Đáp án: 9):**
+            - Nồng độ $C(x) = \dfrac{2500 + 9x}{25 + x}$ với $x \geq 0$.
+            - $\lim_{x \to +\infty} C(x) = 9$. Do $C(x)$ luôn giảm nhưng lớn hơn $9$, suy ra $a = 9$.
+            """)
+
+
