@@ -201,7 +201,10 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
                 """, 
                 unsafe_allow_html=True
             )
-            st.caption("Thí sinh trả lời từ câu 1 đến câu 4. Trong mỗi ý a), b), c), d) chọn đúng hoặc sai.")
+            st.markdown(
+                '<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 4. Trong mỗi ý a), b), c), d) chọn đúng hoặc sai.</b></em>', 
+                unsafe_allow_html=True
+            )
             
             # --- Câu 1 ---
             st.markdown("**Câu 1:** Cho hàm số bậc bốn $y=f(x)$. Hàm số $y=f'(x)$ có đồ thị như hình dưới đây")
