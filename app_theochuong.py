@@ -453,7 +453,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             p1_q1_d2 = st.radio(
                 "C1_d2", 
                 [
-                    r"A. Nếu $f'(x) \neq 0, \forall x \in \mathbb{R}$ thì hàm số $f(x)$ đồng biến trên $\mathbb{R}$", 
+                    r"A. Nếu $f'(x) \neq\  0, \forall x \in \mathbb{R}$ thì hàm số $f(x)$ đồng biến trên $\mathbb{R}$", 
                     r"B. Nếu $f'(x) > 0, \forall x \in \mathbb{R}$ thì hàm số $f(x)$ đồng biến trên $\mathbb{R}$", 
                     r"C. Nếu $f'(x) = 0, \forall x \in \mathbb{R}$ thì hàm số $f(x)$ đồng biến trên $\mathbb{R}$", 
                     r"D. Nếu $f'(x) < 0, \forall x \in \mathbb{R}$ thì hàm số $f(x)$ đồng biến trên $\mathbb{R}$"
