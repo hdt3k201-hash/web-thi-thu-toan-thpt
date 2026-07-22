@@ -217,37 +217,60 @@ if not st.session_state.exam_submitted:
 
 
             # ---------------------------------------------------------------------
-# CÂU HỎI 2 Ô TRỐNG (CHIA 2 CỘT CÂN BẰNG)
-# ---------------------------------------------------------------------
-       # ---------------------------------------------------------------------
-# ---------------------------------------------------------------------
-        # CÂU HỎI 1: ĐÃ CANH THẲNG HÀNG TUYỆT ĐỐI CÁC LỆNH BÊN TRONG
+
+        # ---------------------------------------------------------------------
+        # CÂU HỎI KÉO THẢ / CHỌN PHƯƠNG ÁN CÓ KHUNG TỔNG HỢP ĐÁP ÁN
         # ---------------------------------------------------------------------
         with st.container(border=True):
+            # 1. ĐỀ BÀI
             st.markdown(r"""
             <div class="question-title">
-                <b>Câu 1:</b> <span class="tag-badge">[Điền khuyết - 2 vị trí]</span>
+                <b>Câu 1:</b> <span class="tag-badge">[Kéo thả / Chọn phương án]</span>
             </div>
             
-            Cho hàm số $h(t) = A\cos(\omega t) + 60$. Hãy chọn các giá trị thích hợp:
-            * Biên độ $A =$ **`[ (1) ]`**
+            Một vòng quay Mặt Trời có bán kính $50\text{ m}$. Tâm của vòng quay nằm ở độ cao $60\text{ m}$ so với mặt đất. Vòng quay quay đều, mất $15$ phút để hoàn thành một vòng. Giả sử tại thời điểm $t=0$ (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất. Độ cao của cabin theo thời gian được mô hình hóa bởi:
+            
+            $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
+            """, unsafe_allow_html=True)
+
+            # 2. KHUNG ĐÓNG ĐÁP ÁN LỰA CHỌN (TƯƠNG TỰ TÚI KÉO THẢ)
+            st.markdown(r"""
+            <div style="background-color: #f8f9fa; border: 1.5px solid #dcdfe6; border-radius: 8px; padding: 12px 16px; margin: 12px 0;">
+                <div style="font-weight: bold; color: #1e88e5; margin-bottom: 8px; font-size: 14px;">
+                    🎯 KHUNG PHƯƠNG ÁN LỰA CHỌN (Quan sát các đáp án dưới đây):
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">-50</span>
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">50</span>
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">60</span>
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">2π/15</span>
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">π/15</span>
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">2.5</span>
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">7.5</span>
+                </div>
+            </div>
+            
+            <b>Hãy điền vào các vị trí còn thiếu:</b>
+            * Giá trị $A =$ **`[ (1) ]`**
             * Tần số góc $\omega =$ **`[ (2) ]`**
+            * Giá trị $B =$ **`[ (3) ]`**
             """, unsafe_allow_html=True)
             
             st.markdown("<hr style='margin: 10px 0; border: 0.5px dashed #ffcdd2;'>", unsafe_allow_html=True)
-            
-            # Dòng này đã được đưa về thẳng tắp với chữ "st.markdown" ở trên
-            col1, col2 = st.columns(2)
+
+            # 3. CÁC Ô TRỎ CHUỘT CHỌN ĐÁP ÁN (CHIA 3 CỘT)
+            col1, col2, col3 = st.columns(3)
             
             with col1:
-                q_val_A = st.selectbox("📌 (1) Chọn giá trị A:", ["-- Chọn --", "50", "-50", "60"], key="q_2_a")
+                q1_val_A = st.selectbox("📌 (1) Chọn giá trị A:", ["-- Chọn --", "-50", "50", "60"], key="q1_a")
                 
             with col2:
-                q_val_w = st.selectbox("📌 (2) Chọn tần số góc ω:", ["-- Chọn --", "2π / 15", "π / 15"], key="q_2_w")
+                q1_val_w = st.selectbox("📌 (2) Chọn ω:", ["-- Chọn --", "2π/15", "π/15", "15/2π"], key="q1_w")
+                
+            with col3:
+                q1_val_B = st.selectbox("📌 (3) Chọn giá trị B:", ["-- Chọn --", "50", "60", "85"], key="q1_b")
 
         st.markdown("<br>", unsafe_allow_html=True)
-
-    
 
 
         
