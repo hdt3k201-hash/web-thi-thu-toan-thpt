@@ -3315,6 +3315,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             $PQ = D_{PQ} = 60 - \frac{3}{80} \cdot (-2{,}49)^2 - \left(\frac{(-2{,}49)^3}{25600} - \frac{3 \cdot (-2{,}49)}{16} + 35\right) \approx 24{,}3$
             Tổng độ dài:
             $MN + PQ = 25{,}23 + 24{,}3 = 49{,}53 \approx 49{,}5$
+            )
 
             
 
