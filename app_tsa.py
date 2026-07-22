@@ -93,13 +93,12 @@ selected_exam = st.sidebar.selectbox(
 
 st.sidebar.markdown("---")
 
-# --- ĐỒNG HỒ ĐẾM NGƯỢC DÙNG JAVASCRIPT THỜI GIAN THỰC (KHÔNG RELOAD TRANG) ---
+# --- ĐỒNG HỒ ĐẾM NGƯỢC DÙNG ST.HTML CHUẨN STREAMLIT CLOUD ---
 EXAM_DURATION_MINUTES = 60
 
 if "start_time_tsa" not in st.session_state:
     st.session_state.start_time_tsa = time.time()
 
-# Tính số giây còn lại tính từ lúc bắt đầu
 elapsed_sec = int(time.time() - st.session_state.start_time_tsa)
 total_sec = EXAM_DURATION_MINUTES * 60
 remaining_sec = max(0, total_sec - elapsed_sec)
@@ -107,8 +106,8 @@ remaining_sec = max(0, total_sec - elapsed_sec)
 initial_mins, initial_secs = divmod(remaining_sec, 60)
 initial_time_str = f"{initial_mins:02d}:{initial_secs:02d}"
 
-# Khởi tạo HTML + JS đếm ngược trực tiếp trên trình duyệt
-timer_html = f"""
+# Sử dụng st.html() để Streamlit Cloud cho phép thực thi kịch bản đếm ngược
+st.sidebar.html(f"""
 <div style="background-color: #b71c1c; color: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 20px;">
     <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">⏱️ Thời gian còn lại:</div>
     <div id="tsa-countdown" style="font-size: 26px; font-weight: bold; letter-spacing: 2px;">{initial_time_str}</div>
@@ -140,9 +139,7 @@ timer_html = f"""
     window.tsaTimerInterval = setInterval(updateClock, 1000);
 }})();
 </script>
-"""
-
-st.sidebar.markdown(timer_html, unsafe_allow_html=True)
+""")
 
 if st.sidebar.button("🔄 Làm lại bài thi", type="secondary"):
     st.session_state.start_time_tsa = time.time()
