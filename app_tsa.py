@@ -13,14 +13,33 @@ st.set_page_config(
 st.markdown("""
 <style>
     /* Header chính */
+    /* Header chính - Đã thu nhỏ khung và cỡ chữ */
     .tsa-header {
         background: linear-gradient(135deg, #b71c1c 0%, #d32f2f 100%);
         color: white;
-        padding: 20px;
-        border-radius: 12px;
+        padding: 12px 15px !important; /* Giảm lề trong để khung mỏng hơn */
+        border-radius: 8px;
         text-align: center;
-        margin-bottom: 25px;
-        box-shadow: 0 4px 10px rgba(183, 28, 28, 0.3);
+        margin-bottom: 18px;
+        box-shadow: 0 3px 6px rgba(183, 28, 28, 0.25);
+    }
+    
+    /* Chỉnh cỡ chữ tiêu đề lớn */
+    .tsa-header h1 {
+        font-size: 1.4rem !important; /* Giảm từ ~2.0rem xuống 1.4rem */
+        font-weight: 700 !important;
+        margin: 0 !important; /* Xóa khoảng trống thừa trên dưới */
+        padding-bottom: 4px !important;
+        color: white !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* Chỉnh cỡ chữ chuyên đề phụ */
+    .tsa-header h3 {
+        font-size: 1.0rem !important; /* Giảm xuống 1.0rem vừa vặn */
+        font-weight: 500 !important;
+        margin: 0 !important; /* Xóa khoảng trống thừa */
+        color: #ffcdd2 !important; /* Màu hồng nhạt giúp dịu mắt hơn */
     }
     
     /* Áp dụng viền đỏ trực tiếp cho các Container của Streamlit */
