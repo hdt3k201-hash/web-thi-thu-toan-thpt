@@ -425,7 +425,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             """)
 
 # ==================== XỬ LÝ NỘI DUNG ĐỀ 2 ====================
-elif de_thi_chon == "Đề 2: Khối đa diện và Thể tích (Ví dụ)":
+elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số":
     key_nop_bai = "submitted_de2"
     if key_nop_bai not in st.session_state:
         st.session_state[key_nop_bai] = False
