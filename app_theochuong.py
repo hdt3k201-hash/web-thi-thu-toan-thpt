@@ -432,7 +432,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
         st.session_state[key_nop_bai] = False
         
     st.markdown(
-        '<h1 style="text-align: center; color: #0000FF;">ĐỀ 2: ÔN TẬP SỰ BIẾN THIÊN VÀ CỰC TRỊ</h1>', 
+        '<h1 style="text-align: center; color: #00a88f;">ĐỀ 2: ÔN TẬP SỰ BIẾN THIÊN VÀ CỰC TRỊ</h1>', 
         unsafe_allow_html=True
     )
     st.markdown("---")
@@ -865,7 +865,7 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
         st.session_state[key_nop_bai] = False
         
     st.markdown(
-        '<h1 style="text-align: center; color: #0000FF;">ĐỀ 3: GIÁ TRỊ LỚN NHẤT VÀ GIÁ TRỊ NHỎ NHẤT CỦA HÀM SỐ</h1>', 
+        '<h1 style="text-align: center; color:#00a88f;">ĐỀ 3: GIÁ TRỊ LỚN NHẤT VÀ GIÁ TRỊ NHỎ NHẤT CỦA HÀM SỐ</h1>', 
         unsafe_allow_html=True
     )
     st.markdown("---")
@@ -894,7 +894,7 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d3_cau2_p1.png", width=400)
+                    st.image("images/d3_cau2_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d3_cau2_p1.png")
             st.markdown(r'Giá trị nhỏ nhất của hàm số $y=f(x)$ trên đoạn $[0;3]$ là')
@@ -906,7 +906,7 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d3_cau3_p1.png", width=400)
+                    st.image("images/d3_cau3_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d3_cau3_p1.png")
             st.markdown(r'Giá trị lớn nhất của hàm số $y=f(x)$ trên đoạn $[-1;2]$ là')
@@ -918,7 +918,7 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d3_cau4_p1.png", width=400)
+                    st.image("images/d3_cau4_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d3_cau4_p1.png")
             st.markdown(r'Gọi $M, m$ lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=f(x)$ trên đoạn $[-1;3]$. Khi đó giá trị của $M-m$ là')
@@ -930,7 +930,7 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d3_cau5_p1.png", width=400)
+                    st.image("images/d3_cau5_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d3_cau5_p1.png")
             p1_q5_d3 = st.radio("C5_d3", [r"A. $3$", r"B. $7$", r"C. $-1$", r"D. $4$"], key="p1_q5_d3", label_visibility="collapsed")
@@ -941,7 +941,7 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d3_cau6_p1.png", width=400)
+                    st.image("images/d3_cau6_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d3_cau6_p1.png")
             st.markdown(r'Chọn khẳng định đúng trong các khẳng định sau:')
@@ -1010,7 +1010,7 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d3_cau1_p2.png", width=400)
+                    st.image("images/d3_cau1_p2.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d3_cau1_p2.png")
             
@@ -1070,7 +1070,7 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d3_cau4_p3.png", width=400)
+                    st.image("images/d3_cau4_p3.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d3_cau4_p3.png")
             p3_q4_d3 = st.text_input("Nhập đáp án Câu 4:", key="p3_q4_d3")
