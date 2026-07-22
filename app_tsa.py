@@ -188,72 +188,48 @@ if not st.session_state.exam_submitted:
         # =====================================================================
         if "Đề TSA số 01" in selected_exam:
             with st.container(border=True):
-                st.markdown(
-    """
-    <div class="question-title">
-        <b>Câu 1:</b> <span class="tag-badge">[Kéo thả / Chọn phương án]</span>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
-# 2. NỘI DUNG CÂU HỎI (Thuần Markdown + LaTeX)
-# Lưu ý: Các đơn vị cơ bản (50 m, 15 phút...) đã được chuyển về text đậm thay vì dùng LaTeX để dễ đọc hơn.
-# Công thức toán học có dòng trống ở trên và dưới để hiển thị căn giữa chuẩn xác.
-st.markdown(
-    r"""
-Một vòng quay Mặt Trời có bán kính **50 m**. Tâm của vòng quay nằm ở độ cao **60 m** so với mặt đất. Vòng quay quay đều, mất **15** phút để hoàn thành một vòng. Giả sử tại thời điểm **t = 0** (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất. Độ cao của cabin theo thời gian được mô hình hóa bởi:
-
-$$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
-"""
-)
-
-# 3. KHUNG PHƯƠNG ÁN (Thuần HTML)
-st.markdown(
-    """
-    <div style="background-color: #f8f9fa; border: 1.5px solid #dcdfe6; border-radius: 8px; padding: 12px 16px; margin: 12px 0;">
-        <div style="font-weight: bold; color: #1e88e5; margin-bottom: 8px; font-size: 14px;">🎯 KHUNG PHƯƠNG ÁN LỰA CHỌN:</div>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">-50</span>
-            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">50</span>
-            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">60</span>
-            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">2π/15</span>
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
-# 4. YÊU CẦU ĐIỀN ĐÁP ÁN (Thuần Markdown + LaTeX)
-# Thay thẻ <b> bằng ** của Markdown và thêm khoảng cách &nbsp; để nhìn thoáng hơn
-st.markdown(
-    r"""
-**Hãy điền vào các vị trí còn thiếu:**
-* Giá trị $A =$ **`[ (1) ]`** &nbsp;&nbsp;|&nbsp;&nbsp; Tần số góc $\omega =$ **`[ (2) ]`** &nbsp;&nbsp;|&nbsp;&nbsp; Giá trị $B =$ **`[ (3) ]`**
-"""
-)
-
-# 5. CÁC Ô CHỌN (Selectbox)
-col1, col2, col3 = st.columns(3)
-with col1:
-    q1_val_A = st.selectbox(
-        "📌 (1) Chọn giá trị A:",
-        ["-- Chọn --", "-50", "50", "60", "80"],
-        key="q1_a",
-    )
-with col2:
-    q1_val_w = st.selectbox(
-        "📌 (2) Chọn ω:",
-        ["-- Chọn --", "2π/15", "π/15", "15/2π"],
-        key="q1_w",
-    )
-with col3:
-    q1_val_B = st.selectbox(
-        "📌 (3) Chọn giá trị B:",
-        ["-- Chọn --", "50", "60", "85"],
-        key="q1_b",
-    )
-
+                st.markdown("""
+                <div class="question-title">
+                <b>Câu 1:</b> <span class="tag-badge">[Kéo thả / Chọn phương án]</span>
+                </div>
+                """,unsafe_allow_html=True,)
+                st.markdown(r"""Một vòng quay Mặt Trời có bán kính **50 m**. Tâm của vòng quay nằm ở độ cao **60 m** so với mặt đất. Vòng quay quay đều, mất **15** phút để hoàn thành một vòng. Giả sử tại thời điểm **t = 0** (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất. Độ cao của cabin theo thời gian được mô hình hóa bởi:
+                $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$""")
+                st.markdown("""
+                <div style="background-color: #f8f9fa; border: 1.5px solid #dcdfe6; border-radius: 8px; padding: 12px 16px; margin: 12px 0;">
+                <div style="font-weight: bold; color: #1e88e5; margin-bottom: 8px; font-size: 14px;">🎯 KHUNG PHƯƠNG ÁN LỰA CHỌN:</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">-50</span>
+                <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">50</span>
+                <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">60</span>
+                <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">2π/15</span>
+                </div>
+                </div>
+                """,unsafe_allow_html=True,)
+                st.markdown(r"""
+                **Hãy điền vào các vị trí còn thiếu:**
+                * Giá trị $A =$ **`[ (1) ]`** &nbsp;&nbsp;|&nbsp;&nbsp; Tần số góc $\omega =$ **`[ (2) ]`** &nbsp;&nbsp;|&nbsp;&nbsp; Giá trị $B =$ **`[ (3) ]`**
+                """
+                           )
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    q1_val_A = st.selectbox(
+                        "📌 (1) Chọn giá trị A:",
+                        ["-- Chọn --", "-50", "50", "60", "80"],
+                        key="q1_a",
+                    )
+                    with col2:
+                        q1_val_w = st.selectbox(
+                            "📌 (2) Chọn ω:",
+                            ["-- Chọn --", "2π/15", "π/15", "15/2π"],
+                            key="q1_w",
+                        )
+                    with col3:
+                        q1_val_B = st.selectbox(
+                            "📌 (3) Chọn giá trị B:",
+                            ["-- Chọn --", "50", "60", "85"],
+                            key="q1_b",
+                        )
             with st.container(border=True):
                 st.markdown(
                     r"""<div class="question-title"><b>Câu 2:</b> <span class="tag-badge">[Trắc nghiệm 4 lựa chọn]</span></div>""",
