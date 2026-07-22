@@ -235,11 +235,10 @@ if not st.session_state.exam_submitted:
     
     # Chia 2 cột cân bằng
             col1, col2 = st.columns(2)
-    
             with col1:
         # Thụt lề đúng chuẩn Python ở đây
                 q_val_A = st.selectbox("📌 (1) Chọn giá trị A:", ["-- Chọn --", "50", "-50", "60"], key="q_2_a")
-           with col2:
+            with col2:
         # Thụt lề đúng chuẩn Python ở đây 
                 q_val_w = st.selectbox("📌 (2) Chọn tần số góc ω:", ["-- Chọn --", "2π / 15", "π / 15"], key="q_2_w")
         st.markdown("<br>", unsafe_allow_html=True)
