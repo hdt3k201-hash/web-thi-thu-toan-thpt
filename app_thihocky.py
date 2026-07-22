@@ -81,7 +81,10 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             """, 
             unsafe_allow_html=True
             )
-            st.caption("Thí sinh trả lời từ câu 1 đến câu 12. Mỗi câu hỏi chỉ chọn 1 phương án. (Mỗi câu đúng 0.25 điểm)")
+            st.markdown(
+                '<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 12. Mỗi câu hỏi chỉ chọn 1 phương án. (Mỗi câu đúng 0.25 điểm)</b></em>', 
+                unsafe_allow_html=True
+            )
             
             st.markdown("**Câu 1:** Hàm số $y=f(x)$ liên tục trên $\\mathbb{R}$ có bảng biến thiên hàm số $y=f'(x)$ như hình dưới:")
             try:
