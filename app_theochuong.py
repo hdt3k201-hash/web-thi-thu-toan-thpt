@@ -2324,7 +2324,7 @@ elif de_thi_chon == "Đề 6: Đường tiệm cận của đồ thị hàm số
                     st.rerun()
 
     # ==================== XỬ LÝ CHẤM ĐIỂM & ĐÁP ÁN ĐỀ 6 ====================
-    else:
+else:
         tong_diem_d6 = 0.0
         
         # Chấm điểm Phần 1
