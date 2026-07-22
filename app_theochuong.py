@@ -459,7 +459,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/cau2_p1_d2.png", width=400)
+                    st.image("images/cau2_p1_d2.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d2_cau2_p1.png")
             st.markdown('Điểm cực tiểu của đồ thị hàm số đã cho là')
@@ -468,7 +468,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
 
             st.markdown('<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Hàm số nào sau đây nghịch biến trên tập xác định của nó?', unsafe_allow_html=True)
             p1_q3_d2 = st.radio("C3_d2", [
-                r"A. $y=\frac{2x+1}{x-3}$", 
+                r"A. $y=\dfrac{2x+1}{x-3}$", 
                 r"B. $y=-x^3+2x^2-15x-1$", 
                 r"C. $y=-2x^2+1$", 
                 r"D. $y=x^3-2x^2+2024x+5$"
@@ -516,8 +516,8 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             p1_q8_d2 = st.radio("C8_d2", [r"A. $4$", r"B. $8$", r"C. $10$", r"D. $-2$"], key="p1_q8_d2", label_visibility="collapsed")
             st.divider()
 
-            st.markdown('<span style="color: #0000FF; font-weight: bold;">Câu 9:</span> Tính giá trị cực đại của hàm số $y=\frac{\ln x}{x}$.', unsafe_allow_html=True)
-            p1_q9_d2 = st.radio("C9_d2", [r"A. $\frac{1}{e}$", r"B. $1$", r"C. $e$", r"D. $0$"], key="p1_q9_d2", label_visibility="collapsed")
+            st.markdown('<span style="color: #0000FF; font-weight: bold;">Câu 9:</span> Tính giá trị cực đại của hàm số $y=\dfrac{\ln x}{x}$.', unsafe_allow_html=True)
+            p1_q9_d2 = st.radio("C9_d2", [r"A. $\dfrac{1}{e}$", r"B. $1$", r"C. $e$", r"D. $0$"], key="p1_q9_d2", label_visibility="collapsed")
             st.divider()
 
             st.markdown('<span style="color: #0000FF; font-weight: bold;">Câu 10:</span> Cho hàm số $y=f(x)$ có bảng biến thiên như sau:', unsafe_allow_html=True)
