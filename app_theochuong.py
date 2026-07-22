@@ -132,7 +132,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             st.divider()
 
             st.markdown("**Câu 5:** Hàm số nào sau đây nghịch biến trên $\\mathbb{R}$?")
-            p1_q5 = st.radio("C5:", [r"A. $y = -x^3 + 3x^2 - 9x$", r"B. $y = -x^3 + x + 1$", r"C. $y = \frac{x-1}{x-2}$", r"D. $y = 2x^2 + 3x + 2$"], key="p1_q5", label_visibility="collapsed")
+            p1_q5 = st.radio("C5:", [r"A. $y = -x^3 + 3x^2 - 9x$", r"B. $y = -x^3 + x + 1$", r"C. $y = \dfrac{x-1}{x-2}$", r"D. $y = 2x^2 + 3x + 2$"], key="p1_q5", label_visibility="collapsed")
             st.divider()
 
             st.markdown("**Câu 6:** Cho hàm số $y=f(x)$ có đồ thị là đường cong như hình vẽ bên dưới:")
@@ -166,7 +166,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             ], key="p1_q8", label_visibility="collapsed")
             st.divider()
 
-            st.markdown(r"**Câu 9:** Hàm số $y=\frac{x^2-3x+5}{x+1}$ nghịch biến trên các khoảng nào?")
+            st.markdown(r"**Câu 9:** Hàm số $y=\dfrac{x^2-3x+5}{x+1}$ nghịch biến trên các khoảng nào?")
             p1_q9 = st.radio("C9:", [
                 r"A. $(-4; 2)$", 
                 r"B. $(-\infty; -2)$", 
@@ -211,7 +211,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/cau1_p2.png", width=400)
+                    st.image("images/cau1_p2.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau1_p2.png")
             
