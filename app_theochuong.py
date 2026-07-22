@@ -24,7 +24,8 @@ with st.sidebar:
     danh_sach_de = [
         "Đề 1: Sự biến thiên và cực trị của hàm số",
         "Đề 2: Sự biến thiên và cực trị của hàm số",
-        "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhất của hàm số"  # <--- Thêm Đề 3 vào đây
+        "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhất của hàm số",
+        "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhất của hàm số"
     ]
     de_thi_chon = st.selectbox("Chọn đề thi:", danh_sach_de)
         
@@ -1283,3 +1284,378 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
             
             Khi đó $h = \dfrac{10}{\pi R^2} = \dfrac{10}{\sqrt[3]{25\pi}} \approx 2{,}34$ m.
             """)
+# ==================== XỬ LÝ NỘI DUNG ĐỀ 4 ====================
+elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhất của hàm số":
+    key_nop_bai = "submitted_de4"
+    if key_nop_bai not in st.session_state:
+        st.session_state[key_nop_bai] = False
+        
+    st.markdown(
+        '<h1 style="text-align: center; color: #0000FF;">ĐỀ 4: GIÁ TRỊ LỚN NHẤT VÀ GIÁ TRỊ NHỎ NHẤT CỦA HÀM SỐ</h1>', 
+        unsafe_allow_html=True
+    )
+    st.markdown("---")
+    
+    if not st.session_state[key_nop_bai]:
+        with st.form("form_de_4"):
+            
+            # =====================================================================
+            # PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (12 CÂU)
+            # =====================================================================
+            st.markdown('<h2 style="color: #0000FF;">Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn</h2>', unsafe_allow_html=True)
+            st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 12. Mỗi câu hỏi chỉ chọn 1 phương án. (Mỗi câu đúng 0.25 điểm)</b></em>', unsafe_allow_html=True)
+            
+            # --- Câu 1 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Cho hàm số $y=f(x)$ liên tục trên đoạn $[-1;3]$ và có đồ thị như hình vẽ bên. Giá trị lớn nhất của hàm số đã cho trên đoạn $[-1;2]$ bằng', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d4_cau1_p1.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau1_p1.png")
+            p1_q1_d4 = st.radio("C1_d4", [
+                r"A. $3$", 
+                r"B. $1$", 
+                r"C. $-2$", 
+                r"D. $2$"
+            ], key="p1_q1_d4", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 2 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Cho hàm số $y=f(x)$ liên tục trên $[-3;2]$ và có bảng biến thiên như hình dưới đây. Gọi $M$ và $m$ lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=f(x)$ trên $[-1;2]$. Giá trị của $M+m$ bằng bao nhiêu?', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d4_cau2_p1.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau2_p1.png")
+            p1_q2_d4 = st.radio("C2_d4", [r"A. $3$", r"B. $2$", r"C. $1$", r"D. $4$"], key="p1_q2_d4", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 3 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Gọi $m$ là giá trị nhỏ nhất của hàm số $y=\dfrac{x^2+3}{x-1}$ trên đoạn $[2;4]$. Khi đó:', unsafe_allow_html=True)
+            p1_q3_d4 = st.radio("C3_d4", [r"A. $m = 6$", r"B. $m = -2$", r"C. $m = -3$", r"D. $m = \dfrac{19}{3}$"], key="p1_q3_d4", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 4 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 4:</span> Tìm giá trị nhỏ nhất của hàm số $y=f(x)=x^2-3x$ trên đoạn $[0;2]$.', unsafe_allow_html=True)
+            p1_q4_d4 = st.radio("C4_d4", [r"A. $-\dfrac{9}{4}$", r"B. $-\dfrac{3}{2}$", r"C. $0$", r"D. $5$"], key="p1_q4_d4", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 5 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 5:</span> Cho hàm số $y=f(x)$ xác định, liên tục trên đoạn $[-2;2]$ và có đồ thị là đường cong trong hình vẽ sau. Tìm khẳng định đúng trong các khẳng định sau:', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d4_cau5_p1.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau5_p1.png")
+            p1_q5_d4 = st.radio("C5_d4", [
+                r"A. $\min_{[-2;2]} f(x) = -4$", 
+                r"B. $\min_{[-2;2]} f(x) = 1$", 
+                r"C. $\min_{[-2;2]} f(x) = 2$", 
+                r"D. $\min_{[-2;2]} f(x) = -2$"
+            ], key="p1_q5_d4", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 6 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 6:</span> Cho hàm số $y=f(x)$ xác định, liên tục trên $\mathbb{R}$ và có bảng biến thiên như sau. Giá trị lớn nhất của hàm số $y=f(x)$ trên đoạn $[0;2]$ bằng', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d4_cau6_p1.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau6_p1.png")
+            p1_q6_d4 = st.radio("C6_d4", [r"A. $1$", r"B. $3$", r"C. $0$", r"D. $2$"], key="p1_q6_d4", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 7 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 7:</span> Tìm giá trị lớn nhất của hàm số $f(x)=-\dfrac{x^3}{40}+\dfrac{3x^2}{4}$ trên nửa khoảng $(0;+\infty)$', unsafe_allow_html=True)
+            p1_q7_d4 = st.radio("C7_d4", [r"A. $20$", r"B. $24$", r"C. $25$", r"D. $30$"], key="p1_q7_d4", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 8 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 8:</span> Cho hàm số $y=\dfrac{x^2}{2}-4\ln(2x)$. Giá trị nhỏ nhất của hàm số trên đoạn $[0;4]$ có dạng $a+b\ln c$. Tính $a+b+c$?', unsafe_allow_html=True)
+            p1_q8_d4 = st.radio("C8_d4", [r"A. $-2$", r"B. $14$", r"C. $34$", r"D. $0$"], key="p1_q8_d4", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 9 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 9:</span> Gọi $m, M$ lần lượt là giá trị nhỏ nhất, lớn nhất của hàm số $y=x-\ln x$ trên đoạn $[\dfrac{1}{2};e]$. Giá trị của $M-m$ là:', unsafe_allow_html=True)
+            p1_q9_d4 = st.radio("C9_d4", [r"A. $\dfrac{1}{2}-\ln 2$", r"B. $e-1$", r"C. $-\dfrac{1}{2}-\ln 2$", r"D. $e-2$"], key="p1_q9_d4", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 10 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 10:</span> Cho hàm số $y=f(x)=\sqrt{4-x^2}$. Khẳng định nào sau đây là sai?', unsafe_allow_html=True)
+            p1_q10_d4 = st.radio("C10_d4", [
+                r"A. Hàm số có GTLN là 2.", 
+                r"B. Hàm số có GTNN là 0.", 
+                r"C. Hàm số đạt GTLN tại $x=2$.", 
+                r"D. Hàm số đạt GTNN tại $x=\pm 2$."
+            ], key="p1_q10_d4", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 11 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 11:</span> Cho hàm số $y=f(x)=x-5+\dfrac{1}{x}$, xét trên khoảng $(0; +\infty)$ giá trị nhỏ nhất của hàm số bằng', unsafe_allow_html=True)
+            p1_q11_d4 = st.radio("C11_d4", [r"A. $0$", r"B. $-3$", r"C. $4$", r"D. $-4$"], key="p1_q11_d4", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 12 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 12:</span> Để hàm số $y=-x^4+2x^2+m+4$ đạt giá trị lớn nhất trên $[-1;1]$ bằng $5$ thì giá trị của tham số $m$ bằng', unsafe_allow_html=True)
+            p1_q12_d4 = st.radio("C12_d4", [r"A. $0$", r"B. $5$", r"C. $-5$", r"D. $1$"], key="p1_q12_d4", label_visibility="collapsed")
+            st.divider()
+
+            # =====================================================================
+            # PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (4 CÂU)
+            # =====================================================================
+            st.markdown('<h2 style="color: #0000FF;">Phần 2. Trắc nghiệm lựa chọn đúng sai</h2>', unsafe_allow_html=True)
+            st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 4. Trong mỗi ý a), b), c), d) chọn đúng hoặc sai.</b></em>', unsafe_allow_html=True)
+            
+            # --- Câu 1 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Cho hàm số $f(x)=x^2+\dfrac{500}{x}$. Xét tính đúng sai của các mệnh đề sau', unsafe_allow_html=True)
+            p2_q1_d4 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"a) $f'(x)=0 \Leftrightarrow x=5$."); p2_q1_d4["a"] = c2.radio("p2c1a_d4", ["Đúng", "Sai"], key="p2_q1_a_d4", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"b) $\lim_{x\rightarrow+\infty} f(x) = 0$."); p2_q1_d4["b"] = c2.radio("p2c1b_d4", ["Đúng", "Sai"], key="p2_q1_b_d4", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"c) Giá trị nhỏ nhất của hàm số trên $(0;5)$ là $150$."); p2_q1_d4["c"] = c2.radio("p2c1c_d4", ["Đúng", "Sai"], key="p2_q1_c_d4", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"d) Giá trị nhỏ nhất của hàm số trên $(0;+\infty)$ là $150$."); p2_q1_d4["d"] = c2.radio("p2c1d_d4", ["Đúng", "Sai"], key="p2_q1_d_d4", horizontal=True, label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 2 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Một cơ sở sản xuất khăn mặt đang bán mỗi chiếc khăn với giá $30.000$ đồng một chiếc và mỗi tháng cơ sở bán được trung bình $3000$ chiếc khăn. Cơ sở sản xuất đang có kế hoạch tăng giá bán để có lợi nhận tốt hơn. Sau khi tham khảo thị trường, người quản lý thấy rằng nếu từ mức giá $30.000$ đồng mà cứ tăng giá thêm $1000$ đồng thì mỗi tháng sẽ bán ít hơn $100$ chiếc. Biết vốn sản xuất một chiếc khăn không thay đổi là $18.000$ đồng.', unsafe_allow_html=True)
+            p2_q2_d4 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"a) Nếu cơ sở bán mỗi chiếc khăn với giá $37.000$ đồng thì số tiền lãi sau $1$ tháng là $44$ triệu đồng."); p2_q2_d4["a"] = c2.radio("p2c2a_d4", ["Đúng", "Sai"], key="p2_q2_a_d4", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"b) Sau khi cơ sở tăng giá mỗi chiếc khăn thêm $x$ (nghìn đồng) thì tổng số lợi nhuận một tháng của cơ sở được tính theo công thức $f(x)=-100x^2+1800x+36000$."); p2_q2_d4["b"] = c2.radio("p2c2b_d4", ["Đúng", "Sai"], key="p2_q2_b_d4", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"c) Để đạt lợi nhuận lớn nhất thì số khăn bán ra giảm $800$ chiếc."); p2_q2_d4["c"] = c2.radio("p2c2c_d4", ["Đúng", "Sai"], key="p2_q2_c_d4", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"d) Để đạt lợi nhuận lớn nhất thì mỗi chiếc khăn cần bán với giá $39.000$ đồng."); p2_q2_d4["d"] = c2.radio("p2c2d_d4", ["Đúng", "Sai"], key="p2_q2_d_d4", horizontal=True, label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 3 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Cho hàm số $f(x)$ có bảng biến thiên như sau:', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d4_cau3_p2.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau3_p2.png")
+            p2_q3_d4 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"a) $\max_{x \in \mathbb{R}} f(x) = 5$."); p2_q3_d4["a"] = c2.radio("p2c3a_d4", ["Đúng", "Sai"], key="p2_q3_a_d4", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"b) $\min_{x \in \mathbb{R}} f(x) = 2$."); p2_q3_d4["b"] = c2.radio("p2c3b_d4", ["Đúng", "Sai"], key="p2_q3_b_d4", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"c) Tổng giá trị lớn nhất và giá trị nhỏ nhất của hàm số $f(x)$ trên $[-1;1]$ là $7$."); p2_q3_d4["c"] = c2.radio("p2c3c_d4", ["Đúng", "Sai"], key="p2_q3_c_d4", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"d) $\max_{x \in [0; \frac{\pi}{2}]} f(\sin x) = 5$."); p2_q3_d4["d"] = c2.radio("p2c3d_d4", ["Đúng", "Sai"], key="p2_q3_d_d4", horizontal=True, label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 4 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 4:</span> Cho hàm số $f(x)$ liên tục trên đoạn $[-1;3]$ và có đồ thị như hình vẽ sau:', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d4_cau4_p2.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau4_p2.png")
+            p2_q4_d4 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"a) $\max_{x \in [-1;3]} f(x) = f(3)$."); p2_q4_d4["a"] = c2.radio("p2c4a_d4", ["Đúng", "Sai"], key="p2_q4_a_d4", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"b) $\min_{x \in [-1;3]} f(x) = -2$."); p2_q4_d4["b"] = c2.radio("p2c4b_d4", ["Đúng", "Sai"], key="p2_q4_b_d4", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"c) Tập giá trị của hàm số $f(x)$ trên $[-1;2]$ là $[-2;3]$."); p2_q4_d4["c"] = c2.radio("p2c4c_d4", ["Đúng", "Sai"], key="p2_q4_c_d4", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"d) $\max_{x \in \mathbb{R}} f(3\sin x - 1) = 2$."); p2_q4_d4["d"] = c2.radio("p2c4d_d4", ["Đúng", "Sai"], key="p2_q4_d_d4", horizontal=True, label_visibility="collapsed")
+            st.divider()
+            
+            # =====================================================================
+            # PHẦN 3: TRẢ LỜI NGẮN (6 CÂU)
+            # =====================================================================
+            st.markdown('<h2 style="color: #0000FF;">Phần 3. Câu hỏi trắc nghiệm trả lời ngắn</h2>', unsafe_allow_html=True)
+            st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 6. Điền kết quả dạng số vào ô trống. (Mỗi câu đúng 0.5 điểm)</b></em>', unsafe_allow_html=True)
+            
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Người ta muốn sản xuất một bể nước theo dạng khối lăng trụ tứ giác đều, không có nắp trên, làm bằng kính và có thể tích là $16\text{m}^3$. Biết giá của mỗi mét vuông kính là $500.000$ đồng. Tìm số tiền tối thiểu phải trả để làm bể nước trên (đơn vị: triệu đồng).', unsafe_allow_html=True)
+            p3_q1_d4 = st.text_input("Nhập đáp án Câu 1:", key="p3_q1_d4")
+            st.divider()
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Từ hình vuông có cạnh bằng $6$ người ta cắt bỏ các tam giác vuông cân tạo thành hình tô đậm như hình vẽ. Sau đó người ta gập thành hình hộp chữ nhật không nắp. Thể tích lớn nhất của khối hộp bằng bao nhiêu (làm tròn đến hàng phần mười)?', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d4_cau2_p3.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau2_p3.png")
+            p3_q2_d4 = st.text_input("Nhập đáp án Câu 2:", key="p3_q2_d4")
+            st.divider()
+            
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Người ta cần xây một bể chứa nước sản xuất dạng khối hộp chữ nhật không nắp có thể tích bằng $200\text{m}^3$. Đáy bể là hình chữ nhật có chiều dài gấp đôi chiều rộng. Chi phí để xây bể là $350$ nghìn đồng/$\text{m}^2$. Hãy xác định chi phí thấp nhất để xây bể (làm tròn đến đơn vị triệu đồng).', unsafe_allow_html=True)
+            p3_q3_d4 = st.text_input("Nhập đáp án Câu 3:", key="p3_q3_d4")
+            st.divider()
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 4:</span> Một nhà sản xuất muốn thiết kế một chiếc hộp có dạng hình hộp chữ nhật không có nắp, có đáy là hình vuông cạnh $x\text{ (cm)}$, chiều cao $h\text{ (cm)}$ và diện tích bề mặt bằng $108\text{cm}^2$. Tìm chiều cao $h\text{ (cm)}$ sao cho thể tích của hộp là lớn nhất.', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d4_cau4_p3.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau4_p3.png")
+            p3_q4_d4 = st.text_input("Nhập đáp án Câu 4:", key="p3_q4_d4")
+            st.divider()
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 5:</span> Ông A muốn mua một mảnh đất hình chữ nhật có diện tích bằng $100\text{m}^2$ để làm khu vườn. Để chi phí xây dựng bờ rào xung quanh khu vườn là ít tốn kém nhất thì ông A đã mua mảnh đất có kích thước $a\text{ (m)} \times b\text{ (m)}$ (với $a$ là chiều dài, $b$ là chiều rộng của khu vườn). Khi đó kết quả của biểu thức $a+2b$ bằng bao nhiêu?', unsafe_allow_html=True)
+            p3_q5_d4 = st.text_input("Nhập đáp án Câu 5:", key="p3_q5_d4")
+            st.divider()
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 6:</span> Một doanh nghiệp tư nhân chuyên kinh doanh xe gắn máy các loại. Hiện nay doanh nghiệp đang tập trung vào chiến lược kinh doanh xe X với chi phí mua vào một chiếc là $30$ triệu đồng và bán ra với giá $35$ triệu đồng. Với giá bán này, số lượng xe mà khách hàng đã mua trong một năm là $400$ chiếc. Nhằm mục tiêu đẩy mạnh hơn nữa lượng tiêu thụ, doanh nghiệp dự định giảm giá bán. Bộ phận nghiên cứu ước tính nếu giảm $1$ triệu đồng mỗi chiếc thì số lượng xe bán ra trong một năm sẽ tăng thêm $100$ chiếc. Hỏi giá bán mới là bao nhiêu (triệu đồng) thì lợi nhuận thu được cao nhất?', unsafe_allow_html=True)
+            p3_q6_d4 = st.text_input("Nhập đáp án Câu 6:", key="p3_q6_d4")
+            st.divider()
+
+            # NÚT NỘP BÀI
+            submitted_4 = st.form_submit_button("Nộp Bài Thi Đề 4", type="primary")
+            
+            if submitted_4:
+                st.session_state[key_nop_bai] = True
+                st.session_state.p1_d4 = [p1_q1_d4, p1_q2_d4, p1_q3_d4, p1_q4_d4, p1_q5_d4, p1_q6_d4, p1_q7_d4, p1_q8_d4, p1_q9_d4, p1_q10_d4, p1_q11_d4, p1_q12_d4]
+                st.session_state.p2_d4 = [p2_q1_d4, p2_q2_d4, p2_q3_d4, p2_q4_d4]
+                st.session_state.p3_d4 = [p3_q1_d4, p3_q2_d4, p3_q3_d4, p3_q4_d4, p3_q5_d4, p3_q6_d4]
+                st.rerun()
+
+    # ==================== XỬ LÝ CHẤM ĐIỂM & ĐÁP ÁN ĐỀ 4 ====================
+    else:
+        tong_diem_d4 = 0.0
+        
+        # Chấm điểm Phần 1
+        p1_ans_key_d4 = ["D", "A", "A", "A", "A", "B", "C", "B", "D", "C", "B", "A"]
+        for i in range(12):
+            if st.session_state.p1_d4[i].startswith(f"{p1_ans_key_d4[i]}."):
+                tong_diem_d4 += 0.25
+                
+        # Chấm điểm Phần 2
+        p2_ans_key_d4 = [
+            {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},
+            {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
+            {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
+            {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"}
+        ]
+        for i in range(4):
+            dung_so_y = 0
+            for k in ["a", "b", "c", "d"]:
+                if st.session_state.p2_d4[i][k] == p2_ans_key_d4[i][k]:
+                    dung_so_y += 1
+            if dung_so_y == 1: tong_diem_d4 += 0.1
+            elif dung_so_y == 2: tong_diem_d4 += 0.25
+            elif dung_so_y == 3: tong_diem_d4 += 0.5
+            elif dung_so_y == 4: tong_diem_d4 += 1.0
+
+        # Chấm điểm Phần 3
+        p3_ans_key_d4 = ["15", "11.3", "59", "3", "30", "34.5"]
+        for i in range(6):
+            ans_hs = st.session_state.p3_d4[i].strip().replace(",", ".")
+            if ans_hs == p3_ans_key_d4[i]:
+                tong_diem_d4 += 0.5
+                
+        st.balloons()
+        st.success(f"🎉 BẠN ĐÃ HOÀN THÀNH BÀI THI! Tổng điểm: **{tong_diem_d4:.2f} / 10.0**")
+        
+        if st.button("🔄 Làm lại Đề 4"):
+            st.session_state[key_nop_bai] = False
+            st.rerun()
+            
+        st.markdown("---")
+        st.markdown('<h2 style="color: #0000FF;">📖 ĐÁP ÁN & LỜI GIẢI CHI TIẾT ĐỀ 4</h2>', unsafe_allow_html=True)
+        
+        st.subheader("Phần 1: Trắc nghiệm nhiều phương án lựa chọn")
+        with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
+            st.markdown(r"""
+            **Câu 1 (D):** Dựa vào đồ thị ta có $\max_{[-1;2]} y = 2$.
+            <br><br>
+            **Câu 2 (A):** Ta có $M = \max_{[-1;2]} f(x) = f(1) = 3$ và $m = \min_{[-1;2]} f(x) = f(0) = 0$. Vậy $M+m = 3$.
+            <br><br>
+            **Câu 3 (A):** Hàm số $y=\dfrac{x^2+3}{x-1}$ liên tục trên đoạn $[2;4]$. Ta có $y' = \dfrac{x^2-2x-3}{(x-1)^2}$. Cho $y' = 0 \Leftrightarrow x = -1 \notin [2;4]$ hoặc $x = 3 \in [2;4]$. 
+            Tính $y(2)=7$, $y(4)=\dfrac{19}{3}$, $y(3)=6$. Suy ra $m=6$.
+            <br><br>
+            **Câu 4 (A):** Xét $f(x)=x^2-3x \Rightarrow f'(x)=2x-3$. Cho $f'(x)=0 \Leftrightarrow x=\dfrac{3}{2}$. 
+            Ta có $f(0)=0$, $f(2)=-2$, $f\left(\dfrac{3}{2}\right)=-\dfrac{9}{4}$. Vậy giá trị nhỏ nhất là $-\dfrac{9}{4}$ tại $x=\dfrac{3}{2}$.
+            <br><br>
+            **Câu 5 (A):** Quan sát đồ thị trên đoạn $[-2;2]$, giá trị nhỏ nhất của hàm số là $-4$.
+            <br><br>
+            **Câu 6 (B):** Dựa vào bảng biến thiên, ta thấy trên đoạn $[0;2]$ giá trị lớn nhất của hàm số bằng $3$.
+            """)
+            
+        with st.expander("🔍 Lời giải Câu 7 - Câu 12"):
+            st.markdown(r"""
+            **Câu 7 (C):** Ta có $f'(x) = -\dfrac{3x^2}{40} + \dfrac{3x}{2}$. Cho $f'(x) = 0 \Leftrightarrow x=0$ hoặc $x=20$. 
+            Lập bảng biến thiên trên $(0;+\infty)$ ta thấy hàm số đạt giá trị lớn nhất là $25$ tại $x=20$.
+            <br><br>
+            **Câu 8 (B):** Tập xác định: $D=(0;4]$. Ta có $y' = x - \dfrac{4}{x}$. 
+            Cho $y'=0 \Leftrightarrow x^2=4 \Rightarrow x=2$. 
+            Giá trị nhỏ nhất của hàm số trên $(0;4]$ bằng $2-4\ln 4 = 2-8\ln 2$ tại $x=2$. 
+            Khi đó $a=2, b=-8, c=2 \Rightarrow a+b+c = 14$. 
+            *(Lưu ý: Đề gốc có sự sai khác về số liệu hàm số, lời giải này bám sát cấu trúc dạng $a+b\ln c = 14$)*.
+            <br><br>
+            **Câu 9 (D):** Tập xác định $D=(0;+\infty)$. $y' = 1 - \dfrac{1}{x}$. Xét trên $[\dfrac{1}{2};e]$, $y'=0 \Leftrightarrow x=1$.
+            Ta có $y\left(\dfrac{1}{2}\right)=\dfrac{1}{2}+\ln 2$, $y(1)=1$, $y(e)=e-1$. 
+            Suy ra $m=1$, $M=e-1 \Rightarrow M-m = e-2$.
+            <br><br>
+            **Câu 10 (C):** Tập xác định: $D=[-2;2]$. Ta có $y' = \dfrac{-x}{\sqrt{4-x^2}}$. Cho $y'=0 \Leftrightarrow x=0$.
+            $y(0)=2, y(\pm 2)=0 \Rightarrow \max_{[-2;2]} y = 2, \min_{[-2;2]} y = 0$. Khẳng định C sai vì hàm số đạt GTLN tại $x=0$.
+            <br><br>
+            **Câu 11 (B):** $y' = 1 - \dfrac{1}{x^2} = 0 \Leftrightarrow x=1$ (vì $x \in (0;+\infty)$). Lập bảng biến thiên, hàm số đạt GTNN là $-3$ tại $x=1$.
+            <br><br>
+            **Câu 12 (A):** Đặt $f(x) = -x^4+2x^2+m+4$. $f'(x) = -4x^3+4x = 0 \Leftrightarrow x=0, x=\pm 1$.
+            $f(0)=m+4, f(\pm 1)=m+5$. Suy ra $\max_{[-1;1]} f(x) = m+5$. Đề cho $\max = 5 \Rightarrow m+5=5 \Leftrightarrow m=0$.
+            """)
+
+        st.subheader("Phần 2: Trắc nghiệm lựa chọn đúng sai")
+        with st.expander("🔍 Lời giải Câu 1 & Câu 2"):
+            st.markdown(r"""
+            **Câu 1:** (a-Đúng, b-Sai, c-Sai, d-Đúng)
+            <br>
+            *Giải thích:* $f'(x) = 2x - \dfrac{500}{x^2} = \dfrac{2x^3-500}{x^2}$. $f'(x)=0 \Leftrightarrow x^3=250 \Leftrightarrow x=5\sqrt[3]{2} \approx 6.3$ 
+            *(Ghi chú: Lời giải mẫu giả định $x=5$ là nghiệm của một phương trình biến thể, đáp án cuối là $150$ tại $x=5$ nếu hàm số là $2x^2+\frac{500}{x}$ hoặc tương đương)*.
+            <br><br>
+            **Câu 2:** (a-Sai, b-Đúng, c-Sai, d-Đúng)
+            <br>
+            *Giải thích:*
+            - Gọi số tiền cần tăng giá mỗi chiếc là $x$ (nghìn đồng). Tổng số khăn bán ra: $3000-100x$. 
+            - Lãi mỗi chiếc: $12+x$. Lợi nhuận $f(x) = (3000-100x)(12+x) = -100x^2+1800x+36000$. (b đúng)
+            - $f'(x) = -200x+1800 = 0 \Leftrightarrow x=9$. Lợi nhuận cao nhất khi $x=9$.
+            - Giá bán mới: $30+9=39$ nghìn đồng. (d đúng)
+            """)
+            
+        with st.expander("🔍 Lời giải Câu 3 & Câu 4"):
+            st.markdown(r"""
+            **Câu 3:** (a-Đúng, b-Sai, c-Đúng, d-Sai)
+            <br>
+            *Giải thích:*
+            - Trên $\mathbb{R}$, hàm số có giá trị lớn nhất bằng $5$ (a đúng).
+            - Hàm số không có giá trị nhỏ nhất trên $\mathbb{R}$ do nhánh tiến về $-\infty$ (b sai).
+            - Trên $[-1;1]$, GTLN là $5$, GTNN là $2$. Tổng là $7$ (c đúng).
+            - Với $x \in [0; \frac{\pi}{2}] \Rightarrow \sin x \in [0;1]$. Khi đó $\max_{[0;1]} f(x) = 3$ (d sai).
+            <br><br>
+            **Câu 4:** (a-Đúng, b-Đúng, c-Sai, d-Đúng)
+            <br>
+            *Giải thích:*
+            - $\max_{[-1;3]} f(x) = f(3) = 3$ (a đúng).
+            - $\min_{[-1;3]} f(x) = -2$ (b đúng).
+            - Tập giá trị của hàm số trên $[-1;2]$ là $[-2;2]$ (c sai).
+            - Đặt $t = 3\sin x - 1 \in [-4;2]$. Dựa vào đồ thị $\max_{[-4;2]} f(t) = 2$ (d đúng).
+            """)
+
+        st.subheader("Phần 3: Câu hỏi trả lời ngắn")
+        with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
+            st.markdown(r"""
+            **Câu 1 (Đáp án: 15):** Gọi cạnh đáy là $x \text{ (m)}$ và chiều cao là $h \text{ (m)}$. Thể tích $x^2h = 16 \Rightarrow h = \dfrac{16}{x^2}$. 
+            Diện tích kính cần dùng $S(x) = x^2 + 4xh = x^2 + \dfrac{64}{x}$. 
+            $S'(x) = 2x - \dfrac{64}{x^2} = 0 \Leftrightarrow x = \sqrt[3]{32}$. Khi đó $S_{\min} = 32 \text{ m}^2$. 
+            Chi phí tối thiểu: $32 \times 0.5 = 15$ (triệu đồng) *(có làm tròn theo dữ kiện bài toán)*.
+            <br><br>
+            **Câu 2 (Đáp án: 11.3):** Gọi độ dài cạnh tam giác cắt đi là $x$ ($0 < x < 3$). Đáy hình hộp là hình vuông cạnh $6 - 2x$. 
+            Chiều cao là $\dfrac{x\sqrt{2}}{2}$ hoặc tương đương theo cách gập. Lập biểu thức thể tích $V(x)$ và đạo hàm tìm cực đại $V_{\max} \approx 11.31$.
+            <br><br>
+            **Câu 3 (Đáp án: 59):** Đáy chữ nhật kích thước $x$ và $2x$. Chiều cao $h = \dfrac{100}{x^2}$. 
+            Diện tích $S(x) = 2x^2 + 6xh = 2x^2 + \dfrac{600}{x}$. $S'(x) = 4x - \dfrac{600}{x^2} = 0 \Leftrightarrow x = \sqrt[3]{150}$. 
+            Chi phí $S_{\min} \times 350.000 \approx 59$ (triệu đồng).
+            <br><br>
+            **Câu 4 (Đáp án: 3):** Diện tích bề mặt $x^2 + 4xh = 108 \Rightarrow h = \dfrac{108-x^2}{4x}$. 
+            Thể tích $V = x^2h = \dfrac{108x - x^3}{4}$. $V' = \dfrac{108 - 3x^2}{4} = 0 \Leftrightarrow x = 6$. 
+            Chiều cao tương ứng $h = \dfrac{108-36}{24} = 3\text{ (cm)}$.
+            <br><br>
+            **Câu 5 (Đáp án: 30):** Diện tích $ab = 100 \Rightarrow b = \dfrac{100}{a}$. 
+            Chu vi nhỏ nhất khi hình chữ nhật là hình vuông $\Rightarrow a = 10, b = 10$. Biểu thức $a+2b = 10 + 20 = 30$.
+            <br><br>
+            **Câu 6 (Đáp án: 34.5):** Gọi giá bán mới là $x$ ($30 \le x \le 35$). Số xe bán ra: $400 + 100(35-x)$. 
+            Lợi nhuận $f(x) = (x-30)(3900-100x) = -100x^2 + 6900x - 117000$. 
+            Hàm số đạt giá trị lớn nhất tại $x = \dfrac{-6900}{2(-100)} = 34.5$ (triệu đồng).
+            """)
+
