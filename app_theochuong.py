@@ -223,7 +223,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             st.divider()
 
             # --- Câu 2 ---
-            st.markdown(r"**Câu 2:** Cho hàm số $y=f(x)=\frac{x^2+3x}{x-1}$.")
+            st.markdown(r"**Câu 2:** Cho hàm số $y=f(x)=\dfrac{x^2+3x}{x-1}$.")
             p2_q2 = {}
             c1, c2 = st.columns([4, 1]); c1.markdown("a) Hàm số $f(x)$ đồng biến trên khoảng $(-\infty; 1)$"); p2_q2["a"] = c2.radio("p2c2a", ["Đúng", "Sai"], key="p2_q2_a", horizontal=True, label_visibility="collapsed")
             c1, c2 = st.columns([4, 1]); c1.markdown("b) Cực đại của hàm số $f(x)$ là $1$"); p2_q2["b"] = c2.radio("p2c2b", ["Đúng", "Sai"], key="p2_q2_b", horizontal=True, label_visibility="collapsed")
@@ -232,7 +232,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             st.divider()
 
             # --- Câu 3 ---
-            st.markdown(r"**Câu 3:** Cho hàm số $y=2^{x^2 - 3x + \frac{13}{4}}$.")
+            st.markdown(r"**Câu 3:** Cho hàm số $y=2^{x^2 - 3x + \dfrac{13}{4}}$.")
             p2_q3 = {}
             c1, c2 = st.columns([4, 1]); c1.markdown("a) Hàm số nghịch biến trên khoảng $(-1; 0)$"); p2_q3["a"] = c2.radio("p2c3a", ["Đúng", "Sai"], key="p2_q3_a", horizontal=True, label_visibility="collapsed")
             c1, c2 = st.columns([4, 1]); c1.markdown("b) Hàm số đồng biến trên khoảng $(0; 1)$"); p2_q3["b"] = c2.radio("p2c3b", ["Đúng", "Sai"], key="p2_q3_b", horizontal=True, label_visibility="collapsed")
@@ -302,7 +302,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             p3_q5 = st.text_input("Nhập đáp án Câu 5:", key="p3_q5")
             st.divider()
 
-            st.markdown(r"**Câu 6:** Giả sử doanh số của một sản phẩm mới tuân theo quy luật logistic $f(t) = \frac{5000}{1+5e^{-t}}, t \ge 0$. Hỏi sau khi phát hành bao nhiêu năm thì tốc độ bán hàng là lớn nhất? (quy tròn đến hàng phần trăm).")
+            st.markdown(r"**Câu 6:** Giả sử doanh số của một sản phẩm mới tuân theo quy luật logistic $f(t) = \dfrac{5000}{1+5e^{-t}}, t \ge 0$. Hỏi sau khi phát hành bao nhiêu năm thì tốc độ bán hàng là lớn nhất? (quy tròn đến hàng phần trăm).")
             p3_q6 = st.text_input("Nhập đáp án Câu 6:", key="p3_q6")
             st.divider()
 
@@ -375,21 +375,28 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
         with st.expander("🔍 Câu 7 - Câu 12"):
             st.markdown(r"""
             **Câu 7 (D):** Dựa vào BBT, giá trị cực tiểu là $y_{CT} = -20$.
-            **Câu 8 (B):** TXĐ: $\mathbb{R} \setminus \{-1\}$. $y' = \frac{3}{(x+1)^2} > 0$. Hàm số đồng biến trên $(-\infty; -1)$ và $(-1; +\infty)$.
-            **Câu 9 (D):** $y' = \frac{x^2+2x-8}{(x+1)^2}$. Cho $y' = 0 \Leftrightarrow x = -4 \lor x = 2$. Lập BBT ta thấy hàm số nghịch biến trên $(-4; -1)$ và $(-1; 2)$.
+            
+            **Câu 8 (B):** TXĐ: $\mathbb{R} \setminus \{-1\}$. $y' = \dfrac{3}{(x+1)^2} > 0$. Hàm số đồng biến trên $(-\infty; -1)$ và $(-1; +\infty)$.
+            
+            **Câu 9 (D):** $y' = \dfrac{x^2+2x-8}{(x+1)^2}$. Cho $y' = 0 \Leftrightarrow x = -4 \lor x = 2$. Lập BBT ta thấy hàm số nghịch biến trên $(-4; -1)$ và $(-1; 2)$.
+           
             **Câu 10 (A):** $f'(x) = 0 \Leftrightarrow x=0, x=-1, x=3$. Qua $x=-1$, $f'(x)$ đổi dấu từ $-$ sang $+$. Đồng biến trên $(-\infty; -1)$.
-            **Câu 11 (C):** $y' = \frac{x^2-8x+15}{(x-4)^2} = 0 \Leftrightarrow x=3, x=5$. BBT cho thấy $x_{CĐ}=3, x_{CT}=5$.
-            **Câu 12 (B):** $y' = \frac{-x^2-4x+5}{(x+2)^2} = 0 \Leftrightarrow x=1, x=-5$. BBT cho thấy cực tiểu tại $x = -5$.
+            
+            **Câu 11 (C):** $y' = \dfrac{x^2-8x+15}{(x-4)^2} = 0 \Leftrightarrow x=3, x=5$. BBT cho thấy $x_{CĐ}=3, x_{CT}=5$.
+           
+            **Câu 12 (B):** $y' = \dfrac{-x^2-4x+5}{(x+2)^2} = 0 \Leftrightarrow x=1, x=-5$. BBT cho thấy cực tiểu tại $x = -5$.
             """)
 
         st.subheader("Phần 2: Trắc nghiệm lựa chọn đúng sai")
         with st.expander("🔍 Câu 1 & Câu 2"):
             st.markdown(r"""
             **Câu 1:** (a-Sai, b-Đúng, c-Sai, d-Đúng). 
+            
             *Giải thích:* Đồ thị $f'(x)$ nằm trên trục $Ox$ (dương) ở $(-1; 1)$ và $(2; +\infty)$ nên đồng biến. Đồ thị $f'(x)$ âm ở $(-\infty; -1)$ và $(1; 2)$ nên nghịch biến.
             
             **Câu 2:** (a-Sai, b-Đúng, c-Sai, d-Sai).
-            *Giải thích:* $y' = \frac{x^2-2x-3}{(x-1)^2} = 0 \Leftrightarrow x=-1 \lor x=3$. Có 2 điểm cực trị, cực đại tại $x=-1 \Rightarrow y=1$. Không xác định tại $x=1$ nên không nghịch biến trên $(-1; 3)$.
+            
+            *Giải thích:* $y' = \dfrac{x^2-2x-3}{(x-1)^2} = 0 \Leftrightarrow x=-1 \lor x=3$. Có 2 điểm cực trị, cực đại tại $x=-1 \Rightarrow y=1$. Không xác định tại $x=1$ nên không nghịch biến trên $(-1; 3)$.
             """)
             
         with st.expander("🔍 Câu 3 & Câu 4"):
