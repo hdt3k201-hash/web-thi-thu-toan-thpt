@@ -188,32 +188,6 @@ st.markdown("""
 if not st.session_state.exam_submitted:
     with st.form("tsa_exam_form"):
         
-        # ---------------------------------------------------------------------
-       # ---------------------------------------------------------------------
-        # CÂU 1: CÂU HỎI KÉO THẢ / CHỌN PHƯƠNG ÁN ĐIỀN CHỖ TRỐNG
-        # ---------------------------------------------------------------------
-        with st.container(border=True):
-            st.markdown(r"""
-            <div class="question-title">
-                <b>Câu 1:</b> <span class="tag-badge">[Kéo thả phương án]</span> 
-            </div>
-            """, unsafe_allow_html=True)
-            
-            st.markdown(r"""
-            Một vòng quay Mặt Trời có bán kính $50\text{ m}$. Tâm của vòng quay nằm ở độ cao $60\text{ m}$ so với mặt đất. Vòng quay quay đều, mất $15$ phút để hoàn thành một vòng. Giả sử tại thời điểm $t=0$ (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất. Độ cao của cabin theo thời gian được mô hình hóa bởi:
-            
-            $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
-            
-            **Hãy lựa chọn các giá trị thích hợp tương ứng để hoàn thiện kết luận:**
-            """)
-            
-            col1, col2, col3 = st.columns(3)
-            q1_val_A = col1.selectbox("1) Giá trị A:", ["-- Chọn --", "50", "-50", "60", "-60"], key="q1_a")
-            q1_val_w = col2.selectbox(r"2) Tần số góc $\omega$:", ["-- Chọn --", r"\dfrac{2\pi}{15}", r"\dfrac{15}{2\pi}", r"\dfrac{\pi}{15}"], key="q1_w")
-            q1_val_B = col3.selectbox("3) Giá trị B:", ["-- Chọn --", "50", "60", "85", "10"], key="q1_b")
-            q1_val_t = st.selectbox("4) Thời điểm đầu tiên cabin đạt độ cao 85m là vào phút thứ:", ["-- Chọn --", "2.5", "5", "7.5", "10"], key="q1_t")
-        
-        st.markdown("<br>", unsafe_allow_html=True)
 
 
             # ---------------------------------------------------------------------
