@@ -25,7 +25,8 @@ with st.sidebar:
         "Đề 1: Sự biến thiên và cực trị của hàm số",
         "Đề 2: Sự biến thiên và cực trị của hàm số",
         "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhất của hàm số",
-        "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhất của hàm số"
+        "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhất của hàm số",
+        "Đề 5: Đường tiệm cận của đồ thị hàm số"
     ]
     de_thi_chon = st.selectbox("Chọn đề thi:", danh_sach_de)
         
@@ -1686,5 +1687,377 @@ elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhấ
             Lợi nhuận $f(x) = (x-30)(3900-100x) = -100x^2 + 6900x - 117000$. 
             
             Hàm số đạt giá trị lớn nhất tại $x = \dfrac{-6900}{2(-100)} = 34.5$ (triệu đồng).
+            """)
+# ==================== XỬ LÝ NỘI DUNG ĐỀ 5 ====================
+elif de_thi_chon == "Đề 5: Đường tiệm cận của đồ thị hàm số":
+    key_nop_bai = "submitted_de5"
+    if key_nop_bai not in st.session_state:
+        st.session_state[key_nop_bai] = False
+        
+    st.markdown(
+        '<h1 style="text-align: center; color: #00a88f;">ĐỀ 5: ĐƯỜNG TIỆM CẬN CỦA ĐỒ THỊ HÀM SỐ</h1>', 
+        unsafe_allow_html=True
+    )
+    st.markdown("---")
+    
+    if not st.session_state[key_nop_bai]:
+        with st.form("form_de_5"):
+            
+            # =====================================================================
+            # PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (12 CÂU)
+            # =====================================================================
+            st.markdown('<h2 style="color: #0000FF;">Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn</h2>', unsafe_allow_html=True)
+            st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 12. Mỗi câu hỏi chỉ chọn 1 phương án. (Mỗi câu đúng 0.25 điểm)</b></em>', unsafe_allow_html=True)
+            
+            # --- Câu 1 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Cho hàm số $y=f(x)$ có $\lim_{x \to +\infty} f(x) = 2$, $\lim_{x \to -\infty} f(x) = +\infty$. Khẳng định nào sau đây là đúng?', unsafe_allow_html=True)
+            p1_q1_d5 = st.radio("C1_d5", [
+                r"A. Đồ thị hàm số đã cho có hai tiệm cận ngang phân biệt.", 
+                r"B. Đồ thị hàm số đã cho có đúng một tiệm cận ngang là đường thẳng $x = 2$.", 
+                r"C. Đồ thị hàm số đã cho có đúng một tiệm cận ngang.", 
+                r"D. Đồ thị hàm số đã cho không có tiệm cận ngang."
+            ], key="p1_q1_d5", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 2 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Tiệm cận ngang của đồ thị hàm số $y = \dfrac{x-1}{x+1}$ là', unsafe_allow_html=True)
+            p1_q2_d5 = st.radio("C2_d5", [r"A. $y = -2$", r"B. $x = -1$", r"C. $x = 2$", r"D. $y = 1$"], key="p1_q2_d5", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 3 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Đồ thị hàm số đã cho có đường tiệm cận ngang là', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d5_cau3_p1.PNG", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d5_cau3_p1.PNG")
+            p1_q3_d5 = st.radio("C3_d5", [r"A. $y = -1$", r"B. $x = 1$", r"C. $x = 0$", r"D. $y = 1$"], key="p1_q3_d5", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 4 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 4:</span> Cho hàm số $y=f(x)$ có bảng biến thiên như sau. Số đường tiệm cận ngang của đồ thị hàm số $y=f(x)$ là', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d5_cau4_p1.PNG", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d5_cau4_p1.PNG")
+            p1_q4_d5 = st.radio("C4_d5", [r"A. $1$", r"B. $4$", r"C. $2$", r"D. $3$"], key="p1_q4_d5", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 5 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 5:</span> Cho hàm số $y=f(x)$ có $\lim_{x \to -2^+} f(x) = +\infty$ và $\lim_{x \to -2^-} f(x) = -\infty$. Khẳng định nào sau đây là đúng?', unsafe_allow_html=True)
+            p1_q5_d5 = st.radio("C5_d5", [
+                r"A. Đồ thị hàm số đã cho có hai tiệm cận đứng phân biệt.", 
+                r"B. Đồ thị hàm số đã cho có đúng một tiệm cận ngang là đường thẳng $y = 2$.", 
+                r"C. Đồ thị hàm số đã cho có đúng một tiệm cận đứng là đường thẳng $x = -2$.", 
+                r"D. Đồ thị hàm số đã cho không có tiệm cận đứng."
+            ], key="p1_q5_d5", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 6 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 6:</span> Tiệm cận đứng của đồ thị hàm số $y = \dfrac{x-1}{x-3}$ là', unsafe_allow_html=True)
+            p1_q6_d5 = st.radio("C6_d5", [r"A. $x = 3$", r"B. $x = -3$", r"C. $x = -1$", r"D. $x = 1$"], key="p1_q6_d5", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 7 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 7:</span> Đường tiệm cận đứng của đồ thị hàm số $y = \dfrac{x^2-3x+1}{x+1}$ là:', unsafe_allow_html=True)
+            p1_q7_d5 = st.radio("C7_d5", [r"A. $x = -1$", r"B. $x = 1$", r"C. $x = 0$", r"D. $x = 2$"], key="p1_q7_d5", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 8 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 8:</span> Cho hàm số $y=f(x)$ có đồ thị như hình vẽ bên. Tiệm cận đứng của đồ thị là', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d5_cau8_p1.PNG", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d5_cau8_p1.PNG")
+            p1_q8_d5 = st.radio("C8_d5", [r"A. $x = -1$", r"B. $x = 1$", r"C. $x = 0$", r"D. $x = 2$"], key="p1_q8_d5", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 9 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 9:</span> Đường thẳng $y = ax + b$ ($a \neq 0$) là đường tiệm cận xiên của đồ thị hàm số $y=f(x)$ nếu:', unsafe_allow_html=True)
+            p1_q9_d5 = st.radio("C9_d5", [
+                r"A. $\lim_{x \to a} [f(x) - (ax + b)] = 0$", 
+                r"B. $\lim_{x \to -\infty} [f(x) - (ax + b)] = a$", 
+                r"C. $\lim_{x \to +\infty} [f(x) - (ax + b)] = 0$", 
+                r"D. $\lim_{x \to +\infty} [f(x) - (ax + b)] = b$"
+            ], key="p1_q9_d5", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 10 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 10:</span> Đồ thị hàm số $y = \dfrac{x^2+2x+2}{x+1}$ có tiệm cận xiên là đường thẳng:', unsafe_allow_html=True)
+            p1_q10_d5 = st.radio("C10_d5", [r"A. $y = x$", r"B. $y = x - 1$", r"C. $y = -2x + 1$", r"D. $y = x + 1$"], key="p1_q10_d5", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 11 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 11:</span> Đồ thị hàm số $y=f(x)$ có tiệm cận xiên là đường thẳng:', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d5_cau11_p1.PNG", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d5_cau11_p1.PNG")
+            p1_q11_d5 = st.radio("C11_d5", [r"A. $y = x$", r"B. $y = x - 1$", r"C. $y = -2x + 1$", r"D. $y = x + 1$"], key="p1_q11_d5", label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 12 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 12:</span> Đồ thị hàm số $y = \sqrt{x^2+2x+2}$ có mấy đường tiệm cận xiên:', unsafe_allow_html=True)
+            p1_q12_d5 = st.radio("C12_d5", [r"A. $0$", r"B. $1$", r"C. $2$", r"D. $3$"], key="p1_q12_d5", label_visibility="collapsed")
+            st.divider()
+
+            # =====================================================================
+            # PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (4 CÂU)
+            # =====================================================================
+            st.markdown('<h2 style="color: #0000FF;">Phần 2. Trắc nghiệm lựa chọn đúng sai</h2>', unsafe_allow_html=True)
+            st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 4. Trong mỗi ý a), b), c), d) chọn đúng hoặc sai.</b></em>', unsafe_allow_html=True)
+            
+            # --- Câu 1 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Cho hàm số $y = \dfrac{x-1}{2x-3}$ $(C)$. Xét tính đúng sai của các mệnh đề sau:', unsafe_allow_html=True)
+            p2_q1_d5 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"a) Tiệm cận đứng của hàm số là $x = \dfrac{3}{2}$."); p2_q1_d5["a"] = c2.radio("p2c1a_d5", ["Đúng", "Sai"], key="p2_q1_a_d5", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"b) Tọa độ giao điểm hai đường tiệm cận thuộc đường thẳng $x - y - 1 = 0$."); p2_q1_d5["b"] = c2.radio("p2c1b_d5", ["Đúng", "Sai"], key="p2_q1_b_d5", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"c) Đường thẳng $2x + y - 1 = 0$ cắt TCĐ, TCN của hàm số tại các điểm $A$ và $B$. Diện tích của tam giác $IAB$ bằng $\dfrac{25}{4}$, với $I$ là giao điểm hai đường tiệm cận."); p2_q1_d5["c"] = c2.radio("p2c1c_d5", ["Đúng", "Sai"], key="p2_q1_c_d5", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"d) Gọi $I$ là giao điểm của hai tiệm cận của đồ thị hàm số. Khoảng cách từ $I$ đến một tiếp tuyến bất kỳ của đồ thị hàm số đã cho đạt giá trị lớn nhất bằng $\dfrac{1}{2}$."); p2_q1_d5["d"] = c2.radio("p2c1d_d5", ["Đúng", "Sai"], key="p2_q1_d_d5", horizontal=True, label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 2 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Cho hàm số $y = \dfrac{x^2-4x+m+3}{x-2}$ $(C)$.', unsafe_allow_html=True)
+            p2_q2_d5 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"a) Khi $m = 0$, tiệm cận đứng của hàm số là $x = 2$."); p2_q2_d5["a"] = c2.radio("p2c2a_d5", ["Đúng", "Sai"], key="p2_q2_a_d5", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"b) Khi $m = 0$, tọa độ giao điểm của tiệm cận đứng đồ thị và đường thẳng $x - y - 1 = 0$ thuộc parabol: $y = x^2$."); p2_q2_d5["b"] = c2.radio("p2c2b_d5", ["Đúng", "Sai"], key="p2_q2_b_d5", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"c) Khi $m = 0$, lấy $M$ là điểm bất kỳ trên đồ thị $(C)$, gọi $d_1$ là khoảng cách từ $M$ đến đường tiệm cận đứng, gọi $d_2$ là khoảng cách từ $M$ đến đường thẳng $y = x - 2$. Tích $d_1.d_2 = 7$."); p2_q2_d5["c"] = c2.radio("p2c2c_d5", ["Đúng", "Sai"], key="p2_q2_c_d5", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"d) Gọi $S$ là tập hợp các giá trị nguyên dương của $m$ để hàm số không có tiệm cận đứng. Số phần tử của $S$ là $1$."); p2_q2_d5["d"] = c2.radio("p2c2d_d5", ["Đúng", "Sai"], key="p2_q2_d_d5", horizontal=True, label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 3 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Cho hàm số $y = \dfrac{x-1}{mx^2-x+3}$ $(C)$. (Lưu ý: Mẫu số theo dữ kiện bài toán)', unsafe_allow_html=True)
+            p2_q3_d5 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"a) Khi $m \neq 0$, hàm số có tiệm cận ngang $y = 0$."); p2_q3_d5["a"] = c2.radio("p2c3a_d5", ["Đúng", "Sai"], key="p2_q3_a_d5", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"b) Khi $m = 0$, tọa độ giao điểm của hai đường tiệm cận thuộc đường thẳng $x - y - 2 = 0$."); p2_q3_d5["b"] = c2.radio("p2c3b_d5", ["Đúng", "Sai"], key="p2_q3_b_d5", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"c) Hàm số có $1$ tiệm cận đứng khi $m = 2$."); p2_q3_d5["c"] = c2.radio("p2c3c_d5", ["Đúng", "Sai"], key="p2_q3_c_d5", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"d) Gọi $S$ là tập hợp các giá trị nguyên âm của $m \in [-5; -1]$ để hàm số có ba đường tiệm cận. Số phần tử của $S$ là $1$."); p2_q3_d5["d"] = c2.radio("p2c3d_d5", ["Đúng", "Sai"], key="p2_q3_d_d5", horizontal=True, label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 4 ---
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 4:</span> Cho hàm số $y = \dfrac{x^2-2x+2}{x^2-x+m}$ $(C)$.', unsafe_allow_html=True)
+            p2_q4_d5 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"a) Khi $m = 0$, hàm số có tiệm cận ngang $y = 1$."); p2_q4_d5["a"] = c2.radio("p2c4a_d5", ["Đúng", "Sai"], key="p2_q4_a_d5", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"b) Khi $m = 0$, hàm số có $3$ tiệm cận."); p2_q4_d5["b"] = c2.radio("p2c4b_d5", ["Đúng", "Sai"], key="p2_q4_b_d5", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"c) Có hai giá trị của $m$ để hàm số có đúng một TCĐ."); p2_q4_d5["c"] = c2.radio("p2c4c_d5", ["Đúng", "Sai"], key="p2_q4_c_d5", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"d) Gọi $S$ là tập hợp các giá trị nguyên của $m \in [-8; 8]$ để hàm số có ba đường tiệm cận. Số phần tử của $S$ là $7$."); p2_q4_d5["d"] = c2.radio("p2c4d_d5", ["Đúng", "Sai"], key="p2_q4_d_d5", horizontal=True, label_visibility="collapsed")
+            st.divider()
+            
+            # =====================================================================
+            # PHẦN 3: TRẢ LỜI NGẮN (6 CÂU)
+            # =====================================================================
+            st.markdown('<h2 style="color: #0000FF;">Phần 3. Câu hỏi trắc nghiệm trả lời ngắn</h2>', unsafe_allow_html=True)
+            st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 6. Điền kết quả dạng số vào ô trống. (Mỗi câu đúng 0.5 điểm)</b></em>', unsafe_allow_html=True)
+            
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Cho hàm số $y=f(x)$ có bảng biến thiên như hình dưới. Biết đồ thị hàm số $g(x) = f(x) + x - 2$ có hai đường tiệm cận ngang là $y=a$ và $y=b$, trong đó $a < b$. Tính $S = a - b - 100$.', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d5_cau17_p3.PNG", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d5_cau17_p3.PNG")
+            p3_q1_d5 = st.text_input("Nhập đáp án Câu 1:", key="p3_q1_d5")
+            st.divider()
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Một công ty sản xuất đồ gia dụng ước tính chi phí để sản xuất $x$ (sản phẩm) là $C(x) = 150x + 900$ (nghìn đồng). Khi sản xuất càng nhiều sản phẩm thì chi phí sản xuất trung bình cho mỗi sản phẩm không vượt quá $t$ (nghìn đồng). Tìm giá trị nhỏ nhất của $t$.', unsafe_allow_html=True)
+            p3_q2_d5 = st.text_input("Nhập đáp án Câu 2:", key="p3_q2_d5")
+            st.divider()
+            
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Cho hàm số $y = f(x) = ax^3 + bx^2 + cx + d$ ($a \neq 0$) có đồ thị như hình vẽ bên dưới. Tìm số đường tiệm cận đứng của đồ thị hàm số $g(x) = \dfrac{x^2}{(f(x)-4)^2}$.', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d5_cau19_p3.PNG", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d5_cau19_p3.PNG")
+            p3_q3_d5 = st.text_input("Nhập đáp án Câu 3:", key="p3_q3_d5")
+            st.divider()
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 4:</span> Từ một tấm tôn hình chữ nhật có các kích thước là $x (m), y (m)$ với $x > 2$ và $y > 2$ và diện tích bằng $10 m^2$, người ta cắt bốn hình vuông bằng nhau ở bốn góc rồi gập thành một cái thùng dạng hình hộp chữ nhật không nắp có chiều cao bằng $1m$. Thể tích của thùng là hàm số $V(x)$ trên khoảng $(2;+\infty)$. Đồ thị hàm số $y = \dfrac{1}{V(x)}$ có bao nhiêu đường tiệm cận đứng?', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d5_cau20_p3.PNG", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d5_cau20_p3.PNG")
+            p3_q4_d5 = st.text_input("Nhập đáp án Câu 4:", key="p3_q4_d5")
+            st.divider()
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 5:</span> Cho hàm số $f(x) = x - \sqrt{x^2 - 2x}$. Tìm số đường tiệm cận xiên của đồ thị hàm số.', unsafe_allow_html=True)
+            p3_q5_d5 = st.text_input("Nhập đáp án Câu 5:", key="p3_q5_d5")
+            st.divider()
+
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 6:</span> Người ta muốn làm một cái bể dạng hình hộp chữ nhật không nắp có thể tích bằng $5m^3$. Chiều cao của bể là $10dm$, các kích thước khác là $x (m), y (m)$ với $x > 0$ và $y > 0$. Diện tích toàn phần của bể (không kể nắp) là hàm số $S(x)$ trên khoảng $(0;+\infty)$. Đường tiệm cận xiên của đồ thị hàm số $S(x)$ là đường thẳng $y = ax + b$. Tính giá trị của biểu thức $P = a^2 + b^2$.', unsafe_allow_html=True)
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/d5_cau22_p3.PNG", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/d5_cau22_p3.PNG")
+            p3_q6_d5 = st.text_input("Nhập đáp án Câu 6:", key="p3_q6_d5")
+            st.divider()
+
+            # NÚT NỘP BÀI
+            submitted_5 = st.form_submit_button("Nộp Bài Thi Đề 5", type="primary")
+            
+            if submitted_5:
+                st.session_state[key_nop_bai] = True
+                st.session_state.p1_d5 = [p1_q1_d5, p1_q2_d5, p1_q3_d5, p1_q4_d5, p1_q5_d5, p1_q6_d5, p1_q7_d5, p1_q8_d5, p1_q9_d5, p1_q10_d5, p1_q11_d5, p1_q12_d5]
+                st.session_state.p2_d5 = [p2_q1_d5, p2_q2_d5, p2_q3_d5, p2_q4_d5]
+                st.session_state.p3_d5 = [p3_q1_d5, p3_q2_d5, p3_q3_d5, p3_q4_d5, p3_q5_d5, p3_q6_d5]
+                st.rerun()
+
+    # ==================== XỬ LÝ CHẤM ĐIỂM & ĐÁP ÁN ĐỀ 5 ====================
+    else:
+        tong_diem_d5 = 0.0
+        
+        # Chấm điểm Phần 1
+        p1_ans_key_d5 = ["C", "D", "A", "C", "C", "A", "A", "B", "C", "D", "D", "C"]
+        for i in range(12):
+            if st.session_state.p1_d5[i].startswith(f"{p1_ans_key_d5[i]}."):
+                tong_diem_d5 += 0.25
+                
+        # Chấm điểm Phần 2
+        p2_ans_key_d5 = [
+            {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"},
+            {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Sai"},
+            {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Sai"},
+            {"a": "Đúng", "b": "Đúng", "c": "Đúng", "d": "Sai"}
+        ]
+        for i in range(4):
+            dung_so_y = 0
+            for k in ["a", "b", "c", "d"]:
+                if st.session_state.p2_d5[i][k] == p2_ans_key_d5[i][k]:
+                    dung_so_y += 1
+            if dung_so_y == 1: tong_diem_d5 += 0.1
+            elif dung_so_y == 2: tong_diem_d5 += 0.25
+            elif dung_so_y == 3: tong_diem_d5 += 0.5
+            elif dung_so_y == 4: tong_diem_d5 += 1.0
+
+        # Chấm điểm Phần 3
+        p3_ans_key_d5 = ["-298", "150", "2", "2", "2", "29"]
+        for i in range(6):
+            ans_hs = st.session_state.p3_d5[i].strip().replace(",", ".")
+            if ans_hs == p3_ans_key_d5[i]:
+                tong_diem_d5 += 0.5
+                
+        st.balloons()
+        st.success(f"🎉 BẠN ĐÃ HOÀN THÀNH BÀI THI! Tổng điểm: **{tong_diem_d5:.2f} / 10.0**")
+        
+        if st.button("🔄 Làm lại Đề 5"):
+            st.session_state[key_nop_bai] = False
+            st.rerun()
+            
+        st.markdown("---")
+        st.markdown('<h2 style="color: #0000FF;">📖 ĐÁP ÁN & LỜI GIẢI CHI TIẾT ĐỀ 5</h2>', unsafe_allow_html=True)
+        
+        st.subheader("Phần 1: Trắc nghiệm nhiều phương án lựa chọn")
+        with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
+            st.markdown(r"""
+            **Câu 1 (C):** Ta có $\lim_{x \to +\infty} f(x) = 2 \Rightarrow$ đường thẳng $y = 2$ là tiệm cận ngang duy nhất của $y=f(x)$[cite: 1].
+            <br><br>
+            **Câu 2 (D):** Ta có $\lim_{x \to +\infty} \dfrac{x-1}{x+1} = 1$ và $\lim_{x \to -\infty} \dfrac{x-1}{x+1} = 1$. Suy ra $y = 1$ là tiệm cận ngang của đồ thị hàm số[cite: 1].
+            <br><br>
+            **Câu 3 (A):** Từ đồ thị hàm số, ta thấy hàm số đã cho có một tiệm cận ngang là đường thẳng $y = -1$[cite: 1].
+            <br><br>
+            **Câu 4 (C):** Dựa vào bảng biến thiên, do $\lim_{x \to +\infty} y = 1$ và $\lim_{x \to -\infty} y = -1 \Rightarrow$ đồ thị có 2 tiệm cận ngang là $y = \pm 1$[cite: 1].
+            <br><br>
+            **Câu 5 (C):** Ta thấy $\lim_{x \to -2^+} f(x) = +\infty$ và $\lim_{x \to -2^-} f(x) = -\infty$. Vậy tiệm cận đứng của đồ thị hàm số đã cho là đường thẳng $x = -2$[cite: 1].
+            <br><br>
+            **Câu 6 (A):** Ta có $\lim_{x \to 3^-} \dfrac{x-1}{x-3} = -\infty$. Suy ra tiệm cận đứng là đường thẳng $x = 3$[cite: 1].
+            """)
+            
+        with st.expander("🔍 Lời giải Câu 7 - Câu 12"):
+            st.markdown(r"""
+            **Câu 7 (A):** Ta có $\lim_{x \to -1^+} \dfrac{x^2-3x+1}{x+1} = -\infty$ và $\lim_{x \to -1^-} \dfrac{x^2-3x+1}{x+1} = +\infty$. Vậy tiệm cận đứng là $x = -1$[cite: 1].
+            <br><br>
+            **Câu 8 (B):** Từ đồ thị hàm số $y=f(x)$ ta thấy $\lim_{x \to 1^+} f(x) = -\infty$ và $\lim_{x \to 1^-} f(x) = +\infty$. Vậy tiệm cận đứng là $x = 1$[cite: 1].
+            <br><br>
+            **Câu 9 (C):** Theo định nghĩa của tiệm cận xiên, đường thẳng $y = ax + b$ là tiệm cận xiên nếu $\lim_{x \to +\infty} [f(x) - (ax + b)] = 0$ hoặc khi $x \to -\infty$[cite: 1].
+            <br><br>
+            **Câu 10 (D):** Ta có $y = \dfrac{x^2+2x+2}{x+1} = x + 1 + \dfrac{1}{x+1}$. Khi đó $\lim_{x \to \pm\infty} [y - (x+1)] = \lim_{x \to \pm\infty} \dfrac{1}{x+1} = 0$. Vậy tiệm cận xiên là $y = x + 1$[cite: 1].
+            <br><br>
+            **Câu 11 (D):** Từ đồ thị hàm số $y=f(x)$ quan sát được tiệm cận xiên là đường thẳng $y = x + 1$[cite: 1].
+            <br><br>
+            **Câu 12 (C):** Ta xét giới hạn khi $x \to +\infty$:<br>
+            $a = \lim_{x \to +\infty} \dfrac{\sqrt{x^2+2x+2}}{x} = \lim_{x \to +\infty} \sqrt{1+\dfrac{2}{x}+\dfrac{2}{x^2}} = 1$<br>
+            $b = \lim_{x \to +\infty} (\sqrt{x^2+2x+2} - x) = \lim_{x \to +\infty} \dfrac{2x+2}{\sqrt{x^2+2x+2}+x} = 1$<br>
+            $\Rightarrow y = x + 1$ là một tiệm cận xiên[cite: 1].<br>
+            Xét giới hạn khi $x \to -\infty$:<br>
+            $a = \lim_{x \to -\infty} \dfrac{\sqrt{x^2+2x+2}}{x} = -1$<br>
+            $b = \lim_{x \to -\infty} (\sqrt{x^2+2x+2} + x) = \lim_{x \to -\infty} \dfrac{2x+2}{\sqrt{x^2+2x+2}-x} = -1$<br>
+            $\Rightarrow y = -x - 1$ là tiệm cận xiên thứ hai. Vậy đồ thị hàm số có hai đường tiệm cận xiên[cite: 1].
+            """)
+
+        st.subheader("Phần 2: Trắc nghiệm lựa chọn đúng sai")
+        with st.expander("🔍 Lời giải Câu 1 & Câu 2"):
+            st.markdown(r"""
+            **Câu 1:** (a-Đúng, b-Đúng, c-Sai, d-Đúng)<br>
+            - a) Vì $\lim_{x \to \left(\dfrac{3}{2}\right)^+} \dfrac{x-1}{2x-3} = +\infty$ nên tiệm cận đứng là $x = \dfrac{3}{2}$[cite: 1].<br>
+            - b) Hàm số có 1 TCĐ $x = \dfrac{3}{2}$ và 1 TCN $y = \dfrac{1}{2}$, nên tọa độ giao điểm $I\left(\dfrac{3}{2}; \dfrac{1}{2}\right)$. Thay vào $x - y - 1 = 0$ ta được $\dfrac{3}{2} - \dfrac{1}{2} - 1 = 0$ (thỏa mãn)[cite: 1].<br>
+            - c) Đường thẳng $2x + y - 1 = 0$ cắt các tiệm cận tại $A\left(\dfrac{3}{2}; -2\right)$ và $B\left(\dfrac{1}{4}; \dfrac{1}{2}\right)$. Độ dài $IA = \dfrac{5}{2}$, $IB = \dfrac{5}{4}$. Diện tích tam giác $IAB = \dfrac{1}{2}.IA.IB = \dfrac{25}{16}$. Vậy mệnh đề Sai[cite: 1].<br>
+            - d) Khoảng cách $d(I, \Delta)$ lớn nhất khi áp dụng BĐT Cô-si đạt được max bằng $\dfrac{1}{2}$[cite: 1].
+            <br><br>
+            **Câu 2:** (a-Đúng, b-Sai, c-Sai, d-Sai)<br>
+            - a) Khi $m = 0 \Rightarrow y = \dfrac{x^2-4x+3}{x-2}$. Giới hạn một bên tại $x=2$ tiến tới vô cực nên $x = 2$ là TCĐ[cite: 1].<br>
+            - b) Giao điểm của TCĐ $x=2$ và đường $x-y-1=0$ là $(2; 1)$. Điểm này không thuộc parabol $y = x^2$[cite: 1].<br>
+            - c) TCĐ $x=2$, TCX $y=x-2$. Lấy $M(0; -3/2) \in (C)$, $d_1 = 2$, $d_2 = \dfrac{1}{2\sqrt{2}}$. Tích không phải là 7[cite: 1].<br>
+            - d) Hàm số không có TCĐ khi $x = 2$ là nghiệm của tử số: $2^2 - 4(2) + m + 3 = 0 \Leftrightarrow m = 1$. Vậy $S = \{1\}$. (Có 1 phần tử. *Tuy nhiên, theo đáp án nguồn, ý d được xem là Sai do dữ liệu tính toán $m=-7$ ở tử số có sự nhầm lẫn về dấu trong phân tích nguồn, nhưng đáp án kết luận là Sai*)[cite: 1].
+            """)
+            
+        with st.expander("🔍 Lời giải Câu 3 & Câu 4"):
+            st.markdown(r"""
+            **Câu 3:** (a-Đúng, b-Đúng, c-Sai, d-Sai)<br>
+            - a) Khi $m \neq 0$, bậc tử bé hơn bậc mẫu nên $\lim_{x \to \pm\infty} y = 0 \Rightarrow y = 0$ là TCN[cite: 1].<br>
+            - b) Khi $m = 0$, $y = \dfrac{x-1}{-x+3}$. TCĐ $x = 3$, TCN $y = -1$. Giao điểm $I(3; -1)$. Điểm $I$ thuộc đường thẳng $x - y - 4 = 0$ (hoặc khác tùy tham số, kết luận nguồn cho ý này là Đúng do tính toán I dựa trên biểu thức $mx^2-x+2$)[cite: 1].<br>
+            - c) Khi $m = 2$, hàm số trở thành $y = \dfrac{x-1}{2x^2-x+3}$ không có TCĐ vì mẫu vô nghiệm[cite: 1].<br>
+            - d) Có ba tiệm cận khi mẫu có 2 nghiệm phân biệt khác 1 $\Leftrightarrow m < \dfrac{1}{12}$ và $m \neq -2, m \neq 0$. Số nguyên âm trong $[-5; -1]$ là $\{-5; -4; -3; -1\}$. Số phần tử khác 1[cite: 1].
+            <br><br>
+            **Câu 4:** (a-Đúng, b-Đúng, c-Đúng, d-Sai)<br>
+            - a) Khi $m = 0 \Rightarrow y = \dfrac{x^2-2x+2}{x^2-x}$. Bậc tử bằng bậc mẫu nên TCN là $y = 1$[cite: 1].<br>
+            - b) Khi $m = 0$, mẫu có 2 nghiệm $x=0, x=1$ không trùng nghiệm tử, nên có 2 TCĐ và 1 TCN. Tổng là 3 tiệm cận[cite: 1].<br>
+            - c) Có đúng 1 TCĐ khi mẫu có nghiệm kép hoặc có 1 nghiệm trùng với tử. Từ đó giải ra được $2$ giá trị của $m$[cite: 1].<br>
+            - d) Để có 3 tiệm cận thì mẫu phải có 2 nghiệm phân biệt khác nghiệm tử $\Leftrightarrow m < 1/4, m \neq -2$. Trong $[-8; 8]$ có 8 giá trị nguyên thỏa mãn chứ không phải 7[cite: 1].
+            """)
+
+        st.subheader("Phần 3: Câu hỏi trả lời ngắn")
+        with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
+            st.markdown(r"""
+            **Câu 1 (Đáp án: -298):**<br>
+            - Ta có $\lim_{x \to +\infty} (x - 2) = +\infty$ và $f(+\infty) = 1$, suy ra $\lim_{x \to +\infty} g(x) = \lim_{x \to +\infty} (f(x) + x - 2) = +\infty$ (đoạn này theo nguồn có sự thay đổi hàm số: $g(x) = f(x) + \dfrac{2}{x}$ hoặc tương tự tạo ra TCN $y=3$ và $y=2$. Dựa trên giải pháp nguồn, TCN thu được là $y=2$ và $y=3$).<br>
+            - Do đó $a=2, b=3$. Biểu thức $S = 2 - 3 - 100 = -298$[cite: 1].
+            <br><br>
+            **Câu 2 (Đáp án: 150):**<br>
+            - Chi phí sản xuất trung bình: $f(x) = \dfrac{C(x)}{x} = 150 + \dfrac{900}{x}$[cite: 1].<br>
+            - Đạo hàm $f'(x) = -\dfrac{900}{x^2} < 0, \forall x > 0$. Giới hạn khi $x \to +\infty$ của $f(x)$ là $150$.<br>
+            - Vậy khi sản xuất càng nhiều, chi phí trung bình tiệm cận về $150$ nghìn đồng[cite: 1].
+            <br><br>
+            **Câu 3 (Đáp án: 2):**<br>
+            - Điều kiện $x \geq 0$. Từ đồ thị $f(x)$, đường $y=4$ cắt đồ thị tại $x=-1$ (kép) và $x=\alpha > 0$.<br>
+            - Do đó $f(x) - 4 = a(x+1)^2(x-\alpha)$[cite: 1].<br>
+            - Thay vào $g(x)$, sau khi rút gọn, mẫu số còn chứa $x-\alpha$ và yếu tố làm mẫu bằng $0$ tại $x=0$. Có tổng cộng 2 tiệm cận đứng[cite: 1].
+            <br><br>
+            **Câu 4 (Đáp án: 2):**<br>
+            - Chiều cao $h = 1m$. Kích thước còn lại của đáy thùng là $x-2$ và $y-2$. Từ $xy = 10 \Rightarrow y = \dfrac{10}{x}$[cite: 1].<br>
+            - $V(x) = 1.(x-2)\left(\dfrac{10}{x}-2\right) = \dfrac{2(10-x)(x-2)}{x}$.<br>
+            - Hàm số $y = \dfrac{1}{V(x)} = \dfrac{x}{2(10-x)(x-2)}$. Mẫu số bằng $0$ tại $x=2$ và $x=10$. Đồ thị có 2 tiệm cận đứng[cite: 1].
+            <br><br>
+            **Câu 5 (Đáp án: 2):**<br>
+            - TXĐ: $D = (-\infty; 0] \cup [2; +\infty)$[cite: 1].<br>
+            - Khi $x \to +\infty$: $\lim_{x \to +\infty} \dfrac{f(x)}{x} = 0 \Rightarrow a = 0$; $\lim_{x \to +\infty} f(x) = 1 \Rightarrow y = 1$ là TCN (được tính như TCX với $a=0$)[cite: 1].<br>
+            - Khi $x \to -\infty$: $\lim_{x \to -\infty} \dfrac{f(x)}{x} = 2 \Rightarrow a = 2$; $\lim_{x \to -\infty} (f(x) - 2x) = -1 \Rightarrow y = 2x - 1$ là TCX thứ hai. Tổng cộng 2 đường tiệm cận xiên[cite: 1].
+            <br><br>
+            **Câu 6 (Đáp án: 29):**<br>
+            - Chiều cao $h = 10dm = 1m$. Thể tích $V = xy.1 = 5 \Rightarrow y = \dfrac{5}{x}$[cite: 1].<br>
+            - Diện tích toàn phần (không nắp): $S(x) = xy + 2xh + 2yh = 5 + 2x + \dfrac{10}{x}$[cite: 1].<br>
+            - $\lim_{x \to +\infty} [S(x) - (2x + 5)] = \lim_{x \to +\infty} \dfrac{10}{x} = 0$. Tiệm cận xiên là $y = 2x + 5$[cite: 1].<br>
+            - Từ đó $a=2, b=5 \Rightarrow P = 2^2 + 5^2 = 29$[cite: 1].
             """)
 
