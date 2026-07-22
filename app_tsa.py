@@ -219,25 +219,22 @@ if not st.session_state.exam_submitted:
             # ---------------------------------------------------------------------
 # CÂU HỎI 2 Ô TRỐNG (CHIA 2 CỘT CÂN BẰNG)
 # ---------------------------------------------------------------------
-with st.container(border=True):
-    st.markdown(r"""
-    <div class="question-title">
-        <b>Câu 1:</b> <span class="tag-badge">[Điền khuyết - 2 vị trí]</span>
-    </div>
-    
-    Cho hàm số $h(t) = A\cos(\omega t) + 60$. Hãy chọn các giá trị thích hợp:
-    * Biên độ $A =$ **`[ (1) ]`**
-    * Tần số góc $\omega =$ **`[ (2) ]`**
-    """, unsafe_allow_html=True)
-    
-    st.markdown("<hr style='margin: 10px 0; border: 0.5px dashed #ffcdd2;'>", unsafe_allow_html=True)
-
-    # ĐÚNG 2 Ô TRỐNG -> CHIA 2 CỘT
-    col1, col2 = st.columns(2)
-    with col1:
-        q_val_A = st.selectbox("📌 (1) Chọn giá trị A:", ["-- Chọn --", "50", "-50", "60"], key="q_2_a")
-    with col2:
-        q_val_w = st.selectbox("📌 (2) Chọn tần số góc ω:", ["-- Chọn --", "2π / 15", "π / 15"], key="q_2_w")
+     with st.container(border=True):
+         st.markdown(r"""
+         <div class="question-title">
+         <b>Câu 1:</b> <span class="tag-badge">[Điền khuyết - 2 vị trí]</span>
+         </div>
+         Cho hàm số $h(t) = A\cos(\omega t) + 60$. Hãy chọn các giá trị thích hợp:
+         * Biên độ $A =$ **`[ (1) ]`**
+         * Tần số góc $\omega =$ **`[ (2) ]`**
+         """, unsafe_allow_html=True)
+         st.markdown("<hr style='margin: 10px 0; border: 0.5px dashed #ffcdd2;'>", unsafe_allow_html=True)
+         # ĐÚNG 2 Ô TRỐNG -> CHIA 2 CỘT
+         col1, col2 = st.columns(2)
+         with col1:
+         q_val_A = st.selectbox("📌 (1) Chọn giá trị A:", ["-- Chọn --", "50", "-50", "60"], key="q_2_a")
+         with col2:
+         q_val_w = st.selectbox("📌 (2) Chọn tần số góc ω:", ["-- Chọn --", "2π / 15", "π / 15"], key="q_2_w")
 
     
 
