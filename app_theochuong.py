@@ -1245,9 +1245,9 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
             
             Tính các giá trị: $f(1)=3, f(\dfrac{1}{2})=\dfrac{17}{4}, f(2)=5 \Rightarrow \min_{[\dfrac{1}{2};2]} f(x) = f(1) = 3$.
             
-            **Câu 2 (Đáp án: 0.37):** Khảo sát $g(x) = \dfrac{\ln x}{x}$ trên $[1;4]$: $g'(x) = \dfrac{1-\ln x}{x^2} = 0 \Leftrightarrow x=e \in (1;4)$[cite: 2]. 
+            **Câu 2 (Đáp án: 0.37):** Khảo sát $g(x) = \dfrac{\ln x}{x}$ trên $[1;4]$: $g'(x) = \dfrac{1-\ln x}{x^2} = 0 \Leftrightarrow x=e \in (1;4)$. 
             
-            Tính $g(1)=0, g(e)=\frac{1}{e}, g(4)=\dfrac{\ln 2}{2}$. 
+            Tính $g(1)=0, g(e)=\dfrac{1}{e}, g(4)=\dfrac{\ln 2}{2}$. 
             
             Suy ra $\max = \dfrac{1}{e}, \min = 0 \Rightarrow \max + \min = \frac{1}{e} \approx 0.37$.
             
@@ -1263,7 +1263,7 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
             
             **Câu 4 (Đáp án: 2.4):** Đặt $OA=x > 0$. 
             
-            Ta có $\tan \widehat{BOC} = \tan(\widehat{AOC}-\widehat{AOB}) = \dfrac{\frac{AC}{x} - \dfrac{AB}{x}}{1 + \dfrac{AC \cdot AB}{x^2}} = \dfrac{\dfrac{1{,}4}{x}}{1 + \drac{3{,}2 \times 1{,}8}{x^2}} = \dfrac{1{,}4x}{x^2 + 5{,}76}$. 
+            Ta có $\tan \widehat{BOC} = \tan(\widehat{AOC}-\widehat{AOB}) = \dfrac{\dfrac{AC}{x} - \dfrac{AB}{x}}{1 + \dfrac{AC \cdot AB}{x^2}} = \dfrac{\dfrac{1{,}4}{x}}{1 + \dfrac{3{,}2 \times 1{,}8}{x^2}} = \dfrac{1{,}4x}{x^2 + 5{,}76}$. 
             
             Xét $f(x) = \dfrac{1{,}4x}{x^2+5{,}76} \Rightarrow f'(x) = \dfrac{-1{,}4x^2 + 1{,}4 \times 5{,}76}{(x^2+5{,}76)^2} = 0 \Leftrightarrow x = 2{,}4$ (m).
             
