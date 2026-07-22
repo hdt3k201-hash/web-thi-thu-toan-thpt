@@ -2951,7 +2951,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d8_cau1_p1.PNG", width=400)
+                    st.image("images/de8_cau1_p1.PNG", width=400)
             except Exception: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d8_cau1_p1.PNG")
             p1_q1_d8 = st.radio("C1_d8", [r"A. $y = \dfrac{x-1}{x+1}$", r"B. $y = \dfrac{x^2+2x-2}{x-1}$", r"C. $y = -x^3 + 3x + 1$", r"D. $y = x^3 - 3x + 1$"], key="p1_q1_d8", label_visibility="collapsed")
@@ -2962,7 +2962,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d8_cau2_p1.PNG", width=400)
+                    st.image("images/de8_cau2_p1.PNG", width=400)
             except Exception: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d8_cau2_p1.PNG")
             p1_q2_d8 = st.radio("C2_d8", [r"A. $y = x^3 - 3x + 1$", r"B. $y = -x^3 + 3x + 1$", r"C. $y = -x^4 + 2x^2 + 1$", r"D. $y = x^2 - x + 1$"], key="p1_q2_d8", label_visibility="collapsed")
@@ -2973,7 +2973,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d8_cau3_p1.PNG", width=400)
+                    st.image("images/de8_cau3_p1.PNG", width=400)
             except Exception: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d8_cau3_p1.PNG")
             p1_q3_d8 = st.radio("C3_d8", [r"A. $y = \dfrac{x-1}{x+1}$", r"B. $y = \dfrac{-x+1}{x+1}$", r"C. $y = \dfrac{-2x+1}{x+1}$", r"D. $y = \dfrac{-x^2+1}{x+1}$"], key="p1_q3_d8", label_visibility="collapsed")
@@ -2984,7 +2984,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d8_cau4_p1.PNG", width=400)
+                    st.image("images/de8_cau4_p1.PNG", width=400)
             except Exception: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d8_cau4_p1.PNG")
             p1_q4_d8 = st.radio("C4_d8", [
@@ -3000,7 +3000,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d8_cau5_p1.PNG", width=400)
+                    st.image("images/de8_cau5_p1.PNG", width=400)
             except Exception: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d8_cau5_p1.PNG")
             p1_q5_d8 = st.radio("C5_d8", [r"A. $(-2;5)$", r"B. $(-1;3)$", r"C. $(0;1)$", r"D. $(-2;3)$"], key="p1_q5_d8", label_visibility="collapsed")
@@ -3011,7 +3011,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d8_cau6_p1.PNG", width=400)
+                    st.image("images/de8_cau6_p1.PNG", width=400)
             except Exception: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d8_cau6_p1.PNG")
             p1_q6_d8 = st.radio("C6_d8", [r"A. $y = \dfrac{2x-1}{x+1}$", r"B. $y = \dfrac{x-1}{x+1}$", r"C. $y = \dfrac{-2x+1}{x-1}$", r"D. $y = \dfrac{x+1}{x-1}$"], key="p1_q6_d8", label_visibility="collapsed")
@@ -3022,7 +3022,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d8_cau7_p1.PNG", width=400)
+                    st.image("images/de8_cau7_p1.PNG", width=400)
             except Exception: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d8_cau7_p1.PNG")
             p1_q7_d8 = st.radio("C7_d8", [r"A. $y = \dfrac{-x^2-3x+4}{x+2}$", r"B. $y = \dfrac{-x^2-3x+4}{x-2}$", r"C. $y = \dfrac{-x^2+4}{x+2}$", r"D. $y = -x^3 + 3x + 1$"], key="p1_q7_d8", label_visibility="collapsed")
@@ -3033,7 +3033,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d8_cau8_p1.PNG", width=400)
+                    st.image("images/de8_cau8_p1.PNG", width=400)
             except Exception: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d8_cau8_p1.PNG")
             p1_q8_d8 = st.radio("C8_d8", [
@@ -3084,7 +3084,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d8_cau2_p2.PNG", width=400)
+                    st.image("images/de8_cau2_p2.PNG", width=400)
             except Exception: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d8_cau2_p2.PNG")
             p2_q2_d8 = {}
@@ -3122,7 +3122,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d8_cau1_p3.PNG", width=400)
+                    st.image("images/de8_cau1_p3.PNG", width=400)
             except Exception: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d8_cau1_p3.PNG")
             p3_q1_d8 = st.text_input("Nhập đáp án Câu 1:", key="p3_q1_d8")
@@ -3136,7 +3136,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d8_cau3_p3.PNG", width=400)
+                    st.image("images/de8_cau3_p3.PNG", width=400)
             except Exception: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d8_cau3_p3.PNG")
             p3_q3_d8 = st.text_input("Nhập đáp án Câu 3:", key="p3_q3_d8")
@@ -3146,7 +3146,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d8_cau4_p3.PNG", width=400)
+                    st.image("images/de8_cau4_p3.PNG", width=400)
             except Exception: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d8_cau4_p3.PNG")
             p3_q4_d8 = st.text_input("Nhập đáp án Câu 4:", key="p3_q4_d8")
@@ -3156,7 +3156,7 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d8_cau5_p3.PNG", width=400)
+                    st.image("images/de8_cau5_p3.PNG", width=400)
             except Exception: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d8_cau5_p3.PNG")
             p3_q5_d8 = st.text_input("Nhập đáp án Câu 5:", key="p3_q5_d8")
