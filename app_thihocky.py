@@ -62,7 +62,12 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
     if key_nop_bai not in st.session_state:
         st.session_state[key_nop_bai] = False
         
-    st.title("BÀI 1. SỰ BIẾN THIÊN VÀ CỰC TRỊ CỦA HÀM SỐ")
+    st.markdown(
+    """
+    <h1 style="text-align: center; color: #00a88f;">BÀI 1. SỰ BIẾN THIÊN VÀ CỰC TRỊ CỦA HÀM SỐ</h1>
+    """, 
+    unsafe_allow_html=True
+    )
     st.markdown("---")
 
     if not st.session_state[key_nop_bai]:
