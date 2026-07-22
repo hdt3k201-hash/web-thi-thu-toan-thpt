@@ -258,7 +258,11 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
                 """, 
                 unsafe_allow_html=True
             )
-            st.caption("Thí sinh trả lời từ câu 1 đến câu 6. Điền kết quả dạng số vào ô trống. (Mỗi câu đúng 0.5 điểm)")
+            st.markdown(
+                '<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 6. Điền kết quả dạng số vào ô trống. (Mỗi câu đúng 0.5 điểm)</b></em>', 
+                unsafe_allow_html=True
+            )
+
             
             st.markdown("**Câu 1:** Biết đường thẳng đi qua hai điểm cực trị của đồ thị của hàm số $y = -x^3 + 3x^2 + 9x + 1$ là $ax+by+4=0$. Tính $a+2b$.")
             p3_q1 = st.text_input("Nhập đáp án Câu 1:", key="p3_q1")
