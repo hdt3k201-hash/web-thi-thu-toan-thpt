@@ -76,6 +76,7 @@ if "start_time" not in st.session_state:
     st.session_state.start_time = datetime.now()
 
 # 4. THANH BÊN (SIDEBAR): CHỌN ĐỀ THI & ĐỒNG HỒ ĐẾM NGƯỢC
+# 4. THANH BÊN (SIDEBAR): CHỌN ĐỀ THI & ĐỒNG HỒ ĐẾM NGƯỢC
 st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Logo_HUST.png/1200px-Logo_HUST.png", width=120)
 st.sidebar.title("THI THỬ TSA ONLINE")
 
@@ -91,22 +92,54 @@ selected_exam = st.sidebar.selectbox(
 
 st.sidebar.markdown("---")
 
-# Đồng hồ bấm giờ lùi 60 phút
+# --- XỬ LÝ ĐỒNG HỒ ĐẾM NGƯỢC THỜI GIAN THỰC BẰNG JAVASCRIPT ---
 EXAM_DURATION_MINUTES = 60
-elapsed_seconds = (datetime.now() - st.session_state.start_time).seconds
-remaining_seconds = max(0, (EXAM_DURATION_MINUTES * 60) - elapsed_seconds)
 
-mins, secs = divmod(remaining_seconds, 60)
-timer_text = f"⏱️ Thời gian còn lại: {mins:02d}:{secs:02d}"
+if "start_time_tsa" not in st.session_state:
+    st.session_state.start_time_tsa = time.time()
 
-st.sidebar.markdown(f'<div class="timer-container">{timer_text}</div>', unsafe_allow_html=True)
+# Tính số giây đã trôi qua
+elapsed_sec = int(time.time() - st.session_state.start_time_tsa)
+total_sec = EXAM_DURATION_MINUTES * 60
+remaining_sec = max(0, total_sec - elapsed_sec)
 
-if remaining_seconds == 0 and not st.session_state.exam_submitted:
+if remaining_sec == 0 and not st.session_state.exam_submitted:
     st.session_state.exam_submitted = True
-    st.sidebar.warning("⚠️ Đã hết thời gian làm bài!")
+    st.rerun()
+
+# Mã HTML + JavaScript chạy đồng hồ mượt mà từng giây
+timer_html = f"""
+<div style="background-color: #b71c1c; color: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 20px;">
+    <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">⏱️ Thời gian còn lại:</div>
+    <div id="countdown-timer" style="font-size: 26px; font-weight: bold; letter-spacing: 2px;">--:--</div>
+</div>
+
+<script>
+    let timeLeft = {remaining_sec};
+    const timerDisplay = document.getElementById("countdown-timer");
+
+    function updateTimer() {{
+        if (timeLeft <= 0) {{
+            timerDisplay.innerHTML = "00:00";
+            // Tự động load lại trang để nộp bài khi hết giờ
+            window.location.reload();
+            return;
+        }}
+        let m = Math.floor(timeLeft / 60);
+        let s = timeLeft % 60;
+        timerDisplay.innerHTML = (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+        timeLeft--;
+    }}
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+</script>
+"""
+
+st.sidebar.markdown(timer_html, unsafe_allow_html=True)
 
 if st.sidebar.button("🔄 Làm lại bài thi", type="secondary"):
-    st.session_state.start_time = datetime.now()
+    st.session_state.start_time_tsa = time.time()
     st.session_state.exam_submitted = False
     st.rerun()
 
