@@ -77,6 +77,8 @@ if "start_time" not in st.session_state:
 
 # 4. THANH BÊN (SIDEBAR): CHỌN ĐỀ THI & ĐỒNG HỒ ĐẾM NGƯỢC
 
+import streamlit.components.v1 as components # Sử dụng module chuẩn để chạy JS
+
 # 4. THANH BÊN (SIDEBAR): CHỌN ĐỀ THI & ĐỒNG HỒ ĐẾM NGƯỢC
 st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Logo_HUST.png/1200px-Logo_HUST.png", width=120)
 st.sidebar.title("THI THỬ TSA ONLINE")
@@ -93,70 +95,67 @@ selected_exam = st.sidebar.selectbox(
 
 st.sidebar.markdown("---")
 
-# --- ĐỒNG HỒ ĐẾM NGƯỢC CHUẨN XÁC CHẠY BẰNG JAVASCRIPT ---
+# --- ĐỒNG HỒ ĐẾM NGƯỢC DÙNG COMPONENTS (CHẠY JS MƯỢT MÀ KHÔNG BỊ CHẶN) ---
 EXAM_DURATION_MINUTES = 60
 
-# Tính và lưu mốc thời điểm KẾT THÚC (End Time) vào Session State
+# 1. Tính mốc thời gian KẾT THÚC (End Time) cố định
 if "end_time_tsa" not in st.session_state:
     st.session_state.end_time_tsa = time.time() + (EXAM_DURATION_MINUTES * 60)
 
-# Chuyển đổi sang mili giây để JavaScript xử lý
+# 2. Tính thời gian còn lại ngay tại thời điểm load trang
+remaining_sec = max(0, int(st.session_state.end_time_tsa - time.time()))
+init_mins, init_secs = divmod(remaining_sec, 60)
+init_time_str = f"{init_mins:02d}:{init_secs:02d}"
+
+# Chuyển đổi sang mili giây cho JS
 end_timestamp_ms = int(st.session_state.end_time_tsa * 1000)
 
-st.sidebar.html(f"""
-<div style="background-color: #b71c1c; color: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 20px;">
-    <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">⏱️ Thời gian còn lại:</div>
-    <div id="tsa-countdown" style="font-size: 28px; font-weight: bold; letter-spacing: 2px;">--:--</div>
-</div>
+# 3. Đưa vào giao diện nhúng Component (Tạo khung iframe cách ly để JS tự do chạy)
+with st.sidebar:
+    components.html(f"""
+    <div style="background-color: #b71c1c; color: white; padding: 12px; border-radius: 10px; text-align: center; font-family: 'Source Sans Pro', sans-serif; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin: 2px;">
+        <div style="font-size: 15px; font-weight: bold; margin-bottom: 4px;">⏱️ Thời gian còn lại:</div>
+        <div id="tsa-countdown" style="font-size: 26px; font-weight: bold; letter-spacing: 2px;">{init_time_str}</div>
+    </div>
 
-<script>
-(function() {{
-    const targetTime = {end_timestamp_ms};
-    
-    // Xóa interval cũ nếu có để tránh đè vạch
-    if (window.tsaTimerInterval) {{
-        clearInterval(window.tsaTimerInterval);
-    }}
-
-    function updateClock() {{
-        const now = new Date().getTime();
-        const remainingMs = targetTime - now;
+    <script>
+    (function() {{
+        const targetTime = {end_timestamp_ms};
         const timerElement = document.getElementById("tsa-countdown");
 
-        if (!timerElement) return;
+        function updateClock() {{
+            if (!timerElement) return;
+            
+            const now = new Date().getTime();
+            const remainingMs = targetTime - now;
 
-        if (remainingMs <= 0) {{
-            timerElement.innerHTML = "00:00";
-            timerElement.style.color = "#ffcdd2"; // Đổi màu nhẹ khi hết giờ
-            clearInterval(window.tsaTimerInterval);
-            return;
+            if (remainingMs <= 0) {{
+                timerElement.innerHTML = "00:00";
+                timerElement.style.color = "#ffcdd2";
+                return;
+            }}
+
+            const totalSeconds = Math.floor(remainingMs / 1000);
+            const m = Math.floor(totalSeconds / 60);
+            const s = totalSeconds % 60;
+
+            const formattedM = m < 10 ? "0" + m : m;
+            const formattedS = s < 10 ? "0" + s : s;
+
+            timerElement.innerHTML = formattedM + ":" + formattedS;
         }}
 
-        const totalSeconds = Math.floor(remainingMs / 1000);
-        const m = Math.floor(totalSeconds / 60);
-        const s = totalSeconds % 60;
+        // Cập nhật mỗi giây
+        setInterval(updateClock, 1000);
+    }})();
+    </script>
+    """, height=100)
 
-        const formattedM = m < 10 ? "0" + m : m;
-        const formattedS = s < 10 ? "0" + s : s;
-
-        timerElement.innerHTML = formattedM + ":" + formattedS;
-    }}
-
-    // Chạy ngay 1 lần lập tức để không bị giật UI
-    updateClock();
-    
-    // Đếm lùi mỗi 1 giây
-    window.tsaTimerInterval = setInterval(updateClock, 1000);
-}})();
-</script>
-""")
-
-# Nút Làm lại bài thi: Reset lại mốc thời gian kết thúc mới
+# Nút Làm lại bài thi: Đặt lại mốc thời gian và trạng thái
 if st.sidebar.button("🔄 Làm lại bài thi", type="secondary"):
     st.session_state.end_time_tsa = time.time() + (EXAM_DURATION_MINUTES * 60)
     st.session_state.exam_submitted = False
     st.rerun()
-
 
 # 5. TIÊU ĐỀ CHÍNH BÀI THI
 st.markdown("""
