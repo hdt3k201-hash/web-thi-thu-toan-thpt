@@ -324,10 +324,15 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
         with st.expander("🔍 Câu 1 - Câu 6"):
             st.markdown("""
             **Câu 1 (C):** Phương trình $f'(x)=0$ có hai nghiệm đơn nên hàm số có 2 điểm cực trị.
+            
             **Câu 2 (C):** Hàm số đồng biến trên khoảng $(-\infty; -2)$.
+            
             **Câu 3 (C):** Từ BBT, hàm số nghịch biến trên $(1; 3)$.
+            
             **Câu 4 (B):** Dựa vào đồ thị, $f'(x) > 0, \forall x \in (-1; 1)$ và $(4; +\infty)$.
+            
             **Câu 5 (A):** $y = -x^3 + 3x^2 - 9x \Rightarrow y' = -3x^2 + 6x - 9 < 0, \forall x \in \mathbb{R}$.
+            
             **Câu 6 (B):** Từ đồ thị, hàm số đạt cực đại tại $x = -1$.
             """)
             
