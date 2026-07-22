@@ -3328,8 +3328,8 @@ elif de_thi_chon == "Đề 8: Khảo sát sự biến thiên và vẽ đồ th�
             | x | 0 |  | $\frac{5}{4}$ |  | 9 |
             | :--- | :--- | :--- | :--- | :--- | :--- |
             | T'(x) | - |  | 0 | + |  |
-            | T(x) | $\dfrac{6 \sqrt{10}}{5}$ <br> $\dfrac{168}{65}$ <br> $\dfrac{162}{65}$ |  <br> - |  |  |  |
-            Dựa vào bảng biến thiên, ta thấy giá trị của $T(x)$ nhỏ nhất khi $x=\frac{5}{4}$.
+            | T(x) | $\dfrac{6 \sqrt{10}}{5}$  $\dfrac{168}{65}$  $\dfrac{162}{65}$ |  - |  |  |  |
+            Dựa vào bảng biến thiên, ta thấy giá trị của $T(x)$ nhỏ nhất khi $x=\dfrac{5}{4}$.
             $$
             \Rightarrow \operatorname{Min}_{x=(0,9)} T(x)=T\left(\dfrac{5}{4}\right)=\dfrac{162}{65}
             $$
