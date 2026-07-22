@@ -614,7 +614,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             st.markdown('<h2 style="color: #0000FF;">Phần 3. Câu hỏi trắc nghiệm trả lời ngắn</h2>', unsafe_allow_html=True)
             st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 6. Điền kết quả dạng số vào ô trống. (Mỗi câu đúng 0.5 điểm)</b></em>', unsafe_allow_html=True)
             
-            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Biết rằng tất cả các khoảng nghịch biến của hàm số $y=\frac{x^2+2x+2}{x+1}$ là hai khoảng $(a;b), (b;c)$ với $a<b<c$. Tính $T=a+b+c$', unsafe_allow_html=True)
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Biết rằng tất cả các khoảng nghịch biến của hàm số $y=\dfrac{x^2+2x+2}{x+1}$ là hai khoảng $(a;b), (b;c)$ với $a<b<c$. Tính $T=a+b+c$', unsafe_allow_html=True)
             p3_q1_d2 = st.text_input("Nhập đáp án Câu 1:", key="p3_q1_d2")
             st.divider()
 
@@ -622,7 +622,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             p3_q2_d2 = st.text_input("Nhập đáp án Câu 2:", key="p3_q2_d2")
             st.divider()
             
-            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Biết rằng hai điểm cực trị của đồ thị hàm số $y=\frac{x^2+2x-3}{x^2+1}$ cùng với điểm $I(-\sqrt{5};-\sqrt{5})$ tạo thành một tam giác. Diện tích tam giác đó bằng (kết quả làm tròn đến hàng phần trăm).', unsafe_allow_html=True)
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Biết rằng hai điểm cực trị của đồ thị hàm số $y=\dfrac{x^2+2x-3}{x^2+1}$ cùng với điểm $I(-\sqrt{5};-\sqrt{5})$ tạo thành một tam giác. Diện tích tam giác đó bằng (kết quả làm tròn đến hàng phần trăm).', unsafe_allow_html=True)
             p3_q3_d2 = st.text_input("Nhập đáp án Câu 3:", key="p3_q3_d2")
             st.divider()
 
