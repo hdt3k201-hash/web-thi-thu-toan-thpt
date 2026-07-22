@@ -23,7 +23,8 @@ with st.sidebar:
     st.header("📂 DANH SÁCH ĐỀ THI")
     danh_sach_de = [
         "Đề 1: Sự biến thiên và cực trị của hàm số",
-        "Đề 2: Khối đa diện và Thể tích (Ví dụ)"
+        "Đề 2: Khối đa diện và Thể tích (Ví dụ)",
+        "Đề 3: Hàm số mũ và Lôgarit (Ví dụ)"  # <--- Thêm Đề 3 vào đây
     ]
     de_thi_chon = st.selectbox("Chọn đề thi:", danh_sach_de)
         
@@ -417,3 +418,44 @@ elif de_thi_chon == "Đề 2: Khối đa diện và Thể tích (Ví dụ)":
         with st.expander("🔍 Câu 1: Xem lời giải chi tiết"):
             st.markdown("**Đáp án đúng:** A")
             st.markdown("**Hướng dẫn giải:** Lời giải chi tiết cho câu hỏi khối đa diện...")
+
+# ==================== XỬ LÝ NỘI DUNG ĐỀ 3 ====================
+# ==================== XỬ LÝ NỘI DUNG ĐỀ 3 ====================
+elif de_thi_chon == "Đề 3: Hàm số mũ và Lôgarit (Ví dụ)":
+    key_nop_bai = "submitted_de3"  # Dùng khóa riêng biệt cho Đề 3
+    if key_nop_bai not in st.session_state:
+        st.session_state[key_nop_bai] = False
+        
+    st.title("ĐỀ 3: HÀM SỐ MŨ VÀ LÔGARIT")
+    st.markdown("---")
+    
+    if not st.session_state[key_nop_bai]:
+        with st.form("form_de_3"):
+            st.markdown("**Câu 1 (Đề 3):** Nội dung câu hỏi mũ và lôgarit...")
+            q1_d3 = st.radio("C1_d3", [r"A. Đáp án A", r"B. Đáp án B", r"C. Đáp án C", r"D. Đáp án D"], label_visibility="collapsed")
+            st.divider()
+            
+            # Thêm tiếp các câu hỏi 2, 3, 4... của Đề 3 tại đây nếu cần
+            
+            submitted_3 = st.form_submit_button("Nộp Bài Thi Đề 3", type="primary")
+            if submitted_3:
+                st.session_state[key_nop_bai] = True
+                st.session_state.q1_d3_ans = q1_d3
+                st.rerun()
+    else:
+        # Chấm điểm và hiển thị kết quả Đề 3
+        score_d3 = 0
+        if "q1_d3_ans" in st.session_state and st.session_state.q1_d3_ans.startswith("A."):
+            score_d3 += 0.25
+            
+        st.success(f"🎉 Bạn đã hoàn thành Đề 3! Tổng điểm: **{score_d3}**")
+        
+        if st.button("🔄 Làm lại Đề 3"):
+            st.session_state[key_nop_bai] = False
+            st.rerun()
+            
+        st.markdown("---")
+        st.header("📖 LỜI GIẢI CHI TIẾT ĐỀ 3")
+        with st.expander("🔍 Câu 1: Xem lời giải chi tiết"):
+            st.markdown("**Đáp án đúng:** A")
+            st.markdown("**Hướng dẫn giải:** Lời giải chi tiết cho câu hỏi mũ và lôgarit...")
