@@ -1870,7 +1870,7 @@ elif de_thi_chon == "Đề 5: Đường tiệm cận của đồ thị hàm số
             p3_q2_d5 = st.text_input("Nhập đáp án Câu 2:", key="p3_q2_d5")
             st.divider()
             
-            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Cho hàm số $y = f(x) = ax^3 + bx^2 + cx + d$ ($a \neq 0$) có đồ thị như hình vẽ bên dưới. Tìm số đường tiệm cận đứng của đồ thị hàm số $g(x) = \dfrac{x^2}{(f(x)-4)^2}$.', unsafe_allow_html=True)
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Cho hàm số $y = f(x) = ax^3 + bx^2 + cx + d$ (a khác 0) có đồ thị như hình vẽ bên dưới. Tìm số đường tiệm cận đứng của đồ thị hàm số $g(x) = \dfrac{x^2}{(f(x)-4)^2}$.', unsafe_allow_html=True)
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
