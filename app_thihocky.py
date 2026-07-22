@@ -60,6 +60,10 @@ with st.sidebar:
     html(dong_ho_html, height=70)
 
 # ==================== NỘI DUNG ĐỀ 1 ====================
+if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
+    key_nop_bai = "submitted_de1"
+    if key_nop_bai not in st.session_state:
+        st.session_state[key_nop_bai] = False
 st.title("BÀI 1. SỰ BIẾN THIÊN VÀ CỰC TRỊ CỦA HÀM SỐ")
 st.markdown("---")
 
@@ -343,3 +347,42 @@ else:
         
         **Câu 6 (Ans: 1.61):** Tốc độ bán hàng $h(t) = f'(t) = \frac{25000e^{-t}}{(1+5e^{-t})^2}$. Khảo sát $h'(t)=0 \Leftrightarrow 1-5e^{-t}=0 \Leftrightarrow t = \ln 5 \approx 1.61$ năm[cite: 2].
         """)
+
+elif de_thi_chon == "Đề 2: Khối đa diện và Thể tích (Ví dụ)":
+    key_nop_bai = "submitted_de2"  # Dùng khóa riêng cho Đề 2
+    if key_nop_bai not in st.session_state:
+        st.session_state[key_nop_bai] = False
+        
+    st.title("ĐỀ 2: KHỐI ĐA DIỆN VÀ THỂ TÍCH")
+    st.markdown("---")
+    
+    if not st.session_state[key_nop_bai]:
+        with st.form("form_de_2"):
+            st.markdown("**Câu 1 (Đề 2):** Nội dung câu hỏi khối đa diện...")
+            q1_d2 = st.radio("C1_d2", [r"A. Đáp án A", r"B. Đáp án B", r"C. Đáp án C", r"D. Đáp án D"], label_visibility="collapsed")
+            st.divider()
+            
+            # (Thêm các câu hỏi khác của Đề 2 vào đây...)
+            
+            submitted_2 = st.form_submit_button("Nộp Bài Thi Đề 2", type="primary")
+            if submitted_2:
+                st.session_state[key_nop_bai] = True
+                st.session_state.q1_d2_ans = q1_d2
+                st.rerun()
+    else:
+        # Chấm điểm và hiển thị lời giải Đề 2
+        score_d2 = 0
+        if "q1_d2_ans" in st.session_state and st.session_state.q1_d2_ans.startswith("A."):
+            score_d2 += 0.25
+            
+        st.success(f"🎉 Bạn đã hoàn thành Đề 2! Tổng điểm: **{score_d2}**")
+        
+        if st.button("🔄 Làm lại Đề 2"):
+            st.session_state[key_nop_bai] = False
+            st.rerun()
+            
+        st.markdown("---")
+        st.header("📖 LỜI GIẢI CHI TIẾT ĐỀ 2")
+        with st.expander("🔍 Câu 1: Xem lời giải chi tiết"):
+            st.markdown("**Đáp án đúng:** A")
+            st.markdown("**Hướng dẫn giải:** Lời giải chi tiết cho câu hỏi khối đa diện...")
