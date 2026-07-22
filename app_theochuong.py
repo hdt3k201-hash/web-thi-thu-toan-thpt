@@ -431,7 +431,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
         st.session_state[key_nop_bai] = False
         
     st.markdown(
-        '<h1 style="text-align: center; color: #0000FF;">ĐỀ 2: SỰ BIẾN THIÊN VÀ CỰC TRỊ CỦA HÀM SỐ</h1>', 
+        '<h1 style="text-align: center; color: #00a88f;">ĐỀ 2: SỰ BIẾN THIÊN VÀ CỰC TRỊ CỦA HÀM SỐ</h1>', 
         unsafe_allow_html=True
     )
     st.markdown("---")
