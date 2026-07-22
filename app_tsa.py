@@ -127,13 +127,12 @@ if not st.session_state.exam_submitted:
         # CÂU 1: CÂU HỎI KÉO THẢ / CHỌN PHƯƠNG ÁN ĐIỀN CHỖ TRỐNG
         # ---------------------------------------------------------------------
         with st.container(border=True):
-            st.markdown("""
+            st.markdown(r"""
             <div class="question-title">
-            <b>Câu 1:</b> <span class="tag-badge">[Kéo thả phương án]</span> 
+                <b>Câu 1:</b> <span class="tag-badge">[Kéo thả phương án]</span> Mô hình Vòng quay Mặt Trời
             </div>
             """, unsafe_allow_html=True)
             
-            # Lưu ý chữ 'r' ở đầu chuỗi (raw string) để hiển thị LaTeX an toàn
             st.markdown(r"""
             Một vòng quay Mặt Trời có bán kính $50\text{ m}$. Tâm của vòng quay nằm ở độ cao $60\text{ m}$ so với mặt đất. Vòng quay quay đều, mất $15$ phút để hoàn thành một vòng. Giả sử tại thời điểm $t=0$ (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất. Độ cao của cabin theo thời gian được mô hình hóa bởi:
             
@@ -154,9 +153,9 @@ if not st.session_state.exam_submitted:
         # CÂU 2: CÂU HỎI TRẮC NGHIỆM 4 LỰA CHỌN
         # ---------------------------------------------------------------------
         with st.container(border=True):
-            st.markdown("""
+            st.markdown(r"""
             <div class="question-title">
-                <span class="tag-badge">DẠNG 2: TRẮC NGHIỆM 4 LỰA CHỌN</span> Câu 2: Đọc đồ thị hàm số lượng giác
+                <b>Câu 2:</b> <span class="tag-badge">[Trắc nghiệm 4 lựa chọn]</span> Đọc đồ thị hàm số lượng giác
             </div>
             """, unsafe_allow_html=True)
             
@@ -182,9 +181,9 @@ if not st.session_state.exam_submitted:
         # CÂU 3: CÂU HỎI TRẢ LỜI NGẮN (ĐIỀN ĐÁP ÁN)
         # ---------------------------------------------------------------------
         with st.container(border=True):
-            st.markdown("""
+            st.markdown(r"""
             <div class="question-title">
-                <span class="tag-badge">DẠNG 3: TRẢ LỜI NGẮN</span> Câu 3: Mực nước cảng biển
+                <b>Câu 3:</b> <span class="tag-badge">[Trả lời ngắn]</span> Mực nước cảng biển
             </div>
             """, unsafe_allow_html=True)
             
@@ -200,9 +199,9 @@ if not st.session_state.exam_submitted:
         # CÂU 4: CÂU HỎI ĐÚNG / SAI (GỒM 4 PHÁT BIỂU)
         # ---------------------------------------------------------------------
         with st.container(border=True):
-            st.markdown("""
+            st.markdown(r"""
             <div class="question-title">
-                <span class="tag-badge">DẠNG 4: TRẮC NGHIỆM ĐÚNG / SAI</span> Câu 4: Phân tích nghiệm phương trình lượng giác
+                <b>Câu 4:</b> <span class="tag-badge">[Đúng/Sai]</span> Phân tích nghiệm phương trình lượng giác
             </div>
             """, unsafe_allow_html=True)
             
