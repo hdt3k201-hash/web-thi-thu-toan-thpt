@@ -192,7 +192,12 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             # =====================================================================
             # PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (4 CÂU)
             # =====================================================================
-            st.header("Phần 2. Trắc nghiệm lựa chọn đúng sai")
+            st.markdown(
+                """
+                <h2 style="color: #0000FF;">Phần 2. Trắc nghiệm lựa chọn đúng/sai</h2>
+                """, 
+                unsafe_allow_html=True
+            )
             st.caption("Thí sinh trả lời từ câu 1 đến câu 4. Trong mỗi ý a), b), c), d) chọn đúng hoặc sai.")
             
             # --- Câu 1 ---
@@ -241,7 +246,12 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             # =====================================================================
             # PHẦN 3: TRẢ LỜI NGẮN (6 CÂU)
             # =====================================================================
-            st.header("Phần 3. Câu hỏi trắc nghiệm trả lời ngắn")
+            st.markdown(
+                """
+                <h2 style="color: #0000FF;">Phần 3. Câu hỏi trắc nghiệm trả lời ngắn</h2>
+                """, 
+                unsafe_allow_html=True
+            )
             st.caption("Thí sinh trả lời từ câu 1 đến câu 6. Điền kết quả dạng số vào ô trống. (Mỗi câu đúng 0.5 điểm)")
             
             st.markdown("**Câu 1:** Biết đường thẳng đi qua hai điểm cực trị của đồ thị của hàm số $y = -x^3 + 3x^2 + 9x + 1$ là $ax+by+4=0$. Tính $a+2b$.")
