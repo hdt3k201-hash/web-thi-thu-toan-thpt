@@ -322,6 +322,98 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$[cite: 2]
                     index=None
                 )
 
+            # ================= CÂU 5 =================
+            with st.container(border=True):
+                st.markdown(
+                    r"""<div class="question-title"><b>Câu 5:</b> <span class="tag-badge">[Trả lời ngắn]</span></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Mực nước tại một cảng biển được mô hình hóa bởi hàm số $h(t) = 3\cos\left(\frac{\pi t}{6} + \frac{\pi}{3}\right) + 12$ (mét), trong đó t là thời gian tính bằng giờ $(0 \le t \le 24)$.[cite: 1] Một tàu hàng yêu cầu mực nước tối thiểu là 13.5m để có thể cập cảng an toàn.[cite: 1] Trong một ngày (24 giờ), tổng thời gian tàu có thể cập cảng an toàn là bao nhiêu giờ?[cite: 1]"""
+                )
+                q5_ans = st.text_input("Nhập kết quả dạng số (Ví dụ: 8):", key="q5")
+
+            # ================= CÂU 6 =================
+            with st.container(border=True):
+                st.markdown(
+                    r"""<div class="question-title"><b>Câu 6:</b> <span class="tag-badge">[Trả lời ngắn]</span></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Tìm giá trị nhỏ nhất của hàm số $y = 3\sin x + 4\cos x + 5$.[cite: 1]"""
+                )
+                q6_ans = st.text_input("Nhập kết quả dạng số:", key="q6")
+
+            # ================= CÂU 7 =================
+            with st.container(border=True):
+                st.markdown(
+                    r"""<div class="question-title"><b>Câu 7:</b> <span class="tag-badge">[Đúng/Sai]</span></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Một con lắc lò xo dao động điều hòa với phương trình li độ $x(t) = 5\cos\left(4\pi t - \frac{\pi}{2}\right)$ (cm), trong đó t tính bằng giây.[cite: 1] Vận tốc của vật là đạo hàm của li độ theo thời gian $v(t) = x^{\prime}(t)$.[cite: 1] Xét tính đúng/sai của các mệnh đề sau:[cite: 1]"""
+                )
+                q7_a = st.radio(
+                    r"A. Chu kì dao động toàn phần của con lắc lò xo là $T = 0,5$ giây.",
+                    ["Đúng", "Sai"],
+                    key="q7_1",
+                    horizontal=True,
+                    index=None
+                )
+                q7_b = st.radio(
+                    r"B. Tại thời điểm ban đầu $t = 0$, vật chuyển động đi qua vị trí cân bằng theo chiều âm.",
+                    ["Đúng", "Sai"],
+                    key="q7_2",
+                    horizontal=True,
+                    index=None
+                )
+                q7_c = st.radio(
+                    r"C. Vận tốc đạt giá trị lớn nhất của vật trong suốt quá trình dao động là $20\pi$ (cm/s).",
+                    ["Đúng", "Sai"],
+                    key="q7_3",
+                    horizontal=True,
+                    index=None
+                )
+                q7_d = st.radio(
+                    r"D. Thời gian ngắn nhất để vật di chuyển từ vị trí cân bằng ra đến biên dương cực đại là 0,25 giây.",
+                    ["Đúng", "Sai"],
+                    key="q7_4",
+                    horizontal=True,
+                    index=None
+                )
+
+            # ================= CÂU 8 =================
+            with st.container(border=True):
+                st.markdown(
+                    r"""<div class="question-title"><b>Câu 8:</b> <span class="tag-badge">[Trắc nghiệm 4 lựa chọn]</span></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Có bao nhiêu giá trị nguyên của tham số $m \in [-10; 10]$ để phương trình $\tan x + \cot x = m$ có nghiệm thực?[cite: 1]"""
+                )
+                q8_ans = st.radio(
+                    "Chọn phương án đúng:",
+                    [
+                        r"A. 18",
+                        r"B. 21",
+                        r"C. 17",
+                        r"D. 19",
+                    ],
+                    key="q8",
+                    index=None,
+                )
+
+            # ================= CÂU 9 =================
+            with st.container(border=True):
+                st.markdown(
+                    r"""<div class="question-title"><b>Câu 9:</b> <span class="tag-badge">[Trả lời ngắn]</span></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Nồng độ bụi mịn PM2.5 ngoài trời tại một thành phố trong ngày được mô hình hóa bởi hàm số $C(t) = 20\sin\left(\frac{\pi}{12}(t-6)\right) + 40$, trong đó C là nồng độ $(\mu g/m^{3})$ và t là thời gian trong ngày $(0 \le t \le 24)$.[cite: 1] Khuyến cáo sức khỏe quy định không nên ra ngoài khi nồng độ vượt mức $50\mu g/m^{3}$.[cite: 1] Trong một ngày, khoảng thời gian không an toàn kéo dài liên tục bao nhiêu tiếng?[cite: 1]"""
+                )
+                q9_ans = st.text_input("Nhập kết quả dạng số (Ví dụ: 8):", key="q9")
+
             # ================= SUBMIT BUTTON =================
             submit_btn = st.form_submit_button(
                 f"🚀 NỘP BÀI {exam_name}", type="primary", use_container_width=True
@@ -363,6 +455,33 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$[cite: 2]
         elif c4_score == 3: total_score += 1.5
         elif c4_score == 2: total_score += 0.75
         elif c4_score == 1: total_score += 0.25
+
+        # Chấm Câu 5
+        if st.session_state.get("q5", "").strip() == "8":
+            total_score += 1.0
+            
+        # Chấm Câu 6
+        if st.session_state.get("q6", "").strip() == "0":
+            total_score += 1.0
+
+        # Chấm Câu 7
+        c7_score = 0
+        if st.session_state.get("q7_1") == "Đúng": c7_score += 1
+        if st.session_state.get("q7_2") == "Sai": c7_score += 1
+        if st.session_state.get("q7_3") == "Đúng": c7_score += 1
+        if st.session_state.get("q7_4") == "Sai": c7_score += 1
+
+        if c7_score == 4: total_score += 1.0
+        elif c7_score == 3: total_score += 0.5
+        elif c7_score == 2: total_score += 0.25
+        
+        # Chấm Câu 8
+        if st.session_state.get("q8") and st.session_state.get("q8").startswith("A."):
+            total_score += 1.0
+            
+        # Chấm Câu 9
+        if st.session_state.get("q9", "").strip() == "8":
+            total_score += 1.0
 
         # Hiển thị điểm số
         st.markdown(
@@ -425,6 +544,65 @@ Phương trình có thể phân tích thành tích như sau: $(2\cos x - 1)(\cos
 * **c) Đúng.** Pt (*) luôn có cố định 2 nghiệm trên $[0; 2\pi]$. Để pt tổng có đúng 3 nghiệm, nhánh (**) phải sinh ra duy nhất 1 nghiệm (xảy ra tại $m = 1$ hoặc $m = -1$). Do $m = 1$ cho 2 nghiệm (vừa xét), nên chỉ có $m = -1$ (cho nghiệm duy nhất $x = \pi$) là thỏa mãn.[cite: 2]
 * **d) Sai.** Vì phương trình luôn chứa nhân tử $\left(\cos x - \dfrac{1}{2}\right) = 0$, nên nó luôn có ít nhất 2 nghiệm thực bất chấp giá trị của tham số $m$.[cite: 2]
 """)
+        with st.expander("🔍 Lời giải Câu 5: Thời gian tàu cập cảng"):
+            st.markdown(r"""
+* Để tàu có thể neo đậu an toàn, mực nước lúc đó phải thỏa mãn bất phương trình: $3\cos\left(\frac{\pi t}{6} + \frac{\pi}{3}\right) + 12 \ge 13,5$.[cite: 1]
+* Chuyển vế và rút gọn, ta thu được bất phương trình lượng giác cơ bản: $3\cos\left(\frac{\pi t}{6} + \frac{\pi}{3}\right) \ge 1,5 \Leftrightarrow \cos\left(\frac{\pi t}{6} + \frac{\pi}{3}\right) \ge \frac{1}{2}$.[cite: 1]
+* Giải bất phương trình này trên vòng tròn lượng giác, ta có: $-\frac{\pi}{3} + k2\pi \le \frac{\pi t}{6} + \frac{\pi}{3} \le \frac{\pi}{3} + k2\pi$.[cite: 1]
+* Trừ $\frac{\pi}{3}$ cho toàn bộ các vế và nhân với $\frac{6}{\pi}$ để cô lập t, ta được: $-\frac{2\pi}{3} + k2\pi \le \frac{\pi t}{6} \le k2\pi \Leftrightarrow -4 + 12k \le t \le 12k$.[cite: 1]
+* Tìm các khoảng thời gian hợp lệ trong phạm vi một ngày ($t \in [0; 24]$):
+  * Thay $k = 1$, ta có $8 \le t \le 12$ Nghĩa là tàu có thể cập cảng từ 8 giờ đến 12 giờ (kéo dài **4** tiếng).[cite: 1]
+  * Thay $k = 2$, ta có $20 \le t \le 24$ Nghĩa là tàu có thể cập cảng từ 20 giờ đến 24 giờ (kéo dài thêm **4** tiếng nữa).[cite: 1]
+* Tổng thời gian khả thi để tàu cập bến an toàn trong ngày là: $4 + 4 = 8$ giờ.[cite: 1]
+
+$\Rightarrow$ **Đáp số cần điền: 8.**[cite: 1]
+""")
+
+        with st.expander("🔍 Lời giải Câu 6: Giá trị nhỏ nhất của hàm số"):
+            st.markdown(r"""
+* Sử dụng bất đẳng thức Bunhiacôvski (hoặc từ điều kiện có nghiệm của phương trình $a\sin x + b\cos x = c$), ta đánh giá được cụm biểu thức lượng giác: $|3\sin x + 4\cos x| \le \sqrt{3^2 + 4^2} = 5$.[cite: 1]
+* Do đó, biểu thức $3\sin x + 4\cos x$ bị chặn khép kín trong khoảng $[-5; 5]$: $-5 \le 3\sin x + 4\cos x \le 5$.[cite: 1]
+* Cộng hằng số tự do 5 vào tất cả các vế để khôi phục lại hàm số $y$ ban đầu: $-5 + 5 \le 3\sin x + 4\cos x + 5 \le 5 + 5 \Leftrightarrow 0 \le y \le 10$.[cite: 1]
+* Từ bất đẳng thức kép trên, ta kết luận được ngay giá trị nhỏ nhất của hàm số là 0.[cite: 1]
+
+$\Rightarrow$ **Đáp số cần điền: 0.**[cite: 1]
+""")
+
+        with st.expander("🔍 Lời giải Câu 7: Phân tích dao động con lắc lò xo"):
+            st.markdown(r"""
+Dựa vào phương trình li độ $x(t) = 5\cos\left(4\pi t - \frac{\pi}{2}\right)$, ta lần lượt phân tích các tính chất động học của vật:[cite: 1]
+
+* **A. Đúng.** Tần số góc của dao động là $\omega = 4\pi$, từ đó ta tính được chu kỳ toàn phần $T = \frac{2\pi}{\omega} = \frac{2\pi}{4\pi} = 0,5$ (giây).[cite: 1]
+* **B. Sai.** Thay $t=0$ vào phương trình li độ, ta có $x(0) = 5\cos\left(-\frac{\pi}{2}\right) = 0$ nghĩa là vật đang ở vị trí cân bằng.[cite: 1] Xét phương trình vận tốc $v(t) = x^{\prime}(t) = -20\pi\sin\left(4\pi t - \frac{\pi}{2}\right)$, tại $t=0$ thì $v(0) = -20\pi\sin\left(-\frac{\pi}{2}\right) = 20\pi$.[cite: 1] Vì vận tốc mang giá trị dương nên vật phải đang di chuyển theo chiều dương.[cite: 1]
+* **C. Đúng.** Giá trị cực đại của vận tốc chính là tốc độ khi vật quét qua vị trí cân bằng, được tính bằng $v_{\max} = \omega A = 4\pi \cdot 5 = 20\pi$ (cm/s).[cite: 1]
+* **D. Sai.** Thời gian ngắn nhất để vật đi từ vị trí cân bằng ra đến vị trí biên tương đương với một phần tư chu kỳ dao động, tức là $\Delta t = \frac{T}{4} = \frac{0,5}{4} = 0,125$ (giây).[cite: 1]
+""")
+
+        with st.expander("🔍 Lời giải Câu 8: Phương trình lượng giác chứa tham số"):
+            st.markdown(r"""
+* Trước hết, ta đặt điều kiện xác định cho phương trình là $\sin x \ne 0$ và $\cos x \ne 0$, gộp chung lại thành $\sin 2x \ne 0$.[cite: 1]
+* Biến đổi vế trái của phương trình bằng cách đưa về các hàm cơ bản: $\tan x + \cot x = \frac{\sin x}{\cos x} + \frac{\cos x}{\sin x} = \frac{\sin^2 x + \cos^2 x}{\sin x \cdot \cos x} = \frac{1}{\frac{1}{2}\sin 2x} = \frac{2}{\sin 2x}$.[cite: 1]
+* Lúc này, phương trình đã cho trở thành: $\frac{2}{\sin 2x} = m \Leftrightarrow \sin 2x = \frac{2}{m}$ (điều kiện $m \ne 0$).[cite: 1]
+* Để phương trình có nghiệm, giá trị lượng giác $\sin 2x$ phải nằm trong giới hạn tự nhiên của nó là đoạn $[-1; 1]$.[cite: 1] Đồng thời, do điều kiện xác định $\sin 2x \ne 0$, ta thiết lập được hệ bất phương trình cho tham số m: $-1 \le \frac{2}{m} \le 1$ và $\frac{2}{m} \ne 0 \Leftrightarrow |m| \ge 2$.[cite: 1]
+* Kết hợp với điều kiện bài toán yêu cầu m là số nguyên thuộc đoạn $[-10; 10]$, ta liệt kê được các giá trị hợp lệ: $m \in \{-10, -9, ..., -2\} \cup \{2, 3, ..., 10\}$.[cite: 1]
+* Đếm số lượng phần tử, ta có $9 + 9 = 18$ giá trị thỏa mãn.[cite: 1]
+
+$\Rightarrow$ **Chọn đáp án A.**[cite: 1]
+""")
+
+        with st.expander("🔍 Lời giải Câu 9: Mô hình nồng độ bụi mịn PM2.5"):
+            st.markdown(r"""
+* Khoảng thời gian không an toàn tương ứng với lúc nồng độ bụi mịn vượt ngưỡng cho phép.[cite: 1] Do đó, ta thiết lập bất phương trình: $20\sin\left(\frac{\pi}{12}(t-6)\right) + 40 \ge 50 \Leftrightarrow 20\sin\left(\frac{\pi}{12}(t-6)\right) \ge 10$.[cite: 1]
+* Rút gọn, ta thu được: $\sin\left(\frac{\pi}{12}(t-6)\right) \ge \frac{1}{2}$.[cite: 1]
+* Giải bất phương trình này trên vòng tròn lượng giác, ta định vị được khoảng nghiệm như sau: $\frac{\pi}{6} + k2\pi \le \frac{\pi}{12}(t-6) \le \frac{5\pi}{6} + k2\pi$.[cite: 1]
+* Nhân cả ba vế với $\frac{12}{\pi}$ để khử các hệ số: $2 + 24k \le t - 6 \le 10 + 24k \Leftrightarrow 8 + 24k \le t \le 16 + 24k$.[cite: 1]
+* Bởi vì thời gian được khảo sát gói gọn trong một chu kỳ ngày $(t \in [0; 24])$, ta chỉ có thể chọn giá trị $k = 0$, tương ứng với khoảng: $8 \le t \le 16$.[cite: 1]
+* Điều này có nghĩa là mức độ ô nhiễm sẽ duy trì ở trạng thái không an toàn từ 8 giờ sáng đến 16 giờ chiều.[cite: 1] Tính thời lượng kéo dài liên tục, ta lấy $16 - 8 = 8$ tiếng.[cite: 1]
+
+$\Rightarrow$ **Đáp số cần điền: 8.**[cite: 1]
+""")
+
+        
 
 # ------------------------- ĐỀ TSA SỐ 02 -------------------------
 elif "Đề TSA số 02" in selected_exam:
