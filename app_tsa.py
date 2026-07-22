@@ -129,7 +129,7 @@ if not st.session_state.exam_submitted:
         with st.container(border=True):
             st.markdown(r"""
             <div class="question-title">
-                <b>Câu 1:</b> <span class="tag-badge">[Kéo thả phương án]</span> Mô hình Vòng quay Mặt Trời
+                <b>Câu 1:</b> <span class="tag-badge">[Kéo thả phương án]</span> 
             </div>
             """, unsafe_allow_html=True)
             
@@ -155,7 +155,7 @@ if not st.session_state.exam_submitted:
         with st.container(border=True):
             st.markdown(r"""
             <div class="question-title">
-                <b>Câu 2:</b> <span class="tag-badge">[Trắc nghiệm 4 lựa chọn]</span> Đọc đồ thị hàm số lượng giác
+                <b>Câu 2:</b> <span class="tag-badge">[Trắc nghiệm 4 lựa chọn]</span> 
             </div>
             """, unsafe_allow_html=True)
             
@@ -183,7 +183,7 @@ if not st.session_state.exam_submitted:
         with st.container(border=True):
             st.markdown(r"""
             <div class="question-title">
-                <b>Câu 3:</b> <span class="tag-badge">[Trả lời ngắn]</span> Mực nước cảng biển
+                <b>Câu 3:</b> <span class="tag-badge">[Trả lời ngắn]</span> 
             </div>
             """, unsafe_allow_html=True)
             
@@ -201,7 +201,7 @@ if not st.session_state.exam_submitted:
         with st.container(border=True):
             st.markdown(r"""
             <div class="question-title">
-                <b>Câu 4:</b> <span class="tag-badge">[Đúng/Sai]</span> Phân tích nghiệm phương trình lượng giác
+                <b>Câu 4:</b> <span class="tag-badge">[Đúng/Sai]</span> 
             </div>
             """, unsafe_allow_html=True)
             
