@@ -236,7 +236,7 @@ if not st.session_state.exam_submitted:
             col1, col2, col3 = st.columns(3)
             
             with col1:
-                q1_val_A = st.selectbox("📌 (1) Chọn giá trị A:", ["-- Chọn --", "-50", "50", "60"], key="q1_a")
+                q1_val_A = st.selectbox("📌 (1) Chọn giá trị A:", ["-- Chọn --", "-50", "50", "60", "80"], key="q1_a")
                 
             with col2:
                 q1_val_w = st.selectbox("📌 (2) Chọn ω:", ["-- Chọn --", "2π/15", "π/15", "15/2π"], key="q1_w")
