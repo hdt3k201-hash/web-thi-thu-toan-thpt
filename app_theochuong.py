@@ -440,7 +440,10 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
         with st.form("form_de_2"):
             # --- PHẦN TRẮC NGHIỆM CỦA ĐỀ 2 ---
             st.markdown('<h2 style="color: #0000FF;">Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn</h2>', unsafe_allow_html=True)
-            st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời các câu hỏi dưới đây. (Mỗi câu đúng 0.25 điểm)</b></em>', unsafe_allow_html=True)
+            st.markdown(
+                '<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 12. Mỗi câu hỏi chỉ chọn 1 phương án. (Mỗi câu đúng 0.25 điểm)</b></em>', 
+                unsafe_allow_html=True
+            )
             
             st.markdown('<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Cho hàm số $y=f(x)$...', unsafe_allow_html=True)
             p1_q1_d2 = st.radio("C1_d2", [r"A. Đáp án A", r"B. Đáp án B", r"C. Đáp án C", r"D. Đáp án D"], key="p1_q1_d2", label_visibility="collapsed")
