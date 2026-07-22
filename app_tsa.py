@@ -222,7 +222,7 @@ if not st.session_state.exam_submitted:
        # ---------------------------------------------------------------------
 # CÂU HỎI 2 Ô TRỐNG (ĐÃ SỬA LỖI THỤT LỀ)
 # ---------------------------------------------------------------------
-    with st.container(border=True):
+        with st.container(border=True):
            st.markdown(r"""
            <div class="question-title">
               <b>Câu 1:</b> <span class="tag-badge">[Điền khuyết - 2 vị trí]</span>
@@ -234,16 +234,15 @@ if not st.session_state.exam_submitted:
            st.markdown("<hr style='margin: 10px 0; border: 0.5px dashed #ffcdd2;'>", unsafe_allow_html=True)
     
     # Chia 2 cột cân bằng
-           col1, col2 = st.columns(2)
+            col1, col2 = st.columns(2)
     
-           with col1:
+            with col1:
         # Thụt lề đúng chuẩn Python ở đây
-               q_val_A = st.selectbox("📌 (1) Chọn giá trị A:", ["-- Chọn --", "50", "-50", "60"], key="q_2_a")
+                q_val_A = st.selectbox("📌 (1) Chọn giá trị A:", ["-- Chọn --", "50", "-50", "60"], key="q_2_a")
            with col2:
         # Thụt lề đúng chuẩn Python ở đây 
-               q_val_w = st.selectbox("📌 (2) Chọn tần số góc ω:", ["-- Chọn --", "2π / 15", "π / 15"], key="q_2_w")
-
-    st.markdown("<br>", unsafe_allow_html=True)
+                q_val_w = st.selectbox("📌 (2) Chọn tần số góc ω:", ["-- Chọn --", "2π / 15", "π / 15"], key="q_2_w")
+        st.markdown("<br>", unsafe_allow_html=True)
 
     
 
