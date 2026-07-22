@@ -196,187 +196,122 @@ if not st.session_state.exam_submitted:
         # CÂU HỎI KÉO THẢ / CHỌN PHƯƠNG ÁN CÓ KHUNG TỔNG HỢP ĐÁP ÁN
         # ---------------------------------------------------------------------
         with st.container(border=True):
-           #### Câu 1: [Kéo thả phương án]
-Một vòng quay Mặt Trời (Ferris wheel) có bán kính $50\text{ m}$. Tâm của vòng quay nằm ở độ cao $60\text{ m}$ so với mặt đất. Vòng quay quay đều, mất $15$ phút để hoàn thành một vòng. Giả sử tại thời điểm $t=0$ (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất của vòng quay. Độ cao của cabin so với mặt đất theo thời gian $t$ được mô hình hóa bởi hàm số:
-$$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
+            # 1. ĐỀ BÀI
+            st.markdown(r"""
+            <div class="question-title">
+                <b>Câu 1:</b> <span class="tag-badge">[Kéo thả / Chọn phương án]</span>
+            </div>
+            
+            Một vòng quay Mặt Trời có bán kính $50\text{ m}$. Tâm của vòng quay nằm ở độ cao $60\text{ m}$ so với mặt đất. Vòng quay quay đều, mất $15$ phút để hoàn thành một vòng. Giả sử tại thời điểm $t=0$ (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất. Độ cao của cabin theo thời gian được mô hình hóa bởi:
+            
+            $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
+            """, unsafe_allow_html=True)
 
-*Các phương án lựa chọn:* `-50`, `50`, `60`, `2π/15`, `15/2π`, `85`, `5`, `10`.
+            # 2. KHUNG ĐÓNG ĐÁP ÁN LỰA CHỌN (TƯƠNG TỰ TÚI KÉO THẢ)
+            st.markdown(r"""
+            <div style="background-color: #f8f9fa; border: 1.5px solid #dcdfe6; border-radius: 8px; padding: 12px 16px; margin: 12px 0;">
+                <div style="font-weight: bold; color: #1e88e5; margin-bottom: 8px; font-size: 14px;">
+                    🎯 KHUNG PHƯƠNG ÁN LỰA CHỌN (Quan sát các đáp án dưới đây):
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">-50</span>
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">50</span>
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">60</span>
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">2π/15</span>
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">π/15</span>
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">2.5</span>
+                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600; border: 1px solid #90caf9;">7.5</span>
+                </div>
+            </div>
+            
+            <b>Hãy điền vào các vị trí còn thiếu:</b>
+            * Giá trị $A =$ **`[ (1) ]`**
+            * Tần số góc $\omega =$ **`[ (2) ]`**
+            * Giá trị $B =$ **`[ (3) ]`**
+            """, unsafe_allow_html=True)
+            
+            st.markdown("<hr style='margin: 10px 0; border: 0.5px dashed #ffcdd2;'>", unsafe_allow_html=True)
 
-1. Hàm số mô phỏng độ cao có các thông số là: $A =$ `[ (1) ]`, $\omega =$ `[ (2) ]`, $B =$ `[ (3) ]`.
-2. Thời điểm đầu tiên cabin đạt độ cao $85\text{ m}$ là vào phút thứ `[ (4) ]`.
+            # 3. CÁC Ô TRỎ CHUỘT CHỌN ĐÁP ÁN (CHIA 3 CỘT)
+            col1, col2, col3 = st.columns(3)
+            
+            with col1:
+                q1_val_A = st.selectbox("📌 (1) Chọn giá trị A:", ["-- Chọn --", "-50", "50", "60", "80"], key="q1_a")
+                
+            with col2:
+                q1_val_w = st.selectbox("📌 (2) Chọn ω:", ["-- Chọn --", "2π/15", "π/15", "15/2π"], key="q1_w")
+                
+            with col3:
+                q1_val_B = st.selectbox("📌 (3) Chọn giá trị B:", ["-- Chọn --", "50", "60", "85"], key="q1_b")
 
----
+        st.markdown("<br>", unsafe_allow_html=True)    
 
-#### Câu 2: [Trắc nghiệm 4 lựa chọn]
-Cho hàm số lượng giác $y = a\sin(bx+c) + d$ có đồ thị đạt giá trị lớn nhất $y_{\max} = 4$, giá trị nhỏ nhất $y_{\min} = -2$, chu kỳ $T = \pi$. Biết $a > 0$, $b > 0$ và $c \in (-\pi; 0)$. Tính giá trị của biểu thức $P = a + b + c + d$.
+        # ---------------------------------------------------------------------
+        # CÂU 2: CÂU HỎI TRẮC NGHIỆM 4 LỰA CHỌN
+        # ---------------------------------------------------------------------
+        with st.container(border=True):
+            st.markdown(r"""
+            <div class="question-title">
+                <b>Câu 2:</b> <span class="tag-badge">[Trắc nghiệm 4 lựa chọn]</span> 
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown(r"""
+            Cho hàm số lượng giác $y = a\sin(bx+c) + d$ có đồ thị đạt giá trị lớn nhất $y_{\max} = 4$, giá trị nhỏ nhất $y_{\min} = -2$, chu kỳ $T = \pi$. Biết $a > 0$, $b > 0$ và $c \in (-\pi; 0)$. Tính giá trị của biểu thức $P = a + b + c + d$.
+            """)
+            
+            q2_ans = st.radio(
+                "Chọn phương án đúng:",
+                [
+                    r"A. $P = 6 - \dfrac{\pi}{3}$",
+                    r"B. $P = 4 + \dfrac{\pi}{3}$",
+                    r"C. $P = 5 - \dfrac{\pi}{6}$",
+                    r"D. $P = 3 + \dfrac{\pi}{2}$"
+                ],
+                key="q2",
+                index=None
+            )
 
-* **A.** $P = 6 - \dfrac{\pi}{3}$
-* **B.** $P = 4 + \dfrac{\pi}{3}$
-* **C.** $P = 5 - \dfrac{\pi}{6}$
-* **D.** $P = 3 + \dfrac{\pi}{2}$
+        st.markdown("<br>", unsafe_allow_html=True)
 
----
+        # ---------------------------------------------------------------------
+        # CÂU 3: CÂU HỎI TRẢ LỜI NGẮN (ĐIỀN ĐÁP ÁN)
+        # ---------------------------------------------------------------------
+        with st.container(border=True):
+            st.markdown(r"""
+            <div class="question-title">
+                <b>Câu 3:</b> <span class="tag-badge">[Trả lời ngắn]</span> 
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown(r"""
+            Mực nước tại một cảng biển được mô hình hóa bởi hàm số $h(t) = 3\cos\left(\dfrac{\pi t}{6} + \dfrac{\pi}{3}\right) + 12$ (mét), trong đó $t$ là thời gian tính bằng giờ ($0 \le t \le 24$). Một tàu hàng yêu cầu mực nước tối thiểu là $13,5\text{ m}$ để cập cảng an toàn. Trong một ngày ($24$ giờ), tổng thời gian tàu có thể cập cảng an toàn là bao nhiêu giờ?
+            """)
+            
+            q3_ans = st.text_input("Nhập kết quả dạng số (Ví dụ: 8):", key="q3")
 
-#### Câu 3: [Trả lời ngắn]
-Tính tổng tất cả các nghiệm của phương trình $\sin^2 x - \cos x = 1$ trên đoạn $[0; 2\pi]$.
+        st.markdown("<br>", unsafe_allow_html=True)
 
----
+        # ---------------------------------------------------------------------
+        # CÂU 4: CÂU HỎI ĐÚNG / SAI (GỒM 4 PHÁT BIỂU)
+        # ---------------------------------------------------------------------
+        with st.container(border=True):
+            st.markdown(r"""
+            <div class="question-title">
+                <b>Câu 4:</b> <span class="tag-badge">[Đúng/Sai]</span> 
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown(r"""
+            Cho phương trình lượng giác: $2\cos^2 x - (2m+1)\cos x + m = 0 \quad (1)$. Xét tính đúng/sai của các phát biểu sau:
+            """)
+            
+            q4_a = st.radio(r"a) Phương trình (1) có thể phân tích thành nhân tử dạng $(\cos x - m)(2\cos x - 1) = 0$.", ["Đúng", "Sai"], key="q4_1", horizontal=True)
+            q4_b = st.radio(r"b) Khi $m = 1$, phương trình có đúng $2$ nghiệm phân biệt trên đoạn $[0; 2\pi]$.", ["Đúng", "Sai"], key="q4_2", horizontal=True)
+            q4_c = st.radio(r"c) Để phương trình có đúng $3$ nghiệm phân biệt trên đoạn $[0; 2\pi]$ thì $m = -1$.", ["Đúng", "Sai"], key="q4_3", horizontal=True)
+            q4_d = st.radio(r"d) Có tồn tại giá trị thực của $m$ để phương trình đã cho hoàn toàn vô nghiệm.", ["Đúng", "Sai"], key="q4_4", horizontal=True)
 
-#### Câu 4: [Đúng/Sai]
-Cho phương trình lượng giác: $2\cos^2 x - (2m+1)\cos x + m = 0 \quad (1)$. Xét tính đúng/sai của các phát biểu sau:
-
-* **a)** Phương trình (1) có thể phân tích thành nhân tử dạng $(\cos x - m)(2\cos x - 1) = 0$.
-* **b)** Khi $m = 1$, phương trình có đúng 2 nghiệm phân biệt trên đoạn $[0; 2\pi]$.
-* **c)** Để phương trình có đúng 3 nghiệm phân biệt trên đoạn $[0; 2\pi]$ thì $m = -1$.
-* **d)** Có tồn tại giá trị thực của $m$ để phương trình đã cho hoàn toàn vô nghiệm.
-
----
-
-#### Câu 5: [Trả lời ngắn]
-Mực nước tại một cảng biển được mô hình hóa bởi hàm số $h(t) = 3\cos\left(\dfrac{\pi t}{6} + \dfrac{\pi}{3}\right) + 12$ (mét), trong đó $t$ là thời gian tính bằng giờ ($0 \le t \le 24$). Một tàu hàng yêu cầu mực nước tối thiểu là $13,5\text{ m}$ để cập cảng an toàn. Trong một ngày ($24$ giờ), tổng thời gian tàu có thể cập cảng an toàn là bao nhiêu giờ?
-
----
-
-#### Câu 6: [Trả lời ngắn]
-Tìm giá trị nhỏ nhất của hàm số $y = 3\sin x + 4\cos x + 5$.
-
----
-
-#### Câu 7: [Đúng/Sai]
-Một con lắc lò xo dao động điều hòa với phương trình li độ $x(t) = 5\cos\left(4\pi t - \dfrac{\pi}{2}\right)\text{ (cm)}$. Vận tốc của vật là $v(t) = x'(t)$. Xét tính đúng/sai của các mệnh đề sau:
-
-* **a)** Chu kỳ dao động toàn phần của con lắc lò xo là $T = 0,5\text{ s}$.
-* **b)** Tại thời điểm ban đầu $t=0$, vật chuyển động qua vị trí cân bằng theo chiều âm.
-* **c)** Vận tốc đạt giá trị lớn nhất của vật trong suốt quá trình dao động là $20\pi\text{ cm/s}$.
-* **d)** Thời gian ngắn nhất để vật di chuyển từ vị trí cân bằng ra đến biên dương cực đại là $0,25\text{ s}$.
-
----
-
-#### Câu 8: [Trắc nghiệm 4 lựa chọn]
-Có bao nhiêu giá trị nguyên của tham số $m \in [-10; 10]$ để phương trình $\tan x + \cot x = m$ có nghiệm thực?
-
-* **A.** 18
-* **B.** 21
-* **C.** 17
-* **D.** 19
-
----
-
-#### Câu 9: [Trả lời ngắn]
-Nồng độ bụi mịn PM2.5 ngoài trời tại một thành phố trong ngày được mô hình hóa bởi hàm số $C(t) = 20\sin\left(\dfrac{\pi}{12}(t-6)\right) + 40$ ($\mu\text{g/m}^3$), $0 \le t \le 24$. Khuyến cáo sức khỏe quy định không nên ra ngoài khi nồng độ vượt mức $50\mu\text{g/m}^3$. Trong một ngày, khoảng thời gian không an toàn kéo dài liên tục bao nhiêu tiếng?
-
----
-
-#### Câu 10: [Kéo thả phương án]
-Cho biểu thức lượng giác $P = \sin\left(x + \dfrac{\pi}{6}\right)\cos\left(x - \dfrac{\pi}{6}\right)$.
-1. Rút gọn hoàn toàn biểu thức $P$, ta thu được kết quả: $P =$ `[ (1) ]`
-2. Giá trị lớn nhất có thể đạt được của biểu thức $P$ là: $P_{\max} =$ `[ (2) ]`
-
----
-
-#### Câu 11: [Trả lời ngắn]
-Đếm số lượng các nghiệm nguyên $x$ thuộc đoạn $[1; 2026]$ thỏa mãn phương trình lượng giác: $\cos\left(\dfrac{\pi x}{3}\right) = \dfrac{1}{2}$.
-
----
-
-#### Câu 12: [Đúng/Sai]
-Cho phương trình lượng giác: $(2\cos x + 1)(\cos x - m) = 0$. Xét tính đúng/sai của các mệnh đề:
-
-* **a)** Phương trình luôn có ít nhất 2 nghiệm phân biệt thuộc khoảng $(0; 2\pi)$ với mọi $m \in \mathbb{R}$.
-* **b)** Khi $m = 1$, phương trình có đúng 3 nghiệm phân biệt trên đoạn $[0; 2\pi]$.
-* **c)** Điều kiện cần và đủ để phương trình có đúng 4 nghiệm phân biệt trên đoạn $[-\pi; \pi]$ là $m \in (-1; 1) \setminus \left\{-\dfrac{1}{2}\right\}$.
-* **d)** Giả sử $m = -\dfrac{1}{2}$, tổng tất cả các nghiệm của phương trình trên đoạn $[0; 10\pi]$ là $25\pi$.
-
----
-
-#### Câu 13: [Trắc nghiệm 4 lựa chọn]
-Có bao nhiêu giá trị nguyên của tham số $m \in [-10; 10]$ để phương trình $m\sin x + (m+1)\cos x = m+2$ có nghiệm thực?
-
-* **A.** 17
-* **B.** 18
-* **C.** 19
-* **D.** 20
-
----
-
-#### Câu 14: [Kéo thả phương án]
-Xét phương trình lượng giác $\sin 2x = 0$ trên đoạn $[0; 10\pi]$.
-1. Số lượng các nghiệm phân biệt của phương trình trên đoạn $[0; 10\pi]$ là `[ (1) ]`.
-2. Tổng của tất cả các nghiệm đó có giá trị bằng `[ (2) ]`.
-
----
-
-#### Câu 15: [Trả lời ngắn]
-Số giờ ánh sáng mặt trời trong ngày tại một thành phố được mô hình hóa bởi $H(t) = 12 + 3\sin\left[\dfrac{2\pi}{365}(t-80)\right]$ ($1 \le t \le 365$). Một loại cây công nghiệp chỉ sinh trưởng tốt nếu thời gian chiếu sáng $> 13,5$ giờ. Hỏi trong một năm không nhuận ($365$ ngày), có bao nhiêu ngày cây có thể sinh trưởng tốt?
-
----
-
-#### Câu 16: [Trả lời ngắn]
-Tìm giá trị của tham số thực $m$ để hàm số $y = \dfrac{\sin x + m\cos x + 1}{\cos x - \sin x + 2}$ có giá trị lớn nhất đúng bằng 2.
-
----
-
-#### Câu 17: [Trắc nghiệm 4 lựa chọn]
-Giải phương trình lượng giác $\sin x + \sin 2x + \sin 3x = 0$. Hỏi các nghiệm của phương trình này được biểu diễn bởi bao nhiêu điểm phân biệt trên đường tròn lượng giác?
-
-* **A.** 4
-* **B.** 5
-* **C.** 6
-* **D.** 8
-
----
-
-#### Câu 18: [Đúng/Sai]
-Cho phương trình $\sin^4 x + \cos^4 x = m$. Xét tính đúng/sai của các mệnh đề:
-
-* **a)** Khi $m = 1$, phương trình có đúng 4 nghiệm phân biệt trên đoạn $[0; \pi]$.
-* **b)** Điều kiện cần và đủ để phương trình có nghiệm là $m \in \left[\dfrac{1}{2}; 1\right]$.
-* **c)** Khi $m = \dfrac{3}{4}$, các điểm biểu diễn tập nghiệm trên đường tròn lượng giác tạo thành đỉnh của một hình bát giác đều.
-* **d)** Nếu $m = \dfrac{1}{2}$, phương trình tương đương với $\cos 4x = -1$.
-
----
-
-#### Câu 19: [Trả lời ngắn]
-Tính chính xác giá trị của tổng hữu hạn: $S = \sin^2 10^\circ + \sin^2 20^\circ + \sin^2 30^\circ + \dots + \sin^2 170^\circ + \sin^2 180^\circ$.
-
----
-
-#### Câu 20: [Kéo thả phương án]
-1. Phương trình $3\sin x + 4\cos x = m$ có nghiệm khi $m \in$ `[ ... ]`
-2. Phương trình $\sin^2 x - 2\sin x + m = 0$ có nghiệm khi $m \in$ `[ ... ]`
-3. Phương trình $\cos 2x - 4\cos x + m = 0$ có nghiệm khi $m \in$ `[ ... ]`
-
----
-
-## III. LỜI GIẢI CHI TIẾT CÁC CÂU HỎI TỰ LUẬN & ĐIỂM NÓNG
-
-### 🔍 Lời giải Câu 1: Mô hình Vòng quay Mặt Trời
-- Độ cao tâm vòng quay là vị trí cân bằng $\Rightarrow B = 60$.
-- Bán kính vòng quay ứng với biên độ $|A| = 50$. Tại $t=0$ cabin ở vị trí thấp nhất $h(0) = 10\text{m} \Rightarrow A\cos(0) + 60 = 10 \Rightarrow A = -50$.
-- Chu kỳ $T = 15\text{ phút} \Rightarrow \omega = \dfrac{2\pi}{15}$.
-- Phương trình độ cao: $h(t) = -50\cos\left(\dfrac{2\pi}{15}t\right) + 60$.
-- Cho $h(t) = 85$:
-  $$-50\cos\left(\dfrac{2\pi}{15}t\right) + 60 = 85 \Leftrightarrow \cos\left(\dfrac{2\pi}{15}t\right) = -\dfrac{1}{2} \Rightarrow \dfrac{2\pi}{15}t = \dfrac{2\pi}{3} \Rightarrow t = 5 \text{ (phút)}.$$
-
-### 🔍 Lời giải Câu 2: Đọc đồ thị hàm số lượng giác
-- Đường trung bình $d = \dfrac{y_{\max} + y_{\min}}{2} = \dfrac{4 + (-2)}{2} = 1$.
-- Biên độ $a = \dfrac{y_{\max} - y_{\min}}{2} = \dfrac{4 - (-2)}{2} = 3$.
-- Tần số góc $b = \dfrac{2\pi}{T} = \dfrac{2\pi}{\pi} = 2$.
-- Pha ban đầu $c = -\dfrac{\pi}{3}$ thỏa mãn $c \in (-\pi; 0)$.
-- Tổng $P = a + b + c + d = 3 + 2 - \dfrac{\pi}{3} + 1 = 6 - \dfrac{\pi}{3}$.
-- **Chọn đáp án A.**
-
-### 🔍 Lời giải Câu 3: Mực nước cảng biển
-- Điều kiện cập cảng an toàn:
-  $$3\cos\left(\dfrac{\pi t}{6} + \dfrac{\pi}{3}\right) + 12 \ge 13,5 \Leftrightarrow \cos\left(\dfrac{\pi t}{6} + \dfrac{\pi}{3}\right) \ge \dfrac{1}{2}$$
-- Giải phương trình trên $[0; 24]$ thu được 2 khoảng thời gian: $[8; 12]$ (4 tiếng) và $[20; 24]$ (4 tiếng).
-- **Tổng thời gian = 8 giờ.**
-
-### 🔍 Lời giải Câu 4: Phân tích nghiệm phương trình lượng giác
-- **a) Đúng:** $2\cos^2 x - (2m+1)\cos x + m = 0 \Leftrightarrow (2\cos x - 1)(\cos x - m) = 0$.
-- **b) Sai:** Khi $m = 1$, phương trình cho 4 nghiệm phân biệt trên $[0; 2\pi]$ là $x \in \left\{0; \dfrac{\pi}{3}; \dfrac{5\pi}{3}; 2\pi\right\}$.
-- **c) Đúng:** $m = -1$ sinh ra đúng 1 nghiệm độc lập $x = \pi$, tổng là 3 nghiệm.
-- **d) Sai:** Nhân tử $(2\cos x - 1) = 0$ luôn cho 2 nghiệm cố định với mọi $m$.
+        st.markdown("<br>", unsafe_allow_html=True)
 
         # NÚT NỘP BÀI THI
         submit_btn = st.form_submit_button("🚀 NỘP BÀI THI TSA", type="primary", use_container_width=True)
