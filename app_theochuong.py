@@ -445,7 +445,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
                 unsafe_allow_html=True
             )
             
-            st.markdown('<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Cho hàm số $ f( x )$ có đạo hàm liên tục trên $\mathbb{R}$. Mệnh đề nào sau đây đúng?
+            st.markdown('<span style="color: #0000FF; font-weight: bold;">r"**Câu 1:**</span> Cho hàm số $ f( x )$ có đạo hàm liên tục trên $\mathbb{R}$. Mệnh đề nào sau đây đúng?
             ', unsafe_allow_html=True)
             p1_q1_d2 = st.radio("C1_d2", [r"A. Nếu$f'( x )\ne 0,\forall x\in \mathbb{R}$ thì hàm số $ f( x )$ đồng biến trên$\mathbb{R}$", r"B. Nếu$f'( x )>0,\forall x\in \mathbb{R}$ thì hàm số $ f( x )$ đồng biến trên$\mathbb{R}$", r"C. Nếu$f'( x )=0,\forall x\in \mathbb{R}$ thì hàm số $ f( x )$ đồng biến trên$\mathbb{R}$", r"D. Nếu$f'( x )<0,\forall x\in \mathbb{R}$ thì hàm số $ f( x )$ đồng biến trên$\mathbb{R}$
             "], key="p1_q1_d2", label_visibility="collapsed")
