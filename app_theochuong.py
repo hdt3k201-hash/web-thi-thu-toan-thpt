@@ -23,7 +23,7 @@ with st.sidebar:
     st.header("📂 DANH SÁCH ĐỀ THI")
     danh_sach_de = [
         "Đề 1: Sự biến thiên và cực trị của hàm số",
-        "Đề 2: Khối đa diện và Thể tích (Ví dụ)",
+        "Đề 2: Sự biến thiên và cực trị của hàm số",
         "Đề 3: Hàm số mũ và Lôgarit (Ví dụ)"  # <--- Thêm Đề 3 vào đây
     ]
     de_thi_chon = st.selectbox("Chọn đề thi:", danh_sach_de)
