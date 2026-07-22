@@ -1291,7 +1291,7 @@ elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhấ
         st.session_state[key_nop_bai] = False
         
     st.markdown(
-        '<h1 style="text-align: center; color: #0000FF;">ĐỀ 4: GIÁ TRỊ LỚN NHẤT VÀ GIÁ TRỊ NHỎ NHẤT CỦA HÀM SỐ</h1>', 
+        '<h1 style="text-align: center; color: #00a88f;">ĐỀ 4: GIÁ TRỊ LỚN NHẤT VÀ GIÁ TRỊ NHỎ NHẤT CỦA HÀM SỐ</h1>', 
         unsafe_allow_html=True
     )
     st.markdown("---")
@@ -1310,7 +1310,7 @@ elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d4_cau1_p1.png", width=400)
+                    st.image("images/d4_cau1_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau1_p1.png")
             p1_q1_d4 = st.radio("C1_d4", [
@@ -1326,7 +1326,7 @@ elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d4_cau2_p1.png", width=400)
+                    st.image("images/d4_cau2_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau2_p1.png")
             p1_q2_d4 = st.radio("C2_d4", [r"A. $3$", r"B. $2$", r"C. $1$", r"D. $4$"], key="p1_q2_d4", label_visibility="collapsed")
@@ -1347,7 +1347,7 @@ elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d4_cau5_p1.png", width=400)
+                    st.image("images/d4_cau5_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau5_p1.png")
             p1_q5_d4 = st.radio("C5_d4", [
@@ -1363,7 +1363,7 @@ elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d4_cau6_p1.png", width=400)
+                    st.image("images/d4_cau6_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau6_p1.png")
             p1_q6_d4 = st.radio("C6_d4", [r"A. $1$", r"B. $3$", r"C. $0$", r"D. $2$"], key="p1_q6_d4", label_visibility="collapsed")
@@ -1433,7 +1433,7 @@ elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d4_cau3_p2.png", width=400)
+                    st.image("images/d4_cau3_p2.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau3_p2.png")
             p2_q3_d4 = {}
@@ -1448,7 +1448,7 @@ elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d4_cau4_p2.png", width=400)
+                    st.image("images/d4_cau4_p2.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau4_p2.png")
             p2_q4_d4 = {}
@@ -1472,7 +1472,7 @@ elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d4_cau2_p3.png", width=400)
+                    st.image("images/d4_cau2_p3.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau2_p3.png")
             p3_q2_d4 = st.text_input("Nhập đáp án Câu 2:", key="p3_q2_d4")
@@ -1486,7 +1486,7 @@ elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d4_cau4_p3.png", width=400)
+                    st.image("images/d4_cau4_p3.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d4_cau4_p3.png")
             p3_q4_d4 = st.text_input("Nhập đáp án Câu 4:", key="p3_q4_d4")
@@ -1558,17 +1558,17 @@ elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhấ
         with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
             st.markdown(r"""
             **Câu 1 (D):** Dựa vào đồ thị ta có $\max_{[-1;2]} y = 2$.
-            <br><br>
+            
             **Câu 2 (A):** Ta có $M = \max_{[-1;2]} f(x) = f(1) = 3$ và $m = \min_{[-1;2]} f(x) = f(0) = 0$. Vậy $M+m = 3$.
-            <br><br>
+         
             **Câu 3 (A):** Hàm số $y=\dfrac{x^2+3}{x-1}$ liên tục trên đoạn $[2;4]$. Ta có $y' = \dfrac{x^2-2x-3}{(x-1)^2}$. Cho $y' = 0 \Leftrightarrow x = -1 \notin [2;4]$ hoặc $x = 3 \in [2;4]$. 
             Tính $y(2)=7$, $y(4)=\dfrac{19}{3}$, $y(3)=6$. Suy ra $m=6$.
-            <br><br>
+            
             **Câu 4 (A):** Xét $f(x)=x^2-3x \Rightarrow f'(x)=2x-3$. Cho $f'(x)=0 \Leftrightarrow x=\dfrac{3}{2}$. 
             Ta có $f(0)=0$, $f(2)=-2$, $f\left(\dfrac{3}{2}\right)=-\dfrac{9}{4}$. Vậy giá trị nhỏ nhất là $-\dfrac{9}{4}$ tại $x=\dfrac{3}{2}$.
-            <br><br>
+           
             **Câu 5 (A):** Quan sát đồ thị trên đoạn $[-2;2]$, giá trị nhỏ nhất của hàm số là $-4$.
-            <br><br>
+           
             **Câu 6 (B):** Dựa vào bảng biến thiên, ta thấy trên đoạn $[0;2]$ giá trị lớn nhất của hàm số bằng $3$.
             """)
             
@@ -1576,22 +1576,22 @@ elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhấ
             st.markdown(r"""
             **Câu 7 (C):** Ta có $f'(x) = -\dfrac{3x^2}{40} + \dfrac{3x}{2}$. Cho $f'(x) = 0 \Leftrightarrow x=0$ hoặc $x=20$. 
             Lập bảng biến thiên trên $(0;+\infty)$ ta thấy hàm số đạt giá trị lớn nhất là $25$ tại $x=20$.
-            <br><br>
+          
             **Câu 8 (B):** Tập xác định: $D=(0;4]$. Ta có $y' = x - \dfrac{4}{x}$. 
             Cho $y'=0 \Leftrightarrow x^2=4 \Rightarrow x=2$. 
             Giá trị nhỏ nhất của hàm số trên $(0;4]$ bằng $2-4\ln 4 = 2-8\ln 2$ tại $x=2$. 
             Khi đó $a=2, b=-8, c=2 \Rightarrow a+b+c = 14$. 
             *(Lưu ý: Đề gốc có sự sai khác về số liệu hàm số, lời giải này bám sát cấu trúc dạng $a+b\ln c = 14$)*.
-            <br><br>
+         
             **Câu 9 (D):** Tập xác định $D=(0;+\infty)$. $y' = 1 - \dfrac{1}{x}$. Xét trên $[\dfrac{1}{2};e]$, $y'=0 \Leftrightarrow x=1$.
             Ta có $y\left(\dfrac{1}{2}\right)=\dfrac{1}{2}+\ln 2$, $y(1)=1$, $y(e)=e-1$. 
             Suy ra $m=1$, $M=e-1 \Rightarrow M-m = e-2$.
-            <br><br>
+            
             **Câu 10 (C):** Tập xác định: $D=[-2;2]$. Ta có $y' = \dfrac{-x}{\sqrt{4-x^2}}$. Cho $y'=0 \Leftrightarrow x=0$.
             $y(0)=2, y(\pm 2)=0 \Rightarrow \max_{[-2;2]} y = 2, \min_{[-2;2]} y = 0$. Khẳng định C sai vì hàm số đạt GTLN tại $x=0$.
-            <br><br>
+           
             **Câu 11 (B):** $y' = 1 - \dfrac{1}{x^2} = 0 \Leftrightarrow x=1$ (vì $x \in (0;+\infty)$). Lập bảng biến thiên, hàm số đạt GTNN là $-3$ tại $x=1$.
-            <br><br>
+          
             **Câu 12 (A):** Đặt $f(x) = -x^4+2x^2+m+4$. $f'(x) = -4x^3+4x = 0 \Leftrightarrow x=0, x=\pm 1$.
             $f(0)=m+4, f(\pm 1)=m+5$. Suy ra $\max_{[-1;1]} f(x) = m+5$. Đề cho $\max = 5 \Rightarrow m+5=5 \Leftrightarrow m=0$.
             """)
@@ -1600,62 +1600,91 @@ elif de_thi_chon == "Đề 4: Giá trị lớn nhất và Giá trị nhỏ nhấ
         with st.expander("🔍 Lời giải Câu 1 & Câu 2"):
             st.markdown(r"""
             **Câu 1:** (a-Đúng, b-Sai, c-Sai, d-Đúng)
-            <br>
+            
             *Giải thích:* $f'(x) = 2x - \dfrac{500}{x^2} = \dfrac{2x^3-500}{x^2}$. $f'(x)=0 \Leftrightarrow x^3=250 \Leftrightarrow x=5\sqrt[3]{2} \approx 6.3$ 
             *(Ghi chú: Lời giải mẫu giả định $x=5$ là nghiệm của một phương trình biến thể, đáp án cuối là $150$ tại $x=5$ nếu hàm số là $2x^2+\frac{500}{x}$ hoặc tương đương)*.
-            <br><br>
+            
             **Câu 2:** (a-Sai, b-Đúng, c-Sai, d-Đúng)
-            <br>
+       
             *Giải thích:*
+            
             - Gọi số tiền cần tăng giá mỗi chiếc là $x$ (nghìn đồng). Tổng số khăn bán ra: $3000-100x$. 
+            
             - Lãi mỗi chiếc: $12+x$. Lợi nhuận $f(x) = (3000-100x)(12+x) = -100x^2+1800x+36000$. (b đúng)
+            
             - $f'(x) = -200x+1800 = 0 \Leftrightarrow x=9$. Lợi nhuận cao nhất khi $x=9$.
+            
             - Giá bán mới: $30+9=39$ nghìn đồng. (d đúng)
             """)
             
         with st.expander("🔍 Lời giải Câu 3 & Câu 4"):
             st.markdown(r"""
             **Câu 3:** (a-Đúng, b-Sai, c-Đúng, d-Sai)
-            <br>
+          
             *Giải thích:*
+            
             - Trên $\mathbb{R}$, hàm số có giá trị lớn nhất bằng $5$ (a đúng).
+            
             - Hàm số không có giá trị nhỏ nhất trên $\mathbb{R}$ do nhánh tiến về $-\infty$ (b sai).
+            
             - Trên $[-1;1]$, GTLN là $5$, GTNN là $2$. Tổng là $7$ (c đúng).
+            
             - Với $x \in [0; \frac{\pi}{2}] \Rightarrow \sin x \in [0;1]$. Khi đó $\max_{[0;1]} f(x) = 3$ (d sai).
-            <br><br>
+           
             **Câu 4:** (a-Đúng, b-Đúng, c-Sai, d-Đúng)
-            <br>
+       
             *Giải thích:*
+            
             - $\max_{[-1;3]} f(x) = f(3) = 3$ (a đúng).
+            
             - $\min_{[-1;3]} f(x) = -2$ (b đúng).
+            
             - Tập giá trị của hàm số trên $[-1;2]$ là $[-2;2]$ (c sai).
+            
             - Đặt $t = 3\sin x - 1 \in [-4;2]$. Dựa vào đồ thị $\max_{[-4;2]} f(t) = 2$ (d đúng).
             """)
 
         st.subheader("Phần 3: Câu hỏi trả lời ngắn")
         with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
             st.markdown(r"""
-            **Câu 1 (Đáp án: 15):** Gọi cạnh đáy là $x \text{ (m)}$ và chiều cao là $h \text{ (m)}$. Thể tích $x^2h = 16 \Rightarrow h = \dfrac{16}{x^2}$. 
+            **Câu 1 (Đáp án: 15):** Gọi cạnh đáy là $x \text{ (m)}$ và chiều cao là $h \text{ (m)}$. 
+            
+            Thể tích $x^2h = 16 \Rightarrow h = \dfrac{16}{x^2}$. 
+           
             Diện tích kính cần dùng $S(x) = x^2 + 4xh = x^2 + \dfrac{64}{x}$. 
+            
             $S'(x) = 2x - \dfrac{64}{x^2} = 0 \Leftrightarrow x = \sqrt[3]{32}$. Khi đó $S_{\min} = 32 \text{ m}^2$. 
+            
             Chi phí tối thiểu: $32 \times 0.5 = 15$ (triệu đồng) *(có làm tròn theo dữ kiện bài toán)*.
-            <br><br>
-            **Câu 2 (Đáp án: 11.3):** Gọi độ dài cạnh tam giác cắt đi là $x$ ($0 < x < 3$). Đáy hình hộp là hình vuông cạnh $6 - 2x$. 
-            Chiều cao là $\dfrac{x\sqrt{2}}{2}$ hoặc tương đương theo cách gập. Lập biểu thức thể tích $V(x)$ và đạo hàm tìm cực đại $V_{\max} \approx 11.31$.
-            <br><br>
+          
+            **Câu 2 (Đáp án: 11.3):** Gọi độ dài cạnh tam giác cắt đi là $x$ ($0 < x < 3$). 
+            
+            Đáy hình hộp là hình vuông cạnh $6 - 2x$. 
+            
+            Chiều cao là $\dfrac{x\sqrt{2}}{2}$ hoặc tương đương theo cách gập. 
+            
+            Lập biểu thức thể tích $V(x)$ và đạo hàm tìm cực đại $V_{\max} \approx 11.31$.
+          
             **Câu 3 (Đáp án: 59):** Đáy chữ nhật kích thước $x$ và $2x$. Chiều cao $h = \dfrac{100}{x^2}$. 
+            
             Diện tích $S(x) = 2x^2 + 6xh = 2x^2 + \dfrac{600}{x}$. $S'(x) = 4x - \dfrac{600}{x^2} = 0 \Leftrightarrow x = \sqrt[3]{150}$. 
+            
             Chi phí $S_{\min} \times 350.000 \approx 59$ (triệu đồng).
-            <br><br>
+           
             **Câu 4 (Đáp án: 3):** Diện tích bề mặt $x^2 + 4xh = 108 \Rightarrow h = \dfrac{108-x^2}{4x}$. 
+            
             Thể tích $V = x^2h = \dfrac{108x - x^3}{4}$. $V' = \dfrac{108 - 3x^2}{4} = 0 \Leftrightarrow x = 6$. 
+            
             Chiều cao tương ứng $h = \dfrac{108-36}{24} = 3\text{ (cm)}$.
-            <br><br>
+          
             **Câu 5 (Đáp án: 30):** Diện tích $ab = 100 \Rightarrow b = \dfrac{100}{a}$. 
+            
             Chu vi nhỏ nhất khi hình chữ nhật là hình vuông $\Rightarrow a = 10, b = 10$. Biểu thức $a+2b = 10 + 20 = 30$.
-            <br><br>
+        
             **Câu 6 (Đáp án: 34.5):** Gọi giá bán mới là $x$ ($30 \le x \le 35$). Số xe bán ra: $400 + 100(35-x)$. 
+            
             Lợi nhuận $f(x) = (x-30)(3900-100x) = -100x^2 + 6900x - 117000$. 
+            
             Hàm số đạt giá trị lớn nhất tại $x = \dfrac{-6900}{2(-100)} = 34.5$ (triệu đồng).
             """)
 
