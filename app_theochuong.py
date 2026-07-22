@@ -2431,7 +2431,7 @@ else:
             """)
 
         st.subheader("Phần 2: Trắc nghiệm lựa chọn đúng sai")
-        with st.expander("🔍 Lời giải Câu 13 & Câu 14"):
+        with st.expander("🔍 Lời giải Câu 1 & Câu 2"):
             st.markdown(r"""
             **Câu 1:** (a-Đúng, b-Sai, c-Sai, d-Đúng)
             
@@ -2456,7 +2456,7 @@ else:
             - d) Có $1$ TCN và $5$ TCĐ, tổng cộng $6$ đường tiệm cận, không phải $4$
             """)
             
-        with st.expander("🔍 Lời giải Câu 15 & Câu 16"):
+        with st.expander("🔍 Lời giải Câu 3 & Câu 4"):
             st.markdown(r"""
             **Câu 3:** (a-Sai, b-Đúng, c-Sai, d-Đúng)
            
@@ -2486,7 +2486,7 @@ else:
             """)
 
         st.subheader("Phần 3: Câu hỏi trả lời ngắn")
-        with st.expander("🔍 Lời giải Câu 17 - Câu 22"):
+        with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
             st.markdown(r"""
             **Câu 1 (Đáp án: 5):**
             
