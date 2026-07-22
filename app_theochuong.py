@@ -501,7 +501,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             p1_q6_d2 = st.radio("C6_d2", [r"A. $0$", r"B. $2$", r"C. $3$", r"D. $1$"], key="p1_q6_d2", label_visibility="collapsed")
             st.divider()
 
-            st.markdown('<span style="color: #0000FF; font-weight: bold;">Câu 7:</span> Cho hàm số $y=f(x)$ có $f^{\prime}(x)=(x+2)(x+1)(x^2-1), \forall x \in \mathbb{R}$. Hàm số $y=f(x)$ đồng biến trên khoảng nào sau đây?', unsafe_allow_html=True)
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 7:</span> Cho hàm số $y=f(x)$ có $f^{\prime}(x)=(x+2)(x+1)(x^2-1), \forall x \in \mathbb{R}$. Hàm số $y=f(x)$ đồng biến trên khoảng nào sau đây?', unsafe_allow_html=True)
             p1_q7_d2 = st.radio("C7_d2", [r"A. $(-1;1)$", r"B. $(0;+\infty)$", r"C. $(-\infty;-2)$", r"D. $(-2;-1)$"], key="p1_q7_d2", label_visibility="collapsed")
             st.divider()
 
@@ -704,81 +704,157 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             st.markdown(r"""
             **Câu 1 (B):** Hàm số $f(x)$ có đạo hàm liên tục trên $\mathbb{R}$ thì hàm số $f(x)$ đồng biến trên $\mathbb{R}$ khi $f'(x)>0, \forall x \in \mathbb{R}$[cite: 1].
             
-            **Câu 2 (B):** Dựa vào đồ thị, điểm cực tiểu của đồ thị hàm số đã cho là $x=0$[cite: 1].
+            **Câu 2 (B):** Dựa vào đồ thị, điểm cực tiểu của đồ thị hàm số đã cho là $x=0$.
             
-            **Câu 3 (B):** Hàm số $y=-x^3+2x^2-15x-1$ có TXĐ $D=\mathbb{R}$[cite: 1]. Ta có $y' = -3x^2+4x-15 < 0, \forall x \in \mathbb{R}$ (vì $a=-3<0$ và $\Delta' = 4 - (-3)(-15) = -41 < 0$)[cite: 1]. Vậy hàm số nghịch biến trên $\mathbb{R}$[cite: 1].
+            **Câu 3 (B):** Hàm số $y=-x^3+2x^2-15x-1$ có TXĐ $D=\mathbb{R}$[cite: 1]. Ta có $y' = -3x^2+4x-15 < 0, \forall x \in \mathbb{R}$ (vì $a=-3<0$ và $\Delta' = 4 - (-3)(-15) = -41 < 0$). 
             
-            **Câu 4 (D):** Dựa vào bảng biến thiên ta thấy hàm số nghịch biến trên khoảng $(-1;0)$ và $(0;1)$[cite: 1].
+            Vậy hàm số nghịch biến trên $\mathbb{R}$[cite: 1].
             
-            **Câu 5 (A):** Từ bảng biến thiên của hàm số ta có hàm số đồng biến trên hai khoảng $(-\infty;-1)$ và $(-1;+\infty)$ do vậy hàm số đồng biến trên khoảng $(2;+\infty)$[cite: 1].
+            **Câu 4 (D):** Dựa vào bảng biến thiên ta thấy hàm số nghịch biến trên khoảng $(-1;0)$ và $(0;1)$.
             
-            **Câu 6 (D):** $y' = (3x-2)^2(15x^2-4x-9)$[cite: 1]. Vì $(3x-2)^2 \ge 0, \forall x \in \mathbb{R}$ nên dấu của $y'$ là dấu của biểu thức $15x^2-4x-9$[cite: 1]. Phương trình $15x^2-4x-9=0$ có hai nghiệm phân biệt là $x=\frac{2\pm\sqrt{139}}{15}$[cite: 1]. Lập bảng biến thiên ta suy ra hàm số có 1 điểm cực đại[cite: 1].
+            **Câu 5 (A):** Từ bảng biến thiên của hàm số ta có hàm số đồng biến trên hai khoảng $(-\infty;-1)$ và $(-1;+\infty)$ do vậy hàm số đồng biến trên khoảng $(2;+\infty)$.
+            
+            **Câu 6 (D):** $y' = (3x-2)^2(15x^2-4x-9)$.
+            
+            Vì $(3x-2)^2 \ge 0, \forall x \in \mathbb{R}$ nên dấu của $y'$ là dấu của biểu thức $15x^2-4x-9$. 
+            
+            Phương trình $15x^2-4x-9=0$ có hai nghiệm phân biệt là $x=\dfrac{2\pm\sqrt{139}}{15}$.
+            
+            Lập bảng biến thiên ta suy ra hàm số có 1 điểm cực đại.
             """)
             
         with st.expander("🔍 Lời giải Câu 7 - Câu 12"):
             st.markdown(r"""
-            **Câu 7 (C):** Ta có $f'(x)=0 \Leftrightarrow (x+2)(x+1)(x^2-1)=0 \Leftrightarrow x=-2, x=-1, x=1$[cite: 1]. Qua bảng xét dấu đạo hàm, hàm số đồng biến trên khoảng $(-\infty;-2)$ và $(1;+\infty)$[cite: 1].
+            **Câu 7 (C):** Ta có $f'(x)=0 \Leftrightarrow (x+2)(x+1)(x^2-1)=0 \Leftrightarrow x=-2, x=-1, x=1$. 
             
-            **Câu 8 (B):** Dựa vào bảng biến thiên, ta suy ra giá trị cực đại của hàm số $f(x)$ bằng $8$[cite: 1].
+            Qua bảng xét dấu đạo hàm, hàm số đồng biến trên khoảng $(-\infty;-2)$ và $(1;+\infty)$.
             
-            **Câu 9 (A):** Tập xác định: $D=(0;+\infty)$[cite: 1]. Có $y' = \frac{1-\ln x}{x^2}$[cite: 1]. Phương trình $y'=0 \Leftrightarrow \ln x = 1 \Leftrightarrow x=e$[cite: 1]. Dựa vào bảng biến thiên, hàm số có giá trị cực đại $y = \frac{1}{e}$[cite: 1].
+            **Câu 8 (B):** Dựa vào bảng biến thiên, ta suy ra giá trị cực đại của hàm số $f(x)$ bằng $8$.
             
-            **Câu 10 (C):** Từ bảng biến thiên suy ra hàm số nghịch biến trên khoảng $(-1;1)$[cite: 1].
+            **Câu 9 (A):** Tập xác định: $D=(0;+\infty)$[cite: 1]. Có $y' = \dfrac{1-\ln x}{x^2}$.
             
-            **Câu 11 (A):** Vì hàm số $y=f(x)$ liên tục trên $\mathbb{R}$ và $f'(x)$ đổi dấu 3 lần nên hàm số $y=f(x)$ có 3 điểm cực trị[cite: 1].
+            Phương trình $y'=0 \Leftrightarrow \ln x = 1 \Leftrightarrow x=e$. 
             
-            **Câu 12 (C):** Ta có: $y' = f'(x) = 3x^2+2ax+b$[cite: 1]. Vì $M(1;-5)$ là một điểm cực trị của đồ thị hàm số $y=f(x)$, ta có hệ $\begin{cases} f'(1)=0 \\ f(1)=5 \end{cases} \Leftrightarrow \begin{cases} 2a+b=-3 \\ a+b=3 \end{cases} \Leftrightarrow \begin{cases} a=-6 \\ b=9 \end{cases}$[cite: 1]. Vậy $f(x)=x^3-6x^2+9x+1 \Rightarrow f(2)=3$[cite: 1].
+            Dựa vào bảng biến thiên, hàm số có giá trị cực đại $y = \dfrac{1}{e}$.
+            
+            **Câu 10 (C):** Từ bảng biến thiên suy ra hàm số nghịch biến trên khoảng $(-1;1)$.
+            
+            **Câu 11 (A):** Vì hàm số $y=f(x)$ liên tục trên $\mathbb{R}$ và $f'(x)$ đổi dấu 3 lần nên hàm số $y=f(x)$ có 3 điểm cực trị.
+            
+            **Câu 12 (C):** Ta có: $y' = f'(x) = 3x^2+2ax+b$[cite: 1]. 
+            
+            Vì $M(1;-5)$ là một điểm cực trị của đồ thị hàm số $y=f(x)$, ta có hệ $\begin{cases} f'(1)=0 \\ f(1)=5 \end{cases} \Leftrightarrow \begin{cases} 2a+b=-3 \\ a+b=3 \end{cases} \Leftrightarrow \begin{cases} a=-6 \\ b=9 \end{cases}$. 
+            
+            Vậy $f(x)=x^3-6x^2+9x+1 \Rightarrow f(2)=3$.
             """)
 
         st.subheader("Phần 2: Trắc nghiệm lựa chọn đúng sai")
         with st.expander("🔍 Lời giải Câu 1 & Câu 2"):
             st.markdown(r"""
-            **Câu 1:** (a-Sai, b-Đúng, c-Sai, d-Đúng)[cite: 1]. 
+            **Câu 1:** (a-Sai, b-Đúng, c-Sai, d-Đúng). 
             *Giải thích:*
-            - Hàm số $y=f(x)$ đồng biến trên các khoảng $(-\infty;0)$ và $(3;+\infty)$[cite: 1].
-            - Hàm số $y=f(x)$ nghịch biến trên khoảng $(0;3)$[cite: 1].
-            - Hàm số $y=f(x)$ đạt cực đại tại $x=0$[cite: 1].
-            - Giá trị cực tiểu của hàm số $y=f(x)$ là $y=-4$[cite: 1].
+            - Hàm số $y=f(x)$ đồng biến trên các khoảng $(-\infty;0)$ và $(3;+\infty)$.
             
-            **Câu 2:** (a-Sai, b-Đúng, c-Đúng, d-Sai)[cite: 1].
+            - Hàm số $y=f(x)$ nghịch biến trên khoảng $(0;3)$.
+            
+            - Hàm số $y=f(x)$ đạt cực đại tại $x=0$.
+            
+            - Giá trị cực tiểu của hàm số $y=f(x)$ là $y=-4$.
+            
+            **Câu 2:** (a-Sai, b-Đúng, c-Đúng, d-Sai).
             *Giải thích:*
-            - Hàm số $y=f(x)$ đồng biến trên các khoảng $(-\infty;-1)$ và $(1;+\infty)$[cite: 1].
-            - Giá trị cực đại là $y=3$, giá trị cực tiểu là $y=-1$. Tổng là $3 + (-1) = 2$[cite: 1].
-            - Hàm số $y=f(x)$ có hai cực trị là $x=\pm 1$ (trái dấu)[cite: 1].
-            - Đường thẳng qua hai điểm cực trị $A(-1;3), B(1;-1)$ có phương trình $d: y = -2x+1$[cite: 1].
+            - Hàm số $y=f(x)$ đồng biến trên các khoảng $(-\infty;-1)$ và $(1;+\infty)$.
+            
+            - Giá trị cực đại là $y=3$, giá trị cực tiểu là $y=-1$. Tổng là $3 + (-1) = 2$.
+            
+            - Hàm số $y=f(x)$ có hai cực trị là $x=\pm 1$ (trái dấu).
+            
+            - Đường thẳng qua hai điểm cực trị $A(-1;3), B(1;-1)$ có phương trình $d: y = -2x+1$.
             """)
             
         with st.expander("🔍 Lời giải Câu 3 & Câu 4"):
             st.markdown(r"""
-            **Câu 3:** (a-Sai, b-Đúng, c-Sai, d-Đúng)[cite: 1].
+            **Câu 3:** (a-Sai, b-Đúng, c-Sai, d-Đúng).
             *Giải thích:*
-            - Sai vì hàm số nghịch biến trên $(0;1)$[cite: 1].
-            - Hai điểm cực tiểu có tọa độ $(-1;-1)$ và $(1;-1)$. Độ dài đoạn nối là $\sqrt{(1+1)^2+(-1+1)^2} = 2$[cite: 1].
-            - Ta có $[f(2x)]' = 2f'(2x) = 0 \Leftrightarrow x=-\frac{1}{2}, x=0, x=\frac{1}{2}$[cite: 1]. Khảo sát thấy hàm số đồng biến trên khoảng $(\frac{1}{2};1)$[cite: 1].
-            - Giả sử $f(x)=ax^4+bx^2+c \Rightarrow f(x)=2x^4-4x^2+1$[cite: 1]. Khi đó $y = \frac{1}{x^4}[2x^4-4x^2]^4 = 2^4 x^4(x^2-2)^4$[cite: 1]. Có $y' = 2^4 \cdot 4 \cdot x^3(x^2-2)^3(3x^2-2)$[cite: 1]. Xét $y'=0$ có $5$ nghiệm bội lẻ nên hàm số có $5$ điểm cực trị[cite: 1].
+            - Sai vì hàm số nghịch biến trên $(0;1)$.
             
-            **Câu 4:** (a-Đúng, b-Sai, c-Sai, d-Sai)[cite: 1].
+            - Hai điểm cực tiểu có tọa độ $(-1;-1)$ và $(1;-1)$. Độ dài đoạn nối là $\sqrt{(1+1)^2+(-1+1)^2} = 2$.
+            
+            - Ta có $[f(2x)]' = 2f'(2x) = 0 \Leftrightarrow x=-\dfrac{1}{2}, x=0, x=\dfrac{1}{2}$.
+            
+             Khảo sát thấy hàm số đồng biến trên khoảng $(\dfrac{1}{2};1)$.
+            
+            - Giả sử $f(x)=ax^4+bx^2+c \Rightarrow f(x)=2x^4-4x^2+1$.
+            
+            Khi đó $y = \dfrac{1}{x^4}[2x^4-4x^2]^4 = 2^4 x^4(x^2-2)^4$. 
+            
+            Có $y' = 2^4 \cdot 4 \cdot x^3(x^2-2)^3(3x^2-2)$. 
+            
+            Xét $y'=0$ có $5$ nghiệm bội lẻ nên hàm số có $5$ điểm cực trị.
+            
+            **Câu 4:** (a-Đúng, b-Sai, c-Sai, d-Sai).
+            
             *Giải thích:*
-            - $f'(x) = (x+1)e^x$ đổi dấu tại $x=-1$, đúng[cite: 1].
-            - Không đủ cơ sở để xác định hàm số $f(x)$ nên không xác định được giá trị cực tiểu[cite: 1].
-            - Ta có $[f(x^2)]' = 2xf'(x^2) = 2x(x^2+1)e^{x^2} = 0 \Leftrightarrow x=0$. Hàm số nghịch biến trên $(-1;0)$[cite: 1].
-            - Ta có $g'(x) = \ln x + 1 - 2mx + 4m \le 0, \forall x \in (e; e^{2024}) \Leftrightarrow 2m \ge \frac{\ln x + 1}{x-2}$[cite: 1]. Khảo sát hàm số suy ra $m \ge \frac{1}{e-2} \Rightarrow m \ge 2$[cite: 1]. Do $m \in [-2024; 2025]$ nên $m \in \{2; 3; \dots; 2025\}$ (có $2024$ giá trị)[cite: 1].
+            
+            - $f'(x) = (x+1)e^x$ đổi dấu tại $x=-1$, đúng.
+            
+            - Không đủ cơ sở để xác định hàm số $f(x)$ nên không xác định được giá trị cực tiểu.
+            
+            - Ta có $[f(x^2)]' = 2xf'(x^2) = 2x(x^2+1)e^{x^2} = 0 \Leftrightarrow x=0$. Hàm số nghịch biến trên $(-1;0)$.
+            
+            - Ta có $g'(x) = \ln x + 1 - 2mx + 4m \le 0, \forall x \in (e; e^{2024}) \Leftrightarrow 2m \ge \dfrac{\ln x + 1}{x-2}$.
+            
+            Khảo sát hàm số suy ra $m \ge \dfrac{1}{e-2} \Rightarrow m \ge 2$[cite: 1]. Do $m \in [-2024; 2025]$ nên $m \in \{2; 3; \dots; 2025\}$ (có $2024$ giá trị).
             """)
 
         st.subheader("Phần 3: Câu hỏi trả lời ngắn")
         with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
             st.markdown(r"""
-            **Câu 1 (Đáp án: -3):** Tập xác định: $\mathbb{R} \setminus \{-1\}$. Ta có $y' = \frac{x^2+2x}{(x+1)^2} = 0 \Leftrightarrow x=0, x=-2$[cite: 1]. Hàm số nghịch biến trên $(-2;-1)$ và $(-1;0)$ $\Rightarrow a=-2, b=-1, c=0 \Rightarrow T = -3$[cite: 1].
+            **Câu 1 (Đáp án: -3):** Tập xác định: $\mathbb{R} \setminus \{-1\}$. 
             
-            **Câu 2 (Đáp án: 1.41):** Đồ thị có điểm cực trị $(1;2) \Rightarrow a=1, b=3$[cite: 1]. Hàm số $y'=4x^3-4x = 0 \Leftrightarrow x=0, x=1, x=-1$[cite: 1]. Đồ thị có 2 điểm cực tiểu $A(-1;2), B(1;2)$ và 1 điểm cực đại $C(0;3)$[cite: 1]. Khoảng cách $AC = \sqrt{(0-1)^2+(3-2)^2} = \sqrt{2} \approx 1.41$[cite: 1].
+            Ta có $y' = \frac{x^2+2x}{(x+1)^2} = 0 \Leftrightarrow x=0, x=-2$. 
             
-            **Câu 3 (Đáp án: 6.71):** Tập xác định $\mathbb{R}$[cite: 1]. $y' = \frac{-2x^2+8x+2}{(x^2+1)^2} = 0 \Leftrightarrow x=2-\sqrt{5}, x=2+\sqrt{5}$[cite: 1]. Hai điểm cực trị là $A(2-\sqrt{5}; -1-\sqrt{5})$ và $B(2+\sqrt{5}; -1+\sqrt{5})$[cite: 1]. Ta tính được $\vec{AB} = (2\sqrt{5}; 2\sqrt{5})$, $\vec{AI} = (2; -1)$[cite: 1]. Diện tích tam giác $S_{ABI} = \frac{1}{2}|ad-bc| = \frac{1}{2}|-2\sqrt{5}-4\sqrt{5}| = 3\sqrt{5} \approx 6.71$[cite: 1].
+            Hàm số nghịch biến trên $(-2;-1)$ và $(-1;0)$ $\Rightarrow a=-2, b=-1, c=0 \Rightarrow T = -3$.
             
-            **Câu 4 (Đáp án: 52):** Hàm lợi nhuận $f(x) = TR - TC = -x^3+75x^2+312x-40000$[cite: 1]. TXĐ $D=(0;+\infty)$[cite: 1]. Có $f'(x) = -3x^2+150x+312 = 0 \Leftrightarrow x=52$ hoặc $x=-2$ (loại)[cite: 1]. Khảo sát BBT ta thấy hàm số đạt giá trị cực đại tại $x=52$[cite: 1].
+            **Câu 2 (Đáp án: 1.41):** Đồ thị có điểm cực trị $(1;2) \Rightarrow a=1, b=3$. 
             
-            **Câu 5 (Đáp án: 0):** Tập xác định $D=(-\infty;0) \cup (2;+\infty)$[cite: 1]. Ta có $y' = \frac{2x-2}{(x^2-2x)\ln 3} = 0 \Leftrightarrow x=1$[cite: 1]. Dựa vào BBT, hàm số nghịch biến trên $(-\infty;0)$[cite: 1]. Vậy $a=0$[cite: 1].
+            Hàm số $y'=4x^3-4x = 0 \Leftrightarrow x=0, x=1, x=-1$. 
             
-            **Câu 6 (Đáp án: 158):** Đồ thị $y=f(x)$ đi qua $O(0;0), A(2;0), C(3;0)$ suy ra $y = a(x^3-5x^2+6x)$ với $a>0$[cite: 1]. $y'=a(3x^2-10x+6)=0 \Leftrightarrow x = \frac{5\pm\sqrt{7}}{3}$[cite: 1]. Điểm cực đại $x_{CĐ} = \frac{5-\sqrt{7}}{3}$ với $y_{CĐ} = 0.528$ suy ra $a \approx 0.25$[cite: 1]. Điểm cực tiểu sâu nhất là $x_{CT} = \frac{5+\sqrt{7}}{3}$, tính được $y_{CT} \approx -0.1578$ (km)[cite: 1]. Vậy độ sâu là xấp xỉ $158$ mét[cite: 1].
+            Đồ thị có 2 điểm cực tiểu $A(-1;2), B(1;2)$ và 1 điểm cực đại $C(0;3)$. 
+            
+            Khoảng cách $AC = \sqrt{(0-1)^2+(3-2)^2} = \sqrt{2} \approx 1.41$.
+            
+            **Câu 3 (Đáp án: 6.71):** Tập xác định $\mathbb{R}$.
+            
+            $y' = \dfrac{-2x^2+8x+2}{(x^2+1)^2} = 0 \Leftrightarrow x=2-\sqrt{5}, x=2+\sqrt{5}$. 
+            
+            Hai điểm cực trị là $A(2-\sqrt{5}; -1-\sqrt{5})$ và $B(2+\sqrt{5}; -1+\sqrt{5})$.
+            
+            Ta tính được $\vec{AB} = (2\sqrt{5}; 2\sqrt{5})$, $\vec{AI} = (2; -1)$. 
+            
+            Diện tích tam giác $S_{ABI} = \dfrac{1}{2}|ad-bc| = \dfrac{1}{2}|-2\sqrt{5}-4\sqrt{5}| = 3\sqrt{5} \approx 6.71$.
+            
+            **Câu 4 (Đáp án: 52):** Hàm lợi nhuận $f(x) = TR - TC = -x^3+75x^2+312x-40000$. 
+            
+            TXĐ $D=(0;+\infty)$[cite: 1]. Có $f'(x) = -3x^2+150x+312 = 0 \Leftrightarrow x=52$ hoặc $x=-2$ (loại). 
+            
+            Khảo sát BBT ta thấy hàm số đạt giá trị cực đại tại $x=52$.
+            
+            **Câu 5 (Đáp án: 0):** Tập xác định $D=(-\infty;0) \cup (2;+\infty)$. 
+            
+            Ta có $y' = \dfrac{2x-2}{(x^2-2x)\ln 3} = 0 \Leftrightarrow x=1$.
+            
+            Dựa vào BBT, hàm số nghịch biến trên $(-\infty;0)$[cite: 1]. Vậy $a=0$.
+            
+            **Câu 6 (Đáp án: 158):** Đồ thị $y=f(x)$ đi qua $O(0;0), A(2;0), C(3;0)$ suy ra $y = a(x^3-5x^2+6x)$ với $a>0$. 
+            
+            $y'=a(3x^2-10x+6)=0 \Leftrightarrow x = \frac{5\pm\sqrt{7}}{3}$. 
+            
+            Điểm cực đại $x_{CĐ} = \dfrac{5-\sqrt{7}}{3}$ với $y_{CĐ} = 0.528$ suy ra $a \approx 0.25$. 
+            
+            Điểm cực tiểu sâu nhất là $x_{CT} = \dfrac{5+\sqrt{7}}{3}$, tính được $y_{CT} \approx -0.1578$ (km). 
+            
+            Vậy độ sâu là xấp xỉ $158$ mét.
             """)
 
 # ==================== XỬ LÝ NỘI DUNG ĐỀ 3 ====================
