@@ -426,40 +426,51 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
 
 # ==================== XỬ LÝ NỘI DUNG ĐỀ 2 ====================
 elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số":
-    key_nop_bai = "submitted_de2"
+    key_nop_bai = "submitted_de2"  # Khóa riêng cho Đề 2
     if key_nop_bai not in st.session_state:
         st.session_state[key_nop_bai] = False
         
-    st.title("ĐỀ 2: Sự biến thiên và cực trị của hàm số")
+    st.markdown(
+        '<h1 style="text-align: center; color: #0000FF;">ĐỀ 2: SỰ BIẾN THIÊN VÀ CỰC TRỊ CỦA HÀM SỐ</h1>', 
+        unsafe_allow_html=True
+    )
     st.markdown("---")
     
     if not st.session_state[key_nop_bai]:
         with st.form("form_de_2"):
-            st.markdown("**Câu 1 (Đề 2):** Nội dung câu hỏi khối đa diện...")
-            q1_d2 = st.radio("C1_d2", [r"A. Đáp án A", r"B. Đáp án B", r"C. Đáp án C", r"D. Đáp án D"], label_visibility="collapsed")
+            # --- PHẦN TRẮC NGHIỆM CỦA ĐỀ 2 ---
+            st.markdown('<h2 style="color: #0000FF;">Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn</h2>', unsafe_allow_html=True)
+            st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời các câu hỏi dưới đây. (Mỗi câu đúng 0.25 điểm)</b></em>', unsafe_allow_html=True)
+            
+            st.markdown('<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Cho hàm số $y=f(x)$...', unsafe_allow_html=True)
+            p1_q1_d2 = st.radio("C1_d2", [r"A. Đáp án A", r"B. Đáp án B", r"C. Đáp án C", r"D. Đáp án D"], key="p1_q1_d2", label_visibility="collapsed")
             st.divider()
             
+            # (Thêm các câu hỏi tiếp theo của Đề 2 tại đây...)
+            
+            # NÚT NỘP BÀI ĐỀ 2
             submitted_2 = st.form_submit_button("Nộp Bài Thi Đề 2", type="primary")
             if submitted_2:
                 st.session_state[key_nop_bai] = True
-                st.session_state.q1_d2_ans = q1_d2
+                st.session_state.p1_d2 = [p1_q1_d2] # Lưu đáp án học sinh chọn
                 st.rerun()
     else:
-        score_d2 = 0
-        if "q1_d2_ans" in st.session_state and st.session_state.q1_d2_ans.startswith("A."):
-            score_d2 += 0.25
-            
-        st.success(f"🎉 Bạn đã hoàn thành Đề 2! Tổng điểm: **{score_d2}**")
+        # --- CHẤM ĐIỂM VÀ HIỂN THỊ KẾT QUẢ ĐỀ 2 ---
+        tong_diem_d2 = 0.25 if ("p1_d2" in st.session_state and st.session_state.p1_d2[0].startswith("A.")) else 0.0
+        
+        st.balloons()
+        st.success(f"🎉 BẠN ĐÃ HOÀN THÀNH ĐỀ 2! Tổng điểm: **{tong_diem_d2:.2f} / 10.0**")
         
         if st.button("🔄 Làm lại Đề 2"):
             st.session_state[key_nop_bai] = False
             st.rerun()
             
         st.markdown("---")
-        st.header("📖 LỜI GIẢI CHI TIẾT ĐỀ 2")
-        with st.expander("🔍 Câu 1: Xem lời giải chi tiết"):
-            st.markdown("**Đáp án đúng:** A")
-            st.markdown("**Hướng dẫn giải:** Lời giải chi tiết cho câu hỏi khối đa diện...")
+        st.markdown('<h2 style="color: #0000FF;">📖 ĐÁP ÁN & LỜI GIẢI CHI TIẾT ĐỀ 2</h2>', unsafe_allow_html=True)
+        with st.expander("🔍 Xem hướng dẫn giải chi tiết"):
+            st.markdown(r"""
+            **Câu 1 (A):** Hướng dẫn giải chi tiết cho câu hỏi của Đề 2...
+            """)
 
 # ==================== XỬ LÝ NỘI DUNG ĐỀ 3 ====================
 # ==================== XỬ LÝ NỘI DUNG ĐỀ 3 ====================
