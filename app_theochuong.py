@@ -450,8 +450,6 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
                 unsafe_allow_html=True
             )
 
-            
-            
             p1_q1_d2 = st.radio(
                 "C1_d2", 
                 [
@@ -480,7 +478,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
 
 
             
-            p1_q1_d2 = st.radio(
+            p1_q2_d2 = st.radio(
                 "C1_d2", 
                 [
                     r"A. $ x=-1$}", 
@@ -488,7 +486,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
                     r"C.  $ x=2$", 
                     r"D. $A( 0;-1 ) $"
                 ], 
-                key="p1_q1_d2", 
+                key="p1_q2_d2", 
                 label_visibility="collapsed"
             )
             st.divider()
