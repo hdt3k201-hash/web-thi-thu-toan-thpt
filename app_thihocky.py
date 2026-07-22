@@ -322,7 +322,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
         
         st.subheader("Phần 1: Trắc nghiệm 4 lựa chọn")
         with st.expander("🔍 Câu 1 - Câu 6"):
-            st.markdown("""
+            st.markdown(r"""
             **Câu 1 (C):** Phương trình $f'(x)=0$ có hai nghiệm đơn nên hàm số có 2 điểm cực trị.
             
             **Câu 2 (C):** Hàm số đồng biến trên khoảng $(-\infty; -2)$.
@@ -337,7 +337,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             """)
             
         with st.expander("🔍 Câu 7 - Câu 12"):
-            st.markdown("""
+            st.markdown(r"""
             **Câu 7 (D):** Dựa vào BBT, giá trị cực tiểu là $y_{CT} = -20$.
             **Câu 8 (B):** TXĐ: $\mathbb{R} \setminus \{-1\}$. $y' = \frac{3}{(x+1)^2} > 0$. Hàm số đồng biến trên $(-\infty; -1)$ và $(-1; +\infty)$.
             **Câu 9 (D):** $y' = \frac{x^2+2x-8}{(x+1)^2}$. Cho $y' = 0 \Leftrightarrow x = -4 \lor x = 2$. Lập BBT ta thấy hàm số nghịch biến trên $(-4; -1)$ và $(-1; 2)$.
@@ -348,7 +348,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
 
         st.subheader("Phần 2: Trắc nghiệm lựa chọn đúng sai")
         with st.expander("🔍 Câu 1 & Câu 2"):
-            st.markdown("""
+            st.markdown(r"""
             **Câu 1:** (a-Sai, b-Đúng, c-Sai, d-Đúng). 
             *Giải thích:* Đồ thị $f'(x)$ nằm trên trục $Ox$ (dương) ở $(-1; 1)$ và $(2; +\infty)$ nên đồng biến. Đồ thị $f'(x)$ âm ở $(-\infty; -1)$ và $(1; 2)$ nên nghịch biến.
             
@@ -357,7 +357,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             """)
             
         with st.expander("🔍 Câu 3 & Câu 4"):
-            st.markdown("""
+            st.markdown(r"""
             **Câu 3:** (a-Đúng, b-Sai, c-Đúng, d-Sai).
             *Giải thích:* $y' = (2x-3) \cdot 2^{x^2-3x+\frac{13}{4}} \ln 2$. $y'=0 \Leftrightarrow x=\frac{3}{2}$. Hàm số chỉ có 1 điểm cực trị là cực tiểu tại $x=\frac{3}{2}$ với $y_{CT} = 2$.
             
@@ -367,7 +367,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
 
         st.subheader("Phần 3: Câu hỏi trả lời ngắn")
         with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
-            st.markdown("""
+            st.markdown(r"""
             **Câu 1 (Ans: 6):** $y' = -3x^2+6x+9=0 \Leftrightarrow x=-1 \lor x=3$. Điểm CT: $A(-1; -4), B(3; 28)$. Đường thẳng $AB$: $8x-y+4=0 \Rightarrow a=8, b=-1 \Rightarrow a+2b=6$.
             
             **Câu 2 (Ans: -35):** Thế tọa độ cực trị vào hệ phương trình giải ra $a,b,c,d \Rightarrow y = 2x^3 - 9x^2 + 12x - 12$. Tính $y(-1) = -35$.
