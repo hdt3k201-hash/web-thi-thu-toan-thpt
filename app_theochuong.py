@@ -2055,9 +2055,12 @@ elif de_thi_chon == "Đề 5: Đường tiệm cận của đồ thị hàm số
             - Khi $x \to -\infty$: $\lim_{x \to -\infty} \dfrac{f(x)}{x} = 2 \Rightarrow a = 2$; $\lim_{x \to -\infty} (f(x) - 2x) = -1 \Rightarrow y = 2x - 1$ là TCX thứ hai. Tổng cộng 2 đường tiệm cận xiên[cite: 1].
             <br><br>
             **Câu 6 (Đáp án: 29):**<br>
-            - Chiều cao $h = 10dm = 1m$. Thể tích $V = xy.1 = 5 \Rightarrow y = \dfrac{5}{x}$[cite: 1].<br>
-            - Diện tích toàn phần (không nắp): $S(x) = xy + 2xh + 2yh = 5 + 2x + \dfrac{10}{x}$[cite: 1].<br>
-            - $\lim_{x \to +\infty} [S(x) - (2x + 5)] = \lim_{x \to +\infty} \dfrac{10}{x} = 0$. Tiệm cận xiên là $y = 2x + 5$[cite: 1].<br>
-            - Từ đó $a=2, b=5 \Rightarrow P = 2^2 + 5^2 = 29$[cite: 1].
+            - Chiều cao $h = 10dm = 1m$. Thể tích $V = xy.1 = 5 \Rightarrow y = \dfrac{5}{x}$.
+            
+            - Diện tích toàn phần (không nắp): $S(x) = xy + 2xh + 2yh = 5 + 2x + \dfrac{10}{x}$.
+            
+            - $\lim_{x \to +\infty} [S(x) - (2x + 5)] = \lim_{x \to +\infty} \dfrac{10}{x} = 0$. Tiệm cận xiên là $y = 2x + 5$.
+            
+            - Từ đó $a=2, b=5 \Rightarrow P = 2^2 + 5^2 = 29$.
             """)
 
