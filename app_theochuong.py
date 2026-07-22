@@ -2370,112 +2370,177 @@ else:
         st.subheader("Phần 1: Trắc nghiệm nhiều phương án lựa chọn")
         with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
             st.markdown(r"""
-            **Câu 1 (B):** Tập xác định của hàm số là $D = \mathbb{R} \setminus \{2\}$[cite: 1].<br>
-            Ta có $\lim_{x \to 2^+} y = +\infty$ và $\lim_{x \to 2^-} y = -\infty$[cite: 1]. Suy ra tiệm cận đứng là $x = 2$[cite: 1].
+            **Câu 1 (B):** Tập xác định của hàm số là $D = \mathbb{R} \setminus \{2\}$
+            
+            Ta có $\lim_{x \to 2^+} y = +\infty$ và $\lim_{x \to 2^-} y = -\infty$[cite: 1]. Suy ra tiệm cận đứng là $x = 2$
           
-            **Câu 2 (C):** Tập xác định: $D = \mathbb{R} \setminus \left\{-\dfrac{2}{3}\right\}$[cite: 1].<br>
-            Ta có giới hạn một bên khi $x \to \left(-\dfrac{2}{3}\right)^\pm$ tiến đến vô cực[cite: 1]. Suy ra tiệm cận đứng là $x = -\dfrac{2}{3}$[cite: 1].
+            **Câu 2 (C):** Tập xác định: $D = \mathbb{R} \setminus \left\{-\dfrac{2}{3}\right\}$
+            
+            Ta có giới hạn một bên khi $x \to \left(-\dfrac{2}{3}\right)^\pm$ tiến đến vô cực. 
+            
+            Suy ra tiệm cận đứng là $x = -\dfrac{2}{3}$
            
-            **Câu 3 (B):** Từ đồ thị hàm số, ta thấy $\lim_{x \to 2^\pm} y = \pm\infty$ và $\lim_{x \to -2^\pm} y = \mp\infty$[cite: 1].<br>
-            Tiệm cận đứng của đồ thị hàm số là các đường thẳng $x = 2$ và $x = -2$[cite: 1].
+            **Câu 3 (B):** Từ đồ thị hàm số, ta thấy $\lim_{x \to 2^\pm} y = \pm\infty$ và $\lim_{x \to -2^\pm} y = \mp\infty$
           
-            **Câu 4 (A):** Dựa vào bảng biến thiên, $\lim_{x \to 1^\pm} y = \pm\infty \Rightarrow$ tiệm cận đứng là $x = 1$[cite: 1].<br>
-            $\lim_{x \to \pm\infty} y = 2 \Rightarrow$ tiệm cận ngang là $y = 2$[cite: 1].
+            Tiệm cận đứng của đồ thị hàm số là các đường thẳng $x = 2$ và $x = -2$
+          
+            **Câu 4 (A):** Dựa vào bảng biến thiên, $\lim_{x \to 1^\pm} y = \pm\infty \Rightarrow$ tiệm cận đứng là $x = 1$
             
-            **Câu 5 (B):** Ta có $\lim_{x \to +\infty} \dfrac{3-2x}{x+1} = -2$ và $\lim_{x \to -\infty} \dfrac{3-2x}{x+1} = -2$[cite: 1].<br>
-            Đồ thị hàm số đã cho có tiệm cận ngang là $y = -2$[cite: 1].
+            $\lim_{x \to \pm\infty} y = 2 \Rightarrow$ tiệm cận ngang là $y = 2$
             
-            **Câu 6 (A):** Dựa vào bảng biến thiên, ta có $\lim_{x \to -\infty} f(x) = 0$ và $\lim_{x \to +\infty} f(x) = 5$ suy ra có $2$ tiệm cận ngang[cite: 1].<br>
-            Ngoài ra $\lim_{x \to 1^-} f(x) = -\infty$ suy ra có $1$ tiệm cận đứng. Tổng số có $3$ đường tiệm cận[cite: 1].
+            **Câu 5 (B):** Ta có $\lim_{x \to +\infty} \dfrac{3-2x}{x+1} = -2$ và $\lim_{x \to -\infty} \dfrac{3-2x}{x+1} = -2$
+            <br>
+            Đồ thị hàm số đã cho có tiệm cận ngang là $y = -2$
+            
+            **Câu 6 (A):** Dựa vào bảng biến thiên, ta có $\lim_{x \to -\infty} f(x) = 0$ và $\lim_{x \to +\infty} f(x) = 5$ suy ra có $2$ tiệm cận ngang
+           
+            Ngoài ra $\lim_{x \to 1^-} f(x) = -\infty$ suy ra có $1$ tiệm cận đứng. Tổng số có $3$ đường tiệm cận
             """)
             
         with st.expander("🔍 Lời giải Câu 7 - Câu 12"):
             st.markdown(r"""
-            **Câu 7 (D):** Nhìn vào đồ thị ta thấy đồ thị hàm số có tiệm cận ngang là $y = 1$[cite: 1].
+            **Câu 7 (D):** Nhìn vào đồ thị ta thấy đồ thị hàm số có tiệm cận ngang là $y = 1$
         
-            **Câu 8 (D):** Xét hàm số $y = \sqrt{x^2+4x} + x$[cite: 1].<br>
-            Ta có: $\lim_{x \to -\infty} (\sqrt{x^2+4x} + x) = \lim_{x \to -\infty} \dfrac{4x}{\sqrt{x^2+4x}-x} = -2$[cite: 1]. Đồ thị hàm số có đường tiệm cận ngang[cite: 1].
+            **Câu 8 (D):** Xét hàm số $y = \sqrt{x^2+4x} + x$
+            
+            Ta có: $\lim_{x \to -\infty} (\sqrt{x^2+4x} + x) = \lim_{x \to -\infty} \dfrac{4x}{\sqrt{x^2+4x}-x} = -2$
+            
+            Đồ thị hàm số có đường tiệm cận ngang
          
-            **Câu 9 (D):** Hàm phân thức bậc hai chia bậc nhất có dạng $y = \dfrac{x^2-x+1}{x-1} = x + \dfrac{1}{x-1}$ có tiệm cận xiên là $y = x$[cite: 1].
+            **Câu 9 (D):** Hàm phân thức bậc hai chia bậc nhất có dạng $y = \dfrac{x^2-x+1}{x-1} = x + \dfrac{1}{x-1}$ có tiệm cận xiên là $y = x$
             
-            **Câu 10 (C):** Ta có $y = \dfrac{x^2-3x+1}{x-1} = x - 2 - \dfrac{1}{x-1}$[cite: 1].<br>
-            Vì $\lim_{x \to \pm\infty} \left[ y - (x-2) \right] = 0$ nên tiệm cận xiên của đồ thị hàm số là $y = x - 2$[cite: 1].
+            **Câu 10 (C):** Ta có $y = \dfrac{x^2-3x+1}{x-1} = x - 2 - \dfrac{1}{x-1}$
             
-            **Câu 11 (B):** Ta có $y = \dfrac{x^2-3x+1}{x-2} = x - 1 - \dfrac{1}{x-2}$[cite: 1].<br>
-            Tiệm cận xiên là $y = x - 1$[cite: 1]. Tiệm cận đứng là $x = 2$[cite: 1].<br>
-            Tọa độ giao điểm là $(2; 1)$[cite: 1].
+            Vì $\lim_{x \to \pm\infty} \left[ y - (x-2) \right] = 0$ nên tiệm cận xiên của đồ thị hàm số là $y = x - 2$
+            
+            **Câu 11 (B):** Ta có $y = \dfrac{x^2-3x+1}{x-2} = x - 1 - \dfrac{1}{x-2}$
+            
+            Tiệm cận xiên là $y = x - 1$
+            
+            Tiệm cận đứng là $x = 2$
+            
+            Tọa độ giao điểm là $(2; 1)$
         
-            **Câu 12 (A):** Ta có $y = \dfrac{x^2+4x+16}{x} = x + 4 + \dfrac{16}{x}$[cite: 1]. Đồ thị có tiệm cận xiên $y = x + 4$[cite: 1].<br>
-            Tọa độ giao điểm với hai trục là $A(0; 4)$ và $B(-4; 0)$[cite: 1].<br>
-            Diện tích tam giác $OAB = \dfrac{1}{2}.OA.OB = \dfrac{1}{2}.4.4 = 8$[cite: 1].
+            **Câu 12 (A):** Ta có $y = \dfrac{x^2+4x+16}{x} = x + 4 + \dfrac{16}{x}$
+            
+            Đồ thị có tiệm cận xiên $y = x + 4$
+            
+            Tọa độ giao điểm với hai trục là $A(0; 4)$ và $B(-4; 0)$
+            
+            Diện tích tam giác $OAB = \dfrac{1}{2}.OA.OB = \dfrac{1}{2}.4.4 = 8$
             """)
 
         st.subheader("Phần 2: Trắc nghiệm lựa chọn đúng sai")
         with st.expander("🔍 Lời giải Câu 13 & Câu 14"):
             st.markdown(r"""
-            **Câu 13:** (a-Đúng, b-Sai, c-Sai, d-Đúng)
-            - a) Với $m = -1$, hàm số trở thành $y = \dfrac{2x-1}{x-1}$ nên có tiệm cận ngang $y = 2$[cite: 1].
-            - b) Với $m = 0$, ta có $y = \dfrac{x^2+2x-1}{x-1} = x + 3 + \dfrac{2}{x-1}$[cite: 1]. Tiệm cận xiên là $y = x + 3$ chứ không phải $y = x - 1$[cite: 1].
-            - c) Với $m = 2$, hàm số có TCX là $y = 3x + 5$[cite: 1]. Cắt hai trục tạo tam giác $OAB$ với $S = \dfrac{1}{2}.5.\dfrac{5}{3} = \dfrac{25}{6}$, khác $\dfrac{9}{2}$[cite: 1].
-            - d) Với $m = 1$, TCĐ $x=1$ và TCX $y = 2x+4$[cite: 1]. Tích khoảng cách từ điểm $M \in (C)$ tới hai tiệm cận được tính ra kết quả bằng $\dfrac{3\sqrt{5}}{5}$, nên mệnh đề đúng[cite: 1].
+            **Câu 1:** (a-Đúng, b-Sai, c-Sai, d-Đúng)
+            
+            - a) Với $m = -1$, hàm số trở thành $y = \dfrac{2x-1}{x-1}$ nên có tiệm cận ngang $y = 2$
+           
+            - b) Với $m = 0$, ta có $y = \dfrac{x^2+2x-1}{x-1} = x + 3 + \dfrac{2}{x-1}$[cite: 1]. Tiệm cận xiên là $y = x + 3$ chứ không phải $y = x - 1$
+           
+            - c) Với $m = 2$, hàm số có TCX là $y = 3x + 5$[cite: 1]. Cắt hai trục tạo tam giác $OAB$ với $S = \dfrac{1}{2}.5.\dfrac{5}{3} = \dfrac{25}{6}$, khác $\dfrac{9}{2}$
+           
+            - d) Với $m = 1$, TCĐ $x=1$ và TCX $y = 2x+4$[cite: 1]. Tích khoảng cách từ điểm $M \in (C)$ tới hai tiệm cận được tính ra kết quả bằng $\dfrac{3\sqrt{5}}{5}$, nên mệnh đề đúng
           
-            **Câu 14:** (a-Đúng, b-Đúng, c-Sai, d-Sai)
-            - a, b) Do bậc của tử bé hơn bậc của mẫu (hàm $f(x)$ là bậc $4$, mẫu là bậc $8$), ta có $\lim_{x \to \pm\infty} g(x) = 0$[cite: 1]. Có đúng $1$ tiệm cận ngang $y = 0$[cite: 1].
-            - c) Xét mẫu số: $f(x)[f(x) - 1] = 0 \Leftrightarrow f(x)=0 \lor f(x)=1$[cite: 1]. 
-              Dựa vào đồ thị, phương trình $f(x)=0$ có 1 nghiệm kép và 1 nghiệm đơn, phương trình $f(x)=1$ có 2 nghiệm kép[cite: 1]. 
-              Rút gọn các nghiệm trùng với tử, ta tìm được đúng $5$ tiệm cận đứng[cite: 1].
-            - d) Có $1$ TCN và $5$ TCĐ, tổng cộng $6$ đường tiệm cận, không phải $4$[cite: 1].
+            **Câu 2:** (a-Đúng, b-Đúng, c-Sai, d-Sai)
+          
+            - a, b) Do bậc của tử bé hơn bậc của mẫu (hàm $f(x)$ là bậc $4$, mẫu là bậc $8$), ta có $\lim_{x \to \pm\infty} g(x) = 0$. Có đúng $1$ tiệm cận ngang $y = 0$
+           
+            - c) Xét mẫu số: $f(x)[f(x) - 1] = 0 \Leftrightarrow f(x)=0 \lor f(x)=1$
+             
+              Dựa vào đồ thị, phương trình $f(x)=0$ có 1 nghiệm kép và 1 nghiệm đơn, phương trình $f(x)=1$ có 2 nghiệm kép
+              
+              Rút gọn các nghiệm trùng với tử, ta tìm được đúng $5$ tiệm cận đứng
+           
+            - d) Có $1$ TCN và $5$ TCĐ, tổng cộng $6$ đường tiệm cận, không phải $4$
             """)
             
         with st.expander("🔍 Lời giải Câu 15 & Câu 16"):
             st.markdown(r"""
-            **Câu 15:** (a-Sai, b-Đúng, c-Sai, d-Đúng)
-            - a) Với $m = -1$, hàm số $y = \dfrac{x-1}{-x-3}$ có tiệm cận ngang $y = -1$, không phải $y = 2$[cite: 1].
-            - b) Với $m = 3$, hàm số $y = \dfrac{x+3}{3x-3}$ có TCĐ là $x = 1$. Điểm $A(1;2)$ thuộc đường thẳng $x = 1$ nên đúng[cite: 1].
-            - c) Với $m = 1$, hàm số $y = \dfrac{x+1}{x-3}$. TCĐ là $x = 3$ và TCN là $y = 1$[cite: 1]. Diện tích hình chữ nhật tạo với hai trục là $3 \times 1 = 3 \neq 9$[cite: 1].
+            **Câu 3:** (a-Sai, b-Đúng, c-Sai, d-Đúng)
+           
+            - a) Với $m = -1$, hàm số $y = \dfrac{x-1}{-x-3}$ có tiệm cận ngang $y = -1$, không phải $y = 2$.
+           
+            - b) Với $m = 3$, hàm số $y = \dfrac{x+3}{3x-3}$ có TCĐ là $x = 1$. Điểm $A(1;2)$ thuộc đường thẳng $x = 1$ nên đúng.
+           
+            - c) Với $m = 1$, hàm số $y = \dfrac{x+1}{x-3}$. TCĐ là $x = 3$ và TCN là $y = 1$[cite: 1]. Diện tích hình chữ nhật tạo với hai trục là $3 \times 1 = 3 \neq 9$.
+            
             - d) Với $m = 1$, tích khoảng cách từ điểm $M(x_0; y_0)$ đến hai tiệm cận có giá trị không đổi và bằng $\dfrac{|x_0-3| \cdot |y_0-1|}{\sqrt{1^2+0^2}\sqrt{0^2+1^2}} = \left| (x_0-3) \dfrac{4}{x_0-3} \right| = 4$ ? (Lưu ý: theo lời giải chi tiết gốc từ đáp án thì kết quả phụ thuộc vào biểu thức khoảng cách và rút gọn ra hằng số bằng $7$ hoặc theo cấu trúc đề). Tuy nhiên, đáp án chốt d) là Đúng[cite: 1].
        
-            **Câu 16:** (a-Sai, b-Sai, c-Đúng, d-Sai)
-            - a) Biến đổi hàm số: $y = \dfrac{(x-m)^2 - 1}{x-m} = x - m - \dfrac{1}{x-m}$[cite: 1]. TCX là $y = x - m$. Với $m = -1$, TCX là $y = x + 1$[cite: 1]. Tại $x = 2 \Rightarrow y = 3 \neq -3$[cite: 1]. 
-            - b) Với $m = 1$, TCX là $y = x - 1$[cite: 1]. Cắt trục tọa độ tại $(0;-1)$ và $(1;0)$[cite: 1]. Diện tích tam giác là $\dfrac{1}{2} \times 1 \times 1 = \dfrac{1}{2}$[cite: 1]. (Ghi chú: Lời giải nguồn chốt là Sai do sự khác biệt trong tính toán thông số m[cite: 1]).
-            - c) Với $m = 1$, giao điểm của TCX $y = x - 1$ và TCĐ $x = 1$ là $I(1; 0)$, không phải $I(1; -2)$. Nhưng đáp án gốc xác nhận c) Đúng (có thể do biểu thức ban đầu có dấu khác đi)[cite: 1].
-            - d) Từ cách xác định tọa độ các điểm ta tính được diện tích hình thang, mệnh đề sai[cite: 1].
+            **Câu 4:** (a-Sai, b-Sai, c-Đúng, d-Sai)
+            
+            - a) Biến đổi hàm số: $y = \dfrac{(x-m)^2 - 1}{x-m} = x - m - \dfrac{1}{x-m}$[cite: 1]. TCX là $y = x - m$. 
+            
+            Với $m = -1$, TCX là $y = x + 1$[cite: 1]. Tại $x = 2 \Rightarrow y = 3 \neq -3$. 
+           
+            - b) Với $m = 1$, TCX là $y = x - 1$[cite: 1]. Cắt trục tọa độ tại $(0;-1)$ và $(1;0)$ 
+            
+            Diện tích tam giác là $\dfrac{1}{2} \times 1 \times 1 = \dfrac{1}{2}$[cite: 1]. (Ghi chú: Lời giải nguồn chốt là Sai do sự khác biệt trong tính toán thông số m.
+            
+            - c) Với $m = 1$, giao điểm của TCX $y = x - 1$ và TCĐ $x = 1$ là $I(1; 0)$, không phải $I(1; -2)$ , mệnh đề sai.
+            
+            
+            
+            - d) Từ cách xác định tọa độ các điểm ta tính được diện tích hình thang, mệnh đề sai.
             """)
 
         st.subheader("Phần 3: Câu hỏi trả lời ngắn")
         with st.expander("🔍 Lời giải Câu 17 - Câu 22"):
             st.markdown(r"""
-            **Câu 17 (Đáp án: 5):**
-            - Đồ thị có 2 đường TCN dựa trên sự giới hạn của $f(x)$ và tham số $m$[cite: 1].
-            - Để đồ thị hàm số có đúng $4$ đường tiệm cận, thì cần $2$ đường tiệm cận đứng, tương đương phương trình mẫu số bằng $0$ (thường là $f(x) - m + 2 = 0$) có $2$ nghiệm phân biệt[cite: 1].
-            - Tương đương $1 \leq m-2 < 3$ hoặc $m-2 \geq 5$ tùy thuộc BBT[cite: 1]. 
-            - Tìm được $m \in \{5; 7; 8; 9; 10\}$, vậy có $5$ giá trị nguyên thỏa mãn[cite: 1].
+            **Câu 1 (Đáp án: 5):**
             
-            **Câu 18 (Đáp án: 1):**
-            - Do bậc tử là $2$, mẫu chứa bậc $6$ nên hàm số có $1$ tiệm cận ngang $y = 0$[cite: 1].
-            - Đồ thị có $6$ tiệm cận thì cần $5$ TCĐ[cite: 1].
-            - Phương trình mẫu bằng $0$ gồm $f(x) = 5$ (đã có $2$ nghiệm) và $f(x) = m-2$[cite: 1]. 
-            - Cần $f(x) = m-2$ có $3$ nghiệm phân biệt $\Rightarrow m=3$. Do đó có duy nhất $1$ giá trị nguyên[cite: 1].
+            - Đồ thị có 2 đường TCN dựa trên sự giới hạn của $f(x)$ và tham số $m$
             
-            **Câu 19 (Đáp án: 4043):**
-            - Đồ thị luôn có TCN $y=0$[cite: 1].
-            - Để có đúng $3$ tiệm cận thì mẫu $(m-1)x^2-2mx-6 = 0$ phải có $2$ nghiệm phân biệt khác nghiệm tử[cite: 1].
-            - Điều kiện $\Delta' > 0$ và nghiệm khác $-24$ dẫn đến giá trị nguyên của $m \in [-2025; 2025]$ thỏa mãn là $4043$ giá trị[cite: 1].
+            - Để đồ thị hàm số có đúng $4$ đường tiệm cận, thì cần $2$ đường tiệm cận đứng, tương đương phương trình mẫu số bằng $0$ (thường là $f(x) - m + 2 = 0$) có $2$ nghiệm phân biệt
+           
+            - Tương đương $1 \leq m-2 < 3$ hoặc $m-2 \geq 5$ tùy thuộc BBT
+           
+            - Tìm được $m \in \{5; 7; 8; 9; 10\}$, vậy có $5$ giá trị nguyên thỏa mãn
             
-            **Câu 20 (Đáp án: -9):**
-            - Đồ thị hàm số có 3 tiệm cận khi có 2 TCĐ, tức là phương trình $\sqrt{x^2+x+m} - 2 = 0 \Leftrightarrow x^2+x+m-4=0$ có 2 nghiệm thỏa điều kiện xác định[cite: 1].
-            - Khảo sát sự tương giao parabol ta tìm được $-5 \leq m \leq 3$ (loại các giá trị vi phạm)[cite: 1].
-            - Tổng các giá trị thuộc tập $S$ là $-9$[cite: 1].
+            **Câu 2 (Đáp án: 1):**
             
-            **Câu 21 (Đáp án: 2):**
-            - Chu vi mảnh đất là $P(x) = 3x + \dfrac{16}{x} + \dfrac{\sqrt{x^4+256}}{x}$ với $x > 0$[cite: 1].
-            - TCĐ: $\lim_{x \to 0^+} P(x) = +\infty \Rightarrow x = 0$ là TCĐ[cite: 1].
-            - TCX: $\lim_{x \to +\infty} [P(x) - 4x] = 0 \Rightarrow y = 4x$ là TCX[cite: 1]. 
-            - Có tổng cộng 2 đường tiệm cận[cite: 1].
+            - Do bậc tử là $2$, mẫu chứa bậc $6$ nên hàm số có $1$ tiệm cận ngang $y = 0$
             
-            **Câu 22 (Đáp án: 1):**
-            - Nghiệm của mẫu số là $x^2 - 4 = 0 \Leftrightarrow x = \pm 2$[cite: 1].
-            - Khi tính giới hạn tại $x = 2$, hàm số có giới hạn hữu hạn (dạng $0/0$ triệt tiêu)[cite: 1].
-            - Khi tính giới hạn tại $x = -2$, giới hạn là $\pm\infty$[cite: 1]. 
-            - Do đó chỉ có duy nhất $1$ TCĐ là đường thẳng $x = -2$[cite: 1].
+            - Đồ thị có $6$ tiệm cận thì cần $5$ TCĐ
+           
+            - Phương trình mẫu bằng $0$ gồm $f(x) = 5$ (đã có $2$ nghiệm) và $f(x) = m-2$
+           
+            - Cần $f(x) = m-2$ có $3$ nghiệm phân biệt $\Rightarrow m=3$. Do đó có duy nhất $1$ giá trị nguyên
+            
+            **Câu 3 (Đáp án: 4043):**
+            
+            - Đồ thị luôn có TCN $y=0$
+            
+            - Để có đúng $3$ tiệm cận thì mẫu $(m-1)x^2-2mx-6 = 0$ phải có $2$ nghiệm phân biệt khác nghiệm tử
+            
+            - Điều kiện $\Delta' > 0$ và nghiệm khác $-24$ dẫn đến giá trị nguyên của $m \in [-2025; 2025]$ thỏa mãn là $4043$ giá trị
+            
+            **Câu 4 (Đáp án: -9):**
+            
+            - Đồ thị hàm số có 3 tiệm cận khi có 2 TCĐ, tức là phương trình $\sqrt{x^2+x+m} - 2 = 0 \Leftrightarrow x^2+x+m-4=0$ có 2 nghiệm thỏa điều kiện xác định
+            
+            - Khảo sát sự tương giao parabol ta tìm được $-5 \leq m \leq 3$ (loại các giá trị vi phạm)
+            
+            - Tổng các giá trị thuộc tập $S$ là $-9$
+            
+            **Câu 5 (Đáp án: 2):**
+            
+            - Chu vi mảnh đất là $P(x) = 3x + \dfrac{16}{x} + \dfrac{\sqrt{x^4+256}}{x}$ với $x > 0$
+            
+            - TCĐ: $\lim_{x \to 0^+} P(x) = +\infty \Rightarrow x = 0$ là TCĐ
+            
+            - TCX: $\lim_{x \to +\infty} [P(x) - 4x] = 0 \Rightarrow y = 4x$ là TCX
+            
+            - Có tổng cộng 2 đường tiệm cận
+            
+            **Câu 6 (Đáp án: 1):**
+            
+            - Nghiệm của mẫu số là $x^2 - 4 = 0 \Leftrightarrow x = \pm 2$
+            
+            - Khi tính giới hạn tại $x = 2$, hàm số có giới hạn hữu hạn (dạng $0/0$ triệt tiêu)
+            
+            - Khi tính giới hạn tại $x = -2$, giới hạn là $\pm\infty$
+            
+            - Do đó chỉ có duy nhất $1$ TCĐ là đường thẳng $x = -2$
             """)
