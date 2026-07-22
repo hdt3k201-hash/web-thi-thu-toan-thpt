@@ -1778,7 +1778,7 @@ elif de_thi_chon == "Đề 5: Đường tiệm cận của đồ thị hàm số
             st.divider()
 
             # --- Câu 9 ---
-            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 9:</span> Đường thẳng $y = ax + b$ ($a \neq 0$) là đường tiệm cận xiên của đồ thị hàm số $y=f(x)$ nếu:', unsafe_allow_html=True)
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 9:</span> Đường thẳng $y = ax + b$ (a khác 0) là đường tiệm cận xiên của đồ thị hàm số $y=f(x)$ nếu:', unsafe_allow_html=True)
             p1_q9_d5 = st.radio("C9_d5", [
                 r"A. $\lim_{x \to a} [f(x) - (ax + b)] = 0$", 
                 r"B. $\lim_{x \to -\infty} [f(x) - (ax + b)] = a$", 
@@ -1961,100 +1961,139 @@ elif de_thi_chon == "Đề 5: Đường tiệm cận của đồ thị hàm số
         st.subheader("Phần 1: Trắc nghiệm nhiều phương án lựa chọn")
         with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
             st.markdown(r"""
-            **Câu 1 (C):** Ta có $\lim_{x \to +\infty} f(x) = 2 \Rightarrow$ đường thẳng $y = 2$ là tiệm cận ngang duy nhất của $y=f(x)$[cite: 1].
-            <br><br>
-            **Câu 2 (D):** Ta có $\lim_{x \to +\infty} \dfrac{x-1}{x+1} = 1$ và $\lim_{x \to -\infty} \dfrac{x-1}{x+1} = 1$. Suy ra $y = 1$ là tiệm cận ngang của đồ thị hàm số[cite: 1].
-            <br><br>
+            **Câu 1 (C):** Ta có $\lim_{x \to +\infty} f(x) = 2 \Rightarrow$ đường thẳng $y = 2$ là tiệm cận ngang duy nhất của $y=f(x)$.
+          
+            **Câu 2 (D):** Ta có $\lim_{x \to +\infty} \dfrac{x-1}{x+1} = 1$ và $\lim_{x \to -\infty} \dfrac{x-1}{x+1} = 1$. Suy ra $y = 1$ là tiệm cận ngang của đồ thị hàm số.
+           
             **Câu 3 (A):** Từ đồ thị hàm số, ta thấy hàm số đã cho có một tiệm cận ngang là đường thẳng $y = -1$[cite: 1].
-            <br><br>
-            **Câu 4 (C):** Dựa vào bảng biến thiên, do $\lim_{x \to +\infty} y = 1$ và $\lim_{x \to -\infty} y = -1 \Rightarrow$ đồ thị có 2 tiệm cận ngang là $y = \pm 1$[cite: 1].
-            <br><br>
-            **Câu 5 (C):** Ta thấy $\lim_{x \to -2^+} f(x) = +\infty$ và $\lim_{x \to -2^-} f(x) = -\infty$. Vậy tiệm cận đứng của đồ thị hàm số đã cho là đường thẳng $x = -2$[cite: 1].
-            <br><br>
-            **Câu 6 (A):** Ta có $\lim_{x \to 3^-} \dfrac{x-1}{x-3} = -\infty$. Suy ra tiệm cận đứng là đường thẳng $x = 3$[cite: 1].
+          
+            **Câu 4 (C):** Dựa vào bảng biến thiên, do $\lim_{x \to +\infty} y = 1$ và $\lim_{x \to -\infty} y = -1 \Rightarrow$ đồ thị có 2 tiệm cận ngang là $y = \pm 1$.
+            
+            **Câu 5 (C):** Ta thấy $\lim_{x \to -2^+} f(x) = +\infty$ và $\lim_{x \to -2^-} f(x) = -\infty$. Vậy tiệm cận đứng của đồ thị hàm số đã cho là đường thẳng $x = -2$.
+           
+            **Câu 6 (A):** Ta có $\lim_{x \to 3^-} \dfrac{x-1}{x-3} = -\infty$. Suy ra tiệm cận đứng là đường thẳng $x = 3$.
             """)
             
         with st.expander("🔍 Lời giải Câu 7 - Câu 12"):
             st.markdown(r"""
-            **Câu 7 (A):** Ta có $\lim_{x \to -1^+} \dfrac{x^2-3x+1}{x+1} = -\infty$ và $\lim_{x \to -1^-} \dfrac{x^2-3x+1}{x+1} = +\infty$. Vậy tiệm cận đứng là $x = -1$[cite: 1].
-            <br><br>
-            **Câu 8 (B):** Từ đồ thị hàm số $y=f(x)$ ta thấy $\lim_{x \to 1^+} f(x) = -\infty$ và $\lim_{x \to 1^-} f(x) = +\infty$. Vậy tiệm cận đứng là $x = 1$[cite: 1].
-            <br><br>
-            **Câu 9 (C):** Theo định nghĩa của tiệm cận xiên, đường thẳng $y = ax + b$ là tiệm cận xiên nếu $\lim_{x \to +\infty} [f(x) - (ax + b)] = 0$ hoặc khi $x \to -\infty$[cite: 1].
-            <br><br>
-            **Câu 10 (D):** Ta có $y = \dfrac{x^2+2x+2}{x+1} = x + 1 + \dfrac{1}{x+1}$. Khi đó $\lim_{x \to \pm\infty} [y - (x+1)] = \lim_{x \to \pm\infty} \dfrac{1}{x+1} = 0$. Vậy tiệm cận xiên là $y = x + 1$[cite: 1].
-            <br><br>
-            **Câu 11 (D):** Từ đồ thị hàm số $y=f(x)$ quan sát được tiệm cận xiên là đường thẳng $y = x + 1$[cite: 1].
-            <br><br>
-            **Câu 12 (C):** Ta xét giới hạn khi $x \to +\infty$:<br>
-            $a = \lim_{x \to +\infty} \dfrac{\sqrt{x^2+2x+2}}{x} = \lim_{x \to +\infty} \sqrt{1+\dfrac{2}{x}+\dfrac{2}{x^2}} = 1$<br>
-            $b = \lim_{x \to +\infty} (\sqrt{x^2+2x+2} - x) = \lim_{x \to +\infty} \dfrac{2x+2}{\sqrt{x^2+2x+2}+x} = 1$<br>
-            $\Rightarrow y = x + 1$ là một tiệm cận xiên[cite: 1].<br>
-            Xét giới hạn khi $x \to -\infty$:<br>
-            $a = \lim_{x \to -\infty} \dfrac{\sqrt{x^2+2x+2}}{x} = -1$<br>
-            $b = \lim_{x \to -\infty} (\sqrt{x^2+2x+2} + x) = \lim_{x \to -\infty} \dfrac{2x+2}{\sqrt{x^2+2x+2}-x} = -1$<br>
-            $\Rightarrow y = -x - 1$ là tiệm cận xiên thứ hai. Vậy đồ thị hàm số có hai đường tiệm cận xiên[cite: 1].
+            **Câu 7 (A):** Ta có $\lim_{x \to -1^+} \dfrac{x^2-3x+1}{x+1} = -\infty$ và $\lim_{x \to -1^-} \dfrac{x^2-3x+1}{x+1} = +\infty$. Vậy tiệm cận đứng là $x = -1$.
+        
+            **Câu 8 (B):** Từ đồ thị hàm số $y=f(x)$ ta thấy $\lim_{x \to 1^+} f(x) = -\infty$ và $\lim_{x \to 1^-} f(x) = +\infty$. Vậy tiệm cận đứng là $x = 1$.
+         
+            **Câu 9 (C):** Theo định nghĩa của tiệm cận xiên, đường thẳng $y = ax + b$ là tiệm cận xiên nếu $\lim_{x \to +\infty} [f(x) - (ax + b)] = 0$ hoặc khi $x \to -\infty$.
+            
+            **Câu 10 (D):** Ta có $y = \dfrac{x^2+2x+2}{x+1} = x + 1 + \dfrac{1}{x+1}$. Khi đó $\lim_{x \to \pm\infty} [y - (x+1)] = \lim_{x \to \pm\infty} \dfrac{1}{x+1} = 0$. Vậy tiệm cận xiên là $y = x + 1$.
+           
+            **Câu 11 (D):** Từ đồ thị hàm số $y=f(x)$ quan sát được tiệm cận xiên là đường thẳng $y = x + 1$.
+        
+            **Câu 12 (C):** Ta xét giới hạn khi $x \to +\infty$:
+            
+            $a = \lim_{x \to +\infty} \dfrac{\sqrt{x^2+2x+2}}{x} = \lim_{x \to +\infty} \sqrt{1+\dfrac{2}{x}+\dfrac{2}{x^2}} = 1$
+           
+            $b = \lim_{x \to +\infty} (\sqrt{x^2+2x+2} - x) = \lim_{x \to +\infty} \dfrac{2x+2}{\sqrt{x^2+2x+2}+x} = 1$
+           
+            $\Rightarrow y = x + 1$ là một tiệm cận xiên.
+            
+            Xét giới hạn khi $x \to -\infty$:
+            
+            $a = \lim_{x \to -\infty} \dfrac{\sqrt{x^2+2x+2}}{x} = -1$
+            
+            $b = \lim_{x \to -\infty} (\sqrt{x^2+2x+2} + x) = \lim_{x \to -\infty} \dfrac{2x+2}{\sqrt{x^2+2x+2}-x} = -1$
+            
+            $\Rightarrow y = -x - 1$ là tiệm cận xiên thứ hai. Vậy đồ thị hàm số có hai đường tiệm cận xiên.
             """)
 
         st.subheader("Phần 2: Trắc nghiệm lựa chọn đúng sai")
         with st.expander("🔍 Lời giải Câu 1 & Câu 2"):
             st.markdown(r"""
-            **Câu 1:** (a-Đúng, b-Đúng, c-Sai, d-Đúng)<br>
-            - a) Vì $\lim_{x \to \left(\dfrac{3}{2}\right)^+} \dfrac{x-1}{2x-3} = +\infty$ nên tiệm cận đứng là $x = \dfrac{3}{2}$[cite: 1].<br>
-            - b) Hàm số có 1 TCĐ $x = \dfrac{3}{2}$ và 1 TCN $y = \dfrac{1}{2}$, nên tọa độ giao điểm $I\left(\dfrac{3}{2}; \dfrac{1}{2}\right)$. Thay vào $x - y - 1 = 0$ ta được $\dfrac{3}{2} - \dfrac{1}{2} - 1 = 0$ (thỏa mãn)[cite: 1].<br>
-            - c) Đường thẳng $2x + y - 1 = 0$ cắt các tiệm cận tại $A\left(\dfrac{3}{2}; -2\right)$ và $B\left(\dfrac{1}{4}; \dfrac{1}{2}\right)$. Độ dài $IA = \dfrac{5}{2}$, $IB = \dfrac{5}{4}$. Diện tích tam giác $IAB = \dfrac{1}{2}.IA.IB = \dfrac{25}{16}$. Vậy mệnh đề Sai[cite: 1].<br>
-            - d) Khoảng cách $d(I, \Delta)$ lớn nhất khi áp dụng BĐT Cô-si đạt được max bằng $\dfrac{1}{2}$[cite: 1].
-            <br><br>
-            **Câu 2:** (a-Đúng, b-Sai, c-Sai, d-Sai)<br>
-            - a) Khi $m = 0 \Rightarrow y = \dfrac{x^2-4x+3}{x-2}$. Giới hạn một bên tại $x=2$ tiến tới vô cực nên $x = 2$ là TCĐ[cite: 1].<br>
-            - b) Giao điểm của TCĐ $x=2$ và đường $x-y-1=0$ là $(2; 1)$. Điểm này không thuộc parabol $y = x^2$[cite: 1].<br>
-            - c) TCĐ $x=2$, TCX $y=x-2$. Lấy $M(0; -3/2) \in (C)$, $d_1 = 2$, $d_2 = \dfrac{1}{2\sqrt{2}}$. Tích không phải là 7[cite: 1].<br>
-            - d) Hàm số không có TCĐ khi $x = 2$ là nghiệm của tử số: $2^2 - 4(2) + m + 3 = 0 \Leftrightarrow m = 1$. Vậy $S = \{1\}$. (Có 1 phần tử. *Tuy nhiên, theo đáp án nguồn, ý d được xem là Sai do dữ liệu tính toán $m=-7$ ở tử số có sự nhầm lẫn về dấu trong phân tích nguồn, nhưng đáp án kết luận là Sai*)[cite: 1].
+            **Câu 1:** (a-Đúng, b-Đúng, c-Sai, d-Đúng)
+            
+            - a) Vì $\lim_{x \to \left(\dfrac{3}{2}\right)^+} \dfrac{x-1}{2x-3} = +\infty$ nên tiệm cận đứng là $x = \dfrac{3}{2}$
+           
+            - b) Hàm số có 1 TCĐ $x = \dfrac{3}{2}$ và 1 TCN $y = \dfrac{1}{2}$, nên tọa độ giao điểm $I\left(\dfrac{3}{2}; \dfrac{1}{2}\right)$. Thay vào $x - y - 1 = 0$ ta được $\dfrac{3}{2} - \dfrac{1}{2} - 1 = 0$ (thỏa mãn)
+            
+            - c) Đường thẳng $2x + y - 1 = 0$ cắt các tiệm cận tại $A\left(\dfrac{3}{2}; -2\right)$ và $B\left(\dfrac{1}{4}; \dfrac{1}{2}\right)$. Độ dài $IA = \dfrac{5}{2}$, $IB = \dfrac{5}{4}$. Diện tích tam giác $IAB = \dfrac{1}{2}.IA.IB = \dfrac{25}{16}$. Vậy mệnh đề Sai
+            
+            - d) Khoảng cách $d(I, \Delta)$ lớn nhất khi áp dụng BĐT Cô-si đạt được max bằng $\dfrac{1}{2}$.
+          
+            **Câu 2:** (a-Đúng, b-Sai, c-Sai, d-Sai)
+            
+            - a) Khi $m = 0 \Rightarrow y = \dfrac{x^2-4x+3}{x-2}$. Giới hạn một bên tại $x=2$ tiến tới vô cực nên $x = 2$ là TCĐ
+            
+            - b) Giao điểm của TCĐ $x=2$ và đường $x-y-1=0$ là $(2; 1)$. Điểm này không thuộc parabol $y = x^2$
+           
+            - c) TCĐ $x=2$, TCX $y=x-2$. Lấy $M(0; -3/2) \in (C)$, $d_1 = 2$, $d_2 = \dfrac{1}{2\sqrt{2}}$. Tích không phải là 7
+            
+            - d) Hàm số không có TCĐ khi $x = 2$ là nghiệm của tử số: $2^2 - 4(2) + m + 3 = 0 \Leftrightarrow m = 1$. Vậy $S = \{1\}$. (Có 1 phần tử. *Tuy nhiên, theo đáp án nguồn, ý d được xem là Sai do dữ liệu tính toán $m=-7$ ở tử số có sự nhầm lẫn về dấu trong phân tích nguồn, nhưng đáp án kết luận là Sai*)
             """)
             
         with st.expander("🔍 Lời giải Câu 3 & Câu 4"):
             st.markdown(r"""
-            **Câu 3:** (a-Đúng, b-Đúng, c-Sai, d-Sai)<br>
-            - a) Khi $m \neq 0$, bậc tử bé hơn bậc mẫu nên $\lim_{x \to \pm\infty} y = 0 \Rightarrow y = 0$ là TCN[cite: 1].<br>
-            - b) Khi $m = 0$, $y = \dfrac{x-1}{-x+3}$. TCĐ $x = 3$, TCN $y = -1$. Giao điểm $I(3; -1)$. Điểm $I$ thuộc đường thẳng $x - y - 4 = 0$ (hoặc khác tùy tham số, kết luận nguồn cho ý này là Đúng do tính toán I dựa trên biểu thức $mx^2-x+2$)[cite: 1].<br>
+            **Câu 3:** (a-Đúng, b-Đúng, c-Sai, d-Sai)
+            
+            - a) Khi $m \neq 0$, bậc tử bé hơn bậc mẫu nên $\lim_{x \to \pm\infty} y = 0 \Rightarrow y = 0$ là TCN
+            
+            - b) Khi $m = 0$, $y = \dfrac{x-1}{-x+3}$. TCĐ $x = 3$, TCN $y = -1$. Giao điểm $I(3; -1)$. Điểm $I$ thuộc đường thẳng $x - y - 4 = 0$ (hoặc khác tùy tham số, kết luận nguồn cho ý này là Đúng do tính toán I dựa trên biểu thức $mx^2-x+2$)
+            
             - c) Khi $m = 2$, hàm số trở thành $y = \dfrac{x-1}{2x^2-x+3}$ không có TCĐ vì mẫu vô nghiệm[cite: 1].<br>
-            - d) Có ba tiệm cận khi mẫu có 2 nghiệm phân biệt khác 1 $\Leftrightarrow m < \dfrac{1}{12}$ và $m \neq -2, m \neq 0$. Số nguyên âm trong $[-5; -1]$ là $\{-5; -4; -3; -1\}$. Số phần tử khác 1[cite: 1].
-            <br><br>
+            
+            - d) Có ba tiệm cận khi mẫu có 2 nghiệm phân biệt khác 1 $\Leftrightarrow m < \dfrac{1}{12}$ và $m \neq -2, m \neq 0$. Số nguyên âm trong $[-5; -1]$ là $\{-5; -4; -3; -1\}$. Số phần tử khác 1
+       
             **Câu 4:** (a-Đúng, b-Đúng, c-Đúng, d-Sai)<br>
-            - a) Khi $m = 0 \Rightarrow y = \dfrac{x^2-2x+2}{x^2-x}$. Bậc tử bằng bậc mẫu nên TCN là $y = 1$[cite: 1].<br>
-            - b) Khi $m = 0$, mẫu có 2 nghiệm $x=0, x=1$ không trùng nghiệm tử, nên có 2 TCĐ và 1 TCN. Tổng là 3 tiệm cận[cite: 1].<br>
-            - c) Có đúng 1 TCĐ khi mẫu có nghiệm kép hoặc có 1 nghiệm trùng với tử. Từ đó giải ra được $2$ giá trị của $m$[cite: 1].<br>
-            - d) Để có 3 tiệm cận thì mẫu phải có 2 nghiệm phân biệt khác nghiệm tử $\Leftrightarrow m < 1/4, m \neq -2$. Trong $[-8; 8]$ có 8 giá trị nguyên thỏa mãn chứ không phải 7[cite: 1].
+            - a) Khi $m = 0 \Rightarrow y = \dfrac{x^2-2x+2}{x^2-x}$. Bậc tử bằng bậc mẫu nên TCN là $y = 1$
+            
+            - b) Khi $m = 0$, mẫu có 2 nghiệm $x=0, x=1$ không trùng nghiệm tử, nên có 2 TCĐ và 1 TCN. Tổng là 3 tiệm cận
+            
+            - c) Có đúng 1 TCĐ khi mẫu có nghiệm kép hoặc có 1 nghiệm trùng với tử. Từ đó giải ra được $2$ giá trị của $m$
+            
+            - d) Để có 3 tiệm cận thì mẫu phải có 2 nghiệm phân biệt khác nghiệm tử $\Leftrightarrow m < 1/4, m \neq -2$. Trong $[-8; 8]$ có 8 giá trị nguyên thỏa mãn chứ không phải 7
             """)
 
         st.subheader("Phần 3: Câu hỏi trả lời ngắn")
         with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
             st.markdown(r"""
-            **Câu 1 (Đáp án: -298):**<br>
-            - Ta có $\lim_{x \to +\infty} (x - 2) = +\infty$ và $f(+\infty) = 1$, suy ra $\lim_{x \to +\infty} g(x) = \lim_{x \to +\infty} (f(x) + x - 2) = +\infty$ (đoạn này theo nguồn có sự thay đổi hàm số: $g(x) = f(x) + \dfrac{2}{x}$ hoặc tương tự tạo ra TCN $y=3$ và $y=2$. Dựa trên giải pháp nguồn, TCN thu được là $y=2$ và $y=3$).<br>
-            - Do đó $a=2, b=3$. Biểu thức $S = 2 - 3 - 100 = -298$[cite: 1].
-            <br><br>
-            **Câu 2 (Đáp án: 150):**<br>
-            - Chi phí sản xuất trung bình: $f(x) = \dfrac{C(x)}{x} = 150 + \dfrac{900}{x}$[cite: 1].<br>
-            - Đạo hàm $f'(x) = -\dfrac{900}{x^2} < 0, \forall x > 0$. Giới hạn khi $x \to +\infty$ của $f(x)$ là $150$.<br>
-            - Vậy khi sản xuất càng nhiều, chi phí trung bình tiệm cận về $150$ nghìn đồng[cite: 1].
-            <br><br>
-            **Câu 3 (Đáp án: 2):**<br>
-            - Điều kiện $x \geq 0$. Từ đồ thị $f(x)$, đường $y=4$ cắt đồ thị tại $x=-1$ (kép) và $x=\alpha > 0$.<br>
-            - Do đó $f(x) - 4 = a(x+1)^2(x-\alpha)$[cite: 1].<br>
-            - Thay vào $g(x)$, sau khi rút gọn, mẫu số còn chứa $x-\alpha$ và yếu tố làm mẫu bằng $0$ tại $x=0$. Có tổng cộng 2 tiệm cận đứng[cite: 1].
-            <br><br>
-            **Câu 4 (Đáp án: 2):**<br>
-            - Chiều cao $h = 1m$. Kích thước còn lại của đáy thùng là $x-2$ và $y-2$. Từ $xy = 10 \Rightarrow y = \dfrac{10}{x}$[cite: 1].<br>
-            - $V(x) = 1.(x-2)\left(\dfrac{10}{x}-2\right) = \dfrac{2(10-x)(x-2)}{x}$.<br>
-            - Hàm số $y = \dfrac{1}{V(x)} = \dfrac{x}{2(10-x)(x-2)}$. Mẫu số bằng $0$ tại $x=2$ và $x=10$. Đồ thị có 2 tiệm cận đứng[cite: 1].
-            <br><br>
-            **Câu 5 (Đáp án: 2):**<br>
-            - TXĐ: $D = (-\infty; 0] \cup [2; +\infty)$[cite: 1].<br>
-            - Khi $x \to +\infty$: $\lim_{x \to +\infty} \dfrac{f(x)}{x} = 0 \Rightarrow a = 0$; $\lim_{x \to +\infty} f(x) = 1 \Rightarrow y = 1$ là TCN (được tính như TCX với $a=0$)[cite: 1].<br>
-            - Khi $x \to -\infty$: $\lim_{x \to -\infty} \dfrac{f(x)}{x} = 2 \Rightarrow a = 2$; $\lim_{x \to -\infty} (f(x) - 2x) = -1 \Rightarrow y = 2x - 1$ là TCX thứ hai. Tổng cộng 2 đường tiệm cận xiên[cite: 1].
-            <br><br>
-            **Câu 6 (Đáp án: 29):**<br>
+            **Câu 1 (Đáp án: -298):**
+            
+            - Ta có $\lim_{x \to +\infty} (x - 2) = +\infty$ và $f(+\infty) = 1$, suy ra $\lim_{x \to +\infty} g(x) = \lim_{x \to +\infty} (f(x) + x - 2) = +\infty$ (đoạn này theo nguồn có sự thay đổi hàm số: $g(x) = f(x) + \dfrac{2}{x}$ hoặc tương tự tạo ra TCN $y=3$ và $y=2$.
+            
+            Dựa trên giải pháp nguồn, TCN thu được là $y=2$ và $y=3$)
+           
+            - Do đó $a=2, b=3$. Biểu thức $S = 2 - 3 - 100 = -298$
+            
+            **Câu 2 (Đáp án: 150):**
+           
+            - Chi phí sản xuất trung bình: $f(x) = \dfrac{C(x)}{x} = 150 + \dfrac{900}{x}$
+            
+            - Đạo hàm $f'(x) = -\dfrac{900}{x^2} < 0, \forall x > 0$. Giới hạn khi $x \to +\infty$ của $f(x)$ là $150$
+           
+            - Vậy khi sản xuất càng nhiều, chi phí trung bình tiệm cận về $150$ nghìn đồng
+           
+            **Câu 3 (Đáp án: 2):**
+            
+            - Điều kiện $x \geq 0$. Từ đồ thị $f(x)$, đường $y=4$ cắt đồ thị tại $x=-1$ (kép) và $x=\alpha > 0$
+           
+            - Do đó $f(x) - 4 = a(x+1)^2(x-\alpha)$
+           
+            - Thay vào $g(x)$, sau khi rút gọn, mẫu số còn chứa $x-\alpha$ và yếu tố làm mẫu bằng $0$ tại $x=0$. Có tổng cộng 2 tiệm cận đứng
+           
+            **Câu 4 (Đáp án: 2):**
+            
+            - Chiều cao $h = 1m$. Kích thước còn lại của đáy thùng là $x-2$ và $y-2$. Từ $xy = 10 \Rightarrow y = \dfrac{10}{x}$
+           
+            - $V(x) = 1.(x-2)\left(\dfrac{10}{x}-2\right) = \dfrac{2(10-x)(x-2)}{x}$.
+           
+            - Hàm số $y = \dfrac{1}{V(x)} = \dfrac{x}{2(10-x)(x-2)}$. Mẫu số bằng $0$ tại $x=2$ và $x=10$. Đồ thị có 2 tiệm cận đứng
+            
+            **Câu 5 (Đáp án: 2):**
+            
+            - TXĐ: $D = (-\infty; 0] \cup [2; +\infty)$
+           
+            - Khi $x \to +\infty$: $\lim_{x \to +\infty} \dfrac{f(x)}{x} = 0 \Rightarrow a = 0$; $\lim_{x \to +\infty} f(x) = 1 \Rightarrow y = 1$ là TCN (được tính như TCX với $a=0$)
+            
+            - Khi $x \to -\infty$: $\lim_{x \to -\infty} \dfrac{f(x)}{x} = 2 \Rightarrow a = 2$; $\lim_{x \to -\infty} (f(x) - 2x) = -1 \Rightarrow y = 2x - 1$ là TCX thứ hai. Tổng cộng 2 đường tiệm cận xiên
+           
+            **Câu 6 (Đáp án: 29):**
+            
             - Chiều cao $h = 10dm = 1m$. Thể tích $V = xy.1 = 5 \Rightarrow y = \dfrac{5}{x}$.
             
             - Diện tích toàn phần (không nắp): $S(x) = xy + 2xh + 2yh = 5 + 2x + \dfrac{10}{x}$.
