@@ -973,7 +973,7 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d3_cau10_p1.png", width=400)
+                    st.image("images/d3_cau10_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d3_cau10_p1.png")
             p1_q10_d3 = st.radio("C10_d3", [
