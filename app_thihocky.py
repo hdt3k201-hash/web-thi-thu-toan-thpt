@@ -76,7 +76,11 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             # =====================================================================
             # PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (12 CÂU)
             # =====================================================================
-            st.header("Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn")
+            st.markdown( """
+            <h2 style="color: #00a88f;">Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn</h2>
+            """, 
+            unsafe_allow_html=True
+            )
             st.caption("Thí sinh trả lời từ câu 1 đến câu 12. Mỗi câu hỏi chỉ chọn 1 phương án. (Mỗi câu đúng 0.25 điểm)")
             
             st.markdown("**Câu 1:** Hàm số $y=f(x)$ liên tục trên $\\mathbb{R}$ có bảng biến thiên hàm số $y=f'(x)$ như hình dưới:")
