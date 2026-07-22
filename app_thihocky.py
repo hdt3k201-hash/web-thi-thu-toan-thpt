@@ -77,7 +77,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             # PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (12 CÂU)
             # =====================================================================
             st.markdown( """
-            <h2 style="color: #00a88f;">Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn</h2>
+            <h2 style="color: #0000FF;">Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn</h2>
             """, 
             unsafe_allow_html=True
             )
