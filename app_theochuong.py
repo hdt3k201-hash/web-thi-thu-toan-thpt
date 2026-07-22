@@ -415,13 +415,13 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             
             **Câu 2 (Ans: -35):** Thế tọa độ cực trị vào hệ phương trình giải ra $a,b,c,d \Rightarrow y = 2x^3 - 9x^2 + 12x - 12$. Tính $y(-1) = -35$.
             
-            **Câu 3 (Ans: 3):** Phương trình $y'=0$ có nghiệm $x_1, x_2 > 0 \Rightarrow -\frac{2b}{3a}>0, \frac{c}{3a}>0$. Do nhánh phải đi lên $\Rightarrow a>0$. Do đó $b<0, c>0$. Cắt $Oy$ tại $d>0 \Rightarrow a,c,d > 0$ (Có 3 số dương).
+            **Câu 3 (Ans: 3):** Phương trình $y'=0$ có nghiệm $x_1, x_2 > 0 \Rightarrow -\frac{2b}{3a}>0, \dfrac{c}{3a}>0$. Do nhánh phải đi lên $\Rightarrow a>0$. Do đó $b<0, c>0$. Cắt $Oy$ tại $d>0 \Rightarrow a,c,d > 0$ (Có 3 số dương).
             
             **Câu 4 (Ans: 3):** Vận tốc $v(t) = s'(t) = 3t^2 - 18t + 15 < 0 \Leftrightarrow 1 < t < 5$. Do $t \in \mathbb{Z} \Rightarrow t \in \{2, 3, 4\}$.
             
             **Câu 5 (Ans: 20):** Bề rộng $2x+y = 80 \Rightarrow y = 80-2x$. Diện tích $S(x) = x(80-2x) = -2x^2 + 80x$. $S'(x) = -4x + 80 = 0 \Leftrightarrow x=20$ cm.
             
-            **Câu 6 (Ans: 1.61):** Tốc độ bán hàng $h(t) = f'(t) = \frac{25000e^{-t}}{(1+5e^{-t})^2}$. Khảo sát $h'(t)=0 \Leftrightarrow 1-5e^{-t}=0 \Leftrightarrow t = \ln 5 \approx 1.61$ năm.
+            **Câu 6 (Ans: 1.61):** Tốc độ bán hàng $h(t) = f'(t) = \dfrac{25000e^{-t}}{(1+5e^{-t})^2}$. Khảo sát $h'(t)=0 \Leftrightarrow 1-5e^{-t}=0 \Leftrightarrow t = \ln 5 \approx 1.61$ năm.
             """)
 
 # ==================== XỬ LÝ NỘI DUNG ĐỀ 2 ====================
