@@ -93,56 +93,67 @@ selected_exam = st.sidebar.selectbox(
 
 st.sidebar.markdown("---")
 
-# --- ĐỒNG HỒ ĐẾM NGƯỢC DÙNG ST.HTML CHUẨN STREAMLIT CLOUD ---
+# --- ĐỒNG HỒ ĐẾM NGƯỢC CHUẨN XÁC CHẠY BẰNG JAVASCRIPT ---
 EXAM_DURATION_MINUTES = 60
 
-if "start_time_tsa" not in st.session_state:
-    st.session_state.start_time_tsa = time.time()
+# Tính và lưu mốc thời điểm KẾT THÚC (End Time) vào Session State
+if "end_time_tsa" not in st.session_state:
+    st.session_state.end_time_tsa = time.time() + (EXAM_DURATION_MINUTES * 60)
 
-elapsed_sec = int(time.time() - st.session_state.start_time_tsa)
-total_sec = EXAM_DURATION_MINUTES * 60
-remaining_sec = max(0, total_sec - elapsed_sec)
+# Chuyển đổi sang mili giây để JavaScript xử lý
+end_timestamp_ms = int(st.session_state.end_time_tsa * 1000)
 
-initial_mins, initial_secs = divmod(remaining_sec, 60)
-initial_time_str = f"{initial_mins:02d}:{initial_secs:02d}"
-
-# Sử dụng st.html() để Streamlit Cloud cho phép thực thi kịch bản đếm ngược
 st.sidebar.html(f"""
 <div style="background-color: #b71c1c; color: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 20px;">
     <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">⏱️ Thời gian còn lại:</div>
-    <div id="tsa-countdown" style="font-size: 26px; font-weight: bold; letter-spacing: 2px;">{initial_time_str}</div>
+    <div id="tsa-countdown" style="font-size: 28px; font-weight: bold; letter-spacing: 2px;">--:--</div>
 </div>
 
 <script>
 (function() {{
+    const targetTime = {end_timestamp_ms};
+    
+    // Xóa interval cũ nếu có để tránh đè vạch
     if (window.tsaTimerInterval) {{
         clearInterval(window.tsaTimerInterval);
     }}
-    
-    let totalSeconds = {remaining_sec};
-    const timerElement = document.getElementById("tsa-countdown");
-    
+
     function updateClock() {{
+        const now = new Date().getTime();
+        const remainingMs = targetTime - now;
+        const timerElement = document.getElementById("tsa-countdown");
+
         if (!timerElement) return;
-        if (totalSeconds <= 0) {{
+
+        if (remainingMs <= 0) {{
             timerElement.innerHTML = "00:00";
+            timerElement.style.color = "#ffcdd2"; // Đổi màu nhẹ khi hết giờ
             clearInterval(window.tsaTimerInterval);
             return;
         }}
-        
-        let m = Math.floor(totalSeconds / 60);
-        let s = totalSeconds % 60;
-        timerElement.innerHTML = (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
-        totalSeconds--;
+
+        const totalSeconds = Math.floor(remainingMs / 1000);
+        const m = Math.floor(totalSeconds / 60);
+        const s = totalSeconds % 60;
+
+        const formattedM = m < 10 ? "0" + m : m;
+        const formattedS = s < 10 ? "0" + s : s;
+
+        timerElement.innerHTML = formattedM + ":" + formattedS;
     }}
+
+    // Chạy ngay 1 lần lập tức để không bị giật UI
+    updateClock();
     
+    // Đếm lùi mỗi 1 giây
     window.tsaTimerInterval = setInterval(updateClock, 1000);
 }})();
 </script>
 """)
 
+# Nút Làm lại bài thi: Reset lại mốc thời gian kết thúc mới
 if st.sidebar.button("🔄 Làm lại bài thi", type="secondary"):
-    st.session_state.start_time_tsa = time.time()
+    st.session_state.end_time_tsa = time.time() + (EXAM_DURATION_MINUTES * 60)
     st.session_state.exam_submitted = False
     st.rerun()
 
