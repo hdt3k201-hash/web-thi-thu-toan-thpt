@@ -76,6 +76,7 @@ if "start_time" not in st.session_state:
     st.session_state.start_time = datetime.now()
 
 # 4. THANH BÊN (SIDEBAR): CHỌN ĐỀ THI & ĐỒNG HỒ ĐẾM NGƯỢC
+
 # 4. THANH BÊN (SIDEBAR): CHỌN ĐỀ THI & ĐỒNG HỒ ĐẾM NGƯỢC
 st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Logo_HUST.png/1200px-Logo_HUST.png", width=120)
 st.sidebar.title("THI THỬ TSA ONLINE")
@@ -92,44 +93,62 @@ selected_exam = st.sidebar.selectbox(
 
 st.sidebar.markdown("---")
 
-# --- ĐỒNG HỒ ĐẾM NGƯỢC CHUẨN PYTHON STREAMLIT ---
+# --- ĐỒNG HỒ ĐẾM NGƯỢC DÙNG JAVASCRIPT THỜI GIAN THỰC (KHÔNG RELOAD TRANG) ---
 EXAM_DURATION_MINUTES = 60
 
 if "start_time_tsa" not in st.session_state:
     st.session_state.start_time_tsa = time.time()
 
-# Tính thời gian còn lại
+# Tính số giây còn lại tính từ lúc bắt đầu
 elapsed_sec = int(time.time() - st.session_state.start_time_tsa)
 total_sec = EXAM_DURATION_MINUTES * 60
 remaining_sec = max(0, total_sec - elapsed_sec)
 
-mins, secs = divmod(remaining_sec, 60)
+initial_mins, initial_secs = divmod(remaining_sec, 60)
+initial_time_str = f"{initial_mins:02d}:{initial_secs:02d}"
 
-# Khung hiển thị đồng hồ cố định
-timer_placeholder = st.sidebar.empty()
-
+# Khởi tạo HTML + JS đếm ngược trực tiếp trên trình duyệt
 timer_html = f"""
 <div style="background-color: #b71c1c; color: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 20px;">
     <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">⏱️ Thời gian còn lại:</div>
-    <div style="font-size: 26px; font-weight: bold; letter-spacing: 2px;">{mins:02d}:{secs:02d}</div>
+    <div id="tsa-countdown" style="font-size: 26px; font-weight: bold; letter-spacing: 2px;">{initial_time_str}</div>
 </div>
-"""
-timer_placeholder.markdown(timer_html, unsafe_allow_html=True)
 
-# Kiểm tra hết giờ
-if remaining_sec == 0 and not st.session_state.exam_submitted:
-    st.session_state.exam_submitted = True
-    st.rerun()
+<script>
+(function() {{
+    if (window.tsaTimerInterval) {{
+        clearInterval(window.tsaTimerInterval);
+    }}
+    
+    let totalSeconds = {remaining_sec};
+    const timerElement = document.getElementById("tsa-countdown");
+    
+    function updateClock() {{
+        if (!timerElement) return;
+        if (totalSeconds <= 0) {{
+            timerElement.innerHTML = "00:00";
+            clearInterval(window.tsaTimerInterval);
+            return;
+        }}
+        
+        let m = Math.floor(totalSeconds / 60);
+        let s = totalSeconds % 60;
+        timerElement.innerHTML = (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+        totalSeconds--;
+    }}
+    
+    window.tsaTimerInterval = setInterval(updateClock, 1000);
+}})();
+</script>
+"""
+
+st.sidebar.markdown(timer_html, unsafe_allow_html=True)
 
 if st.sidebar.button("🔄 Làm lại bài thi", type="secondary"):
     st.session_state.start_time_tsa = time.time()
     st.session_state.exam_submitted = False
     st.rerun()
 
-# Tự động kích hoạt làm mới trang mỗi 1 giây để đồng hồ đếm lùi chính xác
-if not st.session_state.exam_submitted and remaining_sec > 0:
-    time.sleep(1)
-    st.rerun()
 
 # 5. TIÊU ĐỀ CHÍNH BÀI THI
 st.markdown("""
