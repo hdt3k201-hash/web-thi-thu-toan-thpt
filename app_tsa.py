@@ -23,14 +23,13 @@ st.markdown("""
         box-shadow: 0 4px 10px rgba(183, 28, 28, 0.3);
     }
     
-    /* Khung viền đỏ cho từng câu hỏi */
-    .question-card {
-        border: 2px solid #d32f2f;
-        border-radius: 10px;
-        padding: 20px;
-        background-color: #fffbfb;
-        margin-bottom: 25px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    /* Áp dụng viền đỏ trực tiếp cho các Container của Streamlit */
+    [data-testid="stVerticalBlockBorderWrapper"] {
+        border: 2px solid #d32f2f !important;
+        border-radius: 10px !important;
+        background-color: #fffbfb !important;
+        margin-bottom: 10px !important;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05) !important;
     }
     
     /* Tiêu đề câu hỏi */
@@ -124,86 +123,97 @@ if not st.session_state.exam_submitted:
     with st.form("tsa_exam_form"):
         
         # ---------------------------------------------------------------------
+       # ---------------------------------------------------------------------
         # CÂU 1: CÂU HỎI KÉO THẢ / CHỌN PHƯƠNG ÁN ĐIỀN CHỖ TRỐNG
         # ---------------------------------------------------------------------
-        st.markdown("""
-        <div class="question-card">
+        with st.container(border=True):
+            st.markdown("""
             <div class="question-title">
                 <span class="tag-badge">DẠNG 1: CHỌN / KÉO THẢ PHƯƠNG ÁN</span> Câu 1: Mô hình Vòng quay Mặt Trời
             </div>
-            Một vòng quay Mặt Trời có bán kính $50\text{m}$. Tâm của vòng quay nằm ở độ cao $60\text{m}$ so với mặt đất. Vòng quay quay đều, mất $15$ phút để hoàn thành một vòng. Giả sử tại thời điểm $t=0$ (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất. Độ cao của cabin theo thời gian được mô hình hóa bởi:
+            """, unsafe_allow_html=True)
+            
+            # Lưu ý chữ 'r' ở đầu chuỗi (raw string) để hiển thị LaTeX an toàn
+            st.markdown(r"""
+            Một vòng quay Mặt Trời có bán kính $50\text{ m}$. Tâm của vòng quay nằm ở độ cao $60\text{ m}$ so với mặt đất. Vòng quay quay đều, mất $15$ phút để hoàn thành một vòng. Giả sử tại thời điểm $t=0$ (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất. Độ cao của cabin theo thời gian được mô hình hóa bởi:
+            
             $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
-            <b>Hãy lựa chọn các giá trị thích hợp tương ứng để hoàn thiện kết luận:</b>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        col1, col2, col3 = st.columns(3)
-        q1_val_A = col1.selectbox("1) Giá trị $A$:", ["-- Chọn --", "50", "-50", "60", "-60"], key="q1_a")
-        q1_val_w = col2.selectbox(r"2) Tần số góc $\omega$:", ["-- Chọn --", r"\dfrac{2\pi}{15}", r"\dfrac{15}{2\pi}", r"\dfrac{\pi}{15}"], key="q1_w")
-        q1_val_B = col3.selectbox("3) Giá trị $B$:", ["-- Chọn --", "50", "60", "85", "10"], key="q1_b")
-        
-        q1_val_t = st.selectbox("4) Thời điểm đầu tiên cabin đạt độ cao $85\text{m}$ là vào phút thứ:", ["-- Chọn --", "2.5", "5", "7.5", "10"], key="q1_t")
+            
+            **Hãy lựa chọn các giá trị thích hợp tương ứng để hoàn thiện kết luận:**
+            """)
+            
+            col1, col2, col3 = st.columns(3)
+            q1_val_A = col1.selectbox("1) Giá trị A:", ["-- Chọn --", "50", "-50", "60", "-60"], key="q1_a")
+            q1_val_w = col2.selectbox(r"2) Tần số góc $\omega$:", ["-- Chọn --", r"\dfrac{2\pi}{15}", r"\dfrac{15}{2\pi}", r"\dfrac{\pi}{15}"], key="q1_w")
+            q1_val_B = col3.selectbox("3) Giá trị B:", ["-- Chọn --", "50", "60", "85", "10"], key="q1_b")
+            q1_val_t = st.selectbox("4) Thời điểm đầu tiên cabin đạt độ cao 85m là vào phút thứ:", ["-- Chọn --", "2.5", "5", "7.5", "10"], key="q1_t")
         
         st.markdown("<br>", unsafe_allow_html=True)
 
         # ---------------------------------------------------------------------
         # CÂU 2: CÂU HỎI TRẮC NGHIỆM 4 LỰA CHỌN
         # ---------------------------------------------------------------------
-        st.markdown("""
-        <div class="question-card">
+        with st.container(border=True):
+            st.markdown("""
             <div class="question-title">
                 <span class="tag-badge">DẠNG 2: TRẮC NGHIỆM 4 LỰA CHỌN</span> Câu 2: Đọc đồ thị hàm số lượng giác
             </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown(r"""
             Cho hàm số lượng giác $y = a\sin(bx+c) + d$ có đồ thị đạt giá trị lớn nhất $y_{\max} = 4$, giá trị nhỏ nhất $y_{\min} = -2$, chu kỳ $T = \pi$. Biết $a > 0$, $b > 0$ và $c \in (-\pi; 0)$. Tính giá trị của biểu thức $P = a + b + c + d$.
-        </div>
-        """, unsafe_allow_html=True)
-        
-        q2_ans = st.radio(
-            "Chọn phương án đúng:",
-            [
-                r"A. $P = 6 - \dfrac{\pi}{3}$",
-                r"B. $P = 4 + \dfrac{\pi}{3}$",
-                r"C. $P = 5 - \dfrac{\pi}{6}$",
-                r"D. $P = 3 + \dfrac{\pi}{2}$"
-            ],
-            key="q2",
-            index=None
-        )
+            """)
+            
+            q2_ans = st.radio(
+                "Chọn phương án đúng:",
+                [
+                    r"A. $P = 6 - \dfrac{\pi}{3}$",
+                    r"B. $P = 4 + \dfrac{\pi}{3}$",
+                    r"C. $P = 5 - \dfrac{\pi}{6}$",
+                    r"D. $P = 3 + \dfrac{\pi}{2}$"
+                ],
+                key="q2",
+                index=None
+            )
 
         st.markdown("<br>", unsafe_allow_html=True)
 
         # ---------------------------------------------------------------------
         # CÂU 3: CÂU HỎI TRẢ LỜI NGẮN (ĐIỀN ĐÁP ÁN)
         # ---------------------------------------------------------------------
-        st.markdown("""
-        <div class="question-card">
+        with st.container(border=True):
+            st.markdown("""
             <div class="question-title">
                 <span class="tag-badge">DẠNG 3: TRẢ LỜI NGẮN</span> Câu 3: Mực nước cảng biển
             </div>
-            Mực nước tại một cảng biển được mô hình hóa bởi hàm số $h(t) = 3\cos\left(\dfrac{\pi t}{6} + \dfrac{\pi}{3}\right) + 12$ (mét), trong đó $t$ là thời gian tính bằng giờ ($0 \le t \le 24$). Một tàu hàng yêu cầu mực nước tối thiểu là $13,5\text{m}$ để cập cảng an toàn. Trong một ngày ($24$ giờ), tổng thời gian tàu có thể cập cảng an toàn là bao nhiêu giờ?
-        </div>
-        """, unsafe_allow_html=True)
-        
-        q3_ans = st.text_input("Nhập kết quả dạng số (Ví dụ: 8):", key="q3")
+            """, unsafe_allow_html=True)
+            
+            st.markdown(r"""
+            Mực nước tại một cảng biển được mô hình hóa bởi hàm số $h(t) = 3\cos\left(\dfrac{\pi t}{6} + \dfrac{\pi}{3}\right) + 12$ (mét), trong đó $t$ là thời gian tính bằng giờ ($0 \le t \le 24$). Một tàu hàng yêu cầu mực nước tối thiểu là $13,5\text{ m}$ để cập cảng an toàn. Trong một ngày ($24$ giờ), tổng thời gian tàu có thể cập cảng an toàn là bao nhiêu giờ?
+            """)
+            
+            q3_ans = st.text_input("Nhập kết quả dạng số (Ví dụ: 8):", key="q3")
 
         st.markdown("<br>", unsafe_allow_html=True)
 
         # ---------------------------------------------------------------------
         # CÂU 4: CÂU HỎI ĐÚNG / SAI (GỒM 4 PHÁT BIỂU)
         # ---------------------------------------------------------------------
-        st.markdown("""
-        <div class="question-card">
+        with st.container(border=True):
+            st.markdown("""
             <div class="question-title">
                 <span class="tag-badge">DẠNG 4: TRẮC NGHIỆM ĐÚNG / SAI</span> Câu 4: Phân tích nghiệm phương trình lượng giác
             </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown(r"""
             Cho phương trình lượng giác: $2\cos^2 x - (2m+1)\cos x + m = 0 \quad (1)$. Xét tính đúng/sai của các phát biểu sau:
-        </div>
-        """, unsafe_allow_html=True)
-        
-        q4_a = st.radio("a) Phương trình (1) có thể phân tích thành nhân tử dạng $(\cos x - m)(2\cos x - 1) = 0$.", ["Đúng", "Sai"], key="q4_1", horizontal=True)
-        q4_b = st.radio(r"b) Khi $m = 1$, phương trình có đúng $2$ nghiệm phân biệt trên đoạn $[0; 2\pi]$.", ["Đúng", "Sai"], key="q4_2", horizontal=True)
-        q4_c = st.radio(r"c) Để phương trình có đúng $3$ nghiệm phân biệt trên đoạn $[0; 2\pi]$ thì $m = -1$.", ["Đúng", "Sai"], key="q4_3", horizontal=True)
-        q4_d = st.radio("d) Có tồn tại giá trị thực của $m$ để phương trình đã cho hoàn toàn vô nghiệm.", ["Đúng", "Sai"], key="q4_4", horizontal=True)
+            """)
+            
+            q4_a = st.radio(r"a) Phương trình (1) có thể phân tích thành nhân tử dạng $(\cos x - m)(2\cos x - 1) = 0$.", ["Đúng", "Sai"], key="q4_1", horizontal=True)
+            q4_b = st.radio(r"b) Khi $m = 1$, phương trình có đúng $2$ nghiệm phân biệt trên đoạn $[0; 2\pi]$.", ["Đúng", "Sai"], key="q4_2", horizontal=True)
+            q4_c = st.radio(r"c) Để phương trình có đúng $3$ nghiệm phân biệt trên đoạn $[0; 2\pi]$ thì $m = -1$.", ["Đúng", "Sai"], key="q4_3", horizontal=True)
+            q4_d = st.radio(r"d) Có tồn tại giá trị thực của $m$ để phương trình đã cho hoàn toàn vô nghiệm.", ["Đúng", "Sai"], key="q4_4", horizontal=True)
 
         st.markdown("<br>", unsafe_allow_html=True)
 
