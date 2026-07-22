@@ -1,326 +1,490 @@
 import streamlit as st
+import time
 
-# Cấu hình giao diện trang web trải rộng toàn màn hình
-st.set_page_config(page_title="Hệ Thống Thi Thử - Lớp Toán Thầy Tùng", layout="wide")
+# ==================== CẤU HÌNH TRANG & FONT CHỮ ====================
+st.set_page_config(page_title="Hệ thống thi thử Toán THPT", layout="wide")
 
-# =========================================================================
-# KHO DỮ LIỆU ĐỀ THI & ĐÁP ÁN (Thầy có thể thêm đề số 3, 4, 5... tương tự bên dưới)
-# =========================================================================
-EXAMS_BANK = {
-    "de_số_1": {
-        "title": "Đề số 01: Ôn tập đơn điệu và cực trị của hàm số 2026",
-        "pdf_id": "1u07mDClzYGhdjGmdziBm0Xbwqg6OxmMn",  # Thay bằng ID file ĐỀ trên Google Drive của thầy
-        "giai_id": "19iIiwKO5bOyTWQq4g8Hh6c9d5nPlTVlD",  # Thay bằng ID file GIẢI CHI TIẾT trên Drive
-        "key_p1": ["C", "C", "C", "B", "A", "B", "D", "B", "D", "A", "C", "B"],  # Đáp án 12 câu Phần I
-        "key_p2": {  # Đáp án 4 câu Phần II (Đúng hoặc Sai cho các ý a, b, c, d)
-            1: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            2: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Sai"},
-            3: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
-            4: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
-        },
-        "key_p3": ["6", "-35", "3", "3", "20", "1.61"]  # Đáp số chuẩn của 6 câu Phần III
-    },
-    "de_số_2": {
-        "title": "Đề số 02: Ôn tập đơn điệu và cực trị của hàm số 2026",
-        "pdf_id": "1IJNKbYvKU0ZfjYl6JRL4vouz24XHF0mQ",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "1b_i9-y1RyoUwkvqKyc51TrCHXlA6uj-8",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["B", "D", "B", "D", "A", "D", "C", "B", "A", "C", "A", "C"],
-        "key_p2": {
-            1: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            2: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-            3: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            4: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Sai"},
-        },
-        "key_p3": ["-3", "1.41", "6.71", "52", "0", "158"]
-    },
-    "de_số_3": {
-        "title": "Đề số 03: Ôn tập đơn điệu và cực trị của hàm số 2026",
-        "pdf_id": "1UMbuWIPvaMN3IXN9i94QYTlzGwq1UzYx",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "12CCEAEbGRu04xJUYvYyK89eMJndmRyPz",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["A", "C", "C", "A", "B", "B", "A", "A", "B", "C", "C", "B"],
-        "key_p2": {
-            1: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            2: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-            3: {"a": "Đúng", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-            4: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-        },
-        "key_p3": ["2", "2", "28", "52", "10.6", "80"]
-    },
-    "de_số_4": {
-        "title": "Đề số 04: Giá trị lớn nhất ; nhỏ nhất của hàm số 2026",
-        "pdf_id": "1bH_wKqKQ1dqEpot9RPlK_9AiEm8xttsn",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "1aVISUkmQvC6ui6tTMZfDGbl9c0rpcFWT",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["D", "B", "A", "A", "D", "D", "D", "B", "A", "A", "A", "B"],
-        "key_p2": {
-            1: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            2: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Đúng"},
-            3: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},
-            4: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-        },
-        "key_p3": ["3", "0.37", "1.125", "2.4", "7200", "2.34"]
-    },
-    "de_số_5": {
-        "title": "Đề số 05: Giá trị lớn nhất ; nhỏ nhất của hàm số 2026",
-        "pdf_id": "1e4cljNfSpxItFbAOuDAsWVBCjFDJ6TA1",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "1r8C2pi4-NdrJQzXwZ4WyOXT4J5AJOcwW",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["D", "A", "A", "A", "A", "B", "C", "B", "D", "C", "B", "A"],
-        "key_p2": {
-            1: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},
-            2: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            3: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
-            4: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-        },
-        "key_p3": ["15", "11.3", "59", "3", "7200", "30"]
-    },
-    "de_số_6": {
-        "title": "Đề số 06: Giá trị lớn nhất ; nhỏ nhất của hàm số 2026",
-        "pdf_id": "16WPFLqC5AE98daLiVf_XmgWXaH-jZA2Q",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "1CBsmjE7L3uB9VeeUe8y6_Po4eHl1Pmv1",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["C", "D", "A", "A", "D", "A", "C", "A", "D", "C", "B", "A"],
-        "key_p2": {
-            1: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},
-            2: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Đúng"},
-            3: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-            4: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-        },
-        "key_p3": ["2.4", "7200", "2.34", "3", "2", "100"]
-    },
-     "de_số_7": {
-        "title": "Đề số 07:Đường tiệm cận của hàm số 2026",
-        "pdf_id": "1CBsmjE7L3uB9VeeUe8y6_Po4eHl1Pmv1",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "1ZXtgPr6dFBwoUV_-nQBEtjG_6mCFq2YN",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["C", "D", "A", "C", "C", "A", "A", "B", "C", "D", "D", "C"],
-        "key_p2": {
-            1: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            2: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Sai"},
-            3: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Sai"},
-            4: {"a": "Đúng", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-        },
-        "key_p3": ["-298", "150", "2", "2", "2", "29"]
-    },
-     "de_số_8": {
-        "title": "Đề số 08:Đường tiệm cận của hàm số 2026",
-        "pdf_id": "1P7YxIDaMuKS2ztT__FcrsvjHIv1MhHK9",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "1XY21SD_m9mvtFwQc0lSi_Jhm_rPyZAio",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["B", "C", "B", "A", "B", "A", "D", "D", "D", "B", "C", "A"],
-        "key_p2": {
-            1: {"a": "Đúng", "b": "Sai", "c": "Sai", "d": "Đúng"},
-            2: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Sai"},
-            3: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            4: {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Sai"},
-        },
-        "key_p3": ["5", "1", "3", "-9", "2", "1"]
-    },
-    "de_số_9": {
-        "title": "Đề số 09:Đường tiệm cận của hàm số 2026",
-        "pdf_id": "1P3NhBQEcdivqpwLfrLw1tlbOn5Wvz5GD",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "16Zp86CeBnft4rNXoe1YQ8deqZK3KXEAB",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["A", "B", "D", "C", "B", "B", "B", "A", "A", "A", "B", "B"],
-        "key_p2": {
-            1: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
-            2: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Sai"},
-            3: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
-            4: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-        },
-        "key_p3": ["2025", "4", "3", "3", "2", "3"]
-    },
-    "de_số_10": {
-        "title": "Đề số 10:Khảo sát hàm số 2026",
-        "pdf_id": "1vHotQ9T_-Fd4r5iHGv7m5Rcm1ZKZrFd_",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "1zhBstuiYKsypoudFBCSHoMqX2zcluRfv",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["A", "D", "D", "C", "D", "D", "D", "A", "D", "B", "D", "A"],
-        "key_p2": {
-            1: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-            2: {"a": "Sai", "b": "Sai", "c": "Đúng", "d": "Đúng"},
-            3: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
-            4: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
-        },
-        "key_p3": ["-2", "7", "13", "2", "3", "9"]
-    },
-    "de_số_11": {
-        "title": "Đề số 11:Khảo sát hàm số 2026",
-        "pdf_id": "1yUMKtafl58HdU2Gv9IBIfaBcjuSElEeE",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "1FSci-mc67aSV62ZooliHlU3VoRze8BRG",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["C", "A", "B", "B", "B", "D", "A", "A", "D", "C", "A", "C"],
-        "key_p2": {
-            1: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            2: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            3: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-            4: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-        },
-        "key_p3": ["-3", "2.2", "49.5", "32.6", "80", "2"]
-    },
-    "de_số_12": {
-        "title": "Đề số 12:Khảo sát hàm số 2026",
-        "pdf_id": "1h2SzKFWVqUGfUu9yBKwLqHj700OJihuM",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "1VLidkjoViXEmcMto2ctMK5nRdKf4Ae0J",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["A", "D", "D", "C", "D", "D", "D", "A", "D", "B", "D", "A"],
-        "key_p2": {
-            1: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            2: {"a": "Đúng", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-            3: {"a": "Sai", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-            4: {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-        },
-        "key_p3": ["-2", "7", "13", "2", "3", "9"]
-    },
-     "de_số_13": {
-        "title": "Đề số 13 : Ứng dụng đạo hàm Khảo sát hàm số 2026",
-        "pdf_id": "1lG0Hri-P5nU3suMk2FlzWw40r0A39IFk",  # Thay bằng ID file ĐỀ số 2
-        "giai_id": "1iqUK2LGa5VqEP_tGuYebERrKyJFu0_5w",  # Thay bằng ID file GIẢI số 2
-        "key_p1": ["A", "B", "A", "A", "C", "A", "B", "B", "A", "C", "A", "A"],
-        "key_p2": {
-            1: {"a": "Đúng", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-            2: {"a": "Đúng", "b": "Đúng", "c": "Đúng", "d": "Sai"},
-            3: {"a": "Đúng", "b": "Đúng", "c": "Sai", "d": "Đúng"},
-            4: {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Đúng"},
-        },
-        "key_p3": ["2.4", "12", "226.2", "224", "12", "41"]
-    },
-}
+st.markdown("""
+    <style>
+    /* Ép toàn bộ chữ và công thức Toán học dùng font Times New Roman */
+    html, body, [class*="css"] {
+        font-family: 'Times New Roman', Times, serif !important;
+        font-size: 18px !important; 
+    }
+    .katex {
+        font-family: 'Times New Roman', Times, serif !important;
+        font-size: 1.1em !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
-# Giao diện chính
-st.title("🎯 PHÒNG THI THỬ TOÁN THEO CHƯƠNG ")
-st.markdown("---")
-
-# MENU CHỌN ĐỀ THI ĐỘNG
-st.sidebar.header("🗂️ DANH SÁCH ĐỀ THI")
-selected_key = st.sidebar.selectbox(
-    "Học sinh chọn đề thi tại đây:",
-    options=list(EXAMS_BANK.keys()),
-    format_func=lambda x: EXAMS_BANK[x]["title"]
-)
-
-# Lấy dữ liệu của đề được chọn
-current_exam = EXAMS_BANK[selected_key]
-pdf_link = f"https://drive.google.com/file/d/{current_exam['pdf_id']}/preview"
-giai_link = f"https://drive.google.com/file/d/{current_exam['giai_id']}/view"
-
-# Chia màn hình làm 2 cột: Đề thi (6) và Phiếu trả lời (4)
-col1, col2 = st.columns([6, 4])
-
-with col1:
-    st.subheader("📑 Nội dung Đề thi")
-    # Khung nhúng PDF tự động thay đổi theo đề chọn
-    st.components.v1.iframe(pdf_link, height=1200)
-
-with col2:
-    st.subheader("✍️ Phiếu Điền Đáp Án")
+# ==================== MENU & ĐỒNG HỒ 90 PHÚT (SIDEBAR) ====================
+with st.sidebar:
+    st.header("📂 DANH SÁCH ĐỀ THI")
+    danh_sach_de = [
+        "Đề 1: Sự biến thiên và cực trị của hàm số",
+        "Đề 2: Khối đa diện và Thể tích (Ví dụ)",
+        "Đề 3: Hàm số mũ và Lôgarit (Ví dụ)"  # <--- Thêm Đề 3 vào đây
+    ]
+    de_thi_chon = st.selectbox("Chọn đề thi:", danh_sach_de)
+        
+    st.markdown("---")
+    st.header("⏱️ THỜI GIAN LÀM BÀI")
     
-    # Đồng hồ đếm ngược 90 phút (Sẽ tự động reset lại từ đầu khi học sinh chuyển đề mới)
-    timer_code = f"""
-    <div id="timer_{selected_key}" style="background-color: #ff4b4b; color: white; padding: 12px; text-align: center; font-size: 26px; font-weight: bold; border-radius: 8px; font-family: Arial, sans-serif; margin-bottom: 15px;">
-        ⏳ 90:00
+    from streamlit.components.v1 import html
+    dong_ho_html = """
+    <div style="font-family: 'Times New Roman', serif; font-size: 28px; font-weight: bold; color: #d9534f; background-color: #f8f9fa; padding: 10px; border-radius: 5px; text-align: center; border: 1px solid #ddd;">
+        <span id="timer">90:00</span>
     </div>
     <script>
-    var time_in_minutes = 90;
-    var deadline = new Date(Date.parse(new Date()) + time_in_minutes * 60 * 1000);
-    function update_clock(){{
-        var t = Date.parse(deadline) - Date.parse(new Date());
-        var seconds = Math.floor( (t/1000) % 60 );
-        var total_minutes = Math.floor(t / 1000 / 60);
-        var clock = document.getElementById('timer_{selected_key}');
-        if(!clock) return;
-        if(t <= 0){{
-            clock.innerHTML = "HẾT GIỜ LÀM BÀI!";
-            clock.style.backgroundColor = "black";
-        }} else {{
-            var m = total_minutes < 10 ? "0" + total_minutes : total_minutes;
-            var s = seconds < 10 ? "0" + seconds : seconds;
-            clock.innerHTML = "⏳ " + m + ":" + s;
-        }}
-    }}
-    setInterval(update_clock, 1000);
+        var totalSeconds = 90 * 60;
+        var timerElement = document.getElementById('timer');
+        var timer = setInterval(function() {
+            var minutes = Math.floor(totalSeconds / 60);
+            var seconds = totalSeconds % 60;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            timerElement.textContent = minutes + ":" + seconds;
+            if (totalSeconds <= 0) {
+                clearInterval(timer);
+                timerElement.textContent = "HẾT GIỜ!";
+            } else {
+                totalSeconds--;
+            }
+        }, 1000);
     </script>
     """
-    st.components.v1.html(timer_code, height=75)
-    
-    # Form điền đáp án
-    with st.form(key=f"form_{selected_key}"):
-        
-        # --- PHẦN I ---
-        st.markdown("### **PHẦN I. Trắc nghiệm nhiều phương án lựa chọn**")
-        p1_answers = {}
-        for i in range(1, 13):
-            p1_answers[i] = st.radio(f"Câu {i}:", ["A", "B", "C", "D"], horizontal=True, index=None, key=f"p1_c{i}_{selected_key}")
-        
-        st.markdown("---")
-        
-        # --- PHẦN II ---
-        st.markdown("### **PHẦN II. Trắc nghiệm Đúng / Sai**")
-        p2_answers = {}
-        for i in range(1, 5):
-            st.markdown(f"**Câu {i}:**")
-            p2_answers[i] = {}
-            col_a, col_b, col_c, col_d = st.columns(4)
-            with col_a: p2_answers[i]["a"] = st.radio("Ý a)", ["Đúng", "Sai"], index=None, key=f"p2_c{i}_a_{selected_key}")
-            with col_b: p2_answers[i]["b"] = st.radio("Ý b)", ["Đúng", "Sai"], index=None, key=f"p2_c{i}_b_{selected_key}")
-            with col_c: p2_answers[i]["c"] = st.radio("Ý c)", ["Đúng", "Sai"], index=None, key=f"p2_c{i}_c_{selected_key}")
-            with col_d: p2_answers[i]["d"] = st.radio("Ý d)", ["Đúng", "Sai"], index=None, key=f"p2_c{i}_d_{selected_key}")
-            st.write("")
-        
-        st.markdown("---")
-        
-        # --- PHẦN III ---
-        st.markdown("### **PHẦN III. Trắc nghiệm Trả lời ngắn**")
-        p3_answers = {}
-        for i in range(1, 7):
-            p3_answers[i] = st.text_input(f"Câu {i}: Nhập đáp số của bạn", key=f"p3_c{i}_{selected_key}")
-        
-        st.markdown("---")
-        submitted = st.form_submit_button("NỘP BÀI & CHẤM ĐIỂM TỰ ĐỘNG", use_container_width=True)
+    html(dong_ho_html, height=70)
 
-    # =========================================================================
-    # LOGIC XỬ LÝ CHẤM ĐIỂM VÀ HIỂN THỊ ĐÁP ÁN CHI TIẾT KHI BẤM NỘP BÀI
-    # =========================================================================
-    if submitted:
-        score_p1 = 0.0
-        score_p2 = 0.0
-        score_p3 = 0.0
+# ==================== XỬ LÝ NỘI DUNG ĐỀ 1 ====================
+if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
+    key_nop_bai = "submitted_de1"
+    if key_nop_bai not in st.session_state:
+        st.session_state[key_nop_bai] = False
         
-        # 1. Chấm điểm Phần I (Mỗi câu đúng 0.25đ)
-        for i in range(1, 13):
-            if p1_answers[i] == current_exam["key_p1"][i-1]:
-                score_p1 += 0.25
-                
-        # 2. Chấm điểm Phần II (Barem điểm chéo chuẩn Bộ GD)
-        p2_score_matrix = {1: 0.1, 2: 0.2, 3: 0.5, 4: 1.0}
-        for i in range(1, 5):
-            correct_branches = 0
-            for branch in ["a", "b", "c", "d"]:
-                if p2_answers[i][branch] == current_exam["key_p2"][i][branch]:
-                    correct_branches += 1
-            if correct_branches > 0:
-                score_p2 += p2_score_matrix[correct_branches]
-                
-        # 3. Chấm điểm Phần III (Mỗi câu đúng 0.5đ)
-        for i in range(1, 7):
-            if p3_answers[i].strip() == str(current_exam["key_p3"][i-1]).strip():
-                score_p3 += 0.5
-                
-        # Tính tổng điểm tổng kết
-        total_score = round(score_p1 + score_p2 + score_p3, 2)
+    st.markdown(
+    """
+    <h1 style="text-align: center; color: #00a88f;">BÀI 1. SỰ BIẾN THIÊN VÀ CỰC TRỊ CỦA HÀM SỐ</h1>
+    """, 
+    unsafe_allow_html=True
+    )
+    st.markdown("---")
+
+    if not st.session_state[key_nop_bai]:
+        with st.form("form_de_1"):
+            
+            # =====================================================================
+            # PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (12 CÂU)
+            # =====================================================================
+            st.markdown( """
+            <h2 style="color: #0000FF;">Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn</h2>
+            """, 
+            unsafe_allow_html=True
+            )
+            st.markdown(
+                '<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 12. Mỗi câu hỏi chỉ chọn 1 phương án. (Mỗi câu đúng 0.25 điểm)</b></em>', 
+                unsafe_allow_html=True
+            )
+            
+            st.markdown("**Câu 1:** Hàm số $y=f(x)$ liên tục trên $\\mathbb{R}$ có bảng biến thiên hàm số $y=f'(x)$ như hình dưới:")
+            try:
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/Cau1_p1.PNG", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau1_p1.png")
+            
+            st.markdown("Số điểm cực trị của hàm số $y=f(x)$ là")
+            p1_q1 = st.radio("C1:", [r"A. $4$", r"B. $1$", r"C. $2$", r"D. $3$"], key="p1_q1", label_visibility="collapsed")
+            st.divider()
+
+            st.markdown("**Câu 2:** Cho hàm số bậc bốn $y=f(x)$ có đồ thị là đường cong trong hình dưới đây:")
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/cau2_p1.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau2_p1.png")
+            st.markdown("Hàm số đã cho đồng biến trên khoảng nào dưới đây?")
+            p1_q2 = st.radio("C2:", [r"A. $(7; +\infty)$", r"B. $(-2; 3)$", r"C. $(-\infty; -2)$", r"D. $(-2; 0)$"], key="p1_q2", label_visibility="collapsed")
+            st.divider()
+
+            st.markdown("**Câu 3:** Cho hàm số $y=f(x)$ có bảng biến thiên như sau:")
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/cau3_p1.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau3_p1.png")
+            st.markdown("Hàm số đã cho nghịch biến trên khoảng nào dưới đây?")
+            p1_q3 = st.radio("C3:", [r"A. $(-2; 0)$", r"B. $(-\infty; 0)$", r"C. $(1; 3)$", r"D. $(3; +\infty)$"], key="p1_q3", label_visibility="collapsed")
+            st.divider()
+
+            st.markdown("**Câu 4:** Cho hàm số $y=f'(x)$ có đồ thị là đường cong trong hình vẽ dưới đây:")
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/cau4_p1.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau4_p1.png")
+            st.markdown("Hàm số $y=f(x)$ đồng biến trên khoảng nào sau đây?")
+            p1_q4 = st.radio("C4:", [r"A. $(-\infty; -1)$", r"B. $(-1; 1)$", r"C. $(1; 4)$", r"D. $(1; +\infty)$"], key="p1_q4", label_visibility="collapsed")
+            st.divider()
+
+            st.markdown("**Câu 5:** Hàm số nào sau đây nghịch biến trên $\\mathbb{R}$?")
+            p1_q5 = st.radio("C5:", [r"A. $y = -x^3 + 3x^2 - 9x$", r"B. $y = -x^3 + x + 1$", r"C. $y = \frac{x-1}{x-2}$", r"D. $y = 2x^2 + 3x + 2$"], key="p1_q5", label_visibility="collapsed")
+            st.divider()
+
+            st.markdown("**Câu 6:** Cho hàm số $y=f(x)$ có đồ thị là đường cong như hình vẽ bên dưới:")
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/cau6_p1.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau6_p1.png")
+            st.markdown("Hàm số $f(x)$ đạt cực đại tại điểm nào sau đây?")
+            p1_q6 = st.radio("C6:", [r"A. $x = 1$", r"B. $x = -1$", r"C. $y = 3$", r"D. $M(-1; 3)$"], key="p1_q6", label_visibility="collapsed")
+            st.divider()
+
+            st.markdown("**Câu 7:** Cho hàm số $y=f(x)$ xác định trên $\\mathbb{R}$ và có bảng biến thiên như hình vẽ sau:")
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/cau7_p1.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau7_p1.png")
+            st.markdown("Giá trị cực tiểu của hàm số $y=f(x)$ là")
+            p1_q7 = st.radio("C7:", [r"A. $-10$", r"B. $11$", r"C. $6$", r"D. $-20$"], key="p1_q7", label_visibility="collapsed")
+            st.divider()
+
+            st.markdown(r"**Câu 8:** Cho hàm số $y=\frac{x-2}{x+1}$, khẳng định nào sau đây là đúng?")
+            p1_q8 = st.radio("C8:", [
+                r"A. Hàm số đồng biến trên $(-\infty; -1) \cup (-1; +\infty)$", 
+                r"B. Hàm số đồng biến trên $(-\infty; -1)$ và $(-1; +\infty)$", 
+                r"C. Hàm số đồng biến trên $\mathbb{R} \setminus \{-1\}$", 
+                r"D. Hàm số đồng biến trên $(-\infty; 1)$"
+            ], key="p1_q8", label_visibility="collapsed")
+            st.divider()
+
+            st.markdown(r"**Câu 9:** Hàm số $y=\frac{x^2-3x+5}{x+1}$ nghịch biến trên các khoảng nào?")
+            p1_q9 = st.radio("C9:", [
+                r"A. $(-4; 2)$", 
+                r"B. $(-\infty; -2)$", 
+                r"C. $(-\infty; -1)$ và $(-1; +\infty)$", 
+                r"D. $(-4; -1)$ và $(-1; 2)$"
+            ], key="p1_q9", label_visibility="collapsed")
+            st.divider()
+
+            st.markdown(r"**Câu 10:** Cho hàm số $y=f(x)$ xác định trên $\mathbb{R}$ và có đạo hàm $f'(x) = 12x^{2025}(x+1)(3-x), \forall x \in \mathbb{R}$. Hàm số đã cho đồng biến trên khoảng nào sau đây?")
+            p1_q10 = st.radio("C10:", [r"A. $(-\infty; -1)$", r"B. $(-1; 3)$", r"C. $(3; +\infty)$", r"D. $(-\infty; 0)$"], key="p1_q10", label_visibility="collapsed")
+            st.divider()
+
+            st.markdown(r"**Câu 11:** Cho hàm số $y=\dfrac{x^2-2x-7}{x-4}$. Phát biểu nào sau đây là đúng?")
+            p1_q11 = st.radio("C11:", [
+                r"A. $x_{CT} = 3, x_{CĐ} = 5$", 
+                r"B. $x_{CT} = -3, x_{CĐ} = 5$", 
+                r"C. $x_{CT} = 5, x_{CĐ} = 3$", 
+                r"D. $x_{CT} = 5, x_{CĐ} = -3$"
+            ], key="p1_q11", label_visibility="collapsed")
+            st.divider()
+
+            st.markdown(r"**Câu 12:** Điểm cực tiểu của hàm số $y=\dfrac{-x^2+2x-1}{x+2}$ là")
+            p1_q12 = st.radio("C12:", [r"A. $x = 1$", r"B. $x = -5$", r"C. $x = 2$", r"D. $x = 5$"], key="p1_q12", label_visibility="collapsed")
+            st.divider()
+
+            # =====================================================================
+            # PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (4 CÂU)
+            # =====================================================================
+            st.markdown(
+                """
+                <h2 style="color: #0000FF;">Phần 2. Trắc nghiệm lựa chọn đúng/sai</h2>
+                """, 
+                unsafe_allow_html=True
+            )
+            st.markdown(
+                '<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 4. Trong mỗi ý a), b), c), d) chọn đúng hoặc sai.</b></em>', 
+                unsafe_allow_html=True
+            )
+            
+            # --- Câu 1 ---
+            st.markdown("**Câu 1:** Cho hàm số bậc bốn $y=f(x)$. Hàm số $y=f'(x)$ có đồ thị như hình dưới đây")
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/cau1_p2.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau1_p2.png")
+            
+            p2_q1 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown("a) Hàm số $y=f(x)$ đồng biến trên khoảng $(-\infty; 0)$"); p2_q1["a"] = c2.radio("p2c1a", ["Đúng", "Sai"], key="p2_q1_a", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown("b) Hàm số đồng biến trên khoảng $(-1; 1)$"); p2_q1["b"] = c2.radio("p2c1b", ["Đúng", "Sai"], key="p2_q1_b", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown("c) Hàm số $y=f(x)$ nghịch biến trên khoảng $(-\infty; 0)$"); p2_q1["c"] = c2.radio("p2c1c", ["Đúng", "Sai"], key="p2_q1_c", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown("d) Hàm số $y=f(x)$ nghịch biến trên khoảng $(1; 2)$"); p2_q1["d"] = c2.radio("p2c1d", ["Đúng", "Sai"], key="p2_q1_d", horizontal=True, label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 2 ---
+            st.markdown(r"**Câu 2:** Cho hàm số $y=f(x)=\frac{x^2+3x}{x-1}$.")
+            p2_q2 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown("a) Hàm số $f(x)$ đồng biến trên khoảng $(-\infty; 1)$"); p2_q2["a"] = c2.radio("p2c2a", ["Đúng", "Sai"], key="p2_q2_a", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown("b) Cực đại của hàm số $f(x)$ là $1$"); p2_q2["b"] = c2.radio("p2c2b", ["Đúng", "Sai"], key="p2_q2_b", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown("c) Hàm số $f(x)$ có ba điểm cực trị"); p2_q2["c"] = c2.radio("p2c2c", ["Đúng", "Sai"], key="p2_q2_c", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown("d) Hàm số $f(x)$ nghịch biến trên khoảng $(-1; 3)$"); p2_q2["d"] = c2.radio("p2c2d", ["Đúng", "Sai"], key="p2_q2_d", horizontal=True, label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 3 ---
+            st.markdown(r"**Câu 3:** Cho hàm số $y=2^{x^2 - 3x + \frac{13}{4}}$.")
+            p2_q3 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown("a) Hàm số nghịch biến trên khoảng $(-1; 0)$"); p2_q3["a"] = c2.radio("p2c3a", ["Đúng", "Sai"], key="p2_q3_a", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown("b) Hàm số đồng biến trên khoảng $(0; 1)$"); p2_q3["b"] = c2.radio("p2c3b", ["Đúng", "Sai"], key="p2_q3_b", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown("c) Hàm số có giá trị cực tiểu $y_{CT} = 2$"); p2_q3["c"] = c2.radio("p2c3c", ["Đúng", "Sai"], key="p2_q3_c", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown("d) Hàm số có 2 điểm cực trị"); p2_q3["d"] = c2.radio("p2c3d", ["Đúng", "Sai"], key="p2_q3_d", horizontal=True, label_visibility="collapsed")
+            st.divider()
+
+            # --- Câu 4 ---
+            st.markdown(r"**Câu 4:** Cho hàm số $y=\log_2(x^2 - 4x + 5)$ có đồ thị là $(C)$.")
+            p2_q4 = {}
+            c1, c2 = st.columns([4, 1]); c1.markdown("a) Hàm số có tập xác định là $D=\mathbb{R}$"); p2_q4["a"] = c2.radio("p2c4a", ["Đúng", "Sai"], key="p2_q4_a", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown("b) Hàm số đồng biến trên $\mathbb{R}$"); p2_q4["b"] = c2.radio("p2c4b", ["Đúng", "Sai"], key="p2_q4_b", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown("c) Hàm số đạt cực tiểu tại $x=2$"); p2_q4["c"] = c2.radio("p2c4c", ["Đúng", "Sai"], key="p2_q4_c", horizontal=True, label_visibility="collapsed")
+            c1, c2 = st.columns([4, 1]); c1.markdown(r"d) Giả sử đồ thị $(C)$ cắt đường thẳng $y=1$ tại $A, B$ và điểm cực trị $M$. Bán kính đường tròn ngoại tiếp $\Delta MAB$ bằng $2$."); p2_q4["d"] = c2.radio("p2c4d", ["Đúng", "Sai"], key="p2_q4_d", horizontal=True, label_visibility="collapsed")
+            st.divider()
+            
+            # =====================================================================
+            # PHẦN 3: TRẢ LỜI NGẮN (6 CÂU)
+            # =====================================================================
+            st.markdown(
+                """
+                <h2 style="color: #0000FF;">Phần 3. Câu hỏi trắc nghiệm trả lời ngắn</h2>
+                """, 
+                unsafe_allow_html=True
+            )
+            st.markdown(
+                '<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 6. Điền kết quả dạng số vào ô trống. (Mỗi câu đúng 0.5 điểm)</b></em>', 
+                unsafe_allow_html=True
+            )
+
+            
+            st.markdown("**Câu 1:** Biết đường thẳng đi qua hai điểm cực trị của đồ thị của hàm số $y = -x^3 + 3x^2 + 9x + 1$ là $ax+by+4=0$. Tính $a+2b$.")
+            p3_q1 = st.text_input("Nhập đáp án Câu 1:", key="p3_q1")
+            st.divider()
+
+            st.markdown("**Câu 2:** Biết đồ thị hàm số $y=ax^3+bx^2+cx+d$ có hai điểm cực trị $A(1; -7), B(2; -8)$. Tính $y(-1)$")
+            p3_q2 = st.text_input("Nhập đáp án Câu 2:", key="p3_q2")
+            st.divider()
+            
+            st.markdown("**Câu 3:** Cho hàm số $y=ax^3+bx^2+cx+d$ ($a,b,c \in \mathbb{R}$) có bảng xét dấu đạo hàm. Biết phương trình $y'=0$ có 2 nghiệm dương phân biệt. Có bao nhiêu số dương trong các số $a, b, c$?")
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/cau3_p3.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau3_p3.png")
+            p3_q3 = st.text_input("Nhập đáp án Câu 3:", key="p3_q3")
+            st.divider()
+
+            st.markdown("**Câu 4:** Xét một chất điểm chuyển động trên một trục số nằm ngang, vị trí $s(t) = t^3 - 9t^2 + 15t, t \ge 0$. Hỏi có bao nhiêu giá trị $t$ nguyên để chất điểm chuyển động sang trái?")
+            p3_q4 = st.text_input("Nhập đáp án Câu 4:", key="p3_q4")
+            st.divider()
+
+            st.markdown("**Câu 5:** Máng trượt của một cầu trượt cho trẻ em được uốn từ một tấm kim loại bề rộng 80 cm. Gọi $S$ là diện tích mặt cắt ngang. Với $x$ đạt giá trị bằng bao nhiêu thì cầu trượt đảm bảo an toàn nhất cho trẻ em?")
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/cau5_p3.png", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau5_p3.png")
+            p3_q5 = st.text_input("Nhập đáp án Câu 5:", key="p3_q5")
+            st.divider()
+
+            st.markdown(r"**Câu 6:** Giả sử doanh số của một sản phẩm mới tuân theo quy luật logistic $f(t) = \frac{5000}{1+5e^{-t}}, t \ge 0$. Hỏi sau khi phát hành bao nhiêu năm thì tốc độ bán hàng là lớn nhất? (quy tròn đến hàng phần trăm).")
+            p3_q6 = st.text_input("Nhập đáp án Câu 6:", key="p3_q6")
+            st.divider()
+
+            # NÚT NỘP BÀI
+            submitted = st.form_submit_button("Nộp Bài Thi", type="primary")
+            
+            if submitted:
+                st.session_state[key_nop_bai] = True
+                st.session_state.p1 = [p1_q1, p1_q2, p1_q3, p1_q4, p1_q5, p1_q6, p1_q7, p1_q8, p1_q9, p1_q10, p1_q11, p1_q12]
+                st.session_state.p2 = [p2_q1, p2_q2, p2_q3, p2_q4]
+                st.session_state.p3 = [p3_q1, p3_q2, p3_q3, p3_q4, p3_q5, p3_q6]
+                st.rerun()
+
+    # ==================== XỬ LÝ CHẤM ĐIỂM & ĐÁP ÁN ĐỀ 1 ====================
+    else:
+        tong_diem = 0.0
         
-        # Xuất kết quả hoành tráng ra màn hình
-        st.markdown("---")
-        st.success(f"🎉 Bạn đã hoàn thành bài thi! HỆ THỐNG CHẤM ĐIỂM ĐÃ HOÀN TẤT.")
-        st.metric(label="📊 ĐIỂM SỐ CỦA BẠN:", value=f"{total_score} / 10.0 Điểm")
+        p1_ans_key = ["C", "C", "C", "B", "A", "B", "D", "B", "D", "A", "C", "B"]
+        for i in range(12):
+            if st.session_state.p1[i].startswith(f"{p1_ans_key[i]}."):
+                tong_diem += 0.25
+                
+        p2_ans_key = [
+            {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Đúng"},
+            {"a": "Sai", "b": "Đúng", "c": "Sai", "d": "Sai"},
+            {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"},
+            {"a": "Đúng", "b": "Sai", "c": "Đúng", "d": "Sai"}
+        ]
+        for i in range(4):
+            dung_so_y = 0
+            for k in ["a", "b", "c", "d"]:
+                if st.session_state.p2[i][k] == p2_ans_key[i][k]:
+                    dung_so_y += 1
+            if dung_so_y == 1: tong_diem += 0.1
+            elif dung_so_y == 2: tong_diem += 0.25
+            elif dung_so_y == 3: tong_diem += 0.5
+            elif dung_so_y == 4: tong_diem += 1.0
+
+        p3_ans_key = ["6", "-35", "3", "3", "20", "1.61"]
+        for i in range(6):
+            if st.session_state.p3[i].strip() == p3_ans_key[i]:
+                tong_diem += 0.5
+                
         st.balloons()
+        st.success(f"🎉 BẠN ĐÃ HOÀN THÀNH BÀI THI! Tổng điểm: **{tong_diem:.2f} / 10.0**")
         
-        # Cung cấp link file giải chi tiết
-        st.info(f"👉 [BẤM VÀO ĐÂY ĐỂ XEM FILE LỜI GIẢI CHI TIẾT PDF]({giai_link})")
+        if st.button("🔄 Làm lại đề này"):
+            st.session_state[key_nop_bai] = False
+            st.rerun()
+            
+        st.markdown("---")
+        st.header("📖 ĐÁP ÁN & LỜI GIẢI CHI TIẾT")
         
-        # HIỂN THỊ ĐÁP ÁN CHI TIẾT TỪNG CÂU ĐỂ TRA CỨU LỖI SAI
-        with st.expander("🔍 BẢNG ĐỐI CHIẾU ĐÁP ÁN CHI TIẾT TỪNG CÂU"):
-            st.markdown("#### **Phần I:**")
-            for i in range(1, 13):
-                st.write(f"Câu {i}: Bạn chọn: **{p1_answers[i]}** | Đáp án đúng: **{current_exam['key_p1'][i-1]}**")
-                
-            st.markdown("#### **Phần II:**")
-            for i in range(1, 5):
-                st.write(f"**Câu {i}:**")
-                for branch in ["a", "b", "c", "d"]:
-                    st.write(f" - Ý {branch}): Bạn chọn: {p2_answers[i][branch]} | Đúng chuẩn: {current_exam['key_p2'][i][branch]}")
-                    
-            st.markdown("#### **Phần III:**")
-            for i in range(1, 7):
-                st.write(f"Câu {i}: Bạn điền: **{p3_answers[i]}** | Đáp số đúng: **{current_exam['key_p3'][i-1]}**")
+        st.subheader("Phần 1: Trắc nghiệm 4 lựa chọn")
+        with st.expander("🔍 Câu 1 - Câu 6"):
+            st.markdown(r"""
+            **Câu 1 (C):** Phương trình $f'(x)=0$ có hai nghiệm đơn nên hàm số có 2 điểm cực trị.
+            
+            **Câu 2 (C):** Hàm số đồng biến trên khoảng $(-\infty; -2)$.
+            
+            **Câu 3 (C):** Từ BBT, hàm số nghịch biến trên $(1; 3)$.
+            
+            **Câu 4 (B):** Dựa vào đồ thị, $f'(x) > 0, \forall x \in (-1; 1)$ và $(4; +\infty)$.
+            
+            **Câu 5 (A):** $y = -x^3 + 3x^2 - 9x \Rightarrow y' = -3x^2 + 6x - 9 < 0, \forall x \in \mathbb{R}$.
+            
+            **Câu 6 (B):** Từ đồ thị, hàm số đạt cực đại tại $x = -1$.
+            """)
+            
+        with st.expander("🔍 Câu 7 - Câu 12"):
+            st.markdown(r"""
+            **Câu 7 (D):** Dựa vào BBT, giá trị cực tiểu là $y_{CT} = -20$.
+            **Câu 8 (B):** TXĐ: $\mathbb{R} \setminus \{-1\}$. $y' = \frac{3}{(x+1)^2} > 0$. Hàm số đồng biến trên $(-\infty; -1)$ và $(-1; +\infty)$.
+            **Câu 9 (D):** $y' = \frac{x^2+2x-8}{(x+1)^2}$. Cho $y' = 0 \Leftrightarrow x = -4 \lor x = 2$. Lập BBT ta thấy hàm số nghịch biến trên $(-4; -1)$ và $(-1; 2)$.
+            **Câu 10 (A):** $f'(x) = 0 \Leftrightarrow x=0, x=-1, x=3$. Qua $x=-1$, $f'(x)$ đổi dấu từ $-$ sang $+$. Đồng biến trên $(-\infty; -1)$.
+            **Câu 11 (C):** $y' = \frac{x^2-8x+15}{(x-4)^2} = 0 \Leftrightarrow x=3, x=5$. BBT cho thấy $x_{CĐ}=3, x_{CT}=5$.
+            **Câu 12 (B):** $y' = \frac{-x^2-4x+5}{(x+2)^2} = 0 \Leftrightarrow x=1, x=-5$. BBT cho thấy cực tiểu tại $x = -5$.
+            """)
+
+        st.subheader("Phần 2: Trắc nghiệm lựa chọn đúng sai")
+        with st.expander("🔍 Câu 1 & Câu 2"):
+            st.markdown(r"""
+            **Câu 1:** (a-Sai, b-Đúng, c-Sai, d-Đúng). 
+            *Giải thích:* Đồ thị $f'(x)$ nằm trên trục $Ox$ (dương) ở $(-1; 1)$ và $(2; +\infty)$ nên đồng biến. Đồ thị $f'(x)$ âm ở $(-\infty; -1)$ và $(1; 2)$ nên nghịch biến.
+            
+            **Câu 2:** (a-Sai, b-Đúng, c-Sai, d-Sai).
+            *Giải thích:* $y' = \frac{x^2-2x-3}{(x-1)^2} = 0 \Leftrightarrow x=-1 \lor x=3$. Có 2 điểm cực trị, cực đại tại $x=-1 \Rightarrow y=1$. Không xác định tại $x=1$ nên không nghịch biến trên $(-1; 3)$.
+            """)
+            
+        with st.expander("🔍 Câu 3 & Câu 4"):
+            st.markdown(r"""
+            **Câu 3:** (a-Đúng, b-Sai, c-Đúng, d-Sai).
+            *Giải thích:* $y' = (2x-3) \cdot 2^{x^2-3x+\frac{13}{4}} \ln 2$. $y'=0 \Leftrightarrow x=\frac{3}{2}$. Hàm số chỉ có 1 điểm cực trị là cực tiểu tại $x=\frac{3}{2}$ với $y_{CT} = 2$.
+            
+            **Câu 4:** (a-Đúng, b-Sai, c-Đúng, d-Sai).
+            *Giải thích:* TXĐ $\mathbb{R}$. $y' = \frac{2x-4}{(x^2-4x+5)\ln 2} = 0 \Leftrightarrow x=2$. Cực tiểu $M(2; 0)$. Giao với $y=1$ cho $A(1; 1), B(3; 1)$. Tam giác $MAB$ vuông tại $M$, bán kính $R = \frac{AB}{2} = 1 \neq 2$.
+            """)
+
+        st.subheader("Phần 3: Câu hỏi trả lời ngắn")
+        with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
+            st.markdown(r"""
+            **Câu 1 (Ans: 6):** $y' = -3x^2+6x+9=0 \Leftrightarrow x=-1 \lor x=3$. Điểm CT: $A(-1; -4), B(3; 28)$. Đường thẳng $AB$: $8x-y+4=0 \Rightarrow a=8, b=-1 \Rightarrow a+2b=6$.
+            
+            **Câu 2 (Ans: -35):** Thế tọa độ cực trị vào hệ phương trình giải ra $a,b,c,d \Rightarrow y = 2x^3 - 9x^2 + 12x - 12$. Tính $y(-1) = -35$.
+            
+            **Câu 3 (Ans: 3):** Phương trình $y'=0$ có nghiệm $x_1, x_2 > 0 \Rightarrow -\frac{2b}{3a}>0, \frac{c}{3a}>0$. Do nhánh phải đi lên $\Rightarrow a>0$. Do đó $b<0, c>0$. Cắt $Oy$ tại $d>0 \Rightarrow a,c,d > 0$ (Có 3 số dương).
+            
+            **Câu 4 (Ans: 3):** Vận tốc $v(t) = s'(t) = 3t^2 - 18t + 15 < 0 \Leftrightarrow 1 < t < 5$. Do $t \in \mathbb{Z} \Rightarrow t \in \{2, 3, 4\}$.
+            
+            **Câu 5 (Ans: 20):** Bề rộng $2x+y = 80 \Rightarrow y = 80-2x$. Diện tích $S(x) = x(80-2x) = -2x^2 + 80x$. $S'(x) = -4x + 80 = 0 \Leftrightarrow x=20$ cm.
+            
+            **Câu 6 (Ans: 1.61):** Tốc độ bán hàng $h(t) = f'(t) = \frac{25000e^{-t}}{(1+5e^{-t})^2}$. Khảo sát $h'(t)=0 \Leftrightarrow 1-5e^{-t}=0 \Leftrightarrow t = \ln 5 \approx 1.61$ năm.
+            """)
+
+# ==================== XỬ LÝ NỘI DUNG ĐỀ 2 ====================
+elif de_thi_chon == "Đề 2: Khối đa diện và Thể tích (Ví dụ)":
+    key_nop_bai = "submitted_de2"
+    if key_nop_bai not in st.session_state:
+        st.session_state[key_nop_bai] = False
+        
+    st.title("ĐỀ 2: KHỐI ĐA DIỆN VÀ THỂ TÍCH")
+    st.markdown("---")
+    
+    if not st.session_state[key_nop_bai]:
+        with st.form("form_de_2"):
+            st.markdown("**Câu 1 (Đề 2):** Nội dung câu hỏi khối đa diện...")
+            q1_d2 = st.radio("C1_d2", [r"A. Đáp án A", r"B. Đáp án B", r"C. Đáp án C", r"D. Đáp án D"], label_visibility="collapsed")
+            st.divider()
+            
+            submitted_2 = st.form_submit_button("Nộp Bài Thi Đề 2", type="primary")
+            if submitted_2:
+                st.session_state[key_nop_bai] = True
+                st.session_state.q1_d2_ans = q1_d2
+                st.rerun()
+    else:
+        score_d2 = 0
+        if "q1_d2_ans" in st.session_state and st.session_state.q1_d2_ans.startswith("A."):
+            score_d2 += 0.25
+            
+        st.success(f"🎉 Bạn đã hoàn thành Đề 2! Tổng điểm: **{score_d2}**")
+        
+        if st.button("🔄 Làm lại Đề 2"):
+            st.session_state[key_nop_bai] = False
+            st.rerun()
+            
+        st.markdown("---")
+        st.header("📖 LỜI GIẢI CHI TIẾT ĐỀ 2")
+        with st.expander("🔍 Câu 1: Xem lời giải chi tiết"):
+            st.markdown("**Đáp án đúng:** A")
+            st.markdown("**Hướng dẫn giải:** Lời giải chi tiết cho câu hỏi khối đa diện...")
+
+# ==================== XỬ LÝ NỘI DUNG ĐỀ 3 ====================
+# ==================== XỬ LÝ NỘI DUNG ĐỀ 3 ====================
+elif de_thi_chon == "Đề 3: Hàm số mũ và Lôgarit (Ví dụ)":
+    key_nop_bai = "submitted_de3"  # Dùng khóa riêng biệt cho Đề 3
+    if key_nop_bai not in st.session_state:
+        st.session_state[key_nop_bai] = False
+        
+    st.title("ĐỀ 3: HÀM SỐ MŨ VÀ LÔGARIT")
+    st.markdown("---")
+    
+    if not st.session_state[key_nop_bai]:
+        with st.form("form_de_3"):
+            st.markdown("**Câu 1 (Đề 3):** Nội dung câu hỏi mũ và lôgarit...")
+            q1_d3 = st.radio("C1_d3", [r"A. Đáp án A", r"B. Đáp án B", r"C. Đáp án C", r"D. Đáp án D"], label_visibility="collapsed")
+            st.divider()
+            
+            # Thêm tiếp các câu hỏi 2, 3, 4... của Đề 3 tại đây nếu cần
+            
+            submitted_3 = st.form_submit_button("Nộp Bài Thi Đề 3", type="primary")
+            if submitted_3:
+                st.session_state[key_nop_bai] = True
+                st.session_state.q1_d3_ans = q1_d3
+                st.rerun()
+    else:
+        # Chấm điểm và hiển thị kết quả Đề 3
+        score_d3 = 0
+        if "q1_d3_ans" in st.session_state and st.session_state.q1_d3_ans.startswith("A."):
+            score_d3 += 0.25
+            
+        st.success(f"🎉 Bạn đã hoàn thành Đề 3! Tổng điểm: **{score_d3}**")
+        
+        if st.button("🔄 Làm lại Đề 3"):
+            st.session_state[key_nop_bai] = False
+            st.rerun()
+            
+        st.markdown("---")
+        st.header("📖 LỜI GIẢI CHI TIẾT ĐỀ 3")
+        with st.expander("🔍 Câu 1: Xem lời giải chi tiết"):
+            st.markdown("**Đáp án đúng:** A")
+            st.markdown("**Hướng dẫn giải:** Lời giải chi tiết cho câu hỏi mũ và lôgarit...")
