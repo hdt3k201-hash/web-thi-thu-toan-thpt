@@ -188,8 +188,9 @@ st.markdown(
 if "Đề TSA số 01" in selected_exam:
     if not st.session_state.exam_submitted:
         with st.form("tsa_exam_form_1"):
+            
+            # ================= CÂU 1 =================
             with st.container(border=True):
-                # Tách phần HTML và Markdown riêng biệt để tối ưu hiển thị
                 st.markdown(
                     """
                     <div class="question-title">
@@ -199,10 +200,9 @@ if "Đề TSA số 01" in selected_exam:
                     unsafe_allow_html=True,
                 )
                 st.markdown(
-                    r"""
-Một vòng quay Mặt Trời có bán kính **50 m**. Tâm của vòng quay nằm ở độ cao **60 m** so với mặt đất. Vòng quay quay đều, mất **15** phút để hoàn thành một vòng. Giả sử tại thời điểm **t = 0** (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất. Độ cao của cabin theo thời gian được mô hình hóa bởi:
+                    r"""Một vòng quay Mặt Trời (Ferris wheel) có bán kính **50 m**. Tâm của vòng quay nằm ở độ cao **60 m** so với mặt đất. Vòng quay quay đều, mất **15** phút để hoàn thành một vòng. Giả sử tại thời điểm **t = 0** (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất của vòng quay. Độ cao của cabin so với mặt đất (tính bằng mét) theo thời gian t được mô hình hóa bởi hàm số:[cite: 2]
 
-$$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
+$$h(t) = A\cos(\omega t) + B \quad (A < 0)$$[cite: 2]
 """
                 )
                 st.markdown(
@@ -213,7 +213,7 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
                             <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">-50</span>
                             <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">50</span>
                             <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">60</span>
-                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">80</span>
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">85</span>
                             <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">2π/15</span>
                         </div>
                     </div>
@@ -221,8 +221,7 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
                     unsafe_allow_html=True,
                 )
                 st.markdown(
-                    r"""
-**Hãy điền vào các vị trí còn thiếu:**
+                    r"""**Hãy điền vào các vị trí còn thiếu:**
 * Giá trị $A =$ **`[ (1) ]`** &nbsp;&nbsp;|&nbsp;&nbsp; Tần số góc $\omega =$ **`[ (2) ]`** &nbsp;&nbsp;|&nbsp;&nbsp; Giá trị $B =$ **`[ (3) ]`**
 """
                 )
@@ -230,7 +229,7 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
                 with col1:
                     q1_val_A = st.selectbox(
                         "📌 (1) Chọn giá trị A:",
-                        ["-- Chọn --", "-50", "50", "60", "80"],
+                        ["-- Chọn --", "-50", "50", "60", "85"],
                         key="q1_a",
                     )
                 with col2:
@@ -246,14 +245,19 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
                         key="q1_b",
                     )
 
+            # ================= CÂU 2 =================
             with st.container(border=True):
                 st.markdown(
                     r"""<div class="question-title"><b>Câu 2:</b> <span class="tag-badge">[Trắc nghiệm 4 lựa chọn]</span></div>""",
                     unsafe_allow_html=True,
                 )
                 st.markdown(
-                    r"""Cho hàm số $y = a\sin(bx+c) + d$ có $y_{\max} = 4$, $y_{\min} = -2$, chu kỳ $T = \pi$. Biết $a, b > 0$ và $c \in (-\pi; 0)$. Tính $P = a + b + c + d$."""
+                    r"""Cho hàm số lượng giác $y = a\sin(bx+c) + d$ có đồ thị như hình vẽ bên dưới. Biết $a > 0$, $b > 0$ và $c \in (-\pi; 0)$. Tính giá trị của biểu thức $P = a + b + c + d$.[cite: 2]"""
                 )
+                
+                # CHÈN LỆNH HÌNH VẼ THEO YÊU CẦU
+                st.image("...IMAGES/do_thi_cau_2.png", caption="Đồ thị hàm số Câu 2", use_container_width=True)
+                
                 q2_ans = st.radio(
                     "Chọn phương án đúng:",
                     [
@@ -266,47 +270,54 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
                     index=None,
                 )
 
+            # ================= CÂU 3 =================
             with st.container(border=True):
                 st.markdown(
                     r"""<div class="question-title"><b>Câu 3:</b> <span class="tag-badge">[Trả lời ngắn]</span></div>""",
                     unsafe_allow_html=True,
                 )
                 st.markdown(
-                    r"""Mực nước cảng biển là $h(t) = 3\cos\left(\dfrac{\pi t}{6} + \dfrac{\pi}{3}\right) + 12$ (mét). Tàu cần mực nước $\ge 13,5\text{ m}$. Trong 24h, tổng thời gian tàu cập cảng an toàn là bao nhiêu giờ?"""
+                    r"""Mực nước tại một cảng biển được mô hình hóa bởi hàm số $h(t) = 3\cos\left(\dfrac{\pi t}{6} + \dfrac{\pi}{3}\right) + 12$ (mét), trong đó t là thời gian tính bằng giờ ($0 \le t \le 24$). Một tàu hàng yêu cầu mực nước tối thiểu là **13,5 m** để có thể cập cảng an toàn. Trong một ngày (24 giờ), tổng thời gian tàu có thể cập cảng an toàn là bao nhiêu giờ?[cite: 2]"""
                 )
                 q3_ans = st.text_input("Nhập kết quả dạng số (Ví dụ: 8):", key="q3")
 
+            # ================= CÂU 4 =================
             with st.container(border=True):
                 st.markdown(
                     r"""<div class="question-title"><b>Câu 4:</b> <span class="tag-badge">[Đúng/Sai]</span></div>""",
                     unsafe_allow_html=True,
                 )
-                st.markdown(r"""Cho phương trình: $2\cos^2 x - (2m+1)\cos x + m = 0 \quad (1)$.""")
+                st.markdown(r"""Cho phương trình lượng giác: $2\cos^2 x - (2m+1)\cos x + m = 0 \quad (1)$. Xét tính đúng/sai của các mệnh đề sau:[cite: 2]""")
                 q4_a = st.radio(
-                    r"a) (1) tương đương $(\cos x - m)(2\cos x - 1) = 0$.",
+                    r"a) Phương trình (1) có thể phân tích thành nhân tử dạng $(\cos x - m)(2\cos x - 1) = 0$.",
                     ["Đúng", "Sai"],
                     key="q4_1",
                     horizontal=True,
+                    index=None
                 )
                 q4_b = st.radio(
-                    r"b) Khi $m = 1$, phương trình có đúng $2$ nghiệm trên $[0; 2\pi]$.",
+                    r"b) Khi $m = 1$, phương trình có đúng **2** nghiệm phân biệt trên đoạn $[0; 2\pi]$.",
                     ["Đúng", "Sai"],
                     key="q4_2",
                     horizontal=True,
+                    index=None
                 )
                 q4_c = st.radio(
-                    r"c) Để có đúng $3$ nghiệm trên $[0; 2\pi]$ thì $m = -1$.",
+                    r"c) Để phương trình có đúng **3** nghiệm phân biệt trên đoạn $[0; 2\pi]$ thì $m = -1$.",
                     ["Đúng", "Sai"],
                     key="q4_3",
                     horizontal=True,
+                    index=None
                 )
                 q4_d = st.radio(
-                    r"d) Tồn tại $m$ để phương trình vô nghiệm.",
+                    r"d) Có tồn tại giá trị thực của m để phương trình đã cho hoàn toàn vô nghiệm.",
                     ["Đúng", "Sai"],
                     key="q4_4",
                     horizontal=True,
+                    index=None
                 )
 
+            # ================= SUBMIT BUTTON =================
             submit_btn = st.form_submit_button(
                 f"🚀 NỘP BÀI {exam_name}", type="primary", use_container_width=True
             )
@@ -320,6 +331,7 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
         st.success(f"🎉 BẠN ĐÃ HOÀN THÀNH {exam_name}!")
         total_score = 0.0
 
+        # Chấm Câu 1
         if (
             st.session_state.get("q1_a") == "-50"
             and st.session_state.get("q1_w") == "2π/15"
@@ -327,12 +339,15 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
         ):
             total_score += 2.5
             
+        # Chấm Câu 2
         if st.session_state.get("q2") and st.session_state.get("q2").startswith("A."):
             total_score += 2.5
             
+        # Chấm Câu 3
         if st.session_state.get("q3", "").strip() == "8":
             total_score += 2.5
 
+        # Chấm Câu 4
         c4_score = 0
         if st.session_state.get("q4_1") == "Đúng": c4_score += 1
         if st.session_state.get("q4_2") == "Sai": c4_score += 1
@@ -344,6 +359,7 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
         elif c4_score == 2: total_score += 0.75
         elif c4_score == 1: total_score += 0.25
 
+        # Hiển thị điểm số
         st.markdown(
             f"""
             <div style="background-color: #ffebee; border: 2px solid #b71c1c; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
@@ -357,14 +373,53 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
         st.subheader(f"📖 LỜI GIẢI CHI TIẾT - {exam_name}")
 
         with st.expander("🔍 Lời giải Câu 1: Mô hình Vòng quay Mặt Trời"):
-            st.markdown(r"""- Độ cao tâm vòng quay là vị trí cân bằng $\Rightarrow B = 60$...""")
+            st.markdown(r"""
+* Từ giả thiết bài toán, độ cao của tâm vòng quay đóng vai trò là hằng số dịch chuyển trên trục tung, do đó ta có ngay $B = 60$.[cite: 2]
+* Bán kính vòng quay sẽ tương ứng với biên độ của dao động, tức là $|A| = 50$.[cite: 2]
+* Tại thời điểm ban đầu $t = 0$, cabin xuất phát từ điểm thấp nhất của quỹ đạo, nên độ cao lúc này là: $h(0) = B - |A| = 60 - 50 = 10 \text{ m}$.[cite: 2]
+* Thay $t = 0$ vào hàm số, ta được $A\cos(0) + 60 = 10 \Rightarrow A = -50$. Giá trị này hoàn toàn phù hợp với điều kiện $A < 0$ mà đề bài đã cho.[cite: 2]
+* Mặt khác, chu kỳ hoàn thành một vòng quay là $T = 15$ phút, từ đó ta tính được tần số góc: $\omega = \dfrac{2\pi}{T} = \dfrac{2\pi}{15}$.[cite: 2]
+* Lắp ghép các thông số trên, ta được kết quả: $A = -50$; $\omega = 2\pi/15$; $B = 60$.[cite: 2]
+""")
+            
         with st.expander("🔍 Lời giải Câu 2: Đọc đồ thị hàm số lượng giác"):
-            st.markdown(r"""- **Chọn đáp án A.** ($P = 6 - \dfrac{\pi}{3}$)""")
-        with st.expander("🔍 Lời giải Câu 3: Mực nước cảng biển"):
-            st.markdown(r"""- Tổng thời gian tàu cập cảng an toàn là 8 giờ.""")
-        with st.expander("🔍 Lời giải Câu 4: Phân tích nghiệm phương trình lượng giác"):
-            st.markdown(r"""- **a) Đúng | b) Sai | c) Đúng | d) Sai**""")
+            st.markdown(r"""
+* Quan sát đồ thị, ta thấy hàm số đạt giá trị lớn nhất $y_{\max} = 4$ và giá trị nhỏ nhất $y_{\min} = -2$.[cite: 2]
+* Từ đó, đường trung bình $d$ và biên độ $a$ được xác định dễ dàng:
+  * $d = \dfrac{y_{\max} + y_{\min}}{2} = \dfrac{4 + (-2)}{2} = 1$.[cite: 2]
+  * $a = \dfrac{y_{\max} - y_{\min}}{2} = \dfrac{4 - (-2)}{2} = 3$.[cite: 2]
+* Nhìn trên trục hoành, khoảng cách từ điểm cực tiểu tại $x = \dfrac{2\pi}{3}$ đến điểm cực đại ngay sau đó tại $x = \dfrac{7\pi}{6}$ tương ứng với nửa chu kỳ: $\dfrac{T}{2} = \dfrac{7\pi}{6} - \dfrac{2\pi}{3} = \dfrac{\pi}{2} \Rightarrow T = \pi$.[cite: 2]
+* Suy ra hệ số góc $b$ của hàm số là: $b = \dfrac{2\pi}{T} = \dfrac{2\pi}{\pi} = 2$.[cite: 2]
+* Lúc này, hàm số đã có dạng: $y = 3\sin(2x+c) + 1$. Đồ thị đi qua điểm uốn $(\dfrac{\pi}{6}; 1)$ theo hướng đi xuống, thay vào phương trình: $3\sin\left(2 \cdot \dfrac{\pi}{6} + c\right) + 1 = 1 \Leftrightarrow \sin\left(\dfrac{\pi}{3} + c\right) = 0$.[cite: 2]
+* Vì đồ thị đi xuống, đạo hàm phải mang dấu âm, do đó pha tương ứng là: $\dfrac{\pi}{3} + c = \pi \Rightarrow c = -\dfrac{\pi}{3}$ (Thỏa mãn $c \in (-\pi; 0)$).[cite: 2]
+* Cuối cùng tính $P = a + b + c + d = 3 + 2 + \left(-\dfrac{\pi}{3}\right) + 1 = 6 - \dfrac{\pi}{3}$.[cite: 2]
 
+$\Rightarrow$ **Chọn đáp án A.**[cite: 2]
+""")
+            
+        with st.expander("🔍 Lời giải Câu 3: Mực nước cảng biển"):
+            st.markdown(r"""
+* Để tàu có thể neo đậu an toàn, mực nước lúc đó phải thỏa mãn bất phương trình: $3\cos\left(\dfrac{\pi t}{6} + \dfrac{\pi}{3}\right) + 12 \ge 13,5$.[cite: 2]
+* Rút gọn, ta thu được: $\cos\left(\dfrac{\pi t}{6} + \dfrac{\pi}{3}\right) \ge \dfrac{1}{2}$.[cite: 2]
+* Giải bất phương trình này trên vòng tròn lượng giác: $-\dfrac{\pi}{3} + k2\pi \le \dfrac{\pi t}{6} + \dfrac{\pi}{3} \le \dfrac{\pi}{3} + k2\pi$.[cite: 2]
+* Trừ đi $\dfrac{\pi}{3}$ và nhân với $\dfrac{6}{\pi}$ để cô lập $t$, ta được: $-4 + 12k \le t \le 12k$.[cite: 2]
+* Tìm các khoảng thời gian hợp lệ trong phạm vi một ngày ($t \in [0; 24]$):
+  * Thay $k = 1$, ta có $8 \le t \le 12$ (Kéo dài **4** tiếng).[cite: 2]
+  * Thay $k = 2$, ta có $20 \le t \le 24$ (Kéo dài **4** tiếng).[cite: 2]
+* Tổng thời gian khả thi để tàu cập bến an toàn trong ngày là: $4 + 4 = 8$ giờ.[cite: 2]
+
+$\Rightarrow$ **Đáp số cần điền: 8.**[cite: 2]
+""")
+            
+        with st.expander("🔍 Lời giải Câu 4: Phân tích nghiệm phương trình lượng giác"):
+            st.markdown(r"""
+Phương trình có thể phân tích thành tích như sau: $(2\cos x - 1)(\cos x - m) = 0 \Leftrightarrow \cos x = \dfrac{1}{2} \quad (*)$ hoặc $\cos x = m \quad (**)$.[cite: 2]
+
+* **a) Đúng.** Phép tách nhân tử hoàn toàn chính xác.[cite: 2]
+* **b) Sai.** Khi thay $m = 1$ vào pt (**), ta được $\cos x = 1 \Rightarrow x = 0$ hoặc $x = 2\pi$. Phương trình (*) luôn cố định 2 nghiệm là $x = \dfrac{\pi}{3}$ và $x = \dfrac{5\pi}{3}$. Tổng cộng phương trình có **4** nghiệm phân biệt chứ không phải 2.[cite: 2]
+* **c) Đúng.** Pt (*) luôn có cố định 2 nghiệm trên $[0; 2\pi]$. Để pt tổng có đúng 3 nghiệm, nhánh (**) phải sinh ra duy nhất 1 nghiệm (xảy ra tại $m = 1$ hoặc $m = -1$). Do $m = 1$ cho 2 nghiệm (vừa xét), nên chỉ có $m = -1$ (cho nghiệm duy nhất $x = \pi$) là thỏa mãn.[cite: 2]
+* **d) Sai.** Vì phương trình luôn chứa nhân tử $\left(\cos x - \dfrac{1}{2}\right) = 0$, nên nó luôn có ít nhất 2 nghiệm thực bất chấp giá trị của tham số $m$.[cite: 2]
+""")
 
 # ------------------------- ĐỀ TSA SỐ 02 -------------------------
 elif "Đề TSA số 02" in selected_exam:
