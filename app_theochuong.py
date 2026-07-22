@@ -3549,7 +3549,7 @@ elif de_thi_chon == "Đề 9: Ứng dụng đạo hàm vào thực tế":
             st.divider()
 
             # --- Câu 14 ---
-            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Phản ứng của cơ thể người bệnh đối với một loại thuốc điều trị được mô hình hóa bởi hàm số $R(x) = x^2\left(\dfrac{15}{2} - \dfrac{x}{3}\right)$, trong đó $x\text{ (mg)}$ là liều lượng thuốc tiêm vào ($0 \le x \le 20$), và $R(x)$ biểu diễn mức độ giảm huyết áp. Để đánh giá sự thay đổi mức độ phản ứng, y học định nghĩa "Độ nhạy cảm của cơ thể với thuốc" là đạo hàm của hàm phản ứng, kí hiệu là $S(x) = R'(x)$.', unsafe_allow_html=True)
+            st.markdown(r"""<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Phản ứng của cơ thể người bệnh đối với một loại thuốc điều trị được mô hình hóa bởi hàm số $R(x) = x^2\left(\dfrac{15}{2} - \dfrac{x}{3}\right)$, trong đó $x\text{ (mg)}$ là liều lượng thuốc tiêm vào ($0 \le x \le 20$), và $R(x)$ biểu diễn mức độ giảm huyết áp. Để đánh giá sự thay đổi mức độ phản ứng, y học định nghĩa "Độ nhạy cảm của cơ thể với thuốc" là đạo hàm của hàm phản ứng, kí hiệu là $S(x) = R'(x)$.""", unsafe_allow_html=True)
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
@@ -3639,7 +3639,7 @@ elif de_thi_chon == "Đề 9: Ứng dụng đạo hàm vào thực tế":
             p3_q4_d9 = st.text_input("Nhập đáp án Câu 4:", key="p3_q4_d9")
             st.divider()
 
-            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 5:</span> Số lượng tế bào của một quần thể nấm men được nuôi cấy trong phòng thí nghiệm tại thời điểm $t$ được mô hình hóa bằng công thức $f(t) = \dfrac{24}{1 + 3e^{-0,5t}}$ (đơn vị: nghìn tế bào), với $t \ge 0$ (đơn vị: giờ). Biết rằng hàm số $y = f'(t)$ biểu thị tốc độ sinh trưởng của quần thể tại thời điểm $t$. Tại thời điểm tốc độ sinh trưởng của quần thể lớn nhất, quần thể có bao nhiêu nghìn tế bào?', unsafe_allow_html=True)
+            st.markdown(r"""<span style="color: #0000FF; font-weight: bold;">Câu 5:</span> Số lượng tế bào của một quần thể nấm men được nuôi cấy trong phòng thí nghiệm tại thời điểm $t$ được mô hình hóa bằng công thức $f(t) = \dfrac{24}{1 + 3e^{-0,5t}}$ (đơn vị: nghìn tế bào), với $t \ge 0$ (đơn vị: giờ). Biết rằng hàm số $y = f'(t)$ biểu thị tốc độ sinh trưởng của quần thể tại thời điểm $t$. Tại thời điểm tốc độ sinh trưởng của quần thể lớn nhất, quần thể có bao nhiêu nghìn tế bào?""", unsafe_allow_html=True)
             p3_q5_d9 = st.text_input("Nhập đáp án Câu 5:", key="p3_q5_d9")
             st.divider()
 
