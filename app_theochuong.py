@@ -463,8 +463,35 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             )
             st.divider()
 
+            st.markdown(
+                '<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Cho hàm số bậc bốn có đồ thị như hình vẽ dưới đây.Điểm cực tiểu của đồ thị hàm số đã cho là', 
+                unsafe_allow_html=True
+            )
+
+            try:
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/Cau1_p1.PNG", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau1_p1.png")
+
+
+
             
-            # (Thêm các câu hỏi tiếp theo của Đề 2 tại đây...)
+            p1_q1_d2 = st.radio(
+                "C1_d2", 
+                [
+                    r"A. Nếu $f'(x) \neq  0,   \forall x \in \mathbb{R}$ thì hàm số $f(x)$ đồng biến trên $\mathbb{R}$", 
+                    r"B. Nếu $f'(x) > 0, \forall x \in \mathbb{R}$ thì hàm số $f(x)$ đồng biến trên $\mathbb{R}$", 
+                    r"C. Nếu $f'(x) = 0, \forall x \in \mathbb{R}$ thì hàm số $f(x)$ đồng biến trên $\mathbb{R}$", 
+                    r"D. Nếu $f'(x) < 0, \forall x \in \mathbb{R}$ thì hàm số $f(x)$ đồng biến trên $\mathbb{R}$"
+                ], 
+                key="p1_q1_d2", 
+                label_visibility="collapsed"
+            )
+            st.divider()
+
+            
             
             # NÚT NỘP BÀI ĐỀ 2
             submitted_2 = st.form_submit_button("Nộp Bài Thi Đề 2", type="primary")
