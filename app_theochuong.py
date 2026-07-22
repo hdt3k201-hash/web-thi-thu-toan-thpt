@@ -29,7 +29,8 @@ with st.sidebar:
         "Đề 5: Đường tiệm cận của đồ thị hàm số",
         "Đề 6: Đường tiệm cận của đồ thị hàm số",
         "Đề 7: Khảo sát và vẽ đồ thị hàm số",
-        "Đề 8: Khảo sát sự biến thiên và vẽ đồ thị của hàm số"
+        "Đề 8: Khảo sát sự biến thiên và vẽ đồ thị của hàm số",
+        "Đề 9: Ứng dụng đạo hàm vào thực tế"
         
     ]
     de_thi_chon = st.selectbox("Chọn đề thi:", danh_sach_de)
