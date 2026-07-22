@@ -69,7 +69,10 @@ if not st.session_state[key_nop_bai]:
         st.caption("Thí sinh trả lời từ câu 1 đến câu 12. Mỗi câu hỏi chỉ chọn 1 phương án. (Mỗi câu đúng 0.25 điểm)")
         
         st.markdown("**Câu 1:** Hàm số $y=f(x)$ liên tục trên $\\mathbb{R}$ có bảng biến thiên hàm số $y=f'(x)$ như hình dưới:")
-        try: st.image("images/Cau1_p1.PNG") 
+        try: # Tạo 3 cột: Cột trái (đẩy), Cột giữa (chứa ảnh), Cột phải (đẩy)
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                st.image("images/Cau1_p1.PNG", width=400) # Thầy có thể chỉnh thông số width to nhỏ tùy ý
         except: st.warning("⚠️ Lỗi: Thiếu file ảnh cau1_p1.png")
         st.markdown("Số điểm cực trị của hàm số $y=f(x)$ là")
         p1_q1 = st.radio("C1:", [r"A. $4$", r"B. $1$", r"C. $2$", r"D. $3$"], key="p1_q1", label_visibility="collapsed")
