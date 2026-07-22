@@ -256,7 +256,12 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$[cite: 2]
                 )
                 
                 # CHÈN LỆNH HÌNH VẼ THEO YÊU CẦU
-                st.image("...IMAGES/do_thi_cau_2.png", caption="Đồ thị hàm số Câu 2", use_container_width=True)
+                try:
+                    col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/de1_tsa_cau2.PNG", width=400)
+                except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau1_p1.png")
                 
                 q2_ans = st.radio(
                     "Chọn phương án đúng:",
