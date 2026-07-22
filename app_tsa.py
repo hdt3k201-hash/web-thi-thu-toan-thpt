@@ -129,7 +129,7 @@ if not st.session_state.exam_submitted:
         with st.container(border=True):
             st.markdown("""
             <div class="question-title">
-                <span class="tag-badge">DẠNG 1: CHỌN / KÉO THẢ PHƯƠNG ÁN</span> Câu 1: Mô hình Vòng quay Mặt Trời
+            <b>Câu 1:</b> <span class="tag-badge">[Kéo thả phương án]</span> 
             </div>
             """, unsafe_allow_html=True)
             
