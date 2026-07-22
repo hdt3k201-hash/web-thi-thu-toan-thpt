@@ -329,7 +329,9 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$[cite: 2]
                     unsafe_allow_html=True,
                 )
                 st.markdown(
-                    r"""Mực nước tại một cảng biển được mô hình hóa bởi hàm số $h(t) = 3\cos\left(\frac{\pi t}{6} + \frac{\pi}{3}\right) + 12$ (mét), trong đó t là thời gian tính bằng giờ $(0 \le t \le 24)$.[cite: 1] Một tàu hàng yêu cầu mực nước tối thiểu là 13.5m để có thể cập cảng an toàn.[cite: 1] Trong một ngày (24 giờ), tổng thời gian tàu có thể cập cảng an toàn là bao nhiêu giờ?[cite: 1]"""
+                    r"""Mực nước tại một cảng biển được mô hình hóa bởi hàm số $h(t) = 3\cos\left(\dfrac{\pi t}{6} + \dfrac{\pi}{3}\right) + 12$ (mét), trong đó t là thời gian tính bằng giờ $(0 \le t \le 24)$.
+                    Một tàu hàng yêu cầu mực nước tối thiểu là 13.5m để có thể cập cảng an toàn.
+                    Trong một ngày (24 giờ), tổng thời gian tàu có thể cập cảng an toàn là bao nhiêu giờ?"""
                 )
                 q5_ans = st.text_input("Nhập kết quả dạng số (Ví dụ: 8):", key="q5")
 
@@ -340,7 +342,7 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$[cite: 2]
                     unsafe_allow_html=True,
                 )
                 st.markdown(
-                    r"""Tìm giá trị nhỏ nhất của hàm số $y = 3\sin x + 4\cos x + 5$.[cite: 1]"""
+                    r"""Tìm giá trị nhỏ nhất của hàm số $y = 3\sin x + 4\cos x + 5$."""
                 )
                 q6_ans = st.text_input("Nhập kết quả dạng số:", key="q6")
 
@@ -351,7 +353,9 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$[cite: 2]
                     unsafe_allow_html=True,
                 )
                 st.markdown(
-                    r"""Một con lắc lò xo dao động điều hòa với phương trình li độ $x(t) = 5\cos\left(4\pi t - \frac{\pi}{2}\right)$ (cm), trong đó t tính bằng giây.[cite: 1] Vận tốc của vật là đạo hàm của li độ theo thời gian $v(t) = x^{\prime}(t)$.[cite: 1] Xét tính đúng/sai của các mệnh đề sau:[cite: 1]"""
+                    r"""Một con lắc lò xo dao động điều hòa với phương trình li độ $x(t) = 5\cos\left(4\pi t - \dfrac{\pi}{2}\right)$ (cm), trong đó t tính bằng giây.
+                    Vận tốc của vật là đạo hàm của li độ theo thời gian $v(t) = x^{\prime}(t)$.
+                    Xét tính đúng/sai của các mệnh đề sau:"""
                 )
                 q7_a = st.radio(
                     r"A. Chu kì dao động toàn phần của con lắc lò xo là $T = 0,5$ giây.",
@@ -389,7 +393,7 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$[cite: 2]
                     unsafe_allow_html=True,
                 )
                 st.markdown(
-                    r"""Có bao nhiêu giá trị nguyên của tham số $m \in [-10; 10]$ để phương trình $\tan x + \cot x = m$ có nghiệm thực?[cite: 1]"""
+                    r"""Có bao nhiêu giá trị nguyên của tham số $m \in [-10; 10]$ để phương trình $\tan x + \cot x = m$ có nghiệm thực?"""
                 )
                 q8_ans = st.radio(
                     "Chọn phương án đúng:",
@@ -410,7 +414,7 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$[cite: 2]
                     unsafe_allow_html=True,
                 )
                 st.markdown(
-                    r"""Nồng độ bụi mịn PM2.5 ngoài trời tại một thành phố trong ngày được mô hình hóa bởi hàm số $C(t) = 20\sin\left(\frac{\pi}{12}(t-6)\right) + 40$, trong đó C là nồng độ $(\mu g/m^{3})$ và t là thời gian trong ngày $(0 \le t \le 24)$.[cite: 1] Khuyến cáo sức khỏe quy định không nên ra ngoài khi nồng độ vượt mức $50\mu g/m^{3}$.[cite: 1] Trong một ngày, khoảng thời gian không an toàn kéo dài liên tục bao nhiêu tiếng?[cite: 1]"""
+                    r"""Nồng độ bụi mịn PM2.5 ngoài trời tại một thành phố trong ngày được mô hình hóa bởi hàm số $C(t) = 20\sin\left(\dfrac{\pi}{12}(t-6)\right) + 40$, trong đó C là nồng độ $(\mu g/m^{3})$ và t là thời gian trong ngày $(0 \le t \le 24)$. Khuyến cáo sức khỏe quy định không nên ra ngoài khi nồng độ vượt mức $50\mu g/m^{3}$.[cite: 1] Trong một ngày, khoảng thời gian không an toàn kéo dài liên tục bao nhiêu tiếng?[cite: 1]"""
                 )
                 q9_ans = st.text_input("Nhập kết quả dạng số (Ví dụ: 8):", key="q9")
 
