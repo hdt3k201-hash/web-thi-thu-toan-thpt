@@ -270,10 +270,7 @@ if not st.session_state.exam_submitted:
             with col3:
                 q1_val_B = st.selectbox("📌 (3) Chọn giá trị B:", ["-- Chọn --", "50", "60", "85"], key="q1_b")
 
-        st.markdown("<br>", unsafe_allow_html=True)
-
-
-        
+        st.markdown("<br>", unsafe_allow_html=True)    
 
         # ---------------------------------------------------------------------
         # CÂU 2: CÂU HỎI TRẮC NGHIỆM 4 LỰA CHỌN
