@@ -1054,7 +1054,7 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
             st.markdown('<h2 style="color: #0000FF;">Phần 3. Câu hỏi trắc nghiệm trả lời ngắn</h2>', unsafe_allow_html=True)
             st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 6. Điền kết quả dạng số vào ô trống. (Mỗi câu đúng 0.5 điểm)</b></em>', unsafe_allow_html=True)
             
-            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Giá trị nhỏ nhất của hàm số $y=x^2+\dfrac{2}{x}$ trên đoạn $[\frac{1}{2};2]$ là bao nhiêu?', unsafe_allow_html=True)
+            st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Giá trị nhỏ nhất của hàm số $y=x^2+\dfrac{2}{x}$ trên đoạn $[\dfrac{1}{2};2]$ là bao nhiêu?', unsafe_allow_html=True)
             p3_q1_d3 = st.text_input("Nhập đáp án Câu 1:", key="p3_q1_d3")
             st.divider()
 
@@ -1141,32 +1141,44 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
         st.subheader("Phần 1: Trắc nghiệm nhiều phương án lựa chọn")
         with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
             st.markdown(r"""
-            **Câu 1 (B):** Theo định nghĩa: Số $m$ được gọi là giá trị nhỏ nhất của hàm số $y=f(x)$ trên tập $D$ nếu $f(x) \ge m$ với mọi $x \in D$ và tồn tại $x_0 \in D$ sao cho $f(x_0)=m$[cite: 2].
+            **Câu 1 (B):** Theo định nghĩa: Số $m$ được gọi là giá trị nhỏ nhất của hàm số $y=f(x)$ trên tập $D$ nếu $f(x) \ge m$ với mọi $x \in D$ và tồn tại $x_0 \in D$ sao cho $f(x_0)=m$.
             
-            **Câu 2 (D):** Từ bảng biến thiên suy ra giá trị nhỏ nhất của hàm số $y=f(x)$ trên đoạn $[0;3]$ là $-4$ đạt được khi $x=1$[cite: 2].
+            **Câu 2 (D):** Từ bảng biến thiên suy ra giá trị nhỏ nhất của hàm số $y=f(x)$ trên đoạn $[0;3]$ là $-4$ đạt được khi $x=1$.
             
-            **Câu 3 (A):** Từ đồ thị hàm số ta có giá trị lớn nhất của hàm số $f(x)$ trên đoạn $[-1;2]$ là $3$ tại $x=1$[cite: 2].
+            **Câu 3 (A):** Từ đồ thị hàm số ta có giá trị lớn nhất của hàm số $f(x)$ trên đoạn $[-1;2]$ là $3$ tại $x=1$.
             
-            **Câu 4 (A):** Dựa vào bảng biến thiên ta có $M = \max_{[-1;3]} f(x) = 5$ tại $x=0$; $m = \min_{[-1;3]} f(x) = 0$ tại $x=-1 \Rightarrow M-m = 5-0 = 5$[cite: 2].
+            **Câu 4 (A):** Dựa vào bảng biến thiên ta có $M = \max_{[-1;3]} f(x) = 5$ tại $x=0$; $m = \min_{[-1;3]} f(x) = 0$ tại $x=-1 \Rightarrow M-m = 5-0 = 5$.
             
             **Câu 5 (D):** Dựa vào đồ thị, giá trị lớn nhất của hàm số là $4$ đạt được khi $x=7$[cite: 2].
             
-            **Câu 6 (D):** Dựa vào bảng biến thiên ta thấy hàm số $y=f(x)$ tiến tới $-\infty$ khi $x \to \pm\infty$ nên không có giá trị nhỏ nhất trên khoảng $(-2;+\infty)$[cite: 2].
+            **Câu 6 (D):** Dựa vào bảng biến thiên ta thấy hàm số $y=f(x)$ tiến tới $-\infty$ khi $x \to \pm\infty$ nên không có giá trị nhỏ nhất trên khoảng $(-2;+\infty)$.
             """)
             
         with st.expander("🔍 Lời giải Câu 7 - Câu 12"):
             st.markdown(r"""
-            **Câu 7 (D):** Ta có $y' = \frac{2x(x+1)-x^2}{(x+1)^2} = \frac{x^2+2x}{(x+1)^2} = 0 \Leftrightarrow x=0$ hoặc $x=-2$ (loại vì $-2 \notin [0;2]$)[cite: 2]. Mặc khác $y(0)=0, y(2)=\frac{4}{3} \Rightarrow \max_{[0;2]} y = \frac{4}{3}$[cite: 2].
+            **Câu 7 (D):** Ta có $y' = \dfrac{2x(x+1)-x^2}{(x+1)^2} = \dfrac{x^2+2x}{(x+1)^2} = 0 \Leftrightarrow x=0$ hoặc $x=-2$ (loại vì $-2 \notin [0;2]$)[cite: 2]. 
             
-            **Câu 8 (B):** Tập xác định $D=[-1;+\infty)$[cite: 2]. Ta có $\sqrt{x+1} \ge 0, \forall x \in [-1;+\infty)$ nên giá trị nhỏ nhất bằng $0$ tại $x=-1$[cite: 2].
+            Mặc khác $y(0)=0, y(2)=\dfrac{4}{3} \Rightarrow \max_{[0;2]} y = \dfrac{4}{3}$.
             
-            **Câu 9 (A):** Ta có $-1 \le \sin 2x \le 1 \Rightarrow 1 \le \sin 2x + 2 \le 3$[cite: 2]. Do đó $y_{\min}=1, y_{\max}=3 \Rightarrow y_{\min}+y_{\max} = 1+3 = 4$[cite: 2].
+            **Câu 8 (B):** Tập xác định $D=[-1;+\infty)$. 
             
-            **Câu 10 (A):** Quan sát bảng biến thiên trên đoạn $[-1;3]$, ta thấy điểm cao nhất có tung độ bằng $5$ đạt tại $x=0 \Rightarrow \max_{[-1;3]} f(x) = f(0) = 5$[cite: 2].
+            Ta có $\sqrt{x+1} \ge 0, \forall x \in [-1;+\infty)$ nên giá trị nhỏ nhất bằng $0$ tại $x=-1$.
             
-            **Câu 11 (A):** $f'(x) = e^{2x} + (x-3)\cdot 2e^{2x} = (2x-5)e^{2x} = 0 \Leftrightarrow x = \frac{5}{2}$[cite: 2]. Bảng biến thiên cho thấy hàm số đạt giá trị nhỏ nhất tại $x=\frac{5}{2}$ với $f(\frac{5}{2}) = -\frac{e^5}{2}$[cite: 2].
+            **Câu 9 (A):** Ta có $-1 \le \sin 2x \le 1 \Rightarrow 1 \le \sin 2x + 2 \le 3$.
             
-            **Câu 12 (B):** $f'(x) = \frac{1-\ln x}{x^2} = 0 \Leftrightarrow x=e \in [1;e^2)$[cite: 2]. Tính các giá trị: $f(1)=0, f(e)=\frac{1}{e}, f(e^2)=\frac{2}{e^2}$[cite: 2]. Lập BBT suy ra $m = \min = 0$ tại $x=1$, $M = \max = \frac{1}{e}$ tại $x=e \Rightarrow \ln(m+M) = \ln(\frac{1}{e}) = -1$[cite: 2].
+            Do đó $y_{\min}=1, y_{\max}=3 \Rightarrow y_{\min}+y_{\max} = 1+3 = 4$.
+            
+            **Câu 10 (A):** Quan sát bảng biến thiên trên đoạn $[-1;3]$, ta thấy điểm cao nhất có tung độ bằng $5$ đạt tại $x=0 \Rightarrow \max_{[-1;3]} f(x) = f(0) = 5$.
+            
+            **Câu 11 (A):** $f'(x) = e^{2x} + (x-3)\cdot 2e^{2x} = (2x-5)e^{2x} = 0 \Leftrightarrow x = \dfrac{5}{2}$. 
+            
+            Bảng biến thiên cho thấy hàm số đạt giá trị nhỏ nhất tại $x=\dfrac{5}{2}$ với $f(\dfrac{5}{2}) = -\dfrac{e^5}{2}$.
+            
+            **Câu 12 (B):** $f'(x) = \dfrac{1-\ln x}{x^2} = 0 \Leftrightarrow x=e \in [1;e^2)$. 
+            
+            Tính các giá trị: $f(1)=0, f(e)=\dfrac{1}{e}, f(e^2)=\dfrac{2}{e^2}$. 
+            
+            Lập BBT suy ra $m = \min = 0$ tại $x=1$, $M = \max = \dfrac{1}{e}$ tại $x=e \Rightarrow \ln(m+M) = \ln(\dfrac{1}{e}) = -1$.
             """)
 
         st.subheader("Phần 2: Trắc nghiệm lựa chọn đúng sai")
@@ -1174,48 +1186,100 @@ elif de_thi_chon == "Đề 3: Giá trị lớn nhất và Giá trị nhỏ nhấ
             st.markdown(r"""
             **Câu 1:** (a-Đúng, b-Đúng, c-Sai, d-Đúng)[cite: 2]. 
             *Giải thích:*
-            - Đồ thị trên $[-2;2]$ có điểm cao nhất tại $(-1;-1)$ nên $\max = -1$, đúng[cite: 2].
-            - Trên $[0;+\infty)$, điểm thấp nhất là $(1;-5)$ nên $\min = -5$, đúng[cite: 2].
-            - Trên $(-\infty;1]$, hàm số tiến tới $-\infty$ nên không có giá trị nhỏ nhất, c sai[cite: 2].
-            - Trên $[-1;2]$, điểm thấp nhất có $y=-5$ tại $x=1$, d đúng[cite: 2].
+            - Đồ thị trên $[-2;2]$ có điểm cao nhất tại $(-1;-1)$ nên $\max = -1$, đúng.
             
-            **Câu 2:** (a-Sai, b-Đúng, c-Đúng, d-Đúng)[cite: 2].
+            - Trên $[0;+\infty)$, điểm thấp nhất là $(1;-5)$ nên $\min = -5$, đúng.
+            
+            - Trên $(-\infty;1]$, hàm số tiến tới $-\infty$ nên không có giá trị nhỏ nhất, c sai.
+            
+            - Trên $[-1;2]$, điểm thấp nhất có $y=-5$ tại $x=1$, d đúng.
+            
+            **Câu 2:** (a-Sai, b-Đúng, c-Đúng, d-Đúng).
+            
             *Giải thích:*
-            - Khi $m=0 \Rightarrow y = \frac{x^2+1}{x}$, khảo sát trên $(0;+\infty)$ ta có $\min = 2$ tại $x=1$, a sai[cite: 2].
-            - $y' = \frac{x^2+2mx+m^2-1}{(x+m)^2} = 0 \Leftrightarrow x = -m-1$ hoặc $x = -m+1$ (luôn có $2$ nghiệm phân biệt $\ne -m$), b đúng[cite: 2].
-            - Từ BBT: $\min_{(-m;+\infty)} y = 2-m$ và $\max_{(-\infty;-m)} y = -2-m \Rightarrow \min - \max = (2-m)-(-2-m) = 4$, c đúng[cite: 2].
-            - Khi $m=-3 \Rightarrow y = \frac{x^2-3x+1}{x-3}$ liên tục trên $[-1;2] \subset (-\infty;3)$[cite: 2]. $y' = \frac{x^2-6x+8}{(x-3)^2} > 0, \forall x \in [-1;2]$ nên hàm số đồng biến $\Rightarrow \max_{[-1;2]} y = y(2) = 1$, d đúng[cite: 2].
+            
+            - Khi $m=0 \Rightarrow y = \dfrac{x^2+1}{x}$, khảo sát trên $(0;+\infty)$ ta có $\min = 2$ tại $x=1$, a sai.
+            
+            - $y' = \dfrac{x^2+2mx+m^2-1}{(x+m)^2} = 0 \Leftrightarrow x = -m-1$ hoặc $x = -m+1$ (luôn có $2$ nghiệm phân biệt $\ne -m$), b đúng.
+            
+            - Từ BBT: $\min_{(-m;+\infty)} y = 2-m$ và $\max_{(-\infty;-m)} y = -2-m \Rightarrow \min - \max = (2-m)-(-2-m) = 4$, c đúng.
+            
+            - Khi $m=-3 \Rightarrow y = \frac{x^2-3x+1}{x-3}$ liên tục trên $[-1;2] \subset (-\infty;3)$[cite: 2]. $y' = \dfrac{x^2-6x+8}{(x-3)^2} > 0, \forall x \in [-1;2]$ nên hàm số đồng biến $\Rightarrow \max_{[-1;2]} y = y(2) = 1$, d đúng.
             """)
             
         with st.expander("🔍 Lời giải Câu 3 & Câu 4"):
             st.markdown(r"""
-            **Câu 3:** (a-Đúng, b-Sai, c-Sai, d-Đúng)[cite: 2].
-            *Giải thích:*
-            - $f'(x) = 4x - \frac{500}{x^2} = \frac{4x^3-500}{x^2} = 0 \Leftrightarrow x=5$, a đúng[cite: 2].
-            - $\lim_{x \to +\infty} f(x) = +\infty$, b sai[cite: 2].
-            - Trên $(0;5)$, hàm số nghịch biến nên không đạt GTNN tại điểm thuộc khoảng này, c sai[cite: 2].
-            - Khảo sát BBT trên $(0;+\infty)$, hàm số đạt GTNN bằng $f(5) = 150$ tại $x=5$, d đúng[cite: 2].
+            **Câu 3:** (a-Đúng, b-Sai, c-Sai, d-Đúng).
             
-            **Câu 4:** (a-Sai, b-Đúng, c-Sai, d-Đúng)[cite: 2].
             *Giải thích:*
-            - Bán $37.000$ đồng ($x=7$) thì số khăn bán ra giảm $700$ chiếc (còn $2300$ chiếc)[cite: 2]. Lãi mỗi chiếc là $37-18=19$ nghìn đồng[cite: 2]. Tổng lãi = $2300 \times 19 = 43,7$ triệu đồng, a sai[cite: 2].
-            - Tăng $x$ nghìn đồng thì số khăn bán là $3000-100x$, lãi $1$ chiếc là $12+x \Rightarrow f(x) = (3000-100x)(12+x) = -100x^2+1800x+36000$, b đúng[cite: 2].
-            - $f'(x) = -200x+1800 = 0 \Leftrightarrow x=9$. Lợi nhuận max khi $x=9$, tương ứng số khăn bán ra giảm $100 \times 9 = 900$ chiếc, c sai[cite: 2].
-            - Giá bán mới đạt LN max là $30 + 9 = 39$ nghìn đồng ($39.000$ đồng), d đúng[cite: 2].
+            
+            - $f'(x) = 4x - \dfrac{500}{x^2} = \dfrac{4x^3-500}{x^2} = 0 \Leftrightarrow x=5$, a đúng.
+            
+            - $\lim_{x \to +\infty} f(x) = +\infty$, b sai.
+            
+            - Trên $(0;5)$, hàm số nghịch biến nên không đạt GTNN tại điểm thuộc khoảng này, c sai.
+            
+            - Khảo sát BBT trên $(0;+\infty)$, hàm số đạt GTNN bằng $f(5) = 150$ tại $x=5$, d đúng.
+            
+            **Câu 4:** (a-Sai, b-Đúng, c-Sai, d-Đúng).
+            
+            *Giải thích:*
+            
+            - Bán $37.000$ đồng ($x=7$) thì số khăn bán ra giảm $700$ chiếc (còn $2300$ chiếc). 
+            
+            Lãi mỗi chiếc là $37-18=19$ nghìn đồng[cite: 2]. Tổng lãi = $2300 \times 19 = 43,7$ triệu đồng, a sai.
+            
+            - Tăng $x$ nghìn đồng thì số khăn bán là $3000-100x$, lãi $1$ chiếc là $12+x \Rightarrow f(x) = (3000-100x)(12+x) = -100x^2+1800x+36000$, b đúng.
+            
+            - $f'(x) = -200x+1800 = 0 \Leftrightarrow x=9$. Lợi nhuận max khi $x=9$, tương ứng số khăn bán ra giảm $100 \times 9 = 900$ chiếc, c sai.
+           
+            - Giá bán mới đạt LN max là $30 + 9 = 39$ nghìn đồng ($39.000$ đồng), d đúng.
             """)
 
         st.subheader("Phần 3: Câu hỏi trả lời ngắn")
         with st.expander("🔍 Lời giải Câu 1 - Câu 6"):
             st.markdown(r"""
-            **Câu 1 (Đáp án: 3):** Hàm số $y=f(x)=x^2+\frac{2}{x}$ liên tục trên $[\frac{1}{2};2]$[cite: 2]. $y' = 2x - \frac{2}{x^2} = \frac{2x^3-2}{x^2} = 0 \Rightarrow x=1 \in [\frac{1}{2};2]$[cite: 2]. Tính các giá trị: $f(1)=3, f(\frac{1}{2})=\frac{17}{4}, f(2)=5 \Rightarrow \min_{[\frac{1}{2};2]} f(x) = f(1) = 3$[cite: 2].
+            **Câu 1 (Đáp án: 3):** Hàm số $y=f(x)=x^2+\dfrac{2}{x}$ liên tục trên $[\dfrac{1}{2};2]$. 
             
-            **Câu 2 (Đáp án: 0.37):** Khảo sát $g(x) = \frac{\ln x}{x}$ trên $[1;4]$: $g'(x) = \frac{1-\ln x}{x^2} = 0 \Leftrightarrow x=e \in (1;4)$[cite: 2]. Tính $g(1)=0, g(e)=\frac{1}{e}, g(4)=\frac{\ln 2}{2}$[cite: 2]. Suy ra $\max = \frac{1}{e}, \min = 0 \Rightarrow \max + \min = \frac{1}{e} \approx 0.37$[cite: 2].
+            $y' = 2x - \dfrac{2}{x^2} = \dfrac{2x^3-2}{x^2} = 0 \Rightarrow x=1 \in [\dfrac{1}{2};2]$.
             
-            **Câu 3 (Đáp án: 1.125):** Biến đổi $f(x) = \sin x + 1 - 2\sin^2 x$[cite: 2]. Đặt $t = \sin x \in [0;1]$ với $x \in [0;\pi]$[cite: 2]. Xét $h(t) = -2t^2+t+1$ trên $[0;1]$[cite: 2]. Có $h'(t) = -4t+1 = 0 \Leftrightarrow t = \frac{1}{4}$[cite: 2]. Tính $h(0)=1, h(1)=0, h(\frac{1}{4})=\frac{9}{8} = 1.125 \Rightarrow \max = \frac{9}{8} = 1.125$[cite: 2].
+            Tính các giá trị: $f(1)=3, f(\dfrac{1}{2})=\dfrac{17}{4}, f(2)=5 \Rightarrow \min_{[\dfrac{1}{2};2]} f(x) = f(1) = 3$.
             
-            **Câu 4 (Đáp án: 2.4):** Đặt $OA=x > 0$[cite: 2]. Ta có $\tan \widehat{BOC} = \tan(\widehat{AOC}-\widehat{AOB}) = \frac{\frac{AC}{x} - \frac{AB}{x}}{1 + \frac{AC \cdot AB}{x^2}} = \frac{\frac{1{,}4}{x}}{1 + \frac{3{,}2 \times 1{,}8}{x^2}} = \frac{1{,}4x}{x^2 + 5{,}76}$[cite: 2]. Xét $f(x) = \frac{1{,}4x}{x^2+5{,}76} \Rightarrow f'(x) = \frac{-1{,}4x^2 + 1{,}4 \times 5{,}76}{(x^2+5{,}76)^2} = 0 \Leftrightarrow x = 2{,}4$ (m)[cite: 2]. Vậy $AO = 2{,}4$ m[cite: 2].
+            **Câu 2 (Đáp án: 0.37):** Khảo sát $g(x) = \dfrac{\ln x}{x}$ trên $[1;4]$: $g'(x) = \dfrac{1-\ln x}{x^2} = 0 \Leftrightarrow x=e \in (1;4)$[cite: 2]. 
             
-            **Câu 5 (Đáp án: 7200):** Gọi $x, y$ là chiều rộng và chiều dài tiếp giáp sông[cite: 2]. Độ dài hàng rào: $2x+y=240 \Rightarrow y=240-2x$ với $x \in (0;120)$[cite: 2]. Diện tích $S(x) = x(240-2x) = -2x^2+240x$[cite: 2]. $S'(x) = -4x+240 = 0 \Leftrightarrow x=60 \Rightarrow S_{\max} = 7200 \text{ m}^2$[cite: 2].
+            Tính $g(1)=0, g(e)=\frac{1}{e}, g(4)=\dfrac{\ln 2}{2}$. 
             
-            **Câu 6 (Đáp án: 2.34):** Thể tích $V = \pi R^2 h = 10 \Rightarrow h = \frac{10}{\pi R^2}$[cite: 2]. Chi phí $C(R) = 400\pi R^2 + 200\pi R^2 + 300(2\pi R h) = 600\left(\pi R^2 + \frac{10}{R}\right)$[cite: 2]. Đạo hàm $C'(R) = 600\left(2\pi R - \frac{10}{R^2}\right) = 0 \Leftrightarrow R = \sqrt[3]{\frac{5}{\pi}}$[cite: 2]. Khi đó $h = \frac{10}{\pi R^2} = \frac{10}{\sqrt[3]{25\pi}} \approx 2{,}34$ m[cite: 2].
+            Suy ra $\max = \dfrac{1}{e}, \min = 0 \Rightarrow \max + \min = \frac{1}{e} \approx 0.37$.
+            
+            **Câu 3 (Đáp án: 1.125):** Biến đổi $f(x) = \sin x + 1 - 2\sin^2 x$.
+            
+            Đặt $t = \sin x \in [0;1]$ với $x \in [0;\pi]$.
+            
+            Xét $h(t) = -2t^2+t+1$ trên $[0;1]$. 
+            
+            Có $h'(t) = -4t+1 = 0 \Leftrightarrow t = \dfrac{1}{4}$. 
+            
+            Tính $h(0)=1, h(1)=0, h(\dfrac{1}{4})=\dfrac{9}{8} = 1.125 \Rightarrow \max = \dfrac{9}{8} = 1.125$.
+            
+            **Câu 4 (Đáp án: 2.4):** Đặt $OA=x > 0$. 
+            
+            Ta có $\tan \widehat{BOC} = \tan(\widehat{AOC}-\widehat{AOB}) = \dfrac{\frac{AC}{x} - \dfrac{AB}{x}}{1 + \dfrac{AC \cdot AB}{x^2}} = \dfrac{\dfrac{1{,}4}{x}}{1 + \drac{3{,}2 \times 1{,}8}{x^2}} = \dfrac{1{,}4x}{x^2 + 5{,}76}$. 
+            
+            Xét $f(x) = \dfrac{1{,}4x}{x^2+5{,}76} \Rightarrow f'(x) = \dfrac{-1{,}4x^2 + 1{,}4 \times 5{,}76}{(x^2+5{,}76)^2} = 0 \Leftrightarrow x = 2{,}4$ (m).
+            
+            Vậy $AO = 2{,}4$ m.
+            
+            **Câu 5 (Đáp án: 7200):** Gọi $x, y$ là chiều rộng và chiều dài tiếp giáp sông.
+            
+            Độ dài hàng rào: $2x+y=240 \Rightarrow y=240-2x$ với $x \in (0;120)$. 
+            
+            Diện tích $S(x) = x(240-2x) = -2x^2+240x$[cite: 2]. $S'(x) = -4x+240 = 0 \Leftrightarrow x=60 \Rightarrow S_{\max} = 7200 \text{ m}^2$.
+            
+            **Câu 6 (Đáp án: 2.34):** Thể tích $V = \pi R^2 h = 10 \Rightarrow h = \dfrac{10}{\pi R^2}$. 
+            
+            Chi phí $C(R) = 400\pi R^2 + 200\pi R^2 + 300(2\pi R h) = 600\left(\pi R^2 + \frac{10}{R}\right)$. 
+            
+            Đạo hàm $C'(R) = 600\left(2\pi R - \dfrac{10}{R^2}\right) = 0 \Leftrightarrow R = \sqrt[3]{\dfrac{5}{\pi}}$. 
+            
+            Khi đó $h = \dfrac{10}{\pi R^2} = \dfrac{10}{\sqrt[3]{25\pi}} \approx 2{,}34$ m.
             """)
