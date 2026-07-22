@@ -102,7 +102,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/cau2_p1.png", width=400)
+                    st.image("images/cau2_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau2_p1.png")
             st.markdown("Hàm số đã cho đồng biến trên khoảng nào dưới đây?")
@@ -113,7 +113,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/cau3_p1.png", width=400)
+                    st.image("images/cau3_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau3_p1.png")
             st.markdown("Hàm số đã cho nghịch biến trên khoảng nào dưới đây?")
@@ -124,7 +124,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/cau4_p1.png", width=400)
+                    st.image("images/cau4_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau4_p1.png")
             st.markdown("Hàm số $y=f(x)$ đồng biến trên khoảng nào sau đây?")
@@ -139,7 +139,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/cau6_p1.png", width=400)
+                    st.image("images/cau6_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau6_p1.png")
             st.markdown("Hàm số $f(x)$ đạt cực đại tại điểm nào sau đây?")
@@ -150,7 +150,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/cau7_p1.png", width=400)
+                    st.image("images/cau7_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau7_p1.png")
             st.markdown("Giá trị cực tiểu của hàm số $y=f(x)$ là")
