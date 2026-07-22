@@ -2230,7 +2230,7 @@ elif de_thi_chon == "Đề 6: Đường tiệm cận của đồ thị hàm số
                 st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 4. Trong mỗi ý a), b), c), d) chọn đúng hoặc sai.</b></em>', unsafe_allow_html=True)
                 
                 # --- Câu 13 ---
-                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 13:</span> Cho hàm số $y = \dfrac{(m+1)x^2+2x-1}{x-1}$ với $m$ là tham số. Các mệnh đề dưới đây đúng hay sai?', unsafe_allow_html=True)
+                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Cho hàm số $y = \dfrac{(m+1)x^2+2x-1}{x-1}$ với $m$ là tham số. Các mệnh đề dưới đây đúng hay sai?', unsafe_allow_html=True)
                 p2_q1_d6 = {}
                 c1, c2 = st.columns([4, 1]); c1.markdown(r"a) Với $m = -1$ đồ thị hàm số có tiệm cận ngang $y = 2$."); p2_q1_d6["a"] = c2.radio("p2c1a_d6", ["Đúng", "Sai"], key="p2_q1_a_d6", horizontal=True, label_visibility="collapsed")
                 c1, c2 = st.columns([4, 1]); c1.markdown(r"b) Với $m = 0$ đồ thị hàm số có tiệm cận xiên $y = x - 1$."); p2_q1_d6["b"] = c2.radio("p2c1b_d6", ["Đúng", "Sai"], key="p2_q1_b_d6", horizontal=True, label_visibility="collapsed")
@@ -2239,7 +2239,7 @@ elif de_thi_chon == "Đề 6: Đường tiệm cận của đồ thị hàm số
                 st.divider()
 
                 # --- Câu 14 ---
-                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 14:</span> Cho hàm số trùng phương $y = f(x) = ax^4 + bx^2 + c$ có đồ thị như hình vẽ. Xét hàm số $y = g(x) = \dfrac{x^2-3}{f^2(x) - f(x)}$.', unsafe_allow_html=True)
+                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Cho hàm số trùng phương $y = f(x) = ax^4 + bx^2 + c$ có đồ thị như hình vẽ. Xét hàm số $y = g(x) = \dfrac{x^2-3}{f^2(x) - f(x)}$.', unsafe_allow_html=True)
                 try: 
                     col1, col2, col3 = st.columns([1, 2, 1])
                     with col2:
@@ -2254,7 +2254,7 @@ elif de_thi_chon == "Đề 6: Đường tiệm cận của đồ thị hàm số
                 st.divider()
 
                 # --- Câu 15 ---
-                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 15:</span> Cho hàm số $y = \dfrac{x+m}{mx-3}$ có đồ thị $(C_m)$, với $m$ là tham số. Các mệnh đề dưới đây đúng hay sai?', unsafe_allow_html=True)
+                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Cho hàm số $y = \dfrac{x+m}{mx-3}$ có đồ thị $(C_m)$, với $m$ là tham số. Các mệnh đề dưới đây đúng hay sai?', unsafe_allow_html=True)
                 p2_q3_d6 = {}
                 c1, c2 = st.columns([4, 1]); c1.markdown(r"a) Với $m = -1$ thì đồ thị hàm số có tiệm cận ngang $y = 2$."); p2_q3_d6["a"] = c2.radio("p2c3a_d6", ["Đúng", "Sai"], key="p2_q3_a_d6", horizontal=True, label_visibility="collapsed")
                 c1, c2 = st.columns([4, 1]); c1.markdown(r"b) Với $m = 3$ thì điểm $A(1;2)$ thuộc tiệm cận đứng của đồ thị hàm số."); p2_q3_d6["b"] = c2.radio("p2c3b_d6", ["Đúng", "Sai"], key="p2_q3_b_d6", horizontal=True, label_visibility="collapsed")
@@ -2263,7 +2263,7 @@ elif de_thi_chon == "Đề 6: Đường tiệm cận của đồ thị hàm số
                 st.divider()
 
                 # --- Câu 16 ---
-                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 16:</span> Cho hàm số $y = \dfrac{x^2-2mx+m^2-1}{x-m}$ với $m$ là tham số. Các mệnh đề dưới đây đúng hay sai?', unsafe_allow_html=True)
+                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 4:</span> Cho hàm số $y = \dfrac{x^2-2mx+m^2-1}{x-m}$ với $m$ là tham số. Các mệnh đề dưới đây đúng hay sai?', unsafe_allow_html=True)
                 p2_q4_d6 = {}
                 c1, c2 = st.columns([4, 1]); c1.markdown(r"a) Với $m = -1$ thì đồ thị hàm số có tiệm cận xiên đi qua $M(2; -3)$."); p2_q4_d6["a"] = c2.radio("p2c4a_d6", ["Đúng", "Sai"], key="p2_q4_a_d6", horizontal=True, label_visibility="collapsed")
                 c1, c2 = st.columns([4, 1]); c1.markdown(r"b) Với $m = 1$ thì tiệm cận xiên của đồ thị hàm số tạo với hai trục tọa độ một tam giác có diện tích là $\dfrac{1}{2}$."); p2_q4_d6["b"] = c2.radio("p2c4b_d6", ["Đúng", "Sai"], key="p2_q4_b_d6", horizontal=True, label_visibility="collapsed")
@@ -2277,40 +2277,40 @@ elif de_thi_chon == "Đề 6: Đường tiệm cận của đồ thị hàm số
                 st.markdown('<h2 style="color: #0000FF;">Phần 3. Câu hỏi trắc nghiệm trả lời ngắn</h2>', unsafe_allow_html=True)
                 st.markdown('<em style="color: #0000FF;"><b>Thí sinh trả lời từ câu 1 đến câu 6. Điền kết quả dạng số vào ô trống. (Mỗi câu đúng 0.5 điểm)</b></em>', unsafe_allow_html=True)
                 
-                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 17:</span> Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ bên dưới. Có bao nhiêu giá trị nguyên của tham số $m$ thuộc $[0;10]$ để đồ thị hàm số $y = \dfrac{f(x)}{f(x)-m+2}$ có đúng $4$ đường tiệm cận?', unsafe_allow_html=True)
+                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 1:</span> Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ bên dưới. Có bao nhiêu giá trị nguyên của tham số $m$ thuộc $[0;10]$ để đồ thị hàm số $y = \dfrac{f(x)}{f(x)-m+2}$ có đúng $4$ đường tiệm cận?', unsafe_allow_html=True)
                 try: 
                     col1, col2, col3 = st.columns([1, 2, 1])
                     with col2:
                         st.image("images/d6_cau17_p3.PNG", width=400)
                 except: 
                     st.warning("⚠️ Lỗi: Thiếu file ảnh images/d6_cau17_p3.PNG")
-                p3_q1_d6 = st.text_input("Nhập đáp án Câu 17:", key="p3_q1_d6")
+                p3_q1_d6 = st.text_input("Nhập đáp án Câu 1:", key="p3_q1_d6")
                 st.divider()
 
-                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 18:</span> Cho hàm số $f(x) = ax^3+bx^2+cx+d \ (a \neq 0)$ có đồ thị như hình vẽ dưới đây. Có bao nhiêu giá trị nguyên của tham số $m$ để đồ thị hàm số $g(x) = \dfrac{x^2-2020}{(f(x)-5)(f(x)-m+2)}$ có đúng $6$ đường tiệm cận?', unsafe_allow_html=True)
+                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 2:</span> Cho hàm số $f(x) = ax^3+bx^2+cx+d \ (a \neq 0)$ có đồ thị như hình vẽ dưới đây. Có bao nhiêu giá trị nguyên của tham số $m$ để đồ thị hàm số $g(x) = \dfrac{x^2-2020}{(f(x)-5)(f(x)-m+2)}$ có đúng $6$ đường tiệm cận?', unsafe_allow_html=True)
                 try: 
                     col1, col2, col3 = st.columns([1, 2, 1])
                     with col2:
                         st.image("images/d6_cau18_p3.PNG", width=400)
                 except: 
                     st.warning("⚠️ Lỗi: Thiếu file ảnh images/d6_cau18_p3.PNG")
-                p3_q2_d6 = st.text_input("Nhập đáp án Câu 18:", key="p3_q2_d6")
+                p3_q2_d6 = st.text_input("Nhập đáp án Câu 2:", key="p3_q2_d6")
                 st.divider()
                 
-                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 19:</span> Cho hàm số $y = \dfrac{x+24}{(m-1)x^2-2mx-6}$. Có bao nhiêu giá trị nguyên của $m$ trên đoạn $[-2025;2025]$ để đồ thị hàm số có đúng $3$ đường tiệm cận?', unsafe_allow_html=True)
-                p3_q3_d6 = st.text_input("Nhập đáp án Câu 19:", key="p3_q3_d6")
+                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 3:</span> Cho hàm số $y = \dfrac{x+24}{(m-1)x^2-2mx-6}$. Có bao nhiêu giá trị nguyên của $m$ trên đoạn $[-2025;2025]$ để đồ thị hàm số có đúng $3$ đường tiệm cận?', unsafe_allow_html=True)
+                p3_q3_d6 = st.text_input("Nhập đáp án Câu 3:", key="p3_q3_d6")
                 st.divider()
 
-                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 20:</span> Gọi $S$ là tập hợp các số nguyên $m$ để đồ thị hàm số $y = \dfrac{x-1}{\sqrt{x^2+x+m}-2}$ có đúng $3$ đường tiệm cận. Tổng giá trị các phần tử của tập $S$ bằng bao nhiêu?', unsafe_allow_html=True)
-                p3_q4_d6 = st.text_input("Nhập đáp án Câu 20:", key="p3_q4_d6")
+                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 4:</span> Gọi $S$ là tập hợp các số nguyên $m$ để đồ thị hàm số $y = \dfrac{x-1}{\sqrt{x^2+x+m}-2}$ có đúng $3$ đường tiệm cận. Tổng giá trị các phần tử của tập $S$ bằng bao nhiêu?', unsafe_allow_html=True)
+                p3_q4_d6 = st.text_input("Nhập đáp án Câu 4:", key="p3_q4_d6")
                 st.divider()
 
-                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 21:</span> Một mảnh đất hình thang vuông có đáy lớn gấp đôi đáy nhỏ, có diện tích là $S(m^2) = 24$. Gọi $x (m)$ là độ dài đáy nhỏ và $P(x)$ là chu vi mảnh đất đó. Tìm số tiệm cận của $P(x)$.', unsafe_allow_html=True)
-                p3_q5_d6 = st.text_input("Nhập đáp án Câu 21:", key="p3_q5_d6")
+                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 5:</span> Một mảnh đất hình thang vuông có đáy lớn gấp đôi đáy nhỏ, có diện tích là $S(m^2) = 24$. Gọi $x (m)$ là độ dài đáy nhỏ và $P(x)$ là chu vi mảnh đất đó. Tìm số tiệm cận của $P(x)$.', unsafe_allow_html=True)
+                p3_q5_d6 = st.text_input("Nhập đáp án Câu 5:", key="p3_q5_d6")
                 st.divider()
 
-                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 22:</span> Số đường tiệm cận đứng của đồ thị hàm số $y = \dfrac{3x-6-2\sin(x-2)}{x^2-4}$ là bao nhiêu?', unsafe_allow_html=True)
-                p3_q6_d6 = st.text_input("Nhập đáp án Câu 22:", key="p3_q6_d6")
+                st.markdown(r'<span style="color: #0000FF; font-weight: bold;">Câu 6:</span> Số đường tiệm cận đứng của đồ thị hàm số $y = \dfrac{3x-6-2\sin(x-2)}{x^2-4}$ là bao nhiêu?', unsafe_allow_html=True)
+                p3_q6_d6 = st.text_input("Nhập đáp án Câu 6:", key="p3_q6_d6")
                 st.divider()
 
                 # NÚT NỘP BÀI
