@@ -276,13 +276,19 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/cau3_p3.png", width=400)
+                    st.image("images/cau3_p3.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau3_p3.png")
             p3_q3 = st.text_input("Nhập đáp án Câu 3:", key="p3_q3")
             st.divider()
 
             st.markdown("**Câu 4:** Xét một chất điểm chuyển động trên một trục số nằm ngang, vị trí $s(t) = t^3 - 9t^2 + 15t, t \ge 0$. Hỏi có bao nhiêu giá trị $t$ nguyên để chất điểm chuyển động sang trái?")
+            try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/cau4_p3.PNG", width=400)
+            except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau4_p3.PNG")
             p3_q4 = st.text_input("Nhập đáp án Câu 4:", key="p3_q4")
             st.divider()
 
@@ -290,7 +296,7 @@ if de_thi_chon == "Đề 1: Sự biến thiên và cực trị của hàm số":
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/cau5_p3.png", width=400)
+                    st.image("images/cau5_p3.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau5_p3.png")
             p3_q5 = st.text_input("Nhập đáp án Câu 5:", key="p3_q5")
