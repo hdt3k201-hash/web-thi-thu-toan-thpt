@@ -430,7 +430,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
     if key_nop_bai not in st.session_state:
         st.session_state[key_nop_bai] = False
         
-    st.title("ĐỀ 2: KHỐI ĐA DIỆN VÀ THỂ TÍCH")
+    st.title("ĐỀ 2: Sự biến thiên và cực trị của hàm số")
     st.markdown("---")
     
     if not st.session_state[key_nop_bai]:
