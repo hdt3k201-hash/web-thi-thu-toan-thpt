@@ -136,7 +136,7 @@ if not st.session_state[key_nop_bai]:
         p1_q10 = st.radio("C10:", [r"A. $(-\infty; -1)$", r"B. $(-1; 3)$", r"C. $(3; +\infty)$", r"D. $(-\infty; 0)$"], key="p1_q10", label_visibility="collapsed")
         st.divider()
 
-        st.markdown(r"**Câu 11:** Cho hàm số $y=\frac{x^2-2x-7}{x-4}$. Phát biểu nào sau đây là đúng?")
+        st.markdown(r"**Câu 11:** Cho hàm số $y=\dfrac{x^2-2x-7}{x-4}$. Phát biểu nào sau đây là đúng?")
         p1_q11 = st.radio("C11:", [
             r"A. $x_{CT} = 3, x_{CĐ} = 5$", 
             r"B. $x_{CT} = -3, x_{CĐ} = 5$", 
@@ -145,7 +145,7 @@ if not st.session_state[key_nop_bai]:
         ], key="p1_q11", label_visibility="collapsed")
         st.divider()
 
-        st.markdown(r"**Câu 12:** Điểm cực tiểu của hàm số $y=\frac{-x^2+2x-1}{x+2}$ là")
+        st.markdown(r"**Câu 12:** Điểm cực tiểu của hàm số $y=\dfrac{-x^2+2x-1}{x+2}$ là")
         p1_q12 = st.radio("C12:", [r"A. $x = 1$", r"B. $x = -5$", r"C. $x = 2$", r"D. $x = 5$"], key="p1_q12", label_visibility="collapsed")
         st.divider()
 
