@@ -479,7 +479,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d2_cau4_p1.png", width=400)
+                    st.image("images/d2_cau4_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d2_cau4_p1.png")
             st.markdown('Hàm số đã cho nghịch biến trên khoảng nào dưới đây?')
@@ -490,7 +490,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d2_cau5_p1.png", width=400)
+                    st.image("images/d2_cau5_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d2_cau5_p1.png")
             st.markdown('Hàm số đồng biến trên khoảng nào dưới đây?')
@@ -509,7 +509,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d2_cau8_p1.png", width=400)
+                    st.image("images/d2_cau8_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d2_cau8_p1.png")
             st.markdown('Giá trị cực đại của $f(x)$ là')
@@ -524,7 +524,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d2_cau10_p1.png", width=400)
+                    st.image("images/d2_cau10_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d2_cau10_p1.png")
             st.markdown('Hàm số đã cho nghịch biến trên khoảng nào dưới đây?')
@@ -535,7 +535,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d2_cau11_p1.png", width=400)
+                    st.image("images/d2_cau11_p1.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d2_cau11_p1.png")
             st.markdown('Hàm số $y=f(x)$ có bao nhiêu điểm cực trị?')
@@ -557,7 +557,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d2_cau1_p2.png", width=400)
+                    st.image("images/d2_cau1_p2.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d2_cau1_p2.png")
             
@@ -573,7 +573,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d2_cau2_p2.png", width=400)
+                    st.image("images/d2_cau2_p2.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d2_cau2_p2.png")
             st.markdown('Mỗi khẳng định sau đây đúng hay sai?')
@@ -589,7 +589,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d2_cau3_p2.png", width=400)
+                    st.image("images/d2_cau3_p2.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d2_cau3_p2.png")
             p2_q3_d2 = {}
@@ -638,7 +638,7 @@ elif de_thi_chon == "Đề 2: Sự biến thiên và cực trị của hàm số
             try: 
                 col1, col2, col3 = st.columns([1, 2, 1])
                 with col2:
-                    st.image("images/d2_cau6_p3.png", width=400)
+                    st.image("images/d2_cau6_p3.PNG", width=400)
             except: 
                 st.warning("⚠️ Lỗi: Thiếu file ảnh images/d2_cau6_p3.png")
             st.markdown(r'Biết khoảng cách hai bên chân đồi $OA=2$ km, độ rộng của hồ $AB=1$ km và ngọn đồi cao $528$ m. Tìm độ sâu của hồ (tính bằng mét) tại điểm sâu nhất? (làm tròn đến hàng đơn vị).', unsafe_allow_html=True)
