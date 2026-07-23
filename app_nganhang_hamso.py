@@ -1228,6 +1228,89 @@ st.markdown("---")
 
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 13 (Cụm liên trường Hải Phòng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d2379e.png
+st.markdown(r"""
+Một doanh nghiệp sản xuất độc quyền một loại sản phẩm. Giả sử khi sản xuất và bán hết $x$ sản phẩm ($0 < x \le 2500$) tổng số tiền doanh nghiệp thu được là $f(x) = 2006x - x^2$ (đơn vị: nghìn đồng) và tổng chi phí là $g(x) = x^2 + 1438x - 1209$ (đơn vị: nghìn đồng).
+Giả sử mức thuế phụ thu trên một đơn vị sản phẩm bán được là $t$ (nghìn đồng), ($0 < t < 320$).
+Giá trị của $t$ là bao nhiêu để nhà nước nhận được số tiền thuế phụ thu lớn nhất và doanh nghiệp cũng nhận được lợi nhuận lớn nhất với mức thuế phụ thu đó?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của t (nghìn đồng) (ví dụ: 150):", key="q21_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q21_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 284
+    if normalized_user_answer == "284":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+        st.session_state['q21_solution_shown'] = True
+    elif normalized_user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy lập hàm lợi nhuận theo x và t, tìm x tối ưu theo t rồi tối đa hóa hàm số thuế T(t) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q21_solution_shown' not in st.session_state:
+    st.session_state['q21_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q21_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q21_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q21_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q21_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm Lợi nhuận của doanh nghiệp theo $x$ và $t$**
+    
+    *   Khi sản xuất và bán hết $x$ sản phẩm ($0 < x \le 2500$), tổng số tiền thuế phụ thu doanh nghiệp phải nộp cho nhà nước là:
+        $$T_{tax} = t \cdot x \text{ (nghìn đồng)}$$
+    *   Hàm lợi nhuận $P(x)$ của doanh nghiệp (sau khi trừ chi phí và thuế phụ thu) là:
+        $$P(x) = f(x) - g(x) - t \cdot x$$
+        $$P(x) = (2006x - x^2) - (x^2 + 1438x - 1209) - tx$$
+        $$P(x) = -2x^2 + (568 - t)x + 1209$$
+    
+    **Bước 2: Tìm số lượng sản phẩm $x$ để doanh nghiệp đạt lợi nhuận lớn nhất**
+    
+    Với một mức thuế $t$ cố định, hàm lợi nhuận $P(x)$ là một hàm số bậc hai ẩn $x$ có hệ số $a = -2 < 0$. Parabol này có bề lõm hướng xuống dưới nên lợi nhuận của doanh nghiệp đạt giá trị lớn nhất tại đỉnh:
+    $$x = -\dfrac{b}{2a} = -\dfrac{568 - t}{2 \cdot (-2)} = \dfrac{568 - t}{4}$$
+    
+    *(Nhận xét: Do $0 < t < 320$ nên $62 < \dfrac{568 - t}{4} < 142$, giá trị này hoàn toàn thỏa mãn điều kiện $0 < x \le 2500$).*
+    
+    **Bước 3: Lập hàm Tổng tiền thuế nhà nước thu được và tối ưu hóa**
+    
+    Khi doanh nghiệp sản xuất ở mức tối ưu lợi nhuận $x = \dfrac{568 - t}{4}$, tổng số tiền thuế phụ thu nhà nước nhận được là một hàm số theo biến $t$:
+    $$T(t) = t \cdot x = t \cdot \dfrac{568 - t}{4} = -\dfrac{1}{4}t^2 + 142t$$
+    
+    Đây tiếp tục là một hàm số bậc hai theo biến $t$ trên khoảng $(0; 320)$ với hệ số $a = -\dfrac{1}{4} < 0$. Do đó, số tiền thuế phụ thu nhà nước thu được lớn nhất tại tọa độ đỉnh của parabol:
+    $$t = -\dfrac{142}{2 \cdot \left(-\dfrac{1}{4}\right)} = 284$$
+    
+    Giá trị $t = 284$ thỏa mãn điều kiện $0 < t < 320$.
+    
+    **Kết luận:** Giá trị mức thuế phụ thu tối ưu cần tìm là **284** (nghìn đồng).
+    """)
+    
+st.markdown("---")
+
 
 
 
