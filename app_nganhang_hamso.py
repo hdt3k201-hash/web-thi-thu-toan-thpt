@@ -9215,4 +9215,180 @@ if st.session_state.get('q95_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 96 (Sở Hưng Yên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một quần thể vi khuẩn được nuôi cấy trong phòng thí nghiệm. Nồng độ dinh dưỡng $S$ (đơn vị: $\text{mg/l}$) thay đổi theo thời gian $t$ (giờ) được mô hình hóa bởi hàm số: $S(t) = \dfrac{10t + 5}{t + 1}$. Biết rằng tốc độ sinh trưởng $V$ của vi khuẩn phụ thuộc vào nồng độ dinh dưỡng theo hàm số: $V(S) = \dfrac{5S}{S + 2}$. Khi thời gian $t$ kéo dài, tốc độ sinh trưởng $V$ tăng dần và ổn định quanh một ngưỡng $K$ nhất định. Hỏi sau bao nhiêu phút thì tốc độ sinh trưởng của vi khuẩn đạt $90\%$ của ngưỡng $K$ đó?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập thời gian (phút) (ví dụ: 15):", key="q96_ans")
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q96_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 15
+    if normalized_user_answer in ["15", "15.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tìm ngưỡng giới hạn K khi thời gian t tiến tới vô cực, sau đó tính 90% của K để tìm nồng độ S và suy ra thời gian t rồi đổi ra phút nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q96_solution_shown' not in st.session_state:
+    st.session_state['q96_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q96_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q96_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q96_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q96_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm ngưỡng giới hạn $K$ của tốc độ sinh trưởng $V$**
+    
+    * Khi thời gian $t$ kéo dài ($t \to +\infty$), nồng độ dinh dưỡng $S(t)$ tiến tới:
+        $$K = \lim_{t \to +\infty} S(t) = \lim_{t \to +\infty} \dfrac{10t + 5}{t + 1} = 10 \text{ (mg/l)}$$
+    * Tốc độ sinh trưởng $V$ ổn định quanh ngưỡng $K$ chính là giá trị của hàm số $V(S)$ tại $S = 10$:
+        $$K_{\text{tốc độ}} = V(10) = \dfrac{5 \cdot 10}{10 + 2} = \dfrac{50}{12} = \dfrac{25}{6}$$
+        
+    **Bước 2: Tính $90\%$ của ngưỡng $K$**
+    
+    * Giá trị $90\%$ của ngưỡng $K$ là:
+        $$V_1 = 90\% \cdot \dfrac{25}{6} = \dfrac{9}{10} \cdot \dfrac{25}{6} = \dfrac{3}{2} \cdot \dfrac{5}{2} = \dfrac{15}{4} = 3,75$$
+        
+    **Bước 3: Tìm nồng độ dinh dưỡng $S$ tương ứng**
+    
+    * Để tốc độ sinh trưởng đạt $3,75$, ta có phương trình:
+        $$\dfrac{5S}{S + 2} = \dfrac{15}{4}$$
+    * Giải phương trình trên:
+        $$4 \cdot 5S = 15(S + 2) \iff 20S = 15S + 30 \iff 5S = 30 \iff S = 6 \text{ (mg/l)}$$
+        
+    **Bước 4: Tính thời gian $t$ (giờ) và đổi ra phút**
+    
+    * Với $S = 6$, ta tìm thời gian $t$ từ hàm số $S(t)$:
+        $$\dfrac{10t + 5}{t + 1} = 6 \iff 10t + 5 = 6(t + 1) \iff 10t + 5 = 6t + 6 \iff 4t = 1 \iff t = 0,25 \text{ (giờ)}$$
+    * Đổi thời gian ra đơn vị phút:
+        $$t = 0,25 \cdot 60 = 15 \text{ phút}$$
+    
+    **Kết luận:** Sau **$15$** phút thì tốc độ sinh trưởng của vi khuẩn đạt $90\%$ của ngưỡng $K$ đó.
+    """)
+    
+st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 97 (Sở Quảng Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một doanh nghiệp dự định sản xuất không quá $200$ đơn vị sản phẩm. Nếu doanh nghiệp sản xuất $x$ đơn vị sản phẩm ($1 \le x \le 200$) thì giá bán của mỗi đơn vị sản phẩm là $f(x) = 435 - 2x$ (triệu đồng) và chi phí sản xuất bình quân cho một đơn vị sản phẩm là $g(x) = \dfrac{0,7x^2}{125} - 1,706x + 96,5 + \dfrac{6375}{x}$ (triệu đồng). Biết rằng mức thuế cho một đơn vị sản phẩm này là $2,5$ triệu đồng. Hỏi doanh nghiệp cần sản xuất bao nhiêu đơn vị sản phẩm để lợi nhuận thu được lớn nhất?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng sản phẩm :", key="q97_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q97_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 125
+    if normalized_user_answer in ["125", "125.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm doanh thu và tổng chi phí (bao gồm chi phí sản xuất và thuế), sau đó khảo sát hàm lợi nhuận để tìm giá trị tối ưu nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q97_solution_shown' not in st.session_state:
+    st.session_state['q97_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q97_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q97_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q97_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q97_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm Doanh thu**
+    
+    Gọi $x$ là số đơn vị sản phẩm doanh nghiệp sản xuất và bán ra ($1 \le x \le 200$).
+    
+    *   Giá bán mỗi đơn vị sản phẩm là: 
+        $$f(x) = 435 - 2x \text{ (triệu đồng)}$$
+    *   Tổng doanh thu thu được là: 
+        $$R(x) = x \cdot f(x) = x(435 - 2x) = 435x - 2x^2 \text{ (triệu đồng)}$$
+        
+    **Bước 2: Thiết lập hàm Tổng chi phí (bao gồm thuế)**
+    
+    *   Chi phí sản xuất bình quân cho một đơn vị sản phẩm là:
+        $$g(x) = \dfrac{0,7x^2}{125} - 1,706x + 96,5 + \dfrac{6375}{x}$$
+    *   Tổng chi phí sản xuất cho $x$ đơn vị sản phẩm là:
+        $$C_{\text{sx}}(x) = x \cdot g(x) = \dfrac{0,7x^3}{125} - 1,706x^2 + 96,5x + 6375 \text{ (triệu đồng)}$$
+    *   Vì mức thuế cho một đơn vị sản phẩm là $2,5$ triệu đồng, tổng số thuế phải nộp là $2,5x$ triệu đồng.
+    *   Tổng chi phí thực tế (đã bao gồm thuế) là:
+        $$C(x) = C_{\text{sx}}(x) + 2,5x = \dfrac{0,7x^3}{125} - 1,706x^2 + 99x + 6375 \text{ (triệu đồng)}$$
+        
+    **Bước 3: Thiết lập hàm Lợi nhuận và khảo sát**
+    
+    *   Hàm lợi nhuận $L(x)$ là tổng doanh thu trừ đi tổng chi phí:
+        $$L(x) = R(x) - C(x)$$
+        $$L(x) = (435x - 2x^2) - \left(\dfrac{0,7x^3}{125} - 1,706x^2 + 99x + 6375\right)$$
+        $$L(x) = -\dfrac{0,7}{125}x^3 + (-2 + 1,706)x^2 + (435 - 99)x - 6375$$
+        $$L(x) = -0,0056x^3 - 0,294x^2 + 336x - 6375 \quad \text{với } x \in [1; 200]$$
+    *   Tính đạo hàm của hàm lợi nhuận:
+        $$L'(x) = -3 \cdot 0,0056x^2 - 2 \cdot 0,294x + 336 = -0,0168x^2 - 0,588x + 336$$
+    *   Cho $L'(x) = 0$:
+        $$-0,0168x^2 - 0,588x + 336 = 0 \iff 0,0168x^2 + 0,588x - 336 = 0$$
+        Phương trình có nghiệm dương:
+        $$x = 125 \quad (\text{thỏa mãn điều kiện } 1 \le x \le 200)$$
+        
+    **Bước 4: Kết luận**
+    
+    *   Bằng cách lập bảng biến thiên hoặc xét dấu đạo hàm, hàm số đạt giá trị lớn nhất tại $x = 125$.
+    *   Vậy doanh nghiệp cần sản xuất **$125$** đơn vị sản phẩm để lợi nhuận thu được lớn nhất.
+    """)
+    
+st.markdown("---")
+
+
 
