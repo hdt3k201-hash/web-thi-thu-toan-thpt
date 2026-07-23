@@ -4202,3 +4202,89 @@ if st.session_state.get('q_trituyetdoi_solution_shown') and st.session_state.get
     """)
     
 st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 44 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Cho hàm số $y = \dfrac{mx + 2}{x - m}$ có đồ thị là $(C_m)$ với $m$ là tham số thực. Gọi $I(x_0; y_0)$ là giao điểm của hai đường tiệm cận của đồ thị $(C_m)$. Tính tổng $S$ tất cả các giá trị của tham số $m$ để khoảng cách từ điểm $I$ đến đường thẳng $d: x - 2y + 3 = 0$ bằng $\dfrac{2}{\sqrt{5}}$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng các giá trị của m (ví dụ: -1):", key="q_tiemcan_ans")
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_tiemcan_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 6
+    if normalized_user_answer == "6":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tọa độ giao điểm của hai tiệm cận và công thức tính khoảng cách từ điểm đến đường thẳng nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_tiemcan_solution_shown' not in st.session_state:
+    st.session_state['q_tiemcan_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_tiemcan_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_tiemcan_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_tiemcan_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_tiemcan_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm tọa độ giao điểm của hai đường tiệm cận**
+    
+    Điều kiện xác định của hàm số: $x \neq m$.
+    
+    *   Đồ thị hàm số có đường tiệm cận đứng là: $x = m$
+    *   Đường tiệm cận ngang là: $y = m$
+    
+    Do đó, giao điểm $I$ của hai đường tiệm cận có tọa độ là:
+    $$I(m; m)$$
+    
+    **Bước 2: Thiết lập phương trình khoảng cách**
+    
+    Khoảng cách từ điểm $I(m; m)$ đến đường thẳng $d: x - 2y + 3 = 0$ được tính theo công thức:
+    $$d(I, d) = \dfrac{|m - 2(m) + 3|}{\sqrt{1^2 + (-2)^2}} = \dfrac{|-m + 3|}{\sqrt{5}} = \dfrac{|3 - m|}{\sqrt{5}}$$
+    
+    **Bước 3: Giải phương trình tìm tham số $m$**
+    
+    Theo giả thiết, khoảng cách này bằng $\dfrac{2}{\sqrt{5}}$, nên ta có phương trình:
+    $$\dfrac{|3 - m|}{\sqrt{5}} = \dfrac{2}{\sqrt{5}} \Leftrightarrow |3 - m| = 2$$
+    
+    Phương trình chứa dấu giá trị tuyệt đối tương đương với:
+    $$\left[ \begin{aligned} 3 - m &= 2 \\ 3 - m &= -2 \end{aligned} \right. \Leftrightarrow \left[ \begin{aligned} m &= 1 \\ m &= 5 \end{aligned} \right.$$
+    
+    Cả hai giá trị $m = 1$ và $m = 5$ đều thỏa mãn điều kiện xác định của hàm số.
+    
+    **Bước 4: Tính tổng các giá trị của tham số $m$**
+    
+    Tổng tất cả các giá trị của tham số $m$ là:
+    $$S = 1 + 5 = 6$$
+    
+    **Kết luận:** Tổng các giá trị của tham số $m$ là **$6$**.
+    """)
+    
+st.markdown("---")
