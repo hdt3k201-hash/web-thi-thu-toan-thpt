@@ -6497,7 +6497,7 @@ if st.session_state.get('q_dh_solution_shown') and st.session_state.get('logged_
     Hàm số đồng biến khi và chỉ khi $y' \ge 0$ (và chỉ bằng $0$ tại hữu hạn điểm):
     $$(2x + 2)f'(x^2 + 2x) \ge 0$$
     
-    Dựa vào bảng xét dấu của $f'(x)$, ta thấy $f'(x) > 0$ khi $x \in (-\infty; -2) \cup (0; 3)$[cite: 1].
+    Dựa vào bảng xét dấu của $f'(x)$, ta thấy $f'(x) > 0$ khi $x \in (-\infty; -2) \cup (0; 3)$.
     Do đó, để $f'(x^2 + 2x) > 0$, ta xét các trường hợp:
     $$\left[ \begin{aligned} x^2 + 2x &< -2 \\ 0 < x^2 + 2x &< 3 \end{aligned} \right. \Leftrightarrow \left[ \begin{aligned} (x+1)^2 &< -1 \text{ (vô nghiệm)} \\ 0 < x^2 + 2x &< 3 \end{aligned} \right. \Leftrightarrow \left[ \begin{aligned} -3 &< x < -2 \\ 0 &< x < 1 \end{aligned} \right.$$
     
@@ -6507,7 +6507,7 @@ if st.session_state.get('q_dh_solution_shown') and st.session_state.get('logged_
     
     Giải các phương trình $x^2 + 2x = c$, ta tìm được các nghiệm đơn/bội lẻ làm đổi dấu đạo hàm: $x \in \{-3; -2; -1; 0; 1\}$.
     
-    *   Xét khoảng $(0; 1)$: Lấy điểm đại diện $x = 0,5$, ta có $2(0,5) + 2 > 0$ và $u = 0,5^2 + 2(0,5) = 1,25 \in (0; 3)$ nên $f'(1,25) > 0$[cite: 1]. 
+    *   Xét khoảng $(0; 1)$: Lấy điểm đại diện $x = 0,5$, ta có $2(0,5) + 2 > 0$ và $u = 0,5^2 + 2(0,5) = 1,25 \in (0; 3)$ nên $f'(1,25) > 0$. 
     *   Do đó $y' > 0$ trên khoảng $(0; 1)$, suy ra hàm số đồng biến trên khoảng này.
     
     **Bước 4: Kết luận**
