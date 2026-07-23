@@ -39,9 +39,10 @@ st.title("Chuyên đề: Hàm số")
 st.markdown("---")
 
 # Tiêu đề câu hỏi
-st.markdown(r"""
-**Câu 1 (HSG 12 - Quảng Ninh 2026)**
-""")
+st.markdown(
+    '<b style="color: #1e88e5;">Câu 1 (HSG 12 - Quảng Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
 
 # Nội dung câu hỏi từ hình ảnh image_cf94a3.png
 st.markdown(r"""
