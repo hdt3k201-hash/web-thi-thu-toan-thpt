@@ -9390,5 +9390,111 @@ if st.session_state.get('q97_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 98 (THPT Ngô Quyền - Hải Phòng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một công ty X có một khu đất hình chữ nhật $ABCD$. Biết $AB = \sqrt{2}\text{ km}$, $AD = 4\text{ km}$. Một góc khu đất là hồ nước, biên của hồ là đường cong $AC$, là một phần của parabol có đỉnh tại $A$ và trục đối xứng là đường thẳng chứa $AD$. Công ty cần kẻ một dải cách li thẳng $MN$ đi qua một điểm $P$ trên đường cong $AC$ với $P$ khác $A, C$ sao cho $M \in AB, N \in BC$ (như hình vẽ). Dải cách li chiếm diện tích không đáng kể nhưng không được đi qua hồ. Gọi diện tích tam giác $BMN$ là $S$ (đơn vị: $\text{km}^2$). Tìm giá trị lớn nhất của $S$ (kết quả làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị lớn nhất của S (km²) (ví dụ: 1.15):", key="q98_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_31aa15.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_31aa15.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q98_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 3.35
+    if normalized_user_answer in ["3.35", "3.350"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập phương trình parabol, viết phương trình tiếp tuyến tại P và tính diện tích tam giác BMN theo hoành độ điểm P nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q98_solution_shown' not in st.session_state:
+    st.session_state['q98_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q98_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q98_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q98_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q98_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ tọa độ và phương trình parabol**
+    
+    * Chọn hệ trục tọa độ $Oxy$ sao cho gốc tọa độ trùng với đỉnh $A$, trục $AB$ trùng với trục hoành, trục $AD$ nằm trên trục tung.
+    * Khi đó, các đỉnh của hình chữ nhật $ABCD$ có tọa độ là: $A(0; 0)$, $B(\sqrt{2}; 0)$, $D(0; 4)$, $C(\sqrt{2}; 4)$.
+    * Biên của hồ là phần parabol có đỉnh tại $A(0; 0)$ và trục đối xứng là đường thẳng chứa $AD$ (trục tung), nên parabol có phương trình dạng:
+        $$y = ax^2 \quad (a > 0)$$
+    * Vì đồ thị đi qua điểm $C(\sqrt{2}; 4)$, ta thay tọa độ điểm $C$ vào phương trình:
+        $$4 = a(\sqrt{2})^2 \iff 4 = 2a \iff a = 2$$
+    * Vậy phương trình của parabol là $y = 2x^2$ với $0 \le x \le \sqrt{2}$.
+    
+    **Bước 2: Viết phương trình đường thẳng $MN$**
+    
+    * Gọi $P(x_0; 2x_0^2)$ là điểm thuộc đường cong $AC$ với $0 < x_0 < \sqrt{2}$. Đường thẳng $MN$ đi qua $P$ và tiếp xúc với parabol tại $P$ (để dải cách li không cắt phần trong của hồ).
+    * Đạo hàm của hàm số là $y' = 4x$. Hệ số góc của tiếp tuyến tại điểm $P$ là $k = 4x_0$.
+    * Phương trình tiếp tuyến $MN$ tại điểm $P$ là:
+        $$y - 2x_0^2 = 4x_0(x - x_0) \iff y = 4x_0x - 2x_0^2$$
+    * Tìm tọa độ các giao điểm $M$ và $N$:
+        * Điểm $M$ là giao điểm của đường thẳng $MN$ với cạnh $AB$ ($y = 0$):
+            $$0 = 4x_0x_M - 2x_0^2 \iff x_M = \dfrac{x_0}{2} \implies M\left(\dfrac{x_0}{2}; 0\right)$$
+        * Điểm $N$ là giao điểm của đường thẳng $MN$ với cạnh $BC$ ($x = \sqrt{2}$):
+            $$y_N = 4x_0\sqrt{2} - 2x_0^2 \implies N\left(\sqrt{2}; 4\sqrt{2}x_0 - 2x_0^2\right)$$
+            
+    **Bước 3: Tính diện tích tam giác $BMN$ và khảo sát giá trị lớn nhất**
+    
+    * Tam giác $BMN$ vuông tại $B$ có độ dài các cạnh góc vuông là:
+        * $BM = x_B - x_M = \sqrt{2} - \dfrac{x_0}{2} = \dfrac{2\sqrt{2} - x_0}{2}$
+        * $BN = y_N = 4\sqrt{2}x_0 - 2x_0^2 = 2x_0(2\sqrt{2} - x_0)$
+    * Diện tích tam giác $BMN$ là:
+        $$S = \dfrac{1}{2} \cdot BM \cdot BN = \dfrac{1}{2} \cdot \left(\dfrac{2\sqrt{2} - x_0}{2}\right) \cdot 2x_0(2\sqrt{2} - x_0) = x_0(2\sqrt{2} - x_0)^2$$
+    * Khảo sát hàm số $S(x_0) = x_0(2\sqrt{2} - x_0)^2$ với $x_0 \in (0; \sqrt{2})$:
+        $$S'(x_0) = (2\sqrt{2} - x_0)^2 + 2x_0(2\sqrt{2} - x_0)(-1) = (2\sqrt{2} - x_0)(2\sqrt{2} - 3x_0)$$
+    * Cho $S'(x_0) = 0$, vì $2\sqrt{2} - x_0 > 0$, ta được:
+        $$2\sqrt{2} - 3x_0 = 0 \iff x_0 = \dfrac{2\sqrt{2}}{3} \quad (\text{thỏa mãn điều kiện } 0 < x_0 < \sqrt{2})$$
+    * Thay $x_0 = \dfrac{2\sqrt{2}}{3}$ vào hàm số $S(x_0)$:
+        $$S_{\max} = \dfrac{2\sqrt{2}}{3} \left(2\sqrt{2} - \dfrac{2\sqrt{2}}{3}\right)^2 = \dfrac{2\sqrt{2}}{3} \left(\dfrac{4\sqrt{2}}{3}\right)^2 = \dfrac{2\sqrt{2}}{3} \cdot \dfrac{32}{9} = \dfrac{64\sqrt{2}}{27}$$
+    
+    **Bước 4: Làm tròn kết quả**
+    
+    * Giá trị số thực:
+        $$S_{\max} = \dfrac{64\sqrt{2}}{27} \approx 3,35221 \text{ km}^2$$
+    * Làm tròn kết quả đến hàng phần trăm, ta được **$3,35$**.
+    
+    **Kết luận:** Giá trị lớn nhất của diện tích $S$ là **$3,35$** $\text{km}^2$.
+    """)
+    
+st.markdown("---")
+
 
 
