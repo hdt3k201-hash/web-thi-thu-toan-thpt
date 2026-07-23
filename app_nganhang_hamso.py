@@ -2237,9 +2237,6 @@ Chi phí an sinh xã hội bình quân theo đầu người được mô hình h
 Tính tốc độ thay đổi của tổng chi phí an sinh xã hội toàn quốc (nghìn tỷ đồng/năm) vào đầu năm 2030 (làm tròn kết quả đến hàng đơn vị).
 """)
 
-
-
-# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 user_answer = st.text_input("Nhập tốc độ thay đổi (nghìn tỷ đồng/năm) (ví dụ: 50):", key="q33_ans")
 
 # Nút kiểm tra Đúng/Sai
