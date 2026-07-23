@@ -643,3 +643,89 @@ st.markdown("---")
 
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 7 (THPT Đồng Hỷ - Thái Nguyên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d0e246.png
+st.markdown(r"""
+Một trang trại rau sạch mỗi ngày thu hoạch được $1$ tấn rau. Mỗi ngày, nếu trang trại bán với giá bán rau là $30.000$ đồng/kg thì bán hết rau, nếu giá bán rau tăng $1.000$ đồng/kg thì số rau thừa tăng $20$ kg. Số rau thừa này được thu mua hết để làm thức ăn chăn nuôi với giá $2.000$ đồng/kg. Hỏi để mỗi ngày thu được số tiền bán rau lớn nhất thì trang trại đó nên bán rau với giá bao nhiêu nghìn đồng?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá bán cần chốt (nghìn đồng) (ví dụ: 35):", key="q13_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q13_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 41
+    if normalized_user_answer == "41":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm tổng doanh thu theo số lần tăng giá và kiểm tra lại nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q13_solution_shown' not in st.session_state:
+    st.session_state['q13_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q13_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q13_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q13_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q13_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đổi đơn vị và lập hàm số biểu diễn giá bán, số lượng rau**
+    
+    *   Đổi $1 \text{ tấn} = 1000 \text{ kg}$.
+    *   Gọi $x$ là số lần tăng giá $1.000$ đồng ($0 \le x \le 50$).
+    *   Khi đó, giá bán rau sạch tính theo nghìn đồng là: 
+        $$p(x) = 30 + x \text{ (nghìn đồng/kg)}$$
+    *   Số rau thừa tăng lên tương ứng là $20x \text{ (kg)}$, do đó khối lượng rau sạch bán được với giá $p(x)$ là: 
+        $$s(x) = 1000 - 20x \text{ (kg)}$$
+    
+    **Bước 2: Thiết lập hàm Tổng doanh thu**
+    
+    Tổng doanh thu $T(x)$ thu được mỗi ngày bao gồm tiền bán rau sạch và tiền bán rau thừa làm thức ăn chăn nuôi (với giá $2 \text{ nghìn đồng/kg}$):
+    $$T(x) = p(x) \cdot s(x) + 2 \cdot 20x$$
+    $$T(x) = (30 + x)(1000 - 20x) + 40x$$
+    $$T(x) = 30000 - 600x + 1000x - 20x^2 + 40x$$
+    $$T(x) = -20x^2 + 440x + 30000$$
+    
+    **Bước 3: Tìm giá trị tối đa của hàm Tổng doanh thu**
+    
+    Đây là một hàm số bậc hai ẩn $x$ với hệ số $a = -20 < 0$. Đồ thị là một parabol có bề lõm hướng xuống dưới nên doanh thu đạt giá trị lớn nhất tại đỉnh của parabol.
+    
+    Tọa độ đỉnh đạt được tại:
+    $$x = -\dfrac{b}{2a} = -\dfrac{440}{2 \cdot (-20)} = \dfrac{440}{40} = 11$$
+    
+    Giá trị $x = 11$ thỏa mãn điều kiện $0 \le x \le 50$.
+    Vậy trang trại cần thực hiện tăng giá $11$ lần để thu được số tiền bán rau lớn nhất.
+    
+    Giá bán rau mỗi kg cần chốt là:
+    $$p(11) = 30 + 11 = 41 \text{ (nghìn đồng/kg)}$$
+    
+    **Kết luận:** Trang trại nên bán rau với giá **$41$** nghìn đồng.
+    """)
+    
+st.markdown("---")
+
+
+
