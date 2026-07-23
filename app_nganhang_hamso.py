@@ -326,3 +326,115 @@ if st.session_state.get('q5_solution_shown') and st.session_state.get('logged_in
     """)
     
 st.markdown("---")
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 4 (HSG 12 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d0671d.png
+st.markdown(r"""
+Trong hệ trục tọa độ $Oxy$, cho đồ thị hàm số $(C): y = \dfrac{x^2 + x + 2}{x + 1}$ mô tả chuyển động của hai tàu đánh cá $A$ và $B$ (1 đơn vị trên mỗi trục tọa độ tính bằng 1 km). 
+Biết quỹ đạo chuyển động của hai tàu luôn thuộc về hai nhánh khác nhau của đồ thị $(C)$. Tính khoảng cách ngắn nhất (đơn vị km) giữa hai tàu đánh cá $A$ và $B$ (kết quả làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập khoảng cách ngắn nhất (làm tròn đến 2 chữ số thập phân, ví dụ: 6.22):", key="q9_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q9_check"):
+    # Chuẩn hóa đầu vào (loại bỏ khoảng trắng, đổi dấu phẩy thành dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(" ", "").replace(",", ".")
+    
+    # Đáp án chính xác là 6.22
+    if normalized_user_answer == "6.22":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách dùng bất đẳng thức AM-GM và làm tròn số nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q9_solution_shown' not in st.session_state:
+    st.session_state['q9_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q9_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q9_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q9_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q9_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chuyển hệ trục tọa độ**
+    
+    Hàm số $y = \dfrac{x^2 + x + 2}{x + 1} = x + \dfrac{2}{x + 1}$ có tập xác định $D = \mathbb{R} \setminus \{-1\}$.
+    Đồ thị $(C)$ có tiệm cận đứng $x = -1$ và tiệm cận xiên $y = x$.
+    Giao điểm của hai đường tiệm cận là $I(-1; -1)$, đây cũng là tâm đối xứng của đồ thị.
+    
+    Thực hiện phép tịnh tiến hệ trục $Oxy$ về gốc $I(-1; -1)$ bằng công thức:
+    $$\begin{cases} x = X - 1 \\ y = Y - 1 \end{cases}$$
+    
+    Phương trình đồ thị $(C)$ trong hệ trục $IXY$ trở thành:
+    $$Y - 1 = (X - 1) + \dfrac{2}{(X - 1) + 1} \Leftrightarrow Y = X + \dfrac{2}{X}$$
+    
+    **Bước 2: Gọi tọa độ hai điểm $A, B$ trên hai nhánh và tính độ dài $AB$**
+    
+    Vì $A, B$ nằm trên hai nhánh khác nhau của đồ thị nên hoành độ của chúng trong hệ trục $IXY$ sẽ trái dấu.
+    Gọi $A\left(-a; -a - \dfrac{2}{a}\right)$ với $a > 0$ (điểm thuộc nhánh trái).
+    Gọi $B\left(b; b + \dfrac{2}{b}\right)$ với $b > 0$ (điểm thuộc nhánh phải).
+    
+    Bình phương khoảng cách giữa $A$ và $B$ là:
+    $$AB^2 = (X_B - X_A)^2 + (Y_B - Y_A)^2$$
+    $$AB^2 = (a + b)^2 + \left(a + b + \dfrac{2}{a} + \dfrac{2}{b}\right)^2$$
+    $$AB^2 = (a + b)^2 + \left(a + b + \dfrac{2(a + b)}{ab}\right)^2 = (a + b)^2 \left[ 1 + \left(1 + \dfrac{2}{ab}\right)^2 \right]$$
+    
+    **Bước 3: Đánh giá tìm giá trị nhỏ nhất**
+    
+    Theo bất đẳng thức AM-GM, ta có: $(a + b)^2 \ge 4ab \Rightarrow ab \le \dfrac{(a + b)^2}{4} \Rightarrow \dfrac{2}{ab} \ge \dfrac{8}{(a + b)^2}$.
+    
+    Do đó:
+    $$AB^2 \ge (a + b)^2 \left[ 1 + \left(1 + \dfrac{8}{(a + b)^2}\right)^2 \right]$$
+    
+    Đặt $t = (a + b)^2$ với $t > 0$, ta xét hàm số:
+    $$f(t) = t \left[ 1 + \left(1 + \dfrac{8}{t}\right)^2 \right] = t \left( 1 + 1 + \dfrac{16}{t} + \dfrac{64}{t^2} \right) = 2t + \dfrac{64}{t} + 16$$
+    
+    Tiếp tục áp dụng bất đẳng thức AM-GM cho hai số dương $2t$ và $\dfrac{64}{t}$:
+    $$2t + \dfrac{64}{t} \ge 2\sqrt{2t \cdot \dfrac{64}{t}} = 2\sqrt{128} = 16\sqrt{2}$$
+    
+    Suy ra: $AB^2 \ge 16\sqrt{2} + 16$.
+    Giá trị nhỏ nhất của $AB$ là: $AB_{min} = \sqrt{16\sqrt{2} + 16} = 4\sqrt{\sqrt{2} + 1}$.
+    
+    Dấu "=" xảy ra khi và chỉ khi:
+    $$\begin{cases} a = b \\ 2t = \dfrac{64}{t} \end{cases} \Leftrightarrow \begin{cases} a = b \\ t^2 = 32 \end{cases} \Leftrightarrow \begin{cases} a = b \\ (2a)^2 = 4\sqrt{2} \end{cases} \Leftrightarrow a = b = \sqrt[4]{2}$$
+    (Thỏa mãn điều kiện).
+    
+    **Bước 4: Tính toán kết quả**
+    
+    Ta có: $AB_{min} = 4\sqrt{\sqrt{2} + 1} \approx 6.21509$.
+    Làm tròn đến hàng phần trăm, khoảng cách ngắn nhất là **$6.22$** (km).
+    """)
+    
+st.markdown("---")
+
+
+
+
+
+
+
+
+
