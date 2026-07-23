@@ -3344,3 +3344,109 @@ if st.session_state.get("q54_solution_shown") and st.session_state.get(
 
 st.markdown("---")
 
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 35 (THPT Lê Thánh Tông - HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Bạn Xuân Anh có một tờ giấy cứng hình chữ nhật $ABCD$ với $AB = 4\text{ dm}$, $AD = 2\text{ dm}$. Bạn chọn một điểm $M$ thuộc cạnh $BC$ rồi dùng thước kẻ vạch và cắt tờ giấy theo đường thẳng $AM$, chia tờ giấy thành hai phần. Phần mảnh giấy chứa cạnh $CD$: Bạn muốn cắt được một hình vuông có đỉnh $D$, hai cạnh nằm trên đường $DA$ và $DC$, đỉnh còn lại hình vuông thuộc đường cắt $AM$. Phần mảnh giấy chứa cạnh $AB$: Bạn muốn cắt được một hình tròn sao cho hình tròn tiếp xúc với cả ba cạnh tam giác $ABM$. Gọi $S$ là tổng diện tích của hình vuông và hình tròn cắt được. Hỏi khi $M$ di động trên $BC$, giá trị nhỏ nhất của $S$ bằng bao nhiêu $\text{dm}^2$ (làm tròn đến hàng phần trăm)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị nhỏ nhất của S (ví dụ: 2.55):", key="q56_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/ltt_hcm.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/ltt_hcm.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q56_check"):
+    # Chuẩn hóa đầu vào (thay dấu phẩy thành dấu chấm nếu người dùng nhập kiểu Việt Nam)
+    normalized_user_answer = user_answer.strip().replace(",", ".")
+    
+    # Đáp án chính xác là 3.16
+    if normalized_user_answer == "3.16":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy gắn hệ trục tọa độ, lập hàm diện tích theo độ dài BM rồi tìm giá trị nhỏ nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q56_solution_shown' not in st.session_state:
+    st.session_state['q56_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q56_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q56_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q56_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q56_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Gắn hệ trục tọa độ và thiết lập các đại lượng**
+    
+    *   Chọn hệ trục tọa độ $Oxy$ sao cho $D(0; 0)$. 
+    *   Theo đề bài $AB = 4$, $AD = 2$, suy ra tọa độ các đỉnh là: $A(0; 2)$, $B(4; 2)$, $C(4; 0)$.
+    *   Điểm $M$ thuộc đoạn $BC$. Gọi độ dài đoạn $BM = x$ (với $0 \le x \le 2$).
+    *   Tọa độ điểm $M$ là $(4; 2-x)$.
+    
+    Phương trình đường thẳng $AM$ đi qua $A(0; 2)$ và $M(4; 2-x)$ có dạng:
+    $$y - 2 = \dfrac{(2-x) - 2}{4 - 0} \cdot (x - 0) \iff y = \dfrac{-x}{4}X + 2$$
+    
+    **Bước 2: Tìm diện tích hình vuông**
+    
+    *   Hình vuông cần cắt có đỉnh $D(0;0)$, hai cạnh nằm trên $DA$ (trục $Oy$) và $DC$ (trục $Ox$). Đỉnh đối diện $D$ của hình vuông sẽ có tọa độ là $(a; a)$ với $a > 0$ là cạnh hình vuông.
+    *   Đỉnh này nằm trên đường thẳng $AM$, nên tọa độ $(a; a)$ thỏa mãn phương trình đường thẳng $AM$:
+        $$a = \dfrac{-x}{4}a + 2 \iff 4a = -ax + 8 \iff a(x+4) = 8 \iff a = \dfrac{8}{x+4}$$
+    *   Diện tích hình vuông là: 
+        $$S_1(x) = a^2 = \left(\dfrac{8}{x+4}\right)^2$$
+        
+    **Bước 3: Tìm diện tích hình tròn**
+    
+    *   Hình tròn cần cắt là đường tròn nội tiếp tam giác vuông $ABM$ (vuông tại $B$).
+    *   Các cạnh của tam giác vuông này là: $AB = 4$, $BM = x$, và cạnh huyền $AM = \sqrt{4^2 + x^2} = \sqrt{x^2 + 16}$.
+    *   Bán kính đường tròn nội tiếp $r$ được tính bằng công thức $r = \dfrac{\text{Cạnh góc vuông 1} + \text{Cạnh góc vuông 2} - \text{Cạnh huyền}}{2}$:
+        $$r = \dfrac{4 + x - \sqrt{x^2+16}}{2}$$
+    *   Diện tích hình tròn là:
+        $$S_2(x) = \pi r^2 = \pi \left(\dfrac{x + 4 - \sqrt{x^2+16}}{2}\right)^2$$
+        
+    **Bước 4: Tìm giá trị nhỏ nhất của tổng diện tích $S$**
+    
+    *   Tổng diện tích $S$ theo ẩn $x$ là:
+        $$S(x) = S_1(x) + S_2(x) = \left(\dfrac{8}{x+4}\right)^2 + \pi \left(\dfrac{x + 4 - \sqrt{x^2+16}}{2}\right)^2$$
+        với $x \in [0; 2]$.
+    *   Đến đây, ta dùng chức năng TABLE trên máy tính cầm tay (Mode 8 hoặc Mode 7) để dò giá trị nhỏ nhất của hàm số trên đoạn $[0; 2]$ với bước nhảy $\text{Step} = 0,1$.
+    *   Nhận thấy hàm số đạt giá trị nhỏ nhất quanh khu vực $x \approx 1$. 
+    *   Tiếp tục thu hẹp khoảng khảo sát $[0,9; 1,1]$ với $\text{Step} = 0,01$, ta thấy hàm số đạt giá trị nhỏ nhất tại $x \approx 0,985$.
+    *   Thay $x = 0,985$ vào hàm số ta được:
+        $$S_{\min} \approx 3,1637...$$
+    *   Làm tròn đến hàng phần trăm ta được $3,16$.
+        
+    **Kết luận:** Giá trị nhỏ nhất của $S$ xấp xỉ bằng **$3,16 \text{ dm}^2$**.
+    """)
+    
+st.markdown("---")
+
