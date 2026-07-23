@@ -142,3 +142,104 @@ if st.session_state.get('q2_solution_shown') and st.session_state.get('logged_in
     """)
     
 st.markdown("---")
+
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 2 (HSG 12 - Hà Tĩnh 2026) - Đã sửa điều kiện</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 
+st.markdown(r"""
+Cho hàm số $y = \dfrac{x^2 - x + 2}{x - 2}$ có đồ thị $(C)$ và điểm $A(1; 3)$. Gọi $B$ là điểm cực tiểu và $\Delta$ là đường tiệm cận xiên của $(C)$. Tìm tọa độ điểm $M$ thuộc $\Delta$ sao cho tam giác $ABM$ cân tại $A$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tọa độ điểm $M$ (ví dụ: (1;2) hoặc 1;2):", key="q4_ans_v2")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q4_check_v2"):
+    # Chuẩn hóa đầu vào của người dùng để so sánh
+    normalized_user_answer = user_answer.strip().replace(" ", "").replace("(", "").replace(")", "").replace("M", "").replace("m", "").replace(",", ";")
+    
+    # Đáp án chính xác là (5; 6)
+    if normalized_user_answer == "5;6":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải (lưu ý điều kiện 3 điểm tạo thành tam giác) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q4_solution_shown_v2' not in st.session_state:
+    st.session_state['q4_solution_shown_v2'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q4_solution_v2"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q4_solution_shown_v2'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q4_solution_shown_v2'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q4_solution_shown_v2') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm phương trình đường tiệm cận xiên $\Delta$**
+    
+    Hàm số $y = \frac{x^2 - x + 2}{x - 2}$ có tập xác định $D = \mathbb{R} \setminus \{2\}$.
+    
+    Ta viết lại hàm số dưới dạng:
+    $$y = \frac{x(x - 2) + (x - 2) + 4}{x - 2} = x + 1 + \frac{4}{x - 2}$$
+    
+    Khi $x \to \pm\infty$, phân thức $\frac{4}{x - 2} \to 0$. Do đó, đường tiệm cận xiên của $(C)$ là:
+    $$\Delta: y = x + 1$$
+    
+    **Bước 2: Tìm tọa độ điểm cực tiểu $B$**
+    
+    Tính đạo hàm:
+    $$y' = 1 - \frac{4}{(x - 2)^2} = \frac{(x - 2)^2 - 4}{(x - 2)^2} = \frac{x^2 - 4x}{(x - 2)^2}$$
+    
+    Cho $y' = 0 \Leftrightarrow x^2 - 4x = 0 \Leftrightarrow \left[ \begin{array}{l} x = 0 \\ x = 4 \end{array} \right.$
+    
+    Lập bảng biến thiên, ta thấy hàm số đạt cực tiểu tại $x = 4$.
+    Giá trị cực tiểu: $y(4) = \frac{4^2 - 4 + 2}{4 - 2} = 7$.
+    Vậy điểm cực tiểu của $(C)$ là $B(4; 7)$.
+    
+    **Bước 3: Tìm tọa độ điểm $M$**
+    
+    Vì điểm $M \in \Delta: y = x + 1$, gọi tọa độ $M(m; m + 1)$.
+    
+    Đề bài yêu cầu tam giác $ABM$ cân tại $A$, điều này tương đương với $AM = AB$ và ba điểm $A, B, M$ không thẳng hàng.
+    Ta có $AM^2 = AB^2$.
+    
+    Với $A(1; 3)$ và $B(4; 7)$:
+    *   $AB^2 = (4 - 1)^2 + (7 - 3)^2 = 3^2 + 4^2 = 25$.
+    *   $AM^2 = (m - 1)^2 + (m + 1 - 3)^2 = (m - 1)^2 + (m - 2)^2 = 2m^2 - 6m + 5$.
+    
+    Cho $AM^2 = AB^2$, ta được phương trình:
+    $$2m^2 - 6m + 5 = 25$$
+    $$\Leftrightarrow 2m^2 - 6m - 20 = 0$$
+    $$\Leftrightarrow m^2 - 3m - 10 = 0$$
+    $$\Leftrightarrow \left[ \begin{array}{l} m = 5 \\ m = -2 \end{array} \right.$$
+    
+    **Kiểm tra điều kiện tạo thành tam giác:**
+    Ta có $\overrightarrow{AB} = (3; 4)$.
+    *   Với $m = 5 \Rightarrow M(5; 6)$. Ta có $\overrightarrow{AM} = (4; 3)$. Vì $\frac{4}{3} \neq \frac{3}{4}$, hai vectơ không cùng phương, $A, B, M$ tạo thành tam giác (Thỏa mãn).
+    *   Với $m = -2 \Rightarrow M(-2; -1)$. Ta có $\overrightarrow{AM} = (-3; -4) = -1 \cdot \overrightarrow{AB}$. Suy ra ba điểm $A, B, M$ thẳng hàng, không tạo thành tam giác (Loại).
+    
+    Vậy tọa độ điểm $M$ cần tìm là **$M(5; 6)$**.
+    """)
+    
+st.markdown("---")
+
