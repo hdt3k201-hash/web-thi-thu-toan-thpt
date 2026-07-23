@@ -919,12 +919,11 @@ st.markdown(
 # Nội dung câu hỏi từ hình ảnh image_d0f546.png
 st.markdown(r"""
 Bác An có một cửa hàng chuyên bán buôn bưởi Đoan Hùng, bác nhận thấy rằng: Nếu bán mỗi kilogram bưởi với giá $30$ nghìn đồng thì mỗi tuần có $60$ đơn hàng và mỗi đơn hàng mua $100$ kilogram. Nếu cứ tăng giá mỗi kilogram bưởi thêm $2$ nghìn đồng thì hàng tuần số đơn hàng giảm $4$ đơn, đồng thời số lượng bưởi mà mỗi đơn hàng đặt mua cũng giảm đi $2$ kilogram.
-
 Hỏi bác cần bán mỗi kilogram bưởi với giá bao nhiêu nghìn đồng để lợi nhuận hàng tuần thu được là lớn nhất, biết giá nhập mỗi kilogram bưởi là $24$ nghìn đồng và giá bán không vượt quá $50$ nghìn đồng/1kg. (Kết quả làm tròn đến hàng đơn vị).
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập giá bán cần chốt (nghìn đồng) (ví dụ: 40):", key="q18_ans")
+user_answer = st.text_input("Nhập giá bán cần chốt (nghìn đồng) (ví dụ: 45):", key="q18_ans")
 
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q18_check"):
