@@ -2959,9 +2959,6 @@ if st.session_state.get('q44_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 
-
-
-
 # Tiêu đề câu hỏi
 st.markdown(
     '<b style="color: blue;">Câu 31 (Chuyên Hạ Long 2026)</b>',
@@ -2972,7 +2969,6 @@ st.markdown(
 st.markdown(r"""
 Đồ thị hàm số $y = \dfrac{x^3(\sqrt{x^2 - 4} + x)}{2x^3 + 3x^2 - 3x - 2}$ có tất cả bao nhiêu đường tiệm cận đứng và tiệm cận ngang?
 """)
-
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 user_answer = st.text_input("Nhập tổng số đường tiệm cận (ví dụ: 8):", key="q45_ans")
 
