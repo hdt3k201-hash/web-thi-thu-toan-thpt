@@ -8375,4 +8375,106 @@ if st.session_state.get('q86_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 87 (THPT Lê Thánh Tông - HCM 2026)</b>',
+    unsafe_allow_html=True
+)
 
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Từ một tấm nhôm hình vuông có cạnh bằng $8\text{ dm}$, người ta cắt bỏ bốn tứ giác bằng nhau (cùng bằng tứ giác $AMNP$) ở bốn góc của tấm nhôm đó, biết $AM = AP = 1\text{ dm}$ và điểm $N$ thuộc đường chéo $AC$. Với phần còn lại của tấm nhôm sau khi đã cắt bỏ đi $4$ tứ giác nói trên, người ta đã gập các đoạn $MN$ trùng với $PN$ rồi dán kĩ bằng keo, làm tương tự cho 3 cặp đoạn còn lại, người ta thu được chậu nước hình chóp cụt tứ giác đều. Sức chứa lớn nhất của chậu nước hình chóp cụt tứ giác đều này là bao nhiêu lít (làm tròn đến hàng đơn vị, bỏ qua độ dày tấm nhôm)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập sức chứa lớn nhất (lít) (ví dụ: 45):", key="q87_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_30c4da.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_30c4da.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q87_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 44
+    if normalized_user_answer == "44":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập chiều cao chóp cụt $h = \sqrt{7-x}$ theo cạnh đáy nhỏ $x$ và tìm giá trị lớn nhất của thể tích nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q87_solution_shown' not in st.session_state:
+    st.session_state['q87_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q87_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q87_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q87_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q87_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập các kích thước của chóp cụt tứ giác đều**
+    
+    *   Gọi $x$ là độ dài cạnh đáy nhỏ (đáy dưới) của chậu nước ($0 < x < 7$).
+    *   Cạnh đáy lớn (đáy trên) của chậu nước được tạo thành từ các đoạn thẳng trên cạnh hình vuông ban đầu sau khi cắt bỏ góc. Chiều dài cạnh đáy lớn là: 
+        $$b = 8 - 1 - 1 = 6 \text{ (dm)}$$
+    *   Trung đoạn của mặt bên (chiều cao của hình thang cân mặt bên) trong mặt phẳng 2D chính là khoảng cách từ cạnh của đáy nhỏ đến cạnh của đáy lớn: 
+        $$l = 4 - \dfrac{x}{2} \text{ (dm)}$$
+    *   Chiều cao $h$ của chóp cụt được tính qua tam giác vuông tạo bởi trung đoạn mặt bên, chiều cao chóp cụt và hình chiếu của trung đoạn lên mặt đáy:
+        $$h = \sqrt{l^2 - \left(\dfrac{b - x}{2}\right)^2} = \sqrt{\left(4 - \dfrac{x}{2}\right)^2 - \left(\dfrac{6 - x}{2}\right)^2}$$
+        $$h = \sqrt{\left(16 - 4x + \dfrac{x^2}{4}\right) - \left(9 - 3x + \dfrac{x^2}{4}\right)} = \sqrt{7 - x} \text{ (dm)}$$
+        
+    **Bước 2: Xây dựng hàm thể tích chậu nước**
+    
+    Thể tích khối chóp cụt tứ giác đều có diện tích đáy lớn $S_1 = 6^2 = 36$, diện tích đáy nhỏ $S_2 = x^2$ là:
+    $$V(x) = \dfrac{1}{3}h(S_1 + \sqrt{S_1 \cdot S_2} + S_2)$$
+    $$V(x) = \dfrac{1}{3}\sqrt{7 - x}(36 + 6x + x^2) \quad \text{với } x \in (0; 7)$$
+        
+    **Bước 3: Khảo sát hàm số để tìm thể tích lớn nhất**
+    
+    Để tìm giá trị lớn nhất của $V(x)$, ta xét hàm số $f(x) = 9 \cdot V^2(x) = (7 - x)(x^2 + 6x + 36)^2$ trên khoảng $(0; 7)$.
+    
+    Tính đạo hàm:
+    $$f'(x) = -1 \cdot (x^2 + 6x + 36)^2 + (7 - x) \cdot 2(x^2 + 6x + 36)(2x + 6)$$
+    $$f'(x) = (x^2 + 6x + 36) \left[ -(x^2 + 6x + 36) + (7 - x)(4x + 12) \right]$$
+    $$f'(x) = (x^2 + 6x + 36)(-x^2 - 6x - 36 + 28x + 84 - 4x^2 - 12x)$$
+    $$f'(x) = (x^2 + 6x + 36)(-5x^2 + 10x + 48)$$
+    
+    Cho $f'(x) = 0 \Leftrightarrow -5x^2 + 10x + 48 = 0$.
+    Phương trình có nghiệm dương là: $x = \dfrac{5 + \sqrt{265}}{5} \approx 4,26$ (thỏa mãn điều kiện).
+    
+    **Bước 4: Tính toán kết quả và làm tròn**
+    
+    Thay $x = \dfrac{5 + \sqrt{265}}{5}$ vào hàm thể tích $V(x)$:
+    *   $h = \sqrt{7 - \dfrac{5 + \sqrt{265}}{5}} \approx 1,657 \text{ (dm)}$
+    *   $S_1 + \sqrt{S_1 S_2} + S_2 = x^2 + 6x + 36 \approx (4,26)^2 + 6(4,26) + 36 \approx 79,71$
+    *   $V_{\max} \approx \dfrac{1}{3} \cdot 1,657 \cdot 79,71 \approx 43,98 \text{ (dm}^3\text{)}$
+    
+    Vì $1 \text{ dm}^3 = 1 \text{ lít}$, nên sức chứa lớn nhất của chậu xấp xỉ $43,98$ lít. 
+    Làm tròn đến hàng đơn vị, ta được **$44$**.
+    
+    **Kết luận:** Sức chứa lớn nhất của chậu nước là **$44$** lít.
+    """)
+    
+st.markdown("---")
