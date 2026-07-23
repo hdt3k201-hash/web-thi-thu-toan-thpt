@@ -9043,3 +9043,89 @@ if st.session_state.get('q93_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 94 (Sở Tuyên Quang 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một khu chung cư có $120$ căn hộ cho thuê. Người quản lí của khu chung cư nhận thấy rằng nếu giá thuê một căn hộ là $7$ triệu đồng một tháng thì tất cả các căn hộ đều sẽ có người thuê. Một cuộc khảo sát thị trường cho thấy, trung bình cứ mỗi lần tăng giá thuê một căn hộ mỗi tháng thêm $250$ nghìn đồng thì sẽ có thêm ba căn hộ bị bỏ trống. Người quản lí nên đặt giá thuê mỗi căn hộ là bao nhiêu triệu đồng một tháng để doanh thu một tháng là lớn nhất?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá thuê mỗi căn hộ (triệu đồng) (ví dụ: 1.5):", key="q94_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q94_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 8.5
+    if normalized_user_answer in ["8.5", "8,5"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm doanh thu dựa trên số lần tăng giá, tìm cực trị của hàm số bậc hai và tính lại giá thuê nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q94_solution_shown' not in st.session_state:
+    st.session_state['q94_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q94_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q94_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q94_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q94_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn cho bài toán**
+    
+    * Gọi $x$ là số lần tăng giá thuê căn hộ ($x \in \mathbb{N}$, $0 \le x \le 40$).
+    * Mỗi lần tăng giá là $250\text{ nghìn đồng} = 0,25\text{ triệu đồng}$.
+    * Giá thuê mới của một căn hộ sau $x$ lần tăng là:
+        $$P(x) = 7 + 0,25x \text{ (triệu đồng)}$$
+    * Số lượng căn hộ được thuê tương ứng sau $x$ lần tăng (cứ tăng $1$ lần thì có $3$ căn hộ trống) là:
+        $$Q(x) = 120 - 3x \text{ (căn hộ)}$$
+        
+    **Bước 2: Thiết lập hàm Doanh thu**
+    
+    * Tổng doanh thu thu được trong một tháng là hàm số theo biến $x$:
+        $$R(x) = P(x) \cdot Q(x) = (7 + 0,25x)(120 - 3x)$$
+        $$R(x) = 840 - 21x + 30x - 0,75x^2$$
+        $$R(x) = -0,75x^2 + 9x + 840$$
+        
+    **Bước 3: Tìm giá trị lớn nhất của hàm doanh thu**
+    
+    * Hàm số $R(x)$ là một hàm bậc hai có đồ thị là một parabol quay bề lõm xuống dưới, do đó đạt giá trị lớn nhất tại đỉnh của parabol.
+    * Hoành độ đỉnh của parabol là:
+        $$x = \dfrac{-b}{2a} = \dfrac{-9}{2 \cdot (-0,75)} = \dfrac{-9}{-1,5} = 6$$
+    * Giá trị $x = 6$ thỏa mãn điều kiện $0 \le x \le 40$.
+    
+    **Bước 4: Tính giá thuê căn hộ để đạt doanh thu lớn nhất**
+    
+    * Với $x = 6$, giá thuê mỗi căn hộ để doanh thu đạt lớn nhất là:
+        $$P(6) = 7 + 0,25 \cdot 6 = 7 + 1,5 = 8,5 \text{ (triệu đồng)}$$
+    
+    **Kết luận:** Người quản lí nên đặt giá thuê mỗi căn hộ là **$8,5$** triệu đồng một tháng để doanh thu một tháng là lớn nhất.
+    """)
+    
+st.markdown("---")
+
+
