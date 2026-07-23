@@ -4803,3 +4803,105 @@ if st.session_state.get('q_om_on_solution_shown') and st.session_state.get('logg
     """)
     
 st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 50 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh[cite: 1]
+st.markdown(r"""
+Cho hàm số $y = \dfrac{mx^2 + (3m^2 - 2)x - 2}{x + 3m}$ có đồ thị là $(C)$ với $m$ là tham số thực ($m \neq \dfrac{1}{3}$). 
+Tính tổng tất cả các giá trị của tham số $m$ để góc giữa hai đường tiệm cận của đồ thị $(C)$ bằng $45^\circ$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng các giá trị của m (ví dụ: 3):", key="q_tiemcan_goc_ans")
+
+# Chèn hình ảnh minh họa
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/bai_toan_3_23.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/bai_toan_3_23.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_tiemcan_goc_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 0
+    if normalized_user_answer == "0":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại phương trình tiệm cận xiên, tiệm cận đứng và công thức tính góc giữa hai đường thẳng nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_tiemcan_goc_solution_shown' not in st.session_state:
+    st.session_state['q_tiemcan_goc_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_tiemcan_goc_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_tiemcan_goc_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_tiemcan_goc_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_tiemcan_goc_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm các đường tiệm cận của đồ thị hàm số**
+    
+    Điều kiện xác định: $x \neq -3m$.
+    
+    *   **Tiệm cận đứng:** Đồ thị hàm số có tiệm cận đứng là đường thẳng $d_2: x = -3m$ (với điều kiện tử số khác $0$ tại $x = -3m$, tức là $m \neq \dfrac{1}{3}$).
+    
+    *   **Tiệm cận xiên:** Thực hiện phép chia đa thức tử cho mẫu:
+        $$mx^2 + (3m^2 - 2)x - 2 = (x + 3m)(mx - 2) + (6m - 2)$$
+        Do đó: 
+        $$y = mx - 2 + \dfrac{6m - 2}{x + 3m}$$
+        Vậy đồ thị hàm số có tiệm cận xiên là đường thẳng $d_1: y = mx - 2$.
+    
+    **Bước 2: Thiết lập góc giữa hai đường tiệm cận**
+    
+    *   Đường thẳng $d_1: y = mx - 2$ có hệ số góc $k = m$, nên nhận véc-tơ chỉ phương là $\vec{u}_1 = (1; m)$.
+    *   Đường thẳng $d_2: x = -3m$ là đường thẳng vuông góc với trục hoành, nên nhận véc-tơ chỉ phương là $\vec{u}_2 = (0; 1)$.
+    
+    Góc $\alpha$ giữa hai đường tiệm cận $d_1$ và $d_2$ được tính thông qua công thức góc giữa hai véc-tơ chỉ phương:
+    $$\cos \alpha = \dfrac{|\vec{u}_1 \cdot \vec{u}_2|}{|\vec{u}_1| \cdot |\vec{u}_2|} = \dfrac{|1 \cdot 0 + m \cdot 1|}{\sqrt{1^2 + m^2} \cdot \sqrt{0^2 + 1^2}} = \dfrac{|m|}{\sqrt{1 + m^2}}$$
+    
+    **Bước 3: Giải phương trình tìm tham số $m$**
+    
+    Theo giả thiết, góc giữa hai tiệm cận bằng $45^\circ$, nên ta có:
+    $$\cos 45^\circ = \dfrac{\sqrt{2}}{2} \implies \dfrac{|m|}{\sqrt{1 + m^2}} = \dfrac{\sqrt{2}}{2}$$
+    
+    Bình phương hai vế của phương trình, ta được:
+    $$\dfrac{m^2}{1 + m^2} = \dfrac{2}{4} = \dfrac{1}{2}$$
+    $$2m^2 = 1 + m^2 \implies m^2 = 1 \implies \left[ \begin{aligned} m &= 1 \\ m &= -1 \end{aligned} \right.$$
+    
+    Cả hai giá trị $m = 1$ và $m = -1$ đều thỏa mãn điều kiện $m \neq \dfrac{1}{3}$.
+    
+    **Bước 4: Tính tổng các giá trị của tham số $m$**
+    
+    Tổng tất cả các giá trị của tham số $m$ là:
+    $$S = 1 + (-1) = 0$$
+    
+    **Kết luận:** Tổng các giá trị của tham số $m$ là **$0$**.
+    """)
+    
+st.markdown("---")
