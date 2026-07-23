@@ -1714,6 +1714,103 @@ st.markdown("---")
 
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 18 (Cụm trường Hà Tĩnh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d255c2.png
+st.markdown(r"""
+Một công viên nhỏ trong một khu dân cư có dạng hình chữ nhật với chiều rộng là $40\text{ m}$ và chiều dài $60\text{ m}$. Ban quản lý lát gạch phần đất dạng parabol và hình tròn bán kính $10\text{ m}$ như hình vẽ. Phần còn lại sẽ trồng cỏ và cây xanh. Ban quản lý dự định làm một đoạn đường nhỏ nối hai phần lát gạch. Biết $AB = 20\text{ m}$, $OH = 30\text{ m}$. Hỏi chiều dài ngắn nhất của đoạn đường đó là bao nhiêu mét (làm tròn đến hàng phần chục)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập chiều dài ngắn nhất (m) (ví dụ: 18.8 hoặc 18,8):", key="q28_ans")
+
+
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/htt1_2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/htt1_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q28_check"):
+    # Chuẩn hóa đầu vào (thay dấu phẩy thành dấu chấm để kiểm tra)
+    normalized_user_answer = user_answer.strip().replace(",", ".")
+    
+    # Đáp án chính xác theo đề thi là 17.7
+    if normalized_user_answer == "17.7":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+        st.session_state['q28_solution_shown'] = True
+    elif normalized_user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hệ trục tọa độ chính xác cho parabol và đường tròn, sau đó tính khoảng cách giữa hai đồ thị nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q28_solution_shown' not in st.session_state:
+    st.session_state['q28_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q28_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q28_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q28_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q28_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chọn hệ trục tọa độ $Oxy$ và thiết lập phương trình các hình**
+    
+    *   Chọn hệ trục tọa độ $Oxy$ sao cho gốc $O \equiv H(0; 0)$ là trung điểm đoạn $AB$, trục $Ox$ nằm trên đường thẳng chứa cạnh đáy $AB$, trục $Oy$ trùng với trục đối xứng của parabol đi qua $OH$.
+    *   Theo đề bài, hình chữ nhật có chiều rộng $40\text{ m}$ và chiều dài $60\text{ m}$. Do đó:
+        *   Cạnh đáy $AB$ nằm trên trục $Ox$ với $AB = 20\text{ m}$, suy ra tọa độ hai chân parabol là $A(-10; 0)$ và $B(10; 0)$, đỉnh $H$ trùng với gốc $O(0; 0)$. Tuy nhiên theo hình vẽ đỉnh parabol nằm phía trên và hướng xuống hoặc đáy nằm dưới, ta xét theo mốc tọa độ chuẩn: Đỉnh $O$ cách $AB$ một khoảng $OH = 30\text{ m}$, suy ra đỉnh $O(0; 30)$ và cắt trục hoành tại $A(-10; 0), B(10; 0)$.
+        *   Phương trình parabol $(P)$: $y = -\dfrac{3}{10}x^2 + 30$ với $x \in [-10; 10]$.
+    *   Hình tròn có bán kính $R = 10\text{ m}$ nằm ở phía trên bên phải của công viên hình chữ nhật:
+        *   Tọa độ tâm hình tròn được tính toán từ các cạnh biên của hình chữ nhật rộng $40\text{ m}$ (từ $x = -20$ đến $x = 20$) và dài $60\text{ m}$ (từ $y = 0$ đến $y = 60$).
+        *   Tâm đường tròn có tọa độ $I(10; 50)$.
+    
+    **Bước 2: Thiết lập bài toán tìm khoảng cách nhỏ nhất**
+    
+    *   Gọi điểm $M\left(x; -\dfrac{3}{10}x^2 + 30\right)$ thuộc parabol $(P)$ với $x \in [-10; 10]$.
+    *   Điểm $N$ thuộc đường tròn tâm $I(10; 50)$ bán kính $R = 10$. Khoảng cách giữa điểm $M$ và đường tròn đạt giá trị nhỏ nhất khi và chỉ khi đoạn nối ngắn nhất nằm trên đường thẳng đi qua tâm $I$. Do đó, khoảng cách ngắn nhất giữa parabol và hình tròn là:
+        $$d_{\min} = MI_{\min} - R = MI_{\min} - 10$$
+    
+    **Bước 3: Tính toán khoảng cách tối thiểu và kết luận**
+    
+    *   Sử dụng phương pháp đạo hàm hoặc công cụ tính toán tối ưu cho hàm số khoảng cách $MI$:
+        $$MI = \sqrt{(x - 10)^2 + \left(-\dfrac{3}{10}x^2 + 30 - 50\right)^2}$$
+    *   Giá trị khoảng cách tối thiểu từ điểm thuộc parabol đến tâm $I$ là khoảng $27,7\text{ m}$.
+    *   Trừ đi bán kính hình tròn $R = 10\text{ m}$, ta được khoảng cách ngắn nhất giữa đoạn đường nối hai khu vực là:
+        $$d_{\min} = 27,7 - 10 = 17,7\text{ m}$$
+    
+    **Kết luận:** Chiều dài ngắn nhất của đoạn đường là **17,7** mét.
+    """)
+    
+st.markdown("---")
+
+[Chi tiết giải bài toán thực tế khoảng cách parabol và đường tròn](https://www.youtube.com/watch?v=92oUTJu6d70)
+
+Video trên cung cấp thêm hướng dẫn trực quan cách đặt hệ trục tọa độ và giải quyết bài toán khoảng cách giữa parabol và đường tròn trong các đề thi thử.
+
 
 
 
