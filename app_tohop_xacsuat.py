@@ -312,3 +312,113 @@ if st.session_state.get('q3_solution_shown') and st.session_state.get('logged_in
     """)
     
 st.markdown("---")
+
+import streamlit as st
+
+# --- CÂU HỎI 4 ---
+st.markdown(
+    '<b style="color: blue;">Câu 4 (Đề thi  Tốt nghiệp THPT 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong một trò chơi bạn Bình cần vượt qua một thử thách. Theo yêu cầu của thử thách, Bình cần điền tất cả 15 số thuộc tập hợp $\{0; 1; 2; 3; 4; 5; 6; 7; 8; 10; 11; 12; 15; 16; 20\}$ vào 15 ô vuông trong hình dưới thỏa mãn đồng thời ba điều kiện sau:
++ Mỗi ô điền đúng một số và mỗi số chỉ được sử dụng một lần;
++ Hiệu hai số ở hai ô bất kì khác nhau trên cùng một hàng không chia hết cho 5;
++ Hiệu hai số ở hai ô bất kì khác nhau trên cùng một cột không chia hết cho 5.
+
+Hai cách điền gọi là giống nhau nếu số điền ở mỗi ô tương ứng trong 15 ô là giống nhau (không tính đến thứ tự điền các số vào 15 ô vuông). Gọi $H$ là số cách điền khác nhau để bạn Bình vượt qua được thử thách. Giá trị của $\dfrac{H}{30}$ bằng bao nhiêu?
+""")
+
+# --- CHÈN HÌNH ẢNH (NẾU CÓ) ---
+# (Phần mẫu chèn ảnh chuẩn theo yêu cầu của thầy - Ảnh bảng ô vuông)
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/tn2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/tn2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án :", key="q4_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q4_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    if normalized_user_answer == "1152":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy phân chia các số thành các nhóm dựa trên số dư khi chia cho 5 và xếp vào các đường chéo của bảng!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q4_solution_shown' not in st.session_state:
+    st.session_state['q4_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q4_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q4_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q4_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q4_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân loại các số theo số dư khi chia cho 5**
+    
+    Ta chia 15 số đã cho thành các tập hợp dựa vào số dư khi chia cho 5:
+    * Tập $A_0$ (chia hết cho 5): $\{0; 5; 10; 15; 20\}$ $\Rightarrow$ có 5 số.
+    * Tập $A_1$ (chia 5 dư 1): $\{1; 6; 11; 16\}$ $\Rightarrow$ có 4 số.
+    * Tập $A_2$ (chia 5 dư 2): $\{2; 7; 12\}$ $\Rightarrow$ có 3 số.
+    * Tập $A_3$ (chia 5 dư 3): $\{3; 8\}$ $\Rightarrow$ có 2 số.
+    * Tập $A_4$ (chia 5 dư 4): $\{4\}$ $\Rightarrow$ có 1 số.
+    
+    **Bước 2: Phân tích điều kiện bài toán**
+    
+    * Theo giả thiết, hiệu hai số trên cùng một hàng hoặc cùng một cột không được chia hết cho 5. Điều này tương đương với việc: **Không có hai số nào trên cùng một hàng hoặc cùng một cột có cùng số dư khi chia cho 5.**
+    * Nghĩa là trên mỗi hàng và mỗi cột, mỗi nhóm $A_i$ ($i \in \{0, 1, 2, 3, 4\}$) chỉ được xuất hiện nhiều nhất 1 lần.
+    
+    **Bước 3: Xếp các nhóm số vào bảng**
+    
+    Bảng có dạng bậc thang gồm 15 ô. Số ô trên mỗi hàng và mỗi cột giảm dần từ 5 đến 1.
+    
+    * **Nhóm $A_0$ (5 số):** Cần điền vào 5 ô khác hàng và khác cột. Hàng 5 chỉ có duy nhất ô $(5, 1)$, nên bắt buộc 1 số của $A_0$ phải nằm ở đây. Do Cột 1 đã có số của $A_0$, ô chứa $A_0$ ở Hàng 4 phải nằm ở $(4, 2)$. Lập luận tương tự, 5 số của $A_0$ bắt buộc phải lấp đầy đường chéo chính: $(5, 1), (4, 2), (3, 3), (2, 4), (1, 5)$.
+        Số cách xếp 5 số này là: $5! = 120 \text{ (cách)}$.
+    
+    * **Nhóm $A_1$ (4 số):** Tương tự, bỏ đi các ô đã điền, 4 số của $A_1$ bắt buộc phải được xếp vào đường chéo kế tiếp: $(4, 1), (3, 2), (2, 3), (1, 4)$. 
+        Số cách xếp 4 số này là: $4! = 24 \text{ (cách)}$.
+    
+    * **Nhóm $A_2$ (3 số):** Bắt buộc xếp vào đường chéo: $(3, 1), (2, 2), (1, 3)$. 
+        Số cách xếp là: $3! = 6 \text{ (cách)}$.
+    
+    * **Nhóm $A_3$ (2 số):** Bắt buộc xếp vào đường chéo: $(2, 1), (1, 2)$. 
+        Số cách xếp là: $2! = 2 \text{ (cách)}$.
+    
+    * **Nhóm $A_4$ (1 số):** Điền vào ô cuối cùng còn lại $(1, 1)$. 
+        Số cách xếp là: $1! = 1 \text{ (cách)}$.
+    
+    **Bước 4: Tính $H$ và kết quả**
+    
+    * Theo quy tắc nhân, tổng số cách điền $H$ thỏa mãn là:
+        $$H = 5! \cdot 4! \cdot 3! \cdot 2! \cdot 1! = 120 \cdot 24 \cdot 6 \cdot 2 \cdot 1 = 34.560 \text{ (cách)}$$
+    * Giá trị cần tìm là:
+        $$\dfrac{H}{30} = \dfrac{34.560}{30} = 1152$$
+    
+    **Kết luận:** Giá trị của $\dfrac{H}{30}$ bằng **1152**.
+    """)
+    
+st.markdown("---")
