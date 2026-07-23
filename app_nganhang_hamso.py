@@ -4013,4 +4013,96 @@ if st.session_state.get('q_phanthuc_solution_shown') and st.session_state.get('l
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 42 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
 
+# Nội dung câu hỏi
+st.markdown(r"""
+Cho đồ thị hàm số $(C): y = x^2$ và đường thẳng $d: y = 2x + m$ (với $m$ là tham số thực). 
+Tìm giá trị của tham số $m$ để khoảng cách ngắn nhất giữa đồ thị $(C)$ và đường thẳng $d$ bằng $\dfrac{\sqrt{5}}{5}$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của m (ví dụ: 5):", key="q_dist_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_dist_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là -2
+    if normalized_user_answer == "-2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại điều kiện để đường thẳng không cắt parabol, hàm số khoảng cách và tìm giá trị nhỏ nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_dist_solution_shown' not in st.session_state:
+    st.session_state['q_dist_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_dist_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_dist_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_dist_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_dist_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập phương trình hoành độ giao điểm và điều kiện**
+    
+    Phương trình hoành độ giao điểm giữa đồ thị $(C): y = x^2$ và đường thẳng $d: y = 2x + m$ là:
+    $$x^2 = 2x + m \Leftrightarrow x^2 - 2x - m = 0 \quad (*)$$
+    
+    Để đường thẳng $d$ không cắt đồ thị $(C)$ (đảm bảo khoảng cách ngắn nhất giữa hai đồ thị tồn tại và lớn hơn $0$), phương trình $(*)$ vô nghiệm, tức là biệt thức $\Delta' < 0$:
+    $$\Delta' = (-1)^2 - 1 \cdot (-m) = 1 + m < 0 \Leftrightarrow m < -1$$
+    
+    **Bước 2: Thiết lập hàm số tính khoảng cách từ một điểm trên $(C)$ đến $d$**
+    
+    Viết lại phương trình đường thẳng $d$ dưới dạng tổng quát: $2x - y + m = 0$.
+    
+    Lấy điểm tùy ý $M(x; x^2)$ thuộc đồ thị $(C)$. Khoảng cách từ điểm $M$ đến đường thẳng $d$ là:
+    $$d(M, d) = \dfrac{|2x - x^2 + m|}{\sqrt{2^2 + (-1)^2}} = \dfrac{|x^2 - 2x - m|}{\sqrt{5}}$$
+    
+    Vì $m < -1$ nên ta có $x^2 - 2x - m = x^2 - 2x + 1 - 1 - m = (x - 1)^2 - 1 - m$. 
+    Do $\Delta' < 0$ nên tam thức bậc hai $x^2 - 2x - m > 0$ với mọi $x \in \mathbb{R}$. Khi đó:
+    $$d(M, d) = \dfrac{x^2 - 2x - m}{\sqrt{5}}$$
+    
+    **Bước 3: Tìm giá trị nhỏ nhất của khoảng cách**
+    
+    Ta có:
+    $$d(M, d) = \dfrac{(x - 1)^2 - 1 - m}{\sqrt{5}}$$
+    
+    Vì $(x - 1)^2 \ge 0$ với mọi $x \in \mathbb{R}$, nên:
+    $$d(M, d) \ge \dfrac{-1 - m}{\sqrt{5}}$$
+    
+    Dấu "=" xảy ra khi và chỉ khi $x - 1 = 0 \Leftrightarrow x = 1$. 
+    Do đó, khoảng cách ngắn nhất giữa đồ thị $(C)$ và đường thẳng $d$ là:
+    $$d_{\min} = \dfrac{-1 - m}{\sqrt{5}}$$
+    
+    **Bước 4: Giải phương trình tìm tham số $m$**
+    
+    Theo giả thiết, khoảng cách ngắn nhất giữa hai đồ thị bằng $\dfrac{\sqrt{5}}{5}$, nên ta có phương trình:
+    $$\dfrac{-1 - m}{\sqrt{5}} = \dfrac{\sqrt{5}}{5} = \dfrac{1}{\sqrt{5}}$$
+    $$-1 - m = 1 \Leftrightarrow m = -2$$
+    
+    Đối chiếu với điều kiện $m < -1$, giá trị $m = -2$ hoàn toàn thỏa mãn.
+    
+    **Kết luận:** Giá trị cần tìm của tham số là **$m = -2$**.
+    """)
+    
+st.markdown("---")
