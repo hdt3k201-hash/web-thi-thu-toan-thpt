@@ -1119,23 +1119,37 @@ st.markdown(
 )
 
 # Nội dung câu hỏi từ hình ảnh image_d14f77.png
-st.markdown(r"""
-Khi dạo chơi trong một công viên, bạn An di chuyển trên cầu cong có hình parabol, bạn Lan di chuyển trên bờ hồ đường tròn (minh họa bằng hình vẽ). Khoảng cách giữa hai chân cầu parabol là $AB = 30\text{ m}$, đỉnh $H$ của parabol cách đường thẳng $AB$ một khoảng $HK = 30\text{ m}$. Khoảng cách từ tâm $I$ của đường tròn đến đường thẳng $AB$ và $HK$ lần lượt là $IE = 30\text{ m}$ và $IH = 30\text{ m}$.
+import streamlit as st
+import os
 
-Tính khoảng cách nhỏ nhất giữa hai bạn An và Lan, biết rằng đường tròn có bán kính bằng $3\text{ m}$ (kết quả làm tròn đến hàng phần chục).
-""")
+# Nội dung câu hỏi từ hình ảnh image_d14f77.png (Đã khôi phục đầy đủ text)
+st.markdown(
+    r"""
+Khi dạo chơi trong một công viên, bạn An di chuyển trên cầu cong có hình parabol, bạn Lan di chuyển trên bờ hồ đường tròn (minh họa bằng hình vẽ). Khoảng cách giữa hai chân cầu parabol là **AB = 30 m**, đỉnh $H$ của parabol cách đường thẳng $AB$ một khoảng **HK = 30 m**. Khoảng cách từ tâm $I$ của đường tròn đến đường thẳng $AB$ và $HK$ lần lượt là **IE = 30 m** và **IH = 30 m**.
+
+Tính khoảng cách nhỏ nhất giữa hai bạn An và Lan, biết rằng đường tròn có bán kính bằng **3 m** (kết quả làm tròn đến hàng phần chục).
+"""
+)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập khoảng cách nhỏ nhất (m) (ví dụ: 20.9 hoặc 20,9):", key="q20_ans")
-# Hiển thị hình ảnh mô phỏng
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        # Đường dẫn ảnh đã được đồng bộ
-        st.image("images/ltt_dn2026.PNG", width=400)
-except FileNotFoundError:
-    # Thông báo lỗi cập nhật đúng tên file
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/ltt_dn2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+user_answer = st.text_input(
+    "Nhập khoảng cách nhỏ nhất (m) (ví dụ: 20.6 hoặc 20,6):", key="q20_ans"
+)
+
+# --- HIỂN THỊ HÌNH ẢNH MÔ PHỎNG (ĐÃ SỬA LỖI) ---
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    # Đường dẫn file ảnh (lưu ý viết chuẩn chữ thường đuôi .png nếu file gốc là chữ thường)
+    image_path = "images/ltt_dn2026.png"
+
+    # Kiểm tra file có tồn tại hay không trước khi render ảnh
+    if os.path.exists(image_path):
+        st.image(image_path, width=400)
+    else:
+        # Thông báo lỗi thân thiện nếu không tìm thấy file
+        st.warning(
+            f"⚠️ Lỗi: Không tìm thấy file ảnh tại đường dẫn '{image_path}'. Vui lòng kiểm tra lại thư mục hoặc tên file!"
+        )
 
 
 
