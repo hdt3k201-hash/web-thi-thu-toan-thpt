@@ -1413,6 +1413,101 @@ st.markdown("---")
 
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 15 (THPT Nguyễn Thị Minh Khai - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d23f9c.png
+st.markdown(r"""
+Cho hàm số $y = \dfrac{x^2 - 4x + 5}{x - 2}$ có đồ thị $(C)$. Gọi $A$ là điểm cực trị có tung độ âm của đồ thị $(C)$. Khoảng cách từ điểm $A$ đến đường tiệm cận xiên của đồ thị hàm số $(C)$ bằng $\dfrac{\sqrt{a}}{b}$ với $a, b \in \mathbb{Z}^+$ và $a$ là số nguyên tố. Tính $2026a + b$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị cần tính (ví dụ: 4054):", key="q25_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q25_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 4054
+    if normalized_user_answer == "4054":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+        st.session_state['q25_solution_shown'] = True
+    elif normalized_user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tìm phương trình tiệm cận xiên, tọa độ điểm cực đại A rồi dùng công thức khoảng cách từ điểm đến đường thẳng nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q25_solution_shown' not in st.session_state:
+    st.session_state['q25_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q25_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q25_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q25_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q25_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm phương trình đường tiệm cận xiên của đồ thị $(C)$**
+    
+    Tập xác định: $D = \mathbb{R} \setminus \{2\}$.
+    
+    Ta thực hiện chia đa thức để viết lại hàm số dưới dạng:
+    $$y = \dfrac{x^2 - 4x + 5}{x - 2} = \dfrac{(x - 2)^2 + 1}{x - 2} = x - 2 + \dfrac{1}{x - 2}$$
+    
+    Vì $\lim_{x \to \pm\infty} \left[ y - (x - 2) \right] = \lim_{x \to \pm\infty} \dfrac{1}{x - 2} = 0$, nên đường tiệm cận xiên của đồ thị $(C)$ là đường thẳng:
+    $$\Delta: y = x - 2 \Leftrightarrow x - y - 2 = 0$$
+    
+    **Bước 2: Tìm tọa độ điểm cực trị $A$ có tung độ âm**
+    
+    Đạo hàm của hàm số:
+    $$y' = 1 - \dfrac{1}{(x - 2)^2}$$
+    
+    Cho $y' = 0 \Leftrightarrow (x - 2)^2 = 1 \Leftrightarrow \left[ \begin{array}{l} x - 2 = 1 \\ x - 2 = -1 \end{array} \right. \Leftrightarrow \left[ \begin{array}{l} x = 3 \\ x = 1 \end{array} \right.$
+    
+    *   Với $x = 1 \Rightarrow y = 1 - 2 + \dfrac{1}{1 - 2} = -2 < 0$. Ta được điểm cực đại $A(1; -2)$ (thỏa mãn điều kiện tung độ âm).
+    *   Với $x = 3 \Rightarrow y = 3 - 2 + \dfrac{1}{3 - 2} = 2 > 0$. Ta được điểm cực tiểu $(3; 2)$ (loại do tung độ dương).
+    
+    Vậy điểm cần tìm là $A(1; -2)$.
+    
+    **Bước 3: Tính khoảng cách từ $A$ đến đường tiệm cận xiên và xác định $a, b$**
+    
+    Áp dụng công thức tính khoảng cách từ điểm $A(1; -2)$ đến đường thẳng $\Delta: x - y - 2 = 0$:
+    $$d(A, \Delta) = \dfrac{|1 - (-2) - 2|}{\sqrt{1^2 + (-1)^2}} = \dfrac{|1 + 2 - 2|}{\sqrt{2}} = \dfrac{1}{\sqrt{2}} = \dfrac{\sqrt{2}}{2}$$
+    
+    Theo giả thiết, khoảng cách này bằng $\dfrac{\sqrt{a}}{b}$ với $a, b \in \mathbb{Z}^+$ và $a$ là số nguyên tố.
+    Đồng nhất thức ta thu được:
+    $$a = 2 \quad (\text{thỏa mãn là số nguyên tố}), \quad b = 2$$
+    
+    **Bước 4: Tính giá trị biểu thức yêu cầu**
+    
+    Ta có:
+    $$2026a + b = 2026 \cdot 2 + 2 = 4052 + 2 = 4054$$
+    
+    **Kết luận:** Giá trị cần tìm là **4054**.
+    """)
+    
+st.markdown("---")
+
+
+
+
+
 
 
 
