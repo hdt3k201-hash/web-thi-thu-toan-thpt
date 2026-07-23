@@ -1605,6 +1605,114 @@ st.markdown("---")
 
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 17 (Cụm trường Hà Tĩnh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d24798.png
+st.markdown(r"""
+Trong một buổi tập luyện của lính đặc công, một chiến sỹ cần phối hợp bơi và chạy bộ để từ điểm $A$ ở bờ sông bên này đến điểm $B$ về phía hạ lưu của bờ sông bên kia. Chiến sỹ dự định bơi thẳng từ điểm $A$ đến một điểm $C$ thuộc đoạn $HB$ sau đó chạy từ điểm đó về điểm $B$. Biết $AH = 300\text{ m}$, $HB = 900\text{ m}$, vận tốc dòng nước là $1\text{ m/s}$, vận tốc bơi của chiến sỹ đối với nước là $1\text{ m/s}$ và vận tốc chạy trên bờ của chiến sỹ là $3\text{ m/s}$. Hỏi chiến sỹ cần ít nhất bao nhiêu giây để hoàn thành kế hoạch trên? (làm tròn đến hàng đơn vị).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập thời gian ít nhất (giây) (ví dụ: 473):", key="q27_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/ht_2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/ht_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q27_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 473
+    if normalized_user_answer == "473":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+        st.session_state['q27_solution_shown'] = True
+    elif normalized_user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy chú ý dòng nước cuốn chiến sỹ đi một đoạn t_1 theo phương ngang, lập phương trình quãng đường bơi đối với nước để tìm t_1 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q27_solution_shown' not in st.session_state:
+    st.session_state['q27_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q27_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q27_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q27_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q27_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích chuyển động bơi và tính thời gian bơi $t_1$**
+    
+    *   Gọi $C$ là điểm chiến sỹ chạm bờ bên kia, đặt $x = HC$ ($0 < x \le 900$, đơn vị: mét).
+    *   Trong thời gian bơi $t_1$ (giây), độ dời tổng hợp thực tế của chiến sỹ từ $A$ đến $C$ có hai thành phần:
+        *   Theo phương vuông góc bờ ($AH$): $300\text{ m}$.
+        *   Theo phương dọc bờ ($HC$): $x\text{ (m)}$.
+    *   Vì dòng nước chảy song song với bờ hướng từ $H$ đến $B$ với vận tốc $v_{\text{nước}} = 1\text{ m/s}$, nên trong thời gian $t_1$, dòng nước đã tự động cuốn chiến sỹ đi một đoạn là $1 \cdot t_1 = t_1\text{ (m)}$ theo phương ngang.
+    *   Do đó, quãng đường thực tế mà chiến sỹ **tự nỗ lực bơi đối với nước** có các thành phần độ dời:
+        *   Theo phương ngang: $x - t_1\text{ (m)}$.
+        *   Theo phương vuông góc: $300\text{ m}$.
+    *   Quãng đường bơi đối với nước là: $S_{\text{bơi}} = \sqrt{(x - t_1)^2 + 300^2}$.
+    *   Vì vận tốc bơi đối với nước là $v_{\text{bơi}} = 1\text{ m/s}$, ta có phương trình thời gian:
+        $$t_1 = \dfrac{S_{\text{bơi}}}{v_{\text{bơi}}} \Leftrightarrow t_1 = \sqrt{(x - t_1)^2 + 300^2}$$
+        $$\Leftrightarrow t_1^2 = (x - t_1)^2 + 300^2 \Leftrightarrow t_1^2 = x^2 - 2xt_1 + t_1^2 + 90000$$
+        $$\Leftrightarrow 2xt_1 = x^2 + 90000 \Leftrightarrow t_1 = \dfrac{x^2 + 90000}{2x} = \dfrac{x}{2} + \dfrac{45000}{x}$$
+    
+    **Bước 2: Tính thời gian chạy bộ $t_2$**
+    
+    *   Quãng đường chạy bộ trên bờ từ $C$ đến $B$ là: $CB = 900 - x\text{ (m)}$.
+    *   Với vận tốc chạy $v_{\text{chạy}} = 3\text{ m/s}$, thời gian chạy bộ là:
+        $$t_2 = \dfrac{900 - x}{3} = 300 - \dfrac{x}{3}\text{ (giây)}$$
+    
+    **Bước 3: Thiết lập hàm tổng thời gian và tìm giá trị nhỏ nhất**
+    
+    Tổng thời gian hoàn thành kế hoạch là hàm số $T(x)$ trên khoảng $(0; 900]$:
+    $$T(x) = t_1 + t_2 = \left(\dfrac{x}{2} + \dfrac{45000}{x}\right) + \left(300 - \dfrac{x}{3}\right)$$
+    $$T(x) = \dfrac{x}{6} + \dfrac{45000}{x} + 300$$
+    
+    Áp dụng bất đẳng thức Cauchy (AM-GM) cho hai số dương $\dfrac{x}{6}$ và $\dfrac{45000}{x}$:
+    $$\dfrac{x}{6} + \dfrac{45000}{x} \ge 2\sqrt{\dfrac{x}{6} \cdot \dfrac{45000}{x}} = 2\sqrt{7500} = 100\sqrt{3}$$
+    
+    Do đó:
+    $$T(x) \ge 300 + 100\sqrt{3} \approx 473,205\text{ (giây)}$$
+    
+    Dấu "$=$" xảy ra khi và chỉ khi:
+    $$\dfrac{x}{6} = \dfrac{45000}{x} \Leftrightarrow x^2 = 270000 \Leftrightarrow x = 300\sqrt{3} \approx 519,62\text{ m}$$
+    
+    Giá trị $x \approx 519,62\text{ m}$ hoàn toàn thỏa mãn điều kiện $x \in (0; 900]$.
+    
+    Làm tròn kết quả đến hàng đơn vị, ta được $473$ giây.
+    
+    **Kết luận:** Chiến sỹ cần ít nhất **473** giây để hoàn thành kế hoạch.
+    """)
+    
+st.markdown("---")
+
+
+
+
 
 
 
