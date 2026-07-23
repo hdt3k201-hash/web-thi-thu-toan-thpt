@@ -2958,3 +2958,111 @@ if st.session_state.get('q44_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 31 (Chuyên Hạ Long 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_ddb2e9.png
+st.markdown(r"""
+Đồ thị hàm số $y = \dfrac{x^3(\sqrt{x^2 - 4} + x)}{2x^3 + 3x^2 - 3x - 2}$ có tất cả bao nhiêu đường tiệm cận đứng và tiệm cận ngang?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng số đường tiệm cận (ví dụ: 8):", key="q45_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q45_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 2
+    if normalized_user_answer == "2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tìm tập xác định, xét giới hạn tại các đầu mút và tìm tiệm cận đứng, tiệm cận ngang nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q45_solution_shown' not in st.session_state:
+    st.session_state['q45_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q45_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q45_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q45_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q45_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm tập xác định của hàm số**
+    
+    Điều kiện xác định:
+    1. Biểu thức trong căn: $x^2 - 4 \ge 0 \Leftrightarrow \left[ \begin{array}{l} x \ge 2 \\ x \le -2 \end{array} \right.$
+    2. Mẫu số khác 0: $2x^3 + 3x^2 - 3x - 2 = 0$
+       Nhận thấy $x = 1$ là nghiệm, ta phân tích đa thức thành nhân tử:
+       $$(x - 1)(2x^2 + 5x + 2) = 0 \Leftrightarrow \left[ \begin{array}{l} x = 1 \\ x = -2 \\ x = -\dfrac{1}{2} \end{array} \right.$$
+    
+    So với điều kiện của căn ($x \ge 2$ hoặc $x \le -2$):
+    *   Giá trị $x = -2$ thỏa mãn điều kiện $x \le -2$.
+    *   Các giá trị $x = 1$ và $x = -\dfrac{1}{2}$ không thỏa mãn điều kiện xác định của căn (vì nằm trong khoảng $(-2; 2)$).
+    
+    Do đó, tập xác định của hàm số là: 
+    $$D = (-\infty; -2] \cup [2; +\infty) \setminus \{-2\} = (-\infty; -2) \cup [2; +\infty)$$
+    
+    **Bước 2: Tìm đường tiệm cận ngang**
+    
+    *   Xét giới hạn khi $x \to +\infty$:
+        $$y = \dfrac{x^3(\sqrt{x^2 - 4} + x)}{2x^3 + 3x^2 - 3x - 2}$$
+        Chia cả tử và mẫu cho $x^4$ (vì ở tử $\sqrt{x^2-4} \sim x$, nhân với $x^3$ thành bậc 4):
+        $$\lim_{x \to +\infty} y = \lim_{x \to +\infty} \dfrac{x^3 \cdot x \left(\sqrt{1 - \dfrac{4}{x^2}} + 1\right)}{2x^3 + 3x^2 - 3x - 2} = \lim_{x \to +\infty} \dfrac{x^4 \left(\sqrt{1 - \dfrac{4}{x^2}} + 1\right)}{2x^3 + \dots} = +\infty$$
+        Vậy không có tiệm cận ngang khi $x \to +\infty$.
+    
+    *   Xét giới hạn khi $x \to -\infty$:
+        Vì $x \to -\infty$, ta có $\sqrt{x^2 - 4} = |x|\sqrt{1 - \dfrac{4}{x^2}} = -x\sqrt{1 - \dfrac{4}{x^2}}$.
+        $$\lim_{x \to -\infty} y = \lim_{x \to -\infty} \dfrac{x^3(-x\sqrt{1 - \dfrac{4}{x^2}} + x)}{2x^3 + 3x^2 - 3x - 2} = \lim_{x \to -\infty} \dfrac{-x^4\left(\sqrt{1 - \dfrac{4}{x^2}} - 1\right)}{2x^3 + \dots}$$
+        Tử số có bậc cao hơn mẫu số nên giới hạn này cũng bằng $\pm\infty$.
+        Vậy hàm số **không có đường tiệm cận ngang**.
+    
+    **Bước 3: Tìm đường tiệm cận đứng**
+    
+    Ta xét các điểm ở biên của tập xác định:
+    *   Tại đầu mút $x = 2$ (đầu mút xác định của tập xác định, không phải nghiệm của mẫu):
+        $$\lim_{x \to 2^+} y = \dfrac{2^3(\sqrt{2^2 - 4} + 2)}{2(2^3) + 3(2^2) - 3(2) - 2} = \dfrac{8(0 + 2)}{16 + 12 - 6 - 2} = \dfrac{16}{20} = \dfrac{4}{5}$$
+        Do đó $x = 2$ không phải là tiệm cận đứng.
+    
+    *   Tại điểm $x = -2$ (giá trị làm mẫu bằng 0 nhưng nằm ở biên âm):
+        Ta tính giới hạn khi $x \to -2^-$:
+        $$\lim_{x \to -2^-} y = \lim_{x \to -2^-} \dfrac{x^3(\sqrt{x^2 - 4} + x)}{(x + 2)(2x^2 + x - 1)}$$
+        Thay $x = -2$ vào phần không đổi:
+        *   Tử số tại $x = -2$: $(-2)^3(\sqrt{(-2)^2 - 4} - 2) = -8(0 - 2) = 16$.
+        *   Thừa số $2x^2 + x - 1$ tại $x = -2$: $2(-2)^2 + (-2) - 1 = 8 - 2 - 1 = 5$.
+        *   Phần mẫu còn lại chứa $(x + 2)$, khi $x \to -2^-$ thì $(x + 2) \to 0^-$.
+        Do đó:
+        $$\lim_{x \to -2^-} y = \lim_{x \to -2^-} \dfrac{16}{5(x + 2)} = -\infty$$
+        Vì $\lim_{x \to -2^-} y = -\infty$, đường thẳng $x = -2$ là một **đường tiệm cận đứng**.
+    
+    *   *Kiểm tra các điểm khác:* Các nghiệm khác của mẫu là $x = 1$ và $x = -\dfrac{1}{2}$ đều nằm ngoài tập xác định nên không tạo thành tiệm cận đứng.
+    
+    *   Tổng số đường tiệm cận đứng là $1$ (đường $x = -2$), và số đường tiệm cận ngang là $0$.  
+    **Kết luận:** Đồ thị hàm số có tổng cộng  **2** đường gồm tiệm cận đứng và tiệm cận ngang).
+    """)
+    
+st.markdown("---")
+
