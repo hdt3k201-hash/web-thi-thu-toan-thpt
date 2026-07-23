@@ -6752,7 +6752,7 @@ Cho hàm số $f(x) = x^3 + x - 2^m$. Tổng các giá trị nguyên của tham 
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập tổng các giá trị nguyên của m (ví dụ: 21):", key="q_bt6_ans")
+user_answer = st.text_input("Nhập tổng các giá trị nguyên của m :", key="q_bt6_ans")
 
 # Chèn hình ảnh minh họa ngay sau ô nhập đáp án
 
@@ -6821,6 +6821,111 @@ if st.session_state.get('q_bt6_solution_shown') and st.session_state.get('logged
     $$0 + 1 + 2 + 3 + 4 + 5 + 6 = 21$$
     
     **Kết luận:** Tổng các giá trị nguyên của tham số $m$ bằng **$21$**.
+    """)
+    
+st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 71 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho hàm số $f(x) = x^5 + 3x^3 - 4m$[cite: 1]. Có bao nhiêu giá trị nguyên của tham số $m$ để phương trình $f\left(\sqrt[3]{f(x)+m}\right) = x^3 - m$ có nghiệm trên đoạn $[1; 2]$[cite: 1]?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng giá trị nguyên của m :", key="q_bt7_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_bt7_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 16
+    if normalized_user_answer == "16":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Đặt $u = \sqrt[3]{f(x)+m}$, đưa về hệ phương trình đối xứng qua hàm đặc trưng $h(t) = f(t) + t^3$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_bt7_solution_shown' not in st.session_state:
+    st.session_state['q_bt7_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_bt7_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_bt7_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_bt7_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_bt7_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn phụ và thiết lập hệ phương trình**
+    
+    Đặt $u = \sqrt[3]{f(x) + m}$, suy ra $u^3 = f(x) + m \iff f(x) = u^3 - m$.
+    Khi đó phương trình đã cho trở thành:
+    $$f(u) = x^3 - m$$
+    
+    Kết hợp với $u^3 = f(x) + m$, ta thu được hệ phương trình:
+    $$\begin{cases} f(u) = x^3 - m \\ f(x) = u^3 - m \end{cases}$$
+    
+    **Bước 2: Sử dụng hàm đặc trưng để suy ra quan hệ $u = x$**
+    
+    Trừ vế với vế hai phương trình của hệ, ta được:
+    $$f(u) - f(x) = x^3 - u^3 \iff f(u) + u^3 = f(x) + x^3$$
+    
+    Xét hàm số $h(t) = f(t) + t^3 = (t^5 + 3t^3 - 4m) + t^3 = t^5 + 4t^3 - 4m$.
+    Đạo hàm của hàm số:
+    $$h'(t) = 5t^4 + 12t^2 \ge 0, \forall t \in \mathbb{R}$$
+    (Đạo hàm bằng $0$ tại $t = 0$, hàm số đồng biến trên $\mathbb{R}$).
+    
+    Do đó phương trình $h(u) = h(x)$ tương đương với:
+    $$u = x$$
+    
+    **Bước 3: Rút gọn phương trình theo $x$ và cô lập $m$**
+    
+    Thay $u = x$ trở lại biểu thức $u = \sqrt[3]{f(x) + m}$, ta có:
+    $$x = \sqrt[3]{f(x) + m} \iff x^3 = f(x) + m$$
+    
+    Thay $f(x) = x^5 + 3x^3 - 4m$ vào phương trình, ta được:
+    $$x^3 = x^5 + 3x^3 - 4m + m \iff x^3 = x^5 + 3x^3 - 3m$$
+    $$\iff 3m = x^5 + 2x^3 \iff m = \dfrac{x^5 + 2x^3}{3}$$
+    
+    **Bước 4: Khảo sát hàm số để tìm điều kiện của $m$**
+    
+    Để phương trình có nghiệm trên đoạn $[1; 2]$, đường thẳng $y = m$ phải cắt đồ thị hàm số $g(x) = \dfrac{x^5 + 2x^3}{3}$ trên đoạn $[1; 2]$.
+    
+    Tính đạo hàm của $g(x)$:
+    $$g'(x) = \dfrac{5x^4 + 6x^2}{3} > 0, \forall x \in [1; 2]$$
+    Suy ra hàm số $g(x)$ đồng biến trên đoạn $[1; 2]$.
+    
+    Giá trị lớn nhất và nhỏ nhất của $g(x)$ trên $[1; 2]$ là:
+    *   $\min_{[1; 2]} g(x) = g(1) = \dfrac{1^5 + 2(1)^3}{3} = 1$
+    *   $\max_{[1; 2]} g(x) = g(2) = \dfrac{2^5 + 2(2)^3}{3} = \dfrac{32 + 16}{3} = 16$
+    
+    Do đó phương trình có nghiệm trên đoạn $[1; 2]$ khi và chỉ khi:
+    $$1 \le m \le 16$$
+    
+    Vì $m$ là số nguyên, nên $m \in \{1; 2; 3; \dots; 16\}$.
+    
+    **Kết luận:** Số các giá trị nguyên của tham số $m$ là **$16$**.
     """)
     
 st.markdown("---")
