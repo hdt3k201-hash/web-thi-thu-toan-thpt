@@ -5091,3 +5091,186 @@ if st.session_state.get('q329_solution_shown') and st.session_state.get('logged_
     """)
     
 st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 53 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho hàm số $y = \dfrac{4x - 3}{x - 3}$ có đồ thị là $(C)$. Tìm giá trị nhỏ nhất của tổng các khoảng cách từ một điểm $M$ thuộc đồ thị $(C)$ đến hai đường tiệm cận của đồ thị.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị nhỏ nhất của tổng khoảng cách (ví dụ: 6):", key="q330_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q330_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 6
+    if normalized_user_answer == "6":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại phương trình các tiệm cận, biểu thức khoảng cách và bất đẳng thức Cô-si nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q330_solution_shown' not in st.session_state:
+    st.session_state['q330_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q330_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q330_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q330_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q330_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định các đường tiệm cận của đồ thị hàm số**
+    
+    Hàm số $y = \dfrac{4x - 3}{x - 3}$ có:
+    *   Đường tiệm cận đứng $\Delta: x = 3$
+    *   Đường tiệm cận ngang $\Delta': y = 4$
+    
+    **Bước 2: Thiết lập biểu thức tổng khoảng cách**
+    
+    Gọi $M\left(x; \dfrac{4x - 3}{x - 3}\right) \in (C)$ với $x \neq 3$.
+    
+    *   Khoảng cách từ $M$ đến tiệm cận đứng $\Delta$ là:
+        $$d(M; \Delta) = |x - 3|$$
+    *   Khoảng cách từ $M$ đến tiệm cận ngang $\Delta'$ là:
+        $$d(M; \Delta') = \left|\dfrac{4x - 3}{x - 3} - 4\right| = \left|\dfrac{4x - 3 - 4(x - 3)}{x - 3}\right| = \left|\dfrac{9}{x - 3}\right| = \dfrac{9}{|x - 3|}$$
+        
+    Tổng khoảng cách từ điểm $M$ đến hai đường tiệm cận là:
+    $$S = d(M; \Delta) + d(M; \Delta') = |x - 3| + \dfrac{9}{|x - 3|}$$
+    
+    **Bước 3: Tìm giá trị nhỏ nhất bằng bất đẳng thức Cô-si (AM-GM)**
+    
+    Vì $|x - 3| > 0$ với mọi $x \neq 3$, áp dụng bất đẳng thức Cô-si cho hai số dương $|x - 3|$ và $\dfrac{9}{|x - 3|}$, ta có:
+    $$S = |x - 3| + \dfrac{9}{|x - 3|} \ge 2\sqrt{|x - 3| \cdot \dfrac{9}{|x - 3|}} = 2\sqrt{9} = 6$$
+    
+    **Bước 4: Xác định điều kiện xảy ra dấu "="**
+    
+    Dấu "=" xảy ra khi và chỉ khi:
+    $$|x - 3| = \dfrac{9}{|x - 3|} \Leftrightarrow (x - 3)^2 = 9 \Leftrightarrow \left[ \begin{aligned} x - 3 &= 3 \\ x - 3 &= -3 \end{aligned} \right. \Leftrightarrow \left[ \begin{aligned} x &= 6 \implies M(6; 7) \\ x &= 0 \implies M'(0; 1) \end{aligned} \right.$$
+    
+    **Kết luận:** Giá trị nhỏ nhất của tổng các khoảng cách từ $M$ đến hai tiệm cận bằng **$6$**.
+    """)
+    
+st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 54 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho hàm số $y = \dfrac{x - 1}{x + 1}$ có đồ thị là $(C)$. Tính giá trị nhỏ nhất của tổng khoảng cách từ điểm $M$ thuộc đồ thị $(C)$ đến hai trục tọa độ $Ox$ và $Oy$ (kết quả làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị nhỏ nhất (ví dụ: 0.83):", key="q331_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q331_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 0.83 (tương ứng với 2\sqrt{2} - 2)
+    if normalized_user_answer == "0.83":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại biểu thức tổng khoảng cách d(M, Ox) + d(M, Oy) và chia khoảng khảo sát để dùng bất đẳng thức Cô-si nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q331_solution_shown' not in st.session_state:
+    st.session_state['q331_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q331_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q331_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q331_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q331_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập công thức tổng khoảng cách**
+    
+    Tập xác định của hàm số: $\mathcal{D} = \mathbb{R} \setminus \{-1\}$.
+    
+    Gọi $M\left(x; \dfrac{x - 1}{x + 1}\right) \in (C)$ với $x \neq -1$.
+    
+    *   Khoảng cách từ $M$ đến trục hoành $Ox$ là: $d(M; Ox) = |y_M| = \left|\dfrac{x - 1}{x + 1}\right|$
+    *   Khoảng cách từ $M$ đến trục tung $Oy$ là: $d(M; Oy) = |x_M| = |x|$
+    
+    Tổng khoảng cách từ $M$ đến hai trục tọa độ là:
+    $$S = |x| + \left|\dfrac{x - 1}{x + 1}\right|$$
+    
+    **Bước 2: Khảo sát biểu thức $S$ trên từng khoảng giá trị của $x$**
+    
+    *   **Trường hợp 1 ($x \in [0; 1)$):**
+        Khi $0 \le x < 1$, ta có $x \ge 0$ và $\dfrac{x - 1}{x + 1} < 0$. Do đó:
+        $$S = x + \dfrac{1 - x}{x + 1} = x - 1 + \dfrac{2}{x + 1} = (x + 1) + \dfrac{2}{x + 1} - 2$$
+        
+        Áp dụng bất đẳng thức Cô-si cho hai số dương $(x + 1)$ và $\dfrac{2}{x + 1}$:
+        $$S \ge 2\sqrt{(x + 1) \cdot \dfrac{2}{x + 1}} - 2 = 2\sqrt{2} - 2 \approx 0,8284$$
+        
+        Dấu "=" xảy ra khi:
+        $$x + 1 = \dfrac{2}{x + 1} \Leftrightarrow (x + 1)^2 = 2 \Leftrightarrow x + 1 = \sqrt{2} \Leftrightarrow x = \sqrt{2} - 1 \in [0; 1)$$
+        
+    *   **Trường hợp 2 ($x \ge 1$):**
+        Khi $x \ge 1$, ta có $S = x + \dfrac{x - 1}{x + 1} \ge 1 + 0 = 1 > 2\sqrt{2} - 2$.
+        
+    *   **Trường hợp 3 ($-1 < x < 0$):**
+        Khi $-1 < x < 0$, ta có $S = -x + \dfrac{1 - x}{x + 1} = -(x + 1) + \dfrac{2}{x + 1} > -1 + 2 = 1 > 2\sqrt{2} - 2$.
+        
+    *   **Trường hợp 4 ($x < -1$):**
+        Khi $x < -1$, ta có $S = -x + \dfrac{x - 1}{x + 1} = -(x + 1) + \dfrac{2}{-(x + 1)} + 2 \ge 2\sqrt{2} + 2 > 2\sqrt{2} - 2$.
+        
+    **Bước 3: Kết luận giá trị nhỏ nhất và làm tròn**
+    
+    Giá trị nhỏ nhất của tổng khoảng cách là:
+    $$S_{\min} = 2\sqrt{2} - 2 \approx 0,8284$$
+    
+    Làm tròn kết quả đến hàng phần trăm, ta được **$0,83$**.
+    
+    **Kết luận:** Giá trị nhỏ nhất cần tìm là **$0,83$**.
+    """)
+    
+st.markdown("---")
