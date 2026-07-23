@@ -8662,3 +8662,106 @@ if st.session_state.get('q89_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 90 (Sở Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho hình vuông $ABCD$ có độ dài cạnh bằng $1$. Cung $AC$ là một phần tư đường tròn tâm $D$, bán kính $DA$ (tham khảo hình vẽ). Giả sử $P$ là điểm thay đổi trên cung $AC$ ($P$ khác $A$ và $C$). Tiếp tuyến tại điểm $P$ của cung $AC$ cắt các đoạn thẳng $AB$, $BC$ theo thứ tự tại các điểm $M$, $N$. Diện tích lớn nhất của tam giác $BMN$ bằng bao nhiêu (kết quả làm tròn đến hàng phần trăm)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập diện tích lớn nhất (ví dụ: 1.23):", key="q90_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_312ab0.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_312ab0.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q90_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 0.17
+    if normalized_user_answer == "0.17":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập phương trình tiếp tuyến tại $P$ theo góc $\alpha$, tìm tọa độ điểm $M, N$ rồi tính diện tích tam giác $BMN$ theo biến $t = \sin\alpha + \cos\alpha$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q90_solution_shown' not in st.session_state:
+    st.session_state['q90_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q90_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q90_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q90_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q90_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chọn hệ tọa độ và thiết lập phương trình tiếp tuyến**
+    
+    *   Chọn hệ tọa độ $Oxy$ sao cho đỉnh $D$ trùng với gốc tọa độ $O(0;0)$, các đỉnh $A(0;1)$, $C(1;0)$, $B(1;1)$.
+    *   Phương trình cung tròn $AC$ là $x^2 + y^2 = 1$ với $x \in [0; 1], y \in [0; 1]$.
+    *   Gọi $P(\cos\alpha; \sin\alpha)$ là điểm thay đổi trên cung $AC$, với $\alpha \in \left(0; \dfrac{\pi}{2}\right)$.
+    *   Phương trình tiếp tuyến tại điểm $P$ của cung $AC$ có dạng:
+        $$x \cos\alpha + y \sin\alpha = 1$$
+        
+    **Bước 2: Tìm tọa độ các điểm $M$ và $N$**
+    
+    *   Điểm $M$ là giao điểm của tiếp tuyến với đoạn thẳng $AB$ ($y = 1$):
+        $$x_M \cos\alpha + 1 \cdot \sin\alpha = 1 \implies x_M = \dfrac{1 - \sin\alpha}{\cos\alpha}$$
+        Suy ra $M\left(\dfrac{1 - \sin\alpha}{\cos\alpha}; 1\right)$. Độ dài đoạn $BM$:
+        $$BM = 1 - x_M = 1 - \dfrac{1 - \sin\alpha}{\cos\alpha} = \dfrac{\cos\alpha - 1 + \sin\alpha}{\cos\alpha}$$
+        
+    *   Điểm $N$ là giao điểm của tiếp tuyến với đoạn thẳng $BC$ ($x = 1$):
+        $$1 \cdot \cos\alpha + y_N \sin\alpha = 1 \implies y_N = \dfrac{1 - \cos\alpha}{\sin\alpha}$$
+        Suy ra $N\left(1; \dfrac{1 - \cos\alpha}{\sin\alpha}\right)$. Độ dài đoạn $BN$:
+        $$BN = 1 - y_N = 1 - \dfrac{1 - \cos\alpha}{\sin\alpha} = \dfrac{\sin\alpha - 1 + \cos\alpha}{\sin\alpha}$$
+        
+    **Bước 3: Xây dựng hàm diện tích tam giác $BMN$**
+    
+    *   Tam giác $BMN$ là tam giác vuông tại $B(1;1)$, do đó diện tích của tam giác là:
+        $$S = \dfrac{1}{2} \cdot BM \cdot BN = \dfrac{1}{2} \cdot \dfrac{(\sin\alpha + \cos\alpha - 1)^2}{\sin\alpha \cos\alpha}$$
+    *   Đặt $t = \sin\alpha + \cos\alpha = \sqrt{2}\sin\left(\alpha + \dfrac{\pi}{4}\right)$. 
+        Vì $\alpha \in \left(0; \dfrac{\pi}{2}\right)$, ta có $t \in (1; \sqrt{2}]$.
+    *   Ta có $t^2 = 1 + 2\sin\alpha\cos\alpha \implies \sin\alpha\cos\alpha = \dfrac{t^2 - 1}{2}$.
+    *   Thay vào biểu thức diện tích, ta được hàm số theo biến $t$:
+        $$S(t) = \dfrac{1}{2} \cdot \dfrac{(t - 1)^2}{\dfrac{t^2 - 1}{2}} = \dfrac{(t - 1)^2}{t^2 - 1} = \dfrac{t - 1}{t + 1} = 1 - \dfrac{2}{t + 1} \quad \text{với } t \in (1; \sqrt{2}]$$
+        
+    **Bước 4: Khảo sát hàm số và tìm giá trị lớn nhất**
+    
+    *   Đạo hàm của hàm số $S(t)$ trên khoảng $(1; \sqrt{2}]$ là:
+        $$S'(t) = \dfrac{2}{(t + 1)^2} > 0, \forall t \in (1; \sqrt{2}]$$
+    *   Do đó hàm số $S(t)$ đồng biến trên khoảng $(1; \sqrt{2}]$. Giá trị lớn nhất của diện tích đạt được khi $t = \sqrt{2}$:
+        $$S_{\max} = 1 - \dfrac{2}{\sqrt{2} + 1} = 1 - 2(\sqrt{2} - 1) = 3 - 2\sqrt{2}$$
+    *   Tính giá trị thực tế: $3 - 2\sqrt{2} \approx 3 - 2(1,4142) = 3 - 2,8284 = 0,1716$.
+    *   Làm tròn kết quả đến hàng phần trăm (2 chữ số thập phân), ta được **$0,17$**.
+    
+    **Kết luận:** Diện tích lớn nhất của tam giác $BMN$ là **$0,17$**.
+    """)
+    
+st.markdown("---")
