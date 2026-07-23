@@ -6518,3 +6518,112 @@ if st.session_state.get('q_dh_solution_shown') and st.session_state.get('logged_
     """)
     
 st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 68 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh được chuyển sang dạng trả lời ngắn
+st.markdown(r"""
+Cho hàm số $y = f(x)$ có bảng xét dấu của đạo hàm $f'(x)$ như hình bên. 
+Hàm số $y = g(x) = 3f(-x+2) + x^3 + 3x^2 - 9x - 1$ nghịch biến trên khoảng $(a; b)$. 
+Tính giá trị của biểu thức $T = a + b$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của T = a + b (ví dụ: -2):", key="q_dh_hieu_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/cau68.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/cau68.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_dh_hieu_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là -2
+    if normalized_user_answer == "-2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tính đạo hàm của hàm hợp g'(x), lập bất phương trình nghịch biến và đối chiếu với bảng xét dấu của f'(x) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_dh_hieu_solution_shown' not in st.session_state:
+    st.session_state['q_dh_hieu_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_dh_hieu_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_dh_hieu_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_dh_hieu_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_dh_hieu_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính đạo hàm của hàm số $g(x)$**
+    
+    Ta có hàm số: 
+    $$g(x) = 3f(-x+2) + x^3 + 3x^2 - 9x - 1$$
+    
+    Đạo hàm của hàm số theo biến $x$ là:
+    $$g'(x) = 3 \cdot (-1) \cdot f'(-x+2) + 3x^2 + 6x - 9$$
+    $$g'(x) = -3f'(-x+2) + 3(x^2 + 2x - 3)$$
+    
+    **Bước 2: Thiết lập điều kiện nghịch biến**
+    
+    Hàm số nghịch biến khi và chỉ khi $g'(x) \le 0$:
+    $$-3f'(-x+2) + 3(x^2 + 2x - 3) \le 0$$
+    $$\Leftrightarrow f'(-x+2) \ge x^2 + 2x - 3 \quad (*)$$
+    
+    **Bước 3: Đặt ẩn phụ và đối chiếu bảng xét dấu**
+    
+    Đặt $t = -x+2$, khi đó $x = 2-t$. Biểu thức $x^2 + 2x - 3$ theo biến $t$ trở thành:
+    $$x^2 + 2x - 3 = (2-t)^2 + 2(2-t) - 3 = t^2 - 6t + 5 = (t-1)(t-5)$$
+    
+    Bất phương trình $(*)$ trở thành:
+    $$f'(t) \ge (t-1)(t-5)$$
+    
+    Dựa vào bảng xét dấu của $f'(t)$[cite: 1], ta có $f'(t) \ge 0$ khi $t \in [1; 5]$ (vì $f'(t) \ge 0$ trên các khoảng $[1; 2]$ và $[2; 5]$). 
+    Đồng thời, với $t \in [1; 5]$, ta có $(t-1)(t-5) \le 0$. 
+    Do đó, bất phương trình nghiệm đúng khi:
+    $$1 \le t \le 5$$
+    
+    **Bước 4: Giải tìm khoảng của $x$**
+    
+    Thay $t = -x+2$ vào, ta được:
+    $$1 \le -x+2 \le 5$$
+    $$\Leftrightarrow -1 \le -x \le 3$$
+    $$\Leftrightarrow -3 \le x \le 1$$
+    
+    Vậy hàm số nghịch biến trên khoảng $(-3; 1)$, suy ra $a = -3$ và $b = 1$.
+    
+    **Bước 5: Tính giá trị biểu thức $T$**
+    
+    Ta có: 
+    $$T = a + b = -3 + 1 = -2$$
+    
+    **Kết luận:** Giá trị của $T$ cần tìm là **$-2$**.
+    """)
+    
+st.markdown("---")
