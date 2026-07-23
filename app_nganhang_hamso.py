@@ -2225,7 +2225,7 @@ st.markdown("---")
 
 # Tiêu đề câu hỏi
 st.markdown(
-    '<b style="color: blue;">Câu 22 (Cụm 5 Sở Ninh Bình 2026)</b>',
+    '<b style="color: blue;">Câu 23 (Cụm 5 Sở Ninh Bình 2026)</b>',
     unsafe_allow_html=True
 )
 
