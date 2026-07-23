@@ -1135,7 +1135,7 @@ try:
     with col2:
         # Đường dẫn ảnh đã được đồng bộ
         st.image("images/ltt_dn2026.PNG", width=400)
-except FileNotFoundError:
+ except FileNotFoundError:
     # Thông báo lỗi cập nhật đúng tên file
     st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/ltt_dn2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
