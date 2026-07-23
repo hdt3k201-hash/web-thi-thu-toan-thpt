@@ -7891,5 +7891,99 @@ if st.session_state.get('q81_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 82 (Cụm Hải Phòng 2026)</b>',
+    unsafe_allow_html=True
+)
 
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Công ty chứng khoán VNStock cần xử lý $18000$ lệnh giao dịch trong một ngày làm việc ($8$ giờ). Hệ thống gồm các máy chủ xử lý với thông số như sau: 
+* Năng suất: $250$ lệnh/giờ/máy. 
+* Chi phí triển khai: $15$ triệu đồng/máy (cài đặt ban đầu). 
+* Chi phí vận hành: Điện + bảo trì: $120.000$ đồng/giờ/máy. 
+* Chi phí nhân viên giám sát: $8$ triệu đồng/giờ (trả theo giờ làm việc thực tế). 
+
+Tìm chi phí thấp nhất mà công ty phải bỏ ra để thực hiện số lượng giao dịch nói trên (làm tròn đến hàng đơn vị của triệu đồng).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập chi phí thấp nhất (triệu đồng) :", key="q82_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q82_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 208
+    if normalized_user_answer == "208":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm chi phí theo thời gian hoạt động $t$ và chú ý điều kiện $t \le 8$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q82_solution_shown' not in st.session_state:
+    st.session_state['q82_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q82_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q82_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q82_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q82_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập mối quan hệ giữa số máy chủ và thời gian làm việc**
+    
+    * Gọi $n$ là số lượng máy chủ cần sử dụng và $t$ là số giờ làm việc của hệ thống trong ngày ($0 < t \le 8$).
+    * Tổng số lệnh giao dịch mà hệ thống xử lý được là:
+        $$n \cdot t \cdot 250 = 18000 \implies n \cdot t = \dfrac{18000}{250} = 72 \implies n = \dfrac{72}{t}$$
+        
+    **Bước 2: Xây dựng hàm tổng chi phí $C(t)$**
+    
+    Tổng chi phí $C(t)$ (tính bằng triệu đồng) bao gồm các khoản:
+    * **Chi phí triển khai máy chủ:** $15n = 15 \cdot \dfrac{72}{t} = \dfrac{1080}{t}$ (triệu đồng).
+    * **Chi phí vận hành (điện + bảo trì):** $120.000$ đồng/giờ/máy $= 0,12$ triệu đồng/giờ/máy. 
+      Tổng chi phí vận hành cho $n$ máy trong $t$ giờ là: 
+      $$0,12 \cdot n \cdot t = 0,12 \cdot 72 = 8,64 \text{ (triệu đồng)}$$
+    * **Chi phí nhân viên giám sát:** $8$ triệu đồng/giờ trong $t$ giờ là: 
+      $$8t \text{ (triệu đồng)}$$
+      
+    Hàm tổng chi phí theo biến $t$ là:
+    $$C(t) = \dfrac{1080}{t} + 8t + 8,64 \quad \text{với } t \in (0; 8]$$
+    
+    **Bước 3: Khảo sát hàm số để tìm giá trị nhỏ nhất**
+    
+    * Tính đạo hàm của hàm số $C(t)$:
+        $$C'(t) = -\dfrac{1080}{t^2} + 8$$
+    * Cho $C'(t) = 0 \iff 8t^2 = 1080 \iff t^2 = 135 \implies t = \sqrt{135} \approx 11,62$$
+    * Vì $t = \sqrt{135} \approx 11,62$ không thuộc khoảng làm việc $(0; 8]$, và đạo hàm $C'(t) < 0$ với mọi $t \in (0; \sqrt{135}]$, nên hàm số $C(t)$ nghịch biến trên đoạn $(0; 8]$.
+    * Do đó, giá trị nhỏ nhất của hàm chi phí trên đoạn $(0; 8]$ đạt được tại biên $t = 8$.
+    
+    **Bước 4: Tính chi phí thấp nhất và làm tròn**
+    
+    Thay $t = 8$ vào hàm tổng chi phí:
+    $$C(8) = \dfrac{1080}{8} + 8(8) + 8,64 = 135 + 64 + 8,64 = 207,64 \text{ (triệu đồng)}$$
+    
+    Làm tròn kết quả đến hàng đơn vị của triệu đồng, ta được **$208$**.
+    
+    **Kết luận:** Chi phí thấp nhất mà công ty phải bỏ ra là **$208$** triệu đồng.
+    """)
+    
+st.markdown("---")
 
