@@ -3924,3 +3924,93 @@ if st.session_state.get('q_asymptote_solution_shown') and st.session_state.get('
     """)
     
 st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 41 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Cho hàm số $y = \dfrac{x + 2m}{x - 1}$ (với $m$ là tham số thực). 
+Tìm giá trị của tham số $m$ để giá trị lớn nhất của hàm số đã cho trên đoạn $[2; 4]$ bằng $5$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của m (ví dụ: 1.5):", key="q_phanthuc_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_phanthuc_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 1.5 (hoặc 3/2)
+    if normalized_user_answer in ["1.5", "3/2"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại đạo hàm, tính đơn điệu của hàm số trên đoạn [2; 4] và điều kiện để đạt giá trị lớn nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_phanthuc_solution_shown' not in st.session_state:
+    st.session_state['q_phanthuc_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_phanthuc_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_phanthuc_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_phanthuc_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_phanthuc_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm tập xác định và tính đạo hàm của hàm số**
+    
+    *   Tập xác định của hàm số: $\mathcal{D} = \mathbb{R} \setminus \{1\}$. 
+    Vì đoạn $[2; 4] \subset \mathcal{D}$ nên hàm số liên tục và xác định trên đoạn $[2; 4]$.
+    
+    *   Đạo hàm của hàm số:
+        $$y' = \dfrac{1 \cdot (-1) - 2m \cdot 1}{(x - 1)^2} = \dfrac{-1 - 2m}{(x - 1)^2}$$
+    
+    **Bước 2: Xét tính đơn điệu của hàm số trên đoạn $[2; 4]$**
+    
+    Hàm số phân thức bậc nhất trên bậc nhất luôn đơn điệu (đồng biến hoặc nghịch biến) trên các khoảng xác định của nó. Do đó, giá trị lớn nhất của hàm số trên đoạn $[2; 4]$ sẽ đạt được tại một trong hai đầu mút của đoạn là $x = 2$ hoặc $x = 4$.
+    
+    Ta xét hai trường hợp của tham số $m$:
+    
+    *   **Trường hợp 1:** Hàm số đồng biến trên $[2; 4]$ khi $y' > 0$
+        $$\dfrac{-1 - 2m}{(x - 1)^2} > 0 \Leftrightarrow -1 - 2m > 0 \Leftrightarrow m < -\dfrac{1}{2}$$
+        Khi đó, giá trị lớn nhất của hàm số trên đoạn $[2; 4]$ đạt được tại đầu mút bên phải $x = 4$:
+        $$\max_{[2; 4]} y = y(4) = \dfrac{4 + 2m}{4 - 1} = \dfrac{4 + 2m}{3}$$
+        Theo giả thiết, giá trị lớn nhất bằng $5$, nên ta có phương trình:
+        $$\dfrac{4 + 2m}{3} = 5 \Leftrightarrow 4 + 2m = 15 \Leftrightarrow 2m = 11 \Leftrightarrow m = \dfrac{11}{2} = 5,5$$
+        So sánh với điều kiện $m < -0,5$, giá trị $m = 5,5$ **loại**.
+        
+    *   **Trường hợp 2:** Hàm số nghịch biến trên $[2; 4]$ khi $y' < 0$
+        $$\dfrac{-1 - 2m}{(x - 1)^2} < 0 \Leftrightarrow -1 - 2m < 0 \Leftrightarrow m > -\dfrac{1}{2}$$
+        Khi đó, giá trị lớn nhất của hàm số trên đoạn $[2; 4]$ đạt được tại đầu mút bên trái $x = 2$:
+        $$\max_{[2; 4]} y = y(2) = \dfrac{2 + 2m}{2 - 1} = \dfrac{2 + 2m}{1} = 2 + 2m$$
+        Theo giả thiết, giá trị lớn nhất bằng $5$, nên ta có phương trình:
+        $$2 + 2m = 5 \Leftrightarrow 2m = 3 \Leftrightarrow m = \dfrac{3}{2} = 1,5$$
+        So sánh với điều kiện $m > -0,5$, giá trị $m = 1,5$ **thỏa mãn**.
+        
+    **Bước 3: Kết luận**
+    
+    Vậy giá trị cần tìm của tham số $m$ là **$m = 1,5$** (hoặc $m = \dfrac{3}{2}$).
+    """)
+    
+st.markdown("---")
+
+
