@@ -4901,3 +4901,200 @@ if st.session_state.get('q_tiemcan_goc_solution_shown') and st.session_state.get
     """)
     
 st.markdown("---")
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 51 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Cho hàm số $y = \dfrac{x+1}{x-1}$ có đồ thị là $(C)$. Tìm khoảng cách ngắn nhất từ một điểm $M$ thuộc đồ thị $(C)$ đến giao điểm hai đường tiệm cận của đồ thị $(C)$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập khoảng cách ngắn nhất (ví dụ: 2):", key="q328_ans")
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q328_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 2
+    if normalized_user_answer == "2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tọa độ giao điểm I, công thức khoảng cách IM và bất đẳng thức Cô-si nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q328_solution_shown' not in st.session_state:
+    st.session_state['q328_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q328_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q328_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q328_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q328_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định tọa độ giao điểm hai đường tiệm cận**
+    
+    Đồ thị hàm số $(C): y = \dfrac{x+1}{x-1}$ có:
+    *   Đường tiệm cận đứng: $x = 1$
+    *   Đường tiệm cận ngang: $y = 1$
+    
+    Do đó, giao điểm của hai đường tiệm cận là điểm $I(1; 1)$.
+    
+    **Bước 2: Thiết lập công thức khoảng cách**
+    
+    Gọi $M\left(x; \dfrac{x+1}{x-1}\right) \in (C)$ với $x \neq 1$.
+    
+    Khoảng cách từ $M$ đến $I$ là:
+    $$IM = \sqrt{(x - 1)^2 + \left(\dfrac{x+1}{x-1} - 1\right)^2}$$
+    $$IM = \sqrt{(x - 1)^2 + \left(\dfrac{x + 1 - (x - 1)}{x - 1}\right)^2} = \sqrt{(x - 1)^2 + \dfrac{4}{(x - 1)^2}}$$
+    
+    **Bước 3: Áp dụng bất đẳng thức Cô-si (AM-GM)**
+    
+    Vì $(x - 1)^2 > 0$ với mọi $x \neq 1$, áp dụng bất đẳng thức Cô-si cho hai số dương $(x - 1)^2$ và $\dfrac{4}{(x - 1)^2}$, ta có:
+    $$(x - 1)^2 + \dfrac{4}{(x - 1)^2} \ge 2\sqrt{(x - 1)^2 \cdot \dfrac{4}{(x - 1)^2}} = 2\sqrt{4} = 4$$
+    
+    Suy ra:
+    $$IM = \sqrt{(x - 1)^2 + \dfrac{4}{(x - 1)^2}} \ge \sqrt{4} = 2$$
+    
+    **Bước 4: Tìm điều kiện xảy ra dấu "="**
+    
+    Dấu "=" xảy ra khi và chỉ khi:
+    $$(x - 1)^2 = \dfrac{4}{(x - 1)^2} \Leftrightarrow (x - 1)^4 = 4 \Leftrightarrow (x - 1)^2 = 2 \Leftrightarrow x - 1 = \pm\sqrt{2} \Leftrightarrow x = 1 \pm \sqrt{2}$$
+    
+    Khi đó ta tìm được 2 điểm $M$ thỏa mãn:
+    $$M_1(1 + \sqrt{2}; 1 + \sqrt{2}), \quad M_2(1 - \sqrt{2}; 1 - \sqrt{2})$$
+    
+    **Kết luận:** Khoảng cách ngắn nhất từ $M$ đến giao điểm hai đường tiệm cận là **$2$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 52 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Cho hàm số $y = \dfrac{x+1}{x-1}$ có đồ thị là $(C)$. Tìm số lượng điểm $M$ trên đồ thị $(C)$ sao cho tổng khoảng cách từ $M$ đến hai đường thẳng $\Delta_1: 2x + y - 4 = 0$ và $\Delta_2: x + 2y - 2 = 0$ đạt giá trị nhỏ nhất.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng điểm M thỏa mãn (ví dụ: 2):", key="q329_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/bai_toan_3_29.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/bai_toan_3_29.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q329_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 2
+    if normalized_user_answer == "2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại biểu thức khoảng cách d(M, d1) + d(M, d2) và điều kiện xảy ra dấu '=' của bất đẳng thức Cô-si nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q329_solution_shown' not in st.session_state:
+    st.session_state['q329_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q329_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q329_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q329_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q329_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tham số hóa tọa độ điểm $M$**
+    
+    Biến đổi phương trình hàm số: $y = \dfrac{x+1}{x-1} = 1 + \dfrac{2}{x-1}$.
+    
+    Đặt $t = x - 1 \neq 0 \implies x = t + 1$. Khi đó $y = 1 + \dfrac{2}{t} = \dfrac{t+2}{t}$.
+    
+    Tọa độ điểm $M \in (C)$ có dạng: $M\left(t + 1; \dfrac{t+2}{t}\right)$ với $t \neq 0$.
+    
+    **Bước 2: Tính khoảng cách từ $M$ đến hai đường thẳng $\Delta_1$ và $\Delta_2$**
+    
+    *   Khoảng cách từ $M$ đến $\Delta_1: 2x + y - 4 = 0$:
+        $$d(M, \Delta_1) = \dfrac{\left|2(t + 1) + \dfrac{t+2}{t} - 4\right|}{\sqrt{2^2 + 1^2}} = \dfrac{\left|2t - 2 + \dfrac{t+2}{t}\right|}{\sqrt{5}} = \dfrac{\left|\dfrac{2t^2 - t + 2}{t}\right|}{\sqrt{5}}$$
+        
+        Vì $2t^2 - t + 2 > 0$ với mọi $t$ ($\Delta_t = 1 - 16 = -15 < 0$), nên:
+        $$d(M, \Delta_1) = \dfrac{2t^2 - t + 2}{\sqrt{5}|t|}$$
+        
+    *   Khoảng cách từ $M$ đến $\Delta_2: x + 2y - 2 = 0$:
+        $$d(M, \Delta_2) = \dfrac{\left|(t + 1) + 2\left(\dfrac{t+2}{t}\right) - 2\right|}{\sqrt{1^2 + 2^2}} = \dfrac{\left|t - 1 + \dfrac{2t+4}{t}\right|}{\sqrt{5}} = \dfrac{\left|\dfrac{t^2 + t + 4}{t}\right|}{\sqrt{5}}$$
+        
+        Vì $t^2 + t + 4 > 0$ với mọi $t$ ($\Delta_t = 1 - 16 = -15 < 0$), nên:
+        $$d(M, \Delta_2) = \dfrac{t^2 + t + 4}{\sqrt{5}|t|}$$
+        
+    **Bước 3: Thiết lập và tìm giá trị nhỏ nhất của tổng khoảng cách**
+    
+    Tổng khoảng cách $S = d(M, \Delta_1) + d(M, \Delta_2)$:
+    $$S = \dfrac{(2t^2 - t + 2) + (t^2 + t + 4)}{\sqrt{5}|t|} = \dfrac{3t^2 + 6}{\sqrt{5}|t|} = \dfrac{3}{\sqrt{5}} \left(|t| + \dfrac{2}{|t|}\right)$$
+    
+    Áp dụng bất đẳng thức Cô-si cho hai số dương $|t|$ và $\dfrac{2}{|t|}$:
+    $$|t| + \dfrac{2}{|t|} \ge 2\sqrt{|t| \cdot \dfrac{2}{|t|}} = 2\sqrt{2}$$
+    
+    Do đó:
+    $$S \ge \dfrac{3}{\sqrt{5}} \cdot 2\sqrt{2} = \dfrac{6\sqrt{10}}{5}$$
+    
+    **Bước 4: Xác định các điểm $M$ thỏa mãn**
+    
+    Dấu "=" xảy ra khi và chỉ khi:
+    $$|t| = \dfrac{2}{|t|} \Leftrightarrow |t|^2 = 2 \Leftrightarrow t^2 = 2 \Leftrightarrow t = \pm\sqrt{2}$$
+    
+    *   Với $t = \sqrt{2} \implies x = 1 + \sqrt{2}, y = 1 + \sqrt{2} \implies M_1(1+\sqrt{2}; 1+\sqrt{2})$.
+    *   Với $t = -\sqrt{2} \implies x = 1 - \sqrt{2}, y = 1 - \sqrt{2} \implies M_2(1-\sqrt{2}; 1-\sqrt{2})$.
+    
+    **Kết luận:** Có **$2$** điểm $M$ trên đồ thị thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
