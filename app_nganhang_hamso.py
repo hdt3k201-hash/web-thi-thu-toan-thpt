@@ -1912,3 +1912,88 @@ st.markdown("---")
 
 
 
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 20 (Liên trường Nghệ An 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một công ty môi trường nhận thấy mức độ ô nhiễm $P(t)$ của một dòng sông sau $t$ tháng xử lý được mô hình hóa bởi $P(t) = \dfrac{1}{3}t^3 - 8t^2 + 48t + 100 \quad (0 \le t \le 12)$. 
+
+Tốc độ giảm ô nhiễm được định nghĩa là $v(t) = -P'(t)$. Hãy tìm thời điểm $t$ (tháng) mà tại đó tốc độ giảm ô nhiễm đạt giá trị lớn nhất.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập thời điểm t (tháng) (ví dụ: 5):", key="q30_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q30_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 8
+    if normalized_user_answer == "8":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tính đạo hàm P'(t), suy ra hàm v(t) và tìm đỉnh của parabol nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q30_solution_shown' not in st.session_state:
+    st.session_state['q30_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q30_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q30_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q30_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q30_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính đạo hàm của hàm số mức độ ô nhiễm $P(t)$**
+    
+    Ta có hàm số:
+    $$P(t) = \dfrac{1}{3}t^3 - 8t^2 + 48t + 100$$
+    
+    Đạo hàm $P'(t)$ là:
+    $$P'(t) = 3 \cdot \dfrac{1}{3}t^2 - 2 \cdot 8t + 48 = t^2 - 16t + 48$$
+    
+    **Bước 2: Lập hàm số tốc độ giảm ô nhiễm $v(t)$**
+    
+    Theo định nghĩa của đề bài, tốc độ giảm ô nhiễm là $v(t) = -P'(t)$. Thay $P'(t)$ vào ta được:
+    $$v(t) = -(t^2 - 16t + 48) = -t^2 + 16t - 48$$
+    
+    Xét hàm số $v(t)$ trên đoạn $[0; 12]$.
+    
+    **Bước 3: Tìm giá trị lớn nhất của $v(t)$**
+    
+    Hàm số $v(t) = -t^2 + 16t - 48$ là một hàm số bậc hai với hệ số $a = -1 < 0$. Do đó, đồ thị của nó là một parabol có bề lõm hướng xuống dưới và đạt giá trị lớn nhất tại đỉnh.
+    
+    Hoành độ đỉnh của parabol là:
+    $$t = -\dfrac{b}{2a} = -\dfrac{16}{2 \cdot (-1)} = 8$$
+    
+    Ta thấy $t = 8$ thuộc đoạn $[0; 12]$.
+    
+    Tại $t = 8$, tốc độ giảm ô nhiễm đạt mức tối đa.
+    
+    **Kết luận:** Thời điểm mà tốc độ giảm ô nhiễm đạt giá trị lớn nhất là tháng thứ **8**.
+    """)
+    
+st.markdown("---")
+
+
+
