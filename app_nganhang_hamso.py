@@ -4701,3 +4701,105 @@ if st.session_state.get('q_tt_tiemcan_solution_shown') and st.session_state.get(
     """)
     
 st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 48 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho đường thẳng $y = 2m$ cắt đồ thị hàm số $y = \dfrac{x^2 + 2x - 1}{x - 1}$ tại hai điểm phân biệt $M$ và $N$ sao cho $OM$ vuông góc với $ON$ (với $O$ là gốc tọa độ). Tính tổng tất cả các giá trị của tham số $m$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng các giá trị của m (ví dụ: -0.4 hoặc -2/5):", key="q_om_on_ans")
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_om_on_ans_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy, dấu chấm và phân số)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là -0.5 hoặc -1/2
+    if normalized_user_answer in ["-0.5", "-1/2"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại phương trình hoành độ giao điểm, điều kiện có 2 nghiệm phân biệt và tích vô hướng của hai véc-tơ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_om_on_solution_shown' not in st.session_state:
+    st.session_state['q_om_on_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_om_on_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_om_on_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_om_on_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_om_on_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập phương trình hoành độ giao điểm**
+    
+    Điều kiện xác định: $x \neq 1$.
+    
+    Phương trình hoành độ giao điểm của đường thẳng $y = 2m$ và đồ thị hàm số là:
+    $$\dfrac{x^2 + 2x - 1}{x - 1} = 2m$$
+    $$\Leftrightarrow x^2 + 2x - 1 = 2m(x - 1)$$
+    $$\Leftrightarrow x^2 + 2(1 - m)x + 2m - 1 = 0 \quad (*)$$
+    
+    **Bước 2: Tìm điều kiện để đường thẳng cắt đồ thị tại hai điểm phân biệt**
+    
+    Đường thẳng cắt đồ thị tại hai điểm phân biệt $M, N$ khi và chỉ khi phương trình $(*)$ có hai nghiệm phân biệt khác $1$:
+    $$\left\{ \begin{aligned} \Delta' &> 0 \\ f(1) &\neq 0 \end{aligned} \right.$$
+    
+    Ta tính giá trị tại $f(1) = 1^2 + 2(1-m)(1) + 2m - 1 = 2 \neq 0$ (luôn đúng với mọi $m$).
+    
+    Biệt thức $\Delta'$ của phương trình $(*)$:
+    $$\Delta' = (1 - m)^2 - 1 \cdot (2m - 1) = 1 - 2m + m^2 - 2m + 1 = m^2 - 4m + 2$$
+    
+    Điều kiện có hai giao điểm phân biệt:
+    $$m^2 - 4m + 2 > 0 \Leftrightarrow \left[ \begin{aligned} m &< 2 - \sqrt{2} \\ m &>& 2 + \sqrt{2} \end{aligned} \right.$$
+    
+    **Bước 3: Sử dụng điều kiện vuông góc $OM \perp ON$**
+    
+    Gọi $x_1, x_2$ là hai nghiệm phân biệt của phương trình $(*)$, chính là hoành độ của hai điểm $M$ và $N$. Theo định lý Vi-ét ta có:
+    $$\left\{ \begin{aligned} x_1 + x_2 &= 2(m - 1) \\ x_1 x_2 &= 2m - 1 \end{aligned} \right.$$
+    
+    Vì $M$ và $N$ cùng nằm trên đường thẳng $y = 2m$, tọa độ của chúng là $M(x_1; 2m)$ và $N(x_2; 2m)$.
+    
+    Xét hai véc-tơ $\vec{OM} = (x_1; 2m)$ và $\vec{ON} = (x_2; 2m)$.
+    
+    Điều kiện $OM \perp ON \iff \vec{OM} \cdot \vec{ON} = 0$:
+    $$x_1 x_2 + 2m \cdot 2m = 0 \Leftrightarrow x_1 x_2 + 4m^2 = 0$$
+    
+    Thay $x_1 x_2 = 2m - 1$ vào phương trình trên, ta được:
+    $$(2m - 1) + 4m^2 = 0 \Leftrightarrow 4m^2 + 2m - 1 = 0$$
+    
+    **Bước 4: Giải phương trình và tính tổng các giá trị của $m$**
+    
+    Phương trình bậc hai theo ẩn $m$: $4m^2 + 2m - 1 = 0$ có biệt thức $\Delta = 2^2 - 4 \cdot 4 \cdot (-1) = 20 > 0$.
+    Do đó phương trình có hai nghiệm phân biệt thỏa mãn điều kiện $m^2 - 4m + 2 > 0$.
+    
+    Theo định lý Vi-ét cho phương trình ẩn $m$, tổng tất cả các giá trị của tham số $m$ là:
+    $$S = -\dfrac{2}{4} = -\dfrac{1}{2} = -0,5$$
+    
+    **Kết luận:** Tổng tất cả các giá trị của tham số $m$ là **$-0,5$** (hoặc **$-\dfrac{1}{2}$**).
+    """)
+    
+st.markdown("---")
