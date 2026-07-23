@@ -7157,7 +7157,7 @@ Một xí nghiệp chế biến cà phê bán trong nước và xuất khẩu ra
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập giá sản xuất mỗi kg cà phê (USD) (ví dụ: 5.58):", key="q63_ans")
+user_answer = st.text_input("Nhập giá sản xuất mỗi kg cà phê (USD) (ví dụ: 1.23):", key="q63_ans")
 
 # Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
 
@@ -7227,6 +7227,103 @@ if st.session_state.get('q63_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 75 (Liên trường Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
 
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Để làm công tác cứu nạn ở một ngôi nhà ba tầng có một hàng rào cao $2,2$ (m) song song và cách bức tường ngôi nhà một khoảng bằng $1,6$ (m). Người ta dựng một cái thang thẳng có một đầu chạm đất, đầu kia chạm vào bức tường ngôi nhà và thân của thang chạm vào mép trên hàng rào (tham khảo hình vẽ). Chiều dài ngắn nhất của cái thang là bao nhiêu? (đơn vị là mét, làm tròn kết quả cuối cùng đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập chiều dài ngắn nhất của cái thang (m) (ví dụ: 5.35):", key="q64_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_2f6f60.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_2f6f60.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q64_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 5.35
+    if normalized_user_answer == "5.35":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm số chiều dài thang theo góc nghiêng $\alpha$ và tìm giá trị nhỏ nhất của hàm số nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q64_solution_shown' not in st.session_state:
+    st.session_state['q64_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q64_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q64_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q64_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q64_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn và thiết lập hàm số chiều dài thang**
+    
+    Gọi $\alpha$ là góc giữa thang và mặt đất ($0 < \alpha < \dfrac{\pi}{2}$).
+    
+    *   Khoảng cách từ chân thang đến chân hàng rào là: 
+        $$x = \dfrac{2,2}{\tan\alpha}$$
+    *   Tổng khoảng cách từ chân thang đến bức tường ngôi nhà là: 
+        $$\dfrac{2,2}{\tan\alpha} + 1,6$$
+    *   Chiều dài tổng cộng của cái thang được tính theo góc $\alpha$ là:
+        $$L(\alpha) = \dfrac{2,2}{\sin\alpha} + \dfrac{1,6}{\cos\alpha}$$
+        
+    **Bước 2: Khảo sát hàm số để tìm giá trị nhỏ nhất**
+    
+    Tính đạo hàm của hàm số $L(\alpha)$:
+    $$L'(\alpha) = -\dfrac{2,2\cos\alpha}{\sin^2\alpha} + \dfrac{1,6\sin\alpha}{\cos^2\alpha} = \dfrac{-2,2\cos^3\alpha + 1,6\sin^3\alpha}{\sin^2\alpha \cos^2\alpha}$$
+    
+    Cho $L'(\alpha) = 0$:
+    $$-2,2\cos^3\alpha + 1,6\sin^3\alpha = 0 \iff \tan^3\alpha = \dfrac{2,2}{1,6} = 1,375$$
+    $$\implies \tan\alpha = \sqrt[3]{1,375} \approx 1,11187$$
+    
+    **Bước 3: Tính chiều dài ngắn nhất của cái thang**
+    
+    Thay giá trị tối ưu vào hàm số hoặc sử dụng công thức tổng quát cho bài toán này:
+    $$L_{\min} = \left(1,6^{2/3} + 2,2^{2/3}\right)^{3/2}$$
+    
+    Thực hiện tính toán chi tiết:
+    *   $1,6^{2/3} \approx 1,3683$
+    *   $2,2^{2/3} \approx 1,6925$
+    *   Tổng: $1,3683 + 1,6925 = 3,0608$
+    *   $L_{\min} = 3,0608^{1,5} \approx 5,3512 \text{ (m)}$
+    
+    **Bước 4: Làm tròn kết quả**
+    
+    *   Làm tròn kết quả đến hàng phần trăm (2 chữ số thập phân), ta được **$5,35$**.
+    
+    **Kết luận:** Chiều dài ngắn nhất của cái thang là **$5,35$** mét.
+    """)
+    
+st.markdown("---")
 
 
