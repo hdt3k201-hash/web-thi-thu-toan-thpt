@@ -1997,3 +1997,102 @@ st.markdown("---")
 
 
 
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 21 (Cụm 5 Sở Ninh Bình 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một nhà máy A chuyên sản xuất một loại sản phẩm cho nhà máy B, nhà máy A chỉ bán sản phẩm cho nhà máy B và nhà máy B cam kết thu mua hết số sản phẩm mà nhà máy A sản xuất được. Nhà máy A có khả năng sản xuất tối đa là 200 tấn sản phẩm trong một tháng. Nếu bán ra $x$ tấn sản phẩm cho nhà máy B thì giá bán mỗi tấn sản phẩm là $50 - 0,0002x^2$ triệu đồng. Trong một tháng nhà máy A phải chi phí cho nhân công và chi phí khấu hao máy móc một lượng cố định là $150$ triệu đồng, ngoài ra khi sản xuất mỗi tấn sản phẩm thì nhà máy phải chi thêm cho mua nguyên vật liệu là $35$ triệu đồng. Biết rằng nhà máy A phải nộp $5\%$ doanh thu cho cơ quan thuế.
+
+Tính lợi nhuận sau thuế (lợi nhuận khi đã trừ thuế) lớn nhất thu được trong một tháng của nhà máy A (đơn vị tính là tỉ đồng và kết quả làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập lợi nhuận lớn nhất (tỉ đồng) (ví dụ: 1.52):", key="q31_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q31_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 1.08
+    if normalized_user_answer == "1.08":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy cẩn thận khi thiết lập hàm lợi nhuận (nhớ trừ 5% thuế từ doanh thu) và làm tròn kết quả nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q31_solution_shown' not in st.session_state:
+    st.session_state['q31_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q31_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q31_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q31_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q31_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm Doanh thu sau thuế**
+    
+    Gọi $x$ là số tấn sản phẩm nhà máy A sản xuất và bán ra trong một tháng ($0 \le x \le 200$).
+    
+    *   Giá bán mỗi tấn sản phẩm là: $P(x) = 50 - 0,0002x^2$ (triệu đồng).
+    *   Tổng doanh thu thu được là: 
+        $$R(x) = x \cdot P(x) = x(50 - 0,0002x^2) = 50x - 0,0002x^3 \text{ (triệu đồng)}$$
+    *   Do phải nộp $5\%$ doanh thu cho thuế, nên doanh thu thực tế giữ lại (sau thuế) là $95\%$:
+        $$R_{\text{sau thuế}}(x) = 0,95 \cdot (50x - 0,0002x^3) = 47,5x - 0,00019x^3$$
+
+    **Bước 2: Thiết lập hàm Chi phí và hàm Lợi nhuận**
+    
+    *   Tổng chi phí sản xuất trong một tháng bao gồm chi phí cố định và chi phí nguyên vật liệu:
+        $$C(x) = 150 + 35x \text{ (triệu đồng)}$$
+        
+    *   Hàm lợi nhuận sau thuế $L(x)$ là Doanh thu sau thuế trừ đi Chi phí:
+        $$L(x) = R_{\text{sau thuế}}(x) - C(x)$$
+        $$L(x) = (47,5x - 0,00019x^3) - (150 + 35x)$$
+        $$L(x) = -0,00019x^3 + 12,5x - 150 \quad \text{với } x \in [0; 200]$$
+        
+    **Bước 3: Khảo sát hàm số để tìm giá trị lớn nhất**
+    
+    Tính đạo hàm của hàm lợi nhuận:
+    $$L'(x) = -0,00057x^2 + 12,5$$
+    
+    Cho $L'(x) = 0$:
+    $$-0,00057x^2 + 12,5 = 0 \Leftrightarrow x^2 = \dfrac{12,5}{0,00057} = \dfrac{1.250.000}{57}$$
+    $$\Rightarrow x = \sqrt{\dfrac{1.250.000}{57}} \approx 148,087 \text{ (thỏa mãn điều kiện } 0 \le x \le 200)$$
+    
+    Vì hệ số $a$ của hàm bậc ba âm ($-0,00019 < 0$) nên hàm số sẽ đạt cực đại (và cũng là giá trị lớn nhất trên đoạn $[0; 200]$) tại $x \approx 148,087$.
+    
+    Thay giá trị $x$ vừa tìm được vào hàm lợi nhuận $L(x)$:
+    $$L_{\max} \approx -0,00019(148,087)^3 + 12,5(148,087) - 150 \approx 1084,056 \text{ (triệu đồng)}$$
+    
+    **Bước 4: Đổi đơn vị và làm tròn**
+    
+    *   $1084,056$ triệu đồng đổi ra tỉ đồng là: $\dfrac{1084,056}{1000} \approx 1,084056$ tỉ đồng.
+    *   Làm tròn đến hàng phần trăm (2 chữ số thập phân), ta được **$1,08$**.
+    
+    **Kết luận:** Lợi nhuận sau thuế lớn nhất thu được trong một tháng là **$1,08$ tỉ đồng**.
+    """)
+    
+st.markdown("---")
+
+
+
