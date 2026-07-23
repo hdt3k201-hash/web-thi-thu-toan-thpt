@@ -8765,3 +8765,90 @@ if st.session_state.get('q90_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 91 (Sở Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Sau khi một loại thuốc kháng sinh được tiêm vào cơ thể thì nồng độ của thuốc trong máu sẽ giảm dần theo thời gian do quá trình chuyển hóa. Nồng độ thuốc trong máu sau $t$ giờ kể từ khi tiêm được mô hình hóa bởi công thức $C(t) = C_0 \cdot e^{-rt}$ (mg/lít). Trong đó: 
+- $C_0$ là nồng độ thuốc trong máu ngay sau khi tiêm. 
+- $r$ là hằng số dương đo tốc độ phân hủy của thuốc. 
+- $e \approx 2,718$.
+
+Biết rằng ngay sau khi tiêm, nồng độ thuốc trong máu là $15\text{ mg/lít}$ và sau đó $4$ giờ nồng độ thuốc giảm còn $10\text{ mg/lít}$. Để đạt hiệu quả điều trị, bác sĩ sẽ tiêm lại một liều mới khi nồng độ thuốc trong máu của bệnh nhân giảm xuống và còn ít nhất $6\text{ mg/lít}$. Theo mô hình trên, để đạt hiệu quả điều trị thì khoảng thời gian nhiều nhất giữa hai lần tiêm thuốc là bao nhiêu giờ (kết quả làm tròn đến hàng đơn vị)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập khoảng thời gian (giờ) :", key="q91_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q91_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 9
+    if normalized_user_answer in ["9", "9.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tìm hằng số $r$ từ dữ kiện sau 4 giờ, sau đó tính thời điểm $t$ khi nồng độ còn $6\text{ mg/lít}$ và làm tròn đến hàng đơn vị nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q91_solution_shown' not in st.session_state:
+    st.session_state['q91_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q91_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q91_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q91_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q91_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định hằng số phân hủy $r$ của thuốc**
+    
+    Theo đề bài, nồng độ thuốc ban đầu ngay sau khi tiêm là $C_0 = 15\text{ mg/lít}$, nên công thức mô hình là:
+    $$C(t) = 15 \cdot e^{-rt}$$
+    
+    Theo giả thiết, sau $4$ giờ nồng độ thuốc giảm còn $10\text{ mg/lít}$, ta có:
+    $$C(4) = 10 \iff 15 \cdot e^{-4r} = 10$$
+    $$\iff e^{-4r} = \dfrac{10}{15} = \dfrac{2}{3}$$
+    $$\iff -4r = \ln\left(\dfrac{2}{3}\right) \iff r = -\dfrac{1}{4}\ln\left(\dfrac{2}{3}\right) = \dfrac{1}{4}\ln\left(\dfrac{3}{2}\right)$$
+    
+    **Bước 2: Tính thời gian để nồng độ thuốc giảm xuống còn $6\text{ mg/lít}$**
+    
+    Bác sĩ sẽ tiêm lại khi nồng độ thuốc giảm xuống mức tối thiểu là $6\text{ mg/lít}$. Ta cần tìm thời gian $t$ sao cho $C(t) = 6$:
+    $$15 \cdot e^{-rt} = 6 \iff e^{-rt} = \dfrac{6}{15} = \dfrac{2}{5}$$
+    $$\iff -rt = \ln\left(\dfrac{2}{5}\right) \iff t = -\dfrac{1}{r}\ln\left(\dfrac{2}{5}\right)$$
+    
+    Thay $r = \dfrac{1}{4}\ln\left(\dfrac{3}{2}\right)$ vào biểu thức của $t$:
+    $$t = \dfrac{-\ln\left(\dfrac{2}{5}\right)}{\dfrac{1}{4}\ln\left(\dfrac{3}{2}\right)} = 4 \cdot \dfrac{\ln\left(\dfrac{5}{2}\right)}{\ln\left(\dfrac{3}{2}\right)}$$
+    
+    **Bước 3: Tính toán giá trị thực tế và làm tròn**
+    
+    *   Ta có: $\ln(2,5) \approx 0,9163$ và $\ln(1,5) \approx 0,4055$.
+    *   Suy ra: $t = 4 \cdot \dfrac{0,9163}{0,4055} \approx 4 \cdot 2,2598 \approx 9,0395$ (giờ).
+    *   Làm tròn kết quả đến hàng đơn vị, ta được **$9$** giờ.
+    
+    **Kết luận:** Khoảng thời gian nhiều nhất giữa hai lần tiêm thuốc để đạt hiệu quả điều trị là **$9$** giờ.
+    """)
+    
+st.markdown("---")
