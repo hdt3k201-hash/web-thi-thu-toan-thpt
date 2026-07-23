@@ -7614,7 +7614,7 @@ Một chiếc thuyền ở vị trí $A$ cách bờ biển một khoảng $AB$ b
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập khoảng cách từ M đến B (km) (ví dụ: 4.47):", key="q79_ans")
+user_answer = st.text_input("Nhập khoảng cách từ M đến B (km) (ví dụ: 1.23):", key="q79_ans")
 
 # Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
 try:
@@ -7696,3 +7696,98 @@ if st.session_state.get('q79_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 80 (THPT Trần Phú - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một công ty du lịch đặt hàng cho một cơ sở sản xuất lều bạt một lô hàng gồm $12$ chiếc lều bạt du lịch giống hệt nhau, hình chóp tứ giác đều mà thể tích trong mỗi chiếc lều là $18\text{ m}^3$ (không tính đến đường viền, nếp gấp và lều không may bạt ở đáy). Hỏi cơ sở sản xuất lều bạt cần ít nhất bao nhiêu $\text{m}^2$ bạt? (kết quả làm tròn tới hàng đơn vị)
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số m² bạt cần ít nhất (ví dụ: 123):", key="q80_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q80_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 374
+    if normalized_user_answer == "374":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập diện tích xung quanh của hình chóp tứ giác đều theo cạnh đáy $x$, sử dụng điều kiện thể tích và tìm giá trị nhỏ nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q80_solution_shown' not in st.session_state:
+    st.session_state['q80_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q80_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q80_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q80_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q80_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập diện tích bạt cho một chiếc lều**
+    
+    * Gọi $x$ là độ dài cạnh đáy của hình chóp tứ giác đều ($x > 0$), và $h$ là chiều cao của lều.
+    * Thể tích của một chiếc lều là $18\text{ m}^3$, ta có:
+        $$V = \dfrac{1}{3} x^2 h = 18 \implies h = \dfrac{54}{x^2}$$
+        
+    * Diện tích xung quanh của một chiếc lều (diện tích cần may bạt) là tổng diện tích của $4$ mặt bên hình chóp:
+        $$S_{\text{xq}} = 4 \cdot \left(\dfrac{1}{2} \cdot x \cdot l\right) = 2x \cdot l$$
+      trong đó $l$ là chiều cao mặt bên:
+        $$l = \sqrt{h^2 + \left(\dfrac{x}{2}\right)^2} = \sqrt{\left(\dfrac{54}{x^2}\right)^2 + \dfrac{x^2}{4}} = \sqrt{\dfrac{2916}{x^4} + \dfrac{x^2}{4}}$$
+        
+    **Bước 2: Biểu diễn diện tích bạt theo $x$ và tìm giá trị nhỏ nhất**
+    
+    * Thay $l$ vào công thức diện tích xung quanh:
+        $$S_{\text{xq}}(x) = 2x \cdot \sqrt{\dfrac{2916}{x^4} + \dfrac{x^2}{4}} = \sqrt{4x^2 \left(\dfrac{2916}{x^4} + \dfrac{x^2}{4}\right)} = \sqrt{\dfrac{11664}{x^2} + x^4}$$
+        
+    * Để diện tích bạt là nhỏ nhất, ta tìm giá trị nhỏ nhất của hàm số $f(x) = \dfrac{11664}{x^2} + x^4$ với $x > 0$.
+    * Tính đạo hàm của hàm số $f(x)$:
+        $$f'(x) = -\dfrac{23328}{x^3} + 4x^3 = \dfrac{4x^6 - 23328}{x^3}$$
+        
+    * Cho $f'(x) = 0 \iff 4x^6 = 23328 \iff x^6 = 5832 \iff x^2 = \sqrt[3]{5832} = 18$.
+    
+    * Khi $x^2 = 18$, giá trị nhỏ nhất của $f(x)$ là:
+        $$f(\sqrt{18}) = \dfrac{11664}{18} + 18^2 = 648 + 324 = 972$$
+        
+    * Do đó, diện tích bạt nhỏ nhất cho một chiếc lều là:
+        $$S_{\min} = \sqrt{972} = \sqrt{324 \cdot 3} = 18\sqrt{3} \text{ (m}^2\text{)}$$
+        
+    **Bước 3: Tính tổng diện tích bạt cho lô hàng $12$ chiếc lều và làm tròn**
+    
+    * Tổng diện tích bạt cần dùng cho $12$ chiếc lều là:
+        $$S_{\text{tổng}} = 12 \cdot 18\sqrt{3} = 216\sqrt{3} \approx 374,12 \text{ (m}^2\text{)}$$
+        
+    * Làm tròn kết quả đến hàng đơn vị, ta được **$374$**.
+    
+    **Kết luận:** Cơ sở sản xuất lều bạt cần ít nhất **$374$** $\text{m}^2$ bạt.
+    """)
+    
+st.markdown("---")
+
+
+
