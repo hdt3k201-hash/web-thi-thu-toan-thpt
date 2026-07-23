@@ -2846,3 +2846,115 @@ if st.session_state.get('q43_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 30 (THPT Nguyễn Khuyến - LHT - HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_dda78b.png
+st.markdown(r"""
+Ông Bình có một hồ nuôi cá có diện tích mặt hồ (miền tô màu như hình vẽ bên) được mô hình là miền giới hạn bởi các trục tọa độ và đồ thị hàm số $f(x) = -\dfrac{1}{10}x^3 + \dfrac{9}{10}x^2 - \dfrac{3}{2}x + \dfrac{28}{5}$.
+Đơn vị độ dài trên mỗi trục là $100$ mét. Một con sông có bờ chạy dọc theo đường thẳng $d: y = -1,5x + 18$.
+Ông Bình dự định xây trên bờ hồ một trạm để lọc nước cho hồ tại vị trí $M$ sao cho khoảng cách từ trạm này đến bờ con sông là ngắn nhất. Nếu điểm xây trên bờ hồ (thuộc đồ thị đã cho) là $M(a; b)$ thì số tiền để xây trạm tương ứng là $(4a + 5b)$ triệu đồng, đồng thời chi phí mỗi mét ống nối từ trạm này ra bờ sông là $0,45$ triệu đồng.
+Tổng chi phí (xây trạm và đường ống) ít nhất mà ông Bình dùng để hoàn thành công trình trên là bao nhiêu triệu đồng? (kết quả làm tròn đến hàng đơn vị).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng chi phí (triệu đồng) (ví dụ: 100):", key="q44_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/ltt_nk2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/ltt_nk2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q44_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 101
+    if normalized_user_answer == "101":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Bạn hãy tìm tiếp tuyến của đồ thị song song với đường thẳng d để tìm điểm M gần nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q44_solution_shown' not in st.session_state:
+    st.session_state['q44_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q44_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q44_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q44_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q44_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm tọa độ điểm $M(a; b)$ trên bờ hồ sao cho khoảng cách đến sông ngắn nhất**
+    
+    *   Đường thẳng $d$ (bờ sông) có phương trình: $y = -1,5x + 18 \Leftrightarrow 1,5x + y - 18 = 0$.
+        Hệ số góc của đường thẳng $d$ là $k = -1,5 = -\dfrac{3}{2}$.
+    *   Điểm $M$ thuộc đồ thị $f(x)$ nằm gần đường thẳng $d$ nhất khi tiếp tuyến của đồ thị tại $M$ song song với $d$.
+        Tức là $f'(x) = k = -\dfrac{3}{2}$.
+    *   Ta có đạo hàm:
+        $$f'(x) = -\dfrac{3}{10}x^2 + \dfrac{18}{10}x - \dfrac{3}{2}$$
+    *   Giải phương trình $f'(x) = -\dfrac{3}{2}$:
+        $$-\dfrac{3}{10}x^2 + \dfrac{18}{10}x - \dfrac{3}{2} = -\dfrac{3}{2}$$
+        $$\Leftrightarrow -\dfrac{3}{10}x^2 + \dfrac{18}{10}x = 0$$
+        $$\Leftrightarrow -3x^2 + 18x = 0 \Leftrightarrow \left[ \begin{array}{l} x = 0 \\ x = 6 \end{array} \right.$$
+    
+    *   Kiểm tra khoảng cách với $2$ điểm tìm được:
+        *   Với $x = 0 \Rightarrow y = f(0) = \dfrac{28}{5} = 5,6$. Ta có $M_1(0; 5,6)$.
+            Khoảng cách từ $M_1$ đến $d$ (theo đơn vị mặt phẳng tọa độ):
+            $$h_1 = \dfrac{|1,5 \cdot 0 + 5,6 - 18|}{\sqrt{1,5^2 + 1^2}} = \dfrac{12,4}{\sqrt{3,25}}$$
+        *   Với $x = 6 \Rightarrow y = f(6) = -\dfrac{1}{10}(6^3) + \dfrac{9}{10}(6^2) - \dfrac{3}{2}(6) + 5,6 = -21,6 + 32,4 - 9 + 5,6 = 7,4$. Ta có $M_2(6; 7,4)$.
+            Khoảng cách từ $M_2$ đến $d$:
+            $$h_2 = \dfrac{|1,5 \cdot 6 + 7,4 - 18|}{\sqrt{1,5^2 + 1^2}} = \dfrac{|9 + 7,4 - 18|}{\sqrt{3,25}} = \dfrac{1,6}{\sqrt{3,25}}$$
+    *   Vì $h_2 < h_1$ nên điểm xây trạm là $M(6; 7,4)$. Suy ra $a = 6$ và $b = 7,4$.
+    
+    **Bước 2: Tính chi phí xây trạm**
+    
+    *   Số tiền xây trạm tại $M(6; 7,4)$ là:
+        $$C_{trạm} = 4a + 5b = 4(6) + 5(7,4) = 24 + 37 = 61 \text{ (triệu đồng)}$$
+    
+    **Bước 3: Tính chi phí đường ống**
+    
+    *   Khoảng cách ngắn nhất trên mặt phẳng tọa độ là:
+        $$h_{min} = \dfrac{1,6}{\sqrt{3,25}} = \dfrac{1,6}{\sqrt{\dfrac{13}{4}}} = \dfrac{3,2}{\sqrt{13}} \text{ (đơn vị)}$$
+    *   Vì mỗi đơn vị độ dài ứng với $100$ mét, chiều dài thực tế của đường ống là:
+        $$L = 100 \cdot \dfrac{3,2}{\sqrt{13}} = \dfrac{320}{\sqrt{13}} \text{ (mét)}$$
+    *   Chi phí đường ống là:
+        $$C_{ống} = 0,45 \cdot L = 0,45 \cdot \dfrac{320}{\sqrt{13}} = \dfrac{144}{\sqrt{13}} \approx 39,94 \text{ (triệu đồng)}$$
+    
+    **Bước 4: Tính tổng chi phí**
+    
+    *   Tổng chi phí công trình là:
+        $$C_{tổng} = C_{trạm} + C_{ống} \approx 61 + 39,94 = 100,94 \text{ (triệu đồng)}$$
+    *   Làm tròn đến hàng đơn vị, ta được $101$.
+    
+    **Kết luận:** Tổng chi phí ít nhất để hoàn thành công trình là **$101$** triệu đồng.
+    """)
+    
+st.markdown("---")
+
