@@ -55,14 +55,7 @@ user_answer = st.text_input("Nhập xác suất (ví dụ: 0.24):", key="tohop_a
 
 # --- CHÈN HÌNH ẢNH (NẾU CÓ) ---
 # (Phần mẫu chèn ảnh chuẩn theo yêu cầu của thầy)
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        # Thầy có thể thay tên file ảnh thực tế nếu có trong thư mục images trên GitHub
-        st.image("images/tohop_minhhoa.PNG", width=400)
-except FileNotFoundError:
-    # Ẩn hoặc bật cảnh báo nếu chưa có file ảnh phụ trợ
-    pass
+
 
 # --- NÚT KIỂM TRA ĐÁP ÁN ---
 if st.button("Kiểm tra đáp án", key="tohop_check_1"):
