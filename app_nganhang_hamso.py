@@ -1810,5 +1810,105 @@ st.markdown("---")
 
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: #1e88e5;">Câu 19 (Liên trường Nghệ An 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Việt Nam đang triển khai dự án đường sắt tốc độ cao chặng Thành phố Hồ Chí Minh – Nha Trang với tổng chiều dài quãng đường là $375\text{ km}$. Tổng công ty đường sắt xác định vận tốc khai thác $v\text{ (km/h)}$ cho đoàn tàu ($200 \le v \le 350$) để đạt lợi nhuận cao nhất cho mỗi chuyến tàu.
+
+Qua tính toán kỹ thuật, chi phí điện năng tiêu thụ cho toàn bộ hành trình $375\text{ km}$ là: $C_1(v) = 15v^2$ (nghìn đồng). Chi phí vận hành cố định bao gồm nhân sự và bảo trì tính cho mỗi giờ tàu chạy là $250$ triệu đồng/giờ. Số lượng khách mua vé cho mỗi chuyến phụ thuộc vào vận tốc: $N(v) = 4v$ (khách). Giá vé bình quân là $1.500.000$ đồng/khách.
+
+Xác định vận tốc khai thác $v$ để lợi nhuận ròng của một chuyến tàu là lớn nhất (làm tròn kết quả đến hàng đơn vị).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập vận tốc khai thác v (km/h) (ví dụ: 300):", key="q29_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q29_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 250
+    if normalized_user_answer == "250":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm doanh thu, chi phí theo vận tốc v, lập hàm lợi nhuận và tìm cực trị nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q29_solution_shown' not in st.session_state:
+    st.session_state['q29_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q29_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q29_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q29_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q29_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Quy đổi đơn vị và tính thời gian di chuyển**
+    
+    * Thời gian tàu chạy cho toàn bộ hành trình $375\text{ km}$ với vận tốc $v$ là: 
+    $$t = \dfrac{375}{v} \text{ (giờ)}$$
+    
+    * Đổi các đơn vị tiền tệ về cùng một đơn vị là **nghìn đồng**:
+      * Chi phí vận hành cố định: $250\text{ triệu đồng} = 250.000\text{ nghìn đồng/giờ}$.
+      * Giá vé bình quân: $1.500.000\text{ đồng} = 1.500\text{ nghìn đồng/khách}$.
+
+    **Bước 2: Thiết lập hàm Doanh thu và hàm Chi phí theo vận tốc v**
+    
+    *   **Hàm Doanh thu (nghìn đồng):**
+        Số lượng khách là $N(v) = 4v$, nên doanh thu của một chuyến tàu là:
+        $$R(v) = N(v) \cdot 1.500 = 4v \cdot 1.500 = 6.000v$$
+        
+    *   **Hàm Chi phí (nghìn đồng):**
+        Chi phí bao gồm điện năng $C_1(v)$ và chi phí vận hành cố định $C_2(v)$.
+        $$C_1(v) = 15v^2$$
+        $$C_2(v) = 250.000 \cdot t = 250.000 \cdot \dfrac{375}{v} = \dfrac{93.750.000}{v}$$
+        Tổng chi phí là:
+        $$C(v) = C_1(v) + C_2(v) = 15v^2 + \dfrac{93.750.000}{v}$$
+        
+    **Bước 3: Lập hàm Lợi nhuận và tìm giá trị lớn nhất**
+    
+    Hàm lợi nhuận $P(v)$ của một chuyến tàu là Doanh thu trừ đi Chi phí:
+    $$P(v) = R(v) - C(v) = 6.000v - \left( 15v^2 + \dfrac{93.750.000}{v} \right)$$
+    $$P(v) = -15v^2 + 6.000v - \dfrac{93.750.000}{v} \quad \text{với } v \in [200; 350]$$
+    
+    Tính đạo hàm của $P(v)$:
+    $$P'(v) = -30v + 6.000 + \dfrac{93.750.000}{v^2} = \dfrac{-30v^3 + 6.000v^2 + 93.750.000}{v^2}$$
+    
+    Cho $P'(v) = 0$:
+    $$-30v^3 + 6.000v^2 + 93.750.000 = 0$$
+    Chia cả 2 vế cho $-30$, ta được phương trình:
+    $$v^3 - 200v^2 - 3.125.000 = 0$$
+    Phân tích đa thức thành nhân tử:
+    $$(v - 250)(v^2 + 50v + 12.500) = 0$$
+    Vì $v^2 + 50v + 12.500 = (v + 25)^2 + 11.875 > 0$ với mọi $v$, nên phương trình chỉ có nghiệm duy nhất:
+    $$v = 250 \text{ (thỏa mãn điều kiện } 200 \le v \le 350)$$
+    
+    Lập bảng biến thiên (hoặc xét dấu $P'(v)$) ta thấy $P'(v) > 0$ khi $v < 250$ và $P'(v) < 0$ khi $v > 250$. Do đó, hàm số $P(v)$ đạt giá trị lớn nhất tại $v = 250$.
+    
+    **Kết luận:** Vận tốc khai thác để lợi nhuận ròng đạt lớn nhất là **$250\text{ km/h}$**.
+    """)
+    
+st.markdown("---")
+
 
 
