@@ -819,7 +819,7 @@ $\Rightarrow$ **Chọn đáp án A.**[cite: 1]
 $\Rightarrow$ **Đáp số cần điền: 8.**[cite: 1]
 """)
             with st.expander("🔍 Lời giải Câu 10: Rút gọn biểu thức lượng giác"):
-            st.markdown(r"""
+                st.markdown(r"""
 * Sử dụng công thức biến đổi tích thành tổng $\sin a \cos b = \frac{1}{2}[\sin(a+b) + \sin(a-b)]$.[cite: 2] 
 * Với $a = x + \frac{\pi}{6}$ và $b = x - \frac{\pi}{6}$, ta khai triển $P$ như sau: $P = \frac{1}{2}\left[\sin\left(x + \frac{\pi}{6} + x - \frac{\pi}{6}\right) + \sin\left(x + \frac{\pi}{6} - \left(x - \frac{\pi}{6}\right)\right)\right]$.[cite: 2]
 * Rút gọn các số hạng đồng dạng ở góc bên trong: $P = \frac{1}{2}\left[\sin 2x + \sin\left(\frac{\pi}{3}\right)\right] = \frac{1}{2}\sin 2x + \frac{\sqrt{3}}{4}$.[cite: 2]
