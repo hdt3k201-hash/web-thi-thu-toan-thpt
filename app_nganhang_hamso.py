@@ -6328,5 +6328,101 @@ if st.session_state.get('q65_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 66 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Có bao nhiêu giá trị nguyên âm của tham số $m$ để hàm số 
+$$y = \dfrac{1}{4}x^4 + mx - \dfrac{3}{2x}$$ 
+đồng biến trên khoảng $(0; +\infty)$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng giá trị nguyên âm của m (ví dụ: 2):", key="q66_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q66_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 2 (m = -2, -1)
+    if normalized_user_answer == "2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tính đạo hàm, cô lập m >= g(x) và lập bảng biến thiên để tìm GTLN của g(x) trên (0; +∞) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q66_solution_shown' not in st.session_state:
+    st.session_state['q66_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q66_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q66_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q66_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q66_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tập xác định và tính đạo hàm**
+    
+    Tập xác định: $\mathcal{D} = \mathbb{R} \setminus \{0\}$.
+    Trên khoảng $(0; +\infty)$, hàm số xác định và liên tục.
+    
+    Đạo hàm của hàm số:
+    $$y' = x^3 + m + \dfrac{3}{2x^2}$$
+        
+    **Bước 2: Thiết lập điều kiện đồng biến**
+    
+    Để hàm số đồng biến trên khoảng $(0; +\infty)$, ta cần:
+    $$y' \ge 0, \forall x \in (0; +\infty)$$
+    $$\Leftrightarrow x^3 + m + \dfrac{3}{2x^2} \ge 0, \forall x \in (0; +\infty)$$
+    $$\Leftrightarrow m \ge -x^3 - \dfrac{3}{2x^2}, \forall x \in (0; +\infty) \quad (**)$$
+        
+    **Bước 3: Khảo sát hàm số $g(x) = -x^3 - \dfrac{3}{2x^2}$**
+    
+    Tính đạo hàm của $g(x)$:
+    $$g'(x) = -3x^2 + \dfrac{3}{x^3} = \dfrac{-3x^5 + 3}{x^3}$$
+    
+    Cho $g'(x) = 0 \Leftrightarrow -3x^5 + 3 = 0 \Leftrightarrow x^5 = 1 \Leftrightarrow x = 1$ (thỏa mãn $x > 0$).
+    
+    Bảng biến thiên của $g(x)$ trên $(0; +\infty)$:
+    *   Với $x \in (0; 1)$: $g'(x) > 0 \implies g(x)$ đồng biến.
+    *   Với $x \in (1; +\infty)$: $g'(x) < 0 \implies g(x)$ nghịch biến.
+    
+    Tại $x = 1$, hàm số $g(x)$ đạt giá trị lớn nhất:
+    $$\max_{x \in (0; +\infty)} g(x) = g(1) = -(1)^3 - \dfrac{3}{2(1)^2} = -1 - \dfrac{3}{2} = -\dfrac{5}{2}$$
+    
+    **Bước 4: Gộp điều kiện và tìm số giá trị nguyên**
+    
+    Để $(**)$ nghiệm đúng với mọi $x \in (0; +\infty)$, ta phải có:
+    $$m \ge \max_{x \in (0; +\infty)} g(x) \Leftrightarrow m \ge -\dfrac{5}{2} = -2,5$$
+    
+    Vì $m$ là số nguyên âm ($m \in \mathbb{Z}, m < 0$) và $m \ge -2,5$, nên:
+    $$m \in \{-2; -1\}$$
+    
+    **Kết luận:** Có tất cả **$2$** giá trị nguyên âm của tham số $m$ thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
 
 
