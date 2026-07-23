@@ -7987,3 +7987,94 @@ if st.session_state.get('q82_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 83 (Sở Lạng Sơn 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một nhà máy sản xuất $x$ sản phẩm trong mỗi tháng. Chi phí sản xuất $x$ sản phẩm được cho bởi hàm chi phí $C(x) = 16000 + 500x - 1,6x^2 + 0,004x^3$ (nghìn đồng). Biết giá bán của mỗi sản phẩm là một hàm số phụ thuộc vào số lượng sản phẩm $x$ và được cho bởi công thức $p(x) = 1700 - 7x$ (nghìn đồng). Hỏi mỗi tháng nhà máy nên sản xuất bao nhiêu sản phẩm để lợi nhuận thu được là lớn nhất? Biết rằng kết quả khảo sát thị trường cho thấy sản phẩm sản xuất ra sẽ được tiêu thụ hết.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng sản phẩm cần sản xuất :", key="q83_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q83_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 100
+    if normalized_user_answer == "100":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm lợi nhuận bằng Doanh thu trừ đi Chi phí, sau đó tìm giá trị lớn nhất của hàm số nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q83_solution_shown' not in st.session_state:
+    st.session_state['q83_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q83_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q83_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q83_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q83_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm Doanh thu**
+    
+    Gọi $x$ là số sản phẩm nhà máy sản xuất và bán ra trong một tháng ($x > 0, x \in \mathbb{N}^*$).
+    
+    *   Giá bán mỗi sản phẩm là: $p(x) = 1700 - 7x$ (nghìn đồng).
+    *   Tổng doanh thu thu được khi bán hết $x$ sản phẩm là: 
+        $$R(x) = x \cdot p(x) = x(1700 - 7x) = 1700x - 7x^2 \text{ (nghìn đồng)}$$
+
+    **Bước 2: Thiết lập hàm Lợi nhuận**
+    
+    *   Hàm chi phí sản xuất được cho là:
+        $$C(x) = 16000 + 500x - 1,6x^2 + 0,004x^3 \text{ (nghìn đồng)}$$
+        
+    *   Hàm lợi nhuận $L(x)$ là Doanh thu trừ đi Chi phí:
+        $$L(x) = R(x) - C(x)$$
+        $$L(x) = (1700x - 7x^2) - (16000 + 500x - 1,6x^2 + 0,004x^3)$$
+        $$L(x) = -0,004x^3 - 5,4x^2 + 1200x - 16000 \quad \text{với } x > 0$$
+        
+    **Bước 3: Khảo sát hàm số để tìm giá trị lớn nhất**
+    
+    Tính đạo hàm của hàm lợi nhuận:
+    $$L'(x) = -0,012x^2 - 10,8x + 1200$$
+    
+    Cho $L'(x) = 0$:
+    $$-0,012x^2 - 10,8x + 1200 = 0$$
+    
+    Chia cả 2 vế cho $-0,012$, ta được phương trình bậc hai:
+    $$x^2 + 900x - 100000 = 0$$
+    
+    Giải phương trình ta thu được 2 nghiệm:
+    $$\begin{bmatrix} x = 100 \text{ (thỏa mãn } x > 0) \\ x = -1000 \text{ (loại vì } x > 0) \end{bmatrix}$$
+    
+    Lập bảng biến thiên của hàm số $L(x)$ trên khoảng $(0; +\infty)$:
+    *   Với $x \in (0; 100)$, $L'(x) > 0 \Rightarrow$ Hàm số đồng biến.
+    *   Với $x \in (100; +\infty)$, $L'(x) < 0 \Rightarrow$ Hàm số nghịch biến.
+    
+    Như vậy, hàm số $L(x)$ đạt cực đại và cũng là giá trị lớn nhất tại $x = 100$.
+    
+    **Kết luận:** Mỗi tháng nhà máy nên sản xuất **$100$** sản phẩm để lợi nhuận thu được là lớn nhất.
+    """)
+    
+st.markdown("---")
