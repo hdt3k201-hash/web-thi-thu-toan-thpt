@@ -7057,7 +7057,7 @@ có $3$ nghiệm thực phân biệt?
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập số lượng giá trị của m (ví dụ: 2):", key="q_bt9_ans")
+user_answer = st.text_input("Nhập số lượng giá trị của m :", key="q_bt9_ans")
 
 # Chèn hình ảnh minh họa ngay sau ô nhập đáp án
 try:
@@ -7129,7 +7129,7 @@ if st.session_state.get('q_bt9_solution_shown') and st.session_state.get('logged
     $$9m^3 + m = g(t)$$
     
     Để phương trình ban đầu có $3$ nghiệm thực phân biệt $x$, ta cần xét số giao điểm của đường thẳng chứa tham số $9m^3 + m$ với đồ thị hàm số $g(t)$ ứng với các giá trị của $t = f^2(x)$.
-    Dựa vào đồ thị hàm số $f(x)$[cite: 1]:
+    Dựa vào đồ thị hàm số $f(x)$:
     *   Khi $t = 1$ (tại cực tiểu), ta có $g(1) = (1 + 3)\sqrt{3(1) + 8} = 4\sqrt{11}$.
     *   Phương trình ẩn $t$ cho mỗi giá trị $t > 1$ tương ứng sẽ sinh ra số nghiệm $x$ dựa vào đồ thị hàm số $f(x)$. Cụ thể, đường thẳng $f^2(x) = t$ sẽ cắt đồ thị $f(x)$ tại bao nhiêu nghiệm tùy thuộc vào mức giá trị của $t$.
     
