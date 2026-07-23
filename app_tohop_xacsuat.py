@@ -50,7 +50,7 @@ st.markdown(
 )
 
 st.markdown(r"""
-Xếp ngẫu nhiên $5$ học sinh lớp A và $4$ học sinh lớp B thành một hàng ngang. Tính xác suất để không có hai học sinh lớp B nào đứng cạnh nhau (kết quả làm tròn đến hàng phần trăm dưới dạng số thập phân).
+Xếp ngẫu nhiên $50$ học sinh lớp A và $4$ học sinh lớp B thành một hàng ngang. Tính xác suất để không có hai học sinh lớp B nào đứng cạnh nhau (kết quả làm tròn đến hàng phần trăm dưới dạng số thập phân).
 """)
 
 # --- Ô NHẬP ĐÁP ÁN ---
