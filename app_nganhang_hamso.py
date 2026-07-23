@@ -2670,3 +2670,91 @@ if st.session_state.get('q38_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 28 (THPT Thọ Xuân 5-Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_dd9cc2.png
+st.markdown(r"""
+Một gia đình đan lưới đánh cá, mỗi ngày đan được $x$ mét lưới ($1 \le x \le 18$). Tổng chi phí sản xuất $x$ mét lưới, tính bằng nghìn đồng, cho bởi hàm chi phí: $C(x) = x^3 - 3x^2 - 20x + 500$.
+Giả sử gia đình làm nghề đan lưới bán hết sản phẩm mỗi ngày với giá $220$ nghìn đồng/mét. Gọi $L(x)$ là lợi nhuận thu được khi bán $x$ mét lưới. Hỏi lợi nhuận tối đa của gia đình đan lưới trong một ngày (đơn vị tính nghìn đồng)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập lợi nhuận tối đa (nghìn đồng) (ví dụ: 1000):", key="q40_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q40_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 1200
+    if normalized_user_answer == "1200":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm lợi nhuận L(x) = Doanh thu - Chi phí và tìm giá trị lớn nhất trên đoạn [1; 18] nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q40_solution_shown' not in st.session_state:
+    st.session_state['q40_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q40_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q40_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q40_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q40_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm doanh thu và hàm lợi nhuận**
+    
+    *   Hàm doanh thu khi bán $x$ mét lưới với giá $220$ nghìn đồng/mét là:
+        $$R(x) = 220x$$
+    *   Hàm chi phí sản xuất $x$ mét lưới là:
+        $$C(x) = x^3 - 3x^2 - 20x + 500$$
+    *   Hàm lợi nhuận $L(x)$ bằng Doanh thu trừ đi Chi phí:
+        $$L(x) = R(x) - C(x)$$
+        $$L(x) = 220x - (x^3 - 3x^2 - 20x + 500)$$
+        $$L(x) = -x^3 + 3x^2 + 240x - 500$$
+        với điều kiện $x \in [1; 18]$.
+    
+    **Bước 2: Tìm giá trị lớn nhất của hàm lợi nhuận $L(x)$ trên đoạn $[1; 18]$**
+    
+    Tính đạo hàm của $L(x)$:
+    $$L'(x) = -3x^2 + 6x + 240$$
+    
+    Cho $L'(x) = 0$:
+    $$-3x^2 + 6x + 240 = 0 \Leftrightarrow x^2 - 2x - 80 = 0$$
+    Giải phương trình bậc hai ta được:
+    $$\left[ \begin{array}{l} x = 10 \quad (\text{thỏa mãn } x \in [1; 18]) \\ x = -8 \quad (\text{loại do } x \notin [1; 18]) \end{array} \right.$$
+    
+    **Bước 3: Tính giá trị của $L(x)$ tại các điểm đầu mút và điểm tới hạn**
+    
+    Ta tính các giá trị:
+    *   $L(1) = -(1)^3 + 3(1)^2 + 240(1) - 500 = -1 + 3 + 240 - 500 = -258$
+    *   $L(10) = -(10)^3 + 3(10)^2 + 240(10) - 500 = -1000 + 300 + 2400 - 500 = 1200$
+    *   $L(18) = -(18)^3 + 3(18)^2 + 240(18) - 500 = -5832 + 972 + 4320 - 500 = -1040$
+    
+    So sánh các giá trị trên, ta thấy giá trị lớn nhất là $\max L(x) = 1200$ đạt được khi $x = 10$.
+    
+    **Kết luận:** Lợi nhuận tối đa của gia đình đan lưới trong một ngày là **$1200$** nghìn đồng.
+    """)
+    
+st.markdown("---")
+
