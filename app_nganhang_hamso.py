@@ -1812,7 +1812,7 @@ st.markdown("---")
 
 # Tiêu đề câu hỏi
 st.markdown(
-    '<b style="color: #1e88e5;">Câu 19 (Liên trường Nghệ An 2026)</b>',
+    '<b style="color: blue;">Câu 19 (Liên trường Nghệ An 2026)</b>',
     unsafe_allow_html=True
 )
 
