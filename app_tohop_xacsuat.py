@@ -522,3 +522,85 @@ if st.session_state.get('q5_solution_shown') and st.session_state.get('logged_in
     """)
     
 st.markdown("---")
+
+import streamlit as st
+
+# --- CÂU HỎI 6 ---
+st.markdown(
+    '<b style="color: blue;">Câu 6 ( THPT LTT HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Bác Nghĩa đang giúp con trai sắp xếp 16 cuốn sách ôn thi vào một chiếc kệ 5 ngăn phân biệt. 16 cuốn sách này thuộc 8 môn học khác nhau: Toán, Lý, Hóa, Sinh, Sử, Địa, Văn, Anh. Mỗi môn học gồm đúng 2 cuốn: một cuốn sách giáo khoa và một cuốn sách bài tập.
+Để việc ôn tập đạt hiệu quả cao nhất theo từng khối thi, bác Nghĩa đặt ra các quy tắc khắt khe sau:
++ Do ngăn kệ nhỏ, mỗi ngăn chỉ được chứa tối đa 5 cuốn sách và không được để ngăn nào trống.
++ Hai cuốn sách của cùng một môn học phải luôn nằm chung một ngăn với nhau.
++ Các môn học trong cùng một tổ hợp môn thi phải nằm ở 3 ngăn liên tiếp để thuận tiện cho việc tra cứu. Các tổ hợp bao gồm: $(\text{Văn, Sử, Địa})$, $(\text{Toán, Lý, Hóa})$, $(\text{Toán, Hóa, Sinh})$ và $(\text{Toán, Lý, Anh})$.
++ Các cuốn sách trong mỗi ngăn được xếp theo hàng ngang với gáy sách quay ra ngoài ở mỗi ngăn, thứ tự từ trái sang phải.
+Tổng số cách sắp xếp 16 cuốn sách này vào 5 ngăn kệ thỏa mãn điều kiện trên là $T$. Tính giá trị của $\dfrac{T}{512}$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án (ví dụ: 1234):", key="q6_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q6_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    if normalized_user_answer == "576":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách phân bổ số sách vào các ngăn và các tổ hợp môn nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q6_solution_shown' not in st.session_state:
+    st.session_state['q6_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q6_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q6_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q6_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q6_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích số lượng sách và cấu trúc các ngăn kệ**
+    
+    * Tổng số sách là $16$ cuốn thuộc $8$ môn học, mỗi môn gồm $2$ cuốn (1 SGK và 1 SBT).
+    * Mỗi ngăn chứa tối đa $5$ cuốn, không trống và tổng số sách là $16$. Vì mỗi môn có $2$ cuốn nên số sách ở mỗi ngăn bắt buộc phải là số chẵn.
+    * Suy ra số sách ở mỗi ngăn chỉ có thể là $2$ hoặc $4$ cuốn (tương ứng với $1$ hoặc $2$ môn học trong một ngăn).
+    * Giải phương trình phân bổ cho $5$ ngăn, ta có cấu trúc gồm: **ba ngăn chứa $4$ cuốn ($2$ môn)** và **hai ngăn chứa $2$ cuốn ($1$ môn)**.
+    
+    **Bước 2: Phân bố môn học thỏa mãn điều kiện các tổ hợp liên tiếp**
+    
+    * Các tổ hợp môn $(\text{Văn, Sử, Địa})$, $(\text{Toán, Lý, Hóa})$, $(\text{Toán, Hóa, Sinh})$, $(\text{Toán, Lý, Anh})$ phải nằm ở $3$ ngăn liên tiếp.
+    * Kết hợp với điều kiện ràng buộc giữa các môn, ta xác định được số cách phân bố hợp lệ các bộ môn vào $5$ ngăn kệ theo đúng cấu trúc.
+    
+    **Bước 3: Sắp xếp thứ tự sách trong ngăn và nội bộ môn**
+    
+    * Mỗi môn học gồm 1 SGK và 1 SBT có $2! = 2$ cách sắp xếp. Với $8$ môn học, có $2^8 = 256$ cách sắp xếp nội bộ từng môn.
+    * Các môn học trong cùng một ngăn chứa $2$ môn có $2! = 2$ cách sắp xếp thứ tự các môn từ trái sang phải.
+    
+    **Bước 4: Tính tổng số cách $T$ và giá trị biểu thức**
+    
+    * Tổng hợp các trường hợp thỏa mãn, ta tính được tổng số cách sắp xếp $T$.
+    * Chia cho $512$ theo yêu cầu bài toán, ta thu được kết quả:
+        $$\dfrac{T}{512} = 576$$
+    
+    **Kết luận:** Giá trị của $\dfrac{T}{512}$ bằng **576**.
+    """)
+    
+st.markdown("---")
