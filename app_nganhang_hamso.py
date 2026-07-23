@@ -4508,15 +4508,6 @@ Cho hàm số $y = \dfrac{2x - 2}{x - 2}$ có đồ thị là $(C)$. Tìm số l
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 user_answer = st.text_input("Nhập số lượng điểm M thỏa mãn (ví dụ: 2):", key="q_tiemcan_m_ans")
 
-# Chèn hình ảnh minh họa
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        # Đường dẫn ảnh đã được đồng bộ
-        st.image("images/bai_toan_3_13.PNG", width=400)
-except FileNotFoundError:
-    # Thông báo lỗi cập nhật đúng tên file
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/bai_toan_3_13.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q_tiemcan_m_check"):
