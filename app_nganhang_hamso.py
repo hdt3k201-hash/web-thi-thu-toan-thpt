@@ -3256,27 +3256,21 @@ if st.session_state.get('q48_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
-
-
-
 # Tiêu đề câu hỏi
 st.markdown(
     '<b style="color: blue;">Câu 34 (THPT Liên cấp ĐH Hồng Đức 2026)</b>',
     unsafe_allow_html=True,
 )
-
 # Nội dung câu hỏi từ hình ảnh
 st.markdown(r"""
 Cho hàm số $f(x)$ liên tục trên $\mathbb{R}$ và $\lim_{x \to -\infty} f(x) = 1$, $\lim_{x \to +\infty} f(x) = +\infty$. Có bao nhiêu giá trị nguyên của tham số $m$ thuộc đoạn $[-2020; 2020]$ để đồ thị hàm số:
 $$g(x) = \dfrac{\sqrt{x^2 + 1000x} + x}{\sqrt{2f(x) - f^2(x)} + m}$$
 có tiệm cận ngang nằm dưới đường thẳng $y = -1$.
 """)
-
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 user_answer = st.text_input(
     "Nhập số giá trị nguyên của m (ví dụ: 111):", key="q54_ans"
 )
-
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q54_check"):
   # Chuẩn hóa đầu vào
