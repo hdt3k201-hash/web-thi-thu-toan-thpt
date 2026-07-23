@@ -9496,5 +9496,190 @@ if st.session_state.get('q98_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 99 (Sở Lào Cai 2026)</b>',
+    unsafe_allow_html=True
+)
 
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một doanh nghiệp sản xuất thiết bị điện tử thông minh có quy trình vận hành và chính sách thuế như sau: Trong mỗi tháng, doanh nghiệp phải chi trả một khoản chi phí cố định 200 triệu đồng, khoản chi phí này không phụ thuộc vào số lượng sản phẩm sản xuất. Ngoài ra, để hoàn thiện mỗi sản phẩm, doanh nghiệp phải chịu chi phí biến đổi 1 triệu đồng cho mỗi sản phẩm. Mỗi sản phẩm được bán ra thị trường với giá 3 triệu đồng một sản phẩm. Nhằm khuyến khích gia tăng quy mô sản xuất, cơ quan quản lý áp dụng chính sách thuế tính theo tổng doanh thu trong tháng, với mức thuế suất giảm dần theo sản lượng. Nếu doanh nghiệp bán dưới 100 sản phẩm trong tháng, thuế suất là 10% tổng doanh thu. Nếu bán từ 100 đến dưới 300 sản phẩm, thuế suất là 8% tổng doanh thu. Nếu bán từ 300 sản phẩm trở lên, thuế suất là 5% tổng doanh thu.
+Gọi $x$ là số lượng sản phẩm doanh nghiệp sản xuất và bán ra trong một tháng ($x \in \mathbb{N}^*$). Tìm số sản phẩm tối thiểu để doanh nghiệp bắt đầu có lãi.
+""")
 
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số sản phẩm tối thiểu (ví dụ: 100):", key="q99_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q99_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 114
+    if normalized_user_answer in ["114", "114.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm lợi nhuận theo từng khoảng sản lượng dựa trên mức thuế suất tương ứng và tìm giá trị nguyên dương nhỏ nhất để lợi nhuận dương nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q99_solution_shown' not in st.session_state:
+    st.session_state['q99_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q99_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q99_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q99_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q99_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm doanh thu và tổng chi phí**
+    
+    Gọi $x$ là số lượng sản phẩm doanh nghiệp sản xuất và bán ra trong một tháng ($x \in \mathbb{N}^*$).
+    
+    *   Giá bán mỗi sản phẩm là $3$ triệu đồng, nên tổng doanh thu trong tháng là:
+        $$R(x) = 3x \text{ (triệu đồng)}$$
+    *   Chi phí cố định trong tháng là $200$ triệu đồng, chi phí biến đổi cho mỗi sản phẩm là $1$ triệu đồng, nên tổng chi phí sản xuất (chưa tính thuế) là:
+        $$C(x) = 200 + x \text{ (triệu đồng)}$$
+        
+    **Bước 2: Xét các trường hợp theo mức thuế suất**
+    
+    *   **Trường hợp 1: Nếu $0 < x < 100$**
+        *   Thuế suất là $10\%$ tổng doanh thu, số tiền thuế phải nộp là $0,1 \cdot 3x = 0,3x$ (triệu đồng).
+        *   Hàm lợi nhuận của doanh nghiệp là:
+            $$L(x) = R(x) - C(x) - \text{Thuế} = 3x - (200 + x) - 0,3x = 1,7x - 200$$
+        *   Để doanh nghiệp có lãi thì $L(x) > 0$:
+            $$1,7x - 200 > 0 \iff x > \dfrac{200}{1,7} \approx 117,65$$
+        *   Kết hợp điều kiện $0 < x < 100$, ta thấy không có giá trị $x$ nào thỏa mãn trong khoảng này.
+        
+    *   **Trường hợp 2: Nếu $100 \le x < 300$**
+        *   Thuế suất là $8\%$ tổng doanh thu, số tiền thuế phải nộp là $0,08 \cdot 3x = 0,24x$ (triệu đồng).
+        *   Hàm lợi nhuận của doanh nghiệp là:
+            $$L(x) = 3x - (200 + x) - 0,24x = 1,76x - 200$$
+        *   Để doanh nghiệp bắt đầu có lãi thì $L(x) > 0$:
+            $$1,76x - 200 > 0 \iff x > \dfrac{200}{1,76} = \dfrac{1250}{11} \approx 113,64$$
+        *   Kết hợp điều kiện $100 \le x < 300$ và $x \in \mathbb{N}^*$, số nguyên dương nhỏ nhất thỏa mãn là $x = 114$.
+        
+    *   **Trường hợp 3: Nếu $x \ge 300$**
+        *   Thuế suất là $5\%$ tổng doanh thu, số tiền thuế phải nộp là $0,05 \cdot 3x = 0,15x$ (triệu đồng).
+        *   Hàm lợi nhuận của doanh nghiệp là:
+            $$L(x) = 3x - (200 + x) - 0,15x = 1,85x - 200$$
+        *   Với $x \ge 300$, ta có:
+            $$L(x) \ge 1,85 \cdot 300 - 200 = 555 - 200 = 355 > 0$$
+            Doanh nghiệp chắc chắn có lãi ở mọi mức sản lượng từ $300$ trở lên, nhưng ta đang tìm số sản phẩm **tối thiểu** để bắt đầu có lãi, nên giá trị này không phải là nhỏ nhất.
+            
+    **Bước 3: Kết luận**
+    
+    *   So sánh các khoảng, số sản phẩm tối thiểu để doanh nghiệp bắt đầu có lãi là **$114$** sản phẩm.
+    """)
+    
+st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 100 (THPT Trần Phú - Phú Thọ 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Người ta xây dựng một cây cầu vượt giao thông hình parabol nối hai điểm có khoảng cách là $400\text{ m}$. Độ dốc của bề mặt cầu không vượt quá $10^\circ$ (độ dốc tại một điểm được xác định bởi góc giữa phương tiếp xúc với bề mặt cầu và phương ngang như hình vẽ). Tính chiều cao giới hạn từ đỉnh cầu đến mặt đường (làm tròn kết quả đến chữ số thập phân thứ nhất).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập chiều cao giới hạn từ đỉnh cầu đến mặt đường (m) (ví dụ: 10.5):", key="q100_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_31b881.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_31b881.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q100_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 17.6
+    if normalized_user_answer in ["17.6", "17,6"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập phương trình parabol, sử dụng điều kiện độ dốc (đạo hàm tại chân cầu bằng $\\tan 10^\\circ$) để tìm chiều cao lớn nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q100_solution_shown' not in st.session_state:
+    st.session_state['q100_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q100_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q100_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q100_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q100_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chọn hệ trục tọa độ và thiết lập phương trình parabol**
+    
+    * Chọn hệ trục tọa độ $Oxy$ sao cho đỉnh của parabol trùng với gốc tọa độ $O(0;0)$, trục đối xứng là trục tung $Oy$, và mặt đường (đường nối hai chân cầu $A, B$) nằm ngang phía dưới.
+    * Vì khoảng cách giữa hai điểm $A$ và $B$ là $400\text{ m}$ và đối xứng qua đỉnh, nên hoành độ của $A$ và $B$ lần lượt là $x_A = -200$ và $x_B = 200$.
+    * Gọi $H$ là chiều cao từ đỉnh cầu đến mặt đường. Khi đó tọa độ mặt đường tương ứng với đường thẳng $y = -H$.
+    * Phương trình của parabol có dạng: $y = -ax^2$ (với $a > 0$).
+    * Vì parabol đi qua điểm $B(200; -H)$, ta có:
+        $$-H = -a(200)^2 \iff H = 40000a$$
+    
+    **Bước 2: Sử dụng điều kiện độ dốc của bề mặt cầu**
+    
+    * Độ dốc tại một điểm trên bề mặt cầu được xác định bởi góc $\alpha$ giữa phương tiếp tuyến tại điểm đó và phương ngang, với $\tan \alpha = |y'|$.
+    * Đạo hàm của hàm số là: $y' = -2ax$.
+    * Độ dốc lớn nhất của cầu đạt được tại hai điểm chân cầu $A$ và $B$ (tương ứng với $x = -200$ và $x = 200$):
+        $$\tan \alpha_{\max} = |-2a(\pm 200)| = 400a$$
+    * Theo đề bài, độ dốc không vượt quá $10^\circ$, tức là:
+        $$400a \le \tan 10^\circ \iff a \le \dfrac{\tan 10^\circ}{400}$$
+        
+    **Bước 3: Tính chiều cao lớn nhất từ đỉnh cầu đến mặt đường**
+    
+    * Để chiều cao $H$ là lớn nhất, hệ số $a$ phải đạt giá trị lớn nhất ($a = \dfrac{\tan 10^\circ}{400}$).
+    * Do đó, chiều cao giới hạn lớn nhất là:
+        $$H_{\max} = 40000 \cdot \dfrac{\tan 10^\circ}{400} = 100 \tan 10^\circ$$
+    * Tính toán giá trị số thực:
+        $$H_{\max} = 100 \cdot \tan 10^\circ \approx 100 \cdot 0,176327 \approx 17,6327 \text{ m}$$
+        
+    **Bước 4: Làm tròn kết quả**
+    
+    * Làm tròn kết quả đến chữ số thập phân thứ nhất, ta được **$17,6$**.
+    
+    **Kết luận:** Chiều cao giới hạn từ đỉnh cầu đến mặt đường là **$17,6$** mét.
+    """)
+    
+st.markdown("---")
