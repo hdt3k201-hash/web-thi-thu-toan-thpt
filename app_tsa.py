@@ -713,6 +713,24 @@ $$S = \sin^2 10^\circ + \sin^2 20^\circ + \sin^2 30^\circ + \dots + \sin^2 170^\
                         key="q20_3",
                     )
 
+            # ==================== CÂU 21 ====================
+            with st.container(border=True):
+                st.markdown(
+                    """
+                    <div class="question-title">
+                        <b>Câu 21:</b> <span class="tag-badge">[Trả lời ngắn]</span>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+                # 1. ĐỀ BÀI
+                st.markdown(
+                    r"""Trong cơ khí, cơ cấu tay quay - con trượt (slider-crank mechanism) được sử dụng để biến đổi chuyển động quay thành chuyển động tịnh tiến (ví dụ: piston trong động cơ đốt trong). Xét một cơ cấu với tay quay OA có bán kính $r=5\text{ cm}$ quay đều quanh tâm O. Thanh truyền AB có chiều dài $l=13\text{ cm}$ nối từ điểm A trên tay quay đến piston B chuyển động dọc theo trục Ox. 
+                    Gọi $\alpha$ là góc quay của tay quay so với trục Ox. Khoảng cách từ tâm O đến piston B được cho bởi công thức $x(\alpha) = r\cos\alpha + \sqrt{l^2-r^2\sin^2\alpha}$. Tính "Hành trình của piston" (được định nghĩa là khoảng cách giữa vị trí xa nhất và gần nhất của piston B so với tâm O).
+                    """
+                )
+                q21_ans = st.text_input("Nhập kết quả dạng số:", key="q21")
+
             # ================= SUBMIT BUTTON =================
             submit_btn = st.form_submit_button(
                 f"🚀 NỘP BÀI {exam_name}", type="primary", use_container_width=True
@@ -879,6 +897,17 @@ $$S = \sin^2 10^\circ + \sin^2 20^\circ + \sin^2 30^\circ + \dots + \sin^2 170^\
             """,
             unsafe_allow_html=True,
         )
+
+        if q21_ans:
+                    try:
+                        # Hành trình = (r + l) - (l - r) = 2r = 2 * 5 = 10 cm
+                        user_val = float(q21_ans.strip())
+                        if abs(user_val - 10.0) < 1e-3:
+                            st.success("✅ Chính xác! (+1.0 điểm)")
+                        else:
+                            st.error("❌ Chưa chính xác. (0 điểm)")
+                    except ValueError:
+                        st.warning("⚠️ Vui lòng nhập vào một số hợp lệ.")
 
         st.markdown("---")
         st.subheader(f"📖 LỜI GIẢI CHI TIẾT - {exam_name}")
@@ -1111,6 +1140,15 @@ $\Rightarrow$ **Đáp số cần điền: 9.**
 
 $\Rightarrow$ **Kết quả:** 1) `[-5; 5]`, 2) `[-3; 1]`, 3) `[-5; 3]`.
 """)
+            with st.expander("📖Lời giải Câu 21: "):
+                    st.markdown(
+                        r"""
+- Vị trí của piston được xác định bởi hàm số: $x(\alpha) = 5\cos\alpha + \sqrt{13^2 - 5^2\sin^2\alpha}$
+- Khi piston ở vị trí xa nhất (điểm chết ngoài), $\alpha = 0^\circ \implies x_{\max} = 5 + \sqrt{169} = 5 + 13 = 18\text{ cm}$.
+- Khi piston ở vị trí gần nhất (điểm chết trong), $\alpha = 180^\circ \implies x_{\min} = -5 + \sqrt{169} = -5 + 13 = 8\text{ cm}$.
+- Hành trình của piston là: $H = x_{\max} - x_{\min} = 18 - 8 = 10\text{ cm}$ (hoặc nhanh chóng suy ra $H = 2r = 10\text{ cm}$).
+"""
+                    )
 
 
 
