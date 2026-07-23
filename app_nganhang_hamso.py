@@ -4705,7 +4705,7 @@ st.markdown("---")
 
 # Tiêu đề câu hỏi
 st.markdown(
-    '<b style="color: blue;">Câu 48 (ĐGNL - TD)</b>',
+    '<b style="color: blue;">Câu 49 (ĐGNL - TD)</b>',
     unsafe_allow_html=True
 )
 
