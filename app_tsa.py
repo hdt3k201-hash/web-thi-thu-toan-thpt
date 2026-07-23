@@ -418,6 +418,172 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
                 )
                 q9_ans = st.text_input("Nhập kết quả dạng số (Ví dụ: 8):", key="q9")
 
+
+            # ================= CÂU 10 =================
+            with st.container(border=True):
+                st.markdown(
+                    """
+                    <div class="question-title">
+                        <b>Câu 10:</b> <span class="tag-badge">[Kéo thả / Chọn phương án]</span>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Cho biểu thức lượng giác $P = \sin\left(x + \frac{\pi}{6}\right)\cos\left(x - \frac{\pi}{6}\right)$.[cite: 2] Kéo và thả các kết quả đúng vào các vị trí 1 và 2 để hoàn thiện quá trình biến đổi đại số:[cite: 2]"""
+                )
+                st.markdown(
+                    """
+                    <div style="background-color: #f8f9fa; border: 1.5px solid #dcdfe6; border-radius: 8px; padding: 12px 16px; margin: 12px 0;">
+                        <div style="font-weight: bold; color: #1e88e5; margin-bottom: 8px; font-size: 14px;">🎯 KHUNG PHƯƠNG ÁN LỰA CHỌN:</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">1/2 sin(2x) + √3/4</span>
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">1/2 sin(2x) + √3/2</span>
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">1/2 cos(2x) + √3/4</span>
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">(2+√3)/4</span>
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">(1+√3)/2</span>
+                        </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+                
+                col1, col2 = st.columns(2)
+                with col1:
+                    q10_1 = st.selectbox(
+                        "📌 1) Rút gọn hoàn toàn biểu thức P, ta thu được kết quả: P =",
+                        ["-- Chọn --", "1/2 sin(2x) + √3/4", "1/2 sin(2x) + √3/2", "1/2 cos(2x) + √3/4", "(2+√3)/4", "(1+√3)/2"],
+                        key="q10_1",
+                    )
+                with col2:
+                    q10_2 = st.selectbox(
+                        "📌 2) Giá trị lớn nhất có thể đạt được của biểu thức P là: P_max =",
+                        ["-- Chọn --", "1/2 sin(2x) + √3/4", "1/2 sin(2x) + √3/2", "1/2 cos(2x) + √3/4", "(2+√3)/4", "(1+√3)/2"],
+                        key="q10_2",
+                    )
+
+            # ================= CÂU 11 =================
+            with st.container(border=True):
+                st.markdown(
+                    r"""<div class="question-title"><b>Câu 11:</b> <span class="tag-badge">[Trả lời ngắn]</span></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Đếm số lượng các nghiệm nguyên x thuộc đoạn $[1; 2026]$ thỏa mãn phương trình lượng giác: $\cos\left(\frac{\pi x}{3}\right) = \frac{1}{2}$.[cite: 2]"""
+                )
+                q11_ans = st.text_input("Nhập số lượng nghiệm (Ví dụ: 100):", key="q11")
+
+            # ================= CÂU 12 =================
+            with st.container(border=True):
+                st.markdown(
+                    r"""<div class="question-title"><b>Câu 12:</b> <span class="tag-badge">[Đúng/Sai]</span></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(r"""Cho phương trình lượng giác: $(2\cos x + 1)(\cos x - m) = 0$.[cite: 2] Xét tính đúng/sai của các mệnh đề sau:[cite: 2]""")
+                q12_a = st.radio(
+                    r"A. Phương trình luôn có ít nhất **2** nghiệm phân biệt thuộc khoảng $(0; 2\pi)$ với mọi giá trị của tham số $m \in \mathbb{R}$.",
+                    ["Đúng", "Sai"],
+                    key="q12_1",
+                    horizontal=True,
+                    index=None
+                )
+                q12_b = st.radio(
+                    r"B. Khi $m = 1$, phương trình có đúng **3** nghiệm phân biệt trên đoạn $[0; 2\pi]$.",
+                    ["Đúng", "Sai"],
+                    key="q12_2",
+                    horizontal=True,
+                    index=None
+                )
+                q12_c = st.radio(
+                    r"C. Điều kiện cần và đủ để phương trình có đúng **4** nghiệm phân biệt trên đoạn $[-\pi; \pi]$ là $m \in (-1; 1) \setminus \{-\frac{1}{2}\}$.",
+                    ["Đúng", "Sai"],
+                    key="q12_3",
+                    horizontal=True,
+                    index=None
+                )
+                q12_d = st.radio(
+                    r"D. Giả sử $m = -\frac{1}{2}$, tổng tất cả các nghiệm của phương trình trên đoạn $[0; 10\pi]$ là $25\pi$.",
+                    ["Đúng", "Sai"],
+                    key="q12_4",
+                    horizontal=True,
+                    index=None
+                )
+
+            # ================= CÂU 13 =================
+            with st.container(border=True):
+                st.markdown(
+                    r"""<div class="question-title"><b>Câu 13:</b> <span class="tag-badge">[Trắc nghiệm 4 lựa chọn]</span></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Có bao nhiêu giá trị nguyên của tham số $m \in [-10; 10]$ để phương trình $m\sin x + (m+1)\cos x = m+2$ có nghiệm thực?[cite: 2]"""
+                )
+                q13_ans = st.radio(
+                    "Chọn phương án đúng:",
+                    [
+                        r"A. 17",
+                        r"B. 18",
+                        r"C. 19",
+                        r"D. 20",
+                    ],
+                    key="q13",
+                    index=None,
+                )
+
+            # ================= CÂU 14 =================
+            with st.container(border=True):
+                st.markdown(
+                    """
+                    <div class="question-title">
+                        <b>Câu 14:</b> <span class="tag-badge">[Kéo thả / Chọn phương án]</span>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Xét phương trình lượng giác $\sin 2x = 0$ trên đoạn $[0; 10\pi]$.[cite: 2] Kéo và thả các giá trị số thích hợp để hoàn thiện các kết luận dưới đây liên quan đến tính chất của tập nghiệm.[cite: 2]"""
+                )
+                st.markdown(
+                    """
+                    <div style="background-color: #f8f9fa; border: 1.5px solid #dcdfe6; border-radius: 8px; padding: 12px 16px; margin: 12px 0;">
+                        <div style="font-weight: bold; color: #1e88e5; margin-bottom: 8px; font-size: 14px;">🎯 KHUNG PHƯƠNG ÁN LỰA CHỌN:</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">20</span>
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">21</span>
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">100π</span>
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">105π</span>
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">210π</span>
+                        </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+                
+                col1, col2 = st.columns(2)
+                with col1:
+                    q14_1 = st.selectbox(
+                        "📌 1) Số lượng các nghiệm phân biệt của phương trình là:",
+                        ["-- Chọn --", "20", "21", "100π", "105π", "210π"],
+                        key="q14_1",
+                    )
+                with col2:
+                    q14_2 = st.selectbox(
+                        "📌 2) Tổng của tất cả các nghiệm đó có giá trị bằng:",
+                        ["-- Chọn --", "20", "21", "100π", "105π", "210π"],
+                        key="q14_2",
+                    )
+
+            # ================= CÂU 15 =================
+            with st.container(border=True):
+                st.markdown(
+                    r"""<div class="question-title"><b>Câu 15:</b> <span class="tag-badge">[Trả lời ngắn]</span></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Số giờ ánh sáng mặt trời trong ngày tại một thành phố được mô hình hóa xấp xỉ bởi hàm số $H(t) = 12 + 3\sin\left[\frac{2\pi}{365}(t - 80)\right]$, trong đó H là số giờ chiếu sáng và t là số thứ tự của ngày trong năm $(1 \le t \le 365)$.[cite: 2] Một loại cây công nghiệp đặc biệt chỉ có thể sinh trưởng tốt nếu thời gian chiếu sáng trong ngày lớn hơn **13,5 giờ**.[cite: 2] Hỏi trong một năm không nhuận, có bao nhiêu ngày cây có thể sinh trưởng tốt?[cite: 2]"""
+                )
+                q15_ans = st.text_input("Nhập kết quả (Ví dụ: 50):", key="q15")
+
             # ================= SUBMIT BUTTON =================
             submit_btn = st.form_submit_button(
                 f"🚀 NỘP BÀI {exam_name}", type="primary", use_container_width=True
@@ -492,6 +658,53 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
             f"""
             <div style="background-color: #ffebee; border: 2px solid #b71c1c; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
                 <h2 style="color: #b71c1c; margin: 0;">TỔNG ĐIỂM {exam_name}: {total_score:.2f} / 10.0</h2>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        # Chấm Câu 10
+        if (
+            st.session_state.get("q10_1") == "1/2 sin(2x) + √3/4"
+            and st.session_state.get("q10_2") == "(2+√3)/4"
+        ):
+            total_score += 1.0
+            
+        # Chấm Câu 11
+        if st.session_state.get("q11", "").strip() == "675":
+            total_score += 1.0
+
+        # Chấm Câu 12
+        c12_score = 0
+        if st.session_state.get("q12_1") == "Đúng": c12_score += 1
+        if st.session_state.get("q12_2") == "Sai": c12_score += 1
+        if st.session_state.get("q12_3") == "Đúng": c12_score += 1
+        if st.session_state.get("q12_4") == "Sai": c12_score += 1
+
+        if c12_score == 4: total_score += 1.0
+        elif c12_score == 3: total_score += 0.5
+        elif c12_score == 2: total_score += 0.25
+        
+        # Chấm Câu 13
+        if st.session_state.get("q13") and st.session_state.get("q13").startswith("B."):
+            total_score += 1.0
+
+        # Chấm Câu 14
+        if (
+            st.session_state.get("q14_1") == "21"
+            and st.session_state.get("q14_2") == "105π"
+        ):
+            total_score += 1.0
+            
+        # Chấm Câu 15
+        if st.session_state.get("q15", "").strip() == "122":
+            total_score += 1.0
+
+        # Hiển thị điểm số (Cho phần này)
+        st.markdown(
+            f"""
+            <div style="background-color: #ffebee; border: 2px solid #b71c1c; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
+                <h2 style="color: #b71c1c; margin: 0;">TỔNG ĐIỂM {exam_name}: {total_score:.2f} / 6.0</h2>
             </div>
             """,
             unsafe_allow_html=True,
@@ -605,6 +818,77 @@ $\Rightarrow$ **Chọn đáp án A.**[cite: 1]
 
 $\Rightarrow$ **Đáp số cần điền: 8.**[cite: 1]
 """)
+            with st.expander("🔍 Lời giải Câu 10: Rút gọn biểu thức lượng giác"):
+            st.markdown(r"""
+* Sử dụng công thức biến đổi tích thành tổng $\sin a \cos b = \frac{1}{2}[\sin(a+b) + \sin(a-b)]$.[cite: 2] 
+* Với $a = x + \frac{\pi}{6}$ và $b = x - \frac{\pi}{6}$, ta khai triển $P$ như sau: $P = \frac{1}{2}\left[\sin\left(x + \frac{\pi}{6} + x - \frac{\pi}{6}\right) + \sin\left(x + \frac{\pi}{6} - \left(x - \frac{\pi}{6}\right)\right)\right]$.[cite: 2]
+* Rút gọn các số hạng đồng dạng ở góc bên trong: $P = \frac{1}{2}\left[\sin 2x + \sin\left(\frac{\pi}{3}\right)\right] = \frac{1}{2}\sin 2x + \frac{\sqrt{3}}{4}$.[cite: 2]
+* Giá trị lớn nhất của biểu thức này dựa trên tính chất $\sin 2x \le 1$ với mọi số thực x.[cite: 2] Suy ra: $P \le \frac{1}{2} \cdot 1 + \frac{\sqrt{3}}{4} = \frac{2+\sqrt{3}}{4}$.[cite: 2]
+* Dấu bằng xảy ra khi $\sin 2x = 1 \Leftrightarrow 2x = \frac{\pi}{2} + k2\pi$, tức là $x = \frac{\pi}{4} + k\pi$.[cite: 2]
+
+$\Rightarrow$ **Kết quả:** 1) $\frac{1}{2}\sin 2x + \frac{\sqrt{3}}{4}$; 2) $\frac{2+\sqrt{3}}{4}$.[cite: 2]
+""")
+
+        with st.expander("🔍 Lời giải Câu 11: Đếm số nghiệm nguyên"):
+            st.markdown(r"""
+* Phương trình $\cos\left(\frac{\pi x}{3}\right) = \frac{1}{2}$ sẽ cho ta hai họ nghiệm lượng giác: $\frac{\pi x}{3} = \frac{\pi}{3} + k2\pi$ hoặc $\frac{\pi x}{3} = -\frac{\pi}{3} + k2\pi \quad (k \in \mathbb{Z})$.[cite: 2]
+* Rút gọn $\pi$ và nhân chéo 3 lên, ta cô lập được x: $x = 1 + 6k$ hoặc $x = -1 + 6k$.[cite: 2]
+* Ép điều kiện $x \in [1; 2026]$ cho từng họ nghiệm:
+  * **Với họ $x = 6k + 1$:** $1 \le 6k + 1 \le 2026 \Leftrightarrow 0 \le 6k \le 2025 \Leftrightarrow 0 \le k \le 337,5$.[cite: 2] Do k nguyên, k nhận các giá trị từ 0 đến 337, tương ứng tạo ra **338** nghiệm.[cite: 2]
+  * **Với họ $x = 6k - 1$:** $1 \le 6k - 1 \le 2026 \Leftrightarrow 2 \le 6k \le 2027 \Leftrightarrow 0,33 \le k \le 337,8$.[cite: 2] Lúc này k nhận các giá trị nguyên từ 1 đến 337, sinh ra thêm **337** nghiệm nữa.[cite: 2]
+* Vì hai họ nghiệm này rời nhau hoàn toàn, tổng số nghiệm nguyên hợp lệ là $338 + 337 = 675$.[cite: 2]
+
+$\Rightarrow$ **Đáp số cần điền: 675.**[cite: 2]
+""")
+
+        with st.expander("🔍 Lời giải Câu 12: Phương trình tích chứa tham số"):
+            st.markdown(r"""
+Cấu trúc của phương trình tích đã cho: $(2\cos x + 1)(\cos x - m) = 0 \Leftrightarrow \cos x = -\frac{1}{2} \quad (1)$ hoặc $\cos x = m \quad (2)$.[cite: 2]
+
+* **A. Đúng.** Phương trình (1) là phương trình hằng số, luôn cho ra đúng 2 nghiệm $x = \frac{2\pi}{3}$ và $x = \frac{4\pi}{3}$ trên khoảng $(0; 2\pi)$.[cite: 2] Hệ phương trình luôn có tối thiểu 2 nghiệm này bất chấp m.[cite: 2]
+* **B. Sai.** Khi $m = 1$, pt (2) trở thành $\cos x = 1$.[cite: 2] Trên đoạn $[0; 2\pi]$, nó sinh ra 2 nghiệm là $x = 0$ và $x = 2\pi$.[cite: 2] Kết hợp với 2 nghiệm của pt (1), tổng cộng ta có 4 nghiệm phân biệt, không phải 3.[cite: 2]
+* **C. Đúng.** Trên đoạn $[-\pi; \pi]$, pt (1) đóng góp 2 nghiệm là $\pm \frac{2\pi}{3}$.[cite: 2] Để có đúng 4 nghiệm, pt (2) phải sinh ra thêm đúng 2 nghiệm mới.[cite: 2] Điều này xảy ra khi $-1 < m < 1$ và $m \ne -\frac{1}{2}$ để tránh trùng nghiệm.[cite: 2]
+* **D. Sai.** Khi $m = -\frac{1}{2}$, phương trình trở thành nghiệm kép $\cos x = -\frac{1}{2}$.[cite: 2] Trên đoạn $[0; 2\pi]$, tổng 2 nghiệm là $\frac{2\pi}{3} + \frac{4\pi}{3} = 2\pi$.[cite: 2] Trên đoạn $[0; 10\pi]$ tương ứng với 5 vòng tròn tuần hoàn, tổng các nghiệm sẽ là: $(2\pi) + (2\pi + 4\pi) + (2\pi + 8\pi) + (2\pi + 12\pi) + (2\pi + 16\pi) = 50\pi$, chứ không phải $25\pi$.[cite: 2]
+""")
+
+        with st.expander("🔍 Lời giải Câu 13: Phương trình lượng giác bậc nhất"):
+            st.markdown(r"""
+* Đây là phương trình dạng $a\sin x + b\cos x = c$.Điều kiện có nghiệm là $a^2 + b^2 \ge c^2$.
+* Áp dụng vào bài toán: $m^2 + (m+1)^2 \ge (m+2)^2$.
+* Khai triển và rút gọn: $m^2 + m^2 + 2m + 1 \ge m^2 + 4m + 4 \Leftrightarrow m^2 - 2m - 3 \ge 0$.
+* Giải bất phương trình: $m \le -1$ hoặc $m \ge 3$.[cite: 2]
+* Với giới hạn $m \in [-10; 10]$ và $m \in \mathbb{Z}$, ta liệt kê được: $m \in \{-10; -9; ...; -1\} \cup \{3; 4; ...; 10\}$.[cite: 2]
+* Số lượng phần tử âm là 10, dương là 8. Tổng cộng có $10 + 8 = 18$ giá trị thỏa mãn.[cite: 2]
+
+$\Rightarrow$ **Chọn đáp án B.**
+""")
+
+        with st.expander("🔍 Lời giải Câu 14: Phân tích tập nghiệm phương trình cơ bản"):
+            st.markdown(r"""
+* Giải phương trình: $\sin 2x = 0 \Leftrightarrow 2x = k\pi \Leftrightarrow x = k\frac{\pi}{2} \quad (k \in \mathbb{Z})$.[cite: 2]
+* Để nghiệm nằm trong đoạn $[0; 10\pi]$: $0 \le k\frac{\pi}{2} \le 10\pi \Leftrightarrow 0 \le \frac{k}{2} \le 10 \Leftrightarrow 0 \le k \le 20$.[cite: 2]
+* Với $k$ từ 0 đến 20, ta đếm được $20 - 0 + 1 = 21$ nghiệm hợp lệ.[cite: 2]
+* Tổng các nghiệm này là: $S = 0 + \frac{\pi}{2} + \frac{2\pi}{2} + ... + \frac{20\pi}{2} = \frac{\pi}{2}(0 + 1 + 2 + ... + 20)$.[cite: 2]
+* Sử dụng công thức cấp số cộng (Gauss): $S = \frac{\pi}{2} \cdot \frac{20 \cdot 21}{2} = \frac{\pi}{2} \cdot 210 = 105\pi$.[cite: 2]
+
+$\Rightarrow$ **Kết quả:** 1) 21; 2) $105\pi$.[cite: 2]
+""")
+
+        with st.expander("🔍 Lời giải Câu 15: Mô hình ánh sáng mặt trời"):
+            st.markdown(r"""
+* Yêu cầu bài toán được dịch sang bất phương trình: $H(t) > 13,5 \Leftrightarrow 12 + 3\sin\left[\frac{2\pi}{365}(t - 80)\right] > 13,5$.
+* Rút gọn hàm lượng giác: $\sin\left[\frac{2\pi}{365}(t - 80)\right] > 0,5$.
+* Trên cung tròn lượng giác, hàm sin nhận giá trị lớn hơn $1/2$ trong giới hạn góc từ $\frac{\pi}{6}$ đến $\frac{5\pi}{6}$.
+* Ta thiết lập: $\frac{\pi}{6} < \frac{2\pi}{365}(t - 80) < \frac{5\pi}{6}$.
+* Triệt tiêu $\pi$ và nhân chéo đại lượng $\frac{365}{2}$ lên: $\frac{365}{12} < t - 80 < \frac{5 \cdot 365}{12} \Leftrightarrow 30,41 < t - 80 < 152,08$.
+* Cộng thêm 80 vào ba vế: $110,41 < t < 232,08$.
+* Vì t là số nguyên, các ngày thỏa mãn là: $111 \le t \le 232$.
+* Tổng số ngày là $232 - 111 + 1 = 122$ ngày.
+
+$\Rightarrow$ **Đáp số cần điền: 122.**
+""")
+
+
 
         
 
