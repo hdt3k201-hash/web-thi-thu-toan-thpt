@@ -9683,3 +9683,185 @@ if st.session_state.get('q100_solution_shown') and st.session_state.get('logged_
     """)
     
 st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 101 (Sở Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Nếu một doanh nghiệp sản xuất $x$ sản phẩm trong một tháng ($x \in \mathbb{N}; 1 \le x \le 300$) thì doanh thu nhận được khi bán hết số sản phẩm là $F(x) = x^3 - 1999x^2 + 1001000x + 250000$ (đồng). Trong đó, chi phí vận hành máy móc bình quân cho mỗi sản phẩm khi sản xuất $x$ sản phẩm là $G(x) = 300 + \dfrac{100}{x}$ (nghìn đồng), chi phí mua nguyên vật liệu để sản xuất $x$ sản phẩm là $H(x) = 2x^3 + 10000x - 50000$ (đồng). Doanh nghiệp cần sản xuất bao nhiêu sản phẩm để lợi nhuận thu được là lớn nhất?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số sản phẩm để lợi nhuận lớn nhất (ví dụ: 120):", key="q101_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q101_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 155
+    if normalized_user_answer in ["155", "155.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập tổng chi phí, hàm lợi nhuận, tính đạo hàm và tìm giá trị nguyên $x$ thỏa mãn để lợi nhuận đạt giá trị lớn nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q101_solution_shown' not in st.session_state:
+    st.session_state['q101_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q101_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q101_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q101_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q101_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính tổng chi phí sản xuất $C(x)$**
+    
+    * Chi phí vận hành máy móc bình quân cho mỗi sản phẩm là $G(x) = 300 + \dfrac{100}{x}$ (nghìn đồng).
+    * Tổng chi phí vận hành máy móc cho $x$ sản phẩm là:
+        $$x \cdot G(x) = x \left(300 + \dfrac{100}{x}\right) = 300x + 100 \text{ (nghìn đồng)} = 300000x + 100000 \text{ (đồng)}$$
+    * Chi phí mua nguyên vật liệu để sản xuất $x$ sản phẩm là:
+        $$H(x) = 2x^3 + 10000x - 50000 \text{ (đồng)}$$
+    * Tổng chi phí sản xuất $C(x)$ trong tháng (tính bằng đồng) là:
+        $$C(x) = (300000x + 100000) + (2x^3 + 10000x - 50000)$$
+        $$C(x) = 2x^3 + 310000x + 50000 \text{ (đồng)}$$
+    
+    **Bước 2: Thiết lập hàm lợi nhuận $L(x)$**
+    
+    * Doanh thu thu được khi bán hết số sản phẩm là:
+        $$F(x) = x^3 - 1999x^2 + 1001000x + 250000 \text{ (đồng)}$$
+    * Hàm lợi nhuận của doanh nghiệp là:
+        $$L(x) = F(x) - C(x)$$
+        $$L(x) = (x^3 - 1999x^2 + 1001000x + 250000) - (2x^3 + 310000x + 50000)$$
+        $$L(x) = -x^3 - 1999x^2 + 691000x + 200000 \quad \text{với } x \in \mathbb{N}, 1 \le x \le 300$$
+    
+    **Bước 3: Khảo sát hàm số để tìm giá trị lớn nhất**
+    
+    * Tính đạo hàm của hàm lợi nhuận:
+        $$L'(x) = -3x^2 - 3998x + 691000$$
+    * Cho $L'(x) = 0$:
+        $$-3x^2 - 3998x + 691000 = 0 \iff 3x^2 + 3998x - 691000 = 0$$
+    * Phương trình có nghiệm dương:
+        $$x = \dfrac{-3998 + \sqrt{3998^2 - 4 \cdot 3 \cdot (-691000)}}{6} = \dfrac{-3998 + \sqrt{24276004}}{6} \approx 154,844$$
+    
+    **Bước 4: Kiểm tra các giá trị nguyên để tìm lợi nhuận lớn nhất**
+    
+    * Vì $x \in \mathbb{N}$ và hàm số đồng biến trước nghiệm và nghịch biến sau nghiệm, ta kiểm tra các giá trị nguyên lân cận là $x = 154$ và $x = 155$:
+        * Với $x = 154$: 
+          $$L(154) = -154^3 - 1999 \cdot 154^2 + 691000 \cdot 154 + 200000 = 55.554.452 \text{ (đồng)}$$
+        * Với $x = 155$: 
+          $$L(155) = -155^3 - 1999 \cdot 155^2 + 691000 \cdot 155 + 200000 = 55.555.150 \text{ (đồng)}$$
+    * So sánh các giá trị, ta thấy $L(155) > L(154)$. Do đó, số sản phẩm cần sản xuất để lợi nhuận đạt giá trị lớn nhất là $x = 155$.
+    
+    **Kết luận:** Số sản phẩm cần sản xuất để lợi nhuận thu được là lớn nhất là **$155$**.
+    """)
+    
+st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 102 (Sở Hà Tĩnh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Giả sử số lượng tế bào của một quần thể nấm men tại môi trường nuôi cấy trong phòng thí nghiệm được mô hình hóa bằng hàm số $P(t) = \dfrac{2a}{b + 3e^{-0,75t}}$ (với $a, b \in \mathbb{R}$), trong đó thời gian $t$ được tính bằng giờ. Đạo hàm của hàm số $y = P(t)$ biểu thị tốc độ sinh trưởng của nấm men (tính bằng tế bào/giờ) tại thời điểm $t$ (giờ). Tại thời điểm ban đầu $t = 0$ quần thể có $24$ tế bào và tốc độ sinh trưởng là $6$ tế bào/giờ. Sau một thời gian về lâu dài thì số lượng tế bào của quần thể nấm men tiến về giá trị bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng tế bào giới hạn (ví dụ: 11):", key="q102_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q102_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 36
+    if normalized_user_answer in ["36", "36.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy sử dụng điều kiện tại $t = 0$ cho hàm số và đạo hàm để tìm $a, b$, sau đó tính giới hạn khi $t \to +\infty$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q102_solution_shown' not in st.session_state:
+    st.session_state['q102_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q102_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q102_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q102_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q102_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính đạo hàm của hàm số $P(t)$**
+    
+    *   Hàm số cho bởi: $P(t) = \dfrac{2a}{b + 3e^{-0,75t}}$.
+    *   Tốc độ sinh trưởng là đạo hàm của hàm số:
+        $$P'(t) = \dfrac{-2a \cdot (b + 3e^{-0,75t})'}{(b + 3e^{-0,75t})^2} = \dfrac{-2a \cdot 3 \cdot (-0,75)e^{-0,75t}}{(b + 3e^{-0,75t})^2} = \dfrac{4,5a e^{-0,75t}}{(b + 3e^{-0,75t})^2}$$
+    
+    **Bước 2: Thiết lập hệ phương trình tìm $a$ và $b$**
+    
+    *   Tại thời điểm ban đầu $t = 0$, quần thể có $24$ tế bào:
+        $$P(0) = 24 \implies \dfrac{2a}{b + 3e^{0}} = 24 \implies \dfrac{2a}{b + 3} = 24 \implies 2a = 24(b + 3) \quad (1)$$
+    *   Tại thời điểm $t = 0$, tốc độ sinh trưởng là $6$ tế bào/giờ:
+        $$P'(0) = 6 \implies \dfrac{4,5a e^{0}}{(b + 3)^2} = 6 \implies \dfrac{4,5a}{(b + 3)^2} = 6 \quad (2)$$
+    
+    **Bước 3: Giải hệ phương trình tìm giá trị của $a$ và $b$**
+    
+    *   Từ phương trình $(1)$, suy ra $a = 12(b + 3)$. Thay vào phương trình $(2)$:
+        $$\dfrac{4,5 \cdot 12(b + 3)}{(b + 3)^2} = 6 \implies \dfrac{54}{b + 3} = 6$$
+        $$b + 3 = \dfrac{54}{6} = 9 \implies b = 6$$
+    *   Thay $b = 6$ vào phương trình $(1)$, ta được:
+        $$2a = 24(6 + 3) = 24 \cdot 9 = 216 \implies a = 108$$
+    *   Vậy hàm số biểu diễn số lượng tế bào là:
+        $$P(t) = \dfrac{2 \cdot 108}{6 + 3e^{-0,75t}} = \dfrac{216}{6 + 3e^{-0,75t}}$$
+    
+    **Bước 4: Tính giới hạn khi $t \to +\infty$**
+    
+    *   Sau một thời gian về lâu dài, tức là khi $t \to +\infty$:
+        $$\lim_{t \to +\infty} e^{-0,75t} = 0$$
+    *   Số lượng tế bào của quần thể tiến về giá trị:
+        $$\lim_{t \to +\infty} P(t) = \lim_{t \to +\infty} \dfrac{216}{6 + 3e^{-0,75t}} = \dfrac{216}{6 + 3 \cdot 0} = \dfrac{216}{6} = 36$$
+    
+    **Kết luận:** Sau một thời gian về lâu dài, số lượng tế bào của quần thể nấm men tiến về giá trị **$36$**.
+    """)
+    
+st.markdown("---")
