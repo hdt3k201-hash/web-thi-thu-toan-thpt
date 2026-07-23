@@ -2870,10 +2870,10 @@ try:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         # Đường dẫn ảnh đã được đồng bộ
-        st.image("images/ltt_nk2026.PNG", width=400)
+        st.image("images/lttnk_2026.PNG", width=400)
 except FileNotFoundError:
     # Thông báo lỗi cập nhật đúng tên file
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/ltt_nk2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/lttnk_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 
 # Nút kiểm tra Đúng/Sai
