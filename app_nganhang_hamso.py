@@ -5677,3 +5677,103 @@ if st.session_state.get('q_bt2_solution_shown') and st.session_state.get('logged
     """)
     
 st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 59 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Có bao nhiêu giá trị nguyên của tham số $m \in [-2018; 2018]$ để hàm số 
+$$y = \sqrt{x^2 + 1} - mx - 1$$ 
+đồng biến trên $(-\infty; +\infty)$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số giá trị nguyên của m :", key="q3_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q3_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 2018
+    if normalized_user_answer == "2018":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tính đạo hàm y' và dùng điều kiện m <= min g(x) trên R nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q3_solution_shown' not in st.session_state:
+    st.session_state['q3_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q3_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q3_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q3_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q3_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tập xác định và Tính đạo hàm**
+    
+    Tập xác định: $D = \mathbb{R}$.
+    
+    Đạo hàm của hàm số:
+    $$y' = \dfrac{(x^2 + 1)'}{2\sqrt{x^2 + 1}} - m = \dfrac{2x}{2\sqrt{x^2 + 1}} - m = \dfrac{x}{\sqrt{x^2 + 1}} - m$$
+    
+    **Bước 2: Thiết lập điều kiện để hàm số đồng biến trên $(-\infty; +\infty)$**
+    
+    Hàm số đồng biến trên $\mathbb{R} \Leftrightarrow y' \ge 0, \forall x \in \mathbb{R}$
+    $$\Leftrightarrow \dfrac{x}{\sqrt{x^2 + 1}} - m \ge 0, \forall x \in \mathbb{R}$$
+    $$\Leftrightarrow m \le \dfrac{x}{\sqrt{x^2 + 1}}, \forall x \in \mathbb{R} \quad (*)$$
+    
+    **Bước 3: Tìm tập giá trị của biểu thức $g(x) = \dfrac{x}{\sqrt{x^2 + 1}}$**
+    
+    Xét hàm số $g(x) = \dfrac{x}{\sqrt{x^2 + 1}}$ trên $\mathbb{R}$:
+    
+    *   Đạo hàm của $g(x)$:
+        $$g'(x) = \dfrac{\sqrt{x^2 + 1} - x \cdot \dfrac{x}{\sqrt{x^2 + 1}}}{x^2 + 1} = \dfrac{x^2 + 1 - x^2}{(x^2 + 1)\sqrt{x^2 + 1}} = \dfrac{1}{(x^2 + 1)\sqrt{x^2 + 1}} > 0, \forall x \in \mathbb{R}$$
+        
+    *   Do $g'(x) > 0, \forall x \in \mathbb{R}$ nên $g(x)$ là hàm số đồng biến trên $\mathbb{R}$.
+    
+    *   Giới hạn tại vô cực:
+        $$\lim_{x \to -\infty} g(x) = \lim_{x \to -\infty} \dfrac{x}{\sqrt{x^2\left(1 + \dfrac{1}{x^2}\right)}} = \lim_{x \to -\infty} \dfrac{x}{-x\sqrt{1 + \dfrac{1}{x^2}}} = -1$$
+        $$\lim_{x \to +\infty} g(x) = \lim_{x \to +\infty} \dfrac{x}{x\sqrt{1 + \dfrac{1}{x^2}}} = 1$$
+        
+    Suy ra tập giá trị của $g(x)$ là $(-1; 1)$, nghĩa là $-1 < g(x) < 1, \forall x \in \mathbb{R}$.
+    
+    **Bước 4: Biện luận tìm tham số $m$**
+    
+    Để bất phương trình $(*)$ đúng với mọi $x \in \mathbb{R}$ thì $m$ phải nhỏ hơn hoặc bằng giá trị nhỏ nhất (nếu có) hoặc luôn bé hơn hay bằng giới hạn dưới của $g(x)$:
+    $$m \le \inf_{x \in \mathbb{R}} g(x) \Leftrightarrow m \le -1$$
+    
+    **Bước 5: Kết hợp điều kiện bài toán**
+    
+    Theo bài ra, $m$ là số nguyên và $m \in [-2018; 2018]$, do đó:
+    $$m \in \{-2018; -2017; -2016; \dots; -2; -1\}$$
+    
+    Số giá trị nguyên của $m$ thỏa mãn là:
+    $$\dfrac{-1 - (-2018)}{1} + 1 = 2018 \text{ (giá trị)}$$
+    
+    **Kết luận:** Có tất cả **$2018$** giá trị nguyên của $m$ thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
