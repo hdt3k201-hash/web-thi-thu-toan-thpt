@@ -5274,3 +5274,220 @@ if st.session_state.get('q331_solution_shown') and st.session_state.get('logged_
     """)
     
 st.markdown("---")
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 55 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho hàm số $y = \dfrac{x^2 - 3}{x - 2}$ có đồ thị là $(C)$. Tìm giá trị nhỏ nhất của tổng khoảng cách từ điểm $M$ thuộc đồ thị $(C)$ đến hai trục tọa độ $Ox$ và $Oy$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị nhỏ nhất (ví dụ: 1.9):", key="q332_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q332_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 1.5
+    if normalized_user_answer == "1.5":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại biểu thức tổng khoảng cách d(M, Ox) + d(M, Oy) tại điểm M(0; 1.5) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q332_solution_shown' not in st.session_state:
+    st.session_state['q332_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q332_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q332_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q332_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q332_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập biểu thức tổng khoảng cách**
+    
+    Tập xác định của hàm số: $\mathcal{D} = \mathbb{R} \setminus \{2\}$.
+    
+    Gọi điểm $M\left(x; \dfrac{x^2 - 3}{x - 2}\right) \in (C)$ với $x \neq 2$.
+    
+    *   Khoảng cách từ $M$ đến trục hoành $Ox$ là: 
+        $$d(M; Ox) = |y_M| = \left|\dfrac{x^2 - 3}{x - 2}\right|$$
+    *   Khoảng cách từ $M$ đến trục tung $Oy$ là: 
+        $$d(M; Oy) = |x_M| = |x|$$
+        
+    Tổng khoảng cách từ $M$ đến hai trục tọa độ là:
+    $$S = d(M; Ox) + d(M; Oy) = |x| + \left|\dfrac{x^2 - 3}{x - 2}\right|$$
+    
+    **Bước 2: Đánh giá giá trị của $S$ tại điểm giao với trục tung**
+    
+    Xét điểm $M$ thuộc đồ thị $(C)$ giao với trục $Oy$ ($x = 0$):
+    $$y_M = \dfrac{0^2 - 3}{0 - 2} = \dfrac{3}{2} = 1,5$$
+    
+    Tọa độ điểm $M\left(0; \dfrac{3}{2}\right) \in (C)$. 
+    
+    Khi đó tổng khoảng cách là:
+    $$S(0) = |0| + \left|\dfrac{3}{2}\right| = 1,5$$
+    
+    **Bước 3: Chứng minh $S \ge 1,5$ trên các khoảng giá trị của $x$**
+    
+    *   **Trường hợp 1 ($x \in (-\sqrt{3}; 0]$):**
+        Ta có $x \le 0 \implies |x| = -x$ và $\dfrac{x^2 - 3}{x - 2} > 0 \implies \left|\dfrac{x^2 - 3}{x - 2}\right| = \dfrac{x^2 - 3}{x - 2}$.
+        $$S = -x + \dfrac{x^2 - 3}{x - 2} = \dfrac{-x(x - 2) + x^2 - 3}{x - 2} = \dfrac{2x - 3}{x - 2} = 2 + \dfrac{1}{x - 2}$$
+        Vì $-\sqrt{3} < x \le 0 \implies -2 - \sqrt{3} < x - 2 \le -2 \implies \dfrac{1}{x - 2} \ge -\dfrac{1}{2}$.
+        
+        Suy ra:
+        $$S = 2 + \dfrac{1}{x - 2} \ge 2 - \dfrac{1}{2} = 1,5$$
+        Dấu "=" xảy ra khi $x = 0$.
+        
+    *   **Trường hợp 2 ($x \in (0; \sqrt{3}]$):**
+        Ta có $x > 0 \implies |x| = x$ và $\dfrac{x^2 - 3}{x - 2} \le 0 \implies \left|\dfrac{x^2 - 3}{x - 2}\right| = \dfrac{3 - x^2}{2 - x}$.
+        $$S = x + \dfrac{3 - x^2}{2 - x} = \dfrac{x(2 - x) + 3 - x^2}{2 - x} = \dfrac{-2x^2 + 2x + 3}{2 - x}$$
+        Khảo sát hàm số $S(x)$ trên $(0; \sqrt{3}]$, ta thấy $S(x) \ge 1,5$.
+        
+    *   **Trường hợp 3 ($x \in (\sqrt{3}; 2)$):**
+        Ta có $x > 0 \implies |x| = x$ và $\dfrac{x^2 - 3}{x - 2} < 0 \implies \left|\dfrac{x^2 - 3}{x - 2}\right| = \dfrac{x^2 - 3}{2 - x}$.
+        $$S = x + \dfrac{x^2 - 3}{2 - x} = \dfrac{2x - 3}{2 - x}$$
+        Vì $x > \sqrt{3} \approx 1,732 > 1,5 \implies 2x - 3 > 0$ và $2 - x > 0$.
+        Khi đó $S = \dfrac{2x - 3}{2 - x} > \sqrt{3} \approx 1,732 > 1,5$.
+        
+    *   **Trường hợp 4 ($x > 2$):**
+        $$S = x + \dfrac{x^2 - 3}{x - 2} = 2(x - 2) + \dfrac{1}{x - 2} + 6 \ge 2\sqrt{2(x - 2) \cdot \dfrac{1}{x - 2}} + 6 = 6 + 2\sqrt{2} \approx 8,83 > 1,5$$
+        
+    *   **Trường hợp 5 ($x \le -\sqrt{3}$):**
+        $$S = -x + \dfrac{x^2 - 3}{2 - x} \ge \sqrt{3} \approx 1,732 > 1,5$$
+
+    **Bước 4: Kết luận**
+    
+    Giá trị nhỏ nhất của tổng khoảng cách từ điểm $M$ thuộc đồ thị $(C)$ đến hai trục tọa độ là **$1,5$**, đạt được tại điểm $M\left(0; \dfrac{3}{2}\right)$.
+    """)
+    
+st.markdown("---")
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 56 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho hàm số $y = \dfrac{x^2 - x - 1}{x - 2}$ có đồ thị là $(C)$. Tính khoảng cách bé nhất giữa hai điểm nằm trên 2 nhánh của đồ thị $(C)$ (kết quả làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập khoảng cách bé nhất (ví dụ: 4.39):", key="q333_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q333_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 4.39
+    if normalized_user_answer == "4.39":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập công thức khoảng cách bình phương AB^2 và sử dụng bất đẳng thức Cô-si (AM-GM) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q333_solution_shown' not in st.session_state:
+    st.session_state['q333_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q333_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q333_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q333_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q333_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Biến đổi hàm số và xác định 2 nhánh đồ thị**
+    
+    Ta có hàm số: $y = \dfrac{x^2 - x - 1}{x - 2} = \dfrac{x(x - 2) + x - 1}{x - 2} = x + 1 + \dfrac{1}{x - 2}$.
+    
+    Tập xác định: $\mathcal{D} = \mathbb{R} \setminus \{2\}$. Đường tiệm cận đứng là $x = 2$.
+    Đồ thị $(C)$ chia làm 2 nhánh:
+    *   Nhánh trái: Ứng với $x < 2$.
+    *   Nhánh phải: Ứng với $x > 2$.
+    
+    **Bước 2: Tham số hóa tọa độ hai điểm $A$ và $B$**
+    
+    Gọi $A$ là điểm thuộc nhánh trái ($x_A < 2$) và $B$ là điểm thuộc nhánh phải ($x_B > 2$).
+    Đặt:
+    *   $x_A = 2 - a \implies y_A = (2 - a) + 1 + \dfrac{1}{-a} = 3 - a - \dfrac{1}{a} \quad (a > 0)$
+    *   $x_B = 2 + b \implies y_B = (2 + b) + 1 + \dfrac{1}{b} = 3 + b + \dfrac{1}{b} \quad (b > 0)$
+    
+    **Bước 3: Thiết lập biểu thức khoảng cách bình phương $AB^2$**
+    
+    Khoảng cách bình phương giữa $A$ và $B$ là:
+    $$AB^2 = (x_B - x_A)^2 + (y_B - y_A)^2$$
+    $$AB^2 = (a + b)^2 + \left(a + b + \dfrac{1}{a} + \dfrac{1}{b}\right)^2$$
+    $$AB^2 = (a + b)^2 + \left(a + b + \dfrac{a + b}{ab}\right)^2 = (a + b)^2 \left[1 + \left(1 + \dfrac{1}{ab}\right)^2\right]$$
+    
+    Đặt tổng $S = a + b$ và tích $P = ab$ ($S, P > 0$). Theo bất đẳng thức, ta luôn có $S^2 \ge 4P$.
+    
+    Thay vào biểu thức:
+    $$AB^2 = S^2 \left[1 + 1 + \dfrac{2}{P} + \dfrac{1}{P^2}\right] = S^2 \left[2 + \dfrac{2}{P} + \dfrac{1}{P^2}\right]$$
+    
+    Do $S^2 \ge 4P$, ta suy ra:
+    $$AB^2 \ge 4P \left[2 + \dfrac{2}{P} + \dfrac{1}{P^2}\right] = 8P + 8 + \dfrac{4}{P}$$
+    
+    **Bước 4: Sử dụng bất đẳng thức Cô-si (AM-GM) tìm giá trị nhỏ nhất**
+    
+    Áp dụng bất đẳng thức Cô-si cho hai số dương $8P$ và $\dfrac{4}{P}$, ta có:
+    $$8P + \dfrac{4}{P} \ge 2\sqrt{8P \cdot \dfrac{4}{P}} = 2\sqrt{32} = 8\sqrt{2}$$
+    
+    Do đó:
+    $$AB^2 \ge 8\sqrt{2} + 8$$
+    Suy ra khoảng cách bé nhất là:
+    $$AB_{\min} = \sqrt{8 + 8\sqrt{2}} \approx 4,3947$$
+    
+    Dấu "=" xảy ra khi và chỉ khi:
+    $\begin{cases} S^2 = 4P \text{ (tức là } a = b) \\ 8P = \dfrac{4}{P} \end{cases} \Leftrightarrow P^2 = \dfrac{1}{2} \Leftrightarrow P = \dfrac{1}{\sqrt{2}}$
+    Từ đó tìm được $a = b = \dfrac{1}{\sqrt[4]{2}}$, ứng với 2 điểm cực trị đối xứng nhau qua tâm đối xứng $I(2; 3)$ của đồ thị.
+    
+    **Kết luận:**
+    Khoảng cách bé nhất giữa hai điểm trên 2 nhánh của đồ thị xấp xỉ **$4,39$**.
+    """)
+    
+st.markdown("---")
