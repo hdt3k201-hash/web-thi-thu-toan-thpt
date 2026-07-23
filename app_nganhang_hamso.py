@@ -729,3 +729,98 @@ st.markdown("---")
 
 
 
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 8 (Chuyên Trần Phú - Hải Phòng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d0e9e4.png
+st.markdown(r"""
+Cho hàm số $y = x^3 - 3(m+1)x^2 + 3(m^2 + 2m)x - 2025$, với $m$ là tham số. Có bao nhiêu giá trị nguyên của tham số $m$ để hàm số có giá trị lớn nhất trên khoảng $(-\infty; 0)$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số giá trị nguyên của m tìm được (ví dụ: 3):", key="q14_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q14_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 3
+    if normalized_user_answer == "3":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy phân tích các điểm cực trị và xét điều kiện f(x) ≤ f(m) trên khoảng (-∞; 0) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q14_solution_shown' not in st.session_state:
+    st.session_state['q14_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q14_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q14_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q14_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q14_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm các điểm cực trị của hàm số**
+    
+    Tập xác định: $\mathbb{R}$.
+    
+    Đạo hàm:
+    $$y' = 3x^2 - 6(m+1)x + 3(m^2 + 2m) = 3\left[x^2 - 2(m+1)x + m^2 + 2m\right]$$
+    
+    Cho $y' = 0 \Leftrightarrow x^2 - 2(m+1)x + m^2 + 2m = 0$.
+    Ta có:
+    $$\Delta' = (m+1)^2 - (m^2 + 2m) = 1 > 0$$
+    
+    Do đó, $y' = 0$ luôn có 2 nghiệm phân biệt:
+    $$x_1 = m, \quad x_2 = m + 2$$
+    
+    Vì hệ số $a = 1 > 0$ và $x_1 < x_2$, hàm số đạt cực đại tại $x = m$ và đạt cực tiểu tại $x = m + 2$.
+    
+    **Bước 2: Phân tích điều kiện hàm số có giá trị lớn nhất trên khoảng $(-\infty; 0)$**
+    
+    Để hàm số có giá trị lớn nhất trên $(-\infty; 0)$, trước hết điểm cực đại phải thuộc khoảng $(-\infty; 0)$, nghĩa là:
+    $$m < 0$$
+    
+    Khi đó, giá trị lớn nhất (nếu có) phải đạt tại $x = m$, tức là $f(x) \le f(m)$ với mọi $x \in (-\infty; 0)$.
+    
+    Xét hiệu $f(x) - f(m)$:
+    $$f(x) - f(m) = (x^3 - m^3) - 3(m+1)(x^2 - m^2) + 3(m^2 + 2m)(x - m)$$
+    $$f(x) - f(m) = (x - m)\left[x^2 + mx + m^2 - 3(m+1)(x + m) + 3(m^2 + 2m)\right]$$
+    $$f(x) - f(m) = (x - m)\left[x^2 - (2m+3)x + m^2 + 3m\right]$$
+    $$f(x) - f(m) = (x - m)^2 (x - (m + 3))$$
+    
+    **Bước 3: Tối ưu bất phương trình và tìm giá trị nguyên của $m$**
+    
+    Vì $(x - m)^2 \ge 0$ với mọi $x$, do đó để $f(x) \le f(m)$ với mọi $x \in (-\infty; 0)$ thì ta cần:
+    $$x - (m + 3) \le 0, \quad \forall x \in (-\infty; 0)$$
+    $$\Leftrightarrow x \le m + 3, \quad \forall x \in (-\infty; 0)$$
+    $$\Leftrightarrow m + 3 \ge 0 \Leftrightarrow m \ge -3$$
+    
+    Kết hợp với điều kiện $m < 0$, ta có:
+    $$-3 \le m < 0$$
+    
+    Vì $m \in \mathbb{Z}$, nên $m \in \{-3; -2; -1\}$.
+    
+    **Kết luận:** Có **$3$** giá trị nguyên của tham số $m$ thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
