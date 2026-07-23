@@ -6695,7 +6695,7 @@ if st.session_state.get('q_dh_dothi_solution_shown') and st.session_state.get('l
     st.markdown(r"""
     **Bước 1: Tìm khoảng nghịch biến của hàm số $f(x)$ từ đồ thị**
     
-    Dựa vào đồ thị của hàm số $f(x)$[cite: 1]:
+    Dựa vào đồ thị của hàm số $f(x)$:
     *   Hàm số $f(x)$ đạt cực đại tại $x = 1$ và cực tiểu tại $x = 3$.
     *   Do đó, hàm số $f(x)$ nghịch biến trên khoảng $(1; 3)$.
     
