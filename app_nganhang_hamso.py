@@ -2582,13 +2582,11 @@ st.markdown("---")
 
 
 
-
 # Tiêu đề câu hỏi
 st.markdown(
     '<b style="color: blue;">Câu 27 (Sở Hưng Yên 2026)</b>',
     unsafe_allow_html=True
 )
-
 # Nội dung câu hỏi từ hình ảnh image_dd426c.png
 st.markdown(r"""
 Cho hàm số $y = \dfrac{x^2 - 2x - 2}{x + 1}$ có đồ thị $(C)$ và điểm $M(1; -3)$. Gọi $A, B$ là hai điểm cực trị của đồ thị $(C)$. Tính diện tích của tam giác $MAB$.
