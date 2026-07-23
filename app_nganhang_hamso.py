@@ -905,3 +905,115 @@ if st.session_state.get('q17_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 10 (Sở Phú Thọ 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d0f546.png
+st.markdown(r"""
+Bác An có một cửa hàng chuyên bán buôn bưởi Đoan Hùng, bác nhận thấy rằng: Nếu bán mỗi kilogram bưởi với giá $30$ nghìn đồng thì mỗi tuần có $60$ đơn hàng và mỗi đơn hàng mua $100$ kilogram. Nếu cứ tăng giá mỗi kilogram bưởi thêm $2$ nghìn đồng thì hàng tuần số đơn hàng giảm $4$ đơn, đồng thời số lượng bưởi mà mỗi đơn hàng đặt mua cũng giảm đi $2$ kilogram.
+
+Hỏi bác cần bán mỗi kilogram bưởi với giá bao nhiêu nghìn đồng để lợi nhuận hàng tuần thu được là lớn nhất, biết giá nhập mỗi kilogram bưởi là $24$ nghìn đồng và giá bán không vượt quá $50$ nghìn đồng/1kg. (Kết quả làm tròn đến hàng đơn vị).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá bán cần chốt (nghìn đồng) (ví dụ: 40):", key="q18_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q18_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 40
+    if normalized_user_answer == "40":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm lợi nhuận theo số lần tăng giá x, tìm đạo hàm và kiểm tra lại nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q18_solution_shown' not in st.session_state:
+    st.session_state['q18_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q18_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q18_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q18_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q18_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập các hàm số biểu diễn theo số lần tăng giá**
+    
+    Gọi $x$ là số lần tăng giá bưởi thêm $2$ nghìn đồng ($x \ge 0$).
+    *   Giá bán mỗi kilogram bưởi là: 
+        $$p(x) = 30 + 2x \text{ (nghìn đồng/kg)}$$
+        Theo giả thiết giá bán không vượt quá $50$ nghìn đồng/kg nên:
+        $$30 + 2x \le 50 \Leftrightarrow 2x \le 20 \Leftrightarrow x \le 10 \Rightarrow 0 \le x \le 10$$
+    *   Lợi nhuận thu được trên mỗi kilogram bưởi là:
+        $$\pi(x) = p(x) - 24 = (30 + 2x) - 24 = 2x + 6 \text{ (nghìn đồng/kg)}$$
+    *   Số lượng đơn hàng hàng tuần là:
+        $$N(x) = 60 - 4x \text{ (đơn hàng)}$$
+    *   Số lượng bưởi mỗi đơn hàng đặt mua là:
+        $$Q(x) = 100 - 2x \text{ (kg/đơn hàng)}$$
+    *   Tổng khối lượng bưởi bán được trong tuần là:
+        $$M(x) = N(x) \cdot Q(x) = (60 - 4x)(100 - 2x) = 8(15 - x)(50 - x) \text{ (kg)}$$
+    
+    **Bước 2: Lập hàm Tổng lợi nhuận hàng tuần $L(x)$**
+    
+    Tổng lợi nhuận hàng tuần thu được là:
+    $$L(x) = M(x) \cdot \pi(x) = 8(15 - x)(50 - x)(2x + 6)$$
+    $$L(x) = 16(15 - x)(50 - x)(x + 3)$$
+    $$L(x) = 16(x^3 - 62x^2 + 555x + 2250) \text{ (nghìn đồng)}$$
+    
+    **Bước 3: Tìm giá trị $x$ để hàm Lợi nhuận đạt giá trị lớn nhất**
+    
+    Xét hàm số $f(x) = x^3 - 62x^2 + 555x + 2250$ trên đoạn $[0; 10]$.
+    
+    Đạo hàm:
+    $$f'(x) = 3x^2 - 124x + 555$$
+    
+    Cho $f'(x) = 0 \Leftrightarrow 3x^2 - 124x + 555 = 0$:
+    $$\Delta' = (-62)^2 - 3 \cdot 555 = 3844 - 1665 = 2179$$
+    $$x_1 = \dfrac{62 - \sqrt{2179}}{3} \approx 5,11 \quad (\text{thỏa mãn } 0 \le x \le 10)$$
+    $$x_2 = \dfrac{62 + \sqrt{2179}}{3} \approx 36,22 \quad (\text{loại do } x > 10)$$
+    
+    Bảng biến thiên cho thấy hàm số $f(x)$ đạt giá trị lớn nhất trên đoạn $[0; 10]$ tại $x_1 = \dfrac{62 - \sqrt{2179}}{3} \approx 5,11$.
+    
+    **Bước 4: Tính giá bán cần chốt**
+    
+    Mức giá bán tương ứng để lợi nhuận đạt lớn nhất là:
+    $$p = 30 + 2 \cdot x_1 \approx 30 + 2 \cdot 5,11 = 40,22 \text{ (nghìn đồng/kg)}$$
+    
+    Làm tròn đến hàng đơn vị, ta được $p \approx 40$ nghìn đồng.
+    
+    **Kết luận:** Bác An cần bán mỗi kilogram bưởi với giá **$40$** nghìn đồng.
+    """)
+    
+st.markdown("---")
+
+
+
+
+
+
+
+
