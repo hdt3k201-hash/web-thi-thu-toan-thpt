@@ -37,7 +37,10 @@ st.sidebar.markdown("---")
 st.sidebar.info("💡 Hướng dẫn: Đăng nhập để mở khóa và xem toàn bộ lời giải chi tiết các câu hỏi.")
 
 # --- GIAO DIỆN CHÍNH ---
-st.title("📚 CHUYÊN ĐỀ: TỔ HỢP - XÁC SUẤT")
+st.markdown(
+    '<h1 style="text-align: center; color: #1e3a8a;">📚 CHUYÊN ĐỀ: TỔ HỢP - XÁC SUẤT</h1>', 
+    unsafe_allow_html=True
+)
 st.markdown("---")
 
 # --- CÂU HỎI 1: XẾP HỌC SINH KHÔNG ĐỨNG CẠNH NHAU ---
