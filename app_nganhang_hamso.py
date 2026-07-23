@@ -2758,3 +2758,91 @@ if st.session_state.get('q40_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 29 (THPT Nguyễn Khuyến - LHT - HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_dda103.png
+st.markdown(r"""
+Một công ty đang triển khai chiến dịch quảng cáo cho sản phẩm mới. Số tiền đầu tư cho quảng cáo là $x$ (triệu đồng). Theo kết quả nghiên cứu thị trường, số lượng sản phẩm sản xuất và bán ra phụ thuộc vào chi phí quảng cáo theo hàm $Q(x) = 1250 + \dfrac{507}{2} \ln(3 + x)$ (đơn vị sản phẩm). Biết rằng, chi phí sản xuất mỗi sản phẩm là $13$ triệu đồng và giá bán mỗi sản phẩm là $21$ triệu đồng. Giá trị lợi nhuận tối đa mà công ty có thể đạt được là $p$ tỷ đồng (số $p$ được làm tròn đến hàng phần mười). Tìm số $p$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số p (tỷ đồng) (ví dụ: 25.5):", key="q43_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q43_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip().replace(",", ".")
+    
+    # Đáp án chính xác là 23.4
+    if normalized_user_answer == "23.4":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm lợi nhuận thu được, tính đạo hàm để tìm giá trị lớn nhất và nhớ đổi đơn vị ra tỷ đồng nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q43_solution_shown' not in st.session_state:
+    st.session_state['q43_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q43_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q43_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q43_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q43_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm lợi nhuận $P(x)$**
+    
+    *   Lợi nhuận thu được từ mỗi sản phẩm bán ra là: 
+        $$21 - 13 = 8 \text{ (triệu đồng)}$$
+    *   Số tiền đầu tư quảng cáo là $x$ (triệu đồng) với $x \ge 0$.
+    *   Hàm lợi nhuận tổng cộng của công ty (tính bằng triệu đồng) bằng tổng lợi nhuận từ số sản phẩm bán ra trừ đi chi phí quảng cáo:
+        $$P(x) = 8 \cdot Q(x) - x$$
+        $$P(x) = 8 \left( 1250 + \dfrac{507}{2} \ln(3 + x) \right) - x$$
+        $$P(x) = 10000 + 2028 \ln(3 + x) - x$$
+    
+    **Bước 2: Tìm giá trị lớn nhất của hàm lợi nhuận $P(x)$**
+    
+    *   Tính đạo hàm của hàm $P(x)$ với $x \ge 0$:
+        $$P'(x) = \dfrac{2028}{3 + x} - 1$$
+    *   Cho $P'(x) = 0$:
+        $$\dfrac{2028}{3 + x} - 1 = 0 \Leftrightarrow 3 + x = 2028 \Leftrightarrow x = 2025 \text{ (thỏa mãn } x \ge 0)$$
+    *   Xét dấu $P'(x)$:
+        *   Với $0 \le x < 2025 \Rightarrow P'(x) > 0$.
+        *   Với $x > 2025 \Rightarrow P'(x) < 0$.
+        Vậy hàm số đạt giá trị lớn nhất tại $x = 2025$.
+    
+    **Bước 3: Tính giá trị lợi nhuận tối đa và quy đổi đơn vị**
+    
+    *   Lợi nhuận tối đa đạt được là (triệu đồng):
+        $$\max_{x \ge 0} P(x) = P(2025) = 10000 + 2028 \ln(3 + 2025) - 2025$$
+        $$P(2025) = 7975 + 2028 \ln(2028)$$
+    *   Sử dụng máy tính cầm tay, ta có giá trị xấp xỉ:
+        $$P(2025) \approx 7975 + 2028 \cdot 7,6148 \approx 23417,82 \text{ (triệu đồng)}$$
+    *   Đổi sang đơn vị tỷ đồng (chia cho 1000):
+        $$p \approx 23,41782 \text{ (tỷ đồng)}$$
+    *   Làm tròn kết quả đến hàng phần mười, ta được $23,4$.
+    
+    **Kết luận:** Số $p$ cần tìm là **$23,4$**.
+    """)
+    
+st.markdown("---")
+
