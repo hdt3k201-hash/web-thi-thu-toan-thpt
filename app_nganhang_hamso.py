@@ -7789,5 +7789,99 @@ if st.session_state.get('q80_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 81 (THPT Phan Đình Phùng - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một cổng có dạng là một parabol $(P)$ có đỉnh là điểm $I$, hai chân cổng là hai điểm $E$, $F$ nằm trên mặt đất. Để tiện phân luồng giao thông, người ta dựng một khung chân có dạng hình vuông $ABCD$ có cạnh dài $6$ mét như hình vẽ bên dưới, với hai điểm $A$, $D$ nằm trên $(P)$. Biết trục đối xứng của hình vuông trùng với trục đối xứng của $(P)$. Diện tích nhỏ nhất của phần cổng giới hạn bởi parabol $(P)$ và mặt đường $EF$ là bao nhiêu mét vuông? (làm tròn kết quả đến hàng phần chục).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập diện tích nhỏ nhất (mét vuông) (ví dụ: 12.9):", key="q81_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q81_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 62.4
+    if normalized_user_answer == "62.4":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập phương trình parabol, biểu diễn diện tích theo chiều cao $h$ và tìm giá trị nhỏ nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q81_solution_shown' not in st.session_state:
+    st.session_state['q81_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q81_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q81_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q81_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q81_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ tọa độ và phương trình parabol**
+    
+    * Chọn hệ trục tọa độ $Oxy$ sao cho gốc tọa độ $O$ nằm trên mặt đất và trùng với hình chiếu của đỉnh $I$ (trục đối xứng của parabol trùng với trục $Oy$).
+    * Phương trình chính của parabol $(P)$ có dạng: 
+        $$y = -ax^2 + h \quad (a > 0, h > 6)$$
+      trong đó $h$ là chiều cao của cổng (đỉnh $I(0; h)$).
+      
+    * Hình vuông $ABCD$ có cạnh bằng $6$ mét, trục đối xứng trùng với trục $Oy$. Do đó, các đỉnh $A$ và $D$ nằm trên $(P)$ có hoành độ lần lượt là $x = -3$ và $x = 3$, và tung độ bằng $6$ (vì chiều cao hình vuông là $6$).
+    * Thay tọa độ điểm $D(3; 6)$ vào phương trình parabol, ta được:
+        $$6 = -a(3)^2 + h \iff h = 9a + 6 \iff a = \dfrac{h - 6}{9}$$
+        
+    **Bước 2: Tính diện tích phần cổng giới hạn bởi parabol và mặt đường**
+    
+    * Hoành độ của hai chân cổng $E$ và $F$ là nghiệm của phương trình $-ax^2 + h = 0$, suy ra:
+        $$x = \pm\sqrt{\dfrac{h}{a}}$$
+    * Chiều rộng của chân cổng (độ dài đoạn $EF$) là:
+        $$EF = 2\sqrt{\dfrac{h}{a}} = 2\sqrt{\dfrac{h}{\dfrac{h - 6}{9}}} = 6\sqrt{\dfrac{h}{h - 6}}$$
+        
+    * Diện tích $S$ của phần cổng giới hạn bởi parabol và mặt đường được tính theo công thức diện tích hình phẳng giới hạn bởi parabol:
+        $$S = \dfrac{2}{3} \cdot EF \cdot h = \dfrac{2}{3} \cdot 6\sqrt{\dfrac{h}{h - 6}} \cdot h = 4h\sqrt{\dfrac{h}{h - 6}}$$
+        
+    **Bước 3: Khảo sát hàm số để tìm giá trị nhỏ nhất của diện tích**
+    
+    * Xét hàm số $S(h) = 4h\sqrt{\dfrac{h}{h - 6}}$ với $h > 6$.
+    * Để tìm giá trị nhỏ nhất, ta xét hàm số $f(h) = S^2(h) = 16h^2 \cdot \dfrac{h}{h - 6} = \dfrac{16h^3}{h - 6}$.
+    * Tính đạo hàm của $f(h)$:
+        $$f'(h) = \dfrac{16 \cdot 3h^2(h - 6) - 16h^3 \cdot 1}{(h - 6)^2} = \dfrac{16h^2(3(h - 6) - h)}{(h - 6)^2} = \dfrac{32h^2(h - 9)}{(h - 6)^2}$$
+        
+    * Cho $f'(h) = 0 \iff h = 9$ (vì $h > 6$).
+    * Lập bảng biến thiên, ta thấy hàm số đạt giá trị nhỏ nhất tại $h = 9$.
+    
+    **Bước 4: Tính giá trị diện tích nhỏ nhất và làm tròn**
+    
+    * Thay $h = 9$ vào công thức tính diện tích $S$:
+        $$S_{\min} = 4(9)\sqrt{\dfrac{9}{9 - 6}} = 36\sqrt{\dfrac{9}{3}} = 36\sqrt{3} \approx 62,3538 \text{ (m}^2\text{)}$$
+        
+    * Làm tròn kết quả đến hàng phần chục (1 chữ số thập phân), ta được **$62,4$**.
+    
+    **Kết luận:** Diện tích nhỏ nhất của phần cổng là **$62,4$** mét vuông.
+    """)
+    
+st.markdown("---")
+
 
 
