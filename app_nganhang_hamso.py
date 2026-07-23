@@ -8852,3 +8852,94 @@ if st.session_state.get('q91_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 92 (Cụm trường Bắc Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Nhà máy A chuyên sản xuất một loại sản phẩm để cung cấp ra thị trường với khối lượng tối đa $100$ tấn mỗi tháng. Nếu số lượng đặt hàng là $x$ tấn sản phẩm thì giá bán cho mỗi tấn sản phẩm là $P(x) = 45 - 0,001x^2$ (triệu đồng). Chi phí để nhà máy A sản xuất $x$ tấn sản phẩm trong một tháng bao gồm: Chi phí cố định $100$ triệu đồng; chi phí cho mỗi tấn sản phẩm làm ra $30$ triệu đồng. Hỏi mỗi tháng lợi nhuận tối đa mà nhà máy A thu về là bao nhiêu triệu đồng (kết quả làm tròn đến hàng đơn vị)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập lợi nhuận tối đa (triệu đồng) (ví dụ: 123):", key="q92_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q92_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 607
+    if normalized_user_answer in ["607", "607.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy lập hàm lợi nhuận $L(x) = R(x) - C(x)$, tìm điểm cực đại trên đoạn $[0; 100]$ và làm tròn kết quả đến hàng đơn vị nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q92_solution_shown' not in st.session_state:
+    st.session_state['q92_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q92_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q92_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q92_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q92_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm Doanh thu và hàm Chi phí**
+    
+    *   Gọi $x$ là số tấn sản phẩm nhà máy A sản xuất và bán ra trong một tháng, với điều kiện $0 \le x \le 100$.
+    *   Giá bán mỗi tấn sản phẩm là: $P(x) = 45 - 0,001x^2$ (triệu đồng).
+    *   Tổng doanh thu thu được trong một tháng là:
+        $$R(x) = x \cdot P(x) = x(45 - 0,001x^2) = 45x - 0,001x^3 \text{ (triệu đồng)}$$
+    *   Tổng chi phí sản xuất $x$ tấn sản phẩm trong một tháng bao gồm chi phí cố định và chi phí biến đổi theo sản lượng:
+        $$C(x) = 100 + 30x \text{ (triệu đồng)}$$
+        
+    **Bước 2: Thiết lập hàm Lợi nhuận**
+    
+    *   Hàm lợi nhuận $L(x)$ là hiệu giữa Tổng doanh thu và Tổng chi phí:
+        $$L(x) = R(x) - C(x)$$
+        $$L(x) = (45x - 0,001x^3) - (100 + 30x)$$
+        $$L(x) = -0,001x^3 + 15x - 100 \quad \text{với } x \in [0; 100]$$
+        
+    **Bước 3: Khảo sát hàm số để tìm giá trị lớn nhất**
+    
+    *   Tính đạo hàm của hàm lợi nhuận:
+        $$L'(x) = -0,003x^2 + 15$$
+    *   Cho $L'(x) = 0$:
+        $$-0,003x^2 + 15 = 0 \iff x^2 = \dfrac{15}{0,003} = 5000$$
+        $$\iff x = \sqrt{5000} = 50\sqrt{2} \approx 70,71 \text{ (thỏa mãn điều kiện } 0 \le x \le 100)$$
+    *   Tính giá trị của hàm lợi nhuận tại các điểm biên và điểm tới hạn:
+        *   $L(0) = -100$
+        *   $L(100) = -0,001 \cdot (100)^3 + 15(100) - 100 = -1000 + 1500 - 100 = 400$
+        *   $L(50\sqrt{2}) = -0,001 \cdot (50\sqrt{2})^3 + 15(50\sqrt{2}) - 100 = 500\sqrt{2} - 100$
+    *   Thay giá trị $\sqrt{2} \approx 1,4142$:
+        $$L(50\sqrt{2}) = 500 \cdot 1,4142 - 100 = 707,1 - 100 = 607,1 \text{ (triệu đồng)}$$
+        
+    **Bước 4: Làm tròn kết quả**
+    
+    *   So sánh các giá trị, lợi nhuận lớn nhất đạt được là $500\sqrt{2} - 100 \approx 607,1$ triệu đồng.
+    *   Làm tròn kết quả đến hàng đơn vị, ta được **$607$** triệu đồng.
+    
+    **Kết luận:** Mỗi tháng lợi nhuận tối đa mà nhà máy A thu về là **$607$** triệu đồng.
+    """)
+    
+st.markdown("---")
