@@ -5777,3 +5777,96 @@ if st.session_state.get('q3_solution_shown') and st.session_state.get('logged_in
     """)
     
 st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 60 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Tìm tất cả các giá trị của tham số $m \in \mathbb{R}$ để hàm số 
+$$y = \sin x + \cos x + mx$$ 
+đồng biến trên $\mathbb{R}$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+# Do kết quả là một bất phương trình (m >= căn 2), ta hướng dẫn học sinh nhập giá trị ranh giới làm tròn
+user_answer = st.text_input("Biết kết quả có dạng m >= a. Hãy nhập giá trị của a (làm tròn đến 2 chữ số thập phân, ví dụ: 1.41):", key="q4_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q4_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là căn 2, làm tròn 2 chữ số thập phân là 1.41
+    if normalized_user_answer == "1.41":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tính đạo hàm y', cô lập m và tìm giá trị lớn nhất của hàm lượng giác g(x) = sin(x) - cos(x) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q4_solution_shown' not in st.session_state:
+    st.session_state['q4_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q4_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q4_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q4_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q4_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tập xác định và tính đạo hàm**
+    
+    *   Tập xác định: $\mathcal{D} = \mathbb{R}$.
+    *   Đạo hàm của hàm số:
+        $$y' = \cos x - \sin x + m$$
+        
+    **Bước 2: Lập luận điều kiện đồng biến**
+    
+    Để hàm số đồng biến trên $\mathbb{R}$ thì $y' \ge 0, \forall x \in \mathbb{R}$.
+    $$\Leftrightarrow \cos x - \sin x + m \ge 0, \forall x \in \mathbb{R}$$
+    $$\Leftrightarrow m \ge \sin x - \cos x, \forall x \in \mathbb{R} \quad (*)$$
+    
+    **Bước 3: Khảo sát hàm số $g(x) = \sin x - \cos x$**
+    
+    Xét hàm số $g(x) = \sin x - \cos x$ trên $\mathbb{R}$. 
+    Áp dụng công thức cộng lượng giác, ta có thể biến đổi $g(x)$ như sau:
+    $$g(x) = \sqrt{2} \left( \dfrac{1}{\sqrt{2}} \sin x - \dfrac{1}{\sqrt{2}} \cos x \right)$$
+    $$g(x) = \sqrt{2} \left( \sin x \cdot \cos\dfrac{\pi}{4} - \cos x \cdot \sin\dfrac{\pi}{4} \right)$$
+    $$g(x) = \sqrt{2} \sin\left(x - \dfrac{\pi}{4}\right)$$
+    
+    Vì $-1 \le \sin\left(x - \dfrac{\pi}{4}\right) \le 1, \forall x \in \mathbb{R}$, nên ta suy ra:
+    $$-\sqrt{2} \le g(x) \le \sqrt{2}, \forall x \in \mathbb{R}$$
+    
+    Giá trị lớn nhất của $g(x)$ trên $\mathbb{R}$ là $\max g(x) = \sqrt{2}$.
+    
+    **Bước 4: Kết luận giá trị của $m$**
+    
+    Để bất phương trình $(*)$ đúng với mọi $x \in \mathbb{R}$ thì $m$ phải lớn hơn hoặc bằng giá trị lớn nhất của $g(x)$:
+    $$m \ge \max_{x \in \mathbb{R}} g(x)$$
+    $$\Leftrightarrow m \ge \sqrt{2}$$
+    
+    **Kết luận:** Các giá trị của $m$ thỏa mãn yêu cầu bài toán là $m \in [\sqrt{2}; +\infty)$. 
+    *(Quy đổi ra số thập phân, $\sqrt{2} \approx 1,41$)*.
+    """)
+    
+st.markdown("---")
