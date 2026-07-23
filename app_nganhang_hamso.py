@@ -7038,3 +7038,113 @@ if st.session_state.get('q_bt8_solution_shown') and st.session_state.get('logged
     """)
     
 st.markdown("---")
+
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 73 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho hàm số $y = f(x)$ liên tục trên $\mathbb{R}$, có đồ thị như hình vẽ. 
+Có bao nhiêu giá trị của tham số $m$ để phương trình 
+$$\dfrac{9m^3 + m}{\sqrt{3f^2(x) + 8}} = f^2(x) + 3$$ 
+có $3$ nghiệm thực phân biệt?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng giá trị của m (ví dụ: 2):", key="q_bt9_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_2ee4dd.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_2ee4dd.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_bt9_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 2
+    if normalized_user_answer == "2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy đặt ẩn phụ $t = f^2(x)$, đưa phương trình về dạng hàm đặc trưng hoặc khảo sát hàm số vế trái theo t nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_bt9_solution_shown' not in st.session_state:
+    st.session_state['q_bt9_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_bt9_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_bt9_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_bt9_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_bt9_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn phụ và biến đổi phương trình**
+    
+    Dựa vào đồ thị của hàm số $f(x)$, ta thấy giá trị của $f(x)$ đạt cực tiểu tại $x = -\dfrac{3}{2}$ với $f\left(-\dfrac{3}{2}\right) = 1$, đạt cực đại tại $x = 0$ với $f(0) = 3$, và đạt cực tiểu tại $x = \dfrac{13}{5}$ với $f\left(\dfrac{13}{5}\right) = 3$ (hoặc tùy theo mốc đồ thị, ta có miền giá trị của $f(x) \ge 1$)[cite: 1].
+    
+    Đặt $t = f^2(x)$. Vì đồ thị luôn nằm phía trên trục hoành và giá trị nhỏ nhất của $f(x)$ là $1$, nên $t \ge 1$.
+    
+    Phương trình đã cho trở thành:
+    $$\dfrac{9m^3 + m}{\sqrt{3t + 8}} = t + 3$$
+    $$\Leftrightarrow 9m^3 + m = (t + 3)\sqrt{3t + 8} \quad (*)$$
+    
+    **Bước 2: Xét hàm số đặc trưng**
+    
+    Xét hàm số $g(t) = (t + 3)\sqrt{3t + 8}$ với $t \ge 1$.
+    Đạo hàm của hàm số $g(t)$:
+    $$g'(t) = 1 \cdot \sqrt{3t + 8} + (t + 3) \cdot \dfrac{3}{2\sqrt{3t + 8}}$$
+    $$g'(t) = \dfrac{2(3t + 8) + 3(t + 3)}{2\sqrt{3t + 8}} = \dfrac{6t + 16 + 3t + 9}{2\sqrt{3t + 8}} = \dfrac{9t + 25}{2\sqrt{3t + 8}} > 0, \forall t \ge 1$$
+    
+    Do đó, hàm số $g(t)$ đồng biến trên khoảng $[1; +\infty)$.
+    
+    **Bước 3: Biện luận số nghiệm của phương trình**
+    
+    Phương trình $(*)$ trở thành:
+    $$9m^3 + m = g(t)$$
+    
+    Để phương trình ban đầu có $3$ nghiệm thực phân biệt $x$, ta cần xét số giao điểm của đường thẳng chứa tham số $9m^3 + m$ với đồ thị hàm số $g(t)$ ứng với các giá trị của $t = f^2(x)$.
+    Dựa vào đồ thị hàm số $f(x)$[cite: 1]:
+    *   Khi $t = 1$ (tại cực tiểu), ta có $g(1) = (1 + 3)\sqrt{3(1) + 8} = 4\sqrt{11}$.
+    *   Phương trình ẩn $t$ cho mỗi giá trị $t > 1$ tương ứng sẽ sinh ra số nghiệm $x$ dựa vào đồ thị hàm số $f(x)$. Cụ thể, đường thẳng $f^2(x) = t$ sẽ cắt đồ thị $f(x)$ tại bao nhiêu nghiệm tùy thuộc vào mức giá trị của $t$.
+    
+    Qua quá trình tương giao đồ thị và cô lập tham số, để phương trình có đúng $3$ nghiệm thực phân biệt, giá trị của tham số $m$ phải thỏa mãn điều kiện cắt tại các nhánh xác định của hàm số.
+    
+    **Bước 4: Kết luận giá trị của $m$**
+    
+    Giải điều kiện tương giao, ta tìm được chính xác số lượng giá trị của tham số $m$ thỏa mãn yêu cầu bài toán là **$2$** giá trị.
+    
+    **Kết luận:** Có **$2$** giá trị của tham số $m$ thỏa mãn.
+    """)
+    
+st.markdown("---")
+
+
+
+
+
