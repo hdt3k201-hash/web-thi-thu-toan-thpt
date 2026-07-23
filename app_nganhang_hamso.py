@@ -5794,7 +5794,7 @@ $$y = \sin x + \cos x + mx$$
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 # Do kết quả là một bất phương trình (m >= căn 2), ta hướng dẫn học sinh nhập giá trị ranh giới làm tròn
-user_answer = st.text_input("Biết kết quả có dạng m >= a. Hãy nhập giá trị của a (làm tròn đến 2 chữ số thập phân, ví dụ: 1.41):", key="q4_ans")
+user_answer = st.text_input("Biết kết quả có dạng m >= a. Hãy nhập giá trị của a (làm tròn đến 2 chữ số thập phân, ví dụ: 1.34):", key="q4_ans")
 
 # Chèn hình ảnh minh họa ngay sau ô nhập đáp án
 
@@ -5867,6 +5867,192 @@ if st.session_state.get('q4_solution_shown') and st.session_state.get('logged_in
     
     **Kết luận:** Các giá trị của $m$ thỏa mãn yêu cầu bài toán là $m \in [\sqrt{2}; +\infty)$. 
     *(Quy đổi ra số thập phân, $\sqrt{2} \approx 1,41$)*.
+    """)
+    
+st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 61 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Tìm tất cả các giá trị thực của tham số $m$ sao cho hàm số 
+$$y = 2x^3 - 3(2m+1)x^2 + 6m(m+1)x + 1$$
+đồng biến trên khoảng $(2; +\infty)$. 
+
+Biết tập hợp tất cả các giá trị của $m$ thỏa mãn yêu cầu bài toán là $(-\infty; a]$. Tìm giá trị của $a$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của a :", key="q1_bt1_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q1_bt1_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 1
+    if normalized_user_answer == "1":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tính đạo hàm y', tìm 2 nghiệm x1 < x2 và cho khoảng (2; +∞) nằm trong khoảng đồng biến [x2; +∞) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q1_bt1_solution_shown' not in st.session_state:
+    st.session_state['q1_bt1_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q1_bt1_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q1_bt1_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q1_bt1_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q1_bt1_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tập xác định và tính đạo hàm**
+    
+    *   Tập xác định: $\mathcal{D} = \mathbb{R}$.
+    *   Đạo hàm của hàm số:
+        $$y' = 6x^2 - 6(2m+1)x + 6m(m+1)$$
+        $$y' = 6 \left[ x^2 - (2m+1)x + m(m+1) \right]$$
+        
+    **Bước 2: Tìm nghiệm của phương trình đạo hàm $y' = 0$**
+    
+    Xét phương trình $x^2 - (2m+1)x + m(m+1) = 0$:
+    Biệt thức $\Delta = (2m+1)^2 - 4m(m+1) = 4m^2 + 4m + 1 - 4m^2 - 4m = 1 > 0$.
+    
+    Phương trình luôn có $2$ nghiệm phân biệt với mọi $m$:
+    $$\left[ \begin{aligned} x_1 &= \dfrac{(2m+1) - 1}{2} = m \\ x_2 &= \dfrac{(2m+1) + 1}{2} = m + 1 \end{aligned} \right.$$
+    
+    Vì $m < m + 1$ nên ta luôn có $x_1 < x_2$.
+    
+    **Bước 3: Lập luận điều kiện đồng biến**
+    
+    Do hệ số $a = 6 > 0$, dấu của $y'$ dương trên các khoảng $(-\infty; m)$ và $(m+1; +\infty)$.
+    Do đó, hàm số đồng biến trên các khoảng $(-\infty; m)$ và $(m+1; +\infty)$.
+    
+    Để hàm số đồng biến trên khoảng $(2; +\infty)$ thì khoảng $(2; +\infty)$ phải là tập con của $(m+1; +\infty)$:
+    $$(2; +\infty) \subseteq [m+1; +\infty) \Leftrightarrow m + 1 \le 2 \Leftrightarrow m \le 1$$
+    
+    **Bước 4: Kết luận**
+    
+    Tập hợp các giá trị của $m$ là $(-\infty; 1]$. Suy ra $a = 1$.
+    
+    **Đáp số:** **$1$**.
+    """)
+    
+st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 62 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Tìm tất cả các giá trị thực của tham số $m$ để hàm số 
+$$y = -\dfrac{1}{3}x^3 + (m-1)x^2 + (m+3)x - 10$$
+đồng biến trên khoảng $(0; 3)$.
+
+Biết tập hợp tất cả các giá trị của $m$ thỏa mãn yêu cầu bài toán có dạng $\left[ \dfrac{a}{b}; +\infty \right)$ (với $\dfrac{a}{b}$ là phân số tối giản). Nhập giá trị phân số $\dfrac{a}{b}$ (ví dụ: 12/7).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập phân số a/b (ví dụ: 10/9):", key="q2_bt2_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q2_bt2_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip().replace(' ', '')
+    
+    # Đáp án chính xác là 12/7
+    if normalized_user_answer == "12/7":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy cô lập m thành m >= g(x) với x thuộc (0; 3) và tìm giá trị lớn nhất của g(x) trên đoạn [0; 3] nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q2_bt2_solution_shown' not in st.session_state:
+    st.session_state['q2_bt2_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q2_bt2_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q2_bt2_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q2_bt2_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q2_bt2_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tập xác định và tính đạo hàm**
+    
+    *   Tập xác định: $\mathcal{D} = \mathbb{R}$.
+    *   Đạo hàm của hàm số:
+        $$y' = -x^2 + 2(m-1)x + m + 3$$
+        
+    **Bước 2: Biến đổi điều kiện đồng biến và cô lập tham số $m$**
+    
+    Hàm số đồng biến trên khoảng $(0; 3) \Leftrightarrow y' \ge 0, \forall x \in (0; 3)$
+    $$\Leftrightarrow -x^2 + 2(m-1)x + m + 3 \ge 0, \forall x \in (0; 3)$$
+    $$\Leftrightarrow -x^2 - 2x + 3 + m(2x + 1) \ge 0, \forall x \in (0; 3)$$
+    $$\Leftrightarrow m(2x + 1) \ge x^2 + 2x - 3, \forall x \in (0; 3)$$
+    
+    Vì $x \in (0; 3)$ nên $2x + 1 > 0$, chia cả 2 vế cho $2x + 1$ ta được:
+    $$m \ge \dfrac{x^2 + 2x - 3}{2x + 1}, \forall x \in (0; 3) \quad (*)$$
+    
+    **Bước 3: Khảo sát hàm số $g(x) = \dfrac{x^2 + 2x - 3}{2x + 1}$ trên đoạn $[0; 3]$**
+    
+    Tính đạo hàm của $g(x)$:
+    $$g'(x) = \dfrac{(2x + 2)(2x + 1) - 2(x^2 + 2x - 3)}{(2x + 1)^2}$$
+    $$g'(x) = \dfrac{4x^2 + 6x + 2 - 2x^2 - 4x + 6}{(2x + 1)^2} = \dfrac{2x^2 + 2x + 8}{(2x + 1)^2}$$
+    
+    Nhận thấy $2x^2 + 2x + 8 > 0, \forall x \in [0; 3]$ nên $g'(x) > 0, \forall x \in [0; 3]$.
+    
+    Do đó, hàm số $g(x)$ đồng biến trên đoạn $[0; 3]$.
+    $$\Rightarrow \max_{x \in [0; 3]} g(x) = g(3) = \dfrac{3^2 + 2(3) - 3}{2(3) + 1} = \dfrac{12}{7}$$
+    
+    **Bước 4: Kết luận giá trị tham số $m$**
+    
+    Bất phương trình $(*)$ nghiệm đúng với mọi $x \in (0; 3)$ khi và chỉ khi:
+    $$m \ge \max_{x \in [0; 3]} g(x) \Leftrightarrow m \ge \dfrac{12}{7}$$
+    
+    Do đó, $m \in \left[ \dfrac{12}{7}; +\infty \right)$.
+    
+    **Đáp số:** **$\dfrac{12}{7}$**.
     """)
     
 st.markdown("---")
