@@ -730,6 +730,15 @@ $$S = \sin^2 10^\circ + \sin^2 20^\circ + \sin^2 30^\circ + \dots + \sin^2 170^\
                     """
                 )
                 q21_ans = st.text_input("Nhập kết quả dạng số:", key="q21")
+                # CHÈN LỆNH HÌNH VẼ THEO YÊU CẦU
+                try:
+                    col1, col2, col3 = st.columns([1, 2, 1])
+                    with col2:
+                        st.image("images/de1_cau21.PNG", width=400)
+                except: 
+                    st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau1_p1.png")
+
+            
 
             # ================= SUBMIT BUTTON =================
             submit_btn = st.form_submit_button(
