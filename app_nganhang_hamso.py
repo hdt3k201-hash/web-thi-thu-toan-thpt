@@ -542,7 +542,104 @@ st.markdown("---")
 
 
 
+import streamlit as st
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 6 (THPT Lê Thánh Tông HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d0db1b.png
+st.markdown(r"""
+Một công ty công nghệ cung cấp gói lưu trữ dữ liệu doanh nghiệp với giá niêm yết $200.000$ đồng/tháng và đang có $400$ khách hàng. Phòng kinh doanh xác định được quy luật: Cứ giảm giá $10.000$ đồng thì sẽ có thêm $50$ khách hàng mới. 
+
+Tuy nhiên, do hiện tượng quá tải băng thông, chi phí vận hành $C(n)$ (nghìn đồng) không cố định mà biến thiên theo hàm bậc hai của số lượng khách hàng $n$, được xác định bởi công thức: 
+$$C(n) = 28n + 0,01n^2 + 15.000$$
+
+Công ty cần chốt giá bán bao nhiêu nghìn đồng để lợi nhuận đạt mức tối đa?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá bán cần chốt (nghìn đồng) (ví dụ: 150):", key="q11_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q11_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 160
+    if normalized_user_answer == "160":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm doanh thu, chi phí theo số lần giảm giá và kiểm tra lại nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q11_solution_shown' not in st.session_state:
+    st.session_state['q11_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q11_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q11_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q11_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q11_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Lập hàm số biểu diễn số lượng khách hàng và giá bán**
+    
+    Gọi $x$ là số lần giảm giá $10.000$ đồng ($x \ge 0$).
+    Khi đó, giá bán mới của gói lưu trữ tính theo nghìn đồng là: 
+    $$p(x) = 200 - 10x \text{ (nghìn đồng)}$$
+    
+    Số lượng khách hàng tương ứng sau khi giảm giá là: 
+    $$n(x) = 400 + 50x \text{ (khách hàng)}$$
+    
+    **Bước 2: Thiết lập hàm Doanh thu và hàm Chi phí**
+    
+    *   **Hàm Doanh thu (nghìn đồng):**
+        $$R(x) = p(x) \cdot n(x) = (200 - 10x)(400 + 50x)$$
+        $$R(x) = 80000 + 10000x - 4000x - 500x^2$$
+        $$R(x) = -500x^2 + 6000x + 80000$$
+        
+    *   **Hàm Chi phí (nghìn đồng):**
+        Theo đề bài $C(n) = 28n + 0,01n^2 + 15000$. Thay $n(x) = 400 + 50x$ vào ta được:
+        $$C(x) = 28(400 + 50x) + 0,01(400 + 50x)^2 + 15000$$
+        $$C(x) = 11200 + 1400x + 0,01(160000 + 40000x + 2500x^2) + 15000$$
+        $$C(x) = 11200 + 1400x + 1600 + 400x + 25x^2 + 15000$$
+        $$C(x) = 25x^2 + 1800x + 27800$$
+        
+    **Bước 3: Lập hàm Lợi nhuận và tìm giá trị tối đa**
+    
+    Hàm lợi nhuận $P(x)$ bằng Doanh thu trừ đi Chi phí:
+    $$P(x) = R(x) - C(x)$$
+    $$P(x) = (-500x^2 + 6000x + 80000) - (25x^2 + 1800x + 27800)$$
+    $$P(x) = -525x^2 + 4200x + 52200$$
+    
+    Đây là một hàm số bậc hai ẩn $x$ với hệ số $a = -525 < 0$. Đồ thị là một parabol có bề lõm hướng xuống dưới nên sẽ đạt giá trị lớn nhất tại đỉnh.
+    Tọa độ đỉnh đạt được tại:
+    $$x = -\dfrac{b}{2a} = -\dfrac{4200}{2 \cdot (-525)} = \dfrac{4200}{1050} = 4$$
+    
+    Vậy công ty cần thực hiện giảm giá $4$ lần để đạt lợi nhuận tối đa.
+    Giá bán gói lưu trữ cần chốt là:
+    $$p(4) = 200 - 10 \cdot 4 = 160 \text{ (nghìn đồng)}$$
+    
+    **Kết luận:** Công ty cần chốt giá bán **$160$** nghìn đồng.
+    """)
+    
+st.markdown("---")
 
 
 
