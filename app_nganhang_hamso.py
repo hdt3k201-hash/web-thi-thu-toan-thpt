@@ -432,6 +432,109 @@ st.markdown("---")
 
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 5 (HSG 12 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d07166.png
+st.markdown(r"""
+Một phần đường chạy của tàu lượn siêu tốc khi gắn hệ trục tọa độ $Oxy$ được mô phỏng như hình vẽ, đơn vị trên mỗi trục là mét. Biết đường chạy của nó là một phần đồ thị hàm số bậc ba $y = ax^3 + bx^2 + cx + d$ ($0 \le x \le 90$); tàu lượn siêu tốc đi qua các điểm $A(0; 30), C(50; 30), D(80; 30)$ đồng thời đạt độ cao nhỏ nhất so với mặt đất là 4m (trong khoảng từ 0 đến 50).
+
+Độ cao lớn nhất mà tàu lượn siêu tốc đạt được là bao nhiêu mét so với mặt đất? (kết quả làm tròn đến hàng phần chục).
+""")
+ try: 
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.image("images/hsgth.PNG", width=400)
+except: 
+                st.warning("⚠️ Lỗi: Thiếu file ảnh images/cau2_p1.png")
+
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập độ cao lớn nhất (làm tròn đến 1 chữ số thập phân, ví dụ: 45.2):", key="q10_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q10_check"):
+    # Chuẩn hóa đầu vào (loại bỏ khoảng trắng, đổi phẩy thành chấm)
+    normalized_user_answer = user_answer.strip().replace(" ", "").replace(",", ".")
+    
+    # Đáp án chính xác là 40.7
+    if normalized_user_answer == "40.7":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại hàm số và cách làm tròn nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q10_solution_shown' not in st.session_state:
+    st.session_state['q10_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q10_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q10_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q10_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q10_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Lập phương trình hàm số bậc ba**
+    
+    Gọi phương trình đường chạy là $y = f(x) = ax^3 + bx^2 + cx + d$ ($0 \le x \le 90$).
+    Đồ thị hàm số đi qua 3 điểm có cùng tung độ bằng 30 là $A(0; 30), C(50; 30), D(80; 30)$. 
+    Suy ra phương trình $f(x) - 30 = 0$ có 3 nghiệm là $x_1 = 0, x_2 = 50, x_3 = 80$.
+    
+    Do đó, hàm số có dạng:
+    $$f(x) - 30 = a(x - 0)(x - 50)(x - 80)$$
+    $$\Leftrightarrow f(x) = a(x^3 - 130x^2 + 4000x) + 30$$
+    
+    **Bước 2: Sử dụng dữ kiện điểm cực tiểu để tìm hệ số a**
+    
+    Đạo hàm của hàm số:
+    $$f'(x) = a(3x^2 - 260x + 4000)$$
+    
+    Cho $f'(x) = 0 \Leftrightarrow 3x^2 - 260x + 4000 = 0 \Leftrightarrow \left[ \begin{array}{l} x = 20 \\ x = \dfrac{200}{3} \end{array} \right.$
+    
+    Trong khoảng $(0; 50)$, điểm cực trị là $x = 20$. 
+    Vì đồ thị đạt độ cao nhỏ nhất là $4$m trong khoảng này, nên $x = 20$ chính là điểm cực tiểu của hàm số và $f(20) = 4$.
+    
+    Thay $x = 20$ vào phương trình hàm số ta được:
+    $$a \cdot 20(20 - 50)(20 - 80) + 30 = 4$$
+    $$\Leftrightarrow a \cdot 20 \cdot (-30) \cdot (-60) = -26$$
+    $$\Leftrightarrow 36000a = -26 \Leftrightarrow a = -\dfrac{26}{36000} = -\dfrac{13}{18000}$$
+    
+    Vậy phương trình hàm số đầy đủ là: $f(x) = -\dfrac{13}{18000}(x^3 - 130x^2 + 4000x) + 30$.
+    
+    **Bước 3: Tìm độ cao lớn nhất của tàu lượn**
+    
+    Vì hệ số $a < 0$, điểm cực đại của đồ thị sẽ nằm tại nghiệm còn lại của đạo hàm, tức là tại $x = \dfrac{200}{3}$ (thuộc đoạn $[0; 90]$).
+    
+    Ta tính giá trị hàm số tại các điểm:
+    *   $f(0) = 30$
+    *   $f(90) = -\dfrac{13}{18000} \cdot 90(90 - 50)(90 - 80) + 30 = -26 + 30 = 4$
+    *   Tại điểm cực đại $x = \dfrac{200}{3}$:
+    $$f\left(\dfrac{200}{3}\right) = -\dfrac{13}{18000} \cdot \left(\dfrac{200}{3}\right) \cdot \left(\dfrac{200}{3} - 50\right) \cdot \left(\dfrac{200}{3} - 80\right) + 30$$
+    $$f\left(\dfrac{200}{3}\right) = -\dfrac{13}{18000} \cdot \dfrac{200}{3} \cdot \dfrac{50}{3} \cdot \left(-\dfrac{40}{3}\right) + 30$$
+    $$f\left(\dfrac{200}{3}\right) = \dfrac{13 \cdot 400000}{18000 \cdot 27} + 30 = \dfrac{2600}{243} + 30 = \dfrac{9890}{243} \approx 40.699$$
+    
+    So sánh các giá trị, độ cao lớn nhất mà tàu lượn đạt được là khoảng $40.699$m.
+    Làm tròn đến hàng phần chục, kết quả là **$40.7$**.
+    """)
+    
+st.markdown("---")
+
 
 
 
