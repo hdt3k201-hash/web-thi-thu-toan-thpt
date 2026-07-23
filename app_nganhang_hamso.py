@@ -5105,7 +5105,7 @@ Cho hàm số $y = \dfrac{4x - 3}{x - 3}$ có đồ thị là $(C)$. Tìm giá t
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập giá trị nhỏ nhất của tổng khoảng cách (ví dụ: 6):", key="q330_ans")
+user_answer = st.text_input("Nhập giá trị nhỏ nhất của tổng khoảng cách (ví dụ: 9):", key="q330_ans")
 
 # Chèn hình ảnh minh họa ngay sau ô nhập đáp án
 
@@ -5190,7 +5190,7 @@ Cho hàm số $y = \dfrac{x - 1}{x + 1}$ có đồ thị là $(C)$. Tính giá t
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập giá trị nhỏ nhất (ví dụ: 0.83):", key="q331_ans")
+user_answer = st.text_input("Nhập giá trị nhỏ nhất (ví dụ: 0.32):", key="q331_ans")
 
 # Chèn hình ảnh minh họa ngay sau ô nhập đáp án
 
