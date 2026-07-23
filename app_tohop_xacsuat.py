@@ -422,3 +422,103 @@ if st.session_state.get('q4_solution_shown') and st.session_state.get('logged_in
     """)
     
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 5 ---
+st.markdown(
+    '<b style="color: blue;">Câu 5 (Đề thi  Tốt nghiệp THPT 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một khung hình trang trí có dạng một đa giác đều 12 cạnh $A_1A_2 \dots A_{12}$ (xem hình dưới) được gắn cố định trên một trần nhà. Bạn Dũng có 12 bóng đèn gồm bốn bóng màu đỏ và tám bóng màu xanh, có công suất đôi một khác nhau. Bạn Dũng lắp ngẫu nhiên 12 bóng đèn trên vào 12 đỉnh $A_1, A_2, \dots, A_{12}$ sao cho mỗi đỉnh có đúng một bóng đèn. Gọi $P$ là xác suất để mỗi hình vuông (có bốn đỉnh là các đỉnh của đa giác đã cho) đều có ít nhất một bóng đèn màu đỏ. Giá trị của $3190P$ bằng bao nhiêu?
+""")
+
+# --- CHÈN HÌNH ẢNH (NẾU CÓ) ---
+# (Phần mẫu chèn ảnh chuẩn theo yêu cầu của thầy)
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/tn12026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/tn12026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án :", key="q5_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q5_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    if normalized_user_answer == "1856":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy chia 12 đỉnh của đa giác thành các hình vuông rời nhau và phân bổ số bóng đỏ vào các hình vuông đó.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q5_solution_shown' not in st.session_state:
+    st.session_state['q5_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q5_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q5_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q5_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q5_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu**
+    
+    * Lắp ngẫu nhiên 12 bóng đèn có công suất đôi một khác nhau vào 12 đỉnh, số cách xếp là:
+        $$n(\Omega) = 12!$$
+    
+    **Bước 2: Phân tích các hình vuông tạo bởi các đỉnh của đa giác đều 12 cạnh**
+    
+    * Một đa giác đều 12 cạnh có $\dfrac{12}{4} = 3$ hình vuông tạo bởi các đỉnh của nó. 
+    * Cụ thể, $3$ hình vuông đó là: 
+        * Hình vuông 1: $A_1A_4A_7A_{10}$
+        * Hình vuông 2: $A_2A_5A_8A_{11}$
+        * Hình vuông 3: $A_3A_6A_9A_{12}$
+    * Nhận thấy $3$ hình vuông này có các đỉnh hoàn toàn rời nhau và bao gồm tất cả $12$ đỉnh của đa giác.
+    
+    **Bước 3: Tính số kết quả thuận lợi cho biến cố**
+    
+    * Gọi biến cố $A$: "Mỗi hình vuông đều có ít nhất một bóng đèn màu đỏ".
+    * Ta có $4$ bóng đèn đỏ. Để $3$ hình vuông đều có ít nhất $1$ bóng đỏ, theo nguyên lý Dirichlet, số bóng đỏ phân bổ vào $3$ hình vuông phải là bộ $(2; 1; 1)$. Tức là sẽ có $1$ hình vuông chứa $2$ bóng đỏ, và $2$ hình vuông còn lại mỗi hình vuông chứa $1$ bóng đỏ.
+    * Số cách chọn vị trí cho $4$ bóng đèn đỏ thỏa mãn là:
+        * Chọn $1$ hình vuông (trong $3$ hình vuông) chứa $2$ bóng đỏ: $C_3^1$ cách.
+        * Chọn $2$ đỉnh trong hình vuông đó để đặt bóng đỏ: $C_4^2$ cách.
+        * Chọn $1$ đỉnh trong mỗi hình vuông còn lại để đặt bóng đỏ: $C_4^1 \cdot C_4^1$ cách.
+        * Suy ra số cách chọn $4$ vị trí đặt bóng đỏ là: $C_3^1 \cdot C_4^2 \cdot C_4^1 \cdot C_4^1 = 3 \cdot 6 \cdot 4 \cdot 4 = 288 \text{ (cách)}$.
+    * Có $4$ bóng đèn đỏ đôi một khác nhau, xếp vào $4$ vị trí đã chọn có $4!$ cách.
+    * Có $8$ bóng đèn xanh đôi một khác nhau, xếp vào $8$ vị trí còn lại có $8!$ cách.
+    * Suy ra số kết quả thuận lợi cho biến cố $A$ là:
+        $$n(A) = 288 \cdot 4! \cdot 8!$$
+    
+    **Bước 4: Tính xác suất $P$ và giá trị cần tìm**
+    
+    * Xác suất của biến cố là:
+        $$P = \dfrac{n(A)}{n(\Omega)} = \dfrac{288 \cdot 4! \cdot 8!}{12!} = \dfrac{288 \cdot 24}{12 \cdot 11 \cdot 10 \cdot 9} = \dfrac{32}{55}$$
+    * Giá trị của biểu thức cần tính là:
+        $$3190P = 3190 \cdot \dfrac{32}{55} = 58 \cdot 32 = 1856$$
+    
+    **Kết luận:** Giá trị của $3190P$ bằng **1856**.
+    """)
+    
+st.markdown("---")
