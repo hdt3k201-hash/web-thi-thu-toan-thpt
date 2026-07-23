@@ -6632,3 +6632,109 @@ if st.session_state.get('q_dh_hieu_solution_shown') and st.session_state.get('lo
     """)
     
 st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 69 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho hai hàm số $f(x)$ và $g(x)$ có đồ thị như hình vẽ[cite: 1]. Biết rằng hai hàm số $f(2x-1)$ và $g(ax+b)$ có cùng khoảng nghịch biến $(m; n)$, với $m, n \in \mathbb{N}$[cite: 1]. 
+Khi đó giá trị của biểu thức $(4a+b)$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của biểu thức 4a + b (ví dụ: 3):", key="q_dh_dothi_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_24eb38.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_24eb38.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_dh_dothi_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 8
+    if normalized_user_answer == "8":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy xác định khoảng nghịch biến của f(x) và g(x) từ đồ thị, sau đó thiết lập điều kiện cho hàm hợp nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_dh_dothi_solution_shown' not in st.session_state:
+    st.session_state['q_dh_dothi_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_dh_dothi_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_dh_dothi_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_dh_dothi_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_dh_dothi_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm khoảng nghịch biến của hàm số $f(x)$ từ đồ thị**
+    
+    Dựa vào đồ thị của hàm số $f(x)$[cite: 1]:
+    *   Hàm số $f(x)$ đạt cực đại tại $x = 1$ và cực tiểu tại $x = 3$.
+    *   Do đó, hàm số $f(x)$ nghịch biến trên khoảng $(1; 3)$.
+    
+    **Bước 2: Tìm khoảng nghịch biến của hàm số hợp $f(2x-1)$**
+    
+    Hàm số $y = f(2x-1)$ nghịch biến khi và chỉ khi đạo hàm của nó âm:
+    $$y' = 2 \cdot f'(2x-1) < 0 \Leftrightarrow f'(2x-1) < 0$$
+    
+    Vì $f(x)$ nghịch biến khi đối số thuộc khoảng $(1; 3)$, nên ta có:
+    $$1 < 2x - 1 < 3$$
+    $$\Leftrightarrow 2 < 2x < 4$$
+    $$\Leftrightarrow 1 < x < 2$$
+    
+    Suy ra hàm số $f(2x-1)$ nghịch biến trên khoảng $(1; 2)$. Theo giả thiết, khoảng nghịch biến này là $(m; n)$, nên ta xác định được $(m; n) = (1; 2)$.
+    
+    **Bước 3: Tìm khoảng nghịch biến của hàm số $g(x)$ và hàm hợp $g(ax+b)$**
+    
+    Dựa vào đồ thị, hàm số $g(x)$ là phép tịnh tiến của đồ thị $f(x)$, đạt cực đại tại $x = 2$ và cực tiểu tại $x = 4$. Do đó, hàm số $g(x)$ nghịch biến trên khoảng $(2; 4)$.
+    
+    Hàm số $y = g(ax+b)$ (với giả thiết $a > 0$) nghịch biến khi:
+    $$2 < ax + b < 4$$
+    $$\Leftrightarrow \dfrac{2-b}{a} < x < \dfrac{4-b}{a}$$
+    
+    **Bước 4: Đồng nhất khoảng nghịch biến và tìm $a, b$**
+    
+    Vì hai hàm số có cùng khoảng nghịch biến là $(1; 2)$, ta đồng nhất các đầu mút của khoảng:
+    $$\begin{cases} \dfrac{2-b}{a} = 1 \\ \dfrac{4-b}{a} = 2 \end{cases}$$
+    $$\Leftrightarrow \begin{cases} 2 - b = a \\ 4 - b = 2a \end{cases}$$
+    $$\Leftrightarrow \begin{cases} a + b = 2 \\ 2a + b = 4 \end{cases}$$
+    $$\Leftrightarrow \begin{cases} a = 2 \\ b = 0 \end{cases}$$
+    
+    Giá trị $a = 2 > 0$ thỏa mãn điều kiện bài toán.
+    
+    **Bước 5: Tính giá trị biểu thức $(4a + b)$**
+    
+    Thay $a = 2$ và $b = 0$ vào biểu thức, ta được:
+    $$4a + b = 4(2) + 0 = 8$$
+    
+    **Kết luận:** Giá trị của biểu thức $(4a + b)$ bằng **$8$**.
+    """)
+    
+st.markdown("---")
