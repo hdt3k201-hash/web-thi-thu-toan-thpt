@@ -942,7 +942,7 @@ Phương trình có thể phân tích thành tích như sau: $(2\cos x - 1)(\cos
   * Thay $k = 2$, ta có $20 \le t \le 24$ Nghĩa là tàu có thể cập cảng từ 20 giờ đến 24 giờ (kéo dài thêm **4** tiếng nữa).
 * Tổng thời gian khả thi để tàu cập bến an toàn trong ngày là: $4 + 4 = 8$ giờ.
 
-$\Rightarrow$ **Đáp số cần điền: 8.**[cite: 1]
+$\Rightarrow$ **Đáp số cần điền: 8.**
 """)
 
         with st.expander("🔍 Lời giải Câu 6: Giá trị nhỏ nhất của hàm số"):
@@ -952,7 +952,7 @@ $\Rightarrow$ **Đáp số cần điền: 8.**[cite: 1]
 * Cộng hằng số tự do 5 vào tất cả các vế để khôi phục lại hàm số $y$ ban đầu: $-5 + 5 \le 3\sin x + 4\cos x + 5 \le 5 + 5 \Leftrightarrow 0 \le y \le 10$.
 * Từ bất đẳng thức kép trên, ta kết luận được ngay giá trị nhỏ nhất của hàm số là 0.
 
-$\Rightarrow$ **Đáp số cần điền: 0.**[cite: 1]
+$\Rightarrow$ **Đáp số cần điền: 0.**
 """)
 
         with st.expander("🔍 Lời giải Câu 7: Phân tích dao động con lắc lò xo"):
@@ -972,7 +972,7 @@ Dựa vào phương trình li độ $x(t) = 5\cos\left(4\pi t - \frac{\pi}{2}\ri
 * Lúc này, phương trình đã cho trở thành: $\frac{2}{\sin 2x} = m \Leftrightarrow \sin 2x = \frac{2}{m}$ (điều kiện $m \ne 0$).
 * Để phương trình có nghiệm, giá trị lượng giác $\sin 2x$ phải nằm trong giới hạn tự nhiên của nó là đoạn $[-1; 1]$.[cite: 1] Đồng thời, do điều kiện xác định $\sin 2x \ne 0$, ta thiết lập được hệ bất phương trình cho tham số m: $-1 \le \frac{2}{m} \le 1$ và $\frac{2}{m} \ne 0 \Leftrightarrow |m| \ge 2$.[cite: 1]
 * Kết hợp với điều kiện bài toán yêu cầu m là số nguyên thuộc đoạn $[-10; 10]$, ta liệt kê được các giá trị hợp lệ: $m \in \{-10, -9, ..., -2\} \cup \{2, 3, ..., 10\}$.[cite: 1]
-* Đếm số lượng phần tử, ta có $9 + 9 = 18$ giá trị thỏa mãn.[cite: 1]
+* Đếm số lượng phần tử, ta có $9 + 9 = 18$ giá trị thỏa mãn.
 
 $\Rightarrow$ **Chọn đáp án A.**[cite: 1]
 """)
@@ -1008,7 +1008,7 @@ $\Rightarrow$ **Kết quả:** 1) $\frac{1}{2}\sin 2x + \frac{\sqrt{3}}{4}$; 2) 
   * **Với họ $x = 6k - 1$:** $1 \le 6k - 1 \le 2026 \Leftrightarrow 2 \le 6k \le 2027 \Leftrightarrow 0,33 \le k \le 337,8$.[cite: 2] Lúc này k nhận các giá trị nguyên từ 1 đến 337, sinh ra thêm **337** nghiệm nữa.
 * Vì hai họ nghiệm này rời nhau hoàn toàn, tổng số nghiệm nguyên hợp lệ là $338 + 337 = 675$.
 
-$\Rightarrow$ **Đáp số cần điền: 675.**[cite: 2]
+$\Rightarrow$ **Đáp số cần điền: 675.**
 """)
 
         with st.expander("🔍 Lời giải Câu 12: Phương trình tích chứa tham số"):
@@ -1060,56 +1060,56 @@ $\Rightarrow$ **Đáp số cần điền: 122.**
 
         with st.expander("🔍 Lời giải Câu 16: Tìm tham số m để hàm số đạt Max"):
             st.markdown(r"""
-* Biến đổi hàm số phân thức lượng giác thành phương trình bậc nhất theo $\sin x$ và $\cos x$.[cite: 2] Nhân chéo mẫu số (vì $\cos x - \sin x + 2 > 0 \, \forall x$): $y(\cos x - \sin x + 2) = \sin x + m\cos x + 1$.[cite: 2]
-* Nhóm các hệ số: $(y+1)\sin x + (m-y)\cos x = 2y-1$.[cite: 2]
-* Phương trình có nghiệm $x$ khi thỏa mãn điều kiện biên độ: $(y+1)^2 + (m-y)^2 \ge (2y-1)^2$.[cite: 2]
-* Khai triển và rút gọn: $y^2 + 2y + 1 + m^2 - 2my + y^2 \ge 4y^2 - 4y + 1 \Leftrightarrow 2y^2 - (2m+6)y - m^2 \le 0 \quad (*)$.[cite: 2]
-* Tập nghiệm của (*) chính là tập giá trị của hàm số đoạn $[y_{\min}; y_{\max}]$.[cite: 2] Để giá trị lớn nhất $y_{\max} = 2$, thì $y=2$ phải là nghiệm làm cho vế trái bằng 0: $2(2)^2 - (2m+6)(2) - m^2 = 0 \Leftrightarrow 8 - 4m - 12 - m^2 = 0 \Leftrightarrow m^2 + 4m + 4 = 0$.[cite: 2]
-* Hằng đẳng thức xuất hiện: $(m+2)^2 = 0 \Rightarrow m = -2$.[cite: 2]
+* Biến đổi hàm số phân thức lượng giác thành phương trình bậc nhất theo $\sin x$ và $\cos x$. Nhân chéo mẫu số (vì $\cos x - \sin x + 2 > 0 \, \forall x$): $y(\cos x - \sin x + 2) = \sin x + m\cos x + 1$.
+* Nhóm các hệ số: $(y+1)\sin x + (m-y)\cos x = 2y-1$.
+* Phương trình có nghiệm $x$ khi thỏa mãn điều kiện biên độ: $(y+1)^2 + (m-y)^2 \ge (2y-1)^2$.
+* Khai triển và rút gọn: $y^2 + 2y + 1 + m^2 - 2my + y^2 \ge 4y^2 - 4y + 1 \Leftrightarrow 2y^2 - (2m+6)y - m^2 \le 0 \quad (*)$.
+* Tập nghiệm của (*) chính là tập giá trị của hàm số đoạn $[y_{\min}; y_{\max}]$. Để giá trị lớn nhất $y_{\max} = 2$, thì $y=2$ phải là nghiệm làm cho vế trái bằng 0: $2(2)^2 - (2m+6)(2) - m^2 = 0 \Leftrightarrow 8 - 4m - 12 - m^2 = 0 \Leftrightarrow m^2 + 4m + 4 = 0$.
+* Hằng đẳng thức xuất hiện: $(m+2)^2 = 0 \Rightarrow m = -2$.
 
-$\Rightarrow$ **Đáp số cần điền: -2.**[cite: 2]
+$\Rightarrow$ **Đáp số cần điền: -2.**
 """)
 
         with st.expander("🔍 Lời giải Câu 17: Biểu diễn nghiệm trên đường tròn lượng giác"):
             st.markdown(r"""
-* Ghép cặp số hạng đầu và số hạng cuối, tận dụng công thức tổng thành tích: $(\sin 3x + \sin x) + \sin 2x = 0 \Leftrightarrow 2\sin 2x\cos x + \sin 2x = 0$.[cite: 2]
-* Rút nhân tử chung: $\sin 2x(2\cos x + 1) = 0$.[cite: 2]
+* Ghép cặp số hạng đầu và số hạng cuối, tận dụng công thức tổng thành tích: $(\sin 3x + \sin x) + \sin 2x = 0 \Leftrightarrow 2\sin 2x\cos x + \sin 2x = 0$.
+* Rút nhân tử chung: $\sin 2x(2\cos x + 1) = 0$.
 * Điều này dẫn đến 2 trường hợp:
-  * $\sin 2x = 0 \Rightarrow 2x = k\pi \Rightarrow x = k\dfrac{\pi}{2}$.[cite: 2] Họ nghiệm này tạo ra **4 điểm** phân biệt ứng với các góc $0, \dfrac{\pi}{2}, \pi, \dfrac{3\pi}{2}$.[cite: 2]
-  * $\cos x = -\dfrac{1}{2} \Rightarrow x = \pm\dfrac{2\pi}{3} + k2\pi$.[cite: 2] Họ này bổ sung thêm đúng **2 điểm** hoàn toàn mới là $\dfrac{2\pi}{3} (120^\circ)$ và $\dfrac{4\pi}{3} (240^\circ)$.[cite: 2]
-* Hai tập hợp điểm này không trùng lặp, nên tổng số điểm biểu diễn phân biệt là $4 + 2 = 6$ điểm.[cite: 2]
+  * $\sin 2x = 0 \Rightarrow 2x = k\pi \Rightarrow x = k\dfrac{\pi}{2}$. Họ nghiệm này tạo ra **4 điểm** phân biệt ứng với các góc $0, \dfrac{\pi}{2}, \pi, \dfrac{3\pi}{2}$.
+  * $\cos x = -\dfrac{1}{2} \Rightarrow x = \pm\dfrac{2\pi}{3} + k2\pi$. Họ này bổ sung thêm đúng **2 điểm** hoàn toàn mới là $\dfrac{2\pi}{3} (120^\circ)$ và $\dfrac{4\pi}{3} (240^\circ)$.
+* Hai tập hợp điểm này không trùng lặp, nên tổng số điểm biểu diễn phân biệt là $4 + 2 = 6$ điểm.
 
-$\Rightarrow$ **Chọn đáp án C.**[cite: 2]
+$\Rightarrow$ **Chọn đáp án C.**
 """)
 
         with st.expander("🔍 Lời giải Câu 18: Biện luận số nghiệm phương trình lượng giác"):
             st.markdown(r"""
-Hạ bậc nhanh phương trình bằng hằng đẳng thức mở rộng: $(\sin^2 x + \cos^2 x)^2 - 2\sin^2 x\cos^2 x = m \Leftrightarrow 1 - \dfrac{1}{2}\sin^2 2x = m \Leftrightarrow \sin^2 2x = 2(1-m)$.[cite: 2]
+Hạ bậc nhanh phương trình bằng hằng đẳng thức mở rộng: $(\sin^2 x + \cos^2 x)^2 - 2\sin^2 x\cos^2 x = m \Leftrightarrow 1 - \dfrac{1}{2}\sin^2 2x = m \Leftrightarrow \sin^2 2x = 2(1-m)$.
 
-* **A. Sai.** Khi $m = 1 \Rightarrow \sin^2 2x = 0 \Leftrightarrow \sin 2x = 0 \Rightarrow x = k\dfrac{\pi}{2}$.[cite: 2] Trên đoạn $[0; \pi]$, ta tìm được **3** nghiệm phân biệt $\left\{0; \dfrac{\pi}{2}; \pi\right\}$, không phải 4.[cite: 2]
-* **B. Đúng.** Vì hàm bình phương $\sin^2 2x$ luôn bị khống chế trong đoạn $[0; 1]$, nên phương trình có nghiệm khi: $0 \le 2(1-m) \le 1 \Leftrightarrow 0 \le 1-m \le \dfrac{1}{2} \Leftrightarrow \dfrac{1}{2} \le m \le 1$.[cite: 2]
-* **C. Đúng.** Thử trực tiếp $m = \dfrac{3}{4}$, ta được $\sin^2 2x = \dfrac{1}{2} \Rightarrow \cos^2 2x = \dfrac{1}{2} \Rightarrow \cos 4x = 0$.[cite: 2] Nghiệm thu được là $4x = \dfrac{\pi}{2} + k\pi \Rightarrow x = \dfrac{\pi}{8} + k\dfrac{\pi}{4}$.[cite: 2] Khoảng cách giữa các nghiệm là $\dfrac{\pi}{4} (45^\circ)$, chia đường tròn thành 8 phần bằng nhau tạo thành bát giác đều.[cite: 2]
-* **D. Đúng.** Thay $m = \dfrac{1}{2}$ vào, ta nhận được $\sin^2 2x = 1$.[cite: 2] Dùng công thức hạ bậc: $\dfrac{1-\cos 4x}{2} = 1 \Leftrightarrow \cos 4x = -1$.[cite: 2]
+* **A. Sai.** Khi $m = 1 \Rightarrow \sin^2 2x = 0 \Leftrightarrow \sin 2x = 0 \Rightarrow x = k\dfrac{\pi}{2}$.[cite: 2] Trên đoạn $[0; \pi]$, ta tìm được **3** nghiệm phân biệt $\left\{0; \dfrac{\pi}{2}; \pi\right\}$, không phải 4.
+* **B. Đúng.** Vì hàm bình phương $\sin^2 2x$ luôn bị khống chế trong đoạn $[0; 1]$, nên phương trình có nghiệm khi: $0 \le 2(1-m) \le 1 \Leftrightarrow 0 \le 1-m \le \dfrac{1}{2} \Leftrightarrow \dfrac{1}{2} \le m \le 1$.
+* **C. Đúng.** Thử trực tiếp $m = \dfrac{3}{4}$, ta được $\sin^2 2x = \dfrac{1}{2} \Rightarrow \cos^2 2x = \dfrac{1}{2} \Rightarrow \cos 4x = 0$.[cite: 2] Nghiệm thu được là $4x = \dfrac{\pi}{2} + k\pi \Rightarrow x = \dfrac{\pi}{8} + k\dfrac{\pi}{4}$. Khoảng cách giữa các nghiệm là $\dfrac{\pi}{4} (45^\circ)$, chia đường tròn thành 8 phần bằng nhau tạo thành bát giác đều.
+* **D. Đúng.** Thay $m = \dfrac{1}{2}$ vào, ta nhận được $\sin^2 2x = 1$. Dùng công thức hạ bậc: $\dfrac{1-\cos 4x}{2} = 1 \Leftrightarrow \cos 4x = -1$.
 """)
 
         with st.expander("🔍 Lời giải Câu 19: Tính tổng chuỗi lượng giác"):
             st.markdown(r"""
-* Dãy tổng S bao gồm các số hạng là bình phương hàm sin của các góc tăng dần với bước nhảy $10^\circ$, kéo dài từ $10^\circ$ đến $180^\circ$.[cite: 2] Có tổng cộng 18 số hạng.[cite: 2]
-* Tách hai góc đặc biệt: $\sin^2 90^\circ = 1$ và $\sin^2 180^\circ = 0$.[cite: 2]
-* Với các góc từ $10^\circ$ đến $80^\circ$, ta gom được thành 4 cặp phụ nhau có tổng bằng 1 (VD: $\sin^2 10^\circ + \sin^2 80^\circ = \sin^2 10^\circ + \cos^2 10^\circ = 1$).[cite: 2] Vậy 4 cặp này cho giá trị bằng **4**.[cite: 2]
-* Đối với các góc tù từ $100^\circ$ đến $170^\circ$, tính chất góc bù cho phép đưa về góc nhọn (VD: $\sin 170^\circ = \sin 10^\circ$).[cite: 2] Như vậy, chuỗi này phản chiếu hoàn toàn chuỗi từ $10^\circ$ đến $80^\circ$, cũng cho kết quả bằng **4**.[cite: 2]
-* Tổng kết toàn bộ chuỗi: $S = 4 + 1 + 4 + 0 = 9$.[cite: 2]
+* Dãy tổng S bao gồm các số hạng là bình phương hàm sin của các góc tăng dần với bước nhảy $10^\circ$, kéo dài từ $10^\circ$ đến $180^\circ$. Có tổng cộng 18 số hạng.
+* Tách hai góc đặc biệt: $\sin^2 90^\circ = 1$ và $\sin^2 180^\circ = 0$.
+* Với các góc từ $10^\circ$ đến $80^\circ$, ta gom được thành 4 cặp phụ nhau có tổng bằng 1 (VD: $\sin^2 10^\circ + \sin^2 80^\circ = \sin^2 10^\circ + \cos^2 10^\circ = 1$). Vậy 4 cặp này cho giá trị bằng **4**.
+* Đối với các góc tù từ $100^\circ$ đến $170^\circ$, tính chất góc bù cho phép đưa về góc nhọn (VD: $\sin 170^\circ = \sin 10^\circ$). Như vậy, chuỗi này phản chiếu hoàn toàn chuỗi từ $10^\circ$ đến $80^\circ$, cũng cho kết quả bằng **4**.
+* Tổng kết toàn bộ chuỗi: $S = 4 + 1 + 4 + 0 = 9$.
 
-$\Rightarrow$ **Đáp số cần điền: 9.**[cite: 2]
+$\Rightarrow$ **Đáp số cần điền: 9.**
 """)
 
         with st.expander("🔍 Lời giải Câu 20: Tập giá trị hàm số lượng giác"):
             st.markdown(r"""
-* **1)** Phương trình $3\sin x + 4\cos x = m$ có nghiệm khi: $3^2 + 4^2 \ge m^2 \Leftrightarrow m^2 \le 25 \Leftrightarrow m \in [-5; 5]$.[cite: 2]
-* **2)** Phương trình sinh ra $m = -\sin^2 x + 2\sin x$.[cite: 2] Đặt $t = \sin x \in [-1; 1]$.[cite: 2] Hàm số $f(t) = -t^2 + 2t$ trên đoạn $[-1; 1]$.[cite: 2] Đỉnh parabol tại $t = 1 \Rightarrow f(1) = 1$.[cite: 2] Giá trị tại biên còn lại $f(-1) = -3$.[cite: 2] Tập giá trị quét từ $-3$ đến $1$, buộc $m \in [-3; 1]$.[cite: 2]
-* **3)** Dùng công thức nhân đôi: $m = -(2\cos^2 x - 1) + 4\cos x = -2\cos^2 x + 4\cos x + 1$.[cite: 2] Đặt $u = \cos x \in [-1; 1]$.[cite: 2] Hàm $g(u) = -2u^2 + 4u + 1$.[cite: 2] Đỉnh đồ thị nằm ở $u = 1 \Rightarrow g(1) = 3$.[cite: 2] Giá trị tại đầu mút kia $g(-1) = -5$.[cite: 2] Hàm trải dài trên đoạn $[-5; 3]$.[cite: 2] Đồng nghĩa với $m \in [-5; 3]$.[cite: 2]
+* **1)** Phương trình $3\sin x + 4\cos x = m$ có nghiệm khi: $3^2 + 4^2 \ge m^2 \Leftrightarrow m^2 \le 25 \Leftrightarrow m \in [-5; 5]$.
+* **2)** Phương trình sinh ra $m = -\sin^2 x + 2\sin x$.[cite: 2] Đặt $t = \sin x \in [-1; 1]$. Hàm số $f(t) = -t^2 + 2t$ trên đoạn $[-1; 1]$.Đỉnh parabol tại $t = 1 \Rightarrow f(1) = 1$. Giá trị tại biên còn lại $f(-1) = -3$. Tập giá trị quét từ $-3$ đến $1$, buộc $m \in [-3; 1]$.
+* **3)** Dùng công thức nhân đôi: $m = -(2\cos^2 x - 1) + 4\cos x = -2\cos^2 x + 4\cos x + 1$. Đặt $u = \cos x \in [-1; 1]$. Hàm $g(u) = -2u^2 + 4u + 1$.[cite: 2] Đỉnh đồ thị nằm ở $u = 1 \Rightarrow g(1) = 3$. Giá trị tại đầu mút kia $g(-1) = -5$.Hàm trải dài trên đoạn $[-5; 3]$. Đồng nghĩa với $m \in [-5; 3]$.
 
-$\Rightarrow$ **Kết quả:** 1) `[-5; 5]`, 2) `[-3; 1]`, 3) `[-5; 3]`.[cite: 2]
+$\Rightarrow$ **Kết quả:** 1) `[-5; 5]`, 2) `[-3; 1]`, 3) `[-5; 3]`.
 """)
 
 
