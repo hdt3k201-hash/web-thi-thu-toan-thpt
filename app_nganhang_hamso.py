@@ -2223,6 +2223,103 @@ st.markdown("---")
 
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 22 (Cụm 5 Sở Ninh Bình 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_dd215f.png
+st.markdown(r"""
+Giả sử dân số Việt Nam được dự báo theo mô hình logistis, giai đoạn từ năm 2023 đến năm 2035 là hàm số $P(t) = \dfrac{120}{1 + 0,2e^{-0,06t}}$ (triệu người), trong đó $t$ là số năm tính từ 2023. 
+Chi phí an sinh xã hội bình quân theo đầu người được mô hình hóa bằng hàm số $C(t) = 25 - 20e^{-0,05t}$ (triệu đồng/đầu người/năm). 
+
+Tính tốc độ thay đổi của tổng chi phí an sinh xã hội toàn quốc (nghìn tỷ đồng/năm) vào đầu năm 2030 (làm tròn kết quả đến hàng đơn vị).
+""")
+
+# Hiển thị hình ảnh minh họa (nếu file ảnh cùng thư mục)
+st.image("image_dd215f.png")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tốc độ thay đổi (nghìn tỷ đồng/năm) (ví dụ: 50):", key="q33_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q33_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 83
+    if normalized_user_answer == "83":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm tổng chi phí, tính đạo hàm và thay t = 7 để kiểm tra lại nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q33_solution_shown' not in st.session_state:
+    st.session_state['q33_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q33_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q33_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q33_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q33_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm tổng chi phí an sinh xã hội**
+    
+    Tổng chi phí an sinh xã hội toàn quốc là tích của dân số và chi phí bình quân theo đầu người.
+    Gọi $T(t)$ là tổng chi phí an sinh xã hội toàn quốc ở năm thứ $t$ (tính từ 2023).
+    $$T(t) = P(t) \cdot C(t)$$
+    
+    *   Đơn vị của $P(t)$ là triệu người ($10^6$ người).
+    *   Đơn vị của $C(t)$ là triệu đồng/người ($10^6$ đồng).
+    *   Do đó, đơn vị của $T(t)$ là $10^6 \cdot 10^6 = 10^{12}$ đồng, tức là **nghìn tỷ đồng**. (Khớp với đơn vị bài toán yêu cầu).
+    
+    **Bước 2: Tính đạo hàm để tìm tốc độ thay đổi**
+    
+    Tốc độ thay đổi của tổng chi phí chính là đạo hàm của hàm $T(t)$ theo thời gian $t$:
+    $$T'(t) = P'(t) \cdot C(t) + P(t) \cdot C'(t)$$
+    
+    Ta tính lần lượt đạo hàm của các hàm thành phần:
+    *   Đạo hàm của hàm dân số $P(t)$:
+        $$P'(t) = \dfrac{-120 \cdot (1 + 0,2e^{-0,06t})'}{(1 + 0,2e^{-0,06t})^2} = \dfrac{-120 \cdot 0,2 \cdot (-0,06)e^{-0,06t}}{(1 + 0,2e^{-0,06t})^2} = \dfrac{1,44e^{-0,06t}}{(1 + 0,2e^{-0,06t})^2}$$
+    *   Đạo hàm của hàm chi phí bình quân $C(t)$:
+        $$C'(t) = -20 \cdot (-0,05)e^{-0,05t} = e^{-0,05t}$$
+    
+    **Bước 3: Tính toán giá trị tại thời điểm đầu năm 2030**
+    
+    Đầu năm 2030 tương ứng với $t = 2030 - 2023 = 7$.
+    Thay $t = 7$ vào các hàm số và đạo hàm ta được:
+    *   $P(7) = \dfrac{120}{1 + 0,2e^{-0,06 \cdot 7}} = \dfrac{120}{1 + 0,2e^{-0,42}} \approx 106,0624$ (triệu người)
+    *   $P'(7) = \dfrac{1,44e^{-0,42}}{(1 + 0,2e^{-0,42})^2} \approx 0,7391$
+    *   $C(7) = 25 - 20e^{-0,05 \cdot 7} = 25 - 20e^{-0,35} \approx 10,9062$ (triệu đồng/người)
+    *   $C'(7) = e^{-0,35} \approx 0,7047$
+    
+    Thay các giá trị này vào công thức tốc độ thay đổi:
+    $$T'(7) = P'(7) \cdot C(7) + P(7) \cdot C'(7)$$
+    $$T'(7) \approx (0,7391)(10,9062) + (106,0624)(0,7047)$$
+    $$T'(7) \approx 8,0608 + 74,7422 = 82,803$$
+    
+    Làm tròn kết quả đến hàng đơn vị, ta được $83$.
+    
+    **Kết luận:** Tốc độ thay đổi của tổng chi phí an sinh xã hội toàn quốc vào đầu năm 2030 là khoảng **$83$** nghìn tỷ đồng/năm.
+    """)
+    
+st.markdown("---")
+
 
 
 
