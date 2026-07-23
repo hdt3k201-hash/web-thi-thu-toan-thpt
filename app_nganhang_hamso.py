@@ -1509,5 +1509,103 @@ st.markdown("---")
 
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 16 (Cụm trường Hà Tĩnh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d2439b.png
+st.markdown(r"""
+Một doanh nghiệp sản xuất đồ gỗ nội thất cần mỗi ngày $5$ khối gỗ để làm các sản phẩm nội thất. Chi phí một lần vận chuyển gỗ từ cơ sở cung cấp gỗ đến nơi sản xuất của doanh nghiệp là $8$ triệu đồng, chi phí lưu kho tại doanh nghiệp của $1$ khối gỗ là $200$ ngàn đồng trên $1$ ngày. Mỗi lần vận chuyển, gỗ sẽ được đưa đến đầu ngày làm việc và lượng gỗ được vận chuyển vừa đủ cho doanh nghiệp sử dụng từ ngày hôm đó cho đến lần vận chuyển tiếp theo. Hỏi doanh nghiệp cần vận chuyển gỗ mấy ngày một lần để chi phí trung bình trong một ngày là nhỏ nhất?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số ngày (ví dụ: 4):", key="q26_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q26_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 4
+    if normalized_user_answer == "4":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+        st.session_state['q26_solution_shown'] = True
+    elif normalized_user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy lập hàm tổng chi phí theo chu kỳ x ngày, sau đó chia cho x để tìm chi phí trung bình 1 ngày rồi áp dụng BĐT Cauchy nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q26_solution_shown' not in st.session_state:
+    st.session_state['q26_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q26_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q26_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q26_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q26_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đổi đơn vị và lập biểu thức tính lượng gỗ lưu kho**
+    
+    *   Đổi đơn vị chi phí: 
+        *   Chi phí vận chuyển mỗi lần: $8\text{ triệu đồng} = 8000\text{ nghìn đồng}$.
+        *   Chi phí lưu kho: $200\text{ nghìn đồng / khối / ngày}$.
+    *   Gọi $x$ ($x \in \mathbb{N}^*$) là số ngày giữa hai lần vận chuyển liên tiếp (chu kỳ vận chuyển là $x$ ngày).
+    *   Đầu ngày thứ nhất, lượng gỗ được chuyển đến là $5x$ khối.
+    *   Lượng gỗ tồn kho qua đêm (sau khi đã sử dụng hết $5$ khối trong ngày) của từng ngày trong chu kỳ lần lượt là:
+        *   Cuối ngày 1: $5x - 5 = 5(x - 1)$ (khối)
+        *   Cuối ngày 2: $5(x - 2)$ (khối)
+        *   ...
+        *   Cuối ngày thứ $x - 1$: $5 \cdot 1 = 5$ (khối)
+        *   Cuối ngày thứ $x$: $0$ (khối)
+    *   Tổng lượng gỗ lưu kho trong một chu kỳ $x$ ngày là:
+        $$S = 5(x - 1) + 5(x - 2) + \dots + 5 \cdot 1 = 5 \cdot \dfrac{(x - 1)x}{2} = \dfrac{5x(x - 1)}{2} \text{ (khối-ngày)}$$
+
+    **Bước 2: Thiết lập hàm chi phí trung bình trong một ngày**
+    
+    *   Tổng chi phí lưu kho trong một chu kỳ là:
+        $$C_{\text{lưu kho}} = 200 \cdot \dfrac{5x(x - 1)}{2} = 500x(x - 1) \text{ (nghìn đồng)}$$
+    *   Tổng chi phí $T(x)$ cho một chu kỳ $x$ ngày (bao gồm tiền vận chuyển và tiền lưu kho) là:
+        $$T(x) = 8000 + 500x(x - 1) = 500x^2 - 500x + 8000 \text{ (nghìn đồng)}$$
+    *   Chi phí trung bình trong một ngày là hàm số $f(x)$:
+        $$f(x) = \dfrac{T(x)}{x} = \dfrac{500x^2 - 500x + 8000}{x} = 500x + \dfrac{8000}{x} - 500 \text{ (nghìn đồng/ngày)}$$
+
+    **Bước 3: Tìm giá trị nhỏ nhất của hàm chi phí trung bình**
+    
+    Để chi phí trung bình một ngày nhỏ nhất thì biểu thức $g(x) = 500x + \dfrac{8000}{x}$ phải đạt giá trị nhỏ nhất với $x > 0$.
+    
+    Áp dụng bất đẳng thức Cauchy (AM-GM) cho hai số dương $500x$ và $\dfrac{8000}{x}$:
+    $$500x + \dfrac{8000}{x} \ge 2\sqrt{500x \cdot \dfrac{8000}{x}} = 2\sqrt{4000000} = 4000$$
+    
+    Dấu "$=$" xảy ra khi và chỉ khi:
+    $$500x = \dfrac{8000}{x} \Leftrightarrow x^2 = 16 \Leftrightarrow x = 4 \quad (\text{do } x > 0)$$
+    
+    Giá trị $x = 4$ hoàn toàn thỏa mãn điều kiện $x \in \mathbb{N}^*$. Khi đó chi phí trung bình tối thiểu mỗi ngày là:
+    $$f(4) = 4000 - 500 = 3500\text{ (nghìn đồng)} = 3,5\text{ (triệu đồng)}$$
+
+    **Kết luận:** Doanh nghiệp cần vận chuyển gỗ **4** ngày một lần để chi phí trung bình trong một ngày là nhỏ nhất.
+    """)
+    
+st.markdown("---")
+
+
+
+
+
+
 
 
