@@ -10032,3 +10032,93 @@ if st.session_state.get('q104_solution_shown') and st.session_state.get('logged_
 st.markdown("---")
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 105 (Sở Đồng Nai 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Hình vẽ dưới đây mô tả một cây cầu vượt có mặt cắt đứng là một phần parabol nối hai điểm $A, B$ và nhận đường trung trực của đoạn $AB$ làm trục đối xứng, $AB = 400\text{ m}$. Khoảng cách từ đỉnh cây cầu đến $AB$ bằng $8\text{ m}$. Xét tiếp tuyến $\Delta$ tại điểm $M$ trên mặt cầu, người ta quy ước $\tan(\Delta, d)$ là độ dốc tại $M$ của mặt cầu, với $d$ là đường thẳng đi qua hai điểm $A, B$. Độ dốc lớn nhất của mặt cầu là bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập độ dốc lớn nhất (ví dụ: 0.01):", key="q105_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_321e94.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_321e94.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q105_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 0.08
+    if normalized_user_answer in ["0.08", "0,08"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hệ tọa độ cho parabol, tính đạo hàm để tìm độ dốc tại một điểm và xác định giá trị lớn nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q105_solution_shown' not in st.session_state:
+    st.session_state['q105_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q105_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q105_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q105_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q105_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chọn hệ trục tọa độ và lập phương trình parabol**
+    
+    * Chọn hệ trục tọa độ $Oxy$ sao cho đỉnh của parabol trùng với gốc tọa độ $O(0; 0)$, trục đối xứng là trục tung $Oy$.
+    * Vì khoảng cách giữa hai điểm $A$ và $B$ là $AB = 400\text{ m}$ và nhận trục tung làm trục đối xứng, nên hoành độ của $A$ và $B$ lần lượt là $x_A = -200$ và $x_B = 200$.
+    * Khoảng cách từ đỉnh cây cầu đến đoạn $AB$ bằng $8\text{ m}$, suy ra đường thẳng chứa đoạn $AB$ nằm ở vị trí $y = -8$. Khi đó tọa độ hai điểm là $A(-200; -8)$ và $B(200; -8)$.
+    * Phương trình của parabol có dạng: 
+        $$y = -ax^2 \quad (a > 0)$$
+    * Vì parabol đi qua điểm $B(200; -8)$, ta có:
+        $$-8 = -a(200)^2 \iff 40000a = 8 \iff a = \dfrac{8}{40000} = 0,0002$$
+    * Vậy phương trình parabol là: 
+        $$y = -0,0002x^2 \quad \text{với } x \in [-200; 200]$$
+    
+    **Bước 2: Tính độ dốc tại một điểm trên mặt cầu**
+    
+    * Đạo hàm của hàm số biểu diễn mặt cầu là:
+        $$y' = -0,0004x$$
+    * Theo đề bài, độ dốc tại điểm $M$ trên mặt cầu được xác định bởi $\tan(\Delta, d) = |y'|$, với $d$ là đường thẳng ngang chứa $AB$.
+    * Do đó, độ dốc tại điểm có hoành độ $x$ là:
+        $$\text{Độ dốc} = |-0,0004x| = 0,0004|x|$$
+    
+    **Bước 3: Tìm độ dốc lớn nhất**
+    
+    * Vì $x \in [-200; 200]$, ta có $|x| \le 200$.
+    * Suy ra độ dốc lớn nhất đạt được khi $x = \pm 200$ (tại các vị trí chân cầu $A$ và $B$):
+        $$\text{Độ dốc}_{\max} = 0,0004 \cdot 200 = 0,08$$
+    
+    **Kết luận:** Độ dốc lớn nhất của mặt cầu là **$0,08$**.
+    """)
+    
+st.markdown("---")
+
+
