@@ -45,11 +45,11 @@ st.markdown(r"""
 
 # Nội dung câu hỏi từ hình ảnh image_cf94a3.png
 st.markdown(r"""
-Cho hàm số $y = \frac{2x+2}{x-1}$ có đồ thị $(C)$, hai đường tiệm cận của $(C)$ cắt nhau tại $I$. Đường thẳng $d$ cắt đồ thị $(C)$ tại hai điểm phân biệt $A, B$ đều có hoành độ lớn hơn 1 sao cho tam giác $IAB$ cân tại $I$ và có diện tích bằng $\frac{15}{2}$. Viết phương trình đường thẳng $d$.
+Cho hàm số $y = \dfrac{2x+2}{x-1}$ có đồ thị $(C)$, hai đường tiệm cận của $(C)$ cắt nhau tại $I$. Đường thẳng $d$ cắt đồ thị $(C)$ tại hai điểm phân biệt $A, B$ đều có hoành độ lớn hơn 1 sao cho tam giác $IAB$ cân tại $I$ và có diện tích bằng $\frac{15}{2}$. Viết phương trình đường thẳng $d$.
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập phương trình đường thẳng $d$ (ví dụ: $y=-x+8$):", key="q2_ans")
+user_answer = st.text_input("Nhập phương trình đường thẳng $d$ (ví dụ: $y=x+1$):", key="q2_ans")
 
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q2_check"):
