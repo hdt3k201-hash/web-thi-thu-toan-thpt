@@ -3649,5 +3649,96 @@ if st.session_state.get('q58_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 38 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
 
+# Nội dung câu hỏi
+st.markdown(r"""
+Cho hàm số $y = x^3 - 3mx^2 + 2m$ có đồ thị là $(C_m)$ với $m$ là tham số thực. 
+Tìm giá trị của tham số $m > 0$ để đồ thị $(C_m)$ có hai điểm cực trị $A, B$ sao cho tam giác $OAB$ có diện tích bằng $8$ (với $O$ là gốc tọa độ).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của m (ví dụ: 2):", key="q_cubic_ans")
+
+# Chèn hình ảnh minh họa (nếu có)
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/toan12_cubic.PNG", width=400)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/toan12_cubic.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_cubic_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 2
+    if normalized_user_answer == "2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại điều kiện có cực trị, tọa độ các điểm cực trị và công thức tính diện tích tam giác OAB nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_cubic_solution_shown' not in st.session_state:
+    st.session_state['q_cubic_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_cubic_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_cubic_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_cubic_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_cubic_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm điều kiện để hàm số có hai điểm cực trị**
+    
+    Ta có đạo hàm của hàm số:
+    $$y' = 3x^2 - 6mx = 3x(x - 2m)$$
+    
+    Hàm số có hai điểm cực trị khi và chỉ khi phương trình $y' = 0$ có hai nghiệm phân biệt, tức là:
+    $$m \neq 0$$
+    
+    **Bước 2: Xác định tọa độ hai điểm cực trị $A$ và $B$**
+    
+    Với $m \neq 0$, phương trình $y' = 0$ có hai nghiệm phân biệt $x_1 = 0$ và $x_2 = 2m$.
+    
+    Tương ứng ta tính được tung độ và suy ra tọa độ hai điểm cực trị của đồ thị hàm số là:
+    *   $A(0; 2m)$
+    *   $B(2m; -4m^3 + 2m)$
+    
+    **Bước 3: Thiết lập phương trình tính diện tích tam giác $OAB$**
+    
+    Nhận thấy điểm $A(0; 2m)$ nằm trên trục tung $Oy$. 
+    
+    Diện tích tam giác $OAB$ được tính theo công thức:
+    $$S_{OAB} = \dfrac{1}{2} \cdot |y_A| \cdot |x_B| = \dfrac{1}{2} \cdot |2m| \cdot |2m| = 2m^2$$
+    
+    Theo giả thiết, diện tích tam giác $OAB$ bằng $8$, nên ta có phương trình:
+    $$2m^2 = 8 \Leftrightarrow m^2 = 4 \Leftrightarrow \left[ \begin{aligned} m &= 2 \\ m &= -2 \end{aligned} \right.$$
+    
+    **Bước 4: Đối chiếu điều kiện và kết luận**
+    
+    Kết hợp với điều kiện bài toán cho $m > 0$, ta nhận giá trị $m = 2$.
+    
+    **Kết luận:** Giá trị cần tìm của tham số là **$m = 2$**.
+    """)
+    
+st.markdown("---")
 
