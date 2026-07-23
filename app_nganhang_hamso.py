@@ -4106,3 +4106,99 @@ if st.session_state.get('q_dist_solution_shown') and st.session_state.get('logge
     """)
     
 st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 43(ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Cho hàm số $y = |x^2 - 4x + m|$ với $m$ là tham số thực. Gọi $S$ là tổng tất cả các giá trị của tham số $m$ để giá trị lớn nhất của hàm số đã cho trên đoạn $[0; 3]$ bằng $6$. 
+Tính giá trị của $S$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng các giá trị của m (ví dụ: 4):", key="q_trituyetdoi_ans")
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_trituyetdoi_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 4
+    if normalized_user_answer == "4":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tập giá trị của tam thức bậc hai trên đoạn đã cho và điều kiện giá trị lớn nhất của hàm trị tuyệt đối nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_trituyetdoi_solution_shown' not in st.session_state:
+    st.session_state['q_trituyetdoi_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_trituyetdoi_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_trituyetdoi_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_trituyetdoi_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_trituyetdoi_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đánh giá tập giá trị của biểu thức bên trong dấu giá trị tuyệt đối**
+    
+    Đặt $f(x) = x^2 - 4x + m$. Đây là một hàm số bậc hai liên tục trên đoạn $[0; 3]$.
+    
+    Ta tính đạo hàm:
+    $$f'(x) = 2x - 4$$
+    
+    Phương trình $f'(x) = 0 \Leftrightarrow x = 2$ (thỏa mãn thuộc đoạn $[0; 3]$).
+    
+    Tính giá trị của hàm số tại các điểm đầu mút và điểm tới hạn:
+    *   $f(0) = m$
+    *   $f(2) = 2^2 - 4(2) + m = m - 4$
+    *   $f(3) = 3^2 - 4(3) + m = m - 3$
+    
+    Do đó, khi $x$ biến thiên trên đoạn $[0; 3]$, tập giá trị của tam thức $f(x)$ là đoạn $[m - 4; m]$.
+    
+    **Bước 2: Thiết lập phương trình theo giá trị lớn nhất của hàm trị tuyệt đối**
+    
+    Giá trị lớn nhất của hàm số $y = |f(x)|$ trên đoạn $[0; 3]$ được xác định bởi công thức:
+    $$\max_{[0; 3]} |f(x)| = \max \left( |m - 4|, |m| \right)$$
+    
+    Theo giả thiết, giá trị lớn nhất của hàm số trên đoạn $[0; 3]$ bằng $6$, nên ta có phương trình:
+    $$\max \left( |m - 4|, |m| \right) = 6 \Leftrightarrow \left[ \begin{aligned} |m| &= 6 \\ |m - 4| &= 6 \end{aligned} \right.$$
+    
+    **Bước 3: Giải các trường hợp để tìm tham số $m$**
+    
+    *   **Trường hợp 1:** $|m| = 6 \Leftrightarrow \left[ \begin{aligned} m &= 6 \\ m &= -6 \end{aligned} \right.$
+        *   Với $m = 6$: Tập giá trị của $f(x)$ là $[2; 6]$. Khi đó $\max_{[0; 3]} |f(x)| = \max(|2|, |6|) = 6$ (**Thỏa mãn**).
+        *   Với $m = -6$: Tập giá trị của $f(x)$ là $[-10; -6]$. Khi đó $\max_{[0; 3]} |f(x)| = \max(|-10|, |-6|) = 10 \neq 6$ (**Loại**).
+        
+    *   **Trường hợp 2:** $|m - 4| = 6 \Leftrightarrow \left[ \begin{aligned} m - 4 &= 6 \\ m - 4 &= -6 \end{aligned} \right. \Leftrightarrow \left[ \begin{aligned} m &= 10 \\ m &= -2 \end{aligned} \right.$
+        *   Với $m = 10$: Tập giá trị của $f(x)$ là $[6; 10]$. Khi đó $\max_{[0; 3]} |f(x)| = \max(|6|, |10|) = 10 \neq 6$ (**Loại**).
+        *   Với $m = -2$: Tập giá trị của $f(x)$ là $[-6; -2]$. Khi đó $\max_{[0; 3]} |f(x)| = \max(|-6|, |-2|) = 6$ (**Thỏa mãn**).
+        
+    **Bước 4: Tính tổng các giá trị thỏa mãn**
+    
+    Các giá trị của $m$ thỏa mãn yêu cầu bài toán là: $m = 6$ và $m = -2$.
+    
+    Tổng các giá trị của tham số $m$ là:
+    $$S = 6 + (-2) = 4$$
+    
+    **Kết luận:** Giá trị của $S$ là **$4$**.
+    """)
+    
+st.markdown("---")
