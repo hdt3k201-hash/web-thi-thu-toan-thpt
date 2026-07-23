@@ -3156,3 +3156,103 @@ if st.session_state.get("q46_solution_shown") and st.session_state.get(
 
 st.markdown("---")
 
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 33 (THPT Nguyễn Đăng Đạo 1 - Bắc Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một bể bơi hình bán nguyệt có đường kính là $AB = 100\text{m}$. Một người muốn bơi từ vị trí $A$ đến vị trí $C$ theo phương thẳng rồi lên bờ đi bộ từ $C$ đến $B$. Biết rằng vận tốc bơi là $5\text{ km/h}$ và vận tốc đi bộ là $6\text{ km/h}$. Hỏi thời gian tối đa để người đó hoàn thành lộ trình như trên là bao nhiêu phút? (Làm tròn kết quả đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập thời gian tối đa (phút) (ví dụ: 5.25):", key="q48_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/ndd_bn.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/ndd_bn.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q48_check"):
+    # Chuẩn hóa đầu vào (thay dấu phẩy thành dấu chấm nếu người dùng nhập kiểu Việt Nam)
+    normalized_user_answer = user_answer.strip().replace(",", ".")
+    
+    # Đáp án chính xác là 1.65
+    if normalized_user_answer == "1.65":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm thời gian theo góc và tìm giá trị lớn nhất bằng đạo hàm nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q48_solution_shown' not in st.session_state:
+    st.session_state['q48_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q48_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q48_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q48_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q48_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Quy đổi đơn vị và đặt ẩn phụ**
+    
+    *   Đổi đơn vị vận tốc ra $\text{m/phút}$:
+        *   Vận tốc bơi: $v_1 = 5 \text{ km/h} = \dfrac{5000}{60} \text{ m/phút} = \dfrac{250}{3} \text{ m/phút}$.
+        *   Vận tốc đi bộ: $v_2 = 6 \text{ km/h} = \dfrac{6000}{60} \text{ m/phút} = 100 \text{ m/phút}$.
+    *   Gọi $\alpha$ là số đo góc $\widehat{BAC}$ (radian), với điều kiện $0 \le \alpha \le \dfrac{\pi}{2}$.
+    *   Bán kính bể bơi: $R = \dfrac{AB}{2} = 50\text{m}$.
+    
+    **Bước 2: Tính độ dài các đoạn đường $AC$ và cung $CB$**
+    
+    *   Tam giác $ABC$ nội tiếp chắn nửa đường tròn nên vuông tại $C$.
+        Quãng đường bơi (đoạn $AC$): 
+        $$AC = AB \cdot \cos\alpha = 100\cos\alpha \text{ (m)}$$
+    *   Góc ở tâm chắn cung $CB$ là $\widehat{BOC} = 2\widehat{BAC} = 2\alpha$.
+        Quãng đường đi bộ (độ dài cung $CB$): 
+        $$l_{CB} = R \cdot (2\alpha) = 50 \cdot 2\alpha = 100\alpha \text{ (m)}$$
+        
+    **Bước 3: Thiết lập hàm thời gian và tìm giá trị lớn nhất**
+    
+    *   Tổng thời gian di chuyển $T(\alpha)$ (phút) là tổng thời gian bơi và đi bộ:
+        $$T(\alpha) = \dfrac{AC}{v_1} + \dfrac{l_{CB}}{v_2} = \dfrac{100\cos\alpha}{\dfrac{250}{3}} + \dfrac{100\alpha}{100}$$
+        $$T(\alpha) = 1,2\cos\alpha + \alpha$$
+    *   Tính đạo hàm:
+        $$T'(\alpha) = -1,2\sin\alpha + 1$$
+    *   Cho $T'(\alpha) = 0 \Leftrightarrow \sin\alpha = \dfrac{1}{1,2} = \dfrac{5}{6}$.
+    *   Vì $\alpha \in \left[0; \dfrac{\pi}{2}\right]$ nên phương trình có nghiệm duy nhất $\alpha_0 = \arcsin\left(\dfrac{5}{6}\right)$.
+        Tại $\alpha_0$ ta có $\cos\alpha_0 = \sqrt{1 - \sin^2\alpha_0} = \sqrt{1 - \left(\dfrac{5}{6}\right)^2} = \dfrac{\sqrt{11}}{6}$.
+    *   Ta thấy hàm số đạt giá trị lớn nhất tại $\alpha_0$. Thời gian tối đa là:
+        $$T(\alpha_0) = 1,2 \cdot \dfrac{\sqrt{11}}{6} + \arcsin\left(\dfrac{5}{6}\right) = 0,2\sqrt{11} + \arcsin\left(\dfrac{5}{6}\right)$$
+    *   Bấm máy tính tính xấp xỉ:
+        $$T(\alpha_0) \approx 0,2 \cdot 3,3166 + 0,9851 \approx 1,6484 \text{ (phút)}$$
+        Làm tròn kết quả đến hàng phần trăm ta được $1,65$ phút.
+        
+    **Kết luận:** Thời gian tối đa để người đó hoàn thành lộ trình là **$1,65$** phút.
+    """)
+    
+st.markdown("---")
+
