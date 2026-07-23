@@ -104,43 +104,62 @@ if st.session_state.get('q2_solution_shown') and st.session_state.get('logged_in
     *   $Y = y - 2 \Rightarrow y = Y + 2$
     
     Khi đó, phương trình $(C)$ trong hệ tọa độ $IXY$ là:
-    $Y + 2 = \frac{2(X+1)+2}{X+1-1} \Rightarrow Y + 2 = \frac{2X+4}{X} \Rightarrow Y + 2 = 2 + \frac{4}{X} \Rightarrow XY = 4$.
+    $Y + 2 = \frac{2(X+1)+2}{X+1-1} \Rightarrow Y + 2 = \dfrac{2X+4}{X} \Rightarrow Y + 2 = 2 + \dfrac{4}{X} \Rightarrow XY = 4$.
+    
     Gốc tọa độ mới là $I(0; 0)$. Hai đường tiệm cận là trục tung ($X=0$) và trục hoành ($Y=0$).
+    
     Hai điểm $A, B$ có hoành độ lớn hơn 1 $\Rightarrow X_A, X_B > 0$.
     
     **Bước 2: Tìm phương trình đường thẳng $d$ trong hệ tọa độ $IXY$.**
     
     Tam giác $IAB$ cân tại $I \Rightarrow d$ vuông góc với một trong hai phân giác của các góc tạo bởi hai đường tiệm cận, đi qua $I$.
+    
     Do $X_A, X_B > 0$, hai điểm $A, B$ thuộc nhánh của $(C)$ trong góc phần tư thứ nhất của hệ tọa độ $IXY$.
+    
     Trục đối xứng của $A, B$ là phân giác của góc phần tư thứ nhất, có phương trình $Y=X$.
+    
     Do $\triangle IAB$ cân tại $I$, $A, B$ đối xứng qua $Y=X$, nên $AB$ vuông góc với $Y=X$.
     
     Vậy phương trình đường thẳng $d$ (chứa $AB$) có dạng: $X + Y = c$ (với $c > 0$ do $A, B$ ở góc phần tư thứ nhất).
+    
     $A, B$ là giao điểm của $XY=4$ và $X+Y=c \Rightarrow X(c-X)=4 \Rightarrow X^2 - cX + 4 = 0$.
+    
     Điều kiện cắt tại 2 điểm: $\Delta = c^2 - 16 > 0 \Rightarrow c > 4$ (do $c>0$).
-    Khi đó, $X_{A,B} = \frac{c \pm \sqrt{c^2-16}}{2} > 0$.
+    
+    Khi đó, $X_{A,B} = \dfrac{c \pm \sqrt{c^2-16}}{2} > 0$.
     
     **Bước 3: Sử dụng điều kiện diện tích.**
     
     Đường thẳng $d$ (pt $X+Y-c=0$) có khoảng cách đến $I(0;0)$ là:
-    $d(I, d) = \frac{|0+0-c|}{\sqrt{1^2+1^2}} = \frac{c}{\sqrt{2}}$.
+    
+    $d(I, d) = \dfrac{|0+0-c|}{\sqrt{1^2+1^2}} = \dfrac{c}{\sqrt{2}}$.
     
     Độ dài cạnh đáy $AB$:
+    
     $AB = \sqrt{(X_B-X_A)^2 + (Y_B-Y_A)^2}$.
+    
     Có $X_B-X_A = \sqrt{c^2-16}$. $Y_B-Y_A = (c-X_B)-(c-X_A) = -(X_B-X_A) = -\sqrt{c^2-16}$.
+    
     $\Rightarrow AB^2 = (\sqrt{c^2-16})^2 + (-\sqrt{c^2-16})^2 = 2(c^2-16)$.
+    
     $\Rightarrow AB = \sqrt{2(c^2-16)}$.
     
     Diện tích tam giác $IAB$:
-    $S_{\triangle IAB} = \frac{1}{2} d(I, d) \cdot AB = \frac{1}{2} \cdot \frac{c}{\sqrt{2}} \cdot \sqrt{2(c^2-16)} = \frac{c\sqrt{c^2-16}}{2} = \frac{15}{2}$.
+    
+    $S_{\triangle IAB} = \dfrac{1}{2} d(I, d) \cdot AB = \dfrac{1}{2} \cdot \dfrac{c}{\sqrt{2}} \cdot \sqrt{2(c^2-16)} = \dfrac{c\sqrt{c^2-16}}{2} = \dfrac{15}{2}$.
+    
     $\Rightarrow c\sqrt{c^2-16} = 15 \Rightarrow c^2(c^2-16) = 225 \Rightarrow c^4 - 16c^2 - 225 = 0$.
+    
     Giải phương trình trùng phương, ta được $c^2 = 25$ hoặc $c^2 = -9$ (loại).
+    
     Với $c^2 = 25 \Rightarrow c = 5$ (do $c>4$).
     
     **Bước 4: Trở lại hệ tọa độ Oxy.**
     
     Phương trình đường thẳng $d$ trong hệ tọa độ $IXY$ là $X + Y = 5$.
+    
     Trở lại hệ tọa độ $Oxy$ bằng cách thay $X = x - 1, Y = y - 2$:
+    
     $(x - 1) + (y - 2) = 5 \Rightarrow x + y - 3 = 5 \Rightarrow x + y - 8 = 0$ hay $y = -x + 8$.
     
     Vậy phương trình đường thẳng $d$ cần tìm là **$y = -x + 8$** (hoặc **$x + y - 8 = 0$**).
@@ -5401,7 +5420,7 @@ Cho hàm số $y = \dfrac{x^2 - x - 1}{x - 2}$ có đồ thị là $(C)$. Tính 
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập khoảng cách bé nhất (ví dụ: 4.39):", key="q333_ans")
+user_answer = st.text_input("Nhập khoảng cách bé nhất (ví dụ: 1.31):", key="q333_ans")
 
 # Chèn hình ảnh minh họa ngay sau ô nhập đáp án
 
