@@ -342,7 +342,7 @@ Biết quỹ đạo chuyển động của hai tàu luôn thuộc về hai nhán
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập khoảng cách ngắn nhất (làm tròn đến 2 chữ số thập phân, ví dụ: 6.22):", key="q9_ans")
+user_answer = st.text_input("Nhập khoảng cách ngắn nhất (làm tròn đến 2 chữ số thập phân, ví dụ: 1.23):", key="q9_ans")
 
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q9_check"):
