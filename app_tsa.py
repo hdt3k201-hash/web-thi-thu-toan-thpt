@@ -584,6 +584,135 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
                 )
                 q15_ans = st.text_input("Nhập kết quả (Ví dụ: 50):", key="q15")
 
+            # ================= CÂU 16 =================
+            with st.container(border=True):
+                st.markdown(
+                    r"""<div class="question-title"><b>Câu 16:</b> <span class="tag-badge">[Trả lời ngắn]</span></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Tìm giá trị của tham số thực m để hàm số $y = \dfrac{\sin x + m\cos x + 1}{\cos x - \sin x + 2}$ có giá trị lớn nhất đúng bằng 2.[cite: 2]"""
+                )
+                q16_ans = st.text_input("Nhập kết quả (Ví dụ: -2):", key="q16")
+
+            # ================= CÂU 17 =================
+            with st.container(border=True):
+                st.markdown(
+                    r"""<div class="question-title"><b>Câu 17:</b> <span class="tag-badge">[Trắc nghiệm 4 lựa chọn]</span></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Giải phương trình lượng giác $\sin x + \sin 2x + \sin 3x = 0$.[cite: 2] Hỏi các nghiệm của phương trình này được biểu diễn bởi bao nhiêu điểm phân biệt trên đường tròn lượng giác?[cite: 2]"""
+                )
+                q17_ans = st.radio(
+                    "Chọn phương án đúng:",
+                    [
+                        r"A. 4",
+                        r"B. 5",
+                        r"C. 6",
+                        r"D. 8",
+                    ],
+                    key="q17",
+                    index=None,
+                )
+
+            # ================= CÂU 18 =================
+            with st.container(border=True):
+                st.markdown(
+                    r"""<div class="question-title"><b>Câu 18:</b> <span class="tag-badge">[Đúng/Sai]</span></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(r"""Cho phương trình chứa tham số m: $\sin^4 x + \cos^4 x = m$.[cite: 2] Xét tính đúng/sai của các mệnh đề sau đây:[cite: 2]""")
+                q18_a = st.radio(
+                    r"A. Khi $m = 1$, phương trình đã cho có đúng **4** nghiệm phân biệt trên đoạn $[0; \pi]$.",
+                    ["Đúng", "Sai"],
+                    key="q18_1",
+                    horizontal=True,
+                    index=None
+                )
+                q18_b = st.radio(
+                    r"B. Điều kiện cần và đủ để phương trình có nghiệm là $m \in \left[\dfrac{1}{2}; 1\right]$.",
+                    ["Đúng", "Sai"],
+                    key="q18_2",
+                    horizontal=True,
+                    index=None
+                )
+                q18_c = st.radio(
+                    r"C. Khi $m = \dfrac{3}{4}$, các điểm biểu diễn tập nghiệm của phương trình trên đường tròn lượng giác tạo thành đỉnh của một hình bát giác đều.",
+                    ["Đúng", "Sai"],
+                    key="q18_3",
+                    horizontal=True,
+                    index=None
+                )
+                q18_d = st.radio(
+                    r"D. Nếu $m = \dfrac{1}{2}$, phương trình đã cho tương đương với phương trình $\cos 4x = -1$.",
+                    ["Đúng", "Sai"],
+                    key="q18_4",
+                    horizontal=True,
+                    index=None
+                )
+
+            # ================= CÂU 19 =================
+            with st.container(border=True):
+                st.markdown(
+                    r"""<div class="question-title"><b>Câu 19:</b> <span class="tag-badge">[Trả lời ngắn]</span></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Tính chính xác giá trị của tổng hữu hạn sau: 
+$$S = \sin^2 10^\circ + \sin^2 20^\circ + \sin^2 30^\circ + \dots + \sin^2 170^\circ + \sin^2 180^\circ$$[cite: 2]"""
+                )
+                q19_ans = st.text_input("Nhập giá trị của S (Ví dụ: 9):", key="q19")
+
+            # ================= CÂU 20 =================
+            with st.container(border=True):
+                st.markdown(
+                    """
+                    <div class="question-title">
+                        <b>Câu 20:</b> <span class="tag-badge">[Kéo thả / Chọn phương án]</span>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    r"""Kéo và thả các tập hợp tương ứng vào ô trống bên dưới để biểu diễn điều kiện cần và đủ của tham số m sao cho các phương trình lượng giác tương ứng có nghiệm.[cite: 2]"""
+                )
+                st.markdown(
+                    """
+                    <div style="background-color: #f8f9fa; border: 1.5px solid #dcdfe6; border-radius: 8px; padding: 12px 16px; margin: 12px 0;">
+                        <div style="font-weight: bold; color: #1e88e5; margin-bottom: 8px; font-size: 14px;">🎯 KHUNG PHƯƠNG ÁN LỰA CHỌN:</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">[-5; 5]</span>
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">[-3; 1]</span>
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">[-5; 3]</span>
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">[1; 3]</span>
+                            <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 12px; border-radius: 15px; font-weight: 600;">(-∞; 1]</span>
+                        </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+                
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    q20_1 = st.selectbox(
+                        "📌 1) $3\sin x + 4\cos x = m$",
+                        ["-- Chọn --", "[-5; 5]", "[-3; 1]", "[-5; 3]", "[1; 3]", "(-∞; 1]"],
+                        key="q20_1",
+                    )
+                with col2:
+                    q20_2 = st.selectbox(
+                        "📌 2) $\sin^2 x - 2\sin x + m = 0$",
+                        ["-- Chọn --", "[-5; 5]", "[-3; 1]", "[-5; 3]", "[1; 3]", "(-∞; 1]"],
+                        key="q20_2",
+                    )
+                with col3:
+                    q20_3 = st.selectbox(
+                        "📌 3) $\cos 2x - 4\cos x + m = 0$",
+                        ["-- Chọn --", "[-5; 5]", "[-3; 1]", "[-5; 3]", "[1; 3]", "(-∞; 1]"],
+                        key="q20_3",
+                    )
+
             # ================= SUBMIT BUTTON =================
             submit_btn = st.form_submit_button(
                 f"🚀 NỘP BÀI {exam_name}", type="primary", use_container_width=True
@@ -705,6 +834,47 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
             f"""
             <div style="background-color: #ffebee; border: 2px solid #b71c1c; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
                 <h2 style="color: #b71c1c; margin: 0;">TỔNG ĐIỂM {exam_name}: {total_score:.2f} / 6.0</h2>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        # Chấm Câu 16
+        if st.session_state.get("q16", "").strip() == "-2":
+            total_score += 1.0
+            
+        # Chấm Câu 17
+        if st.session_state.get("q17") and st.session_state.get("q17").startswith("C."):
+            total_score += 1.0
+
+        # Chấm Câu 18
+        c18_score = 0
+        if st.session_state.get("q18_1") == "Sai": c18_score += 1
+        if st.session_state.get("q18_2") == "Đúng": c18_score += 1
+        if st.session_state.get("q18_3") == "Đúng": c18_score += 1
+        if st.session_state.get("q18_4") == "Đúng": c18_score += 1
+
+        if c18_score == 4: total_score += 1.0
+        elif c18_score == 3: total_score += 0.5
+        elif c18_score == 2: total_score += 0.25
+        
+        # Chấm Câu 19
+        if st.session_state.get("q19", "").strip() == "9":
+            total_score += 1.0
+
+        # Chấm Câu 20
+        if (
+            st.session_state.get("q20_1") == "[-5; 5]"
+            and st.session_state.get("q20_2") == "[-3; 1]"
+            and st.session_state.get("q20_3") == "[-5; 3]"
+        ):
+            total_score += 1.0
+
+        # Hiển thị điểm số 
+        st.markdown(
+            f"""
+            <div style="background-color: #ffebee; border: 2px solid #b71c1c; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
+                <h2 style="color: #b71c1c; margin: 0;">TỔNG ĐIỂM {exam_name}: {total_score:.2f} / 5.0</h2>
             </div>
             """,
             unsafe_allow_html=True,
@@ -886,6 +1056,60 @@ $\Rightarrow$ **Kết quả:** 1) 21; 2) $105\pi$.
 * Tổng số ngày là $232 - 111 + 1 = 122$ ngày.
 
 $\Rightarrow$ **Đáp số cần điền: 122.**
+""")
+
+        with st.expander("🔍 Lời giải Câu 16: Tìm tham số m để hàm số đạt Max"):
+            st.markdown(r"""
+* Biến đổi hàm số phân thức lượng giác thành phương trình bậc nhất theo $\sin x$ và $\cos x$.[cite: 2] Nhân chéo mẫu số (vì $\cos x - \sin x + 2 > 0 \, \forall x$): $y(\cos x - \sin x + 2) = \sin x + m\cos x + 1$.[cite: 2]
+* Nhóm các hệ số: $(y+1)\sin x + (m-y)\cos x = 2y-1$.[cite: 2]
+* Phương trình có nghiệm $x$ khi thỏa mãn điều kiện biên độ: $(y+1)^2 + (m-y)^2 \ge (2y-1)^2$.[cite: 2]
+* Khai triển và rút gọn: $y^2 + 2y + 1 + m^2 - 2my + y^2 \ge 4y^2 - 4y + 1 \Leftrightarrow 2y^2 - (2m+6)y - m^2 \le 0 \quad (*)$.[cite: 2]
+* Tập nghiệm của (*) chính là tập giá trị của hàm số đoạn $[y_{\min}; y_{\max}]$.[cite: 2] Để giá trị lớn nhất $y_{\max} = 2$, thì $y=2$ phải là nghiệm làm cho vế trái bằng 0: $2(2)^2 - (2m+6)(2) - m^2 = 0 \Leftrightarrow 8 - 4m - 12 - m^2 = 0 \Leftrightarrow m^2 + 4m + 4 = 0$.[cite: 2]
+* Hằng đẳng thức xuất hiện: $(m+2)^2 = 0 \Rightarrow m = -2$.[cite: 2]
+
+$\Rightarrow$ **Đáp số cần điền: -2.**[cite: 2]
+""")
+
+        with st.expander("🔍 Lời giải Câu 17: Biểu diễn nghiệm trên đường tròn lượng giác"):
+            st.markdown(r"""
+* Ghép cặp số hạng đầu và số hạng cuối, tận dụng công thức tổng thành tích: $(\sin 3x + \sin x) + \sin 2x = 0 \Leftrightarrow 2\sin 2x\cos x + \sin 2x = 0$.[cite: 2]
+* Rút nhân tử chung: $\sin 2x(2\cos x + 1) = 0$.[cite: 2]
+* Điều này dẫn đến 2 trường hợp:
+  * $\sin 2x = 0 \Rightarrow 2x = k\pi \Rightarrow x = k\dfrac{\pi}{2}$.[cite: 2] Họ nghiệm này tạo ra **4 điểm** phân biệt ứng với các góc $0, \dfrac{\pi}{2}, \pi, \dfrac{3\pi}{2}$.[cite: 2]
+  * $\cos x = -\dfrac{1}{2} \Rightarrow x = \pm\dfrac{2\pi}{3} + k2\pi$.[cite: 2] Họ này bổ sung thêm đúng **2 điểm** hoàn toàn mới là $\dfrac{2\pi}{3} (120^\circ)$ và $\dfrac{4\pi}{3} (240^\circ)$.[cite: 2]
+* Hai tập hợp điểm này không trùng lặp, nên tổng số điểm biểu diễn phân biệt là $4 + 2 = 6$ điểm.[cite: 2]
+
+$\Rightarrow$ **Chọn đáp án C.**[cite: 2]
+""")
+
+        with st.expander("🔍 Lời giải Câu 18: Biện luận số nghiệm phương trình lượng giác"):
+            st.markdown(r"""
+Hạ bậc nhanh phương trình bằng hằng đẳng thức mở rộng: $(\sin^2 x + \cos^2 x)^2 - 2\sin^2 x\cos^2 x = m \Leftrightarrow 1 - \dfrac{1}{2}\sin^2 2x = m \Leftrightarrow \sin^2 2x = 2(1-m)$.[cite: 2]
+
+* **A. Sai.** Khi $m = 1 \Rightarrow \sin^2 2x = 0 \Leftrightarrow \sin 2x = 0 \Rightarrow x = k\dfrac{\pi}{2}$.[cite: 2] Trên đoạn $[0; \pi]$, ta tìm được **3** nghiệm phân biệt $\left\{0; \dfrac{\pi}{2}; \pi\right\}$, không phải 4.[cite: 2]
+* **B. Đúng.** Vì hàm bình phương $\sin^2 2x$ luôn bị khống chế trong đoạn $[0; 1]$, nên phương trình có nghiệm khi: $0 \le 2(1-m) \le 1 \Leftrightarrow 0 \le 1-m \le \dfrac{1}{2} \Leftrightarrow \dfrac{1}{2} \le m \le 1$.[cite: 2]
+* **C. Đúng.** Thử trực tiếp $m = \dfrac{3}{4}$, ta được $\sin^2 2x = \dfrac{1}{2} \Rightarrow \cos^2 2x = \dfrac{1}{2} \Rightarrow \cos 4x = 0$.[cite: 2] Nghiệm thu được là $4x = \dfrac{\pi}{2} + k\pi \Rightarrow x = \dfrac{\pi}{8} + k\dfrac{\pi}{4}$.[cite: 2] Khoảng cách giữa các nghiệm là $\dfrac{\pi}{4} (45^\circ)$, chia đường tròn thành 8 phần bằng nhau tạo thành bát giác đều.[cite: 2]
+* **D. Đúng.** Thay $m = \dfrac{1}{2}$ vào, ta nhận được $\sin^2 2x = 1$.[cite: 2] Dùng công thức hạ bậc: $\dfrac{1-\cos 4x}{2} = 1 \Leftrightarrow \cos 4x = -1$.[cite: 2]
+""")
+
+        with st.expander("🔍 Lời giải Câu 19: Tính tổng chuỗi lượng giác"):
+            st.markdown(r"""
+* Dãy tổng S bao gồm các số hạng là bình phương hàm sin của các góc tăng dần với bước nhảy $10^\circ$, kéo dài từ $10^\circ$ đến $180^\circ$.[cite: 2] Có tổng cộng 18 số hạng.[cite: 2]
+* Tách hai góc đặc biệt: $\sin^2 90^\circ = 1$ và $\sin^2 180^\circ = 0$.[cite: 2]
+* Với các góc từ $10^\circ$ đến $80^\circ$, ta gom được thành 4 cặp phụ nhau có tổng bằng 1 (VD: $\sin^2 10^\circ + \sin^2 80^\circ = \sin^2 10^\circ + \cos^2 10^\circ = 1$).[cite: 2] Vậy 4 cặp này cho giá trị bằng **4**.[cite: 2]
+* Đối với các góc tù từ $100^\circ$ đến $170^\circ$, tính chất góc bù cho phép đưa về góc nhọn (VD: $\sin 170^\circ = \sin 10^\circ$).[cite: 2] Như vậy, chuỗi này phản chiếu hoàn toàn chuỗi từ $10^\circ$ đến $80^\circ$, cũng cho kết quả bằng **4**.[cite: 2]
+* Tổng kết toàn bộ chuỗi: $S = 4 + 1 + 4 + 0 = 9$.[cite: 2]
+
+$\Rightarrow$ **Đáp số cần điền: 9.**[cite: 2]
+""")
+
+        with st.expander("🔍 Lời giải Câu 20: Tập giá trị hàm số lượng giác"):
+            st.markdown(r"""
+* **1)** Phương trình $3\sin x + 4\cos x = m$ có nghiệm khi: $3^2 + 4^2 \ge m^2 \Leftrightarrow m^2 \le 25 \Leftrightarrow m \in [-5; 5]$.[cite: 2]
+* **2)** Phương trình sinh ra $m = -\sin^2 x + 2\sin x$.[cite: 2] Đặt $t = \sin x \in [-1; 1]$.[cite: 2] Hàm số $f(t) = -t^2 + 2t$ trên đoạn $[-1; 1]$.[cite: 2] Đỉnh parabol tại $t = 1 \Rightarrow f(1) = 1$.[cite: 2] Giá trị tại biên còn lại $f(-1) = -3$.[cite: 2] Tập giá trị quét từ $-3$ đến $1$, buộc $m \in [-3; 1]$.[cite: 2]
+* **3)** Dùng công thức nhân đôi: $m = -(2\cos^2 x - 1) + 4\cos x = -2\cos^2 x + 4\cos x + 1$.[cite: 2] Đặt $u = \cos x \in [-1; 1]$.[cite: 2] Hàm $g(u) = -2u^2 + 4u + 1$.[cite: 2] Đỉnh đồ thị nằm ở $u = 1 \Rightarrow g(1) = 3$.[cite: 2] Giá trị tại đầu mút kia $g(-1) = -5$.[cite: 2] Hàm trải dài trên đoạn $[-5; 3]$.[cite: 2] Đồng nghĩa với $m \in [-5; 3]$.[cite: 2]
+
+$\Rightarrow$ **Kết quả:** 1) `[-5; 5]`, 2) `[-3; 1]`, 3) `[-5; 3]`.[cite: 2]
 """)
 
 
