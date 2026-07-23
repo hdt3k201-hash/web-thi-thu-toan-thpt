@@ -6587,13 +6587,17 @@ if st.session_state.get('q_dh_hieu_solution_shown') and st.session_state.get('lo
     $$g(x) = 3f(-x+2) + x^3 + 3x^2 - 9x - 1$$
     
     Đạo hàm của hàm số theo biến $x$ là:
+    
     $$g'(x) = 3 \cdot (-1) \cdot f'(-x+2) + 3x^2 + 6x - 9$$
+    
     $$g'(x) = -3f'(-x+2) + 3(x^2 + 2x - 3)$$
     
     **Bước 2: Thiết lập điều kiện nghịch biến**
     
     Hàm số nghịch biến khi và chỉ khi $g'(x) \le 0$:
+    
     $$-3f'(-x+2) + 3(x^2 + 2x - 3) \le 0$$
+    
     $$\Leftrightarrow f'(-x+2) \ge x^2 + 2x - 3 \quad (*)$$
     
     **Bước 3: Đặt ẩn phụ và đối chiếu bảng xét dấu**
@@ -6604,7 +6608,8 @@ if st.session_state.get('q_dh_hieu_solution_shown') and st.session_state.get('lo
     Bất phương trình $(*)$ trở thành:
     $$f'(t) \ge (t-1)(t-5)$$
     
-    Dựa vào bảng xét dấu của $f'(t)$[cite: 1], ta có $f'(t) \ge 0$ khi $t \in [1; 5]$ (vì $f'(t) \ge 0$ trên các khoảng $[1; 2]$ và $[2; 5]$). 
+    Dựa vào bảng xét dấu của $f'(t)$, ta có $f'(t) \ge 0$ khi $t \in [1; 5]$ (vì $f'(t) \ge 0$ trên các khoảng $[1; 2]$ và $[2; 5]$).
+
     Đồng thời, với $t \in [1; 5]$, ta có $(t-1)(t-5) \le 0$. 
     Do đó, bất phương trình nghiệm đúng khi:
     $$1 \le t \le 5$$
