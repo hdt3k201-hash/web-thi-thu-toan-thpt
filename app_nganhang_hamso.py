@@ -6246,19 +6246,16 @@ st.markdown(
     '<b style="color: blue;">Câu 65 (ĐGNL - TD)</b>',
     unsafe_allow_html=True
 )
-
 # Nội dung câu hỏi từ hình ảnh được chuyển sang dạng trả lời ngắn
 st.markdown(r"""
 Có bao nhiêu giá trị nguyên không âm của tham số $m$ sao cho hàm số 
 $$y = -x^4 + (2m-3)x^2 + m$$ 
 nghịch biến trên đoạn $[1; 2]$?
 """)
-
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 user_answer = st.text_input("Nhập số lượng giá trị nguyên không âm của m (ví dụ: 3):", key="q1_bt1_ans")
 
 # Chèn hình ảnh minh họa ngay sau ô nhập đáp án
-
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q1_bt1_check"):
     # Chuẩn hóa đầu vào 
@@ -6344,10 +6341,7 @@ $$y = \dfrac{1}{4}x^4 + mx - \dfrac{3}{2x}$$
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 user_answer = st.text_input("Nhập số lượng giá trị nguyên âm của m (ví dụ: 2):", key="q2_bt2_ans")
-
 # Chèn hình ảnh minh họa ngay sau ô nhập đáp án
-
-
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q2_bt2_check"):
     # Chuẩn hóa đầu vào
