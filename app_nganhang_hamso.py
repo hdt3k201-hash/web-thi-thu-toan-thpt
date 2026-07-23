@@ -7602,4 +7602,97 @@ if st.session_state.get('q78_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 79 (THPT Trần Nhân Tông - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
 
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một chiếc thuyền ở vị trí $A$ cách bờ biển một khoảng $AB$ bằng $5\text{ km}$. Trên bờ biển có một cái kho ở vị trí $C$ cách $B$ một khoảng $7\text{ km}$. Người lái thuyền dự định chèo thuyền từ $A$ đến điểm $M$ trên bờ biển với vận tốc $1,2\text{ m/s}$ rồi đi bộ đến $C$ với vận tốc $1,8\text{ m/s}$ (tham khảo hình vẽ). Điểm $M$ cách $B$ bao nhiêu để người đó đến kho của mình nhanh nhất? (làm tròn kết quả đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập khoảng cách từ M đến B (km) (ví dụ: 4.47):", key="q79_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_3041b7.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_3041b7.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q79_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 4.47 (tương ứng với 2\sqrt{5})
+    if normalized_user_answer == "4.47":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm thời gian di chuyển theo biến $x$ (khoảng cách $BM$) và tìm giá trị nhỏ nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q79_solution_shown' not in st.session_state:
+    st.session_state['q79_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q79_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q79_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q79_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q79_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn và thiết lập hàm thời gian di chuyển**
+    
+    * Gọi khoảng cách từ điểm $M$ đến điểm $B$ là $x$ (km), với điều kiện $0 \le x \le 7$.
+    * Độ dài quãng đường chèo thuyền từ $A$ đến $M$ là: 
+        $$AM = \sqrt{AB^2 + BM^2} = \sqrt{5^2 + x^2} = \sqrt{25 + x^2} \text{ (km)}$$
+    * Độ dài quãng đường đi bộ từ $M$ đến $C$ là: 
+        $$MC = BC - BM = 7 - x \text{ (km)}$$
+        
+    **Bước 2: Xây dựng hàm thời gian tổng cộng $T(x)$**
+    
+    * Vận tốc chèo thuyền là $v_1 = 1,2\text{ m/s}$, thời gian chèo thuyền là:
+        $$t_1 = \dfrac{1000\sqrt{25 + x^2}}{1,2} \text{ (giây)}$$
+    * Vận tốc đi bộ là $v_2 = 1,8\text{ m/s}$, thời gian đi bộ là:
+        $$t_2 = \dfrac{1000(7 - x)}{1,8} \text{ (giây)}$$
+    * Tổng thời gian di chuyển là hàm số theo biến $x$:
+        $$T(x) = \dfrac{1000\sqrt{25 + x^2}}{1,2} + \dfrac{1000(7 - x)}{1,8}$$
+        
+    **Bước 3: Khảo sát hàm số để tìm thời gian nhỏ nhất**
+    
+    Tính đạo hàm của hàm số $T(x)$ theo $x$:
+    $$T'(x) = \dfrac{1000}{1,2} \cdot \dfrac{x}{\sqrt{25 + x^2}} - \dfrac{1000}{1,8}$$
+    
+    Cho $T'(x) = 0$:
+    $$\dfrac{1}{1,2} \cdot \dfrac{x}{\sqrt{25 + x^2}} = \dfrac{1}{1,8} \iff \dfrac{x}{\sqrt{25 + x^2}} = \dfrac{1,2}{1,8} = \dfrac{2}{3}$$
+    
+    Bình phương hai vế của phương trình:
+    $$\dfrac{x^2}{25 + x^2} = \dfrac{4}{9} \iff 9x^2 = 4(25 + x^2) \iff 5x^2 = 100 \iff x^2 = 20$$
+    $$\implies x = \sqrt{20} = 2\sqrt{5} \approx 4,47 \text{ (thỏa mãn điều kiện } 0 \le x \le 7)$$
+    
+    Lập bảng biến thiên hoặc xét dấu đạo hàm, ta thấy hàm số $T(x)$ đạt giá trị nhỏ nhất tại $x = 2\sqrt{5} \approx 4,47$.
+    
+    **Kết luận:** Để người đó đến kho nhanh nhất, điểm $M$ cách $B$ một khoảng là **$4,47$** km.
+    """)
+    
+st.markdown("---")
