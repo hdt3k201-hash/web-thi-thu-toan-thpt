@@ -4605,3 +4605,99 @@ if st.session_state.get('q_tiemcan_m_solution_shown') and st.session_state.get('
     """)
     
 st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 48 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho hàm số $y = \dfrac{x^2 + 2x + 2}{x + 1}$ có đồ thị là $(C)$. Có bao nhiêu tiếp tuyến của đồ thị $(C)$ đi qua giao điểm của hai đường tiệm cận của đồ thị?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng tiếp tuyến thỏa mãn :", key="q_tt_tiemcan_ans")
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_tt_tiemcan_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 0
+    if normalized_user_answer == "0":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tọa độ giao điểm của hai tiệm cận và phương trình tiếp tuyến tại điểm M nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_tt_tiemcan_solution_shown' not in st.session_state:
+    st.session_state['q_tt_tiemcan_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_tt_tiemcan_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_tt_tiemcan_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_tt_tiemcan_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_tt_tiemcan_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm các đường tiệm cận và giao điểm của chúng**
+    
+    Tập xác định của hàm số: $\mathcal{D} = \mathbb{R} \setminus \{-1\}$.
+    
+    *   Đồ thị hàm số có đường tiệm cận đứng là: $x = -1$.
+    *   Mặt khác, ta biến đổi hàm số:
+        $$y = \dfrac{x^2 + 2x + 2}{x + 1} = \dfrac{(x + 1)^2 + 1}{x + 1} = x + 1 + \dfrac{1}{x + 1}$$
+        Do đó, đường tiệm cận xiên của đồ thị là: $y = x + 1$.
+    
+    Giao điểm $I$ của hai đường tiệm cận là nghiệm của hệ phương trình:
+    $$\left\{ \begin{aligned} x &= -1 \\ y &= x + 1 \end{aligned} \right. \implies I(-1; 0)$$
+    
+    **Bước 2: Lập phương trình tiếp tuyến của đồ thị tại điểm $M$**
+    
+    Gọi $M\left(x_0; \dfrac{x_0^2 + 2x_0 + 2}{x_0 + 1}\right)$ là điểm thuộc đồ thị $(C)$ với $x_0 \neq -1$.
+    
+    Đạo hàm của hàm số là:
+    $$y' = \dfrac{(2x + 2)(x + 1) - (x^2 + 2x + 2) \cdot 1}{(x + 1)^2} = \dfrac{x^2 + 2x}{(x + 1)^2}$$
+    
+    Phương trình tiếp tuyến $\Delta$ tại điểm $M$ có dạng:
+    $$y = y'(x_0)(x - x_0) + y(x_0)$$
+    $$y = \dfrac{x_0^2 + 2x_0}{(x_0 + 1)^2}(x - x_0) + \dfrac{x_0^2 + 2x_0 + 2}{x_0 + 1}$$
+    
+    **Bước 3: Xét điều kiện tiếp tuyến đi qua giao điểm $I(-1; 0)$**
+    
+    Để tiếp tuyến đi qua điểm $I(-1; 0)$, ta thay tọa độ điểm $I$ vào phương trình tiếp tuyến:
+    $$0 = \dfrac{x_0^2 + 2x_0}{(x_0 + 1)^2}(-1 - x_0) + \dfrac{x_0^2 + 2x_0 + 2}{x_0 + 1}$$
+    
+    Vì $-1 - x_0 = -(x_0 + 1)$ và $x_0 \neq -1$, ta rút gọn phương trình trên:
+    $$0 = -\dfrac{x_0^2 + 2x_0}{x_0 + 1} + \dfrac{x_0^2 + 2x_0 + 2}{x_0 + 1}$$
+    $$0 = \dfrac{-(x_0^2 + 2x_0) + (x_0^2 + 2x_0 + 2)}{x_0 + 1}$$
+    $$0 = \dfrac{2}{x_0 + 1}$$
+    
+    Phương trình $\dfrac{2}{x_0 + 1} = 0$ **vô nghiệm**.
+    
+    **Bước 4: Kết luận**
+    
+    Do phương trình tìm hoành độ tiếp điểm $x_0$ vô nghiệm, không tồn tại tiếp tuyến nào của đồ thị $(C)$ đi qua giao điểm của hai đường tiệm cận.
+    
+    **Kết luận:** Số lượng tiếp tuyến thỏa mãn yêu cầu bài toán là **0**.
+    """)
+    
+st.markdown("---")
