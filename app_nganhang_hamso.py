@@ -8943,3 +8943,103 @@ if st.session_state.get('q92_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 93 (Sở Sơn La 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một nhà địa chất học đang ở địa điểm $A$ trên sa mạc. Anh ta muốn đến điểm $B$ (cũng ở trên sa mạc) và cách $A$ một khoảng bằng $70\text{ km}$. Trong sa mạc, xe anh ta chỉ có thể di chuyển với vận tốc $30\text{ km/h}$. Nhà địa chất phải đến được điểm $B$ sau $2$ giờ, vì vậy nếu anh ta đi thẳng từ $A$ đến $B$ sẽ không thể đến đúng giờ được. Rất may, có một con đường nhựa song song với đường nối $A$ và $B$ và cách $AB$ một đoạn $10\text{ km}$ (tham khảo hình vẽ). Trên đường nhựa đó, xe nhà địa chất có thể di chuyển với vận tốc $50\text{ km/h}$. Thời gian ngắn nhất để nhà địa chất di chuyển từ $A$ đến $B$ là bao nhiêu phút?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập thời gian ngắn nhất (phút) (ví dụ: 100):", key="q93_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_313cbd.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_313cbd.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q93_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 116
+    if normalized_user_answer in ["116", "116.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm thời gian di chuyển theo quãng đường trên đường nhựa, tìm giá trị nhỏ nhất của hàm số rồi đổi ra đơn vị phút nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q93_solution_shown' not in st.session_state:
+    st.session_state['q93_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q93_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q93_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q93_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q93_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm số tính thời gian di chuyển**
+    
+    * Gọi đường thẳng chứa đoạn $AB$ và đường nhựa là hai đường thẳng song song cách nhau $10\text{ km}$.
+    * Nhà địa chất đi từ $A$ qua sa mạc đến một điểm $C$ trên đường nhựa, di chuyển dọc theo đường nhựa đến điểm $D$, rồi đi qua sa mạc từ $D$ đến điểm $B$.
+    * Do tính đối xứng, gọi $x$ là khoảng cách hình chiếu của $A$ trên đường nhựa đến điểm $C$ ($0 \le x \le 35$). Khi đó khoảng cách hình chiếu của $B$ đến $D$ cũng bằng $x$.
+    * Quãng đường di chuyển trên sa mạc cho mỗi đoạn $AC$ và cắt từ $DB$ là:
+        $$AC = DB = \sqrt{x^2 + 10^2} \text{ (km)}$$
+    * Quãng đường di chuyển trên đường nhựa là đoạn $CD$:
+        $$CD = 70 - 2x \text{ (km)}$$
+    
+    **Bước 2: Lập hàm số tổng thời gian $T(x)$**
+    
+    * Thời gian di chuyển trên sa mạc (với vận tốc $30\text{ km/h}$) cho hai đoạn $AC$ và $DB$ là:
+        $$t_1 = \dfrac{2\sqrt{x^2 + 10^2}}{30} = \dfrac{\sqrt{x^2 + 10^2}}{15} \text{ (giờ)}$$
+    * Thời gian di chuyển trên đường nhựa (với vận tốc $50\text{ km/h}$) là:
+        $$t_2 = \dfrac{70 - 2x}{50} \text{ (giờ)}$$
+    * Tổng thời gian di chuyển từ $A$ đến $B$ là hàm số theo biến $x$:
+        $$T(x) = \dfrac{\sqrt{x^2 + 10^2}}{15} + \dfrac{70 - 2x}{50} \quad \text{với } x \in [0; 35]$$
+        
+    **Bước 3: Khảo sát hàm số để tìm giá trị nhỏ nhất**
+    
+    * Tính đạo hàm của hàm số $T(x)$:
+        $$T'(x) = \dfrac{1}{15} \cdot \dfrac{x}{\sqrt{x^2 + 10^2}} - \dfrac{2}{50} = \dfrac{x}{15\sqrt{x^2 + 10^2}} - \dfrac{1}{25}$$
+    * Cho $T'(x) = 0$:
+        $$\dfrac{x}{15\sqrt{x^2 + 10^2}} = \dfrac{1}{25} \iff \dfrac{x}{\sqrt{x^2 + 10^2}} = \dfrac{15}{25} = \dfrac{3}{5}$$
+    * Bình phương hai vế ta được:
+        $$\dfrac{x^2}{x^2 + 100} = \dfrac{9}{25} \iff 25x^2 = 9x^2 + 900 \iff 16x^2 = 900 \iff x^2 = 56,25 \iff x = 7,5 \text{ (km)}$$
+        
+    **Bước 4: Tính thời gian ngắn nhất và đổi đơn vị**
+    
+    * Thay $x = 7,5$ vào hàm số $T(x)$:
+        $$T(7,5) = \dfrac{\sqrt{7,5^2 + 10^2}}{15} + \dfrac{70 - 2(7,5)}{50}$$
+        $$T(7,5) = \dfrac{12,5}{15} + \dfrac{55}{50} = \dfrac{5}{6} + \dfrac{11}{10} = \dfrac{25 + 33}{30} = \dfrac{58}{30} = \dfrac{29}{15} \text{ (giờ)}$$
+    * Đổi ra đơn vị phút:
+        $$T_{\min} = \dfrac{29}{15} \cdot 60 = 29 \cdot 4 = 116 \text{ (phút)}$$
+    
+    **Kết luận:** Thời gian ngắn nhất để nhà địa chất di chuyển từ $A$ đến $B$ là **$116$** phút.
+    """)
+    
+st.markdown("---")
