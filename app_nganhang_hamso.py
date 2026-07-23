@@ -1314,3 +1314,105 @@ st.markdown("---")
 
 
 
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 14 (Chuyên Vinh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d23b9a.png
+st.markdown(r"""
+Một công ty du lịch chuyên tổ chức các Tour Trải nghiệm - khám phá, đặt hàng cho một cơ sở sản xuất lều bạt một lô hàng gồm $10$ chiếc lều bạt du lịch giống hệt nhau, hình chóp tứ giác đều mà thể tích mỗi chiếc lều là $18\text{ m}^3$. Đơn giá tính theo diện tích bạt sử dụng là $500$ nghìn đồng/$\text{m}^2$, (không tính đến đường viền, nếp gấp và lều không may bạt ở đáy). Hỏi số tiền ít nhất mà công ty du lịch phải trả cho cơ sở sản xuất lều bạt là bao nhiêu triệu đồng? (Kết quả làm tròn đến hàng đơn vị).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số tiền ít nhất phải trả (triệu đồng) (ví dụ: 156):", key="q22_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q22_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 156
+    if normalized_user_answer == "156":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+        st.session_state['q22_solution_shown'] = True
+    elif normalized_user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy biểu diễn diện tích xung quanh theo cạnh đáy x, dùng bất đẳng thức Cauchy hoặc đạo hàm để tìm giá trị nhỏ nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q22_solution_shown' not in st.session_state:
+    st.session_state['q22_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q22_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q22_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q22_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q22_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập công thức tính chiều cao theo cạnh đáy**
+    
+    *   Gọi $x > 0$ là độ dài cạnh đáy của lều (hình vuông, đơn vị: mét) và $h > 0$ là chiều cao của lều (đơn vị: mét).
+    *   Thể tích của mỗi chiếc lều hình chóp tứ giác đều là:
+        $$V = \dfrac{1}{3}S_{đáy} \cdot h = \dfrac{1}{3}x^2h = 18 \implies x^2h = 54 \implies h = \dfrac{54}{x^2}$$
+    
+    **Bước 2: Lập hàm số biểu diễn diện tích bạt cần sử dụng**
+    
+    *   Vì lều không may bạt ở đáy nên diện tích bạt sử dụng cho một chiếc lều chính là diện tích xung quanh ($S_{xq}$) của hình chóp tứ giác đều:
+        $$S_{xq} = 4 \cdot S_{\text{tam giác}} = 4 \cdot \dfrac{1}{2}x \cdot d = 2xd$$
+        (trong đó $d$ là trung đoạn của hình chóp).
+    *   Ta có trung đoạn $d = \sqrt{h^2 + \left(\dfrac{x}{2}\right)^2} = \sqrt{h^2 + \dfrac{x^2}{4}}$.
+    *   Thay vào công thức diện tích xung quanh:
+        $$S_{xq} = 2x\sqrt{h^2 + \dfrac{x^2}{4}} = \sqrt{4x^2\left(h^2 + \dfrac{x^2}{4}\right)} = \sqrt{4x^2h^2 + x^4}$$
+    *   Thay $h = \dfrac{54}{x^2} \implies h^2 = \dfrac{2916}{x^4}$ vào biểu thức trên:
+        $$S_{xq} = \sqrt{4x^2 \cdot \dfrac{2916}{x^4} + x^4} = \sqrt{x^4 + \dfrac{11664}{x^2}}$$
+    
+    **Bước 3: Tìm giá trị nhỏ nhất của diện tích bạt**
+    
+    Để diện tích bạt sử dụng ít nhất, biểu thức $f(x) = x^4 + \dfrac{11664}{x^2}$ dưới dấu căn phải nhỏ nhất với $x > 0$.
+    
+    Áp dụng bất đẳng thức Cauchy (AM-GM) cho 3 số dương:
+    $$f(x) = x^4 + \dfrac{5832}{x^2} + \dfrac{5832}{x^2} \ge 3\sqrt[3]{x^4 \cdot \dfrac{5832}{x^2} \cdot \dfrac{5832}{x^2}} = 3\sqrt[3]{5832^2} = 3 \cdot 324 = 972$$
+    
+    Dấu "$=$" xảy ra khi $x^4 = \dfrac{5832}{x^2} \Leftrightarrow x^6 = 5832 \Leftrightarrow x = \sqrt[6]{5832} \approx 4,27\text{ m}$.
+    
+    Do đó, diện tích bạt nhỏ nhất cho một chiếc lều là:
+    $$S_{xq, \min} = \sqrt{972} = 18\sqrt{3}\text{ m}^2$$
+    
+    **Bước 4: Tính tổng số tiền tối thiểu cho lô hàng 10 chiếc lều**
+    
+    *   Đổi đơn giá: $500\text{ nghìn đồng/m}^2 = 0,5\text{ triệu đồng/m}^2$.
+    *   Tổng số tiền ít nhất mà công ty phải trả cho 10 chiếc lều là:
+        $$T = 10 \cdot S_{xq, \min} \cdot 0,5 = 10 \cdot 18\sqrt{3} \cdot 0,5 = 90\sqrt{3} \approx 155,88\text{ (triệu đồng)}$$
+    
+    Làm tròn kết quả đến hàng đơn vị, ta được $156$ triệu đồng.
+    
+    **Kết luận:** Số tiền ít nhất công ty du lịch phải trả là **156** triệu đồng.
+    """)
+    
+st.markdown("---")
+
+
+
+
+
+
+
+
