@@ -148,3 +148,77 @@ if st.session_state.get('q1_solution_shown') and st.session_state.get('logged_in
 
 st.markdown("---")
 
+import streamlit as st
+
+# --- CÂU HỎI 2: ---
+st.markdown(
+    '<b style="color: blue;">Câu 2 (Đề thi Tốt nghiệp THPT 2025)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có bốn ngăn (trong một giá để sách) được đánh số thứ tự $1, 2, 3, 4$ và tám quyển sách khác nhau. Bạn An xếp hết tám quyển sách nói trên vào bốn ngăn đó sao cho mỗi ngăn có ít nhất một quyển sách và các quyển sách được xếp thẳng đứng thành một hàng ngang với gáy sách quay ra ngoài ở mỗi ngăn. Khi đã xếp xong tám quyển sách, hai cách xếp của bạn An được gọi là giống nhau nếu chúng thỏa mãn đồng thời hai điều kiện sau đây:
++ Với từng ngăn, số lượng quyển sách ở ngăn đó là như nhau trong cả hai cách xếp;
++ Với từng ngăn, thứ tự từ trái sang phải của các quyển sách được xếp là như nhau trong cả hai cách xếp.
+Gọi $T$ là số cách xếp đôi một khác nhau của bạn An. Giá trị của $\dfrac{T}{400}$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án (ví dụ: 1234):", key="q2_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q2_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    if normalized_user_answer == "3528":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q2_solution_shown' not in st.session_state:
+    st.session_state['q2_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q2_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q2_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q2_solution_shown'] = False # Đảm bảo ẩn nếu chưa đăng nhập
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q2_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Sắp xếp các quyển sách thành một hàng ngang**
+    
+    * Số cách xếp 8 quyển sách khác nhau thành một hàng ngang là hoán vị của 8 phần tử:
+        $$8! = 40.320 	ext{ (cách)}$$
+    
+    **Bước 2: Sử dụng phương pháp "vách ngăn"**
+    
+    * Khi xếp 8 quyển sách thành một hàng ngang, ta có $7$ khoảng trống ở giữa các quyển sách (không tính hai đầu mút vì mỗi ngăn phải có ít nhất 1 quyển sách).
+    * Việc chia 8 quyển sách này vào 4 ngăn khác nhau (mỗi ngăn ít nhất 1 quyển) tương đương với việc đặt $3$ vách ngăn vào $3$ trong số $7$ khoảng trống đó (để chia thành 4 phần tương ứng cho 4 ngăn theo thứ tự 1, 2, 3, 4).
+    * Số cách đặt 3 vách ngăn là tổ hợp chập 3 của 7:
+        $$C_7^3 = \dfrac{7!}{3!(7-3)!} = 35 	ext{ (cách)}$$
+    
+    **Bước 3: Tính tổng số cách xếp $T$ và giá trị cần tìm**
+    
+    * Theo quy tắc nhân, tổng số cách xếp $T$ là:
+        $$T = 8! \cdot C_7^3 = 40.320 \cdot 35 = 1.411.200 	ext{ (cách)}$$
+    * Theo yêu cầu bài toán, ta cần tính giá trị của $\dfrac{T}{400}$:
+        $$\dfrac{T}{400} = \dfrac{1.411.200}{400} = 3528$$
+    
+    **Kết luận:** Giá trị của $\dfrac{T}{400}$ bằng **$3528$**.
+    """)
+    
+st.markdown("---")
