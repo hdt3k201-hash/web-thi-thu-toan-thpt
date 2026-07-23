@@ -36,7 +36,11 @@ else:
 
 
 # 2. Giao diện chính hiển thị câu hỏi
-st.title("Chuyên đề: Hàm số")
+# Tiêu đề chuyên đề căn giữa màn hình, màu xanh đậm (Dark Blue)
+st.markdown(
+    '<h2 style="text-align: center; color: #00008B;">CHUYÊN ĐỀ: HÀM SỐ</h2>',
+    unsafe_allow_html=True
+)
 st.markdown("---")
 
 # Tiêu đề câu hỏi
