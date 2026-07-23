@@ -6425,4 +6425,96 @@ if st.session_state.get('q66_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 67 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
 
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho hàm số $y = f(x)$ có bảng xét dấu đạo hàm như hình bên. 
+Hàm số $y = f(x^2 + 2x)$ đồng biến trên khoảng $(0; b)$. Tìm giá trị của $b$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của b (ví dụ: 5):", key="q_dh_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/cau67.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/cau67.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_dh_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 1
+    if normalized_user_answer == "1":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tính đạo hàm hàm hợp, xét dấu và tìm khoảng đồng biến chứa 0.5 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_dh_solution_shown' not in st.session_state:
+    st.session_state['q_dh_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_dh_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_dh_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_dh_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_dh_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính đạo hàm của hàm hợp**
+    
+    Đặt $u = x^2 + 2x$, ta có hàm số $y = f(u)$.
+    Đạo hàm của hàm số theo biến $x$ là:
+    $$y' = (x^2 + 2x)' \cdot f'(x^2 + 2x) = (2x + 2)f'(x^2 + 2x)$$
+    
+    **Bước 2: Thiết lập điều kiện đồng biến**
+    
+    Hàm số đồng biến khi và chỉ khi $y' \ge 0$ (và chỉ bằng $0$ tại hữu hạn điểm):
+    $$(2x + 2)f'(x^2 + 2x) \ge 0$$
+    
+    Dựa vào bảng xét dấu của $f'(x)$, ta thấy $f'(x) > 0$ khi $x \in (-\infty; -2) \cup (0; 3)$[cite: 1].
+    Do đó, để $f'(x^2 + 2x) > 0$, ta xét các trường hợp:
+    $$\left[ \begin{aligned} x^2 + 2x &< -2 \\ 0 < x^2 + 2x &< 3 \end{aligned} \right. \Leftrightarrow \left[ \begin{aligned} (x+1)^2 &< -1 \text{ (vô nghiệm)} \\ 0 < x^2 + 2x &< 3 \end{aligned} \right. \Leftrightarrow \left[ \begin{aligned} -3 &< x < -2 \\ 0 &< x < 1 \end{aligned} \right.$$
+    
+    **Bước 3: Lập bảng xét dấu và kiểm tra khoảng**
+    
+    Phương trình $y' = 0 \Leftrightarrow \left[ \begin{aligned} 2x + 2 &= 0 \\ f'(x^2 + 2x) &= 0 \end{aligned} \right. \Leftrightarrow \left[ \begin{aligned} x &= -1 \\ x^2 + 2x &\in \{-2; 0; 3\} \end{aligned} \right.$
+    
+    Giải các phương trình $x^2 + 2x = c$, ta tìm được các nghiệm đơn/bội lẻ làm đổi dấu đạo hàm: $x \in \{-3; -2; -1; 0; 1\}$.
+    
+    *   Xét khoảng $(0; 1)$: Lấy điểm đại diện $x = 0,5$, ta có $2(0,5) + 2 > 0$ và $u = 0,5^2 + 2(0,5) = 1,25 \in (0; 3)$ nên $f'(1,25) > 0$[cite: 1]. 
+    *   Do đó $y' > 0$ trên khoảng $(0; 1)$, suy ra hàm số đồng biến trên khoảng này.
+    
+    **Bước 4: Kết luận**
+    
+    Theo giả thiết, khoảng đồng biến có dạng $(0; b)$, từ đó suy ra $b = 1$.
+    
+    **Đáp số:** **$1$**.
+    """)
+    
+st.markdown("---")
