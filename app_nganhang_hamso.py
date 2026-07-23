@@ -3648,29 +3648,18 @@ if st.session_state.get('q58_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
-
 # Tiêu đề câu hỏi
 st.markdown(
     '<b style="color: blue;">Câu 38 (ĐGNL - TD)</b>',
     unsafe_allow_html=True
 )
-
 # Nội dung câu hỏi
 st.markdown(r"""
 Cho hàm số $y = x^3 - 3mx^2 + 2m$ có đồ thị là $(C_m)$ với $m$ là tham số thực. 
 Tìm giá trị của tham số $m > 0$ để đồ thị $(C_m)$ có hai điểm cực trị $A, B$ sao cho tam giác $OAB$ có diện tích bằng $8$ (với $O$ là gốc tọa độ).
 """)
-
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 user_answer = st.text_input("Nhập giá trị của m (ví dụ: 2):", key="q_cubic_ans")
-
-# Chèn hình ảnh minh họa (nếu có)
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.image("images/toan12_cubic.PNG", width=400)
-except FileNotFoundError:
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/toan12_cubic.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q_cubic_check"):
