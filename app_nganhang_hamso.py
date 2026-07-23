@@ -6738,3 +6738,89 @@ if st.session_state.get('q_dh_dothi_solution_shown') and st.session_state.get('l
     """)
     
 st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 70 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho hàm số $f(x) = x^3 + x - 2^m$. Tổng các giá trị nguyên của tham số $m$ để phương trình $f(f(x)) = x$ có nghiệm trên đoạn $[1; 4]$ là bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng các giá trị nguyên của m (ví dụ: 21):", key="q_bt6_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_bt6_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 21
+    if normalized_user_answer == "21":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy đặt ẩn phụ $t = f(x)$, xét hàm đặc trưng $g(u) = f(u) + u$ đồng biến để suy ra $f(x) = x$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_bt6_solution_shown' not in st.session_state:
+    st.session_state['q_bt6_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_bt6_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_bt6_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_bt6_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_bt6_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn phụ và thiết lập phương trình tương đương**[cite: 1]
+    
+    Đặt $t = f(x)$, ta có hệ phương trình:
+    $$\begin{cases} t = f(x) \\ f(t) = x \end{cases} \implies f(t) + t = f(x) + x \quad (1)$$
+    
+    **Bước 2: Xét tính đơn điệu của hàm đặc trưng**
+    
+    Xét hàm số $g(u) = f(u) + u = (u^3 + u - 2^m) + u = u^3 + 2u - 2^m$.
+    Đạo hàm của hàm số:
+    $$g'(u) = 3u^2 + 2 > 0, \forall u \in \mathbb{R}$$
+    
+    Do đó, hàm số $g(u)$ đồng biến trên $\mathbb{R}$. Phương trình $(1)$ tương đương với:
+    $$t = x \iff f(x) = x \iff x^3 + x - 2^m = x \iff x^3 = 2^m \quad (2)$$
+    
+    **Bước 3: Tìm điều kiện của tham số $m$ để phương trình có nghiệm**
+    
+    Phương trình $f(f(x)) = x$ có nghiệm trên đoạn $[1; 4]$ khi và chỉ khi phương trình $(2)$ có nghiệm trên đoạn $[1; 4]$.
+    Ta có:
+    $$1 \le x \le 4 \iff 1^3 \le x^3 \le 4^3 \iff 1 \le 2^m \le 64$$
+    
+    Vì $m$ là số nguyên, ta suy ra:
+    $$0 \le m \le 6 \implies m \in \{0; 1; 2; 3; 4; 5; 6\}$$
+    
+    **Bước 4: Tính tổng các giá trị nguyên của $m$**
+    
+    Tổng các giá trị nguyên của $m$ thỏa mãn là:
+    $$0 + 1 + 2 + 3 + 4 + 5 + 6 = 21$$
+    
+    **Kết luận:** Tổng các giá trị nguyên của tham số $m$ bằng **$21$**.
+    """)
+    
+st.markdown("---")
