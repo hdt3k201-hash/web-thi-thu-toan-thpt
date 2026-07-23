@@ -9128,4 +9128,91 @@ if st.session_state.get('q94_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 95 (Sở Hưng Yên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Trong trò chơi mô phỏng xây dựng công viên giải trí Roller Coaster Tycoon, một kỹ sư thiết kế một đoạn đường ray hình lượn sóng. Trong hệ trục tọa độ $Oxy$, đoạn đường ray này được mô hình hóa bởi đồ thị của hàm số $y = x^3 - 6x^2 + 9x + 1$, với $0 \le x \le 4$. Biết hệ trục tọa độ được thiết lập sao cho trục $Ox$ nằm ngang (đóng vai trò là mặt sàn kỹ thuật) và mỗi đơn vị độ dài trên các trục tọa độ tương ứng với $2$ mét trên thực tế. Để kiểm tra độ ổn định của cấu trúc, kỹ sư sử dụng thiết bị laser để đo khoảng cách trực tiếp giữa hai điểm chốt kỹ thuật đặt tại điểm cực đại $A$ và điểm cực tiểu $B$ của đồ thị hàm số trên. Hãy tính độ dài thực tế của khoảng cách giữa hai điểm $A$ và $B$ (không làm tròn các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần trăm theo đơn vị mét).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập độ dài thực tế (mét) (ví dụ: 4.24):", key="q95_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q95_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 8.94
+    if normalized_user_answer in ["8.94", "8,94"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tìm tọa độ điểm cực đại và cực tiểu, tính khoảng cách trên hệ tọa độ rồi nhân với tỉ lệ thực tế nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q95_solution_shown' not in st.session_state:
+    st.session_state['q95_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q95_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q95_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q95_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q95_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm tọa độ các điểm cực trị của đồ thị hàm số**
+    
+    * Cho hàm số: $y = x^3 - 6x^2 + 9x + 1$ xác định trên đoạn $[0; 4]$.
+    * Tính đạo hàm của hàm số:
+        $$y' = 3x^2 - 12x + 9$$
+    * Cho $y' = 0$:
+        $$3x^2 - 12x + 9 = 0 \iff x^2 - 4x + 3 = 0 \iff \begin{bmatrix} x = 1 \\ x = 3 \end{bmatrix}$$
+    * Cả hai nghiệm đều thỏa mãn điều kiện $0 \le x \le 4$.
+    
+    **Bước 2: Xác định tọa độ điểm cực đại $A$ và cực tiểu $B$**
+    
+    * Tính đạo hàm cấp hai:
+        $$y'' = 6x - 12$$
+    * Tại $x = 1$: $y''(1) = 6(1) - 12 = -6 < 0$, suy ra $x = 1$ là điểm cực đại. 
+      Tọa độ điểm cực đại là $A(1; 5)$.
+    * Tại $x = 3$: $y''(3) = 6(3) - 12 = 6 > 0$, suy ra $x = 3$ là điểm cực tiểu. 
+      Tọa độ điểm cực tiểu là $B(3; 1)$.
+      
+    **Bước 3: Tính khoảng cách giữa hai điểm $A$ và $B$ trên hệ tọa độ**
+    
+    * Khoảng cách giữa hai điểm $A(1; 5)$ và $B(3; 1)$ trên hệ trục tọa độ $Oxy$ là:
+        $$AB = \sqrt{(3 - 1)^2 + (1 - 5)^2} = \sqrt{2^2 + (-4)^2} = \sqrt{4 + 16} = \sqrt{20} = 2\sqrt{5} \text{ (đơn vị độ dài)}$$
+        
+    **Bước 4: Quy đổi ra khoảng cách thực tế và làm tròn kết quả**
+    
+    * Vì mỗi đơn vị độ dài trên các trục tọa độ tương ứng với $2$ mét trên thực tế, nên khoảng cách thực tế giữa hai điểm $A$ và $B$ là:
+        $$\text{Khoảng cách thực tế} = 2 \cdot 2\sqrt{5} = 4\sqrt{5} \text{ (mét)}$$
+    * Tính giá trị số thực:
+        $$4\sqrt{5} \approx 8,94427 \text{ mét}$$
+    * Làm tròn kết quả đến hàng phần trăm, ta được **$8,94$** mét.
+    
+    **Kết luận:** Độ dài thực tế của khoảng cách giữa hai điểm $A$ và $B$ là **$8,94$** mét.
+    """)
+    
+st.markdown("---")
+
 
