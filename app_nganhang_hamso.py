@@ -8571,4 +8571,94 @@ if st.session_state.get('q88_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 89 (Cụm trường Sở Phú Thọ 2026)</b>',
+    unsafe_allow_html=True
+)
 
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Trong hệ trục tọa độ Oxy, đơn vị mỗi trục là mét, một đường trượt mới sẽ được xây dựng theo bản thiết kế đã trình bày như hình vẽ. Thanh trượt bắt đầu từ A và kết thúc tại C, đường cong của thanh trượt là một phần của đồ thị hàm số $f(x) = \dfrac{ax^2 + bx + c}{x + d}$, biết đồ thị hàm số $f(x)$ tiếp xúc với trục Ox tại điểm B. Bạn Việt bắt đầu trượt từ điểm A, hỏi khi bạn Việt cách vị trí ban đầu theo phương ngang một khoảng 6 mét thì bạn Việt cách mặt đất bao nhiêu mét, biết trục Ox nằm trên mặt đất.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập khoảng cách (mét) (ví dụ: 1.5):", key="q89_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_30d442.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_30d442.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q89_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 1
+    if normalized_user_answer in ["1", "1.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy xác định các hệ số của hàm số dựa vào các điểm đặc biệt (tiếp xúc tại B, đi qua C) rồi tính giá trị tại $x = 6$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q89_solution_shown' not in st.session_state:
+    st.session_state['q89_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q89_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q89_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q89_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q89_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định tọa độ các điểm đặc biệt từ hình vẽ**
+    
+    *   Gốc tọa độ $O(0; 0)$. Trục $Ox$ nằm trên mặt đất.
+    *   Đồ thị hàm số $f(x) = \dfrac{ax^2 + bx + c}{x + d}$ tiếp xúc với trục $Ox$ tại điểm $B(10; 0)$ (khoảng cách từ $O$ đến $B$ theo phương ngang là $10\text{ m}$).
+    *   Điểm kết thúc $C$ cách điểm $B$ một khoảng $5\text{ m}$ theo phương ngang và có độ cao $1\text{ m}$ so với mặt đất, suy ra tọa độ điểm $C$ là $(15; 1)$.
+    
+    **Bước 2: Lập phương trình tìm các hệ số của hàm số**
+    
+    *   Vì đồ thị tiếp xúc với trục $Ox$ tại $B(10; 0)$, ta có:
+        $$\begin{cases} f(10) = 0 \\ f'(10) = 0 \end{cases}$$
+    *   Đồ thị đi qua điểm $C(15; 1)$, nên:
+        $$f(15) = 1$$
+    
+    Do đường trượt đi xuống từ $A$ và tiếp xúc với đáy tại $B$, hàm số có dạng $f(x) = \dfrac{(x - 10)^2}{x + d} = \dfrac{x^2 - 20x + 100}{x + d}$.
+    
+    Thay tọa độ điểm $C(15; 1)$ vào hàm số:
+    $$f(15) = \dfrac{(15 - 10)^2}{15 + d} = 1 \Leftrightarrow \dfrac{25}{15 + d} = 1 \Leftrightarrow 15 + d = 25 \Leftrightarrow d = 10$$
+    
+    Vậy hàm số biểu diễn thanh trượt là:
+    $$f(x) = \dfrac{x^2 - 20x + 100}{x + 10}$$
+    
+    **Bước 3: Tính khoảng cách từ bạn Việt đến mặt đất**
+    
+    Vị trí ban đầu của bạn Việt là điểm $A$ trên trục tung ($x = 0$). Khi bạn Việt cách vị trí ban đầu theo phương ngang một khoảng $6\text{ m}$, hoành độ của bạn Việt là $x = 6$.
+    
+    Thay $x = 6$ vào hàm số $f(x)$:
+    $$f(6) = \dfrac{6^2 - 20 \cdot 6 + 100}{6 + 10} = \dfrac{36 - 120 + 100}{16} = \dfrac{16}{16} = 1 \text{ (mét)}$$
+    
+    **Kết luận:** Khi bạn Việt cách vị trí ban đầu theo phương ngang một khoảng $6\text{ m}$, bạn Việt cách mặt đất **$1$** mét.
+    """)
+    
+st.markdown("---")
