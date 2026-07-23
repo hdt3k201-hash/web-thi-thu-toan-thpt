@@ -5510,3 +5510,170 @@ if st.session_state.get('q333_solution_shown') and st.session_state.get('logged_
     """)
     
 st.markdown("---")
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 57 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Có bao nhiêu giá trị của tham số $m$ để hàm số 
+$$y = x^9 + (3m^2 - m)x^6 + (m^3 - 3m^2 + 2m)x^4 + 2019$$ 
+đồng biến trên $\mathbb{R}$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng giá trị của m (ví dụ: 4):", key="q_bt1_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_bt1_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 1
+    if normalized_user_answer == "1":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tính đạo hàm và biện luận hệ số của các số hạng chứa mũ lẻ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_bt1_solution_shown' not in st.session_state:
+    st.session_state['q_bt1_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_bt1_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_bt1_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_bt1_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_bt1_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính đạo hàm của hàm số**
+    
+    Ta có: $y' = 9x^8 + 6(3m^2 - m)x^5 + 4(m^3 - 3m^2 + 2m)x^3$.
+    
+    Để hàm số đồng biến trên $\mathbb{R}$ thì $y' \ge 0, \forall x \in \mathbb{R}$.
+    
+    **Bước 2: Phân tích điều kiện của đạo hàm**
+    
+    Ta thấy $y'$ là một đa thức. Để $y' \ge 0, \forall x \in \mathbb{R}$, thì các số hạng có số mũ lẻ không thể quyết định dấu của đa thức khi $x$ lân cận $0$.
+    Cụ thể, nếu hệ số của $x^3$ (số hạng có bậc thấp nhất) mà khác $0$, biểu thức $y'$ sẽ đổi dấu khi $x$ đi qua $0$, dẫn đến $y'$ không thể luôn $\ge 0$.
+    
+    Suy ra điều kiện bắt buộc là hệ số của $x^3$ phải bằng $0$:
+    $$4(m^3 - 3m^2 + 2m) = 0 \Leftrightarrow m(m - 1)(m - 2) = 0 \Leftrightarrow \left[ \begin{aligned} m &= 0 \\ m &= 1 \\ m &= 2 \end{aligned} \right.$$
+    
+    **Bước 3: Kiểm tra lại từng giá trị của $m$**
+    
+    *   **Với $m = 0$:** $y' = 9x^8 \ge 0, \forall x \in \mathbb{R}$. Vậy $m = 0$ thỏa mãn.
+    *   **Với $m = 1$:** $y' = 9x^8 + 12x^5 = x^5(9x^3 + 12)$. Cho $x = -2 \implies y' = (-32)(-72+12) > 0$; nhưng cho $x = -1 \implies y' = (-1)(-9+12) = -3 < 0$. Suy ra $y'$ đổi dấu, không thỏa mãn.
+    *   **Với $m = 2$:** $y' = 9x^8 + 60x^5 = x^5(9x^3 + 60)$. Tương tự, tại $x = -1 \implies y' = (-1)(-9+60) = -51 < 0$. Không thỏa mãn.
+    
+    *(Mẹo: Ta có thể lập luận thêm rằng hệ số của tất cả các bậc lẻ đều phải bằng $0$. Từ đó suy ra $3m^2 - m = 0$ và $m^3 - 3m^2 + 2m = 0$, giải ra được ngay $m = 0$).*
+    
+    **Kết luận:** Có duy nhất **$1$** giá trị của tham số $m$ ($m=0$) thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 58 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Gọi $S$ là tập hợp tất cả các giá trị thực của tham số $m$ để hàm số 
+$$f(x) = -m^2x^5 - mx^3 - (m^2 - m - 20)x^2 + 2019$$ 
+nghịch biến trên $\mathbb{R}$. Tổng giá trị của tất cả các phần tử thuộc $S$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng giá trị của các phần tử thuộc S (ví dụ: 3):", key="q_bt2_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_bt2_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 5
+    if normalized_user_answer == "5":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập f'(x) <= 0 và kiểm tra điều kiện của hệ số bậc lẻ (bậc 1) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_bt2_solution_shown' not in st.session_state:
+    st.session_state['q_bt2_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_bt2_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_bt2_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_bt2_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_bt2_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính đạo hàm của hàm số**
+    
+    Ta có: $f'(x) = -5m^2x^4 - 3mx^2 - 2(m^2 - m - 20)x$.
+    
+    Để hàm số nghịch biến trên $\mathbb{R}$ thì $f'(x) \le 0, \forall x \in \mathbb{R}$.
+    
+    **Bước 2: Phân tích điều kiện của đạo hàm**
+    
+    Tương tự như phân tích ở Bài tập 1, để đa thức $f'(x) \le 0, \forall x \in \mathbb{R}$, thì số hạng có bậc thấp nhất là bậc lẻ (ở đây là bậc 1) phải có hệ số bằng $0$. Nếu không, tại khu vực $x$ lân cận $0$, $f'(x)$ sẽ nhận giá trị mang dấu trái ngược nhau, vi phạm điều kiện $\le 0$.
+    
+    Suy ra hệ số của $x$ phải bằng $0$:
+    $$-2(m^2 - m - 20) = 0 \Leftrightarrow m^2 - m - 20 = 0 \Leftrightarrow \left[ \begin{aligned} m &= 5 \\ m &= -4 \end{aligned} \right.$$
+    
+    **Bước 3: Kiểm tra lại các giá trị của $m$**
+    
+    *   **Với $m = 5$:** $f'(x) = -125x^4 - 15x^2 = -5x^2(25x^2 + 3) \le 0, \forall x \in \mathbb{R}$. Giá trị $m = 5$ thỏa mãn.
+    *   **Với $m = -4$:** $f'(x) = -80x^4 + 12x^2 = -4x^2(20x^2 - 3)$. Khi xét $x$ đủ gần $0$ (chẳng hạn $x = 0,1$), ta có $20x^2 - 3 < 0 \implies f'(x) > 0$. Vậy $m = -4$ không thỏa mãn.
+    
+    Từ đó ta xác định được tập hợp các giá trị của $m$ là $S = \{5\}$.
+    
+    **Bước 4: Tính tổng các phần tử thuộc $S$**
+    
+    Tập $S$ chỉ có duy nhất một phần tử là $5$. Do đó, tổng giá trị của tất cả các phần tử thuộc $S$ là $5$.
+    
+    **Kết luận:** Tổng giá trị các phần tử thuộc $S$ bằng **$5$**.
+    """)
+    
+st.markdown("---")
