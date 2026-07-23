@@ -3256,3 +3256,97 @@ if st.session_state.get('q48_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 34 (THPT Liên cấp ĐH Hồng Đức 2026)</b>',
+    unsafe_allow_html=True,
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho hàm số $f(x)$ liên tục trên $\mathbb{R}$ và $\lim_{x \to -\infty} f(x) = 1$, $\lim_{x \to +\infty} f(x) = +\infty$. Có bao nhiêu giá trị nguyên của tham số $m$ thuộc đoạn $[-2020; 2020]$ để đồ thị hàm số:
+$$g(x) = \dfrac{\sqrt{x^2 + 1000x} + x}{\sqrt{2f(x) - f^2(x)} + m}$$
+có tiệm cận ngang nằm dưới đường thẳng $y = -1$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input(
+    "Nhập số giá trị nguyên của m (ví dụ: 111):", key="q54_ans"
+)
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q54_check"):
+  # Chuẩn hóa đầu vào
+  normalized_user_answer = user_answer.strip()
+
+  # Đáp án chính xác là 499
+  if normalized_user_answer == "499":
+    st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+  elif user_answer == "":
+    st.warning("Bạn chưa nhập đáp án.")
+  else:
+    st.error(
+        "Sai rồi. Hãy xét giới hạn của g(x) khi x tiến tới -∞ để tìm đường tiệm"
+        " cận ngang nhé!"
+    )
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if "q54_solution_shown" not in st.session_state:
+  st.session_state["q54_solution_shown"] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+  if st.button("Xem lời giải chi tiết", key="q54_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get("logged_in"):
+      st.session_state["q54_solution_shown"] = True
+    else:
+      st.warning(
+          "🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết."
+      )
+      st.session_state["q54_solution_shown"] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get("q54_solution_shown") and st.session_state.get(
+    "logged_in"
+):
+  st.info("### Lời giải chi tiết:")
+
+  st.markdown(r"""
+    **Bước 1: Tìm tập xác định và xét giới hạn khi $x \to +\infty$**
+    
+    *   Điều kiện để căn thức ở mẫu xác định là: $2f(x) - f^2(x) \ge 0 \iff 0 \le f(x) \le 2$.
+    *   Vì $\lim_{x \to +\infty} f(x) = +\infty$ nên khi $x \to +\infty$, giá trị $f(x) > 2$, làm cho biểu thức $\sqrt{2f(x) - f^2(x)}$ không xác định.
+    *   Do đó, đồ thị hàm số $g(x)$ **không có** tiệm cận ngang khi $x \to +\infty$.
+    
+    **Bước 2: Tìm tiệm cận ngang khi $x \to -\infty$**
+    
+    *   Vì $\lim_{x \to -\infty} f(x) = 1 \in [0; 2]$ nên hàm số $g(x)$ xác định trong một lân cận của $-\infty$.
+    *   Tính giới hạn của mẫu số khi $x \to -\infty$:
+        $$\lim_{x \to -\infty} \left(\sqrt{2f(x) - f^2(x)} + m\right) = \sqrt{2(1) - 1^2} + m = 1 + m$$
+    *   Tính giới hạn của tử số khi $x \to -\infty$:
+        $$\lim_{x \to -\infty} \left(\sqrt{x^2 + 1000x} + x\right) = \lim_{x \to -\infty} \dfrac{(x^2 + 1000x) - x^2}{\sqrt{x^2 + 1000x} - x}$$
+        $$= \lim_{x \to -\infty} \dfrac{1000x}{-x\sqrt{1 + \dfrac{1000}{x}} - x} = \lim_{x \to -\infty} \dfrac{1000}{-\sqrt{1 + \dfrac{1000}{x}} - 1} = \dfrac{1000}{-1 - 1} = -500$$
+    *   Suy ra:
+        $$\lim_{x \to -\infty} g(x) = \dfrac{-500}{1 + m} \quad (\text{với } m \ne -1)$$
+    *   Vậy đồ thị hàm số $g(x)$ có duy nhất $1$ đường tiệm cận ngang là $y = \dfrac{-500}{1 + m}$.
+    
+    **Bước 3: Lập bất phương trình và tìm số giá trị nguyên của $m$**
+    
+    *   Theo yêu cầu bài toán, đường tiệm cận ngang phải nằm dưới đường thẳng $y = -1$:
+        $$\dfrac{-500}{1 + m} < -1 \iff \dfrac{-500}{1 + m} + 1 < 0 \iff \dfrac{m - 499}{m + 1} < 0$$
+        $$\iff -1 < m < 499$$
+    *   Vì $m \in \mathbb{Z}$ và $m \in [-2020; 2020]$ nên $m \in \{0; 1; 2; \dots; 498\}$.
+    *   Số giá trị nguyên của $m$ thỏa mãn là: $498 - 0 + 1 = 499$ giá trị.
+    
+    **Kết luận:** Có **$499$** giá trị nguyên của tham số $m$ thỏa mãn yêu cầu bài toán.
+    """)
+
+st.markdown("---")
+
