@@ -148,7 +148,7 @@ st.markdown("---")
 
 # Tiêu đề câu hỏi
 st.markdown(
-    '<b style="color: blue;">Câu 2 (HSG 12 - Hà Tĩnh 2026) - Đã sửa điều kiện</b>',
+    '<b style="color: blue;">Câu 2 (HSG 12 - Hà Tĩnh 2026) </b>',
     unsafe_allow_html=True
 )
 
