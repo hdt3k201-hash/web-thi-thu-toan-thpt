@@ -8387,17 +8387,17 @@ Từ một tấm nhôm hình vuông có cạnh bằng $8\text{ dm}$, người ta
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập sức chứa lớn nhất (lít) (ví dụ: 45):", key="q87_ans")
+user_answer = st.text_input("Nhập sức chứa lớn nhất (lít) (ví dụ: 67):", key="q87_ans")
 
 # Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
 try:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         # Đường dẫn ảnh đã được đồng bộ
-        st.image("images/image_30c4da.png", width=400)
+        st.image("images/image_30c4da.PNG", width=400)
 except FileNotFoundError:
     # Thông báo lỗi cập nhật đúng tên file
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_30c4da.png'. Vui lòng kiểm tra lại đường dẫn.")
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_30c4da.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q87_check"):
