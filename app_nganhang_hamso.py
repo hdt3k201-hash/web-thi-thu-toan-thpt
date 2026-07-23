@@ -1112,4 +1112,110 @@ st.markdown("---")
 
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 12 (Chuyên Lê Thánh Tông - Đà Nẵng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d14f77.png
+st.markdown(r"""
+Khi dạo chơi trong một công viên, bạn An di chuyển trên cầu cong có hình parabol, bạn Lan di chuyển trên bờ hồ đường tròn (minh họa bằng hình vẽ). Khoảng cách giữa hai chân cầu parabol là $AB = 30\text{ m}$, đỉnh $H$ của parabol cách đường thẳng $AB$ một khoảng $HK = 30\text{ m}$. Khoảng cách từ tâm $I$ của đường tròn đến đường thẳng $AB$ và $HK$ lần lượt là $IE = 30\text{ m}$ và $IH = 30\text{ m}$.
+
+Tính khoảng cách nhỏ nhất giữa hai bạn An và Lan, biết rằng đường tròn có bán kính bằng $3\text{ m}$ (kết quả làm tròn đến hàng phần chục).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập khoảng cách nhỏ nhất (m) (ví dụ: 20.9 hoặc 20,9):", key="q20_ans")
+
+
+# Hiển thị hình ảnh mô phỏng
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/ltt_dn2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/ltt_dn2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q20_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip().replace(",", ".")
+    
+    # Đáp án chính xác là 20.6
+    if normalized_user_answer == "20.6":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy gắn hệ trục tọa độ Oxy vào chân K, tìm phương trình parabol và tâm I rồi khảo sát hàm khoảng cách nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q20_solution_shown' not in st.session_state:
+    st.session_state['q20_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q20_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q20_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q20_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q20_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chọn hệ trục tọa độ $Oxy$ và thiết lập phương trình các đường**
+    
+    *   Chọn hệ trục tọa độ $Oxy$ với gốc tọa độ $O \equiv K(0; 0)$, trục hoành $Ox$ trùng với đường thẳng $AB$, trục tung $Oy$ trùng với đường thẳng $HK$.
+    *   Vì $AB = 30\text{ m}$ và $K$ là trung điểm $AB$ nên ta có tọa độ các điểm: $K(0; 0)$, $A(-15; 0)$, $B(15; 0)$. Đỉnh cầu parabol là $H(0; 30)$.
+    *   Gọi phương trình parabol $(P)$ có dạng $y = ax^2 + 30$. Vì $(P)$ đi qua $B(15; 0)$ nên:
+        $$a \cdot 15^2 + 30 = 0 \Leftrightarrow 225a = -30 \Leftrightarrow a = -\dfrac{2}{15}$$
+        Do đó, phương trình cầu parabol là: $(P): y = -\dfrac{2}{15}x^2 + 30$ với $x \in [-15; 15]$.
+    *   Tâm $I$ của bờ hồ đường tròn cách trục hoành $Ox$ ($AB$) một khoảng $IE = 30\text{ m}$ và cách trục tung $Oy$ ($HK$) một khoảng $IH = 30\text{ m}$. Do $I$ nằm ở góc phần tư thứ nhất nên tọa độ tâm là $I(30; 30)$.
+    
+    **Bước 2: Thiết lập hàm khoảng cách giữa An và tâm $I$**
+    
+    Gọi $M\left(x; -\dfrac{2}{15}x^2 + 30\right) \in (P)$ là vị trí của bạn An ($x \in [-15; 15]$).
+    Khoảng cách từ $M$ đến tâm $I(30; 30)$ là:
+    $$MI = \sqrt{(x - 30)^2 + \left(-\dfrac{2}{15}x^2 + 30 - 30\right)^2} = \sqrt{(x - 30)^2 + \dfrac{4}{225}x^4}$$
+    
+    Xét hàm số dưới dấu căn: $f(x) = \dfrac{4}{225}x^4 + x^2 - 60x + 900$ trên đoạn $[-15; 15]$.
+    
+    **Bước 3: Tìm giá trị nhỏ nhất của hàm số**
+    
+    Đạo hàm của hàm số $f(x)$:
+    $$f'(x) = \dfrac{16}{225}x^3 + 2x - 60$$
+    
+    Cho $f'(x) = 0 \Leftrightarrow \dfrac{16}{225}x^3 + 2x - 60 = 0 \Leftrightarrow 8x^3 + 225x - 6750 = 0$.
+    
+    Sử dụng máy tính cầm tay giải phương trình bậc ba, ta nhận được nghiệm duy nhất trên đoạn $[-15; 15]$ là:
+    $$x_0 \approx 8,461$$
+    
+    Khi đó, khoảng cách nhỏ nhất từ bạn An ($M$) đến tâm $I$ là:
+    $$MI_{\min} = \sqrt{f(8,461)} = \sqrt{(8,461 - 30)^2 + \dfrac{4}{225}(8,461)^4} \approx \sqrt{555,037} \approx 23,559\text{ (m)}$$
+    
+    **Bước 4: Tính khoảng cách nhỏ nhất giữa An và Lan**
+    
+    Vì bạn Lan ($N$) di chuyển trên đường tròn $(C)$ tâm $I$, bán kính $R = 3\text{ m}$, nên khoảng cách nhỏ nhất giữa hai bạn An và Lan chính bằng khoảng cách từ An đến tâm $I$ trừ đi bán kính $R$:
+    $$d_{\min} = MI_{\min} - R \approx 23,559 - 3 = 20,559\text{ (m)}$$
+    
+    Làm tròn kết quả đến hàng phần chục, ta được $d_{\min} \approx 20,6\text{ m}$.
+    
+    **Kết luận:** Khoảng cách nhỏ nhất giữa hai bạn là **$20,6$** m.
+    """)
+    
+st.markdown("---")
+
 
