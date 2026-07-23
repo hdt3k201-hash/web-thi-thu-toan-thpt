@@ -7145,6 +7145,88 @@ if st.session_state.get('q_bt9_solution_shown') and st.session_state.get('logged
 st.markdown("---")
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 74 (Liên trường Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một xí nghiệp chế biến cà phê bán trong nước và xuất khẩu ra nước ngoài. Nếu giá sản xuất mỗi kg cà phê là $x$ (USD) thì sản lượng xí nghiệp sản xuất được là $(2000x - 150)$ (kg) và lượng tiêu thụ trong nước là $(4000 - 500x)$ (kg). Phần cà phê còn dư sẽ được xuất khẩu với giá cố định $10$ (USD) mỗi kg. Biết rằng với mỗi kg cà phê xuất khẩu thì xí nghiệp phải chịu mức thuế là $0,5$ (USD). Hỏi giá sản xuất mỗi kg cà phê của xí nghiệp là bao nhiêu để lợi nhuận thu được từ xuất khẩu là lớn nhất?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá sản xuất mỗi kg cà phê (USD) (ví dụ: 5.58):", key="q63_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q63_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 5.58
+    if normalized_user_answer == "5.58":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập đúng lượng xuất khẩu, tính lợi nhuận trên mỗi kg xuất khẩu và tìm đỉnh của hàm bậc hai nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q63_solution_shown' not in st.session_state:
+    st.session_state['q63_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q63_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q63_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q63_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q63_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính lượng cà phê xuất khẩu**
+    
+    * Sản lượng cà phê xí nghiệp sản xuất được là: $Q_{\text{prod}} = 2000x - 150 \text{ (kg)}$
+    * Lượng tiêu thụ trong nước là: $Q_{\text{dom}} = 4000 - 500x \text{ (kg)}$
+    * Lượng cà phê dành để xuất khẩu là phần còn dư:
+        $$Q_{\text{exp}} = Q_{\text{prod}} - Q_{\text{dom}} = (2000x - 150) - (4000 - 500x)$$
+        $$Q_{\text{exp}} = 2500x - 4150 \text{ (kg)}$$
+        *(Điều kiện: $\dfrac{4150}{2500} < x < 8$, tức là $1,66 < x < 8$)*
+        
+    **Bước 2: Thiết lập hàm lợi nhuận từ xuất khẩu**
+    
+    * Giá bán xuất khẩu mỗi kg là $10$ (USD), chịu thuế $0,5$ (USD), và chi phí sản xuất mỗi kg là $x$ (USD).
+    * Lợi nhuận thu được trên mỗi kg cà phê xuất khẩu là: 
+        $$P_{\text{lợi nhuận}} = 10 - 0,5 - x = 9,5 - x \text{ (USD/kg)}$$
+    * Tổng lợi nhuận thu được từ xuất khẩu là:
+        $$L(x) = Q_{\text{exp}} \cdot (9,5 - x) = (2500x - 4150)(9,5 - x)$$
+        $$L(x) = -2500x^2 + 27900x - 39425$$
+        
+    **Bước 3: Khảo sát hàm số để tìm giá trị lớn nhất**
+    
+    Hàm lợi nhuận $L(x)$ là một hàm bậc hai có hệ số $a = -2500 < 0$, đồ thị là một parabol quay bề lõm xuống dưới, do đó đạt giá trị lớn nhất tại đỉnh:
+    $$x = -\dfrac{b}{2a} = -\dfrac{27900}{2 \cdot (-2500)} = \dfrac{27900}{5000} = 5,58$$
+    
+    Giá trị $x = 5,58$ thỏa mãn điều kiện xác định.
+    
+    **Kết luận:** Giá sản xuất mỗi kg cà phê để lợi nhuận thu được từ xuất khẩu lớn nhất là **$5,58$** USD.
+    """)
+    
+st.markdown("---")
+
+
 
 
 
