@@ -4493,3 +4493,124 @@ if st.session_state.get('q_bb_solution_shown') and st.session_state.get('logged_
     """)
     
 st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 47 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh[cite: 1]
+st.markdown(r"""
+Cho hàm số $y = \dfrac{2x - 2}{x - 2}$ có đồ thị là $(C)$. Tìm số lượng các điểm $M$ thuộc đồ thị $(C)$ sao cho tiếp tuyến của $(C)$ tại điểm $M$ cắt hai đường tiệm cận của đồ thị tại hai điểm phân biệt $A, B$ thỏa mãn độ dài đoạn thẳng $AB = 2\sqrt{5}$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng điểm M thỏa mãn (ví dụ: 2):", key="q_tiemcan_m_ans")
+
+# Chèn hình ảnh minh họa
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/bai_toan_3_13.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/bai_toan_3_13.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_tiemcan_m_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 4
+    if normalized_user_answer == "4":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại phương trình tiếp tuyến, tọa độ giao điểm với các đường tiệm cận và công thức độ dài đoạn thẳng nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_tiemcan_m_solution_shown' not in st.session_state:
+    st.session_state['q_tiemcan_m_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_tiemcan_m_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_tiemcan_m_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_tiemcan_m_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_tiemcan_m_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm tiệm cận và chuyển hệ tọa độ về tâm đối xứng**
+    
+    Hàm số đã cho: $y = \dfrac{2x - 2}{x - 2} = 2 + \dfrac{2}{x - 2}$.
+    
+    Đồ thị $(C)$ có:
+    *   Tiệm cận đứng: $x = 2$
+    *   Tiệm cận ngang: $y = 2$
+    
+    Tâm đối xứng của đồ thị là điểm $I(2; 2)$. 
+    
+    Dời hệ trục tọa độ về tâm $I$ bằng phép đặt: $\left\{ \begin{aligned} X &= x - 2 \\ Y &= y - 2 \end{aligned} \right.$
+    
+    Khi đó, phương trình của đồ thị trong hệ tọa độ mới là: $Y = \dfrac{2}{X}$.
+    Hai đường tiệm cận trở thành hai trục tọa độ $X = 0$ và $Y = 0$.
+    
+    **Bước 2: Lập phương trình tiếp tuyến tại điểm $M$**
+    
+    Gọi $M\left(X_0; \dfrac{2}{X_0}\right)$ là một điểm thuộc đồ thị trong hệ tọa độ mới (với $X_0 \neq 0$).
+    
+    Đạo hàm của hàm số trong hệ mới: $Y' = -\dfrac{2}{X^2}$.
+    
+    Hệ số góc của tiếp tuyến tại $M$ là: $k = -\dfrac{2}{X_0^2}$.
+    
+    Phương trình tiếp tuyến $\Delta$ tại điểm $M$ là:
+    $$Y - \dfrac{2}{X_0} = -\dfrac{2}{X_0^2}(X - X_0) \Leftrightarrow Y = -\dfrac{2}{X_0^2}X + \dfrac{4}{X_0}$$
+    
+    **Bước 3: Tìm tọa độ giao điểm $A, B$ của tiếp tuyến với hai tiệm cận**
+    
+    Giao điểm $A$ của tiếp tuyến với tiệm cận đứng $X = 0$:
+    $$A\left(0; \dfrac{4}{X_0}\right)$$
+    
+    Giao điểm $B$ của tiếp tuyến với tiệm cận ngang $Y = 0$:
+    $$0 = -\dfrac{2}{X_0^2}X_B + \dfrac{4}{X_0} \implies X_B = 2X_0 \implies B(2X_0; 0)$$
+    
+    **Bước 4: Thiết lập độ dài đoạn thẳng $AB$ và tìm điểm $M$**
+    
+    Độ dài đoạn thẳng $AB$ được tính theo công thức khoảng cách trong hệ tọa độ:
+    $$AB^2 = (X_B - X_A)^2 + (Y_B - Y_A)^2 = (2X_0 - 0)^2 + \left(0 - \dfrac{4}{X_0}\right)^2$$
+    $$AB^2 = 4X_0^2 + \dfrac{16}{X_0^2}$$
+    
+    Theo giả thiết, $AB = 2\sqrt{5} \implies AB^2 = 20$. Ta có phương trình:
+    $$4X_0^2 + \dfrac{16}{X_0^2} = 20 \Leftrightarrow X_0^2 + \dfrac{4}{X_0^2} = 5$$
+    
+    Đặt $u = X_0^2 > 0$, phương trình trở thành:
+    $$u + \dfrac{4}{u} = 5 \Leftrightarrow u^2 - 5u + 4 = 0 \Leftrightarrow \left[ \begin{aligned} u &= 1 \\ u &= 4 \end{aligned} \right.$$
+    
+    *   Với $u = 1 \implies X_0^2 = 1 \implies X_0 = \pm 1$.
+    *   Với $u = 4 \implies X_0^2 = 4 \implies X_0 = \pm 2$.
+    
+    Ứng với mỗi giá trị của $X_0$, ta tìm được hoành độ tương ứng trong hệ tọa độ ban đầu $x_0 = X_0 + 2$:
+    *   $X_0 = 1 \implies x_0 = 3 \implies M(3; 4)$
+    *   $X_0 = -1 \implies x_0 = 1 \implies M(1; 0)$
+    *   $X_0 = 2 \implies x_0 = 4 \implies M(4; 3)$
+    *   $X_0 = -2 \implies x_0 = 0 \implies M(0; 1)$
+    
+    Vậy có tổng cộng **4** điểm $M$ thỏa mãn yêu cầu bài toán.
+    
+    **Kết luận:** Số lượng điểm $M$ thỏa mãn là **$4$**.
+    """)
+    
+st.markdown("---")
