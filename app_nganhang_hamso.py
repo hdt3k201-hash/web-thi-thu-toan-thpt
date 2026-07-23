@@ -4820,15 +4820,7 @@ Tính tổng tất cả các giá trị của tham số $m$ để góc giữa ha
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 user_answer = st.text_input("Nhập tổng các giá trị của m (ví dụ: 3):", key="q_tiemcan_goc_ans")
 
-# Chèn hình ảnh minh họa
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        # Đường dẫn ảnh đã được đồng bộ
-        st.image("images/bai_toan_3_23.PNG", width=400)
-except FileNotFoundError:
-    # Thông báo lỗi cập nhật đúng tên file
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/bai_toan_3_23.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
 
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q_tiemcan_goc_check"):
