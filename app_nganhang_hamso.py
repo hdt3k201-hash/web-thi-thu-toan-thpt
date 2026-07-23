@@ -3450,3 +3450,97 @@ if st.session_state.get('q56_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 36  (THPT LÊ THÁNH TÔNG -HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một doanh nghiệp vận tải muốn đóng các thùng gỗ để chứa hàng hóa trong quá trình vận chuyển. Mỗi thùng được thiết kế theo dạng hình hộp chữ nhật không có nắp, có thể tích $1\text{m}^3$. Để đảm bảo phù hợp với thiết bị xếp dỡ, thùng được thiết kế sao cho chiều dài của đáy gấp $1,5$ lần chiều rộng. Biết chi phí vật liệu làm mặt đáy là $240.000\text{ đồng/m}^2$, chi phí vật liệu làm mặt bên là $180.000\text{ đồng/m}^2$ (bỏ qua các chi phí khác như lắp ráp, vận chuyển, hao hụt vật liệu,...). Hỏi với số tiền là $200$ triệu đồng, doanh nghiệp có thể sản xuất tối đa bao nhiêu thùng gỗ?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng thùng gỗ tối đa (ví dụ: 100):", key="q_opt_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_opt_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 209
+    if normalized_user_answer == "209":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm chi phí theo một ẩn (chiều rộng) và dùng đạo hàm (hoặc AM-GM) để tìm chi phí nhỏ nhất cho một thùng nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_opt_solution_shown' not in st.session_state:
+    st.session_state['q_opt_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_opt_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_opt_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_opt_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_opt_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập các kích thước của thùng gỗ**
+    
+    *   Gọi $x$ là chiều rộng của đáy thùng ($x > 0$, đơn vị: mét).
+    *   Theo đề bài, chiều dài của đáy gấp $1,5$ lần chiều rộng nên chiều dài là $1,5x = \dfrac{3}{2}x$ (m).
+    *   Gọi $h$ là chiều cao của thùng gỗ ($h > 0$, đơn vị: mét).
+    *   Thể tích của thùng là $V = 1\text{m}^3$, ta có phương trình:
+        $$x \cdot \dfrac{3}{2}x \cdot h = 1 \iff \dfrac{3}{2}x^2h = 1 \implies h = \dfrac{2}{3x^2}$$
+        
+    **Bước 2: Tính diện tích và thiết lập hàm chi phí**
+    
+    *   Diện tích mặt đáy của thùng: 
+        $$S_{\text{đáy}} = x \cdot \dfrac{3}{2}x = \dfrac{3}{2}x^2 \text{ (m}^2\text{)}$$
+    *   Diện tích $4$ mặt xung quanh (mặt bên): 
+        $$S_{\text{bên}} = 2 \cdot (x \cdot h) + 2 \cdot \left(\dfrac{3}{2}x \cdot h\right) = 2xh + 3xh = 5xh$$
+        Thay $h = \dfrac{2}{3x^2}$ vào, ta được:
+        $$S_{\text{bên}} = 5x \cdot \dfrac{2}{3x^2} = \dfrac{10}{3x} \text{ (m}^2\text{)}$$
+    *   Chi phí để sản xuất $1$ chiếc thùng $f(x)$ (tính theo đơn vị nghìn đồng) là tổng chi phí làm mặt đáy và mặt bên:
+        $$f(x) = 240 \cdot S_{\text{đáy}} + 180 \cdot S_{\text{bên}} = 240 \cdot \dfrac{3}{2}x^2 + 180 \cdot \dfrac{10}{3x}$$
+        $$f(x) = 360x^2 + \dfrac{600}{x} \text{ (nghìn đồng)}$$
+        
+    **Bước 3: Tìm chi phí nhỏ nhất cho $1$ thùng gỗ**
+    
+    *   Khảo sát hàm số $f(x) = 360x^2 + \dfrac{600}{x}$ trên khoảng $(0; +\infty)$:
+        Tính đạo hàm:
+        $$f'(x) = 720x - \dfrac{600}{x^2} = \dfrac{720x^3 - 600}{x^2}$$
+        Cho $f'(x) = 0 \iff 720x^3 - 600 = 0 \iff x^3 = \dfrac{5}{6} \implies x = \sqrt[3]{\dfrac{5}{6}}$$
+    *   Lập bảng biến thiên, ta thấy $f(x)$ đạt giá trị nhỏ nhất tại $x = \sqrt[3]{\dfrac{5}{6}}$.
+    *   Chi phí nhỏ nhất cho $1$ thùng là:
+        $$f_{\min} = 360\left(\sqrt[3]{\dfrac{5}{6}}\right)^2 + \dfrac{600}{\sqrt[3]{\dfrac{5}{6}}} \approx 956,392 \text{ (nghìn đồng)}$$
+        *(Cách khác: Dùng BĐT AM-GM: $360x^2 + \dfrac{300}{x} + \dfrac{300}{x} \ge 3\sqrt[3]{360x^2 \cdot \dfrac{300}{x} \cdot \dfrac{300}{x}} = 3\sqrt[3]{32400000} \approx 956,392$)*
+        
+    **Bước 4: Tính số lượng thùng tối đa**
+    
+    *   Doanh nghiệp có tổng số tiền là $200$ triệu đồng $= 200.000$ (nghìn đồng).
+    *   Số lượng thùng gỗ tối đa có thể sản xuất là:
+        $$N = \left\lfloor \dfrac{200.000}{956,392} \right\rfloor = \lfloor 209,119 \rfloor = 209 \text{ (thùng)}$$
+        
+    **Kết luận:** Doanh nghiệp có thể sản xuất tối đa **$209$** thùng gỗ.
+    """)
+    
+st.markdown("---")
+
