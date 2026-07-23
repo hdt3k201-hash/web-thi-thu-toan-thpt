@@ -7239,7 +7239,7 @@ st.markdown(r"""
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập chiều dài ngắn nhất của cái thang (m) (ví dụ: 5.35):", key="q64_ans")
+user_answer = st.text_input("Nhập chiều dài ngắn nhất của cái thang (m) (ví dụ: 2.29):", key="q64_ans")
 
 # Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
 try:
@@ -7322,6 +7322,114 @@ if st.session_state.get('q64_solution_shown') and st.session_state.get('logged_i
     *   Làm tròn kết quả đến hàng phần trăm (2 chữ số thập phân), ta được **$5,35$**.
     
     **Kết luận:** Chiều dài ngắn nhất của cái thang là **$5,35$** mét.
+    """)
+    
+st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 76 (THPT Nguyễn Trung Thiên - Hà Tĩnh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một phần đường chạy của tàu lượn siêu tốc khi gắn hệ trục tọa độ $Oxy$ được mô phỏng như đồ thị bên dưới, đơn vị trên mỗi trục là mét. Biết đường chạy của nó là một phần đồ thị hàm số bậc ba $y = ax^3 + bx^2 + cx + d$ ($0 \le x < 90$); tàu lượn siêu tốc xuất phát từ điểm $A$, đi qua các điểm $C, D$ (ba điểm $A, C, D$ nằm trên đường thẳng song song với trục $Ox$) đồng thời đạt độ cao nhỏ nhất so với mặt đất là $4\text{m}$. Độ cao lớn nhất mà tàu lượn siêu tốc đạt được là bao nhiêu mét so với mặt đất (kết quả làm tròn đến hàng phần chục).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập độ cao lớn nhất (mét) (ví dụ: 10.6):", key="q65_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_2fcd17.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_2fcd17.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q65_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 40.7
+    if normalized_user_answer == "40.7":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hệ phương trình tìm các hệ số của hàm bậc ba và tìm giá trị lớn nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q65_solution_shown' not in st.session_state:
+    st.session_state['q65_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q65_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q65_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q65_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q65_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định các điều kiện của hàm số**
+    
+    Giả sử hàm số bậc ba mô phỏng đường chạy là:
+    $$y = ax^3 + bx^2 + cx + d \quad (a \neq 0)$$
+    
+    Dựa vào đồ thị, ta có các dữ kiện sau:
+    * Tàu lượn xuất phát từ điểm $A(0; 30)$, suy ra:
+        $$d = 30$$
+    * Ba điểm $A, C, D$ nằm trên đường thẳng song song với trục $Ox$ và đi qua điểm có tung độ $30$, kết hợp với tọa độ trên hình vẽ ta có:
+        * Điểm $A(0; 30)$
+        * Điểm $C(50; 30)$
+        * Điểm $D(80; 30)$
+    * Đạt độ cao nhỏ nhất so với mặt đất là $4\text{m}$ tại $x = 20$, nghĩa là đồ thị có điểm cực tiểu là $(20; 4)$, suy ra:
+        $$y(20) = 4 \quad \text{và} \quad y'(20) = 0$$
+        
+    **Bước 2: Thiết lập hệ phương trình tìm các hệ số**
+    
+    Ta có hệ phương trình:
+    * $y'(20) = 3a(20)^2 + 2b(20) + c = 0 \iff 1200a + 40b + c = 0$
+    * $y(20) = a(20)^3 + b(20)^2 + c(20) + 30 = 4 \iff 8000a + 400b + 20c = -26$
+    * $y(50) = a(50)^3 + b(50)^2 + c(50) + 30 = 30 \iff 125000a + 2500b + 50c = 0 \iff 2500a + 50b + c = 0$
+    
+    Giải hệ phương trình trên, ta tìm được các hệ số:
+    * $a = -\dfrac{13}{18000}$
+    * $b = \dfrac{169}{1800}$
+    * $c = -\dfrac{26}{9}$
+    * $d = 30$
+    
+    **Bước 3: Tìm độ cao lớn nhất của tàu lượn**
+    
+    Đạo hàm của hàm số là:
+    $$y' = -\dfrac{39}{18000}x^2 + \dfrac{338}{1800}x - \dfrac{26}{9}$$
+    
+    Cho $y' = 0 \iff 3x^2 - 260x + 4000 = 0$, ta thu được hai nghiệm:
+    * $x = 20$ (cho giá trị cực tiểu, tương ứng độ cao nhỏ nhất)
+    * $x = \dfrac{200}{3}$ (cho giá trị cực đại, tương ứng độ cao lớn nhất)
+    
+    Thay $x = \dfrac{200}{3}$ vào hàm số $y$, ta tính được độ cao lớn nhất:
+    $$y_{\max} = y\left(\dfrac{200}{3}\right) = \dfrac{9890}{243} \approx 40,7037 \text{ (mét)}$$
+    
+    **Bước 4: Làm tròn kết quả**
+    
+    Làm tròn kết quả đến hàng phần chục (1 chữ số thập phân), ta được **$40,7$**.
+    
+    **Kết luận:** Độ cao lớn nhất mà tàu lượn siêu tốc đạt được là **$40,7$** mét.
     """)
     
 st.markdown("---")
