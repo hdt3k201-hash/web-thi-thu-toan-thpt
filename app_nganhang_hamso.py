@@ -6056,3 +6056,186 @@ if st.session_state.get('q2_bt2_solution_shown') and st.session_state.get('logge
     """)
     
 st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 63 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh được chuyển sang dạng trả lời ngắn
+st.markdown(r"""
+Tìm các giá trị thực của tham số $m$ để hàm số 
+$$y = 2x^3 + 3(m-1)x^2 + 6(m-2)x + 3$$ 
+nghịch biến trên một khoảng có độ dài lớn hơn $3$. 
+
+Biết tập hợp tất cả các giá trị của $m$ thỏa mãn yêu cầu bài toán có dạng $(-\infty; a) \cup (b; +\infty)$ với $a < b$. Tính tổng $S = a + b$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của tổng S (ví dụ: 5):", key="q1_bt4_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q1_bt4_check"):
+    # Chuẩn hóa đầu vào 
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 6 (vì a = 0, b = 6)
+    if normalized_user_answer == "6":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm 2 nghiệm x1, x2 của y' = 0. Sau đó giải bất phương trình |x1 - x2| > 3 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q1_bt4_solution_shown' not in st.session_state:
+    st.session_state['q1_bt4_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q1_bt4_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q1_bt4_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q1_bt4_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q1_bt4_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính đạo hàm của hàm số**
+    
+    Tập xác định: $\mathcal{D} = \mathbb{R}$.
+    
+    Ta có đạo hàm:
+    $$y' = 6x^2 + 6(m-1)x + 6(m-2)$$
+    $$y' = 6 \left[ x^2 + (m-1)x + m - 2 \right]$$
+    
+    **Bước 2: Tìm nghiệm của $y' = 0$**
+    
+    Xét phương trình $y' = 0 \Leftrightarrow x^2 + (m-1)x + m - 2 = 0$.
+    
+    Nhận thấy hệ số $a - b + c = 1 - (m-1) + (m-2) = 1 - m + 1 + m - 2 = 0$.
+    Do đó, phương trình luôn có 2 nghiệm:
+    $$\left[ \begin{aligned} x_1 &= -1 \\ x_2 &= -(m-2) = 2 - m \end{aligned} \right.$$
+    
+    **Bước 3: Lập luận điều kiện khoảng nghịch biến**
+    
+    Do hệ số của $x^2$ trong $y'$ dương (bằng $6$), nên hàm số nghịch biến trên khoảng nằm giữa 2 nghiệm $x_1$ và $x_2$.
+    Độ dài khoảng nghịch biến chính là $|x_1 - x_2|$.
+    
+    Để hàm số nghịch biến trên một khoảng có độ dài lớn hơn $3$, ta cần:
+    $$ \begin{cases} x_1 \neq x_2 \\ |x_1 - x_2| > 3 \end{cases} $$
+    $$\Leftrightarrow \begin{cases} -1 \neq 2 - m \\ |-1 - (2 - m)| > 3 \end{cases}$$
+    $$\Leftrightarrow \begin{cases} m \neq 3 \\ |m - 3| > 3 \end{cases} \Leftrightarrow |m - 3| > 3$$
+    
+    Giải bất phương trình trị tuyệt đối:
+    $$|m - 3| > 3 \Leftrightarrow \left[ \begin{aligned} m - 3 &> 3 \\ m - 3 &< -3 \end{aligned} \right. \Leftrightarrow \left[ \begin{aligned} m &> 6 \\ m &< 0 \end{aligned} \right.$$
+    
+    **Bước 4: Kết luận**
+    
+    Tập hợp các giá trị của $m$ là $(-\infty; 0) \cup (6; +\infty)$. 
+    Đồng nhất với dạng $(-\infty; a) \cup (b; +\infty)$, ta có $a = 0$ và $b = 6$.
+    
+    Tổng $S = a + b = 0 + 6 = 6$.
+    
+    **Đáp số:** **$6$**.
+    """)
+    
+st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 64 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Có tất cả bao nhiêu giá trị nguyên của $m$ để hàm số 
+$$y = \dfrac{x + 3}{x + 4m}$$ 
+nghịch biến trên khoảng $(2; +\infty)$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng giá trị nguyên của m (ví dụ: 3):", key="q2_bt5_ans")
+
+# Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q2_bt5_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 1 (m = 0)
+    if normalized_user_answer == "1":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tìm điều kiện y' < 0 và điều kiện điểm gián đoạn x = -4m không thuộc khoảng (2; +∞) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q2_bt5_solution_shown' not in st.session_state:
+    st.session_state['q2_bt5_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q2_bt5_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q2_bt5_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q2_bt5_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q2_bt5_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm tập xác định và tính đạo hàm**
+    
+    Hàm số $y = \dfrac{x + 3}{x + 4m}$
+    
+    *   Điều kiện xác định: $x + 4m \neq 0 \Leftrightarrow x \neq -4m$.
+    *   Tập xác định: $\mathcal{D} = \mathbb{R} \setminus \{-4m\}$.
+    *   Đạo hàm của hàm số:
+        $$y' = \dfrac{1 \cdot 4m - 1 \cdot 3}{(x + 4m)^2} = \dfrac{4m - 3}{(x + 4m)^2}$$
+        
+    **Bước 2: Thiết lập hệ điều kiện**
+    
+    Để hàm số nghịch biến trên khoảng $(2; +\infty)$, ta cần thỏa mãn đồng thời 2 điều kiện:
+    1.  Đạo hàm âm trên từng khoảng xác định: $y' < 0, \forall x \neq -4m$.
+        $$\Leftrightarrow 4m - 3 < 0 \Leftrightarrow m < \dfrac{3}{4}$$
+    2.  Điểm gián đoạn của hàm số không nằm trong khoảng $(2; +\infty)$:
+        $$-4m \notin (2; +\infty) \Leftrightarrow -4m \le 2 \Leftrightarrow m \ge -\dfrac{1}{2}$$
+        
+    **Bước 3: Gộp điều kiện và tìm số giá trị nguyên**
+    
+    Kết hợp cả hai điều kiện (1) và (2), ta có:
+    $$-\dfrac{1}{2} \le m < \dfrac{3}{4}$$
+    
+    Vì bài toán yêu cầu tìm các giá trị nguyên của $m$ ($m \in \mathbb{Z}$), nên trong nửa khoảng $\left[ -\dfrac{1}{2}; \dfrac{3}{4} \right)$ chỉ có duy nhất $1$ số nguyên:
+    $$m = 0$$
+    
+    **Kết luận:** Có tất cả **$1$** giá trị nguyên của tham số $m$ thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
