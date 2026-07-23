@@ -898,16 +898,9 @@ $$S = \sin^2 10^\circ + \sin^2 20^\circ + \sin^2 30^\circ + \dots + \sin^2 170^\
             unsafe_allow_html=True,
         )
 
-        if q21_ans:
-                    try:
-                        # Hành trình = (r + l) - (l - r) = 2r = 2 * 5 = 10 cm
-                        user_val = float(q21_ans.strip())
-                        if abs(user_val - 10.0) < 1e-3:
-                            st.success("✅ Chính xác! (+1.0 điểm)")
-                        else:
-                            st.error("❌ Chưa chính xác. (0 điểm)")
-                    except ValueError:
-                        st.warning("⚠️ Vui lòng nhập vào một số hợp lệ.")
+         # Chấm Câu 21
+        if st.session_state.get("q21", "").strip() == "10":
+            total_score += 1.0
 
         st.markdown("---")
         st.subheader(f"📖 LỜI GIẢI CHI TIẾT - {exam_name}")
