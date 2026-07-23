@@ -253,7 +253,7 @@ st.markdown(
 
 # Nội dung câu hỏi từ hình ảnh image_d013ae.png
 st.markdown(r"""
-Công ty X cần vận chuyển hàng đến một địa điểm cách công ty 100 dặm. Khi xe chở hàng di chuyển với tốc độ $x$ (dặm/giờ) thì chi phí nhiên liệu (USD) trên mỗi dặm đường là $C(x) = \frac{1}{5}\left(\frac{64}{x} + \frac{9}{100}x\right)$. Ngoài ra, giá thuê tài xế là 16 USD mỗi giờ lái xe. Biết tốc độ không vượt quá 50 dặm/giờ. Hỏi chi phí nhỏ nhất mà công ty phải trả trên mỗi chuyến hàng là bao nhiêu USD?
+Công ty X cần vận chuyển hàng đến một địa điểm cách công ty 100 dặm. Khi xe chở hàng di chuyển với tốc độ $x$ (dặm/giờ) thì chi phí nhiên liệu (USD) trên mỗi dặm đường là $C(x) = \dfrac{1}{5}\left(\dfrac{64}{x} + \dfrac{9}{100}x\right)$. Ngoài ra, giá thuê tài xế là 16 USD mỗi giờ lái xe. Biết tốc độ không vượt quá 50 dặm/giờ. Hỏi chi phí nhỏ nhất mà công ty phải trả trên mỗi chuyến hàng là bao nhiêu USD?
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
