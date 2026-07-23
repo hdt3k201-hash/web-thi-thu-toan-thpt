@@ -83,7 +83,7 @@ st.sidebar.title("THI THỬ TSA ONLINE")
 selected_exam = st.sidebar.selectbox(
     "📋 Chọn Đề Thi TSA:",
     [
-        "Đề TSA số 01: Chuyên đề Lượng giác & Dao động",
+        "Đề TSA số 01: Chuyên đề Lượng giác ",
         "Đề TSA số 02: Hàm số & Mô hình Toán thực tế",
         "Đề TSA số 03: Xác suất & Phân tích số liệu",
     ],
