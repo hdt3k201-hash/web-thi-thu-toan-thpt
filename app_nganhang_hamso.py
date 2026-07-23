@@ -6833,7 +6833,7 @@ st.markdown(
 
 # Nội dung câu hỏi từ hình ảnh
 st.markdown(r"""
-Cho hàm số $f(x) = x^5 + 3x^3 - 4m$[cite: 1]. Có bao nhiêu giá trị nguyên của tham số $m$ để phương trình $f\left(\sqrt[3]{f(x)+m}\right) = x^3 - m$ có nghiệm trên đoạn $[1; 2]$[cite: 1]?
+Cho hàm số $f(x) = x^5 + 3x^3 - 4m$. Có bao nhiêu giá trị nguyên của tham số $m$ để phương trình $f\left(\sqrt[3]{f(x)+m}\right) = x^3 - m$ có nghiệm trên đoạn $[1; 2]$?
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
