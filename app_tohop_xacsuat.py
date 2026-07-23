@@ -222,3 +222,93 @@ if st.session_state.get('q2_solution_shown') and st.session_state.get('logged_in
     """)
     
 st.markdown("---")
+
+import streamlit as st
+
+# --- CÂU HỎI 3 ---
+st.markdown(
+    '<b style="color: blue;">Câu 2 (Đề thi minh họa Tốt nghiệp THPT 2025)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có hai chiếc hộp, hộp I có $6$ quả bóng màu đỏ và $4$ quả bóng màu vàng, hộp II có $7$ quả bóng màu đỏ và $3$ quả bóng màu vàng, các quả bóng có cùng kích thước và khối lượng. Lấy ngẫu nhiên một quả bóng từ hộp I bỏ vào hộp II. Sau đó, lấy ra ngẫu nhiên một quả bóng từ hộp II. Tính xác suất để quả bóng được lấy ra từ hộp II là quả bóng được chuyển từ hộp I sang, biết rằng quả bóng đó có màu đỏ (làm tròn kết quả đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án (ví dụ: 0.12):", key="q3_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q3_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    if normalized_user_answer in ["0.08", "0,08"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Sử dụng công thức xác suất có điều kiện $P(C|B) = \dfrac{P(C \cap B)}{P(B)}$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q3_solution_shown' not in st.session_state:
+    st.session_state['q3_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q3_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q3_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q3_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q3_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    Gọi $B$ là biến cố: "Quả bóng lấy ra từ hộp II là bóng màu đỏ".
+    Gọi $C$ là biến cố: "Quả bóng lấy ra từ hộp II chính là quả bóng được chuyển từ hộp I sang".
+    
+    Ta cần tính xác suất có điều kiện: $P(C|B) = \dfrac{P(C \cap B)}{P(B)}$.
+    
+    **Bước 1: Tính xác suất lấy được bóng đỏ từ hộp II $P(B)$**
+    
+    Gọi $A_1$ là biến cố "Quả bóng chuyển từ hộp I sang hộp II có màu đỏ".
+    $$P(A_1) = \dfrac{6}{10} = \dfrac{3}{5}$$
+    Khi đó, hộp II có $8$ bóng đỏ và $3$ bóng vàng (tổng $11$ quả). Xác suất lấy được bóng đỏ lúc này là:
+    $$P(B|A_1) = \dfrac{8}{11}$$
+    
+    Gọi $A_2$ là biến cố "Quả bóng chuyển từ hộp I sang hộp II có màu vàng".
+    $$P(A_2) = \dfrac{4}{10} = \dfrac{2}{5}$$
+    Khi đó, hộp II có $7$ bóng đỏ và $4$ bóng vàng (tổng $11$ quả). Xác suất lấy được bóng đỏ lúc này là:
+    $$P(B|A_2) = \dfrac{7}{11}$$
+    
+    Áp dụng công thức xác suất toàn phần:
+    $$P(B) = P(A_1) \cdot P(B|A_1) + P(A_2) \cdot P(B|A_2) = \dfrac{3}{5} \cdot \dfrac{8}{11} + \dfrac{2}{5} \cdot \dfrac{7}{11} = \dfrac{38}{55}$$
+    
+    **Bước 2: Tính xác suất $P(C \cap B)$**
+    
+    $C \cap B$ là biến cố "Quả bóng lấy ra từ hộp II là quả bóng chuyển từ hộp I sang VÀ có màu đỏ".
+    Điều này chỉ xảy ra khi quả bóng chuyển từ hộp I sang phải là bóng đỏ (tức là biến cố $A_1$ xảy ra).
+    
+    Khi $A_1$ xảy ra, hộp II có tổng cộng $11$ quả bóng, trong đó có đúng $1$ quả bóng đỏ vừa được chuyển sang. 
+    Xác suất bốc trúng đúng quả bóng đó là $\dfrac{1}{11}$.
+    
+    Do đó:
+    $$P(C \cap B) = P(A_1) \cdot P(C \cap B | A_1) = \dfrac{3}{5} \cdot \dfrac{1}{11} = \dfrac{3}{55}$$
+    
+    **Bước 3: Tính xác suất cần tìm và làm tròn**
+    
+    $$P(C|B) = \dfrac{P(C \cap B)}{P(B)} = \dfrac{\dfrac{3}{55}}{\dfrac{38}{55}} = \dfrac{3}{38} \approx 0,0789...$$
+    
+    Làm tròn kết quả đến hàng phần trăm, ta được giá trị **$0,08$**.
+    
+    **Kết luận:** Xác suất cần tìm là **$0,08$**.
+    """)
+    
+st.markdown("---")
