@@ -2396,3 +2396,99 @@ if st.session_state.get('q34_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 25 (Cụm trường Nghệ An 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_dd340a.png
+st.markdown(r"""
+Tính tổng giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y = (x^2 + x + 1)e^{-x}$ trên đoạn $[-1; 0]$ (Làm tròn đến hàng phần chục).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng giá trị lớn nhất và nhỏ nhất (ví dụ: 2.5):", key="q36_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q36_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm cho số thập phân)
+    normalized_user_answer = user_answer.strip().replace(",", ".")
+    
+    # Đáp án chính xác là 3.7
+    if normalized_user_answer == "3.7":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tính đạo hàm, tìm giá trị lớn nhất, nhỏ nhất trên đoạn [-1; 0] và cộng lại nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q36_solution_shown' not in st.session_state:
+    st.session_state['q36_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q36_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q36_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q36_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q36_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính đạo hàm của hàm số**
+    
+    Xét hàm số $y = (x^2 + x + 1)e^{-x}$ trên đoạn $[-1; 0]$.
+    Áp dụng quy tắc đạo hàm của một tích $(uv)' = u'v + uv'$, ta có:
+    $$y' = (x^2 + x + 1)'e^{-x} + (x^2 + x + 1)(e^{-x})'$$
+    $$y' = (2x + 1)e^{-x} - (x^2 + x + 1)e^{-x}$$
+    $$y' = e^{-x}(2x + 1 - x^2 - x - 1)$$
+    $$y' = e^{-x}(-x^2 + x)$$
+    
+    **Bước 2: Tìm các điểm tới hạn trên đoạn $[-1; 0]$**
+    
+    Cho $y' = 0 \Leftrightarrow e^{-x}(-x^2 + x) = 0$.
+    Vì $e^{-x} > 0$ với mọi $x \in \mathbb{R}$, ta có:
+    $$-x^2 + x = 0 \Leftrightarrow x(1 - x) = 0 \Leftrightarrow \left[ \begin{array}{l} x = 0 \\ x = 1 \end{array} \right.$$
+    
+    Trong hai giá trị trên, chỉ có $x = 0$ thuộc đoạn $[-1; 0]$ (trùng với một đầu mút của đoạn).
+    *(Ngoài ra, với mọi $x \in (-1; 0)$, ta có $x < 0$ và $1-x > 0$ nên $-x^2+x = x(1-x) < 0$, suy ra $y' < 0$. Điều này chứng tỏ hàm số nghịch biến trên đoạn $[-1; 0]$).*
+    
+    **Bước 3: Tính giá trị của hàm số tại các đầu mút**
+    
+    Ta tính giá trị của hàm số tại $x = -1$ và $x = 0$:
+    *   $y(-1) = ((-1)^2 + (-1) + 1)e^{-(-1)} = (1 - 1 + 1)e^1 = e$
+    *   $y(0) = (0^2 + 0 + 1)e^0 = 1 \cdot 1 = 1$
+    
+    **Bước 4: Kết luận giá trị lớn nhất, nhỏ nhất và tính tổng**
+    
+    Từ các giá trị tính được, ta suy ra trên đoạn $[-1; 0]$:
+    *   Giá trị lớn nhất của hàm số là $\max y = e$ (khi $x = -1$).
+    *   Giá trị nhỏ nhất của hàm số là $\min y = 1$ (khi $x = 0$).
+    
+    Tổng giá trị lớn nhất và giá trị nhỏ nhất là:
+    $$S = \max y + \min y = e + 1$$
+    
+    Sử dụng giá trị xấp xỉ $e \approx 2,71828...$, ta có:
+    $$S \approx 2,71828 + 1 = 3,71828...$$
+    
+    Làm tròn kết quả đến hàng phần chục, ta được $3,7$.
+    
+    **Kết luận:** Tổng giá trị lớn nhất và nhỏ nhất làm tròn đến hàng phần chục là **$3,7$**.
+    """)
+    
+st.markdown("---")
+
