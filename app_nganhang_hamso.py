@@ -824,3 +824,84 @@ if st.session_state.get('q14_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 9 (Sở Bắc Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d0ee42.png
+st.markdown(r"""
+Giả sử nhu cầu tiêu thụ một loại sản phẩm mới của doanh nghiệp A được mô hình hóa bởi hàm số $p = \dfrac{1500}{\sqrt{x}}$, trong đó $p$ là đơn giá (tính bằng nghìn đồng) và $x$ là số lượng đơn vị sản phẩm. Chi phí (tính bằng nghìn đồng) để sản xuất $x$ đơn vị sản phẩm được cho bởi hàm số $C = 12x + 500$. Tìm mức giá (tính bằng nghìn đồng) để mang lại lợi nhuận tối đa.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập mức giá cần tìm (nghìn đồng) (ví dụ: 20):", key="q17_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q17_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 24
+    if normalized_user_answer == "24":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm lợi nhuận theo x, tìm đạo hàm P'(x) = 0 rồi tính lại mức giá p nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q17_solution_shown' not in st.session_state:
+    st.session_state['q17_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q17_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q17_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q17_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q17_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm Doanh thu và hàm Lợi nhuận**
+    
+    *   Điều kiện: $x > 0$.
+    *   Hàm doanh thu (nghìn đồng) khi bán được $x$ đơn vị sản phẩm là:
+        $$R(x) = p \cdot x = \dfrac{1500}{\sqrt{x}} \cdot x = 1500\sqrt{x}$$
+    *   Hàm chi phí sản xuất (nghìn đồng) theo đề bài là:
+        $$C(x) = 12x + 500$$
+    *   Hàm lợi nhuận $P(x)$ bằng Doanh thu trừ đi Chi phí:
+        $$P(x) = R(x) - C(x) = 1500\sqrt{x} - 12x - 500$$
+    
+    **Bước 2: Tìm số lượng sản phẩm $x$ để hàm Lợi nhuận đạt giá trị tối đa**
+    
+    Tính đạo hàm của hàm lợi nhuận theo biến $x$:
+    $$P'(x) = 1500 \cdot \dfrac{1}{2\sqrt{x}} - 12 = \dfrac{750}{\sqrt{x}} - 12$$
+    
+    Cho $P'(x) = 0$ ta được:
+    $$\dfrac{750}{\sqrt{x}} - 12 = 0 \Leftrightarrow \sqrt{x} = \dfrac{750}{12} = 62,5 \Leftrightarrow x = 3906,25$$
+    
+    Vì đạo hàm bậc hai $P''(x) = -\dfrac{375}{x\sqrt{x}} < 0$ với mọi $x > 0$, nên hàm lợi nhuận $P(x)$ đạt giá trị lớn nhất tại $\sqrt{x} = 62,5$ (hay $x = 3906,25$).
+    
+    **Bước 3: Tính mức giá bán tối ưu**
+    
+    Thay $\sqrt{x} = 62,5$ vào hàm cầu tiêu thụ để tìm mức giá $p$:
+    $$p = \dfrac{1500}{\sqrt{x}} = \dfrac{1500}{62,5} = 24 \text{ (nghìn đồng)}$$
+    
+    **Kết luận:** Mức giá cần tìm để mang lại lợi nhuận tối đa là **24** nghìn đồng.
+    """)
+    
+st.markdown("---")
