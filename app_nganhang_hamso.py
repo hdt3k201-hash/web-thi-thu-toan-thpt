@@ -3078,7 +3078,7 @@ Một nhà máy sản xuất $x$ sản phẩm trong mỗi tháng. Chi phí sản
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 user_answer = st.text_input(
-    "Nhập số lượng sản phẩm cần sản xuất (ví dụ: 100):", key="q46_ans"
+    "Nhập số lượng sản phẩm cần sản xuất (ví dụ: 108):", key="q46_ans"
 )
 
 # Nút kiểm tra Đúng/Sai
