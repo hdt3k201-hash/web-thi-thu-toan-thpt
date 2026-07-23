@@ -3544,3 +3544,107 @@ if st.session_state.get('q_opt_solution_shown') and st.session_state.get('logged
     
 st.markdown("---")
 
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 37 (THPT Lê Thánh Tông - HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Anh Nghĩa có một khu đất hình thang vuông $ABCD$ với $AB = 100\text{m}$, $DC = 60\text{m}$ và $AD = 40\text{m}$. Anh ấy đã đào một cái hồ để nuôi cá, hồ được bao bởi cạnh $AB$, biết rằng $(H)$ chứa các điểm $K$ sao cho tích khoảng cách từ $K$ đến $AD$, $BC$ luôn bằng $600\sqrt{2}\text{m}$. Anh Nghĩa xây thêm một nhà kho để chứa thức ăn cho cá được tạo bởi cạnh $AD$, $DC$ và đường cong Parabol $(P)$ có đỉnh $A$, biết rằng phần đất xây nhà kho có diện tích $S = \dfrac{1600}{3}\text{m}^2$.
+
+Anh Nghĩa suy nghĩ và muốn xây một con đường thẳng đi từ nhà kho đến ao cá để vận chuyển thức ăn. Hãy tính độ dài con đường ngắn nhất? (Đơn vị: mét, làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập độ dài con đường ngắn nhất (mét) (ví dụ: 12.34):", key="q58_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/ltt_hcm1.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/ltt_hcm1.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q58_check"):
+    # Chuẩn hóa đầu vào (thay dấu phẩy thành dấu chấm nếu người dùng nhập kiểu Việt Nam)
+    normalized_user_answer = user_answer.strip().replace(",", ".")
+    
+    # Đáp án chính xác là 5.23
+    if normalized_user_answer == "5.23":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hệ trục tọa độ, tìm phương trình (P), (H) và dùng công cụ đạo hàm để tìm khoảng cách ngắn nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q58_solution_shown' not in st.session_state:
+    st.session_state['q58_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q58_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q58_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q58_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q58_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ trục tọa độ và tìm phương trình Parabol $(P)$**
+    
+    *   Chọn hệ trục tọa độ $Oxy$ với $A \equiv O(0;0)$, tia $AB$ trùng với tia $Ox$, tia $AD$ trùng với tia $Oy$.
+    *   Tọa độ các đỉnh: $A(0;0)$, $B(100;0)$, $D(0;40)$. 
+    *   Vì $DC = 60$ và $DC \parallel AB$ nên $C(60;40)$.
+    *   Giả sử phương trình Parabol $(P)$ có dạng $y = ax^2$ (do đỉnh $A(0;0)$ và bề lõm hướng lên).
+    *   Diện tích nhà kho là phần giới hạn bởi trục $Oy$ (cạnh $AD$), đường $y=40$ (cạnh $DC$) và Parabol $(P)$.
+        Tọa độ giao điểm của $(P)$ và $DC$ là nghiệm $ax^2 = 40 \Rightarrow x = \dfrac{\sqrt{40}}{\sqrt{a}}$.
+        Diện tích $S = \int_0^{\frac{\sqrt{40}}{\sqrt{a}}} (40 - ax^2) dx = \left[ 40x - \dfrac{ax^3}{3} \right]_0^{\frac{\sqrt{40}}{\sqrt{a}}} = \dfrac{1600}{3}$.
+        Giải phương trình trên ta thu được $a = \dfrac{1}{10}$.
+        Vậy phương trình Parabol $(P)$ là: **$y = \dfrac{x^2}{10}$**.
+        
+    **Bước 2: Tìm phương trình đường cong $(H)$**
+    
+    *   Phương trình đường thẳng $BC$ đi qua $B(100;0)$ và $C(60;40)$ là: $x + y - 100 = 0$.
+    *   Phương trình đường thẳng $AD$ là trục $Oy$: $x = 0$.
+    *   Gọi $K(x;y)$ là điểm thuộc $(H)$ nằm trong khu đất (nên $x>0$ và $x+y-100 < 0$).
+        Khoảng cách từ $K$ đến $AD$: $d(K, AD) = x$.
+        Khoảng cách từ $K$ đến $BC$: $d(K, BC) = \dfrac{|x+y-100|}{\sqrt{1^2+1^2}} = \dfrac{100-x-y}{\sqrt{2}}$.
+    *   Theo giả thiết: $x \cdot \dfrac{100-x-y}{\sqrt{2}} = 600\sqrt{2} \iff x(100-x-y) = 1200$.
+        Biến đổi ta được phương trình của $(H)$: **$y = -x + 100 - \dfrac{1200}{x}$**.
+        
+    **Bước 3: Tìm độ dài đoạn thẳng ngắn nhất (Khoảng cách giữa $(P)$ và $(H)$)**
+    
+    *   Lấy điểm $M\left(a; \dfrac{a^2}{10}\right) \in (P)$ và $N\left(b; -b + 100 - \dfrac{1200}{b}\right) \in (H)$.
+    *   Khoảng cách $MN = \sqrt{(b-a)^2 + \left(-b + 100 - \dfrac{1200}{b} - \dfrac{a^2}{10}\right)^2}$.
+    *   Đường ngắn nhất đạt được khi đường thẳng $MN$ là pháp tuyến chung của cả hai đường cong $(P)$ và $(H)$. 
+        Tại đó, tiếp tuyến tại $M$ và $N$ phải song song với nhau: $y_{(P)}'(a) = y_{(H)}'(b)$.
+        $$\dfrac{a}{5} = -1 + \dfrac{1200}{b^2} \implies b = \sqrt{\dfrac{6000}{a+5}}$$
+    *   Sử dụng phương pháp thế vào hàm khoảng cách $MN$ theo ẩn $a$ (hoặc dùng chức năng TABLE trên máy tính cầm tay dò tìm min cho hàm $D^2(a)$), ta tìm được giá trị cực tiểu đạt tại $a \approx 13,24$.
+        Khi đó $b \approx 18,14$.
+    *   Thay ngược lại tọa độ $M$ và $N$, ta tính được khoảng cách ngắn nhất:
+        $$MN_{\min} \approx 5,2276... \text{ (m)}$$
+        Làm tròn đến hàng phần trăm, độ dài con đường ngắn nhất là $5,23\text{m}$.
+        
+    **Kết luận:** Độ dài con đường ngắn nhất xấp xỉ **$5,23$** mét.
+    """)
+    
+st.markdown("---")
+
