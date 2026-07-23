@@ -6253,11 +6253,11 @@ $$y = -x^4 + (2m-3)x^2 + m$$
 nghịch biến trên đoạn $[1; 2]$?
 """)
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập số lượng giá trị nguyên không âm của m (ví dụ: 3):", key="q1_bt1_ans")
+user_answer = st.text_input("Nhập số lượng giá trị nguyên không âm của m (ví dụ: 3):", key="q1_bt4_ans")
 
 # Chèn hình ảnh minh họa ngay sau ô nhập đáp án
 # Nút kiểm tra Đúng/Sai
-if st.button("Kiểm tra đáp án", key="q1_bt1_check"):
+if st.button("Kiểm tra đáp án", key="q1_bt4_check"):
     # Chuẩn hóa đầu vào 
     normalized_user_answer = user_answer.strip().replace(',', '.')
     
@@ -6278,16 +6278,16 @@ if 'q1_bt1_solution_shown' not in st.session_state:
 
 col1, col2 = st.columns([1, 4])
 with col1:
-    if st.button("Xem lời giải chi tiết", key="q1_bt1_solution"):
+    if st.button("Xem lời giải chi tiết", key="q1_bt4_solution"):
         # Kiểm tra điều kiện đăng nhập
         if st.session_state.get('logged_in'):
-            st.session_state['q1_bt1_solution_shown'] = True
+            st.session_state['q1_bt4_solution_shown'] = True
         else:
             st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
             st.session_state['q1_bt1_solution_shown'] = False 
 
 # Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
-if st.session_state.get('q1_bt1_solution_shown') and st.session_state.get('logged_in'):
+if st.session_state.get('q1_bt4_solution_shown') and st.session_state.get('logged_in'):
     st.info("### Lời giải chi tiết:")
     
     st.markdown(r"""
