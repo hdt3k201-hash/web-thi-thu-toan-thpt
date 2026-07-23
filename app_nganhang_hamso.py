@@ -6952,7 +6952,7 @@ if st.button("Kiểm tra đáp án", key="q_bt8_check"):
     normalized_user_answer = user_answer.strip().replace(',', '.')
     
     # Đáp án chính xác là 3 (m thuộc {0; 1; 2})
-    if normalized_user_answer == "3":
+    if normalized_user_answer == "2":
         st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
     elif user_answer == "":
         st.warning("Bạn chưa nhập đáp án.")
@@ -6981,55 +6981,60 @@ if st.session_state.get('q_bt8_solution_shown') and st.session_state.get('logged
     st.info("### Lời giải chi tiết:")
     
     st.markdown(r"""
-    **Bước 1: Điều kiện xác định**
+    **Bước 1: Điều kiện xác định và biến đổi phương trình**
     
-    Điều kiện để phương trình có nghĩa và có nghiệm thực:
-    $$\begin{cases} \sin x \ge 0 \\ m + 2\sin x \ge 0 \\ m + 2\sqrt{m + 2\sin x} \ge 0 \end{cases}$$
+    Điều kiện: $\sin x \ge 0$.
     
-    **Bước 2: Biến đổi phương trình**
+    Ta có phương trình: 
+    $$\sqrt{m + 2\sqrt{m + 2\sin x}} = \sin x \Leftrightarrow m + 2\sqrt{m + 2\sin x} = \sin^2 x$$
     
-    Từ phương trình $\sqrt{m + 2\sqrt{m + 2\sin x}} = \sin x$, do $\sin x \ge 0$, bình phương hai vế ta được:
-    $$m + 2\sqrt{m + 2\sin x} = \sin^2 x$$
-    $$\Leftrightarrow 2\sqrt{m + 2\sin x} = \sin^2 x - m$$
+    Cộng thêm $2\sin x$ vào hai vế, ta được:
+    $$m + 2\sin x + 2\sqrt{m + 2\sin x} = \sin^2 x + 2\sin x \quad (1)$$
     
-    Bình phương hai vế tiếp tục:
-    $$4(m + 2\sin x) = (\sin^2 x - m)^2$$
-    $$\Leftrightarrow 4m + 8\sin x = \sin^4 x - 2m\sin^2 x + m^2$$
-    $$\Leftrightarrow \sin^4 x - 2m\sin^2 x - 8\sin x + m^2 - 4m = 0$$
+    **Bước 2: Sử dụng hàm đặc trưng**
     
-    **Bước 3: Đưa về phương trình theo tham số $m$**
+    Xét hàm số $f(t) = t^2 + 2t$ với $t \ge 0$.
     
-    Cộng $2\sin^2 x + \sin^2 x$ hoặc nhóm ẩn:
-    $$(\sin^4 x - 2m\sin^2 x + m^2) - 4(\sin^2 x + 2\sin x + m) + 4m = 0 \text{ (chưa tối ưu bằng cách xem như phương trình bậc 2 ẩn } m\text{)}$$
+    Đạo hàm của hàm số:
+    $$f'(t) = 2t + 2 > 0, \forall t \ge 0 \implies \text{Hàm số } f(t) \text{ đồng biến trên } [0; +\infty)\text{.}$$
     
-    Xem phương trình là phương trình bậc hai đối với $m$:
-    $$m^2 - (2\sin^2 x + 4)m + (\sin^4 x - 8\sin x) = 0$$
+    Phương trình $(1)$ có dạng:
+    $$f\left(\sqrt{m + 2\sin x}\right) = f(\sin x) \iff \sqrt{m + 2\sin x} = \sin x$$
     
-    Tính biệt thức $\Delta'$ theo ẩn $m$:
-    $$\Delta' = (\sin^2 x + 2)^2 - (\sin^4 x - 8\sin x)$$
-    $$\Delta' = \sin^4 x + 4\sin^2 x + 4 - \sin^4 x + 8\sin x = 4\sin^2 x + 8\sin x + 4 = (2\sin x + 2)^2$$
+    Do $\sin x \ge 0$, bình phương hai vế ta được:
+    $$m + 2\sin x = \sin^2 x \iff \sin^2 x - 2\sin x = m$$
     
-    **Bước 4: Giải phương trình tìm $m$ theo $\sin x$**
+    **Bước 3: Đặt ẩn phụ và khảo sát hàm số theo tham số**
     
-    Phương trình có các nghiệm $m$:
-    $$\left[ \begin{aligned} m &= (\sin^2 x + 2) + (2\sin x + 1) = \sin^2 x + 2\sin x + 3 \\ m &= (\sin^2 x + 2) - (2\sin x + 1) = \sin^2 x - 2\sin x + 1 = (\sin - 1)^2 \end{aligned} \right.$$
+    Đặt $\sin x = t$, vì $\sin x \ge 0$ và $\sin x \le 1$, ta có $t \in [0; 1]$.
     
-    Do $\sin x \in [0; 1]$ (vì $\sin x \ge 0$ và $\sin x \le 1$):
-    *   **Trường hợp 1:** $m = \sin^2 x + 2\sin x + 3 = (\sin x + 1)^2 + 2$.
-        Vì $\sin x \in [0; 1]$, ta có $3 \le m \le 6$.
-    *   **Trường hợp 2:** $m = (\sin x - 1)^2$.
-        Vì $\sin x \in [0; 1]$, ta có $0 \le m \le 1$.
+    Phương trình đã cho có nghiệm khi và chỉ khi phương trình $t^2 - 2t = m$ có nghiệm trên đoạn $[0; 1]$.
     
-    **Bước 5: Tổng hợp các giá trị nguyên của $m$**
+    Xét hàm số $g(t) = t^2 - 2t$ trên đoạn $[0; 1]$.
     
-    Vì $m$ là số nguyên, ta nhận các giá trị:
-    *   Từ đoạn $[0; 1]$: $m \in \{0; 1\}$
-    *   Từ đoạn $[3; 6]$: $m \in \{3; 4; 5; 6\}$
+    Đạo hàm:
+    $$g'(t) = 2t - 2$$
     
-    *(Tuy nhiên, cần đối chiếu điều kiện có nghiệm thực của phương trình ban đầu. Kiểm tra lại với các giá trị nguyên, ta thấy các giá trị thỏa mãn điều kiện thực tế là $m \in \{0; 1; 2\}$ hoặc xét kỹ miền giá trị).*
-    Chính xác qua khảo sát hàm số, số giá trị nguyên của tham số $m$ để phương trình có nghiệm là **$3$** giá trị ($m \in \{0; 1; 2\}$).
+    Cho $g'(t) = 0 \iff 2t - 2 = 0 \iff t = 1$ (thỏa mãn thuộc $[0; 1]$).
     
-    **Kết luận:** Có **$3$** giá trị nguyên của tham số $m$ thỏa mãn yêu cầu bài toán.
+    Tính giá trị của hàm số tại các đầu mút và điểm tới hạn:
+    *   $g(0) = 0^2 - 2(0) = 0$
+    *   $g(1) = 1^2 - 2(1) = -1$
+    
+    Do đó, trên đoạn $[0; 1]$, ta có:
+    $$\max_{[0; 1]} g(t) = 0 \quad \text{và} \quad \min_{[0; 1]} g(t) = -1$$
+    
+    **Bước 4: Biện luận tìm tham số $m$**
+    
+    Để phương trình có nghiệm thì đường thẳng $y = m$ phải cắt đồ thị hàm số $g(t)$ trên đoạn $[0; 1]$, tức là:
+    $$-1 \le m \le 0$$
+    
+    Vì $m \in \mathbb{Z}$, ta nhận được các giá trị nguyên của $m$ là:
+    $$m \in \{-1; 0\}$$
+    
+    Vậy có tổng cộng $2$ giá trị nguyên của tham số $m$ thỏa mãn yêu cầu bài toán.
+    
+    **Kết luận:** Có **$2$** giá trị nguyên của tham số $m$.
     """)
     
 st.markdown("---")
