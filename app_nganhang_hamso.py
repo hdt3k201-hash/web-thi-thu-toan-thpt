@@ -4288,3 +4288,208 @@ if st.session_state.get('q_tiemcan_solution_shown') and st.session_state.get('lo
     """)
     
 st.markdown("---")
+
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 45 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Cho hàm số $y = x^4 - (m+1)x^2 + m$ có đồ thị là $(C_m)$ với $m$ là tham số thực ($m > 0, m \neq 1$). 
+Tìm tích tất cả các giá trị của tham số $m$ để đồ thị $(C_m)$ cắt trục hoành tại bốn điểm phân biệt, tạo thành ba đoạn thẳng có độ dài bằng nhau.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tích các giá trị của m (ví dụ: 3):", key="q_ba_ans")
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_ba_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 1
+    if normalized_user_answer == "1":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại phương trình hoành độ giao điểm, tọa độ các giao điểm và điều kiện độ dài các đoạn thẳng nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_ba_solution_shown' not in st.session_state:
+    st.session_state['q_ba_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_ba_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_ba_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_ba_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_ba_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập phương trình hoành độ giao điểm**
+    
+    Hoành độ giao điểm của đồ thị $(C_m)$ và trục hoành là nghiệm của phương trình:
+    $$x^4 - (m+1)x^2 + m = 0$$
+    $$\Leftrightarrow (x^2 - 1)(x^2 - m) = 0 \Leftrightarrow \left[ \begin{aligned} x^2 &= 1 \\ x^2 &= m \end{aligned} \right. \Leftrightarrow \left[ \begin{aligned} x &= \pm 1 \\ x &= \pm\sqrt{m} \end{aligned} \right.$$
+    
+    Để đồ thị cắt trục hoành tại bốn điểm phân biệt, điều kiện là $m > 0$ và $m \neq 1$.
+    
+    **Bước 2: Xác định tọa độ các giao điểm trên trục hoành**
+    
+    Bốn giao điểm của đồ thị với trục hoành có hoành độ lần lượt là:
+    *   Nếu $m > 1$: $-\sqrt{m}, -1, 1, \sqrt{m}$
+    *   Nếu $0 < m < 1$: $-1, -\sqrt{m}, \sqrt{m}, 1$
+    
+    Do tính đối xứng qua trục tung, ta xét hai trường hợp của $m$:
+    
+    *   **Trường hợp 1 ($m > 1$):** Các hoành độ xếp theo thứ tự tăng dần là $-\sqrt{m}, -1, 1, \sqrt{m}$.
+        Ba đoạn thẳng tạo bởi bốn điểm này có độ dài lần lượt là:
+        *   Đoạn thứ nhất: $-1 - (-\sqrt{m}) = \sqrt{m} - 1$
+        *   Đoạn thứ hai: $1 - (-1) = 2$
+        *   Đoạn thứ ba: $\sqrt{m} - 1$
+        
+        Để ba đoạn thẳng có độ dài bằng nhau, ta cần:
+        $$\sqrt{m} - 1 = 2 \Leftrightarrow \sqrt{m} = 3 \Leftrightarrow m = 9$$
+        Giá trị $m = 9$ thỏa mãn điều kiện $m > 1$.
+        
+    *   **Trường hợp 2 ($0 < m < 1$):** Các hoành độ xếp theo thứ tự tăng dần là $-1, -\sqrt{m}, \sqrt{m}, 1$.
+        Ba đoạn thẳng tạo bởi bốn điểm này có độ dài lần lượt là:
+        *   Đoạn thứ nhất: $-\sqrt{m} - (-1) = 1 - \sqrt{m}$
+        *   Đoạn thứ hai: $\sqrt{m} - (-\sqrt{m}) = 2\sqrt{m}$
+        *   Đoạn thứ ba: $1 - \sqrt{m}$
+        
+        Để ba đoạn thẳng có độ dài bằng nhau, ta cần:
+        $$1 - \sqrt{m} = 2\sqrt{m} \Leftrightarrow 3\sqrt{m} = 1 \Leftrightarrow \sqrt{m} = \dfrac{1}{3} \Leftrightarrow m = \dfrac{1}{9}$$
+        Giá trị $m = \dfrac{1}{9}$ thỏa mãn điều kiện $0 < m < 1$.
+        
+    **Bước 3: Tính tích các giá trị của tham số $m$**
+    
+    Các giá trị thỏa mãn của $m$ là $m = 9$ và $m = \dfrac{1}{9}$.
+    
+    Tích tất cả các giá trị của tham số $m$ là:
+    $$P = 9 \cdot \dfrac{1}{9} = 1$$
+    
+    **Kết luận:** Tích các giá trị cần tìm của tham số $m$ là **$1$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 46 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Cho đường thẳng $d: y = -x + m$ cắt đồ thị hàm số $(C): y = \dfrac{2x - 1}{x - 1}$ tại hai điểm phân biệt $A, B$ sao cho độ dài đoạn thẳng $AB = \sqrt{10}$. 
+Tính tổng tất cả các giá trị của tham số $m$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng các giá trị của m (ví dụ: 1):", key="q_bb_ans")
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_bb_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 6
+    if normalized_user_answer == "6":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại phương trình hoành độ giao điểm, định lý Vi-ét và công thức tính khoảng cách giữa hai điểm nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_bb_solution_shown' not in st.session_state:
+    st.session_state['q_bb_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_bb_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_bb_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_bb_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_bb_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập phương trình hoành độ giao điểm**
+    
+    Điều kiện xác định: $x \neq 1$.
+    
+    Phương trình hoành độ giao điểm của đường thẳng $d$ và đồ thị $(C)$ là:
+    $$\dfrac{2x - 1}{x - 1} = -x + m \Leftrightarrow 2x - 1 = (-x + m)(x - 1)$$
+    $$\Leftrightarrow 2x - 1 = -x^2 + x + mx - m \Leftrightarrow x^2 + (1 - m)x + m - 1 = 0 \quad (*)$$
+    
+    **Bước 2: Tìm điều kiện để đường thẳng cắt đồ thị tại hai điểm phân biệt**
+    
+    Đường thẳng $d$ cắt đồ thị $(C)$ tại hai điểm phân biệt $A, B$ khi và chỉ khi phương trình $(*)$ có hai nghiệm phân biệt khác $1$, tức là:
+    $$\left\{ \begin{aligned} \Delta &> 0 \\ f(1) &\neq 0 \end{aligned} \right.$$
+    
+    Ta tính biệt thức $\Delta$:
+    $$\Delta = (1 - m)^2 - 4(1)(m - 1) = (m - 1)^2 - 4(m - 1) = (m - 1)(m - 5)$$
+    
+    Điều kiện $\Delta > 0 \Leftrightarrow (m - 1)(m - 5) > 0 \Leftrightarrow \left[ \begin{aligned} m &< 1 \\ m &>& 5 \end{aligned} \right.$$
+    
+    Thay $x = 1$ vào vế trái của $(*)$: $1^2 + (1-1)(1) + m - 1 = m$. Điều kiện $m \neq 0$ (đã thỏa mãn với các khoảng trên).
+    
+    **Bước 3: Sử dụng giả thiết độ dài đoạn thẳng $AB$**
+    
+    Gọi $x_1, x_2$ là hai nghiệm phân biệt của phương trình $(*)$. Theo định lý Vi-ét ta có:
+    $$\left\{ \begin{aligned} x_1 + x_2 &= m - 1 \\ x_1 x_2 &= m - 1 \end{aligned} \right.$$
+    
+    Tọa độ hai giao điểm là $A(x_1; -x_1 + m)$ và $B(x_2; -x_2 + m)$.
+    
+    Độ dài đoạn thẳng $AB$ được tính bằng công thức:
+    $$AB^2 = (x_2 - x_1)^2 + [(-x_2 + m) - (-x_1 + m)]^2 = 2(x_2 - x_1)^2$$
+    $$AB^2 = 2\left[(x_1 + x_2)^2 - 4x_1x_2\right] = 2\left[(m - 1)^2 - 4(m - 1)\right] = 2(m - 1)(m - 5)$$
+    
+    Theo giả thiết, $AB = \sqrt{10} \implies AB^2 = 10$, ta có phương trình:
+    $$2(m - 1)(m - 5) = 10 \Leftrightarrow (m - 1)(m - 5) = 5$$
+    $$\Leftrightarrow m^2 - 6m + 5 = 5 \Leftrightarrow m^2 - 6m = 0 \Leftrightarrow \left[ \begin{aligned} m &= 0 \\ m &= 6 \end{aligned} \right.$$
+    
+    **Bước 4: Đối chiếu điều kiện và tính tổng**
+    
+    So sánh với điều kiện $\left[ \begin{aligned} m &< 1 \\ m &>& 5 \end{aligned} \right.$:
+    *   $m = 0$ (thỏa mãn $m < 1$)
+    *   $m = 6$ (thỏa mãn $m > 5$)
+    
+    Tổng tất cả các giá trị của tham số $m$ là:
+    $$S = 0 + 6 = 6$$
+    
+    **Kết luận:** Tổng các giá trị của tham số $m$ là **$6$**.
+    """)
+    
+st.markdown("---")
