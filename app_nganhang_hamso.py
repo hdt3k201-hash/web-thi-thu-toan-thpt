@@ -1137,19 +1137,15 @@ user_answer = st.text_input(
 )
 
 # --- HIỂN THỊ HÌNH ẢNH MÔ PHỎNG (ĐÃ SỬA LỖI) ---
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    # Đường dẫn file ảnh (lưu ý viết chuẩn chữ thường đuôi .png nếu file gốc là chữ thường)
-    image_path = "images/ltt_dn2026.PNG"
 
-    # Kiểm tra file có tồn tại hay không trước khi render ảnh
-    if os.path.exists(image_path):
-        st.image(image_path, width=400)
-    else:
-        # Thông báo lỗi thân thiện nếu không tìm thấy file
-        st.warning(
-            f"⚠️ Lỗi: Không tìm thấy file ảnh tại đường dẫn '{image_path}'. Vui lòng kiểm tra lại thư mục hoặc tên file!"
-        )
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/ltt_dn2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/ltt_dn2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 
 
