@@ -6257,14 +6257,6 @@ nghịch biến trên đoạn $[1; 2]$?
 user_answer = st.text_input("Nhập số lượng giá trị nguyên không âm của m (ví dụ: 3):", key="q65_ans")
 
 # Chèn hình ảnh minh họa ngay sau ô nhập đáp án
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        # Đường dẫn ảnh đã được đồng bộ
-        st.image("images/q65_img.PNG", width=400)
-except FileNotFoundError:
-    # Thông báo lỗi cập nhật đúng tên file
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/q65_img.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q65_check"):
