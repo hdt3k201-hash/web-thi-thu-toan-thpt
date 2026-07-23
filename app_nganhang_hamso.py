@@ -1012,6 +1012,103 @@ st.markdown("---")
 
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 11 (Chuyên Lê Thánh Tông - Đà Nẵng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d0fc6b.png
+st.markdown(r"""
+Cho hàm số $y = f(x) = -x^3 + 3x^2 - 4$ có đồ thị là $(C)$. Đường thẳng đi qua hai điểm cực trị của $(C)$ là đồ thị hàm số $g(x) = ax + b$. Gọi $M, m$ lần lượt là giá trị lớn nhất nhỏ nhất của hàm $h(x) = \sqrt{-x(ax + b)}$. Tính giá trị $\sqrt{8}(300M - 20m)$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị cần tính (ví dụ: 1000):", key="q19_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q19_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 1200
+    if normalized_user_answer == "1200":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tìm tọa độ 2 điểm cực trị, lập đường thẳng g(x) rồi tìm min/max của h(x) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q19_solution_shown' not in st.session_state:
+    st.session_state['q19_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q19_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q19_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q19_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q19_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm tọa độ hai điểm cực trị của đồ thị $(C)$**
+    
+    Tập xác định: $\mathbb{R}$.
+    
+    Đạo hàm:
+    $$f'(x) = -3x^2 + 6x$$
+    
+    Cho $f'(x) = 0 \Leftrightarrow -3x^2 + 6x = 0 \Leftrightarrow \left[ \begin{array}{l} x = 0 \\ x = 2 \end{array} \right.$
+    
+    *   Với $x = 0 \Rightarrow y = -4$, ta được điểm cực tiểu $A(0; -4)$.
+    *   Với $x = 2 \Rightarrow y = -8 + 3 \cdot 4 - 4 = 0$, ta được điểm cực đại $B(2; 0)$.
+    
+    **Bước 2: Viết phương trình đường thẳng $g(x) = ax + b$ đi qua hai điểm cực trị**
+    
+    Đường thẳng $y = ax + b$ đi qua $A(0; -4)$ và $B(2; 0)$ nên tọa độ của chúng thỏa mãn hệ phương trình:
+    $$\begin{cases} a \cdot 0 + b = -4 \\ a \cdot 2 + b = 0 \end{cases} \Leftrightarrow \begin{cases} b = -4 \\ 2a - 4 = 0 \end{cases} \Leftrightarrow \begin{cases} a = 2 \\ b = -4 \end{cases}$$
+    
+    Vậy hàm số $g(x) = 2x - 4$.
+    
+    **Bước 3: Tìm giá trị lớn nhất $M$ và nhỏ nhất $m$ của hàm số $h(x)$**
+    
+    Thay $a = 2, b = -4$ vào hàm số $h(x)$, ta có:
+    $$h(x) = \sqrt{-x(2x - 4)} = \sqrt{-2x^2 + 4x}$$
+    
+    Điều kiện xác định: $-2x^2 + 4x \ge 0 \Leftrightarrow 0 \le x \le 2$.
+    
+    Xét biểu thức dưới dấu căn trên đoạn $[0; 2]$:
+    $$-2x^2 + 4x = -2(x^2 - 2x + 1) + 2 = -2(x - 1)^2 + 2$$
+    
+    Vì $-2(x - 1)^2 \le 0$ với mọi $x$, nên:
+    $$0 \le -2x^2 + 4x \le 2, \quad \forall x \in [0; 2]$$
+    $$\Rightarrow 0 \le \sqrt{-2x^2 + 4x} \le \sqrt{2}, \quad \forall x \in [0; 2]$$
+    
+    Do đó:
+    *   Giá trị lớn nhất của hàm số là $M = \sqrt{2}$ (đạt được khi $x = 1$).
+    *   Giá trị nhỏ nhất của hàm số là $m = 0$ (đạt được khi $x = 0$ hoặc $x = 2$).
+    
+    **Bước 4: Tính giá trị biểu thức yêu cầu**
+    
+    Ta có:
+    $$\sqrt{8}(300M - 20m) = 2\sqrt{2} \cdot \left(300\sqrt{2} - 20 \cdot 0\right)$$
+    $$= 2\sqrt{2} \cdot 300\sqrt{2} = 600 \cdot 2 = 1200$$
+    
+    **Kết luận:** Giá trị của biểu thức là **1200**.
+    """)
+    
+st.markdown("---")
+
 
 
 
