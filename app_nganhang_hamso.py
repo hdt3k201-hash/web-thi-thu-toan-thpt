@@ -2096,3 +2096,130 @@ st.markdown("---")
 
 
 
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 22 (Cụm 5 Sở Ninh Bình 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_dcbfe4.png
+st.markdown(r"""
+Trong hệ trục tọa độ Oxy, đơn vị mỗi trục là mét, một đường trượt mới sẽ được xây dựng theo bản thiết kế đã trình bày như hình vẽ. Thanh trượt bắt đầu từ A và kết thúc tại C, đường cong của thanh trượt là một phần của đồ thị hàm số $f(x) = \dfrac{ax^2 + bx + c}{x + d}$, biết đồ thị hàm số $f(x)$ tiếp xúc với trục Ox tại điểm B. 
+
+Bạn Nam bắt đầu trượt từ điểm A, hỏi khi Nam cách vị trí ban đầu theo phương ngang một khoảng 5 mét thì Nam cách mặt đất bao nhiêu mét, biết trục Ox nằm trên mặt đất (kết quả làm tròn đến hàng phần trăm).
+""")
+
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập khoảng cách so với mặt đất (mét) (ví dụ: 1.23):", key="q32_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/sonb.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/sonb.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q32_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm cho số thập phân)
+    normalized_user_answer = user_answer.strip().replace(",", ".")
+    
+    # Đáp án chính xác là 0.77
+    if normalized_user_answer == "0.77":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hệ phương trình để tìm các hệ số a, b, c, d của hàm số và kiểm tra lại nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q32_solution_shown' not in st.session_state:
+    st.session_state['q32_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q32_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q32_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q32_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q32_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Khai thác các dữ kiện từ đồ thị**
+    
+    Đồ thị hàm số $f(x) = \dfrac{ax^2 + bx + c}{x + d}$ đi qua các điểm $A(0, 10)$, $B(10, 0)$, $C(20, 1)$.
+    Ta có hệ phương trình:
+    1. Đồ thị đi qua $A(0, 10)$: 
+       $$f(0) = 10 \Rightarrow \dfrac{c}{d} = 10 \Rightarrow c = 10d \quad (1)$$
+    2. Đồ thị đi qua $B(10, 0)$: 
+       $$f(10) = 0 \Rightarrow \dfrac{100a + 10b + c}{10 + d} = 0 \Rightarrow 100a + 10b + c = 0 \quad (2)$$
+    3. Đồ thị đi qua $C(20, 1)$: 
+       $$f(20) = 1 \Rightarrow \dfrac{400a + 20b + c}{20 + d} = 1 \Rightarrow 400a + 20b + c = 20 + d \quad (3)$$
+    
+    Ngoài ra, đồ thị tiếp xúc với trục hoành tại $B(10, 0)$ nên $f'(10) = 0$.
+    Ta tính đạo hàm:
+    $$f'(x) = \dfrac{(2ax + b)(x + d) - (ax^2 + bx + c)}{(x + d)^2} = \dfrac{ax^2 + 2adx + bd - c}{(x + d)^2}$$
+    
+    Thay $x = 10$: 
+    $$f'(10) = 0 \Rightarrow 100a + 20ad + bd - c = 0 \quad (4)$$
+    
+    **Bước 2: Giải hệ phương trình tìm $a, b, c, d$**
+    
+    Từ (1) và (2) suy ra: 
+    $$100a + 10b + 10d = 0 \Rightarrow 10a + b + d = 0 \Rightarrow b = -10a - d$$
+    
+    Thay $b$ và $c$ vào (4):
+    $$100a + 20ad + d(-10a - d) - 10d = 0 \Rightarrow 100a + 10ad - d^2 - 10d = 0 \quad (*)$$
+    
+    Thay $b$ và $c$ vào (3):
+    $$400a + 20(-10a - d) + 10d = 20 + d \Rightarrow 200a - 10d = 20 + d$$
+    $$\Rightarrow 200a = 11d + 20 \Rightarrow a = \dfrac{11d + 20}{200}$$
+    
+    Thay $a$ vào (*):
+    $$100\left(\dfrac{11d + 20}{200}\right) + 10d\left(\dfrac{11d + 20}{200}\right) - d^2 - 10d = 0$$
+    $$\Leftrightarrow \dfrac{11d + 20}{2} + \dfrac{11d^2 + 20d}{20} - d^2 - 10d = 0$$
+    Nhân cả hai vế với $20$:
+    $$10(11d + 20) + (11d^2 + 20d) - 20d^2 - 200d = 0$$
+    $$\Leftrightarrow -9d^2 - 70d + 200 = 0 \Leftrightarrow 9d^2 + 70d - 200 = 0$$
+    
+    Giải phương trình bậc hai trên, ta thu được:
+    $$d = \dfrac{20}{9} \quad \text{hoặc} \quad d = -10$$
+    * Nếu $d = -10$, đồ thị có tiệm cận đứng $x = 10$, điều này vô lý vì đồ thị liên tục và xác định tại $x = 10$ (điểm B).
+    * Do đó $d = \dfrac{20}{9}$.
+    
+    Từ $d = \dfrac{20}{9}$, ta tính được các hệ số còn lại:
+    * $a = \dfrac{11 \cdot (20/9) + 20}{200} = \dfrac{2}{9}$
+    * $b = -10\left(\dfrac{2}{9}\right) - \dfrac{20}{9} = -\dfrac{40}{9}$
+    * $c = 10 \cdot \dfrac{20}{9} = \dfrac{200}{9}$
+    
+    Vậy hàm số cần tìm là: 
+    $$f(x) = \dfrac{\dfrac{2}{9}x^2 - \dfrac{40}{9}x + \dfrac{200}{9}}{x + \dfrac{20}{9}} = \dfrac{2x^2 - 40x + 200}{9x + 20}$$
+    
+    **Bước 3: Tính khoảng cách Nam so với mặt đất**
+    
+    Khi Nam cách vị trí ban đầu $A$ theo phương ngang $5$ mét, tức là hoành độ $x = 5$.
+    Khoảng cách đến mặt đất lúc này là giá trị của hàm số tại $x = 5$:
+    $$f(5) = \dfrac{2(5^2) - 40(5) + 200}{9(5) + 20} = \dfrac{50 - 200 + 200}{45 + 20} = \dfrac{50}{65} = \dfrac{10}{13} \approx 0,769$$
+    
+    Làm tròn đến hàng phần trăm ta được $0,77$.
+    
+    **Kết luận:** Khi cách vị trí ban đầu $5$ mét theo phương ngang, Nam cách mặt đất khoảng **$0,77$** mét.
+    """)
+    
+st.markdown("---")
+
+
+
