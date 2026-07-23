@@ -591,7 +591,7 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
                     unsafe_allow_html=True,
                 )
                 st.markdown(
-                    r"""Tìm giá trị của tham số thực m để hàm số $y = \dfrac{\sin x + m\cos x + 1}{\cos x - \sin x + 2}$ có giá trị lớn nhất đúng bằng 2.[cite: 2]"""
+                    r"""Tìm giá trị của tham số thực m để hàm số $y = \dfrac{\sin x + m\cos x + 1}{\cos x - \sin x + 2}$ có giá trị lớn nhất đúng bằng 2."""
                 )
                 q16_ans = st.text_input("Nhập kết quả (Ví dụ: -2):", key="q16")
 
@@ -602,7 +602,7 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
                     unsafe_allow_html=True,
                 )
                 st.markdown(
-                    r"""Giải phương trình lượng giác $\sin x + \sin 2x + \sin 3x = 0$.[cite: 2] Hỏi các nghiệm của phương trình này được biểu diễn bởi bao nhiêu điểm phân biệt trên đường tròn lượng giác?[cite: 2]"""
+                    r"""Giải phương trình lượng giác $\sin x + \sin 2x + \sin 3x = 0$. Hỏi các nghiệm của phương trình này được biểu diễn bởi bao nhiêu điểm phân biệt trên đường tròn lượng giác?"""
                 )
                 q17_ans = st.radio(
                     "Chọn phương án đúng:",
@@ -622,7 +622,7 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
                     r"""<div class="question-title"><b>Câu 18:</b> <span class="tag-badge">[Đúng/Sai]</span></div>""",
                     unsafe_allow_html=True,
                 )
-                st.markdown(r"""Cho phương trình chứa tham số m: $\sin^4 x + \cos^4 x = m$.[cite: 2] Xét tính đúng/sai của các mệnh đề sau đây:[cite: 2]""")
+                st.markdown(r"""Cho phương trình chứa tham số m: $\sin^4 x + \cos^4 x = m$. Xét tính đúng/sai của các mệnh đề sau đây:""")
                 q18_a = st.radio(
                     r"A. Khi $m = 1$, phương trình đã cho có đúng **4** nghiệm phân biệt trên đoạn $[0; \pi]$.",
                     ["Đúng", "Sai"],
@@ -660,7 +660,7 @@ $$h(t) = A\cos(\omega t) + B \quad (A < 0)$$
                 )
                 st.markdown(
                     r"""Tính chính xác giá trị của tổng hữu hạn sau: 
-$$S = \sin^2 10^\circ + \sin^2 20^\circ + \sin^2 30^\circ + \dots + \sin^2 170^\circ + \sin^2 180^\circ$$[cite: 2]"""
+$$S = \sin^2 10^\circ + \sin^2 20^\circ + \sin^2 30^\circ + \dots + \sin^2 170^\circ + \sin^2 180^\circ$$"""
                 )
                 q19_ans = st.text_input("Nhập giá trị của S (Ví dụ: 9):", key="q19")
 
@@ -675,7 +675,7 @@ $$S = \sin^2 10^\circ + \sin^2 20^\circ + \sin^2 30^\circ + \dots + \sin^2 170^\
                     unsafe_allow_html=True,
                 )
                 st.markdown(
-                    r"""Kéo và thả các tập hợp tương ứng vào ô trống bên dưới để biểu diễn điều kiện cần và đủ của tham số m sao cho các phương trình lượng giác tương ứng có nghiệm.[cite: 2]"""
+                    r"""Kéo và thả các tập hợp tương ứng vào ô trống bên dưới để biểu diễn điều kiện cần và đủ của tham số m sao cho các phương trình lượng giác tương ứng có nghiệm."""
                 )
                 st.markdown(
                     """
