@@ -243,3 +243,86 @@ if st.session_state.get('q4_solution_shown_v2') and st.session_state.get('logged
     
 st.markdown("---")
 
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 3 (HSG 12 - Hà Tĩnh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_d013ae.png
+st.markdown(r"""
+Công ty X cần vận chuyển hàng đến một địa điểm cách công ty 100 dặm. Khi xe chở hàng di chuyển với tốc độ $x$ (dặm/giờ) thì chi phí nhiên liệu (USD) trên mỗi dặm đường là $C(x) = \frac{1}{5}\left(\frac{64}{x} + \frac{9}{100}x\right)$. Ngoài ra, giá thuê tài xế là 16 USD mỗi giờ lái xe. Biết tốc độ không vượt quá 50 dặm/giờ. Hỏi chi phí nhỏ nhất mà công ty phải trả trên mỗi chuyến hàng là bao nhiêu USD?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập chi phí nhỏ nhất (USD) (ví dụ: 150):", key="q5_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q5_check"):
+    # Chuẩn hóa đầu vào (loại bỏ khoảng trắng, chữ "usd", v.v.)
+    normalized_user_answer = user_answer.strip().lower().replace(" ", "").replace("usd", "").replace("$", "")
+    
+    # Đáp án chính xác là 144
+    if normalized_user_answer == "144":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Bạn thử tính toán lại cẩn thận hàm tổng chi phí nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q5_solution_shown' not in st.session_state:
+    st.session_state['q5_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q5_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q5_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q5_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q5_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập các biểu thức chi phí theo $x$**
+    
+    Gọi $x$ (dặm/giờ) là tốc độ của xe chở hàng. Theo giả thiết, điều kiện của $x$ là: $0 < x \le 50$.
+    Quãng đường di chuyển là $S = 100$ dặm.
+    
+    *   **Thời gian di chuyển:** 
+        $$t = \frac{S}{x} = \frac{100}{x} \text{ (giờ)}$$
+    
+    *   **Chi phí tài xế cho 1 chuyến:** 
+        $$16 \cdot t = 16 \cdot \frac{100}{x} = \frac{1600}{x} \text{ (USD)}$$
+    
+    *   **Chi phí nhiên liệu cho 1 chuyến:** Bằng chi phí nhiên liệu trên 1 dặm nhân với quãng đường (100 dặm).
+        $$100 \cdot C(x) = 100 \cdot \frac{1}{5}\left(\frac{64}{x} + \frac{9}{100}x\right) = 20\left(\frac{64}{x} + \frac{9}{100}x\right) = \frac{1280}{x} + \frac{9x}{5} \text{ (USD)}$$
+    
+    **Bước 2: Lập hàm tổng chi phí và tìm giá trị nhỏ nhất**
+    
+    Tổng chi phí công ty phải trả cho mỗi chuyến hàng là hàm số $f(x)$ với $x \in (0; 50]$:
+    $$f(x) = \text{Chi phí tài xế} + \text{Chi phí nhiên liệu}$$
+    $$f(x) = \frac{1600}{x} + \frac{1280}{x} + \frac{9x}{5} = \frac{2880}{x} + \frac{9x}{5}$$
+    
+    Để tìm giá trị nhỏ nhất của $f(x)$, ta có thể sử dụng Bất đẳng thức AM-GM (Cauchy) cho hai số dương $\frac{2880}{x}$ và $\frac{9x}{5}$:
+    $$f(x) = \frac{2880}{x} + \frac{9x}{5} \ge 2\sqrt{\frac{2880}{x} \cdot \frac{9x}{5}} = 2\sqrt{\frac{25920}{5}} = 2\sqrt{5184} = 2 \cdot 72 = 144$$
+    
+    Dấu "=" xảy ra khi và chỉ khi:
+    $$\frac{2880}{x} = \frac{9x}{5} \Leftrightarrow 9x^2 = 14400 \Leftrightarrow x^2 = 1600 \Leftrightarrow x = 40 \text{ (Thỏa mãn } 0 < x \le 50\text{)}$$
+    
+    *(Lưu ý: Học sinh cũng có thể tính đạo hàm $f'(x) = -\frac{2880}{x^2} + \frac{9}{5}$, giải $f'(x) = 0 \Rightarrow x = 40$ và lập bảng biến thiên để tìm Min trên khoảng $(0; 50]$ ra kết quả tương tự).*
+    
+    **Kết luận:** Chi phí nhỏ nhất mà công ty phải trả trên mỗi chuyến hàng là **144 USD** (khi xe chạy với tốc độ 40 dặm/giờ).
+    """)
+    
+st.markdown("---")
