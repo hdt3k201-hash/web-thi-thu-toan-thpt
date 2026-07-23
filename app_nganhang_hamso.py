@@ -9865,3 +9865,170 @@ if st.session_state.get('q102_solution_shown') and st.session_state.get('logged_
     """)
     
 st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 103 (Cụm chuyên môn 4 Đắk Lắk 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một vật chuyển động theo quy luật $s(t) = \dfrac{1}{3}t^3 - \dfrac{3}{2}t^2 + 10t + 2$ (với $t$ (giây) là khoảng thời gian tính từ lúc vật bắt đầu chuyển động và $s$ (mét) là quãng đường vật đi được trong thời gian đó). Tính quãng đường mà vật đi được khi vận tốc đạt $20\text{ m/s}$ (Kết quả làm tròn đến chữ số thập phân thứ nhất).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập quãng đường vật đi được (mét) (ví dụ: 50.8):", key="q103_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q103_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 56.2
+    if normalized_user_answer == "56.2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tìm thời điểm $t$ khi vận tốc đạt $20\text{ m/s}$ từ đạo hàm của quãng đường, sau đó tính $s(t)$ và làm tròn kết quả nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q103_solution_shown' not in st.session_state:
+    st.session_state['q103_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q103_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q103_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q103_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q103_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm vận tốc $v(t)$**
+    
+    * Vận tốc chuyển động của vật là đạo hàm của quãng đường theo thời gian $t$:
+        $$v(t) = s'(t) = \left(\dfrac{1}{3}t^3 - \dfrac{3}{2}t^2 + 10t + 2\right)' = t^2 - 3t + 10 \text{ (m/s)}$$
+    
+    **Bước 2: Tìm thời điểm $t$ khi vận tốc đạt $20\text{ m/s}$**
+    
+    * Theo đề bài, vận tốc đạt $20\text{ m/s}$, ta có phương trình:
+        $$v(t) = 20 \iff t^2 - 3t + 10 = 20$$
+        $$\iff t^2 - 3t - 10 = 0$$
+    * Giải phương trình bậc hai, ta được hai nghiệm:
+        $$t = 5 \text{ (nhận)} \quad \text{hoặc} \quad t = -2 \text{ (loại vì } t > 0\text{)}$$
+    
+    **Bước 3: Tính quãng đường vật đi được tại thời điểm $t = 5$**
+    
+    * Thay $t = 5$ vào hàm quãng đường $s(t)$:
+        $$s(5) = \dfrac{1}{3}(5)^3 - \dfrac{3}{2}(5)^2 + 10(5) + 2$$
+        $$s(5) = \dfrac{125}{3} - \dfrac{75}{2} + 50 + 2 = \dfrac{125}{3} - \dfrac{75}{2} + 52$$
+        $$s(5) = \dfrac{250 - 225 + 312}{6} = \dfrac{337}{6} \approx 56,1667 \text{ (mét)}$$
+    
+    **Bước 4: Làm tròn kết quả**
+    
+    * Làm tròn đến chữ số thập phân thứ nhất, ta được **$56,2$**.
+    
+    **Kết luận:** Quãng đường mà vật đi được khi vận tốc đạt $20\text{ m/s}$ là **$56,2$** mét.
+    """)
+    
+st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 104 (Cụm chuyên môn 4 Đắk Lắk 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Ông Khoa muốn xây một bể cá chứa nước dạng khối hộp chữ nhật không nắp có thể tích $288\text{ m}^3$. Đáy bể là hình chữ nhật có chiều dài gấp đôi chiều rộng, giá thuê công nhân xây bể là $400.000\text{ đồng/m}^2$. Nếu ông Khoa biết xác định các kích thước một cách hợp lí thì chi phí thuê nhân công sẽ thấp nhất. Hỏi ông Khoa trả chi phí thấp nhất để xây dựng bể cá đó là bao nhiêu? (Đơn vị tính triệu đồng)
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập chi phí thấp nhất (triệu đồng) (ví dụ: 12.4):", key="q104_ans")
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q104_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 86.4
+    if normalized_user_answer in ["86.4", "86,4"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm diện tích toàn phần của bể theo một biến, tính đạo hàm để tìm cực tiểu rồi nhân với đơn giá nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q104_solution_shown' not in st.session_state:
+    st.session_state['q104_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q104_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q104_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q104_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q104_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn và thiết lập chiều cao của bể**
+    
+    * Gọi chiều rộng của đáy bể là $x$ ($x > 0$, tính bằng mét).
+    * Chiều dài của đáy bể là $2x$ (mét).
+    * Gọi chiều cao của bể là $h$ ($h > 0$, tính bằng mét).
+    * Thể tích của khối hộp chữ nhật là $V = 288\text{ m}^3$, ta có:
+        $$2x \cdot x \cdot h = 288 \iff 2x^2h = 288 \iff h = \dfrac{144}{x^2}$$
+    
+    **Bước 2: Tính tổng diện tích bề mặt cần xây dựng**
+    
+    * Bể cá dạng khối hộp chữ nhật không nắp, tổng diện tích bề mặt $S$ cần xây (gồm diện tích đáy và diện tích 4 mặt xung quanh) là:
+        $$S = S_{\text{đáy}} + S_{\text{xung quanh}}$$
+        $$S = (2x \cdot x) + 2 \cdot (2x \cdot h) + 2 \cdot (x \cdot h) = 2x^2 + 4xh + 2xh = 2x^2 + 6xh$$
+    * Thay $h = \dfrac{144}{x^2}$ vào biểu thức diện tích, ta được hàm số theo biến $x$:
+        $$S(x) = 2x^2 + 6x \cdot \dfrac{144}{x^2} = 2x^2 + \dfrac{864}{x} \quad (\text{với } x > 0)$$
+    
+    **Bước 3: Khảo sát hàm số để tìm diện tích nhỏ nhất**
+    
+    * Tính đạo hàm của hàm số $S(x)$:
+        $$S'(x) = 4x - \dfrac{864}{x^2} = \dfrac{4x^3 - 864}{x^2}$$
+    * Cho $S'(x) = 0$:
+        $$4x^3 - 864 = 0 \iff x^3 = 216 \iff x = 6 \text{ (thỏa mãn điều kiện } x > 0\text{)}$$
+    * Lập bảng biến thiên hoặc xét dấu đạo hàm, ta thấy hàm số $S(x)$ đạt giá trị nhỏ nhất tại $x = 6$.
+    * Giá trị diện tích nhỏ nhất là:
+        $$S(6) = 2(6)^2 + \dfrac{864}{6} = 72 + 144 = 216 \text{ (m}^2\text{)}$$
+    
+    **Bước 4: Tính chi phí thấp nhất**
+    
+    * Giá thuê công nhân xây bể là $400.000\text{ đồng/m}^2 = 0,4\text{ triệu đồng/m}^2$.
+    * Chi phí thấp nhất để xây dựng bể cá là:
+        $$\text{Chi phí} = 216 \cdot 0,4 = 86,4 \text{ (triệu đồng)}$$
+    
+    **Kết luận:** Chi phí thấp nhất để xây dựng bể cá là **$86,4$** triệu đồng.
+    """)
+    
+st.markdown("---")
+
+
