@@ -1807,9 +1807,7 @@ if st.session_state.get('q28_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
-[Chi tiết giải bài toán thực tế khoảng cách parabol và đường tròn](https://www.youtube.com/watch?v=92oUTJu6d70)
 
-Video trên cung cấp thêm hướng dẫn trực quan cách đặt hệ trục tọa độ và giải quyết bài toán khoảng cách giữa parabol và đường tròn trong các đề thi thử.
 
 
 
