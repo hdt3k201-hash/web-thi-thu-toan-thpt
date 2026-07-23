@@ -8478,3 +8478,97 @@ if st.session_state.get('q87_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 88 (Cụm trường Sở Phú Thọ 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một doanh nghiệp sản xuất độc quyền một loại sản phẩm. Giả sử khi sản xuất và bán hết $x$ sản phẩm ($0 < x < 2000$), tổng số tiền doanh nghiệp thu được là $F(x) = 2000x - x^2$ (chục nghìn đồng) và tổng chi phí doanh nghiệp bỏ ra là $G(x) = x^2 + 1440x + 50$ (chục nghìn đồng). Công ty cũng phải chịu mức thuế phụ thu cho 1 đơn vị sản phẩm bán được là $t$ (chục nghìn đồng) ($0 < t < 300$). Mức thuế phụ thu $t$ (trên một đơn vị sản phẩm) là bao nhiêu sao cho nhà nước thu được số tiền thuế phụ thu lớn nhất và doanh nghiệp cũng thu được lợi nhuận nhiều nhất theo đúng mức thuế phụ thu đó (đơn vị là chục nghìn đồng, kết quả làm tròn đến hàng đơn vị).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập mức thuế phụ thu t (chục nghìn đồng) (ví dụ: 200):", key="q88_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q88_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 280
+    if normalized_user_answer == "280":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm lợi nhuận phụ thuộc vào $t$, tìm số lượng sản phẩm tối ưu theo $t$, sau đó lập hàm số tiền thuế của nhà nước để tìm giá trị lớn nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q88_solution_shown' not in st.session_state:
+    st.session_state['q88_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q88_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q88_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q88_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q88_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm lợi nhuận của doanh nghiệp theo $x$ và $t$**
+    
+    *   Tổng số tiền doanh nghiệp thu được khi bán $x$ sản phẩm là: 
+        $$F(x) = 2000x - x^2 \text{ (chục nghìn đồng)}$$
+    *   Tổng chi phí sản xuất (chưa tính thuế phụ thu) là: 
+        $$G(x) = x^2 + 1440x + 50 \text{ (chục nghìn đồng)}$$
+    *   Tổng tiền thuế phụ thu mà doanh nghiệp phải nộp cho nhà nước với mức thuế $t$ trên một đơn vị sản phẩm là: 
+        $$T_{\text{nộp}} = t \cdot x$$
+        
+    Hàm lợi nhuận của doanh nghiệp sau khi chịu thuế phụ thu $t$ là:
+    $$\pi(x) = F(x) - G(x) - t \cdot x$$
+    $$\pi(x) = (2000x - x^2) - (x^2 + 1440x + 50) - tx$$
+    $$\pi(x) = -2x^2 + (560 - t)x - 50 \quad \text{với } 0 < x < 2000$$
+    
+    **Bước 2: Tìm số lượng sản phẩm $x$ để doanh nghiệp đạt lợi nhuận lớn nhất**
+    
+    Vì $\pi(x)$ là hàm bậc hai với hệ số của $x^2$ là $-2 < 0$, lợi nhuận đạt giá trị lớn nhất tại đỉnh của parabol:
+    $$x = -\dfrac{560 - t}{2(-2)} = \dfrac{560 - t}{4} = 140 - \dfrac{t}{4}$$
+    
+    **Bước 3: Thiết lập hàm số tiền thuế phụ thu của nhà nước**
+    
+    Tổng số tiền thuế phụ thu nhà nước thu được là một hàm theo biến $t$:
+    $$S(t) = t \cdot x = t \left(140 - \dfrac{t}{4}\right) = 140t - \dfrac{t^2}{4}$$
+    
+    **Bước 4: Tìm mức thuế $t$ để số tiền thuế phụ thu lớn nhất**
+    
+    Xét hàm số $S(t) = -\dfrac{1}{4}t^2 + 140t$ với $0 < t < 300$.
+    
+    Tính đạo hàm:
+    $$S'(t) = -\dfrac{1}{2}t + 140$$
+    
+    Cho $S'(t) = 0 \Leftrightarrow -\dfrac{1}{2}t + 140 = 0 \Leftrightarrow t = 280$$
+    
+    Vì hệ số của $t^2$ âm ($-\dfrac{1}{4} < 0$), hàm số đạt giá trị lớn nhất tại $t = 280$ (thỏa mãn điều kiện $0 < t < 300$).
+    
+    **Kết luận:** Mức thuế phụ thu $t$ trên một đơn vị sản phẩm là **$280$** chục nghìn đồng.
+    """)
+    
+st.markdown("---")
+
+
