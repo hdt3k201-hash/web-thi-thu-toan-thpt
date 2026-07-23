@@ -7804,6 +7804,14 @@ Một cổng có dạng là một parabol $(P)$ có đỉnh là điểm $I$, hai
 user_answer = st.text_input("Nhập diện tích nhỏ nhất (mét vuông) (ví dụ: 12.9):", key="q81_ans")
 
 # Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/pdp_2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/pdp_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q81_check"):
