@@ -3662,7 +3662,7 @@ Tìm giá trị của tham số $m > 0$ để đồ thị $(C_m)$ có hai điể
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập giá trị của m (ví dụ: 2):", key="q_cubic_ans")
+user_answer = st.text_input("Nhập giá trị của m (ví dụ: 5):", key="q_cubic_ans")
 
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q_cubic_check"):
@@ -3730,6 +3730,101 @@ if st.session_state.get('q_cubic_solution_shown') and st.session_state.get('logg
     Kết hợp với điều kiện bài toán cho $m > 0$, ta nhận giá trị $m = 2$.
     
     **Kết luận:** Giá trị cần tìm của tham số là **$m = 2$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 39 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Cho hàm số $y = x^4 - 2mx^2 + m$ có đồ thị là $(C_m)$ với $m$ là tham số thực. 
+Tìm giá trị của tham số $m$ để đồ thị $(C_m)$ có ba điểm cực trị tạo thành một tam giác vuông cân.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của m (ví dụ: 1):", key="q_quartic_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q_quartic_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 1
+    if normalized_user_answer == "1":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại điều kiện hàm số có 3 cực trị, tọa độ tam giác cực trị và tính chất tam giác vuông cân nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q_quartic_solution_shown' not in st.session_state:
+    st.session_state['q_quartic_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q_quartic_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q_quartic_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q_quartic_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q_quartic_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm điều kiện để hàm số có ba điểm cực trị**
+    
+    Ta có đạo hàm của hàm số:
+    $$y' = 4x^3 - 4mx = 4x(x^2 - m)$$
+    
+    Hàm số có ba điểm cực trị khi và chỉ khi phương trình $y' = 0$ có ba nghiệm phân biệt, tức là:
+    $$m > 0$$
+    
+    **Bước 2: Xác định tọa độ ba điểm cực trị**
+    
+    Khi $m > 0$, phương trình $y' = 0$ có ba nghiệm: $x = 0$ và $x = \pm\sqrt{m}$.
+    
+    Tọa độ ba điểm cực trị của đồ thị hàm số là:
+    * $A(0; m)$
+    * $B(-\sqrt{m}; -m^2 + m)$
+    * $C(\sqrt{m}; -m^2 + m)$
+    
+    **Bước 3: Thiết lập điều kiện tam giác vuông cân**
+    
+    Vì tam giác $ABC$ luôn nhận trục tung làm trục đối xứng nên $ABC$ là tam giác cân tại đỉnh $A$. 
+    
+    Để tam giác $ABC$ là tam giác vuông cân (vuông tại $A$), ta cần thỏa mãn điều kiện tích vô hướng $\vec{AB} \cdot \vec{AC} = 0$.
+    
+    Cụ thể, ta tính các véc-tơ:
+    * $\vec{AB} = \left(-\sqrt{m}; -m^2\right)$
+    * $\vec{AC} = \left(\sqrt{m}; -m^2\right)$
+    
+    Điều kiện để tam giác $ABC$ vuông tại $A$ là:
+    $$\vec{AB} \cdot \vec{AC} = 0 \Leftrightarrow (-\sqrt{m}) \cdot \sqrt{m} + (-m^2) \cdot (-m^2) = 0$$
+    $$-m + m^4 = 0 \Leftrightarrow m(m^3 - 1) = 0$$
+    
+    **Bước 4: Giải phương trình và kết luận**
+    
+    Do điều kiện bài toán yêu cầu $m > 0$, ta loại nghiệm $m = 0$ và nhận nghiệm:
+    $$m^3 - 1 = 0 \Leftrightarrow m = 1$$
+    
+    Giá trị $m = 1$ hoàn toàn thỏa mãn điều kiện $m > 0$.
+    
+    **Kết luận:** Giá trị cần tìm của tham số là **$m = 1$**.
     """)
     
 st.markdown("---")
