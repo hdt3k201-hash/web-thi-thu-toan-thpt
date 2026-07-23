@@ -6240,98 +6240,101 @@ if st.session_state.get('q2_bt5_solution_shown') and st.session_state.get('logge
     
 st.markdown("---")
 
-
-
-
 # Tiêu đề câu hỏi
 st.markdown(
-    '<b style="color: blue;">Câu 66 (ĐGNL - TD)</b>',
+    '<b style="color: blue;">Câu 65 (ĐGNL - TD)</b>',
     unsafe_allow_html=True
 )
 
-# Nội dung câu hỏi từ hình ảnh
+# Nội dung câu hỏi từ hình ảnh được chuyển sang dạng trả lời ngắn
 st.markdown(r"""
-Có bao nhiêu giá trị nguyên âm của tham số $m$ để hàm số 
-$$y = \dfrac{1}{4}x^4 + mx - \dfrac{3}{2x}$$ 
-đồng biến trên khoảng $(0; +\infty)$?
+Có bao nhiêu giá trị nguyên không âm của tham số $m$ sao cho hàm số 
+$$y = -x^4 + (2m-3)x^2 + m$$ 
+nghịch biến trên đoạn $[1; 2]$?
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer = st.text_input("Nhập số lượng giá trị nguyên âm của m (ví dụ: 2):", key="q2_bt2_ans")
+user_answer = st.text_input("Nhập số lượng giá trị nguyên không âm của m (ví dụ: 3):", key="q65_ans")
+
 # Chèn hình ảnh minh họa ngay sau ô nhập đáp án
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/q65_img.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/q65_img.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
 # Nút kiểm tra Đúng/Sai
-if st.button("Kiểm tra đáp án", key="q2_bt2_check"):
-    # Chuẩn hóa đầu vào
+if st.button("Kiểm tra đáp án", key="q65_check"):
+    # Chuẩn hóa đầu vào 
     normalized_user_answer = user_answer.strip().replace(',', '.')
     
-    # Đáp án chính xác là 2 (m = -2, -1)
-    if normalized_user_answer == "2":
+    # Đáp án chính xác là 3
+    if normalized_user_answer == "3":
         st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
     elif user_answer == "":
         st.warning("Bạn chưa nhập đáp án.")
     else:
-        st.error("Sai rồi. Gợi ý: Hãy tính đạo hàm, cô lập m >= g(x) và lập bảng biến thiên để tìm GTLN của g(x) trên (0; +∞) nhé!")
+        st.error("Sai rồi. Gợi ý: Hãy tính y', cô lập m và tìm giá trị nhỏ nhất của hàm số trên đoạn [1; 2] nhé!")
 
 # --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
 st.markdown("---")
 
 # Khởi tạo trạng thái hiển thị lời giải nếu chưa có
-if 'q2_bt2_solution_shown' not in st.session_state:
-    st.session_state['q2_bt2_solution_shown'] = False
+if 'q65_solution_shown' not in st.session_state:
+    st.session_state['q65_solution_shown'] = False
 
 col1, col2 = st.columns([1, 4])
 with col1:
-    if st.button("Xem lời giải chi tiết", key="q2_bt2_solution"):
+    if st.button("Xem lời giải chi tiết", key="q65_solution"):
         # Kiểm tra điều kiện đăng nhập
         if st.session_state.get('logged_in'):
-            st.session_state['q2_bt2_solution_shown'] = True
+            st.session_state['q65_solution_shown'] = True
         else:
             st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
-            st.session_state['q2_bt2_solution_shown'] = False 
+            st.session_state['q65_solution_shown'] = False 
 
 # Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
-if st.session_state.get('q2_bt2_solution_shown') and st.session_state.get('logged_in'):
+if st.session_state.get('q65_solution_shown') and st.session_state.get('logged_in'):
     st.info("### Lời giải chi tiết:")
     
     st.markdown(r"""
-    **Bước 1: Tập xác định và tính đạo hàm**
+    **Bước 1: Tính đạo hàm của hàm số**
     
-    Tập xác định: $\mathcal{D} = \mathbb{R} \setminus \{0\}$.
-    Trên khoảng $(0; +\infty)$, hàm số xác định và liên tục.
+    Tập xác định: $\mathcal{D} = \mathbb{R}$.
     
-    Đạo hàm của hàm số:
-    $$y' = x^3 + m + \dfrac{3}{2x^2}$$
-        
-    **Bước 2: Thiết lập điều kiện đồng biến**
+    Ta có đạo hàm:
+    $$y' = -4x^3 + 2(2m-3)x = x(-4x^2 + 4m - 6)$$
     
-    Để hàm số đồng biến trên khoảng $(0; +\infty)$, ta cần:
-    $$y' \ge 0, \forall x \in (0; +\infty)$$
-    $$\Leftrightarrow x^3 + m + \dfrac{3}{2x^2} \ge 0, \forall x \in (0; +\infty)$$
-    $$\Leftrightarrow m \ge -x^3 - \dfrac{3}{2x^2}, \forall x \in (0; +\infty) \quad (**)$$
-        
-    **Bước 3: Khảo sát hàm số $g(x) = -x^3 - \dfrac{3}{2x^2}$**
+    **Bước 2: Thiết lập điều kiện nghịch biến**
     
-    Tính đạo hàm của $g(x)$:
-    $$g'(x) = -3x^2 + \dfrac{3}{x^3} = \dfrac{-3x^5 + 3}{x^3}$$
+    Hàm số nghịch biến trên đoạn $[1; 2]$ khi và chỉ khi $y' \le 0, \forall x \in [1; 2]$.
+    $$\Leftrightarrow x(-4x^2 + 4m - 6) \le 0, \forall x \in [1; 2]$$
     
-    Cho $g'(x) = 0 \Leftrightarrow -3x^5 + 3 = 0 \Leftrightarrow x^5 = 1 \Leftrightarrow x = 1$ (thỏa mãn $x > 0$).
+    Vì $x \in [1; 2]$ nên $x > 0$. Khi đó, bất phương trình tương đương với:
+    $$-4x^2 + 4m - 6 \le 0, \forall x \in [1; 2]$$
+    $$\Leftrightarrow 4m \le 4x^2 + 6, \forall x \in [1; 2]$$
+    $$\Leftrightarrow m \le x^2 + \dfrac{3}{2}, \forall x \in [1; 2] \quad (*)$$
     
-    Bảng biến thiên của $g(x)$ trên $(0; +\infty)$:
-    *   Với $x \in (0; 1)$: $g'(x) > 0 \implies g(x)$ đồng biến.
-    *   Với $x \in (1; +\infty)$: $g'(x) < 0 \implies g(x)$ nghịch biến.
+    **Bước 3: Khảo sát hàm số để tìm $m$**
     
-    Tại $x = 1$, hàm số $g(x)$ đạt giá trị lớn nhất:
-    $$\max_{x \in (0; +\infty)} g(x) = g(1) = -(1)^3 - \dfrac{3}{2(1)^2} = -1 - \dfrac{3}{2} = -\dfrac{5}{2}$$
+    Xét hàm số $g(x) = x^2 + \dfrac{3}{2}$ trên đoạn $[1; 2]$.
+    Ta thấy $g'(x) = 2x > 0, \forall x \in [1; 2]$, suy ra hàm số $g(x)$ đồng biến trên đoạn $[1; 2]$.
     
-    **Bước 4: Gộp điều kiện và tìm số giá trị nguyên**
+    Để $(*)$ nghiệm đúng với mọi $x \in [1; 2]$, ta cần:
+    $$m \le \min_{x \in [1; 2]} g(x) = g(1) = 1^2 + \dfrac{3}{2} = \dfrac{5}{2}$$
     
-    Để $(**)$ nghiệm đúng với mọi $x \in (0; +\infty)$, ta phải có:
-    $$m \ge \max_{x \in (0; +\infty)} g(x) \Leftrightarrow m \ge -\dfrac{5}{2} = -2,5$$
+    **Bước 4: Kết hợp điều kiện tham số**
     
-    Vì $m$ là số nguyên âm ($m \in \mathbb{Z}, m < 0$) và $m \ge -2,5$, nên:
-    $$m \in \{-2; -1\}$$
+    Do $m$ là số nguyên không âm ($m \in \mathbb{Z}, m \ge 0$) và $m \le \dfrac{5}{2} = 2,5$, nên:
+    $$m \in \{0; 1; 2\}$$
     
-    **Kết luận:** Có tất cả **$2$** giá trị nguyên âm của tham số $m$ thỏa mãn yêu cầu bài toán.
+    **Kết luận:** Có **$3$** giá trị nguyên không âm của $m$ thỏa mãn yêu cầu bài toán.
     """)
     
 st.markdown("---")
+
+
+
