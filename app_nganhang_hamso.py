@@ -2319,3 +2319,80 @@ st.markdown("---")
 
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 24 (ĐGNL ĐHSPHN 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_dd2f8d.png
+st.markdown(r"""
+Thống kê số người nhiễm virus trong vòng $21$ ngày ở một cộng đồng, người ta nhận thấy số người nhiễm virus vào ngày thứ $t$ là $f(t) = 21t^2 - t^3$. Ta xem $y = f(t)$ là một hàm số xác định trên $[1; 21]$ và $f'(t)$ là tốc độ nhiễm virus tại thời điểm $t$. Tốc độ nhiễm virus lớn nhất vào ngày thứ bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập ngày đạt tốc độ nhiễm lớn nhất (ví dụ: 10):", key="q34_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q34_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 7
+    if normalized_user_answer == "7":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tính hàm tốc độ f'(t) và tìm giá trị lớn nhất của hàm đó trên đoạn [1; 21] nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q34_solution_shown' not in st.session_state:
+    st.session_state['q34_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q34_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q34_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q34_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q34_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm hàm số biểu diễn tốc độ nhiễm virus**
+    
+    Theo giả thiết, số người nhiễm virus vào ngày thứ $t$ là $f(t) = 21t^2 - t^3$ với $t \in [1; 21]$.
+    Tốc độ nhiễm virus tại thời điểm $t$ là đạo hàm bậc nhất của $f(t)$, ký hiệu là $v(t)$:
+    $$v(t) = f'(t) = 42t - 3t^2$$
+    
+    **Bước 2: Tìm giá trị lớn nhất của hàm tốc độ $v(t)$**
+    
+    Bài toán yêu cầu tìm $t \in [1; 21]$ sao cho $v(t)$ đạt giá trị lớn nhất.
+    Hàm số $v(t) = -3t^2 + 42t$ là một hàm số bậc hai ẩn $t$ với hệ số $a = -3 < 0$. 
+    Đồ thị của hàm số này là một parabol có bề lõm hướng xuống dưới, do đó nó đạt giá trị lớn nhất tại đỉnh.
+    
+    Hoành độ đỉnh của parabol là:
+    $$t = -\dfrac{b}{2a} = -\dfrac{42}{2 \cdot (-3)} = -\dfrac{42}{-6} = 7$$
+    
+    Giá trị $t = 7$ thuộc đoạn $[1; 21]$.
+    
+    *(Cách khác: Tính đạo hàm $v'(t) = 42 - 6t$. Cho $v'(t) = 0 \Leftrightarrow t = 7$. Lập bảng biến thiên trên đoạn $[1; 21]$ cũng sẽ cho kết quả hàm số đạt cực đại và lớn nhất tại $t = 7$.)*
+    
+    **Bước 3: Kết luận**
+    
+    Tốc độ nhiễm virus đạt giá trị lớn nhất vào ngày thứ $7$.
+    
+    **Kết luận:** Tốc độ nhiễm virus lớn nhất vào ngày thứ **$7$**.
+    """)
+    
+st.markdown("---")
+
