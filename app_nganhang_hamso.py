@@ -7434,4 +7434,85 @@ if st.session_state.get('q76_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 77 (THPT Lê Thánh Tông - HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Anh Trọng quyết định mua $2$ cây đào và $1$ cây mai tại nhà vườn để trang trí dịp Tết Nguyên Đán. Giá mỗi cây đào là $1.000.000$ đồng, giá mỗi cây mai là $2.000.000$ đồng. Để kích cầu, nhà vườn đưa ra chính sách: nếu khách hàng mua thêm $x$ cây cảnh nhỏ ($x$ là số nguyên không âm) với giá $50.000$ đồng/cây, thì toàn bộ đơn hàng sẽ được vận chuyển về nhà với mức chi phí theo hàm số: $f(x) = x^2 - 100x + 300$ (đơn vị nghìn đồng). Biết rằng số lượng cây mua không vượt quá $40$ cây để đảm bảo tải trọng xe ($0 \le x \le 40$). Tổng chi phí (tiền mua cây và tiền vận chuyển) thấp nhất mà anh Trọng cần bỏ ra để mua cây trang trí dịp tết là bao nhiêu nghìn đồng?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng chi phí thấp nhất (nghìn đồng) (ví dụ: 3675):", key="q77_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q77_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 3675
+    if normalized_user_answer == "3675":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tính tổng chi phí gồm tiền mua hoa, tiền mua cây cảnh nhỏ và tiền vận chuyển, sau đó tìm giá trị nhỏ nhất của hàm số bậc hai nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q77_solution_shown' not in st.session_state:
+    st.session_state['q77_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q77_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q77_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q77_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q77_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính tiền mua cây đào, cây mai và cây cảnh nhỏ**
+    
+    * Tiền mua $2$ cây đào và $1$ cây mai là:
+        $$2 \cdot 1.000.000 + 1 \cdot 2.000.000 = 4.000.000 \text{ (đồng)} = 4000 \text{ (nghìn đồng)}$$
+    * Tiền mua $x$ cây cảnh nhỏ (với giá $50.000$ đồng/cây = $50$ nghìn đồng/cây):
+        $$50x \text{ (nghìn đồng)}$$
+        
+    **Bước 2: Thiết lập hàm tổng chi phí**
+    
+    * Chi phí vận chuyển theo đề bài là: 
+        $$f(x) = x^2 - 100x + 300 \text{ (nghìn đồng)}$$
+    * Tổng chi phí $C(x)$ (tính bằng nghìn đồng) bao gồm tiền mua hoa, tiền mua cây cảnh nhỏ và tiền vận chuyển là:
+        $$C(x) = 4000 + 50x + (x^2 - 100x + 300)$$
+        $$C(x) = x^2 - 50x + 4300 \quad \text{với } x \in [0; 40], x \in \mathbb{N}$$
+        
+    **Bước 3: Tìm giá trị nhỏ nhất của hàm số**
+    
+    * Hàm số $C(x) = x^2 - 50x + 4300$ là một hàm bậc hai có hệ số $a = 1 > 0$, đồ thị là một parabol có bề lõm hướng lên trên.
+    * Hoành độ đỉnh của parabol là:
+        $$x = -\dfrac{b}{2a} = -\dfrac{-50}{2 \cdot 1} = 25$$
+    * Vì $x = 25$ thỏa mãn điều kiện $0 \le 25 \le 40$ và $25$ là số nguyên, nên hàm số đạt giá trị nhỏ nhất tại $x = 25$.
+    
+    **Bước 4: Tính tổng chi phí thấp nhất**
+    
+    Thay $x = 25$ vào hàm $C(x)$:
+    $$C(25) = 25^2 - 50 \cdot 25 + 4300 = 625 - 1250 + 4300 = 3675 \text{ (nghìn đồng)}$$
+    
+    **Kết luận:** Tổng chi phí thấp nhất mà anh Trọng cần bỏ ra là **$3675$** nghìn đồng.
+    """)
+    
+st.markdown("---")
+
 
