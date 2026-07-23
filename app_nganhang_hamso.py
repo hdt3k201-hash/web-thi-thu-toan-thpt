@@ -3660,12 +3660,10 @@ Tìm giá trị của tham số $m > 0$ để đồ thị $(C_m)$ có hai điể
 """)
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 user_answer = st.text_input("Nhập giá trị của m (ví dụ: 2):", key="q_cubic_ans")
-
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q_cubic_check"):
     # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
-    normalized_user_answer = user_answer.strip().replace(',', '.')
-    
+    normalized_user_answer = user_answer.strip().replace(',', '.')    
     # Đáp án chính xác là 2
     if normalized_user_answer == "2":
         st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
@@ -3673,14 +3671,11 @@ if st.button("Kiểm tra đáp án", key="q_cubic_check"):
         st.warning("Bạn chưa nhập đáp án.")
     else:
         st.error("Sai rồi. Hãy kiểm tra lại điều kiện có cực trị, tọa độ các điểm cực trị và công thức tính diện tích tam giác OAB nhé!")
-
 # --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
 st.markdown("---")
-
 # Khởi tạo trạng thái hiển thị lời giải nếu chưa có
 if 'q_cubic_solution_shown' not in st.session_state:
     st.session_state['q_cubic_solution_shown'] = False
-
 col1, col2 = st.columns([1, 4])
 with col1:
     if st.button("Xem lời giải chi tiết", key="q_cubic_solution"):
@@ -3693,14 +3688,12 @@ with col1:
 
 # Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
 if st.session_state.get('q_cubic_solution_shown') and st.session_state.get('logged_in'):
-    st.info("### Lời giải chi tiết:")
-    
+    st.info("### Lời giải chi tiết:") 
     st.markdown(r"""
     **Bước 1: Tìm điều kiện để hàm số có hai điểm cực trị**
     
     Ta có đạo hàm của hàm số:
     $$y' = 3x^2 - 6mx = 3x(x - 2m)$$
-    
     Hàm số có hai điểm cực trị khi và chỉ khi phương trình $y' = 0$ có hai nghiệm phân biệt, tức là:
     $$m \neq 0$$
     
