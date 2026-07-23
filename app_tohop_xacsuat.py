@@ -43,80 +43,109 @@ st.markdown(
 )
 st.markdown("---")
 
-# --- CÂU HỎI 1: XẾP HỌC SINH KHÔNG ĐỨNG CẠNH NHAU ---
+
+
+# --- CÂU HỎI 1: TỔ HỢP XÁC SUẤT ---
 st.markdown(
-    '<b style="color: blue;">Câu 1 (Cụm chuyên môn Toán 2026)</b>',
+    '<b style="color: blue;">Câu 1 (Đề thi Tốt nghiệp THPT 2025)</b>',
     unsafe_allow_html=True
 )
 
 st.markdown(r"""
-Xếp ngẫu nhiên $50$ học sinh lớp A và $4$ học sinh lớp B thành một hàng ngang. Tính xác suất để không có hai học sinh lớp B nào đứng cạnh nhau (kết quả làm tròn đến hàng phần trăm dưới dạng số thập phân).
+Bạn Nam tham gia cuộc thi giải một mật thư. Theo quy tắc của cuộc thi, người chơi cần chọn ra sáu số từ tập $S = \{31; 32; 33; 34; 35; 36; 37; 38; 39\}$ và xếp mỗi số vào đúng một vị trí trong sáu vị trí $A, B, C, M, N, P$ như hình bên sao cho mỗi vị trí chỉ được xếp một số. Mật thư sẽ được giải nếu các bộ ba số xuất hiện ở những bộ ba vị trí $(A, M, B); (B, N, C); (C, P, A)$ tạo thành các cấp số cộng theo thứ tự đó. Bạn Nam chọn ngẫu nhiên sáu số trong tập $S$ và xếp ngẫu nhiên vào các vị trí được yêu cầu. Gọi xác suất để bạn Nam giải được mật thư ở lần chọn và xếp đó là $a$. Giá trị của $\dfrac{3}{a}$ bằng bao nhiêu?
 """)
 
 # --- Ô NHẬP ĐÁP ÁN ---
-user_answer = st.text_input("Nhập xác suất (ví dụ: 0.24):", key="tohop_ans_1")
+user_answer = st.text_input("Nhập giá trị của 3/a (ví dụ: 1234):", key="q1_ans")
 
-# --- CHÈN HÌNH ẢNH (NẾU CÓ) ---
-# (Phần mẫu chèn ảnh chuẩn theo yêu cầu của thầy)
-
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_4ed3e2.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_4ed3e2.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # --- NÚT KIỂM TRA ĐÁP ÁN ---
-if st.button("Kiểm tra đáp án", key="tohop_check_1"):
+if st.button("Kiểm tra đáp án", key="q1_check"):
     normalized_user_answer = user_answer.strip().replace(',', '.')
     
-    if normalized_user_answer in ["0.24", "0,24"]:
+    # Đáp án chính xác là 3780
+    if normalized_user_answer == "3780":
         st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
     elif user_answer == "":
         st.warning("Bạn chưa nhập đáp án.")
     else:
-        st.error("Sai rồi. Hãy sử dụng phương pháp xếp học sinh lớp A trước rồi chèn học sinh lớp B vào các khoảng trống nhé!")
+        st.error("Sai rồi. Gợi ý: Hãy phân tích tính chẵn lẻ của A, B, C và điều kiện không tạo thành cấp số cộng để loại các bộ ba trùng lặp nhé!")
 
 # --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
 st.markdown("---")
 
-if 'tohop_solution_shown' not in st.session_state:
-    st.session_state['tohop_solution_shown'] = False
+if 'q1_solution_shown' not in st.session_state:
+    st.session_state['q1_solution_shown'] = False
 
 col1, col2 = st.columns([1, 4])
 with col1:
-    if st.button("Xem lời giải chi tiết", key="tohop_solution_btn_1"):
+    if st.button("Xem lời giải chi tiết", key="q1_solution_btn"):
         if st.session_state.get('logged_in'):
-            st.session_state['tohop_solution_shown'] = True
+            st.session_state['q1_solution_shown'] = True
         else:
             st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
-            st.session_state['tohop_solution_shown'] = False 
+            st.session_state['q1_solution_shown'] = False 
 
 # Hiển thị lời giải chi tiết khi đủ điều kiện
-if st.session_state.get('tohop_solution_shown') and st.session_state.get('logged_in'):
+if st.session_state.get('q1_solution_shown') and st.session_state.get('logged_in'):
     st.info("### Lời giải chi tiết:")
     
     st.markdown(r"""
     **Bước 1: Tính số phần tử của không gian mẫu**
     
-    * Tổng số học sinh tham gia xếp hàng là: 
-        $$5 + 4 = 9 \text{ (học sinh)}$$
-    * Số cách xếp ngẫu nhiên $9$ học sinh thành một hàng ngang là số hoán vị của $9$ phần tử:
-        $$n(\Omega) = 9! = 362.880$$
+    * Tập $S = \{31; 32; 33; 34; 35; 36; 37; 38; 39\}$ có $9$ phần tử.
+    * Việc chọn ngẫu nhiên $6$ số từ tập $S$ và xếp vào $6$ vị trí phân biệt $A, B, C, M, N, P$ chính là một chỉnh hợp chập $6$ của $9$.
+    * Số phần tử của không gian mẫu là:
+        $$n(\Omega) = A_9^6 = 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 = 60.480 \text{ (cách)}$$
     
-    **Bước 2: Tính số kết quả thuận lợi cho biến cố**
+    **Bước 2: Phân tích điều kiện của biến cố**
     
-    * Xếp $5$ học sinh lớp A thành một hàng ngang có $5! = 120$ cách. 
-    * Khi xếp $5$ học sinh lớp A sẽ tạo ra $6$ khoảng trống (tính cả hai đầu mút của hàng ngang).
-    * Để không có hai học sinh lớp B nào đứng cạnh nhau, ta chọn $4$ khoảng trống từ $6$ khoảng trống đó để xếp $4$ học sinh lớp B vào:
-        $$A_6^4 = \dfrac{6!}{(6-4)!} = 360 \text{ (cách)}$$
-    * Theo quy tắc nhân, số kết quả thuận lợi cho biến cố là:
-        $$n(A) = 5! \cdot A_6^4 = 120 \cdot 360 = 43.200$$
+    Gọi biến cố $X$: "Bạn Nam giải được mật thư".
+    * Theo giả thiết, các bộ ba $(A, M, B); (B, N, C); (C, P, A)$ lập thành cấp số cộng. Điều kiện này tương đương với:
+        $$\begin{cases} A + B = 2M \\ B + C = 2N \\ C + A = 2P \end{cases}$$
+    * Vì vế phải $2M, 2N, 2P$ là các số chẵn nên các tổng $A+B, B+C, C+A$ phải là số chẵn. Do đó, $A, B, C$ bắt buộc phải có cùng tính chẵn lẻ (cùng là số chẵn hoặc cùng là số lẻ).
+    * Mặt khác, $6$ số $A, B, C, M, N, P$ là các số phân biệt nên tập hợp $3$ số $\{A, B, C\}$ không được tạo thành một cấp số cộng (Ví dụ, nếu $A, B, C$ lập thành cấp số cộng thì $A+C=2B \Rightarrow 2P = 2B \Rightarrow P = B$, trái với điều kiện các số phân biệt).
     
-    **Bước 3: Tính xác suất của biến cố**
+    **Bước 3: Đếm số kết quả thuận lợi cho biến cố $X$**
     
-    * Xác suất cần tìm là:
-        $$P(A) = \dfrac{n(A)}{n(\Omega)} = \dfrac{43.200}{362.880} \approx 0,119047$$
+    * **Trường hợp 1:** $A, B, C$ cùng là số lẻ.
+        * Tập các số lẻ trong $S$ là $\{31; 33; 35; 37; 39\}$ (có $5$ số).
+        * Số cách chọn $3$ số lẻ là $C_5^3 = 10$ (cách).
+        * Trong $10$ bộ số này, có $4$ bộ lập thành cấp số cộng là: $\{31; 33; 35\}, \{33; 35; 37\}, \{35; 37; 39\}$ (công sai 2) và $\{31; 35; 39\}$ (công sai 4).
+        * Suy ra có $10 - 4 = 6$ bộ $3$ số lẻ thoả mãn không tạo thành cấp số cộng.
+        * Với mỗi bộ thỏa mãn, có $3! = 6$ cách xếp vào $3$ vị trí $A, B, C$. Khi $A, B, C$ cố định, $M, N, P$ sẽ được xác định duy nhất.
+        * Số kết quả trong trường hợp 1 là: $6 \times 6 = 36$ (cách).
+        
+    * **Trường hợp 2:** $A, B, C$ cùng là số chẵn.
+        * Tập các số chẵn trong $S$ là $\{32; 34; 36; 38\}$ (có $4$ số).
+        * Số cách chọn $3$ số chẵn là $C_4^3 = 4$ (cách).
+        * Trong $4$ bộ số này, có $2$ bộ lập thành cấp số cộng là: $\{32; 34; 36\}, \{34; 36; 38\}$.
+        * Suy ra có $4 - 2 = 2$ bộ $3$ số chẵn thoả mãn.
+        * Với mỗi bộ thỏa mãn, có $3! = 6$ cách xếp vào $3$ vị trí $A, B, C$.
+        * Số kết quả trong trường hợp 2 là: $2 \times 6 = 12$ (cách).
+        
+    * Vậy tổng số kết quả thuận lợi cho biến cố $X$ là:
+        $$n(X) = 36 + 12 = 48 \text{ (cách)}$$
     
-    **Bước 4: Quy đổi và làm tròn kết quả**
+    **Bước 4: Tính xác suất và kết quả bài toán**
     
-    * Làm tròn kết quả đến hàng phần trăm (2 chữ số thập phân), ta thu được giá trị **$0,24$** (hoặc theo kết cấu định dạng quy chuẩn bộ đề).
-    
-    **Kết luận:** Xác suất để không có hai học sinh lớp B nào đứng cạnh nhau là **$0,24$**.
+    * Xác suất để bạn Nam giải được mật thư là:
+        $$a = P(X) = \dfrac{n(X)}{n(\Omega)} = \dfrac{48}{60.480} = \dfrac{1}{1260}$$
+    * Giá trị cần tính là:
+        $$\dfrac{3}{a} = \dfrac{3}{\dfrac{1}{1260}} = 3 \times 1260 = 3780$$
+        
+    **Kết luận:** Giá trị của $\dfrac{3}{a}$ bằng **$3780$**.
     """)
 
 st.markdown("---")
+
+
