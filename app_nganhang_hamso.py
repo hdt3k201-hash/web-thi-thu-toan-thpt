@@ -8273,3 +8273,106 @@ if st.session_state.get('q85_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 86 (THPT Lê Thánh Tông - HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một nhà mạng cần phủ sóng 5G dọc theo một tuyến đường thẳng dài $100\text{ (km)}$ nối hai thành phố A và B (tại A và B đã có trạm phát chính). Họ cần xây thêm các trạm thu phát sóng phụ ở giữa với khoảng cách đều nhau. Chi phí xây dựng mỗi trạm phụ là $320\text{ (triệu đồng)}$. Chi phí kéo cáp quang nối giữa hai trạm liền kề với khoảng cách $x\text{ (km)}$ là $x(5 + 2x)\text{ (triệu đồng)}$. Hỏi nhà mạng cần xây thêm bao nhiêu trạm phụ để tổng chi phí thi công là thấp nhất?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số trạm phụ cần xây thêm (ví dụ: 9):", key="q86_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q86_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 7
+    if normalized_user_answer == "7":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy gọi $n$ là số trạm cần xây, số đoạn cáp sẽ là $n+1$. Thiết lập hàm chi phí theo $n$ và dùng đạo hàm để tìm giá trị nhỏ nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q86_solution_shown' not in st.session_state:
+    st.session_state['q86_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q86_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q86_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q86_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q86_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập các biến số và hàm chi phí**
+    
+    *   Gọi $n$ là số trạm thu phát phụ cần xây thêm ($n \in \mathbb{N}$).
+    *   Khi xây $n$ trạm phụ ở giữa hai trạm chính A và B, tuyến đường sẽ được chia thành $n + 1$ đoạn bằng nhau.
+    *   Khoảng cách giữa hai trạm liền kề (chiều dài mỗi đoạn) là: 
+        $$x = \dfrac{100}{n + 1} \text{ (km)}$$
+    
+    **Bước 2: Xây dựng hàm tổng chi phí**
+    
+    Tổng chi phí thi công bao gồm chi phí xây trạm phụ và chi phí kéo cáp quang.
+    
+    *   Chi phí xây dựng $n$ trạm phụ là: 
+        $$C_1 = 320n \text{ (triệu đồng)}$$
+        
+    *   Chi phí kéo cáp quang cho **một đoạn** chiều dài $x$ là: 
+        $$x(5 + 2x) = \dfrac{100}{n + 1}\left(5 + 2 \cdot \dfrac{100}{n + 1}\right) = \dfrac{500}{n + 1} + \dfrac{20000}{(n + 1)^2} \text{ (triệu đồng)}$$
+        
+    *   Vì có tổng cộng $n + 1$ đoạn, chi phí kéo cáp quang cho **toàn bộ** tuyến đường là:
+        $$C_2 = (n + 1) \cdot \left[ \dfrac{500}{n + 1} + \dfrac{20000}{(n + 1)^2} \right] = 500 + \dfrac{20000}{n + 1} \text{ (triệu đồng)}$$
+        
+    *   Hàm tổng chi phí theo $n$ là:
+        $$f(n) = C_1 + C_2 = 320n + 500 + \dfrac{20000}{n + 1}$$
+        
+    **Bước 3: Khảo sát hàm số tìm giá trị nhỏ nhất**
+    
+    Để thuận tiện, đặt $k = n + 1 \Rightarrow n = k - 1$ với $k \in \mathbb{N}^*$. Hàm số trở thành:
+    $$g(k) = 320(k - 1) + 500 + \dfrac{20000}{k} = 320k + \dfrac{20000}{k} + 180$$
+    
+    Xét hàm số $g(t) = 320t + \dfrac{20000}{t} + 180$ với $t > 0$.
+    Tính đạo hàm:
+    $$g'(t) = 320 - \dfrac{20000}{t^2}$$
+    Cho $g'(t) = 0 \Leftrightarrow 320t^2 = 20000 \Leftrightarrow t^2 = 62,5 \Rightarrow t = \sqrt{62,5} \approx 7,905$$
+    
+    Vì $k$ phải là số nguyên ($k \in \mathbb{N}^*$), ta so sánh hai giá trị nguyên lân cận của $t \approx 7,9$ là $k = 7$ và $k = 8$:
+    *   Với $k = 7$: 
+        $$g(7) = 320 \cdot 7 + \dfrac{20000}{7} + 180 = 2420 + 2857,14 \approx 5277,14 \text{ (triệu đồng)}$$
+    *   Với $k = 8$: 
+        $$g(8) = 320 \cdot 8 + \dfrac{20000}{8} + 180 = 2560 + 2500 + 180 = 5240 \text{ (triệu đồng)}$$
+        
+    Ta thấy $g(8) < g(7)$, do đó hàm chi phí đạt giá trị nhỏ nhất khi $k = 8$.
+    
+    **Bước 4: Kết luận**
+    
+    Với $k = 8 \Rightarrow n + 1 = 8 \Leftrightarrow n = 7$.
+    
+    Vậy nhà mạng cần xây thêm **$7$ trạm phụ** để tổng chi phí thi công là thấp nhất.
+    """)
+    
+st.markdown("---")
+
+
