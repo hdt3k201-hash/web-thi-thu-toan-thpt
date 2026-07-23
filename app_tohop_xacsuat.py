@@ -1,44 +1,44 @@
 import streamlit as st
+import math
 
-# --- CẤU HÌNH TRANG WEB ---
-st.set_page_config(
-    page_title="Chuyên đề Tổ hợp - Xác suất - Toán THPT",
-    page_icon="📚",
-    layout="wide"
-)
+st.set_page_config(page_title="Ngân hàng câu hỏi", layout="centered")
 
-# --- KHỞI TẠO TRẠNG THÁI ĐĂNG NHẬP ---
-if 'logged_in' not in st.session_state:
-    st.session_state['logged_in'] = False
+# 1. Đọc thông số từ URL (do WordPress truyền sang)
+params = st.query_params
 
-# --- THANH ĐIỀU HƯỚNG SIDEBAR (QUẢN LÝ TRẠNG THÁI) ---
-st.sidebar.title("🗂️ HỆ THỐNG XÁC THỰC")
-if not st.session_state['logged_in']:
-    st.sidebar.warning("🔒 Trạng thái: Chưa đăng nhập")
-    with st.sidebar.form("login_form"):
-        username = st.text_input("Tên đăng nhập")
-        password = st.text_input("Mật khẩu", type="password")
-        submit_btn = st.form_submit_button("Đăng nhập")
-        if submit_btn:
-            if username == "admin" and password == "123456": # Thầy có thể đổi thông tin tài khoản tại đây
-                st.session_state['logged_in'] = True
-                st.success("Đăng nhập thành công!")
-                st.rerun()
-            else:
-                st.error("Sai tài khoản hoặc mật khẩu!")
+# Nếu trên URL có chứa tham số 'auth_status=success', tự động cho phép xem lời giải
+if params.get("auth_status") == "success":
+    st.session_state['logged_in'] = True
+    st.sidebar.success("✅ Đã đồng bộ tài khoản từ Website!")
 else:
-    st.sidebar.success("🔓 Trạng thái: Đã đăng nhập hệ thống")
-    if st.sidebar.button("Đăng xuất"):
+    # Nếu không có tham số từ web, hiển thị form đăng nhập dự phòng như cũ
+    if 'logged_in' not in st.session_state:
         st.session_state['logged_in'] = False
-        st.session_state['tohop_solution_shown'] = False
-        st.rerun()
 
-st.sidebar.markdown("---")
-st.sidebar.info("💡 Hướng dẫn: Đăng nhập để mở khóa và xem toàn bộ lời giải chi tiết các câu hỏi.")
+    with st.sidebar:
+        st.header("Tài khoản học sinh")
+        if not st.session_state['logged_in']:
+            username = st.text_input("Tên đăng nhập")
+            password = st.text_input("Mật khẩu", type="password")
+            if st.button("Đăng nhập"):
+                if username == "hocsinh" and password == "123456":
+                    st.session_state['logged_in'] = True
+                    st.success("Đăng nhập thành công!")
+                    st.rerun()
+                else:
+                    st.error("Sai tên đăng nhập hoặc mật khẩu.")
+        else:
+            st.success("Đã đăng nhập!")
+            if st.button("Đăng xuất"):
+                st.session_state['logged_in'] = False
+                st.rerun()
 
-# --- GIAO DIỆN CHÍNH ---
+
+
+# 2. Giao diện chính hiển thị câu hỏi
+# Tiêu đề chuyên đề căn giữa màn hình, màu xanh đậm (Dark Blue)
 st.markdown(
-    '<h1 style="text-align: center; color: #1e3a8a;">📚 CHUYÊN ĐỀ: TỔ HỢP - XÁC SUẤT</h1>', 
+    '<h2 style="text-align: center; color: #00008B;">CHUYÊN ĐỀ: TỔ HỢP XÁC SUẤT</h2>',
     unsafe_allow_html=True
 )
 st.markdown("---")
