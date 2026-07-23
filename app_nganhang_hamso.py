@@ -439,17 +439,22 @@ st.markdown(
 )
 
 # Nội dung câu hỏi từ hình ảnh image_d07166.png
+# Nội dung câu hỏi từ hình ảnh image_d07166.png
 st.markdown(r"""
 Một phần đường chạy của tàu lượn siêu tốc khi gắn hệ trục tọa độ $Oxy$ được mô phỏng như hình vẽ, đơn vị trên mỗi trục là mét. Biết đường chạy của nó là một phần đồ thị hàm số bậc ba $y = ax^3 + bx^2 + cx + d$ ($0 \le x \le 90$); tàu lượn siêu tốc đi qua các điểm $A(0; 30), C(50; 30), D(80; 30)$ đồng thời đạt độ cao nhỏ nhất so với mặt đất là 4m (trong khoảng từ 0 đến 50).
 
 Độ cao lớn nhất mà tàu lượn siêu tốc đạt được là bao nhiêu mét so với mặt đất? (kết quả làm tròn đến hàng phần chục).
 """)
- try: 
+
+# Hiển thị hình ảnh mô phỏng
+try:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
+        # Đường dẫn ảnh đã được đồng bộ
         st.image("images/hsgth.PNG", width=400)
- except: 
-    st.warning("⚠️ Lỗi: Thiếu file ảnh images/hsgth.PNG")
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/hsgth.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
