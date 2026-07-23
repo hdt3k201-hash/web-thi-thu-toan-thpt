@@ -8078,3 +8078,198 @@ if st.session_state.get('q83_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 84 (Sở Thái Nguyên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Đối với ngành nuôi trồng thủy sản, việc kiểm soát lượng thuốc tồn dư trong nước là một nhiệm vụ quan trọng nhằm đáp ứng các tiêu chuẩn an toàn về môi trường. Khi nghiên cứu một loại thuốc trị bệnh trong nuôi trồng thủy sản, người ta sử dụng thuốc đó một lần và theo dõi nồng độ thuốc tồn dư trong nước kể từ lúc sử dụng thuốc. Kết quả cho thấy nồng độ thuốc $y(t)$ (đơn vị: mg/lít) tồn dư trong nước tại thời điểm $t$ ngày kể từ lúc sử dụng thuốc, thỏa mãn $y(t) = e^{g(t)}$ và $y'(t) = k \cdot y(t)$ với $t \ge 0$, trong đó $k$ là hằng số khác không. Do nồng độ thuốc tồn dư trong nước tại các thời điểm $t = 6$ ngày, $t = 12$ ngày nhận được kết quả lần lượt là $2\text{ mg/lít}$, $1\text{ mg/lít}$. Nồng độ thuốc tồn dư trong nước tại thời điểm $30$ ngày bằng bao nhiêu mg/lít? (kết quả làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập nồng độ thuốc (mg/lít) (ví dụ: 0.13):", key="q84_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q84_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 0.13
+    if normalized_user_answer == "0.13":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy giải phương trình vi phân $y'(t) = k \cdot y(t)$ để tìm dạng của hàm $y(t)$, sau đó dùng giả thiết để tìm các hằng số nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q84_solution_shown' not in st.session_state:
+    st.session_state['q84_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q84_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q84_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q84_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q84_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm công thức tổng quát của hàm số $y(t)$**
+    
+    Từ giả thiết ta có phương trình vi phân:
+    $$y'(t) = k \cdot y(t)$$
+    $$\Leftrightarrow \dfrac{y'(t)}{y(t)} = k$$
+    
+    Lấy nguyên hàm hai vế theo biến $t$, ta được:
+    $$\int \dfrac{y'(t)}{y(t)} dt = \int k \, dt$$
+    $$\Leftrightarrow \ln |y(t)| = kt + C$$
+    
+    Vì $y(t)$ là nồng độ thuốc nên $y(t) > 0$. Do đó:
+    $$y(t) = e^{kt + C} = e^C \cdot e^{kt}$$
+    
+    Đặt $A = e^C$ ($A > 0$), ta có công thức nồng độ thuốc tại thời điểm $t$:
+    $$y(t) = A \cdot e^{kt}$$
+    
+    **Bước 2: Sử dụng các dữ kiện để tìm các hằng số $A$ và $e^{6k}$**
+    
+    Theo bài ra, tại $t = 6$ và $t = 12$, ta có:
+    *   $y(6) = 2 \implies A \cdot e^{6k} = 2 \quad (1)$
+    *   $y(12) = 1 \implies A \cdot e^{12k} = 1 \quad (2)$
+    
+    Chia vế theo vế của $(2)$ cho $(1)$, ta được:
+    $$\dfrac{A \cdot e^{12k}}{A \cdot e^{6k}} = \dfrac{1}{2}$$
+    $$\Leftrightarrow e^{6k} = \dfrac{1}{2}$$
+    
+    Thay $e^{6k} = \dfrac{1}{2}$ vào $(1)$, ta có:
+    $$A \cdot \dfrac{1}{2} = 2 \Leftrightarrow A = 4$$
+    
+    Vậy hàm số biểu diễn nồng độ thuốc là:
+    $$y(t) = 4 \cdot (e^{6k})^{\frac{t}{6}} = 4 \cdot \left(\dfrac{1}{2}\right)^{\frac{t}{6}}$$
+    
+    **Bước 3: Tính nồng độ thuốc tại thời điểm $t = 30$ ngày**
+    
+    Thay $t = 30$ vào hàm số $y(t)$, ta được:
+    $$y(30) = 4 \cdot \left(\dfrac{1}{2}\right)^{\frac{30}{6}} = 4 \cdot \left(\dfrac{1}{2}\right)^5$$
+    $$y(30) = 4 \cdot \dfrac{1}{32} = \dfrac{1}{8} = 0,125 \text{ (mg/lít)}$$
+    
+    Làm tròn kết quả đến hàng phần trăm (2 chữ số thập phân), ta được **$0,13$**.
+    
+    **Kết luận:** Nồng độ thuốc tồn dư trong nước tại thời điểm $30$ ngày là **$0,13$** mg/lít.
+    """)
+    
+st.markdown("---")
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 85 (Cụm trường Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một cửa hàng kinh doanh máy lọc nước Karofi. Hàm cầu biểu thị liên hệ giữa giá bán của một chiếc máy với số lượng máy bán được trong một tháng là hàm bậc nhất. Khi giá bán là 5 triệu đồng một chiếc thì một tháng bán được 100 chiếc. Khi giá bán là 4,5 triệu đồng một chiếc thì một tháng bán được 120 chiếc. Biết chi phí trung bình cho một chiếc máy khi bán được $x$ chiếc là $\overline{C}(x) = \dfrac{3x + 50}{x}$. Hỏi cửa hàng cần bán với giá bao nhiêu triệu đồng một chiếc máy để lợi nhuận thu được trong một tháng là lớn nhất?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá bán (triệu đồng) (ví dụ: 1.23):", key="q85_ans")
+
+# Chèn hình ảnh minh họa ngay sau dòng nhập đáp án, trước phần kiểm tra đáp án và xem lời giải chi tiết
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q85_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 5.25
+    if normalized_user_answer == "5.25":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tìm hàm giá bán theo x trước, sau đó thiết lập hàm lợi nhuận = Doanh thu - Tổng chi phí nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q85_solution_shown' not in st.session_state:
+    st.session_state['q85_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q85_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q85_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q85_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q85_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm cầu (giá bán theo số lượng)**
+    
+    Gọi $p(x)$ là giá bán của một chiếc máy lọc nước khi cửa hàng bán được $x$ chiếc trong một tháng ($x \in \mathbb{N}^*$).
+    
+    Vì hàm cầu là một hàm bậc nhất nên có dạng: $p(x) = ax + b$.
+    
+    Theo giả thiết của bài toán, ta có hệ phương trình:
+    $$\begin{cases} 100a + b = 5 \\ 120a + b = 4,5 \end{cases}$$
+    
+    Trừ vế theo vế, ta được $20a = -0,5 \Leftrightarrow a = -0,025$. 
+    Thay vào phương trình đầu, ta tìm được $b = 5 - 100(-0,025) = 7,5$.
+    
+    Vậy hàm giá bán là: $p(x) = -0,025x + 7,5$ (triệu đồng).
+    
+    **Bước 2: Thiết lập hàm doanh thu và hàm chi phí**
+    
+    *   Doanh thu thu được khi bán $x$ chiếc máy trong một tháng là:
+        $$R(x) = x \cdot p(x) = x(-0,025x + 7,5) = -0,025x^2 + 7,5x \text{ (triệu đồng)}$$
+        
+    *   Tổng chi phí để bán được $x$ chiếc máy trong một tháng là:
+        $$C(x) = x \cdot \overline{C}(x) = x \cdot \dfrac{3x + 50}{x} = 3x + 50 \text{ (triệu đồng)}$$
+        
+    **Bước 3: Khảo sát hàm lợi nhuận**
+    
+    Hàm lợi nhuận $L(x)$ là Doanh thu trừ đi Tổng chi phí:
+    $$L(x) = R(x) - C(x)$$
+    $$L(x) = (-0,025x^2 + 7,5x) - (3x + 50)$$
+    $$L(x) = -0,025x^2 + 4,5x - 50$$
+    
+    Xét hàm số $L(x) = -0,025x^2 + 4,5x - 50$, đây là một parabol có hệ số $a = -0,025 < 0$ nên quay bề lõm xuống dưới. Hàm số đạt giá trị lớn nhất tại đỉnh của parabol.
+    
+    Tính đạo hàm:
+    $$L'(x) = -0,05x + 4,5$$
+    
+    Cho $L'(x) = 0 \Leftrightarrow -0,05x + 4,5 = 0 \Leftrightarrow x = 90$ (thỏa mãn điều kiện).
+    
+    Vậy để đạt lợi nhuận lớn nhất, cửa hàng cần bán $90$ chiếc máy lọc nước mỗi tháng.
+    
+    **Bước 4: Tính giá bán tối ưu**
+    
+    Thay $x = 90$ vào hàm giá bán $p(x)$:
+    $$p(90) = -0,025 \cdot 90 + 7,5 = -2,25 + 7,5 = 5,25 \text{ (triệu đồng)}$$
+    
+    **Kết luận:** Cửa hàng cần bán với giá **$5,25$ triệu đồng** một chiếc máy để thu được lợi nhuận lớn nhất.
+    """)
+    
+st.markdown("---")
