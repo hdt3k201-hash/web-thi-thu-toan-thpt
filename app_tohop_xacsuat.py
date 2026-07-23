@@ -227,7 +227,7 @@ import streamlit as st
 
 # --- CÂU HỎI 3 ---
 st.markdown(
-    '<b style="color: blue;">Câu 2 (Đề thi minh họa Tốt nghiệp THPT 2025)</b>',
+    '<b style="color: blue;">Câu 3 (Đề thi minh họa Tốt nghiệp THPT 2025)</b>',
     unsafe_allow_html=True
 )
 
