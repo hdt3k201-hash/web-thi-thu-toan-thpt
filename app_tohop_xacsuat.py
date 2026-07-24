@@ -3785,3 +3785,183 @@ if st.session_state.get('q41_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 42 (Từ ảnh - Liên trường Hà Nội 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 42 (Liên trường Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 42 từ hình ảnh
+st.markdown(r"""
+Cho một bảng ô vuông $3 \times 3$ như hình vẽ. Điền ngẫu nhiên 9 số thuộc tập hợp $X = \{0; 1; 2; 3; 4; 5; 6; 7; 8; 9\}$ vào 9 ô vuông trong bảng (mỗi ô điền một số khác nhau). Gọi $Y$ là biến cố "mỗi hàng, mỗi cột bất kì trong bảng đều có ít nhất một số lẻ". Biết xác suất $P(Y) = \dfrac{a}{b}$ (với $a, b \in \mathbb{N}$ và $\dfrac{a}{b}$ là phân số tối giản). Khi đó $a + b$ bằng bao nhiêu?
+""")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/hn12026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/hn12026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 42) ---
+user_answer_42 = st.text_input("Nhập giá trị của $a + b$ cho Câu 42:", key="q42_ans")
+
+if st.button("Kiểm tra đáp án Câu 42", key="q42_check"):
+    normalized_user_answer_42 = user_answer_42.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 43 (a = 15, b = 28 => a + b = 43)
+    if normalized_user_answer_42 == "43":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 42 đã được mở khóa.")
+    elif user_answer_42 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 42) ---
+st.markdown("---")
+
+if 'q42_solution_shown' not in st.session_state:
+    st.session_state['q42_solution_shown'] = False
+
+col1_42, col2_42 = st.columns([1, 4])
+with col1_42:
+    if st.button("Xem lời giải chi tiết Câu 42", key="q42_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q42_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q42_solution_shown'] = False
+
+if st.session_state.get('q42_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 42:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu $n(\Omega)$**
+    
+    *   Tập hợp $X = \{0; 1; 2; 3; 4; 5; 6; 7; 8; 9\}$ có 10 phần tử (5 số lẻ, 5 số chẵn).
+    *   Điền ngẫu nhiên 9 số khác nhau từ tập $X$ vào 9 ô vuông của bảng $3 \times 3$:
+        $$n(\Omega) = A_{10}^9 = 10! = 3\,628\,800 \text{ (cách)}$$
+    
+    **Bước 2: Phân tích các trường hợp phần bù số lượng số lẻ trong bảng**
+    
+    Vì tập $X$ có 10 số mà chỉ điền 9 số vào bảng, nên có 1 số bị loại ra ngoài:
+    *   **Trường hợp 1:** Số bị loại là số chẵn $\Rightarrow$ Bảng chứa **5 số lẻ** và **4 số chẵn**.
+        *   Số cách chọn số chẵn bị loại: $C_5^1 = 5$ cách.
+        *   Số cách chọn vị trí cho 5 số lẻ sao cho mỗi hàng, mỗi cột đều có ít nhất 1 số lẻ (dùng phương pháp phần bù hoặc đếm trực tiếp tương tự phân tích chuẩn): có $90$ cách chọn vị trí.
+        *   Số cách sắp xếp các số lẻ ($5!$) và số chẵn ($4!$).
+        *   Tổng số cách của TH1: $S_1 = 5 \times 90 \times 5! \times 4! = 1\,296\,000$ cách.
+        
+    *   **Trường hợp 2:** Số bị loại là số lẻ $\Rightarrow$ Bảng chứa **4 số lẻ** và **5 số chẵn**.
+        *   Số cách chọn số lẻ bị loại: $C_5^1 = 5$ cách.
+        *   Số cách chọn vị trí cho 4 số lẻ sao cho mỗi hàng, mỗi cột đều có ít nhất 1 số lẻ: có $45$ cách chọn vị trí.
+        *   Số cách sắp xếp các số lẻ ($4!$) và số chẵn ($5!$).
+        *   Tổng số cách của TH2: $S_2 = 5 \times 45 \times 4! \times 5! = 648\,000$ cách.
+        
+    **Bước 3: Tính tổng số kết quả thuận lợi và xác suất $P(Y)$**
+    
+    *   Tổng số kết quả thuận lợi cho biến cố $Y$:
+        $$n(Y) = S_1 + S_2 = 1\,296\,000 + 648\,000 = 1\,944\,000 \text{ (cách)}$$
+    
+    *   Xác suất của biến cố $Y$:
+        $$P(Y) = \dfrac{1\,944\,000}{3\,628\,800} = \dfrac{15}{28}$$
+    
+    *   Phân số $\dfrac{15}{28}$ là phân số tối giản ($\text{ƯCLN}(15, 28) = 1$), do đó $a = 15$ và $b = 28$.
+    
+    *   Vậy giá trị của biểu thức $a + b = 15 + 28 = 43$.
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU 43 (Từ ảnh - THPT Nguyễn Trung Thiên - Hà Tĩnh 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 43 (THPT Nguyễn Trung Thiên - Hà Tĩnh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 43 từ hình ảnh
+st.markdown(r"""
+Một người môi giới bất động sản có 8 chìa khóa để mở 8 ngôi nhà mới. Mỗi chìa khóa chỉ mở được đúng 1 ngôi nhà. Biết có 3 ngôi nhà thường không khóa cửa, người môi giới chọn ngẫu nhiên 3 chìa khóa mang theo. Hỏi nếu người môi giới chọn ngẫu nhiên một nhà để vào thì xác suất để người môi giới này có thể vào được là bao nhiêu? (kết quả làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 43) ---
+user_answer_43 = st.text_input("Nhập kết quả xác suất cho Câu 43 (ví dụ: 0.12 hoặc 12%):", key="q43_ans")
+
+if st.button("Kiểm tra đáp án Câu 43", key="q43_check"):
+    normalized_user_answer_43 = user_answer_43.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 0.61 (hoặc 39/64)
+    if normalized_user_answer_43 in ["0.61", "39/64", "61%", "0.610"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 43 đã được mở khóa.")
+    elif user_answer_43 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 43) ---
+st.markdown("---")
+
+if 'q43_solution_shown' not in st.session_state:
+    st.session_state['q43_solution_shown'] = False
+
+col1_43, col2_43 = st.columns([1, 4])
+with col1_43:
+    if st.button("Xem lời giải chi tiết Câu 43", key="q43_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q43_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q43_solution_shown'] = False
+
+if st.session_state.get('q43_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 43:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích tình huống bài toán**
+    
+    *   Tổng số ngôi nhà: 8 ngôi nhà.
+        *   Có **3 ngôi nhà không khóa cửa** (dù không có chìa khóa hoặc có chìa khóa thì người môi giới vẫn có thể vào được).
+        *   Có **5 ngôi nhà bị khóa cửa** (cần đúng chìa khóa tương ứng mới vào được).
+    *   Người môi giới chọn ngẫu nhiên **3 chìa khóa** mang theo trong tổng số 8 chìa khóa.
+        *   Số cách chọn 3 chìa khóa từ 8 chìa khóa là: $n(\Omega_{\text{khoá}}) = C_8^3 = 56$ cách.
+    *   Người môi giới chọn ngẫu nhiên **1 ngôi nhà** để vào trong tổng số 8 ngôi nhà.
+    
+    **Bước 2: Tính xác suất người môi giới vào được nhà**
+    
+    Gọi $A$ là biến cố "Người môi giới có thể vào được ngôi nhà được chọn ngẫu nhiên".
+    Ta chia thành 2 trường hợp dựa trên loại ngôi nhà được chọn:
+    
+    *   **Trường hợp 1: Ngôi nhà được chọn là ngôi nhà không khóa cửa.**
+        *   Xác suất chọn được ngôi nhà không khóa là: $P_1 = \dfrac{3}{8}$.
+        *   Trong trường hợp này, dù có hay không có chìa khóa, người môi giới **luôn luôn vào được** nhà ($\text{xác suất vào được} = 1$).
+        *   Xác suất đóng góp của trường hợp này là: 
+            $$P(\text{TH1}) = \dfrac{3}{8} \times 1 = \dfrac{3}{8}$$
+            
+    *   **Trường hợp 2: Ngôi nhà được chọn là ngôi nhà bị khóa cửa.**
+        *   Xác suất chọn được ngôi nhà bị khóa là: $P_2 = \dfrac{5}{8}$.
+        *   Trong trường hợp này, người môi giới chỉ vào được nhà nếu trong 3 chiếc chìa khóa mang theo có chứa **đúng chiếc chìa khóa** mở ngôi nhà đó.
+        *   Số cách chọn 3 chiếc chìa khóa sao cho có chứa chìa khóa của ngôi nhà bị khóa đó là: $C_7^2 = 21$ cách (vì cố định 1 chìa khóa mở nhà đó, chọn thêm 2 chìa khóa nữa từ 7 chìa khóa còn lại).
+        *   Xác suất để có chìa khóa mở ngôi nhà bị khóa đó là: $\dfrac{C_7^2}{C_8^3} = \dfrac{21}{56} = \dfrac{3}{8}$.
+        *   Xác suất đóng góp của trường hợp này là:
+            $$P(\text{TH2}) = \dfrac{5}{8} \times \dfrac{3}{8} = \dfrac{15}{64}$$
+            
+    **Bước 3: Tổng hợp xác suất và làm tròn**
+    
+    Tổng xác suất để người môi giới có thể vào được ngôi nhà được chọn là:
+    $$P(A) = P(\text{TH1}) + P(\text{TH2}) = \dfrac{3}{8} + \dfrac{15}{64} = \dfrac{24}{64} + \dfrac{15}{64} = \dfrac{39}{64}$$
+    
+    Chuyển sang dạng số thập phân và làm tròn đến hàng phần trăm:
+    $$P(A) = \dfrac{39}{64} \approx 0.609375 \approx 0.61$$
+    
+    Vậy xác suất cần tìm là **$0.61$** (hoặc **$61\%$**).
+    """)
+
+st.markdown("---")
