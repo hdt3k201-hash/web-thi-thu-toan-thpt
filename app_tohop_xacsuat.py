@@ -10369,3 +10369,148 @@ if st.session_state.get('q113_solution_shown') and st.session_state.get('logged_
 st.markdown("---")
 
 
+
+
+# ==========================================
+# CÂU 114
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 114 (Cụm chuyên môn số 10 Đắk Lắk 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Chọn ngẫu nhiên 3 trong số 24 đỉnh của một đa giác đều 24 cạnh. Gọi $P$ là xác suất để 3 đỉnh được chọn là 3 đỉnh của một tam giác cân hoặc một tam giác vuông. Biết $P = \dfrac{a}{b}$, với $a, b \in \mathbb{N}^*$ và $\dfrac{a}{b}$ là phân số tối giản. Tính $2a + b$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_114 = st.text_input("Nhập đáp án Câu 114 (chỉ nhập số):", key="q114_ans")
+
+if st.button("Kiểm tra đáp án", key="q114_check"):
+    normalized_user_answer = user_answer_114.strip()
+    if normalized_user_answer == "379":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_114 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q114_solution_shown' not in st.session_state:
+    st.session_state['q114_solution_shown'] = False
+
+col1_114, col2_114 = st.columns([1, 4])
+with col1_114:
+    if st.button("Xem lời giải chi tiết", key="q114_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q114_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q114_solution_shown'] = False
+
+if st.session_state.get('q114_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu $\Omega$.**
+    *   Chọn ngẫu nhiên 3 đỉnh từ 24 đỉnh của đa giác đều:
+        $$n(\Omega) = C_{24}^3 = \dfrac{24 \times 23 \times 22}{3 \times 2 \times 1} = 2024$$
+
+    **Bước 2: Tính số tam giác vuông được tạo thành.**
+    *   Đa giác đều có 24 cạnh (số cạnh chẵn) nên có $\dfrac{24}{2} = 12$ đường chéo đi qua tâm (đường kính).
+    *   Mỗi đường kính kết hợp với một trong 22 đỉnh còn lại trên đường tròn tạo thành một tam giác vuông.
+    *   Số tam giác vuông là:
+        $$n_1 = 12 \times 22 = 264$$
+
+    **Bước 3: Tính số tam giác cân (không nhất thiết là tam giác vuông hoặc tam giác đều).**
+    *   Số tam giác cân có đỉnh tại một đỉnh bất kỳ của đa giác đều $n$ cạnh ($n=24$) là $\dfrac{n-2}{2} = \dfrac{24-2}{2} = 11$.
+    *   Vì đa giác có 24 đỉnh, tổng số tam giác cân (tính cả tam giác đều) là:
+        $$24 \times 11 = 264$$
+    *   Trong đó, số tam giác đều được tính 3 lần (mỗi đỉnh của tam giác đều đều là đỉnh cân). Số tam giác đều là $\dfrac{24}{3} = 8$.
+    *   Do đó, số tam giác cân (bao gồm cả tam giác đều) là $264$.
+
+    **Bước 4: Tính số tam giác vừa vuông vừa cân (giao của hai tập hợp).**
+    *   Tam giác vừa vuông vừa cân nhận đường kính làm cạnh huyền. Với mỗi đường kính (có 12 đường kính), ta chọn được 2 đỉnh trên đường tròn (ở hai bên đường kính) để tạo thành tam giác vuông cân.
+    *   Số tam giác vừa vuông vừa cân là:
+        $$n_3 = 12 \times 2 = 24$$
+
+    **Bước 5: Tính tổng số kết quả thuận lợi và rút gọn phân số xác suất.**
+    *   Theo nguyên lý bù trừ, số tam giác thỏa mãn yêu cầu (là tam giác vuông hoặc tam giác cân) là:
+        $$n(A) = n_1 + n_2 - n_3 = 264 + 264 - 24 = 504$$
+    *   Xác suất $P$ là:
+        $$P = \dfrac{504}{2024} = \dfrac{63}{253}$$
+    *   Ta có $a = 63$, $b = 253$ ($a, b$ nguyên dương và $\dfrac{63}{253}$ là phân số tối giản).
+    *   Giá trị của $2a + b$ là:
+        $$2(63) + 253 = 126 + 253 = 379$$
+
+    **Vậy đáp án là: 379**
+    """)
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 115
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 115 (Sở Cần Thơ 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có hai hộp đựng các viên bi. Hộp thứ nhất có 9 viên bi trắng và 2 viên bi xanh, hộp thứ hai có 4 viên bi trắng và 5 viên bi xanh. Lấy ngẫu nhiên từ mỗi hộp ra một viên bi và không hoàn lại, sau đó đem số bi còn lại ở hai hộp này cho vào hộp thứ ba, hộp thứ ba trước đó không chứa viên bi nào. Lấy ngẫu nhiên một viên bi từ hộp thứ ba, xác suất để lấy được bi xanh là bao nhiêu, không làm tròn kết quả các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần trăm?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_115 = st.text_input("Nhập đáp án Câu 115 (% làm tròn đến hàng phần trăm, ví dụ: 34.19 hoặc 34,19):", key="q115_ans")
+
+if st.button("Kiểm tra đáp án", key="q115_check"):
+    normalized_user_answer = user_answer_115.strip().replace(" ", "").replace("%", "").replace(",", ".")
+    if normalized_user_answer == "34.79":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_115 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q115_solution_shown' not in st.session_state:
+    st.session_state['q115_solution_shown'] = False
+
+col1_115, col2_115 = st.columns([1, 4])
+with col1_115:
+    if st.button("Xem lời giải chi tiết", key="q115_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q115_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q115_solution_shown'] = False
+
+if st.session_state.get('q115_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Phân tích số lượng bi ban đầu ở hai hộp.**
+    *   Hộp 1: $9$ bi trắng, $2$ bi xanh (Tổng $11$ viên).
+    *   Hộp 2: $4$ bi trắng, $5$ bi xanh (Tổng $9$ viên).
+
+    **Bước 2: Sử dụng kỳ vọng toán học để tính số lượng bi xanh còn lại cho vào hộp thứ ba.**
+    *   Số viên bi còn lại sau khi lấy ra 1 viên từ mỗi hộp cho vào hộp thứ ba là:
+        $$(11 - 1) + (9 - 1) = 10 + 8 = 18 \text{ viên}$$
+    *   Số lượng kỳ vọng các viên bi xanh còn lại từ Hộp 1:
+        $$E_1 = 2 \times \dfrac{10}{11} = \dfrac{20}{11}$$
+    *   Số lượng kỳ vọng các viên bi xanh còn lại từ Hộp 2:
+        $$E_2 = 5 \times \dfrac{8}{9} = \dfrac{40}{9}$$
+    *   Tổng số lượng kỳ vọng các viên bi xanh ở hộp thứ ba là:
+        $$E = \dfrac{20}{11} + \dfrac{40}{9} = \dfrac{180 + 440}{99} = \dfrac{620}{99}$$
+
+    **Bước 3: Tính xác suất lấy được bi xanh từ hộp thứ ba.**
+    *   Xác suất lấy được một viên bi xanh từ hộp thứ ba là tỉ số giữa số bi xanh kỳ vọng và tổng số bi trong hộp thứ ba:
+        $$P = \dfrac{\dfrac{620}{99}}{18} = \dfrac{620}{1782} = \dfrac{310}{891} \approx 0,34792368...$$
+
+    **Bước 4: Đổi ra phần trăm và làm tròn.**
+    *   Đổi ra phần trăm: $0,34792368... \times 100\% \approx 34,792368\%$.
+    *   Làm tròn đến hàng phần trăm, ta được **$34,79\%$**.
+
+    **Vậy đáp án là: 34.79**
+    """)
+st.markdown("---")
