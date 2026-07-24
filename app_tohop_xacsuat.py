@@ -4656,3 +4656,110 @@ if st.session_state.get('q51_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 52 (Từ ảnh - Cụm trường Bắc Ninh 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 52 (Cụm trường Bắc Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Để trang bị hệ thống làm mát cho nhà thi đấu đa năng mới khánh thành, ban quản lý dự kiến lắp đặt một mạng lưới vòi phun nước thông minh. Hệ thống sử dụng hai loại vòi:
+1. Vòi phun áp lực (loại $X$): Công suất tiêu thụ 5 lít/giờ.
+2. Vòi phun sương (loại $Y$): Công suất tiêu thụ 11 lít/giờ.
+
+Theo yêu cầu vận hành của máy bơm trung tâm, tổng lượng nước tiêu thụ của toàn hệ thống phải đạt đúng 3300 lít/giờ và mỗi loại đều có ít nhất 1 vòi. Để đồng bộ với các module điều khiển tự động, các vòi phun được lắp đặt theo từng cụm kỹ thuật, mỗi cụm yêu cầu đúng 8 vòi (không phân biệt loại). Một phương án lắp đặt được coi là "tối ưu về kỹ thuật" nếu tổng số vòi của toàn hệ thống là một số chia hết cho 8 để khớp hoàn toàn với các cụm điều khiển.
+
+Người ta chọn ngẫu nhiên một phương án lắp đặt thỏa mãn tổng công suất tiêu thụ. Tính xác suất để phương án được chọn là phương án tối ưu về kỹ thuật (kết quả làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_52 = st.text_input("Nhập kết quả xác suất (ví dụ: 0.15 hoặc 15%):", key="q52_ans")
+
+if st.button("Kiểm tra đáp án", key="q52_check"):
+    normalized_user_answer_52 = user_answer_52.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 0.25 (15/59)
+    if normalized_user_answer_52 in ["0.25", "15/59", "25%", "0.254"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_52 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q52_solution_shown' not in st.session_state:
+    st.session_state['q52_solution_shown'] = False
+
+col1_52, col2_52 = st.columns([1, 4])
+with col1_52:
+    if st.button("Xem lời giải chi tiết Câu 52", key="q52_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q52_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q52_solution_shown'] = False
+
+if st.session_state.get('q52_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 52:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập phương trình công suất tiêu thụ nước**
+    
+    *   Gọi $x$ là số lượng vòi phun áp lực (loại $X$), với $x \in \mathbb{N}, x \ge 1$.
+    *   Gọi $y$ là số lượng vòi phun sương (loại $Y$), với $y \in \mathbb{N}, y \ge 1$.
+    *   Tổng công suất tiêu thụ của hệ thống là 3300 lít/giờ, ta có phương trình nghiệm nguyên:
+        $$5x + 11y = 3300$$
+    
+    **Bước 2: Tìm tập hợp tất cả các phương án lắp đặt thỏa mãn (Không gian mẫu)**
+    
+    *   Biểu diễn $x$ theo $y$:
+        $$5x = 3300 - 11y \implies x = 660 - \frac{11y}{5}$$
+    *   Vì $x$ là số nguyên, $11y$ phải chia hết cho 5. Do $\text{ƯCLN}(11, 5) = 1$, suy ra $y$ phải chia hết cho 5.
+    *   Đặt $y = 5k$ (với $k \in \mathbb{Z}^+$ do $y \ge 1 \implies k \ge 1$).
+    *   Khi đó:
+        $$x = 660 - \frac{11(5k)}{5} = 660 - 11k$$
+    *   Điều kiện cho số lượng vòi $x \ge 1$ và $y \ge 1$:
+        *   $y = 5k \ge 1 \implies k \ge 1$
+        *   $x = 660 - 11k \ge 1 \implies 11k \le 659 \implies k \le \frac{659}{11} \approx 59.91 \implies k \le 59$
+    *   Do đó, $k$ nhận các giá trị nguyên từ $1$ đến $59$. 
+    *   Số lượng phương án lắp đặt thỏa mãn tổng công suất (không gian mẫu) là:
+        $$n(\Omega) = 59 - 1 + 1 = 59 \text{ phương án}$$
+    
+    **Bước 3: Tìm số phương án "tối ưu về kỹ thuật"**
+    
+    *   Tổng số vòi của toàn hệ thống trong mỗi phương án là:
+        $$S = x + y = (660 - 11k) + 5k = 660 - 6k$$
+    *   Phương án được gọi là "tối ưu về kỹ thuật" khi tổng số vòi $S$ chia hết cho 8:
+        $$660 - 6k \vdots 8 \implies 6k \equiv 660 \pmod 8$$
+    *   Ta có $660 = 8 \times 82 + 4 \equiv 4 \pmod 8$, nên phương trình đồng dư trở thành:
+        $$6k \equiv 4 \pmod 8$$
+    *   Chia cả hai vế cho 2:
+        $$3k \equiv 2 \pmod 4$$
+    *   Nhân cả hai vế với nghịch đảo của 3 modulo 4 (là 3):
+        $$k \equiv 3 \times 2 = 6 \equiv 2 \pmod 4$$
+    *   Vậy $k$ có dạng $k = 4m + 2$ với $m \in \mathbb{N}$.
+    *   Kết hợp điều kiện $1 \le k \le 59$:
+        $$1 \le 4m + 2 \le 59 \implies -1 \le 4m \le 57 \implies -0.25 \le m \le 14.25$$
+    *   Vì $m$ là số nguyên nên $m \in \{0, 1, 2, \dots, 14\}$.
+    *   Số lượng giá trị của $m$ (tương ứng với số phương án tối ưu về kỹ thuật) là:
+        $$n(A) = 14 - 0 + 1 = 15 \text{ phương án}$$
+    
+    **Bước 4: Tính xác suất và làm tròn kết quả**
+    
+    *   Xác suất để phương án được chọn là phương án tối ưu về kỹ thuật:
+        $$P = \frac{n(A)}{n(\Omega)} = \frac{15}{59} \approx 0.2542$$
+    *   Làm tròn kết quả đến hàng phần trăm ta được **$0.25$** (hoặc **$25\%$**).
+    """)
+
+st.markdown("---")
+
+
+
