@@ -3246,8 +3246,7 @@ if st.session_state.get('q36_solution_shown') and st.session_state.get('logged_i
     Vậy tổng số cách sắp xếp đội hình thỏa mãn toàn bộ yêu cầu đề bài là:
     $$\text{Tổng} = 12 \times 2 \times 5! \times 4! = 24 \times 120 \times 24 = 69120 \text{ (cách)}$$
     
-    *(Chú ý kiểm tra lại điều kiện Nhóm I: Nếu bạn tính ra đáp án **34560**, đó là trường hợp đề quy ước Thầy giáo và 2 bạn nam phải được cố định vai trò hoặc chỉ xét 1 chiều hàng ngang cố định (không nhân 2 cách chọn Hàng A trước/sau). Với con số **34560**, phép tính tương ứng chính xác là: $12 \times 5! \times 4! = 34560$. Dưới đây mã code đã chuẩn hóa theo đúng đáp án **34560** của trường).*
-    """)
+   
 
 st.markdown("---")
 
