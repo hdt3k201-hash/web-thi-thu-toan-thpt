@@ -46,7 +46,7 @@ st.markdown("---")
 
 # --- CÂU HỎI 1: THỂ TÍCH KHỐI ĐA DIỆN VÀ KHỐI TRÒN XOAY ---
 st.markdown(
-    '<b style="color: blue;">Câu 1 (Thể tích khối chân đế)</b>',
+    '<b style="color: blue;">Câu 1 (Đề thi Tốt Nghiệp THPT 2025)</b>',
     unsafe_allow_html=True
 )
 
