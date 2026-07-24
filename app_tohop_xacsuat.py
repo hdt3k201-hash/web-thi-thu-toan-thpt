@@ -6845,3 +6845,97 @@ if st.session_state.get('q74_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+st.markdown(
+    '<b style="color: blue;">Câu 75 (THPT Mường Lát - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_755d28.png
+st.markdown(r"""
+Lớp 10G trong một trường THPT có 21 nam và 24 nữ. Qua thống kê hằng năm tỉ lệ học sinh nữ và tỉ lệ học sinh nam của khối 10 tham gia câu lạc bộ Toán học trong nhà trường lần lượt là 11% và 14%. Chọn ngẫu nhiên một học sinh của lớp 10G. Tính xác suất học sinh đó là nam, biết rằng học sinh đó có tham gia câu lạc bộ Toán học của trường (làm tròn kết quả đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án (ví dụ: 0.15 hoặc 0,15):", key="q75_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q75_check"):
+    # Chuẩn hóa đầu vào của người dùng (loại bỏ khoảng trắng, đổi dấu phẩy thành dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(" ", "").replace(",", ".")
+    
+    # Đáp án chính xác là 0.53
+    if normalized_user_answer == "0.53":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q75_solution_shown' not in st.session_state:
+    st.session_state['q75_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q75_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q75_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q75_solution_shown'] = False # Đảm bảo ẩn nếu chưa đăng nhập
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q75_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Gọi các biến cố.**
+    
+    *   Gọi $A$ là biến cố: "Học sinh được chọn là nam". 
+        $\Rightarrow \bar{A}$ là biến cố: "Học sinh được chọn là nữ".
+    *   Gọi $B$ là biến cố: "Học sinh được chọn có tham gia câu lạc bộ Toán học".
+    
+    **Bước 2: Xác định các xác suất cơ bản.**
+    
+    Lớp 10G có tổng số học sinh là: $21 + 24 = 45$ (học sinh).
+    *   Xác suất chọn được một học sinh nam là: $P(A) = \frac{21}{45} = \frac{7}{15}$.
+    *   Xác suất chọn được một học sinh nữ là: $P(\bar{A}) = \frac{24}{45} = \frac{8}{15}$.
+    
+    Theo giả thiết:
+    *   Tỉ lệ học sinh nam tham gia CLB Toán là **14%**, nên xác suất một học sinh tham gia CLB Toán biết rằng học sinh đó là nam: 
+        $P(B|A) = 0.14$.
+    *   Tỉ lệ học sinh nữ tham gia CLB Toán là **11%**, nên xác suất một học sinh tham gia CLB Toán biết rằng học sinh đó là nữ: 
+        $P(B|\bar{A}) = 0.11$.
+    
+    **Bước 3: Sử dụng công thức xác suất toàn phần và công thức Bayes.**
+    
+    Xác suất để học sinh được chọn ngẫu nhiên có tham gia CLB Toán học (theo công thức xác suất toàn phần) là:
+    $$P(B) = P(A) \cdot P(B|A) + P(\bar{A}) \cdot P(B|\bar{A})$$
+    
+    Thay số:
+    $$P(B) = \frac{7}{15} \cdot 0.14 + \frac{8}{15} \cdot 0.11 = \frac{0.98}{15} + \frac{0.88}{15} = \frac{1.86}{15} = 0.124$$
+    
+    Xác suất học sinh đó là nam, biết rằng học sinh đó có tham gia CLB Toán (áp dụng công thức Bayes):
+    $$P(A|B) = \frac{P(A) \cdot P(B|A)}{P(B)}$$
+    
+    Thay số:
+    $$P(A|B) = \frac{\frac{7}{15} \cdot 0.14}{0.124} = \frac{\frac{0.98}{15}}{\frac{1.86}{15}} = \frac{0.98}{1.86} = \frac{49}{93}$$
+    
+    Thực hiện phép tính:
+    $$\frac{49}{93} \approx 0.52688...$$
+    
+    Yêu cầu làm tròn kết quả đến hàng phần trăm (2 chữ số thập phân), ta được **0.53**.
+    
+    **Vậy đáp án là: 0.53**
+    """)
+    
+st.markdown("---")
+
+
