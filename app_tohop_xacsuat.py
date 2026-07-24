@@ -9203,3 +9203,90 @@ if st.session_state.get('q98_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+st.markdown(
+    '<b style="color: blue;">Câu 99 (THPT Lương Thế Vinh - HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_773e7d.png
+st.markdown(r"""
+Một trung tâm an ninh mạng sử dụng hai bộ lọc độc lập $S_1$ và $S_2$ để quét các tập tin lạ. Qua thống kê, tỷ lệ tập tin có mã độc trong hệ thống là $2\%$. Đối với một tập tin có mã độc, xác suất nó bị $S_1$ cảnh báo là $0,9$, bị $S_2$ cảnh báo là $0,8$ và xác suất bị cả hai bộ lọc cùng cảnh báo là $0,75$. Đối với một tập tin không có mã độc, xác suất nó bị $S_1$ cảnh báo là $0,05$, bị $S_2$ cảnh báo là $0,03$ và xác suất nó không bị bộ lọc nào cảnh báo là $0,93$. Một tập tin được quét và bị ít nhất một bộ lọc cảnh báo. Xác suất để tập tin đó thực sự có mã độc là bao nhiêu phần trăm, làm tròn kết quả đến hàng phần mười?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án (% làm tròn đến hàng phần mười, ví dụ: 21.7 hoặc 21,7):", key="q99_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q99_check"):
+    # Chuẩn hóa đầu vào (loại bỏ khoảng trắng, dấu %, chuyển dấu phẩy thành dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(" ", "").replace("%", "").replace(",", ".")
+    
+    # Đáp án chính xác là 21.7
+    if normalized_user_answer == "21.7":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q99_solution_shown' not in st.session_state:
+    st.session_state['q99_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q99_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q99_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q99_solution_shown'] = False # Đảm bảo ẩn nếu chưa đăng nhập
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q99_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Gọi các biến cố và xác định xác suất từ giả thiết**
+    
+    Gọi $M$ là biến cố "tập tin có mã độc". Từ giả thiết ta có xác suất $P(M) = 2\% = 0,02$ và xác suất tập tin không có mã độc là $P(\overline{M}) = 1 - 0,02 = 0,98$.
+    Gọi $A_1$ là biến cố "bộ lọc $S_1$ cảnh báo", $A_2$ là biến cố "bộ lọc $S_2$ cảnh báo".
+    Gọi $W$ là biến cố "tập tin bị ít nhất một bộ lọc cảnh báo". Ta có $W = A_1 \cup A_2$.
+
+    **Bước 2: Tính xác suất tập tin bị cảnh báo khi có mã độc và không có mã độc**
+
+    *   **Trường hợp tập tin có mã độc (biết $M$ xảy ra):**
+        Theo giả thiết: $P(A_1 | M) = 0,9$; $P(A_2 | M) = 0,8$ và $P(A_1 \cap A_2 | M) = 0,75$.
+        Xác suất tập tin bị ít nhất một bộ lọc cảnh báo khi có mã độc là:
+        $P(W | M) = P(A_1 \cup A_2 | M) = P(A_1 | M) + P(A_2 | M) - P(A_1 \cap A_2 | M) = 0,9 + 0,8 - 0,75 = 0,95$.
+
+    *   **Trường hợp tập tin không có mã độc (biết $\overline{M}$ xảy ra):**
+        Theo giả thiết, xác suất không bị bộ lọc nào cảnh báo là $0,93$, tức là $P(\overline{W} | \overline{M}) = 0,93$.
+        Xác suất tập tin bị ít nhất một bộ lọc cảnh báo khi không có mã độc là phần bù:
+        $P(W | \overline{M}) = 1 - P(\overline{W} | \overline{M}) = 1 - 0,93 = 0,07$.
+
+    **Bước 3: Tính xác suất toàn phần để tập tin bị cảnh báo**
+    
+    Theo công thức xác suất đầy đủ, xác suất một tập tin bất kỳ bị ít nhất một bộ lọc cảnh báo là:
+    $P(W) = P(M) \cdot P(W | M) + P(\overline{M}) \cdot P(W | \overline{M})$
+    $P(W) = 0,02 \cdot 0,95 + 0,98 \cdot 0,07 = 0,019 + 0,0686 = 0,0876$.
+
+    **Bước 4: Sử dụng công thức Bayes tính xác suất theo yêu cầu**
+
+    Xác suất để tập tin thực sự có mã độc biết rằng nó đã bị ít nhất một bộ lọc cảnh báo là $P(M | W)$:
+    $P(M | W) = \dfrac{P(M) \cdot P(W | M)}{P(W)} = \dfrac{0,019}{0,0876} \approx 0,21689...$
+
+    Đổi ra phần trăm: $0,21689... \times 100\% \approx 21,689\%$.
+    Yêu cầu làm tròn kết quả đến hàng phần mười, ta được **$21,7\%$**.
+    
+    **Vậy đáp án là: 21,7**
+    """)
+    
+st.markdown("---")
