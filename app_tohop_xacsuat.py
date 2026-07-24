@@ -999,3 +999,161 @@ if st.session_state.get('q11_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 12 ---
+st.markdown(
+    '<b style="color: blue;">Câu 12 (THPT Nguyễn Gia Thiều - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một nghệ nhân có 9 chiếc đèn lồng với độ dài dây treo ($cm$) lần lượt là $10, 20, 30, ..., 90$. Khung đèn là một tam giác đều $ABC$; gọi $M, N, P$ lần lượt là trung điểm của $AB, BC, CA$. Nghệ nhân chọn ngẫu nhiên 6 chiếc đèn và gán ngẫu nhiên vào 6 vị trí $A, B, C, M, N, P$ (mọi cách gán là đồng khả năng). Để khung đèn đạt độ cân bằng hoàn hảo, trên mỗi cạnh tam giác, chiều dài dây treo của đèn ở giữa phải bằng trung bình cộng chiều dài dây treo của hai đèn ở hai đầu mút cạnh đó. Gọi xác suất để thỏa mãn điều kiện ngay lần chọn và gán đầu tiên là $p$. Giá trị của $\dfrac{6}{p}$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_12 = st.text_input("Nhập đáp án :", key="q12_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q12_check"):
+    normalized_user_answer_12 = user_answer_12.strip()
+    
+    if normalized_user_answer_12 == "7560":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_12 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại điều kiện cấp số cộng cho các cạnh và không gian mẫu nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q12_solution_shown' not in st.session_state:
+    st.session_state['q12_solution_shown'] = False
+
+col1_12, col2_12 = st.columns([1, 4])
+with col1_12:
+    if st.button("Xem lời giải chi tiết", key="q12_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q12_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q12_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q12_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu**
+    
+    * Có tất cả $9$ chiếc đèn lồng với độ dài tương ứng đại diện bởi tập hợp $\{1, 2, 3, 4, 5, 6, 7, 8, 9\}$ (sau khi rút gọn tỉ lệ $10$ cm).
+    * Nghệ nhân chọn ngẫu nhiên $6$ chiếc đèn và gán vào $6$ vị trí $A, B, C, M, N, P$.
+    * Số phần tử của không gian mẫu là số chỉnh hợp chập $6$ của $9$ phần tử:
+        $$n(\Omega) = A_9^6 = 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 = 60480$$
+    
+    **Bước 2: Phân tích điều kiện cân bằng hoàn hảo**
+    
+    * Gọi giá trị các đèn tại các đỉnh $A, B, C$ lần lượt là $a, b, c$ và tại các trung điểm $M$ (trên $AB$), $N$ (trên $BC$), $P$ (trên $CA$) lần lượt là $m, n, p$.
+    * Theo giả thiết, ta có hệ thức trung bình cộng trên mỗi cạnh:
+        $$m = \frac{a+b}{2}, \quad n = \frac{b+c}{2}, \quad p = \frac{c+a}{2}$$
+    * Điều này đòi hỏi $a, b, c$ phải cùng tính chẵn lẻ (hoặc cùng lẻ, hoặc cùng chẵn).
+    * Xét các tập hợp bộ ba số $\{a, b, c\}$ thỏa mãn điều kiện tạo ra tập trung điểm $\{m, n, p\}$ rời nhau và đều thuộc tập $\{1, 2, \dots, 9\}$:
+        * Trường hợp $a, b, c$ lẻ (chọn từ $\{1, 3, 5, 7, 9\}$): có $6$ bộ thỏa mãn.
+        * Trường hợp $a, b, c$ chẵn (chọn từ $\{2, 4, 6, 8\}$): có $2$ bộ thỏa mãn.
+    * Tổng số bộ $(a, b, c)$ hợp lệ là $6 + 2 = 8$ bộ.
+    
+    **Bước 3: Tính số kết quả thuận lợi**
+    
+    * Với mỗi bộ $\{a, b, c\}$ hợp lệ, có $3! = 6$ cách sắp xếp vị trí vào $A, B, C$.
+    * Tổng số kết quả thuận lợi là:
+        $$n(A) = 8 \cdot 6 = 48$$
+    
+    **Bước 4: Tính xác suất $p$ và giá trị biểu thức $\dfrac{6}{p}$**
+    
+    * Xác suất $p$ là:
+        $$p = \dfrac{48}{60480} = \dfrac{1}{1260}$$
+    * Giá trị của biểu thức $\dfrac{6}{p}$ là:
+        $$\dfrac{6}{p} = 6 \cdot 1260 = 7560$$
+    
+    **Kết luận:** Giá trị của $\dfrac{6}{p}$ bằng **7560**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU HỎI 13 ---
+st.markdown(
+    '<b style="color: blue;">Câu 13 (Sở Bắc Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho đa giác đều 36 cạnh. Chọn ngẫu nhiên 4 đỉnh trong các đỉnh của đa giác đã cho. Tính xác suất để 4 đỉnh được chọn tạo thành một tứ giác có 2 góc ở 2 đỉnh liền kề (chung một cạnh của tứ giác) là 2 góc tù. Kết quả làm tròn đến hàng phần trăm.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_13 = st.text_input("Nhập đáp án (ví dụ: 0.15):", key="q13_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q13_check"):
+    normalized_user_answer_13 = user_answer_13.strip().replace(',', '.')
+    
+    if normalized_user_answer_13 in ["0.1", "0.10", "0,1", "0,10"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_13 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại số cách chọn đỉnh thỏa mãn điều kiện góc tù trên cạnh tứ giác nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q13_solution_shown' not in st.session_state:
+    st.session_state['q13_solution_shown'] = False
+
+col1_13, col2_13 = st.columns([1, 4])
+with col1_13:
+    if st.button("Xem lời giải chi tiết", key="q13_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q13_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q13_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q13_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính không gian mẫu**
+    
+    * Số cách chọn ngẫu nhiên $4$ đỉnh từ $36$ đỉnh của đa giác đều là:
+        $$n(\Omega) = C_{36}^4 = 58905$$
+    
+    **Bước 2: Phân tích điều kiện góc tù của tứ giác nội tiếp**
+    
+    * Một tứ giác nội tiếp có góc tại một đỉnh là góc tù khi và chỉ khi cung chắn đối diện lớn hơn nửa đường tròn ($> 180^\circ$, tức là chứa nhiều hơn $\frac{36}{2} = 18$ đơn vị cung).
+    * Gọi $a, b, c, d$ là số khoảng cách cạnh đơn vị giữa $4$ đỉnh liên tiếp của tứ giác trên đường tròn, ta có $a + b + c + d = 36$ ($a, b, c, d \ge 1$).
+    * Điều kiện để hai đỉnh kề nhau có góc tù (ứng với một cạnh chung của tứ giác) dẫn đến hệ bất phương trình khoảng cách giữa các cạnh.
+    
+    **Bước 3: Đếm số trường hợp thuận lợi**
+    
+    * Sử dụng phương pháp đếm nghiệm nguyên và tính chất đối xứng của $4$ cạnh tứ giác, số tứ giác thỏa mãn có đúng một cạnh có hai đầu mút là góc tù là:
+        $$4 \cdot \sum_{a=1}^{16} (17 - a)^2 = 4 \cdot \sum_{k=1}^{16} k^2 = 4 \cdot 1496 = 5984$$
+    
+    **Bước 4: Tính xác suất**
+    
+    * Xác suất cần tìm là:
+        $$p = \dfrac{5984}{58905} \approx 0.1016$$
+    * Làm tròn kết quả đến hàng phần trăm, ta được **$0.10$**.
+    
+    **Kết luận:** Xác suất cần tìm là **0.10**.
+    """)
+    
+st.markdown("---")
