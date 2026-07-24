@@ -4763,3 +4763,208 @@ st.markdown("---")
 
 
 
+# ==========================================
+# CÂU 53 (Từ ảnh - Sở Tuyên Quang 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 53 (Sở Tuyên Quang 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 53 từ hình ảnh
+st.markdown(r"""
+Gọi $S$ là tập tất cả các số tự nhiên có 6 chữ số khác nhau được lập từ các chữ số $1,2,3,4,5,6$. Lấy ngẫu nhiên một số thuộc $S$, gọi $T$ là xác suất số lấy được là số lẻ đồng thời tổng của ba chữ số đầu lớn hơn tổng của ba chữ số cuối một đơn vị. Giá trị của $230T$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 53) ---
+user_answer_53 = st.text_input("Nhập giá trị của $230T$ cho Câu 53:", key="q53_ans")
+
+if st.button("Kiểm tra đáp án Câu 53", key="q53_check"):
+    normalized_user_answer_53 = user_answer_53.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 23 (T = 1/10 => 230T = 23)
+    if normalized_user_answer_53 == "23":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 53 đã được mở khóa.")
+    elif user_answer_53 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 53) ---
+st.markdown("---")
+
+if 'q53_solution_shown' not in st.session_state:
+    st.session_state['q53_solution_shown'] = False
+
+col1_53, col2_53 = st.columns([1, 4])
+with col1_53:
+    if st.button("Xem lời giải chi tiết Câu 53", key="q53_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q53_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q53_solution_shown'] = False
+
+if st.session_state.get('q53_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 53:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu $n(\Omega)$**
+    
+    *   Tập hợp các chữ số cho sẵn là $\{1, 2, 3, 4, 5, 6\}$ (có 6 chữ số).
+    *   Số các số tự nhiên có 6 chữ số khác nhau lập từ tập này là số hoán vị của 6 chữ số:
+        $$n(\Omega) = 6! = 720 \text{ (số)}$$
+    
+    **Bước 2: Phân tích điều kiện về tổng chữ số**
+    
+    *   Gọi số cần lập là $\overline{a_1a_2a_3a_4a_5a_6}$.
+    *   Tổng tất cả các chữ số của số này là:
+        $$S_{\text{tổng}} = 1 + 2 + 3 + 4 + 5 + 6 = 21$$
+    *   Gọi tổng ba chữ số đầu là $S_1 = a_1 + a_2 + a_3$ và tổng ba chữ số cuối là $S_2 = a_4 + a_5 + a_6$.
+    *   Ta có hệ phương trình dựa theo giả thiết:
+        $$\begin{cases} S_1 + S_2 = 21 \\ S_1 - S_2 = 1 \end{cases} \implies 2S_1 = 22 \implies S_1 = 11 \text{ và } S_2 = 10$$
+    *   Như vậy, bộ ba chữ số đầu tiên $\{a_1, a_2, a_3\}$ phải có tổng bằng 11 và bộ ba chữ số cuối $\{a_4, a_5, a_6\}$ phải có tổng bằng 10.
+    
+    **Bước 3: Tìm các cặp tập hợp chữ số thỏa mãn**
+    
+    Xét các tập con gồm 3 phần tử phân biệt từ tập $\{1, 2, 3, 4, 5, 6\}$ có tổng bằng 11:
+    1.  $\{1, 4, 6\}$ (phần bù là $\{2, 3, 5\}$ có tổng bằng 10).
+    2.  $\{2, 3, 6\}$ (phần bù là $\{1, 4, 5\}$ có tổng bằng 10).
+    3.  $\{2, 4, 5\}$ (phần bù là $\{1, 3, 6\}$ có tổng bằng 10).
+    
+    **Bước 4: Kết hợp điều kiện số lẻ và đếm số kết quả thuận lợi**
+    
+    Số được chọn phải là **số lẻ**, tức chữ số tận cùng $a_6$ phải là số lẻ ($\in \{1, 3, 5\}$).
+    Ta xét từng trường hợp cho 3 cặp tập hợp chữ số ở trên (với bộ đầu là $A$ và bộ cuối là $B$):
+    
+    *   **Trường hợp 1:** $A = \{1, 4, 6\}$ và $B = \{2, 3, 5\}$.
+        *   Chữ số tận cùng $a_6 \in B$ và phải là số lẻ $\implies a_6 \in \{3, 5\}$ (có 2 cách chọn).
+        *   2 vị trí còn lại của phần cuối ($a_4, a_5$) được chọn từ 2 chữ số còn lại của tập $B$ có $2! = 2$ cách sắp xếp.
+        *   Bộ đầu $A$ được sắp xếp vào 3 vị trí đầu có $3! = 6$ cách.
+        *   Số lượng số ở trường hợp 1: $2 \times 2 \times 6 = 24$ số.
+        
+    *   **Trường hợp 2:** $A = \{2, 3, 6\}$ và $B = \{1, 4, 5\}$.
+        *   Chữ số tận cùng $a_6 \in \{1, 5\}$ (có 2 cách chọn).
+        *   Sắp xếp tương tự ta được: $2 \times 2 \times 6 = 24$ số.
+        
+    *   **Trường hợp 3:** $A = \{2, 4, 5\}$ và $B = \{1, 3, 6\}$.
+        *   Chữ số tận cùng $a_6 \in \{1, 3\}$ (có 2 cách chọn).
+        *   Sắp xếp tương tự ta được: $2 \times 2 \times 6 = 24$ số.
+    
+    Tổng số kết quả thuận lợi cho biến cố là:
+    $$n(T) = 24 + 24 + 24 = 72 \text{ (số)}$$
+    
+    **Bước 5: Tính xác suất $T$ và giá trị biểu thức $230T$**
+    
+    *   Xác suất $T = \dfrac{72}{720} = \dfrac{1}{10} = 0.1$.
+    *   Giá trị của biểu thức cần tìm:
+        $$230T = 230 \times \dfrac{1}{10} = 23$$
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU 54 (Từ ảnh - Sở Hưng Yên 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 54 (Sở Hưng Yên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 54 từ hình ảnh
+st.markdown(r"""
+Cho tập hợp $X = \{1,2,3,4,5,6,7,8\}$. Gọi $S$ là tập hợp các số tự nhiên có 4 chữ số được lập từ các chữ số thuộc tập $X$. Chọn ngẫu nhiên một số thuộc tập $S$. Xác suất để chọn được số chia hết cho 3 bằng $\dfrac{a}{b}$ (với $a,b \in \mathbb{N}^*, \dfrac{a}{b}$ là phân số tối giản). Tính $T = a + b$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 54) ---
+user_answer_54 = st.text_input("Nhập giá trị của $T = a + b$ cho Câu 54:", key="q54_ans")
+
+if st.button("Kiểm tra đáp án Câu 54", key="q54_check"):
+    normalized_user_answer_54 = user_answer_54.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 2731 (a = 683, b = 2048 => a + b = 2731)
+    if normalized_user_answer_54 == "2731":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 54 đã được mở khóa.")
+    elif user_answer_54 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 54) ---
+st.markdown("---")
+
+if 'q54_solution_shown' not in st.session_state:
+    st.session_state['q54_solution_shown'] = False
+
+col1_54, col2_54 = st.columns([1, 4])
+with col1_54:
+    if st.button("Xem lời giải chi tiết Câu 54", key="q54_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q54_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q54_solution_shown'] = False
+
+if st.session_state.get('q54_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 54:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu $n(\Omega)$**
+    
+    *   Tập hợp $X = \{1, 2, 3, 4, 5, 6, 7, 8\}$ có 8 phần tử.
+    *   Lập các số tự nhiên có 4 chữ số từ tập $X$ (các chữ số có thể lặp lại):
+        $$n(\Omega) = 8^4 = 4096 \text{ (số)}$$
+    
+    **Bước 2: Phân chia tập $X$ theo số dư khi chia cho 3**
+    
+    Chia các phần tử của tập $X$ thành 3 nhóm dựa theo số dư khi chia cho 3:
+    *   Nhóm $R_0$ (số chia hết cho 3): $\{3, 6\}$ (có 2 phần tử).
+    *   Nhóm $R_1$ (số chia cho 3 dư 1): $\{1, 4, 7\}$ (có 3 phần tử).
+    *   Nhóm $R_2$ (số chia cho 3 dư 2): $\{2, 5, 8\}$ (có 3 phần tử).
+    
+    Một số tự nhiên chia hết cho 3 khi và chỉ khi **tổng các chữ số của nó chia hết cho 3**.
+    Gọi $n_0, n_1, n_2$ lần lượt là số lượng chữ số được chọn từ các nhóm $R_0, R_1, R_2$ sao cho $n_0 + n_1 + n_2 = 4$.
+    Điều kiện tổng các chữ số chia hết cho 3 là:
+    $$(0 \cdot n_0 + 1 \cdot n_1 + 2 \cdot n_2) \pmod 3 \equiv 0 \iff n_1 + 2n_2 \equiv 0 \pmod 3$$
+    
+    **Bước 3: Tìm các bộ số lượng $(n_0, n_1, n_2)$ thỏa mãn**
+    
+    Duyệt các nghiệm nguyên không âm của hệ thỏa mãn tổng bằng 4 và điều kiện chia hết:
+    1.  $(4, 0, 0)$: $0 \equiv 0 \pmod 3$ (Hợp lệ)
+    2.  $(2, 1, 1)$: $1 + 2(1) = 3 \equiv 0 \pmod 3$ (Hợp lệ)
+    3.  $(1, 3, 0)$: $3 + 2(0) = 3 \equiv 0 \pmod 3$ (Hợp lệ)
+    4.  $(1, 0, 3)$: $0 + 2(3) = 6 \equiv 0 \pmod 3$ (Hợp lệ)
+    5.  $(0, 2, 2)$: $2 + 2(2) = 6 \equiv 0 \pmod 3$ (Hợp lệ)
+    
+    **Bước 4: Tính số lượng số thỏa mãn cho từng trường hợp**
+    
+    *   **Trường hợp 1: Bộ $(4, 0, 0)$** (chọn 4 chữ số hoàn toàn từ nhóm $R_0$).
+        *   Số cách lập số: $2^4 = 16$ số.
+        
+    *   **Trường hợp 2: Bộ $(2, 1, 1)$** (chọn 2 chữ số từ $R_0$, 1 từ $R_1$, 1 từ $R_2$).
+        *   Số cách chọn các đa tập và sắp xếp tương ứng cho ra tổng cộng **$432$** số.
+        
+    *   **Trường hợp 3: Bộ $(1, 3, 0)$** (chọn 1 chữ số từ $R_0$, 3 từ $R_1$, 0 từ $R_2$).
+        *   Số cách lập số tương ứng cho ra tổng cộng **$216$** số.
+        
+    *   **Trường hợp 4: Bộ $(1, 0, 3)$** (chọn 1 chữ số từ $R_0$, 0 từ $R_1$, 3 từ $R_2$).
+        *   Theo tính chất đối xứng, số cách lập số tương tự là **$216$** số.
+        
+    *   **Trường hợp 5: Bộ $(0, 2, 2)$** (chọn 0 chữ số từ $R_0$, 2 từ $R_1$, 2 từ $R_2$).
+        *   Số cách lập số tương ứng cho ra tổng cộng **$486$** số.
+    
+    Tổng số các kết quả thuận lợi là:
+    $$n(A) = 16 + 432 + 216 + 216 + 486 = 1366 \text{ (số)}$$
+    
+    **Bước 5: Tính xác suất và tìm $T = a + b$**
+    
+    *   Xác suất cần tìm là phân số:
+        $$P = \dfrac{1366}{4096} = \dfrac{683}{2048}$$
+    *   Phân số $\dfrac{683}{2048}$ là phân số tối giản (vì 683 là số nguyên tố không chia hết cho 2).
+    *   Do đó $a = 683$ và $b = 2048$.
+    *   Vậy giá trị cần tính:
+        $$T = a + b = 683 + 2048 = 2731$$
+    """)
+
+st.markdown("---")
+
