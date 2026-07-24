@@ -3698,3 +3698,90 @@ if st.session_state.get('q40_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 41 ---
+st.markdown(
+    '<b style="color: blue;">Câu 41 (HSG 12 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Gọi $S$ là tập hợp các số tự nhiên có 3 chữ số đôi một khác nhau. Chọn ngẫu nhiên hai phần tử từ $S$. Tính xác suất để mỗi phần tử được chọn là một số tự nhiên có tích các chữ số chia hết cho 6 (kết quả làm tròn đến hàng phần trăm)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_41 = st.text_input("Nhập đáp án (ví dụ: 0.13):", key="q41_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q41_check"):
+    normalized_user_answer_41 = user_answer_41.strip().replace(',', '.')
+    
+    if normalized_user_answer_41 in ["0.53", "0,53", "0.530"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_41 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại số phần tử của không gian mẫu và số lượng số có tích chữ số chia hết cho 6 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q41_solution_shown' not in st.session_state:
+    st.session_state['q41_solution_shown'] = False
+
+col1_41, col2_41 = st.columns([1, 4])
+with col1_41:
+    if st.button("Xem lời giải chi tiết", key="q41_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q41_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q41_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q41_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu**
+    
+    * Tập hợp $S$ gồm các số tự nhiên có 3 chữ số đôi một khác nhau $\overline{abc}$ (với $a \neq 0$).
+    * Số cách chọn chữ số $a$ (từ $1$ đến $9$): $9$ cách.
+    * Số cách chọn chữ số $b$ (từ $0$ đến $9$, khác $a$): $9$ cách.
+    * Số cách chọn chữ số $c$ (từ $0$ đến $9$, khác $a$ và $b$): $8$ cách.
+    * Số phần tử của tập $S$ là:
+        $$n(S) = 9 \times 9 \times 8 = 648$$
+    * Chọn ngẫu nhiên 2 phần tử từ tập $S$:
+        $$n(\Omega) = C_{648}^2 = \dfrac{648 \times 647}{2} = 209628$$
+    
+    **Bước 2: Tìm số phần tử có tích các chữ số chia hết cho 6**
+    
+    * Tích các chữ số của một số chia hết cho $6$ khi và chỉ khi tích đó vừa chia hết cho $2$ (có ít nhất một chữ số chẵn) vừa chia hết cho $3$ (có ít nhất một chữ số là bội của $3$: $0, 3, 6, 9$).
+    * Ta đi đếm số lượng số trong $S$ có tích các chữ số **không** chia hết cho $6$ (gọi là tập $K$):
+      1. **Các số không có chữ số chẵn** (tất cả 3 chữ số đều lẻ, chọn từ $\{1, 3, 5, 7, 9\}$):
+         $$A_5^3 = 5 \times 4 \times 3 = 60 \text{ số}$$
+      2. **Các số không có chữ số là bội của 3** (chọn từ $\{1, 2, 4, 5, 7, 8\}$):
+         $$A_6^3 = 6 \times 5 \times 4 = 120 \text{ số}$$
+      3. **Phần giao của hai trường hợp trên** (các số vừa không có chữ số chẵn vừa không có chữ số là bội của $3$, tức là chọn từ $\{1, 5, 7\}$):
+         $$A_3^3 = 3! = 6 \text{ số}$$
+    * Theo nguyên lý bù trừ, số lượng số có tích chữ số **không** chia hết cho $6$ là:
+        $$60 + 120 - 6 = 174 \text{ số}$$
+    * Do đó, số lượng số trong $S$ có tích các chữ số **chia hết cho 6** là:
+        $$648 - 174 = 474 \text{ số}$$
+    
+    **Bước 3: Tính số kết quả thuận lợi và xác suất**
+    
+    * Số cách chọn 2 số từ $474$ số thỏa mãn là:
+        $$n(A) = C_{474}^2 = \dfrac{474 \times 473}{2} = 112101$$
+    * Xác suất cần tìm là:
+        $$P = \dfrac{112101}{209628} \approx 0.53476$$
+    * Làm tròn kết quả đến hàng phần trăm, ta được **$0.53$**.
+    
+    **Kết luận:** Xác suất cần tìm là **0.53**.
+    """)
+    
+st.markdown("---")
