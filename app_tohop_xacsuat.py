@@ -4422,3 +4422,84 @@ if st.session_state.get('q48_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 49 ---
+st.markdown(
+    '<b style="color: blue;">Câu 49 (Cụm trường Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong một hộp kín đựng 20 viên bi được đánh số từ 1 đến 20. Bạn An chọn ngẫu nhiên 4 viên bi trong hộp, xác suất để 4 số trên 4 viên bi được chọn lập thành cấp số cộng là $\dfrac{1}{a}$. Tính $a$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_49 = st.text_input("Nhập đáp án :", key="q49_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q49_check"):
+    normalized_user_answer_49 = user_answer_49.strip()
+    
+    if normalized_user_answer_49 == "85":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_49 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại số phần tử không gian mẫu và số các bộ cấp số cộng có 4 phần tử từ tập số nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q49_solution_shown' not in st.session_state:
+    st.session_state['q49_solution_shown'] = False
+
+col1_49, col2_49 = st.columns([1, 4])
+with col1_49:
+    if st.button("Xem lời giải chi tiết", key="q49_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q49_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q49_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q49_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu**
+    
+    * Chọn ngẫu nhiên $4$ viên bi từ hộp chứa $20$ viên bi:
+        $$n(\Omega) = C_{20}^4 = \dfrac{20 \times 19 \times 18 \times 17}{4 \times 3 \times 2 \times 1} = 4845$$
+    
+    **Bước 2: Xác định số lượng bộ 4 số lập thành cấp số cộng**
+    
+    * Một cấp số cộng gồm 4 số có dạng: $(x, x+d, x+2d, x+3d)$ với số hạng đầu $x \ge 1$ và công sai $d \ge 1$.
+    * Điều kiện để số hạng cuối cùng không vượt quá $20$:
+        $$x + 3d \le 20$$
+    * Ta xét các trường hợp của công sai $d$:
+        * Với $d = 1$: $x + 3 \le 20 \implies x \le 17$ (có $17$ cách chọn $x$).
+        * Với $d = 2$: $x + 6 \le 20 \implies x \le 14$ (có $14$ cách chọn $x$).
+        * Với $d = 3$: $x + 9 \le 20 \implies x \le 11$ (có $11$ cách chọn $x$).
+        * Với $d = 4$: $x + 12 \le 20 \implies x \le 8$ (có $8$ cách chọn $x$).
+        * Với $d = 5$: $x + 15 \le 20 \implies x \le 5$ (có $5$ cách chọn $x$).
+        * Với $d = 6$: $x + 18 \le 20 \implies x \le 2$ (có $2$ cách chọn $x$).
+    * Tổng số bộ 4 số lập thành cấp số cộng là:
+        $$n(A) = 17 + 14 + 11 + 8 + 5 + 2 = 57$$
+    
+    **Bước 3: Tính xác suất và tìm giá trị $a$**
+    
+    * Xác suất chọn được 4 viên bi lập thành cấp số cộng là:
+        $$P = \dfrac{57}{4845} = \dfrac{1}{85}$$
+    * Theo đề bài, xác suất này có dạng $\dfrac{1}{a}$, suy ra $a = 85$.
+    
+    **Kết luận:** Giá trị của $a$ bằng **85**.
+    """)
+    
+st.markdown("---")
+
+
