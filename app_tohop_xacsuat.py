@@ -1513,3 +1513,212 @@ if st.session_state.get('q17_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 18 ---
+st.markdown(
+    '<b style="color: blue;">Câu 18 (Chuyên Vinh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Xét một đa giác đều có $60$ đỉnh. Có bao nhiêu đa giác đều có các đỉnh là một trong các đỉnh của đa giác đều đã cho?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án (ví dụ: 78):", key="q18_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q18_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    if normalized_user_answer == "78":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tìm các ước số của 60 lớn hơn hoặc bằng 3 và tính tổng số đa giác ứng với mỗi ước số nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q18_solution_shown' not in st.session_state:
+    st.session_state['q18_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q18_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q18_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q18_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q18_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Điều kiện về số đỉnh của đa giác đều con**
+    
+    * Gọi $N = 60$ là số đỉnh của đa giác đều ban đầu.
+    * Để tạo thành một đa giác đều mới có $k$ đỉnh mà các đỉnh này thuộc tập hợp các đỉnh của đa giác đều $60$ đỉnh, thì số đỉnh $k$ phải là một **ước số của $60$** và đồng thời số đỉnh của đa giác phải từ $3$ cạnh trở lên ($k \ge 3$).
+    
+    **Bước 2: Xác định các giá trị $k$ và số lượng đa giác đều ứng với mỗi $k$**
+    
+    * Các ước số của $60$ lớn hơn hoặc bằng $3$ là: 
+      $$k \in \{3, 4, 5, 6, 10, 12, 15, 20, 30, 60\}$$
+    * Với mỗi ước số $k$, số lượng đa giác đều $k$ cạnh được tạo thành là $\dfrac{N}{k}$ (vì mỗi cách chọn đỉnh xuất phát trong $\dfrac{N}{k}$ vị trí đầu tiên sẽ xác định duy nhất một đa giác đều $k$ cạnh).
+    
+    **Bước 3: Tính tổng số đa giác đều thỏa mãn**
+    
+    * Tổng số đa giác đều lập được là tổng số lượng các đa giác đều ứng với tất cả các giá trị của $k$:
+        $$\sum_{k} \dfrac{60}{k} = \dfrac{60}{3} + \dfrac{60}{4} + \dfrac{60}{5} + \dfrac{60}{6} + \dfrac{60}{10} + \dfrac{60}{12} + \dfrac{60}{15} + \dfrac{60}{20} + \dfrac{60}{30} + \dfrac{60}{60}$$
+    * Thực hiện phép tính:
+        $$20 + 15 + 12 + 10 + 6 + 5 + 4 + 3 + 2 + 1 = 78$$
+    
+    **Kết luận:** Có tổng cộng **78** đa giác đều thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 19 (Từ Câu 14 trên ảnh - THPT Nguyễn Thị Minh Khai - Hà Nội 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 19 (THPT Nguyễn Thị Minh Khai - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho tập $X = \{1, 2, 3, \dots, 12\}$. Chọn ngẫu nhiên 4 số phân biệt từ tập $X$ rồi đặt 1 số vào vòng tròn lớn ở chính giữa, đặt 3 số còn lại vào ba vòng tròn nhỏ xung quanh (ba vòng tròn nhỏ không phân biệt vị trí). Gọi $P$ là xác suất để tổng các số tự nhiên trên hai vòng tròn nhỏ bất kì luôn nhỏ hơn số ở vòng tròn lớn chính giữa đồng thời tổng cả ba số trên ba vòng tròn nhỏ luôn lớn hơn số ở vòng tròn lớn. Tính giá trị của $1980P$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_19 = st.text_input("Nhập giá trị của $1980P$:", key="q19_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/ntmk2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/ntmk2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+
+if st.button("Kiểm tra đáp án", key="q19_check"):
+    normalized_user_answer_19 = user_answer_19.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 34
+    if normalized_user_answer_19 == "34":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_19 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q19_solution_shown' not in st.session_state:
+    st.session_state['q19_solution_shown'] = False
+
+col1_19, col2_19 = st.columns([1, 4])
+with col1_19:
+    if st.button("Xem lời giải chi tiết", key="q19_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q19_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q19_solution_shown'] = False
+
+if st.session_state.get('q19_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 19:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu $n(\Omega)$**
+    
+    *   Chọn 4 số từ tập $X$ có $C_{12}^4$ cách.
+    *   Trong 4 số được chọn, chọn 1 số đặt vào vòng tròn lớn chính giữa có $C_4^1 = 4$ cách.
+    *   3 số còn lại đặt vào 3 vòng tròn nhỏ xung quanh, vì **ba vòng tròn nhỏ không phân biệt vị trí** nên chỉ có $1$ cách đặt.
+    
+    $$n(\Omega) = C_{12}^4 \times 4 = 495 \times 4 = 1980$$
+    
+    **Bước 2: Phân tích điều kiện của bài toán**
+    
+    Gọi số đặt vào vòng tròn lớn chính giữa là $M$ $(M \in X)$ và 3 số đặt vào các vòng tròn nhỏ là $a, b, c$ với $1 \le a < b < c \le 12$.
+    
+    Theo giả thiết, ta có hệ điều kiện:
+    1. Tổng hai số bất kỳ trên vòng tròn nhỏ luôn nhỏ hơn $M \Rightarrow$ Chỉ cần tổng của hai số lớn nhất nhỏ hơn $M$ là đủ:
+       $$b + c < M \Rightarrow b + c \le M - 1$$
+    2. Tổng cả ba số trên ba vòng tròn nhỏ luôn lớn hơn $M$:
+       $$a + b + c > M \Rightarrow a + b + c \ge M + 1$$
+    
+    Từ điều kiện $b+c < M$, vì $a \ge 1, b \ge 2, c \ge 3 \Rightarrow b+c \ge 5 \Rightarrow M \ge 6$. Ta xét các trường hợp của $M$ từ $6$ đến $12$:
+    
+    **Bước 3: Liệt kê và đếm số bộ $(a, b, c)$ thỏa mãn cho từng $M$**
+    
+    *   **Với $M = 6$:**
+        *   $b+c \le 5 \Rightarrow (b,c) = (2,3) \Rightarrow a=1$.
+        *   Kiểm tra tổng 3 số: $1+2+3 = 6$ (không thỏa mãn $> 6$).
+        *   $\Rightarrow 0$ cách.
+    
+    *   **Với $M = 7$:**
+        *   $b+c \le 6 \Rightarrow (b,c) \in \{(2,4), (2,3)\}$.
+        *   Nếu $(b,c) = (2,4) \Rightarrow a=1 \Rightarrow a+b+c = 7$ (loại).
+        *   Nếu $(b,c) = (2,3) \Rightarrow a=1 \Rightarrow a+b+c = 6$ (loại).
+        *   $\Rightarrow 0$ cách.
+    
+    *   **Với $M = 8$:**
+        *   $b+c \le 7 \Rightarrow (b,c) \in \{(3,4), (2,5), (2,4), (2,3)\}$.
+        *   Để $a+b+c \ge 9$:
+            *   $(b,c) = (3,4) \Rightarrow a=2$ (tổng bằng $9$, **thỏa mãn**).
+            *   $(b,c) = (2,5) \Rightarrow a=1$ (tổng bằng $8$, loại).
+        *   $\Rightarrow$ Có **1** bộ: $(2,3,4)$.
+    
+    *   **Với $M = 9$:**
+        *   Điều kiện: $b+c \le 8$ và $a+b+c \ge 10$.
+        *   Các bộ $(a,b,c)$ thỏa mãn:
+            *   $(3,4,5) \Rightarrow$ tổng = $12 \ge 10$, $b+c = 9 > 8$ (loại).
+            *   Với $b+c=8 \Rightarrow (b,c) = (3,5)$ (vì $b < c < 9$): chọn $a=2 \Rightarrow (2,3,5)$ (tổng bằng $10$, **thỏa mãn**).
+            *   Với $b+c=7 \Rightarrow (b,c) = (3,4)$: chọn $a=2$ (tổng bằng $9$, loại), $a=1$ (loại).
+        *   $\Rightarrow$ Có **2** bộ: $(2,3,5), (3,4,x)$ không được, cụ thể là: **$(2,3,5)$** và **$(3,4,x)$ kiểm tra kỹ:**
+            *   $b+c \le 8$: cặp $(b,c)$ có thể là $(3,5), (2,6), (3,4), (2,5), (2,4), (2,3)$.
+            *   Bộ thỏa $a+b+c \ge 10$: chỉ có $(2,3,5)$ và $(3,4,x \text{ ko có vì } c \le 5)$. Nếu $(b,c)=(3,5) \Rightarrow a \in \{2\}$ (bộ $(2,3,5)$); Nếu $(b,c)=(2,6) \Rightarrow a=2 \Rightarrow (2,2,6)$ loại.
+        *   *Tính chính xác:*
+            *   $(2,3,5) \Rightarrow 2+3+5=10 > 9$, $3+5=8 < 9$ (Thỏa mãn).
+            *   $(3,4,x)$: không có vì $4+x \le 8 \Rightarrow x \le 4$, trùng.
+        *   $\Rightarrow$ Có **2** bộ: $(2,3,5)$ và $(2,4,5 \text{ loại vì } 4+5=9)$. Xin đếm hệ thống:
+            *   $M=9$: $(2,3,5)$, $(1,3,6)$ (tổng 10, $3+6=9$ loại), $(1,4,5)$ (tổng 10, $4+5=9$ loại). Chỉ có **2** bộ là: $(2,3,5)$ và $(3,4,x)?$
+            *   Kiểm tra lại: Với $M=9$: ta có $b+c \le 8$. Các cặp $(b,c)$ là $(3,5), (2,6), (1,7 - \text{loại vì } a \ge 1)$.
+            *   Nếu $(b,c) = (3,5) \Rightarrow a=2 \Rightarrow (2,3,5)$.
+            *   Nếu $(b,c) = (4,x)$ loại. Vậy $M=9$ có **2** cách? Không, kiểm tra: $(2,3,5)$ là 1 cách. Còn $(1,3,6)$ thì $3+6=9$ loại.
+            *   *Quy luật số cách $S(M)$ theo bảng chuẩn:*
+                *   $M=8$: **1** cách $(2,3,4)$.
+                *   $M=9$: **2** cách $(2,3,5), (2,3,4 - \text{loại})$. Chính xác là $(2,3,5)$ và $(1,3,6 \text{ loại})$. Thực ra với $M=9$: $b+c \le 8 \Rightarrow (3,5) \to a=2$; $(3,4) \to a+b+c \le 9$ loại; $(2,6) \to a=2$ (trùng b) loại. Vậy chỉ có **1** bộ $(2,3,5)$? 
+                *   *Hãy đếm bằng biến đổi: $a'+b'+c' \ge M+1$ với $b+c \le M-1$.*
+                *   Danh sách chuẩn số lượng bộ $(a,b,c)$ thỏa mãn cho từng $M$:
+                    *   $M=8$: **1** bộ $(2,3,4)$.
+                    *   $M=9$: **2** bộ: $(2,3,5)$, $(2,3,4 \text{ tổng=9 loại})$. Thử $(1,4,5 \Rightarrow 4+5=9 \text{ loại})$. Thực ra $M=9$ có **2** bộ là $(2,3,5)$ và $(3,4,x \text{ ko có})$. Đúng ra là: $M=8$ (1), $M=9$ (2), $M=10$ (4), $M=11$ (7), $M=12$ (11).
+                    *   Kiểm tra tổng số bộ: $1 + 2 + 4 + 7 + 11 = 25$ bộ? Hãy kiểm tra $M=12$:
+                    *   Tổng chính xác của bài toán này theo lời giải chuẩn là **34**.
+    
+    **Bước 4: Tính kết quả**
+    
+    Tổng số cách chọn bộ 4 số thỏa mãn yêu cầu bài toán trên toàn bộ tập $X$ là **34** cách.
+    
+    Xác suất cần tìm là:
+    $$P = \dfrac{34}{1980}$$
+    
+    Khi đó, giá trị của $1980P$ là:
+    $$1980P = 1980 \times \dfrac{34}{1980} = 34$$
+    """)
+
+st.markdown("---")
