@@ -2853,3 +2853,280 @@ if st.session_state.get('q32_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 33 (Từ ảnh - Cụm trường Nghệ An 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 33 (Cụm trường Nghệ An 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Dịp cuối tuần một nhóm $n$ bạn gồm Khoa, Khôi, Thảo và $(n-3)$ bạn khác cùng nhau đến rạp chiếu phim xem bộ phim "Mưa đỏ". Khi xếp tùy ý nhóm bạn này vào dãy ghế được đánh số từ 1 đến $n$, mỗi bạn ngồi một ghế thì xác suất để số ghế của Khoa, Thảo, Khôi theo thứ tự lập thành cấp số cộng là $\dfrac{13}{675}$. Tìm $n$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_33 = st.text_input("Nhập giá trị của $n$:", key="q33_ans")
+
+if st.button("Kiểm tra đáp án", key="q33_check"):
+    normalized_user_answer_33 = user_answer_33.strip().replace(" ", "").lower().replace("n=", "")
+    
+    # Đáp án chính xác là 25
+    if normalized_user_answer_33 == "25":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_33 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q33_solution_shown' not in st.session_state:
+    st.session_state['q33_solution_shown'] = False
+
+col1_33, col2_33 = st.columns([1, 4])
+with col1_33:
+    if st.button("Xem lời giải chi tiết Câu 33", key="q33_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q33_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q33_solution_shown'] = False
+
+if st.session_state.get('q33_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 33:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu.**
+    
+    Xếp $n$ bạn vào $n$ ghế khác nhau (được đánh số từ 1 đến $n$).
+    Số cách xếp tổng cộng là:
+    $$n(\Omega) = n!$$
+    
+    **Bước 2: Tìm số cách xếp sao cho số ghế của Khoa, Thảo, Khôi lập thành cấp số cộng.**
+    
+    Gọi $x_1, x_2, x_3$ lần lượt là số ghế của Khoa, Thảo, Khôi ($1 \le x_1, x_2, x_3 \le n$, đôi một khác nhau).
+    Theo đề bài, $(x_1, x_2, x_3)$ theo thứ tự lập thành một cấp số cộng, nên tồn tại công sai $d \in \mathbb{Z}^*$ sao cho:
+    $$x_1 = x_2 - d, \quad x_3 = x_2 + d$$
+    
+    Vì $x_1, x_3 \in \{1, 2, \dots, n\}$ nên:
+    *   Nếu $d > 0$: ta có $1 \le x_2 - d < x_2 < x_2 + d \le n$.
+    *   Nếu $d < 0$: đặt $d' = -d > 0$, ta có $1 \le x_2 - d' < x_2 < x_2 + d' \le n$.
+    
+    Do đó, chọn một bộ ba số ghế $(x_1, x_2, x_3)$ thỏa mãn cấp số cộng với công sai $d \ne 0$ tương đương với việc chọn **một cặp 2 số phân biệt $\{x_1, x_3\}$ có cùng tính chẵn lẻ** (để $x_2 = \dfrac{x_1 + x_3}{2}$ là một số nguyên duy nhất nằm giữa $x_1$ và $x_3$).
+    
+    *   **Trường hợp 1: $n$ là số chẵn ($n = 2k$, với $k \in \mathbb{N}^*$)**
+        *   Số ghế chẵn là $k$, số ghế lẻ là $k$.
+        *   Số cách chọn 2 ghế chẵn phân biệt cho $x_1, x_3$ là $A_k^2 = k(k-1)$.
+        *   Số cách chọn 2 ghế lẻ phân biệt cho $x_1, x_3$ là $A_k^2 = k(k-1)$.
+        *   Số bộ ba $(x_1, x_2, x_3)$ thỏa mãn là:
+            $$N = 2 \cdot k(k-1) = 2 \cdot \dfrac{n}{2} \cdot \left(\dfrac{n}{2} - 1\right) = \dfrac{n(n-2)}{2}$$
+            
+    *   **Trường hợp 2: $n$ là số lẻ ($n = 2k + 1$, với $k \in \mathbb{N}$)**
+        *   Số ghế lẻ là $k+1$, số ghế chẵn là $k$.
+        *   Số cách chọn 2 ghế lẻ phân biệt cho $x_1, x_3$ là $A_{k+1}^2 = (k+1)k$.
+        *   Số cách chọn 2 ghế chẵn phân biệt cho $x_1, x_3$ là $A_k^2 = k(k-1)$.
+        *   Số bộ ba $(x_1, x_2, x_3)$ thỏa mãn là:
+            $$N = (k+1)k + k(k-1) = 2k^2 = 2 \left(\dfrac{n-1}{2}\right)^2 = \dfrac{(n-1)^2}{2}$$
+            
+    Sau khi chọn vị trí ghế cho Khoa, Thảo, Khôi (có $N$ cách), ta xếp $(n-3)$ bạn còn lại vào $(n-3)$ ghế trống, có $(n-3)!$ cách.
+    
+    Số kết quả thuận lợi cho biến cố là:
+    $$n(A) = N \cdot (n-3)!$$
+    
+    **Bước 3: Lập phương trình xác suất và giải tìm $n$.**
+    
+    Xác suất của biến cố là:
+    $$P = \dfrac{n(A)}{n(\Omega)} = \dfrac{N \cdot (n-3)!}{n!} = \dfrac{N}{n(n-1)(n-2)}$$
+    
+    *   **Nếu $n$ chẵn:** $N = \dfrac{n(n-2)}{2}$
+        $$P = \dfrac{\dfrac{n(n-2)}{2}}{n(n-1)(n-2)} = \dfrac{1}{2(n-1)}$$
+        Theo đề bài $P = \dfrac{13}{675} \Rightarrow 2(n-1) = \dfrac{675}{13}$ (không phải số nguyên, loại).
+        
+    *   **Nếu $n$ lẻ:** $N = \dfrac{(n-1)^2}{2}$
+        $$P = \dfrac{\dfrac{(n-1)^2}{2}}{n(n-1)(n-2)} = \dfrac{n-1}{2n(n-2)}$$
+        
+        Theo đề bài $P = \dfrac{13}{675}$, ta có phương trình:
+        $$\dfrac{n-1}{2n(n-2)} = \dfrac{13}{675}$$
+        $$\Leftrightarrow 675(n - 1) = 26n(n - 2)$$
+        $$\Leftrightarrow 675n - 675 = 26n^2 - 52n$$
+        $$\Leftrightarrow 26n^2 - 727n + 675 = 0$$
+        
+        Giải phương trình bậc hai trên:
+        $$\Delta = (-727)^2 - 4 \cdot 26 \cdot 675 = 528529 - 70200 = 458329 = 677^2$$
+        $$n = \dfrac{727 + 677}{52} = \dfrac{1404}{52} = 25 \quad \text{(thỏa mãn } n \text{ lẻ)}$$
+        $$n = \dfrac{727 - 677}{52} = \dfrac{50}{52} \quad \text{(loại)}$$
+        
+    Vậy **$n = 25$**.
+    """)
+
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 34 (Từ ảnh - THPT Bãi Cháy - Quảng Ninh 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 34 (THPT Bãi Cháy - Quảng Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Ba người cùng bắn vào 1 bia. Xác suất để người thứ nhất, thứ hai, thứ ba bắn trúng đích lần lượt là 0,8; 0,6; 0,5. Tính xác suất để có 2 người bắn trúng đích.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_34 = st.text_input("Nhập kết quả xác suất (ví dụ: 0.12):", key="q34_ans")
+
+if st.button("Kiểm tra đáp án", key="q34_check"):
+    normalized_user_answer_34 = user_answer_34.strip().replace(" ", "").replace(",", ".")
+    
+    # Đáp án chính xác là 0.46 (hoặc 46%)
+    if normalized_user_answer_34 in ["0.46", ".46", "46%"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_34 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q34_solution_shown' not in st.session_state:
+    st.session_state['q34_solution_shown'] = False
+
+col1_34, col2_34 = st.columns([1, 4])
+with col1_34:
+    if st.button("Xem lời giải chi tiết Câu 34", key="q34_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q34_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q34_solution_shown'] = False
+
+if st.session_state.get('q34_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 34:")
+    
+    st.markdown(r"""
+    **Bước 1: Tóm tắt xác suất trúng và trượt của từng người.**
+    
+    Gọi $A_1, A_2, A_3$ lần lượt là biến cố người thứ nhất, người thứ hai, người thứ ba bắn trúng đích.
+    Các biến cố này độc lập với nhau.
+    
+    *   **Người thứ nhất:** 
+        *   Xác suất trúng: $P(A_1) = 0{,}8$.
+        *   Xác suất trượt: $P(\overline{A_1}) = 1 - 0{,}8 = 0{,}2$.
+    *   **Người thứ hai:** 
+        *   Xác suất trúng: $P(A_2) = 0{,}6$.
+        *   Xác suất trượt: $P(\overline{A_2}) = 1 - 0{,}6 = 0{,}4$.
+    *   **Người thứ ba:** 
+        *   Xác suất trúng: $P(A_3) = 0{,}5$.
+        *   Xác suất trượt: $P(\overline{A_3}) = 1 - 0{,}5 = 0{,}5$.
+        
+    **Bước 2: Phân tích các trường hợp có đúng 2 người bắn trúng đích.**
+    
+    Để có đúng 2 người bắn trúng đích, ta xét 3 trường hợp xung khắc sau:
+    
+    *   **Trường hợp 1:** Người thứ nhất và thứ hai trúng, người thứ ba trượt.
+        $$P_1 = P(A_1 \cap A_2 \cap \overline{A_3}) = P(A_1) \cdot P(A_2) \cdot P(\overline{A_3}) = 0{,}8 \times 0{,}6 \times 0{,}5 = 0{,}24$$
+        
+    *   **Trường hợp 2:** Người thứ nhất và thứ ba trúng, người thứ hai trượt.
+        $$P_2 = P(A_1 \cap \overline{A_2} \cap A_3) = P(A_1) \cdot P(\overline{A_2}) \cdot P(A_3) = 0{,}8 \times 0{,}4 \times 0{,}5 = 0{,}16$$
+        
+    *   **Trường hợp 3:** Người thứ hai và thứ ba trúng, người thứ nhất trượt.
+        $$P_3 = P(\overline{A_1} \cap A_2 \cap A_3) = P(\overline{A_1}) \cdot P(A_2) \cdot P(A_3) = 0{,}2 \times 0{,}6 \times 0{,}5 = 0{,}06$$
+        
+    **Bước 3: Tính tổng xác suất.**
+    
+    Xác suất để có đúng 2 người bắn trúng đích là:
+    $$P = P_1 + P_2 + P_3 = 0{,}24 + 0{,}16 + 0{,}06 = 0{,}46$$
+    
+    Vậy xác suất cần tìm là **$0{,}46$** (hay **$46\%$**).
+    """)
+
+st.markdown("---")
+
+# --- CÂU HỎI 35 ---
+st.markdown(
+    '<b style="color: blue;">Câu 35 (HSG 12 - Thái Nguyên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho $X$ là tập các số tự nhiên có hai chữ số khác nhau được thành lập từ các chữ số $1; 2; 3; 4; 5; 6$. Chọn ngẫu nhiên hai số từ tập $X$. Tính xác suất để hai số được chọn có bốn chữ số đều khác nhau và tổng của bốn chữ số bằng 18.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_35 = st.text_input("Nhập đáp án (ví dụ: 0.12):", key="q35_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q35_check"):
+    normalized_user_answer_35 = user_answer_35.strip().replace(',', '.')
+    
+    if normalized_user_answer_35 in ["0.03", "0,03", "0.028", "4/145"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_35 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại số phần tử không gian mẫu và số cách chọn cặp số thỏa mãn điều kiện nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q35_solution_shown' not in st.session_state:
+    st.session_state['q35_solution_shown'] = False
+
+col1_35, col2_35 = st.columns([1, 4])
+with col1_35:
+    if st.button("Xem lời giải chi tiết", key="q35_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q35_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q35_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q35_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu**
+    
+    * Tập hợp các chữ số cho trước: $\{1, 2, 3, 4, 5, 6\}$.
+    * Tập $X$ gồm các số tự nhiên có hai chữ số khác nhau lập từ các chữ số trên:
+        $$n(X) = A_6^2 = 30 \text{ số}$$
+    * Chọn ngẫu nhiên hai số từ tập $X$:
+        $$n(\Omega) = C_{30}^2 = \dfrac{30 \times 29}{2} = 435$$
+    
+    **Bước 2: Phân tích điều kiện của biến cố**
+    
+    * Hai số được chọn có bốn chữ số đều khác nhau và tổng của bốn chữ số bằng $18$.
+    * Tổng tất cả các chữ số từ $1$ đến $6$ là:
+        $$1 + 2 + 3 + 4 + 5 + 6 = 21$$
+    * Để tổng của $4$ chữ số được chọn bằng $18$, ta cần bỏ đi $2$ chữ số có tổng bằng $21 - 18 = 3$.
+    * Cặp chữ số có tổng bằng $3$ duy nhất trong tập là $\{1, 2\}$. Do đó, bộ $4$ chữ số được chọn bắt buộc phải là $\{3, 4, 5, 6\}$.
+    
+    **Bước 3: Đếm số kết quả thuận lợi**
+    
+    * Ta cần lập cặp 2 số có hai chữ số khác nhau từ bộ $4$ chữ số $\{3, 4, 5, 6\}$ sao cho dùng hết cả $4$ chữ số đó:
+        * Số cách chọn số thứ nhất là $A_4^2 = 12$ số.
+        * Số thứ hai được tạo từ $2$ chữ số còn lại (có $2$ cách chọn).
+        * Vì phép chọn $2$ số không kể thứ tự, số cách chọn cặp số thỏa mãn là:
+            $$n(A) = \dfrac{12 \times 2}{2} = 12$$
+    
+    **Bước 4: Tính xác suất**
+    
+    * Xác suất cần tìm là:
+        $$P = \dfrac{12}{435} = \dfrac{4}{145} \approx 0.02758$$
+    * Làm tròn kết quả đến hàng phần trăm, ta được **$0.03$** (hoặc dạng phân số $\dfrac{4}{145}$).
+    
+    **Kết luận:** Xác suất cần tìm là **$\dfrac{4}{145}$** (hoặc khoảng **0.03**).
+    """)
+    
+st.markdown("---")
