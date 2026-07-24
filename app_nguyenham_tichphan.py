@@ -1,4 +1,5 @@
 import streamlit as st
+import numpy as np
 import math
 
 st.set_page_config(page_title="Ngân hàng câu hỏi", layout="centered")
@@ -1114,3 +1115,104 @@ if st.session_state.get('q11_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+
+
+
+
+# --- CÂU HỎI 12: DIỆN TÍCH HÌNH PHẲNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 12 (Sở Gia Lai 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong mặt phẳng với hệ tọa độ $Oxy$, cho ngũ giác đều $ABCDE$ có tâm $I$, $A(-2; -4)$, $B(2; -4)$ và năm parabol $(P_1), (P_2), (P_3), (P_4), (P_5)$ giống nhau như hình. Biết $(P_1)$ có đỉnh là gốc tọa độ $O$, hỏi diện tích hình phẳng giới hạn bởi năm parabol đã cho bằng bao nhiêu, không làm tròn kết quả các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần trăm?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích (làm tròn đến hàng phần trăm, ví dụ: 1.23):", key="q12_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("image_d866bd.PNG", width=500)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'image_d866bd.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q12_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    if normalized_user_answer == "4.29":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hệ tọa độ với gốc tại tâm $I$ của ngũ giác để khai thác tính đối xứng quay, sau đó tìm diện tích một phần mười của hình sao ở giữa nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q12_solution_shown' not in st.session_state:
+    st.session_state['q12_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q12_solution_btn"):
+        st.session_state['q12_solution_shown'] = True
+
+if st.session_state.get('q12_solution_shown'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định tọa độ tâm $I$ của ngũ giác đều**
+    
+    * Ngũ giác đều $ABCDE$ có cạnh đáy $AB$ nằm ngang (do tung độ $y_A = y_B = -4$). Chiều dài cạnh là $AB = 4$.
+    * Gọi $M$ là trung điểm của $AB \Rightarrow M(0; -4)$. Tâm $I$ của ngũ giác nằm trên trục tung (trục đối xứng của $AB$).
+    * Khoảng cách từ tâm $I$ đến cạnh $AB$ là: $IM = \dfrac{AB}{2} \cot(36^\circ) = 2\cot(36^\circ)$.
+    * Do $I$ nằm phía trên đoạn $AB$, tọa độ tâm $I$ là: $I(0; -4 + 2\cot 36^\circ)$.
+    
+    **Bước 2: Lập phương trình parabol và tịnh tiến hệ tọa độ**
+    
+    * Parabol đi qua $A(-2; -4), B(2; -4)$ và có đỉnh $O(0;0)$ có dạng $y = ax^2$.
+    * Thay tọa độ điểm $A$ vào, ta được $-4 = a(-2)^2 \Rightarrow a = -1$. Vậy phương trình parabol này là $y = -x^2$.
+    * Để tính diện tích phần giao nhau dễ dàng hơn, ta tịnh tiến hệ tọa độ gốc $O$ về hệ tọa độ mới gốc $I$ thông qua phép đổi biến: $\begin{cases} X = x \\ Y = y - y_I = y + 4 - 2\cot 36^\circ \end{cases}$
+    * Đặt $t = \cot 36^\circ$. Phương trình parabol trong hệ tọa độ mới là: 
+        $$Y - 4 + 2t = -X^2 \Leftrightarrow Y = -X^2 + 4 - 2t$$
+    * Parabol này có đỉnh tại $(0; 4 - 2t)$ và trục đối xứng là phần dương trục $IY$ (tương ứng với góc $90^\circ$ trên đường tròn lượng giác gốc $I$).
+    
+    **Bước 3: Xác định tọa độ giao điểm $K$ của hai parabol liền kề**
+    
+    * Hình phẳng cần tính là ngôi sao $5$ cánh giới hạn bởi $5$ parabol đối xứng quay quanh $I$. Diện tích này gồm $10$ phần diện tích bằng nhau.
+    * Parabol liền kề bên phải có trục đối xứng lệch đi một góc $72^\circ$ so với trục $IY$, tức là trục của nó ở góc $90^\circ - 72^\circ = 18^\circ$.
+    * Giao điểm $K$ của hai parabol này nằm trên tia phân giác của hai trục đối xứng, ứng với góc $\dfrac{90^\circ + 18^\circ}{2} = 54^\circ$.
+    * Phương trình tia phân giác này là $Y = X \tan(54^\circ) = X \cot(36^\circ) = tX$ (với $X > 0$).
+    * Tọa độ $X_K$ là nghiệm dương của phương trình hoành độ giao điểm:
+        $$-X^2 + 4 - 2t = tX \Leftrightarrow X^2 + tX - (4 - 2t) = 0$$
+    * Tính biệt thức $\Delta = t^2 - 4[-(4 - 2t)] = t^2 - 8t + 16 = (t - 4)^2$. 
+    * Vì $t = \cot 36^\circ \approx 1,376 < 4$ nên $\sqrt{\Delta} = 4 - t$.
+    * Do đó, $X_K = \dfrac{-t + (4 - t)}{2} = 2 - t$.
+    
+    **Bước 4: Tính diện tích hình phẳng**
+    
+    * Diện tích $S$ cần tìm là $10$ lần diện tích phần hình phẳng giới hạn bởi đường parabol, tia phân giác $Y = tX$ và trục $IY$:
+        $$S = 10 \int_{0}^{2-t} \left[ (-X^2 + 4 - 2t) - tX \right] \text{d}X$$
+        $$S = 10 \left[ -\dfrac{X^3}{3} - \dfrac{tX^2}{2} + (4 - 2t)X \right]_{0}^{2-t}$$
+    * Rút gọn biểu thức trên, ta được:
+        $$S = 10 \left( -\dfrac{(2-t)^3}{3} - \dfrac{t(2-t)^2}{2} + 2(2-t)^2 \right)$$
+        $$S = 10 (2-t)^2 \left( \dfrac{-2(2-t) - 3t + 12}{6} \right) = \dfrac{5}{3} (2-t)^2 (8-t)$$
+        
+    **Bước 5: Tính kết quả bằng số**
+    
+    * Ta có $t = \cot 36^\circ = \dfrac{\cos 36^\circ}{\sin 36^\circ} = \dfrac{\dfrac{1+\sqrt{5}}{4}}{\dfrac{\sqrt{10-2\sqrt{5}}}{4}} = \dfrac{1+\sqrt{5}}{\sqrt{10-2\sqrt{5}}} \approx 1,37638$.
+    * Thay $t$ vào công thức tính diện tích $S$:
+        $$S \approx \dfrac{5}{3} \times (2 - 1,37638)^2 \times (8 - 1,37638) \approx 4,2932$$
+    * Làm tròn kết quả đến hàng phần trăm theo yêu cầu đề bài.
+    
+    **Kết luận:** Diện tích hình phẳng giới hạn bởi năm parabol bằng **$4,29$**.
+    """)
+    st.markdown("---")
