@@ -9845,3 +9845,152 @@ if st.session_state.get('q106_solution_shown') and st.session_state.get('logged_
     **Vậy đáp án là: -538**
     """)
 st.markdown("---")
+
+
+
+
+# ==========================================
+# CÂU 107
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 107 (THPT Marie Curie - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một máy ép thủy lực có hai động cơ $A$ và $B$ hoạt động độc lập với nhau. Xác suất để động cơ $A$ chạy tốt là $0,8$. Xác suất để động cơ $B$ chạy tốt là $0,75$. Biết rằng máy chỉ hoạt động được nếu có ít nhất một động cơ chạy tốt. Tìm xác suất để máy ép thủy lực hoạt động.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_107 = st.text_input("Nhập đáp án Câu 107 (ví dụ: 0.15 hoặc 0,15):", key="q107_ans")
+
+if st.button("Kiểm tra đáp án", key="q107_check"):
+    normalized_user_answer = user_answer_107.strip().replace(",", ".")
+    if normalized_user_answer == "0.95":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_107 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q107_solution_shown' not in st.session_state:
+    st.session_state['q107_solution_shown'] = False
+
+col1_107, col2_107 = st.columns([1, 4])
+with col1_107:
+    if st.button("Xem lời giải chi tiết", key="q107_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q107_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q107_solution_shown'] = False
+
+if st.session_state.get('q107_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Xác định xác suất của từng động cơ và biến cố đối.**
+    *   Gọi $A$ là biến cố "Động cơ $A$ chạy tốt". Theo giả thiết: $P(A) = 0,8$.
+        Xác suất động cơ $A$ không chạy tốt là: $P(\overline{A}) = 1 - 0,8 = 0,2$.
+    *   Gọi $B$ là biến cố "Động cơ $B$ chạy tốt". Theo giả thiết: $P(B) = 0,75$.
+        Xác suất động cơ $B$ không chạy tốt là: $P(\overline{B}) = 1 - 0,75 = 0,25$.
+
+    **Bước 2: Sử dụng biến cố đối để tính xác suất máy ép thủy lực hoạt động.**
+    *   Máy ép thủy lực chỉ hoạt động được nếu có ít nhất một động cơ chạy tốt.
+    *   Biến cố đối của "Máy hoạt động" là biến cố "Cả hai động cơ $A$ và $B$ đều không chạy tốt" ($\overline{A} \cap \overline{B}$).
+    *   Vì hai động cơ hoạt động độc lập với nhau nên xác suất để cả hai động cơ đều không chạy tốt là:
+        $$P(\overline{A} \cap \overline{B}) = P(\overline{A}) \cdot P(\overline{B}) = 0,2 \cdot 0,25 = 0,05$$
+
+    **Bước 3: Tính xác suất máy ép thủy lực hoạt động.**
+    *   Xác suất để máy ép thủy lực hoạt động là:
+        $$P = 1 - P(\overline{A} \cap \overline{B}) = 1 - 0,05 = 0,95$$
+
+    **Vậy đáp án là: 0.95**
+    """)
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 108
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 108 (Sở An Giang 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong mặt phẳng tọa độ $Oxy$, xét tập hợp $S$ gồm các điểm có tọa độ $(x; y)$ với $x, y$ là các số nguyên dương không vượt quá 15. Chọn ngẫu nhiên 2 điểm phân biệt $A, B$ từ tập $S$. Gọi $C$ là trung điểm của đoạn thẳng $AB$. Gọi $p$ là xác suất để điểm $C$ có tọa độ đều là các số nguyên. Tính giá trị của $225p$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_108 = st.text_input("Nhập đáp án Câu 108 (chỉ nhập số):", key="q108_ans")
+
+if st.button("Kiểm tra đáp án", key="q108_check"):
+    normalized_user_answer = user_answer_108.strip()
+    if normalized_user_answer == "56":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_108 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q108_solution_shown' not in st.session_state:
+    st.session_state['q108_solution_shown'] = False
+
+col1_108, col2_108 = st.columns([1, 4])
+with col1_108:
+    if st.button("Xem lời giải chi tiết", key="q108_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q108_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q108_solution_shown'] = False
+
+if st.session_state.get('q108_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu $\Omega$.**
+    *   Các tọa độ $x, y$ nhận giá trị nguyên dương không vượt quá 15 nên $x, y \in \{1, 2, 3, \dots, 15\}$ (có 15 giá trị cho mỗi tọa độ).
+    *   Số phần tử của tập hợp $S$ là: $15 \times 15 = 225$ điểm.
+    *   Chọn ngẫu nhiên 2 điểm phân biệt $A, B$ từ tập $S$, số phần tử của không gian mẫu là:
+        $$n(\Omega) = C_{225}^2 = \dfrac{225 \times 224}{2} = 25200$$
+
+    **Bước 2: Phân tích điều kiện để trung điểm $C$ có tọa độ nguyên.**
+    *   Giả sử $A(x_1; y_1)$ và $B(x_2; y_2)$. Tọa độ trung điểm $C$ của đoạn thẳng $AB$ là:
+        $$C\left(\dfrac{x_1 + x_2}{2}; \dfrac{y_1 + y_2}{2}\right)$$
+    *   Để điểm $C$ có tọa độ đều là các số nguyên thì tổng hoành độ $x_1 + x_2$ phải là số chẵn và tổng tung độ $y_1 + y_2$ phải là số chẵn.
+    *   Điều này xảy ra khi và chỉ khi $x_1, x_2$ cùng tính chẵn lẻ và $y_1, y_2$ cùng tính chẵn lẻ (tức là $A$ và $B$ có cùng "loại" tính chẵn lẻ của tọa độ).
+
+    **Bước 3: Phân loại các điểm trong tập $S$.**
+    Từ tập giá trị $\{1, 2, \dots, 15\}$, ta có:
+    *   Số các số lẻ là 8 (gồm $1, 3, 5, 7, 9, 11, 13, 15$).
+    *   Số các số chẵn là 7 (gồm $2, 4, 6, 8, 10, 12, 14$).
+    
+    Tập $S$ gồm các điểm được chia thành 4 nhóm dựa theo tính chẵn lẻ của $(x; y)$:
+    1.  Nhóm (Lẻ, Lẻ): Số lượng điểm là $8 \times 8 = 64$.
+    2.  Nhóm (Lẻ, Chẵn): Số lượng điểm là $8 \times 7 = 56$.
+    3.  Nhóm (Chẵn, Lẻ): Số lượng điểm là $7 \times 8 = 56$.
+    4.  Nhóm (Chẵn, Chẵn): Số lượng điểm là $7 \times 7 = 49$.
+
+    **Bước 4: Tính số kết quả thuận lợi cho biến cố ($n(A)$).**
+    Hai điểm $A, B$ phải nằm trong cùng một nhóm để trung điểm $C$ có tọa độ nguyên:
+    *   Chọn 2 điểm từ nhóm (Lẻ, Lẻ): $C_{64}^2 = \dfrac{64 \times 63}{2} = 2016$ cách.
+    *   Chọn 2 điểm từ nhóm (Lẻ, Chẵn): $C_{56}^2 = \dfrac{56 \times 55}{2} = 1540$ cách.
+    *   Chọn 2 điểm từ nhóm (Chẵn, Lẻ): $C_{56}^2 = \dfrac{56 \times 55}{2} = 1540$ cách.
+    *   Chọn 2 điểm từ nhóm (Chẵn, Chẵn): $C_{49}^2 = \dfrac{49 \times 48}{2} = 1176$ cách.
+    
+    Tổng số kết quả thuận lợi là:
+    $$n(A) = 2016 + 1540 + 1540 + 1176 = 6272$$
+
+    **Bước 5: Tính xác suất $p$ và giá trị $225p$.**
+    *   Xác suất $p$ là:
+        $$p = \dfrac{6272}{25200}$$
+    *   Giá trị cần tính của biểu thức $225p$ là:
+        $$225p = 225 \times \dfrac{6272}{25200} = \dfrac{6272}{112} = 56$$
+
+    **Vậy đáp án là: 56**
+    """)
+st.markdown("---")
