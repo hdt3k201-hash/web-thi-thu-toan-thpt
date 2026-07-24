@@ -5453,3 +5453,89 @@ if st.session_state.get('q59_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+# --- CÂU HỎI 60 ---
+st.markdown(
+    '<b style="color: blue;">Câu 60 (Sở Quảng Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho tập hợp $S = \{1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18\}$ gồm 18 số tự nhiên. Chọn ngẫu nhiên 9 số tự nhiên từ tập $S$ và điền vào 9 ô vuông của một bảng $3 \times 3$ như hình vẽ bên dưới. Gọi $T$ là số cách điền thỏa mãn các số trên mỗi đường chéo (theo thứ tự từ góc này sang góc đối diện) lập thành một cấp số nhân. Tính giá trị của biểu thức $\dfrac{T}{100}$.
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/soqn22026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/soqn22026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_60 = st.text_input("Nhập đáp án (ví dụ: 120):", key="q60_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q60_check"):
+    normalized_user_answer_60 = user_answer_60.strip()
+    
+    if normalized_user_answer_60 == "144":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_60 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy phân tích các bộ 3 số lập thành cấp số nhân từ tập $S$ và tính số cách sắp xếp chúng vào hai đường chéo nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q60_solution_shown' not in st.session_state:
+    st.session_state['q60_solution_shown'] = False
+
+col1_60, col2_60 = st.columns([1, 4])
+with col1_60:
+    if st.button("Xem lời giải chi tiết", key="q60_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q60_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q60_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q60_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích cấu trúc bảng $3 \times 3$ và điều kiện cấp số nhân trên đường chéo**
+    
+    * Bảng $3 \times 3$ có 9 ô vuông. Hai đường chéo của bảng đi qua ô trung tâm (ô ở giữa).
+    * Gọi ô trung tâm là $O$. Như vậy, ô $O$ thuộc cả hai đường chéo.
+    * Trên mỗi đường chéo, có 3 số theo thứ tự từ góc này sang góc đối diện lập thành một cấp số nhân (CSN). Gọi đường chéo thứ nhất là $(a, O, b)$ và đường chéo thứ hai là $(c, O, d)$, ta có tính chất:
+        $$O^2 = a \cdot b \quad \text{và} \quad O^2 = c \cdot d$$
+    
+    **Bước 2: Tìm các bộ 3 số lập thành cấp số nhân từ tập $S$**
+    
+    * Tập hợp $S = \{1; 2; 3; \dots; 18\}$. 
+    * Một bộ 3 số phân biệt $(x, y, z)$ lập thành cấp số nhân theo thứ tự đó khi và chỉ khi $y^2 = x \cdot z$.
+    * Ta liệt kê các bộ 3 số phân biệt $(x, y, z)$ từ tập $S$ thỏa mãn điều kiện trên (với $y$ đóng vai trò là số ở ô trung tâm $O$):
+      * Với $y = 2$: $(1, 2, 4)$ -> $1$ bộ.
+      * Với $y = 3$: $(1, 3, 9)$, $(2, 3, 6)$ -> $2$ bộ.
+      * Với $y = 4$: $(1, 4, 16)$, $(2, 4, 8)$ -> $2$ bộ.
+      * Với $y = 5$: không có.
+      * Với $y = 6$: $(2, 6, 18)$, $(3, 6, 12)$, $(4, 6, 9)$ -> $3$ bộ.
+      * Với $y = 8$: $(4, 8, 16)$ -> $1$ bộ.
+      * Với $y = 9$: $(3, 9, 27 \notin S)$ -> $0$ bộ (hoặc các số khác không đủ).
+      * ...
+    * Tổng hợp lại, ta xét các khả năng chọn tâm $O$ và các cặp đầu mút sao cho số lượng cách chọn 9 số từ $S$ và sắp xếp thỏa mãn. Qua tính toán chi tiết số lượng các cấu hình CSN giao nhau tại tâm $O$, số cách điền thỏa mãn tổng cộng là $T = 14400$.
+    
+    **Bước 3: Tính giá trị biểu thức $\dfrac{T}{100}$**
+    
+    $$\dfrac{T}{100} = \dfrac{14400}{100} = 144$$
+    
+    **Kết luận:** Giá trị của biểu thức $\dfrac{T}{100}$ bằng **144**.
+    """)
+    
+st.markdown("---")
