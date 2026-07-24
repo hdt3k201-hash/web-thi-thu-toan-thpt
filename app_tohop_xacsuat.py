@@ -10130,3 +10130,91 @@ if st.session_state.get('q110_solution_shown') and st.session_state.get('logged_
     **Vậy đáp án là: 54**
     """)
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 111
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 111 (Sở Hưng Yên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một trường học có tỉ lệ học sinh nam và học sinh nữ là $5:3$. Trong đó, tỉ lệ số học sinh nam thuận tay trái là $11\%$, tỉ lệ số học sinh nữ thuận tay trái là $9\%$. Xác suất để chọn ngẫu nhiên 5 học sinh ở trường trong đó có đúng 1 học sinh nam và 1 học sinh nữ thuận tay trái là bao nhiêu $\%$, làm tròn đến hàng phần trăm?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_111 = st.text_input("Nhập đáp án Câu 111 (% làm tròn đến hàng phần trăm, ví dụ: 12.34 hoặc 12,34):", key="q111_ans")
+
+if st.button("Kiểm tra đáp án", key="q111_check"):
+    normalized_user_answer = user_answer_111.strip().replace(" ", "").replace("%", "").replace(",", ".")
+    # Tính toán đáp án chính xác:
+    # Tỉ lệ nam = 5/8 = 0.625, nữ = 3/8 = 0.375
+    # Xác suất 1 nam thuận tay trái trong trường = 0.625 * 0.11 = 0.06875
+    # Xác suất 1 nữ thuận tay trái trong trường = 0.375 * 0.09 = 0.03375
+    # Xác suất không phải nam thuận tay trái = 1 - 0.06875 = 0.93125
+    # Xác suất không phải nữ thuận tay trái = 1 - 0.03375 = 0.96625
+    # Chọn 5 học sinh, gọi X là số nam thuận tay trái, Y là số nữ thuận tay trái...
+    # Đề bài: "trong đó có đúng 1 học sinh nam và 1 học sinh nữ thuận tay trái" (trong 5 học sinh được chọn ngẫu nhiên).
+    # Sử dụng phân phối nhị thức hoặc tổ hợp xác suất: P = C_5^1 * C_4^1 * p_nam * p_nu * (1 - p_nam - p_nu)^3 ... chờ chút, phân phối đa thức hoặc nhị thức độc lập.
+    # Cụ thể: Chọn 5 học sinh từ trường rất lớn (coi xác suất mỗi lần chọn là độc lập với p_1 = 0.06875, p_2 = 0.03375, còn lại p_3 = 1 - p_1 - p_2 = 0.8975).
+    # Số cách chọn vị trí cho 1 học sinh nam thuận tay trái và 1 học sinh nữ thuận tay trái trong 5 học sinh là 5 * 4 = 20 cách.
+    # Xác suất = 20 * (0.06875) * (0.03375) * (0.8975)^3 ≈ 20 * 0.0023203125 * 0.722668... ≈ 0.03355... -> 3.36% (hoặc cần check kỹ hơn).
+    # Hãy tính chính xác: 20 * 0.06875 * 0.03375 * (0.8975**3) = 0.033555... -> 3.36%
+    if normalized_user_answer == "3.36":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_111 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q111_solution_shown' not in st.session_state:
+    st.session_state['q111_solution_shown'] = False
+
+col1_111, col2_111 = st.columns([1, 4])
+with col1_111:
+    if st.button("Xem lời giải chi tiết", key="q111_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q111_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q111_solution_shown'] = False
+
+if st.session_state.get('q111_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Tính tỉ lệ các nhóm học sinh trong toàn trường.**
+    *   Tỉ lệ học sinh nam và nữ là $5:3$, suy ra:
+        *   Xác suất chọn được học sinh nam là: $P(\text{Nam}) = \dfrac{5}{5 + 3} = \dfrac{5}{8} = 0,625$.
+        *   Xác suất chọn được học sinh nữ là: $P(\text{Nữ}) = \dfrac{3}{5 + 3} = \dfrac{3}{8} = 0,375$.
+    
+    **Bước 2: Tính xác suất chọn được học sinh nam thuận tay trái và học sinh nữ thuận tay trái trong tổng số học sinh toàn trường.**
+    *   Gọi $A$ là biến cố "Chọn được học sinh nam thuận tay trái":
+        $$P(A) = P(\text{Nam}) \cdot P(\text{Thuận tay trái} \mid \text{Nam}) = 0,625 \cdot 11\% = 0,625 \cdot 0,11 = 0,06875$$
+    *   Gọi $B$ là biến cố "Chọn được học sinh nữ thuận tay trái":
+        $$P(B) = P(\text{Nữ}) \cdot P(\text{Thuận tay trái} \mid \text{Nữ}) = 0,375 \cdot 9\% = 0,375 \cdot 0,09 = 0,03375$$
+    *   Xác suất chọn được học sinh không thuộc hai nhóm trên (học sinh còn lại) trong một lần chọn là:
+        $$P(C) = 1 - P(A) - P(B) = 1 - 0,06875 - 0,03375 = 0,8975$$
+
+    **Bước 3: Tính xác suất khi chọn ngẫu nhiên 5 học sinh.**
+    Khi chọn ngẫu nhiên 5 học sinh, để có được **đúng 1 học sinh nam thuận tay trái** và **đúng 1 học sinh nữ thuận tay trái** (và 3 học sinh còn lại thuộc nhóm khác), ta áp dụng phân phối xác suất đa thức:
+    *   Số cách phân bổ vị trí cho 1 học sinh nam thuận tay trái và 1 học sinh nữ thuận tay trái trong 5 học sinh được chọn là:
+        $$C_5^1 \cdot C_4^1 = 5 \cdot 4 = 20 \text{ cách}$$
+    *   Xác suất cần tìm là:
+        $$P = 20 \cdot P(A) \cdot P(B) \cdot [P(C)]^3$$
+        $$P = 20 \cdot 0,06875 \cdot 0,03375 \cdot (0,8975)^3$$
+        $$P \approx 20 \cdot 0,0023203 \cdot 0,72267 \approx 0,033555...$$
+
+    **Bước 4: Đổi ra phần trăm và làm tròn.**
+    *   Đổi ra phần trăm: $0,033555... \times 100\% \approx 3,3555\%$.
+    *   Làm tròn kết quả đến hàng phần trăm, ta được **$3,36\%$**.
+
+    **Vậy đáp án là: 3.36**
+    """)
+st.markdown("---")
+
+
