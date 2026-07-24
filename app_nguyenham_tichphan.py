@@ -1215,3 +1215,104 @@ if st.session_state.get('q12_solution_shown'):
     **Kết luận:** Diện tích hình phẳng giới hạn bởi năm parabol bằng **$4,29$**.
     """)
     st.markdown("---")
+
+
+
+# --- CÂU HỎI 13: THỂ TÍCH KHỐI TRÒN XOAY ---
+st.markdown(
+    '<b style="color: blue;">Câu 13 (Sở Bắc Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hình vuông $ABCD$ tâm $O$. Gọi $M, N, P, Q$ lần lượt là trung điểm của các đoạn $AB, BC, CD, DA$. Các cung $\widehat{QM}, \widehat{MN}, \widehat{NP}, \widehat{PQ}$ lần lượt là các cung tròn của các đường tròn tâm $A, B, C, D$ với bán kính bằng nhau. Biết diện tích "tứ giác cong" $MNPQ$ bằng $\dfrac{16(4-\pi)}{} \text{ dm}^2$ (đề bài: $16(4-\pi) \text{ dm}^2$). Hỏi khi cho "tứ giác cong" $MNPQ$ quay quanh trục $NQ$ ta thu được vật thể có thể tích bằng bao nhiêu đê-xi-mét khối, kết quả làm tròn đến hàng phần mười?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập thể tích (làm tròn đến hàng phần mười, ví dụ: 32.2):", key="q13_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/image_d8d3f1.PNG", width=400)
+except Exception as e:
+    st.warning("⚠️ Lỗi: Không thể tải ảnh 'images/image_d8d3f1.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q13_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    if normalized_user_answer == "38.6":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tính bán kính hình vuông từ diện tích tứ giác cong, sau đó thiết lập hệ trục tọa độ và dùng công thức thể tích khối tròn xoay nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q13_solution_shown' not in st.session_state:
+    st.session_state['q13_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q13_solution_btn"):
+        st.session_state['q13_solution_shown'] = True
+
+if st.session_state.get('q13_solution_shown'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính bán kính và kích thước hình vuông**
+    
+    * Gọi cạnh của hình vuông $ABCD$ là $2a$ ($a > 0$). Diện tích hình vuông là $S_{ABCD} = (2a)^2 = 4a^2$.
+    * Các điểm $M, N, P, Q$ lần lượt là trung điểm các cạnh $AB, BC, CD, DA$. Các cung tròn tâm $A, B, C, D$ có bán kính bằng nhau và bằng khoảng cách từ đỉnh đến trung điểm cạnh kề, tức là $R = a$.
+    * Phần diện tích nằm ngoài "tứ giác cong" $MNPQ$ bên trong hình vuông gồm $4$ hình quạt tròn tâm $A, B, C, D$ có bán kính $R = a$ và góc ở tâm bằng $90^\circ$ ($\dfrac{\pi}{2}$).
+    * Tổng diện tích $4$ hình quạt tròn này là: $4 \times \dfrac{1}{4} \pi a^2 = \pi a^2$.
+    * Diện tích "tứ giác cong" $MNPQ$ được tính bằng:
+        $$S_{MNPQ} = S_{ABCD} - \pi a^2 = 4a^2 - \pi a^2 = a^2(4 - \pi)$$
+    * Theo giả thiết: $S_{MNPQ} = 16(4 - \pi)$, suy ra $a^2 = 16 \implies a = 4 \text{ dm}$.
+    
+    **Bước 2: Gắn hệ trục tọa độ và thiết lập phương trình đường biên**
+    
+    * Chọn hệ trục tọa độ $Oxy$ sao cho gốc $O$ trùng với tâm hình vuông, trục hoành $Ox$ trùng với đoạn thẳng $NQ$ (với $N(-a; 0)$ và $Q(a; 0)$), trục tung $Oy$ trùng với đoạn thẳng $MP$ (với $M(0; a)$ và $P(0; -a)$).
+    * Do tính đối xứng, miền diện tích $MNPQ$ nằm hoàn toàn trong góc phần tư giới hạn từ $x = -a$ đến $x = a$.
+    * Biên phía trên của "tứ giác cong" trên đoạn $[-a; 0]$ là cung $MN$ thuộc đường tròn tâm $B(-a; a)$ bán kính $R = a$, có phương trình:
+        $$y = a - \sqrt{a^2 - (x + a)^2} \quad (\text{với } x \in [-a; 0])$$
+    * Biên phía trên trên đoạn $[0; a]$ là cung $MQ$ thuộc đường tròn tâm $A(a; a)$ bán kính $R = a$, có phương trình:
+        $$y = a - \sqrt{a^2 - (x - a)^2} \quad (\text{với } x \in [0; a])$$
+        
+    **Bước 3: Tính thể tích khối tròn xoay khi quay quanh trục $NQ$**
+    
+    * Khi quay hình phẳng này quanh trục $Ox$ (trục $NQ$), thể tích vật thể tạo thành được tính bằng công thức tích phân:
+        $$V = \pi \int_{-a}^{0} y_1^2 \text{d}x + \pi \int_{0}^{a} y_2^2 \text{d}x$$
+    * Do tính đối xứng qua trục tung $Oy$, hai tích phân này bằng nhau. Ta tính tích phân một bên:
+        $$I = \int_{0}^{a} \left[ a - \sqrt{a^2 - (x - a)^2} \right]^2 \text{d}x$$
+    * Đặt $t = x - a \implies \text{d}t = \text{d}x$. Khi $x$ chạy từ $0$ đến $a$ thì $t$ chạy từ $-a$ đến $0$:
+        $$I = \int_{-a}^{0} \left[ a - \sqrt{a^2 - t^2} \right]^2 \text{d}t = \int_{-a}^{0} \left( 2a^2 - t^2 - 2a\sqrt{a^2 - t^2} \right) \text{d}t$$
+    * Tính từng thành phần:
+        1. $\int_{-a}^{0} 2a^2 \text{d}t = 2a^3$
+        2. $\int_{-a}^{0} -t^2 \text{d}t = -\dfrac{a^3}{3}$
+        3. $-2a \int_{-a}^{0} \sqrt{a^2 - t^2} \text{d}t = -2a \times \left(\dfrac{1}{4}\pi a^2\right) = -\dfrac{\pi}{2}a^3$
+    * Cộng lại ta được: $I = 2a^3 - \dfrac{a^3}{3} - \dfrac{\pi}{2}a^3 = a^3 \left( \dfrac{5}{3} - \dfrac{\pi}{2} \right)$.
+    * Tổng thể tích vật thể là:
+        $$V = 2\pi I = 2\pi a^3 \left( \dfrac{5}{3} - \dfrac{\pi}{2} \right) = a^3 \left( \dfrac{10\pi}{3} - \pi^2 \right)$$
+        
+    **Bước 4: Thay số và tính kết quả cuối cùng**
+    
+    * Với $a = 4$, ta thay vào công thức thể tích:
+        $$V = 4^3 \left( \dfrac{10\pi}{3} - \pi^2 \right) = 64 \left( \dfrac{10\pi}{3} - \pi^2 \right)$$
+    * Sử dụng giá trị $\pi \approx 3,14159$, ta tính được:
+        $$V \approx 64 \times \left( 10,47198 - 9,86960 \right) = 64 \times 0,60238 \approx 38,552 \text{ dm}^3$$
+    * Làm tròn kết quả đến hàng phần mười theo yêu cầu đề bài ta được $38,6$.
+    
+    **Kết luận:** Thể tích của vật thể bằng khoảng **$38,6$** đê-xi-mét khối.
+    """)
+    st.markdown("---")
+
+
+
+
+
