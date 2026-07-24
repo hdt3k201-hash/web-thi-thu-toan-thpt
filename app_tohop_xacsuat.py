@@ -1722,3 +1722,161 @@ if st.session_state.get('q19_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+# --- CÂU HỎI 20 ---
+st.markdown(
+    '<b style="color: blue;">Câu 20 (Liên trường Nghệ An 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một hộp đựng 25 lá thăm khác nhau được đánh số từ 1 đến 25. Chọn ngẫu nhiên đồng thời 4 lá thăm từ hộp. Tính xác suất để trong 4 lá thăm được chọn có ít nhất 2 lá thăm là số nguyên tố và tổng của các số đó là một số chẵn (Làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_20 = st.text_input("Nhập đáp án (ví dụ: 0.12):", key="q20_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q20_check"):
+    normalized_user_answer_20 = user_answer_20.strip().replace(',', '.')
+    
+    if normalized_user_answer_20 in ["0.23", "0,23", "0.230"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_20 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại số lượng số nguyên tố, tính chẵn lẻ và phân bố các trường hợp chọn nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q20_solution_shown' not in st.session_state:
+    st.session_state['q20_solution_shown'] = False
+
+col1_20, col2_20 = st.columns([1, 4])
+with col1_20:
+    if st.button("Xem lời giải chi tiết", key="q20_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q20_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q20_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q20_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu**
+    
+    * Chọn ngẫu nhiên đồng thời $4$ lá thăm từ $25$ lá thăm:
+        $$n(\Omega) = C_{25}^4 = 12650$$
+    
+    **Bước 2: Phân tích tính chất các số từ 1 đến 25**
+    
+    * Các số nguyên tố từ $1$ đến $25$ gồm: $\{2, 3, 5, 7, 11, 13, 17, 19, 23\}$ (có $9$ số nguyên tố, trong đó có $1$ số chẵn là $2$ và $8$ số lẻ).
+    * Các số không phải số nguyên tố gồm $16$ số, trong đó có $11$ số chẵn và $5$ số lẻ ($1, 9, 15, 21, 25$).
+    * Tổng cộng có $13$ số lẻ và $12$ số chẵn.
+    
+    **Bước 3: Đếm số kết quả thuận lợi**
+    
+    * Yêu cầu bài toán: 
+      1. Có ít nhất $2$ lá thăm là số nguyên tố (số lượng số nguyên tố $k \ge 2$).
+      2. Tổng của $4$ số là số chẵn $\implies$ số lượng số lẻ được chọn phải là số chẵn ($j \in \{0, 2, 4\}$).
+    * Xét các trường hợp số lượng số lẻ $j$:
+      * **Trường hợp $j = 0$ ($0$ số lẻ, $4$ số chẵn):** Không thể chọn được $\ge 2$ số nguyên tố vì chỉ có duy nhất $1$ số nguyên tố chẵn là số $2$.
+      * **Trường hợp $j = 2$ ($2$ số lẻ, $2$ số chẵn):** Số cách chọn thỏa mãn điều kiện và loại bỏ các trường hợp có ít hơn $2$ số nguyên tố là $2288$ cách.
+      * **Trường hợp $j = 4$ ($4$ số lẻ, $0$ số chẵn):** Số cách chọn thỏa mãn điều kiện và loại bỏ các trường hợp có ít hơn $2$ số nguyên tố là $630$ cách.
+    * Tổng số kết quả thuận lợi là:
+        $$n(A) = 2288 + 630 = 2918$$
+    
+    **Bước 4: Tính xác suất và làm tròn**
+    
+    * Xác suất cần tìm là:
+        $$P = \dfrac{2918}{12650} \approx 0.23067$$
+    * Làm tròn kết quả đến hàng phần trăm, ta được **$0.23$**.
+    
+    **Kết luận:** Xác suất cần tìm là **0.23**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU HỎI 21 ---
+st.markdown(
+    '<b style="color: blue;">Câu 21 (ĐGNL ĐHSPHN 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một nghiên cứu cho thấy có $5\%$ các tin nhắn trên một mạng viễn thông X là tin nhắn quảng cáo. Trong các tin nhắn quảng cáo, $80\%$ tin nhắn có chứa chữ “sale”. Trong các tin nhắn không quảng cáo, $2\%$ tin nhắn có chứa chữ “sale”. Chọn ngẫu nhiên 1 tin nhắn trên mạng viễn thông X. Biết rằng tin nhắn đó có chứa chữ “sale”, xác suất để nó là tin nhắn quảng cáo bằng bao nhiêu (làm tròn kết quả đến hàng phần trăm)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_21 = st.text_input("Nhập đáp án (ví dụ: 0.51):", key="q21_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q21_check"):
+    normalized_user_answer_21 = user_answer_21.strip().replace(',', '.')
+    
+    if normalized_user_answer_21 in ["0.68", "0,68", "0.680"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_21 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy áp dụng công thức Bayes để tính xác suất có điều kiện nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q21_solution_shown' not in st.session_state:
+    st.session_state['q21_solution_shown'] = False
+
+col1_21, col2_21 = st.columns([1, 4])
+with col1_21:
+    if st.button("Xem lời giải chi tiết", key="q21_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q21_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q21_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q21_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt các biến cố**
+    
+    * Gọi $A$ là biến cố: "Tin nhắn là tin nhắn quảng cáo".
+    * Gọi $\bar{A}$ là biến cố: "Tin nhắn không phải là tin nhắn quảng cáo".
+    * Gọi $S$ là biến cố: "Tin nhắn có chứa chữ 'sale'".
+    
+    **Bước 2: Xác định các xác suất theo giả thiết**
+    
+    * Xác suất tin nhắn là quảng cáo: $P(A) = 0.05$.
+    * Xác suất tin nhắn không phải quảng cáo: $P(\bar{A}) = 1 - 0.05 = 0.95$.
+    * Xác suất tin nhắn chứa chữ 'sale' biết rằng đó là tin nhắn quảng cáo: $P(S \mid A) = 0.80$.
+    * Xác suất tin nhắn chứa chữ 'sale' biết rằng đó không phải tin nhắn quảng cáo: $P(S \mid \bar{A}) = 0.02$.
+    
+    **Bước 3: Tính xác suất toàn phần của biến cố $S$**
+    
+    * Theo công thức xác suất toàn phần:
+        $$P(S) = P(A) \cdot P(S \mid A) + P(\bar{A}) \cdot P(S \mid \bar{A})$$
+        $$P(S) = 0.05 \cdot 0.80 + 0.95 \cdot 0.02 = 0.040 + 0.019 = 0.059$$
+    
+    **Bước 4: Áp dụng định lý Bayes để tính xác suất cần tìm**
+    
+    * Xác suất để tin nhắn là tin nhắn quảng cáo biết rằng nó có chứa chữ 'sale' là $P(A \mid S)$:
+        $$P(A \mid S) = \dfrac{P(A) \cdot P(S \mid A)}{P(S)} = \dfrac{0.040}{0.059} \approx 0.67796$$
+    * Làm tròn kết quả đến hàng phần trăm, ta được **$0.68$**.
+    
+    **Kết luận:** Xác suất để tin nhắn đó là tin nhắn quảng cáo là **0.68**.
+    """)
+    
+st.markdown("---")
