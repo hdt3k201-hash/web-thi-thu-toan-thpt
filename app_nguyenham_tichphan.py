@@ -60,14 +60,7 @@ Thể tích của khối chân đế bằng bao nhiêu centimét khối (không 
 user_answer = st.text_input("Nhập thể tích khối chân đế (làm tròn đến hàng phần mười, ví dụ: 12.3):", key="q1_ans")
 
 # --- CHÈN HÌNH ẢNH ---
-try:
-    col1, col2, col3 = st.columns([1, 4, 1])
-    with col2:
-        # Đường dẫn ảnh đã được đồng bộ
-        st.image("images/image_d637a4.png", width=600)
-except FileNotFoundError:
-    # Thông báo lỗi cập nhật đúng tên file
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_d637a4.png'. Vui lòng kiểm tra lại đường dẫn.")
+
 
 # --- NÚT KIỂM TRA ĐÁP ÁN ---
 if st.button("Kiểm tra đáp án", key="q1_check"):
