@@ -2490,3 +2490,113 @@ if st.session_state.get('q28_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+
+# ==========================================
+# CÂU 29 (Từ ảnh - THPT Nguyễn Khuyến - HCM 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 29 (THPT Nguyễn Khuyến - HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Trên một ô lưới như hình, hình chữ nhật $AB$ gồm 9 cột và 5 hàng ô vuông. Một bé cún xuất phát từ điểm $A$ và chạy đến điểm $B$. Mỗi bước, bé cún chỉ được chạy sang phải hoặc xuống dưới đúng 1 ô (đi theo các cạnh của ô vuông), vì vậy bé cún luôn đi theo đường ngắn nhất. Trong hình vuông có phần tô đậm là những bãi bùn. Bé cún không được chạy vào miền trong của các vùng tô đậm, nhưng vẫn được phép chạy trên đường biên của chúng. Hỏi bé cún có bao nhiêu cách chạy từ $A$ đến $B$?
+""")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/nkltt12026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/nkltt12026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_29 = st.text_input("Nhập số cách chạy của bé cún từ A đến B:", key="q29_ans")
+
+if st.button("Kiểm tra đáp án", key="q29_check"):
+    normalized_user_answer_29 = user_answer_29.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 1640
+    if normalized_user_answer_29 == "1640":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_29 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q29_solution_shown' not in st.session_state:
+    st.session_state['q29_solution_shown'] = False
+
+col1_29, col2_29 = st.columns([1, 4])
+with col1_29:
+    if st.button("Xem lời giải chi tiết Câu 29", key="q29_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q29_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q29_solution_shown'] = False
+
+if st.session_state.get('q29_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 29:")
+    
+    st.markdown(r"""
+    **Bước 1: Hiểu quy tắc di chuyển trên lưới ô vuông**
+    
+    Để đi từ điểm $X$ đến điểm $Y$ trên lưới theo đường ngắn nhất (chỉ đi sang phải hoặc xuống dưới), nếu điểm $Y$ cách điểm $X$ là $m$ bước sang phải và $n$ bước xuống dưới thì tổng số bước đi là $m+n$.
+    Số cách đi sẽ là số cách chọn $m$ bước sang phải trong tổng số $m+n$ bước:
+    $$W(X, Y) = C_{m+n}^m = \dfrac{(m+n)!}{m! \cdot n!}$$
+    
+    **Bước 2: Phân tích lưới tọa độ**
+    
+    Ta chọn hệ trục tọa độ với điểm gốc $A(0;0)$. Vì di chuyển sang phải (tăng $x$) và xuống dưới (tăng $y$), ta gán tọa độ các nút lưới theo hướng đó:
+    *   Điểm xuất phát: $A(0; 0)$
+    *   Điểm đích $B$: nằm cách $A$ là $9$ ô sang phải và $5$ ô xuống dưới $\Rightarrow B(9; 5)$.
+    *   Vùng tô đậm gồm 2 bãi bùn:
+        *   Bãi bùn thứ nhất là hình vuông kích thước $2 \times 2$ với các đỉnh $C(3;2)$, $D(3;4)$, $E(5;4)$ và đỉnh đối diện $C$ là $(5;2)$.
+        *   Bãi bùn thứ hai là hình chữ nhật kích thước $2 \times 1$ với các đỉnh $K(5;1)$, $I(7;1)$, $H(7;2)$, $G(5;2)$.
+        
+    *Lưu ý quan trọng:* Bé cún **được đi trên biên** của bãi bùn nhưng **không được đi vào miền trong** (tức là không được dùng các đoạn thẳng nằm bên trong các vùng tô màu xanh). Specifically:
+    *   Trong vùng $2 \times 2$ (đỉnh $C, D, E, (5;2)$), có đỉnh nằm chính giữa là $M(4;3)$. Bất kỳ đường đi nào đi qua điểm $M(4;3)$ đều sẽ phải dùng đoạn thẳng nằm bên trong vùng bùn. Ngược lại, nếu đi qua $M$ thì vi phạm, còn đi trên viền thì hợp lệ.
+    *   Trong vùng $2 \times 1$ (đỉnh $K, I, H, G$), điểm nối giữa hai ô vuông nhỏ của vùng này là $N(6;1)$ và $P(6;2)$. Nếu bé cún dùng đoạn dọc nối giữa $(6;1)$ và $(6;2)$ thì chính là đi xuyên qua giữa vùng bãi bùn.
+    
+    Do đó, bài toán tương đương với: **Tìm số đường đi từ $A(0;0)$ đến $B(9;5)$ không đi qua điểm $M(4;3)$ và không sử dụng đoạn thẳng dọc $NP$ từ $N(6;1)$ đến $P(6;2)$.**
+    
+    **Bước 3: Dùng phương pháp phần bù (Principle of Inclusion-Exclusion)**
+    
+    *   **Tổng số cách đi từ $A$ đến $B$ (không có vật cản):**
+        $$S = W(A, B) = C_{9+5}^5 = C_{14}^5 = 2002 \text{ (cách)}$$
+        
+    *   **Số đường đi vi phạm điều kiện 1 (đi qua $M(4;3)$):**
+        *   Đi từ $A(0;0)$ đến $M(4;3)$ có: $C_{4+3}^3 = C_7^3 = 35$ cách.
+        *   Đi từ $M(4;3)$ đến $B(9;5)$ (chênh lệch $5$ phải, $2$ xuống) có: $C_{5+2}^2 = C_7^2 = 21$ cách.
+        $$\Rightarrow S_1 = 35 \times 21 = 735 \text{ (cách)}$$
+        
+    *   **Số đường đi vi phạm điều kiện 2 (đi qua đoạn dọc $NP$ nối $N(6;1)$ và $P(6;2)$):**
+        *   Đi từ $A(0;0)$ đến $N(6;1)$ có: $C_{6+1}^1 = C_7^1 = 7$ cách.
+        *   Bước dọc từ $N(6;1)$ xuống $P(6;2)$ có đúng $1$ cách.
+        *   Đi từ $P(6;2)$ đến $B(9;5)$ (chênh lệch $3$ phải, $3$ xuống) có: $C_{3+3}^3 = C_6^3 = 20$ cách.
+        $$\Rightarrow S_2 = 7 \times 1 \times 20 = 140 \text{ (cách)}$$
+        
+    *   **Số đường đi vi phạm CẢ HAI điều kiện (đi qua $M(4;3)$ rồi đi qua đoạn dọc $NP$):**
+        *   Đi từ $A(0;0)$ đến $M(4;3)$ có: $C_7^3 = 35$ cách.
+        *   Đi từ $M(4;3)$ đến $N(6;1)$ (chênh lệch $2$ phải, $-2$ xuống) $\Rightarrow$ **0 cách** vì không thể đi ngược lên trên từ hàng 3 lên hàng 1!
+        $$\Rightarrow S_{12} = 0 \text{ (cách)}$$
+        
+    **Bước 4: Kết luận**
+    
+    Số cách chạy hợp lệ của bé cún từ $A$ đến $B$ là:
+    $$S_{\text{hợp lệ}} = S - (S_1 + S_2 - S_{12}) = 2002 - (735 + 140 - 0) = 1640 \text{ (cách)}$$
+    
+    *(Bạn cũng có thể kiểm chứng lại kết quả bằng phương pháp cộng dồn điểm (Quy hoạch động) trực tiếp trên lưới: mỗi đỉnh lưới có giá trị bằng tổng hai đỉnh bên trái và bên trên nó, trừ điểm $M(4;3)$ gán bằng $0$ và không cộng từ đỉnh $N(6;1)$ xuống đỉnh $P(6;2)$, con số cuối cùng tại $B$ sẽ chính xác là **1640**).*
+    """)
+
+st.markdown("---")
