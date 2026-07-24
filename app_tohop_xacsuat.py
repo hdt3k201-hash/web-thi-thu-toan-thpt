@@ -5539,3 +5539,197 @@ if st.session_state.get('q60_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+# ==========================================
+# CÂU 61 (Từ ảnh - THPT Ngô Quyền - Hải Phòng 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 61 (THPT Ngô Quyền - Hải Phòng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 61 từ hình ảnh
+st.markdown(r"""
+Lớp mẫu giáo có 10 em bé, các bé đứng thành vòng tròn và cách đều nhau, đứng ở tâm vòng tròn là cô giáo. Mỗi bé cầm hai cờ, một xanh một đỏ trên mỗi tay. Cô giáo bảo "giơ lên cao một cờ", các bé giơ ngẫu nhiên một cờ. Gọi $a$ là xác suất để không có 4 cờ nào cùng màu được giơ lên ở 4 vị trí mà 4 vị trí ấy là 4 đỉnh của một hình chữ nhật. Giá trị của $\dfrac{2026}{a}$ bằng bao nhiêu? (kết quả làm tròn đến chữ số hàng đơn vị).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 61) ---
+user_answer_61 = st.text_input("Nhập giá trị làm tròn của $\dfrac{2026}{a}$ cho Câu 61:", key="q61_ans")
+
+if st.button("Kiểm tra đáp án Câu 61", key="q61_check"):
+    normalized_user_answer_61 = user_answer_61.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 5894 (a = 11/32 => 2026/a ≈ 5893.818... ≈ 5894)
+    if normalized_user_answer_61 == "5894":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 61 đã được mở khóa.")
+    elif user_answer_61 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 61) ---
+st.markdown("---")
+
+if 'q61_solution_shown' not in st.session_state:
+    st.session_state['q61_solution_shown'] = False
+
+col1_61, col2_61 = st.columns([1, 4])
+with col1_61:
+    if st.button("Xem lời giải chi tiết Câu 61", key="q61_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q61_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q61_solution_shown'] = False
+
+if st.session_state.get('q61_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 61:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu $n(\Omega)$**
+    
+    *   Có 10 em bé, mỗi bé chọn giơ ngẫu nhiên 1 trong 2 cờ (Xanh hoặc Đỏ).
+    *   Số kết quả có thể xảy ra của không gian mẫu là:
+        $$n(\Omega) = 2^{10} = 1024$$
+    
+    **Bước 2: Phân tích hình chữ nhật tạo bởi các đỉnh của đa giác đều 10 đỉnh**
+    
+    *   10 em bé đứng cách đều tạo thành các đỉnh của một đa giác đều 10 đỉnh (thập giác đều) nội tiếp đường tròn.
+    *   Một hình chữ nhật nội tiếp đường tròn có 2 đường chéo đi qua tâm đường tròn. Trong thập giác đều, có đúng **5 đường chéo đi qua tâm** (nối 2 bé đứng đối diện nhau).
+    *   Cứ chọn **2 đường chéo** bất kỳ đi qua tâm, ta sẽ tạo thành đúng 1 hình chữ nhật.
+    
+    **Bước 3: Điều kiện để không có hình chữ nhật nào có 4 đỉnh cùng màu**
+    
+    Xét 5 cặp bé đứng đối diện (5 đường chéo qua tâm). Với mỗi cặp đối diện, màu cờ giơ lên có thể là:
+    *   Cùng màu Xanh (XX): Gọi số cặp này là $g$.
+    *   Cùng màu Đỏ (ĐĐ): Gọi số cặp này là $r$.
+    *   Khác màu (XĐ hoặc ĐX): Gọi số cặp này là $m$.
+    *   Ta luôn có: $g + r + m = 5$.
+    
+    *   Nếu có từ 2 cặp cùng màu Xanh ($g \ge 2$), 2 cặp này sẽ tạo thành một hình chữ nhật có 4 đỉnh cùng màu Xanh.
+    *   Nếu có từ 2 cặp cùng màu Đỏ ($r \ge 2$), 2 cặp này sẽ tạo thành một hình chữ nhật có 4 đỉnh cùng màu Đỏ.
+    *   Do đó, biến cố $A$: "Không có 4 cờ nào cùng màu ở 4 đỉnh của một hình chữ nhật" tương đương với việc **$g \le 1$ và $r \le 1$**.
+    
+    **Bước 4: Đếm số kết quả thuận lợi cho biến cố $A$**
+    
+    Ta liệt kê các bộ $(g, r)$ thỏa mãn $g \le 1$ và $r \le 1$:
+    1.  **Trường hợp $(g, r) = (0, 0) \implies m = 5$:** Cả 5 cặp đều khác màu.
+        *   Mỗi cặp có 2 cách giơ cờ (XĐ hoặc ĐX) $\implies 2^5 = 32$ cách.
+    2.  **Trường hợp $(g, r) = (1, 0) \implies m = 4$:** 1 cặp XX, 4 cặp khác màu.
+        *   Chọn 1 cặp XX: $C_5^1 = 5$ cách.
+        *   4 cặp khác màu: $2^4 = 16$ cách $\implies 5 \times 16 = 80$ cách.
+    3.  **Trường hợp $(g, r) = (0, 1) \implies m = 4$:** 1 cặp ĐĐ, 4 cặp khác màu.
+        *   Tương tự, có: $5 \times 16 = 80$ cách.
+    4.  **Trường hợp $(g, r) = (1, 1) \implies m = 3$:** 1 cặp XX, 1 cặp ĐĐ, 3 cặp khác màu.
+        *   Chọn 1 cặp XX (5 cách), chọn 1 cặp ĐĐ từ 4 cặp còn lại (4 cách).
+        *   3 cặp khác màu: $2^3 = 8$ cách $\implies 5 \times 4 \times 8 = 160$ cách.
+        
+    Tổng số kết quả thuận lợi:
+    $$n(A) = 32 + 80 + 80 + 160 = 352 \text{ (cách)}$$
+    
+    **Bước 5: Tính xác suất $a$ và giá trị $\dfrac{2026}{a}$**
+    
+    *   Xác suất cần tìm là:
+        $$a = \dfrac{352}{1024} = \dfrac{11}{32} = 0.34375$$
+    *   Giá trị của biểu thức đề bài yêu cầu:
+        $$\dfrac{2026}{a} = \dfrac{2026}{\dfrac{11}{32}} = \dfrac{64832}{11} \approx 5893.818...$$
+    *   Làm tròn đến chữ số hàng đơn vị, ta được kết quả là **$5894$**.
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU 62 (Từ ảnh - Sở Lào Cai 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 62 (Sở Lào Cai 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 62 từ hình ảnh
+st.markdown(r"""
+Hai bạn An và Bình cùng chơi trò chơi đánh cờ carô trên một bảng ô vuông kích thước $3 \times 3$ (gồm 9 ô trống). Luật chơi quy định An đi trước, mỗi lượt điền một dấu "X" vào một ô trống và Bình đi sau, mỗi lượt điền một dấu "O" vào một ô trống. Trò chơi kết thúc và xác định được người chiến thắng nếu người đó tạo được 3 dấu của mình nằm liên tiếp nhau trên cùng một hàng ngang, hàng dọc hoặc đường chéo. Hỏi có tất cả bao nhiêu trình tự các nước đi để ván cờ kết thúc chính xác ở nước đi thứ 5 với An là người giành chiến thắng?
+""")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/sohp1_2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/sohp1_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 62) ---
+user_answer_62 = st.text_input("Nhập số trình tự các nước đi cho Câu 62:", key="q62_ans")
+
+if st.button("Kiểm tra đáp án Câu 62", key="q62_check"):
+    normalized_user_answer_62 = user_answer_62.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 1440
+    if normalized_user_answer_62 == "1440":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 62 đã được mở khóa.")
+    elif user_answer_62 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 62) ---
+st.markdown("---")
+
+if 'q62_solution_shown' not in st.session_state:
+    st.session_state['q62_solution_shown'] = False
+
+col1_62, col2_62 = st.columns([1, 4])
+with col1_62:
+    if st.button("Xem lời giải chi tiết Câu 62", key="q62_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q62_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q62_solution_shown'] = False
+
+if st.session_state.get('q62_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 62:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích số lượt đi và điều kiện chiến thắng**
+    
+    *   Ván cờ kết thúc **chính xác ở nước đi thứ 5** và An là người thắng:
+        *   An đi các nước thứ 1, 3 và 5 (tổng cộng 3 dấu "X").
+        *   Bình đi các nước thứ 2 và 4 (tổng cộng 2 dấu "O").
+    *   Để thắng, An phải tạo được 3 dấu "X" thẳng hàng (ngang, dọc hoặc chéo). Vì An chỉ có đúng 3 lượt đi, cả 3 dấu "X" của An buộc phải nằm trọn vẹn trên cùng 1 đường thẳng chiến thắng.
+    *   *Lưu ý:* Vì phải đến nước thứ 5 (nước thứ 3 của An) thì An mới có đủ 3 dấu "X", nên trò chơi **không thể kết thúc sớm hơn** nước thứ 5. Đồng thời Bình chỉ có 2 dấu "O" nên Bình cũng không thể chiến thắng trước đó.
+    
+    **Bước 2: Chọn đường chiến thắng cho An**
+    
+    *   Trên bảng $3 \times 3$, tổng số đường thẳng chứa 3 ô liên tiếp là:
+        *   3 hàng ngang.
+        *   3 hàng dọc.
+        *   2 đường chéo.
+    *   Tổng cộng có: $3 + 3 + 2 = 8$ đường chiến thắng.
+    *   Số cách chọn 1 đường chiến thắng cho An là: **8 cách**.
+    
+    **Bước 3: Tính số trình tự các nước đi của An và Bình**
+    
+    *   **Các nước đi của An (lượt 1, 3, 5):**
+        *   An phải đặt 3 dấu "X" vào 3 ô cố định thuộc đường chiến thắng đã chọn ở Bước 2.
+        *   Số trình tự đặt 3 nước đi này vào 3 ô là số hoán vị của 3 phần tử:
+            $$3! = 6 \text{ (cách)}$$
+            
+    *   **Các nước đi của Bình (lượt 2, 4):**
+        *   Trên bảng có 9 ô, trong đó 3 ô đã dành riêng cho đường chiến thắng của An.
+        *   Bình tuyệt đối không được đánh vào 3 ô của An (vì nếu đánh vào, An sẽ bị chặn và không thể thắng ở nước thứ 5).
+        *   Do đó, Bình phải đánh 2 dấu "O" vào $9 - 3 = 6$ ô trống còn lại.
+        *   Số trình tự đặt 2 nước đi của Bình vào 6 ô trống có kể đến thứ tự là chỉnh hợp chập 2 của 6 phần tử:
+            $$A_6^2 = 6 \times 5 = 30 \text{ (cách)}$$
+            
+    **Bước 4: Tính tổng số trình tự nước đi**
+    
+    Áp dụng quy tắc nhân cho các giai đoạn độc lập, tổng số trình tự các nước đi để ván cờ kết thúc ở nước thứ 5 với chiến thắng thuộc về An là:
+    $$N = 8 \times 3! \times A_6^2 = 8 \times 6 \times 30 = 1440 \text{ (trình tự)}$$
+    """)
+
+st.markdown("---")
