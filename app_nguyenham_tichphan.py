@@ -134,7 +134,7 @@ st.markdown("---")
 
 # --- CÂU HỎI 2: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH ---
 st.markdown(
-    '<b style="color: blue;">Câu 2 (Ứng dụng Tích phân)</b>',
+    '<b style="color: blue;">Câu 2 (Đề minh họa 2025)</b>',
     unsafe_allow_html=True
 )
 
@@ -216,6 +216,97 @@ if st.session_state.get('q2_solution_shown') and st.session_state.get('logged_in
         $$S_{\text{sân chơi}} = S_{\text{hcn}} - S_{\text{hoa}} = 4800 - 1600 = 3200 \text{ (m}^2\text{)}$$
         
     **Kết luận:** Diện tích của phần sân chơi là **$3200\text{ m}^2$**.
+    """)
+
+st.markdown("---")
+
+
+# --- CÂU HỎI 3: ỨNG DỤNG TÍCH PHÂN TÍNH THỂ TÍCH KHỐI TRÒN XOAY ---
+st.markdown(
+    '<b style="color: blue;">Câu 3 (Đề thi tốt nghiệp THPT 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+**Câu 2.** Để chế tác một hạt cườm, người ta lấy một khối vật thể có dạng một khối tròn xoay được tạo thành khi quay hình phẳng giới hạn bởi trục $Ox$ và nửa trên của elip $\dfrac{x^2}{1,5^2} + \dfrac{y^2}{1^2} = 1$ (một đơn vị dài trên mỗi trục tọa độ tương ứng với một xăng-ti-mét trong thực tế) quanh trục $Ox$; sau đó khoan dọc theo trục xoay (xem hình dưới). Lỗ khoan có dạng hình trụ với bán kính 0,2 cm và có trục nằm trên trục xoay. Phần còn lại sau khi khoan là hạt cườm, có dạng một khối tròn xoay.
+
+Thể tích của hạt cườm đó bằng bao nhiêu xăng-ti-mét khối *(không làm tròn kết quả các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần trăm)*?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập thể tích hạt cườm (làm tròn đến hàng phần trăm, ví dụ: 12.34):", key="q3_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Sử dụng đúng tên file ảnh bạn đã cung cấp
+        st.image("images/image_d7032f.PNG", width=600)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_d7032f.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q3_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 5.91
+    if normalized_user_answer == "5.91":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hạt cườm là khối tròn xoay tạo bởi hình phẳng giới hạn giữa đường elip và đường thẳng y = 0,2 quay quanh trục Ox. Hãy tìm hoành độ giao điểm để xác định cận tích phân nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q3_solution_shown' not in st.session_state:
+    st.session_state['q3_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q3_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q3_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q3_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q3_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định phương trình đường cong và cận tích phân**
+    
+    * Phương trình của elip là $\dfrac{x^2}{1,5^2} + \dfrac{y^2}{1^2} = 1$. Suy ra nửa trên của elip có phương trình:
+        $$y = \sqrt{1 - \dfrac{x^2}{2,25}}$$
+    * Lỗ khoan hình trụ dọc theo trục $Ox$ có bán kính $r = 0,2$ cm. Mặt cắt ngang của mép lỗ khoan là đường thẳng $y = 0,2$.
+    * Tìm hoành độ giao điểm của elip và đường thẳng $y = 0,2$:
+        $$\sqrt{1 - \dfrac{x^2}{2,25}} = 0,2 \Rightarrow 1 - \dfrac{x^2}{2,25} = 0,04 \Rightarrow \dfrac{x^2}{2,25} = 0,96$$
+        $$\Rightarrow x^2 = 2,16 \Rightarrow x = \pm\sqrt{2,16}$$
+        
+    **Bước 2: Thiết lập công thức tính thể tích**
+    
+    * Thể tích hạt cườm ($V$) chính là thể tích khối tròn xoay được sinh ra khi quay hình phẳng giới hạn bởi đồ thị $y = \sqrt{1 - \dfrac{x^2}{2,25}}$, đường thẳng $y = 0,2$ và hai đường thẳng $x = -\sqrt{2,16}, x = \sqrt{2,16}$ xung quanh trục $Ox$.
+    * Công thức tính thể tích:
+        $$V = \pi \int_{-\sqrt{2,16}}^{\sqrt{2,16}} \left[ \left(\sqrt{1 - \dfrac{x^2}{2,25}}\right)^2 - 0,2^2 \right] \text{d}x$$
+        $$V = \pi \int_{-\sqrt{2,16}}^{\sqrt{2,16}} \left( 1 - \dfrac{x^2}{2,25} - 0,04 \right) \text{d}x = \pi \int_{-\sqrt{2,16}}^{\sqrt{2,16}} \left( 0,96 - \dfrac{x^2}{2,25} \right) \text{d}x$$
+    
+    **Bước 3: Tính toán kết quả tích phân**
+    
+    * Do hàm số chẵn, ta có thể tính:
+        $$V = 2\pi \int_{0}^{\sqrt{2,16}} \left( 0,96 - \dfrac{x^2}{2,25} \right) \text{d}x$$
+        $$V = 2\pi \left[ 0,96x - \dfrac{x^3}{3 \cdot 2,25} \right]_{0}^{\sqrt{2,16}} = 2\pi \left[ 0,96x - \dfrac{x^3}{6,75} \right]_{0}^{\sqrt{2,16}}$$
+    * Thay cận $x = \sqrt{2,16}$ vào (lưu ý $x^3 = 2,16\sqrt{2,16}$):
+        $$V = 2\pi \left( 0,96\sqrt{2,16} - \dfrac{2,16\sqrt{2,16}}{6,75} \right)$$
+        $$V = 2\pi \left( 0,96\sqrt{2,16} - 0,32\sqrt{2,16} \right) = 2\pi \left( 0,64\sqrt{2,16} \right) = 1,28\pi\sqrt{2,16}$$
+    * Bấm máy tính giá trị xấp xỉ:
+        $$V \approx 5,91035 \text{ (cm}^3\text{)}$$
+    * Làm tròn kết quả đến hàng phần trăm theo yêu cầu đề bài, ta được 5,91.
+        
+    **Kết luận:** Thể tích của hạt cườm là **5,91 cm³**.
     """)
 
 st.markdown("---")
