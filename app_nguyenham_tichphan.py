@@ -132,3 +132,81 @@ if st.session_state.get('q1_solution_shown') and st.session_state.get('logged_in
 st.markdown("---")
 
 
+# --- CÂU HỎI 2: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH ---
+st.markdown(
+    '<b style="color: blue;">Câu 2 (Ứng dụng Tích phân)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Kiến trúc sư thiết kế một khu sinh hoạt cộng đồng có dạng hình chữ nhật với chiều rộng và chiều dài lần lượt là $60\text{m}$ và $80\text{m}$. Trong đó, phần được tô màu đậm là sân chơi, phần còn lại để trồng hoa. Mỗi phần trồng hoa có đường biên cong là một phần của parabol với đỉnh thuộc một trục đối xứng của hình chữ nhật và khoảng cách từ đỉnh đó đến trung điểm cạnh tương ứng của hình chữ nhật bằng $20\text{m}$ (xem hình minh họa).
+
+Diện tích của phần sân chơi là bao nhiêu mét vuông?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích phần sân chơi (ví dụ: 1234):", key="q2_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q2_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 3200
+    if normalized_user_answer == "3200":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tính tổng diện tích hình chữ nhật rồi trừ đi diện tích của 2 phần parabol trồng hoa. Bạn có thể gắn trục tọa độ để dùng tích phân hoặc dùng công thức diện tích hình phẳng giới hạn bởi parabol nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q2_solution_shown' not in st.session_state:
+    st.session_state['q2_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q2_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q2_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q2_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q2_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính diện tích toàn bộ khu đất hình chữ nhật**
+    
+    * Hình chữ nhật có chiều rộng $60\text{ m}$ và chiều dài (cao) $80\text{ m}$.
+    * Diện tích tổng thể của khu đất là:
+        $$S_{\text{hcn}} = 60 \times 80 = 4800 \text{ (m}^2\text{)}$$
+    
+    **Bước 2: Tính diện tích phần đất trồng hoa (2 phần giới hạn bởi parabol)**
+    
+    * Chọn hệ trục tọa độ $Oxy$ sao cho gốc $O$ trùng với trung điểm cạnh đáy dưới của hình chữ nhật, trục $Ox$ nằm dọc theo cạnh đáy dưới, trục $Oy$ là trục đối xứng dọc của hình chữ nhật.
+    * Khi đó, parabol bên dưới có đỉnh $I(0; 20)$ và đi qua 2 điểm thuộc đáy hình chữ nhật là $A(-30; 0)$ và $B(30; 0)$.
+    * Phương trình parabol có dạng $y = ax^2 + c$. Vì đỉnh là $I(0; 20)$ nên $c = 20 \Rightarrow y = ax^2 + 20$.
+    * Parabol đi qua $B(30; 0)$ nên:
+        $$0 = a(30)^2 + 20 \Rightarrow 900a = -20 \Rightarrow a = -\dfrac{1}{45}$$
+    * Vậy phương trình parabol bên dưới là: $y = -\dfrac{1}{45}x^2 + 20$.
+    * Diện tích một phần trồng hoa bên dưới là diện tích hình phẳng giới hạn bởi parabol và trục hoành:
+        $$S_1 = \int_{-30}^{30} \left( -\dfrac{1}{45}x^2 + 20 \right) \text{d}x = \left[ -\dfrac{x^3}{135} + 20x \right]_{-30}^{30} = 800 \text{ (m}^2\text{)}$$
+        *(Mẹo nhanh: Diện tích hình phẳng giới hạn bởi parabol và dây cung vuông góc với trục đối xứng được tính nhanh bằng công thức $S = \dfrac{2}{3} \cdot \text{đáy} \cdot \text{chiều cao} = \dfrac{2}{3} \cdot 60 \cdot 20 = 800 \text{ m}^2$)*
+    * Do tính đối xứng, phần trồng hoa bên trên cũng có diện tích bằng phần bên dưới. Tổng diện tích phần trồng hoa là:
+        $$S_{\text{hoa}} = 2 \times 800 = 1600 \text{ (m}^2\text{)}$$
+    
+    **Bước 3: Tính diện tích phần sân chơi**
+    
+    * Phần diện tích sân chơi bằng diện tích tổng thể trừ đi diện tích trồng hoa:
+        $$S_{\text{sân chơi}} = S_{\text{hcn}} - S_{\text{hoa}} = 4800 - 1600 = 3200 \text{ (m}^2\text{)}$$
+        
+    **Kết luận:** Diện tích của phần sân chơi là **$3200\text{ m}^2$**.
+    """)
+
+st.markdown("---")
