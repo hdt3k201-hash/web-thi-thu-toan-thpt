@@ -5733,3 +5733,190 @@ if st.session_state.get('q62_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+
+# --- CÂU HỎI 63 ---
+st.markdown(
+    '<b style="color: blue;">Câu 63 (THPT Trần Phú - Phú Thọ 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho một lưới ô vuông gồm 16 ô vuông nhỏ, mỗi ô vuông có kích thước $1 \times 1$ (mét) như hình vẽ. Con kiến thứ nhất ở vị trí $A$ muốn di chuyển lên vị trí $B$, con kiến thứ hai ở vị trí $B$ muốn di chuyển xuống vị trí $A$. Biết rằng, con kiến thứ nhất chỉ có thể di chuyển ngẫu nhiên về phía bên phải hoặc lên trên, con kiến thứ hai chỉ có thể di chuyển ngẫu nhiên về phía bên trái hoặc xuống dưới (theo các cạnh của lưới). Hai con kiến xuất phát cùng một thời điểm và cùng có vận tốc di chuyển là $1$ mét/1 phút. Xác suất để hai con kiến không gặp nhau bằng bao nhiêu (kết quả làm tròn đến hàng phần trăm)?
+""")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/sphutho2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'sphutho2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_63 = st.text_input("Nhập đáp án (ví dụ: 0.12):", key="q63_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q63_check"):
+    normalized_user_answer_63 = user_answer_63.strip().replace(',', '.')
+    
+    if normalized_user_answer_63 in ["0.63", "0,63", "0.631", "309/490"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_63 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy chú ý hai con kiến chỉ có thể gặp nhau tại các điểm nút trên đường chéo sau đúng 4 phút di chuyển nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q63_solution_shown' not in st.session_state:
+    st.session_state['q63_solution_shown'] = False
+
+col1_63, col2_63 = st.columns([1, 4])
+with col1_63:
+    if st.button("Xem lời giải chi tiết", key="q63_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q63_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q63_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q63_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định không gian mẫu**
+    
+    * Lưới $4 \times 4$ ô vuông. Đặt hệ trục tọa độ với $A(0;0)$ và $B(4;4)$.
+    * Mỗi con kiến cần đi qua $8$ cạnh (bước). Kiến 1 đi $4$ bước sang phải, $4$ bước lên trên. Kiến 2 đi $4$ bước sang trái, $4$ bước xuống dưới.
+    * Số cách chọn đường đi của kiến 1 là: $C_8^4 = 70$ cách.
+    * Số cách chọn đường đi của kiến 2 là: $C_8^4 = 70$ cách.
+    * Không gian mẫu (chọn ngẫu nhiên một đường đi cho mỗi con kiến):
+        $$n(\Omega) = 70 \times 70 = 4900$$
+    
+    **Bước 2: Phân tích điều kiện gặp nhau**
+    
+    * Do hai con kiến đi cùng vận tốc, chúng chỉ có thể gặp nhau sau khi cùng đi được một nửa quãng đường, tức là sau $4$ phút ($4$ bước).
+    * Gọi $M_k$ là điểm mà hai con kiến gặp nhau. Tọa độ của $M_k$ phải thỏa mãn tổng số bước từ $A$ là $4$, suy ra $M_k(k; 4-k)$ với $k \in \{0, 1, 2, 3, 4\}$.
+    
+    **Bước 3: Đếm số kết quả thuận lợi cho biến cố gặp nhau**
+    
+    * Số đường đi của **Kiến 1** đi qua $M_k$:
+      * Từ $A(0;0) \to M_k(k; 4-k)$: cần $4$ bước, có $C_4^k$ cách.
+      * Từ $M_k(k; 4-k) \to B(4;4)$: cần $4$ bước, có $C_4^{4-k} = C_4^k$ cách.
+      * Số cách của Kiến 1 qua $M_k$ là: $(C_4^k)^2$.
+    * Số đường đi của **Kiến 2** đi qua $M_k$:
+      * Bằng lập luận tương tự đối xứng từ $B$ về $A$, số cách của Kiến 2 qua $M_k$ cũng là: $(C_4^k)^2$.
+    * Suy ra, số cặp đường đi để hai con kiến gặp nhau tại $M_k$ là: 
+        $$(C_4^k)^2 \times (C_4^k)^2 = (C_4^k)^4$$
+    * Tổng số cặp đường đi để hai con kiến gặp nhau là:
+        $$n(\text{gặp}) = \sum_{k=0}^{4} (C_4^k)^4 = (C_4^0)^4 + (C_4^1)^4 + (C_4^2)^4 + (C_4^3)^4 + (C_4^4)^4$$
+        $$n(\text{gặp}) = 1^4 + 4^4 + 6^4 + 4^4 + 1^4 = 1 + 256 + 1296 + 256 + 1 = 1810$$
+    
+    **Bước 4: Tính xác suất**
+    
+    * Xác suất để hai con kiến **gặp nhau** là: 
+        $$P(\text{gặp}) = \dfrac{1810}{4900} = \dfrac{181}{490}$$
+    * Xác suất để hai con kiến **không gặp nhau** là:
+        $$P = 1 - \dfrac{181}{490} = \dfrac{309}{490} \approx 0.6306$$
+    * Làm tròn đến hàng phần trăm, ta được **$0.63$**.
+    
+    **Kết luận:** Xác suất để hai con kiến không gặp nhau là **0.63**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU HỎI 64 ---
+st.markdown(
+    '<b style="color: blue;">Câu 64 (Sở Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Lấy ngẫu nhiên một số tự nhiên có 5 chữ số. Xác suất để chọn được số tự nhiên có dạng $\overline{a_1a_2a_3a_4a_5}$ trong đó $a_1 \le a_2 + 1 \le a_3 - 7 < a_4 \le a_5 + 2$ bằng $a$. Giá trị của $\dfrac{1}{a}$ bằng bao nhiêu (làm tròn đến hàng đơn vị)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_64 = st.text_input("Nhập đáp án :", key="q64_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q64_check"):
+    normalized_user_answer_64 = user_answer_64.strip()
+    
+    if normalized_user_answer_64 == "506":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_64 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy chặn khoảng giá trị của $a_3$ dựa trên điều kiện các chữ số và xét từng trường hợp để đếm nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q64_solution_shown' not in st.session_state:
+    st.session_state['q64_solution_shown'] = False
+
+col1_64, col2_64 = st.columns([1, 4])
+with col1_64:
+    if st.button("Xem lời giải chi tiết", key="q64_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q64_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q64_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q64_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Không gian mẫu và phân tích điều kiện**
+    
+    * Số tự nhiên có 5 chữ số có $a_1 \ne 0$, nên $a_1 \in \{1, 2, \dots, 9\}$ và các chữ số còn lại thuộc $\{0, 1, \dots, 9\}$. Không gian mẫu $n(\Omega) = 9 \times 10^4 = 90000$.
+    * Bất đẳng thức đề bài cho: $1 \le a_1 \le a_2 + 1 \le a_3 - 7 < a_4 \le a_5 + 2$.
+    * Chú ý điều kiện của $a_3$: Do $a_3 \le 9$ nên $a_3 - 7 \le 2$.
+    * Mặt khác, $1 \le a_1 \le a_3 - 7$, suy ra $1 \le a_3 - 7 \le 2$. 
+    * Do đó, $a_3 - 7$ chỉ có thể nhận giá trị $1$ hoặc $2$ (tương ứng $a_3 = 8$ hoặc $a_3 = 9$).
+    
+    **Bước 2: Xét các trường hợp của $a_3$**
+    
+    * **Trường hợp 1: $a_3 - 7 = 1 \iff a_3 = 8$.**
+        * Ta có $1 \le a_1 \le a_2 + 1 \le 1$. Bắt buộc $a_1 = 1$ và $a_2 + 1 = 1 \implies a_2 = 0$. Có $1$ bộ $(a_1, a_2)$.
+        * Xét vế sau: $1 < a_4 \le a_5 + 2 \implies a_4 \ge 2$. Vậy $a_4 \in \{2, 3, \dots, 9\}$.
+        * Với mỗi $a_4$, điều kiện $a_5 \ge a_4 - 2$ cho ta số cách chọn $a_5$ (từ $a_4 - 2$ đến $9$) là: $9 - (a_4 - 2) + 1 = 12 - a_4$.
+        * Số bộ $(a_4, a_5)$ thỏa mãn là: $\sum_{a_4=2}^{9} (12 - a_4) = 10 + 9 + 8 + 7 + 6 + 5 + 4 + 3 = 52$ cách.
+        * TH1 có: $1 \times 52 = 52$ số.
+    
+    * **Trường hợp 2: $a_3 - 7 = 2 \iff a_3 = 9$.**
+        * Ta có $1 \le a_1 \le a_2 + 1 \le 2$.
+        * Các cặp $(a_1, a_2)$ thỏa mãn là:
+            * $a_2 + 1 = 1 \implies a_2 = 0 \implies a_1 = 1$ (1 cặp).
+            * $a_2 + 1 = 2 \implies a_2 = 1 \implies a_1 \in \{1, 2\}$ (2 cặp).
+            * Suy ra có tổng cộng $3$ cặp $(a_1, a_2)$.
+        * Xét vế sau: $2 < a_4 \le a_5 + 2 \implies a_4 \ge 3$. Vậy $a_4 \in \{3, 4, \dots, 9\}$.
+        * Tương tự, số cách chọn $a_5$ cho mỗi $a_4$ vẫn là $12 - a_4$.
+        * Số bộ $(a_4, a_5)$ thỏa mãn là: $\sum_{a_4=3}^{9} (12 - a_4) = 9 + 8 + 7 + 6 + 5 + 4 + 3 = 42$ cách.
+        * TH2 có: $3 \times 42 = 126$ số.
+    
+    **Bước 3: Tính xác suất $a$ và giá trị $\dfrac{1}{a}$**
+    
+    * Tổng số các số thỏa mãn (biến cố $A$) là: $n(A) = 52 + 126 = 178$.
+    * Xác suất $a = \dfrac{178}{90000} = \dfrac{89}{45000}$.
+    * Giá trị cần tính là: 
+        $$\dfrac{1}{a} = \dfrac{45000}{89} \approx 505.618$$
+    * Làm tròn kết quả đến hàng đơn vị, ta được **$506$**.
+    
+    **Kết luận:** Giá trị của biểu thức $\dfrac{1}{a}$ làm tròn là **506**.
+    """)
+    
+st.markdown("---")
