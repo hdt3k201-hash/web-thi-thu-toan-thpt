@@ -407,3 +407,91 @@ if st.session_state.get('q4_solution_shown') and st.session_state.get('logged_in
     """)
 
 st.markdown("---")
+
+
+# --- CÂU HỎI 5: ỨNG DỤNG TÍCH PHÂN TRONG BÀI TOÁN THỰC TẾ ---
+st.markdown(
+    '<b style="color: blue;">Câu 5 (THPT Thọ Xuân 5 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một người có miếng đất hình tròn có bán kính bằng $5\text{ m}$. Người này tính trồng cây trên mảnh đất đó, biết mỗi mét vuông trồng cây thu hoạch được 100 nghìn. Tuy nhiên cần có 1 khoảng trống để dựng 1 cái chòi và để đồ dùng nên người này bớt lại 1 phần đất nhỏ không trồng cây (phần màu trắng như hình vẽ), trong đó $AB = 6m$. Hỏi khi thu hoạch cây thì người này thu được bao nhiêu tiền *(Kết quả làm tròn đến đơn vị nghìn đồng)*?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập số tiền thu được (đơn vị: nghìn đồng, ví dụ: 1234):", key="q5_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 3, 1])
+    with col2:
+        # Sử dụng đúng tên file ảnh bạn đã cung cấp
+        st.image("images/image_d7197b.PNG", width=500)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_d7197b.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q5_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 7445
+    if normalized_user_answer == "7445":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Gắn hệ trục tọa độ vào tâm mảnh đất. Tính khoảng cách từ tâm đến dây cung AB, sau đó dùng tích phân để tính diện tích phần màu trắng (phần không trồng cây) rồi trừ đi diện tích cả hình tròn nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q5_solution_shown' not in st.session_state:
+    st.session_state['q5_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q5_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q5_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q5_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q5_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính diện tích toàn bộ mảnh đất hình tròn**
+    
+    * Mảnh đất hình tròn có bán kính $R = 5\text{ m}$.
+    * Diện tích tổng thể của mảnh đất là:
+        $$S_{\text{tròn}} = \pi R^2 = \pi \cdot 5^2 = 25\pi \approx 78,5398 \text{ (m}^2\text{)}$$
+    
+    **Bước 2: Sử dụng hệ trục tọa độ và tích phân tính diện tích phần không trồng cây (phần màu trắng)**
+    
+    * Gắn hệ trục tọa độ $Oxy$ có gốc tọa độ $O$ trùng với tâm đường tròn. Khi đó phương trình đường tròn là: $x^2 + y^2 = 25$.
+    * Dây cung $AB = 6\text{ m}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ là:
+        $$d = \sqrt{R^2 - \left(\dfrac{AB}{2}\right)^2} = \sqrt{5^2 - 3^2} = 4\text{ m}$$
+    * Ta có thể xem phần không trồng cây (màu trắng) là hình phẳng được giới hạn bởi nửa trên đường tròn $y = \sqrt{25 - x^2}$ và đường thẳng $y = 4$.
+    * Tìm hoành độ giao điểm của đường thẳng và đường tròn:
+        $$\sqrt{25 - x^2} = 4 \Leftrightarrow 25 - x^2 = 16 \Leftrightarrow x^2 = 9 \Leftrightarrow x = \pm 3$$
+    * Diện tích phần đất màu trắng được tính bằng tích phân:
+        $$S_{\text{trắng}} = \int_{-3}^{3} \left( \sqrt{25 - x^2} - 4 \right) \text{d}x$$
+    * Sử dụng máy tính cầm tay để tính nhanh giá trị tích phân này (hoặc đặt $x = 5\sin t$), ta được:
+        $$S_{\text{trắng}} \approx 4,0875 \text{ (m}^2\text{)}$$
+    
+    **Bước 3: Tính diện tích trồng cây và số tiền thu được**
+    
+    * Diện tích phần trồng cây (màu vàng) là:
+        $$S_{\text{vàng}} = S_{\text{tròn}} - S_{\text{trắng}} = 25\pi - 4,0875 \approx 74,4523 \text{ (m}^2\text{)}$$
+    * Biết mỗi mét vuông thu hoạch được $100$ nghìn đồng, tổng số tiền thu được là:
+        $$T = 74,4523 \times 100 = 7445,23 \text{ (nghìn đồng)}$$
+    * Yêu cầu bài toán là làm tròn đến đơn vị nghìn đồng, ta được **$7445$** nghìn đồng.
+        
+    **Kết luận:** Số tiền người này thu được là **7445 nghìn đồng**.
+    """)
+
+st.markdown("---")
