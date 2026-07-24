@@ -1136,9 +1136,9 @@ user_answer = st.text_input("Nhập diện tích (làm tròn đến hàng phần
 try:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        st.image("image_d866bd.PNG", width=500)
+        st.image("images/image_d866bd.PNG", width=500)
 except FileNotFoundError:
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'image_d866bd.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_d866bd.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # --- NÚT KIỂM TRA ĐÁP ÁN ---
 if st.button("Kiểm tra đáp án", key="q12_check"):
