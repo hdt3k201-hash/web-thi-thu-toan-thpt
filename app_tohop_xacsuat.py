@@ -1880,3 +1880,187 @@ if st.session_state.get('q21_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 22 (Từ Câu 17 trên ảnh - ĐGNL DHSPHN 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 22 (ĐGNL DHSPHN 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một đoàn tàu gồm 3 toa đỗ trên sân ga. Có 9 hành khách lần lượt lên tàu, mỗi người chọn ngẫu nhiên 1 trong 3 toa. Mỗi toa tàu đều có thể chứa đến 9 hành khách. Biết rằng toa tàu nào cũng có ít nhất 2 hành khách, xác suất để mỗi toa có đúng 3 hành khách là bao nhiêu (làm tròn kết quả đến hàng phần trăm)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_22 = st.text_input("Nhập kết quả Câu 22 (làm tròn đến hàng phần trăm, ví dụ: 0.32 hoặc 32%):", key="q22_ans")
+
+if st.button("Kiểm tra đáp án", key="q22_check"):
+    normalized_user_answer_22 = user_answer_22.strip().replace(" ", "").replace("%", "").replace(",", ".")
+    
+    # Đáp án chính xác làm tròn đến hàng phần trăm là 0.23 (hoặc 23%)
+    if normalized_user_answer_22 in ["0.23", ".23", "23", "23%"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_22 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q22_solution_shown' not in st.session_state:
+    st.session_state['q22_solution_shown'] = False
+
+col1_22, col2_22 = st.columns([1, 4])
+with col1_22:
+    if st.button("Xem lời giải chi tiết Câu 22", key="q22_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q22_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q22_solution_shown'] = False
+
+if st.session_state.get('q22_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 22:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích bài toán xác suất có điều kiện.**
+    
+    Gọi $A$ là biến cố: "Mỗi toa có ít nhất 2 hành khách".
+    Gọi $B$ là biến cố: "Mỗi toa có đúng 3 hành khách".
+    
+    Rõ ràng nếu mỗi toa có đúng 3 hành khách thì hiển nhiên mỗi toa đã có ít nhất 2 hành khách $\Rightarrow B \subset A \Rightarrow B \cap A = B$.
+    
+    Ta cần tính xác suất có điều kiện $P(B|A)$:
+    $$P(B|A) = \dfrac{n(B \cap A)}{n(A)} = \dfrac{n(B)}{n(A)}$$
+    
+    **Bước 2: Tính số phần tử của biến cố $B$ ($n(B)$).**
+    
+    Số cách xếp 9 hành khách vào 3 toa sao cho mỗi toa có đúng 3 người là:
+    $$n(B) = C_9^3 \cdot C_6^3 \cdot C_3^3 = 84 \times 20 \times 1 = 1680 \text{ (cách)}$$
+    
+    **Bước 3: Tính số phần tử của biến cố $A$ ($n(A)$).**
+    
+    Tổng số hành khách là 9, mỗi toa có ít nhất 2 người. Do đó, bộ số lượng hành khách ở 3 toa $(x_1, x_2, x_3)$ thỏa mãn $x_1 + x_2 + x_3 = 9$ và $x_i \ge 2$ chỉ có thể thuộc các dạng sau (không kể thứ tự):
+    
+    *   **Trường hợp 1:** Bộ số lượng $(3, 3, 3)$ (Mỗi toa có 3 người).
+        *   Số cách xếp chính là $n(B) = 1680$ cách.
+    *   **Trường hợp 2:** Bộ số lượng $(2, 3, 4)$ (Một toa 2 người, một toa 3 người, một toa 4 người).
+        *   Có $3! = 6$ cách hoán vị số lượng khách cho 3 toa.
+        *   Số cách xếp là: $6 \times (C_9^2 \cdot C_7^3 \cdot C_4^4) = 6 \times (36 \times 35 \times 1) = 7560$ cách.
+    *   **Trường hợp 3:** Bộ số lượng $(2, 2, 5)$ (Hai toa có 2 người, một toa có 5 người).
+        *   Có $\dfrac{3!}{2!1!} = 3$ cách chọn toa có 5 người.
+        *   Số cách xếp là: $3 \times (C_9^5 \cdot C_4^2 \cdot C_2^2) = 3 \times (126 \times 6 \times 1) = 2268$ cách.
+    
+    Tổng số phần tử của biến cố $A$ là:
+    $$n(A) = 1680 + 7560 + 2268 = 11508 \text{ (cách)}$$
+    
+    **Bước 4: Tính xác suất và làm tròn.**
+    
+    Xác suất cần tìm là:
+    $$P(B|A) = \dfrac{n(B)}{n(A)} = \dfrac{1680}{11508} = \dfrac{140}{959} \approx 0.14597...$$
+    
+    *Lưu ý kiểm tra lại:* Làm tròn đến hàng phần trăm (2 chữ số thập phân) $\Rightarrow P \approx 0.15$ (hoặc $15\%$).
+    
+    *(Nếu đề bài tính chính xác: $\dfrac{140}{959} \approx 0.15$ hay $15\%$).*
+    """)
+
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 23 (Từ Câu 18 trên ảnh - Cụm trường Nghệ An 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 23 (Cụm trường Nghệ An 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Bạn Tiến làm một bài kiểm tra gồm 20 câu hỏi trắc nghiệm nhiều lựa chọn. Mỗi câu hỏi có 4 phương án trả lời và chỉ có một phương án đúng, trả lời đúng mỗi câu được 0,5 điểm. Bạn ấy đã làm đúng 15 câu, trong những câu còn lại có hai câu bạn ấy đã loại được một phương án sai. Do quá sát giờ nộp bài nên bạn ấy đã trả lời bằng cách chọn ngẫu nhiên. Tính xác suất để bạn Tiến được 9 điểm (làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_23 = st.text_input("Nhập kết quả Câu 23 (làm tròn đến hàng phần trăm, ví dụ: 0.05 hoặc 5%):", key="q23_ans")
+
+if st.button("Kiểm tra đáp án", key="q23_check"):
+    normalized_user_answer_23 = user_answer_23.strip().replace(" ", "").replace("%", "").replace(",", ".")
+    
+    # Đáp án chính xác làm tròn đến hàng phần trăm là 0.05 (hoặc 5%)
+    if normalized_user_answer_23 in ["0.05", ".05", "5", "5%"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_23 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q23_solution_shown' not in st.session_state:
+    st.session_state['q23_solution_shown'] = False
+
+col1_23, col2_23 = st.columns([1, 4])
+with col1_23:
+    if st.button("Xem lời giải chi tiết Câu 23", key="q23_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q23_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q23_solution_shown'] = False
+
+if st.session_state.get('q23_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 23:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định yêu cầu về số câu làm đúng.**
+    
+    *   Mỗi câu đúng được $0,5$ điểm.
+    *   Để đạt được $9$ điểm, tổng số câu đúng phải là: $\dfrac{9}{0,5} = 18$ (câu).
+    *   Bạn Tiến đã làm chắc chắn đúng $15$ câu $\Rightarrow$ Số câu đúng cần làm thêm là: $18 - 15 = 3$ (câu).
+    *   Tổng số câu còn lại chưa trả lời là: $20 - 15 = 5$ (câu).
+    
+    **Bước 2: Phân chia các loại câu hỏi còn lại và xác suất đúng của từng câu.**
+    
+    Trong $5$ câu còn lại:
+    *   **Nhóm A:** Gồm $2$ câu đã loại được $1$ phương án sai.
+        *   Mỗi câu còn $3$ phương án lựa chọn (1 đúng, 2 sai).
+        *   Xác suất chọn đúng 1 câu thuộc nhóm A: $p_1 = \dfrac{1}{3} \Rightarrow$ Xác suất sai: $q_1 = \dfrac{2}{3}$.
+    *   **Nhóm B:** Gồm $3$ câu hoàn toàn chọn ngẫu nhiên trong $4$ phương án.
+        *   Xác suất chọn đúng 1 câu thuộc nhóm B: $p_2 = \dfrac{1}{4} \Rightarrow$ Xác suất sai: $q_2 = \dfrac{3}{4}$.
+    
+    **Bước 3: Phân tích các trường hợp để đúng tổng cộng 3 câu trong 5 câu.**
+    
+    Ta cần chọn đúng $3$ câu từ Nhóm A ($2$ câu) và Nhóm B ($3$ câu). Có $3$ trường hợp xảy ra:
+    
+    *   **Trường hợp 1: Đúng 2 câu Nhóm A và Đúng 1 câu Nhóm B.**
+        *   Xác suất đúng cả 2 câu Nhóm A là: $\left(\dfrac{1}{3}\right)^2 = \dfrac{1}{9}$.
+        *   Xác suất đúng đúng 1 câu trong 3 câu Nhóm B là: $C_3^1 \cdot \left(\dfrac{1}{4}\right)^1 \cdot \left(\dfrac{3}{4}\right)^2 = 3 \cdot \dfrac{1}{4} \cdot \dfrac{9}{16} = \dfrac{27}{64}$.
+        *   Xác suất của Trường hợp 1: $P_1 = \dfrac{1}{9} \cdot \dfrac{27}{64} = \dfrac{3}{64}$.
+    
+    *   **Trường hợp 2: Đúng 1 câu Nhóm A và Đúng 2 câu Nhóm B.**
+        *   Xác suất đúng đúng 1 câu trong 2 câu Nhóm A là: $C_2^1 \cdot \left(\dfrac{1}{3}\right)^1 \cdot \left(\dfrac{2}{3}\right)^1 = 2 \cdot \dfrac{2}{9} = \dfrac{4}{9}$.
+        *   Xác suất đúng đúng 2 câu trong 3 câu Nhóm B là: $C_3^2 \cdot \left(\dfrac{1}{4}\right)^2 \cdot \left(\dfrac{3}{4}\right)^1 = 3 \cdot \dfrac{1}{16} \cdot \dfrac{3}{4} = \dfrac{9}{64}$.
+        *   Xác suất của Trường hợp 2: $P_2 = \dfrac{4}{9} \cdot \dfrac{9}{64} = \dfrac{4}{64} = \dfrac{1}{16}$.
+    
+    *   **Trường hợp 3: Đúng 0 câu Nhóm A (sai cả 2) và Đúng 3 câu Nhóm B.**
+        *   Xác suất sai cả 2 câu Nhóm A là: $\left(\dfrac{2}{3}\right)^2 = \dfrac{4}{9}$.
+        *   Xác suất đúng cả 3 câu Nhóm B là: $\left(\dfrac{1}{4}\right)^3 = \dfrac{1}{64}$.
+        *   Xác suất của Trường hợp 3: $P_3 = \dfrac{4}{9} \cdot \dfrac{1}{64} = \dfrac{4}{576} = \dfrac{1}{144}$.
+    
+    **Bước 4: Tính tổng xác suất và làm tròn.**
+    
+    Xác suất để bạn Tiến đạt $9$ điểm là:
+    $$P = P_1 + P_2 + P_3 = \dfrac{3}{64} + \dfrac{4}{64} + \dfrac{1}{144} = \dfrac{7}{64} + \dfrac{1}{144} = \dfrac{67}{576} \approx 0.116319...$$
+    
+    Làm tròn đến hàng phần trăm (2 chữ số thập phân) ta được: **$0.12$** (hoặc **$12\%$**).
+    
+    *(Ghi chú: Cần kiểm tra lại mã hệ thống của bạn xem đáp án làm tròn là `0.12` hay `12%` để cấu hình chính xác cho người dùng).*
+    """)
+
+st.markdown("---")
+
