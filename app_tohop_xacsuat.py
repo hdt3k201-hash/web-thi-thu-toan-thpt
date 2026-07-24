@@ -5920,3 +5920,203 @@ if st.session_state.get('q64_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+
+# ==========================================
+# CÂU 65 (Từ ảnh - Sở Hà Tĩnh 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 65 (Sở Hà Tĩnh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 65 từ hình ảnh
+st.markdown(r"""
+Xếp 8 quyển sách giống nhau vào một giá sách gồm 10 ngăn. Gọi $P$ là xác suất để xếp 8 quyển sách vào 10 ngăn sao cho số quyển sách trong mỗi ngăn không quá 2 quyển, có 4 ngăn hoặc 6 ngăn chứa đúng 1 quyển sách và các ngăn liền kề với ngăn chứa 2 quyển sách là ngăn không có quyển sách nào. Tính $2431P$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 65) ---
+user_answer_65 = st.text_input("Nhập giá trị của $2431P$ cho Câu 65:", key="q65_ans")
+
+if st.button("Kiểm tra đáp án Câu 65", key="q65_check"):
+    normalized_user_answer_65 = user_answer_65.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 232
+    if normalized_user_answer_65 == "232":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 65 đã được mở khóa.")
+    elif user_answer_65 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 65) ---
+st.markdown("---")
+
+if 'q65_solution_shown' not in st.session_state:
+    st.session_state['q65_solution_shown'] = False
+
+col1_65, col2_65 = st.columns([1, 4])
+with col1_65:
+    if st.button("Xem lời giải chi tiết Câu 65", key="q65_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q65_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q65_solution_shown'] = False
+
+if st.session_state.get('q65_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 65:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu $n(\Omega)$**
+    
+    *   Bài toán chia 8 quyển sách giống nhau vào 10 ngăn sách phân biệt tương đương với việc tìm số nghiệm nguyên không âm của phương trình:
+        $$x_1 + x_2 + \dots + x_{10} = 8$$
+    *   Áp dụng bài toán chia kẹo Euler (Stars and Bars), số cách xếp tùy ý là:
+        $$n(\Omega) = C_{8 + 10 - 1}^{8} = C_{17}^8 = 2431 \text{ (cách)}$$
+    *   Do đó, giá trị cần tính là $2431P = 2431 \times \dfrac{n(A)}{2431} = n(A)$ (chính là số cách xếp thỏa mãn yêu cầu bài toán).
+    
+    **Bước 2: Phân tích số lượng sách trong các ngăn**
+    
+    Gọi $n_0, n_1, n_2$ lần lượt là số ngăn chứa 0 quyển, 1 quyển và 2 quyển sách. ta có hệ điều kiện:
+    $$\begin{cases} n_0 + n_1 + n_2 = 10 \text{ (tổng số ngăn)} \\ 0 \cdot n_0 + 1 \cdot n_1 + 2 \cdot n_2 = 8 \text{ (tổng số sách)} \end{cases}$$
+    
+    Theo đề bài, số ngăn chứa đúng 1 quyển ($n_1$) chỉ có thể là **4** hoặc **6**:
+    *   **Trường hợp 1:** $n_1 = 6 \implies 2n_2 = 8 - 6 = 2 \implies n_2 = 1$. Khi đó $n_0 = 3$.
+        (Có sáu ngăn "1", một ngăn "2", ba ngăn "0").
+    *   **Trường hợp 2:** $n_1 = 4 \implies 2n_2 = 8 - 4 = 4 \implies n_2 = 2$. Khi đó $n_0 = 4$.
+        (Có bốn ngăn "1", hai ngăn "2", bốn ngăn "0").
+    
+    **Bước 3: Đếm số cách xếp thỏa mãn điều kiện cô lập ngăn "2"**
+    
+    Điều kiện *"các ngăn liền kề với ngăn chứa 2 quyển sách là ngăn trống"* nghĩa là mọi ngăn "2" đều phải được bao bọc bởi ngăn "0" (không được đứng cạnh ngăn "1" hoặc ngăn "2" khác). Ta đóng gói ngăn "2" cùng các ngăn "0" liền kề thành các **khối không thể tách rời**:
+    
+    *   **Xét Trường hợp 1 ($n_1 = 6, n_2 = 1, n_0 = 3$):**
+        *   *Khả năng 1a (Ngăn "2" nằm ở hai đầu biên - vị trí số 1 hoặc 10):* Ngăn "2" chỉ cần 1 ngăn "0" liền kề bên cạnh (tạo thành khối `[2, 0]` ở đầu trái hoặc `[0, 2]` ở đầu phải).
+            Số phần tử còn lại để sắp xếp vào 8 vị trí là: sáu ngăn "1" và hai ngăn "0".
+            Số cách xếp: $2 \times C_8^2 = 2 \times 28 = 56 \text{ (cách)}$.
+        *   *Khả năng 1b (Ngăn "2" nằm ở giữa):* Ngăn "2" buộc phải bị kẹp giữa hai ngăn "0", ta đóng gói thành khối `[0, 2, 0]`.
+            Các khối cần sắp xếp bao gồm: một khối `[0, 2, 0]`, sáu khối `[1]` và một khối `[0]` còn dư (tổng cộng 8 khối).
+            Số cách hoán vị các khối này là: $\dfrac{8!}{6! \times 1! \times 1!} = 56 \text{ (cách)}$.
+        *   *Tổng số cách cho Trường hợp 1:* $56 + 56 = 112 \text{ (cách)}$.
+        
+    *   **Xét Trường hợp 2 ($n_1 = 4, n_2 = 2, n_0 = 4$):**
+        *   *Khả năng 2a (Cả hai ngăn "2" đều nằm ở hai đầu biên):* Giá sách bắt buộc bắt đầu bằng khối `[2, 0]` và kết thúc bằng khối `[0, 2]`.
+            Ở giữa là sự sắp xếp tùy ý của bốn ngăn "1" và hai ngăn "0" còn dư.
+            Số cách xếp: $C_6^2 = 15 \text{ (cách)}$.
+        *   *Khả năng 2b (Đúng một ngăn "2" nằm ở đầu biên):* Có 2 chọn lựa (biên trái hoặc biên phải, giả sử chọn khối `[2, 0]` ở biên trái).
+            Ngăn "2" còn lại phải nằm ở giữa, ta đóng gói thành khối `[0, 2, 0]`.
+            Các phần tử còn lại cần xếp: một khối `[0, 2, 0]`, bốn khối `[1]` và một khối `[0]` (tổng cộng 6 khối).
+            Số cách hoán vị: $\dfrac{6!}{4! \times 1! \times 1!} = 30 \text{ (cách)}$.
+            Do có 2 biên nên số cách là: $2 \times 30 = 60 \text{ (cách)}$.
+        *   *Khả năng 2c (Cả hai ngăn "2" đều nằm ở giữa):*
+            + Nếu hai ngăn "2" không chia sẻ ngăn "0": Ta đóng thành hai khối riêng biệt `[0, 2, 0]`. Còn lại bốn khối `[1]`. Hoán vị 6 khối này có $\dfrac{6!}{4! \times 2!} = 15 \text{ (cách)}$.
+            + Nếu hai ngăn "2" chia sẻ một ngăn "0" ở giữa: Ta đóng thành một khối gộp `[0, 2, 0, 2, 0]`. Còn lại bốn khối `[1]` và một khối `[0]` dư. Hoán vị 6 khối này có $\dfrac{6!}{4! \times 1! \times 1!} = 30 \text{ (cách)}$.
+            Tổng khả năng 2c: $15 + 30 = 45 \text{ (cách)}$.
+        *   *Tổng số cách cho Trường hợp 2:* $15 + 60 + 45 = 120 \text{ (cách)}$.
+        
+    **Bước 4: Kết luận**
+    
+    Tổng số kết quả thuận lợi cho biến cố là:
+    $$n(A) = 112 + 120 = 232$$
+    
+    Vậy giá trị của biểu thức cần tìm là **$2431P = 232$**.
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU 66 (Từ ảnh - Sở TT Huế 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 66 (Sở TT Huế 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 66 từ hình ảnh
+st.markdown(r"""
+**[Mức độ 3]** An và Bình rất giỏi Toán, cùng tham gia một trò chơi, đầu tiên An bốc ngẫu nhiên một thẻ từ hộp thứ nhất chứa sáu thẻ giống nhau được đánh số từ 1 đến 6, tiếp theo Bình bốc ngẫu nhiên một thẻ từ hộp thứ hai chứa bốn thẻ giống nhau được đánh số từ 1 đến 4. Gọi số An bốc được là $a$ và số của Bình là $b$, sau đó hai người cùng tính giá trị của tích phân $I = \int_0^a x^b dx$. Nếu kết quả $I$ là một số nguyên thì An thắng, ngược lại Bình thắng. Tính xác suất An thắng cuộc (kết quả làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 66) ---
+user_answer_66 = st.text_input("Nhập xác suất An thắng cuộc (làm tròn đến hàng phần trăm, VD: 0.32 hoặc 32%) cho Câu 66:", key="q66_ans")
+
+if st.button("Kiểm tra đáp án Câu 66", key="q66_check"):
+    # Chuẩn hóa đầu vào: chấp nhận 0.38, 0,38, 38%, 38
+    norm_66 = user_answer_66.strip().replace(",", ".").replace("%", "")
+    
+    if norm_66 in ["0.38", "38"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 66 đã được mở khóa.")
+    elif user_answer_66 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 66) ---
+st.markdown("---")
+
+if 'q66_solution_shown' not in st.session_state:
+    st.session_state['q66_solution_shown'] = False
+
+col1_66, col2_66 = st.columns([1, 4])
+with col1_66:
+    if st.button("Xem lời giải chi tiết Câu 66", key="q66_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q66_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q66_solution_shown'] = False
+
+if st.session_state.get('q66_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 66:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu $n(\Omega)$**
+    
+    *   An bốc thẻ $a \in \{1, 2, 3, 4, 5, 6\}$ (có 6 khả năng).
+    *   Bình bốc thẻ $b \in \{1, 2, 3, 4\}$ (có 4 khả năng).
+    *   Tổng số kết quả có thể xảy ra của phép thử là:
+        $$n(\Omega) = 6 \times 4 = 24 \text{ (cặp số)}$$
+    
+    **Bước 2: Tính tích phân $I$ và tìm điều kiện để An thắng**
+    
+    Ta tính giá trị của tích phân theo $a$ và $b$:
+    $$I = \int_0^a x^b dx = \left[ \dfrac{x^{b+1}}{b+1} \right]_0^a = \dfrac{a^{b+1}}{b+1}$$
+    
+    An thắng cuộc khi và chỉ khi $I \in \mathbb{Z}$, tức là $a^{b+1}$ phải **chia hết cho** $(b+1)$.
+    
+    **Bước 3: Kiểm tra từng trường hợp của $b$**
+    
+    Ta xét các trường hợp của $b \in \{1, 2, 3, 4\}$ để tìm các giá trị $a$ thỏa mãn:
+    
+    *   **Trường hợp $b = 1 \implies b+1 = 2$:**
+        *   Điều kiện: $a^2$ chia hết cho 2 $\iff a$ là số chẵn.
+        *   Các số $a$ thỏa mãn: $\{2, 4, 6\}$ $\implies$ Có **3 cặp** $(2;1), (4;1), (6;1)$.
+        
+    *   **Trường hợp $b = 2 \implies b+1 = 3$:**
+        *   Điều kiện: $a^3$ chia hết cho 3 $\iff a$ chia hết cho 3 (vì 3 là số nguyên tố).
+        *   Các số $a$ thỏa mãn: $\{3, 6\}$ $\implies$ Có **2 cặp** $(3;2), (6;2)$.
+        
+    *   **Trường hợp $b = 3 \implies b+1 = 4$:**
+        *   Điều kiện: $a^4$ chia hết cho 4.
+        *   Nếu $a$ chẵn ($a \in \{2, 4, 6\}$) thì $a^4$ luôn chứa thừa số $2^4 = 16$, hiển nhiên chia hết cho 4.
+        *   Nếu $a$ lẻ ($a \in \{1, 3, 5\}$) thì $a^4$ lẻ, không chia hết cho 4.
+        *   Các số $a$ thỏa mãn: $\{2, 4, 6\}$ $\implies$ Có **3 cặp** $(2;3), (4;3), (6;3)$.
+        
+    *   **Trường hợp $b = 4 \implies b+1 = 5$:**
+        *   Điều kiện: $a^5$ chia hết cho 5 $\iff a$ chia hết cho 5 (vì 5 là số nguyên tố).
+        *   Số $a$ thỏa mãn: $\{5\}$ $\implies$ Có **1 cặp** $(5;4)$.
+    
+    **Bước 4: Tính xác suất**
+    
+    *   Tổng số kết quả thuận lợi cho biến cố "An thắng cuộc" là:
+        $$n(A) = 3 + 2 + 3 + 1 = 9 \text{ (cặp)}$$
+    *   Xác suất An thắng cuộc là:
+        $$P = \dfrac{n(A)}{n(\Omega)} = \dfrac{9}{24} = \dfrac{3}{8} = 0.375$$
+    *   Làm tròn kết quả đến hàng phần trăm (hàng thập phân thứ hai):
+        $$0.375 \approx 0.38 \text{ (hoặc } 38\% \text{)}$$
+    """)
+
+st.markdown("---")
