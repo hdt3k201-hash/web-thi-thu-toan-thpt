@@ -8640,12 +8640,6 @@ if st.session_state.get('q91_solution_shown') and st.session_state.get('logged_i
     
     Giá trị cần tính là: $\dfrac{T}{70} = \dfrac{120960}{70} = 1728$.
     
-    *Chờ đã, hãy kiểm tra lại có bị nhầm lẫn ở đâu không. Đề hỏi "có đúng một hộp chứa toàn các bóng mang số chẵn". Bóng vàng không được đánh số, nó không phải là bóng "mang số chẵn". Vì vậy nếu một hộp có 4 bóng vàng thì hộp đó không phải "toàn bóng chẵn".*
-    *Kiểm tra lại một chút. Nếu đề bài hiểu bóng vàng cũng là bóng không phải số chẵn, thì lập luận trên hoàn toàn đúng. Số cách là 1728.*
-    *Tuy nhiên, nếu ta xem 4 bóng vàng là 4 bóng giống nhau, và xem bóng số chẵn là 2, 4, 6, 8. Hộp chứa toàn bóng mang số chẵn tức là hộp đó chứa 2,4,6,8. 8 bóng còn lại chia vào 8 ô, 4 bóng vàng không phân biệt. Việc chia là chọn 4 ô đặt vàng $C_8^4$, 4 ô đặt lẻ là $4!$. $C_8^4 \cdot 4! = A_8^4 = 1680$. $T = 3 \cdot 4! \cdot 1680 = 120960$. $T/70 = 1728$.*
-    *(Nếu đáp án là số khác, ví dụ 3456, thì T = 241920. Gấp đôi số trên. Liệu bóng vàng có được đánh số không? Đề ghi "8 quả bóng xanh được đánh số 1,2..8". Vàng không đánh số.)*
-    *Giả sử có thể hộp chứa toàn bóng mang số chẵn không nhất thiết là 4 bóng xanh 2,4,6,8? Không, chỉ có 4 bóng xanh chẵn. Nên bắt buộc 4 bóng xanh chẵn phải vào 1 hộp.*
-    *Đúng rồi, $T = 120960$. $T/70 = 1728$.*
     """)
     
 st.markdown("---")
