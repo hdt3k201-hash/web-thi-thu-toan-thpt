@@ -6679,7 +6679,7 @@ Hai người tham gia một trò chơi di chuyển theo cạnh của các ô hì
 try:
     col_img1_73, col_img2_73, col_img3_73 = st.columns([1, 2, 1])
     with col_img2_73:
-        st.image("images/thpt_tranphu_2026.png", width=450)
+        st.image("images/thpt_tranphu_2026.PNG", width=450)
 except FileNotFoundError:
     st.warning("⚠️ Lỗi: Không tìm thấy file ảnh minh họa. Vui lòng kiểm tra lại đường dẫn ảnh.")
 
