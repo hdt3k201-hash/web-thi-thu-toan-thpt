@@ -55,6 +55,14 @@ st.markdown(r"""
 
 Thể tích của khối chân đế bằng bao nhiêu centimét khối (không làm tròn kết quả các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần mười)?
 """)
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/tp_2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/tp_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # --- Ô NHẬP ĐÁP ÁN ---
 user_answer = st.text_input("Nhập thể tích khối chân đế (làm tròn đến hàng phần mười, ví dụ: 12.3):", key="q1_ans")
