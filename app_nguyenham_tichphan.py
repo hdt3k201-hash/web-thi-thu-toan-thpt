@@ -495,3 +495,95 @@ if st.session_state.get('q5_solution_shown') and st.session_state.get('logged_in
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 6: ỨNG DỤNG TÍCH PHÂN TÍNH THỂ TÍCH KHỐI TRÒN XOAY ---
+st.markdown(
+    '<b style="color: blue;">Câu 6 (THPT Bá Thước - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Bên trong hình vuông cạnh 4, dựng hình sao bốn cánh đều như hình vẽ bên (các kích thước cần thiết cho như ở trong hình). Tính thể tích $V$ của khối tròn xoay sinh ra khi quay hình sao đó quanh trục $Ox$ (làm tròn kết quả đến hàng phần mười).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập thể tích V (làm tròn đến hàng phần mười, ví dụ: 12.3):", key="q6_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 3, 1])
+    with col2:
+        # Sử dụng đúng tên file ảnh bạn đã cung cấp
+        st.image("images/image_d7731c.PNG", width=500)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_d7731c.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q6_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 20.9
+    if normalized_user_answer == "20.9":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Do tính đối xứng, khối tròn xoay sinh ra bằng hai lần khối tròn xoay sinh ra bởi phần hình sao bên phải trục Oy. Hãy thiết lập phương trình các đường biên ở góc phần tư thứ nhất và dùng tích phân nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q6_solution_shown' not in st.session_state:
+    st.session_state['q6_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q6_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q6_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q6_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q6_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích tính đối xứng và các đường giới hạn**
+    
+    * Hình sao bốn cánh đối xứng qua cả trục $Ox$ và trục $Oy$. Do đó, khối tròn xoay sinh ra khi quay toàn bộ hình sao quanh trục $Ox$ sẽ có thể tích gấp đôi thể tích khối tròn xoay sinh ra khi chỉ quay phần nửa bên phải của hình sao ($x \ge 0, y \ge 0$). 
+    * Hơn nữa, vì tính đối xứng qua $Ox$, phần diện tích phía dưới trục hoành khi quay quanh $Ox$ sẽ tạo ra cùng một không gian với phần diện tích phía trên. Ta chỉ cần lấy phần hình phẳng ở **góc phần tư thứ nhất** quay quanh trục $Ox$, sau đó nhân $2$ (để bù phần bên trái $x < 0$).
+    * Trong góc phần tư thứ nhất, hình phẳng được giới hạn bởi các đường thẳng:
+        *   **Biên trên:** Đường thẳng đi qua hai điểm $(0; 1)$ và $(2; 2)$.
+            Phương trình có dạng $y = ax + b$. Ta dễ dàng tìm được $y = \dfrac{1}{2}x + 1$.
+        *   **Biên dưới:**
+            *   Trên đoạn $x \in [0; 1]$: Hình phẳng giới hạn bởi đường $y = \dfrac{1}{2}x + 1$ và trục hoành $y = 0$.
+            *   Trên đoạn $x \in [1; 2]$: Hình phẳng giới hạn bởi đường $y = \dfrac{1}{2}x + 1$ và đường thẳng đi qua $(1; 0), (2; 2)$. Phương trình đường biên dưới này là $y = 2x - 2$.
+    
+    **Bước 2: Thiết lập công thức tích phân tính thể tích**
+    
+    * Gọi $V_1$ là thể tích sinh ra khi quay phần hình phẳng ở góc phần tư thứ nhất quanh $Ox$. Ta có:
+        $$V_1 = \pi \int_{0}^{1} \left( \dfrac{1}{2}x + 1 \right)^2 \text{d}x + \pi \int_{1}^{2} \left[ \left( \dfrac{1}{2}x + 1 \right)^2 - (2x - 2)^2 \right] \text{d}x$$
+    
+    **Bước 3: Tính toán tích phân**
+    
+    * Tính tích phân trên đoạn $[0; 1]$:
+        $$I_1 = \int_{0}^{1} \left( \dfrac{1}{4}x^2 + x + 1 \right) \text{d}x = \left[ \dfrac{x^3}{12} + \dfrac{x^2}{2} + x \right]_{0}^{1} = \dfrac{1}{12} + \dfrac{1}{2} + 1 = \dfrac{19}{12}$$
+    * Tính tích phân trên đoạn $[1; 2]$:
+        $$I_2 = \int_{1}^{2} \left[ \left( \dfrac{1}{4}x^2 + x + 1 \right) - (4x^2 - 8x + 4) \right] \text{d}x = \int_{1}^{2} \left( -\dfrac{15}{4}x^2 + 9x - 3 \right) \text{d}x$$
+        $$I_2 = \left[ -\dfrac{5}{4}x^3 + \dfrac{9}{2}x^2 - 3x \right]_{1}^{2} = \left( -10 + 18 - 6 \right) - \left( -\dfrac{5}{4} + \dfrac{9}{2} - 3 \right) = 2 - \dfrac{1}{4} = \dfrac{7}{4} = \dfrac{21}{12}$$
+    * Tổng thể tích $V_1$:
+        $$V_1 = \pi \cdot \left( \dfrac{19}{12} + \dfrac{21}{12} \right) = \dfrac{40\pi}{12} = \dfrac{10\pi}{3}$$
+    
+    **Bước 4: Tính kết quả cuối cùng**
+    
+    * Thể tích của toàn bộ khối tròn xoay là:
+        $$V = 2 \cdot V_1 = 2 \cdot \dfrac{10\pi}{3} = \dfrac{20\pi}{3} \approx 20,94395$$
+    * Làm tròn kết quả đến hàng phần mười, ta được $20,9$.
+        
+    **Kết luận:** Thể tích của khối tròn xoay sinh ra xấp xỉ **$20,9$**.
+    """)
+
+st.markdown("---")
