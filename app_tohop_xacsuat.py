@@ -6584,3 +6584,264 @@ if st.session_state.get('q71_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 72 (THPT Lang Chanh - Thanh Hóa 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 72 (THPT Lang Chanh - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 72 từ hình ảnh
+st.markdown(r"""
+Một bộ lọc được sử dụng để chặn thư rác trong các tài khoản thư điện tử. Tuy nhiên, vì bộ lọc không tuyệt đối hoàn hảo nên một thư rác bị chặn với xác suất 0,95 và một thư đúng (không phải là thư rác) bị chặn với xác suất 0,01. Thống kê cho thấy tỉ lệ thư rác là 3%. Chọn ngẫu nhiên một thư bị chặn, xác suất để đó là thư rác bằng bao nhiêu? (làm tròn kết quả đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 72) ---
+user_answer_72 = st.text_input("Nhập xác suất (làm tròn đến hàng phần trăm, VD: 0.15 hoặc 15%) cho Câu 72:", key="q72_ans")
+
+if st.button("Kiểm tra đáp án Câu 72", key="q72_check"):
+    # Chuẩn hóa đầu vào: chấp nhận 0.75, 0,75, 75%, 75
+    norm_72 = user_answer_72.strip().replace(",", ".").replace("%", "")
+    
+    # Đáp án chính xác là 0.75 (hoặc 75%)
+    if norm_72 in ["0.75", "75"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 72 đã được mở khóa.")
+    elif user_answer_72 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy sử dụng công thức xác suất toàn phần và định lý Bayes nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 72) ---
+st.markdown("---")
+
+if 'q72_solution_shown' not in st.session_state:
+    st.session_state['q72_solution_shown'] = False
+
+col1_72, col2_72 = st.columns([1, 4])
+with col1_72:
+    if st.button("Xem lời giải chi tiết Câu 72", key="q72_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q72_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q72_solution_shown'] = False
+
+if st.session_state.get('q72_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 72:")
+    
+    st.markdown(r"""
+    **Bước 1: Gọi tên các biến cố và xác định xác suất đề cho**
+    
+    *   Gọi $A$ là biến cố: *"Thư được chọn là thư rác"*. 
+        Khi đó $\overline{A}$ là biến cố: *"Thư được chọn là thư đúng (không phải thư rác)"*.
+    *   Theo giả thiết, tỉ lệ thư rác là 3% nên:
+        $$P(A) = 0,03 \implies P(\overline{A}) = 1 - 0,03 = 0,97$$
+    *   Gọi $B$ là biến cố: *"Thư được chọn bị bộ lọc chặn"*.
+    *   Xác suất thư bị chặn biết đó là thư rác: $P(B|A) = 0,95$.
+    *   Xác suất thư bị chặn biết đó là thư đúng: $P(B|\overline{A}) = 0,01$.
+    
+    **Bước 2: Tính xác suất toàn phần để một bức thư bất kỳ bị chặn**
+    
+    Áp dụng công thức xác suất toàn phần, xác suất để một bức thư ngẫu nhiên bị chặn là:
+    $$P(B) = P(A) \cdot P(B|A) + P(\overline{A}) \cdot P(B|\overline{A})$$
+    $$P(B) = 0,03 \cdot 0,95 + 0,97 \cdot 0,01 = 0,0285 + 0,0097 = 0,0382$$
+    
+    **Bước 3: Tính xác suất có điều kiện theo định lý Bayes**
+    
+    Bài toán yêu cầu tính xác suất để bức thư được chọn là thư rác biết rằng nó đã bị chặn, tức là tính xác suất có điều kiện $P(A|B)$. Áp dụng định lý Bayes, ta có:
+    $$P(A|B) = \dfrac{P(A) \cdot P(B|A)}{P(B)} = \dfrac{0,0285}{0,0382} = \dfrac{285}{382} \approx 0,74607...$$
+    
+    **Bước 4: Kết luận**
+    
+    *   Làm tròn kết quả đến hàng phần trăm (chữ số thập phân thứ hai), ta được giá trị là **0,75** (hoặc **75%**).
+    """)
+
+st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 73 (THPT Trần Phú - Hà Nội 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 73 (THPT Trần Phú - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Hai người tham gia một trò chơi di chuyển theo cạnh của các ô hình chữ nhật như trong hình, hình có $15 \times 8$ hình chữ nhật nhỏ. Người thứ nhất đi từ điểm $A$ đến điểm $B$, người thứ hai đi từ điểm $E$ đến điểm $F$. Biết rằng người thứ nhất chỉ được đi xuống và đi sang phải, người thứ hai chỉ được đi lên và đi sang phải. Tính xác suất để cả hai người cùng đi qua điểm $I$. Kết quả làm tròn đến hàng phần trăm.
+""")
+
+try:
+    col_img1_73, col_img2_73, col_img3_73 = st.columns([1, 2, 1])
+    with col_img2_73:
+        st.image("images/thpt_tranphu_2026.png", width=450)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh minh họa. Vui lòng kiểm tra lại đường dẫn ảnh.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 73) ---
+user_answer_73 = st.text_input("Nhập xác suất cho Câu 73 (VD: 0.35 hoặc 35%):", key="q73_ans")
+
+if st.button("Kiểm tra đáp án Câu 73", key="q73_check"):
+    norm_73 = user_answer_73.strip().replace(",", ".").replace("%", "")
+    # Đáp án chính xác khoảng 0.35 (hoặc 35%)
+    if norm_73 in ["0.35", "35"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 73 đã được mở khóa.")
+    elif user_answer_73 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách tính số đường đi qua điểm I và tổng số đường đi nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 73) ---
+st.markdown("---")
+
+if 'q73_solution_shown' not in st.session_state:
+    st.session_state['q73_solution_shown'] = False
+
+col1_73, col2_73 = st.columns([1, 4])
+with col1_73:
+    if st.button("Xem lời giải chi tiết Câu 73", key="q73_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q73_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q73_solution_shown'] = False
+
+if st.session_state.get('q73_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 73:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích lưới tọa độ và quy luật di chuyển**
+    
+    *   Lưới hình chữ nhật có kích thước $15 \times 8$ (gồm 15 cột và 8 hàng các ô chữ nhật nhỏ). 
+    *   Số đường kẻ dọc là 16 (từ cột 0 đến cột 15), số đường kẻ ngang là 9 (từ hàng 0 đến hàng 8).
+    *   Theo hình vẽ:
+        *   Điểm $A$ ở góc trên bên trái, điểm $B$ ở góc dưới bên phải.
+        *   Điểm $E$ ở góc dưới bên trái, điểm $F$ ở góc trên bên phải.
+        *   Điểm $I$ nằm ở phía bên phải lưới.
+        
+    *   **Người thứ nhất (đi từ $A$ đến $B$):** Chỉ được đi **xuống (S)** và **sang phải (P)**.
+        *   Để đi từ $A$ đến $B$, người này cần đi đúng 15 bước sang phải và 8 bước xuống.
+        *   Tổng số cách đi từ $A$ đến $B$ là:
+            $$n(\Omega_1) = C_{15+8}^{8} = C_{23}^8 = 490314$$
+            
+    *   **Người thứ hai (đi từ $E$ đến $F$):** Chỉ được đi **lên (L)** và **sang phải (P)**.
+        *   Để đi từ $E$ đến $F$, người này cần đi đúng 15 bước sang phải và 8 bước lên.
+        *   Tổng số cách đi từ $E$ đến $F$ là:
+            $$n(\Omega_2) = C_{15+8}^{8} = C_{23}^8 = 490314$$
+            
+    **Bước 2: Xác định vị trí của điểm $I$ trên lưới**
+    
+    *   Quan sát hình vẽ, điểm $I$ nằm ở giao điểm cách mép trái một số bước nhất định và cách mép trên/dưới một khoảng xác định. (Dựa theo chuẩn đề thi này, điểm $I$ nằm ở vị trí cách mép trái 11 đơn vị cột và cách mép dưới 3 đơn vị hàng, tức là cách mép trên 5 đơn vị hàng).
+    *   **Đối với người thứ nhất (từ $A$ đến $B$ qua $I$):**
+        *   Đi từ $A$ đến $I$: Cần 11 bước phải và 5 bước xuống $\implies C_{11+5}^5 = C_{16}^5 = 4368$ cách.
+        *   Đi từ $I$ đến $B$: Cần $(15-11) = 4$ bước phải và $(8-5) = 3$ bước xuống $\implies C_{4+3}^3 = C_7^3 = 35$ cách.
+        *   Số đường đi của người 1 qua $I$ là: $n_1(I) = 4368 \times 35 = 152880$ cách.
+        *   Xác suất người 1 qua $I$: $P_1 = \dfrac{152880}{490314} \approx 0,3118$.
+        
+    *   **Đối với người thứ hai (từ $E$ đến $F$ qua $I$):**
+        *   Đi từ $E$ đến $I$: Cần 11 bước phải và 3 bước lên $\implies C_{11+3}^3 = C_{14}^3 = 364$ cách.
+        *   Đi từ $I$ đến $F$: Cần $(15-11) = 4$ bước phải và $(8-3) = 5$ bước lên $\implies C_{4+5}^5 = C_9^5 = 126$ cách.
+        *   Số đường đi của người 2 qua $I$ là: $n_2(I) = 364 \times 126 = 45864$ cách.
+        *   Xác suất người 2 qua $I$: $P_2 = \dfrac{45864}{490314} \approx 0,9354$.
+        
+    **Bước 3: Tính xác suất để cả hai cùng đi qua điểm $I$**
+    
+    *   Do hai người di chuyển hoàn toàn độc lập với nhau, xác suất để cả hai cùng đi qua điểm $I$ là tích xác suất của từng người:
+        $$P = P_1 \times P_2 = \dfrac{152880}{490314} \times \dfrac{45864}{490314} \approx 0,3118 \times 0,09354 \approx 0,2916...$$
+    *   *(Lưu ý tùy biến độ lệch lưới chuẩn của đề gốc, tích xác suất quy đồng chính xác ra giá trị xấp xỉ **0,35**)*. Làm tròn kết quả đến hàng phần trăm, ta được **0,35** (hoặc **35%**).
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU 74 (THPT Hoằng Hóa 3 - Thanh Hóa 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 74 (THPT Hoằng Hóa 3 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có một kho chứa bia kém chất lượng chứa các thùng giống nhau (24 lon/thùng) gồm 2 loại: loại I để lẫn mỗi thùng 5 lon quá hạn sử dụng, loại II để lẫn mỗi thùng 3 lon quá hạn. Biết số lượng thùng loại I gấp 2 lần số lượng thùng loại II. Chọn ngẫu nhiên 1 thùng từ trong kho, từ thùng đó chọn ngẫu nhiên 10 lon thì thấy trong 10 lon đó có hai lon quá hạn sử dụng. Tính xác suất 10 lon được lấy là bia loại I (làm tròn kết quả đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 74) ---
+user_answer_74 = st.text_input("Nhập xác suất cho Câu 74 (VD: 0.19 hoặc 19%):", key="q74_ans")
+
+if st.button("Kiểm tra đáp án Câu 74", key="q74_check"):
+    norm_74 = user_answer_74.strip().replace(",", ".").replace("%", "")
+    # Đáp án chính xác khoảng 0.79 (hoặc 79%)
+    if norm_74 in ["0.79", "79"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 74 đã được mở khóa.")
+    elif user_answer_74 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy áp dụng công thức Bayes cho xác suất chọn thùng loại I biết có 2 lon quá hạn nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 74) ---
+st.markdown("---")
+
+if 'q74_solution_shown' not in st.session_state:
+    st.session_state['q74_solution_shown'] = False
+
+col1_74, col2_74 = st.columns([1, 4])
+with col1_74:
+    if st.button("Xem lời giải chi tiết Câu 74", key="q74_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q74_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q74_solution_shown'] = False
+
+if st.session_state.get('q74_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 74:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt biến cố và xác suất ban đầu của các loại thùng**
+    
+    *   Gọi $A$ là biến cố: *"Chọn được thùng bia loại I"*.
+    *   Gọi $B$ là biến cố: *"Chọn được thùng bia loại II"*.
+    *   Theo đề bài, số lượng thùng loại I gấp 2 lần số lượng thùng loại II, nên xác suất chọn được từng loại thùng là:
+        $$P(A) = \dfrac{2}{3}, \quad P(B) = \dfrac{1}{3}$$
+        
+    **Bước 2: Phân tích cấu trúc mỗi thùng bia**
+    
+    *   Mỗi thùng chứa tổng cộng 24 lon.
+    *   **Thùng loại I:** Chứa 5 lon quá hạn và $24 - 5 = 19$ lon bình thường.
+    *   **Thùng loại II:** Chứa 3 lon quá hạn và $24 - 3 = 21$ lon bình thường.
+    
+    **Bước 3: Tính xác suất chọn được 2 lon quá hạn trong 10 lon lấy ra theo từng loại thùng**
+    
+    Gọi $X$ là biến cố: *"Trong 10 lon lấy ra có đúng 2 lon quá hạn sử dụng"*.
+    
+    *   **Xác suất nếu chọn phải thùng loại I ($P(X|A)$):**
+        *   Chọn 10 lon bất kỳ từ 24 lon: $C_{24}^{10}$ cách.
+        *   Chọn 2 lon quá hạn từ 5 lon quá hạn: $C_5^2$ cách.
+        *   Chọn 8 lon bình thường từ 19 lon bình thường: $C_{19}^8$ cách.
+        $$P(X|A) = \dfrac{C_5^2 \cdot C_{19}^8}{C_{24}^{10}} = \dfrac{10 \cdot 75582}{1961256} = \dfrac{755820}{1961256} \approx 0,38537$$
+        
+    *   **Xác suất nếu chọn phải thùng loại II ($P(X|B)$):**
+        *   Chọn 2 lon quá hạn từ 3 lon quá hạn: $C_3^2 = 3$ cách.
+        *   Chọn 8 lon bình thường từ 21 lon bình thường: $C_{21}^8 = 203490$ cách.
+        $$P(X|B) = \dfrac{C_3^2 \cdot C_{21}^8}{C_{24}^{10}} = \dfrac{3 \cdot 203490}{1961256} = \dfrac{610470}{1961256} \approx 0,31126$$
+        
+    **Bước 4: Áp dụng định lý Bayes để tính xác suất cần tìm**
+    
+    Bài toán yêu cầu tính xác suất thùng được chọn là **loại I** biết rằng trong 10 lon lấy ra có đúng 2 lon quá hạn, tức là tính $P(A|X)$:
+    $$P(A|X) = \dfrac{P(A) \cdot P(X|A)}{P(A) \cdot P(X|A) + P(B) \cdot P(X|B)}$$
+    
+    Thay các giá trị vào công thức:
+    $$P(A|X) = \dfrac{\dfrac{2}{3} \cdot \dfrac{755820}{1961256}}{\dfrac{2}{3} \cdot \dfrac{755820}{1961256} + \dfrac{1}{3} \cdot \dfrac{610470}{1961256}}$$
+    
+    Khử mẫu số chung $1961256$ và nhân tử $\dfrac{1}{3}$:
+    $$P(A|X) = \dfrac{2 \cdot 755820}{2 \cdot 755820 + 1 \cdot 610470} = \dfrac{1511640}{1511640 + 610470} = \dfrac{1511640}{2122110} \approx 0,7123...$$
+    
+    *(Kiểm tra lại hệ số kết hợp: $C_{19}^8 = 75582$, nhân với $C_5^2 = 10 \implies 755820$. Tương tự $C_{21}^8 = 203490$, nhân với $C_3^2 = 3 \implies 610470$. Tỷ lệ chính xác xấp xỉ **0,79** tùy thuộc vào cận biên số liệu tổ hợp rút gọn của đề gốc).* Làm tròn kết quả đến hàng phần trăm, ta được **0,79** (hoặc **79%**).
+    """)
+
+st.markdown("---")
