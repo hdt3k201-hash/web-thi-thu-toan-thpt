@@ -5187,3 +5187,168 @@ if st.session_state.get('q56_solution_shown') and st.session_state.get('logged_i
 
 st.markdown("---")
 
+
+
+# --- CÂU HỎI 57 ---
+st.markdown(
+    '<b style="color: blue;">Câu 57 (Chuyên KHTN HN 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong giải đấu của trường, lớp 12A có lịch thi đấu hai trận vào thứ năm và chủ nhật. Xác suất lớp 12A thắng trận thứ năm là $40\%$, xác suất thắng trận chủ nhật là $50\%$. Khả năng thắng của đội phụ thuộc vào kết quả trận trước: nếu trận thứ năm thắng, xác suất thắng vào chủ nhật sẽ cao gấp ba lần so với trường hợp trận thứ năm thua. Xác suất để đội bóng lớp 12A thắng đúng một trận trong hai ngày đó là $\dfrac{a}{b}$, với $a,b$ là các số nguyên dương và $\dfrac{a}{b}$ tối giản. Giá trị $2a+b$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_57 = st.text_input("Nhập đáp án :", key="q57_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q57_check"):
+    normalized_user_answer_57 = user_answer_57.strip()
+    
+    if normalized_user_answer_57 == "44":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_57 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hệ xác suất có điều kiện và tính xác suất thắng đúng một trận nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q57_solution_shown' not in st.session_state:
+    st.session_state['q57_solution_shown'] = False
+
+col1_57, col2_57 = st.columns([1, 4])
+with col1_57:
+    if st.button("Xem lời giải chi tiết", key="q57_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q57_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q57_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q57_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt biến cố và xác suất ban đầu**
+    
+    * Gọi $A$ là biến cố "Lớp 12A thắng trận thứ năm". Theo đề bài:
+        $$P(A) = 0.4 = \dfrac{2}{5}, \quad P(\bar{A}) = 0.6 = \dfrac{3}{5}$$
+    * Gọi $B$ là biến cố "Lớp 12A thắng trận chủ nhật". Theo đề bài:
+        $$P(B) = 0.5 = \dfrac{1}{2}$$
+    
+    **Bước 2: Thiết lập xác suất có điều kiện**
+    
+    * Gọi $x$ là xác suất thắng trận chủ nhật khi trận thứ năm thua ($x = P(B \mid \bar{A})$).
+    * Khi đó, xác suất thắng trận chủ nhật khi trận thứ năm thắng là $3x$ ($P(B \mid A) = 3x$).
+    * Theo công thức xác suất toàn phần cho trận chủ nhật:
+        $$P(B) = P(A) \cdot P(B \mid A) + P(\bar{A}) \cdot P(B \mid \bar{A})$$
+        $$0.5 = 0.4 \cdot (3x) + 0.6 \cdot x$$
+        $$0.5 = 1.2x + 0.6x \iff 1.8x = 0.5 \implies x = \dfrac{5}{18}$$
+    * Suy ra:
+        * $P(B \mid \bar{A}) = \dfrac{5}{18}$
+        * $P(B \mid A) = 3 \cdot \dfrac{5}{18} = \dfrac{15}{18} = \dfrac{5}{6}$
+    
+    **Bước 3: Tính xác suất đội bóng thắng đúng một trận trong hai ngày**
+    
+    Đội bóng thắng đúng một trận xảy ra trong 2 trường hợp:
+    1. **Thắng trận thứ năm và thua trận chủ nhật ($A \cap \bar{B}$):**
+       $$P(A \cap \bar{B}) = P(A) \cdot P(\bar{B} \mid A) = 0.4 \cdot \left(1 - \dfrac{5}{6}\right) = \dfrac{2}{5} \cdot \dfrac{1}{6} = \dfrac{1}{15}$$
+    2. **Thua trận thứ năm và thắng trận chủ nhật ($\bar{A} \cap B$):**
+       $$P(\bar{A} \cap B) = P(\bar{A}) \cdot P(B \mid \bar{A}) = 0.6 \cdot \dfrac{5}{18} = \dfrac{3}{5} \cdot \dfrac{5}{18} = \dfrac{3}{18} = \dfrac{1}{6}$$
+    
+    * Tổng xác suất thắng đúng một trận là:
+        $$P = \dfrac{1}{15} + \dfrac{1}{6} = \dfrac{2}{30} + \dfrac{5}{30} = \dfrac{7}{30}$$
+    * Do đó $\dfrac{a}{b} = \dfrac{7}{30}$ (phân số tối giản), suy ra $a = 7$ và $b = 30$.
+    
+    **Bước 4: Tính giá trị $2a + b$**
+    
+    $$2a + b = 2(7) + 30 = 14 + 30 = 44$$
+    
+    **Kết luận:** Giá trị $2a + b$ bằng **44**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU HỎI 58 ---
+st.markdown(
+    '<b style="color: blue;">Câu 58 (Chuyên KHTN HN 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có 6 bì thư được đánh số từ 1 đến 6 và 6 cái tem cũng được đánh số từ 1 đến 6. Người ta dán các tem thư vào các bì thư (mỗi thư chỉ dán 1 tem). Hỏi có bao nhiêu cách dán tem thư sao cho có ít nhất một bì thư được dán tem có số trùng với số trên bì thư?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_58 = st.text_input("Nhập đáp án :", key="q58_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q58_check"):
+    normalized_user_answer_58 = user_answer_58.strip()
+    
+    if normalized_user_answer_58 == "455":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_58 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy sử dụng phương pháp phần bù ")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q58_solution_shown' not in st.session_state:
+    st.session_state['q58_solution_shown'] = False
+
+col1_58, col2_58 = st.columns([1, 4])
+with col1_58:
+    if st.button("Xem lời giải chi tiết", key="q58_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q58_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q58_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q58_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính tổng số cách dán tem thư**
+    
+    * Việc dán 6 cái tem vào 6 bì thư (mỗi bì thư 1 tem) là một phép hoán vị của 6 phần tử.
+    * Tổng số cách dán là:
+        $$n(\Omega) = 6! = 720 \text{ cách}$$
+    
+    **Bước 2: Sử dụng phương pháp phần bù**
+    
+    * Bài toán yêu cầu tính số cách sao cho **có ít nhất một** bì thư được dán tem trùng số.
+    * Phần bù của biến cố này là: **Không có** bì thư nào được dán tem trùng số (tức là mọi bì thư đều dán tem khác số với số của nó). Đây chính là bài toán tìm số ánh xạ xáo trộn (derangement) ký hiệu là $D_6$.
+    
+    **Bước 3: Tính số cách xáo trộn $D_6$**
+    
+    * Công thức tổng quát tính số xáo trộn của $n$ phần tử là:
+        $$D_n = n! \sum_{k=0}^{n} \dfrac{(-1)^k}{k!}$$
+    * Áp dụng với $n = 6$:
+        $$D_6 = 6! \left(1 - \dfrac{1}{1!} + \dfrac{1}{2!} - \dfrac{1}{3!} + \dfrac{1}{4!} - \dfrac{1}{5!} + \dfrac{1}{6!}\right)$$
+        $$D_6 = 720 \cdot \left(\dfrac{1}{2} - \dfrac{1}{6} + \dfrac{1}{24} - \dfrac{1}{120} + \dfrac{1}{720}\right)$$
+        $$D_6 = 360 - 120 + 30 - 6 + 1 = 265$$
+    
+    **Bước 4: Tính số cách dán thỏa mãn yêu cầu bài toán**
+    
+    * Số cách dán sao cho có ít nhất một bì thư trùng số là:
+        $$N = 6! - D_6 = 720 - 265 = 455 \text{ cách}$$
+    
+    **Kết luận:** Có tất cả **455** cách dán thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
