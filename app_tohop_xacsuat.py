@@ -9290,3 +9290,186 @@ if st.session_state.get('q99_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+
+# ==========================================
+# CÂU 100
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 100 (THPT Lê Hồng Phong - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Bạn An có một bảng chữ nhật gồm 6 hình vuông đơn vị, cố định không xoay như hình vẽ. Bé muốn dùng 3 màu để tô tất cả các cạnh của các hình vuông đơn vị, mỗi cạnh tô một lần sao cho mỗi hình vuông đơn vị được tô bởi đúng 2 màu, trong đó mỗi màu tô đúng 2 cạnh. Biết số cách tô màu bảng của bạn An là $T$, tính $\dfrac{T}{4}$.
+""")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/lhp2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/lhp2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_100 = st.text_input("Nhập đáp án Câu 100 (chỉ nhập số):", key="q100_ans")
+
+if st.button("Kiểm tra đáp án", key="q100_check"):
+    normalized_user_answer = user_answer_100.strip()
+    if normalized_user_answer == "3888":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_100 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q100_solution_shown' not in st.session_state:
+    st.session_state['q100_solution_shown'] = False
+
+col1_100, col2_100 = st.columns([1, 4])
+with col1_100:
+    if st.button("Xem lời giải chi tiết", key="q100_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q100_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q100_solution_shown'] = False
+
+if st.session_state.get('q100_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Phân tích số cách tô cho một hình vuông đơn vị.**
+    
+    Yêu cầu đặt ra là mỗi hình vuông cần tô đúng 2 màu, mỗi màu 2 cạnh từ tập 3 màu cho trước.
+    
+    *   **Tô một hình vuông hoàn toàn tự do (chưa cố định cạnh nào):** 
+        Chọn 2 màu từ 3 màu có $C_3^2 = 3$ cách. Với 2 màu đã chọn (giả sử màu $a$ và $b$), số cách chọn 2 cạnh để tô màu $a$ (2 cạnh còn lại tô màu $b$) là $C_4^2 = 6$ cách.
+        $\Rightarrow$ Tổng số cách là: $3 \times 6 = 18$ cách.
+
+    *   **Tô hình vuông khi đã cố định trước 1 cạnh:** 
+        Giả sử cạnh cố định đã có màu $a$. Hình vuông cần tô đúng 2 màu nên ta phải chọn màu thứ hai $b$ từ 2 màu còn lại ($2$ cách). Ta cần phân bổ thêm 1 cạnh màu $a$ và 2 cạnh màu $b$ vào 3 vị trí cạnh còn lại. Số cách phân bổ là chọn 1 vị trí cho cạnh màu $a$ ($C_3^1 = 3$ cách). 
+        $\Rightarrow$ Tổng số cách là: $2 \times 3 = 6$ cách.
+
+    *   **Tô hình vuông khi đã cố định trước 2 cạnh kề nhau:** 
+        Giả sử 2 cạnh kề có màu $x$ và $y$.
+        *   Nếu $x = y = a$: 2 cạnh còn lại bắt buộc phải mang cùng một màu $b \neq a$. Có 2 cách chọn màu $b$. ($\Rightarrow$ 2 cách).
+        *   Nếu $x \neq y$ (một cạnh màu $a$, một cạnh màu $b$): 2 cạnh còn lại bắt buộc phải là 1 cạnh màu $a$ và 1 cạnh màu $b$. Có 2 hoán vị cho 2 vị trí này. ($\Rightarrow$ 2 cách).
+        $\Rightarrow$ Luôn có đúng $2$ cách để tô tiếp khi biết trước 2 cạnh kề.
+
+    **Bước 2: Xây dựng bảng 2x3.**
+    
+    Bảng gồm 6 ô vuông (2 dòng, 3 cột). Đánh số các ô theo tọa độ (dòng, cột). Ta thực hiện tô lần lượt theo thứ tự:
+    
+    1.  **Ô (1, 1)** (tự do, chưa chung cạnh nào): Có $18$ cách.
+    2.  **Ô (2, 1)** (chung 1 cạnh ngang với ô (1, 1)): Có $6$ cách.
+    3.  **Ô (1, 2)** (chung 1 cạnh dọc với ô (1, 1)): Có $6$ cách.
+    4.  **Ô (2, 2)** (chung 2 cạnh kề với ô (2, 1) và ô (1, 2)): Có $2$ cách.
+    5.  **Ô (1, 3)** (chung 1 cạnh dọc với ô (1, 2)): Có $6$ cách.
+    6.  **Ô (2, 3)** (chung 2 cạnh kề với ô (1, 3) và ô (2, 2)): Có $2$ cách.
+
+    **Bước 3: Tính toán kết quả.**
+    
+    Tổng số cách tô màu bảng là: 
+    $$T = 18 \times 6 \times 6 \times 2 \times 6 \times 2 = 15552$$
+    
+    Giá trị cần tìm:
+    $$\dfrac{T}{4} = \dfrac{15552}{4} = 3888$$
+    
+    **Vậy đáp án là: 3888**
+    """)
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 101
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 101 (THPT Kim Liên - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một hệ thống máy chủ có 14 địa chỉ IP được đánh số từ 1 đến 14. Quản trị viên cần cấp phát địa chỉ cho ba nhóm: Web có 4 địa chỉ được đánh số liên tiếp; Database có 3 địa chỉ trong đó không có hai địa chỉ nào được đánh số liên tiếp; Storage có 2 địa chỉ được đánh số bất kỳ. Biết rằng ba nhóm này không có địa chỉ chung và không có địa chỉ của nhóm Database nào được đứng cạnh nhóm Web, cả trước và sau. Hỏi có bao nhiêu cách cấp phát địa chỉ?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_101 = st.text_input("Nhập đáp án Câu 101 (chỉ nhập số):", key="q101_ans")
+
+if st.button("Kiểm tra đáp án", key="q101_check"):
+    normalized_user_answer = user_answer_101.strip()
+    if normalized_user_answer == "5880":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_101 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q101_solution_shown' not in st.session_state:
+    st.session_state['q101_solution_shown'] = False
+
+col1_101, col2_101 = st.columns([1, 4])
+with col1_101:
+    if st.button("Xem lời giải chi tiết", key="q101_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q101_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q101_solution_shown'] = False
+
+if st.session_state.get('q101_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Phân tích số lượng và xem xét như bài toán vách ngăn**
+    
+    Tổng số IP là 14. 
+    *   Nhóm Web (W) cần 4 IP liên tiếp, ta có thể coi khối 4 IP này như **1 siêu khối W**.
+    *   Nhóm Database (D) cần 3 IP rời rạc, ta coi như **3 khối D riêng lẻ**.
+    
+    Bốn khối này sử dụng tổng cộng $4 + 1\times3 = 7$ IP. Số IP còn lại (bao gồm 2 IP nhóm Storage và 5 IP không cấp phát) là $14 - 7 = 7$ IP. 
+    Ta coi 7 IP còn lại này như **7 vách ngăn (E)** dùng để ngăn cách các khối W và D.
+
+    **Bước 2: Xếp vị trí cho Web và Database**
+    
+    Để đáp ứng điều kiện "không có 2 IP Database nào liên tiếp" và "không IP Database nào đứng cạnh nhóm Web", thì giữa bất kỳ hai khối nào trong 4 khối (W, D, D, D) cũng phải có ít nhất 1 IP vách ngăn E.
+
+    Có $4$ cách xếp thứ tự các khối W và D (vì có 1 khối W và 3 khối D giống hệt nhau về mặt vai trò khối):
+    (W, D, D, D); (D, W, D, D); (D, D, W, D); (D, D, D, W).
+    
+    Với mỗi cách xếp, ta tạo ra 5 khoảng trống (bao gồm 3 khoảng trống ở giữa và 2 khoảng trống ở hai đầu). 
+    Gọi $x_1, x_2, x_3, x_4, x_5$ là số vách ngăn E đặt vào các khoảng trống đó. Ta có phương trình:
+    $$x_1 + x_2 + x_3 + x_4 + x_5 = 7$$
+    
+    Do điều kiện không được đứng cạnh nhau, 3 khoảng trống ở giữa bắt buộc phải có ít nhất 1 vách ngăn: $x_2, x_3, x_4 \ge 1$. Các khoảng ở hai đầu $x_1, x_5 \ge 0$.
+    Đặt $x_2' = x_2 - 1, x_3' = x_3 - 1, x_4' = x_4 - 1$, ta được:
+    $$x_1 + x_2' + x_3' + x_4' + x_5 = 7 - 3 = 4$$
+    (với $x_1, x_2', x_3', x_4', x_5 \ge 0$)
+    
+    Số nghiệm nguyên không âm của phương trình trên là:
+    $$C_{4+5-1}^{5-1} = C_8^4 = 70 \text{ cách.}$$
+    
+    $\Rightarrow$ Tổng số cách chọn vị trí cấp phát cho Web và Database là: $4 \times 70 = 280$ cách.
+
+    **Bước 3: Cấp phát cho nhóm Storage**
+    
+    Sau khi đã cấp phát cố định vị trí cho nhóm Web và Database, có đúng 7 vị trí IP còn trống (tương ứng với 7 vách ngăn E ở trên). 
+    Nhóm Storage cần 2 địa chỉ bất kỳ, do đó ta chỉ cần chọn 2 IP trong số 7 IP trống này.
+    
+    Số cách chọn cho Storage là:
+    $$C_7^2 = \dfrac{7 \times 6}{2} = 21 \text{ cách.}$$
+
+    **Bước 4: Tổng số cách cấp phát**
+    
+    Theo quy tắc nhân, tổng số cách cấp phát địa chỉ thỏa mãn yêu cầu bài toán là:
+    $$280 \times 21 = 5880 \text{ cách.}$$
+    
+    **Vậy đáp án là: 5880**
+    """)
+st.markdown("---")
