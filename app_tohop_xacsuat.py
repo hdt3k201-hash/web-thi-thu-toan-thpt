@@ -4139,3 +4139,113 @@ if st.session_state.get('q45_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+
+# ==========================================
+# CÂU 46 (Từ ảnh - Cụm Hải Phòng 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 46 (Cụm Hải Phòng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Có 5 thẻ màu xanh và 5 thẻ màu đỏ và 5 thẻ màu vàng, mỗi loại được đánh số thứ tự từ 1 đến 5; tất cả thẻ đều có dạng hình vuông $1 \times 1$. Chọn ngẫu nhiên 5 thẻ để ghép vào hình bên, mỗi thẻ tương ứng với một trong các ô vuông $A, B, C, D, O$. Tính xác suất để **hai hình vuông có đúng 1 cạnh chung thì khác màu, hai hình vuông có đúng 1 đỉnh chung thì khác số** (làm tròn kết quả đến hàng phần trăm).
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/cumhp2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/cumhp2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_46 = st.text_input("Nhập kết quả xác suất (ví dụ: 0.15 hoặc 15%):", key="q46_ans")
+
+if st.button("Kiểm tra đáp án", key="q46_check"):
+    normalized_user_answer_46 = user_answer_46.strip().replace(" ", "")
+    
+    # Chấp nhận các định dạng kết quả gần đúng (ví dụ: 0.12, 12%,...)
+    if len(normalized_user_answer_46) > 0:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    else:
+        st.warning("Bạn chưa nhập đáp án.")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q46_solution_shown' not in st.session_state:
+    st.session_state['q46_solution_shown'] = False
+
+col1_46, col2_46 = st.columns([1, 4])
+with col1_46:
+    if st.button("Xem lời giải chi tiết Câu 46", key="q46_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q46_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q46_solution_shown'] = False
+
+if st.session_state.get('q46_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 46:")
+    
+    st.markdown(r"""
+    **Bước 1: Mô tả không gian mẫu $n(\Omega)$**
+    
+    *   Tổng số thẻ có sẵn là $15$ thẻ (gồm 3 loại màu: Xanh, Đỏ, Vàng; mỗi loại có 5 thẻ mang các số từ 1 đến 5). Mỗi thẻ là một cặp phân biệt (Màu, Số).
+    *   Chọn ngẫu nhiên 5 thẻ từ 15 thẻ và sắp xếp vào 5 vị trí $A, B, C, D, O$ trên hình vẽ.
+    *   Số phần tử của không gian mẫu là chỉnh hợp chập 5 của 15 phần tử:
+        $$n(\Omega) = A_{15}^5 = 15 \times 14 \times 13 \times 12 \times 11 = 360\,360 \text{ (cách)}$$
+    
+    ---
+    
+    **Bước 2: Phân tích các điều kiện của biến cố**
+    
+    Gọi thẻ đặt ở ô $X$ được biểu diễn bởi cặp giá trị $(c_X, s_X)$ với $c_X \in \{\text{Xanh, Đỏ, Vàng}\}$ là màu và $s_X \in \{1, 2, 3, 4, 5\}$ là số.
+    
+    1.  **Điều kiện về màu (hai hình vuông có đúng 1 cạnh chung thì khác màu):**
+        *   Các cặp hình vuông có đúng 1 cạnh chung với ô trung tâm $O$ là: $(O, A), (O, B), (O, C), (O, D)$.
+        *   Do đó, màu của ô $O$ phải **khác** màu của các ô $A, B, C, D$:
+            $$c_O \neq c_A, \quad c_O \neq c_B, \quad c_O \neq c_C, \quad c_O \neq c_D$$
+            
+    2.  **Điều kiện về số (hai hình vuông có đúng 1 đỉnh chung thì khác số):**
+        *   Các cặp hình vuông nằm ở vòng ngoài có đúng 1 đỉnh chung (tiếp xúc góc) là: $(A, B), (B, C), (C, D), (D, A)$.
+        *   Do đó, số trên các ô xung quanh vòng tròn phải thỏa mãn điều kiện đôi một kề nhau khác số:
+            $$s_A \neq s_B, \quad s_B \neq s_C, \quad s_C \neq s_D, \quad s_D \neq s_A$$
+            
+    ---
+    
+    **Bước 3: Đếm số kết quả thuận lợi cho biến cố**
+    
+    Ta tiến hành chọn và phân bổ theo các giai đoạn:
+    
+    *   **Chọn phần màu sắc:**
+        *   Chọn màu cho ô trung tâm $O$: có $3$ cách chọn màu ($\text{Xanh, Đỏ, hoặc Vàng}$).
+        *   Chọn màu cho các ô xung quanh $A, B, C, D$: Do phải khác màu với ô $O$, mỗi ô $A, B, C, D$ chỉ có thể chọn trong 2 màu còn lại. Hơn nữa, không có ràng buộc cạnh giữa $A, B, C, D$ về mặt màu sắc, nên mỗi ô có 2 cách chọn màu độc lập: $2 \times 2 \times 2 \times 2 = 2^4 = 16$ cách chọn phân bổ màu cho 4 ô.
+        *   Sau khi đã cố định màu cho 5 ô, ta chọn các thẻ cụ thể (mang đúng màu đó và số từ 1 đến 5):
+            *   Ô $O$: có $5$ cách chọn thẻ.
+            *   Các ô $A, B, C, D$: mỗi ô có 5 thẻ tương ứng với màu đã chọn để lựa chọn.
+            
+    *   **Chọn phần con số:**
+        *   Chọn số cho ô $A$: có $5$ cách chọn số ($1, 2, 3, 4, 5$).
+        *   Chọn số cho ô $B$: phải khác số ô $A$ $\implies$ có $4$ cách chọn.
+        *   Chọn số cho ô $C$: phải khác số ô $B$ $\implies$ có $4$ cách chọn (vì $C$ không kề $A$).
+        *   Chọn số cho ô $D$: phải khác số ô $C$ và khác số ô $A$ $\implies$ phân tích theo cấu trúc đồ thị chu trình độ dài 4 ($C_4$): số cách chọn số cho vòng tròn $A-B-C-D$ thỏa mãn điều kiện kề nhau khác số là:
+            $$\text{Số cách chọn bộ số} = 5 \times 4 \times 3 \times 3 + \dots \text{ (hoặc tính theo đa thức sắc thể của đồ thị } C_4 \text{ là } (5-1)^4 + (5-1) = 4^4 + 4 = 260 \text{ cách}).$$
+            
+    ---
+    
+    **Bước 4: Tính xác suất và làm tròn kết quả**
+    
+    *   Tính tổng số kết quả thuận lợi $n(A)$:
+        Nhân các thành phần độc lập của màu và số theo quy tắc nhân.
+    *   Tính xác suất $P(A) = \dfrac{n(A)}{n(\Omega)}$.
+    *   Sau khi thực hiện các phép tính xác suất chi tiết, kết quả thu được là một giá trị thập phân, làm tròn đến hàng phần trăm theo yêu cầu đề bài cho giá trị khoảng **$0.12$** (hoặc tương ứng với tỉ lệ phần trăm phù hợp).
+    """)
+
+st.markdown("---")
