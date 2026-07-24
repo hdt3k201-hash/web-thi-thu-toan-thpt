@@ -1157,3 +1157,159 @@ if st.session_state.get('q13_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+
+# --- CÂU HỎI 14 ---
+st.markdown(
+    '<b style="color: blue;">Câu 14 (Sở Phú Thọ 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho đa giác đều 36 đỉnh $A_1A_2...A_{36}$ nội tiếp đường tròn tâm $O$. Chọn ngẫu nhiên 3 đỉnh trong số các đỉnh $A_1, A_2, ..., A_{36}$ của đa giác đã cho, biết xác suất để chọn được ba đỉnh tạo thành một tam giác có một góc bằng $120^\circ$ là $P$. Giá trị của biểu thức $595P$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_14 = st.text_input("Nhập đáp án :", key="q14_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q14_check"):
+    normalized_user_answer_14 = user_answer_14.strip()
+    
+    if normalized_user_answer_14 == "66":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_14 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách tính số tam giác có góc $120^\circ$ trong đa giác đều nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q14_solution_shown' not in st.session_state:
+    st.session_state['q14_solution_shown'] = False
+
+col1_14, col2_14 = st.columns([1, 4])
+with col1_14:
+    if st.button("Xem lời giải chi tiết", key="q14_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q14_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q14_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q14_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử không gian mẫu**
+    
+    * Số cách chọn ngẫu nhiên 3 đỉnh từ 36 đỉnh của đa giác đều là:
+        $$n(\Omega) = C_{36}^3 = \dfrac{36 \cdot 35 \cdot 34}{3 \cdot 2 \cdot 1} = 7140$$
+    
+    **Bước 2: Phân tích cấu trúc tam giác có một góc bằng $120^\circ$**
+    
+    * Một góc nội tiếp bằng $120^\circ$ chắn cung có số đo là $240^\circ$, tương ứng với $\dfrac{240^\circ}{360^\circ} \cdot 36 = 24$ khoảng cung đơn vị.
+    * Do đó, cạnh đối diện với góc $120^\circ$ sẽ chia chu vi vòng tròn thành hai phần: một phần có 24 khoảng và phần còn lại có $36 - 24 = 12$ khoảng.
+    * Như vậy, tam giác thỏa mãn được xác định bằng cách chọn một cạnh (cung) có độ dài 12 đơn vị (có 36 cách chọn vị trí khởi đầu cho cung này), và đỉnh thứ ba được chọn trên cung còn lại có 24 điểm. 
+    * Loại trừ điểm chính giữa của cung còn lại (vì nếu đỉnh thứ ba nằm ở chính giữa sẽ tạo ra tam giác đều có các góc $60^\circ$), số cách chọn đỉnh thứ ba là $24 - 1 - 1 = 22$ cách (hoặc tính dựa trên phân phối cung $12 + y + z = 36$ với $y+z=24, y,z \ge 1, y \neq 12$).
+    
+    **Bước 3: Tính số kết quả thuận lợi**
+    
+    * Tổng số tam giác thỏa mãn yêu cầu bài toán là:
+        $$n(A) = 36 \cdot 22 = 792$$
+    
+    **Bước 4: Tính xác suất $P$ và giá trị biểu thức $595P$**
+    
+    * Xác suất $P$ là:
+        $$P = \dfrac{792}{7140} = \dfrac{66}{595}$$
+    * Giá trị của biểu thức $595P$ là:
+        $$595P = 595 \cdot \dfrac{66}{595} = 66$$
+    
+    **Kết luận:** Giá trị của biểu thức $595P$ bằng **66**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU HỎI 15 ---
+st.markdown(
+    '<b style="color: blue;">Câu 15 (Chuyên Lê Thánh Tông - Đà Nẵng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Lớp mẫu giáo có 10 em bé, các bé đứng thành vòng tròn và cách đều nhau, đứng ở tâm vòng tròn là cô giáo. Mỗi bé cầm hai cờ, một xanh một đỏ trên mỗi tay. Cô giáo bảo "giơ lên cao một cờ", các bé giơ ngẫu nhiên một cờ. Gọi $a$ là xác suất để không có 4 cờ nào cùng màu được giơ lên ở 4 vị trí mà 4 vị trí ấy là 4 đỉnh của một hình chữ nhật. Giá trị của $\dfrac{2200}{a}$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_15 = st.text_input("Nhập đáp án :", key="q15_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q15_check"):
+    normalized_user_answer_15 = user_answer_15.strip()
+    
+    if normalized_user_answer_15 == "6400":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_15 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại số hình chữ nhật trong đa giác 10 đỉnh và số cấu hình thỏa mãn điều kiện màu sắc nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q15_solution_shown' not in st.session_state:
+    st.session_state['q15_solution_shown'] = False
+
+col1_15, col2_15 = st.columns([1, 4])
+with col1_15:
+    if st.button("Xem lời giải chi tiết", key="q15_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q15_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q15_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q15_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Không gian mẫu và cấu trúc hình chữ nhật**
+    
+    * Có 10 em bé, mỗi bé chọn ngẫu nhiên 1 trong 2 màu cờ (Xanh hoặc Đỏ). Số phần tử của không gian mẫu là:
+        $$n(\Omega) = 2^{10} = 1024$$
+    * Trong đa giác đều 10 đỉnh, các đỉnh được chia thành 5 cặp đỉnh đối xứng qua tâm (tương ứng với 5 đường kính). Mỗi hình chữ nhật được tạo thành bởi việc chọn ra 2 đường kính bất kỳ trong số 5 đường kính đó.
+    * Tổng số hình chữ nhật là:
+        $$C_5^2 = 10 \text{ hình chữ nhật}$$
+    
+    **Bước 2: Phân tích điều kiện không có hình chữ nhật cùng màu**
+    
+    * Gọi màu cờ của 10 em bé tương ứng với các biến giá trị nhị phân. Xét các cặp đỉnh đối xứng qua tâm (5 đường kính).
+    * Để không có hình chữ nhật nào có 4 đỉnh cùng màu, ta áp dụng phương pháp phân loại cấu hình màu sắc theo số lượng đường kính có trạng thái màu sắc đối xứng giống nhau hoặc khác nhau.
+    * Tính toán số lượng các cấu hình thỏa mãn điều kiện an toàn (không có hình chữ nhật nào monochromatic):
+        * Trường hợp 1 ($|T| = 0$): $32$ cách.
+        * Trường hợp 2 ($|T| = 1$): $160$ cách.
+        * Trường hợp 3 ($|T| = 2$): $160$ cách.
+    * Tổng số cấu hình thỏa mãn điều kiện (không có hình chữ nhật cùng màu) là:
+        $$n(A) = 32 + 160 + 160 = 352 \text{ cách}$$
+    
+    **Bước 3: Tính xác suất $a$ và giá trị biểu thức**
+    
+    * Xác suất $a$ là:
+        $$a = \dfrac{352}{1024} = \dfrac{11}{32}$$
+    * Giá trị của biểu thức $\dfrac{2200}{a}$ là:
+        $$\dfrac{2200}{\dfrac{11}{32}} = 2200 \cdot \dfrac{32}{11} = 200 \cdot 32 = 6400$$
+    
+    **Kết luận:** Giá trị của $\dfrac{2200}{a}$ bằng **6400**.
+    """)
+    
+st.markdown("---")
