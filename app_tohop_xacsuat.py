@@ -6123,8 +6123,9 @@ st.markdown("---")
 
 
 
-
-# --- CÂU HỎI 66 ---
+# ==========================================
+# CÂU 67 (Sở TT Huế 2026)
+# ==========================================
 st.markdown(
     '<b style="color: blue;">Câu 67 (Sở TT Huế 2026)</b>',
     unsafe_allow_html=True
@@ -6134,40 +6135,37 @@ st.markdown(r"""
 Hằng năm trước ngày Khai giảng năm học mới, Uỷ ban nhân dân thành phố Huế giao Sở Giáo dục và Đào tạo tổ chức Lễ Tuyên dương học sinh đạt danh hiệu “Học sinh danh dự toàn trường” dành cho những học sinh xuất sắc nhất của mỗi trường phổ thông trên địa bàn thành phố. Trong Lễ Tuyên dương, Ban tổ chức vinh danh các học sinh theo lượt nhận, mỗi lượt có 10 học sinh, với những lượt có 5 học sinh nam và 5 học sinh nữ thì Ban tổ chức muốn các học sinh này đứng thành một hàng mà nam nữ xen kẽ. Tuy nhiên khi xếp hàng với lượt có 5 học sinh nam và 5 học sinh nữ thì Ban tổ chức nhận thấy các học sinh này không đứng xen kẽ nhưng chỉ cần đổi chỗ hai học sinh nào đó thì được hàng có nam nữ đứng xen kẽ, các xếp này gọi là “cách xếp lỗi”. Gọi $D$ là số “cách xếp lỗi” như trên, xác định giá trị của $\dfrac{D}{100}$.
 """)
 
-# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer_66 = st.text_input("Nhập đáp án :", key="q66_ans")
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 67) ---
+user_answer_67 = st.text_input("Nhập đáp án cho Câu 67:", key="q67_ans")
 
 # Nút kiểm tra Đúng/Sai
-if st.button("Kiểm tra đáp án", key="q66_check"):
-    normalized_user_answer_66 = user_answer_66.strip()
+if st.button("Kiểm tra đáp án Câu 67", key="q67_check"):
+    normalized_user_answer_67 = user_answer_67.strip()
     
-    if normalized_user_answer_66 == "7200":
-        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
-    elif user_answer_66 == "":
+    if normalized_user_answer_67 == "7200":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 67 đã được mở khóa.")
+    elif user_answer_67 == "":
         st.warning("Bạn chưa nhập đáp án.")
     else:
         st.error("Sai rồi. Hãy đếm số mẫu giới tính thỏa mãn điều kiện 'cách xếp lỗi' sau đó nhân với số hoán vị của nam và nữ nhé!")
 
-# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 67) ---
 st.markdown("---")
 
-# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
-if 'q66_solution_shown' not in st.session_state:
-    st.session_state['q66_solution_shown'] = False
+if 'q67_solution_shown' not in st.session_state:
+    st.session_state['q67_solution_shown'] = False
 
-col1_66, col2_66 = st.columns([1, 4])
-with col1_66:
-    if st.button("Xem lời giải chi tiết", key="q66_solution"):
-        # Kiểm tra điều kiện đăng nhập
+col1_67, col2_67 = st.columns([1, 4])
+with col1_67:
+    if st.button("Xem lời giải chi tiết Câu 67", key="q67_solution"):
         if st.session_state.get('logged_in'):
-            st.session_state['q66_solution_shown'] = True
+            st.session_state['q67_solution_shown'] = True
         else:
             st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
-            st.session_state['q66_solution_shown'] = False
+            st.session_state['q67_solution_shown'] = False
 
-# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
-if st.session_state.get('q66_solution_shown') and st.session_state.get('logged_in'):
-    st.info("### Lời giải chi tiết:")
+if st.session_state.get('q67_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 67:")
     
     st.markdown(r"""
     **Bước 1: Phân tích cấu trúc của một hàng nam nữ xen kẽ chuẩn**
@@ -6175,12 +6173,12 @@ if st.session_state.get('q66_solution_shown') and st.session_state.get('logged_i
     * Để 5 nam và 5 nữ đứng xen kẽ, ta có 2 mẫu cấu trúc giới tính (gọi $N$ là Nam, $Z$ là Nữ):
       * Mẫu 1: $N-Z-N-Z-N-Z-N-Z-N-Z$ (Nam ở vị trí lẻ, Nữ ở vị trí chẵn).
       * Mẫu 2: $Z-N-Z-N-Z-N-Z-N-Z-N$ (Nữ ở vị trí lẻ, Nam ở vị trí chẵn).
-    * Với mỗi mẫu, số cách xếp $5$ nam và $5$ nữ vào các vị trí là: $5! \times 5! = 14400$ cách.
+    * Với mỗi mẫu, số cách xếp 5 nam và 5 nữ vào các vị trí là: $5! \times 5! = 14400$ cách.
     
     **Bước 2: Phân tích điều kiện của "cách xếp lỗi"**
     
     * Một "cách xếp lỗi" là một cách xếp không xen kẽ, nhưng **chỉ cần đổi chỗ đúng 2 học sinh** là trở thành xếp xen kẽ chuẩn.
-    * Xét Mẫu 1 ($N-Z-N-Z-N-Z-N-Z-N-Z$): Để tạo ra một mẫu bị lỗi 1 lần hoán vị từ Mẫu 1, ta bắt buộc phải chọn 1 vị trí Nam (lẻ) và 1 vị trí Nữ (chẵn) để đổi chỗ cho nhau. (Nếu đổi 2 Nam hoặc 2 Nữ thì hàng vẫn giữ nguyên mẫu giới tính xen kẽ ban đầu).
+    * Xét Mẫu 1 ($N-Z-N-Z-N-Z-N-Z-N-Z$): Để tạo ra một mẫu bị lỗi 1 lần hoán vị từ Mẫu 1, ta bắt buộc phải chọn 1 vị trí Nam (lẻ) và 1 vị trí Nữ (chẵn) để đổi chỗ cho nhau (nếu đổi 2 Nam hoặc 2 Nữ thì hàng vẫn giữ nguyên mẫu giới tính xen kẽ ban đầu).
     * Số cách chọn 1 vị trí Nam và 1 vị trí Nữ để đổi chỗ trong Mẫu 1 là: $5 \times 5 = 25$ cách. Mỗi cách đổi tạo ra một chuỗi giới tính lỗi duy nhất (có đúng 1 Nam ở vị trí chẵn và 1 Nữ ở vị trí lẻ).
     * Tương tự, xét Mẫu 2 ($Z-N-Z-N-Z-N-Z-N-Z-N$), số cách chọn 1 vị trí Nữ (lẻ) và 1 vị trí Nam (chẵn) để đổi chỗ là: $5 \times 5 = 25$ cách.
     * Do Mẫu 1 có 4 Nam lẻ, 1 Nam chẵn, còn Mẫu 2 có 4 Nam chẵn, 1 Nam lẻ nên 25 cấu trúc lỗi sinh ra từ Mẫu 1 hoàn toàn khác biệt với 25 cấu trúc lỗi sinh ra từ Mẫu 2.
@@ -6195,7 +6193,8 @@ if st.session_state.get('q66_solution_shown') and st.session_state.get('logged_i
     
     **Bước 4: Tính giá trị biểu thức $\dfrac{D}{100}$**
     
-    $$\dfrac{D}{100} = \dfrac{720000}{100} = 7200$$
+    * Ta có:
+        $$\dfrac{D}{100} = \dfrac{720000}{100} = 7200$$
     
     **Kết luận:** Giá trị của biểu thức $\dfrac{D}{100}$ bằng **7200**.
     """)
@@ -6203,7 +6202,9 @@ if st.session_state.get('q66_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 
-# --- CÂU HỎI 67 ---
+# ==========================================
+# CÂU 68 (Sở Cao Bằng 2026)
+# ==========================================
 st.markdown(
     '<b style="color: blue;">Câu 68 (Sở Cao Bằng 2026)</b>',
     unsafe_allow_html=True
@@ -6212,49 +6213,45 @@ st.markdown(
 st.markdown(r"""
 Cho một hình bát giác đều $ABCD.EFGH$ nội tiếp trong một đường tròn tâm $O$ như hình bên. Gắn ngẫu nhiên tám số tự nhiên $\{9; 10; 11; 12; 13; 14; 15; 16\}$ vào tám đỉnh của bát giác đều này (mỗi số gắn đúng một đỉnh). Chọn ngẫu nhiên một tam giác có ba đỉnh lấy từ tám đỉnh của bát giác đã cho. Gọi xác suất thu được một tam giác vuông với ba số trên ba đỉnh của tam giác (theo một thứ tự nào đó) lập thành một cấp số cộng là $\dfrac{m}{n}$ (với $m, n \in \mathbb{N}^*$; $\dfrac{m}{n}$ là phân số tối giản). Giá trị của $m+n$ bằng bao nhiêu?
 """)
+
 try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        # Đường dẫn ảnh đã được đồng bộ
+    col_img1_68, col_img2_68, col_img3_68 = st.columns([1, 2, 1])
+    with col_img2_68:
         st.image("images/socb_2026.PNG", width=400)
 except FileNotFoundError:
-    # Thông báo lỗi cập nhật đúng tên file
     st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/socb_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
-# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer_67 = st.text_input("Nhập đáp án :", key="q67_ans")
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 68) ---
+user_answer_68 = st.text_input("Nhập đáp án cho Câu 68:", key="q68_ans")
 
 # Nút kiểm tra Đúng/Sai
-if st.button("Kiểm tra đáp án", key="q67_check"):
-    normalized_user_answer_67 = user_answer_67.strip()
+if st.button("Kiểm tra đáp án Câu 68", key="q68_check"):
+    normalized_user_answer_68 = user_answer_68.strip()
     
-    if normalized_user_answer_67 == "107":
-        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
-    elif user_answer_67 == "":
+    if normalized_user_answer_68 == "107":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 68 đã được mở khóa.")
+    elif user_answer_68 == "":
         st.warning("Bạn chưa nhập đáp án.")
     else:
         st.error("Sai rồi. Hãy đếm số lượng tam giác vuông trong bát giác đều và số bộ 3 phần tử lập thành cấp số cộng từ tập hợp đã cho nhé!")
 
-# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 68) ---
 st.markdown("---")
 
-# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
-if 'q67_solution_shown' not in st.session_state:
-    st.session_state['q67_solution_shown'] = False
+if 'q68_solution_shown' not in st.session_state:
+    st.session_state['q68_solution_shown'] = False
 
-col1_67, col2_67 = st.columns([1, 4])
-with col1_67:
-    if st.button("Xem lời giải chi tiết", key="q67_solution"):
-        # Kiểm tra điều kiện đăng nhập
+col1_68, col2_68 = st.columns([1, 4])
+with col1_68:
+    if st.button("Xem lời giải chi tiết Câu 68", key="q68_solution"):
         if st.session_state.get('logged_in'):
-            st.session_state['q67_solution_shown'] = True
+            st.session_state['q68_solution_shown'] = True
         else:
             st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
-            st.session_state['q67_solution_shown'] = False
+            st.session_state['q68_solution_shown'] = False
 
-# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
-if st.session_state.get('q67_solution_shown') and st.session_state.get('logged_in'):
-    st.info("### Lời giải chi tiết:")
+if st.session_state.get('q68_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 68:")
     
     st.markdown(r"""
     **Bước 1: Tính số phần tử của không gian mẫu**
@@ -6277,9 +6274,9 @@ if st.session_state.get('q67_solution_shown') and st.session_state.get('logged_i
     * **Điều kiện 2: 3 số lập thành cấp số cộng.**
       * Tập hợp các số được cho là $S = \{9; 10; 11; 12; 13; 14; 15; 16\}$.
       * Liệt kê các tập con gồm 3 phần tử tạo thành CSC từ $S$ (gọi công sai là $d$):
-        * $d = 1$: $\{9, 10, 11\}, \{10, 11, 12\}, \{11, 12, 13\}, \{12, 13, 14\}, \{13, 14, 15\}, \{14, 15, 16\}$ $\rightarrow$ có $6$ tập.
-        * $d = 2$: $\{9, 11, 13\}, \{10, 12, 14\}, \{11, 13, 15\}, \{12, 14, 16\}$ $\rightarrow$ có $4$ tập.
-        * $d = 3$: $\{9, 12, 15\}, \{10, 13, 16\}$ $\rightarrow$ có $2$ tập.
+        * $d = 1$: $\{9, 10, 11\}, \{10, 11, 12\}, \{11, 12, 13\}, \{12, 13, 14\}, \{13, 14, 15\}, \{14, 15, 16\}$ $\rightarrow$ có 6 tập.
+        * $d = 2$: $\{9, 11, 13\}, \{10, 12, 14\}, \{11, 13, 15\}, \{12, 14, 16\}$ $\rightarrow$ có 4 tập.
+        * $d = 3$: $\{9, 12, 15\}, \{10, 13, 16\}$ $\rightarrow$ có 2 tập.
         * $d = 4$: không có tập nào thoả mãn.
       * Tổng cộng có $6 + 4 + 2 = 12$ bộ 3 số lập thành một CSC.
     
@@ -6306,3 +6303,5 @@ if st.session_state.get('q67_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
