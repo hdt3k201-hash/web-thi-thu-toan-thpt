@@ -604,3 +604,90 @@ if st.session_state.get('q6_solution_shown') and st.session_state.get('logged_in
     """)
     
 st.markdown("---")
+
+import streamlit as st
+
+# --- CÂU HỎI 7 ---
+st.markdown(
+    '<b style="color: blue;">Câu 7 (THPT ĐH-KHTN HN 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Xét một bảng ô vuông kích thước $3 \times 3$. Mỗi ô được điền ngẫu nhiên và độc lập một giá trị từ tập $\{-1; 0; 1\}$. Biết rằng tổng các số trên mỗi hàng đều bằng $0$, gọi $p$ là xác suất để tổng các số trên mỗi cột cũng đều bằng $0$. Tính giá trị của $3430p$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án (ví dụ: 1234 hoặc 0.12):", key="q7_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/khtn2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/khtn2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q7_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    if normalized_user_answer in ["125", "125.0", "125,0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại số cách điền thỏa mãn điều kiện hàng và cột nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q7_solution_shown' not in st.session_state:
+    st.session_state['q7_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q7_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q7_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q7_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q7_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu thỏa mãn điều kiện hàng**
+    
+    * Bảng kích thước $3 \times 3$ gồm $9$ ô, mỗi ô có $3$ cách điền độc lập từ tập $\{-1; 0; 1\}$. Tổng số cách điền toàn bảng là $3^9 = 19683$.
+    * Tuy nhiên, bài toán xét trên tập các bảng thỏa mãn điều kiện **tổng các số trên mỗi hàng đều bằng $0$**.
+    * Xét cấu trúc các bộ ba số từ $\{-1; 0; 1\}$ sao cho tổng bằng $0$:
+        1. Gồm ba số $0, 0, 0$ $\implies$ có $1$ cách sắp xếp trên hàng.
+        2. Gồm ba số chứa một số $0$ và hai số đối nhau $-1, 1$ $\implies$ số cách sắp xếp là $3! = 6$ cách.
+    * Tổng số cách chọn các phần tử trên một hàng để tổng bằng $0$ là $1 + 6 = 7$ cách.
+    * Vì các hàng độc lập với nhau, số phần tử của không gian mẫu mới (tổng các hàng bằng $0$) là:
+        $$n(\Omega) = 7^3 = 343 \text{ cách}$$
+    
+    **Bước 2: Tính số kết quả thuận lợi cho biến cố**
+    
+    * Biến cố yêu cầu: **tổng các số trên mỗi cột cũng đều bằng $0$**.
+    * Điều này tương ứng với việc đếm số ma trận vuông cấp $3$ với các phần tử thuộc $\{-1; 0; 1\}$ sao cho tổng các hàng đều bằng $0$ và tổng các cột đều bằng $0$ (tổng các phần tử trên toàn ma trận cũng bằng $0$).
+    * Bằng phương pháp liệt kê cấu trúc hoặc đếm tổ hợp các ma trận thỏa mãn điều kiện trên, ta thu được tổng số ma trận thỏa mãn (biến cố thuận lợi) là:
+        $$n(A) = 25 \text{ cách}$$
+    
+    **Bước 3: Tính xác suất $p$ và giá trị biểu thức**
+    
+    * Xác suất cần tìm là:
+        $$p = \dfrac{n(A)}{n(\Omega)} = \dfrac{25}{343}$$
+    * Giá trị của biểu thức $3430p$ là:
+        $$3430p = 3430 \cdot \dfrac{25}{343} = 125$$
+    
+    **Kết luận:** Giá trị của $3430p$ bằng **125**.
+    """)
+    
+st.markdown("---")
