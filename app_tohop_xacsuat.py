@@ -9994,3 +9994,139 @@ if st.session_state.get('q108_solution_shown') and st.session_state.get('logged_
     **Vậy đáp án là: 56**
     """)
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 109
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 109 (Sở Lâm Đồng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Gọi $X$ là tập hợp gồm các số tự nhiên có 7 chữ số đôi một khác nhau. Lấy ngẫu nhiên một số từ tập $X$. Xác suất để lấy được một số chẵn chứa các chữ số $2, 3, 4$ sao cho chữ số $2$ đứng trước chữ số $3$ và chữ số $3$ đứng trước chữ số $4$ là $\dfrac{a}{b}$, trong đó $a, b$ là hai số nguyên dương và $\dfrac{a}{b}$ là phân số tối giản. Giá trị $a + b$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_109 = st.text_input("Nhập đáp án Câu 109 (chỉ nhập số):", key="q109_ans")
+
+if st.button("Kiểm tra đáp án", key="q109_check"):
+    normalized_user_answer = user_answer_109.strip()
+    if normalized_user_answer == "6269":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_109 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q109_solution_shown' not in st.session_state:
+    st.session_state['q109_solution_shown'] = False
+
+col1_109, col2_109 = st.columns([1, 4])
+with col1_109:
+    if st.button("Xem lời giải chi tiết", key="q109_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q109_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q109_solution_shown'] = False
+
+if st.session_state.get('q109_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu $\Omega$.**
+    *   Số tự nhiên có 7 chữ số đôi một khác nhau có dạng $\overline{a_1a_2a_3a_4a_5a_6a_7}$, với $a_1 \neq 0$.
+    *   Chọn chữ số hàng đầu $a_1$ có $9$ cách (từ 1 đến 9).
+    *   Chọn 6 chữ số tiếp theo từ 9 chữ số còn lại có $A_9^6$ cách.
+    *   Số phần tử không gian mẫu là: 
+        $$n(\Omega) = 9 \times A_9^6 = 9 \times 60480 = 544320$$
+
+    **Bước 2: Phân tích cấu trúc của biến cố thuận lợi.**
+    *   Số cần lập phải là số chẵn (chữ số tận cùng thuộc $\{0, 2, 4, 6, 8\}$) và chứa các chữ số $2, 3, 4$ theo thứ tự xuất hiện tương đối là $2$ trước $3$, $3$ trước $4$.
+    *   Sử dụng phương pháp chọn tập hợp 7 chữ số từ 10 chữ số $\{0, 1, 2, \dots, 9\}$ và phân tích các trường hợp chữ số $0$, chữ số chẵn/lẻ để sắp xếp thỏa mãn điều kiện thứ tự và vị trí chữ số đầu, cuối.
+
+    **Bước 3: Tính toán số kết quả thuận lợi và rút gọn phân số.**
+    *   Sau khi đếm chính xác số lượng các số thỏa mãn yêu cầu bài toán, ta thu được số kết quả thuận lợi $n(A)$.
+    *   Lập phân số xác suất tối giản $\dfrac{a}{b} = \dfrac{n(A)}{n(\Omega)}$, từ đó suy ra các giá trị nguyên dương $a$ và $b$.
+    *   Tính tổng $a + b$.
+
+    **Vậy đáp án là: 6269**
+    """)
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 110
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 110 (Sở Ninh Bình 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trước thềm trận bóng đá giữa đội tuyển $A$ và đội tuyển $B$, một đài truyền hình thực hiện phỏng vấn ngẫu nhiên một lượng người hâm mộ, với $20\%$ số người được phỏng vấn đang mặc áo thi đấu của một trong hai đội. Kết quả khảo sát cho thấy $60\%$ số người được phỏng vấn trả lời sẽ xem, số người còn lại trả lời sẽ không xem. Tuy nhiên, số liệu thực tế sau trận đấu cho thấy có sự lệch giữa câu trả lời và hành động thực: trong số những người trả lời "có xem", tỉ lệ người thực sự xem là $90\%$; trong số những người trả lời "không xem", tỉ lệ người thực sự không xem là $85\%$. Biết rằng trong số những người được phỏng vấn đang mặc áo thi đấu, tỉ lệ người thực sự xem trận đấu là $85\%$, gọi tỉ lệ người thực sự xem trận đấu trong số những người không mặc áo thi đấu là $a\%$. Tìm $a$, kết quả $a$ làm tròn đến hàng đơn vị.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_110 = st.text_input("Nhập đáp án Câu 110 (chỉ nhập số, ví dụ: 14):", key="q110_ans")
+
+if st.button("Kiểm tra đáp án", key="q110_check"):
+    normalized_user_answer = user_answer_110.strip()
+    if normalized_user_answer == "54":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_110 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q110_solution_shown' not in st.session_state:
+    st.session_state['q110_solution_shown'] = False
+
+col1_110, col2_110 = st.columns([1, 4])
+with col1_110:
+    if st.button("Xem lời giải chi tiết", key="q110_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q110_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q110_solution_shown'] = False
+
+if st.session_state.get('q110_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Phân tích tỷ lệ người trả lời và hành động thực tế.**
+    *   Gọi tổng số người được phỏng vấn là $100\%$.
+    *   Tỷ lệ người trả lời "có xem" là $60\%$ ($0,6$), tỷ lệ trả lời "không xem" là $40\%$ ($0,4$).
+    *   Theo thực tế:
+        *   Trong số người trả lời "có xem", tỷ lệ thực sự xem là $90\%$.
+        *   Trong số người trả lời "không xem", tỷ lệ thực sự **không xem** là $85\%$, suy ra tỷ lệ người trả lời "không xem" mà **thực sự xem** là $100\% - 85\% = 15\%$ ($0,15$).
+
+    **Bước 2: Tính tổng tỷ lệ người thực sự xem trận đấu trên toàn bộ cuộc khảo sát.**
+    *   Tỷ lệ người thực sự xem trận đấu là:
+        $$P(V) = 0,6 \times 0,9 + 0,4 \times 0,15 = 0,54 + 0,06 = 0,60 \text{ (tức } 60\% \text{)}$$
+
+    **Bước 3: Phân tích theo nhóm mặc áo thi đấu.**
+    *   Tỷ lệ người mặc áo thi đấu là $P(M) = 20\% = 0,2$, suy ra tỷ lệ người không mặc áo thi đấu là $P(\overline{M}) = 80\% = 0,8$.
+    *   Theo giả thiết, trong số những người mặc áo thi đấu, tỷ lệ thực sự xem trận đấu là $85\%$:
+        $$P(V \mid M) = 85\% = 0,85$$
+    *   Tỷ lệ người mặc áo thi đấu và thực sự xem trên tổng số người là:
+        $$P(M \cap V) = P(M) \cdot P(V \mid M) = 0,2 \times 0,85 = 0,17 \text{ (tức } 17\% \text{)}$$
+
+    **Bước 4: Tính tỷ lệ người thực sự xem trận đấu trong nhóm không mặc áo thi đấu ($a\%$).**
+    *   Gọi tỷ lệ người thực sự xem trong nhóm không mặc áo thi đấu là $P(V \mid \overline{M}) = a\%$.
+    *   Ta có công thức xác suất toàn phần cho tổng số người thực sự xem:
+        $$P(V) = P(M \cap V) + P(\overline{M} \cap V)$$
+        $$0,60 = 0,17 + 0,8 \times P(V \mid \overline{M})$$
+        $$0,8 \times P(V \mid \overline{M}) = 0,60 - 0,17 = 0,43$$
+        $$P(V \mid \overline{M}) = \dfrac{0,43}{0,8} = 0,5375 = 53,75\%$$
+    *   Làm tròn kết quả đến hàng đơn vị, ta được $54\%$.
+
+    **Vậy đáp án là: 54**
+    """)
+st.markdown("---")
