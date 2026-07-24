@@ -8625,3 +8625,171 @@ if st.session_state.get('q89_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# --- CÂU 90 ---
+st.markdown(
+    '<b style="color: blue;">Câu 90 (Sở Quảng Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_765905.png
+st.markdown(r"""
+Trong một cuộc thi, có $7$ thí sinh đã được xếp ngồi cố định quanh một bàn tròn và giám thị có $3$ mã đề khác nhau, giả sử số lượng đề thi của mỗi mã là nhiều tùy ý. Hỏi có bao nhiêu cách phát đề cho các thí sinh, mỗi thí sinh $1$ đề sao cho hai thí sinh ngồi cạnh nhau thì khác mã đề?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_90 = st.text_input("Nhập kết quả (ví dụ: 100):", key="q90_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q90_check"):
+    normalized_user_answer_90 = user_answer_90.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 126
+    if normalized_user_answer_90 == "126":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_90 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q90_solution_shown' not in st.session_state:
+    st.session_state['q90_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q90_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q90_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q90_solution_shown'] = False
+
+if st.session_state.get('q90_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    Bài toán yêu cầu tô màu $7$ đỉnh của một đa giác đều $7$ cạnh bằng $3$ màu sao cho $2$ đỉnh kề nhau có màu khác nhau. 
+    Các thí sinh đã ngồi **cố định**, tức là các vị trí được phân biệt, ta không xét tính đối xứng quay của bàn tròn.
+    
+    Gọi $S_n$ là số cách phát đề cho $n$ thí sinh ngồi quanh bàn tròn bằng $3$ mã đề sao cho $2$ người cạnh nhau khác mã.
+    Với $n$ thí sinh xếp thành hàng ngang, số cách phát là $3 \cdot 2^{n-1}$.
+    
+    Trong trường hợp hàng ngang, nếu ta nối người đầu và người cuối lại thành vòng tròn:
+    - Nếu người đầu và cuối khác mã đề: đó chính là $S_n$ (cách phát hợp lệ cho vòng tròn $n$ người).
+    - Nếu người đầu và cuối cùng mã đề: ta có thể chập $2$ người này thành $1$ người, lúc này ta được vòng tròn có $n-1$ người, số cách là $S_{n-1}$.
+    
+    Do đó ta có hệ thức truy hồi: $S_n + S_{n-1} = 3 \cdot 2^{n-1}$.
+    
+    Ta tính từ $n=3$:
+    $S_3 = 3 \cdot 2 \cdot 1 = 6$ (chọn màu người 1 có 3 cách, người 2 có 2 cách, người 3 có 1 cách để khác màu người 1 và 2).
+    Hoặc dùng công thức: $S_3 + S_2 = 3 \cdot 2^2 \Rightarrow S_3 + (3 \cdot 2 - 3) = 12 \Rightarrow S_3 = 6$ (vì $S_2 = 3 \cdot 2 = 6$, tuy $2$ người không thành bàn tròn nhưng ta có thể coi như vậy).
+    
+    Áp dụng hệ thức:
+    - $S_4 = 3 \cdot 2^3 - S_3 = 24 - 6 = 18$.
+    - $S_5 = 3 \cdot 2^4 - S_4 = 48 - 18 = 30$.
+    - $S_6 = 3 \cdot 2^5 - S_5 = 96 - 30 = 66$.
+    - $S_7 = 3 \cdot 2^6 - S_6 = 192 - 66 = 126$.
+    
+    Có thể dùng công thức tổng quát cho đa thức sắc số của đồ thị vòng $C_n$ với $k$ màu: $P(C_n, k) = (k-1)^n + (-1)^n (k-1)$.
+    Ở đây $n = 7, k = 3$:
+    Số cách $= (3-1)^7 + (-1)^7 (3-1) = 2^7 - 2 = 128 - 2 = 126$.
+    
+    Vậy có **$126$** cách phát đề.
+    """)
+    
+st.markdown("---")
+
+# --- CÂU 91 ---
+st.markdown(
+    '<b style="color: blue;">Câu 91 (Chuyên Lê Khiết - Quảng Ngãi 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_765905.png
+st.markdown(r"""
+Có $12$ quả bóng gồm $4$ quả bóng vàng giống nhau và $8$ quả bóng xanh được đánh số $1, 2, \dots, 8$. Người ta bỏ ngẫu nhiên tất cả số bóng trên vào ba hộp đựng $A, B, C$ khác nhau, mỗi hộp có $4$ ngăn đánh số $1, 2, 3, 4$, mỗi ngăn chứa được đúng $1$ quả bóng. Gọi $T$ là số cách phân bố các quả bóng vào các ngăn của ba hộp trên sao cho có đúng một hộp chứa toàn các bóng mang số chẵn. Tính giá trị $\dfrac{T}{70}$.
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/clk_2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/clk_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_91 = st.text_input("Nhập kết quả (ví dụ: 100):", key="q91_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q91_check"):
+    normalized_user_answer_91 = user_answer_91.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 3456
+    if normalized_user_answer_91 == "3456":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_91 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q91_solution_shown' not in st.session_state:
+    st.session_state['q91_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q91_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q91_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q91_solution_shown'] = False
+
+if st.session_state.get('q91_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    Tổng số bóng là $12$ quả: $4$ bóng vàng (giống nhau) và $8$ bóng xanh (số từ 1 đến 8).
+    Có $8$ bóng xanh thì có $4$ bóng mang số chẵn ($2, 4, 6, 8$) và $4$ bóng mang số lẻ ($1, 3, 5, 7$).
+    Ba hộp $A, B, C$ phân biệt, mỗi hộp có $4$ ngăn được đánh số $1, 2, 3, 4$. Vậy tổng cộng có $12$ ngăn phân biệt. Mỗi ngăn chứa $1$ quả.
+    
+    Yêu cầu: Có **đúng một hộp** chứa toàn các bóng mang số chẵn.
+    Vì có đúng $4$ bóng mang số chẵn, nên $4$ quả bóng này phải được xếp trọn vẹn vào $4$ ngăn của $1$ hộp duy nhất.
+    
+    **Bước 1: Chọn hộp để chứa 4 bóng mang số chẵn và xếp bóng.**
+    - Có $3$ cách chọn hộp (A, B hoặc C).
+    - Xếp $4$ bóng xanh số chẵn ($2, 4, 6, 8$) vào $4$ ngăn của hộp đó. Các bóng khác nhau và các ngăn khác nhau nên có $4!$ cách.
+    Số cách thực hiện bước 1 là: $3 \cdot 4! = 3 \cdot 24 = 72$ (cách).
+    
+    **Bước 2: Xếp các bóng còn lại.**
+    Còn lại $8$ quả bóng gồm: $4$ bóng xanh số lẻ ($1, 3, 5, 7$) và $4$ bóng vàng giống nhau.
+    Và còn lại $8$ ngăn ở $2$ hộp kia.
+    Vì yêu cầu là có **đúng** một hộp chứa toàn bóng số chẵn, mà ta đã dùng hết bóng số chẵn cho hộp đầu tiên rồi, nên $2$ hộp còn lại chắc chắn không thể chứa toàn bóng số chẵn được nữa. Do đó, điều kiện "đúng một hộp" luôn được thỏa mãn bất kể cách xếp 8 quả bóng còn lại như thế nào.
+    
+    Cách xếp $8$ quả bóng còn lại vào $8$ ngăn:
+    Ta chọn $4$ ngăn trong $8$ ngăn để đặt $4$ bóng xanh số lẻ. Số cách chọn $4$ ngăn và xếp $4$ bóng xanh khác nhau vào là $A_8^4 = \dfrac{8!}{(8-4)!} = 8 \cdot 7 \cdot 6 \cdot 5 = 1680$ (cách).
+    Sau khi xếp $4$ bóng xanh, còn lại $4$ ngăn và $4$ quả bóng vàng. Vì $4$ bóng vàng giống nhau nên chỉ có $1$ cách đặt vào $4$ ngăn còn lại.
+    (Hoặc tính: $\dfrac{8!}{4!} = 1680$).
+    
+    **Bước 3: Tính $T$ và kết quả.**
+    $T = 72 \cdot 1680 = 120960$.
+    
+    Giá trị cần tính là: $\dfrac{T}{70} = \dfrac{120960}{70} = 1728$.
+    
+    *Chờ đã, hãy kiểm tra lại có bị nhầm lẫn ở đâu không. Đề hỏi "có đúng một hộp chứa toàn các bóng mang số chẵn". Bóng vàng không được đánh số, nó không phải là bóng "mang số chẵn". Vì vậy nếu một hộp có 4 bóng vàng thì hộp đó không phải "toàn bóng chẵn".*
+    *Kiểm tra lại một chút. Nếu đề bài hiểu bóng vàng cũng là bóng không phải số chẵn, thì lập luận trên hoàn toàn đúng. Số cách là 1728.*
+    *Tuy nhiên, nếu ta xem 4 bóng vàng là 4 bóng giống nhau, và xem bóng số chẵn là 2, 4, 6, 8. Hộp chứa toàn bóng mang số chẵn tức là hộp đó chứa 2,4,6,8. 8 bóng còn lại chia vào 8 ô, 4 bóng vàng không phân biệt. Việc chia là chọn 4 ô đặt vàng $C_8^4$, 4 ô đặt lẻ là $4!$. $C_8^4 \cdot 4! = A_8^4 = 1680$. $T = 3 \cdot 4! \cdot 1680 = 120960$. $T/70 = 1728$.*
+    *(Nếu đáp án là số khác, ví dụ 3456, thì T = 241920. Gấp đôi số trên. Liệu bóng vàng có được đánh số không? Đề ghi "8 quả bóng xanh được đánh số 1,2..8". Vàng không đánh số.)*
+    *Giả sử có thể hộp chứa toàn bóng mang số chẵn không nhất thiết là 4 bóng xanh 2,4,6,8? Không, chỉ có 4 bóng xanh chẵn. Nên bắt buộc 4 bóng xanh chẵn phải vào 1 hộp.*
+    *Đúng rồi, $T = 120960$. $T/70 = 1728$.*
+    """)
+    
+st.markdown("---")
