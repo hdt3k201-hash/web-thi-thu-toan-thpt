@@ -7421,3 +7421,122 @@ if st.session_state.get('q80_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+st.markdown(
+    '<b style="color: blue;">Câu 81 (Sở Đồng Nai 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_7577e9.png
+st.markdown(r"""
+Hệ thống gồm các vật như sau được gọi là máng $n$:
+Một máng nghiêng có $n$ lỗ dọc theo dãy. Tính từ trên cao xuống, các lỗ lần lượt có đường kính là $1, 2, 3, \ldots, n$. Quả bóng có đường kính là các số nguyên dương không lớn hơn $n$, trong đó có thể có nhiều quả bóng có cùng đường kính.
+
+Xét máng $n$, thả lần lượt $n$ quả bóng từ đỉnh máng xuống, lần lượt từng quả. Đối với mỗi quả bóng, khi lăn đến lỗ có đường kính lớn hơn hoặc bằng đường kính của nó thì nó sẽ lọt vào đồng thời đóng lỗ này lại. Đối với một thứ tự các quả bóng sau khi thả, nếu các quả bóng đều lọt vào lỗ thì thứ tự các quả bóng ấy được gọi là dãy đẹp.
+
+Hai dãy đẹp giống nhau khi và chỉ khi thứ tự đường kính của bóng lọt lỗ là như nhau.
+
+**Câu hỏi:** Có thể tạo được bao nhiêu dãy đẹp khác nhau đối với máng 5 biết rằng có đường kính một quả là 4 và một quả có đường kính là 5?
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/sodn1_2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/sodn1_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án (ví dụ: 100):", key="q81_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q81_check"):
+    # Chuẩn hóa đầu vào của người dùng
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 320
+    if normalized_user_answer == "320":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q81_solution_shown' not in st.session_state:
+    st.session_state['q81_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q81_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q81_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q81_solution_shown'] = False # Đảm bảo ẩn nếu chưa đăng nhập
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q81_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    Bài toán này là một dạng phát biểu của bài toán **Parking Functions (Hàm đỗ xe)**.
+    
+    **Bước 1: Phân tích điều kiện để một dãy là "dãy đẹp" (tất cả các bóng đều lọt lỗ).**
+    
+    Xét 5 quả bóng được thả xuống máng 5 (các lỗ có đường kính lần lượt là $1, 2, 3, 4, 5$). Gọi tập hợp các đường kính của 5 quả bóng này là một đa tập $S = \{a_1, a_2, a_3, a_4, a_5\}$.
+    
+    Sắp xếp các phần tử của $S$ theo thứ tự tăng dần: $b_1 \le b_2 \le b_3 \le b_4 \le b_5$.
+    Để tất cả 5 quả bóng đều có thể lọt vào các lỗ (tức là tạo thành một dãy đẹp, bất kể thứ tự thả), điều kiện cần và đủ là mỗi quả bóng $b_i$ không được lớn hơn $i$. Tức là:
+    $$b_i \le i, \quad \forall i \in \{1, 2, 3, 4, 5\}$$
+    
+    **Bước 2: Xác định các bộ số (đa tập) thỏa mãn điều kiện đề bài.**
+    
+    Theo giả thiết, trong 5 quả bóng thả xuống có một quả đường kính 4 và một quả đường kính 5. 
+    $\Rightarrow$ Đa tập $S$ chắc chắn chứa số 4 và số 5.
+    
+    Do $b_5 \le 5$ và có một quả kích thước 5 nên bắt buộc **$b_5 = 5$**.
+    Do $b_4 \le 4$ và có một quả kích thước 4 nên bắt buộc **$b_4 = 4$**.
+    (Nếu có nhiều hơn một quả kích thước 4 hoặc 5, sẽ vi phạm điều kiện $b_3 \le 3$).
+    
+    Vậy 3 quả bóng còn lại $b_1, b_2, b_3$ phải thỏa mãn:
+    *   $1 \le b_1 \le b_2 \le b_3 \le 3$
+    *   $b_1 \le 1 \Rightarrow b_1 = 1$
+    *   $b_2 \le 2 \Rightarrow b_2 \in \{1, 2\}$
+    *   $b_3 \le 3 \Rightarrow b_3 \in \{1, 2, 3\}$
+    
+    Ta liệt kê được các đa tập $\{b_1, b_2, b_3\}$ hợp lệ như sau:
+    1. Trưởng hợp $b_2 = 1$: $b_3$ có thể là $1, 2, 3$. Ta có các đa tập: $\{1, 1, 1\}, \{1, 1, 2\}, \{1, 1, 3\}$.
+    2. Trường hợp $b_2 = 2$: $b_3$ phải $\ge 2$ và $\le 3$. Ta có các đa tập: $\{1, 2, 2\}, \{1, 2, 3\}$.
+    
+    Ghép thêm quả số 4 và số 5, ta có tổng cộng 5 đa tập $S$ có thể tạo ra dãy đẹp:
+    *   $S_1 = \{1, 1, 1, 4, 5\}$
+    *   $S_2 = \{1, 1, 2, 4, 5\}$
+    *   $S_3 = \{1, 1, 3, 4, 5\}$
+    *   $S_4 = \{1, 2, 2, 4, 5\}$
+    *   $S_5 = \{1, 2, 3, 4, 5\}$
+    
+    **Bước 3: Đếm số dãy đẹp.**
+    
+    Mỗi cách hoán vị các phần tử trong một đa tập $S$ hợp lệ sẽ tạo ra một "dãy đẹp" khác nhau. Số dãy đẹp sinh ra từ mỗi đa tập chính là số hoán vị lặp của đa tập đó:
+    
+    *   Với $S_1 = \{1, 1, 1, 4, 5\}$ (có ba số 1): Số dãy là $\frac{5!}{3!} = 20$.
+    *   Với $S_2 = \{1, 1, 2, 4, 5\}$ (có hai số 1): Số dãy là $\frac{5!}{2!} = 60$.
+    *   Với $S_3 = \{1, 1, 3, 4, 5\}$ (có hai số 1): Số dãy là $\frac{5!}{2!} = 60$.
+    *   Với $S_4 = \{1, 2, 2, 4, 5\}$ (có hai số 2): Số dãy là $\frac{5!}{2!} = 60$.
+    *   Với $S_5 = \{1, 2, 3, 4, 5\}$ (các phần tử phân biệt): Số dãy là $5! = 120$.
+    
+    Tổng số dãy đẹp thỏa mãn yêu cầu là: 
+    $$20 + 60 + 60 + 60 + 120 = 320$$
+    
+    **Vậy, có thể tạo ra 320 dãy đẹp.**
+    """)
+    
+st.markdown("---")
