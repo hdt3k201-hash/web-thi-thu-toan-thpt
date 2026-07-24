@@ -691,3 +691,163 @@ if st.session_state.get('q7_solution_shown') and st.session_state.get('logged_in
     """)
     
 st.markdown("---")
+
+import streamlit as st
+
+# --- CÂU HỎI 8 ---
+st.markdown(
+    '<b style="color: blue;">Câu 8 (THPT Đồng Hỷ - Thái Nguyên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong một hộp kín đựng $102$ tấm thẻ như nhau được đánh số từ $1$ đến $102$. Lấy ngẫu nhiên ba tấm thẻ từ hộp. Có bao nhiêu cách lấy được ba tấm thẻ mà ba số ghi trên ba tấm thẻ đó lập thành một cấp số cộng?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án (ví dụ: 1234):", key="q8_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q8_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    if normalized_user_answer == "2550":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Số cách lập cấp số cộng độ dài 3 từ tập hợp các số từ $1$ đến $N$ được tính dựa trên công thức công sai $d$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q8_solution_shown' not in st.session_state:
+    st.session_state['q8_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q8_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q8_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q8_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q8_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích cấu trúc cấp số cộng độ dài 3**
+    
+    * Giả sử ba số được chọn lập thành cấp số cộng theo thứ tự tăng dần là $a, b, c$. Khi đó ta có hệ thức: $a + c = 2b$.
+    * Điều này tương đương với việc $a$ và $c$ phải cùng tính chẵn lẻ (cùng chẵn hoặc cùng lẻ). Do đó, số lượng cách chọn hai số $a$ và $c$ từ tập hợp $\{1, 2, \dots, 102\}$ sao cho $a + c$ là số chẵn chính bằng số cách chọn hai số cùng tính chẵn hoặc cùng lẻ.
+    
+    **Bước 2: Tính số cách chọn bộ ba số lập thành cấp số cộng**
+    
+    * Xét các bộ ba số có dạng $(a, a+d, a+2d)$ với công sai $d \ge 1$.
+    * Với mỗi công sai $d$, số cách chọn số hạng đầu tiên $a$ sao cho $a + 2d \le 102$ là:
+        $$102 - 2d$$
+    * Công sai $d$ có thể nhận các giá trị nguyên từ $1$ đến $\dfrac{102 - 2}{2} = 50$.
+    * Tổng số cấp số cộng lập được từ $102$ số là tổng của các trường hợp ứng với từng giá trị của $d$:
+        $$\sum_{d=1}^{50} (102 - 2d) = 2 \sum_{d=1}^{50} (51 - d)$$
+    * Tính tổng dãy số trên:
+        $$2 \cdot (50 + 49 + \dots + 1) = 2 \cdot \dfrac{50 \cdot 51}{2} = 50 \cdot 51 = 2550 \text{ (cách)}$$
+    
+    **Kết luận:** Số cách lấy được ba tấm thẻ thỏa mãn yêu cầu bài toán là **2550**.
+    """)
+    
+st.markdown("---")
+
+
+import streamlit as st
+
+# --- CÂU HỎI 9 ---
+st.markdown(
+    '<b style="color: blue;">Câu 9 (THPT Đồng Hỷ - Thái Nguyên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Ba hộp chứa các viên bi giống nhau về kích thước. Hộp I chứa $a$ viên bi màu đỏ và $2$ viên bi màu xanh. Hộp II chứa $b$ viên bi màu đỏ và $3$ viên bi màu xanh. Hộp III chứa $6$ viên bi màu đỏ và $4$ viên bi màu xanh. Từ mỗi hộp lấy ra một viên bi. Biết xác suất lấy ra ít nhất một viên bi đỏ là $0,976$ và xác suất lấy ra cả ba viên bi đỏ là $0,336$. Tính xác suất lấy được đúng hai viên bi màu đỏ (làm tròn kết quả cuối cùng đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án (ví dụ: 0.15):", key="q9_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q9_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    if normalized_user_answer in ["0.45", "0,45", "0.450"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hệ phương trình theo xác suất cả ba đỏ và không có đỏ nào để tìm $a$ và $b$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q9_solution_shown' not in st.session_state:
+    st.session_state['q9_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q9_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q9_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q9_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q9_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ phương trình tìm $a$ và $b$**
+    
+    * Xác suất lấy được viên bi đỏ từ các hộp lần lượt là:
+        * Hộp I: $\dfrac{a}{a+2}$ (bi xanh là $\dfrac{2}{a+2}$)
+        * Hộp II: $\dfrac{b}{b+3}$ (bi xanh là $\dfrac{3}{b+3}$)
+        * Hộp III: $\dfrac{6}{6+4} = \dfrac{6}{10} = 0,6$ (bi xanh là $\dfrac{4}{10} = 0,4$)
+    
+    * Xác suất để lấy ra cả ba viên bi đỏ là $0,336$:
+        $$\dfrac{a}{a+2} \cdot \dfrac{b}{b+3} \cdot 0,6 = 0,336 \implies \dfrac{a}{a+2} \cdot \dfrac{b}{b+3} = 0,56$$
+    
+    * Xác suất để lấy ra ít nhất một viên bi đỏ là $0,976$, suy ra xác suất không lấy được viên bi đỏ nào (tức là cả ba viên đều xanh) là:
+        $$1 - 0,976 = 0,024$$
+        $$\dfrac{2}{a+2} \cdot \dfrac{3}{b+3} \cdot 0,4 = 0,024 \implies \dfrac{2,4}{(a+2)(b+3)} = 0,024 \implies (a+2)(b+3) = 100$$
+    
+    * Từ hệ phương trình trên, ta suy ra:
+        $$ab = 0,56 \cdot 100 = 56$$
+        Mặt khác, khai triển $(a+2)(b+3) = ab + 3a + 2b + 6 = 100 \implies 56 + 3a + 2b + 6 = 100 \implies 3a + 2b = 38$$
+    
+    * Vì $a, b$ là số nguyên dương, giải nghiệm nguyên hệ $\begin{cases} ab = 56 \\ 3a + 2b = 38 \end{cases}$ ta được $a = 8, b = 7$.
+    
+    **Bước 2: Tính xác suất lấy được đúng hai viên bi màu đỏ**
+    
+    * Với $a = 8, b = 7$, xác suất lấy bi đỏ và xanh ở từng hộp là:
+        * Hộp I: $P(R_1) = 0,8; P(X_1) = 0,2$
+        * Hộp II: $P(R_2) = 0,7; P(X_2) = 0,3$
+        * Hộp III: $P(R_3) = 0,6; P(X_3) = 0,4$
+    
+    * Xác suất để lấy được đúng hai viên bi màu đỏ là tổng xác suất của các trường hợp:
+        * Trường hợp 1 (Đỏ, Đỏ, Xanh): $0,8 \cdot 0,7 \cdot 0,4 = 0,224$
+        * Trường hợp 2 (Đỏ, Xanh, Đỏ): $0,8 \cdot 0,3 \cdot 0,6 = 0,144$
+        * Trường hợp 3 (Xanh, Đỏ, Đỏ): $0,2 \cdot 0,7 \cdot 0,6 = 0,084$
+    
+    * Tổng xác suất cần tìm là:
+        $$P = 0,224 + 0,144 + 0,084 = 0,452$$
+    
+    * Làm tròn kết quả đến hàng phần trăm, ta được giá trị **$0,45$**.
+    
+    **Kết luận:** Xác suất lấy được đúng hai viên bi màu đỏ là **$0,45$**.
+    """)
+    
+st.markdown("---")
