@@ -9473,3 +9473,165 @@ if st.session_state.get('q101_solution_shown') and st.session_state.get('logged_
     **Vậy đáp án là: 5880**
     """)
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 102
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 102 (THPT Kim Liên - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một ứng viên tham gia quy trình tuyển dụng gồm ba vòng phỏng vấn liên tiếp. Quy định của quy trình là ứng viên chỉ được đi tiếp vào vòng sau nếu vượt qua vòng trước đó và sẽ bị loại ngay lập tức nếu không đạt ở bất kỳ vòng nào. Giả sử xác suất để ứng viên này vượt qua các vòng như sau: xác suất vượt qua vòng 1 là $0,7$; nếu đã vượt qua vòng 1, xác suất vượt qua vòng 2 là $0,6$; nếu đã vượt qua cả vòng 1 và vòng 2, xác suất vượt qua vòng 3 là $0,5$. Biết rằng ứng viên này cuối cùng đã không trúng tuyển, tính xác suất để ứng viên đó bị loại ở vòng 2 hoặc vòng 3, tức là đã vượt qua được ít nhất vòng 1, kết quả làm tròn đến hàng phần trăm.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_102 = st.text_input("Nhập đáp án Câu 102 (ví dụ: 0.12 hoặc 0,12):", key="q102_ans")
+
+if st.button("Kiểm tra đáp án", key="q102_check"):
+    normalized_user_answer = user_answer_102.strip().replace(",", ".")
+    if normalized_user_answer == "0.62":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_102 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q102_solution_shown' not in st.session_state:
+    st.session_state['q102_solution_shown'] = False
+
+col1_102, col2_102 = st.columns([1, 4])
+with col1_102:
+    if st.button("Xem lời giải chi tiết", key="q102_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q102_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q102_solution_shown'] = False
+
+if st.session_state.get('q102_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Gọi các biến cố.**
+    *   Gọi $A_1$ là biến cố "Ứng viên vượt qua vòng 1". Theo giả thiết: $P(A_1) = 0,7$.
+    *   Gọi $A_2$ là biến cố "Ứng viên vượt qua vòng 2". Theo giả thiết: $P(A_2 | A_1) = 0,6$.
+    *   Gọi $A_3$ là biến cố "Ứng viên vượt qua vòng 3". Theo giả thiết: $P(A_3 | A_1 \cap A_2) = 0,5$.
+    
+    **Bước 2: Tính xác suất ứng viên trúng tuyển và không trúng tuyển.**
+    *   Biến cố ứng viên trúng tuyển (vượt qua cả 3 vòng) là $T = A_1 \cap A_2 \cap A_3$.
+        Xác suất trúng tuyển:
+        $$P(T) = P(A_1) \cdot P(A_2 | A_1) \cdot P(A_3 | A_1 \cap A_2) = 0,7 \cdot 0,6 \cdot 0,5 = 0,21$$
+    *   Biến cố ứng viên không trúng tuyển là $\overline{T}$.
+        Xác suất không trúng tuyển:
+        $$P(\overline{T}) = 1 - P(T) = 1 - 0,21 = 0,79$$
+
+    **Bước 3: Tính xác suất ứng viên bị loại ở vòng 2 hoặc vòng 3.**
+    *   Biến cố "bị loại ở vòng 2 hoặc vòng 3" (tức là qua vòng 1 nhưng cuối cùng không trúng tuyển) chính là $A_1 \cap \overline{T}$.
+    *   Ta có: Nếu qua vòng 1 thì ứng viên sẽ rơi vào 1 trong 2 trường hợp: trúng tuyển ($T$) hoặc không trúng tuyển ($A_1 \cap \overline{T}$).
+        Do đó: $P(A_1) = P(T) + P(A_1 \cap \overline{T})$
+        $$\Rightarrow P(A_1 \cap \overline{T}) = P(A_1) - P(T) = 0,7 - 0,21 = 0,49$$
+
+    **Bước 4: Tính xác suất có điều kiện theo yêu cầu bài toán.**
+    *   Xác suất để ứng viên bị loại ở vòng 2 hoặc vòng 3, **biết rằng** ứng viên đã không trúng tuyển, là:
+        $$P(A_1 \cap \overline{T} \mid \overline{T}) = \dfrac{P(A_1 \cap \overline{T} \cap \overline{T})}{P(\overline{T})} = \dfrac{P(A_1 \cap \overline{T})}{P(\overline{T})} = \dfrac{0,49}{0,79} = \dfrac{49}{79} \approx 0,62025...$$
+    *   Làm tròn kết quả đến hàng phần trăm, ta được $0,62$.
+
+    **Vậy đáp án là: 0.62**
+    """)
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 103
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 103 (Sở Hải Phòng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong cuộc gặp mặt dặn dò trước khi lên đường tham gia kì thi học sinh giỏi, có 10 bạn trong đội tuyển gồm 3 bạn đến từ lớp 12A, 2 bạn đến từ lớp 12B, 5 bạn còn lại đến từ 5 lớp khác, mỗi lớp 1 bạn. Thầy giáo xếp ngẫu nhiên các bạn kể trên vào một bàn dài có 10 ghế mà mỗi bên có 5 ghế đối diện nhau. Tính xác suất để không có học sinh nào cùng lớp ngồi đối diện nhau, kết quả làm tròn đến hàng phần chục.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_103 = st.text_input("Nhập đáp án Câu 103 (ví dụ: 0.5 hoặc 0,5):", key="q103_ans")
+
+if st.button("Kiểm tra đáp án", key="q103_check"):
+    normalized_user_answer = user_answer_103.strip().replace(",", ".")
+    if normalized_user_answer == "0.6":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_103 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q103_solution_shown' not in st.session_state:
+    st.session_state['q103_solution_shown'] = False
+
+col1_103, col2_103 = st.columns([1, 4])
+with col1_103:
+    if st.button("Xem lời giải chi tiết", key="q103_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q103_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q103_solution_shown'] = False
+
+if st.session_state.get('q103_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Không gian mẫu.**
+    Số cách xếp ngẫu nhiên 10 học sinh vào 10 ghế là: $|\Omega| = 10!$.
+    Bàn có 10 ghế chia thành 5 cặp ghế đối diện nhau.
+
+    **Bước 2: Sử dụng biến cố đối.**
+    Gọi $E$ là biến cố "Không có học sinh nào cùng lớp ngồi đối diện nhau".
+    Biến cố đối $\overline{E}$ là "Có ít nhất một cặp học sinh cùng lớp ngồi đối diện nhau".
+    Vì chỉ có lớp 12A (3 học sinh) và lớp 12B (2 học sinh) mới có khả năng tạo ra cặp học sinh cùng lớp, nên ta xét:
+    *   $A$: Biến cố "Có 2 học sinh lớp 12A ngồi đối diện nhau" (Lưu ý 12A có 3 học sinh nên chỉ có thể tạo tối đa 1 cặp đối diện).
+    *   $B$: Biến cố "Có 2 học sinh lớp 12B ngồi đối diện nhau" (12B có 2 học sinh nên tạo đúng 1 cặp).
+    Ta có: $\overline{E} = A \cup B \Rightarrow n(\overline{E}) = n(A) + n(B) - n(A \cap B)$.
+
+    **Bước 3: Tính số phần tử của các biến cố.**
+    *   **Tính $n(A)$:**
+        *   Chọn 2 học sinh lớp 12A để xếp đối diện: $C_3^2 = 3$ cách.
+        *   Chọn 1 cặp ghế đối diện trong 5 cặp ghế: $5$ cách.
+        *   Xếp 2 học sinh này vào cặp ghế đã chọn: $2! = 2$ cách.
+        *   Xếp 8 học sinh còn lại vào 8 ghế còn lại: $8!$ cách.
+        $\Rightarrow n(A) = 3 \cdot 5 \cdot 2 \cdot 8! = 30 \cdot 8! = 1.209.600$.
+    *   **Tính $n(B)$:**
+        *   Chọn 2 học sinh lớp 12B: có $1$ cách.
+        *   Chọn 1 cặp ghế đối diện trong 5 cặp ghế: $5$ cách.
+        *   Xếp 2 học sinh này vào: $2! = 2$ cách.
+        *   Xếp 8 học sinh còn lại vào 8 ghế: $8!$ cách.
+        $\Rightarrow n(B) = 1 \cdot 5 \cdot 2 \cdot 8! = 10 \cdot 8! = 403.200$.
+    *   **Tính $n(A \cap B)$ (Cả A và B cùng xảy ra):**
+        *   Chọn 2 học sinh 12A: $3$ cách.
+        *   Chọn 2 cặp ghế đối diện từ 5 cặp: $C_5^2 = 10$ cách.
+        *   Phân 2 cặp học sinh (cặp 12A và cặp 12B) vào 2 cặp ghế vừa chọn: $2! = 2$ cách.
+        *   Đổi chỗ trong nội bộ cặp ghế của 12A: $2! = 2$ cách.
+        *   Đổi chỗ trong nội bộ cặp ghế của 12B: $2! = 2$ cách.
+        *   Xếp 6 học sinh còn lại vào 6 ghế còn lại: $6!$ cách.
+        $\Rightarrow n(A \cap B) = 3 \cdot 10 \cdot 2 \cdot 2 \cdot 2 \cdot 6! = 240 \cdot 6! = 172.800$.
+
+    **Bước 4: Tính kết quả.**
+    *   Số cách xếp có học sinh cùng lớp ngồi đối diện:
+        $$n(\overline{E}) = 1.209.600 + 403.200 - 172.800 = 1.440.000$$
+    *   Số cách xếp không có học sinh cùng lớp ngồi đối diện:
+        $$n(E) = 10! - n(\overline{E}) = 3.628.800 - 1.440.000 = 2.188.800$$
+    *   Xác suất cần tìm:
+        $$P(E) = \dfrac{2.188.800}{3.628.800} = \dfrac{38}{63} \approx 0,60317...$$
+    Làm tròn kết quả đến hàng phần chục, ta được $0,6$.
+
+    **Vậy đáp án là: 0.6**
+    """)
+st.markdown("---")
+
+
