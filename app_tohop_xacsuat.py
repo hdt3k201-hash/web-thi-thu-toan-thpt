@@ -2064,3 +2064,175 @@ if st.session_state.get('q23_solution_shown') and st.session_state.get('logged_i
 
 st.markdown("---")
 
+
+
+
+# --- CÂU HỎI 24 ---
+st.markdown(
+    '<b style="color: blue;">Câu 24 (THPT Thọ Xuân 5 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho tập hợp $X = \{3; 4; 5; 6; 7; 8; 9\}$. Từ tập $X$ có bao nhiêu số tự nhiên có 5 chữ số chia hết cho 6?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_24 = st.text_input("Nhập đáp án :", key="q24_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q24_check"):
+    normalized_user_answer_24 = user_answer_24.strip()
+    
+    if normalized_user_answer_24 == "360":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_24 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại điều kiện chia hết cho 2 và 3 cũng như cách chọn các chữ số khác nhau từ tập hợp nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q24_solution_shown' not in st.session_state:
+    st.session_state['q24_solution_shown'] = False
+
+col1_24, col2_24 = st.columns([1, 4])
+with col1_24:
+    if st.button("Xem lời giải chi tiết", key="q24_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q24_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q24_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q24_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích điều kiện chia hết cho 6**
+    
+    * Gọi số tự nhiên có 5 chữ số khác nhau cần lập là $\overline{a_1a_2a_3a_4a_5}$ với các chữ số lấy từ tập $X = \{3, 4, 5, 6, 7, 8, 9\}$ ($7$ phần tử).
+    * Số tự nhiên chia hết cho $6$ khi và chỉ khi nó đồng thời chia hết cho $2$ và $3$:
+        1. **Điều kiện chia hết cho 2:** Chữ số tận cùng $a_5$ phải là số chẵn $\implies a_5 \in \{4, 6, 8\}$.
+        2. **Điều kiện chia hết cho 3:** Tổng các chữ số của số đó phải chia hết cho $3$.
+    
+    **Bước 2: Sử dụng tính chất tổng các phần tử của tập $X$**
+    
+    * Tổng tất cả các phần tử của tập $X$ là: 
+      $$3 + 4 + 5 + 6 + 7 + 8 + 9 = 42 \ (\text{chia hết cho } 3)$$
+    * Khi chọn ra 5 chữ số từ 7 phần tử của $X$, tổng của 5 chữ số đó chia hết cho 3 khi và chỉ khi tổng của 2 chữ số bị bỏ lại ngoài tập 5 chữ số đó cũng chia hết cho 3.
+    * Xét các tập hợp 5 chữ số được chọn từ $X$ sao cho tổng của chúng chia hết cho 3 (có tổng cộng $C_7^5 - 9 = 7$ tập hợp thỏa mãn điều kiện chia hết cho 3).
+    
+    **Bước 3: Phân loại theo số lượng chữ số chẵn trong mỗi tập 5 chữ số**
+    
+    * **Loại 1 (Chứa 3 chữ số chẵn $\{4, 6, 8\}$ và 2 chữ số lẻ):**
+        * Có $C_4^2 = 6$ cách chọn 2 số lẻ, kết hợp với 3 số chẵn tạo thành $6$ tập hợp. Trong đó có $2$ tập thỏa mãn tổng 5 số chia hết cho 3.
+        * Cả 3 số chẵn đều có thể làm chữ số tận cùng $a_5$ (3 cách). 4 vị trí còn lại có $4! = 24$ cách sắp xếp.
+        * Số lượng số trong trường hợp này: $2 \times 3 \times 4! = 144$ số.
+    
+    * **Loại 2 (Chứa 2 chữ số chẵn và 3 chữ số lẻ):**
+        * Có $4$ tập hợp 5 chữ số thỏa mãn tổng chia hết cho 3.
+        * Mỗi tập có 2 chữ số chẵn nên có 2 cách chọn $a_5$. 4 vị trí còn lại có $4! = 24$ cách sắp xếp.
+        * Số lượng số trong trường hợp này: $4 \times 2 \times 4! = 192$ số.
+    
+    * **Loại 3 (Chứa 1 chữ số chẵn duy nhất là $6$ và 4 chữ số lẻ $\{3, 5, 7, 9\}$):**
+        * Có $1$ tập hợp thỏa mãn.
+        * Do chỉ có duy nhất số chẵn là $6$, suy ra $a_5 = 6$ (1 cách). 4 vị trí còn lại có $4! = 24$ cách sắp xếp.
+        * Số lượng số trong trường hợp này: $1 \times 1 \times 4! = 24$ số.
+    
+    **Bước 4: Tính tổng số lượng số thỏa mãn**
+    
+    * Tổng số các số tự nhiên thỏa mãn yêu cầu bài toán là:
+        $$144 + 192 + 24 = 360$$
+    
+    **Kết luận:** Có tất cả **360** số tự nhiên thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU HỎI 25 ---
+st.markdown(
+    '<b style="color: blue;">Câu 25 (THPT Nguyễn Khuyến - LHT - HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có 25 chai rượu Vang Opus One đang đựng trong thùng $A$ và thùng $B$, trong mỗi thùng đều có chai Vang thật và Vang giả (các chai Vang đều giống nhau về mẫu mã, chai Vang giả được chủ quán Bar đánh dấu để phân biệt) và số chai rượu ở thùng $A$ nhiều hơn ở thùng $B$. Biết khi lấy ngẫu nhiên ở mỗi thùng một chai Vang thì xác suất lấy được hai chai Vang thật là $\dfrac{65}{144}$. Nhân viên quầy bar có $P$ cách để xếp hết 25 chai Vang này lên kệ rượu thành một hàng ngang sao cho không có hai chai Vang giả nào được xếp kề nhau. Tính giá trị của $\dfrac{P}{12}$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_25 = st.text_input("Nhập đáp án :", key="q25_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q25_check"):
+    normalized_user_answer_25 = user_answer_25.strip()
+    
+    if normalized_user_answer_25 == "21162960":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_25 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại số chai ở mỗi thùng, số chai thật/giả và phương pháp xếp xen kẽ khoảng trống nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q25_solution_shown' not in st.session_state:
+    st.session_state['q25_solution_shown'] = False
+
+col1_25, col2_25 = st.columns([1, 4])
+with col1_25:
+    if st.button("Xem lời giải chi tiết", key="q25_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q25_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q25_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q25_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định số lượng chai rượu ở mỗi thùng**
+    
+    * Gọi số chai rượu ở thùng $A$ là $n_A$ và thùng $B$ là $n_B$. Ta có:
+        $$n_A + n_B = 25 \quad \text{và} \quad n_A > n_B$$
+    * Giả sử trong thùng $A$ có $a$ chai thật, thùng $B$ có $b$ chai thật. Xác suất lấy được hai chai Vang thật từ hai thùng là:
+        $$\dfrac{a}{n_A} \cdot \dfrac{b}{n_B} = \dfrac{65}{144}$$
+    * Vì $n_A + n_B = 25$ và $n_A > n_B$, tích $n_A \cdot n_B = 144$ ứng với cặp nghiệm phân chia:
+        $$n_A = 16 \quad \text{và} \quad n_B = 9$$
+    * Thay vào phương trình xác suất:
+        $$\dfrac{a}{16} \cdot \dfrac{b}{9} = \dfrac{65}{144} \implies a \cdot b = 65$$
+    * Kết hợp điều kiện $a \le 16$ và $b \le 9$, ta nhận được nghiệm duy nhất:
+        $$a = 13 \quad \text{và} \quad b = 5$$
+    
+    **Bước 2: Tính tổng số chai Vang thật và Vang giả**
+    
+    * Tổng số chai Vang thật: $13 + 5 = 18$ chai (các chai thật giống nhau hoàn toàn về mẫu mã).
+    * Tổng số chai Vang giả: $25 - 18 = 7$ chai (các chai giả được đánh dấu phân biệt).
+    
+    **Bước 3: Tính số cách xếp $P$ thỏa mãn yêu cầu không có hai chai giả kề nhau**
+    
+    * Xếp $18$ chai Vang thật thành một hàng ngang: vì các chai thật giống nhau nên chỉ có $1$ cách sắp xếp cơ bản.
+    * $18$ chai thật tạo ra $18 + 1 = 19$ khoảng trống (bao gồm cả 2 đầu mút).
+    * Để không có hai chai Vang giả nào được xếp kề nhau, ta chọn ra $7$ khoảng trống trong số $19$ khoảng trống và xếp lần lượt $7$ chai Vang giả phân biệt vào đó. Số cách thực hiện là chỉnh hợp chập 7 của 19:
+        $$P = A_{19}^7 = \dfrac{19!}{12!} = 19 \cdot 18 \cdot 17 \cdot 16 \cdot 15 \cdot 14 \cdot 13 = 253955520$$
+    
+    **Bước 4: Tính giá trị biểu thức $\dfrac{P}{12}$**
+    
+    * Giá trị của $\dfrac{P}{12}$ là:
+        $$\dfrac{P}{12} = \dfrac{253955520}{12} = 21162960$$
+    
+    **Kết luận:** Giá trị của $\dfrac{P}{12}$ bằng **21162960**.
+    """)
+    
+st.markdown("---")
+
