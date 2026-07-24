@@ -9035,3 +9035,171 @@ if st.session_state.get('q96_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# --- CÂU 97 ---
+st.markdown(
+    '<b style="color: blue;">Câu 97 (THPT Yên Định 1 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_773a40.png
+st.markdown(r"""
+Có hai hộp đựng bi, các viên bi có cùng kích thước và cùng khối lượng. Hộp I đựng 9 viên bi mỗi viên bi đánh một số là $1, 2, 3, 4, 5, 6, 7, 8, 9$; Hộp II đựng 8 viên bi mỗi viên bi đánh một số là $1, 2, 3, 4, 5, 6, 7, 8$. Bạn Hoa và Bình tham gia trò chơi như sau: Bạn Hoa chọn ngẫu nhiên ba viên bi trong hộp I và sắp xếp các số trên viên bi theo thứ tự giảm dần để tạo thành một số gồm ba chữ số. Bạn Bình chọn ngẫu nhiên ba viên bi trong hộp II và sắp xếp các số trên viên bi theo thứ tự giảm dần để tạo thành một số gồm ba chữ số. Hoa sẽ là người thắng cuộc nếu số của Hoa lớn hơn số của Bình. Biết xác suất Hoa là người thắng cuộc là $\dfrac{a}{b}$, $a \in \mathbb{N}, b \in \mathbb{N}^*$; $\dfrac{a}{b}$ là phân số tối giản. Tính giá trị của $T = a + 2b$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_97 = st.text_input("Nhập kết quả $T$ (ví dụ: 100):", key="q97_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q97_check"):
+    normalized_user_answer_97 = user_answer_97.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 149
+    if normalized_user_answer_97 == "149":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_97 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q97_solution_shown' not in st.session_state:
+    st.session_state['q97_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q97_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q97_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q97_solution_shown'] = False
+
+if st.session_state.get('q97_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử không gian mẫu của Hoa và Bình**
+    - Hộp I có 9 viên bi chứa các số từ 1 đến 9. Bạn Hoa chọn ngẫu nhiên 3 viên và sắp xếp theo thứ tự giảm dần để tạo thành số có 3 chữ số (mỗi tập 3 viên bi cho ra đúng một số duy nhất). 
+      Số kết quả có thể của Hoa là: $n(\Omega_H) = C_9^3 = 84$.
+    - Hộp II có 8 viên bi chứa các số từ 1 đến 8. Bạn Bình chọn ngẫu nhiên 3 viên và sắp xếp theo thứ tự giảm dần để tạo thành số có 3 chữ số.
+      Số kết quả có thể của Bình là: $n(\Omega_B) = C_8^3 = 56$.
+    - Tổng số cặp kết quả $(X, Y)$ với $X$ là số của Hoa và $Y$ là số của Bình là:
+      $N = 84 \times 56 = 4704$.
+
+    **Bước 2: Đếm số trường hợp Hoa thắng ($X > Y$)**
+    Ta chia làm 2 trường hợp dựa vào số của Hoa ($X$):
+    - **Trường hợp 1: Số $X$ của Hoa có chứa chữ số 9.**
+      Các số của Hoa chứa chữ số 9 khi chọn chữ số 9 và thêm 2 chữ số khác từ 8 chữ số còn lại ($\{1, 2, \dots, 8\}$).
+      Số cách chọn là $C_8^2 = 28$ cách. 
+      Vì các chữ số được sắp xếp giảm dần, mọi số của Hoa có chứa chữ số 9 đều có chữ số hàng trăm là 9 (nhỏ nhất là 921). 
+      Trong khi đó, số lớn nhất của Bình $Y$ chỉ được tạo từ các chữ số thuộc tập $\{1, 2, \dots, 8\}$, nên giá trị lớn nhất của $Y$ là 876.
+      Do đó, với mọi số $X$ có chứa chữ số 9 và mọi số $Y$ của Bình, ta luôn có $X > Y$.
+      Số các cặp thỏa mãn trong trường hợp này là: $28 \times 56 = 1568$ cặp.
+
+    - **Trường hợp 2: Số $X$ của Hoa không chứa chữ số 9.**
+      Lúc này, cả $X$ và $Y$ đều được chọn từ tập các chữ số $\{1, 2, \dots, 8\}$. 
+      Có tổng số $C_8^3 = 56$ giá trị cho $X$ và $56$ giá trị cho $Y$ (đây là các tập hợp con gồm 3 phần tử được sắp xếp giảm dần từ cùng một tập $\{1, \dots, 8\}$).
+      Do tính đối xứng hoàn toàn giữa hai tập hợp giá trị của $X$ và $Y$:
+      - Số trường hợp $X = Y$ là 56 cặp (khi Hoa và Bình chọn ra cùng một tập 3 viên bi).
+      - Số trường hợp $X \neq Y$ là $56^2 - 56 = 3080$ cặp.
+      - Do vai trò bình đẳng, số trường hợp $X > Y$ bằng số trường hợp $X < Y$ và bằng: $\dfrac{3080}{2} = 1540$ cặp.
+
+    **Bước 3: Tính tổng số trường hợp Hoa thắng và xác suất**
+    Tổng số kết quả thuận lợi cho Hoa thắng là:
+    $n(A) = 1568 + 1540 = 3108$.
+    
+    Xác suất để Hoa là người thắng cuộc là:
+    $P(A) = \dfrac{3108}{4704} = \dfrac{37}{56}$.
+    
+    Theo đề bài, xác suất là phân số tối giản $\dfrac{a}{b}$, suy ra $a = 37$ và $b = 56$.
+    
+    Giá trị của $T = a + 2b = 37 + 2 \times 56 = 37 + 112 = 149$.
+    """)
+    
+st.markdown("---")
+
+# --- CÂU 98 ---
+st.markdown(
+    '<b style="color: blue;">Câu 98 (THPT Thanh Đa - HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_773a40.png
+st.markdown(r"""
+Có hai chiếc hộp, hộp I có 5 quả bóng đỏ và 3 quả bóng vàng, hộp II có 4 quả bóng đỏ và 6 quả bóng vàng, các quả bóng có cùng kích thước và khối lượng. Lấy ngẫu nhiên một quả bóng từ hộp I rồi chuyển vào hộp II. Sau đó, lấy ra ngẫu nhiên hai quả bóng từ hộp II. Biết rằng trong hai quả bóng lấy ra từ hộp II có ít nhất một quả màu đỏ. Tính xác suất để quả bóng được chuyển từ hộp I sang là quả bóng màu đỏ, làm tròn kết quả đến hàng phần trăm.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_98 = st.text_input("Nhập kết quả (ví dụ: 0.28):", key="q98_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q98_check"):
+    normalized_user_answer_98 = user_answer_98.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 0.66
+    if normalized_user_answer_98 == "0.66" or normalized_user_answer_98 == "0,66":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_98 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q98_solution_shown' not in st.session_state:
+    st.session_state['q98_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q98_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q98_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q98_solution_shown'] = False
+
+if st.session_state.get('q98_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt các biến cố**
+    - Gọi $D_1$ là biến cố: "Quả bóng chuyển từ hộp I sang hộp II là bóng đỏ".
+    - Gọi $V_1$ là biến cố: "Quả bóng chuyển từ hộp I sang hộp II là bóng vàng".
+    - Gọi $A$ là biến cố: "Trong hai quả bóng lấy ra từ hộp II có ít nhất một quả màu đỏ".
+    
+    Ta có:
+    - Hộp I có 5 đỏ và 3 vàng (tổng 8 quả) $\Rightarrow P(D_1) = \dfrac{5}{8}$, $P(V_1) = \dfrac{3}{8}$.
+
+    **Bước 2: Tính xác suất có ít nhất một quả đỏ theo từng trường hợp chuyển bóng**
+    - **Trường hợp 1 ($D_1$ xảy ra):** Chuyển 1 quả đỏ từ hộp I sang hộp II.
+      Hộp II lúc này có: $4 + 1 = 5$ quả đỏ và $6$ quả vàng (tổng cộng 11 quả).
+      Xác suất lấy ra 2 quả đều không có quả đỏ nào (tức là cả 2 quả đều vàng) là:
+      $$P(\overline{A}|D_1) = \dfrac{C_6^2}{C_{11}^2} = \dfrac{15}{55} = \dfrac{3}{11}$$
+      $\Rightarrow$ Xác suất có ít nhất một quả đỏ là:
+      $$P(A|D_1) = 1 - \dfrac{3}{11} = \dfrac{8}{11}$$
+
+    - **Trường hợp 2 ($V_1$ xảy ra):** Chuyển 1 quả vàng từ hộp I sang hộp II.
+      Hộp II lúc này có: $4$ quả đỏ và $6 + 1 = 7$ quả vàng (tổng cộng 11 quả).
+      Xác suất lấy ra 2 quả đều là vàng là:
+      $$P(\overline{A}|V_1) = \dfrac{C_7^2}{C_{11}^2} = \dfrac{21}{55}$$
+      $\Rightarrow$ Xác suất có ít nhất một quả đỏ là:
+      $$P(A|V_1) = 1 - \dfrac{21}{55} = \dfrac{34}{55}$$
+
+    **Bước 3: Tính xác suất toàn phần của biến cố $A$ và xác suất có điều kiện cần tìm**
+    Theo công thức xác suất toàn phần:
+    $$P(A) = P(D_1) \cdot P(A|D_1) + P(V_1) \cdot P(A|V_1)$$
+    $$P(A) = \dfrac{5}{8} \cdot \dfrac{8}{11} + \dfrac{3}{8} \cdot \dfrac{34}{55} = \dfrac{5}{11} + \dfrac{102}{440} = \dfrac{200}{440} + \dfrac{102}{440} = \dfrac{302}{440} = \dfrac{151}{220}$$
+    
+    Yêu cầu bài toán là tính xác suất quả bóng chuyển sang là bóng đỏ *biết rằng* trong hai quả bóng lấy ra từ hộp II có ít nhất một quả màu đỏ, tức là tính $P(D_1|A)$:
+    $$P(D_1|A) = \dfrac{P(D_1 \cap A)}{P(A)} = \dfrac{P(D_1) \cdot P(A|D_1)}{P(A)} = \dfrac{\dfrac{5}{11}}{\dfrac{151}{220}} = \dfrac{5 \times 220}{11 \times 151} = \dfrac{100}{151} \approx 0.66225$$
+    
+    Làm tròn kết quả đến hàng phần trăm, ta được **$0.66$**.
+    """)
+    
+st.markdown("---")
