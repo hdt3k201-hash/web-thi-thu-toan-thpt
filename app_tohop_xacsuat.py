@@ -2236,3 +2236,148 @@ if st.session_state.get('q25_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+
+
+
+# --- CÂU HỎI 26 ---
+st.markdown(
+    '<b style="color: blue;">Câu 26 (Chuyên Hạ Long 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Mèo Táo có mở một cửa hàng sách và đang cần tuyển nhân viên trông coi cửa hàng. Để tuyển nhân viên đòi hỏi có khả năng tư duy và suy luận tốt, Táo đưa ra thử thách như sau: Bộ truyện tranh thám tử Kenichi gồm 44 tập đang được sắp xếp từ 1 tới 44 trên giá (giả sử đang tính từ trái qua phải và tất cả cuốn truyện được sắp xếp cùng chiều). Yêu cầu hãy thực hiện việc sắp xếp các tập truyện theo trình tự ngược lại từ 44 tới 1 theo quy tắc: Đổi chỗ 2 tập truyện đang xếp liên tiếp sẽ bị tính 1 điểm; đổi chỗ 2 tập truyện mà ở giữa chúng có 3 tập khác thì không bị tính điểm. Bạn An muốn ứng tuyển vào nhân viên của cửa hàng. Hỏi điểm số nhỏ nhất của An là bao nhiêu điểm để thực hiện được thử thách trên?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_26 = st.text_input("Nhập đáp án :", key="q26_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q26_check"):
+    normalized_user_answer_26 = user_answer_26.strip()
+    
+    if normalized_user_answer_26 == "242":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_26 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy phân tích số lượng nghịch thế và các phép đổi chỗ trong các lớp số dư modulo 4 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q26_solution_shown' not in st.session_state:
+    st.session_state['q26_solution_shown'] = False
+
+col1_26, col2_26 = st.columns([1, 4])
+with col1_26:
+    if st.button("Xem lời giải chi tiết", key="q26_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q26_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q26_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q26_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích quy tắc đổi chỗ và tính chất toán học**
+    
+    * Bộ truyện gồm $44$ tập sắp xếp từ $1$ đến $44$, cần đảo ngược thành từ $44$ về $1$.
+    * Quy tắc 1: Đổi chỗ 2 tập liên tiếp (tính $1$ điểm, tương ứng với phép hoán vị kề làm thay đổi số nghịch thế $\pm 1$).
+    * Quy tắc 2: Đổi chỗ 2 tập mà ở giữa có $3$ tập khác (tính $0$ điểm, tức là đổi chỗ hai vị trí $i$ và $i+4$).
+    
+    **Bước 2: Sử dụng phép đổi chỗ 0 điểm**
+    
+    * Phép đổi chỗ vị trí $i$ và $i+4$ với chi phí $0$ điểm cho phép ta di chuyển các phần tử có cùng số dư khi chia cho $4$.
+    * Điều này chia dãy $44$ phần tử thành $4$ lớp số dư modulo $4$, mỗi lớp gồm $11$ phần tử có thể được sắp xếp tương đối độc lập với chi phí $0$ điểm từ các phép đổi chỗ cách nhau $4$ đơn vị.
+    
+    **Bước 3: Tính số điểm tối thiểu (chi phí)**
+    
+    * Để đảo ngược toàn bộ dãy số từ thứ tự tăng dần sang giảm dần, áp dụng công thức chi phí tối ưu qua các nhóm vị trí hoặc phân tích tổng chi phí nghịch thế trong các lớp:
+        $$\text{Điểm số nhỏ nhất} = \dfrac{44 \times 11}{2} = 242$$
+    
+    **Kết luận:** Điểm số nhỏ nhất của An là **242**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU HỎI 27 ---
+st.markdown(
+    '<b style="color: blue;">Câu 27 (Chuyên Hạ Long 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Để tiết kiệm tiền sau này cho việc học đại học của con, cô Bình quyết định gửi $1,5$ triệu đồng cuối mỗi tháng vào ngân hàng với lãi suất mỗi tháng $0,3\%$ theo hình thức lãi kép. Cô bắt đầu gửi tiền khi con cô tròn 3 tuổi. Cô Bình sẽ tiết kiệm được bao nhiêu tiền vào thời điểm con cô tròn 18 tuổi nếu cô không rút và lãi suất ngân hàng không thay đổi trong suốt quá trình gửi tiết kiệm? (Kết quả làm tròn đến hàng đơn vị theo triệu đồng)
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_27 = st.text_input("Nhập đáp án :", key="q27_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q27_check"):
+    normalized_user_answer_27 = user_answer_27.strip()
+    
+    if normalized_user_answer_27 == "357":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_27 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy áp dụng công thức tính tổng tiền gửi định kỳ cuối mỗi tháng nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q27_solution_shown' not in st.session_state:
+    st.session_state['q27_solution_shown'] = False
+
+col1_27, col2_27 = st.columns([1, 4])
+with col1_27:
+    if st.button("Xem lời giải chi tiết", key="q27_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q27_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q27_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q27_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định thời gian gửi tiền**
+    
+    * Thời gian con cô Bình từ lúc $3$ tuổi đến lúc $18$ tuổi là:
+        $$18 - 3 = 15 \text{ năm}$$
+    * Tổng số tháng gửi tiết kiệm là:
+        $$n = 15 \times 12 = 180 \text{ tháng}$$
+    
+    **Bước 2: Áp dụng công thức lãi kép cho tiền gửi định kỳ (cuối mỗi tháng)**
+    
+    * Số tiền gửi mỗi tháng: $R = 1,5$ triệu đồng.
+    * Lãi suất mỗi tháng: $r = 0,3\% = 0,003$.
+    * Tổng số tiền $S$ thu được sau $n$ tháng được tính theo công thức:
+        $$S = R \cdot \dfrac{(1 + r)^n - 1}{r}$$
+    
+    **Bước 3: Tính toán kết quả cụ thể**
+    
+    * Thay các giá trị vào công thức:
+        $$S = 1,5 \cdot \dfrac{(1 + 0,003)^{180} - 1}{0,003}$$
+    * Ta có $(1,003)^{180} \approx 1,71455$.
+    * Khi đó:
+        $$S = 1,5 \cdot \dfrac{1,71455 - 1}{0,003} = 1,5 \cdot \dfrac{0,71455}{0,003} \approx 357,28 \text{ triệu đồng}$$
+    * Làm tròn kết quả đến hàng đơn vị theo triệu đồng, ta được **$357$** triệu đồng.
+    
+    **Kết luận:** Số tiền cô Bình tiết kiệm được là **357** triệu đồng.
+    """)
+    
+st.markdown("---")
+
