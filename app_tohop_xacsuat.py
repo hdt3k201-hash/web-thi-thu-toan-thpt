@@ -4503,3 +4503,156 @@ if st.session_state.get('q49_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 
+
+
+# --- CÂU HỎI 50 ---
+st.markdown(
+    '<b style="color: blue;">Câu 50 (Cụm trường Sở Phú Thọ 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+An và Bình thi đấu với nhau một trận đánh bóng bàn, người thắng trước 3 séc sẽ là người chiến thắng chung cuộc. Xác suất An giành chiến thắng mỗi séc đấu là $0,4$. Tính xác suất An thắng chung cuộc (kết quả làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_50 = st.text_input("Nhập đáp án (ví dụ: 0.12):", key="q50_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q50_check"):
+    normalized_user_answer_50 = user_answer_50.strip().replace(',', '.')
+    
+    if normalized_user_answer_50 in ["0.32", "0,32", "0.317", "0.31744"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_50 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy phân chia các trường hợp số séc thi đấu (3, 4 hoặc 5 séc) để tính xác suất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q50_solution_shown' not in st.session_state:
+    st.session_state['q50_solution_shown'] = False
+
+col1_50, col2_50 = st.columns([1, 4])
+with col1_50:
+    if st.button("Xem lời giải chi tiết", key="q50_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q50_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q50_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q50_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định xác suất thắng/thua trong mỗi séc**
+    
+    * Gọi $p = 0.4$ là xác suất An thắng trong một séc.
+    * Gọi $q = 1 - 0.4 = 0.6$ là xác suất Bình thắng trong một séc (tức An thua).
+    
+    **Bước 2: Các trường hợp An giành chiến thắng chung cuộc**
+    
+    Trận đấu kết thúc khi có người thắng trước 3 séc. An thắng chung cuộc có thể xảy ra ở 3 trường hợp số séc đấu như sau:
+    
+    1. **Trường hợp 1: An thắng 3 - 0 (thi đấu 3 séc)**
+       * An thắng cả 3 séc đầu tiên.
+       * Xác suất: 
+         $$P_3 = p^3 = 0.4^3 = 0.064$$
+    
+    2. **Trường hợp 2: An thắng 3 - 1 (thi đấu 4 séc)**
+       * Trong 3 séc đầu tiên An thắng 2 séc và thua 1 séc, và ở séc thứ 4 An thắng.
+       * Xác suất: 
+         $$P_4 = C_3^2 \times p^2 \times q \times p = 3 \times 0.4^2 \times 0.6 \times 0.4 = 0.1152$$
+    
+    3. **Trường hợp 3: An thắng 3 - 2 (thi đấu 5 séc)**
+       * Trong 4 séc đầu tiên An thắng 2 séc và thua 2 séc, và ở séc thứ 5 An thắng.
+       * Xác suất: 
+         $$P_5 = C_4^2 \times p^2 \times q^2 \times p = 6 \times 0.4^2 \times 0.6^2 \times 0.4 = 0.13824$$
+    
+    **Bước 3: Tính tổng xác suất và làm tròn**
+    
+    * Tổng xác suất An thắng chung cuộc là:
+        $$P = P_3 + P_4 + P_5 = 0.064 + 0.1152 + 0.13824 = 0.31744$$
+    * Làm tròn kết quả đến hàng phần trăm, ta được **$0.32$**.
+    
+    **Kết luận:** Xác suất An thắng chung cuộc là **0.32**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU HỎI 51 ---
+st.markdown(
+    '<b style="color: blue;">Câu 51 (Sở Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Người ta trang trí một bảng ô vuông $4 \times 4$ (như hình 1) bởi các ngôi sao và các bông hoa giống nhau. Mỗi ô vuông nhỏ được dán một ngôi sao hoặc một bông hoa, sao cho trong mỗi hàng và mỗi cột của bảng ô vuông đều có 2 ngôi sao và 2 bông hoa (tham khảo hình vẽ 2). Có tất cả bao nhiêu cách trang trí bảng ô vuông thỏa mãn yêu cầu trên?
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/sohn12026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/sohn12026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_51 = st.text_input("Nhập đáp án :", key="q51_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q51_check"):
+    normalized_user_answer_51 = user_answer_51.strip()
+    
+    if normalized_user_answer_51 == "90":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_51 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy sử dụng phương pháp đếm ma trận nhị phân thỏa mãn điều kiện tổng hàng và tổng cột bằng 2 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q51_solution_shown' not in st.session_state:
+    st.session_state['q51_solution_shown'] = False
+
+col1_51, col2_51 = st.columns([1, 4])
+with col1_51:
+    if st.button("Xem lời giải chi tiết", key="q51_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q51_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q51_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q51_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Quy đổi bài toán về dạng toán tổ hợp ma trận**
+    
+    * Bài toán yêu cầu điền ngôi sao và bông hoa vào bảng $4 \times 4$ sao cho mỗi hàng và mỗi cột đều có đúng 2 ngôi sao và 2 bông hoa.
+    * Nếu ta quy ước ngôi sao ứng với số $1$ và bông hoa ứng với số $0$, bài toán trở thành việc đếm số lượng ma trận nhị phân cấp $4 \times 4$ sao cho tổng các phần tử trên mỗi hàng bằng $2$ và tổng các phần tử trên mỗi cột bằng $2$.
+    
+    **Bước 2: Phân tích cấu trúc và số lượng cách sắp xếp**
+    
+    * Số cách chọn vị trí đặt 2 ngôi sao cho mỗi hàng là $\binom{4}{2} = 6$ cách.
+    * Tuy nhiên, ta cần thỏa mãn đồng thời điều kiện trên các cột (mỗi cột có đúng 2 ngôi sao). 
+    * Theo lý thuyết đếm ma trận nhị phân với các tổng hàng và tổng cột cho trước (hoặc dựa trên phân rã thành các đồ thị hai phía 2-chính quy), số lượng ma trận nhị phân cấp $4 \times 4$ với mọi tổng hàng và tổng cột đều bằng $2$ được tính chính xác bằng công thức tổ hợp hoặc liệt kê cấu trúc vòng lặp là **$90$** cách.
+    
+    **Kết luận:** Có tất cả **90** cách trang trí bảng ô vuông thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
