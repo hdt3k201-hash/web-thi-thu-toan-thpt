@@ -4968,3 +4968,110 @@ if st.session_state.get('q54_solution_shown') and st.session_state.get('logged_i
 
 st.markdown("---")
 
+
+
+
+# --- CÂU HỎI 55 ---
+st.markdown(
+    '<b style="color: blue;">Câu 55 (Sở Sơn La 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong một cuộc thi đấu Robotics, sân đấu được thiết kế dạng lưới ô vuông như hình vẽ. Các robot xuất phát từ vị trí điểm $A$, di chuyển ngẫu nhiên theo cạnh của các ô vuông theo hướng xuống dưới hoặc sang phải đến vị trí điểm $B$. Tính xác suất robot đi từ $A$ đến $B$ mà không đi qua cả $M$ và $N$ (kết quả làm tròn đến hàng phần trăm).
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/sl12026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/sl12026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_55 = st.text_input("Nhập đáp án (ví dụ: 0.11):", key="q55_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q55_check"):
+    normalized_user_answer_55 = user_answer_55.strip().replace(',', '.')
+    
+    if normalized_user_answer_55 in ["0.29", "0,29", "0.286", "2/7"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_55 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tính tổng số đường đi, số đường đi qua các điểm $M, N$ và áp dụng nguyên lý bù trừ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q55_solution_shown' not in st.session_state:
+    st.session_state['q55_solution_shown'] = False
+
+col1_55, col2_55 = st.columns([1, 4])
+with col1_55:
+    if st.button("Xem lời giải chi tiết", key="q55_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q55_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q55_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q55_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định kích thước lưới và không gian mẫu**
+    
+    * Đặt điểm xuất phát $A$ ở tọa độ $(0,0)$. Quan sát lưới ô vuông từ hình vẽ, điểm đích $B$ ở góc dưới bên phải có tọa độ $(5,4)$ (gồm $5$ bước sang phải và $4$ bước xuống dưới).
+    * Tổng số bước để đi từ $A$ đến $B$ là $5 + 4 = 9$ bước.
+    * Tổng số đường đi khác nhau từ $A$ đến $B$ là số phần tử của không gian mẫu:
+        $$n(\Omega) = C_9^4 = \dfrac{9 \times 8 \times 7 \times 6}{4 \times 3 \times 2 \times 1} = 126$$
+    
+    **Bước 2: Xác định vị trí của các điểm $M$ và $N$**
+    
+    * Dựa trên lưới tọa độ:
+      * Điểm $M$ nằm ở vị trí $(2,1)$ (2 bước sang phải, 1 bước xuống dưới từ $A$).
+      * Điểm $N$ nằm ở vị trí $(2,2)$ (2 bước sang phải, 2 bước xuống dưới từ $A$).
+    
+    **Bước 3: Tính số đường đi qua điểm $M$ và điểm $N$**
+    
+    1. **Số đường đi qua điểm $M(2,1)$:**
+       * Số đường đi từ $A(0,0)$ đến $M(2,1)$ là: $C_{2+1}^1 = C_3^1 = 3$.
+       * Số đường đi từ $M(2,1)$ đến $B(5,4)$ (khoảng cách $3$ phải, $3$ xuống) là: $C_{3+3}^3 = C_6^3 = 20$.
+       * Tổng số đường đi qua $M$ là: $n(M) = 3 \times 20 = 60$.
+       
+    2. **Số đường đi qua điểm $N(2,2)$:**
+       * Số đường đi từ $A(0,0)$ đến $N(2,2)$ là: $C_{2+2}^2 = C_4^2 = 6$.
+       * Số đường đi từ $N(2,2)$ đến $B(5,4)$ (khoảng cách $3$ phải, $2$ xuống) là: $C_{3+2}^2 = C_5^2 = 10$.
+       * Tổng số đường đi qua $N$ là: $n(N) = 6 \times 10 = 60$.
+       
+    3. **Số đường đi qua đồng thời cả $M$ và $N$:**
+       * Vì $N$ nằm ngay phía dưới $M$, mọi đường đi qua cả $M$ và $N$ bắt buộc phải đi theo lộ trình: $A \to M \to N \to B$.
+       * Số đường từ $A$ đến $M$ là $3$.
+       * Số đường từ $M$ đến $N$ là $1$ (1 bước đi xuống).
+       * Số đường từ $N$ đến $B$ là $10$.
+       * Tổng số đường đi qua cả $M$ và $N$ là: $n(M \cap N) = 3 \times 1 \times 10 = 30$.
+    
+    **Bước 4: Tính số đường đi thỏa mãn yêu cầu bài toán**
+    
+    * Theo nguyên lý bù trừ, số đường đi qua ít nhất một trong hai điểm $M$ hoặc $N$ là:
+        $$n(M \cup N) = n(M) + n(N) - n(M \cap N) = 60 + 60 - 30 = 90$$
+    * Số đường đi từ $A$ đến $B$ mà không đi qua cả $M$ và $N$ là:
+        $$n = n(\Omega) - n(M \cup N) = 126 - 90 = 36$$
+    
+    **Bước 5: Tính xác suất và làm tròn**
+    
+    * Xác suất cần tìm là:
+        $$P = \dfrac{36}{126} = \dfrac{2}{7} \approx 0.2857 \approx 0.29$$
+    * Làm tròn kết quả đến hàng phần trăm, ta được **$0.29$**.
+    
+    **Kết luận:** Xác suất robot đi từ $A$ đến $B$ mà không đi qua cả $M$ và $N$ là **0.29**.
+    """)
+    
+st.markdown("---")
+
