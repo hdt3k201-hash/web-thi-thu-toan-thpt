@@ -410,9 +410,90 @@ if st.session_state.get('q4_solution_shown') and st.session_state.get('logged_in
 st.markdown("---")
 
 
+
+# --- CÂU HỎI 5: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH ---
+st.markdown(
+    '<b style="color: blue;">Câu 5 (THPT Lê Thánh Tông HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một bể chứa nước có diện tích mặt cắt ngang được tô màu như hình bên, ở đó đơn vị trên các trục tọa độ được tính bằng mét. Trên mặt cắt ngang, phần đáy của bể chứa có phương trình: $y = k(x - 8)^2$. Tính diện tích của mặt cắt ngang theo mét vuông.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích mặt cắt ngang (ví dụ: 123):", key="q5_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/image_f50ef1.PNG", width=500)
+except Exception as e:
+    st.warning("⚠️ Lỗi: Không thể tải ảnh. Vui lòng kiểm tra lại xem file 'images/image_f50ef1.PNG' đã tồn tại chưa.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q5_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    if normalized_user_answer == "54":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tìm hệ số $k$ bằng cách cho parabol đi qua điểm $M$ trên trục tung, sau đó dùng tích phân để tính diện tích!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q5_solution_shown' not in st.session_state:
+    st.session_state['q5_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q5_solution_btn"):
+        st.session_state['q5_solution_shown'] = True
+
+if st.session_state.get('q5_solution_shown'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định tọa độ các điểm và phương trình các đường biên**
+    
+    * Quan sát hình vẽ, phần mặt cắt ngang (màu đỏ) được giới hạn phía trên bởi đoạn thẳng $MN$ nằm ngang. 
+    * Vì điểm $N$ có tọa độ $(12; 6)$ và $MN$ vuông góc với trục tung tại $M$, suy ra điểm $M$ có tọa độ là $(0; 6)$ và phương trình đường thẳng chứa đoạn $MN$ là $y = 6$.
+    * Đáy bể là một phần của đường parabol có phương trình $y = k(x - 8)^2$. 
+    * Parabol này đi qua điểm $M(0; 6)$. Thay $x = 0, y = 6$ vào phương trình parabol, ta có:
+        $$6 = k(0 - 8)^2 \Leftrightarrow 64k = 6 \Leftrightarrow k = \dfrac{6}{64} = \dfrac{3}{32}$$
+    * Vậy phương trình đường parabol đáy bể là: $y = \dfrac{3}{32}(x - 8)^2$.
+    
+    **Bước 2: Thiết lập công thức tính diện tích**
+    
+    * Diện tích mặt cắt ngang $S$ chính là diện tích hình phẳng giới hạn bởi:
+        * Đường thẳng phía trên: $y = 6$
+        * Đường cong phía dưới: $y = \dfrac{3}{32}(x - 8)^2$
+        * Hai đường thẳng đứng giới hạn hoành độ: $x = 0$ và $x = 12$
+    * Thể hiện qua tích phân, ta có:
+        $$S = \int_{0}^{12} \left[ 6 - \dfrac{3}{32}(x - 8)^2 \right] \text{d}x$$
+        
+    **Bước 3: Tính toán tích phân**
+    
+    * Tìm nguyên hàm của biểu thức dưới dấu tích phân:
+        $$S = \left[ 6x - \dfrac{3}{32} \cdot \dfrac{(x - 8)^3}{3} \right]_{0}^{12} = \left[ 6x - \dfrac{1}{32}(x - 8)^3 \right]_{0}^{12}$$
+    * Thay cận vào để tính giá trị:
+        * Tại cận trên $x = 12$:
+            $$6(12) - \dfrac{1}{32}(12 - 8)^3 = 72 - \dfrac{1}{32}(4^3) = 72 - \dfrac{64}{32} = 72 - 2 = 70$$
+        * Tại cận dưới $x = 0$:
+            $$6(0) - \dfrac{1}{32}(0 - 8)^3 = 0 - \dfrac{1}{32}(-8)^3 = 0 - \dfrac{-512}{32} = 16$$
+    * Trừ hai giá trị vừa tìm được:
+        $$S = 70 - 16 = 54$$
+    
+    **Kết luận:** Diện tích của mặt cắt ngang là **$54 \text{ m}^2$**.
+    """)
+    st.markdown("---")
 # --- CÂU HỎI 5: ỨNG DỤNG TÍCH PHÂN TRONG BÀI TOÁN THỰC TẾ ---
 st.markdown(
-    '<b style="color: blue;">Câu 5 (THPT Thọ Xuân 5 - Thanh Hóa 2026)</b>',
+    '<b style="color: blue;">Câu 6 (THPT Thọ Xuân 5 - Thanh Hóa 2026)</b>',
     unsafe_allow_html=True
 )
 
