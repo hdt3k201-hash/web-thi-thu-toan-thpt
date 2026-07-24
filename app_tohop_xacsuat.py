@@ -8819,3 +8819,219 @@ if st.session_state.get('q93_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# --- CÂU 94 ---
+st.markdown(
+    '<b style="color: blue;">Câu 94 (THPT Thường Xuân 2 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Có 8 bạn cùng ngồi xung quanh một cái bàn tròn, mỗi bạn cầm một đồng xu như nhau. Tất cả 8 bạn cùng tung đồng xu của mình, bạn có đồng xu ngửa thì đứng, bạn có đồng xu sấp thì ngồi. Xác suất để không có hai bạn liền kề cùng đứng bằng bao nhiêu? (Kết quả làm tròn đến hàng phần trăm)
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_94 = st.text_input("Nhập kết quả (ví dụ: 0.15):", key="q94_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q94_check"):
+    normalized_user_answer_94 = user_answer_94.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 0.18
+    if normalized_user_answer_94 == "0.18" or normalized_user_answer_94 == "0,18":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_94 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q94_solution_shown' not in st.session_state:
+    st.session_state['q94_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q94_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q94_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q94_solution_shown'] = False
+
+if st.session_state.get('q94_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu**
+    Có $8$ bạn, mỗi bạn tung một đồng xu có $2$ khả năng (ngửa hoặc sấp).
+    Số phần tử của không gian mẫu là: $n(\Omega) = 2^8 = 256$.
+
+    **Bước 2: Tính số kết quả thuận lợi cho biến cố**
+    Gọi $A$ là biến cố: "Không có hai bạn liền kề cùng đứng".
+    Hai bạn cùng đứng tương ứng với việc có hai đồng xu liền kề cùng ngửa. Ta cần tìm số cách sắp xếp $8$ đồng xu lên $8$ vị trí quanh bàn tròn sao cho không có hai đồng xu ngửa (N) nào xếp cạnh nhau. Đồng xu sấp kí hiệu là (S).
+    Ta chia các trường hợp theo số bạn đứng (số đồng xu ngửa $k$):
+    - **Trường hợp 1:** $k = 0$ (Không có ai đứng). Có $1$ cách (tất cả đều sấp).
+    - **Trường hợp 2:** $k = 1$ (Có 1 bạn đứng). Có $C_8^1 = 8$ cách chọn bạn đứng.
+    - **Trường hợp 3:** $k = 2$ (Có 2 bạn đứng). Ta chọn 2 vị trí không kề nhau trên bàn tròn 8 vị trí. Số cách chọn là $\dfrac{8}{8-2} C_{8-2}^2 = \dfrac{8}{6} C_6^2 = \dfrac{8}{6} \cdot 15 = 20$ cách (Hoặc tính: $C_8^2 - 8 = 28 - 8 = 20$ cách).
+    - **Trường hợp 4:** $k = 3$ (Có 3 bạn đứng). Chọn 3 vị trí không kề nhau trên bàn tròn 8 vị trí. Số cách chọn là $\dfrac{8}{8-3} C_{8-3}^3 = \dfrac{8}{5} C_5^3 = \dfrac{8}{5} \cdot 10 = 16$ cách.
+    - **Trường hợp 5:** $k = 4$ (Có 4 bạn đứng). Vì có 8 vị trí nên 4 người đứng xen kẽ 4 người ngồi. Có $2$ cách xếp.
+    *(Lưu ý: Không thể có từ 5 người đứng trở lên mà không có 2 người kề nhau).*
+    
+    Tổng số cách thỏa mãn biến cố $A$ là:
+    $n(A) = 1 + 8 + 20 + 16 + 2 = 47$.
+
+    **Bước 3: Tính xác suất**
+    Xác suất của biến cố $A$ là:
+    $P(A) = \dfrac{n(A)}{n(\Omega)} = \dfrac{47}{256} \approx 0.18359$.
+    
+    Làm tròn đến hàng phần trăm, ta được kết quả là **$0.18$**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU 95 ---
+st.markdown(
+    '<b style="color: blue;">Câu 95 (THPT Thọ Xuân 5 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Có hai chuồng thỏ. Chuồng I có 5 con thỏ đen và 10 con thỏ trắng. Chuồng II có 7 con thỏ đen và 3 con thỏ trắng. Trước tiên, từ chuồng II lấy ra ngẫu nhiên 1 con thỏ rồi cho vào chuồng I. Sau đó, từ chuồng I lấy ra ngẫu nhiên 1 con thỏ. Tính xác suất để con thỏ được lấy ra là con thỏ trắng. (Kết quả làm tròn đến chữ số thập phân thứ 2).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_95 = st.text_input("Nhập kết quả (ví dụ: 0.50):", key="q95_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q95_check"):
+    normalized_user_answer_95 = user_answer_95.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 0.64
+    if normalized_user_answer_95 == "0.64" or normalized_user_answer_95 == "0,64":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_95 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q95_solution_shown' not in st.session_state:
+    st.session_state['q95_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q95_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q95_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q95_solution_shown'] = False
+
+if st.session_state.get('q95_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    Gọi $A$ là biến cố "Bắt được thỏ đen từ chuồng II bỏ vào chuồng I".
+    Gọi $B$ là biến cố "Bắt được thỏ trắng từ chuồng II bỏ vào chuồng I".
+    Chuồng II có $7$ thỏ đen và $3$ thỏ trắng (tổng 10 con), do đó:
+    $P(A) = \dfrac{7}{10}$ và $P(B) = \dfrac{3}{10}$.
+    
+    Gọi $T$ là biến cố "Con thỏ lấy ra sau cùng từ chuồng I là thỏ trắng".
+    Ta sử dụng công thức xác suất toàn phần: $P(T) = P(A) \cdot P(T|A) + P(B) \cdot P(T|B)$.
+
+    **Trường hợp 1:** Nếu biến cố $A$ xảy ra (chuyển thỏ đen từ chuồng II sang chuồng I).
+    Lúc này chuồng I có: $5+1=6$ thỏ đen và $10$ thỏ trắng. Tổng cộng có 16 con thỏ.
+    Xác suất lấy được thỏ trắng từ chuồng I lúc này là: $P(T|A) = \dfrac{10}{16} = \dfrac{5}{8}$.
+
+    **Trường hợp 2:** Nếu biến cố $B$ xảy ra (chuyển thỏ trắng từ chuồng II sang chuồng I).
+    Lúc này chuồng I có: $5$ thỏ đen và $10+1=11$ thỏ trắng. Tổng cộng có 16 con thỏ.
+    Xác suất lấy được thỏ trắng từ chuồng I lúc này là: $P(T|B) = \dfrac{11}{16}$.
+
+    **Tính xác suất của biến cố T:**
+    $$P(T) = \dfrac{7}{10} \cdot \dfrac{10}{16} + \dfrac{3}{10} \cdot \dfrac{11}{16} = \dfrac{70}{160} + \dfrac{33}{160} = \dfrac{103}{160} = 0.64375$$
+    
+    Làm tròn kết quả đến chữ số thập phân thứ 2, ta được **$0.64$**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU 96 ---
+st.markdown(
+    '<b style="color: blue;">Câu 96 (THPT Bá Thước - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho tập $S = \{1; 2; 3; \dots ; 19; 20\}$ gồm 20 số tự nhiên từ 1 đến 20. Lấy ngẫu nhiên ba số thuộc $S$. Tính xác suất để ba số lấy được lập thành một cấp số cộng (làm tròn đến hàng phần trăm)
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_96 = st.text_input("Nhập kết quả (ví dụ: 0.10):", key="q96_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q96_check"):
+    normalized_user_answer_96 = user_answer_96.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 0.08
+    if normalized_user_answer_96 == "0.08" or normalized_user_answer_96 == "0,08":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_96 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q96_solution_shown' not in st.session_state:
+    st.session_state['q96_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q96_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q96_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q96_solution_shown'] = False
+
+if st.session_state.get('q96_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu**
+    Lấy ngẫu nhiên $3$ số từ tập $S$ gồm $20$ số. Số phần tử của không gian mẫu là:
+    $n(\Omega) = C_{20}^3 = 1140$.
+
+    **Bước 2: Tìm số cách chọn 3 số lập thành cấp số cộng**
+    Gọi 3 số lấy được là $a, b, c$ và sắp xếp theo thứ tự $a < b < c$.
+    Để ba số này lập thành một cấp số cộng, ta phải có: $a + c = 2b$.
+    Từ đẳng thức này, ta suy ra tổng $(a + c)$ phải là một số chẵn.
+    Điều này chỉ xảy ra khi $a$ và $c$ cùng tính chẵn lẻ, tức là $a, c$ cùng là số lẻ hoặc cùng là số chẵn.
+    Tập $S$ gồm $10$ số lẻ và $10$ số chẵn.
+    - Số cách chọn 2 số $a, c$ cùng lẻ là: $C_{10}^2 = 45$ (cách).
+    - Số cách chọn 2 số $a, c$ cùng chẵn là: $C_{10}^2 = 45$ (cách).
+    
+    Với mỗi cách chọn cặp $(a, c)$ cùng tính chẵn lẻ như trên, ta sẽ luôn có duy nhất một số $b = \dfrac{a + c}{2}$ nguyên nằm giữa $a$ và $c$, tức là $b \in S$.
+    Do đó, số bộ 3 số $(a, b, c)$ lập thành cấp số cộng bằng tổng số cách chọn cặp $(a, c)$:
+    $n(A) = 45 + 45 = 90$ (bộ).
+
+    **Bước 3: Tính xác suất**
+    Xác suất cần tìm là:
+    $P(A) = \dfrac{n(A)}{n(\Omega)} = \dfrac{90}{1140} = \dfrac{3}{38} \approx 0.0789$.
+    
+    Làm tròn kết quả đến hàng phần trăm, ta được **$0.08$**.
+    """)
+    
+st.markdown("---")
