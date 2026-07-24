@@ -7959,3 +7959,112 @@ if st.session_state.get('q86_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 
+
+st.markdown(
+    '<b style="color: blue;">Câu 87 (Sở Sơn La 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_764680.png
+st.markdown(r"""
+Trong một trò chơi thám hiểm, anh Sơn phải vượt qua một mê cung gồm các phòng thông nhau như sơ đồ dưới đây. Tại mỗi phòng, anh Sơn sẽ chọn ngẫu nhiên một trong các cửa thông với phòng hiện tại, với xác suất như nhau, để đi tiếp. Quá trình di chuyển diễn ra liên tục và trò chơi sẽ kết thúc ngay khi anh bước vào phòng chứa Kho báu hoặc phòng có Bẫy. Biết anh Sơn bắt đầu từ Phòng 1, tính xác suất để anh tìm được kho báu. Kết quả làm tròn đến hàng phần trăm.
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/sosl2_2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/sosl2_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án (ví dụ: 0.27 hoặc 0,27):", key="q87_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q87_check"):
+    # Chuẩn hóa đầu vào của người dùng (loại bỏ khoảng trắng, đổi dấu phẩy thành dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(" ", "").replace(",", ".")
+    
+    # Đáp án chính xác là 0.67 hoặc 2/3
+    if normalized_user_answer in ["0.67", "2/3"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q87_solution_shown' not in st.session_state:
+    st.session_state['q87_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q87_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q87_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q87_solution_shown'] = False # Đảm bảo ẩn nếu chưa đăng nhập
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q87_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích số cửa ở mỗi phòng dựa vào sơ đồ**
+    
+    Dựa vào sơ đồ mê cung, ta đếm được số lối đi (cửa) tại mỗi phòng như sau:
+    *   **Phòng 1:** Có 3 cửa thông tới: Kho báu, Phòng 2, Phòng 3.
+    *   **Phòng 2:** Có 2 cửa thông tới: Phòng 1, Phòng 4.
+    *   **Phòng 3:** Có 2 cửa thông tới: Phòng 1, Phòng 4.
+    *   **Phòng 4:** Có 3 cửa thông tới: Phòng 2, Phòng 3, Bẫy.
+    
+    **Bước 2: Thiết lập hệ phương trình xác suất**
+    
+    Gọi $x_1, x_2, x_3, x_4$ lần lượt là xác suất anh Sơn tìm được kho báu khi đang đứng ở Phòng 1, Phòng 2, Phòng 3 và Phòng 4.
+    
+    Trò chơi kết thúc khi vào phòng Kho báu (xác suất thành công = 1) hoặc vào Bẫy (xác suất thành công = 0). Do anh Sơn chọn ngẫu nhiên các cửa với xác suất như nhau, ta có hệ phương trình:
+    
+    $$
+    \begin{cases}
+    x_1 = \frac{1}{3} \cdot 1 + \frac{1}{3} \cdot x_2 + \frac{1}{3} \cdot x_3 & (1) \\
+    x_2 = \frac{1}{2} \cdot x_1 + \frac{1}{2} \cdot x_4 & (2) \\
+    x_3 = \frac{1}{2} \cdot x_1 + \frac{1}{2} \cdot x_4 & (3) \\
+    x_4 = \frac{1}{3} \cdot x_2 + \frac{1}{3} \cdot x_3 + \frac{1}{3} \cdot 0 & (4)
+    \end{cases}
+    $$
+    
+    **Bước 3: Giải hệ phương trình**
+    
+    Từ phương trình (2) và (3), ta dễ dàng nhận thấy vai trò đối xứng của Phòng 2 và Phòng 3, suy ra: 
+    $$x_2 = x_3$$
+    
+    Thế $x_3 = x_2$ vào phương trình (4), ta được:
+    $$x_4 = \frac{1}{3}x_2 + \frac{1}{3}x_2 = \frac{2}{3}x_2$$
+    
+    Thế $x_4 = \frac{2}{3}x_2$ vào phương trình (2), ta có:
+    $$x_2 = \frac{1}{2}x_1 + \frac{1}{2}\left(\frac{2}{3}x_2\right)$$
+    $$x_2 = \frac{1}{2}x_1 + \frac{1}{3}x_2 \implies \frac{2}{3}x_2 = \frac{1}{2}x_1 \implies x_2 = \frac{3}{4}x_1$$
+    
+    Bây giờ, thế $x_2 = x_3 = \frac{3}{4}x_1$ trở lại vào phương trình (1):
+    $$x_1 = \frac{1}{3} + \frac{1}{3} \cdot \left(\frac{3}{4}x_1\right) + \frac{1}{3} \cdot \left(\frac{3}{4}x_1\right)$$
+    $$x_1 = \frac{1}{3} + \frac{1}{4}x_1 + \frac{1}{4}x_1$$
+    $$x_1 = \frac{1}{3} + \frac{1}{2}x_1$$
+    $$x_1 - \frac{1}{2}x_1 = \frac{1}{3} \implies \frac{1}{2}x_1 = \frac{1}{3}$$
+    $$\implies x_1 = \frac{2}{3}$$
+    
+    **Bước 4: Kết luận**
+    
+    Xác suất để anh Sơn tìm được kho báu khi bắt đầu từ Phòng 1 là $x_1 = \frac{2}{3}$.
+    
+    Làm tròn đến hàng phần trăm (2 chữ số thập phân): $\frac{2}{3} \approx 0.67$.
+    
+    **Vậy đáp án là: 0.67**
+    """)
+    
+st.markdown("---")
