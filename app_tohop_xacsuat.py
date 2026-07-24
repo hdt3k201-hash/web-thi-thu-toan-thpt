@@ -6939,3 +6939,282 @@ if st.session_state.get('q75_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 
+
+st.markdown(
+    '<b style="color: blue;">Câu 76 (THPT Phụ Dực - Hưng Yên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_755e21.png
+st.markdown(r"""
+Thầy Nguyễn Công Toản là một giáo viên dạy hóa rất giỏi ở trường THPT Phụ Dực. Thầy đặc biệt giỏi công nghệ và say mê chuyên môn. Thầy có ngân hàng đề gồm $20$ câu rất hay và độc lạ. Trong một buổi giao bài tập về nhà cho đội tuyển học sinh giỏi gồm $5$ bạn, thầy để AI lựa chọn ngẫu nhiên một số câu hỏi từ ngân hàng đề trên cho từng bạn. Gọi $A$ là biến cố xảy ra đồng thời các điều kiện sau:
+- Số câu hỏi chung của cả $5$ bạn là $2$.
+- Số câu hỏi chung của nhóm gồm $4$ bạn bất kì trong đội là $3$.
+- Số câu hỏi chung của nhóm gồm $3$ bạn bất kì trong đội là $4$.
+
+Giả sử xác suất xảy ra biến cố $A$ là $p$. Tính $10^{10} p$, làm tròn kết quả đến hàng đơn vị.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập kết quả (ví dụ: 1234):", key="q76_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q76_check"):
+    # Chuẩn hóa đầu vào của người dùng để so sánh
+    normalized_user_answer = user_answer.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 6940
+    if normalized_user_answer == "6940":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q76_solution_shown' not in st.session_state:
+    st.session_state['q76_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q76_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q76_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q76_solution_shown'] = False # Đảm bảo ẩn nếu chưa đăng nhập
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q76_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu $n(\Omega)$**
+    
+    Ngân hàng có $20$ câu hỏi. Việc AI chọn ngẫu nhiên một số câu hỏi cho từng bạn (trong $5$ bạn) tương đương với việc mỗi câu hỏi trong $20$ câu có thể được giao cho một tập con bất kì trong số $5$ bạn.
+    
+    Đối với mỗi câu hỏi, có $2^5 = 32$ cách phân phối (kể cả trường hợp không giao cho bạn nào). 
+    Do đó, tổng số cách phân phối ngẫu nhiên $20$ câu hỏi là: 
+    $n(\Omega) = (2^5)^{20} = 2^{100}$.
+
+    **Bước 2: Phân tích các điều kiện của biến cố $A$**
+    
+    Gọi $x_k$ là số lượng câu hỏi được giao cho **chính xác** một nhóm gồm $k$ bạn ($0 \le k \le 5$). Ta xét các điều kiện:
+    
+    1.  **Số câu hỏi chung của cả $5$ bạn là $2$:** 
+        Chỉ có một nhóm gồm $5$ bạn. Vậy số câu hỏi được giao cho đúng $5$ bạn là $x_5 = 2$.
+        
+    2.  **Số câu hỏi chung của nhóm $4$ bạn bất kì là $3$:** 
+        Số câu hỏi chung của một nhóm $4$ bạn cụ thể bao gồm số câu hỏi giao riêng cho đúng $4$ bạn đó và số câu hỏi giao cho cả $5$ bạn. 
+        $\Rightarrow x_4 + x_5 = 3 \Rightarrow x_4 + 2 = 3 \Rightarrow x_4 = 1$.
+        Vì có $C_5^4 = 5$ nhóm gồm $4$ bạn, và mỗi nhóm đều có chính xác $1$ câu hỏi riêng, nên tổng số câu hỏi được giao cho đúng $4$ bạn là: $5 \times 1 = 5$ câu.
+        
+    3.  **Số câu hỏi chung của nhóm $3$ bạn bất kì là $4$:** 
+        Tương tự, số câu chung của $3$ bạn cụ thể bằng tổng số câu giao cho riêng $3$ bạn đó, cộng với số câu giao cho các nhóm $4$ bạn có chứa $3$ bạn đó (có $2$ nhóm như vậy), cộng với số câu giao cho cả $5$ bạn.
+        $\Rightarrow x_3 + 2 \times x_4 + x_5 = 4 \Rightarrow x_3 + 2(1) + 2 = 4 \Rightarrow x_3 = 0$.
+        Vậy không có câu hỏi nào được giao cho đúng $3$ bạn.
+
+    **Bước 3: Đếm số kết quả thuận lợi cho $A$**
+    
+    Từ phân tích trên, ta đã dùng mất $2 + 5 + 0 = 7$ câu hỏi. Còn lại $20 - 7 = 13$ câu hỏi. 
+    $13$ câu hỏi này chỉ có thể được giao cho các nhóm có quy mô từ $2$ bạn trở xuống ($k \le 2$). 
+    Số lượng các nhóm có quy mô $\le 2$ là: $C_5^2 + C_5^1 + C_5^0 = 10 + 5 + 1 = 16$ nhóm.
+    
+    Số cách chọn và phân phối câu hỏi thỏa mãn biến cố $A$ là:
+    *   Chọn $2$ câu từ $20$ câu để giao cho cả $5$ bạn: $C_{20}^2$ cách.
+    *   Chọn $5$ câu từ $18$ câu còn lại và phân phối đều cho $5$ nhóm gồm $4$ bạn (mỗi nhóm $1$ câu): $A_{18}^5$ cách.
+    *   Đối với $13$ câu hỏi còn lại, mỗi câu có thể tùy ý giao cho $1$ trong $16$ nhóm (có quy mô $\le 2$): $16^{13}$ cách.
+    
+    Số phần tử của biến cố $A$ là: 
+    $n(A) = C_{20}^2 \cdot A_{18}^5 \cdot 16^{13} = 190 \cdot 1028160 \cdot (2^4)^{13} = 195350400 \cdot 2^{52}$.
+
+    **Bước 4: Tính xác suất $p$ và kết quả cuối cùng**
+    
+    Xác suất $p = \dfrac{n(A)}{n(\Omega)} = \dfrac{195350400 \cdot 2^{52}}{2^{100}} = \dfrac{195350400}{2^{48}}$.
+    
+    Ta tính giá trị:
+    $10^{10} p = 10^{10} \cdot \dfrac{195350400}{281474976710656} \approx 6940,2415$.
+    
+    Làm tròn kết quả đến hàng đơn vị, ta được **$6940$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 77
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 77 (THPT Yên Hòa - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho một hình bát giác đều có tám đỉnh $A, B, C, D, E, F, G, H$. Người ta gắn ngẫu nhiên vào 8 đỉnh này 8 số tự nhiên $1; 2; 3; 4; 5; 6; 7; 8$, mỗi đỉnh gắn một số. Chọn ngẫu nhiên một tam giác có 3 đỉnh lấy từ 8 đỉnh của bát giác đã cho. Gọi $P$ là xác suất để thu được một tam giác vuông với 3 số trên 3 đỉnh của tam giác đó lập thành một cấp số cộng. Biết $P = \frac{m}{n}$, phân số tối giản. Tính $m + 3n$.
+""")
+
+user_answer_77 = st.text_input("Nhập đáp án cho Câu 77:", key="q77_ans")
+
+if st.button("Kiểm tra đáp án Câu 77", key="q77_check"):
+    normalized_user_answer_77 = user_answer_77.strip()
+    
+    if normalized_user_answer_77 == "303":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_77 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+st.markdown("---")
+
+if 'q77_solution_shown' not in st.session_state:
+    st.session_state['q77_solution_shown'] = False
+
+col1_77, col2_77 = st.columns([1, 4])
+with col1_77:
+    if st.button("Xem lời giải chi tiết Câu 77", key="q77_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q77_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q77_solution_shown'] = False
+
+if st.session_state.get('q77_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 77:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu.**
+    Phép thử gồm hai công đoạn:
+    * Gắn 8 số vào 8 đỉnh: Có $8!$ cách.
+    * Chọn ngẫu nhiên 3 đỉnh để tạo thành một tam giác: Có $C_8^3$ cách.
+    $\Rightarrow n(\Omega) = 8! \cdot C_8^3 = 40320 \cdot 56 = 2257920$.
+
+    **Bước 2: Đếm số kết quả thuận lợi.**
+    Gọi biến cố $X$: "Tam giác thu được là tam giác vuông và 3 số trên 3 đỉnh lập thành cấp số cộng".
+    
+    *Đếm số tam giác vuông:*
+    Đường tròn ngoại tiếp bát giác đều có 4 đường kính đi qua các đỉnh. 
+    Mỗi tam giác vuông nội tiếp đường tròn phải có cạnh huyền là một đường kính.
+    * Chọn 1 đường kính làm cạnh huyền: 4 cách.
+    * Chọn 1 đỉnh góc vuông từ 6 đỉnh còn lại: 6 cách.
+    $\Rightarrow$ Số tam giác vuông tạo thành từ 8 đỉnh là $4 \times 6 = 24$ (tam giác).
+
+    *Đếm số bộ 3 số lập thành cấp số cộng (CSC) từ tập $\{1; 2; \dots; 8\}$:*
+    * Công sai $d = 1$: $(1,2,3), (2,3,4), \dots, (6,7,8)$ $\rightarrow$ Có 6 bộ.
+    * Công sai $d = 2$: $(1,3,5), (2,4,6), (3,5,7), (4,6,8)$ $\rightarrow$ Có 4 bộ.
+    * Công sai $d = 3$: $(1,4,7), (2,5,8)$ $\rightarrow$ Có 2 bộ.
+    $\Rightarrow$ Tổng cộng có $6 + 4 + 2 = 12$ bộ 3 số lập thành CSC.
+
+    *Xếp số để thỏa mãn biến cố $X$:*
+    * Chọn 1 tam giác vuông: $24$ cách.
+    * Chọn 1 bộ 3 số là CSC: $12$ cách.
+    * Xếp 3 số của bộ này vào 3 đỉnh của tam giác vuông: $3! = 6$ cách.
+    * Xếp 5 số còn lại vào 5 đỉnh còn lại: $5! = 120$ cách.
+    $\Rightarrow n(X) = 24 \cdot 12 \cdot 6 \cdot 120 = 207360$.
+
+    **Bước 3: Tính xác suất và kết luận.**
+    Xác suất $P = \frac{n(X)}{n(\Omega)} = \frac{207360}{2257920} = \frac{9}{98}$.
+    Phân số $\frac{9}{98}$ đã tối giản, nên $m = 9, n = 98$.
+    Vậy $m + 3n = 9 + 3 \cdot 98 = 9 + 294 = 303$.
+    
+    **Đáp án: 303**
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 78
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 78 (THPT Nguyễn Thị Minh Khai - Khánh Hòa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong một trò chơi "giải mật mã tại ngày hội khoa học", ban tổ chức chuẩn bị một hộp chứa 9 tấm thẻ được ghi các số từ các số $\{1; 2; 3; 4; 5; 6; 7; 8; 9\}$. Một người chơi rút ngẫu nhiên 5 tấm thẻ khác nhau từ hộp. Sau đó các số được sắp xếp theo thứ tự tăng dần thành $a < b < c < d < e$. Người chơi được coi là giải được mật mã nếu trong năm số này tồn tại bốn số liên tiếp tạo thành một cấp số cộng. Biết xác suất để người chơi giải được mật mã là $A$. Giá trị $\frac{1}{A}$ là bao nhiêu?
+""")
+
+user_answer_78 = st.text_input("Nhập đáp án cho Câu 78 (viết dạng phân số a/b hoặc số thập phân):", key="q78_ans")
+
+if st.button("Kiểm tra đáp án Câu 78", key="q78_check"):
+    normalized_user_answer_78 = user_answer_78.strip().replace(",", ".")
+    
+    if normalized_user_answer_78 in ["21/5", "4.2", "4,2"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_78 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+st.markdown("---")
+
+if 'q78_solution_shown' not in st.session_state:
+    st.session_state['q78_solution_shown'] = False
+
+col1_78, col2_78 = st.columns([1, 4])
+with col1_78:
+    if st.button("Xem lời giải chi tiết Câu 78", key="q78_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q78_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q78_solution_shown'] = False
+
+if st.session_state.get('q78_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 78:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử không gian mẫu.**
+    Số cách chọn 5 tấm thẻ từ 9 tấm thẻ là $n(\Omega) = C_9^5 = 126$.
+
+    **Bước 2: Tìm các cấp số cộng (CSC) độ dài 4 và 5 từ tập $\{1;..;9\}$.**
+    Giả sử 5 số được sắp xếp là $x_1 < x_2 < x_3 < x_4 < x_5$. "Tồn tại 4 số liên tiếp tạo thành CSC" nghĩa là $(x_1,x_2,x_3,x_4)$ là CSC hoặc $(x_2,x_3,x_4,x_5)$ là CSC.
+    
+    Các CSC có 4 phần tử tăng dần:
+    * Công sai $d=1$: $(1,2,3,4)$ đến $(6,7,8,9)$ (6 bộ)
+    * Công sai $d=2$: $(1,3,5,7), (2,4,6,8), (3,5,7,9)$ (3 bộ)
+    Tổng cộng có 9 bộ 4 số tạo thành CSC.
+
+    **Bước 3: Đếm số kết quả thuận lợi.**
+    *   **Trường hợp 1:** 4 số đầu $(x_1,x_2,x_3,x_4)$ là CSC.
+        Với mỗi bộ CSC $(a,b,c,d)$ đã liệt kê, ta chọn số $x_5$ sao cho $x_5 > d$.
+        * Từ $(1,2,3,4) \Rightarrow x_5 \in \{5,6,7,8,9\}$: 5 cách.
+        * Từ $(2,3,4,5) \Rightarrow x_5 \in \{6,7,8,9\}$: 4 cách.
+        * Tương tự: $3 + 2 + 1 = 6$ cách.
+        * Từ $(1,3,5,7) \Rightarrow x_5 \in \{8,9\}$: 2 cách.
+        * Từ $(2,4,6,8) \Rightarrow x_5 \in \{9\}$: 1 cách.
+        * Từ $(3,5,7,9) \Rightarrow$ không có $x_5$ thỏa mãn: 0 cách.
+        $\Rightarrow$ Tổng số cách TH1: $5 + 4 + 3 + 2 + 1 + 2 + 1 + 0 = 18$ cách.
+
+    *   **Trường hợp 2:** 4 số sau $(x_2,x_3,x_4,x_5)$ là CSC.
+        Với mỗi bộ CSC $(b,c,d,e)$, ta chọn $x_1$ sao cho $x_1 < b$.
+        * Từ $(2,3,4,5) \Rightarrow x_1 \in \{1\}$: 1 cách.
+        * Từ $(3,4,5,6) \Rightarrow x_1 \in \{1,2\}$: 2 cách.
+        * Tương tự: $3 + 4 + 5 = 12$ cách.
+        * Từ $(2,4,6,8) \Rightarrow x_1 \in \{1\}$: 1 cách.
+        * Từ $(3,5,7,9) \Rightarrow x_1 \in \{1,2\}$: 2 cách.
+        $\Rightarrow$ Tổng số cách TH2: $1 + 2 + 3 + 4 + 5 + 1 + 2 = 18$ cách.
+
+    *   **Trường hợp 3:** Cả 4 số đầu và 4 số sau đều là CSC.
+        Khi đó, cả 5 số tạo thành một CSC 5 phần tử.
+        * $d=1$: $(1,2,3,4,5)$ đến $(5,6,7,8,9)$ $\rightarrow$ 5 bộ.
+        * $d=2$: $(1,3,5,7,9)$ $\rightarrow$ 1 bộ.
+        $\Rightarrow$ Có 6 tập hợp bị đếm trùng ở cả TH1 và TH2.
+
+    Số kết quả thuận lợi: $n(A) = 18 + 18 - 6 = 30$.
+
+    **Bước 4: Tính kết quả.**
+    Xác suất $A = \frac{30}{126} = \frac{5}{21}$.
+    
+    Vậy $\frac{1}{A} = \frac{21}{5} = 4.2$.
+    
+    **Đáp án: 21/5 (hoặc 4.2)**
+    """)
+    
+st.markdown("---")
