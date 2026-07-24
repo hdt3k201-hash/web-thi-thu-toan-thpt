@@ -7681,3 +7681,176 @@ if st.session_state.get('q83_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+
+# --- CÂU 84 ---
+st.markdown(
+    '<b style="color: blue;">Câu 84 (Sở Nghệ An 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_75e889.png (Câu trên)
+st.markdown(r"""
+Trong một trò chơi, có $22$ chiếc đèn được bố trí cách đều nhau trên một vòng tròn lớn. Khi người chơi bấm nút, hệ thống máy tính sẽ chọn ngẫu nhiên $3$ chiếc đèn để thắp sáng đồng thời. Nếu tâm của vòng tròn nằm hoàn toàn bên trong tam giác tạo bởi $3$ bóng đèn được thắp sáng đó thì người chơi được nhận một phần quà. Mỗi người chơi thực hiện $5$ lần bấm nút. Tính xác suất để một người chơi may mắn giành được ít nhất $2$ phần quà. Không làm tròn kết quả ở các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần trăm.
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/sona1_2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/sona1_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_84 = st.text_input("Nhập kết quả (ví dụ: 0.12):", key="q84_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q84_check"):
+    normalized_user_answer_84 = user_answer_84.strip().replace(" ", "").replace(",", ".")
+    
+    # Đáp án chính xác là 0.29
+    if normalized_user_answer_84 == "0.29":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_84 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q84_solution_shown' not in st.session_state:
+    st.session_state['q84_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q84_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q84_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q84_solution_shown'] = False
+
+if st.session_state.get('q84_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính xác suất $p$ để nhận được quà trong 1 lần bấm nút.**
+    
+    Tổng số cách chọn 3 chiếc đèn từ 22 chiếc là: $n(\Omega) = C_{22}^3 = 1540$ (cách).
+    
+    Ta đi đếm số tam giác **không chứa tâm** đường tròn bên trong (kể cả trên cạnh).
+    Một tam giác không chứa tâm đường tròn khi 3 đỉnh của nó nằm trên cùng một nửa đường tròn (không tính đường kính).
+    - Cố định một đỉnh $A$. Đường kính đi qua $A$ chia 20 đỉnh còn lại thành 2 nhóm, mỗi nhóm có 10 đỉnh nằm về một phía của đường kính.
+    - Để 3 đỉnh nằm về cùng một nửa đường tròn theo chiều kim đồng hồ, ta chọn 2 đỉnh còn lại trong 10 đỉnh liền kề đỉnh $A$ (theo cùng một chiều). Số cách chọn là $C_{10}^2 = 45$.
+    - Có 22 cách chọn đỉnh $A$ làm điểm xuất phát. Vậy số tam giác có 3 đỉnh nằm hoàn toàn trên một nửa đường tròn là: $22 \times 45 = 990$ (tam giác).
+    
+    Số tam giác vuông (có tâm nằm trên cạnh huyền): Chọn 1 đường kính làm cạnh huyền (có 11 đường kính). Chọn 1 đỉnh còn lại trong 20 đỉnh. Vậy có $11 \times 20 = 220$ (tam giác vuông).
+    
+    Số tam giác có tâm nằm hoàn toàn bên trong là:
+    $n(A) = 1540 - 990 - 220 = 330$ (tam giác).
+    
+    Xác suất để được nhận quà trong 1 lần bấm là: $p = \dfrac{330}{1540} = \dfrac{3}{14}$.
+    
+    **Bước 2: Tính xác suất để giành ít nhất 2 phần quà sau 5 lần bấm.**
+    
+    Gọi $X$ là số lần trúng quà trong 5 lần bấm. Ta có $X$ tuân theo phân bố nhị thức $X \sim B(5, p)$ với $p = \dfrac{3}{14}$.
+    Xác suất để không trúng quà lần nào: $P(X=0) = C_5^0 \left(\dfrac{3}{14}\right)^0 \left(\dfrac{11}{14}\right)^5 = \left(\dfrac{11}{14}\right)^5$.
+    Xác suất để trúng quà đúng 1 lần: $P(X=1) = C_5^1 \left(\dfrac{3}{14}\right)^1 \left(\dfrac{11}{14}\right)^4 = 5 \cdot \dfrac{3}{14} \cdot \left(\dfrac{11}{14}\right)^4$.
+    
+    Xác suất để được ít nhất 2 phần quà là:
+    $P(X \ge 2) = 1 - P(X=0) - P(X=1) = 1 - \left(\dfrac{11}{14}\right)^5 - 15 \cdot \dfrac{11^4}{14^5} = 1 - \dfrac{11^4 (11 + 15)}{14^5}$
+    $P(X \ge 2) = 1 - \dfrac{14641 \times 26}{537824} = 1 - \dfrac{380666}{537824} = \dfrac{157158}{537824} \approx 0,29221...$
+    
+    Làm tròn đến hàng phần trăm ta được **$0,29$**.
+    """)
+    
+st.markdown("---")
+
+# --- CÂU 85 ---
+st.markdown(
+    '<b style="color: blue;">Câu 85 (Sở Thái Nguyên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_75e889.png (Câu dưới)
+st.markdown(r"""
+Người ta muốn lát kín một bảng ô vuông kích thước $2 \times 13$ (2 hàng, 13 cột) bằng các tấm bìa kích thước $1 \times 2$ và $1 \times 3$ sao cho các tấm bìa không được chồng lên nhau hay phủ ra ngoài bảng. Có bao nhiêu cách lát nếu ta được phép xoay các tấm bìa nhưng cạnh dài của tất cả các tấm bìa đều phải song song với nhau (số lượng mỗi loại tấm bìa không hạn chế)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_85 = st.text_input("Nhập kết quả:", key="q85_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q85_check"):
+    normalized_user_answer_85 = user_answer_85.strip().replace(" ", "")
+    
+    # Đáp án
+    if normalized_user_answer_85 == "257":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_85 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q85_solution_shown' not in st.session_state:
+    st.session_state['q85_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q85_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q85_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q85_solution_shown'] = False
+
+if st.session_state.get('q85_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    Theo đề bài, **cạnh dài của tất cả các tấm bìa đều phải song song với nhau**, nghĩa là các tấm bìa hoặc cùng đặt nằm dọc, hoặc cùng đặt nằm ngang.
+    
+    **Trường hợp 1: Tất cả các tấm bìa đều đặt thẳng đứng.**
+    Kích thước bảng là $2 \times 13$ (chiều cao bằng $2$).
+    Khi đặt dọc, tấm bìa có kích thước $2 \times 1$ hoặc $3 \times 1$. 
+    Do chiều cao của bảng chỉ là $2$ nên ta không thể sử dụng tấm bìa $3 \times 1$. Bắt buộc phải sử dụng toàn bộ tấm bìa $2 \times 1$.
+    Mỗi cột của bảng sẽ được phủ bởi đúng một tấm bìa $2 \times 1$. Có 13 cột nên chỉ có **1 cách** xếp duy nhất.
+    
+    **Trường hợp 2: Tất cả các tấm bìa đều đặt nằm ngang.**
+    Khi xếp ngang, các tấm bìa có kích thước $1 \times 2$ và $1 \times 3$.
+    Vì các tấm có chiều cao bằng $1$, nên việc lát 2 hàng của bảng là hoàn toàn độc lập với nhau.
+    Gọi $a_n$ là số cách lát một hàng kích thước $1 \times n$ bằng các tấm $1 \times 2$ và $1 \times 3$. Ta có hệ thức truy hồi:
+    $a_n = a_{n-2} + a_{n-3}$ (với $n \ge 3$).
+    
+    Ta tính các giá trị ban đầu:
+    $a_0 = 1$ (Cách lát bảng trống)
+    $a_1 = 0$ (Không thể lát)
+    $a_2 = 1$ (Sử dụng một tấm $1 \times 2$)
+    $a_3 = 1$ (Sử dụng một tấm $1 \times 3$)
+    
+    Sử dụng công thức truy hồi, ta tính lần lượt:
+    - $a_4 = a_2 + a_1 = 1 + 0 = 1$
+    - $a_5 = a_3 + a_2 = 1 + 1 = 2$
+    - $a_6 = a_4 + a_3 = 1 + 1 = 2$
+    - $a_7 = a_5 + a_4 = 2 + 1 = 3$
+    - $a_8 = a_6 + a_5 = 2 + 2 = 4$
+    - $a_9 = a_7 + a_6 = 3 + 2 = 5$
+    - $a_{10} = a_8 + a_7 = 4 + 3 = 7$
+    - $a_{11} = a_9 + a_8 = 5 + 4 = 9$
+    - $a_{12} = a_{10} + a_9 = 7 + 5 = 12$
+    - $a_{13} = a_{11} + a_{10} = 9 + 7 = 16$
+    
+    Vậy mỗi hàng kích thước $1 \times 13$ có $16$ cách lát.
+    Do lát 2 hàng độc lập nên số cách lát cả bảng là: $16 \times 16 = 256$ (cách).
+    
+    **Tổng cộng:** Số cách lát thỏa mãn yêu cầu bài toán là $1 + 256 = \mathbf{257}$ cách.
+    """)
+    
+st.markdown("---")
