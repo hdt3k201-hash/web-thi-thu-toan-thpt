@@ -8643,3 +8643,179 @@ if st.session_state.get('q91_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# --- CÂU 92 ---
+st.markdown(
+    '<b style="color: blue;">Câu 92 (Chuyên Lê Khiết - Quảng Ngãi 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_76c220.png (Câu trên)
+st.markdown(r"""
+Dịp cuối tuần một nhóm 27 bạn gồm Tâm, Vy, Tuệ và 24 bạn khác cùng nhau đến rạp chiếu phim xem bộ phim "Mưa đỏ". Khi xếp tùy ý nhóm bạn này vào dãy ghế được đánh số từ 1 đến 27, mỗi bạn ngồi một ghế thì xác suất để số ghế của Tâm, Vy, Tuệ theo thứ tự lập thành cấp số cộng là $\dfrac{P}{675}$. Tìm $P$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_92 = st.text_input("Nhập kết quả $P$ (ví dụ: 5):", key="q92_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q92_check"):
+    normalized_user_answer_92 = user_answer_92.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 13
+    if normalized_user_answer_92 == "13":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_92 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q92_solution_shown' not in st.session_state:
+    st.session_state['q92_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q92_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q92_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q92_solution_shown'] = False
+
+if st.session_state.get('q92_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm số phần tử của không gian mẫu**
+    Xếp 27 bạn vào 27 ghế có $27!$ cách. 
+    Vậy $n(\Omega) = 27!$.
+
+    **Bước 2: Tìm số kết quả thuận lợi cho biến cố**
+    Gọi $x, y, z$ lần lượt là số ghế của Tâm, Vy, Tuệ ($x, y, z \in \{1, 2, \dots, 27\}$ và đôi một khác nhau).
+    Để $x, y, z$ theo thứ tự lập thành cấp số cộng thì $x + z = 2y$.
+    Điều này tương đương với việc $x + z$ phải là một số chẵn, tức là $x$ và $z$ phải cùng tính chẵn lẻ.
+    
+    Tập hợp 27 ghế từ 1 đến 27 gồm:
+    *   14 ghế mang số lẻ: $\{1, 3, 5, \dots, 27\}$.
+    *   13 ghế mang số chẵn: $\{2, 4, 6, \dots, 26\}$.
+
+    Số cách chọn cặp ghế $(x, z)$ (có tính thứ tự vì $x$ là ghế của Tâm, $z$ là ghế của Tuệ) sao cho chúng cùng tính chẵn lẻ là:
+    *   Cùng lẻ: Chọn 2 số lẻ từ 14 số lẻ có $A_{14}^2 = 14 \times 13 = 182$ cách.
+    *   Cùng chẵn: Chọn 2 số chẵn từ 13 số chẵn có $A_{13}^2 = 13 \times 12 = 156$ cách.
+    Tổng số cách chọn vị trí cho Tâm và Tuệ là: $182 + 156 = 338$ cách.
+    
+    Với mỗi cách chọn $(x, z)$, vị trí ghế $y$ của Vy được xác định duy nhất bởi công thức $y = \dfrac{x + z}{2}$.
+    Sau khi xếp xong 3 bạn Tâm, Vy, Tuệ, số cách xếp 24 bạn còn lại vào 24 ghế trống là $24!$ cách.
+    
+    Vậy số kết quả thuận lợi cho biến cố là: $n(A) = 338 \times 24!$.
+
+    **Bước 3: Tính xác suất**
+    Xác suất cần tìm là:
+    $$P(A) = \dfrac{n(A)}{n(\Omega)} = \dfrac{338 \times 24!}{27!} = \dfrac{338}{27 \times 26 \times 25} = \dfrac{13 \times 26}{27 \times 26 \times 25} = \dfrac{13}{675}$$
+    
+    Theo giả thiết xác suất bằng $\dfrac{P}{675}$, suy ra $P = 13$.
+    """)
+    
+st.markdown("---")
+
+# --- CÂU 93 ---
+st.markdown(
+    '<b style="color: blue;">Câu 93 (THPT Ninh Bình - Bạc Liêu - Ninh Bình 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_76c220.png (Câu dưới)
+st.markdown(r"""
+Cho 5 ô vuông $a, b, c, d, e$ được bố trí như hình vẽ bên. Biết rằng có tất cả $T$ cách chọn ra 5 số nguyên khác nhau từ tập hợp $S = \{1; 2; 3; \dots; 15\}$ để xếp vào 5 ô vuông $a, b, c, d, e$ sao cho mỗi ô vuông nhỏ chỉ xếp được đúng một số và các ô hàng ngang được sắp xếp theo thứ tự tăng dần hoặc giảm dần, còn các ô hàng dọc thì không được sắp xếp theo thứ tự tăng dần và cũng không giảm dần. Hãy xác định giá trị của $\dfrac{T}{1001}$.
+""")
+
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/nbbl.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/nbbl.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_93 = st.text_input("Nhập kết quả $\\dfrac{T}{1001}$:", key="q93_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q93_check"):
+    normalized_user_answer_93 = user_answer_93.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 84
+    if normalized_user_answer_93 == "84":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_93 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q93_solution_shown' not in st.session_state:
+    st.session_state['q93_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q93_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q93_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q93_solution_shown'] = False
+
+if st.session_state.get('q93_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Số cách chọn 5 số từ tập $S$**
+    Tập $S$ có 15 phần tử. Số cách chọn ra 5 số khác nhau từ $S$ là $C_{15}^5 = 3003$ cách.
+    Giả sử 5 số được chọn sắp xếp theo thứ tự tăng dần là: $x_1 < x_2 < x_3 < x_4 < x_5$.
+
+    **Bước 2: Xếp 5 số đã chọn vào các ô $a, b, c, d, e$**
+    Hàng ngang gồm 3 ô $a, b, c$ tăng dần hoặc giảm dần nên $b$ luôn là số ở giữa (trung vị) của tập 3 số $\{a, b, c\}$.
+    Do đó, $b$ không thể là số nhỏ nhất ($x_1$) hay lớn nhất ($x_5$) trong 5 số. Ta xét các trường hợp của $b$:
+
+    *   **Trường hợp 1: $b = x_2$**
+        Để $b$ là trung vị của $\{a, b, c\}$, thì 2 ô $a, c$ phải nhận 1 số nhỏ hơn $b$ (chính là $x_1$) và 1 số lớn hơn $b$ (từ $\{x_3, x_4, x_5\}$).
+        Số cách chọn tập $\{a, c\}$ là $1 \times 3 = 3$ cách.
+        Với mỗi tập $\{a, c\}$, do $a, b, c$ tăng hoặc giảm nên có $2! = 2$ cách xếp vào $a$ và $c$.
+        Hai số còn lại xếp vào $d$ và $e$. Hai số này đều lớn hơn $b$ (vì $b=x_2$ và số $< x_2$ đã dùng).
+        Để cột $b, d, e$ không tăng không giảm, thứ tự 2 số này phải là $e < d$ (nếu xếp $d < e$ thì $b < d < e$ tạo thành cột tăng dần).
+        Vậy chỉ có 1 cách xếp cho $d$ và $e$.
+        Số cách xếp trong trường hợp này: $3 \times 2 \times 1 = 6$ cách.
+
+    *   **Trường hợp 2: $b = x_3$**
+        Tập $\{a, c\}$ phải nhận 1 số nhỏ hơn $x_3$ (có 2 lựa chọn) và 1 số lớn hơn $x_3$ (có 2 lựa chọn).
+        Số cách chọn tập $\{a, c\}$ là $2 \times 2 = 4$ cách. Có 2 cách xếp vào $a, c$.
+        Hai số còn lại xếp vào $d, e$ gồm 1 số $< x_3$ và 1 số $> x_3$.
+        Vì 1 số lớn hơn $b$ và 1 số nhỏ hơn $b$, nên dù xếp thế nào cột $b, d, e$ cũng sẽ không bao giờ đồng biến hay nghịch biến (sẽ có dạng tăng rồi giảm hoặc giảm rồi tăng).
+        Do đó, cả $2! = 2$ cách xếp $d, e$ đều thỏa mãn.
+        Số cách xếp trong trường hợp này: $4 \times 2 \times 2 = 16$ cách.
+
+    *   **Trường hợp 3: $b = x_4$**
+        Đối xứng với trường hợp 1.
+        Tập $\{a, c\}$ nhận 1 số lớn hơn $x_4$ ($x_5$) và 1 số nhỏ hơn $x_4$ (từ $\{x_1, x_2, x_3\}$).
+        Số cách chọn tập $\{a, c\}$ là $1 \times 3 = 3$ cách. Có 2 cách xếp vào $a, c$.
+        Hai số còn lại xếp vào $d, e$ đều nhỏ hơn $b$. Để cột không giảm dần ($b > d > e$), ta phải xếp số nhỏ hơn vào $d$, số lớn hơn vào $e$ (tức là $d < e$). Có 1 cách xếp.
+        Số cách xếp trong trường hợp này: $3 \times 2 \times 1 = 6$ cách.
+
+    Tổng số cách xếp cho một bộ 5 số bất kỳ là: $6 + 16 + 6 = 28$ cách.
+
+    **Bước 3: Tính kết quả**
+    Tổng số cách sắp xếp thỏa mãn bài toán là: $T = 28 \times C_{15}^5 = 28 \times 3003 = 84084$.
+    
+    Giá trị cần tìm là: $\dfrac{T}{1001} = \dfrac{84084}{1001} = 84$.
+    """)
+    
+st.markdown("---")
