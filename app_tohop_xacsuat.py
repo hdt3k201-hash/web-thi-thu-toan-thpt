@@ -5352,3 +5352,104 @@ if st.session_state.get('q58_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+
+
+# --- CÂU HỎI 59 ---
+st.markdown(
+    '<b style="color: blue;">Câu 59 (Sở Quảng Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho một bảng ô vuông kích thước $2 \times 7$ như hình vẽ. Hai ô vuông gọi là kề nhau nếu có chung một cạnh. Người ta tô màu các ô vuông bởi hai màu đen và đỏ sao cho mỗi ô chỉ được tô đúng một màu. Gọi $P$ là xác suất để có đúng 3 ô được tô màu đỏ và không có hai ô đỏ nào kề nhau. Giá trị $8192P$ bằng bao nhiêu?
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/qn12026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/qn12026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_59 = st.text_input("Nhập đáp án :", key="q59_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q59_check"):
+    normalized_user_answer_59 = user_answer_59.strip()
+    
+    if normalized_user_answer_59 == "85":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_59 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại số phần tử không gian mẫu và số cách chọn 3 ô đỏ không kề nhau trên lưới $2 \times 7$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q59_solution_shown' not in st.session_state:
+    st.session_state['q59_solution_shown'] = False
+
+col1_59, col2_59 = st.columns([1, 4])
+with col1_59:
+    if st.button("Xem lời giải chi tiết", key="q59_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q59_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q59_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q59_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu**
+    
+    * Bảng ô vuông kích thước $2 \times 7$ gồm tổng cộng $2 \times 7 = 14$ ô vuông nhỏ.
+    * Mỗi ô vuông được tô bằng một trong hai màu (đỏ hoặc đen), do đó mỗi ô có $2$ cách chọn màu.
+    * Tổng số cách tô màu cho toàn bộ bảng (số phần tử không gian mẫu) là:
+        $$n(\Omega) = 2^{14} = 16384$$
+    
+    **Bước 2: Phân tích điều kiện của biến cố thuận lợi**
+    
+    * Ta cần chọn ra đúng $3$ ô được tô màu đỏ sao cho **không có hai ô đỏ nào kề nhau** (không chia sẻ chung cạnh).
+    * Hai ô kề nhau khi chúng nằm cùng một cột (khác hàng) hoặc nằm ở hai cột liên tiếp nhưng cùng một hàng.
+    * Do đó, trong mỗi cột của bảng ($2$ ô theo chiều dọc), ta chỉ có thể chọn tối đa $1$ ô màu đỏ (vì nếu chọn cả $2$ ô trong cùng một cột thì chúng kề nhau).
+    
+    **Bước 3: Đếm số kết quả thuận lợi bằng phương pháp quy hoạch động hoặc tổ hợp**
+    
+    Xét các cột từ trái sang phải ($n = 7$):
+    * Chọn ra các cột có chứa ô màu đỏ. Vì có đúng $3$ ô đỏ và mỗi cột chứa tối đa $1$ ô đỏ, nên ta phải chọn ra $3$ cột khác nhau chứa ô đỏ trong tổng số $7$ cột.
+    * Xét vị trí của $3$ cột được chọn:
+      1. **Trường hợp 3 cột không liền nhau (0 cặp kề nhau):** 
+         * Số cách chọn 3 cột không liền nhau từ 7 cột là $\binom{5}{3} = 10$ cách.
+         * Với mỗi tập 3 cột, mỗi cột có 2 cách chọn hàng (hàng trên hoặc hàng dưới) một cách độc lập: $2^3 = 8$ cách.
+         * Số cách trong trường hợp này: $10 \times 8 = 80$ cách.
+      2. **Trường hợp có đúng 1 cặp cột liền nhau:**
+         * Có 20 cách chọn tập 3 cột chứa đúng 1 cặp cột liên tiếp.
+         * Với cặp cột liên tiếp, hai ô đỏ bắt buộc phải ở hai hàng khác nhau để không kề nhau ($2$ cách chọn hàng), cột còn lại có $2$ cách chọn hàng. Tổng số cách chọn hàng là $2 \times 2 = 4$ cách.
+         * Số cách trong trường hợp này: $20 \times 4 = 80$ cách.
+      3. **Trường hợp có 2 cặp cột liền nhau (3 cột liên tiếp):**
+         * Có $5$ cách chọn 3 cột liên tiếp (ví dụ: các cột $\{1,2,3\}, \{2,3,4\}, \dots$).
+         * Với 3 cột liên tiếp, các hàng tương ứng $r_1, r_2, r_3$ phải thỏa mãn $r_1 \neq r_2$ và $r_2 \neq r_3$ ($2$ cách chọn hàng hợp lệ).
+         * Số cách trong trường hợp này: $5 \times 2 = 10$ cách.
+    
+    * Tổng số kết quả thuận lợi là:
+        $$n(A) = 80 + 80 + 10 = 170$$
+    
+    **Bước 4: Tính xác suất $P$ và giá trị $8192P$**
+    
+    * Xác suất cần tìm là:
+        $$P = \dfrac{170}{16384} = \dfrac{85}{8192}$$
+    * Giá trị của biểu thức $8192P$ là:
+        $$8192P = 8192 \times \dfrac{85}{8192} = 85$$
+    
+    **Kết luận:** Giá trị $8192P$ bằng **85**.
+    """)
+    
+st.markdown("---")
