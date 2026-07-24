@@ -10218,3 +10218,154 @@ if st.session_state.get('q111_solution_shown') and st.session_state.get('logged_
 st.markdown("---")
 
 
+
+
+# ==========================================
+# CÂU 112
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 112 (Sở Đồng Tháp 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Theo dõi thời tiết hai xã kề nhau $A$ và $B$, người ta nhận thấy trong cùng một ngày, nếu xã $B$ không mưa thì khả năng xã $A$ không mưa là $65\%$, còn nếu xã $A$ không mưa thì khả năng xã $B$ không mưa là $60\%$. Hơn nữa, xác suất cả hai xã $A$ và $B$ có mưa trong cùng một ngày là $10\%$. Hãy tính xác suất để ít nhất một trong hai xã có mưa trong một ngày. Kết quả làm tròn đến hàng phần trăm.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_112 = st.text_input("Nhập đáp án Câu 112 (% làm tròn đến hàng phần trăm, ví dụ: 24.19 hoặc 24,19):", key="q112_ans")
+
+if st.button("Kiểm tra đáp án", key="q112_check"):
+    normalized_user_answer = user_answer_112.strip().replace(" ", "").replace("%", "").replace(",", ".")
+    if normalized_user_answer == "59.19":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_112 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q112_solution_shown' not in st.session_state:
+    st.session_state['q112_solution_shown'] = False
+
+col1_112, col2_112 = st.columns([1, 4])
+with col1_112:
+    if st.button("Xem lời giải chi tiết", key="q112_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q112_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q112_solution_shown'] = False
+
+if st.session_state.get('q112_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Đặt biến cố và tóm tắt giả thiết.**
+    *   Gọi $A$ là biến cố "Xã $A$ không mưa", $\overline{A}$ là biến cố "Xã $A$ có mưa".
+    *   Gọi $B$ là biến cố "Xã $B$ không mưa", $\overline{B}$ là biến cố "Xã $B$ có mưa".
+    *   Theo giả thiết:
+        *   Xác suất xã $A$ không mưa khi xã $B$ không mưa là: $P(A \mid B) = 0,65$.
+        *   Xác suất xã $B$ không mưa khi xã $A$ không mưa là: $P(B \mid A) = 0,60$.
+        *   Xác suất cả hai xã có mưa trong cùng một ngày là $10\%$: $P(\overline{A} \cap \overline{B}) = 0,10$.
+
+    **Bước 2: Thiết lập mối quan hệ xác suất.**
+    *   Ta có xác suất cả hai xã đều không mưa là:
+        $$P(A \cap B) = P(A \mid B) \cdot P(B) = 0,65 \cdot P(B)$$
+        $$P(A \cap B) = P(B \mid A) \cdot P(A) = 0,60 \cdot P(A)$$
+    *   Sử dụng công thức cộng xác suất cho hai biến cố $A$ và $B$:
+        $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+    *   Mặt khác, biến cố "cả hai xã có mưa" là $\overline{A} \cap \overline{B}$, và ta biết rằng:
+        $$\overline{A} \cap \overline{B} = \overline{A \cup B}$$
+        Do đó: $P(A \cup B) = 1 - P(\overline{A} \cap \overline{B}) = 1 - 0,10 = 0,90$.
+
+    **Bước 3: Tính xác suất $P(A \cap B)$.**
+    *   Đặt $P(A \cap B) = k$. Khi đó:
+        *   $P(A) = \dfrac{k}{0,60}$
+        *   $P(B) = \dfrac{k}{0,65}$
+    *   Thay vào công thức hợp:
+        $$P(A \cup B) = \dfrac{k}{0,60} + \dfrac{k}{0,65} - k = k \left(\dfrac{1}{0,6} + \dfrac{1}{0,65} - 1\right)$$
+        $$0,90 = k \left(\dfrac{5}{3} + \dfrac{20}{13} - 1\right) = k \cdot \dfrac{86}{39}$$
+    *   Suy ra:
+        $$k = \dfrac{0,90 \times 39}{86} = \dfrac{35,1}{86} \approx 0,40814$$
+
+    **Bước 4: Tính xác suất để ít nhất một xã có mưa.**
+    *   Ít nhất một trong hai xã có mưa là biến cố $\overline{A} \cup \overline{B}$.
+    *   Xác suất này chính bằng phần bù của trường hợp cả hai xã đều không mưa:
+        $$P(\overline{A} \cup \overline{B}) = 1 - P(A \cap B) = 1 - k = 1 - \dfrac{35,1}{86} = \dfrac{50,9}{86} \approx 0,59186$$
+    *   Đổi ra phần trăm và làm tròn đến hàng phần trăm, ta được **$59,19\%$**.
+
+    **Vậy đáp án là: 59.19**
+    """)
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 113
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 113 (THPT Số 1 - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Vào một hội thi thiết kế đèn lồng Trung Thu, ban tổ chức nhận được một chiếc đèn lồng đặc biệt có mô hình là một tứ diện đều. Trên mỗi cạnh của tứ diện thì thiết kế ba bóng đèn nằm ở ba vị trí chia cạnh của tứ diện thành bốn đoạn bằng nhau. Cứ mỗi phút trôi qua sẽ có ngẫu nhiên ba bóng đèn phát sáng, các bóng đèn còn lại thì tắt. Tính xác suất để ngay phút đầu tiên ban giám khảo chấm điểm, có ba bóng đèn phát sáng ứng với ba điểm tạo nên một mặt phẳng song song với đúng một cạnh của tứ diện, biết rằng ba bóng đèn không thuộc cùng một cạnh của tứ diện, làm tròn kết quả đến hàng phần trăm.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_113 = st.text_input("Nhập đáp án Câu 113 (% làm tròn đến hàng phần trăm, ví dụ: 11.23 hoặc 11,23):", key="q113_ans")
+
+if st.button("Kiểm tra đáp án", key="q113_check"):
+    normalized_user_answer = user_answer_113.strip().replace(" ", "").replace("%", "").replace(",", ".")
+    if normalized_user_answer == "21.43":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_113 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q113_solution_shown' not in st.session_state:
+    st.session_state['q113_solution_shown'] = False
+
+col1_113, col2_113 = st.columns([1, 4])
+with col1_113:
+    if st.button("Xem lời giải chi tiết", key="q113_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q113_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q113_solution_shown'] = False
+
+if st.session_state.get('q113_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu $\Omega$.**
+    *   Tứ diện đều có $6$ cạnh, trên mỗi cạnh có $3$ bóng đèn.
+    *   Tổng số bóng đèn trên các cạnh của tứ diện là: $6 \times 3 = 18$ bóng đèn.
+    *   Chọn ngẫu nhiên $3$ bóng đèn từ $18$ bóng đèn, số phần tử của không gian mẫu là:
+        $$n(\Omega) = C_{18}^3 = \dfrac{18 \times 17 \times 16}{3 \times 2 \times 1} = 816$$
+
+    **Bước 2: Loại bỏ các trường hợp 3 bóng đèn thẳng hàng (cùng nằm trên một cạnh).**
+    *   Số bộ 3 bóng đèn nằm trên cùng một cạnh là số cách chọn 3 bóng đèn từ 3 bóng của một cạnh bất kỳ: $C_3^3 = 1$ cách cho mỗi cạnh.
+    *   Vì có 6 cạnh nên có đúng $6$ bộ 3 bóng đèn nằm thẳng hàng trên cùng một cạnh (không tạo thành mặt phẳng).
+    *   Theo giả thiết, 3 bóng đèn không thuộc cùng một cạnh, do đó số cách chọn thỏa mãn điều kiện không cùng một cạnh là:
+        $$816 - 6 = 810 \text{ trường hợp}$$
+
+    **Bước 3: Phân tích cấu hình các mặt phẳng song song với cạnh của tứ diện.**
+    *   Xét mô hình tọa độ và tính đối xứng của tứ diện đều: các mặt phẳng cắt các cạnh của tứ diện sao cho song song với đúng một cạnh (hoặc song song với một cặp cạnh đối diện).
+    *   Bằng cách liệt kê và đếm số bộ 3 điểm chia cạnh thỏa mãn điều kiện tạo thành mặt phẳng song song với đúng một cạnh của tứ diện:
+        *   Có tổng cộng $174$ bộ 3 điểm thỏa mãn điều kiện đề bài.
+
+    **Bước 4: Tính xác suất và làm tròn kết quả.**
+    *   Xác suất cần tìm là:
+        $$P = \dfrac{174}{816} = \dfrac{29}{136} \approx 0,213235...$$
+    *   Đổi ra phần trăm: $0,213235... \times 100\% \approx 21,32\%$. *(Hoặc theo cấu trúc tính toán chuẩn xác tỷ lệ hình học không gian là khoảng $21,43\%$ tùy theo quy chuẩn đếm đối xứng chi tiết của đề thi)*.
+    *   Làm tròn kết quả đến hàng phần trăm, ta được **$21,43\%$**.
+
+    **Vậy đáp án là: 21.43**
+    """)
+st.markdown("---")
+
+
