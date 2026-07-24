@@ -310,3 +310,100 @@ if st.session_state.get('q3_solution_shown') and st.session_state.get('logged_in
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 4: ỨNG DỤNG TÍCH PHÂN TÍNH THỂ TÍCH ---
+st.markdown(
+    '<b style="color: blue;">Câu 4 (THPT Thường Xuân 2 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Ông A dự định xây “tường cong” trong sân trượt patin là một khối bê tông có chiều cao từ mặt đất lên là 3,5 m. Giao của mặt tường cong và mặt đất là đoạn thẳng $AB = 4\text{ m}$. Thiết diện của khối tường cong cắt bởi mặt phẳng vuông góc với $AB$ tại $A$ là một hình tam giác vuông cong $ACE$ với $AC = 4\text{ m}$, $CE = 3,5\text{ m}$ và cạnh cong $AE$ nằm trên một đường parabol có trục đối xứng vuông góc với mặt đất. Tại vị trí $M$ là trung điểm của $AC$ thì tường cong có độ cao 1 m (xem hình minh họa bên). 
+
+Tính thể tích bê tông cần sử dụng để tạo nên khối tường cong đó.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập thể tích khối bê tông (ví dụ: 12.5):", key="q4_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Sử dụng đúng tên file ảnh bạn đã cung cấp
+        st.image("images/image_d7113c.PNG", width=600)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_d7113c.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q4_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 20
+    if normalized_user_answer == "20":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Khối tường cong này thực chất là một hình lăng trụ có đáy là tam giác vuông cong ACE. Hãy gắn hệ trục tọa độ để tìm phương trình parabol và dùng tích phân tính diện tích mặt đáy nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q4_solution_shown' not in st.session_state:
+    st.session_state['q4_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q4_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q4_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q4_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q4_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích hình học của khối tường cong**
+    
+    * Khối bê tông có dạng một hình lăng trụ (tổng quát) với đường sinh vuông góc với mặt đáy. 
+    * Mặt đáy ở đây chính là thiết diện tam giác vuông cong $ACE$. Chiều cao (hoặc chiều dài) của khối lăng trụ này là đoạn thẳng $AB = 4\text{ m}$.
+    * Thể tích khối tường cong được tính bằng công thức: $V = S_{ACE} \cdot AB$.
+    
+    **Bước 2: Gắn hệ trục tọa độ và tìm phương trình parabol $AE$**
+    
+    * Chọn hệ trục tọa độ $Oxy$ sao cho gốc tọa độ $O$ trùng với điểm $A(0; 0)$. Tia $Ox$ chứa đoạn thẳng $AC$, tia $Oy$ hướng thẳng đứng lên trên.
+    * Khi đó, các điểm có tọa độ như sau:
+        * $A(0; 0)$
+        * Vì $AC = 4\text{ m}$ nên $C(4; 0)$.
+        * $CE \perp AC$ và $CE = 3,5\text{ m}$ nên $E(4; 3,5)$.
+        * $M$ là trung điểm $AC$ nên $M(2; 0)$. Tại $M$ tường cao $1\text{ m}$, tức là đồ thị đi qua điểm $N(2; 1)$.
+    * Cạnh cong $AE$ nằm trên parabol có trục đối xứng vuông góc với mặt đất (tức là song song hoặc trùng với trục $Oy$), nên phương trình có dạng: $y = ax^2 + bx + c \quad (a \neq 0)$.
+    * Thay tọa độ các điểm $A, N, E$ vào phương trình, ta có hệ:
+        $$\begin{cases} c = 0 \\ a(2)^2 + b(2) + c = 1 \\ a(4)^2 + b(4) + c = 3,5 \end{cases} \Leftrightarrow \begin{cases} c = 0 \\ 4a + 2b = 1 \\ 16a + 4b = 3,5 \end{cases}$$
+    * Giải hệ phương trình trên:
+        Nhân phương trình thứ hai với $2$: $8a + 4b = 2$. Lấy phương trình thứ ba trừ đi phương trình này: 
+        $16a - 8a = 3,5 - 2 \Rightarrow 8a = 1,5 \Rightarrow a = \dfrac{1,5}{8} = \dfrac{3}{16}$.
+        Từ đó, $2b = 1 - 4 \cdot \dfrac{3}{16} = 1 - \dfrac{3}{4} = \dfrac{1}{4} \Rightarrow b = \dfrac{1}{8}$.
+    * Vậy phương trình của parabol là: $y = \dfrac{3}{16}x^2 + \dfrac{1}{8}x$.
+    
+    **Bước 3: Tính diện tích tam giác vuông cong $ACE$**
+    
+    * Diện tích mặt cong $S_{ACE}$ chính là diện tích hình phẳng giới hạn bởi đường parabol $y = \dfrac{3}{16}x^2 + \dfrac{1}{8}x$, trục hoành $y = 0$ và hai đường thẳng $x = 0, x = 4$.
+    * Áp dụng công thức tích phân:
+        $$S_{ACE} = \int_{0}^{4} \left( \dfrac{3}{16}x^2 + \dfrac{1}{8}x \right) \text{d}x = \left[ \dfrac{3}{16} \cdot \dfrac{x^3}{3} + \dfrac{1}{8} \cdot \dfrac{x^2}{2} \right]_{0}^{4} = \left[ \dfrac{x^3}{16} + \dfrac{x^2}{16} \right]_{0}^{4}$$
+        $$S_{ACE} = \dfrac{4^3}{16} + \dfrac{4^2}{16} - 0 = \dfrac{64}{16} + \dfrac{16}{16} = 4 + 1 = 5 \text{ (m}^2\text{)}$$
+    
+    **Bước 4: Tính thể tích khối bê tông**
+    
+    * Thể tích của khối bê tông là:
+        $$V = S_{ACE} \cdot AB = 5 \cdot 4 = 20 \text{ (m}^3\text{)}$$
+        
+    **Kết luận:** Thể tích bê tông cần sử dụng để tạo nên khối tường cong là **20 m³**.
+    """)
+
+st.markdown("---")
