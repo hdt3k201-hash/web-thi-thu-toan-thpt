@@ -5075,3 +5075,115 @@ if st.session_state.get('q55_solution_shown') and st.session_state.get('logged_i
     
 st.markdown("---")
 
+
+
+
+# ==========================================
+# CÂU 56 (Từ ảnh - Sở Sơn La 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 56 (Sở Sơn La 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho hình vẽ bên gồm 4 tam giác. Người ta chọn 3 số phân biệt từ tập hợp $S = \{1; 2; 3; \dots; 26\}$ để xếp vào 3 tam giác ở 3 góc. Sau đó tính tổng bình phương của 3 số đó rồi ghi kết quả vào tam giác còn lại ở giữa. Hỏi có bao nhiêu cách xếp sao cho số ghi ở giữa là một số chia hết cho 5?
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/sl22026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/sl22026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_56 = st.text_input("Nhập kết quả số cách xếp cho Câu 56:", key="q56_ans")
+
+if st.button("Kiểm tra đáp án Câu 56", key="q56_check"):
+    normalized_user_answer_56 = user_answer_56.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 3360
+    if normalized_user_answer_56 == "3360":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 56 đã được mở khóa.")
+    elif user_answer_56 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q56_solution_shown' not in st.session_state:
+    st.session_state['q56_solution_shown'] = False
+
+col1_56, col2_56 = st.columns([1, 4])
+with col1_56:
+    if st.button("Xem lời giải chi tiết Câu 56", key="q56_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q56_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q56_solution_shown'] = False
+
+if st.session_state.get('q56_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 56:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích yêu cầu bài toán**
+    
+    *   Tập hợp cho trước: $S = \{1, 2, 3, \dots, 26\}$ gồm 26 số nguyên dương.
+    *   Chọn 3 số phân biệt từ $S$ và xếp vào 3 tam giác ở 3 góc. Do 3 góc là các vị trí phân biệt, số cách chọn và xếp là số các bộ ba số thứ tự $(a, b, c)$ phân biệt lấy từ $S$.
+    *   Số ghi ở ô giữa là tổng bình phương của 3 số ở góc: $T = a^2 + b^2 + c^2$.
+    *   Yêu cầu $T$ phải **chia hết cho 5**, nghĩa là:
+        $$a^2 + b^2 + c^2 \equiv 0 \pmod 5$$
+    
+    **Bước 2: Phân loại số dư của bình phương các số khi chia cho 5**
+    
+    Xét số dư của một số nguyên $x$ khi chia cho 5 ($x \pmod 5 \in \{0, 1, 2, 3, 4\}$):
+    *   Nếu $x \equiv 0 \pmod 5 \implies x^2 \equiv 0 \pmod 5$.
+    *   Nếu $x \equiv \pm 1 \pmod 5 \implies x^2 \equiv 1 \pmod 5$.
+    *   Nếu $x \equiv \pm 2 \pmod 5 \implies x^2 \equiv 4 \pmod 5$.
+    
+    Do đó, bình phương của mọi số nguyên khi chia cho 5 chỉ có thể có số dư thuộc tập $\{0, 1, 4\}$.
+    
+    Ta phân chia 26 phần tử của tập $S$ thành 3 nhóm dựa trên số dư bình phương modulo 5:
+    1.  **Nhóm $R_0$** (các số có $x^2 \equiv 0 \pmod 5$, tức là $x \vdots 5$):
+        $$\{5, 10, 15, 20, 25\} \implies |R_0| = 5 \text{ phần tử}$$
+    2.  **Nhóm $R_1$** (các số có $x^2 \equiv 1 \pmod 5$, gồm các số $x \equiv 1$ hoặc $4 \pmod 5$):
+        $$\{1, 4, 6, 9, 11, 14, 16, 19, 21, 24, 26\} \implies |R_1| = 11 \text{ phần tử}$$
+    3.  **Nhóm $R_4$** (các số có $x^2 \equiv 4 \pmod 5$, gồm các số $x \equiv 2$ hoặc $3 \pmod 5$):
+        $$\{2, 3, 7, 8, 12, 13, 17, 18, 22, 23\} \implies |R_4| = 10 \text{ phần tử}$$
+    
+    **Bước 3: Xác định các bộ số dư thỏa mãn tổng chia hết cho 5**
+    
+    Gọi $r_a, r_b, r_c \in \{0, 1, 4\}$ lần lượt là số dư của $a^2, b^2, c^2$ khi chia cho 5. 
+    Ta cần:
+    $$r_a + r_b + r_c \equiv 0 \pmod 5$$
+    
+    Vì $r_i \in \{0, 1, 4\}$, tổng $r_a + r_b + r_c$ chỉ có thể nhận các giá trị chia hết cho 5 là **0** hoặc **5** (do giá trị lớn nhất là $4+4+4=12$).
+    Các trường hợp bộ số dư $(r_a, r_b, r_c)$ thỏa mãn là:
+    *   **Trường hợp 1:** $(0, 0, 0)$ $\implies$ Tổng bằng $0$ (chia hết cho 5).
+    *   **Trường hợp 2:** Các hoán vị của bộ $(0, 1, 4)$ $\implies$ Tổng bằng $0 + 1 + 4 = 5$ (chia hết cho 5).
+    
+    **Bước 4: Tính số cách chọn cho từng trường hợp**
+    
+    *   **Trường hợp 1:** Cả 3 số $a, b, c$ đều thuộc nhóm $R_0$.
+        *   Số cách chọn 3 số phân biệt từ nhóm $R_0$ có 5 phần tử và sắp xếp vào 3 vị trí:
+            $$A_5^3 = 5 \times 4 \times 3 = 60 \text{ (cách)}$$
+            
+    *   **Trường hợp 2:** Ba số $a, b, c$ lấy từ 3 nhóm khác nhau $R_0, R_1, R_4$.
+        *   Số cách chọn 1 số từ $R_0$ (5 cách), 1 số từ $R_1$ (11 cách), và 1 số từ $R_4$ (10 cách).
+        *   Do 3 vị trí ở góc phân biệt và các nhóm là rời nhau, ta nhân với số hoán vị của 3 vị trí ($3!$):
+            $$3! \times |R_0| \times |R_1| \times |R_4| = 6 \times 5 \times 11 \times 10 = 3300 \text{ (cách)}$$
+    
+    **Bước 5: Tổng kết số cách xếp**
+    
+    Tổng số cách xếp thỏa mãn yêu cầu bài toán là:
+    $$N = 60 + 3300 = 3360 \text{ (cách)}$$
+    """)
+
+st.markdown("---")
+
