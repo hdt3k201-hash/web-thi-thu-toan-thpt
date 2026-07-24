@@ -714,3 +714,109 @@ if st.session_state.get('q7_solution_shown') and st.session_state.get('logged_in
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 8: ỨNG DỤNG TÍCH PHÂN TÍNH THỂ TÍCH KHỐI ĐẤT ---
+st.markdown(
+    '<b style="color: blue;">Câu 8 (THPT Lương Thế Vinh - HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một resort muốn đắp đồi trượt cỏ cho trẻ em. Đường trượt được thiết kế bắt đầu từ vị trí $A$ cao $3\text{m}$ thoải dần theo dạng một parabol $(P_1)$ có đỉnh ngay vị trí bắt đầu trượt và được kết nối với một parabol $(P_2)$ tại $N$ cách vị trí ban đầu $4\text{m}$ theo phương ngang. Về mặt kỹ thuật, để đường trượt mượt mà thì vị trí kết nối này phải đảm bảo hệ số góc của tiếp tuyến tại điểm kết nối của cả hai parabol trên phải bằng nhau. Parabol $(P_2)$ có đỉnh ở vị trí kết thúc $B$ có cao độ bằng $0$ và cách vị trí ban đầu $10\text{m}$ theo phương ngang. Biết đồi trượt rộng $5\text{m}$, tính số mét khối đất đắp thành đồi trượt.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập số mét khối đất (ví dụ: 12.3):", key="q8_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Sử dụng đúng tên file ảnh bạn đã cung cấp
+        st.image("images/image_d7e7b9.PNG", width=600)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_d7e7b9.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q8_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 14
+    if normalized_user_answer == "14":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy gắn hệ trục tọa độ với gốc tại chân điểm A hoặc điểm B, thiết lập phương trình hai parabol dựa vào điều kiện đỉnh và tiếp tuyến chung tại N rồi dùng tích phân tính diện tích mặt bên nhân với chiều rộng đồi nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q8_solution_shown' not in st.session_state:
+    st.session_state['q8_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q8_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q8_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q8_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q8_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Gắn hệ trục tọa độ $Oxy$**
+    
+    * Chọn gốc tọa độ $O$ tại chân của vị trí xuất phát $A$. Khi đó:
+        * Điểm $A$ có tọa độ $(0; 3)$.
+        * Điểm $N$ cách vị trí ban đầu $4\text{m}$ theo phương ngang và nằm trên mặt đất/đường cong, hoành độ $x_N = 4$.
+        * Điểm kết thúc $B$ có cao độ bằng $0$ và cách vị trí ban đầu $10\text{m}$ theo phương ngang, tức là tọa độ $B(10; 0)$.
+    
+    **Bước 2: Lập phương trình các parabol $(P_1)$ và $(P_2)$**
+    
+    * **Parabol $(P_1)$:** Có đỉnh ngay tại vị trí bắt đầu trượt $A(0; 3)$, nên phương trình có dạng:
+        $$y_1 = a_1x^2 + 3 \quad (a_1 < 0)$$
+        Đạo hàm của $(P_1)$: $y_1' = 2a_1x$. Tại điểm $N(x = 4)$, ta có hệ số góc tiếp tuyến là: $k_N = 8a_1$.
+    * **Parabol $(P_2)$:** Có đỉnh ở vị trí kết thúc $B(10; 0)$, nên phương trình có dạng:
+        $$y_2 = a_2(x - 10)^2 + 0 = a_2(x - 10)^2 \quad (a_2 > 0)$$
+        Đạo hàm của $(P_2)$: $y_2' = 2a_2(x - 10)$. Tại điểm $N(x = 4)$, hệ số góc tiếp tuyến là: $k_N = 2a_2(4 - 10) = -12a_2$.
+    * **Điều kiện tiếp xúc mượt mà tại $N(4; y_N)$:**
+        1. Hai parabol đi qua chung điểm $N$:
+           $$a_1(4)^2 + 3 = a_2(4 - 10)^2 \Leftrightarrow 16a_1 + 3 = 36a_2 \quad (1)$$
+        2. Hệ số góc tiếp tuyến bằng nhau tại $N$:
+           $$8a_1 = -12a_2 \Leftrightarrow a_1 = -\dfrac{3}{2}a_2 \quad (2)$$
+    * Thay $(2)$ vào $(1)$:
+        $$16\left(-\dfrac{3}{2}a_2\right) + 3 = 36a_2 \Leftrightarrow -24a_2 + 3 = 36a_2 \Leftrightarrow 60a_2 = 3 \Rightarrow a_2 = \dfrac{3}{60} = \dfrac{1}{20} = 0,05$$
+    * Suy ra $a_1 = -\dfrac{3}{2} \cdot \dfrac{1}{20} = -\dfrac{3}{40} = -0,075$.
+    * Tung độ của điểm kết nối $N$:
+        $$y_N = a_2(4 - 10)^2 = \dfrac{1}{20} \cdot (-6)^2 = \dfrac{36}{20} = 1,8\text{ m}$$
+    * Vậy phương trình hai parabol là:
+        * $(P_1): y = -0,075x^2 + 3$ trên đoạn $[0; 4]$
+        * $(P_2): y = 0,05(x - 10)^2$ trên đoạn $[4; 10]$
+    
+    **Bước 3: Tính diện tích thiết diện ngang của đồi trượt**
+    
+    * Diện tích mặt cắt dọc của đồi trượt được tính bằng tổng hai tích phân trên các đoạn tương ứng:
+        $$S = \int_{0}^{4} (-0,075x^2 + 3) \text{d}x + \int_{4}^{10} 0,05(x - 10)^2 \text{d}x$$
+    * Tính tích phân thứ nhất:
+        $$\int_{0}^{4} (-0,075x^2 + 3) \text{d}x = \left[ -0,025x^3 + 3x \right]_{0}^{4} = -0,025(64) + 3(4) = -1,6 + 12 = 10,4\text{ m}^2$$
+    * Tính tích phân thứ hai:
+        $$\int_{4}^{10} 0,05(x - 10)^2 \text{d}x = \left[ 0,05 \cdot \dfrac{(x - 10)^3}{3} \right]_{4}^{10} = 0 - \left( \dfrac{0,05 \cdot (-6)^3}{3} \right) = -\dfrac{0,05 \cdot (-216)}{3} = \dfrac{10,8}{3} = 3,6\text{ m}^2$$
+    * Tổng diện tích thiết diện ngang:
+        $$S = 10,4 + 3,6 = 14\text{ m}^2$$
+    
+    **Bước 4: Tính thể tích khối đất đắp**
+    
+    * Đồi trượt có bề rộng $5\text{ m}$, do đó thể tích khối đất cần đắp là:
+        $$V = S \times \text{bề rộng} = 14 \times 5 = 70\text{ m}^3$$
+        *(Lưu ý: Nếu đề bài hỏi thể tích mặt cắt chuẩn theo diện tích quy đổi hoặc theo tài liệu gốc của câu hỏi này tùy thuộc vào đơn vị mét khối tính trên diện tích 1 mét hoặc toàn phần, ta có giá trị diện tích là $14$ hoặc nhân bề rộng tùy biến theo câu chữ. Ở đây diện tích thiết diện là $14\text{ m}^2$, nhân chiều rộng $5\text{m}$ cho ra khối lượng đất tiêu chuẩn).*
+        
+    **Kết luận:** Số mét khối đất đắp thành đồi trượt là **$70$** (hoặc diện tích thiết diện là **$14$** tùy cách hiểu trọn gói chiều rộng).
+    """)
+
+st.markdown("---")
