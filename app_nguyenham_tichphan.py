@@ -587,3 +587,130 @@ if st.session_state.get('q6_solution_shown') and st.session_state.get('logged_in
     """)
 
 st.markdown("---")
+
+
+# --- CÂU HỎI 7: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH HÌNH PHẲNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 7 (THPT Yên Định 1 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Hình 1 là một tác phẩm dự thi của nhà thiết kế sân khấu trong một cuộc thi thiết kế sân khấu ngoài trời tổ chức tại một quảng trường. Khi mở rộng sân khấu trung tâm, ta được Hình 2. Quá trình thiết kế sân khấu trung tâm được mô tả như sau:
+
+Bước 1. Vẽ hình vuông $ABCD$ có độ dài cạnh bằng $2$ và lấy trung điểm của bốn cạnh lần lượt là $E, F, G, H$.
+
+Bước 2. Vẽ đồ thị của các hàm bậc hai đi qua ba điểm $B, C, H$ và hàm bậc hai đi qua ba điểm $F, D, A$.
+
+Bước 3. Tương tự như Bước 2, vẽ đồ thị của các hàm bậc hai đi qua ba điểm $A, B, G$ và ba điểm $C, D, E$.
+
+Biết rằng: Diện tích phần tô đen trong Hình 2 được cho bởi công thức: $\dfrac{p\sqrt{2} + q}{3}$
+
+Hãy tính giá trị của $p - 3q$. (Với $p, q$ là các số nguyên.)
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của p - 3q (ví dụ: 12):", key="q7_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Sử dụng đúng tên file ảnh bạn đã cung cấp
+        st.image("images/image_d77af3.PNG", width=600)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_d77af3.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q7_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 29
+    if normalized_user_answer == "29":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Gắn hệ trục tọa độ với gốc O tại tâm hình vuông. Tìm phương trình 4 parabol, do tính đối xứng, bạn chỉ cần tính diện tích ở góc phần tư thứ nhất rồi nhân 4 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q7_solution_shown' not in st.session_state:
+    st.session_state['q7_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q7_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q7_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q7_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q7_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Gắn hệ trục tọa độ và tìm tọa độ các điểm**
+    
+    * Chọn hệ trục tọa độ $Oxy$ với gốc tọa độ $O(0;0)$ trùng với tâm của hình vuông $ABCD$.
+    * Do hình vuông có cạnh bằng $2$, ta có tọa độ các đỉnh: 
+      $A(-1; 1)$, $D(1; 1)$, $C(1; -1)$, $B(-1; -1)$.
+    * Tọa độ trung điểm các cạnh: 
+      $H(0; 1)$ (trung điểm AD), $F(0; -1)$ (trung điểm BC), 
+      $G(1; 0)$ (trung điểm CD), $E(-1; 0)$ (trung điểm AB).
+    
+    **Bước 2: Viết phương trình các đường parabol**
+    
+    * **$(P_1)$ đi qua $B, C, H$**: Có đỉnh là $H(0; 1)$, bề lõm hướng xuống $\Rightarrow y = ax^2 + 1$. 
+      Thay tọa độ $C(1; -1)$ vào ta được $-1 = a(1)^2 + 1 \Rightarrow a = -2$. Vậy $(P_1): y = -2x^2 + 1$.
+    * **$(P_2)$ đi qua $F, D, A$**: Có đỉnh là $F(0; -1)$, bề lõm hướng lên $\Rightarrow y = ax^2 - 1$. 
+      Thay tọa độ $D(1; 1)$ vào ta được $1 = a(1)^2 - 1 \Rightarrow a = 2$. Vậy $(P_2): y = 2x^2 - 1$.
+    * **$(P_3)$ đi qua $A, B, G$**: Có đỉnh là $G(1; 0)$, bề lõm hướng sang trái $\Rightarrow x = ay^2 + 1$. 
+      Thay tọa độ $A(-1; 1)$ vào ta được $-1 = a(1)^2 + 1 \Rightarrow a = -2$. Vậy $(P_3): x = -2y^2 + 1$.
+    * **$(P_4)$ đi qua $C, D, E$**: Có đỉnh là $E(-1; 0)$, bề lõm hướng sang phải $\Rightarrow x = ay^2 - 1$. 
+      Thay tọa độ $D(1; 1)$ vào ta được $1 = a(1)^2 - 1 \Rightarrow a = 2$. Vậy $(P_4): x = 2y^2 - 1$.
+      
+    **Bước 3: Xác định diện tích phần tô đen**
+    
+    * Phần tô đen là miền trong cùng giới hạn bởi 4 parabol này, tức là tập hợp các điểm $(x; y)$ thỏa mãn:
+      $$\begin{cases} 2x^2 - 1 \le y \le -2x^2 + 1 \\ 2y^2 - 1 \le x \le -2y^2 + 1 \end{cases}$$
+    * Do tính đối xứng qua cả $Ox$, $Oy$ và hai đường chéo $y = x, y = -x$, ta chỉ cần tính diện tích $S_1$ ở góc phần tư thứ nhất ($x \ge 0, y \ge 0$) rồi nhân 4.
+    * Trong góc phần tư thứ nhất, biên phía trên của hình được tạo bởi đoạn cắt nhau của $(P_1)$ và $(P_3)$. 
+      Ta tìm giao điểm của $(P_1)$ và $(P_3)$ trong miền này:
+      $$\begin{cases} y = -2x^2 + 1 \\ x = -2y^2 + 1 \end{cases}$$
+      Lấy phương trình trên trừ phương trình dưới vế theo vế, ta được $(y - x) = 2(y^2 - x^2) \Leftrightarrow (y - x)[1 + 2(y + x)] = 0$.
+      Vì $x \ge 0, y \ge 0$ nên $1 + 2(y + x) > 0$, suy ra $x = y$.
+      Thế $y = x$ vào phương trình $(P_1)$: $x = -2x^2 + 1 \Leftrightarrow 2x^2 + x - 1 = 0$.
+      Giải ra ta được $x = \dfrac{1}{2}$ (nhận) và $x = -1$ (loại). Vậy giao điểm là $M\left(\dfrac{1}{2}; \dfrac{1}{2}\right)$.
+      
+    * Biên của phần diện tích ở góc phần tư thứ nhất $S_1$ sẽ là đường cong nằm bên trong nhất, gồm 2 đoạn:
+      + Đoạn 1: Từ $x = 0$ đến $x = \dfrac{1}{2}$, giới hạn bởi $(P_3): x = -2y^2 + 1 \Rightarrow y = \sqrt{\dfrac{1-x}{2}}$
+      + Đoạn 2: Từ $x = \dfrac{1}{2}$ đến $x = \dfrac{1}{\sqrt{2}}$, giới hạn bởi $(P_1): y = -2x^2 + 1$
+      
+    **Bước 4: Tính tích phân**
+    
+    $$S_1 = \int_{0}^{1/2} \sqrt{\dfrac{1-x}{2}} \text{d}x + \int_{1/2}^{1/\sqrt{2}} (1 - 2x^2) \text{d}x = I_1 + I_2$$
+    
+    * Tính $I_1 = \dfrac{1}{\sqrt{2}} \int_{0}^{1/2} (1-x)^{1/2} \text{d}x = \dfrac{1}{\sqrt{2}} \left[ -\dfrac{2}{3}(1-x)^{3/2} \right]_{0}^{1/2} = \dfrac{-\sqrt{2}}{3} \left( \dfrac{1}{2\sqrt{2}} - 1 \right) = \dfrac{\sqrt{2}}{3} - \dfrac{1}{6}$$
+    * Tính $I_2 = \int_{1/2}^{1/\sqrt{2}} (1 - 2x^2) \text{d}x = \left[ x - \dfrac{2}{3}x^3 \right]_{1/2}^{1/\sqrt{2}} = \left( \dfrac{1}{\sqrt{2}} - \dfrac{2}{3} \cdot \dfrac{1}{2\sqrt{2}} \right) - \left( \dfrac{1}{2} - \dfrac{2}{3} \cdot \dfrac{1}{8} \right)$$
+      $$I_2 = \left( \dfrac{1}{\sqrt{2}} - \dfrac{1}{3\sqrt{2}} \right) - \left( \dfrac{1}{2} - \dfrac{1}{12} \right) = \dfrac{2}{3\sqrt{2}} - \dfrac{5}{12} = \dfrac{\sqrt{2}}{3} - \dfrac{5}{12}$$
+    
+    * Tổng diện tích ở góc phần tư thứ nhất: 
+      $$S_1 = \left( \dfrac{\sqrt{2}}{3} - \dfrac{1}{6} \right) + \left( \dfrac{\sqrt{2}}{3} - \dfrac{5}{12} \right) = \dfrac{2\sqrt{2}}{3} - \dfrac{7}{12}$$
+    
+    * Tổng diện tích phần tô đen của sân khấu:
+      $$S = 4S_1 = 4 \left( \dfrac{2\sqrt{2}}{3} - \dfrac{7}{12} \right) = \dfrac{8\sqrt{2}}{3} - \dfrac{7}{3} = \dfrac{8\sqrt{2} - 7}{3}$$
+      
+    **Bước 5: Đối chiếu yêu cầu đề bài**
+    
+    * So sánh với công thức $S = \dfrac{p\sqrt{2} + q}{3}$, ta đồng nhất được $p = 8$ và $q = -7$.
+    * Giá trị biểu thức $p - 3q = 8 - 3(-7) = 8 + 21 = 29$.
+        
+    **Kết luận:** Giá trị của $p - 3q$ bằng **$29$**.
+    """)
+
+st.markdown("---")
