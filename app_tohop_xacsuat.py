@@ -2600,3 +2600,256 @@ if st.session_state.get('q29_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+
+# ==========================================
+# CÂU 30 (Từ ảnh - THPT Cửa Lò - Nghệ An 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 30 (THPT Cửa Lò - Nghệ An 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có 9 quả cầu giống hệt nhau được đánh số từ 1 đến 9 và đựng trong một cái hộp. Sau khi xáo trộn, người ta lấy ngẫu nhiên lần lượt ra 4 quả cầu. Xác suất để lấy được tổng các chữ số ghi trên các quả cầu là 15 bằng bao nhiêu (*không làm tròn các bước tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần trăm*)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_30 = st.text_input("Nhập kết quả Câu 30 (làm tròn đến hàng phần trăm, ví dụ: 0.05 hoặc 5%):", key="q30_ans")
+
+if st.button("Kiểm tra đáp án", key="q30_check"):
+    normalized_user_answer_30 = user_answer_30.strip().replace(" ", "").replace("%", "").replace(",", ".")
+    
+    # Đáp án chính xác làm tròn đến hàng phần trăm là 0.05 (hoặc 5%)
+    if normalized_user_answer_30 in ["0.05", ".05", "5", "5%"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_30 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q30_solution_shown' not in st.session_state:
+    st.session_state['q30_solution_shown'] = False
+
+col1_30, col2_30 = st.columns([1, 4])
+with col1_30:
+    if st.button("Xem lời giải chi tiết Câu 30", key="q30_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q30_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q30_solution_shown'] = False
+
+if st.session_state.get('q30_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 30:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu.**
+    
+    Lấy ngẫu nhiên không hoàn lại 4 quả cầu từ hộp có 9 quả (việc tính theo tổ hợp hay chỉnh hợp không làm thay đổi kết quả xác suất). Ta dùng tổ hợp:
+    $$n(\Omega) = C_9^4 = \dfrac{9 \times 8 \times 7 \times 6}{24} = 126$$
+    
+    **Bước 2: Tìm số kết quả thuận lợi cho biến cố.**
+    
+    Gọi $A$ là biến cố: "Tổng các chữ số ghi trên 4 quả cầu bằng 15".
+    Ta cần tìm các tập hợp 4 số nguyên phân biệt $\{a, b, c, d\}$ từ tập $\{1, 2, 3, 4, 5, 6, 7, 8, 9\}$ sao cho:
+    $$1 \le a < b < c < d \le 9 \quad \text{và} \quad a + b + c + d = 15$$
+    
+    Ta liệt kê theo thứ tự tăng dần của $a$:
+    *   **Trường hợp $a = 1 \Rightarrow b + c + d = 14$:**
+        *   Nếu $b = 2 \Rightarrow c + d = 12 \Rightarrow (c, d) \in \{(3, 9), (4, 8), (5, 7)\}$. (Có **3** bộ: $\{1, 2, 3, 9\}, \{1, 2, 4, 8\}, \{1, 2, 5, 7\}$)
+        *   Nếu $b = 3 \Rightarrow c + d = 11 \Rightarrow (c, d) \in \{(4, 7), (5, 6)\}$. (Có **2** bộ: $\{1, 3, 4, 7\}, \{1, 3, 5, 6\}$)
+        *   Nếu $b = 4 \Rightarrow c + d = 10 \Rightarrow$ không có cặp số phân biệt nào lớn hơn 4 vì $5 + 6 = 11 > 10$.
+    *   **Trường hợp $a = 2 \Rightarrow b + c + d = 13$:**
+        *   Nếu $b = 3 \Rightarrow c + d = 10 \Rightarrow (c, d) \in \{(4, 6)\}$. (Có **1** bộ: $\{2, 3, 4, 6\}$)
+        *   Nếu $b = 4 \Rightarrow c + d = 9 \Rightarrow$ không có cặp số phân biệt nào lớn hơn 4.
+    *   **Trường hợp $a \ge 3$:** Tổng nhỏ nhất của 4 số phân biệt là $3 + 4 + 5 + 6 = 18 > 15$ (loại).
+    
+    Tổng số kết quả thuận lợi cho biến cố $A$ là:
+    $$n(A) = 3 + 2 + 1 = 6 \text{ (bộ)}$$
+    
+    **Bước 3: Tính xác suất và làm tròn.**
+    
+    Xác suất cần tìm là:
+    $$P(A) = \dfrac{n(A)}{n(\Omega)} = \dfrac{6}{126} = \dfrac{1}{21} \approx 0.047619...$$
+    
+    Làm tròn kết quả cuối cùng đến hàng phần trăm (2 chữ số thập phân): **$0.05$** (hoặc **$5\%$**).
+    """)
+
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 31 (Từ ảnh - THPT Cửa Lò - Nghệ An 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 31 (THPT Cửa Lò - Nghệ An 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Quanh một đa giác đều $2n$ cạnh ($n \ge 6, n \in \mathbb{N}$) vẽ vòng tròn ngoại tiếp. Ba đỉnh bất kì của đa giác được gọi là cùng phía nếu tồn tại một nửa đường tròn chứa 3 đỉnh đó (các đầu mút của nửa đường tròn là các đỉnh của đa giác). Biết xác suất của biến cố "3 đỉnh chọn bất kì cùng phía" bằng $\dfrac{33}{43}$. Tìm $n$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_31 = st.text_input("Nhập giá trị của $n$:", key="q31_ans")
+
+if st.button("Kiểm tra đáp án", key="q31_check"):
+    normalized_user_answer_31 = user_answer_31.strip().replace(" ", "").lower().replace("n=", "")
+    
+    # Đáp án chính xác là 22
+    if normalized_user_answer_31 == "22":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_31 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q31_solution_shown' not in st.session_state:
+    st.session_state['q31_solution_shown'] = False
+
+col1_31, col2_31 = st.columns([1, 4])
+with col1_31:
+    if st.button("Xem lời giải chi tiết Câu 31", key="q31_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q31_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q31_solution_shown'] = False
+
+if st.session_state.get('q31_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 31:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu.**
+    
+    Đa giác đều có $2n$ cạnh $\Rightarrow$ có $2n$ đỉnh nằm trên đường tròn ngoại tiếp.
+    Số cách chọn 3 đỉnh bất kỳ từ $2n$ đỉnh là:
+    $$n(\Omega) = C_{2n}^3 = \dfrac{2n(2n-1)(2n-2)}{6} = \dfrac{n(2n-1)(2n-2)}{3}$$
+    
+    **Bước 2: Phân tích điều kiện "3 đỉnh cùng phía".**
+    
+    Trong một đa giác đều $2n$ đỉnh nội tiếp đường tròn, các đường kính nối hai đỉnh đối diện sẽ chia đường tròn thành các nửa đường tròn có đầu mút chính là các đỉnh của đa giác.
+    Một tam giác tạo bởi 3 đỉnh nằm trên cùng một nửa đường tròn (kể cả đầu mút) khi và chỉ khi tam giác đó **không phải là tam giác nhọn**, tức là nó là **tam giác vuông** hoặc **tam giác tù**:
+    
+    *   **Số tam giác vuông:**
+        *   Mỗi đường kính của đường tròn đi qua 2 đỉnh đối diện của đa giác. Có tất cả $n$ đường kính như vậy.
+        *   Với mỗi đường kính (cạnh huyền), ta có thể chọn 1 đỉnh bất kỳ trong $2n - 2$ đỉnh còn lại làm đỉnh góc vuông.
+        *   Số tam giác vuông là: $T_{\text{vuông}} = n(2n - 2)$.
+        
+    *   **Số tam giác tù:**
+        *   Một góc tại đỉnh $A$ là góc tù khi và chỉ khi cạnh đối diện chắn một cung lớn hơn nửa đường tròn, tương đương với việc hai đỉnh còn lại nằm nghiêm ngặt cùng một phía đối với đường kính đi qua $A$.
+        *   Đường kính đi qua $A$ chia $2n - 2$ đỉnh còn lại thành hai phần đều nhau, mỗi phần có $\dfrac{2n - 2}{2} = n - 1$ đỉnh nằm trên cùng một nửa đường tròn mở.
+        *   Để tạo thành tam giác tù tại $A$, ta chỉ cần chọn 2 đỉnh từ $n - 1$ đỉnh nằm cùng một bên đường kính đó. Số cách chọn là $C_{n-1}^2$.
+        *   Do mỗi tam giác tù chỉ có đúng 1 góc tù nên khi cho $A$ chạy qua tất cả $2n$ đỉnh, ta không bị đếm trùng.
+        *   Số tam giác tù là: $T_{\text{tù}} = 2n \cdot C_{n-1}^2 = 2n \cdot \dfrac{(n-1)(n-2)}{2} = n(n-1)(n-2)$.
+    
+    **Bước 3: Tính tổng số tam giác thuận lợi và lập phương trình.**
+    
+    Tổng số tam giác thỏa mãn điều kiện cùng phía (biến cố $X$) là:
+    $$n(X) = T_{\text{vuông}} + T_{\text{tù}} = n(2n - 2) + n(n - 1)(n - 2)$$
+    $$n(X) = 2n(n - 1) + n(n - 1)(n - 2) = n(n - 1)[2 + (n - 2)] = n^2(n - 1)$$
+    
+    Xác suất của biến cố là:
+    $$P(X) = \dfrac{n(X)}{n(\Omega)} = \dfrac{n^2(n - 1)}{\dfrac{n(2n - 1)(2n - 2)}{3}} = \dfrac{n^2(n - 1)}{\dfrac{2n(2n - 1)(n - 1)}{3}} = \dfrac{3n}{2(2n - 1)} = \dfrac{3n}{4n - 2}$$
+    
+    **Bước 4: Giải phương trình tìm $n$.**
+    
+    Theo giả thiết, xác suất này bằng $\dfrac{33}{43}$, ta có phương trình:
+    $$\dfrac{3n}{4n - 2} = \dfrac{33}{43}$$
+    $$\Leftrightarrow 3n \cdot 43 = 33(4n - 2)$$
+    $$\Leftrightarrow 129n = 132n - 66$$
+    $$\Leftrightarrow 3n = 66 \Leftrightarrow n = 22$$
+    
+    Giá trị $n = 22$ thỏa mãn điều kiện $n \ge 6, n \in \mathbb{N}$.
+    
+    Vậy **$n = 22$**.
+    """)
+
+st.markdown("---")
+
+
+
+
+# --- CÂU HỎI 32 ---
+st.markdown(
+    '<b style="color: blue;">Câu 32 (THPT Nguyễn Khuyến - LTT HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Đài truyền hình $FTV$ phát sóng hai chương trình truyền hình $A$ và $B$ với xác suất lần lượt là $0,55$ và $0,45$. Do thời tiết xấu gây nhiễu trên đường truyền nên $\dfrac{2}{9}$ các tín hiệu chương trình $A$ bị lệch và phát sóng chương trình $B$ sau khi thu được, còn lại bình thường. Còn đối với chương trình $B$ thì $\dfrac{1}{5}$ các tín hiệu bị lệch và phát chương trình $A$ sau khi thu được, $\dfrac{1}{4}$ các tín hiệu chương trình $B$ bị mất hẳn không thu được, còn lại bình thường. Ông $F$ đang xem một chương trình truyền hình trên TV, tính xác suất ông $F$ xem được chương trình thu được đúng với các tín hiệu lúc phát đi (làm tròn đến hàng phần trăm)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_32 = st.text_input("Nhập đáp án (ví dụ: 0.68):", key="q32_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q32_check"):
+    normalized_user_answer_32 = user_answer_32.strip().replace(',', '.')
+    
+    if normalized_user_answer_32 in ["0.68", "0,68", "0.680"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_32 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại xác suất của từng trường hợp và công thức xác suất toàn phần nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q32_solution_shown' not in st.session_state:
+    st.session_state['q32_solution_shown'] = False
+
+col1_32, col2_32 = st.columns([1, 4])
+with col1_32:
+    if st.button("Xem lời giải chi tiết", key="q32_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q32_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q32_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q32_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định xác suất phát sóng các chương trình**
+    
+    * Xác suất phát sóng chương trình $A$: $P(A) = 0,55 = \dfrac{11}{20}$.
+    * Xác suất phát sóng chương trình $B$: $P(B) = 0,45 = \dfrac{9}{20}$.
+    
+    **Bước 2: Tính xác suất thu đúng tín hiệu của từng chương trình**
+    
+    * **Đối với chương trình $A$:** Có $\dfrac{2}{9}$ tín hiệu bị lệch sang $B$, do đó xác suất thu được đúng tín hiệu chương trình $A$ là:
+        $$P(\text{đúng } A \mid A) = 1 - \dfrac{2}{9} = \dfrac{7}{9}$$
+    * **Đối với chương trình $B$:** Có $\dfrac{1}{5}$ tín hiệu bị lệch sang $A$ và $\dfrac{1}{4}$ tín hiệu bị mất hẳn, do đó xác suất thu được đúng tín hiệu chương trình $B$ (bình thường) là:
+        $$P(\text{đúng } B \mid B) = 1 - \dfrac{1}{5} - \dfrac{1}{4} = 1 - 0,2 - 0,25 = 0,55 = \dfrac{11}{20}$$
+    
+    **Bước 3: Áp dụng công thức xác suất toàn phần**
+    
+    * Gọi $R$ là biến cố ông $F$ xem được chương trình thu được đúng với các tín hiệu lúc phát đi.
+    * Theo công thức xác suất toàn phần:
+        $$P(R) = P(A) \cdot P(\text{đúng } A \mid A) + P(B) \cdot P(\text{đúng } B \mid B)$$
+        $$P(R) = 0,55 \cdot \dfrac{7}{9} + 0,45 \cdot \dfrac{11}{20}$$
+        $$P(R) = \dfrac{77}{180} + \dfrac{99}{400} = \dfrac{2431}{3600} \approx 0,67528$$
+    
+    **Bước 4: Làm tròn kết quả**
+    
+    * Làm tròn kết quả đến hàng phần trăm, ta được **$0,68$**.
+    
+    **Kết luận:** Xác suất để ông $F$ xem được chương trình đúng với lúc phát đi là **0,68**.
+    """)
+    
+st.markdown("---")
