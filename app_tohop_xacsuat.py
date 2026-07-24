@@ -3965,3 +3965,177 @@ if st.session_state.get('q43_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 44 ---
+st.markdown(
+    '<b style="color: blue;">Câu 44 (THPT Nguyễn Trãi - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Chọn ngẫu nhiên 5 số phân biệt từ tập hợp $X = \{2;4;6;8;10;12;13;14;16;18;20\}$ để xếp vào 5 ô $A,B,C,D,O$ như hình vẽ. (mỗi ô xếp một số). Gọi $Y$ là biến cố "Số 13 ở ô $O$ và tổng các số ở ô $A,O,C$ bằng tổng các số xếp ở ô $B,O,D$". Biết xác suất của biến cố $Y$ là $P(Y) = \dfrac{a}{b}$ (với $a,b \in \mathbb{N}; \dfrac{a}{b}$ là phân số tối giản). Khi đó giá trị $a+b$ bằng bao nhiêu?
+""")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/nt12026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/nt12026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_44 = st.text_input("Nhập đáp án (ví dụ: 12):", key="q44_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q44_check"):
+    normalized_user_answer_44 = user_answer_44.strip()
+    
+    if normalized_user_answer_44 == "34":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_44 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại số phần tử không gian mẫu, điều kiện tổng hai cặp số bằng nhau và rút gọn phân số nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q44_solution_shown' not in st.session_state:
+    st.session_state['q44_solution_shown'] = False
+
+col1_44, col2_44 = st.columns([1, 4])
+with col1_44:
+    if st.button("Xem lời giải chi tiết", key="q44_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q44_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q44_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q44_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu**
+    
+    * Tập hợp $X$ có $11$ phần tử: $\{2; 4; 6; 8; 10; 12; 13; 14; 16; 18; 20\}$.
+    * Chọn ngẫu nhiên $5$ số phân biệt từ tập $X$ và xếp vào $5$ ô $A, B, C, D, O$ (có kể thứ tự vị trí):
+        $$n(\Omega) = A_{11}^5 = 11 \times 10 \times 9 \times 8 \times 7 = 55440$$
+    
+    **Bước 2: Phân tích điều kiện của biến cố $Y$**
+    
+    * Số $13$ nằm ở ô $O$, nghĩa là $O = 13$ (có $1$ cách chọn).
+    * Tổng các số ở ô $A, O, C$ bằng tổng các số ở ô $B, O, D$:
+        $$A + O + C = B + O + D \iff A + C = B + D$$
+    * Do số $13$ đã ở ô $O$, $4$ số còn lại được chọn từ $10$ số chẵn còn lại của tập $X$ ($2, 4, 6, 8, 10, 12, 14, 16, 18, 20$).
+    
+    **Bước 3: Đếm số kết quả thuận lợi cho biến cố $Y$**
+    
+    * Chọn bộ $4$ số chẵn bất kỳ từ $10$ số chẵn: có $C_{10}^4 = 210$ cách.
+    * Vì $10$ số chẵn lập thành một cấp số cộng, mọi tập hợp gồm $4$ số chẵn bất kỳ luôn có duy nhất một cách phân chia thành hai cặp có tổng bằng nhau (cặp nhỏ nhất và lớn nhất vào một nhóm, hai số ở giữa vào nhóm còn lại).
+    * Với mỗi bộ $4$ số được chọn, số cách sắp xếp chúng vào các ô $A, B, C, D$ sao cho $A + C = B + D$ là:
+        * Chọn cặp nào cho $\{A, C\}$ và cặp nào cho $\{B, D\}$: $2$ cách.
+        * Sắp xếp các số trong mỗi cặp vào vị trí tương ứng: $2! \times 2! = 4$ cách.
+        * Tổng số cách sắp xếp cho mỗi bộ $4$ số là: $2 \times 4 = 8$ cách.
+    * Số kết quả thuận lợi là:
+        $$n(Y) = 1 \times C_{10}^4 \times 8 = 1 \times 210 \times 8 = 1680$$
+    
+    **Bước 4: Tính xác suất và tìm giá trị $a + b$**
+    
+    * Xác suất của biến cố $Y$ là:
+        $$P(Y) = \dfrac{1680}{55440} = \dfrac{1}{33}$$
+    * Suy ra phân số tối giản là $\dfrac{a}{b} = \dfrac{1}{33}$, tức là $a = 1$ và $b = 33$.
+    * Giá trị của $a + b = 1 + 33 = 34$.
+    
+    **Kết luận:** Giá trị $a + b$ bằng **34**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU HỎI 45 ---
+st.markdown(
+    '<b style="color: blue;">Câu 45 (THPT Trần Phú - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong ngày giới thiệu các câu lạc bộ (CLB) ngoại khoá của trường THPT, thống kê việc đăng kí vào 3 CLB gồm bóng đá, cầu lông và cờ vua thì có tổng là 70 học sinh, mỗi học sinh muốn tham gia vào CLB nào thì phải viết 1 đơn đăng kí gửi CLB đó. Tổng cả 3 CLB thu được 155 đơn; hỏi có ít nhất bao nhiêu học sinh đăng kí tham gia cả 3 CLB?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_45 = st.text_input("Nhập đáp án (ví dụ: 15):", key="q45_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q45_check"):
+    normalized_user_answer_45 = user_answer_45.strip()
+    
+    if normalized_user_answer_45 == "15":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_45 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy lập hệ phương trình đánh giá số lượng học sinh đăng kí theo số lượng CLB để tìm giá trị nhỏ nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q45_solution_shown' not in st.session_state:
+    st.session_state['q45_solution_shown'] = False
+
+col1_45, col2_45 = st.columns([1, 4])
+with col1_45:
+    if st.button("Xem lời giải chi tiết", key="q45_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q45_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q45_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q45_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn cho số lượng học sinh đăng kí theo số lượng CLB**
+    
+    * Gọi tổng số học sinh tham gia đăng kí là $70$ học sinh.
+    * Gọi $n_1$ là số học sinh đăng kí đúng $1$ CLB.
+    * Gọi $n_2$ là số học sinh đăng kí đúng $2$ CLB.
+    * Gọi $n_3$ là số học sinh đăng kí cả $3$ CLB.
+    
+    **Bước 2: Lập hệ phương trình từ giả thiết**
+    
+    * Tổng số học sinh là $70$:
+        $$n_1 + n_2 + n_3 = 70 \quad (1)$$
+    * Tổng số đơn thu được từ $3$ CLB là $155$ đơn (mỗi học sinh đăng kí bao nhiêu CLB thì viết bấy nhiêu đơn):
+        $$n_1 + 2n_2 + 3n_3 = 155 \quad (2)$$
+    
+    **Bước 3: Biến đổi và tìm giá trị nhỏ nhất của $n_3$**
+    
+    * Lấy phương trình $(2)$ trừ đi phương trình $(1)$, ta được:
+        $$(n_1 + 2n_2 + 3n_3) - (n_1 + n_2 + n_3) = 155 - 70 \iff n_2 + 2n_3 = 85$$
+        $$\implies n_2 = 85 - 2n_3$$
+    * Từ phương trình $(1)$, ta có $n_1 = 70 - n_2 - n_3$. 
+    * Vì số lượng học sinh $n_1 \ge 0$, nên:
+        $$70 - n_2 - n_3 \ge 0 \iff n_2 + n_3 \le 70$$
+    * Thay $n_2 = 85 - 2n_3$ vào bất phương trình trên:
+        $$(85 - 2n_3) + n_3 \le 70 \iff 85 - n_3 \le 70 \iff n_3 \ge 15$$
+    
+    **Bước 4: Kết luận giá trị nhỏ nhất**
+    
+    * Vậy số học sinh đăng kí tham gia cả $3$ CLB ít nhất là $15$ học sinh (khi $n_3 = 15$, ta có $n_2 = 55$ và $n_1 = 0$).
+    
+    **Kết luận:** Có ít nhất **15** học sinh đăng kí tham gia cả 3 CLB.
+    """)
+    
+st.markdown("---")
