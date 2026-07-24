@@ -4249,3 +4249,176 @@ if st.session_state.get('q46_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 47 ---
+st.markdown(
+    '<b style="color: blue;">Câu 47 (Sở Thái Nguyên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tung đồng thời hai con xúc xắc khác nhau đều cân đối và đồng chất ba lần. Bằng cách cộng số chấm xuất hiện trên hai con xúc xắc trong mỗi lần tung ta được một số ngẫu nhiên từ 2 đến 12. Gọi ba số này lần lượt là $a$, $b$ và $t$. Chọn ngẫu nhiên một tam giác có hai cạnh có độ dài là $a$, $b$ và góc xen giữa chúng bằng $(t-1)15^\circ$. Xác suất để tam giác này là tam giác vuông bằng bao nhiêu? (kết quả làm tròn đến hàng phần trăm)
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_47 = st.text_input("Nhập đáp án (ví dụ: 0.11):", key="q47_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q47_check"):
+    normalized_user_answer_47 = user_answer_47.strip().replace(',', '.')
+    
+    if normalized_user_answer_47 in ["0.18", "0,18", "0.176", "0.1757"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_47 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại phân phối xác suất của tổng 2 con xúc xắc và các điều kiện để tam giác vuông nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q47_solution_shown' not in st.session_state:
+    st.session_state['q47_solution_shown'] = False
+
+col1_47, col2_47 = st.columns([1, 4])
+with col1_47:
+    if st.button("Xem lời giải chi tiết", key="q47_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q47_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q47_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q47_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích phân phối xác suất của tổng hai con xúc xắc**
+    
+    * Khi tung 2 con xúc xắc cân đối và đồng chất, tổng số chấm nhận các giá trị $X \in \{2, 3, \dots, 12\}$ với số kết quả thuận lợi lần lượt là:
+      $$1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1$$
+    * Không gian mẫu cho tổng mỗi lần tung là $36$.
+    * Các số $a, b, t$ độc lập với nhau và đều nhận giá trị từ $2$ đến $12$.
+    
+    **Bước 2: Điều kiện để tam giác là tam giác vuông**
+    
+    * Tam giác có hai cạnh $a, b$ và góc xen giữa $\alpha = (t-1)15^\circ$.
+    * Tam giác vuông xảy ra trong các trường hợp sau:
+      1. **Góc xen giữa là góc vuông ($\alpha = 90^\circ$):** 
+         * Khi đó $(t-1)15^\circ = 90^\circ \implies t = 7$.
+         * Khi $t = 7$, với mọi cặp giá trị $a, b \in \{2, \dots, 12\}$, tam giác luôn là tam giác vuông tại đỉnh chứa góc xen giữa.
+         * Xác suất để $t = 7$ là: 
+           $$P(t = 7) = \dfrac{6}{36} = \dfrac{1}{6} \approx 0.1667$$
+      2. **Một trong hai góc còn lại là góc vuông:**
+         * Áp dụng định lý cosin, điều kiện dẫn đến $\cos\alpha = \dfrac{b}{a}$ hoặc $\cos\alpha = \dfrac{a}{b}$.
+         * Với $\alpha = 60^\circ$ tương ứng $t = 5$ ($P(t=5) = \dfrac{4}{36} = \dfrac{1}{9}$), ta có $\cos 60^\circ = \dfrac{1}{2}$, dẫn đến các cặp $(a, b)$ thỏa mãn $a = 2b$ hoặc $b = 2a$ (có $10$ cặp thỏa mãn trên tổng số $11 \times 11 = 121$ cặp).
+         * Xác suất của trường hợp này đóng góp một lượng nhỏ ($\approx 0.009$).
+    
+    **Bước 3: Tính tổng xác suất và làm tròn**
+    
+    * Tổng xác suất xấp xỉ:
+        $$P \approx \dfrac{1}{6} + 0.009 \approx 0.1757 \approx 0.18$$
+    * Làm tròn kết quả đến hàng phần trăm, ta được **$0.18$**.
+    
+    **Kết luận:** Xác suất để tam giác là tam giác vuông là **0.18**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU HỎI 48 ---
+st.markdown(
+    '<b style="color: blue;">Câu 48 (Sở Thái Nguyên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có bao nhiêu cách chọn sáu số từ chín số nguyên $1, 2, \dots, 9$ và điền vào các ô của hình dưới đây (mỗi ô chỉ điền đúng một số) sao cho tổng các số ở mỗi cột (kể cả cột có một ô) bằng nhau?
+""")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/stn2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/stn2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_48 = st.text_input("Nhập đáp án :", key="q48_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q48_check"):
+    normalized_user_answer_48 = user_answer_48.strip()
+    
+    if normalized_user_answer_48 == "36":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_48 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy phân chia các tập hợp con có cùng tổng số và tính số cách sắp xếp vào các cột nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q48_solution_shown' not in st.session_state:
+    st.session_state['q48_solution_shown'] = False
+
+col1_48, col2_48 = st.columns([1, 4])
+with col1_48:
+    if st.button("Xem lời giải chi tiết", key="q48_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q48_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q48_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q48_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích cấu trúc hình vẽ và yêu cầu bài toán**
+    
+    * Hình vẽ gồm 3 cột từ trái sang phải:
+      * Cột 1 (trái): có $1$ ô.
+      * Cột 2 (giữa): có $2$ ô.
+      * Cột 3 (phải): có $3$ ô.
+      * Tổng số ô là $1 + 2 + 3 = 6$ ô.
+    * Ta cần chọn $6$ số từ tập $\{1, 2, \dots, 9\}$ và chia chúng thành 3 tập hợp tương ứng với 3 cột sao cho tổng các số ở mỗi cột đều bằng nhau (gọi chung là $K$).
+    * Cột 1 có $1$ ô nên giá trị của ô đó chính là $K$. Do đó $K$ phải là một số nguyên thuộc tập $\{1, 2, \dots, 9\}$.
+    
+    **Bước 2: Tìm các cách phân chia tập hợp thỏa mãn**
+    
+    * Xét điều kiện tổng các tập con có kích thước lần lượt là $1, 2, 3$ đều bằng $K$. Qua kiểm tra, giá trị hợp lý duy nhất là $K = 9$.
+    * Các cách phân chia $6$ số từ $\{1, \dots, 9\}$ thành 3 tập có tổng bằng $9$ (với kích thước lần lượt $1, 2, 3$) gồm có $3$ phân hoạch thỏa mãn:
+      1. Phân hoạch 1: $\{\{9\}, \{1, 8\}, \{2, 3, 4\}\}$
+      2. Phân hoạch 2: $\{\{9\}, \{2, 7\}, \{1, 3, 5\}\}$
+      3. Phân hoạch 3: $\{\{9\}, \{4, 5\}, \{1, 2, 6\}\}$
+    
+    **Bước 3: Tính số cách sắp xếp vào các cột**
+    
+    * Với mỗi phân hoạch, ta gán:
+      * Tập có $1$ phần tử cho cột 1 ($1$ cách chọn).
+      * Tập có $2$ phần tử cho cột 2 ($1$ cách chọn).
+      * Tập có $3$ phần tử cho cột 3 ($1$ cách chọn).
+    * Số cách sắp xếp các số bên trong mỗi cột:
+      * Cột 1 ($1$ ô): $1! = 1$ cách.
+      * Cột 2 ($2$ ô): $2! = 2$ cách.
+      * Cột 3 ($3$ ô): $3! = 6$ cách.
+    * Số cách điền cho mỗi phân hoạch là: $1 \times 2 \times 6 = 12$ cách.
+    * Tổng số cách điền cho cả $3$ phân hoạch là:
+        $$3 \times 12 = 36 \text{ cách}$$
+    
+    **Kết luận:** Có tất cả **36** cách thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
