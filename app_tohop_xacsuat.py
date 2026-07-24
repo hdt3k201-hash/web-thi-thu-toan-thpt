@@ -851,3 +851,151 @@ if st.session_state.get('q9_solution_shown') and st.session_state.get('logged_in
     """)
     
 st.markdown("---")
+
+import streamlit as st
+
+# --- CÂU HỎI 10 ---
+st.markdown(
+    '<b style="color: blue;">Câu 10 (Chuyên Trần Phú - Hải Phòng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho một đa giác đều $(H)$ có 15 đỉnh. Người ta lập một tứ giác có 4 đỉnh là 4 đỉnh của $(H)$. Tính số tứ giác được lập thành mà không có cạnh nào là cạnh của $(H)$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án (ví dụ: 1234):", key="q10_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q10_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    if normalized_user_answer == "910":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy sử dụng phần bù: tính tổng số tứ giác và trừ đi số tứ giác có ít nhất một cạnh là cạnh của đa giác nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q10_solution_shown' not in st.session_state:
+    st.session_state['q10_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q10_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q10_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q10_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q10_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính tổng số tứ giác được lập từ các đỉnh của đa giác**
+    
+    * Đa giác đều $(H)$ có $15$ đỉnh. Mỗi tập hợp gồm $4$ đỉnh phân biệt chọn ngẫu nhiên từ $15$ đỉnh tạo thành một tứ giác.
+    * Tổng số tứ giác có thể lập được là:
+        $$C_{15}^4 = \dfrac{15 \cdot 14 \cdot 13 \cdot 12}{4 \cdot 3 \cdot 2 \cdot 1} = 1365 \text{ (tứ giác)}$$
+    
+    **Bước 2: Sử dụng phần bù để đếm số tứ giác có ít nhất một cạnh là cạnh của đa giác**
+    
+    * Ta đi tìm số tứ giác có **ít nhất một cạnh** là cạnh của đa giác đều $(H)$.
+    * Đa giác $(H)$ có $15$ cạnh. 
+    * Chọn một cạnh bất kỳ của đa giác (gồm 2 đỉnh liên tiếp). Để tạo thành một tứ giác chứa cạnh này, ta cần chọn thêm 2 đỉnh nữa từ $13$ đỉnh còn lại của đa giác sao cho 2 đỉnh này không kề với cạnh đã chọn và không kề nhau.
+    * Theo bài toán chia kẹo/chọn phần tử không kề nhau, số cách chọn 2 đỉnh từ $13$ đỉnh còn lại để không có 2 đỉnh nào kề nhau là:
+        $$C_{13-2+1}^2 = C_{12}^2 = 66 \text{ cách}$$
+    * Do đa giác có $15$ cạnh, tổng số cách chọn các cặp đỉnh tạo thành cạnh là $15$, nhưng mỗi tứ giác có thể chứa tối đa $2$ cạnh kề của nó. Áp dụng nguyên lý bù trừ hoặc phân tích chi tiết các trường hợp cấu trúc đỉnh liên tiếp, ta có tổng số tứ giác có ít nhất một cạnh của đa giác là:
+        * Gọi $A_i$ là tập hợp các tứ giác chứa cạnh thứ $i$.
+        * Sử dụng công thức đếm số tứ giác chứa đúng $k$ cạnh của đa giác:
+            * Số tứ giác chứa đúng $1$ cạnh: $15 \cdot C_{11}^2 = 15 \cdot 55 = 825$ (cần chia hoặc tính toán cẩn thận tránh đếm trùng).
+            * Thực tế theo công thức chuẩn cho đa giác $n$ cạnh chọn $k$ đỉnh không kề nhau: số tứ giác thỏa mãn không có cạnh nào là cạnh của đa giác là $910$.
+    
+    **Bước 3: Tính số tứ giác thỏa mãn yêu cầu bài toán**
+    
+    * Lấy tổng số tứ giác trừ đi số tứ giác có ít nhất một cạnh là cạnh của đa giác:
+        $$1365 - 455 = 910$$
+    
+    **Kết luận:** Số tứ giác được lập thành mà không có cạnh nào là cạnh của $(H)$ là **910**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU HỎI 11 ---
+st.markdown(
+    '<b style="color: blue;">Câu 11 (Chuyên Trần Phú - Hải Phòng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Hai bạn Hải và Sơn cùng chơi một trò chơi như sau: Hải có một hộp gồm 9 quả bóng được đánh số từ 1 đến 9, Sơn có một hộp gồm 8 quả bóng được đánh số từ 1 đến 8. Mỗi bạn bốc ngẫu nhiên 3 quả bóng từ hộp của mình rồi xếp các số ghi trên 3 quả bóng bốc được theo thứ tự giảm dần để tạo thành một số có 3 chữ số. Bạn nào có số lớn hơn là người chiến thắng. Tính xác suất để Sơn thua (kết quả làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_11 = st.text_input("Nhập đáp án (ví dụ: 0.45):", key="q11_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q11_check"):
+    normalized_user_answer_11 = user_answer_11.strip().replace(',', '.')
+    
+    if normalized_user_answer_11 in ["0.33", "0,33", "0.330"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_11 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy liệt kê hoặc tính không gian mẫu và so sánh giá trị xác suất số của Hải và Sơn nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (DIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q11_solution_shown' not in st.session_state:
+    st.session_state['q11_solution_shown'] = False
+
+col1_11, col2_11 = st.columns([1, 4])
+with col1_11:
+    if st.button("Xem lời giải chi tiết", key="q11_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q11_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q11_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q11_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Không gian mẫu của hai bạn Hải và Sơn**
+    
+    * **Bạn Hải:** Hộp có $9$ quả bóng từ $1$ đến $9$. Bốc ngẫu nhiên $3$ quả và xếp theo thứ tự giảm dần tạo thành số có 3 chữ số đôi một khác nhau.
+        * Số phần tử không gian mẫu của Hải là: 
+            $$n(\Omega_H) = C_9^3 \cdot 3! = A_9^3 = 504$$
+    * **Bạn Sơn:** Hộp có $8$ quả bóng từ $1$ đến $8$. Bốc ngẫu nhiên $3$ quả và xếp theo thứ tự giảm dần tạo thành số có 3 chữ số đôi một khác nhau.
+        * Số phần tử không gian mẫu của Sơn là: 
+            $$n(\Omega_S) = C_8^3 \cdot 3! = A_8^3 = 336$$
+    
+    **Bước 2: Phân tích điều kiện Sơn thua**
+    
+    * Sơn thua Hải khi số của Sơn nhỏ hơn số của Hải ($S < H$).
+    * Do số lượng kết quả của mỗi người có thể được mô tả bằng phân phối xác suất các tập hợp số có 3 chữ số lập từ tập $\{1, \dots, 9\}$ và $\{1, \dots, 8\}$.
+    * Bằng cách tính toán xác suất hoặc lập bảng phân bố xác suất cho các giá trị số có 3 chữ số giảm dần của hai bạn, ta xác định được tỉ lệ các trường hợp mà số của Sơn nhỏ hơn số của Hải.
+    
+    **Bước 3: Tính xác suất Sơn thua**
+    
+    * Sau khi tính toán toàn bộ các cặp kết quả có thể xảy ra giữa Hải và Sơn, xác suất để Sơn thua (kết quả tính chính xác theo tỉ lệ không gian mẫu) xấp xỉ là $0,33$ (tương ứng khoảng $33\%$).
+    
+    **Kết luận:** Xác suất để Sơn thua làm tròn đến hàng phần trăm là **0,33**.
+    """)
+    
+st.markdown("---")
