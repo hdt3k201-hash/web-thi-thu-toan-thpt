@@ -6305,3 +6305,282 @@ if st.session_state.get('q68_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 
+# ==========================================
+# CÂU 69 (Sở Cao Bằng 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 69 (Sở Cao Bằng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Trong giải cờ vua giao hữu tại một trường THPT chào mừng ngày thành lập Đoàn 26/3, các vận động viên nam và nữ cùng tham gia thi đấu. Để đảm bảo tính công bằng, giúp mỗi kỳ thủ đều được cầm quân Trắng và quân Đen khi đối đầu với các đối thủ khác thì Ban tổ chức quy định thể thức thi đấu vòng tròn hai lượt tức là mỗi cặp vận động viên sẽ thi đấu với nhau đúng 2 ván. Biết rằng giải chỉ có 2 vận động viên nữ tham gia. Sau khi kết thúc giải, Ban tổ chức thống kê được số ván các vận động viên nam thi đấu với nhau nhiều hơn số ván họ thi đấu với các vận động viên nữ là 66 ván. Hỏi tổng số ván mà tất cả các vận động viên đã thi đấu là bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 69) ---
+user_answer_69 = st.text_input("Nhập tổng số ván thi đấu cho Câu 69:", key="q69_ans")
+
+if st.button("Kiểm tra đáp án Câu 69", key="q69_check"):
+    normalized_user_answer_69 = user_answer_69.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 156
+    if normalized_user_answer_69 == "156":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết Câu 69 đã được mở khóa.")
+    elif user_answer_69 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy lập phương trình theo số vận động viên nam và giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (CÂU 69) ---
+st.markdown("---")
+
+if 'q69_solution_shown' not in st.session_state:
+    st.session_state['q69_solution_shown'] = False
+
+col1_69, col2_69 = st.columns([1, 4])
+with col1_69:
+    if st.button("Xem lời giải chi tiết Câu 69", key="q69_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q69_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q69_solution_shown'] = False
+
+if st.session_state.get('q69_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 69:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn và biểu diễn số các ván đấu theo điều kiện đề bài**
+    
+    *   Gọi $n$ là số vận động viên nam tham gia giải đấu ($n \in \mathbb{N}^*, n \ge 2$).
+    *   Số vận động viên nữ là: $2$ (vận động viên).
+    *   Thể thức thi đấu vòng tròn hai lượt nghĩa là: **Mỗi cặp 2 kỳ thủ bất kỳ sẽ thi đấu với nhau đúng 2 ván**.
+    
+    **Bước 2: Tính số ván thi đấu theo từng nhóm**
+    
+    *   **Số ván các vận động viên nam thi đấu với nhau ($T_1$):**
+        *   Số cặp vận động viên nam là: $C_n^2 = \dfrac{n(n-1)}{2}$.
+        *   Do mỗi cặp đấu 2 ván nên tổng số ván nam đấu với nam là:
+            $$T_1 = 2 \times \dfrac{n(n-1)}{2} = n(n-1) = n^2 - n \text{ (ván)}$$
+            
+    *   **Số ván các vận động viên nam thi đấu với các vận động viên nữ ($T_2$):**
+        *   Mỗi kỳ thủ nam sẽ đối đầu với 2 kỳ thủ nữ, tạo thành $2n$ cặp đấu nam - nữ.
+        *   Do mỗi cặp đấu 2 ván nên tổng số ván nam đấu với nữ là:
+            $$T_2 = 2 \times (2n) = 4n \text{ (ván)}$$
+            
+    **Bước 3: Lập phương trình tìm số vận động viên nam $n$**
+    
+    Theo giả thiết, số ván các kỳ thủ nam thi đấu với nhau nhiều hơn số ván họ thi đấu với các kỳ thủ nữ là 66 ván, ta có phương trình:
+    $$T_1 - T_2 = 66 \iff n^2 - n - 4n = 66 \iff n^2 - 5n - 66 = 0$$
+    
+    Giải phương trình bậc hai trên:
+    $$\Delta = (-5)^2 - 4 \times (-66) = 25 + 264 = 289 > 0 \implies \sqrt{\Delta} = 17$$
+    $$\implies \begin{cases} n = \dfrac{5 + 17}{2} = 11 \text{ (thỏa mãn } n \in \mathbb{N}^* \text{)} \\ n = \dfrac{5 - 17}{2} = -6 \text{ (loại)} \end{cases}$$
+    
+    Vậy giải đấu có **11 vận động viên nam** và **2 vận động viên nữ**.
+    
+    **Bước 4: Tính tổng số ván của toàn giải đấu**
+    
+    *   Tổng số vận động viên tham gia giải là:
+        $$N = 11 + 2 = 13 \text{ (vận động viên)}$$
+    *   Tổng số cặp đấu của cả giải là: $C_{13}^2 = \dfrac{13 \times 12}{2} = 78$ (cặp).
+    *   Vì mỗi cặp thi đấu đúng 2 ván, tổng số ván mà tất cả các vận động viên đã thi đấu là:
+        $$T = 2 \times 78 = 156 \text{ (ván)}$$
+        
+    *(Kiểm tra lại bằng tổng các phần: $T = T_{\text{nam-nam}} + T_{\text{nam-nữ}} + T_{\text{nữ-nữ}} = 11 \times 10 + 4 \times 11 + 2 \times 1 = 110 + 44 + 2 = 156$ ván).*
+    
+    **Kết luận:** Tổng số ván mà tất cả các vận động viên đã thi đấu là **156**.
+    """)
+
+st.markdown("---")
+
+
+
+# --- CÂU HỎI 70 ---
+st.markdown(
+    '<b style="color: blue;">Câu 70 (Sở Hải Phòng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong một kỳ thi bằng hình thức vấn đáp, ban tổ chức chuẩn bị một bộ câu hỏi gồm 12 câu hỏi khác nhau, mỗi câu được đựng trong một phong bì kín giống hệt nhau. Có ba thí sinh $A, B$ và $C$ cùng tham gia. Quy tắc chọn câu hỏi như sau: mỗi thí sinh lần lượt chọn ngẫu nhiên 4 phong bì từ bộ 12 câu hỏi đó để xác định phần thi của mình (sau khi mỗi thí sinh chọn xong, các câu hỏi được hoàn trả lại để thí sinh tiếp theo vẫn chọn từ bộ 12 câu ban đầu).
+Biết rằng xác suất để xảy ra đồng thời hai điều kiện:
++ Có ít nhất một câu hỏi mà cả ba thí sinh $A, B, C$ đều chọn giống nhau.
++ Tổng số câu hỏi khác nhau mà cả ba thí sinh đã chọn được là đúng 9 câu.
+được viết dưới dạng phân số tối giản $\dfrac{a}{b}$ (với $a, b$ là các số nguyên dương). Tính giá trị của biểu thức: $S = a + b$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_70 = st.text_input("Nhập đáp án (ví dụ: 1234):", key="q70_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q70_check"):
+    normalized_user_answer_70 = user_answer_70.strip()
+    
+    if normalized_user_answer_70 == "5893":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_70 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hệ phương trình về số lượng câu hỏi xuất hiện 1 lần, 2 lần và 3 lần để tìm ra cấu hình phân bố câu hỏi nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q70_solution_shown' not in st.session_state:
+    st.session_state['q70_solution_shown'] = False
+
+col1_70, col2_70 = st.columns([1, 4])
+with col1_70:
+    if st.button("Xem lời giải chi tiết", key="q70_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q70_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q70_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q70_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu**
+    
+    * Mỗi thí sinh chọn 4 câu hỏi từ 12 câu, có hoàn lại. Số cách chọn của mỗi thí sinh là $C_{12}^4 = 495$.
+    * Số phần tử không gian mẫu khi 3 thí sinh chọn là:
+        $$n(\Omega) = (C_{12}^4)^3 = 495^3 = 121287375$$
+    
+    **Bước 2: Phân tích điều kiện biến cố thuận lợi**
+    
+    Gọi $X, Y, Z$ lần lượt là tập hợp các câu hỏi mà thí sinh $A, B, C$ chọn. Ta có $|X| = |Y| = |Z| = 4$.
+    * Gọi $N_k$ là số lượng câu hỏi xuất hiện trong đúng $k$ tập hợp (với $k = 1, 2, 3$).
+    * Điều kiện 1: $|X \cap Y \cap Z| \ge 1 \implies N_3 \ge 1$.
+    * Điều kiện 2: Tổng số câu hỏi khác nhau là 9 $\implies N_1 + N_2 + N_3 = 9$.
+    * Tổng số lượt câu hỏi được chọn (đếm theo các tập) là $4 \times 3 = 12$, nên:
+        $$N_1 + 2N_2 + 3N_3 = 12$$
+    * Trừ hai phương trình cho nhau, ta được: $N_2 + 2N_3 = 3$.
+    * Vì $N_2, N_3$ là các số tự nhiên và $N_3 \ge 1$, ta chỉ có một trường hợp duy nhất thỏa mãn:
+        $$N_3 = 1 \implies N_2 = 1 \implies N_1 = 7$$
+    * Ý nghĩa: Trong 9 câu hỏi được chọn, có đúng $1$ câu được cả 3 người chọn, $1$ câu được 2 người chọn và $7$ câu chỉ được 1 người chọn.
+    
+    **Bước 3: Đếm số cách chọn thỏa mãn cấu hình $(N_1=7, N_2=1, N_3=1)$**
+    
+    * Chọn 9 câu hỏi từ 12 câu hỏi để tạo thành tập hợp các câu hỏi được chọn: $C_{12}^9 = 220$ cách.
+    * Trong 9 câu này, chọn 1 câu để giao chung cho cả 3 thí sinh (nằm trong cả X, Y, Z): $C_9^1 = 9$ cách.
+    * Chọn 2 thí sinh trong 3 thí sinh để cùng chia sẻ câu hỏi xuất hiện 2 lần: $C_3^2 = 3$ cách. (Giả sử là A và B).
+    * Chọn 1 câu trong 8 câu còn lại để gán cho 2 thí sinh vừa chọn: $C_8^1 = 8$ cách.
+    * Lúc này, 3 tập $X, Y, Z$ đang thiếu số phần tử lần lượt là $4-2=2, 4-2=2, 4-1=3$. Ta cần chia 7 câu hỏi còn lại vào 3 tập này sao cho mỗi câu chỉ thuộc 1 tập:
+        * Số cách chia 7 phần tử thành 3 nhóm có kích thước $(2, 2, 3)$ là: $\dfrac{7!}{2! \cdot 2! \cdot 3!} = 210$ cách.
+    * Số kết quả thuận lợi của biến cố là:
+        $$n(A) = 220 \times 9 \times 3 \times 8 \times 210 = 9979200$$
+    
+    **Bước 4: Tính xác suất $P$ và biểu thức $S$**
+    
+    * Xác suất cần tìm:
+        $$P = \dfrac{9979200}{121287375} = \dfrac{448}{5445}$$
+    * Phân số tối giản, nên $a = 448$ và $b = 5445$.
+    * Giá trị của biểu thức $S = a + b = 448 + 5445 = 5893$.
+    
+    **Kết luận:** Giá trị của $S$ bằng **5893**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU HỎI 71 ---
+st.markdown(
+    '<b style="color: blue;">Câu 71 (Sở Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một công ty tổ chức sự kiện tổng kết cuối năm. Trong buổi dự tiệc có 4320 người tham gia. Để làm tăng tính thú vị hấp dẫn của buổi tiệc, người ta đã tạo ra các lá thăm ghi các số tự nhiên gồm 6 chữ số khác nhau có dạng $\overline{a_1a_2a_3a_4a_5a_6}$ được lập từ các chữ số $0; 1; 2; 3; 4; 5; 6$. Mỗi người tham gia dự tiệc sẽ chọn cho mình 1 lá thăm và tất cả các lá thăm được bốc hết. Gần cuối buổi tiệc, ban tổ chức công bố những người chọn được số thỏa mãn điều kiện $a_1 + a_2 = a_3 + a_4 = a_5 + a_6$ sẽ được nhận phần thưởng đặc biệt từ công ty. Anh Huy là nhân viên công ty có tham gia dự tiệc và bốc thăm trúng thưởng. Hỏi anh Huy có xác suất trúng thưởng là bao nhiêu, kết quả làm tròn đến hàng phần trăm.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_71 = st.text_input("Nhập đáp án (ví dụ: 0.05):", key="q71_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q71_check"):
+    normalized_user_answer_71 = user_answer_71.strip().replace(',', '.')
+    
+    if normalized_user_answer_71 in ["0.03", "3%"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_71 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy nhớ tổng 6 chữ số phải chia hết cho 3 để tìm ra chữ số bị loại, sau đó đếm số lượng vé trúng thưởng nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q71_solution_shown' not in st.session_state:
+    st.session_state['q71_solution_shown'] = False
+
+col1_71, col2_71 = st.columns([1, 4])
+with col1_71:
+    if st.button("Xem lời giải chi tiết", key="q71_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q71_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q71_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q71_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định số lượng lá thăm (không gian mẫu)**
+    
+    * Lá thăm có dạng $\overline{a_1a_2a_3a_4a_5a_6}$, các chữ số khác nhau lấy từ tập $S = \{0, 1, 2, 3, 4, 5, 6\}$.
+    * Số cách lập lá thăm: $a_1 \neq 0$ có 6 cách chọn. 5 chữ số còn lại có $A_6^5 = 720$ cách.
+    * Tổng số lá thăm là $6 \times 720 = 4320$ lá. Việc mỗi người chọn 1 lá (vừa đủ 4320 người) đồng nghĩa với xác suất trúng thưởng của một người chính là tỉ lệ lá thăm trúng thưởng trên tổng số lá.
+    
+    **Bước 2: Phân tích điều kiện lá thăm trúng thưởng**
+    
+    * Điều kiện trúng thưởng: $a_1 + a_2 = a_3 + a_4 = a_5 + a_6 = k$.
+    * Tổng 7 chữ số ban đầu là $0 + 1 + 2 + 3 + 4 + 5 + 6 = 21$.
+    * Một số có 6 chữ số sẽ lấy 6 chữ số và bỏ lại 1 chữ số, gọi chữ số bỏ lại là $x$ ($x \in S$).
+    * Tổng 6 chữ số được sử dụng là: $21 - x$.
+    * Mà tổng này bằng $3k$, do đó: $21 - x = 3k \implies x$ phải chia hết cho 3.
+    * Suy ra $x$ có thể nhận các giá trị $0, 3, 6$.
+    
+    **Bước 3: Đếm số lá thăm trúng thưởng theo từng trường hợp của $x$**
+    
+    * **Trường hợp 1: $x = 0$** (Loại số 0).
+      * Tập chữ số sử dụng: $\{1, 2, 3, 4, 5, 6\}$. Tổng bằng 21 $\implies k = 7$.
+      * 3 cặp số có tổng bằng 7 là: $\{1, 6\}, \{2, 5\}, \{3, 4\}$.
+      * Số cách ghép các cặp vào 3 vị trí và đổi chỗ trong từng cặp: $3! \times 2^3 = 48$ cách.
+      * (Vì không có chữ số 0 nên tất cả các số này đều hợp lệ).
+      
+    * **Trường hợp 2: $x = 3$** (Loại số 3).
+      * Tập chữ số sử dụng: $\{0, 1, 2, 4, 5, 6\}$. Tổng bằng 18 $\implies k = 6$.
+      * 3 cặp số có tổng bằng 6 là: $\{0, 6\}, \{1, 5\}, \{2, 4\}$.
+      * Tổng số cách ghép (kể cả $a_1 = 0$) là $3! \times 2^3 = 48$ cách.
+      * Số trường hợp bị loại do $a_1 = 0$: cặp $\{0, 6\}$ bắt buộc phải nằm đầu tiên và $0$ đứng trước ($1$ cách), các cặp còn lại xếp vào 2 vị trí còn lại ($2! \times 2^2 = 8$ cách). Có $1 \times 8 = 8$ số vi phạm.
+      * Số lá thăm hợp lệ: $48 - 8 = 40$ lá.
+      
+    * **Trường hợp 3: $x = 6$** (Loại số 6).
+      * Tập chữ số sử dụng: $\{0, 1, 2, 3, 4, 5\}$. Tổng bằng 15 $\implies k = 5$.
+      * 3 cặp số có tổng bằng 5 là: $\{0, 5\}, \{1, 4\}, \{2, 3\}$.
+      * Tương tự trường hợp 2, tổng số cách tạo là 48.
+      * Số cách vi phạm do chữ số 0 đứng đầu (cặp $\{0, 5\}$ nằm đầu) là 8 cách.
+      * Số lá thăm hợp lệ: $48 - 8 = 40$ lá.
+      
+    **Bước 4: Tính xác suất**
+    
+    * Tổng số lá thăm trúng thưởng là: $48 + 40 + 40 = 128$ lá.
+    * Xác suất trúng thưởng của anh Huy là:
+        $$P = \dfrac{128}{4320} = \dfrac{4}{135} \approx 0.0296$$
+    * Làm tròn đến hàng phần trăm, ta được **$0.03$**.
+    
+    **Kết luận:** Xác suất trúng thưởng là **0.03**.
+    """)
+    
+st.markdown("---")
