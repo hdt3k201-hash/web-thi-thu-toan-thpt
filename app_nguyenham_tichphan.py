@@ -1022,15 +1022,19 @@ if st.session_state.get('q10_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 # --- CÂU HỎI 11: THỂ TÍCH KHỐI TRÒN XOAY ---
+import streamlit as st
+import numpy as np
+
+# --- CÂU HỎI 11: THỂ TÍCH KHỐI TRÒN XOAY ---
 st.markdown(
-    '<b style="color: blue;">Câu 11 (Sở Hải Phòng 2026)</b>',
+    '<b style="color: blue;">Câu 11 (Đề thi thử Tốt nghiệp THPT Sở Hải Phòng 2026)</b>',
     unsafe_allow_html=True
 )
 
 st.markdown(r"""
-Một xưởng thủy tinh mỹ nghệ cần sản xuất những chiếc bình thủy tinh cỡ lớn để ngâm một loại sâm. Chiếc bình được tạo hình bằng cách quay hình phẳng $(H)$ quanh trục $AB$. Hỏi chiếc bình ngâm sâm này có sức chứa tối đa khoảng bao nhiêu lít nước, kết quả làm tròn đến hàng phần chục?
+Một xưởng thủy tinh mỹ nghệ cần sản xuất những chiếc bình thủy tinh cỡ lớn để ngâm một loại sâm. Chiếc bình được tạo hình bằng cách quay hình phẳng $(H)$ (phần gạch chéo trong hình vẽ) quanh trục $AB$. Hình $(H)$ nằm trong hình chữ nhật $ABCD$, giới hạn bởi các đoạn thẳng $AM, BP$ (với $M, P$ lần lượt thuộc các cạnh $AD, BC, MP \parallel AB$), cung tròn $MN$ (có tâm $I$ là trung điểm của đoạn thẳng $AE$ nằm trên trục $AB$) và cung parabol $NP$. 
 
-*(Chú ý: Cập nhật thêm các dữ kiện về kích thước/phương trình vào phần mô tả này khi có đầy đủ đề bài).*
+Biết: $AB = 5 \text{ dm}, AM = 1,5 \text{ dm}, BP = 1,5 \text{ dm}, BE = 1 \text{ dm}$. Tiếp tuyến của cung tròn và cung parabol tại điểm tiếp giáp $N$ là trùng nhau để đảm bảo thành bình mượt mà. Giả sử bề dày của thành thủy tinh không đáng kể. Hỏi chiếc bình ngâm sâm này có sức chứa tối đa khoảng bao nhiêu lít nước (kết quả làm tròn đến hàng phần chục)?
 """)
 
 # --- Ô NHẬP ĐÁP ÁN ---
@@ -1040,7 +1044,6 @@ user_answer = st.text_input("Nhập thể tích (lít) làm tròn đến hàng p
 try:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # Sử dụng đúng tên file ảnh bạn đã cung cấp
         st.image("images/image_d805bd.PNG", width=400)
 except FileNotFoundError:
     st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_d805bd.PNG'. Vui lòng kiểm tra lại đường dẫn.")
@@ -1049,17 +1052,14 @@ except FileNotFoundError:
 if st.button("Kiểm tra đáp án", key="q11_check"):
     normalized_user_answer = user_answer.strip().replace(',', '.')
     
-    # TODO: Thay "XX.X" bằng đáp án chính xác của đề bài
-    correct_answer = "XX.X" 
-    
-    if normalized_user_answer == correct_answer:
+    if normalized_user_answer == "66.9":
         st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
     elif user_answer == "":
         st.warning("Bạn chưa nhập đáp án.")
     else:
-        st.error("Sai rồi. Gợi ý: Hãy gắn hệ trục tọa độ, tìm phương trình đường sinh và áp dụng công thức tính thể tích khối tròn xoay nhé!")
+        st.error("Sai rồi. Gợi ý: Hãy gắn hệ trục tọa độ với $AB$ làm trục hoành, tìm phương trình đường tròn chứa cung $MN$ và phương trình parabol chứa cung $NP$ để tính tích phân nhé!")
 
-# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+# --- XEM LỜI GIẢI CHI TIẾT ---
 st.markdown("---")
 
 if 'q11_solution_shown' not in st.session_state:
@@ -1074,33 +1074,43 @@ with col1:
             st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
             st.session_state['q11_solution_shown'] = False 
 
-# Hiển thị lời giải chi tiết khi đủ điều kiện
 if st.session_state.get('q11_solution_shown') and st.session_state.get('logged_in'):
     st.info("### Lời giải chi tiết:")
     
     st.markdown(r"""
     **Bước 1: Gắn hệ trục tọa độ**
     
-    * Chọn hệ trục tọa độ $Oxy$ sao cho trục hoành $Ox$ chứa đoạn thẳng $AB$. 
-    * Gọi các điểm mốc trên trục hoành có hoành độ lần lượt là $x_A$ và $x_B$ (dựa trên kích thước thực tế của đề bài).
+    * Chọn hệ trục tọa độ $Oxy$ sao cho $O \equiv A$, điểm $B$ thuộc tia $Ox$, điểm $D$ thuộc tia $Oy$. 
+    * Do $AB = 5$, ta có $A(0; 0)$ và $B(5; 0)$.
+    * Ta có $AM = 1,5$ nên $M(0; 1,5)$. Điểm $P$ thuộc $BC$ với $BP = 1,5$ nên $P(5; 1,5)$.
+    * Điểm $E$ thuộc $AB$ và $BE = 1$ nên $E(4; 0)$. 
+    * Tâm $I$ là trung điểm $AE$ nên $I(2; 0)$.
     
-    **Bước 2: Xác định phương trình đường biên tạo nên bình thủy tinh**
+    **Bước 2: Tìm phương trình cho đường tròn (cung $MN$)**
     
-    * Dựa vào các dữ kiện kích thước (chiều dài, chiều rộng, các điểm đặc biệt), ta thiết lập phương trình cho đường cong biên $MNP$ của hình phẳng $(H)$.
-    * Giả sử phần đường cong này tạo bởi hàm số $y = f(x)$ trên đoạn $[x_A, x_B]$.
+    * Bán kính đường tròn là $R = IM = \sqrt{(0 - 2)^2 + (1,5 - 0)^2} = \sqrt{4 + 2,25} = 2,5$.
+    * Phương trình của đường tròn tâm $I(2; 0)$ là: $(x - 2)^2 + y^2 = \frac{25}{4}$.
+    * Suy ra cung $MN$ phía trên trục hoành có phương trình hàm số $f_1(x) = \sqrt{\frac{25}{4} - (x - 2)^2}$ (với $0 \le x \le 4$).
+    * Tại $x_N = x_E = 4$, ta có $y_N = \sqrt{6,25 - 4} = 1,5 \Rightarrow N(4; 1,5)$.
     
-    **Bước 3: Tính thể tích khối tròn xoay**
+    **Bước 3: Tìm phương trình parabol (cung $NP$)**
     
-    * Khi quay hình phẳng $(H)$ giới hạn bởi đồ thị $y = f(x)$, trục hoành $y = 0$, và các đường thẳng $x = x_A$, $x = x_B$ xung quanh trục $Ox$, thể tích khối tròn xoay (bình sâm) tạo thành được tính theo công thức:
-        $$V = \pi \int_{x_A}^{x_B} \left[ f(x) \right]^2 \text{d}x$$
-    * Thay hàm $f(x)$ và các cận tương ứng vào công thức, sau đó bấm máy tính tích phân để tìm ra thể tích theo đơn vị khối (ví dụ: $\text{cm}^3$, $\text{dm}^3$).
+    * Giả sử phương trình parabol có dạng $y = ax^2 + bx + c$.
+    * Parabol đi qua $N(4; 1,5)$ và $P(5; 1,5)$, ta có hệ:
+        $$\begin{cases} 16a + 4b + c = 1,5 \\ 25a + 5b + c = 1,5 \end{cases}$$
+    * Xét đạo hàm hàm đường tròn tại $N(x = 4)$: $y' = \frac{-(x - 2)}{\sqrt{6,25 - (x - 2)^2}} \Rightarrow y'(4) = \frac{-2}{1,5} = -\frac{4}{3}$.
+    * Để tiếp tuyến trùng nhau, đạo hàm parabol tại $N$ phải bằng $-\frac{4}{3}$. Ta có: $y' = 2ax + b \Rightarrow 8a + b = -\frac{4}{3}$.
+    * Giải hệ 3 phương trình, ta thu được: $\begin{cases} a = \frac{4}{3} \\ b = -12 \\ c = \frac{169}{6} \end{cases}$.
+    * Phương trình parabol là $f_2(x) = \frac{4}{3}x^2 - 12x + \frac{169}{6}$ (với $4 \le x \le 5$).
     
-    **Bước 4: Đổi đơn vị và kết luận**
+    **Bước 4: Tính thể tích khối tròn xoay**
     
-    * Đổi thể tích vừa tìm được sang đơn vị lít. Lưu ý: $1 \text{ dm}^3 = 1 \text{ lít}$ hoặc $1000 \text{ cm}^3 = 1 \text{ lít}$.
-    * Làm tròn kết quả đến hàng phần chục theo đúng yêu cầu của đề bài.
+    * Thể tích bình ngâm sâm là tổng thể tích tạo bởi cung $MN$ và cung $NP$ quay quanh $Ox$:
+        $$V = \pi \int_{0}^{4} \left[ \frac{25}{4} - (x - 2)^2 \right] \text{d}x + \pi \int_{4}^{5} \left( \frac{4}{3}x^2 - 12x + \frac{169}{6} \right)^2 \text{d}x$$
+    * Bấm máy hoặc tính tay 2 tích phân trên, ta được: 
+        $$V = \frac{59\pi}{3} + \frac{887\pi}{540} \approx 66,9 \text{ dm}^3$$
     
-    **Kết luận:** Sức chứa tối đa của chiếc bình là khoảng **[Cập nhật đáp số]** lít.
+    **Kết luận:** Sức chứa tối đa của chiếc bình là khoảng **66,9 lít** ($1 \text{ dm}^3 = 1 \text{ lít}$).
     """)
 
 st.markdown("---")
