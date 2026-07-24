@@ -1020,3 +1020,87 @@ if st.session_state.get('q10_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 11: THỂ TÍCH KHỐI TRÒN XOAY ---
+st.markdown(
+    '<b style="color: blue;">Câu 11 (Sở Hải Phòng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một xưởng thủy tinh mỹ nghệ cần sản xuất những chiếc bình thủy tinh cỡ lớn để ngâm một loại sâm. Chiếc bình được tạo hình bằng cách quay hình phẳng $(H)$ quanh trục $AB$. Hỏi chiếc bình ngâm sâm này có sức chứa tối đa khoảng bao nhiêu lít nước, kết quả làm tròn đến hàng phần chục?
+
+*(Chú ý: Cập nhật thêm các dữ kiện về kích thước/phương trình vào phần mô tả này khi có đầy đủ đề bài).*
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập thể tích (lít) làm tròn đến hàng phần chục (ví dụ: 12.3):", key="q11_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Sử dụng đúng tên file ảnh bạn đã cung cấp
+        st.image("images/image_d805bd.PNG", width=400)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_d805bd.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q11_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # TODO: Thay "XX.X" bằng đáp án chính xác của đề bài
+    correct_answer = "XX.X" 
+    
+    if normalized_user_answer == correct_answer:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy gắn hệ trục tọa độ, tìm phương trình đường sinh và áp dụng công thức tính thể tích khối tròn xoay nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q11_solution_shown' not in st.session_state:
+    st.session_state['q11_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q11_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q11_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q11_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q11_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Gắn hệ trục tọa độ**
+    
+    * Chọn hệ trục tọa độ $Oxy$ sao cho trục hoành $Ox$ chứa đoạn thẳng $AB$. 
+    * Gọi các điểm mốc trên trục hoành có hoành độ lần lượt là $x_A$ và $x_B$ (dựa trên kích thước thực tế của đề bài).
+    
+    **Bước 2: Xác định phương trình đường biên tạo nên bình thủy tinh**
+    
+    * Dựa vào các dữ kiện kích thước (chiều dài, chiều rộng, các điểm đặc biệt), ta thiết lập phương trình cho đường cong biên $MNP$ của hình phẳng $(H)$.
+    * Giả sử phần đường cong này tạo bởi hàm số $y = f(x)$ trên đoạn $[x_A, x_B]$.
+    
+    **Bước 3: Tính thể tích khối tròn xoay**
+    
+    * Khi quay hình phẳng $(H)$ giới hạn bởi đồ thị $y = f(x)$, trục hoành $y = 0$, và các đường thẳng $x = x_A$, $x = x_B$ xung quanh trục $Ox$, thể tích khối tròn xoay (bình sâm) tạo thành được tính theo công thức:
+        $$V = \pi \int_{x_A}^{x_B} \left[ f(x) \right]^2 \text{d}x$$
+    * Thay hàm $f(x)$ và các cận tương ứng vào công thức, sau đó bấm máy tính tích phân để tìm ra thể tích theo đơn vị khối (ví dụ: $\text{cm}^3$, $\text{dm}^3$).
+    
+    **Bước 4: Đổi đơn vị và kết luận**
+    
+    * Đổi thể tích vừa tìm được sang đơn vị lít. Lưu ý: $1 \text{ dm}^3 = 1 \text{ lít}$ hoặc $1000 \text{ cm}^3 = 1 \text{ lít}$.
+    * Làm tròn kết quả đến hàng phần chục theo đúng yêu cầu của đề bài.
+    
+    **Kết luận:** Sức chứa tối đa của chiếc bình là khoảng **[Cập nhật đáp số]** lít.
+    """)
+
+st.markdown("---")
