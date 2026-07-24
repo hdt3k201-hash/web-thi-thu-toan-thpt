@@ -7540,3 +7540,144 @@ if st.session_state.get('q81_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# --- CÂU 82 ---
+st.markdown(
+    '<b style="color: blue;">Câu 82 (Cụm các trường Hưng Yên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_75d584.png (Câu trên)
+st.markdown(r"""
+Phòng thí nghiệm $A$ được giao làm hai thí nghiệm độc lập. Xác suất thành công trong từng thí nghiệm là $0,8$. Phòng thành công ít nhất một thí nghiệm được coi là hoàn thành nhiệm vụ. Tính xác suất để phòng thí nghiệm $A$ hoàn thành nhiệm vụ.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_82 = st.text_input("Nhập kết quả (ví dụ: 0.12):", key="q82_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q82_check"):
+    normalized_user_answer_82 = user_answer_82.strip().replace(" ", "").replace(",", ".")
+    
+    # Đáp án chính xác là 0.96 hoặc 24/25
+    if normalized_user_answer_82 == "0.96" or normalized_user_answer_82 == "24/25":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_82 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q82_solution_shown' not in st.session_state:
+    st.session_state['q82_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q82_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q82_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q82_solution_shown'] = False
+
+if st.session_state.get('q82_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    Gọi $A_1$ là biến cố "Thí nghiệm 1 thành công" $\Rightarrow P(A_1) = 0,8 \Rightarrow P(\overline{A_1}) = 0,2$.
+    Gọi $A_2$ là biến cố "Thí nghiệm 2 thành công" $\Rightarrow P(A_2) = 0,8 \Rightarrow P(\overline{A_2}) = 0,2$.
+    
+    Biến cố "Phòng thí nghiệm $A$ hoàn thành nhiệm vụ" là biến cố thành công ít nhất một thí nghiệm.
+    Ta sử dụng biến cố đối: "Phòng thí nghiệm $A$ không hoàn thành nhiệm vụ" (tức là cả hai thí nghiệm đều thất bại).
+    
+    Vì hai thí nghiệm độc lập nên xác suất cả hai đều thất bại là:
+    $P(\overline{A_1} \cap \overline{A_2}) = P(\overline{A_1}) \cdot P(\overline{A_2}) = 0,2 \cdot 0,2 = 0,04$.
+    
+    Vậy xác suất để phòng thí nghiệm $A$ hoàn thành nhiệm vụ (thành công ít nhất một thí nghiệm) là:
+    $P = 1 - 0,04 = 0,96$.
+    
+    **Đáp án: $0,96$** (hoặc $\dfrac{24}{25}$).
+    """)
+    
+st.markdown("---")
+
+# --- CÂU 83 ---
+st.markdown(
+    '<b style="color: blue;">Câu 83 (Cụm các trường Hưng Yên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_75d584.png (Câu dưới)
+st.markdown(r"""
+Một khối lập phương có độ dài cạnh là $2cm$ được chia thành $8$ khối lập phương cạnh $1cm$. Hỏi có bao nhiêu tam giác tạo thành từ các đỉnh của các khối lập phương cạnh $1cm$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_83 = st.text_input("Nhập kết quả:", key="q83_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q83_check"):
+    normalized_user_answer_83 = user_answer_83.strip().replace(" ", "")
+    
+    # Đáp án
+    if normalized_user_answer_83 == "2876":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_83 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q83_solution_shown' not in st.session_state:
+    st.session_state['q83_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q83_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q83_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q83_solution_shown'] = False
+
+if st.session_state.get('q83_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    Khối lập phương cạnh $2cm$ được chia thành $8$ khối lập phương cạnh $1cm$, tương đương với một lưới không gian kích thước $2 \times 2 \times 2$.
+    Số điểm (đỉnh) trên mỗi cạnh của khối lập phương lớn là 3 điểm.
+    Tổng số đỉnh của các khối lập phương cạnh $1cm$ là: $n = 3 \times 3 \times 3 = 27$ (đỉnh).
+    
+    Để tạo thành một tam giác, ta cần chọn ra $3$ điểm không thẳng hàng từ $27$ điểm nói trên.
+    Tổng số cách chọn ra $3$ điểm bất kỳ từ $27$ điểm là:
+    $C_{27}^3 = \dfrac{27 \cdot 26 \cdot 25}{6} = 2925$ (cách).
+    
+    Tiếp theo, ta tìm số các bộ $3$ điểm thẳng hàng (không thể tạo thành tam giác):
+    1.  **Các bộ 3 điểm nằm trên các đường thẳng song song với các cạnh của khối lập phương:**
+        Mỗi mặt phẳng có $3 \times 3 = 9$ đường (theo 2 phương). Nhưng trong không gian 3D, theo mỗi phương (Ox, Oy, Oz) sẽ có $9$ đường thẳng.
+        Số bộ $3$ điểm là: $3 \times 9 = 27$ (bộ).
+        
+    2.  **Các bộ 3 điểm nằm trên đường chéo của các hình vuông cạnh $2cm$ (song song với các mặt phẳng tọa độ):**
+        Có $3$ mặt phẳng cắt dọc theo mỗi chiều. Mỗi mặt phẳng như vậy chứa một hình vuông $2 \times 2$ (có $2$ đường chéo gồm $3$ điểm).
+        Số mặt phẳng là $3 \times 3 = 9$ mặt phẳng.
+        Số bộ $3$ điểm là: $9 \times 2 = 18$ (bộ).
+        
+    3.  **Các bộ 3 điểm nằm trên đường chéo chính của khối lập phương lớn:**
+        Có $4$ đường chéo đi qua tâm của khối lập phương $2 \times 2 \times 2$. Mỗi đường chéo chứa $3$ điểm.
+        Số bộ $3$ điểm là: $4$ (bộ).
+        
+    Tổng số bộ $3$ điểm thẳng hàng là: $27 + 18 + 4 = 49$ (bộ).
+    
+    Vậy, số tam giác có thể tạo thành là:
+    $C_{27}^3 - 49 = 2925 - 49 = 2876$ (tam giác).
+    
+    **Đáp án: 2876**
+    """)
+    
+st.markdown("---")
