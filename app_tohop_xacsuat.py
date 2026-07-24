@@ -3378,3 +3378,139 @@ if st.session_state.get('q37_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 38 (Từ ảnh - HSG 12 - Hà Tĩnh 2026)
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 38 (HSG 12 - Hà Tĩnh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Cho một bảng ô vuông $3 \times 3$ như hình vẽ.
+
+Điền ngẫu nhiên 9 số thuộc tập hợp $X = \{0; 1; 2; 3; 4; 5; 6; 7; 8; 9\}$ vào 9 ô vuông trong bảng (mỗi ô điền một số khác nhau). Tính xác suất của biến cố "mỗi hàng, mỗi cột bất kì trong bảng đều có ít nhất một số lẻ".
+""")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/hsght2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/hsght2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_38 = st.text_input("Nhập kết quả xác suất (ví dụ: 1/2 hoặc 0.5...):", key="q38_ans")
+
+if st.button("Kiểm tra đáp án", key="q38_check"):
+    normalized_user_answer_38 = user_answer_38.strip().replace(" ", "")
+    
+    # Đáp án chính xác là 5/14 (hoặc số thập phân xấp xỉ 0.357 / 35.71%)
+    if normalized_user_answer_38 in ["5/14", "0.357", "0.3571", "35.71%", "35.7%"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_38 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q38_solution_shown' not in st.session_state:
+    st.session_state['q38_solution_shown'] = False
+
+col1_38, col2_38 = st.columns([1, 4])
+with col1_38:
+    if st.button("Xem lời giải chi tiết Câu 38", key="q38_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q38_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q38_solution_shown'] = False
+
+if st.session_state.get('q38_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 38:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích tập hợp và tính không gian mẫu**
+    
+    *   Tập hợp $X = \{0; 1; 2; 3; 4; 5; 6; 7; 8; 9\}$ có 10 phần tử, trong đó có:
+        *   **5 số lẻ**: $\{1; 3; 5; 7; 9\}$
+        *   **5 số chẵn**: $\{0; 2; 4; 6; 8\}$
+    *   Điền ngẫu nhiên 9 số khác nhau từ tập $X$ vào bảng $3 \times 3$ (có 9 ô):
+        *   Số cách chọn 9 số từ 10 số và sắp xếp vào 9 ô là chỉnh hợp chập 9 của 10:
+        $$n(\Omega) = A_{10}^9 = 10! = 3\,628\,800 \text{ (cách)}$$
+    
+    *   Vì tập $X$ có 10 số mà chỉ điền 9 số vào bảng, nên sẽ có đúng **1 số bị loại ra không điền vào bảng**. Ta chia làm 2 trường hợp theo tính chẵn/lẻ của số bị loại ra:
+        *   **Trường hợp 1:** Số bị loại ra là số chẵn $\Rightarrow$ Trong bảng có đủ **5 số lẻ** và **4 số chẵn**.
+        *   **Trường hợp 2:** Số bị loại ra là số lẻ $\Rightarrow$ Trong bảng có **4 số lẻ** và **5 số chẵn**.
+    
+    ---
+    
+    **Bước 2: Tìm số kết quả thuận lợi cho biến cố $A$ ("Mỗi hàng, mỗi cột đều có ít nhất một số lẻ")**
+    
+    Thay vì bài toán với con số cụ thể, ta bài toán hóa thành việc **đặt các viên bi lẻ vào bảng $3 \times 3$ sao cho không có hàng nào trống và không có cột nào trống**, sau đó hoán vị các số lẻ và số chẵn vào các ô.
+    
+    ### **Trường hợp 1: Bảng có 5 số lẻ và 4 số chẵn**
+    
+    *   Có $C_5^1 = 5$ cách chọn 1 số chẵn bị loại ra ngoài (hoạt động này mang lại đủ 5 lẻ, 4 chẵn để điền).
+    *   Ta cần đặt 5 "ô lẻ" vào bảng $3 \times 3$ sao cho mỗi hàng, mỗi cột đều có ít nhất 1 ô lẻ. Ta dùng phương pháp **phần bù (Inclusion-Exclusion)**:
+        *   Tổng số cách chọn 5 ô bất kỳ trong bảng 9 ô là: $C_9^5 = 126$ cách.
+        *   **Số cách có ít nhất 1 hàng trống (không có số lẻ):** Nếu chọn 1 hàng trống (có $C_3^1 = 3$ cách), thì 5 ô lẻ buộc phải nằm hết trong 6 ô của 2 hàng còn lại. Số cách là: $3 \times C_6^5 = 3 \times 6 = 18$ cách. (Không thể có 2 hàng cùng trống vì lúc đó chỉ còn 3 ô không đủ chứa 5 số lẻ).
+        *   **Số cách có ít nhất 1 cột trống:** Tương tự, có $3 \times C_6^5 = 18$ cách.
+        *   **Số cách vi phạm cả hàng trống và cột trống:** Chọn 1 hàng trống ($C_3^1=3$ cách) và 1 cột trống ($C_3^1=3$ cách). Khi đó, số ô còn lại là $2 \times 2 = 4$ ô. Nhưng ta cần đặt 5 ô lẻ vào 4 ô này $\Rightarrow$ Không thể xảy ra (**0 cách**).
+        
+        $\Rightarrow$ Số cách đặt 5 ô lẻ thỏa mãn điều kiện mỗi hàng/cột có ít nhất 1 ô lẻ là:
+        $$N_1 = 126 - (18 + 18) + 0 = 90 \text{ (cách chọn vị trí)}$$
+    
+    *   Sau khi chọn được vị trí, ta xếp 5 số lẻ vào 5 vị trí đó ($5!$ cách) và xếp 4 số chẵn vào 4 ô còn lại ($4!$ cách).
+    *   Tổng số cách của Trường hợp 1 là:
+        $$S_1 = 5 \times 90 \times 5! \times 4! = 1\,296\,000 \text{ (cách)}$$
+    
+    ---
+    
+    ### **Trường hợp 2: Bảng có 4 số lẻ và 5 số chẵn**
+    
+    *   Có $C_5^1 = 5$ cách chọn 1 số lẻ bị loại ra ngoài (còn lại 4 số lẻ và 5 số chẵn).
+    *   Ta cần đặt 4 "ô lẻ" vào bảng $3 \times 3$ sao cho mỗi hàng, mỗi cột có ít nhất 1 ô lẻ.
+        Vì chỉ có 4 ô lẻ cho 3 hàng, theo nguyên lý Dirichlet sẽ có phân bố số lượng ô lẻ trên 3 hàng là: **(2, 1, 1)**.
+        Tương tự, phân bố số lượng ô lẻ trên 3 cột cũng phải là: **(2, 1, 1)**.
+        
+        Để đếm số cách đặt vị trí:
+        *   Chọn 1 hàng có 2 ô lẻ (có $C_3^1 = 3$ cách) và 1 cột có 2 ô lẻ (có $C_3^1 = 3$ cách). Có $3 \times 3 = 9$ cặp (hàng đôi, cột đôi).
+        *   Với mỗi cặp (hàng đôi, cột đôi) đã xác định, giao của chúng là 1 ô. Sẽ có 2 khả năng xảy ra đối với ô giao này:
+            *   *Khả năng A: Ô giao chứa số lẻ.*
+                Lúc này, trên hàng đôi cần thêm 1 ô lẻ nữa (chọn từ 2 vị trí còn lại $\Rightarrow 2$ cách). Trên cột đôi cần thêm 1 ô lẻ nữa (chọn từ 2 vị trí còn lại $\Rightarrow 2$ cách). Lúc này ta đã dùng 3 ô lẻ. Ô lẻ thứ 4 bắt buộc phải đặt vào ô giao của hàng 1 và cột 1 còn lại để đảm bảo hàng nào/cột nào cũng có số lẻ ($\Rightarrow 1$ cách).
+                $\Rightarrow$ Có: $2 \times 2 \times 1 = 4$ cách cấu hình.
+            *   *Khả năng B: Ô giao KHÔNG chứa số lẻ (là ô chẵn).*
+                Lúc này, để hàng đôi có 2 ô lẻ thì phải điền vào cả 2 ô còn lại của hàng đôi ($\Rightarrow 1$ cách). Để cột đôi có 2 ô lẻ thì phải điền vào cả 2 ô còn lại của cột đôi ($\Rightarrow 1$ cách). Ta đã dùng hết 4 ô lẻ! Lúc này, 2 hàng còn lại và 2 cột còn lại tự động mỗi hàng/cột nhận đúng 1 ô lẻ.
+                $\Rightarrow$ Có: $1 \times 1 = 1$ cách cấu hình.
+        
+        $\Rightarrow$ Tổng số cách đặt 4 ô lẻ thỏa mãn là:
+        $$N_2 = 9 \times (4 + 1) = 45 \text{ (cách chọn vị trí)}$$
+    
+    *   Sau khi chọn được vị trí, ta xếp 4 số lẻ vào 4 vị trí đó ($4!$ cách) và xếp 5 số chẵn vào 5 ô còn lại ($5!$ cách).
+    *   Tổng số cách của Trường hợp 2 là:
+        $$S_2 = 5 \times 45 \times 4! \times 5! = 648\,000 \text{ (cách)}$$
+    
+    ---
+    
+    **Bước 3: Tính tổng kết quả thuận lợi và xác suất**
+    
+    *   Tổng số kết quả thuận lợi cho biến cố $A$ là:
+        $$n(A) = S_1 + S_2 = 1\,296\,000 + 648\,000 = 1\,944\,000 \text{ (cách)}$$
+    
+    *   Xác suất cần tìm là:
+        $$P(A) = \dfrac{n(A)}{n(\Omega)} = \dfrac{1\,944\,000}{3\,628\,800} = \dfrac{5}{14} \approx 0.3571 \text{ (hay } 35.71\% \text{)}$$
+    
+    Vậy xác suất của biến cố là **$\dfrac{5}{14}$**.
+    """)
+
+st.markdown("---")
