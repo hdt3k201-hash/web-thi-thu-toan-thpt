@@ -3245,8 +3245,11 @@ if st.session_state.get('q36_solution_shown') and st.session_state.get('logged_i
     
     Vậy tổng số cách sắp xếp đội hình thỏa mãn toàn bộ yêu cầu đề bài là:
     $$\text{Tổng} = 12 \times 2 \times 5! \times 4! = 24 \times 120 \times 24 = 69120 \text{ (cách)}$$
+
+    *().*
+    """)
     
-)
+
 
 st.markdown("---")
 
