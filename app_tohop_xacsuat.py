@@ -6120,3 +6120,189 @@ if st.session_state.get('q66_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+
+# --- CÂU HỎI 66 ---
+st.markdown(
+    '<b style="color: blue;">Câu 67 (Sở TT Huế 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Hằng năm trước ngày Khai giảng năm học mới, Uỷ ban nhân dân thành phố Huế giao Sở Giáo dục và Đào tạo tổ chức Lễ Tuyên dương học sinh đạt danh hiệu “Học sinh danh dự toàn trường” dành cho những học sinh xuất sắc nhất của mỗi trường phổ thông trên địa bàn thành phố. Trong Lễ Tuyên dương, Ban tổ chức vinh danh các học sinh theo lượt nhận, mỗi lượt có 10 học sinh, với những lượt có 5 học sinh nam và 5 học sinh nữ thì Ban tổ chức muốn các học sinh này đứng thành một hàng mà nam nữ xen kẽ. Tuy nhiên khi xếp hàng với lượt có 5 học sinh nam và 5 học sinh nữ thì Ban tổ chức nhận thấy các học sinh này không đứng xen kẽ nhưng chỉ cần đổi chỗ hai học sinh nào đó thì được hàng có nam nữ đứng xen kẽ, các xếp này gọi là “cách xếp lỗi”. Gọi $D$ là số “cách xếp lỗi” như trên, xác định giá trị của $\dfrac{D}{100}$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_66 = st.text_input("Nhập đáp án :", key="q66_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q66_check"):
+    normalized_user_answer_66 = user_answer_66.strip()
+    
+    if normalized_user_answer_66 == "7200":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_66 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy đếm số mẫu giới tính thỏa mãn điều kiện 'cách xếp lỗi' sau đó nhân với số hoán vị của nam và nữ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q66_solution_shown' not in st.session_state:
+    st.session_state['q66_solution_shown'] = False
+
+col1_66, col2_66 = st.columns([1, 4])
+with col1_66:
+    if st.button("Xem lời giải chi tiết", key="q66_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q66_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q66_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q66_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích cấu trúc của một hàng nam nữ xen kẽ chuẩn**
+    
+    * Để 5 nam và 5 nữ đứng xen kẽ, ta có 2 mẫu cấu trúc giới tính (gọi $N$ là Nam, $Z$ là Nữ):
+      * Mẫu 1: $N-Z-N-Z-N-Z-N-Z-N-Z$ (Nam ở vị trí lẻ, Nữ ở vị trí chẵn).
+      * Mẫu 2: $Z-N-Z-N-Z-N-Z-N-Z-N$ (Nữ ở vị trí lẻ, Nam ở vị trí chẵn).
+    * Với mỗi mẫu, số cách xếp $5$ nam và $5$ nữ vào các vị trí là: $5! \times 5! = 14400$ cách.
+    
+    **Bước 2: Phân tích điều kiện của "cách xếp lỗi"**
+    
+    * Một "cách xếp lỗi" là một cách xếp không xen kẽ, nhưng **chỉ cần đổi chỗ đúng 2 học sinh** là trở thành xếp xen kẽ chuẩn.
+    * Xét Mẫu 1 ($N-Z-N-Z-N-Z-N-Z-N-Z$): Để tạo ra một mẫu bị lỗi 1 lần hoán vị từ Mẫu 1, ta bắt buộc phải chọn 1 vị trí Nam (lẻ) và 1 vị trí Nữ (chẵn) để đổi chỗ cho nhau. (Nếu đổi 2 Nam hoặc 2 Nữ thì hàng vẫn giữ nguyên mẫu giới tính xen kẽ ban đầu).
+    * Số cách chọn 1 vị trí Nam và 1 vị trí Nữ để đổi chỗ trong Mẫu 1 là: $5 \times 5 = 25$ cách. Mỗi cách đổi tạo ra một chuỗi giới tính lỗi duy nhất (có đúng 1 Nam ở vị trí chẵn và 1 Nữ ở vị trí lẻ).
+    * Tương tự, xét Mẫu 2 ($Z-N-Z-N-Z-N-Z-N-Z-N$), số cách chọn 1 vị trí Nữ (lẻ) và 1 vị trí Nam (chẵn) để đổi chỗ là: $5 \times 5 = 25$ cách.
+    * Do Mẫu 1 có 4 Nam lẻ, 1 Nam chẵn, còn Mẫu 2 có 4 Nam chẵn, 1 Nam lẻ nên 25 cấu trúc lỗi sinh ra từ Mẫu 1 hoàn toàn khác biệt với 25 cấu trúc lỗi sinh ra từ Mẫu 2.
+    * Tổng cộng có $25 + 25 = 50$ mẫu giới tính bị "lỗi" theo yêu cầu.
+    
+    **Bước 3: Tính tổng số cách xếp lỗi $D$**
+    
+    * Với mỗi mẫu giới tính lỗi, ta xếp cụ thể 5 học sinh nam và 5 học sinh nữ vào các vị trí đã định sẵn. 
+    * Số cách xếp cụ thể cho mỗi mẫu là: $5! \times 5! = 120 \times 120 = 14400$ cách.
+    * Tổng số "cách xếp lỗi" là:
+        $$D = 50 \times 14400 = 720000$$
+    
+    **Bước 4: Tính giá trị biểu thức $\dfrac{D}{100}$**
+    
+    $$\dfrac{D}{100} = \dfrac{720000}{100} = 7200$$
+    
+    **Kết luận:** Giá trị của biểu thức $\dfrac{D}{100}$ bằng **7200**.
+    """)
+    
+st.markdown("---")
+
+
+# --- CÂU HỎI 67 ---
+st.markdown(
+    '<b style="color: blue;">Câu 68 (Sở Cao Bằng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho một hình bát giác đều $ABCD.EFGH$ nội tiếp trong một đường tròn tâm $O$ như hình bên. Gắn ngẫu nhiên tám số tự nhiên $\{9; 10; 11; 12; 13; 14; 15; 16\}$ vào tám đỉnh của bát giác đều này (mỗi số gắn đúng một đỉnh). Chọn ngẫu nhiên một tam giác có ba đỉnh lấy từ tám đỉnh của bát giác đã cho. Gọi xác suất thu được một tam giác vuông với ba số trên ba đỉnh của tam giác (theo một thứ tự nào đó) lập thành một cấp số cộng là $\dfrac{m}{n}$ (với $m, n \in \mathbb{N}^*$; $\dfrac{m}{n}$ là phân số tối giản). Giá trị của $m+n$ bằng bao nhiêu?
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/socb_2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/socb_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_67 = st.text_input("Nhập đáp án :", key="q67_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q67_check"):
+    normalized_user_answer_67 = user_answer_67.strip()
+    
+    if normalized_user_answer_67 == "107":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_67 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy đếm số lượng tam giác vuông trong bát giác đều và số bộ 3 phần tử lập thành cấp số cộng từ tập hợp đã cho nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q67_solution_shown' not in st.session_state:
+    st.session_state['q67_solution_shown'] = False
+
+col1_67, col2_67 = st.columns([1, 4])
+with col1_67:
+    if st.button("Xem lời giải chi tiết", key="q67_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q67_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q67_solution_shown'] = False
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q67_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu**
+    
+    * Phép thử gồm 2 bước độc lập:
+      1. Gắn 8 số vào 8 đỉnh của bát giác đều: có $8!$ cách.
+      2. Chọn ngẫu nhiên 1 tam giác từ 8 đỉnh: có $C_8^3 = 56$ cách.
+    * Không gian mẫu của phép thử là: 
+        $$n(\Omega) = 8! \times 56$$
+    
+    **Bước 2: Phân tích các điều kiện của biến cố thuận lợi**
+    
+    Biến cố $A$: "Tam giác được chọn là tam giác vuông VÀ 3 số trên 3 đỉnh lập thành một cấp số cộng (CSC)".
+    
+    * **Điều kiện 1: Tam giác vuông.**
+      * Một tam giác có 3 đỉnh thuộc bát giác đều là tam giác vuông khi và chỉ khi có một cạnh là đường kính của đường tròn ngoại tiếp.
+      * Bát giác đều có $\dfrac{8}{2} = 4$ đường kính.
+      * Với mỗi đường kính (chứa 2 đỉnh), ta chọn 1 trong 6 đỉnh còn lại để tạo thành góc vuông. Do đó, số tam giác vuông có thể tạo ra là: $4 \times 6 = 24$ tam giác.
+    
+    * **Điều kiện 2: 3 số lập thành cấp số cộng.**
+      * Tập hợp các số được cho là $S = \{9; 10; 11; 12; 13; 14; 15; 16\}$.
+      * Liệt kê các tập con gồm 3 phần tử tạo thành CSC từ $S$ (gọi công sai là $d$):
+        * $d = 1$: $\{9, 10, 11\}, \{10, 11, 12\}, \{11, 12, 13\}, \{12, 13, 14\}, \{13, 14, 15\}, \{14, 15, 16\}$ $\rightarrow$ có $6$ tập.
+        * $d = 2$: $\{9, 11, 13\}, \{10, 12, 14\}, \{11, 13, 15\}, \{12, 14, 16\}$ $\rightarrow$ có $4$ tập.
+        * $d = 3$: $\{9, 12, 15\}, \{10, 13, 16\}$ $\rightarrow$ có $2$ tập.
+        * $d = 4$: không có tập nào thoả mãn.
+      * Tổng cộng có $6 + 4 + 2 = 12$ bộ 3 số lập thành một CSC.
+    
+    **Bước 3: Tính số kết quả thuận lợi**
+    
+    * Để tạo ra một kết quả thuận lợi, ta thực hiện các bước:
+      1. Chọn 1 tam giác vuông từ 24 tam giác vuông: $24$ cách.
+      2. Chọn 1 bộ 3 số lập thành CSC từ 12 bộ thoả mãn: $12$ cách.
+      3. Xếp 3 số vừa chọn vào 3 đỉnh của tam giác vuông đó: $3! = 6$ cách.
+      4. Xếp 5 số còn lại vào 5 đỉnh còn lại của bát giác: $5! = 120$ cách.
+    * Tổng số kết quả thuận lợi là: 
+        $$n(A) = 24 \times 12 \times 3! \times 5!$$
+    
+    **Bước 4: Tính xác suất và suy ra kết quả $m+n$**
+    
+    * Xác suất cần tìm là:
+        $$P(A) = \dfrac{n(A)}{n(\Omega)} = \dfrac{24 \times 12 \times 6 \times 120}{56 \times 40320}$$
+        $$P(A) = \dfrac{1728 \times 120}{2257920} = \dfrac{207360}{2257920} = \dfrac{9}{98}$$
+    * Suy ra $m = 9$ và $n = 98$ (do $\dfrac{9}{98}$ đã là phân số tối giản).
+    * Giá trị cần tìm là: 
+        $$m + n = 9 + 98 = 107$$
+    
+    **Kết luận:** Giá trị của $m + n$ bằng **107**.
+    """)
+    
+st.markdown("---")
