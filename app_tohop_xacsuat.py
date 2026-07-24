@@ -7854,3 +7854,108 @@ if st.session_state.get('q85_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# --- CÂU 86 ---
+st.markdown(
+    '<b style="color: blue;">Câu 86 (Sở Thái Nguyên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh image_764340.png
+st.markdown(r"""
+Một bảng hình vuông kích thước $12 \times 12$ gồm $144$ hình vuông đơn vị, mỗi hình vuông đơn vị có diện tích bằng $1$. Chọn ngẫu nhiên một hình chữ nhật tạo thành từ các hình vuông đơn vị của bảng. Xác suất để hình chữ nhật chọn được có diện tích là một số chẵn bằng $\dfrac{a}{b}$ với $\dfrac{a}{b}$ là phân số tối giản. Khi đó giá trị của $R = a - b$ bằng bao nhiêu?
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/sotn2_2026.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/sotn2_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_86 = st.text_input("Nhập kết quả (ví dụ: -10):", key="q86_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q86_check"):
+    # Chuẩn hóa đầu vào của người dùng để so sánh
+    normalized_user_answer_86 = user_answer_86.strip().replace(" ", "")
+    
+    # Đáp án chính xác là -49
+    if normalized_user_answer_86 == "-49":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_86 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q86_solution_shown' not in st.session_state:
+    st.session_state['q86_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q86_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q86_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q86_solution_shown'] = False # Đảm bảo ẩn nếu chưa đăng nhập
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q86_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính tổng số hình chữ nhật có thể tạo thành (Không gian mẫu).**
+    
+    Bảng lưới kích thước $12 \times 12$ được tạo bởi $13$ đường thẳng dọc và $13$ đường thẳng ngang.
+    Để tạo thành một hình chữ nhật, ta cần chọn $2$ đường thẳng ngang từ $13$ đường ngang và $2$ đường thẳng dọc từ $13$ đường dọc.
+    Số hình chữ nhật tạo thành là:
+    $n(\Omega) = C_{13}^2 \cdot C_{13}^2 = 78 \cdot 78 = 6084$ (hình).
+
+    **Bước 2: Sử dụng biến cố đối để tìm số hình chữ nhật có diện tích chẵn.**
+    
+    Gọi $A$ là biến cố: "Hình chữ nhật được chọn có diện tích là số chẵn".
+    Biến cố đối $\overline{A}$ là: "Hình chữ nhật được chọn có diện tích là số lẻ".
+    
+    Giả sử hình chữ nhật có kích thước là $x \times y$ (với $x, y \in \{1, 2, \dots, 12\}$).
+    Diện tích $S = x \cdot y$. 
+    $S$ là số lẻ khi và chỉ khi cả chiều dài $x$ và chiều rộng $y$ đều là số lẻ.
+    
+    **Đếm số cách chọn kích thước lẻ:**
+    Độ dài một cạnh của hình chữ nhật trên lưới được tính bằng hiệu tọa độ của $2$ đường thẳng được chọn (ví dụ chọn đường thứ $i$ và đường thứ $j$ với $0 \le i < j \le 12$, độ dài là $j - i$).
+    Để độ dài $j - i$ là một số lẻ, thì trong $2$ số $i, j$, phải có một số chẵn và một số lẻ.
+    Từ $0$ đến $12$ (có $13$ số) bao gồm:
+    - Tập các số chẵn: $\{0, 2, 4, 6, 8, 10, 12\}$ gồm $7$ phần tử.
+    - Tập các số lẻ: $\{1, 3, 5, 7, 9, 11\}$ gồm $6$ phần tử.
+    
+    Số cách chọn 2 đường thẳng để khoảng cách giữa chúng là số lẻ:
+    $C_7^1 \cdot C_6^1 = 7 \cdot 6 = 42$ (cách).
+    
+    Do đó, để tạo ra hình chữ nhật có cả hai kích thước đều lẻ, ta có:
+    $n(\overline{A}) = 42 \cdot 42 = 1764$ (hình).
+    
+    Suy ra số hình chữ nhật có diện tích chẵn (ít nhất 1 kích thước chẵn) là:
+    $n(A) = n(\Omega) - n(\overline{A}) = 6084 - 1764 = 4320$ (hình).
+
+    **Bước 3: Tính xác suất và kết luận.**
+    
+    Xác suất để chọn được hình chữ nhật có diện tích chẵn là:
+    $P(A) = \dfrac{n(A)}{n(\Omega)} = \dfrac{4320}{6084} = \dfrac{120}{169}$.
+    
+    Theo giả thiết, $P(A) = \dfrac{a}{b}$ với $\dfrac{a}{b}$ tối giản, ta có $a = 120$ và $b = 169$.
+    
+    Vậy $R = a - b = 120 - 169 = -49$.
+    """)
+    
+st.markdown("---")
+
+
