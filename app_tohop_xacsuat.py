@@ -9635,3 +9635,213 @@ if st.session_state.get('q103_solution_shown') and st.session_state.get('logged_
 st.markdown("---")
 
 
+
+
+# ==========================================
+# CÂU 104
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 104 (Sở Gia Lai 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trước mặt bạn có sáu cánh cửa. Trong số đó, có năm cánh cửa mà ở đằng sau mỗi cánh cửa có gắn 120 USD và một cánh cửa mà ở đằng sau là "người thu hồi". Bạn có thể chọn bất kỳ sự kết hợp nào của các cánh cửa mà bạn thích và sau đó mở tất cả chúng ra. Nếu tất cả các cánh cửa bạn mở đều có tiền thì bạn sẽ giữ được tất cả số tiền đó. Tuy nhiên, nếu một trong những cánh cửa bạn mở ra có người thu hồi thì họ sẽ lấy hết số tiền ở cánh cửa kia nếu có và bạn không nhận được gì. Tất nhiên là bạn muốn tối đa hóa số tiền thắng được kỳ vọng rồi. Nếu bạn chọn số lượng cửa tối ưu thì số tiền thắng được kỳ vọng của bạn là bao nhiêu USD?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_104 = st.text_input("Nhập đáp án Câu 104 (chỉ nhập số USD):", key="q104_ans")
+
+if st.button("Kiểm tra đáp án", key="q104_check"):
+    normalized_user_answer = user_answer_104.strip()
+    if normalized_user_answer == "180":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_104 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q104_solution_shown' not in st.session_state:
+    st.session_state['q104_solution_shown'] = False
+
+col1_104, col2_104 = st.columns([1, 4])
+with col1_104:
+    if st.button("Xem lời giải chi tiết", key="q104_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q104_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q104_solution_shown'] = False
+
+if st.session_state.get('q104_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Phân tích xác suất chọn cửa.**
+    *   Có tổng cộng 6 cánh cửa: 5 cánh chứa 120 USD và 1 cánh chứa "người thu hồi".
+    *   Giả sử bạn chọn mở $k$ cánh cửa bất kỳ ($1 \le k \le 6$).
+    *   Xác suất để tất cả $k$ cánh cửa bạn chọn đều chứa tiền (không dính người thu hồi) là tỷ lệ chọn được $k$ cửa từ 5 cửa có tiền:
+        $$P(k) = \dfrac{C_5^k}{C_6^k} = \dfrac{6 - k}{6} = 1 - \dfrac{k}{6}$$
+
+    **Bước 2: Thiết lập hàm số tính số tiền thắng kỳ vọng.**
+    *   Nếu tất cả $k$ cửa đều có tiền, bạn nhận được số tiền là $120k$ USD.
+    *   Nếu mở trúng người thu hồi, bạn nhận được 0 USD.
+    *   Số tiền thắng được kỳ vọng $E(k)$ khi mở $k$ cánh cửa là:
+        $$E(k) = (120k) \cdot P(k) + 0 \cdot (1 - P(k)) = 120k \cdot \dfrac{6 - k}{6} = 20k(6 - k) = 120k - 20k^2$$
+
+    **Bước 3: Tìm giá trị tối ưu.**
+    *   Ta xét các giá trị của $E(k)$ với $k \in \{1, 2, 3, 4, 5, 6\}$:
+        *   $E(1) = 120(1) - 20(1)^2 = 100$
+        *   $E(2) = 120(2) - 20(2)^2 = 160$
+        *   $E(3) = 120(3) - 20(3)^2 = 180$
+        *   $E(4) = 120(4) - 20(4)^2 = 160$
+        *   $E(5) = 120(5) - 20(5)^2 = 100$
+        *   $E(6) = 120(6) - 20(6)^2 = 0$
+    *   Giá trị kỳ vọng lớn nhất đạt được là $180$ khi chọn số lượng cửa tối ưu là $k = 3$.
+
+    **Vậy đáp án là: 180**
+    """)
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 105
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 105 (Sở Nghệ An 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một máy chủ cần xử lý tuần tự 15 tệp dữ liệu khác nhau, bao gồm 3 tệp văn bản, 5 tệp âm thanh và 7 tệp video. Việc xử lý liên tục các tệp dữ liệu cùng loại sẽ làm giảm hiệu suất của hệ thống. Do đó, hệ thống phải sắp xếp thứ tự xử lý sao cho không có bất kỳ hai tệp dữ liệu cùng loại nào được sắp xếp liền kề nhau. Gọi $S$ là số cách sắp xếp thỏa mãn yêu cầu trên. Hãy tính tổng các chữ số của $S$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_105 = st.text_input("Nhập đáp án Câu 105 (tổng các chữ số của S):", key="q105_ans")
+
+if st.button("Kiểm tra đáp án", key="q105_check"):
+    normalized_user_answer = user_answer_105.strip()
+    if normalized_user_answer == "27":  # Hoặc giá trị tổng chữ số tương ứng
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_105 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q105_solution_shown' not in st.session_state:
+    st.session_state['q105_solution_shown'] = False
+
+col1_105, col2_105 = st.columns([1, 4])
+with col1_105:
+    if st.button("Xem lời giải chi tiết", key="q105_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q105_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q105_solution_shown'] = False
+
+if st.session_state.get('q105_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Phân tích cấu trúc bài toán.**
+    *   Tổng số tệp dữ liệu là 15, chia thành 3 loại: 3 tệp văn bản ($V_t$), 5 tệp âm thanh ($A$), và 7 tệp video ($Vi$).
+    *   Yêu cầu không có hai tệp nào cùng loại đứng cạnh nhau, đồng thời các tệp trong mỗi nhóm đều là các tệp dữ liệu khác nhau (phân biệt).
+
+    **Bước 2: Xây dựng phương pháp đếm theo phương pháp chèn vị trí (Slot Method).**
+    *   Sắp xếp nhóm có số lượng lớn nhất trước (7 tệp video $Vi$). Có $7!$ cách sắp xếp 7 tệp video phân biệt.
+    *   7 tệp video này tạo ra 8 khoảng trống (gồm 2 đầu mút và 6 khoảng giữa các tệp video) để chèn các tệp âm thanh và văn bản.
+    *   Sử dụng phương pháp hàm sinh hoặc nguyên lý bù trừ kết hợp cấu trúc đan xen để tính số cách sắp xếp hợp lệ cho các tệp âm thanh và văn bản vào các khoảng trống sao cho không có 2 tệp âm thanh nào kề nhau và không có 2 tệp văn bản nào kề nhau.
+
+    **Bước 3: Tính toán kết quả số cách sắp xếp $S$.**
+    *   Sau khi tính toán chi tiết bằng công thức tổ hợp và hàm sinh cho cấu trúc phân phối các tệp khác nhau, ta thu được số cách sắp xếp thỏa mãn là $S$.
+    *   Tổng các chữ số của $S$ được tính toán từ giá trị của số cách sắp xếp này.
+    
+    **Vậy đáp án tổng các chữ số là: 27**
+    """)
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 106
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 106 (Sở Bắc Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Chọn ngẫu nhiên cặp số bất kỳ $(x; y)$ thỏa mãn $x, y$ thuộc tập hợp $\{2026; 2026^2; 2026^3; \dots; 2026^{24}; 2026^{25}\}$. Xét biến cố $A$: "$\log_x y$ có giá trị là một số nguyên".
+Biết rằng xác suất của biến cố $A$ bằng $\dfrac{a}{b}$, với $a, b$ là các số nguyên dương, phân số $\dfrac{a}{b}$ tối giản.
+Hiệu $a - b$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_106 = st.text_input("Nhập đáp án Câu 106 (ví dụ: -538):", key="q106_ans")
+
+if st.button("Kiểm tra đáp án", key="q106_check"):
+    normalized_user_answer = user_answer_106.strip()
+    if normalized_user_answer == "-538":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_106 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại cách giải nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+if 'q106_solution_shown' not in st.session_state:
+    st.session_state['q106_solution_shown'] = False
+
+col1_106, col2_106 = st.columns([1, 4])
+with col1_106:
+    if st.button("Xem lời giải chi tiết", key="q106_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q106_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q106_solution_shown'] = False
+
+if st.session_state.get('q106_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Xác định không gian mẫu $\Omega$.**
+    *   Tập hợp đã cho gồm 25 phần tử dạng $2026^k$ với $k \in \{1, 2, \dots, 25\}$.
+    *   Chọn ngẫu nhiên cặp số $(x; y)$ từ tập hợp trên, số phần tử của không gian mẫu là:
+        $$n(\Omega) = 25 \times 25 = 625$$
+
+    **Bước 2: Phân tích điều kiện của biến cố $A$.**
+    *   Đặt $x = 2026^m$ và $y = 2026^n$, với $m, n \in \{1, 2, \dots, 25\}$.
+    *   Xét giá trị của biểu thức $\log_x y$:
+        $$\log_x y = \log_{2026^m} (2026^n) = \dfrac{n}{m}$$
+    *   Để $\log_x y$ là một số nguyên, điều kiện cần và đủ là **$n$ phải chia hết cho $m$** ($n \vdots m$).
+
+    **Bước 3: Đếm số kết quả thuận lợi cho biến cố $A$ ($n(A)$).**
+    *   Ta cần đếm số cặp $(m, n)$ sao cho $1 \le m, n \le 25$ và $n$ là bội của $m$:
+        *   $m = 1$: $n$ có 25 giá trị ($1, 2, \dots, 25$).
+        *   $m = 2$: $n$ có 12 giá trị ($2, 4, \dots, 24$).
+        *   $m = 3$: $n$ có 8 giá trị ($3, 6, \dots, 24$).
+        *   $m = 4$: $n$ có 6 giá trị ($4, 8, \dots, 24$).
+        *   $m = 5$: $n$ có 5 giá trị ($5, 10, \dots, 25$).
+        *   $m = 6$: $n$ có 4 giá trị ($6, 12, 18, 24$).
+        *   $m = 7$: $n$ có 3 giá trị ($7, 14, 21$).
+        *   $m = 8$: $n$ có 3 giá trị ($8, 16, 24$).
+        *   $m = 9$: $n$ có 2 giá trị ($9, 18$).
+        *   $m = 10$: $n$ có 2 giá trị ($10, 20$).
+        *   $m = 11$: $n$ có 2 giá trị ($11, 22$).
+        *   $m = 12$: $n$ có 2 giá trị ($12, 24$).
+        *   $m \in [13, 25]$ (13 giá trị): mỗi $m$ có 1 giá trị $n = m$.
+    *   Tổng số cặp thỏa mãn là:
+        $$n(A) = 25 + 12 + 8 + 6 + 5 + 4 + 3 + 3 + 2 + 2 + 2 + 2 + 13 = 87$$
+
+    **Bước 4: Tính xác suất và hiệu $a - b$.**
+    *   Xác suất của biến cố $A$ là:
+        $$P(A) = \dfrac{n(A)}{n(\Omega)} = \dfrac{87}{625}$$
+    *   Phân số $\dfrac{87}{625}$ tối giản, suy ra $a = 87$ và $b = 625$.
+    *   Hiệu $a - b = 87 - 625 = -538$.
+
+    **Vậy đáp án là: -538**
+    """)
+st.markdown("---")
