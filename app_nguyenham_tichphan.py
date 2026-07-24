@@ -1119,9 +1119,6 @@ st.markdown("---")
 
 
 
-
-
-
 # --- CÂU HỎI 12: DIỆN TÍCH HÌNH PHẲNG ---
 st.markdown(
     '<b style="color: blue;">Câu 12 (Sở Gia Lai 2026)</b>',
@@ -1156,6 +1153,8 @@ if st.button("Kiểm tra đáp án", key="q12_check"):
 
 # --- XEM LỜI GIẢI CHI TIẾT ---
 st.markdown("---")
+
+
 
 if 'q12_solution_shown' not in st.session_state:
     st.session_state['q12_solution_shown'] = False
