@@ -8725,3 +8725,87 @@ if st.session_state.get('q97_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 98: THỂ TÍCH KHỐI TRÒN XOAY ---
+st.markdown(
+    '<b style="color: blue;">Câu 98 (Sở Cần Thơ 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tính thể tích khối tròn xoay tạo thành khi cho hình phẳng giới hạn bởi đồ thị hàm số $y = 3^x - 1$, trục hoành và hai đường thẳng $x = 0, x = 2$ quay quanh trục $Ox$, không làm tròn kết quả các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần mười.
+""")
+
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập thể tích khối tròn xoay (làm tròn đến hàng phần mười, ví dụ: 12.3):", key="q98_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q98_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 47.9
+    if normalized_user_answer == "47.9":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Sử dụng công thức tính thể tích khối tròn xoay $V = \pi \int_{a}^{b} f^2(x)\text{d}x$ và tính nguyên hàm của hàm số mũ!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q98_solution_shown' not in st.session_state:
+    st.session_state['q98_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q98_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q98_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q98_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q98_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập công thức tích phân tính thể tích**
+    
+    * Thể tích khối tròn xoay khi hình phẳng giới hạn bởi đồ thị hàm số $y = 3^x - 1$, trục hoành ($y = 0$) và hai đường thẳng $x = 0, x = 2$ quay quanh trục $Ox$ được tính bởi công thức:
+      $$V = \pi \int_{0}^{2} (3^x - 1)^2 \text{d}x$$
+    
+    **Bước 2: Khai triển biểu thức và tính nguyên hàm**
+    
+    * Khai triển hàm dưới dấu tích phân:
+      $$(3^x - 1)^2 = (3^x)^2 - 2 \cdot 3^x + 1 = 9^x - 2 \cdot 3^x + 1 = (3^2)^x - 2 \cdot 3^x + 1$$
+    * Tìm nguyên hàm của từng số hạng:
+      * Nguyên hàm của $9^x$ là $\dfrac{9^x}{\ln 9} = \dfrac{9^x}{2\ln 3}$
+      * Nguyên hàm của $-2 \cdot 3^x$ là $-\dfrac{2 \cdot 3^x}{\ln 3}$
+      * Nguyên hàm của $1$ là $x$
+    * Do đó, nguyên hàm tổng quát là:
+      $$I(x) = \dfrac{9^x}{2\ln 3} - \dfrac{2 \cdot 3^x}{\ln 3} + x$$
+    
+    **Bước 3: Thay cận để tính thể tích**
+    
+    * Tại cận trên $x = 2$:
+      $$I(2) = \dfrac{9^2}{2\ln 3} - \dfrac{2 \cdot 3^2}{\ln 3} + 2 = \dfrac{81}{2\ln 3} - \dfrac{18}{\ln 3} + 2 = \dfrac{81 - 36}{2\ln 3} + 2 = \dfrac{45}{2\ln 3} + 2$$
+    * Tại cận dưới $x = 0$:
+      $$I(0) = \dfrac{9^0}{2\ln 3} - \dfrac{2 \cdot 3^0}{\ln 3} + 0 = \dfrac{1}{2\ln 3} - \dfrac{2}{\ln 3} = \dfrac{1 - 4}{2\ln 3} = \dfrac{-3}{2\ln 3}$$
+    * Trị số tích phân:
+      $$\int_{0}^{2} (3^x - 1)^2 \text{d}x = I(2) - I(0) = \left(\dfrac{45}{2\ln 3} + 2\right) - \left(\dfrac{-3}{2\ln 3}\right) = \dfrac{48}{2\ln 3} + 2 = \dfrac{24}{\ln 3} + 2$$
+    * Thể tích khối tròn xoay là:
+      $$V = \pi \left(\dfrac{24}{\ln 3} + 2\right) \approx 3,14159 \cdot \left(\dfrac{24}{1,09861} + 2\right) \approx 3,14159 \cdot (21,846 + 2) \approx 47,858$$
+    
+    **Bước 4: Làm tròn kết quả**
+    
+    Làm tròn kết quả đến hàng phần mười, ta được $47,9$.
+        
+    **Kết luận:** Thể tích của khối tròn xoay xấp xỉ **$47,9$**.
+    """)
+
+st.markdown("---")
