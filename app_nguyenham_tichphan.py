@@ -8429,3 +8429,112 @@ if st.session_state.get('q94_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 
+
+# --- CÂU HỎI 95: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH VÀ CHI PHÍ ---
+st.markdown(
+    '<b style="color: blue;">Câu 95 (THPT Yên Lạc - Phú Thọ 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Lô gô gắn tại các showroom của hãng ô tô VINFAST là một hình tròn. Phần tô đậm nằm giữa parabol đỉnh $I$ và đường gấp khúc $AJB$ được dát bạc với chi phí $10$ triệu đồng/$\text{m}^2$. Phần còn lại của hình tròn được phủ sơn với chi phí $2$ triệu đồng/$\text{m}^2$. Biết $AB = 2\text{ m}$, $IA = IB = \sqrt{5}\text{ m}$, $JA = JB = \dfrac{\sqrt{13}}{2}\text{ m}$.
+
+Tính tổng số tiền, đơn vị triệu đồng, để dát bạc và phủ sơn toàn bộ lô gô nói trên. Kết quả làm tròn đến hàng phần chục.
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đề bài (cần cập nhật đúng tên file ảnh trong thư mục của bạn)
+        st.image("images/thpt_yen_lac_2026_q95.PNG", width=450)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/thpt_yen_lac_2026_q95.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập tổng số tiền (triệu đồng, làm tròn đến hàng phần chục, ví dụ: 12.7):", key="q95_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q95_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Kết quả tính toán chính xác xấp xỉ 19.15 triệu đồng, làm tròn đến hàng phần chục là 19.2 (hoặc 19.15)
+    if normalized_user_answer in ["19.2", "19.15", "19.1"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy chọn hệ trục tọa độ Oxy với I là gốc tọa độ. Lập phương trình parabol, tìm tọa độ điểm J, phương trình đường thẳng JB, sau đó dùng tích phân để tính diện tích phần dát bạc và diện tích hình tròn nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q95_solution_shown' not in st.session_state:
+    st.session_state['q95_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q95_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q95_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q95_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q95_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ trục tọa độ $Oxy$**
+    
+    * Chọn hệ trục tọa độ $Oxy$ sao cho đỉnh $I$ của parabol trùng với gốc tọa độ $O(0; 0)$ và trục tung $Oy$ là trục đối xứng của logo.
+    * Do $AB = 2\text{ m}$ và đối xứng qua $Oy$, hoành độ của $A$ và $B$ là $x_A = -1$ và $x_B = 1$.
+    * Vì $IA = \sqrt{5}$ và $x_A = -1$, tung độ của $A$ là:
+        $$y_A = \sqrt{IA^2 - x_A^2} = \sqrt{(\sqrt{5})^2 - (-1)^2} = \sqrt{5 - 1} = 2$$
+    * Suy ra tọa độ các điểm là $A(-1; 2)$, $B(1; 2)$ và $I(0; 0)$.
+    
+    **Bước 2: Viết phương trình Parabol và đường thẳng $JB$**
+    
+    * Parabol đi qua gốc $O(0;0)$ và có dạng $y = ax^2$. Vì parabol đi qua điểm $B(1; 2)$ nên:
+        $$2 = a \cdot 1^2 \implies a = 2 \implies (P): y = 2x^2$$
+    * Gọi tọa độ điểm $J$ nằm trên trục $Oy$ có dạng $J(0; y_0)$ (với $0 < y_0 < 2$).
+    * Độ dài đoạn thẳng $JB$:
+        $$JB = \sqrt{(1 - 0)^2 + (2 - y_0)^2} = \dfrac{\sqrt{13}}{2}$$
+        $$\implies 1 + (2 - y_0)^2 = \dfrac{13}{4} \implies (2 - y_0)^2 = \dfrac{9}{4}$$
+    * Vì điểm $J$ nằm phía dưới điểm $A, B$ nên $2 - y_0 = \dfrac{3}{2} \implies y_0 = \dfrac{1}{2}$. Vậy $J\left(0; \dfrac{1}{2}\right)$.
+    * Đường thẳng $JB$ đi qua $J\left(0; \dfrac{1}{2}\right)$ và $B(1; 2)$ có phương trình:
+        $$y = \dfrac{2 - \dfrac{1}{2}}{1 - 0}x + \dfrac{1}{2} = \dfrac{3}{2}x + \dfrac{1}{2}$$
+    
+    **Bước 3: Tính diện tích phần dát bạc (phần tô đậm)**
+    
+    * Phần tô đậm gồm hai cánh đối xứng qua trục $Oy$. Ta tính diện tích cánh bên phải (từ $x = 0$ đến $x = 1$) rồi nhân đôi.
+    * Trên đoạn $[0; 1]$, đường thẳng $JB$ nằm phía trên parabol $(P)$:
+        $$S_{\text{cánh phải}} = \int_{0}^{1} \left[ \left(\dfrac{3}{2}x + \dfrac{1}{2}\right) - 2x^2 \right] \text{d}x$$
+        $$S_{\text{cánh phải}} = \left[ \dfrac{3}{4}x^2 + \dfrac{1}{2}x - \dfrac{2}{3}x^3 \right]_{0}^{1} = \dfrac{3}{4} + \dfrac{1}{2} - \dfrac{2}{3} = \dfrac{9 + 6 - 8}{12} = \dfrac{7}{12} \text{ (m}^2\text{)}$$
+    * Tổng diện tích phần dát bạc là:
+        $$S_{\text{bạc}} = 2 \times S_{\text{cánh phải}} = 2 \times \dfrac{7}{12} = \dfrac{7}{6} \text{ (m}^2\text{)}$$
+    
+    **Bước 4: Tính diện tích hình tròn và diện tích phần phủ sơn**
+    
+    * Hình tròn chứa logo đi qua ba điểm $I(0; 0)$, $A(-1; 2)$, $B(1; 2)$.
+    * Do tính đối xứng, tâm $I'$ của đường tròn nằm trên trục $Oy$ có tọa độ $I'(0; R)$.
+    * Bán kính $R$ thỏa mãn khoảng cách từ $I'$ đến $O(0;0)$ bằng khoảng cách từ $I'$ đến $B(1;2)$:
+        $$R^2 = (2 - R)^2 + 1^2 \implies R^2 = 4 - 4R + R^2 + 1 \implies 4R = 5 \implies R = \dfrac{5}{4} = 1,25\text{ m}$$
+    * Diện tích toàn bộ hình tròn là:
+        $$S_{\text{tròn}} = \pi R^2 = \pi \left(\dfrac{5}{4}\right)^2 = \dfrac{25\pi}{16} \approx 4,9087 \text{ (m}^2\text{)}$$
+    * Diện tích phần phủ sơn (phần còn lại của hình tròn):
+        $$S_{\text{sơn}} = S_{\text{tròn}} - S_{\text{bạc}} = \dfrac{25\pi}{16} - \dfrac{7}{6} \approx 4,9087 - 1,1667 = 3,7420 \text{ (m}^2\text{)}$$
+    
+    **Bước 5: Tính tổng chi phí**
+    
+    * Chi phí dát bạc:
+        $$T_{\text{bạc}} = S_{\text{bạc}} \times 10 = \dfrac{7}{6} \times 10 = \dfrac{35}{3} \approx 11,6667 \text{ (triệu đồng)}$$
+    * Chi phí phủ sơn:
+        $$T_{\text{sơn}} = S_{\text{sơn}} \times 2 = \left(\dfrac{25\pi}{16} - \dfrac{7}{6}\right) \times 2 = \dfrac{25\pi}{8} - \dfrac{7}{3} \approx 7,4841 \text{ (triệu đồng)}$$
+    * Tổng số tiền cần dùng:
+        $$T = T_{\text{bạc}} + T_{\text{sơn}} = \dfrac{35}{3} + \dfrac{25\pi}{8} - \dfrac{7}{3} = \dfrac{28}{3} + \dfrac{25\pi}{8} \approx 9,3333 + 9,8175 = 19,1508 \text{ (triệu đồng)}$$
+    * Làm tròn kết quả đến hàng phần chục ta được **$19,2$** triệu đồng.
+        
+    **Kết luận:** Tổng số tiền để dát bạc và phủ sơn lô gô xấp xỉ **$19,2$ triệu đồng**.
+    """)
+
+st.markdown("---")
