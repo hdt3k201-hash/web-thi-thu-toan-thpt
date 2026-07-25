@@ -6649,7 +6649,7 @@ user_answer_75 = st.text_input("Nhập giá trị của a (ví dụ: 19):", key=
 try:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # Đường dẫn ảnh đã được đồng bộ
+        # Đường dẫn ảnh đã được đồng bộ chuẩn đuôi .png
         st.image("images/image_1c29e6.PNG", width=400)
 except FileNotFoundError:
     # Thông báo lỗi cập nhật đúng tên file
