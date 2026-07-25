@@ -8645,10 +8645,10 @@ try:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         # Đường dẫn ảnh đã được đồng bộ
-        st.image("image_aaa942.PNG", width=400)
+        st.image("images/image_aaa942.PNG", width=400)
 except FileNotFoundError:
     # Thông báo lỗi cập nhật đúng tên file
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'image_aaa942.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_aaa942.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # --- Ô NHẬP ĐÁP ÁN ---
 user_answer = st.text_input("Nhập diện tích phần màu trắng (làm tròn đến hàng đơn vị, ví dụ: 1234):", key="q97_ans")
