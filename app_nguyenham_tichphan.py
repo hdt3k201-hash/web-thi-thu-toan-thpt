@@ -7839,3 +7839,96 @@ if st.session_state.get('q88_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 
+
+st.markdown(
+    '<b style="color: blue;">Câu 89 (Sở Đồng Tháp 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Bác Tuấn trang trí bức tường hình vuông $ABCD$ có $AB = 4\text{ m}$ như hình vẽ bằng cách sơn màu. Trong đó, bốn đường cong $AQB$, $APD$, $BEC$, $CFD$ đều là đường parabol có các đỉnh lần lượt là $Q, P, E, F$. Biết rằng trục đối xứng của mỗi Parabol trùng với một trục đối xứng của hình vuông $ABCD$. Cho biết $OE = OF = OP = OQ = 1\text{ m}$. Phần diện tích giới hạn bởi bốn đường Parabol nêu trên, phần gạch chéo (màu vàng trên hình), được sơn màu đỏ với chi phí $500$ nghìn đồng cho mỗi mét vuông. Phần diện tích còn lại của bức tường được sơn màu trắng với chi phí $300$ nghìn đồng cho mỗi mét vuông. Tính tổng số tiền, đơn vị: nghìn đồng, bác Tuấn cần để hoàn thành việc sơn bức tường đó. Kết quả làm tròn đến hàng đơn vị.
+""")
+
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Sử dụng đúng tên file ảnh bạn đã cung cấp
+        st.image("images/image_385509.PNG", width=500)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_385509.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập tổng số tiền cần dùng (làm tròn đến hàng đơn vị, ví dụ: 1234):", key="q89_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q89_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 6176
+    if normalized_user_answer == "6176":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Gắn hệ trục tọa độ $Oxy$ với $O$ là tâm hình vuông. Tìm phương trình 4 parabol, sau đó dùng tích phân để tính diện tích 4 'cánh hoa' ở các góc!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q89_solution_shown' not in st.session_state:
+    st.session_state['q89_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q89_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q89_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q89_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q89_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chọn hệ trục tọa độ và viết phương trình các parabol**
+    
+    *   Chọn hệ trục tọa độ $Oxy$ với gốc $O(0; 0)$ là tâm của hình vuông $ABCD$.
+    *   Cạnh hình vuông bằng $4\text{ m}$ nên tọa độ các đỉnh là: $A(-2; 2)$, $B(-2; -2)$, $C(2; -2)$, $D(2; 2)$.
+    *   Từ giả thiết $OE = OF = OP = OQ = 1\text{ m}$, ta xác định được tọa độ các đỉnh parabol: $Q(1; 0)$, $P(0; -1)$, $E(0; 1)$, $F(-1; 0)$.
+    *   Dễ dàng lập được phương trình của $4$ parabol như sau:
+        *   Parabol $(APD)$ có đỉnh $P(0; -1)$ đi qua $D(2; 2)$: $y = \dfrac{3}{4}x^2 - 1$.
+        *   Parabol $(BEC)$ có đỉnh $E(0; 1)$ đi qua $C(2; -2)$: $y = -\dfrac{3}{4}x^2 + 1$.
+        *   Parabol $(CFD)$ có đỉnh $F(-1; 0)$ đi qua $D(2; 2)$: $x = \dfrac{3}{4}y^2 - 1$.
+        *   Parabol $(AQB)$ có đỉnh $Q(1; 0)$ đi qua $A(-2; 2)$: $x = -\dfrac{3}{4}y^2 + 1$.
+
+    **Bước 2: Phân tích và tính diện tích phần sơn màu đỏ (4 góc cánh hoa)**
+    
+    *   Phần sơn màu đỏ (phần tô vàng/gạch chéo trên hình) gồm 4 miền diện tích đối xứng nhau ở 4 góc. Ta xét miền diện tích $S_1$ nằm ở góc phần tư thứ nhất (gần đỉnh $D$).
+    *   Quan sát đồ thị, miền $S_1$ được giới hạn bởi cung của hai parabol $(APD)$ và $(CFD)$, nằm trọn bên ngoài vùng lõi trung tâm (ngôi sao 4 cánh màu trắng).
+    *   Lõi trung tâm màu trắng ở góc phần tư thứ nhất được giới hạn bởi parabol $(BEC)$ và $(AQB)$, hai parabol này cắt nhau tại điểm $M\left(\dfrac{2}{3}; \dfrac{2}{3}\right)$.
+    *   Diện tích phần lõi trung tâm màu trắng ở góc phần tư thứ nhất ($S_{loi}$):
+        $$S_{loi} = \int_{0}^{\frac{2}{3}} \left( -\dfrac{3}{4}x^2 + 1 \right) \text{d}x + \int_{\frac{2}{3}}^{1} \sqrt{\dfrac{4}{3}(1 - x)} \text{d}x = \dfrac{16}{27} + \dfrac{4}{27} = \dfrac{20}{27} \text{ (m}^2\text{)}$$
+    *   Xét phần diện tích giới hạn bởi parabol $(APD)$ và $(CFD)$ ở góc phần tư thứ nhất (bao trùm cả $S_1$ và phần lõi). Đường $(APD)$ giao trục hoành tại $x = \dfrac{2}{\sqrt{3}}$, đường $(CFD)$ là hàm $y = \sqrt{\dfrac{4}{3}(x+1)}$:
+        $$S_{giao} = \int_{0}^{2} \sqrt{\dfrac{4}{3}(x+1)} \text{d}x - \int_{\frac{2}{\sqrt{3}}}^{2} \left(\dfrac{3}{4}x^2 - 1\right) \text{d}x$$
+        $$S_{giao} = \left[ \dfrac{4}{3\sqrt{3}} (x+1)^{\frac{3}{2}} \right]_0^2 - \left[ \dfrac{1}{4}x^3 - x \right]_{\frac{2}{\sqrt{3}}}^2 = \left(4 - \dfrac{4\sqrt{3}}{9}\right) - \dfrac{4\sqrt{3}}{9} = 4 - \dfrac{8\sqrt{3}}{9} \text{ (m}^2\text{)}$$
+    *   Vì $S_{giao}$ bao gồm cả $S_1$ và phần lõi trung tâm, ta có diện tích một cánh hoa (phần sơn đỏ ở 1 góc) là:
+        $$S_1 = S_{giao} - S_{loi} = 4 - \dfrac{8\sqrt{3}}{9} - \dfrac{20}{27}$$
+    *   Tổng diện tích phần sơn màu đỏ (4 cánh hoa) là:
+        $$S_{do} = 4 \times \left( 4 - \dfrac{8\sqrt{3}}{9} - \dfrac{20}{27} \right) = 16 - \dfrac{32\sqrt{3}}{9} - \dfrac{80}{27} \approx 12,805 \text{ (m}^2\text{)}$$
+
+    **Bước 3: Tính diện tích sơn màu trắng và tổng chi phí**
+    
+    *   Diện tích tổng của bức tường là $S_{tong} = 4 \times 4 = 16 \text{ (m}^2\text{)}$.
+    *   Diện tích phần sơn màu trắng là:
+        $$S_{trang} = S_{tong} - S_{do} = 16 - \left( 16 - \dfrac{32\sqrt{3}}{9} - \dfrac{80}{27} \right) = \dfrac{32\sqrt{3}}{9} + \dfrac{80}{27} \approx 3,195 \text{ (m}^2\text{)}$$
+    *   Tổng chi phí bác Tuấn cần để sơn tường là:
+        $$T = S_{do} \times 500 + S_{trang} \times 300 = 500 \times \left( 16 - \dfrac{32\sqrt{3}}{9} - \dfrac{80}{27} \right) + 300 \times \left( \dfrac{32\sqrt{3}}{9} + \dfrac{80}{27} \right)$$
+        $$T = 8000 - 200 \times \left( \dfrac{32\sqrt{3}}{9} + \dfrac{80}{27} \right) = 8000 - \dfrac{6400\sqrt{3}}{9} - \dfrac{16000}{27} \approx 6175,727 \text{ (nghìn đồng)}$$
+    *   Làm tròn kết quả đến hàng đơn vị, ta được $6176$ nghìn đồng.
+    
+    **Kết luận:** Tổng số tiền bác Tuấn cần là **$6176$** (nghìn đồng).
+    """)
+
+st.markdown("---")
