@@ -2526,3 +2526,107 @@ if st.session_state.get('q26_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 27: ỨNG DỤNG TÍCH PHÂN TÍNH THỂ TÍCH KHỐI TRÒN XOAY ---
+st.markdown(
+    '<b style="color: blue;">Câu 27 (THPT Nguyễn Văn Trỗi - Hà Tĩnh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Nghề làm thùng gỗ sồi đựng rượu vang, đặc biệt là chuẩn thùng Barrique của vùng Bordeaux, Pháp, đòi hỏi sự tỉ mỉ và độ chính xác rất cao. Những chiếc thùng này không có dạng hình trụ thẳng đứng mà phình ra ở giữa. Thiết kế này giúp thợ ủ rượu dễ dàng lăn thùng và cặn rượu được gom lại ở phần rốn bụng. Theo tiêu chuẩn sản xuất, đường viền dọc thân thùng cong dạng một cung parabol.
+
+Một xưởng gỗ chuẩn bị xuất xưởng một chiếc thùng có các thông số kỹ thuật được đo đạc cẩn thận. Nhiệm vụ đặt ra là phải tính toán dung tích thực tế của chiếc thùng này để dán nhãn chính xác trước khi đưa vào hầm ủ. Biết rằng thùng rượu vang có chiều cao $90\text{ cm}$. Đường kính lớn nhất ở phần bụng thùng là $62\text{ cm}$, trong khi đường kính ở hai mặt đáy của thùng là bằng nhau và bằng $44\text{ cm}$. Hỏi thể tích của chiếc thùng đó bằng bao nhiêu lít? Làm tròn kết quả đến hàng đơn vị.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập thể tích của chiếc thùng (lít) (ví dụ: 123):", key="q27_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ theo yêu cầu
+        st.image("images/image_00d118.PNG", width=600)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_00d118.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q27_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 224
+    if normalized_user_answer == "224":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Gắn hệ trục tọa độ $Oxy$ với gốc $O$ tại tâm của thùng. Viết phương trình parabol đường viền thùng, sau đó dùng công thức tính thể tích khối tròn xoay.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q27_solution_shown' not in st.session_state:
+    st.session_state['q27_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q27_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q27_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q27_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q27_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ trục tọa độ**
+    
+    Chọn hệ trục tọa độ $Oxy$ sao cho trục $Ox$ trùng với trục của thùng rượu, gốc tọa độ $O$ nằm tại điểm chính giữa của trục thùng.
+    
+    Khi đó, chiếc thùng là khối tròn xoay được tạo thành khi quay miền phẳng giới hạn bởi trục $Ox$, đường parabol (đường viền dọc thân thùng), và hai đường thẳng $x = -45, x = 45$ (do chiều cao thùng là $90\text{ cm}$) xung quanh trục $Ox$.
+    
+    **Bước 2: Tìm phương trình parabol**
+    
+    Giả sử phương trình parabol có dạng $y = ax^2 + bx + c$.
+    Vì parabol đối xứng qua trục $Oy$ nên $b = 0 \Rightarrow y = ax^2 + c$.
+    
+    Dựa vào các kích thước đã cho:
+    *   Tại vị trí bụng thùng (chính giữa, $x = 0$), đường kính lớn nhất là $62\text{ cm}$, suy ra bán kính là $R_{max} = \dfrac{62}{2} = 31\text{ cm}$. Do đó, đồ thị đi qua điểm $(0; 31) \Rightarrow c = 31$.
+    *   Tại mặt đáy ($x = 45$ hoặc $x = -45$), đường kính là $44\text{ cm}$, suy ra bán kính là $r_{min} = \dfrac{44}{2} = 22\text{ cm}$. Do đó, đồ thị đi qua điểm $(45; 22)$.
+    
+    Thay tọa độ điểm $(45; 22)$ vào phương trình parabol ta có:
+    $$22 = a \cdot (45)^2 + 31 \Leftrightarrow 2025a = -9 \Leftrightarrow a = -\dfrac{9}{2025} = -\dfrac{1}{225}$$
+    
+    Vậy phương trình đường parabol giới hạn viền thùng là: $y = -\dfrac{1}{225}x^2 + 31$.
+
+    **Bước 3: Tính thể tích khối tròn xoay**
+    
+    Thể tích $V$ của chiếc thùng được tính bằng công thức:
+    $$V = \pi \int_{-45}^{45} y^2 dx = \pi \int_{-45}^{45} \left( -\dfrac{1}{225}x^2 + 31 \right)^2 dx$$
+    
+    Do hàm số dưới dấu tích phân là hàm chẵn, ta có thể tính:
+    $$V = 2\pi \int_{0}^{45} \left( \dfrac{1}{50625}x^4 - \dfrac{62}{225}x^2 + 961 \right) dx$$
+    
+    Tính nguyên hàm:
+    $$V = 2\pi \left[ \dfrac{1}{253125}x^5 - \dfrac{62}{675}x^3 + 961x \right]_{0}^{45}$$
+    
+    Thay cận $x = 45$ vào (lưu ý $45^3 = 91125, 45^5 = 184528125$):
+    $$V = 2\pi \left( \dfrac{184528125}{253125} - \dfrac{62 \cdot 91125}{675} + 961 \cdot 45 \right)$$
+    $$V = 2\pi (729 - 8370 + 43245) = 2\pi \cdot 35604 = 71208\pi \text{ (cm}^3\text{)}$$
+    
+    **Bước 4: Đổi đơn vị và làm tròn**
+    
+    *   Tính giá trị xấp xỉ: $V \approx 71208 \cdot 3,14159265 \approx 223706,53 \text{ cm}^3$.
+    *   Đổi sang lít ($1 \text{ lít} = 1000 \text{ cm}^3$): $V \approx 223,70653 \text{ lít}$.
+    *   Làm tròn đến hàng đơn vị: $V \approx 224 \text{ lít}$.
+    
+    **Kết luận:** Thể tích của chiếc thùng xấp xỉ **$224$** lít.
+    """)
+
+st.markdown("---")
