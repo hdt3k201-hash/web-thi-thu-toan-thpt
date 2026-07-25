@@ -3433,13 +3433,7 @@ Biết $\int_{0}^{\pi} \dfrac{x \sin^{2018} x}{\sin^{2018} x + \cos^{2018} x} dx
 user_answer = st.text_input("Nhập giá trị của P:", key="q36_ans")
 
 # --- CHÈN HÌNH ẢNH ---
-try:
-    col1, col2, col3 = st.columns([1, 4, 1])
-    with col2:
-        # Đường dẫn ảnh đã được đồng bộ theo yêu cầu
-        st.image("images/image_01d3fd.png", width=600)
-except FileNotFoundError:
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_01d3fd.png'. Vui lòng kiểm tra lại đường dẫn.")
+
 
 # --- NÚT KIỂM TRA ĐÁP ÁN ---
 if st.button("Kiểm tra đáp án", key="q36_check"):
