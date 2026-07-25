@@ -495,6 +495,86 @@ if st.session_state.get('q5_solution_shown'):
 
 
 
+# --- CÂU HỎI 6: ỨNG DỤNG TÍCH PHÂN TÍNH QUÃNG ĐƯỜNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 6 (Sở Bắc Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một xe ô tô sau khi chờ hết đèn đỏ đã bắt đầu chuyển động. Trong $7$ phút đầu tiên với tốc độ được biểu thị bằng đồ thị là đường cong parabol; biết rằng sau $5$ phút thì xe đạt đến tốc độ cao nhất $900 \text{ m/phút}$ và bắt đầu giảm tốc độ. Sau khi đi được $7$ phút thì xe chuyển động đều (tham khảo hình vẽ). Quãng đường xe đi được sau $10$ phút đầu tiên kể từ khi hết đèn đỏ là bao nhiêu mét?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập quãng đường xe đi được (m):", key="q6_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/image_f57ab8.PNG", width=500)
+except Exception as e:
+    st.warning("⚠️ Lỗi: Không thể tải ảnh. Vui lòng kiểm tra lại xem file 'images/image_f57ab8.PNG' đã tồn tại chưa.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q6_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    if normalized_user_answer == "6972":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Quãng đường là tích phân của vận tốc. Hãy chia làm 2 giai đoạn: từ 0 đến 7 phút (dùng phương trình parabol) và từ 7 đến 10 phút (chuyển động đều)!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q6_solution_shown' not in st.session_state:
+    st.session_state['q6_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q6_solution_btn"):
+        st.session_state['q6_solution_shown'] = True
+
+if st.session_state.get('q6_solution_shown'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Lập phương trình vận tốc của xe trong 7 phút đầu**
+    
+    * Đồ thị vận tốc $v(t)$ trong $7$ phút đầu là một parabol có đỉnh $I(5; 900)$. Do đó, phương trình có dạng:
+        $$v_1(t) = a(t - 5)^2 + 900 \quad (0 \le t \le 7)$$
+    * Tại thời điểm $t = 0$ (lúc hết đèn đỏ), xe bắt đầu chuyển động nên vận tốc $v_1(0) = 0$. Thay vào phương trình ta được:
+        $$a(0 - 5)^2 + 900 = 0 \Leftrightarrow 25a = -900 \Leftrightarrow a = -36$$
+    * Suy ra phương trình parabol là:
+        $$v_1(t) = -36(t - 5)^2 + 900 = -36(t^2 - 10t + 25) + 900 = -36t^2 + 360t$$
+        
+    **Bước 2: Xác định vận tốc của xe trong giai đoạn chuyển động đều**
+    
+    * Tại thời điểm $t = 7$ (phút), vận tốc của xe đạt được là:
+        $$v_1(7) = -36(7)^2 + 360(7) = -1764 + 2520 = 756 \text{ (m/phút)}$$
+        *(Hoặc tính theo dạng đỉnh: $v_1(7) = -36(7 - 5)^2 + 900 = -144 + 900 = 756$)*
+    * Do từ phút thứ 7 đến phút thứ 10 xe chuyển động đều, nên vận tốc trong giai đoạn này là hằng số:
+        $$v_2(t) = 756 \quad (7 \le t \le 10)$$
+        
+    **Bước 3: Tính tổng quãng đường xe đi được trong 10 phút**
+    
+    * Quãng đường $S$ đi được bằng tích phân của vận tốc theo thời gian. Ta chia làm 2 giai đoạn:
+        $$S = \int_{0}^{7} v_1(t)\text{d}t + \int_{7}^{10} v_2(t)\text{d}t$$
+    * Tính quãng đường đi được trong $7$ phút đầu:
+        $$S_1 = \int_{0}^{7} (-36t^2 + 360t)\text{d}t = \left[ -12t^3 + 180t^2 \right]_{0}^{7}$$
+        $$S_1 = -12(7)^3 + 180(7)^2 = -12(343) + 180(49) = -4116 + 8820 = 4704 \text{ (m)}$$
+    * Tính quãng đường đi được từ phút thứ 7 đến phút thứ 10:
+        $$S_2 = \int_{7}^{10} 756\text{d}t = 756 \times (10 - 7) = 756 \times 3 = 2268 \text{ (m)}$$
+    * Tổng quãng đường xe đi được là:
+        $$S = S_1 + S_2 = 4704 + 2268 = 6972 \text{ (m)}$$
+    
+    **Kết luận:** Quãng đường xe đi được sau $10$ phút đầu tiên là **$6972 \text{ mét}$**.
+    """)
+    st.markdown("---")
+
 
 # --- CÂU HỎI 7: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH HÌNH PHẲNG ---
 st.markdown(
