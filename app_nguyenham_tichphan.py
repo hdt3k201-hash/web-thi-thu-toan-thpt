@@ -4097,3 +4097,172 @@ if st.session_state.get('q43_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU HỎI 44
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 44 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x)$ có đạo hàm liên tục trên $\mathbb{R}$ thỏa mãn $f(3) = 21$ và $\int_{0}^{3} f(x) dx = 9$. Tính tích phân $I = \int_{0}^{1} x f'(3x) dx$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN CÂU 44 ---
+user_answer_44 = st.text_input("Nhập giá trị của I:", key="q44_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN CÂU 44 ---
+if st.button("Kiểm tra đáp án Câu 44", key="q44_check"):
+    normalized_user_answer_44 = user_answer_44.strip()
+    
+    if normalized_user_answer_44 == "6":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_44 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Đặt ẩn phụ cho phần $3x$, sau đó sử dụng phương pháp tích phân từng phần để tính.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 44 ---
+st.markdown("---")
+
+if 'q44_solution_shown' not in st.session_state:
+    st.session_state['q44_solution_shown'] = False
+
+col1_44, col2_44 = st.columns([1, 4])
+with col1_44:
+    if st.button("Xem lời giải chi tiết Câu 44", key="q44_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q44_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q44_solution_shown'] = False 
+
+if st.session_state.get('q44_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 44:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    Xét tích phân $I = \int_{0}^{1} x f'(3x) dx$.
+    
+    **Bước 1: Đổi biến số**
+    
+    Đặt $t = 3x \Rightarrow dt = 3 dx \Rightarrow dx = \dfrac{dt}{3}$ và $x = \dfrac{t}{3}$.
+    
+    Đổi cận:
+    *   Khi $x = 0 \Rightarrow t = 0$;
+    *   Khi $x = 1 \Rightarrow t = 3$.
+    
+    Thay vào biểu thức $I$, ta có:
+    $$ I = \int_{0}^{3} \left(\dfrac{t}{3}\right) f'(t) \left(\dfrac{dt}{3}\right) = \dfrac{1}{9} \int_{0}^{3} t f'(t) dt = \dfrac{1}{9} \int_{0}^{3} x f'(x) dx $$
+    
+    **Bước 2: Tính tích phân bằng phương pháp tích phân từng phần**
+    
+    Xét tích phân $\int_{0}^{3} x f'(x) dx$. Đặt $\begin{cases} u = x \\ dv = f'(x) dx \end{cases} \Rightarrow \begin{cases} du = dx \\ v = f(x) \end{cases}$.
+    
+    Áp dụng công thức tích phân từng phần:
+    $$ \int_{0}^{3} x f'(x) dx = x f(x) \Big|_{0}^{3} - \int_{0}^{3} f(x) dx $$
+    $$ = 3 f(3) - 0 \cdot f(0) - \int_{0}^{3} f(x) dx $$
+    
+    Theo giả thiết, ta có $f(3) = 21$ và $\int_{0}^{3} f(x) dx = 9$. Thay vào ta được:
+    $$ \int_{0}^{3} x f'(x) dx = 3 \cdot 21 - 9 = 63 - 9 = 54 $$
+    
+    **Bước 3: Kết luận**
+    
+    Thay kết quả vừa tính vào biểu thức của $I$:
+    $$ I = \dfrac{1}{9} \cdot 54 = 6 $$
+    
+    **Kết luận:** $I = 6$.
+    """)
+
+st.markdown("---")
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+
+# ==========================================
+# CÂU HỎI 45
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 45 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho $f(x)$ và $g(x)$ là hai hàm số liên tục trên $[0; 2]$ thỏa mãn điều kiện $\int_{0}^{2} [f(x) + g(x)] dx = 10$ và $\int_{0}^{2} [3f(x) - g(x)] dx = 6$. Tính giá trị của biểu thức $P = \int_{2019}^{2021} f(2021 - x) dx + 3 \int_{0}^{1} g(2x) dx$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN CÂU 45 ---
+user_answer_45 = st.text_input("Nhập giá trị của P:", key="q45_ans")
+
+# --- CHÈN HÌNH ẢNH (Dùng chung 1 ảnh) ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN CÂU 45 ---
+if st.button("Kiểm tra đáp án Câu 45", key="q45_check"):
+    normalized_user_answer_45 = user_answer_45.strip()
+    
+    if normalized_user_answer_45 == "13":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_45 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Giải hệ tích phân để tìm giá trị của $\int_{0}^{2} f(x) dx$ và $\int_{0}^{2} g(x) dx$, sau đó dùng phương pháp đổi biến cho từng phần trong biểu thức $P$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 45 ---
+st.markdown("---")
+
+if 'q45_solution_shown' not in st.session_state:
+    st.session_state['q45_solution_shown'] = False
+
+col1_45, col2_45 = st.columns([1, 4])
+with col1_45:
+    if st.button("Xem lời giải chi tiết Câu 45", key="q45_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q45_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q45_solution_shown'] = False 
+
+if st.session_state.get('q45_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 45:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Tìm giá trị các tích phân cơ bản trên đoạn $[0; 2]$**
+    
+    Từ giả thiết, ta có hệ phương trình tích phân:
+    $$ \begin{cases} \int_{0}^{2} f(x) dx + \int_{0}^{2} g(x) dx = 10 \\ 3 \int_{0}^{2} f(x) dx - \int_{0}^{2} g(x) dx = 6 \end{cases} $$
+    
+    Cộng vế với vế của hai phương trình trên:
+    $$ 4 \int_{0}^{2} f(x) dx = 16 \Rightarrow \int_{0}^{2} f(x) dx = 4 $$
+    
+    Thay vào phương trình thứ nhất để tìm $\int_{0}^{2} g(x) dx$:
+    $$ 4 + \int_{0}^{2} g(x) dx = 10 \Rightarrow \int_{0}^{2} g(x) dx = 6 $$
+    
+    **Bước 2: Tính từng thành phần của biểu thức $P$**
+    
+    *   **Phần 1:** $I_1 = \int_{2019}^{2021} f(2021 - x) dx$.
+        Đặt $u = 2021 - x \Rightarrow du = -dx \Rightarrow dx = -du$.
+        Đổi cận: Khi $x = 2019 \Rightarrow u = 2$; khi $x = 2021 \Rightarrow u = 0$.
+        $$ I_1 = \int_{2}^{0} f(u) (-du) = \int_{0}^{2} f(u) du = \int_{0}^{2} f(x) dx = 4 $$
+        
+    *   **Phần 2:** $I_2 = 3 \int_{0}^{1} g(2x) dx$.
+        Đặt $v = 2x \Rightarrow dv = 2 dx \Rightarrow dx = \dfrac{dv}{2}$.
+        Đổi cận: Khi $x = 0 \Rightarrow v = 0$; khi $x = 1 \Rightarrow v = 2$.
+        $$ I_2 = 3 \int_{0}^{2} g(v) \dfrac{dv}{2} = \dfrac{3}{2} \int_{0}^{2} g(v) dv = \dfrac{3}{2} \int_{0}^{2} g(x) dx = \dfrac{3}{2} \cdot 6 = 9 $$
+        
+    **Bước 3: Tính tổng giá trị của $P$**
+    $$ P = I_1 + I_2 = 4 + 9 = 13 $$
+    
+    **Kết luận:** Giá trị của $P$ là $13$.
+    """)
+
+st.markdown("---")
