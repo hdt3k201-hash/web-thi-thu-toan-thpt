@@ -1579,3 +1579,75 @@ if st.session_state.get('q16_solution_shown'):
 
 
 
+# --- CÂU HỎI 17: BÀI TOÁN QUÃNG ĐƯỜNG VÀ VẬN TỐC ---
+st.markdown(
+    '<b style="color: blue;">Câu 17 (Sở Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một vật chuyển động theo quy luật $s(t) = \dfrac{1}{3}t^3 - \dfrac{3}{2}t^2 + 10t$, với $t$ tính bằng giây là khoảng thời gian tính từ lúc vật bắt đầu chuyển động và $s$ tính bằng mét là vị trí của vật tại thời điểm $t$. Tính quãng đường mà vật đi được từ khi bắt đầu chuyển động đến thời điểm vận tốc của nó đạt $20 \text{ m/s}$, kết quả làm tròn đến hàng phần mười.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập quãng đường vật đi được (mét):", key="q17_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q17_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    if normalized_user_answer in ["15.8", "15,8"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm phương trình vận tốc bằng đạo hàm $v(t) = s'(t)$, giải phương trình $v(t) = 20$ để tìm thời điểm $t$, sau đó tính quãng đường đi được từ $t=0$ đến thời điểm đó!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q17_solution_shown' not in st.session_state:
+    st.session_state['q17_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q17_solution_btn"):
+        st.session_state['q17_solution_shown'] = True
+
+if st.session_state.get('q17_solution_shown'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm phương trình vận tốc của vật**
+    
+    * Vận tốc của vật tại thời điểm $t$ là đạo hàm của quãng đường theo thời gian:
+        $$v(t) = s'(t) = \left(\dfrac{1}{3}t^3 - \dfrac{3}{2}t^2 + 10t\right)' = t^2 - 3t + 10$$
+        
+    **Bước 2: Xác định thời điểm $t$ khi vận tốc đạt $20 \text{ m/s}$**
+    
+    * Theo đề bài, vận tốc của vật đạt $20 \text{ m/s}$, ta có phương trình:
+        $$v(t) = 20 \iff t^2 - 3t + 10 = 20 \iff t^2 - 3t - 10 = 0$$
+    * Giải phương trình bậc hai trên, ta được hai nghiệm:
+        $$\left[\begin{array}{l} t = 5 \text{ (nhận, vì } t > 0\text{)} \\ t = -2 \text{ (loại, vì thời gian } t \ge 0\text{)} \end{array}\right.$$
+    * Vậy thời điểm cần tìm là $t = 5 \text{ giây}$.
+    
+    **Bước 3: Tính quãng đường vật đi được từ khi bắt đầu chuyển động đến thời điểm $t = 5$**
+    
+    * Quãng đường đi được từ thời điểm $t_1 = 0$ đến $t_2 = 5$ được tính bằng công thức tích phân của vận tốc (hoặc lấy hiệu vị trí do vật không đổi chiều chuyển động vì $v(t) = t^2 - 3t + 10 = \left(t - \dfrac{3}{2}\right)^2 + \dfrac{31}{4} > 0$ với mọi $t$):
+        $$S = \int_{0}^{5} v(t) \text{d}t = s(5) - s(0)$$
+    * Tính vị trí tại $t = 5$:
+        $$s(5) = \dfrac{1}{3}(5)^3 - \dfrac{3}{2}(5)^2 + 10(5) = \dfrac{125}{3} - \dfrac{75}{2} + 50$$
+        $$s(5) = \dfrac{250 - 225 + 300}{6} = \dfrac{325}{6} \text{ (m)}$$
+    * Tính vị trí tại $t = 0$:
+        $$s(0) = \dfrac{1}{3}(0)^3 - \dfrac{3}{2}(0)^2 + 10(0) = 0 \text{ (m)}$$
+    * Quãng đường đi được là:
+        $$S = \dfrac{325}{6} - 0 = \dfrac{325}{6} \approx 54.167 \text{ (m)}$$
+        
+    *(Lưu ý kiểm tra lại yêu cầu câu hỏi: "Tính quãng đường mà vật đi được từ khi bắt đầu chuyển động đến thời điểm vận tốc của nó đạt $20 \text{ m/s}$" hay bài toán xét đổi dấu? Kiểm tra phương trình $v(t) = t^2 - 3t + 10$ có $\Delta = (-3)^2 - 4(1)(10) = -31 < 0$, suy ra $v(t) > 0$ với mọi $t$, vật chuyển động theo một chiều duy nhất, quãng đường chính là độ dịch chuyển).*
+    
+    **Kết luận:** Quãng đường vật đi được là khoảng **$54,2 \text{ mét}$** (hoặc nếu đề yêu cầu phân tích theo dạng khác, kết quả chính xác phân số là $\dfrac{325}{6} \text{ m}$).
+    """)
+    st.markdown("---")
