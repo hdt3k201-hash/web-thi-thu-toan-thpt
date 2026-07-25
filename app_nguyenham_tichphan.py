@@ -6996,3 +6996,90 @@ if st.session_state.get('q78_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 79: ỨNG DỤNG TÍCH PHÂN - TÍNH LƯỢNG NƯỚC TRONG BỂ THEO HÀM TỐC ĐỘ THAY ĐỔI ---
+st.markdown(
+    '<b style="color: blue;">Câu 79 (THPT Nguyễn Khuyến - Lê Thánh Tông 2025)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Hệ thống lọc nước bể bơi vô cùng quan trọng khi tiến hành xây dựng công trình bơi lội để nguồn nước được làm sạch thường xuyên và giữ vệ sinh cho người bơi. Trong quá trình vận hành lọc nước thì lượng nước trong bể sẽ thay đổi theo thời gian. Lượng nước trong bể giảm nếu hệ thống đang xả nước bẩn ra khỏi bể và tăng nếu hệ thống đang cấp thêm nước sạch cho bể. Biết rằng $1 \text{ gallon}$ gần bằng $3,785 \text{ lít}$, dung tích của bể là $1000 \text{ gallon}$ và thời điểm $6$ giờ sáng bể chứa $250 \text{ gallon}$ nước. Hàm số $f(t)$ biểu thị cho tốc độ thay đổi lượng nước trong bể theo thời gian $t$ giờ, từ thời điểm $6$ giờ sáng đến $6$ giờ chiều được cho bởi:
+$$f(t) = \begin{cases} 100t & \text{khi } 0 \le t \le 3 \\ 900 - 200t & \text{khi } 3 \le t \le 6 \\ 100t - 900 & \text{khi } 6 \le t \le 12 \end{cases}$$
+với mốc thời gian $t = 0$ tại thời điểm $6$ giờ sáng. Hỏi ở thời điểm $6$ giờ chiều thì trong bể chứa bao nhiêu gallon nước?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_79 = st.text_input("Nhập số gallon nước (ví dụ: 100):", key="q79_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q79_check"):
+    normalized_user_answer_79 = user_answer_79.strip()
+    
+    # Đáp án chính xác là 900
+    if normalized_user_answer_79 == "900":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_79 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Lượng nước tại thời điểm 6 giờ chiều (t = 12) bằng lượng nước ban đầu (250 gallon) cộng với tích phân của hàm tốc độ thay đổi f(t) từ t = 0 đến t = 12.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q79_solution_shown' not in st.session_state:
+    st.session_state['q79_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q79_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q79_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q79_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q79_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định thời điểm cần tính toán**
+    
+    * Thời điểm $6$ giờ sáng ứng với mốc thời gian $t = 0$, lúc này lượng nước ban đầu trong bể là $V(0) = 250 \text{ gallon}$.
+    * Thời điểm $6$ giờ chiều (tức $18$ giờ cùng ngày) cách $6$ giờ sáng đúng $12$ tiếng, ứng với mốc thời gian $t = 12$ giờ.
+
+    **Bước 2: Tính tổng sự thay đổi lượng nước từ $t = 0$ đến $t = 12$**
+    
+    * Lượng nước thay đổi trong khoảng thời gian từ $t = 0$ đến $t = 12$ được tính bằng tích phân của hàm tốc độ thay đổi $f(t)$:
+      $$\Delta V = \int_{0}^{12} f(t) dt$$
+    * Do hàm số $f(t)$ được cho bởi các công thức khác nhau trên từng khoảng, ta tách tích phân thành các khoảng nhỏ:
+      $$\Delta V = \int_{0}^{3} 100t \, dt + \int_{3}^{6} (900 - 200t) \, dt + \int_{6}^{12} (100t - 900) \, dt$$
+
+    **Bước 3: Tính giá trị từng tích phân thành phần**
+    
+    * **Khoảng 1 ($0 \le t \le 3$):**
+      $$\int_{0}^{3} 100t \, dt = \left[ 50t^2 \right]_{0}^{3} = 50(3^2) - 0 = 450$$
+    * **Khoảng 2 ($3 \le t \le 6$):**
+      $$\int_{3}^{6} (900 - 200t) \, dt = \left[ 900t - 100t^2 \right]_{3}^{6} = (900(6) - 100(6^2)) - (900(3) - 100(3^2))$$
+      $$= (5400 - 3600) - (2700 - 900) = 1800 - 1800 = 0$$
+    * **Khoảng 3 ($6 \le t \le 12$):**
+      $$\int_{6}^{12} (100t - 900) \, dt = \left[ 50t^2 - 900t \right]_{6}^{12} = (50(12^2) - 900(12)) - (50(6^2) - 900(6))$$
+      $$= (7200 - 10800) - (1800 - 5400) = -3600 - (-3600) = 0$$
+
+    * Tổng lượng nước thay đổi là:
+      $$\Delta V = 450 + 0 + 0 = 450 \text{ (gallon)}$$
+
+    **Bước 4: Tính lượng nước trong bể tại thời điểm $6$ giờ chiều**
+    
+    * Lượng nước trong bể lúc $6$ giờ chiều ($t = 12$) là:
+      $$V(12) = V(0) + \Delta V = 250 + 450 = 700 \text{ (gallon)}$$
+      *(Kiểm tra lại giá trị tích phân khoảng 3: $\int_{6}^{12} (100t - 900) dt = [50t^2 - 900t]_6^{12} = (7200 - 10800) - (1800 - 5400) = -3600 - (-3600) = 0$. Tổng thay đổi là $450$, vậy lượng nước cuối cùng là $250 + 450 = 700$ gallon).*
+
+    **Kết luận:** Ở thời điểm $6$ giờ chiều, trong bể chứa **$700$** gallon nước.
+    *(Nguồn câu hỏi: THPT Nguyễn Khuyến - Lê Thánh Tông 2025)*
+    """)
+
+st.markdown("---")
