@@ -8538,3 +8538,93 @@ if st.session_state.get('q95_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 96: DIỆN TÍCH HÌNH PHẲNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 96 (THPT Chuyên Lê Khiết - Quảng Ngãi 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Từ bảng gỗ hình vuông $ABCD$ có độ dài cạnh $12\text{ cm}$, bạn Anh chia hình vuông này thành 9 hình vuông nhỏ bằng nhau rồi vẽ một hình càng cua được giới hạn bởi các cung phần tư của các đường tròn tâm $A, E, F, G$, xem hình vẽ. Tính diện tích hình càng cua, phần tô đậm trong hình vẽ, theo đơn vị $\text{cm}^2$. Kết quả làm tròn đến hàng đơn vị.
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_ab0e9f1.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_ab0e9f1.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích hình càng cua (làm tròn đến hàng đơn vị, ví dụ: 12):", key="q96_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q96_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 38
+    if normalized_user_answer == "38":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tính diện tích các hình quạt tròn tâm A, E, F, G tương ứng rồi sử dụng nguyên lý bù trừ diện tích!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q96_solution_shown' not in st.session_state:
+    st.session_state['q96_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q96_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q96_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q96_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q96_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định bán kính các cung tròn**
+    
+    Hình vuông $ABCD$ cạnh $12\text{ cm}$ được chia thành $9$ hình vuông nhỏ bằng nhau, nên mỗi hình vuông nhỏ có cạnh bằng $12 / 3 = 4\text{ cm}$.
+    Dựa vào hệ trục toạ độ và các điểm lưới, ta xác định được bán kính của các đường tròn tạo nên các cung phần tư:
+    * Cung phần tư tâm $A$: Bán kính $R_A = 12\text{ cm}$. 
+      Diện tích hình quạt tương ứng: $S_A = \dfrac{1}{4} \pi \cdot 12^2 = 36\pi \text{ (cm}^2\text{)}$
+    * Cung phần tư tâm $E$: Bán kính $R_E = 8\text{ cm}$. 
+      Diện tích hình quạt tương ứng: $S_E = \dfrac{1}{4} \pi \cdot 8^2 = 16\pi \text{ (cm}^2\text{)}$
+    * Cung phần tư tâm $F$: Bán kính $R_F = 4\text{ cm}$. 
+      Diện tích hình quạt tương ứng: $S_F = \dfrac{1}{4} \pi \cdot 4^2 = 4\pi \text{ (cm}^2\text{)}$
+    * Cung phần tư tâm $G$: Bán kính $R_G = 4\text{ cm}$. 
+      Diện tích hình quạt tương ứng: $S_G = \dfrac{1}{4} \pi \cdot 4^2 = 4\pi \text{ (cm}^2\text{)}$
+    
+    **Bước 2: Tính diện tích hình càng cua**
+    
+    Hình càng cua (phần màu vàng) được tạo thành bởi giới hạn của các cung phần tư trên. Phân tích bằng hình học cắt ghép (hoặc sử dụng phép tính tích phân nguyên lý bù trừ), diện tích của hình phẳng này được tính thông qua hiệu diện tích của cung lớn trừ đi phần lẹm bởi các cung nhỏ hơn:
+    
+    $$S = S_A - (S_E + S_F + S_G)$$
+    
+    Thay các số liệu đã tính ở trên vào:
+    
+    $$S = 36\pi - (16\pi + 4\pi + 4\pi) = 36\pi - 24\pi = 12\pi \text{ (cm}^2\text{)}$$
+    
+    **Bước 3: Làm tròn kết quả**
+    
+    Thực hiện phép tính:
+    $$S = 12 \cdot 3,14159... \approx 37,699... \text{ (cm}^2\text{)}$$
+    
+    Làm tròn kết quả đến hàng đơn vị, ta được $38$.
+        
+    **Kết luận:** Diện tích hình càng cua xấp xỉ **$38\text{ cm}^2$**.
+    """)
+
+st.markdown("---")
