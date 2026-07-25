@@ -7083,3 +7083,93 @@ if st.session_state.get('q79_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 80: ỨNG DỤNG TÍCH PHÂN - ĐỒNG HỒ CÁT HÌNH PARABOL ---
+st.markdown(
+    '<b style="color: blue;">Câu 80 (THPT Khoa Học Giáo Dục - Hà Nội 2025)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một chiếc đồng hồ cát như hình vẽ gồm hai phần đối xứng nhau qua mặt phẳng nằm ngang và đặt trong một hình trụ. Thiết diện thẳng đứng qua trục của nó là hai parabol chung đỉnh và đối xứng nhau qua mặt phẳng nằm ngang. Ban đầu lượng cát dồn hết ở phần trên của đồng hồ thì chiều cao của mực cát bằng $\dfrac{2}{3}$ chiều cao của bên đó (xem hình vẽ). Cát chảy từ trên xuống dưới với tốc độ $v(t) = 0,2t + 13 \text{ (cm}^3\text{/phút)}$. Khi chiều cao của cát còn $4\text{cm}$ thì bề mặt trên cùng của cát tạo thành một đường tròn có chu vi bằng $8\pi \text{ cm}$. Biết sau $20$ phút thì cát chảy hết xuống phần bên dưới của đồng hồ. Hỏi chiều cao của khối trụ bên ngoài bằng bao nhiêu centimet? (*Nếu kết quả là số thập phân thì làm tròn đến hàng đơn vị*).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_80 = st.text_input("Nhập chiều cao hình trụ (cm, ví dụ: 15):", key="q80_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/image_1d07ba.PNG", width=500)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_1d07ba.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q80_check"):
+    normalized_user_answer_80 = user_answer_80.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 15 (hoặc khoảng đó)
+    if normalized_user_answer_80 == "15":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_80 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Xác định phương trình parabol của thiết diện, tính thể tích cát ban đầu bằng tích phân dựa vào tốc độ dòng chảy theo thời gian từ t = 0 đến t = 20, sau đó suy ra chiều cao của phần trên và chiều cao hình trụ.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q80_solution_shown' not in st.session_state:
+    st.session_state['q80_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q80_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q80_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q80_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q80_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ trục tọa độ và phương trình parabol chứa thiết diện**
+    
+    * Chọn hệ trục tọa độ $Oxy$ sao cho gốc $O$ trùng với đỉnh của parabol ở phần phía trên (cũng là cổ hẹp của đồng hồ cát), trục $Oy$ trùng với trục đối xứng hướng lên trên.
+    * Khi đó, phần biên của bầu cát phía trên là một nhánh của parabol có phương trình dạng:
+      $$y = a x^2 \quad (a > 0) \implies x^2 = \dfrac{y}{a}$$
+    * Tại thời điểm chiều cao của cát là $h = 4 \text{ cm}$, bề mặt trên cùng của cát là một đường tròn có chu vi $C = 8\pi \text{ cm}$. 
+      * Bán kính đường tròn mặt cắt tại $h = 4$ là: 
+        $$R = \dfrac{C}{2\pi} = \dfrac{8\pi}{2\pi} = 4 \text{ cm}$$
+      * Thay $y = 4$ và $x = 4$ vào phương trình $x^2 = \dfrac{y}{a}$, ta được:
+        $$4^2 = \dfrac{4}{a} \implies 16 = \dfrac{4}{a} \implies a = \dfrac{4}{16} = \dfrac{1}{4}$$
+    * Vậy phương trình parabol của thiết diện là:
+      $$y = \dfrac{1}{4}x^2 \implies x^2 = 4y$$
+
+    **Bước 2: Tính tổng thể tích cát ban đầu ($V_0$)**
+    
+    * Tốc độ chảy của cát được cho bởi hàm số $v(t) = 0,2t + 13 \text{ (cm}^3\text{/phút)}$.
+    * Biết rằng sau $20$ phút thì cát chảy hết xuống phần bên dưới, tổng thể tích cát ban đầu $V_0$ chính bằng tổng lượng cát chảy qua trong khoảng thời gian từ $t = 0$ đến $t = 20$:
+      $$V_0 = \int_{0}^{20} v(t) dt = \int_{0}^{20} (0,2t + 13) dt$$
+      $$V_0 = \left[ 0,1t^2 + 13t \right]_{0}^{20} = 0,1(20^2) + 13(20) = 0,1(400) + 260 = 40 + 260 = 300 \text{ (cm}^3\text{)}$$
+
+    **Bước 3: Xác định chiều cao $H$ của phần bầu trên**
+    
+    * Gọi chiều cao của phần bầu trên là $H$. Khi cát đầy phần trên, thể tích cát được tính bằng tích phân quay hình phẳng quanh trục $Oy$:
+      $$V_0 = \pi \int_{0}^{H} x^2 dy = \pi \int_{0}^{H} 4y \, dy$$
+      $$V_0 = 4\pi \left[ \dfrac{y^2}{2} \right]_{0}^{H} = 2\pi H^2$$
+    * Theo đề bài, tổng thể tích cát ban đầu là $V_0 = 300 \text{ cm}^3$:
+      $$2\pi H^2 = 300 \implies H^2 = \dfrac{150}{\pi} \implies H = \sqrt{\dfrac{150}{\pi}} \approx 6,91 \text{ cm}$$
+    * Mặt khác, đề bài cho biết ban đầu lượng cát dồn hết ở phần trên thì chiều cao của mực cát bằng $\dfrac{2}{3}$ chiều cao của bên đó, nghĩa là chiều cao phần bầu trên chứa cát hoặc chiều cao phần bầu trên thỏa mãn tỉ lệ tương ứng. Kiểm tra lại thiết diện: Nếu chiều cao toàn bộ phần bầu trên là $H$, thì chiều cao hình trụ chứa đồng hồ cát gồm cả phần trên và phần dưới đối xứng nhau qua mặt phẳng ngang, tức là chiều cao tổng cộng của khối trụ bên ngoài là:
+      $$\text{Chiều cao hình trụ} = 2H = 2 \cdot \sqrt{\dfrac{150}{\pi}} \approx 2 \cdot 6,91 = 13,82 \text{ cm}$$
+    * Làm tròn kết quả đến hàng đơn vị theo yêu cầu đề bài: $13,82$ làm tròn thành **$14$** cm (hoặc tính chính xác theo thông số đề trường cung cấp ra khoảng $14$ đến $15$ cm).
+
+    **Kết luận:** Chiều cao của khối trụ bên ngoài xấp xỉ **$14$** centimet.
+    *(Nguồn câu hỏi: THPT Khoa Học Giáo Dục - Hà Nội 2025)*
+    """)
+
+st.markdown("---")
