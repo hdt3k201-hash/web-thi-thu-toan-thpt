@@ -1665,7 +1665,7 @@ Diện tích phần lát gạch bằng bao nhiêu $\text{m}^2$? *(kết quả l�
 """)
 
 # --- Ô NHẬP ĐÁP ÁN ---
-user_answer = st.text_input("Nhập diện tích phần lát gạch (ví dụ: 7.38):", key="q18_ans")
+user_answer = st.text_input("Nhập diện tích phần lát gạch (ví dụ: 1.68):", key="q18_ans")
 
 # --- CHÈN HÌNH ẢNH ---
 try:
@@ -1747,6 +1747,109 @@ if st.session_state.get('q18_solution_shown') and st.session_state.get('logged_i
     * Làm tròn kết quả đến hàng phần trăm, ta được: $S_C \approx 7,38 \text{ m}^2$.
         
     **Kết luận:** Diện tích phần lát gạch là **$7,38$** $\text{m}^2$.
+    """)
+
+st.markdown("---")
+
+# --- CÂU HỎI 19: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH HÌNH PHẢNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 19 (THPT Lang Chanh - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một công ty có ý định thiết kế một logo hình vuông có độ dài nửa đường chéo bằng $4$. Biểu tượng $4$ chiếc lá (được tô màu) được tạo thành bởi các đường cong đối xứng với nhau qua tâm của hình vuông và qua các đường chéo.
+
+Một trong số các đường cong ở nửa bên phải của logo là một phần của đồ thị hàm số bậc ba dạng $y = ax^3 + bx^2 - x$ với hệ số $a < 0$. Để kỷ niệm ngày thành lập $2/3$, công ty thiết kế để tỉ số diện tích được tô màu so với phần không được tô màu bằng $\dfrac{2}{3}$. Tính $a + b$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của a + b (ví dụ: 0.1 hoặc 1/10):", key="q19_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đồng bộ đường dẫn ảnh theo đúng tên file trên hệ thống
+        st.image("images/image_f60278.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi nếu chưa đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_f60278.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q19_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 0.4 (hoặc 2/5)
+    if normalized_user_answer in ["0.4", "2/5", ".4", "0,4"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy đặt hệ trục tọa độ với tâm O là tâm hình vuông. Sử dụng điều kiện đường cong đi qua đỉnh (4; 0) và tỉ lệ diện tích để lập hệ phương trình hai ẩn a, b nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q19_solution_shown' not in st.session_state:
+    st.session_state['q19_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q19_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q19_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q19_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q19_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chọn hệ trục tọa độ và phân tích các giao điểm**
+    
+    * Chọn hệ trục tọa độ $Oxy$ có gốc $O(0;0)$ trùng với tâm của logo hình vuông, các trục $Ox, Oy$ nằm trên hai đường chéo của hình vuông.
+    * Do nửa đường chéo bằng $4$, nên 4 đỉnh của hình vuông lần lượt là $(4; 0)$, $(0; 4)$, $(-4; 0)$ và $(0; -4)$.
+    * Chiếc lá bên phải (nằm trên trục $Ox$) có đỉnh là điểm $A(4; 0)$. Do đó, đường cong giới hạn chiếc lá này đi qua gốc tọa độ $O(0;0)$ và điểm $A(4;0)$.
+    * Xét hàm số $y = f(x) = ax^3 + bx^2 - x$ với $a < 0$. 
+        * Rõ ràng đồ thị đi qua $O(0;0)$ vì $f(0) = 0$.
+        * Vì đồ thị đi qua $A(4;0)$ nên ta có phương trình:
+        $$f(4) = 0 \Leftrightarrow a \cdot 4^3 + b \cdot 4^2 - 4 = 0 \Leftrightarrow 64a + 16b - 4 = 0 \Leftrightarrow 16a + 4b = 1 \Leftrightarrow b = \dfrac{1 - 16a}{4} \quad (1)$$
+        * Ta có $y'(0) = -1 < 0$, do đó với $x \in (0; 4)$, đồ thị hàm số nằm phía dưới trục hoành ($f(x) \le 0$). Đây chính là đường biên dưới của chiếc lá bên phải.
+    
+    **Bước 2: Tính diện tích hình vuông và diện tích một chiếc lá**
+    
+    * Độ dài đường chéo của hình vuông là $d = 2 \times 4 = 8$.
+    * Diện tích tổng thể của logo hình vuông là:
+        $$S_{\text{tổng}} = \dfrac{1}{2} d^2 = \dfrac{1}{2} \cdot 8^2 = 32$$
+    * Theo đề bài, tỉ số giữa diện tích phần tô màu ($S_{\text{màu}}$) và diện tích phần không tô màu ($S_{\text{trắng}}$) bằng $\dfrac{2}{3}$. Ta có:
+        $$\dfrac{S_{\text{màu}}}{S_{\text{trắng}}} = \dfrac{2}{3} \Rightarrow S_{\text{màu}} = \dfrac{2}{2+3} S_{\text{tổng}} = \dfrac{2}{5} \cdot 32 = \dfrac{64}{5}$$
+    * Vì logo có $4$ chiếc lá hoàn toàn đối xứng nhau, nên diện tích của một chiếc lá nằm dọc trục $Ox$ là:
+        $$S_{\text{lá}} = \dfrac{1}{4} S_{\text{màu}} = \dfrac{1}{4} \cdot \dfrac{64}{5} = \dfrac{16}{5}$$
+
+    **Bước 3: Lập phương trình tích phân cho diện tích nửa chiếc lá**
+    
+    * Do tính chất đối xứng qua đường chéo $Ox$, diện tích phần nửa chiếc lá nằm bên dưới trục $Ox$ bằng một nửa diện tích chiếc lá:
+        $$S_{\text{nửa lá}} = \dfrac{1}{2} S_{\text{lá}} = \dfrac{8}{5}$$
+    * Mặt khác, diện tích nửa chiếc lá này được tính bằng tích phân:
+        $$S_{\text{nửa lá}} = \int_{0}^{4} |f(x)| \, dx = \int_{0}^{4} (-ax^3 - bx^2 + x) \, dx$$
+    * Tính tích phân:
+        $$\int_{0}^{4} (-ax^3 - bx^2 + x) \, dx = \left[ -\dfrac{a}{4}x^4 - \dfrac{b}{3}x^3 + \dfrac{1}{2}x^2 \right]_0^4 = -64a - \dfrac{64}{3}b + 8$$
+    * Do đó, ta có phương trình:
+        $$-64a - \dfrac{64}{3}b + 8 = \dfrac{8}{5} \Leftrightarrow -64a - \dfrac{64}{3}b = -\dfrac{32}{5} \Leftrightarrow 2a + \dfrac{2}{3}b = \dfrac{1}{5} \Leftrightarrow 30a + 10b = 3 \quad (2)$$
+
+    **Bước 4: Giải hệ phương trình và tính $a + b$**
+    
+    * Thế $(1)$ vào $(2)$, ta được:
+        $$30a + 10 \left( \dfrac{1 - 16a}{4} \right) = 3 \Leftrightarrow 30a + \dfrac{5 - 80a}{2} = 3 \Leftrightarrow 60a + 5 - 80a = 6 \Leftrightarrow -20a = 1 \Leftrightarrow a = -\dfrac{1}{20} \text{ (thỏa mãn } a < 0\text{)}$$
+    * Với $a = -\dfrac{1}{20} = -0,05$, ta tìm được $b$:
+        $$b = \dfrac{1 - 16\left(-\dfrac{1}{20}\right)}{4} = \dfrac{1 + \dfrac{4}{5}}{4} = \dfrac{9}{20} = 0,45$$
+    * Giá trị cần tính là:
+        $$a + b = -\dfrac{1}{20} + \dfrac{9}{20} = \dfrac{8}{20} = \dfrac{2}{5} = 0,4$$
+        
+    **Kết luận:** Giá trị của $a + b$ bằng **$0,4$** (hoặc $\dfrac{2}{5}$).
     """)
 
 st.markdown("---")
