@@ -3679,3 +3679,149 @@ if st.session_state.get('q38_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU HỎI 39
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 39 ( ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Biết rằng $\int_{1}^{e} \dfrac{21\ln x + 1}{x(\ln x + 1)^2} dx = a\ln 2 - \dfrac{b}{c}$ với $a, b, c$ là các số nguyên dương và $\dfrac{b}{c}$ là phân số tối giản. Tính $S = a + b + c$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN CÂU 39 ---
+user_answer_39 = st.text_input("Nhập giá trị của S:", key="q39_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN CÂU 39 ---
+if st.button("Kiểm tra đáp án Câu 39", key="q39_check"):
+    normalized_user_answer_39 = user_answer_39.strip()
+    
+    if normalized_user_answer_39 == "5":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_39 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Đặt $t = \ln x + 1$, suy ra $\dfrac{1}{x}dx = dt$. Biến đổi tích phân theo biến $t$ và đồng nhất hệ số để tìm $a, b, c$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 39 ---
+st.markdown("---")
+
+if 'q39_solution_shown' not in st.session_state:
+    st.session_state['q39_solution_shown'] = False
+
+col1_39, col2_39 = st.columns([1, 4])
+with col1_39:
+    if st.button("Xem lời giải chi tiết Câu 39", key="q39_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q39_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q39_solution_shown'] = False 
+
+if st.session_state.get('q39_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 39:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    Đặt $t = \ln x + 1 \Rightarrow \dfrac{1}{x} dx = dt$. 
+    Ta có $\ln x = t - 1$.
+    
+    Đổi cận:
+    *   Khi $x = 1 \Rightarrow t = 1$;
+    *   Khi $x = e \Rightarrow t = 2$.
+    
+    Thay vào tích phân ban đầu, ta có:
+    $$ \int_{1}^{e} \dfrac{21\ln x + 1}{x(\ln x + 1)^2} dx = \int_{1}^{2} \dfrac{2(t - 1) + 1}{t^2} dt = \int_{1}^{2} \dfrac{2t - 1}{t^2} dt $$
+    $$ = \int_{1}^{2} \left( \dfrac{2}{t} - \dfrac{1}{t^2} \right) dt = \left( 2\ln |t| + \dfrac{1}{t} \right)\Bigg|_{1}^{2} $$
+    $$ = \left( 2\ln 2 + \dfrac{1}{2} \right) - (2\ln 1 + 1) = 2\ln 2 + \dfrac{1}{2} - 1 = 2\ln 2 - \dfrac{1}{2} $$
+    
+    Theo giả thiết, kết quả có dạng $a\ln 2 - \dfrac{b}{c}$, suy ra:
+    $a = 2$, $b = 1$, $c = 2$ (phân số $\dfrac{1}{2}$ đã tối giản).
+    
+    **Kết luận:** $S = a + b + c = 2 + 1 + 2 = 5$.
+    """)
+
+st.markdown("---")
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+
+# ==========================================
+# CÂU HỎI 40
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 40 ( ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho $I = \int_{1}^{5} f(x) dx = 26$. Khi đó $J = \int_{0}^{2} x [f(x^2 + 1) + 1] dx$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN CÂU 40 ---
+user_answer_40 = st.text_input("Nhập giá trị của J:", key="q40_ans")
+
+# --- CHÈN HÌNH ẢNH (Dùng chung 1 ảnh) ---
+
+# --- NÚT KIỂM TRA ĐÁP ÁN CÂU 40 ---
+if st.button("Kiểm tra đáp án Câu 40", key="q40_check"):
+    normalized_user_answer_40 = user_answer_40.strip()
+    
+    if normalized_user_answer_40 == "15":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_40 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tách tích phân $J$ thành hai phần, phần chứa hàm ẩn sử dụng phương pháp đổi biến số với $u = x^2 + 1$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 40 ---
+st.markdown("---")
+
+if 'q40_solution_shown' not in st.session_state:
+    st.session_state['q40_solution_shown'] = False
+
+col1_40, col2_40 = st.columns([1, 4])
+with col1_40:
+    if st.button("Xem lời giải chi tiết Câu 40", key="q40_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q40_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q40_solution_shown'] = False 
+
+if st.session_state.get('q40_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 40:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    Ta có tích phân $J$ được tách thành:
+    $$ J = \int_{0}^{2} x [f(x^2 + 1) + 1] dx = \int_{0}^{2} x f(x^2 + 1) dx + \int_{0}^{2} x dx $$
+    
+    **Bước 1: Tính tích phân thứ nhất $J_1 = \int_{0}^{2} x f(x^2 + 1) dx$**
+    Đặt $u = x^2 + 1 \Rightarrow du = 2x dx \Rightarrow x dx = \dfrac{1}{2} du$.
+    Đổi cận:
+    *   Khi $x = 0 \Rightarrow u = 1$;
+    *   Khi $x = 2 \Rightarrow u = 5$.
+    
+    Khi đó:
+    $$ J_1 = \dfrac{1}{2} \int_{1}^{5} f(u) du = \dfrac{1}{2} \int_{1}^{5} f(x) dx = \dfrac{1}{2} \cdot 26 = 13 $$
+    
+    **Bước 2: Tính tích phân thứ hai $J_2 = \int_{0}^{2} x dx$**
+    $$ J_2 = \left( \dfrac{x^2}{2} \right)\Bigg|_{0}^{2} = \dfrac{2^2}{2} - 0 = 2 $$
+    
+    **Bước 3: Tính tổng giá trị của $J$**
+    $$ J = J_1 + J_2 = 13 + 2 = 15 $$
+    
+    **Kết luận:** Giá trị của $J$ là $15$.
+    """)
+
+st.markdown("---")
