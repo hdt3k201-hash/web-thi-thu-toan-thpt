@@ -7508,4 +7508,167 @@ if st.session_state.get('q84_solution_shown') and st.session_state.get('logged_i
 
 st.markdown("---")
 
+# Tiêu đề câu hỏi Câu 85
+st.markdown(
+    '<b style="color: blue;">Câu 85 </b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi Câu 85
+st.markdown(r"""
+Một vật chuyển động thẳng có vận tốc được cho bởi hàm số $v(t) = t^2 \cos t$ (m/s) với $t \in [0; \pi]$ (giây là thời gian tính từ lúc bắt đầu chuyển động). Tính quãng đường vật đi được trong khoảng thời gian từ $t = 0$ đến $t = \pi$ (đơn vị: mét, kết quả làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_85 = st.text_input("Nhập quãng đường đi được (mét) (ví dụ: 7.22):", key="q85_ans")
+
+
+# Nút kiểm tra Đúng/Sai cho Câu 85
+if st.button("Kiểm tra đáp án", key="q85_check"):
+    normalized_user_answer_85 = user_answer_85.strip().replace(',', '.')
+    
+    if normalized_user_answer_85 == "7.22":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_85 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy chú ý xét dấu của hàm vận tốc trên đoạn $[0; \pi]$ và chia tích phân thành các khoảng phù hợp nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 85 ---
+st.markdown("---")
+
+if 'q85_solution_shown' not in st.session_state:
+    st.session_state['q85_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q85_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q85_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q85_solution_shown'] = False 
+
+if st.session_state.get('q85_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định khoảng đổi dấu của vận tốc**
+    
+    Phương trình $v(t) = t^2 \cos t = 0$ trên đoạn $[0; \pi]$ có nghiệm $t = \dfrac{\pi}{2}$ (vì $t \in (0; \pi]$ nên $t^2 > 0$).
+    
+    * Trên khoảng $\left[0; \dfrac{\pi}{2}\right)$, ta có $\cos t > 0$ nên $v(t) > 0$.
+    * Trên khoảng $\left(\dfrac{\pi}{2}; \pi\right]$, ta có $\cos t < 0$ nên $v(t) < 0$.
+    
+    **Bước 2: Thiết lập tích phân tính quãng đường**
+    
+    Quãng đường vật đi được từ $t = 0$ đến $t = \pi$ là:
+    $$S = \int_0^{\pi} |v(t)| \, dt = \int_0^{\dfrac{\pi}{2}} t^2 \cos t \, dt - \int_{\dfrac{\pi}{2}}^{\pi} t^2 \cos t \, dt$$
+    
+    Sử dụng phương pháp tích phân từng phần, ta tìm nguyên hàm:
+    $$\int t^2 \cos t \, dt = t^2 \sin t + 2t \cos t - 2\sin t = (t^2 - 2)\sin t + 2t \cos t$$
+    
+    **Bước 3: Tính toán các tích phân thành phần**
+    
+    * Tích phân thứ nhất:
+    $$\int_0^{\dfrac{\pi}{2}} t^2 \cos t \, dt = \left[ (t^2 - 2)\sin t + 2t \cos t \right]_0^{\dfrac{\pi}{2}} = \dfrac{\pi^2}{4} - 2$$
+    
+    * Tích phân thứ hai:
+    $$\int_{\dfrac{\pi}{2}}^{\pi} t^2 \cos t \, dt = \left[ (t^2 - 2)\sin t + 2t \cos t \right]_{\dfrac{\pi}{2}}^{\pi} = -2\pi - \left(\dfrac{\pi^2}{4} - 2\right) = -2\pi - \dfrac{\pi^2}{4} + 2$$
+    
+    **Bước 4: Tổng hợp kết quả và làm tròn**
+    
+    $$S = \left(\dfrac{\pi^2}{4} - 2\right) - \left(-2\pi - \dfrac{\pi^2}{4} + 2\right) = \dfrac{\pi^2}{2} + 2\pi - 4$$
+    
+    Thay $\pi \approx 3,14159$, ta được:
+    $$S \approx \dfrac{3,14159^2}{2} + 2 \cdot 3,14159 - 4 \approx 4,9348 + 6,2832 - 4 = 7,218 \approx 7,22 \text{ (mét)}$$
+    
+    **Kết luận:** Quãng đường vật đi được là **$7,22$** mét.
+    """)
+    
+st.markdown("---")
+
+
+# Tiêu đề câu hỏi Câu 86
+st.markdown(
+    '<b style="color: blue;">Câu 86 </b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi Câu 86
+st.markdown(r"""
+Tốc độ tăng trưởng số lượng một loài vi khuẩn trong phòng thí nghiệm được cho bởi hàm số $f'(t) = \dfrac{1000}{1 + 0,1t}$ (con/giờ), trong đó $t$ là thời gian tính bằng giờ ($t \ge 0$). Biết rằng ban đầu ($t = 0$) số lượng vi khuẩn là $5000$ con. Tính số lượng vi khuẩn sau $10$ giờ (kết quả làm tròn đến hàng đơn vị).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_86 = st.text_input("Nhập số lượng vi khuẩn (con) :", key="q86_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/tichphan_tangtruong86.PNG", width=400)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/tichphan_tangtruong86.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai cho Câu 86
+if st.button("Kiểm tra đáp án", key="q86_check"):
+    normalized_user_answer_86 = user_answer_86.strip().replace(',', '.')
+    
+    if normalized_user_answer_86 == "11931":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_86 == "":
+        st.warning("You have not entered an answer.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại việc tính tích phân chứa logarit tự nhiên và xác định đúng hằng số $C$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 86 ---
+st.markdown("---")
+
+if 'q86_solution_shown' not in st.session_state:
+    st.session_state['q86_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q86_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q86_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q86_solution_shown'] = False 
+
+if st.session_state.get('q86_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm số biểu diễn số lượng vi khuẩn**
+    
+    Gọi $f(t)$ là số lượng vi khuẩn tại thời điểm $t$ (giờ). Ta có số lượng vi khuẩn là nguyên hàm của tốc độ tăng trưởng:
+    $$f(t) = \int f'(t) \, dt = \int \dfrac{1000}{1 + 0,1t} \, dt$$
+    
+    Đặt $u = 1 + 0,1t \Rightarrow du = 0,1 \, dt \Rightarrow dt = 10 \, du$. Khi đó:
+    $$f(t) = \int \dfrac{1000}{u} \cdot 10 \, du = 10000 \ln|u| + C = 10000 \ln(1 + 0,1t) + C$$
+    
+    **Bước 2: Tìm hằng số $C$ từ điều kiện ban đầu**
+    
+    Vì ban đầu ($t = 0$) số lượng vi khuẩn là $5000$ con, nên:
+    $$f(0) = 10000 \ln(1 + 0) + C = 5000 \Rightarrow C = 5000$$
+    
+    Do đó, hàm số biểu diễn số lượng vi khuẩn theo thời gian $t$ là:
+    $$f(t) = 10000 \ln(1 + 0,1t) + 5000$$
+    
+    **Bước 3: Tính số lượng vi khuẩn sau $10$ giờ và làm tròn**
+    
+    Thay $t = 10$ vào hàm số $f(t)$:
+    $$f(10) = 10000 \ln(1 + 0,1 \cdot 10) + 5000 = 10000 \ln(2) + 5000$$
+    
+    Sử dụng giá trị $\ln(2) \approx 0,693147$, ta có:
+    $$f(10) \approx 10000 \cdot 0,693147 + 5000 = 6931,47 + 5000 = 11931,47 \text{ (con)}$$
+    
+    Làm tròn đến hàng đơn vị, ta được **$11931$**.
+    
+    **Kết luận:** Số lượng vi khuẩn sau $10$ giờ là **$11931$** con.
+    """)
+    
+st.markdown("---")
+
 
