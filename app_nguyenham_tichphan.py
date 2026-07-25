@@ -2426,3 +2426,103 @@ if st.session_state.get('q25_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+# --- CÂU HỎI 26: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH ---
+st.markdown(
+    '<b style="color: blue;">Câu 26 (THPT Yên Hòa - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Dự án “Công viên Thiên văn học” được khởi công năm 2017 do Tập Đoàn Nam Cường đầu tư và đưa vào sử dụng từ đầu năm 2024. Để tạo điểm nhấn, các kỹ sư đã thiết kế một con đường và Vọng Lâu giữa hồ. Theo một tỉ lệ nhất định, con đường ở giữa công viên được mô phỏng như hình vẽ. Biết rằng, trên hệ trục tương ứng của hình vẽ:
+- Các đường cong $BC; FG$ là 2 phần của Parabol có phương trình $y = f(x) = 0,11x^2 + 1$.
+- Các đường cong $AQ, PK$ là 2 phần của Parabol có phương trình $y = g(x) = 0,1x^2 + 0,41$.
+- Đường cong qua 3 điểm $Q, O, P$ là một phần của Parabol có phương trình là $y = h(x) = 0,13x^2$.
+- Các điểm $C, D$ có cùng hoành độ là $-0,35$. Các điểm $E, F$ có cùng hoành độ là $0,35$.
+- Các điểm $D, E$ có cùng tung độ là $2,65$.
+- Các điểm $A, Q, P, K$ có hoành độ lần lượt là $-6; -\sqrt{14}; \sqrt{14}; 6$.
+- Điểm $B, G$ có hoành độ lần lượt là $-5,7$ và $5,7$.
+
+Dựa theo số liệu ở hình vẽ, tính diện tích phần con đường được tô hình viên gạch. Kết quả làm tròn đến hàng phần mười.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích phần con đường (ví dụ: 12.3):", key="q26_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Đường dẫn ảnh theo đúng yêu cầu
+        st.image("images/image_007304.PNG", width=600)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_007304.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q26_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 11.4
+    if normalized_user_answer == "11.4":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hình vẽ có tính đối xứng qua trục tung. Hãy tính diện tích phần bên phải (x ≥ 0) bằng cách chia thành các phần nhỏ, tính tích phân từng phần rồi nhân đôi kết quả.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q26_solution_shown' not in st.session_state:
+    st.session_state['q26_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q26_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q26_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q26_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q26_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Nhận xét tính đối xứng**
+    
+    Quan sát hình vẽ và các số liệu, ta thấy phần con đường (màu vàng) đối xứng qua trục tung $Oy$. Do đó, ta chỉ cần tính diện tích phần nằm bên phải trục tung ($x \ge 0$), gọi là $S_{phai}$, sau đó tổng diện tích sẽ là $S = 2 \times S_{phai}$.
+    
+    **Bước 2: Chia phần bên phải thành các miền diện tích nhỏ**
+    
+    Phần bên phải trục tung được giới hạn bởi $x = 0$ đến $x = 6$, ta chia thành 4 miền:
+    *   **Miền 1 ($S_1$):** Từ $x \in [0; 0,35]$. Giới hạn trên là đường thẳng $DE: y = 2,65$, giới hạn dưới là $y = h(x) = 0,13x^2$.
+        $$S_1 = \int_{0}^{0,35} (2,65 - 0,13x^2) dx = \left[ 2,65x - \dfrac{0,13}{3}x^3 \right]_{0}^{0,35} \approx 0,9256$$
+
+    *   **Miền 2 ($S_2$):** Từ $x \in [0,35; \sqrt{14}]$. Giới hạn trên là parabol $FG: y = f(x) = 0,11x^2 + 1$, giới hạn dưới là $y = h(x) = 0,13x^2$.
+        $$S_2 = \int_{0,35}^{\sqrt{14}} \left( (0,11x^2 + 1) - 0,13x^2 \right) dx = \int_{0,35}^{\sqrt{14}} (1 - 0,02x^2) dx$$
+        $$S_2 = \left[ x - \dfrac{0,02}{3}x^3 \right]_{0,35}^{\sqrt{14}} \approx 3,3924 - 0,3497 \approx 3,0427$$
+
+    *   **Miền 3 ($S_3$):** Từ $x \in [\sqrt{14}; 5,7]$. Giới hạn trên là parabol $FG: y = f(x) = 0,11x^2 + 1$, giới hạn dưới là parabol $PK: y = g(x) = 0,1x^2 + 0,41$.
+        $$S_3 = \int_{\sqrt{14}}^{5,7} \left( (0,11x^2 + 1) - (0,1x^2 + 0,41) \right) dx = \int_{\sqrt{14}}^{5,7} (0,01x^2 + 0,59) dx$$
+        $$S_3 = \left[ \dfrac{0,01}{3}x^3 + 0,59x \right]_{\sqrt{14}}^{5,7} \approx 3,9803 - 2,3822 \approx 1,5981$$
+
+    *   **Miền 4 ($S_4$):** Khúc đuôi từ $x \in [5,7; 6]$. Giới hạn trên là đoạn thẳng nối từ điểm $G$ đến điểm $K$, giới hạn dưới là $y = g(x) = 0,1x^2 + 0,41$.
+        *   Tọa độ $G(5,7; f(5,7)) \Rightarrow y_G = 0,11(5,7)^2 + 1 = 4,5739$.
+        *   Tọa độ $K(6; g(6)) \Rightarrow y_K = 0,1(6)^2 + 0,41 = 4,01$.
+        *   Diện tích hình thang giới hạn bởi đoạn $GK$ và trục hoành: $S_{ht} = \dfrac{1}{2}(y_G + y_K)(x_K - x_G) = \dfrac{1}{2}(4,5739 + 4,01)(6 - 5,7) \approx 1,2876$.
+        *   Diện tích phần dưới đường cong $g(x)$ trên đoạn $[5,7; 6]$: 
+            $$S_{cg} = \int_{5,7}^{6} (0,1x^2 + 0,41) dx = \left[ \dfrac{0,1}{3}x^3 + 0,41x \right]_{5,7}^{6} \approx 9,66 - 8,5101 \approx 1,1499$$
+        *   Suy ra $S_4 = S_{ht} - S_{cg} = 1,2876 - 1,1499 \approx 0,1377$.
+
+    **Bước 3: Tính tổng diện tích**
+    
+    *   Diện tích phần bên phải: $S_{phai} = S_1 + S_2 + S_3 + S_4 \approx 0,9256 + 3,0427 + 1,5981 + 0,1377 = 5,7041$.
+    *   Tổng diện tích con đường: $S = 2 \times S_{phai} \approx 2 \times 5,7041 = 11,4082$.
+    
+    **Kết luận:** Làm tròn kết quả đến hàng phần mười, diện tích con đường là **$11,4$**.
+    """)
+
+st.markdown("---")
