@@ -5103,3 +5103,227 @@ if st.session_state.get('q54_solution_shown') and st.session_state.get('logged_i
     
     **Kết luận:** $f(4) = \dfrac{17}{6}$.
     """)
+
+
+
+# ==========================================
+# CÂU HỎI 55
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 55(ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $y = f(x)$ có đạo hàm và liên tục trên $\mathbb{R}$ thỏa mãn $2f(x) + f'(x) = 2x + 1, \forall x \in \mathbb{R}$ và $f(0) = 1$. Giá trị của $\int_{0}^{1} f(x) dx$ bằng bao nhiêu?
+""")
+
+user_answer_55 = st.text_input("Nhập giá trị tích phân (dạng  0.812):", key="q55_ans")
+
+
+
+if st.button("Kiểm tra đáp án Câu 55", key="q55_check"):
+    normalized_user_answer_55 = user_answer_55.strip()
+    if normalized_user_answer_55 in ["1 - 1/(2*e^2)", "(2*e^2-1)/(2*e^2)", "0.932", "0.93"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_55 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Nhân cả hai vế với thừa số tích phân $e^{2x}$ để đưa về đạo hàm của một tích.")
+
+st.markdown("---")
+
+if 'q55_solution_shown' not in st.session_state:
+    st.session_state['q55_solution_shown'] = False
+
+col1_55, col2_55 = st.columns([1, 4])
+with col1_55:
+    if st.button("Xem lời giải chi tiết Câu 55", key="q55_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q55_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q55_solution_shown'] = False 
+
+if st.session_state.get('q55_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 55:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Biến đổi phương trình vi phân**
+    
+    Phương trình cho: $f'(x) + 2f(x) = 2x + 1$.
+    Nhân cả hai vế với thừa số tích phân $e^{\int 2 dx} = e^{2x}$:
+    $$ e^{2x} f'(x) + 2e^{2x} f(x) = (2x + 1)e^{2x} $$
+    $$ \implies \left( e^{2x} f(x) \right)' = (2x + 1)e^{2x} $$
+    
+    **Bước 2: Tìm hàm số $f(x)$**
+    
+    Lấy nguyên hàm hai vế:
+    $$ e^{2x} f(x) = \int (2x + 1)e^{2x} dx $$
+    
+    Đặt $\begin{cases} u = 2x + 1 \\ dv = e^{2x} dx \end{cases} \implies \begin{cases} du = 2 \, dx \\ v = \dfrac{1}{2}e^{2x} \end{cases}$.
+    
+    Áp dụng tích phân từng phần:
+    $$ \int (2x + 1)e^{2x} dx = (2x + 1) \cdot \dfrac{1}{2}e^{2x} - \int e^{2x} dx = \left( x + \dfrac{1}{2} \right)e^{2x} - \dfrac{1}{2}e^{2x} + C = x e^{2x} + C $$
+    
+    Do đó:
+    $$ e^{2x} f(x) = x e^{2x} + C \implies f(x) = x + C e^{-2x} $$
+    
+    **Bước 3: Xác định hằng số $C$**
+    
+    Sử dụng điều kiện $f(0) = 1$:
+    $$ 0 + C e^0 = 1 \implies C = 1 $$
+    
+    Vậy hàm số cần tìm là:
+    $$ f(x) = x + e^{-2x} $$
+    
+    **Bước 4: Tính tích phân**
+    $$ \int_{0}^{1} f(x) dx = \int_{0}^{1} (x + e^{-2x}) dx = \left[ \dfrac{x^2}{2} - \dfrac{1}{2}e^{-2x} \right]_{0}^{1} $$
+    $$ = \left( \dfrac{1}{2} - \dfrac{1}{2}e^{-2} \right) - \left( 0 - \dfrac{1}{2} \right) = 1 - \dfrac{1}{2e^2} $$
+    
+    **Kết luận:** $\int_{0}^{1} f(x) dx = 1 - \dfrac{1}{2e^2}$.
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU HỎI 56
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 56(ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho đa thức bậc bốn $y = f(x)$ đạt cực trị tại $x = 1$ và $x = 2$. Biết $\lim_{x \to 0} \dfrac{2x + f'(x)}{2x} = 2$. Tích phân $\int_{0}^{1} f'(x) dx$ bằng bao nhiêu?
+""")
+
+user_answer_56 = st.text_input("Nhập giá trị tích phân (dạng phân số 1/2 hoặc số thập phân 0.5):", key="q56_ans")
+
+if st.button("Kiểm tra đáp án Câu 56", key="q56_check"):
+    normalized_user_answer_56 = user_answer_56.strip()
+    if normalized_user_answer_56 in ["1/4", "0.25"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_56 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Dựa vào các điểm cực trị để xác định nghiệm của đa thức đạo hàm $f'(x)$, sau đó dùng giới hạn để tìm hệ số.")
+
+st.markdown("---")
+
+if 'q56_solution_shown' not in st.session_state:
+    st.session_state['q56_solution_shown'] = False
+
+col1_56, col2_56 = st.columns([1, 4])
+with col1_56:
+    if st.button("Xem lời giải chi tiết Câu 56", key="q56_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q56_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q56_solution_shown'] = False 
+
+if st.session_state.get('q56_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 56:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Xác định dạng của đa thức đạo hàm $f'(x)$**
+    
+    Vì $y = f(x)$ là đa thức bậc bốn nên $f'(x)$ là đa thức bậc ba.
+    Hàm số đạt cực trị tại $x = 1$ và $x = 2$, suy ra $f'(1) = 0$ và $f'(2) = 0$. 
+    Do đó, $f'(x)$ có dạng:
+    $$ f'(x) = a x (x - 1)(x - 2) = a x(x^2 - 3x + 2) = a x^3 - 3a x^2 + 2a x $$
+    
+    **Bước 2: Tìm hệ số $a$ từ giới hạn cho trước**
+    
+    Xét giới hạn:
+    $$ \lim_{x \to 0} \dfrac{2x + f'(x)}{2x} = \lim_{x \to 0} \dfrac{2x + a x^3 - 3a x^2 + 2a x}{2x} = \lim_{x \to 0} \dfrac{(2 + 2a)x + a x^3 - 3a x^2}{2x} $$
+    $$ = \lim_{x \to 0} \left( \dfrac{2 + 2a}{2} + \dfrac{a x^2 - 3a x}{2} \right) = \dfrac{2 + 2a}{2} = 1 + a $$
+    
+    Theo giả thiết, giới hạn này bằng $2$:
+    $$ 1 + a = 2 \implies a = 1 $$
+    
+    Vậy đạo hàm của hàm số là:
+    $$ f'(x) = x(x - 1)(x - 2) = x^3 - 3x^2 + 2x $$
+    
+    **Bước 3: Tính tích phân**
+    $$ \int_{0}^{1} f'(x) dx = \int_{0}^{1} (x^3 - 3x^2 + 2x) dx = \left[ \dfrac{x^4}{4} - x^3 + x^2 \right]_{0}^{1} $$
+    $$ = \left( \dfrac{1}{4} - 1 + 1 \right) - 0 = \dfrac{1}{4} $$
+    
+    **Kết luận:** Tích phân bằng $\dfrac{1}{4}$ (hoặc $0.25$).
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU HỎI 57
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 57(ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $y = f(x)$ có đạo hàm liên tục trên $[0; 1]$, thỏa mãn $(f'(x))^2 + 4f(x) = 8x^2 + 4, \forall x \in [0; 1]$ và $f(1) = 2$. Tính tích phân $I = \int_{0}^{1} f(x) dx$.
+""")
+
+user_answer_57 = st.text_input("Nhập giá trị của I (dạng phân số 1/3 hoặc số thập phân 0.333):", key="q57_ans")
+
+if st.button("Kiểm tra đáp án Câu 57", key="q57_check"):
+    normalized_user_answer_57 = user_answer_57.strip()
+    if normalized_user_answer_57 in ["4/3", "1.333", "1.3333"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_57 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Dự đoán dạng hàm số bậc hai $f(x) = ax^2 + bx + c$, thay vào phương trình để tìm các hệ số.")
+
+st.markdown("---")
+
+if 'q57_solution_shown' not in st.session_state:
+    st.session_state['q57_solution_shown'] = False
+
+col1_57, col2_57 = st.columns([1, 4])
+with col1_57:
+    if st.button("Xem lời giải chi tiết Câu 57", key="q57_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q57_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q57_solution_shown'] = False 
+
+if st.session_state.get('q57_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 57:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Dự đoán dạng hàm số $f(x)$**
+    
+    Nhìn vế phải $8x^2 + 4$, ta dự đoán $f(x)$ là đa thức bậc hai:
+    $$ f(x) = a x^2 + b x + c \implies f'(x) = 2ax + b $$
+    
+    Thay vào phương trình giả thiết:
+    $$ (2ax + b)^2 + 4(a x^2 + b x + c) = 8x^2 + 4 $$
+    $$ 4a^2 x^2 + 4ab x + b^2 + 4a x^2 + 4b x + 4c = 8x^2 + 4 $$
+    $$ (4a^2 + 4a)x^2 + (4ab + 4b)x + (b^2 + 4c) = 8x^2 + 4 $$
+    
+    **Bước 2: Đồng nhất hệ số hai vế**
+    
+    Ta lập hệ phương trình:
+    * Hệ số của $x^2$: $4a^2 + 4a = 8 \implies a^2 + a - 2 = 0 \implies \left[ \begin{array}{l} a = 1 \\ a = -2 \end{array} \right.$
+    * Hệ số của $x$: $4ab + 4b = 0 \implies 4b(a + 1) = 0$.
+    * Hệ số tự do: $b^2 + 4c = 4$.
+    
+    Thử nghiệm với các giá trị của $a$:
+    * Nếu $a = 1$: từ $4ab + 4b = 0 \implies 8b = 0 \implies b = 0$.
+      Thay $b = 0$ vào hệ số tự do: $0^2 + 4c = 4 \implies c = 1$.
+      Ta được hàm số: $f(x) = x^2 + 1$.
+      Kiểm tra điều kiện $f(1) = 1^2 + 1 = 2$ (thỏa mãn giả thiết).
+      
+    **Bước 3: Tính tích phân $I$**
+    $$ I = \int_{0}^{1} f(x) dx = \int_{0}^{1} (x^2 + 1) dx = \left[ \dfrac{x^3}{3} + x \right]_{0}^{1} = \dfrac{1}{3} + 1 = \dfrac{4}{3} $$
+    
+    **Kết luận:** $I = \dfrac{4}{3}$ (hoặc khoảng $1.333$).
+    """)
