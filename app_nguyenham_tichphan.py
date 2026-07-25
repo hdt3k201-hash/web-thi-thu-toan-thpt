@@ -5853,3 +5853,181 @@ if st.session_state.get('q64_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 65: ỨNG DỤNG ĐẠO HÀM / TÍCH PHÂN TÌM HÀM SỐ ---
+st.markdown(
+    '<b style="color: blue;">Câu 65 (Cụm Chuyên môn 3 - Đak Lak 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một bể chứa nước hình trụ thẳng đứng đang đầy nước. Khi mở nút xả ở đáy, nước chảy ra ngoài với tốc độ giảm thể tích tỉ lệ thuận với căn bậc hai của chiều cao mực nước hiện tại trong bể. Nếu gọi $V(t)$ là thể tích nước còn lại trong bể sau $t$ phút, tốc độ thay đổi thể tích được mô tả bởi $V'(t) = -k\sqrt{V(t)}$, với $k > 0$. Biết bể ban đầu có $144$ lít nước. Sau $10$ phút xả, lượng nước còn lại là $64$ lít. Hỏi sau bao nhiêu phút kể từ lúc mở nút xả thì bể cạn hoàn toàn?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của t (ví dụ: 12):", key="q65_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q65_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 30
+    if normalized_user_answer == "30":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy lấy nguyên hàm hai vế phương trình đã cho để tìm hàm $V(t)$, sau đó dùng dữ kiện $t=0$ và $t=10$ để tìm các hằng số.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q65_solution_shown' not in st.session_state:
+    st.session_state['q65_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q65_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q65_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q65_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q65_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm hàm thể tích nước $V(t)$**
+    
+    Từ giả thiết, ta có phương trình vi phân:
+    $$V'(t) = -k\sqrt{V(t)} \Rightarrow \dfrac{V'(t)}{\sqrt{V(t)}} = -k$$
+    
+    Lấy nguyên hàm hai vế theo biến $t$, ta được:
+    $$\int \dfrac{V'(t)}{\sqrt{V(t)}} dt = \int -k dt$$
+    $$\Rightarrow 2\sqrt{V(t)} = -kt + C$$
+    
+    **Bước 2: Tìm các hằng số $C$ và $k$**
+    
+    * Tại $t = 0$, bể đầy nước nên $V(0) = 144$:
+      $$2\sqrt{144} = -k \cdot 0 + C \Rightarrow C = 2 \cdot 12 = 24$$
+      Vậy ta có phương trình: $2\sqrt{V(t)} = -kt + 24$.
+      
+    * Tại $t = 10$, thể tích nước là $V(10) = 64$:
+      $$2\sqrt{64} = -10k + 24 \Rightarrow 2 \cdot 8 = -10k + 24$$
+      $$\Rightarrow 16 = -10k + 24 \Rightarrow 10k = 8 \Rightarrow k = \dfrac{4}{5}$$
+      
+    Vậy phương trình liên hệ là: $2\sqrt{V(t)} = -\dfrac{4}{5}t + 24$.
+
+    **Bước 3: Tính thời gian $t$ khi bể cạn hoàn toàn**
+    
+    Khi bể cạn hoàn toàn thì $V(t) = 0$:
+    $$2\sqrt{0} = -\dfrac{4}{5}t + 24 \Rightarrow 0 = -\dfrac{4}{5}t + 24$$
+    $$\Rightarrow \dfrac{4}{5}t = 24 \Rightarrow t = \dfrac{24 \cdot 5}{4} = 30$$
+    
+    **Kết luận:** Sau $30$ phút kể từ lúc mở nút xả thì bể cạn hoàn toàn.
+    *(Nguồn câu hỏi: Cụm Chuyên môn 3 - Đak Lak 2026)*
+    """)
+
+st.markdown("---")
+
+# --- CÂU HỎI 66: ỨNG DỤNG ĐẠO HÀM / TÍCH PHÂN TÌM HÀM SỐ ---
+st.markdown(
+    '<b style="color: blue;">Câu 66 (Liên Trường Bắc Ninh 2025)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Người ta quan sát một quần thể vi khuẩn đang tăng trưởng, ban đầu gồm $500$ vi khuẩn. Sau một ngày và sau bốn ngày kể từ khi bắt đầu quan sát, số lượng vi khuẩn của quần thể đó tương ứng là $600$ vi khuẩn, $1300$ vi khuẩn. Gọi $P(t)$ là số lượng vi khuẩn của quần thể đó tại thời điểm $t$ ngày kể từ khi bắt đầu quan sát, $0 \le t \le 10$. Người ta ước tính tốc độ tăng trưởng của quần thể vi khuẩn đó được mô tả bởi $P'(t) = at + b\sqrt{t}$ (vi khuẩn/ngày), trong đó $a, b$ là hằng số. Hỏi số lượng vi khuẩn của quần thể đó sau 9 ngày kể từ khi bắt đầu quan sát là bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của P(9) (ví dụ: 1234):", key="q66_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q66_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 3416
+    if normalized_user_answer == "3416":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm hàm số P(t) bằng cách lấy nguyên hàm của P'(t). Sau đó thiết lập hệ phương trình để tìm a và b.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q66_solution_shown' not in st.session_state:
+    st.session_state['q66_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q66_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q66_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q66_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q66_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm hàm số lượng vi khuẩn $P(t)$**
+    
+    Ta có $P'(t) = at + b\sqrt{t} = at + bt^{\dfrac{1}{2}}$.
+    Số lượng vi khuẩn $P(t)$ là một nguyên hàm của tốc độ tăng trưởng $P'(t)$:
+    $$P(t) = \int P'(t) dt = \int \left(at + bt^{\dfrac{1}{2}}\right) dt = a\dfrac{t^2}{2} + b\dfrac{t^{\dfrac{3}{2}}}{\dfrac{3}{2}} + C$$
+    $$P(t) = \dfrac{a}{2}t^2 + \dfrac{2b}{3}t\sqrt{t} + C$$
+    
+    **Bước 2: Tìm các hằng số $a, b, C$**
+    
+    * Ban đầu có 500 vi khuẩn nên $P(0) = 500$:
+      $$C = 500$$
+      Vậy $P(t) = \dfrac{a}{2}t^2 + \dfrac{2b}{3}t\sqrt{t} + 500$.
+      
+    * Sau 1 ngày có 600 vi khuẩn nên $P(1) = 600$:
+      $$\dfrac{a}{2} + \dfrac{2b}{3} + 500 = 600 \Rightarrow \dfrac{a}{2} + \dfrac{2b}{3} = 100 \Rightarrow 3a + 4b = 600 \quad (1)$$
+      
+    * Sau 4 ngày có 1300 vi khuẩn nên $P(4) = 1300$:
+      $$\dfrac{a}{2} \cdot 4^2 + \dfrac{2b}{3} \cdot 4\sqrt{4} + 500 = 1300$$
+      $$8a + \dfrac{16b}{3} = 800 \Rightarrow 24a + 16b = 2400 \Rightarrow 3a + 2b = 300 \quad (2)$$
+      
+    Giải hệ phương trình $(1)$ và $(2)$, ta được:
+    $$
+    \begin{cases}
+    3a + 4b = 600 \\
+    3a + 2b = 300
+    \end{cases}
+    \Rightarrow
+    \begin{cases}
+    2b = 300 \\
+    3a = 300 - 2b
+    \end{cases}
+    \Rightarrow
+    \begin{cases}
+    b = 150 \\
+    a = 0
+    \end{cases}
+    $$
+    
+    Vậy hàm số lượng vi khuẩn là:
+    $$P(t) = 0 \cdot \dfrac{t^2}{2} + \dfrac{2 \cdot 150}{3}t\sqrt{t} + 500 = 100t\sqrt{t} + 500$$
+
+    **Bước 3: Tính số lượng vi khuẩn sau 9 ngày**
+    
+    Thay $t = 9$ vào hàm $P(t)$:
+    $$P(9) = 100 \cdot 9\sqrt{9} + 500 = 100 \cdot 9 \cdot 3 + 500 = 2700 + 500 = 3200$$
+    
+    **Kết luận:** Số lượng vi khuẩn của quần thể đó sau 9 ngày kể từ khi bắt đầu quan sát là 3200.
+    *(Nguồn câu hỏi: Liên Trường Bắc Ninh 2025)*
+    """)
+
+st.markdown("---")
