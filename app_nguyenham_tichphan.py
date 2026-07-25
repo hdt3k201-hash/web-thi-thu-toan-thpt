@@ -2630,3 +2630,116 @@ if st.session_state.get('q27_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 28: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH HÌNH PHẲNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 28 (Sở Đồng Nai 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong mặt phẳng $Oxy$ cho:
+Đồ thị $(C)$ của hàm số $y = \dfrac{3}{4}|x|$.
+
+Đường tròn $(C_1)$ có tâm $I_1$, bán kính 1 tiếp xúc với $(C)$ tại $A$ và tiếp xúc với tia $Ox$.
+Đường tròn $(C_2)$ có tâm $I_2$, bán kính 1 tiếp xúc với $(C)$ tại $B$ và tiếp xúc với tia $Ox'$.
+Parabol $(P)$ có đỉnh là $O$, qua $I_1$ và $I_2$.
+
+Tính diện tích của hình phẳng giới hạn bởi $(C)$, $(P)$ và các đường thẳng $I_1A, I_2B$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị diện tích hình phẳng (ví dụ: 1.5):", key="q28_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ theo yêu cầu
+        st.image("images/image_00e023.PNG", width=600)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_00e023.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q28_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 4
+    if normalized_user_answer == "4":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm tọa độ tâm $I_1$, viết phương trình parabol $(P)$ và đường thẳng $I_1A$. Sau đó dùng tích phân để tính diện tích nửa bên phải rồi nhân đôi.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q28_solution_shown' not in st.session_state:
+    st.session_state['q28_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q28_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q28_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q28_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q28_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm tọa độ tâm $I_1$ và $I_2$**
+    
+    Do hình vẽ có tính đối xứng qua trục tung $Oy$, ta chỉ cần xét nửa mặt phẳng bên phải ($x \ge 0$).
+    Với $x \ge 0$, đồ thị $(C)$ có phương trình là $y = \dfrac{3}{4}x \Leftrightarrow 3x - 4y = 0$.
+    
+    Đường tròn $(C_1)$ có tâm $I_1(a; b)$ (với $a > 0$) nằm trên nửa mặt phẳng phần tư thứ nhất.
+    Vì $(C_1)$ tiếp xúc với tia $Ox$ (trục hoành) và có bán kính $R = 1$ nên $b = R = 1 \Rightarrow I_1(a; 1)$.
+    Vì $(C_1)$ cũng tiếp xúc với $(C)$ nên khoảng cách từ $I_1$ đến đường thẳng $3x - 4y = 0$ bằng $1$:
+    $$d(I_1, C) = \dfrac{|3a - 4(1)|}{\sqrt{3^2 + (-4)^2}} = 1 \Leftrightarrow \dfrac{|3a - 4|}{5} = 1 \Leftrightarrow |3a - 4| = 5$$
+    Giải phương trình, ta được $3a - 4 = 5 \Rightarrow a = 3$ (nhận) hoặc $3a - 4 = -5 \Rightarrow a = -\dfrac{1}{3}$ (loại vì $a > 0$).
+    Vậy $I_1(3; 1)$. Do tính đối xứng, $I_2(-3; 1)$.
+
+    **Bước 2: Tìm phương trình Parabol $(P)$ và tọa độ tiếp điểm $A$**
+    
+    Parabol $(P)$ có đỉnh là gốc tọa độ $O(0;0)$ nên có phương trình dạng $y = kx^2$.
+    Vì $(P)$ đi qua $I_1(3; 1)$ nên:
+    $$1 = k \cdot 3^2 \Rightarrow k = \dfrac{1}{9} \Rightarrow (P): y = \dfrac{1}{9}x^2$$
+    
+    Đường thẳng $I_1A$ là pháp tuyến của $(C)$ tại tiếp điểm $A$. Vì $(C)$ có hệ số góc là $\dfrac{3}{4}$ nên $I_1A$ có hệ số góc là $-\dfrac{4}{3}$.
+    Phương trình đường thẳng $I_1A$ đi qua $I_1(3; 1)$:
+    $$y - 1 = -\dfrac{4}{3}(x - 3) \Leftrightarrow y = -\dfrac{4}{3}x + 5$$
+    
+    Hoành độ điểm $A$ là nghiệm của phương trình hoành độ giao điểm giữa $(C)$ và $I_1A$:
+    $$\dfrac{3}{4}x = -\dfrac{4}{3}x + 5 \Leftrightarrow \left(\dfrac{3}{4} + \dfrac{4}{3}\right)x = 5 \Leftrightarrow \dfrac{25}{12}x = 5 \Leftrightarrow x = \dfrac{12}{5}$$
+    Tung độ điểm $A$: $y_A = \dfrac{3}{4} \cdot \dfrac{12}{5} = \dfrac{9}{5}$. Vậy $A\left(\dfrac{12}{5}; \dfrac{9}{5}\right)$.
+
+    **Bước 3: Tính diện tích hình phẳng**
+    
+    Gọi $S_{phai}$ là diện tích phần hình phẳng nằm bên phải trục $Oy$. Miền này giới hạn ở phía dưới bởi $(P): y = \dfrac{1}{9}x^2$ và phía trên bởi đường gấp khúc tạo bởi đoạn thẳng $OA$ và $AI_1$. Ta chia thành hai miền tích phân từ $x=0$ đến $x=\dfrac{12}{5}$ và từ $x=\dfrac{12}{5}$ đến $x=3$:
+    
+    *   **Miền 1 (Từ $x = 0$ đến $x = \dfrac{12}{5}$):**
+        $$S_1 = \int_{0}^{\frac{12}{5}} \left( \dfrac{3}{4}x - \dfrac{1}{9}x^2 \right) dx = \left[ \dfrac{3}{8}x^2 - \dfrac{1}{27}x^3 \right]_{0}^{\frac{12}{5}}$$
+        $$S_1 = \dfrac{3}{8} \cdot \dfrac{144}{25} - \dfrac{1}{27} \cdot \dfrac{1728}{125} = \dfrac{54}{25} - \dfrac{64}{125} = \dfrac{270 - 64}{125} = \dfrac{206}{125}$$
+        
+    *   **Miền 2 (Từ $x = \dfrac{12}{5}$ đến $x = 3$):**
+        $$S_2 = \int_{\frac{12}{5}}^{3} \left( \left(-\dfrac{4}{3}x + 5\right) - \dfrac{1}{9}x^2 \right) dx = \left[ -\dfrac{2}{3}x^2 + 5x - \dfrac{1}{27}x^3 \right]_{\frac{12}{5}}^{3}$$
+        Tại $x = 3$: $-\dfrac{2}{3}(9) + 15 - \dfrac{1}{27}(27) = -6 + 15 - 1 = 8$
+        Tại $x = \dfrac{12}{5}$: $-\dfrac{2}{3}\left(\dfrac{144}{25}\right) + 12 - \dfrac{1}{27}\left(\dfrac{1728}{125}\right) = -\dfrac{96}{25} + 12 - \dfrac{64}{125} = \dfrac{-480 + 1500 - 64}{125} = \dfrac{956}{125}$
+        $$S_2 = 8 - \dfrac{956}{125} = \dfrac{1000 - 956}{125} = \dfrac{44}{125}$$
+        
+    *   **Tổng diện tích:**
+        Diện tích nửa bên phải: $S_{phai} = S_1 + S_2 = \dfrac{206}{125} + \dfrac{44}{125} = \dfrac{250}{125} = 2$.
+        Do tính đối xứng, tổng diện tích hình phẳng giới hạn bởi cả hai bên là:
+        $$S = 2 \times S_{phai} = 2 \times 2 = 4$$
+        
+    **Kết luận:** Diện tích hình phẳng cần tìm là **$4$**.
+    """)
+
+st.markdown("---")
