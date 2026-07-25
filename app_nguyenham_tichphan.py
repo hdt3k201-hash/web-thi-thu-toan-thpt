@@ -7955,7 +7955,7 @@ except FileNotFoundError:
     st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/khtn_hn_2026_q90.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # --- Ô NHẬP ĐÁP ÁN ---
-user_answer = st.text_input("Nhập chi phí nguyên liệu thấp nhất (nghìn đồng, làm tròn đến hàng phần mười, ví dụ: 60.2):", key="q90_ans")
+user_answer = st.text_input("Nhập chi phí nguyên liệu thấp nhất (nghìn đồng, làm tròn đến hàng phần mười, ví dụ: 50.9):", key="q90_ans")
 
 # --- NÚT KIỂM TRA ĐÁP ÁN ---
 if st.button("Kiểm tra đáp án", key="q90_check"):
@@ -8031,6 +8031,194 @@ if st.session_state.get('q90_solution_shown') and st.session_state.get('logged_i
     * Làm tròn kết quả đến hàng phần mười, ta được $60,2$.
         
     **Kết luận:** Chi phí nguyên liệu thấp nhất để sản xuất một viên gạch xấp xỉ **$60,2$ nghìn đồng**.
+    """)
+
+st.markdown("---")
+
+import streamlit as st
+
+# --- CÂU HỎI 91: DIỆN TÍCH HÌNH PHẢNG ỨNG DỤNG TÍCH PHÂN ---
+st.markdown(
+    '<b style="color: blue;">Câu 91 (THPT Trần Nhân Tông - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Họa sĩ thiết kế logo hình con cá cho một doanh nghiệp kinh doanh hải sản. Logo là hình giới hạn bởi hai Parabol với các kích thước được cho trong hình sau (đơn vị trên mỗi trục tọa độ là $\text{cm}$):
+
+Diện tích logo bằng bao nhiêu $\text{cm}^2$ (không làm tròn kết quả phép tính trung gian, chỉ làm tròn kết quả cuối cùng)?
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đề bài (cần cập nhật đúng tên file ảnh trong thư mục của bạn)
+        st.image("images/tran_nhan_tong_2026_q91.PNG", width=450)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/tran_nhan_tong_2026_q91.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích logo (cm², làm tròn đến hàng phần mười, ví dụ: 29.4):", key="q91_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q91_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Chấp nhận các dạng làm tròn phổ biến (65.4 hoặc làm tròn đến hàng đơn vị là 65)
+    if normalized_user_answer in ["65.4", "65.41", "65"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy chia logo thành 2 phần: Phần thân cá từ x = -6 đến x = 6 và phần đuôi cá từ x = -7 đến x = -6. Lập phương trình hai parabol rồi dùng tích phân để tính diện tích nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q91_solution_shown' not in st.session_state:
+    st.session_state['q91_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q91_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q91_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q91_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q91_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Lập phương trình của hai đường Parabol**
+    
+    * Chọn hệ trục tọa độ $Oxy$ như hình vẽ:
+        * Parabol phía trên $(P_1)$ có đỉnh nằm trên trục tung tại điểm $(0; 3)$ và cắt trục hoành tại hai điểm $(-6; 0)$ và $(6; 0)$.
+        * Parabol phía dưới $(P_2)$ có đỉnh nằm trên trục tung tại điểm $(0; -5)$ và cũng đi qua hai điểm $(-6; 0)$ và $(6; 0)$.
+    * Phương trình của $(P_1)$ có dạng $y = a_1 x^2 + 3$. Vì $(P_1)$ đi qua điểm $(6; 0)$ nên:
+        $$0 = a_1 \cdot 6^2 + 3 \iff 36a_1 = -3 \iff a_1 = -\dfrac{1}{12}$$
+        $$\implies (P_1): y = -\dfrac{1}{12}x^2 + 3$$
+    * Phương trình của $(P_2)$ có dạng $y = a_2 x^2 - 5$. Vì $(P_2)$ đi qua điểm $(6; 0)$ nên:
+        $$0 = a_2 \cdot 6^2 - 5 \iff 36a_2 = 5 \iff a_2 = \dfrac{5}{36}$$
+        $$\implies (P_2): y = \dfrac{5}{36}x^2 - 5$$
+    
+    **Bước 2: Tính diện tích phần thân cá (từ $x = -6$ đến $x = 6$)**
+    
+    * Trên đoạn $[-6; 6]$, đồ thị $(P_1)$ nằm phía trên đồ thị $(P_2)$, do đó diện tích phần thân cá là:
+        $$S_{\text{thân}} = \int_{-6}^{6} \left[ \left(-\dfrac{1}{12}x^2 + 3\right) - \left(\dfrac{5}{36}x^2 - 5\right) \right] \text{d}x = \int_{-6}^{6} \left( -\dfrac{2}{9}x^2 + 8 \right) \text{d}x$$
+    * Tính tích phân:
+        $$S_{\text{thân}} = \left[ -\dfrac{2}{27}x^3 + 8x \right]_{-6}^{6} = 2 \left( -\dfrac{2}{27} \cdot 216 + 48 \right) = 2(-16 + 48) = 64 \text{ (cm}^2\text{)}$$
+    
+    **Bước 3: Tính diện tích phần đuôi cá (từ $x = -7$ đến $x = -6$)**
+    
+    * Theo kích thước trên hình, phần đuôi cá kéo dài thêm $1\text{ cm}$ về phía bên trái của điểm $x = -6$, tức là thuộc đoạn $[-7; -6]$.
+    * Trên đoạn $[-7; -6]$, đồ thị $(P_2)$ lại tiếp tục mở rộng và nằm **phía trên** đồ thị $(P_1)$, do đó diện tích phần đuôi cá là:
+        $$S_{\text{đuôi}} = \int_{-7}^{-6} \left[ \left(\dfrac{5}{36}x^2 - 5\right) - \left(-\dfrac{1}{12}x^2 + 3\right) \right] \text{d}x = \int_{-7}^{-6} \left( \dfrac{2}{9}x^2 - 8 \right) \text{d}x$$
+    * Tính tích phân:
+        $$S_{\text{đuôi}} = \left[ \dfrac{2}{27}x^3 - 8x \right]_{-7}^{-6} = \left(\dfrac{2}{27}(-216) + 48\right) - \left(\dfrac{2}{27}(-343) + 56\right) = 32 - \left(-\dfrac{686}{27} + 56\right) = \dfrac{38}{27} \text{ (cm}^2\text{)}$$
+    
+    **Bước 4: Tính tổng diện tích logo**
+    
+    * Tổng diện tích của logo hình con cá là:
+        $$S = S_{\text{thân}} + S_{\text{đuôi}} = 64 + \dfrac{38}{27} = \dfrac{1766}{27} \approx 65,4074 \text{ (cm}^2\text{)}$$
+    * Làm tròn kết quả cuối cùng đến hàng phần mười ta được $65,4$ (hoặc làm tròn đến hàng đơn vị là $65$).
+        
+    **Kết luận:** Diện tích của logo xấp xỉ **$65,4\text{ cm}^2$** (hoặc **$65\text{ cm}^2$**).
+    """)
+
+st.markdown("---")
+
+import streamlit as st
+
+# --- CÂU HỎI 91: DIỆN TÍCH HÌNH PHẢNG ỨNG DỤNG TÍCH PHÂN ---
+st.markdown(
+    '<b style="color: blue;">Câu 91 (THPT Trần Nhân Tông - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Họa sĩ thiết kế logo hình con cá cho một doanh nghiệp kinh doanh hải sản. Logo là hình giới hạn bởi hai Parabol với các kích thước được cho trong hình sau (đơn vị trên mỗi trục tọa độ là $\text{cm}$):
+
+Diện tích logo bằng bao nhiêu $\text{cm}^2$ (không làm tròn kết quả phép tính trung gian, chỉ làm tròn kết quả cuối cùng)?
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đề bài (cần cập nhật đúng tên file ảnh trong thư mục của bạn)
+        st.image("images/tran_nhan_tong_2026_q91.PNG", width=450)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/tran_nhan_tong_2026_q91.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích logo (cm², làm tròn đến hàng phần mười, ví dụ: 65.4):", key="q91_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q91_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Chấp nhận các dạng làm tròn phổ biến (65.4 hoặc làm tròn đến hàng đơn vị là 65)
+    if normalized_user_answer in ["65.4", "65.41", "65"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy chia logo thành 2 phần: Phần thân cá từ x = -6 đến x = 6 và phần đuôi cá từ x = -7 đến x = -6. Lập phương trình hai parabol rồi dùng tích phân để tính diện tích nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q91_solution_shown' not in st.session_state:
+    st.session_state['q91_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q91_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q91_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q91_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q91_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Lập phương trình của hai đường Parabol**
+    
+    * Chọn hệ trục tọa độ $Oxy$ như hình vẽ:
+        * Parabol phía trên $(P_1)$ có đỉnh nằm trên trục tung tại điểm $(0; 3)$ và cắt trục hoành tại hai điểm $(-6; 0)$ và $(6; 0)$.
+        * Parabol phía dưới $(P_2)$ có đỉnh nằm trên trục tung tại điểm $(0; -5)$ và cũng đi qua hai điểm $(-6; 0)$ và $(6; 0)$.
+    * Phương trình của $(P_1)$ có dạng $y = a_1 x^2 + 3$. Vì $(P_1)$ đi qua điểm $(6; 0)$ nên:
+        $$0 = a_1 \cdot 6^2 + 3 \iff 36a_1 = -3 \iff a_1 = -\dfrac{1}{12}$$
+        $$\implies (P_1): y = -\dfrac{1}{12}x^2 + 3$$
+    * Phương trình của $(P_2)$ có dạng $y = a_2 x^2 - 5$. Vì $(P_2)$ đi qua điểm $(6; 0)$ nên:
+        $$0 = a_2 \cdot 6^2 - 5 \iff 36a_2 = 5 \iff a_2 = \dfrac{5}{36}$$
+        $$\implies (P_2): y = \dfrac{5}{36}x^2 - 5$$
+    
+    **Bước 2: Tính diện tích phần thân cá (từ $x = -6$ đến $x = 6$)**
+    
+    * Trên đoạn $[-6; 6]$, đồ thị $(P_1)$ nằm phía trên đồ thị $(P_2)$, do đó diện tích phần thân cá là:
+        $$S_{\text{thân}} = \int_{-6}^{6} \left[ \left(-\dfrac{1}{12}x^2 + 3\right) - \left(\dfrac{5}{36}x^2 - 5\right) \right] \text{d}x = \int_{-6}^{6} \left( -\dfrac{2}{9}x^2 + 8 \right) \text{d}x$$
+    * Tính tích phân:
+        $$S_{\text{thân}} = \left[ -\dfrac{2}{27}x^3 + 8x \right]_{-6}^{6} = 2 \left( -\dfrac{2}{27} \cdot 216 + 48 \right) = 2(-16 + 48) = 64 \text{ (cm}^2\text{)}$$
+    
+    **Bước 3: Tính diện tích phần đuôi cá (từ $x = -7$ đến $x = -6$)**
+    
+    * Theo kích thước trên hình, phần đuôi cá kéo dài thêm $1\text{ cm}$ về phía bên trái của điểm $x = -6$, tức là thuộc đoạn $[-7; -6]$.
+    * Trên đoạn $[-7; -6]$, đồ thị $(P_2)$ lại tiếp tục mở rộng và nằm **phía trên** đồ thị $(P_1)$, do đó diện tích phần đuôi cá là:
+        $$S_{\text{đuôi}} = \int_{-7}^{-6} \left[ \left(\dfrac{5}{36}x^2 - 5\right) - \left(-\dfrac{1}{12}x^2 + 3\right) \right] \text{d}x = \int_{-7}^{-6} \left( \dfrac{2}{9}x^2 - 8 \right) \text{d}x$$
+    * Tính tích phân:
+        $$S_{\text{đuôi}} = \left[ \dfrac{2}{27}x^3 - 8x \right]_{-7}^{-6} = \left(\dfrac{2}{27}(-216) + 48\right) - \left(\dfrac{2}{27}(-343) + 56\right) = 32 - \left(-\dfrac{686}{27} + 56\right) = \dfrac{38}{27} \text{ (cm}^2\text{)}$$
+    
+    **Bước 4: Tính tổng diện tích logo**
+    
+    * Tổng diện tích của logo hình con cá là:
+        $$S = S_{\text{thân}} + S_{\text{đuôi}} = 64 + \dfrac{38}{27} = \dfrac{1766}{27} \approx 65,4074 \text{ (cm}^2\text{)}$$
+    * Làm tròn kết quả cuối cùng đến hàng phần mười ta được $65,4$ (hoặc làm tròn đến hàng đơn vị là $65$).
+        
+    **Kết luận:** Diện tích của logo xấp xỉ **$65,4\text{ cm}^2$** (hoặc **$65\text{ cm}^2$**).
     """)
 
 st.markdown("---")
