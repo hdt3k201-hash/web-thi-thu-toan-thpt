@@ -8315,3 +8315,117 @@ if st.session_state.get('q93_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 
+
+# --- CÂU HỎI 94: ỨNG DỤNG TÍCH PHÂN VÀ TỐI ƯU HÓA DIỆN TÍCH ---
+st.markdown(
+    '<b style="color: blue;">Câu 94 (Chuyên Trần Đại Nghĩa - HCM 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong mặt phẳng tọa độ $Oxy$ với độ dài trên mỗi trục là $10$ mét. Giả sử có một mảnh vườn được giới hạn bởi trục hoành và một phần đồ thị $(H)$ của hàm số $f(x) = -x^3 + bx^2 + cx + d$, $O$ là điểm cực tiểu, $(H)$ cắt $Ox$ tại điểm $M(3;0)$. Bạn An muốn trồng hoa trên mảnh đất có dạng hình tam giác $MAB$ với $A, B$ là giao điểm của đường thẳng $d: y = kx$ ($k > 0$) và đồ thị $(H)$. Khi diện tích phần trồng hoa này là lớn nhất, phần đất còn lại bằng bao nhiêu mét vuông *(kết quả làm tròn đến hàng phần mười)*?
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đề bài (cần cập nhật đúng tên file ảnh trong thư mục của bạn)
+        st.image("images/chuyen_tran_dai_nghia_2026_q94.PNG", width=450)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/chuyen_tran_dai_nghia_2026_q94.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích phần đất còn lại (m², làm tròn đến hàng phần mười, ví dụ: 125.8):", key="q94_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q94_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Chấp nhận kết quả làm tròn 285.3 hoặc 285 (hoặc dạng chính xác)
+    if normalized_user_answer in ["285.3", "285.29", "285"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tìm hàm số f(x) từ giả thiết O(0;0) là cực tiểu và đồ thị qua M(3;0). Tính tổng diện tích mảnh vườn (nhớ nhân 100 vì 1 đơn vị trục = 10m). Sau đó biểu diễn diện tích tam giác MAB theo k, dùng bất đẳng thức AM-GM hoặc đạo hàm để tìm giá trị lớn nhất rồi trừ đi nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q94_solution_shown' not in st.session_state:
+    st.session_state['q94_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q94_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q94_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q94_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q94_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định hàm số $f(x)$ và diện tích tổng của mảnh vườn**
+    
+    * Đồ thị $(H)$ có $O(0;0)$ là điểm cực tiểu, do đó:
+        * $O \in (H) \implies f(0) = 0 \implies d = 0$.
+        * Đạo hàm $f'(x) = -3x^2 + 2bx + c$. Vì $O$ là điểm cực trị nên $f'(0) = 0 \implies c = 0$.
+    * Đồ thị $(H)$ đi qua điểm $M(3;0)$ nên:
+        $$f(3) = 0 \implies -3^3 + b \cdot 3^2 = 0 \iff -27 + 9b = 0 \iff b = 3$$
+    * Thử lại: $f''(x) = -6x + 6 \implies f''(0) = 6 > 0$, chứng tỏ $O(0;0)$ đúng là điểm cực tiểu.
+    * Vậy hàm số cần tìm là $f(x) = -x^3 + 3x^2$.
+    * Diện tích toàn bộ mảnh vườn (tính theo đơn vị trên hệ trục tọa độ) là miền giới hạn bởi $(H)$ và trục $Ox$ từ $x = 0$ đến $x = 3$:
+        $$S_0 = \int_{0}^{3} (-x^3 + 3x^2) \text{d}x = \left[ -\dfrac{x^4}{4} + x^3 \right]_{0}^{3} = -\dfrac{81}{4} + 27 = \dfrac{27}{4}$$
+    * **Lưu ý đơn vị:** Vì độ dài trên mỗi trục là $10\text{ m}$ nên 1 đơn vị diện tích trên hệ tọa độ tương ứng với $10 \times 10 = 100\text{ m}^2$.
+    * Diện tích mảnh vườn thực tế là:
+        $$S_{\text{vườn}} = \dfrac{27}{4} \times 100 = 675 \text{ (m}^2\text{)}$$
+    
+    **Bước 2: Tìm tọa độ giao điểm $A, B$ và độ dài đoạn $AB$**
+    
+    * Phương trình hoành độ giao điểm của $(H)$ và đường thẳng $d: y = kx$ ($k > 0$):
+        $$-x^3 + 3x^2 = kx \iff x(x^2 - 3x + k) = 0$$
+    * Vì $A, B$ khác gốc tọa độ $O$ nên hoành độ $x_A, x_B$ là hai nghiệm dương phân biệt của phương trình bậc hai:
+        $$x^2 - 3x + k = 0 \quad (1)$$
+    * Điều kiện để (1) có 2 nghiệm dương phân biệt là:
+        $$\Delta = 9 - 4k > 0 \iff 0 < k < \dfrac{9}{4}$$
+    * Theo định lý Vi-ét ta có: $x_A + x_B = 3$ và $x_A x_B = k$.
+    * Vì $A, B \in d$ nên tọa độ của chúng có dạng $A(x_A; kx_A)$ và $B(x_B; kx_B)$. Khoảng cách giữa hai điểm $A, B$ là:
+        $$AB = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2} = \sqrt{(1 + k^2)(x_B - x_A)^2}$$
+        $$AB = \sqrt{1 + k^2} \cdot \sqrt{(x_A + x_B)^2 - 4x_A x_B} = \sqrt{1 + k^2} \cdot \sqrt{9 - 4k}$$
+    
+    **Bước 3: Tính diện tích tam giác $MAB$ theo tham số $k$**
+    
+    * Ba điểm $O, A, B$ cùng nằm trên đường thẳng $d: kx - y = 0$.
+    * Khoảng cách từ điểm $M(3;0)$ đến đường thẳng $d$ chính là chiều cao của tam giác $MAB$:
+        $$h = d(M, d) = \dfrac{|k \cdot 3 - 0|}{\sqrt{k^2 + 1}} = \dfrac{3k}{\sqrt{k^2 + 1}} \quad (\text{do } k > 0)$$
+    * Diện tích tam giác $MAB$ (theo đơn vị tọa độ):
+        $$S_{\triangle MAB} = \dfrac{1}{2} \cdot AB \cdot h = \dfrac{1}{2} \cdot \sqrt{1 + k^2}\sqrt{9 - 4k} \cdot \dfrac{3k}{\sqrt{k^2 + 1}} = \dfrac{3}{2} k\sqrt{9 - 4k}$$
+    
+    **Bước 4: Tìm giá trị lớn nhất của phần diện tích trồng hoa**
+    
+    * Ta cần tìm giá trị lớn nhất của biểu thức $g(k) = k\sqrt{9 - 4k}$ với $0 < k < \dfrac{9}{4}$.
+    * Áp dụng bất đẳng thức Cauchy (AM-GM) cho ba số dương $2k, 2k, (9 - 4k)$:
+        $$2k \cdot 2k \cdot (9 - 4k) \le \left( \dfrac{2k + 2k + 9 - 4k}{3} \right)^3 = 3^3 = 27$$
+        $$\implies 4k^2(9 - 4k) \le 27 \implies k^2(9 - 4k) \le \dfrac{27}{4} \implies k\sqrt{9 - 4k} \le \dfrac{3\sqrt{3}}{2}$$
+    * Dấu "$=$" xảy ra khi:
+        $$2k = 9 - 4k \iff 6k = 9 \iff k = \dfrac{3}{2} \quad (\text{thỏa mãn điều kiện})$$
+    * Do đó, diện tích tam giác $MAB$ trên hệ tọa độ đạt giá trị lớn nhất là:
+        $$S_{\triangle MAB \text{ max}} = \dfrac{3}{2} \cdot \dfrac{3\sqrt{3}}{2} = \dfrac{9\sqrt{3}}{4}$$
+    * Diện tích trồng hoa thực tế lớn nhất là:
+        $$S_{\text{hoa max}} = \dfrac{9\sqrt{3}}{4} \times 100 = 225\sqrt{3} \approx 389,71 \text{ (m}^2\text{)}$$
+    
+    **Bước 5: Tính diện tích phần đất còn lại**
+    
+    * Khi diện tích phần trồng hoa lớn nhất, diện tích phần đất còn lại là:
+        $$S_{\text{còn lại}} = S_{\text{vườn}} - S_{\text{hoa max}} = 675 - 225\sqrt{3} \approx 285,2885 \text{ (m}^2\text{)}$$
+    * Làm tròn kết quả đến hàng phần mười ta được $285,3\text{ m}^2$.
+        
+    **Kết luận:** Phần đất còn lại có diện tích xấp xỉ **$285,3\text{ m}^2$**.
+    """)
+
+st.markdown("---")
+
+
