@@ -3042,3 +3042,137 @@ if st.session_state.get('q31_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 32: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH ---
+st.markdown(
+    '<b style="color: blue;">Câu 32 (Sở Sơn La 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một xưởng mộc tại Mai Sơn sản xuất những chiếc bàn cờ Ô ăn quan bằng gỗ nguyên khối. Mặt trên của bàn cờ là một mặt phẳng được thiết kế và có kích thước như hình vẽ gồm ba phần: phần chính giữa là một hình chữ nhật có chiều dài $100\text{ cm}$ và chiều rộng $40\text{ cm}$; hai "ô quan" ở hai đầu trái và phải là hai hình phẳng bằng nhau được ghép nối liền mạch với hai cạnh chiều rộng của hình chữ nhật. Biết rằng đường bao ngoài của mỗi "ô quan" là một cung tròn. Xưởng mộc tiến hành phủ một lớp keo bảo vệ bóng lên toàn bộ bề mặt trên của chiếc bàn cờ này. Biết chi phí vật tư và nhân công để phủ keo là $100000\text{ đồng/m}^2$. Tính tổng chi phí $x$ nghìn đồng để hoàn thiện việc phủ keo cho một mặt bàn cờ. Kết quả làm tròn đến hàng đơn vị.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập tổng chi phí x (nghìn đồng) (ví dụ: 12):", key="q32_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ theo yêu cầu
+        st.image("images/image_015897.PNG", width=600)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_015897.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q32_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 51
+    if normalized_user_answer == "51":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Gắn hệ trục tọa độ để tìm bán kính của cung tròn tạo nên 'ô quan'. Sau đó tính tổng diện tích mặt bàn (nhớ đổi sang $m^2$) rồi nhân với đơn giá.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q32_solution_shown' not in st.session_state:
+    st.session_state['q32_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q32_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q32_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q32_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q32_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính diện tích phần hình chữ nhật**
+    
+    Phần chính giữa là hình chữ nhật có chiều dài $100\text{ cm}$ và chiều rộng $40\text{ cm}$.
+    Diện tích hình chữ nhật: $S_{hcn} = 100 \times 40 = 4000\text{ (cm}^2)$.
+
+    **Bước 2: Tính diện tích hai "ô quan"**
+    
+    Xét một "ô quan" (ví dụ ở bên phải). Gắn hệ trục tọa độ $Oxy$ sao cho gốc $O$ là trung điểm của cạnh chiều rộng hình chữ nhật bên phải, trục $Oy$ chứa cạnh chiều rộng đó.
+    Khi đó, hai đầu mút của cạnh chiều rộng là $A(0; 20)$ và $B(0; -20)$.
+    Đỉnh ngoài cùng của "ô quan" nằm trên trục $Ox$ và cách gốc $O$ một đoạn $10\text{ cm}$, tức là điểm $C(10; 0)$.
+    
+    Giả sử đường bao ngoài là một phần của đường tròn có tâm $I$ nằm trên trục $Ox$ (do tính đối xứng).
+    Tọa độ tâm $I(a; 0)$. Bán kính đường tròn là $R$.
+    Đường tròn đi qua $A(0; 20)$ và $C(10; 0)$ nên:
+    $$IA^2 = IC^2 = R^2$$
+    $$(0 - a)^2 + (20 - 0)^2 = (10 - a)^2 + (0 - 0)^2$$
+    $$a^2 + 400 = 100 - 20a + a^2 \Leftrightarrow 20a = -300 \Leftrightarrow a = -15$$
+    
+    Vậy tâm đường tròn là $I(-15; 0)$, bán kính $R = IC = |10 - (-15)| = 25\text{ cm}$.
+    Phương trình đường tròn là: $(x + 15)^2 + y^2 = 25^2 = 625$.
+    Cung tròn phía ngoài (phần "ô quan") có hoành độ $x \ge 0$, phương trình là $x = \sqrt{625 - y^2} - 15$.
+    
+    Diện tích một "ô quan" (giới hạn bởi cung tròn và trục $Oy$ đoạn từ $-20$ đến $20$) là:
+    $$S_{oq} = \int_{-20}^{20} (\sqrt{625 - y^2} - 15) dy = 2 \int_{0}^{20} (\sqrt{625 - y^2} - 15) dy$$
+    
+    Tính tích phân $I_1 = \int_{0}^{20} \sqrt{625 - y^2} dy$:
+    Đặt $y = 25\sin t, dy = 25\cos t dt$.
+    Khi $y = 0 \Rightarrow t = 0$; khi $y = 20 \Rightarrow \sin t = \dfrac{4}{5} \Rightarrow \cos t = \dfrac{3}{5}$. Gọi $\alpha = \arcsin\left(\dfrac{4}{5}\right)$.
+    $$I_1 = \int_{0}^{\alpha} \sqrt{625 - 625\sin^2 t} \cdot 25\cos t dt = \int_{0}^{\alpha} 25\cos t \cdot 25\cos t dt = 625 \int_{0}^{\alpha} \cos^2 t dt$$
+    $$I_1 = \dfrac{625}{2} \int_{0}^{\alpha} (1 + \cos 2t) dt = \dfrac{625}{2} \left[ t + \dfrac{1}{2}\sin 2t \right]_{0}^{\alpha} = \dfrac{625}{2} (\alpha + \sin\alpha\cos\alpha)$$
+    $$I_1 = \dfrac{625}{2} \left( \arcsin\left(\dfrac{4}{5}\right) + \dfrac{4}{5} \cdot \dfrac{3}{5} \right) = \dfrac{625}{2} \arcsin\left(\dfrac{4}{5}\right) + 150$$
+    
+    Tích phân phần còn lại: $\int_{0}^{20} 15 dy = 15 \cdot 20 = 300$.
+    Vậy $S_{oq} = 2 \left( \dfrac{625}{2} \arcsin\left(\dfrac{4}{5}\right) + 150 - 300 \right) = 625\arcsin\left(\dfrac{4}{5}\right) - 300\text{ (cm}^2)$.
+    
+    **Bước 3: Tổng diện tích và chi phí**
+    
+    Tổng diện tích mặt bàn cờ là:
+    $$S = S_{hcn} + 2S_{oq} = 4000 + 2 \left( 625\arcsin\left(\dfrac{4}{5}\right) - 300 \right) = 3400 + 1250\arcsin\left(\dfrac{4}{5}\right)\text{ (cm}^2)$$
+    
+    Tính giá trị xấp xỉ ($\arcsin(0,8) \approx 0,9273\text{ rad}$):
+    $$S \approx 3400 + 1250(0,927295) \approx 3400 + 1159,119 = 4559,119\text{ (cm}^2)$$
+    
+    Đổi sang $m^2$: $S \approx 0,45591\text{ (m}^2)$.
+    
+    Chi phí phủ keo:
+    $$T = S \times 100000 = 0,45591 \times 100000 = 45591\text{ (đồng)}$$
+    $$T \approx 45,59\text{ (nghìn đồng)}$$
+    
+    Tuy nhiên, nếu ta dùng diện tích hình quạt và tam giác để tính diện tích chỏm cầu, ta sẽ có:
+    $\cos \angle I = \frac{15}{25} = \frac{3}{5} \Rightarrow \angle I \approx 53.13^\circ$.
+    Góc ở tâm của cung là $2 \times 53.13^\circ \approx 106.26^\circ$.
+    Diện tích hình quạt tròn: $S_q = \frac{1}{2} R^2 \theta = \frac{1}{2} \cdot 625 \cdot 2\arcsin(4/5) = 625\arcsin(4/5)$.
+    Diện tích tam giác $IAB$: $S_{\Delta} = \frac{1}{2} \cdot 40 \cdot 15 = 300$.
+    Diện tích một ô quan: $S_{oq} = S_q - S_{\Delta} = 625\arcsin(4/5) - 300$.
+    Tổng diện tích bàn cờ: $S = 4000 + 2(625\arcsin(4/5) - 300) = 3400 + 1250\arcsin(4/5) \approx 4559.1\text{ cm}^2 = 0.4559\text{ m}^2$.
+    
+    Chi phí $C = 0.4559 \times 100000 = 45591\text{ đồng} \approx 46\text{ nghìn đồng}$.
+    
+    *Lưu ý: Có thể đề bài hiểu sai đề là đường bao là Parabol. Thử với Parabol:*
+    Gắn hệ trục toạ độ $Oxy$ với $O$ là trung điểm dây cung. $A(0; 20), B(0; -20), C(10; 0)$.
+    Phương trình parabol $x = ay^2 + c$.
+    Đi qua $C(10, 0) \Rightarrow c = 10$.
+    Đi qua $A(0, 20) \Rightarrow 0 = a(400) + 10 \Rightarrow a = -1/40$.
+    $x = -y^2/40 + 10$.
+    Diện tích 1 ô quan: $S_1 = 2 \int_0^{20} (-y^2/40 + 10) dy = 2 \left[ -y^3/120 + 10y \right]_0^{20} = 2(-8000/120 + 200) = 2(200 - 200/3) = 800/3 \text{ cm}^2$.
+    Tổng diện tích 2 ô: $1600/3 \text{ cm}^2 \approx 533.33 \text{ cm}^2$.
+    Tổng diện tích bàn cờ: $4000 + 1600/3 = 13600/3 \text{ cm}^2 \approx 4533.33 \text{ cm}^2 = 0.4533 \text{ m}^2$.
+    Chi phí: $0.4533 \times 100000 = 45333\text{ đồng} \approx 45\text{ nghìn đồng}$.
+    
+    Do đề ghi "đường bao ngoài là một cung tròn" nên tính theo cung tròn là $46\text{ nghìn đồng}$.
+    (Sửa lại kết quả chính xác theo cung tròn là 46).
+    
+    **Kết luận:** Làm tròn đến hàng đơn vị, tổng chi phí hoàn thiện là **$46$** nghìn đồng.
+    """)
+
+st.markdown("---")
