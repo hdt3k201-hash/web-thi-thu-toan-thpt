@@ -6344,3 +6344,223 @@ if st.session_state.get('q70_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 71: ỨNG DỤNG TÍCH PHÂN TÍNH QUÃNG ĐƯỜNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 71 (Sở Gia Lai 2025)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một xe ô tô đang chạy với vận tốc $20 \text{ m/s}$ thì xe bắt đầu giảm tốc độ để tránh va chạm với chướng ngại vật ở phía trước với vận tốc cho bởi công thức $v(t) = at + b \text{ } (a, b \in \mathbb{R})$ trong đó $t$ là thời gian tính bằng giây kể từ khi bắt đầu giảm tốc. Sau 5 giây thì xe dừng hẳn trước chướng ngại vật. Quãng đường từ khi bắt đầu giảm tốc độ đến khi xe dừng hẳn là bao nhiêu mét?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_71 = st.text_input("Nhập quãng đường (ví dụ: 100):", key="q71_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q71_check"):
+    normalized_user_answer_71 = user_answer_71.strip()
+    
+    # Đáp án chính xác là 50
+    if normalized_user_answer_71 == "50":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_71 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Dựa vào vận tốc ban đầu và thời điểm dừng hẳn để tìm các hệ số a, b của hàm vận tốc. Sau đó tính tích phân để ra quãng đường.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q71_solution_shown' not in st.session_state:
+    st.session_state['q71_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q71_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q71_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q71_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q71_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định hàm vận tốc $v(t)$**
+    
+    * Tại thời điểm bắt đầu giảm tốc ($t = 0$), vận tốc của xe là $20 \text{ m/s}$:
+      $$v(0) = a \cdot 0 + b = 20 \Rightarrow b = 20$$
+    * Sau 5 giây xe dừng hẳn ($t = 5$), tức là vận tốc bằng $0$:
+      $$v(5) = a \cdot 5 + 20 = 0 \Rightarrow 5a = -20 \Rightarrow a = -4$$
+      
+    Vậy hàm vận tốc của xe trong quá trình giảm tốc là: $v(t) = -4t + 20$.
+    
+    **Bước 2: Tính quãng đường**
+    
+    Quãng đường từ lúc bắt đầu giảm tốc đến khi dừng hẳn là tích phân của hàm vận tốc từ $t = 0$ đến $t = 5$:
+    $$S = \int_0^5 v(t) dt = \int_0^5 (-4t + 20) dt = \left( -2t^2 + 20t \right) \Bigg|_0^5$$
+    $$S = (-2 \cdot 5^2 + 20 \cdot 5) - 0 = -50 + 100 = 50 \text{ (m)}$$
+    
+    **Kết luận:** Quãng đường xe đi được là **$50$** mét.
+    *(Nguồn câu hỏi: Sở Gia Lai 2025)*
+    """)
+
+st.markdown("---")
+
+# --- CÂU HỎI 72: ỨNG DỤNG TÍCH PHÂN TÍNH QUÃNG ĐƯỜNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 72 (Sở Trà Vinh 2025)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một ô tô đang chạy với vận tốc $12 \text{ m/s}$ thì người lái xe đạp phanh. Từ thời điểm đó, ô tô chuyển động chậm dần đều với vận tốc $v(t) = -2t + 12 \text{ (m/s)}$, trong đó $t$ là khoảng thời gian được tính bằng giây, kể từ lúc bắt đầu đạp phanh. Quãng đường ô tô di chuyển được trong 10 giây cuối cùng bằng bao nhiêu? *(làm tròn kết quả đến hàng đơn vị)*.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_72 = st.text_input("Nhập quãng đường (ví dụ: 100):", key="q72_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q72_check"):
+    normalized_user_answer_72 = user_answer_72.strip()
+    
+    # Đáp án chính xác là 84
+    if normalized_user_answer_72 == "84":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_72 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm xem xe cần bao nhiêu giây để dừng hẳn kể từ lúc phanh. Nếu thời gian phanh nhỏ hơn 10 giây, thì trước đó xe chạy đều với vận tốc 12 m/s.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q72_solution_shown' not in st.session_state:
+    st.session_state['q72_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q72_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q72_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q72_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q72_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính thời gian từ lúc đạp phanh đến khi dừng hẳn**
+    
+    Xe dừng hẳn khi vận tốc $v(t) = 0$:
+    $$-2t + 12 = 0 \Leftrightarrow t = 6 \text{ (s)}$$
+    Như vậy, xe chỉ mất 6 giây kể từ lúc đạp phanh để dừng hẳn. 
+    
+    **Bước 2: Phân tích 10 giây cuối cùng**
+    
+    Vì xe mất 6 giây để dừng lại, nên 10 giây cuối cùng trước khi dừng sẽ bao gồm 2 giai đoạn:
+    * **4 giây đầu tiên:** Xe đang chạy đều với vận tốc ban đầu là $12 \text{ m/s}$ (trước khi đạp phanh).
+    * **6 giây cuối:** Xe chuyển động chậm dần đều với vận tốc $v(t) = -2t + 12 \text{ m/s}$.
+    
+    **Bước 3: Tính quãng đường**
+    
+    * Quãng đường đi được trong 4 giây chạy đều: 
+      $$S_1 = 12 \times 4 = 48 \text{ (m)}$$
+    * Quãng đường đi được trong 6 giây đạp phanh:
+      $$S_2 = \int_0^6 (-2t + 12) dt = \left( -t^2 + 12t \right) \Bigg|_0^6 = -6^2 + 12(6) = 36 \text{ (m)}$$
+      
+    Tổng quãng đường xe di chuyển được trong 10 giây cuối cùng là:
+    $$S = S_1 + S_2 = 48 + 36 = 84 \text{ (m)}$$
+    
+    **Kết luận:** Quãng đường là **$84$** mét.
+    *(Nguồn câu hỏi: Sở Trà Vinh 2025)*
+    """)
+
+st.markdown("---")
+
+# --- CÂU HỎI 73: ỨNG DỤNG TÍCH PHÂN TÍNH QUÃNG ĐƯỜNG (CHUYỂN ĐỘNG NÉM LÊN) ---
+st.markdown(
+    '<b style="color: blue;">Câu 73 (Cụm trường THPT Hải Dương 2025)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một viên đạn được bắn thẳng đứng lên trên từ độ cao $2 \text{ m}$ với vận tốc tại thời điểm $t$ cho bởi công thức $v(t) = 100 - 9,8t \text{ (m/s)}$, ($t=0$ là thời điểm viên đạn được bắn lên). Tìm độ cao (tính theo km) của viên đạn so với mặt đất ở thời điểm 1 giây sau khi viên đạn đạt độ cao lớn nhất *(làm tròn đến hàng phần trăm)*.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_73 = st.text_input("Nhập độ cao (theo km, ví dụ: 0.12):", key="q73_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q73_check"):
+    normalized_user_answer_73 = user_answer_73.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 0.51
+    if normalized_user_answer_73 == "0.51":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_73 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm thời điểm đạn đạt độ cao cực đại (v(t)=0). Sau đó tính tổng độ cao đạt được. Trừ đi quãng đường rơi trong 1 giây sau đó rồi đổi ra km.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q73_solution_shown' not in st.session_state:
+    st.session_state['q73_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q73_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q73_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q73_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q73_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm thời điểm viên đạn đạt độ cao lớn nhất**
+    
+    Viên đạn đạt độ cao lớn nhất khi vận tốc của nó bằng $0$:
+    $$v(t) = 0 \Leftrightarrow 100 - 9,8t = 0 \Leftrightarrow t_0 = \dfrac{100}{9,8} = \dfrac{500}{49} \text{ (s)}$$
+    
+    **Bước 2: Tính độ cao lớn nhất của viên đạn**
+    
+    Độ cao $h(t)$ của viên đạn tại thời điểm $t$ là nguyên hàm của $v(t)$, cộng thêm độ cao ban đầu $2 \text{ m}$:
+    $$h(t) = 2 + \int_0^t (100 - 9,8x) dx = 2 + \left( 100t - 4,9t^2 \right)$$
+    
+    Độ cao lớn nhất (tại $t_0 = \dfrac{500}{49}$):
+    $$h_{max} = 2 + 100\left(\dfrac{500}{49}\right) - 4,9\left(\dfrac{500}{49}\right)^2 = 2 + \dfrac{50000}{49} - 4,9 \cdot \dfrac{250000}{2401}$$
+    $$h_{max} = 2 + \dfrac{50000}{49} - \dfrac{25000}{49} = 2 + \dfrac{25000}{49} \approx 512,204 \text{ (m)}$$
+    
+    **Bước 3: Tính độ cao sau đó 1 giây**
+    
+    1 giây sau khi đạt độ cao cực đại, viên đạn rơi tự do với gia tốc $9,8 \text{ m/s}^2$ và vận tốc ban đầu là $0$. 
+    Quãng đường viên đạn rơi xuống trong 1 giây là:
+    $$s = \dfrac{1}{2}gt^2 = \dfrac{1}{2} \cdot 9,8 \cdot 1^2 = 4,9 \text{ (m)}$$
+    
+    Độ cao của viên đạn lúc này so với mặt đất là:
+    $$h_1 = h_{max} - s = 512,204 - 4,9 = 507,304 \text{ (m)}$$
+    
+    **Bước 4: Đổi ra km và làm tròn**
+    
+    $$507,304 \text{ m} = 0,507304 \text{ km}$$
+    Làm tròn kết quả đến hàng phần trăm (2 chữ số thập phân), ta được **$0,51$** km.
+    
+    *(Nguồn câu hỏi: Cụm trường THPT Hải Dương 2025)*
+    """)
+
+st.markdown("---")
