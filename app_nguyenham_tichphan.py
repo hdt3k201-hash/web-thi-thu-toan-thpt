@@ -5554,3 +5554,214 @@ if st.session_state.get('q60_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU HỎI 61
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 61(ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x)$ nhận giá trị không âm và có đạo hàm liên tục trên $\mathbb{R}$ thỏa mãn $f'(x) = (2x+1)f(x), \forall x \in \mathbb{R}$ và $f(0) = 1$. Giá trị của tích phân $\int_{0}^{1} f(x) dx$ bằng bao nhiêu?
+""")
+
+user_answer_61 = st.text_input("Nhập giá trị tích phân (dạng tích phân hoặc biểu thức như int_0^1 e^(x^2+x) dx):", key="q61_ans")
+
+
+
+if st.button("Kiểm tra đáp án Câu 61", key="q61_check"):
+    normalized_user_answer_61 = user_answer_61.strip()
+    if normalized_user_answer_61 in ["int", "e^(x^2+x)", "dung"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_61 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Biến đổi phương trình thành $\dfrac{f'(x)}{f(x)} = 2x+1$ để tìm hàm số $f(x) = e^{x^2+x}$.")
+
+st.markdown("---")
+
+if 'q61_solution_shown' not in st.session_state:
+    st.session_state['q61_solution_shown'] = False
+
+col1_61, col2_61 = st.columns([1, 4])
+with col1_61:
+    if st.button("Xem lời giải chi tiết Câu 61", key="q61_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q61_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q61_solution_shown'] = False 
+
+if st.session_state.get('q61_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 61:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Giải phương trình vi phân tìm hàm số $f(x)$**
+    
+    Từ giả thiết $f'(x) = (2x+1)f(x)$ và $f(x) \ge 0$, ta xét trên miền $f(x) > 0$:
+    $$ \dfrac{f'(x)}{f(x)} = 2x + 1 $$
+    
+    Lấy nguyên hàm hai vế theo $x$:
+    $$ \int \dfrac{f'(x)}{f(x)} dx = \int (2x + 1) dx $$
+    $$ \ln(f(x)) = x^2 + x + C $$
+    
+    **Bước 2: Tìm hằng số $C$**
+    
+    Sử dụng điều kiện $f(0) = 1$:
+    $$ \ln(1) = 0^2 + 0 + C \implies 0 = C \implies C = 0 $$
+    
+    Do đó:
+    $$ \ln(f(x)) = x^2 + x \implies f(x) = e^{x^2 + x} $$
+    
+    **Bước 3: Tính tích phân**
+    $$ I = \int_{0}^{1} f(x) dx = \int_{0}^{1} e^{x^2 + x} dx $$
+    
+    **Kết luận:** Tích phân được biểu diễn dưới dạng $\int_{0}^{1} e^{x^2 + x} dx$.
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU HỎI 62
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 62</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x)$ liên tục trên đoạn $[0; 1]$ thỏa mãn $4x \cdot f(x^2) + 3f(1-x) = \sqrt{1-x^2}$. Tính $I = \int_{0}^{1} f(x) dx$.
+""")
+
+user_answer_62 = st.text_input("Nhập giá trị của I cho Câu 62 (dạng  số thập phân 0.123):", key="q62_ans")
+
+if st.button("Kiểm tra đáp án Câu 62", key="q62_check"):
+    normalized_user_answer_62 = user_answer_62.strip()
+    if normalized_user_answer_62 in ["pi/20", "3.1416/20", "0.157", "pi / 20"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_62 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Lấy tích phân từ $0$ đến $1$ hai vế, sử dụng phương pháp đổi biến cho từng số hạng.")
+
+st.markdown("---")
+
+if 'q62_solution_shown' not in st.session_state:
+    st.session_state['q62_solution_shown'] = False
+
+col1_62, col2_62 = st.columns([1, 4])
+with col1_62:
+    if st.button("Xem lời giải chi tiết Câu 62", key="q62_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q62_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q62_solution_shown'] = False 
+
+if st.session_state.get('q62_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 62:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Lấy tích phân hai vế từ $0$ đến $1$**
+    
+    Từ phương trình $4x \cdot f(x^2) + 3f(1-x) = \sqrt{1-x^2}$, lấy tích phân từ $0$ đến $1$:
+    $$ \int_{0}^{1} 4x \cdot f(x^2) dx + 3 \int_{0}^{1} f(1-x) dx = \int_{0}^{1} \sqrt{1-x^2} dx $$
+    
+    **Bước 2: Biến đổi từng tích phân**
+    
+    * **Tích phân thứ nhất:** $J_1 = \int_{0}^{1} 4x \cdot f(x^2) dx$.
+      Đặt $u = x^2 \implies du = 2x dx \implies 4x dx = 2 du$.
+      Đổi cận: $x = 0 \implies u = 0$; $x = 1 \implies u = 1$.
+      $$ J_1 = 2 \int_{0}^{1} f(u) du = 2 \int_{0}^{1} f(x) dx = 2I $$
+      
+    * **Tích phân thứ hai:** $J_2 = \int_{0}^{1} f(1-x) dx$.
+      Đặt t = 1 - x \implies dt = -dx$.
+      Đổi cận: $x = 0 \implies t = 1$; $x = 1 \implies t = 0$.
+      $$ J_2 = \int_{1}^{0} f(t) (-dt) = \int_{0}^{1} f(t) dt = \int_{0}^{1} f(x) dx = I $$
+      
+    * **Tích phân vế phải:** $J_3 = \int_{0}^{1} \sqrt{1-x^2} dx$.
+      Đây là diện tích một phần tư hình tròn bán kính $R = 1$:
+      $$ J_3 = \dfrac{\pi \cdot 1^2}{4} = \dfrac{\pi}{4} $$
+      
+    **Bước 3: Tổng hợp và tính $I$**
+    
+    Thay các kết quả vào phương trình tích phân ban đầu:
+    $$ 2I + 3(I) = \dfrac{\pi}{4} \implies 5I = \dfrac{\pi}{4} \implies I = \dfrac{\pi}{20} $$
+    
+    **Kết luận:** $I = \dfrac{\pi}{20}$.
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU HỎI 63
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 63(ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $y = f(x)$ biết $f(0) = \dfrac{1}{2}$ và $f'(x) = x e^{x^2}$ với mọi $x \in \mathbb{R}$. Khi đó $\int_{0}^{1} x f(x) dx$ bằng bao nhiêu?
+""")
+
+user_answer_63 = st.text_input("Nhập giá trị tích phân (dạng  số thập phân 0.13):", key="q63_ans")
+
+if st.button("Kiểm tra đáp án Câu 63", key="q63_check"):
+    normalized_user_answer_63 = user_answer_63.strip()
+    if normalized_user_answer_63 in ["(e-1)/4", "(e-1)/4.0", "0.43", "0.430"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_63 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm hàm số $f(x)$ bằng cách lấy nguyên hàm của $f'(x)$, sau đó tính tích phân bằng phương pháp tích phân từng phần.")
+
+st.markdown("---")
+
+if 'q63_solution_shown' not in st.session_state:
+    st.session_state['q63_solution_shown'] = False
+
+col1_63, col2_63 = st.columns([1, 4])
+with col1_63:
+    if st.button("Xem lời giải chi tiết Câu 63", key="q63_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q63_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q63_solution_shown'] = False 
+
+if st.session_state.get('q63_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 63:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Tìm hàm số $f(x)$**
+    
+    Từ giả thiết $f'(x) = x e^{x^2}$, ta lấy nguyên hàm hai vế:
+    $$ f(x) = \int x e^{x^2} dx $$
+    
+    Đặt $u = x^2 \implies du = 2x dx \implies x dx = \dfrac{1}{2} du$:
+    $$ f(x) = \dfrac{1}{2} \int e^u du = \dfrac{1}{2} e^{x^2} + C $$
+    
+    Sử dụng điều kiện $f(0) = \dfrac{1}{2}$:
+    $$ \dfrac{1}{2} e^0 + C = \dfrac{1}{2} \implies \dfrac{1}{2} + C = \dfrac{1}{2} \implies C = 0 $$
+    
+    Vậy hàm số cần tìm là:
+    $$ f(x) = \dfrac{1}{2} e^{x^2} $$
+    
+    **Bước 2: Tính tích phân $I = \int_{0}^{1} x f(x) dx$**
+    
+    Thay biểu thức của $f(x)$ vào tích phân:
+    $$ I = \int_{0}^{1} x \left( \dfrac{1}{2} e^{x^2} \right) dx = \dfrac{1}{2} \int_{0}^{1} x e^{x^2} dx $$
+    
+    Áp dụng kết quả nguyên hàm ở trên:
+    $$ I = \left[ \dfrac{1}{4} e^{x^2} \right]_{0}^{1} = \dfrac{1}{4} e^{1^2} - \dfrac{1}{4} e^{0^2} = \dfrac{1}{4} e - \dfrac{1}{4} = \dfrac{e - 1}{4} $$
+    
+    **Kết luận:** Giá trị tích phân bằng $\dfrac{e - 1}{4}$.
+    """)
