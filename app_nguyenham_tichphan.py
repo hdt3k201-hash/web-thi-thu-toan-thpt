@@ -7667,3 +7667,80 @@ if st.session_state.get('q86_solution_shown') and st.session_state.get('logged_i
 st.markdown("---")
 
 
+
+st.markdown(
+    '<b style="color: blue;">Câu 87 (THPT Yên Lạc - Phú Thọ 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tốc độ giải ngân 2 tỷ tiền trợ cấp dành cho một vùng bị thiệt hại lũ lụt tỉ lệ thuận với bình phương của $(100-t)$, trong đó $t$ là thời gian tính bằng ngày, $0 \le t \le 100$, và $M(t)$ là số tiền còn lại chưa giải ngân sau $t$ ngày. Hỏi số tiền còn lại chưa giải ngân sau $40$ ngày là bao nhiêu triệu đồng, biết rằng toàn bộ số tiền sẽ được giải ngân trong $100$ ngày?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập số tiền còn lại chưa giải ngân (triệu đồng):", key="q87_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q87_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 432
+    if normalized_user_answer == "432":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Gọi $V(t)$ là số tiền đã giải ngân. Tốc độ giải ngân là đạo hàm $V'(t) = k(100-t)^2$. Lấy nguyên hàm để tìm hàm $M(t)$!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q87_solution_shown' not in st.session_state:
+    st.session_state['q87_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q87_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q87_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q87_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q87_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm số**
+    
+    * Đổi 2 tỷ đồng = $2000$ triệu đồng.
+    * Gọi $V(t)$ là số tiền đã giải ngân sau $t$ ngày. Khi đó, số tiền còn lại chưa giải ngân là $M(t) = 2000 - V(t)$.
+    * Theo giả thiết, tốc độ giải ngân tỉ lệ thuận với $(100-t)^2$, do đó:
+        $$V'(t) = k(100-t)^2 \quad (k > 0)$$
+    * Mặt khác: $M'(t) = -V'(t) = -k(100-t)^2$.
+    
+    **Bước 2: Tìm hàm $M(t)$**
+    
+    * Lấy nguyên hàm hai vế:
+        $$M(t) = \int -k(100-t)^2 \text{d}t = \dfrac{k}{3}(100-t)^3 + C$$
+    * Tại thời điểm ban đầu ($t = 0$), chưa có tiền được giải ngân nên số tiền còn lại là toàn bộ 2 tỷ: $M(0) = 2000$.
+        $$\Rightarrow \dfrac{k}{3}(100)^3 + C = 2000 \quad (1)$$
+    * Sau $100$ ngày, toàn bộ số tiền đã được giải ngân nên $M(100) = 0$.
+        $$\Rightarrow \dfrac{k}{3}(0)^3 + C = 0 \Rightarrow C = 0$$
+    * Thay $C = 0$ vào $(1)$, ta có:
+        $$\dfrac{k}{3} \cdot 1000000 = 2000 \Rightarrow \dfrac{k}{3} = \dfrac{2000}{1000000} = \dfrac{1}{500}$$
+    * Vậy hàm số biểu diễn số tiền còn lại là:
+        $$M(t) = \dfrac{1}{500}(100-t)^3$$
+    
+    **Bước 3: Tính số tiền còn lại sau 40 ngày**
+    
+    * Thay $t = 40$ vào hàm $M(t)$ vừa tìm được:
+        $$M(40) = \dfrac{1}{500}(100-40)^3 = \dfrac{1}{500} \cdot 60^3 = \dfrac{216000}{500} = 432$$
+        
+    **Kết luận:** Số tiền còn lại chưa giải ngân sau $40$ ngày là **$432$ triệu đồng**.
+    """)
+
+st.markdown("---")
+
+
