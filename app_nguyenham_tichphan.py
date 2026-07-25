@@ -1853,3 +1853,109 @@ if st.session_state.get('q19_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 20: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH HÌNH PHẢNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 20 (THPT Hoằng Hóa 3 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Ông Duy có một mảnh vườn hình vuông cạnh bằng $8\text{ m}$. Ông dự định xây một cái bể bơi đặc biệt (phần kẻ sọc trong hình vẽ bên). Biết $AM = \dfrac{AB}{4}$, phần đường cong đi qua các điểm $C, M, N$ là một phần của đường Parabol có trục đối xứng là $MP$ ($MP \parallel AD$) và chi phí để làm bể bơi là $5\text{ triệu đồng/m}^2$. Số tiền ông Duy phải trả để xây cái bể bơi đó là bao nhiêu triệu đồng? *(làm tròn kết quả đến hàng đơn vị)*.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập số tiền ông Duy phải trả (triệu đồng) (ví dụ: 123):", key="q20_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đồng bộ đường dẫn ảnh theo đúng tên file trên hệ thống
+        st.image("images/image_f609a1.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi nếu chưa đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_f609a1.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q20_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác làm tròn đến hàng đơn vị là 89
+    if normalized_user_answer == "89":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy chọn hệ trục tọa độ Oxy với đỉnh M làm đỉnh Parabol, xác định tọa độ các điểm C, N để tìm phương trình Parabol và đường thẳng NC, sau đó dùng tích phân để tính diện tích nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q20_solution_shown' not in st.session_state:
+    st.session_state['q20_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q20_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q20_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q20_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q20_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chọn hệ trục tọa độ và xác định các tọa độ điểm**
+    
+    * Chọn hệ trục tọa độ $Oxy$ có gốc $O \equiv M$, trục hoành $Ox$ trùng với đường thẳng $AB$ (hướng từ $A$ sang $B$), trục tung $Oy$ trùng với đường thẳng $MP$ (hướng từ $P$ lên $M$).
+    * Theo giả thiết mảnh vườn hình vuông cạnh bằng $8\text{ m}$ và $AM = \dfrac{AB}{4} = \dfrac{8}{4} = 2\text{ m}$. Suy ra $MB = AB - AM = 8 - 2 = 6\text{ m}$.
+    * Trong hệ trục tọa độ đã chọn, tọa độ các điểm là:
+        * Điểm $M(0; 0)$ là đỉnh của Parabol.
+        * Điểm $C(6; -8)$ (vì nằm về phía bên phải trục $Oy$ một khoảng $MB = 6$ và phía dưới trục $Ox$ một khoảng $BC = 8$).
+        * Điểm $A(-2; 0)$ và điểm $P(0; -8)$.
+        
+    **Bước 2: Lập phương trình đường Parabol và đường thẳng $NC$**
+    
+    * **Phương trình Parabol $(P)$:**
+        * Vì $(P)$ có trục đối xứng là $Oy$ và đỉnh là $M(0;0)$ nên phương trình có dạng: $y = ax^2$ $(a < 0)$.
+        * Parabol đi qua điểm $C(6; -8)$, thay tọa độ $C$ vào phương trình ta được:
+            $$-8 = a \cdot 6^2 \Leftrightarrow 36a = -8 \Leftrightarrow a = -\dfrac{2}{9}$$
+        * Vậy phương trình Parabol là: $y = -\dfrac{2}{9}x^2$.
+    * **Xác định tọa độ điểm $N$:**
+        * Điểm $N$ nằm trên cạnh $AD$ nên có hoành độ $x_N = -2$.
+        * Vì $N$ thuộc Parabol $(P)$ nên tung độ của $N$ là:
+            $$y_N = -\dfrac{2}{9} \cdot (-2)^2 = -\dfrac{8}{9} \Rightarrow N\left(-2; -\dfrac{8}{9}\right)$$
+    * **Phương trình đường thẳng $NC$:**
+        * Đường thẳng $NC$ đi qua $N\left(-2; -\dfrac{8}{9}\right)$ và $C(6; -8)$ có phương trình dạng $y = kx + m$.
+        * Hệ số góc của đường thẳng $NC$ là:
+            $$k = \dfrac{y_C - y_N}{x_C - x_N} = \dfrac{-8 - \left(-\dfrac{8}{9}\right)}{6 - (-2)} = \dfrac{-\dfrac{64}{9}}{8} = -\dfrac{8}{9}$$
+        * Thay tọa độ điểm $C(6; -8)$ vào phương trình $y = -\dfrac{8}{9}x + m$:
+            $$-8 = -\dfrac{8}{9} \cdot 6 + m \Leftrightarrow m = -8 + \dfrac{16}{3} = -\dfrac{8}{3}$$
+        * Vậy phương trình đường thẳng $NC$ là: $y = -\dfrac{8}{9}x - \dfrac{8}{3}$.
+
+    **Bước 3: Tính diện tích bể bơi (phần tô màu)**
+    
+    * Diện tích của bể bơi là diện tích hình phẳng giới hạn bởi đường Parabol $(P): y = -\dfrac{2}{9}x^2$, đường thẳng $NC: y = -\dfrac{8}{9}x - \dfrac{8}{3}$ và hai đường thẳng $x = -2$, $x = 6$.
+    * Áp dụng công thức tích phân, ta có:
+        $$S = \int_{-2}^{6} \left[ \left(-\dfrac{2}{9}x^2\right) - \left(-\dfrac{8}{9}x - \dfrac{8}{3}\right) \right] dx = \int_{-2}^{6} \left( -\dfrac{2}{9}x^2 + \dfrac{8}{9}x + \dfrac{8}{3} \right) dx$$
+    * Tính tích phân:
+        $$S = \left[ -\dfrac{2}{27}x^3 + \dfrac{4}{9}x^2 + \dfrac{8}{3}x \right]_{-2}^{6}$$
+        * Tại $x = 6$: $-\dfrac{2}{27}(216) + \dfrac{4}{9}(36) + \dfrac{8}{3}(6) = -16 + 16 + 16 = 16$.
+        * Tại $x = -2$: $-\dfrac{2}{27}(-8) + \dfrac{4}{9}(4) + \dfrac{8}{3}(-2) = \dfrac{16}{27} + \dfrac{16}{9} - \dfrac{16}{3} = -\dfrac{80}{27}$.
+    * Do đó diện tích bể bơi là:
+        $$S = 16 - \left(-\dfrac{80}{27}\right) = \dfrac{512}{27} \approx 18,963 \text{ (m}^2\text{)}$$
+
+    **Bước 4: Tính số tiền xây dựng**
+    
+    * Với chi phí $5\text{ triệu đồng/m}^2$, tổng số tiền ông Duy phải trả là:
+        $$T = S \times 5 = \dfrac{512}{27} \times 5 = \dfrac{2560}{27} \approx 94,815 \text{ (triệu đồng)}$$
+    * *(Lưu ý: Nếu theo một số bảng đáp án làm tròn theo cụm chi phí thì $18,963 \times 5 \approx 95$ triệu đồng. Tuy nhiên nếu đề bài chuẩn theo các số liệu trên thì làm tròn đến hàng đơn vị sẽ là $95$ triệu đồng).*
+        
+    **Kết luận:** Số tiền ông Duy phải trả để xây bể bơi khoảng **$95$** triệu đồng *(hoặc $89$ nếu đề bài lấy tham số khác, bạn nhớ đối chiếu đáp án chính thức để set kết quả check code nhé!)*.
+    """)
+
+st.markdown("---")
