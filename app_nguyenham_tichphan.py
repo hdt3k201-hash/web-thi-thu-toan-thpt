@@ -1651,3 +1651,102 @@ if st.session_state.get('q17_solution_shown'):
     **Kết luận:** Quãng đường vật đi được là khoảng **$54,2 \text{ mét}$** (hoặc nếu đề yêu cầu phân tích theo dạng khác, kết quả chính xác phân số là $\dfrac{325}{6} \text{ m}$).
     """)
     st.markdown("---")
+
+# --- CÂU HỎI 18: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH HÌNH PHẢNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 18 (THPT Lang Chanh - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một khu vườn hình elip $(E)$, có độ dài trục lớn bằng $10\text{ m}$ và trục nhỏ bằng $8\text{ m}$ (như hình vẽ). Khu vực $A$ để trồng hoa; khu vực $B$ để trồng cỏ, là nửa hình tròn có tâm là một tiêu điểm của elip $(E)$, bán kính bằng $1\text{ m}$; còn lại là khu vực $C$ (phần tô đậm) người ta lát gạch. 
+
+Diện tích phần lát gạch bằng bao nhiêu $\text{m}^2$? *(kết quả làm tròn đến hàng phần trăm)*
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích phần lát gạch (ví dụ: 7.38):", key="q18_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ theo tên file
+        st.image("images/image_f5f69f.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_f5f69f.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q18_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác làm tròn đến hàng phần trăm là 7.38
+    if normalized_user_answer == "7.38":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy lập phương trình elip trong hệ trục tọa độ Oxy, tìm hoành độ tiêu điểm F2 và dùng tích phân để tính diện tích phần bên phải đường thẳng x = c nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q18_solution_shown' not in st.session_state:
+    st.session_state['q18_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q18_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q18_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q18_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q18_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ trục tọa độ và phương trình elip**
+    
+    * Chọn hệ trục tọa độ $Oxy$ có gốc $O$ trùng với tâm của elip, trục hoành $Ox$ trùng với trục lớn, trục tung $Oy$ trùng với trục nhỏ.
+    * Theo giả thiết:
+        * Độ dài trục lớn $2a = 10 \Rightarrow a = 5$.
+        * Độ dài trục nhỏ $2b = 8 \Rightarrow b = 4$.
+        * Tiêu cự của elip: $c = \sqrt{a^2 - b^2} = \sqrt{5^2 - 4^2} = 3$.
+    * Phương trình chính tắc của elip $(E)$ là:
+        $$\dfrac{x^2}{25} + \dfrac{y^2}{16} = 1 \Rightarrow y = \pm \dfrac{4}{5}\sqrt{25 - x^2}$$
+    * Tiêu điểm bên phải của elip có tọa độ $F_2(3; 0)$. Đường thẳng phân chia khu vực $A$ với khu vực $B$ và $C$ là đường thẳng dựng đứng đi qua tiêu điểm $F_2$, tức là đường thẳng $x = 3$.
+    
+    **Bước 2: Tính tổng diện tích khu vực B và C**
+    
+    * Gọi $S_1$ là tổng diện tích của khu vực $B$ và $C$ (chính là phần diện tích của elip giới hạn bởi đường thẳng $x = 3$ và đỉnh bên phải $x = 5$).
+    * Dùng ứng dụng tích phân, ta có:
+        $$S_1 = \int_{3}^{5} 2y \, dx = \int_{3}^{5} \dfrac{8}{5}\sqrt{25 - x^2} \, dx$$
+    * **Tính tích phân bằng phương pháp đổi biến số:**
+        * Đặt $x = 5\sin t \Rightarrow dx = 5\cos t \, dt$.
+        * Đổi cận: Khi $x = 3 \Rightarrow \sin t = 0,6 \Rightarrow t = \arcsin(0,6)$; khi $x = 5 \Rightarrow \sin t = 1 \Rightarrow t = \dfrac{\pi}{2}$.
+        * Khi đó tích phân trở thành:
+            $$S_1 = \dfrac{8}{5} \int_{\arcsin(0,6)}^{\pi/2} 5\cos t \cdot 5\cos t \, dt = 40 \int_{\arcsin(0,6)}^{\pi/2} \cos^2 t \, dt = 20 \int_{\arcsin(0,6)}^{\pi/2} (1 + \cos 2t) \, dt$$
+            $$S_1 = 20 \left[ t + \dfrac{\sin 2t}{2} \right]_{\arcsin(0,6)}^{\pi/2} = 20 \left( \dfrac{\pi}{2} - \arcsin(0,6) - \sin(\arcsin(0,6)) \cos(\arcsin(0,6)) \right)$$
+        * Vì $\sin(\arcsin(0,6)) = 0,6$ và $\cos(\arcsin(0,6)) = \sqrt{1 - 0,6^2} = 0,8$, ta được:
+            $$S_1 = 10\pi - 20\arcsin(0,6) - 20 \cdot 0,6 \cdot 0,8 = 10\pi - 20\arcsin(0,6) - 9,6 \approx 8,9459 \text{ (m}^2\text{)}$$
+    
+    **Bước 3: Tính diện tích khu vực B (nửa hình tròn)**
+    
+    * Khu vực $B$ là nửa hình tròn có tâm tại tiêu điểm $F_2$, bán kính $r = 1\text{ m}$.
+    * Diện tích của khu vực $B$ là:
+        $$S_B = \dfrac{1}{2} \pi r^2 = \dfrac{\pi}{2} \approx 1,5708 \text{ (m}^2\text{)}$$
+    
+    **Bước 4: Tính diện tích phần lát gạch (khu vực C)**
+    
+    * Diện tích phần lát gạch (khu vực $C$) bằng tổng diện tích $S_1$ trừ đi diện tích khu vực $B$:
+        $$S_C = S_1 - S_B = \left( 9,5\pi - 20\arcsin(0,6) - 9,6 \right) \approx 8,9459 - 1,5708 = 7,3751 \text{ (m}^2\text{)}$$
+    * Làm tròn kết quả đến hàng phần trăm, ta được: $S_C \approx 7,38 \text{ m}^2$.
+        
+    **Kết luận:** Diện tích phần lát gạch là **$7,38$** $\text{m}^2$.
+    """)
+
+st.markdown("---")
