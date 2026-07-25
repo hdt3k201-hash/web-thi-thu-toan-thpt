@@ -502,7 +502,7 @@ Một người có miếng đất hình tròn có bán kính bằng $5\text{ m}$
 """)
 
 # --- Ô NHẬP ĐÁP ÁN ---
-user_answer = st.text_input("Nhập số tiền thu được (đơn vị: nghìn đồng, ví dụ: 1234):", key="q5_ans")
+user_answer = st.text_input("Nhập số tiền thu được (đơn vị: nghìn đồng, ví dụ: 1234):", key="q6_ans")
 
 # --- CHÈN HÌNH ẢNH ---
 try:
@@ -515,7 +515,7 @@ except FileNotFoundError:
     st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_d7197b.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # --- NÚT KIỂM TRA ĐÁP ÁN ---
-if st.button("Kiểm tra đáp án", key="q5_check"):
+if st.button("Kiểm tra đáp án", key="q6_check"):
     normalized_user_answer = user_answer.strip().replace(',', '.')
     
     # Đáp án chính xác là 7445
@@ -536,13 +536,13 @@ col1, col2 = st.columns([1, 4])
 with col1:
     if st.button("Xem lời giải chi tiết", key="q5_solution_btn"):
         if st.session_state.get('logged_in'):
-            st.session_state['q5_solution_shown'] = True
+            st.session_state['q6_solution_shown'] = True
         else:
             st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
-            st.session_state['q5_solution_shown'] = False 
+            st.session_state['q6_solution_shown'] = False 
 
 # Hiển thị lời giải chi tiết khi đủ điều kiện
-if st.session_state.get('q5_solution_shown') and st.session_state.get('logged_in'):
+if st.session_state.get('q6_solution_shown') and st.session_state.get('logged_in'):
     st.info("### Lời giải chi tiết:")
     
     st.markdown(r"""
