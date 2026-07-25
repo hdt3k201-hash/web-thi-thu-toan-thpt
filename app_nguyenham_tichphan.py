@@ -3268,3 +3268,80 @@ if st.session_state.get('q33_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 34: TÍCH PHÂN HÀM PHÂN THỨC CHỨA HÀM MŨ ---
+st.markdown(
+    '<b style="color: blue;">Câu 34( ĐGNL - TD )</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Biết $\int_{0}^{1} \dfrac{\pi x^3 + 2^x + e x^3 \cdot 2^x}{\pi + e \cdot 2^x} dx = \dfrac{1}{m} + \dfrac{1}{e \ln n} \ln \left( p + \dfrac{e}{e + \pi} \right)$ với $m, n, p$ là các số nguyên dương. Tính tổng $S = m + n + p$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập tổng S:", key="q34_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q34_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 7
+    if normalized_user_answer == "7":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tách tử số thành các phần chia hết cho mẫu số và phần còn lại để đưa về tổng của hai tích phân. Tích phân thứ hai sử dụng phương pháp đổi biến số.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q34_solution_shown' not in st.session_state:
+    st.session_state['q34_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q34_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q34_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q34_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q34_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    Ta có:
+    $$ \int_{0}^{1} \dfrac{\pi x^3 + 2^x + e x^3 \cdot 2^x}{\pi + e \cdot 2^x} dx = \int_{0}^{1} \left( x^3 + \dfrac{2^x}{\pi + e \cdot 2^x} \right) dx = \dfrac{1}{4} + \int_{0}^{1} \dfrac{2^x}{\pi + e \cdot 2^x} dx = \dfrac{1}{4} + J. $$
+    
+    Tính $J = \int_{0}^{1} \dfrac{2^x}{\pi + e \cdot 2^x} dx$. 
+    
+    Đặt $\pi + e \cdot 2^x = t \Rightarrow e \cdot 2^x \ln 2 dx = dt \Leftrightarrow 2^x dx = \dfrac{1}{e \ln 2} dt$.
+    
+    Đổi cận: 
+    *   Khi $x = 0$ thì $t = \pi + e$; 
+    *   Khi $x = 1$ thì $t = \pi + 2e$.
+    
+    Khi đó:
+    $$ J = \int_{0}^{1} \dfrac{2^x}{\pi + e \cdot 2^x} dx = \dfrac{1}{e \ln 2} \int_{\pi + e}^{\pi + 2e} \dfrac{1}{t} dt = \dfrac{1}{e \ln 2} \ln |t| \Big|_{\pi + e}^{\pi + 2e} = \dfrac{1}{e \ln 2} \ln \left( \dfrac{\pi + 2e}{\pi + e} \right) = \dfrac{1}{e \ln 2} \ln \left( 1 + \dfrac{e}{e + \pi} \right). $$
+    
+    Vậy ta có:
+    $$ \int_{0}^{1} \dfrac{\pi x^3 + 2^x + e x^3 \cdot 2^x}{\pi + e \cdot 2^x} dx = \dfrac{1}{4} + \dfrac{1}{e \ln 2} \ln \left( 1 + \dfrac{e}{e + \pi} \right) $$
+    
+    Đồng nhất với biểu thức đề bài $\dfrac{1}{m} + \dfrac{1}{e \ln n} \ln \left( p + \dfrac{e}{e + \pi} \right)$, ta suy ra:
+    $m = 4$, $n = 2$, $p = 1$.
+    
+    **Kết luận:** $S = m + n + p = 4 + 2 + 1 = 7$.
+    """)
+
+st.markdown("---")
