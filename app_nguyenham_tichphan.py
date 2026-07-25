@@ -1300,5 +1300,87 @@ if st.session_state.get('q13_solution_shown'):
 
 
 
+# --- CÂU HỎI 14: BÀI TOÁN TÌM NGUYÊN HÀM ---
+st.markdown(
+    '<b style="color: blue;">Câu 14 (THPT Nguyễn Thị Minh Khai - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x) = (2\tan x - \cot x)^2$. $F(x)$ là một nguyên hàm của hàm số $f(x)$ sao cho $F\left(\dfrac{\pi}{4}\right) = 3 - \dfrac{9\pi}{4}$. Khi đó $F(x) = a\tan x + b\cot x + cx$ ($a, b, c$ là các hằng số). Tính $a.b.c$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của a.b.c (ví dụ: 12):", key="q14_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q14_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    if normalized_user_answer == "36":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy khai triển hằng đẳng thức của $f(x)$, sau đó thêm bớt để đưa về dạng các đạo hàm cơ bản $\\dfrac{1}{\\cos^2 x}$ và $\\dfrac{1}{\\sin^2 x}$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q14_solution_shown' not in st.session_state:
+    st.session_state['q14_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q14_solution_btn"):
+        st.session_state['q14_solution_shown'] = True
+
+if st.session_state.get('q14_solution_shown'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Khai triển và biến đổi hàm số $f(x)$**
+    
+    * Khai triển biểu thức của hàm số $f(x)$:
+        $$f(x) = (2\tan x - \cot x)^2 = 4\tan^2 x - 4\tan x \cot x + \cot^2 x$$
+    * Vì $\tan x \cdot \cot x = 1$, ta có:
+        $$f(x) = 4\tan^2 x - 4 + \cot^2 x$$
+    * Để dễ dàng tìm nguyên hàm, ta sử dụng các hằng đẳng thức lượng giác $\tan^2 x = \dfrac{1}{\cos^2 x} - 1$ và $\cot^2 x = \dfrac{1}{\sin^2 x} - 1$. Biến đổi $f(x)$ như sau:
+        $$f(x) = 4\left(\dfrac{1}{\cos^2 x} - 1\right) - 4 + \left(\dfrac{1}{\sin^2 x} - 1\right)$$
+        $$f(x) = \dfrac{4}{\cos^2 x} - 4 - 4 + \dfrac{1}{\sin^2 x} - 1$$
+        $$f(x) = \dfrac{4}{\cos^2 x} + \dfrac{1}{\sin^2 x} - 9$$
+        
+    **Bước 2: Tìm họ nguyên hàm $F(x)$**
+    
+    * Lấy nguyên hàm hai vế, ta được:
+        $$F(x) = \int \left( \dfrac{4}{\cos^2 x} + \dfrac{1}{\sin^2 x} - 9 \right) \text{d}x$$
+    * Áp dụng các công thức nguyên hàm cơ bản:
+        $$F(x) = 4\tan x - \cot x - 9x + C$$
+        
+    **Bước 3: Tìm hằng số $C$ dựa vào điều kiện bài toán**
+    
+    * Theo giả thiết, $F\left(\dfrac{\pi}{4}\right) = 3 - \dfrac{9\pi}{4}$. Thay $x = \dfrac{\pi}{4}$ vào hàm $F(x)$ vừa tìm được:
+        $$4\tan\left(\dfrac{\pi}{4}\right) - \cot\left(\dfrac{\pi}{4}\right) - 9\left(\dfrac{\pi}{4}\right) + C = 3 - \dfrac{9\pi}{4}$$
+    * Ta biết $\tan\left(\dfrac{\pi}{4}\right) = 1$ và $\cot\left(\dfrac{\pi}{4}\right) = 1$, do đó:
+        $$4(1) - 1 - \dfrac{9\pi}{4} + C = 3 - \dfrac{9\pi}{4}$$
+        $$3 - \dfrac{9\pi}{4} + C = 3 - \dfrac{9\pi}{4} \implies C = 0$$
+    * Vậy hàm số $F(x)$ cụ thể là:
+        $$F(x) = 4\tan x - \cot x - 9x$$
+        
+    **Bước 4: Đồng nhất hệ số và tính $a.b.c$**
+    
+    * Đề bài cho $F(x) = a\tan x + b\cot x + cx$. 
+    * Đồng nhất các hệ số với hàm $F(x)$ ta vừa tìm được, ta có:
+        $$\begin{cases} a = 4 \\ b = -1 \\ c = -9 \end{cases}$$
+    * Khi đó, tích của ba số $a, b, c$ là:
+        $$a.b.c = 4 \times (-1) \times (-9) = 36$$
+    
+    **Kết luận:** Giá trị của $a.b.c$ bằng **$36$**.
+    """)
+    st.markdown("---")
+
 
 
