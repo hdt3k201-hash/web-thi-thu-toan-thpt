@@ -6638,20 +6638,21 @@ st.markdown(
     '<b style="color: blue;">Câu 75 (Sở Thanh Hóa 2026)</b>',
     unsafe_allow_html=True
 )
-
 st.markdown(r"""
 Một cái chậu đựng nước có dạng hình chóp cụt đều, đáy chậu là tam giác đều cạnh bằng $2 \text{ dm}$, miệng chậu là tam giác đều cạnh bằng $5 \text{ dm}$ và chiều cao chậu nước bằng $3 \text{ dm}$. Người ta bơm nước vào chậu với lưu lượng không đổi $\dfrac{\sqrt{3}}{3} \text{ lít/phút}$. Tại thời điểm $14$ phút sau khi bơm tốc độ dâng lên của nước trong chậu là $\dfrac{1}{a} \text{ dm/phút}$, giá trị của $a$ bằng bao nhiêu?
 """)
 
 # --- Ô NHẬP ĐÁP ÁN ---
-user_answer_75 = st.text_input("Nhập giá trị của a (ví dụ: 29):", key="q75_ans")
+user_answer_75 = st.text_input("Nhập giá trị của a (ví dụ: 19):", key="q75_ans")
 
 # --- CHÈN HÌNH ẢNH ---
 try:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        st.image("images/image_1c29e6.PNG", width=600)
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_1c29e6.PNG", width=400)
 except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
     st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_1c29e6.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # --- NÚT KIỂM TRA ĐÁP ÁN ---
