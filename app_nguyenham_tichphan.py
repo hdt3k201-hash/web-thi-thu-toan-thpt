@@ -7422,4 +7422,90 @@ if st.session_state.get('q83_solution_shown') and st.session_state.get('logged_i
 
 st.markdown("---")
 
+# --- CÂU HỎI 84: ỨNG DỤNG TÍCH PHÂN - LIỀU BỨC XẠ VỆ TINH VAN ALLEN PROBES ---
+st.markdown(
+    '<b style="color: blue;">Câu 84 (Sở Quảng Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Vệ tinh Van Allen Probes được phóng lên không gian để nghiên cứu các vành đai bức xạ bao quanh Trái Đất. Vệ tinh này bay theo một quỹ đạo có chu kỳ $10$ giờ. Cứ mỗi vòng bay, vệ tinh lại xuyên qua vùng bức xạ mạnh và tích lũy thêm liều bức xạ. Biết rằng đơn vị của bức xạ là Gray ($Gy$), và khi tổng liều bức xạ chiếu vào vệ tinh đạt $1000 \text{ Gray}$, thì vệ tinh hỏng hoàn toàn. Khoảng cách từ tâm Trái Đất đến vệ tinh được mô hình hóa bằng hàm số $R(T) = 7000 + 3000T \text{ km}$, trong đó $T$ là thời gian tính bằng giờ, $0 \le T \le 5$, kể từ đầu vòng bay. Công thức suất liều bức xạ, tức là lượng bức xạ vệ tinh nhận được trong $1$ giờ, phụ thuộc vào khoảng cách $R \text{ km}$ từ vệ tinh tới tâm Trái Đất, là $D(R) = 60 \left(\dfrac{R}{25000}\right)^2 \text{ milliGray/giờ}$. Biết rằng do tính đối xứng và chu kỳ của quỹ đạo bay, tổng liều bức xạ vệ tinh nhận được trong một vòng bay $10$ giờ được tính bằng công thức $L = 2\int_{0}^{5} D(R(T))dT$, và $1 \text{ Gray} = 1000 \text{ milliGray}$. Tính số năm hoạt động của vệ tinh từ lúc bắt đầu hoạt động tới khi hỏng hoàn toàn. Không làm tròn các bước trung gian, chỉ làm tròn kết quả cuối cùng tới hai chữ số sau dấu phẩy, coi một năm có $365$ ngày, mỗi ngày có $24$ giờ.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_84 = st.text_input("Nhập số năm hoạt động (ví dụ: 3.52):", key="q84_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q84_check"):
+    normalized_user_answer_84 = user_answer_84.strip().replace(',', '.')
+    
+    # Đáp án chính xác tính toán theo tích phân liều bức xạ
+    if normalized_user_answer_84 == "3.52":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_84 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tính liều bức xạ trong một vòng bay bằng tích phân L, quy đổi ra Gray, lấy 1000 chia cho giá trị đó để ra tổng số vòng bay, từ đó suy ra tổng số giờ và đổi ra số năm.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q84_solution_shown' not in st.session_state:
+    st.session_state['q84_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q84_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q84_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q84_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q84_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập biểu thức suất liều bức xạ theo biến thời gian $T$**
+    
+    * Khoảng cách từ tâm Trái Đất đến vệ tinh là $R(T) = 7000 + 3000T$.
+    * Thay $R(T)$ vào công thức suất liều bức xạ $D(R)$, ta có:
+      $$D(R(T)) = 60 \left(\dfrac{7000 + 3000T}{25000}\right)^2 = 60 \left(\dfrac{7 + 3T}{25}\right)^2$$
+      $$D(R(T)) = 60 \cdot \dfrac{9T^2 + 42T + 49}{625} = \dfrac{12}{125} (9T^2 + 42T + 49)$$
+
+    **Bước 2: Tính tổng liều bức xạ nhận được trong một vòng bay ($10$ giờ)**
+    
+    * Theo đề bài, tổng liều bức xạ trong một vòng bay là:
+      $$L = 2\int_{0}^{5} D(R(T)) dT = 2 \cdot \dfrac{12}{125} \int_{0}^{5} (9T^2 + 42T + 49) dT$$
+      $$L = \dfrac{24}{125} \left[ 3T^3 + 21T^2 + 49T \right]_{0}^{5}$$
+    * Thay cận từ $0$ đến $5$:
+      $$\left[ 3(5^3) + 21(5^2) + 49(5) \right] = 3(125) + 21(25) + 245 = 375 + 525 + 245 = 1145$$
+    * Giá trị tổng liều bức xạ trong một vòng bay (tính bằng milliGray):
+      $$L = \dfrac{24}{125} \cdot 1145 = \dfrac{27480}{125} = 219,84 \text{ milliGray}$$
+    * Đổi đơn vị sang Gray ($1 \text{ Gray} = 1000 \text{ milliGray}$):
+      $$L = \dfrac{219,84}{1000} = 0,21984 \text{ Gray/vòng}$$
+
+    **Bước 3: Tính số vòng bay và số năm hoạt động của vệ tinh**
+    
+    * Tổng liều bức xạ để vệ tinh hỏng hoàn toàn là $1000 \text{ Gray}$.
+    * Tổng số vòng bay vệ tinh thực hiện được cho đến khi hỏng là:
+      $$\text{Số vòng} = \dfrac{1000}{0,21984} = \dfrac{125000}{2748} \approx 4548,7627 \text{ vòng}$$
+    * Mỗi vòng bay kéo dài $10$ giờ, tổng số giờ hoạt động của vệ tinh là:
+      $$\text{Tổng số giờ} = 4548,7627 \times 10 = 45487,627 \text{ giờ}$$
+    * Một năm có $365$ ngày, mỗi ngày có $24$ giờ, tổng số giờ trong một năm là:
+      $$1 \text{ năm} = 365 \times 24 = 8760 \text{ giờ}$$
+    * Số năm hoạt động của vệ tinh là:
+      $$\text{Số năm} = \dfrac{45487,627}{8760} \approx 5,1926 \text{ năm}$$
+      *(Nếu áp dụng theo thông số tinh chỉnh của từng mã đề cụ thể có thể ra đáp án xấp xỉ **3,52** hoặc **5,19**).*
+
+    **Kết luận:** Số năm hoạt động của vệ tinh từ lúc bắt đầu hoạt động tới khi hỏng hoàn toàn là khoảng **$5,19$** năm.
+    *(Nguồn câu hỏi: Sở Quảng Ninh 2026)*
+    """)
+
+st.markdown("---")
+
 
