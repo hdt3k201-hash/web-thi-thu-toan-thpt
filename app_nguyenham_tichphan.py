@@ -3523,3 +3523,159 @@ if st.session_state.get('q36_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU HỎI 37
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 37 (ĐGNL - TD )</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x)$ liên tục trên $\mathbb{R}$ và thỏa mãn $\int_{-5}^{1} f(x) dx = 9$. Tích phân $\int_{0}^{2} [f(1-3x) + 9] dx$ bằng bao nhiêu?
+
+*Chú thích: ĐGNL - TD*
+""")
+
+# --- Ô NHẬP ĐÁP ÁN CÂU 37 ---
+user_answer_37 = st.text_input("Nhập giá trị của tích phân:", key="q37_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN CÂU 37 ---
+if st.button("Kiểm tra đáp án Câu 37", key="q37_check"):
+    normalized_user_answer_37 = user_answer_37.strip()
+    
+    if normalized_user_answer_37 == "21":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_37 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tách tích phân thành 2 phần. Với phần chứa $f(1-3x)$, sử dụng phương pháp đổi biến số $t = 1 - 3x$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 37 ---
+st.markdown("---")
+
+if 'q37_solution_shown' not in st.session_state:
+    st.session_state['q37_solution_shown'] = False
+
+col1_37, col2_37 = st.columns([1, 4])
+with col1_37:
+    if st.button("Xem lời giải chi tiết Câu 37", key="q37_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q37_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q37_solution_shown'] = False 
+
+if st.session_state.get('q37_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 37:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    Ta có:
+    $$ \int_{0}^{2} [f(1-3x) + 9] dx = \int_{0}^{2} f(1-3x) dx + \int_{0}^{2} 9 dx = \int_{0}^{2} f(1-3x) dx + 18. $$
+    
+    Xét $\int_{0}^{2} f(1-3x) dx$. 
+    Đặt $t = 1 - 3x \Rightarrow dt = -3 dx \Rightarrow dx = -\dfrac{dt}{3}$.
+    
+    Đổi cận:
+    *   Khi $x = 0 \Rightarrow t = 1$;
+    *   Khi $x = 2 \Rightarrow t = -5$.
+    
+    Suy ra:
+    $$ \int_{0}^{2} f(1-3x) dx = -\dfrac{1}{3} \int_{1}^{-5} f(t) dt = \dfrac{1}{3} \int_{-5}^{1} f(t) dt = \dfrac{1}{3} \int_{-5}^{1} f(x) dx. $$
+    
+    Theo giả thiết $\int_{-5}^{1} f(x) dx = 9$, ta có:
+    $$ \int_{0}^{2} f(1-3x) dx = \dfrac{1}{3} \cdot 9 = 3. $$
+    
+    Khi đó:
+    $$ \int_{0}^{2} [f(1-3x) + 9] dx = 3 + 18 = 21. $$
+    
+    **Kết luận:** Giá trị cần tìm là $21$.
+    """)
+
+st.markdown("---")
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+
+# ==========================================
+# CÂU HỎI 38
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 38 ( ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x)$ liên tục trên đoạn $[0; 10]$ thỏa mãn $\int_{0}^{10} f(x) dx = 7$ và $\int_{2}^{10} f(x) dx = 1$. Tính $P = \int_{0}^{1} f(2x) dx$.
+
+*Chú thích: ĐGNL - TD*
+""")
+
+# --- Ô NHẬP ĐÁP ÁN CÂU 38 ---
+user_answer_38 = st.text_input("Nhập giá trị của P:", key="q38_ans")
+
+# --- CHÈN HÌNH ẢNH (Dùng chung 1 ảnh) ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN CÂU 38 ---
+if st.button("Kiểm tra đáp án Câu 38", key="q38_check"):
+    normalized_user_answer_38 = user_answer_38.strip()
+    
+    if normalized_user_answer_38 == "3":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_38 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Dùng tính chất chèn cận $\int_{0}^{10} = \int_{0}^{2} + \int_{2}^{10}$ để tìm $\int_{0}^{2} f(x) dx$. Sau đó dùng đổi biến $t = 2x$ cho biểu thức P.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 38 ---
+st.markdown("---")
+
+if 'q38_solution_shown' not in st.session_state:
+    st.session_state['q38_solution_shown'] = False
+
+col1_38, col2_38 = st.columns([1, 4])
+with col1_38:
+    if st.button("Xem lời giải chi tiết Câu 38", key="q38_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q38_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q38_solution_shown'] = False 
+
+if st.session_state.get('q38_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 38:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    Theo tính chất của tích phân, ta có:
+    $$ \int_{0}^{10} f(x) dx = \int_{0}^{2} f(x) dx + \int_{2}^{10} f(x) dx $$
+    
+    Thay các giá trị đã biết vào, ta được:
+    $$ 7 = \int_{0}^{2} f(x) dx + 1 \Rightarrow \int_{0}^{2} f(x) dx = 6 $$
+    
+    Xét tích phân $P = \int_{0}^{1} f(2x) dx$. 
+    Đặt $t = 2x \Rightarrow dt = 2 dx \Rightarrow dx = \dfrac{dt}{2}$.
+    
+    Đổi cận:
+    *   Khi $x = 0 \Rightarrow t = 0$;
+    *   Khi $x = 1 \Rightarrow t = 2$.
+    
+    Khi đó biểu thức $P$ trở thành:
+    $$ P = \int_{0}^{2} f(t) \dfrac{dt}{2} = \dfrac{1}{2} \int_{0}^{2} f(t) dt = \dfrac{1}{2} \int_{0}^{2} f(x) dx $$
+    
+    Thay $\int_{0}^{2} f(x) dx = 6$ vào biểu thức trên:
+    $$ P = \dfrac{1}{2} \cdot 6 = 3 $$
+    
+    **Kết luận:** $P = 3$.
+    """)
+
+st.markdown("---")
