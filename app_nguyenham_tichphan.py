@@ -4885,3 +4885,221 @@ if st.session_state.get('q51_solution_shown') and st.session_state.get('logged_i
     
     **Kết luận:** $I = \dfrac{11}{12}$.
     """)
+
+
+
+# ==========================================
+# CÂU HỎI 52
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 52(ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x)$ nhận giá trị dương và thỏa mãn $f(0) = 1$, $(f'(x))^2 = e^x (f(x))^2, \forall x \in \mathbb{R}$. Tính $f(3)$.
+""")
+
+user_answer_52 = st.text_input("Nhập giá trị của $f(3)$ (dạng biểu thức hoặc số):", key="q52_ans")
+
+
+if st.button("Kiểm tra đáp án Câu 52", key="q52_check"):
+    normalized_user_answer_52 = user_answer_52.strip()
+    if normalized_user_answer_52 in ["e^(2e^(3/2)-2)", "e^(2*e^(1.5)-2)", "exp(2*sqrt(e^3)-2)"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_52 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Lấy căn bậc hai hai vế, kết hợp điều kiện hàm dương và tích phân hai vế để tìm ra hàm số $f(x)$.")
+
+st.markdown("---")
+
+if 'q52_solution_shown' not in st.session_state:
+    st.session_state['q52_solution_shown'] = False
+
+col1_52, col2_52 = st.columns([1, 4])
+with col1_52:
+    if st.button("Xem lời giải chi tiết Câu 52", key="q52_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q52_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q52_solution_shown'] = False 
+
+if st.session_state.get('q52_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 52:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Biến đổi phương trình đạo hàm**
+    
+    Từ giả thiết $(f'(x))^2 = e^x (f(x))^2$ và hàm số nhận giá trị dương ($f(x) > 0$), ta khai căn hai vế:
+    $$ f'(x) = \sqrt{e^x} f(x) = e^{\dfrac{x}{2}} f(x) $$
+    
+    **Bước 2: Giải phương trình vi phân**
+    
+    Biến đổi đưa về dạng tách biến:
+    $$ \dfrac{f'(x)}{f(x)} = e^{\dfrac{x}{2}} $$
+    
+    Lấy nguyên hàm hai vế theo $x$:
+    $$ \int \dfrac{f'(x)}{f(x)} dx = \int e^{\dfrac{x}{2}} dx $$
+    $$ \ln(f(x)) = 2e^{\dfrac{x}{2}} + C $$
+    
+    **Bước 3: Tìm hằng số $C$**
+    
+    Sử dụng điều kiện $f(0) = 1$:
+    $$ \ln(1) = 2e^0 + C \implies 0 = 2 + C \implies C = -2 $$
+    
+    Do đó:
+    $$ \ln(f(x)) = 2e^{\dfrac{x}{2}} - 2 \implies f(x) = e^{2e^{\dfrac{x}{2}} - 2} $$
+    
+    **Bước 4: Tính $f(3)$**
+    $$ f(3) = e^{2e^{\dfrac{3}{2}} - 2} $$
+    
+    **Kết luận:** $f(3) = e^{2e^{\dfrac{3}{2}} - 2}$.
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU HỎI 53
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 53(ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Giả sử hàm số $f(x)$ có đạo hàm cấp 2 trên $\mathbb{R}$ thỏa mãn $f(1) = f'(1) = 1$ và $f(1-x) + x^2 f''(x) = 2x$ với mọi $x \in \mathbb{R}$. Tính tích phân $I = \int_{0}^{1} x f'(x) dx$.
+""")
+
+user_answer_53 = st.text_input("Nhập giá trị của I cho Câu 53 (dạng phân số 1/4 hoặc số thập phân 0.25):", key="q53_ans")
+
+if st.button("Kiểm tra đáp án Câu 53", key="q53_check"):
+    normalized_user_answer_53 = user_answer_53.strip()
+    if normalized_user_answer_53 in ["1/3", "0.333", "0.3333"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_53 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Lấy tích phân từ $0$ đến $1$ hai vế, kết hợp đổi biến và tích phân từng phần để thiết lập hệ thức liên hệ giữa $I$ và $\int_{0}^{1} f(x) dx$.")
+
+st.markdown("---")
+
+if 'q53_solution_shown' not in st.session_state:
+    st.session_state['q53_solution_shown'] = False
+
+col1_53, col2_53 = st.columns([1, 4])
+with col1_53:
+    if st.button("Xem lời giải chi tiết Câu 53", key="q53_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q53_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q53_solution_shown'] = False 
+
+if st.session_state.get('q53_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 53:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Lấy tích phân hai vế từ $0$ đến $1$**
+    
+    Từ phương trình $f(1-x) + x^2 f''(x) = 2x$, lấy tích phân từ $0$ đến $1$:
+    $$ \int_{0}^{1} f(1-x) dx + \int_{0}^{1} x^2 f''(x) dx = \int_{0}^{1} 2x \, dx $$
+    
+    * Xét vế phải: $\int_{0}^{1} 2x \, dx = 1$.
+    * Xét tích phân thứ nhất: Đặt $u = 1 - x \implies du = -dx$. Đổi cận $x = 0 \implies u = 1$, $x = 1 \implies u = 0$.
+      $$ \int_{0}^{1} f(1-x) dx = \int_{0}^{1} f(u) du = \int_{0}^{1} f(x) dx $$
+    * Xét tích phân thứ hai (dùng tích phân từng phần):
+      $$ \int_{0}^{1} x^2 f''(x) dx = \int_{0}^{1} x^2 d(f'(x)) = \left[ x^2 f'(x) \right]_{0}^{1} - \int_{0}^{1} 2x f'(x) dx $$
+      Thay $f'(1) = 1$:
+      $$ 1^2 \cdot f'(1) - 0 - 2 \int_{0}^{1} x f'(x) dx = 1 - 2I $$
+    
+    Thay vào phương trình tổng hợp:
+    $$ \int_{0}^{1} f(x) dx + 1 - 2I = 1 \implies \int_{0}^{1} f(x) dx = 2I $$
+    
+    **Bước 2: Biến đổi tích phân cần tính $I$**
+    
+    Xét $I = \int_{0}^{1} x f'(x) dx$. Dùng tích phân từng phần:
+    $$ I = \int_{0}^{1} x d(f(x)) = \left[ x f(x) \right]_{0}^{1} - \int_{0}^{1} f(x) dx = 1 \cdot f(1) - 0 - \int_{0}^{1} f(x) dx $$
+    Vì $f(1) = 1$, ta có:
+    $$ I = 1 - \int_{0}^{1} f(x) dx $$
+    
+    **Bước 3: Tính giá trị của $I$**
+    
+    Thay $\int_{0}^{1} f(x) dx = 2I$ vào phương trình trên:
+    $$ I = 1 - 2I \implies 3I = 1 \implies I = \dfrac{1}{3} $$
+    
+    **Kết luận:** $I = \dfrac{1}{3}$.
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU HỎI 54
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 54 (ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $y = f(x)$ có đạo hàm trên $(0; +\infty)$ thỏa mãn $2x f'(x) + f(x) = 2x, \forall x \in (0; +\infty)$, $f(1) = 1$. Giá trị của biểu thức $f(4)$ là:
+""")
+
+user_answer_54 = st.text_input("Nhập giá trị của $f(4)$ cho Câu 54 (dạng phân số 17/2 hoặc số thập phân 8.5):", key="q54_ans")
+
+if st.button("Kiểm tra đáp án Câu 54", key="q54_check"):
+    normalized_user_answer_54 = user_answer_54.strip()
+    if normalized_user_answer_54 in ["17/6", "2.833", "2.8333"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_54 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Nhân cả hai vế với thừa số tích phân thích hợp (chia phương trình cho $\sqrt{x}$) để thu gọn thành đạo hàm của một tích.")
+
+st.markdown("---")
+
+if 'q54_solution_shown' not in st.session_state:
+    st.session_state['q54_solution_shown'] = False
+
+col1_54, col2_54 = st.columns([1, 4])
+with col1_54:
+    if st.button("Xem lời giải chi tiết Câu 54", key="q54_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q54_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q54_solution_shown'] = False 
+
+if st.session_state.get('q54_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 54:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Biến đổi phương trình vi phân**
+    
+    Phương trình cho: $2x f'(x) + f(x) = 2x$.
+    Chia cả hai vế cho $2\sqrt{x}$ (với $x > 0$):
+    $$ \sqrt{x} f'(x) + \dfrac{1}{2\sqrt{x}} f(x) = \sqrt{x} $$
+    
+    Nhận thấy vế trái chính là đạo hàm của tích:
+    $$ \left( \sqrt{x} \cdot f(x) \right)' = \sqrt{x} $$
+    
+    **Bước 2: Lấy nguyên hàm hai vế**
+    $$ \sqrt{x} \cdot f(x) = \int \sqrt{x} \, dx = \dfrac{2}{3} x^{\dfrac{3}{2}} + C $$
+    
+    **Bước 3: Xác định hằng số $C$**
+    
+    Sử dụng điều kiện $f(1) = 1$:
+    $$ \sqrt{1} \cdot f(1) = \dfrac{2}{3} (1)^{\dfrac{3}{2}} + C \implies 1 = \dfrac{2}{3} + C \implies C = \dfrac{1}{3} $$
+    
+    Do đó biểu thức hàm số là:
+    $$ \sqrt{x} \cdot f(x) = \dfrac{2}{3} x^{\dfrac{3}{2}} + \dfrac{1}{3} \implies f(x) = \dfrac{2}{3}x + \dfrac{1}{3\sqrt{x}} $$
+    
+    **Bước 4: Tính $f(4)$**
+    $$ f(4) = \dfrac{2}{3}(4) + \dfrac{1}{3\sqrt{4}} = \dfrac{8}{3} + \dfrac{1}{3 \cdot 2} = \dfrac{8}{3} + \dfrac{1}{6} = \dfrac{16}{6} + \dfrac{1}{6} = \dfrac{17}{6} $$
+    
+    **Kết luận:** $f(4) = \dfrac{17}{6}$.
+    """)
