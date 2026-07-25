@@ -2938,3 +2938,107 @@ if st.session_state.get('q30_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 31: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH HÌNH PHẲNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 31 (Sở Thái Nguyên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hai hàm số $y = f(x) = ax^3 + bx^2 + cx - 1$ và $y = g(x) = dx^2 + ex + \dfrac{1}{2}, (a,b,c,d,e \in \mathbb{R})$. Biết rằng đồ thị của hàm số $y = f(x)$ và $y = g(x)$ cắt nhau tại ba điểm có hoành độ lần lượt $-3; -1; 2$. Hình phẳng giới hạn bởi hai đồ thị đã cho có diện tích bằng bao nhiêu? Không làm tròn kết quả các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần mười.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích hình phẳng (ví dụ: 12.3):", key="q31_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ theo yêu cầu
+        st.image("images/image_0149b5.PNG", width=600)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_0149b5.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q31_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 5.3 (253/48 ≈ 5.27 -> 5.3)
+    if normalized_user_answer == "5.3":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Xét hàm hiệu $h(x) = f(x) - g(x)$. Dựa vào các nghiệm hoành độ giao điểm và hệ số tự do để tìm phương trình cụ thể của $h(x)$, sau đó tính tích phân.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q31_solution_shown' not in st.session_state:
+    st.session_state['q31_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q31_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q31_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q31_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q31_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm hiệu $h(x)$**
+    
+    Xét hàm số $h(x) = f(x) - g(x)$. Ta có:
+    $$h(x) = (ax^3 + bx^2 + cx - 1) - \left(dx^2 + ex + \dfrac{1}{2}\right) = ax^3 + (b-d)x^2 + (c-e)x - \dfrac{3}{2}$$
+    
+    Theo giả thiết, hai đồ thị $f(x)$ và $g(x)$ cắt nhau tại 3 điểm có hoành độ $x = -3$, $x = -1$, $x = 2$.
+    Nghĩa là phương trình $h(x) = 0$ có 3 nghiệm phân biệt là $-3; -1; 2$. 
+    Do $h(x)$ là đa thức bậc 3 có hệ số của $x^3$ là $a$, ta có thể viết $h(x)$ dưới dạng:
+    $$h(x) = a(x + 3)(x + 1)(x - 2)$$
+    
+    **Bước 2: Tìm hệ số $a$**
+    
+    Khai triển biểu thức $h(x)$ ở trên:
+    $$h(x) = a(x^2 + 4x + 3)(x - 2) = a(x^3 - 2x^2 + 4x^2 - 8x + 3x - 6) = a(x^3 + 2x^2 - 5x - 6)$$
+    $$h(x) = ax^3 + 2ax^2 - 5ax - 6a$$
+    
+    Đồng nhất hệ số tự do của 2 cách viết hàm $h(x)$, ta có:
+    $$-6a = -\dfrac{3}{2} \Leftrightarrow a = \dfrac{1}{4}$$
+    
+    Vậy hàm hiệu là: $h(x) = \dfrac{1}{4}(x^3 + 2x^2 - 5x - 6)$.
+    
+    **Bước 3: Tính diện tích hình phẳng**
+    
+    Diện tích $S$ của hình phẳng giới hạn bởi $f(x)$ và $g(x)$ được tính bằng công thức:
+    $$S = \int_{-3}^{2} |h(x)| dx = \int_{-3}^{-1} |h(x)| dx + \int_{-1}^{2} |h(x)| dx$$
+    
+    Dựa vào đồ thị (hoặc xét dấu hàm $h(x)$):
+    *   Trên khoảng $(-3; -1)$: đồ thị $f(x)$ nằm trên $g(x)$ nên $h(x) > 0$.
+    *   Trên khoảng $(-1; 2)$: đồ thị $f(x)$ nằm dưới $g(x)$ nên $h(x) < 0$.
+    
+    Do đó:
+    $$S = \int_{-3}^{-1} \dfrac{1}{4}(x^3 + 2x^2 - 5x - 6) dx - \int_{-1}^{2} \dfrac{1}{4}(x^3 + 2x^2 - 5x - 6) dx$$
+    
+    Ta tính nguyên hàm $H(x) = \dfrac{1}{4} \left( \dfrac{x^4}{4} + \dfrac{2x^3}{3} - \dfrac{5x^2}{2} - 6x \right)$.
+    
+    *   Diện tích phần thứ nhất: 
+        $$S_1 = H(-1) - H(-3) = \dfrac{37}{48} - \left(-\dfrac{9}{16}\right) = \dfrac{64}{48} = \dfrac{4}{3}$$
+    *   Diện tích phần thứ hai:
+        $$S_2 = -\left[ H(2) - H(-1) \right] = H(-1) - H(2) = \dfrac{37}{48} - \left(-\dfrac{19}{6}\right) = \dfrac{189}{48} = \dfrac{63}{16}$$
+        
+    Tổng diện tích:
+    $$S = S_1 + S_2 = \dfrac{4}{3} + \dfrac{63}{16} = \dfrac{64 + 189}{48} = \dfrac{253}{48} \approx 5,2708...$$
+    
+    **Kết luận:** Làm tròn kết quả cuối cùng đến hàng phần mười, ta được $S \approx 5,3$.
+    """)
+
+st.markdown("---")
