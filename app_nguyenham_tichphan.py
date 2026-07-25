@@ -4583,3 +4583,305 @@ if st.session_state.get('q48_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+import streamlit as st
+
+# ==========================================
+# CÂU HỎI 49
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 49(ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $y = f(x)$ có đạo hàm trên $[0; 3]$; $f(3 - x) \cdot f(x) = 1$, $f(x) \neq -1$ với mọi $x \in [0; 3]$ và $f(0) = \dfrac{1}{2}$. Tính tích phân: $I = \int_{0}^{3} \dfrac{x \cdot f'(x)}{[1 + f(3 - x)]^2 \cdot f^2(x)} dx$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN CÂU 49 ---
+user_answer_49 = st.text_input("Nhập giá trị của I (dạng phân số 1/4 hoặc số thập phân 0.25):", key="q49_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN CÂU 49 ---
+if st.button("Kiểm tra đáp án Câu 49", key="q49_check"):
+    normalized_user_answer_49 = user_answer_49.strip()
+    
+    if normalized_user_answer_49 in ["1/2", "0.5"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_49 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Rút gọn mẫu số bằng tính chất $f(3-x) \cdot f(x) = 1$, sau đó dùng phương pháp tích phân từng phần kết hợp đổi biến đối xứng để tính.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 49 ---
+st.markdown("---")
+
+if 'q49_solution_shown' not in st.session_state:
+    st.session_state['q49_solution_shown'] = False
+
+col1_49, col2_49 = st.columns([1, 4])
+with col1_49:
+    if st.button("Xem lời giải chi tiết Câu 49", key="q49_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q49_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q49_solution_shown'] = False 
+
+if st.session_state.get('q49_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 49:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Rút gọn biểu thức dưới dấu tích phân**
+    
+    Từ giả thiết $f(3 - x) \cdot f(x) = 1$, ta suy ra $f(3 - x) = \dfrac{1}{f(x)}$ với mọi $x \in [0; 3]$.
+    
+    Xét mẫu số của biểu thức tích phân:
+    $$ [1 + f(3 - x)]^2 \cdot f^2(x) = \left[ \left(1 + f(3 - x)\right) \cdot f(x) \right]^2 $$
+    $$ = \left[ f(x) + f(3 - x) \cdot f(x) \right]^2 = \left[ f(x) + 1 \right]^2 = (1 + f(x))^2 $$
+    
+    Khi đó, tích phân $I$ trở thành:
+    $$ I = \int_{0}^{3} \dfrac{x \cdot f'(x)}{(1 + f(x))^2} dx $$
+    
+    **Bước 2: Sử dụng phương pháp tích phân từng phần**
+    
+    Đặt $\begin{cases} u = x \\ dv = \dfrac{f'(x)}{(1 + f(x))^2} dx \end{cases} \implies \begin{cases} du = dx \\ v = -\dfrac{1}{1 + f(x)} \end{cases}$.
+    
+    Áp dụng công thức tích phân từng phần:
+    $$ I = \left[ -\dfrac{x}{1 + f(x)} \right]_{0}^{3} - \int_{0}^{3} \left( -\dfrac{1}{1 + f(x)} \right) dx $$
+    $$ = \left( -\dfrac{3}{1 + f(3)} + \dfrac{0}{1 + f(0)} \right) + \int_{0}^{3} \dfrac{1}{1 + f(x)} dx $$
+    
+    **Bước 3: Tìm giá trị của $f(3)$**
+    
+    Từ giả thiết $f(3 - x) \cdot f(x) = 1$ và $f(0) = \dfrac{1}{2}$, thay $x = 0$ ta được:
+    $$ f(3 - 0) \cdot f(0) = 1 \implies f(3) \cdot \dfrac{1}{2} = 1 \implies f(3) = 2 $$
+    
+    Thay $f(3) = 2$ vào biểu thức biên:
+    $$ -\dfrac{3}{1 + f(3)} = -\dfrac{3}{1 + 2} = -\dfrac{3}{3} = -1 $$
+    
+    **Bước 4: Tính tích phân phần còn lại $J = \int_{0}^{3} \dfrac{1}{1 + f(x)} dx$**
+    
+    Đặt $t = 3 - x \implies dt = -dx \implies dx = -dt$.
+    Đổi cận: Khi $x = 0 \implies t = 3$; khi $x = 3 \implies t = 0$.
+    
+    Ta có:
+    $$ J = \int_{3}^{0} \dfrac{1}{1 + f(3 - t)} (-dt) = \int_{0}^{3} \dfrac{1}{1 + f(3 - t)} dt = \int_{0}^{3} \dfrac{1}{1 + f(t)} dt = \int_{0}^{3} \dfrac{1}{1 + f(x)} dx $$
+    
+    Mặt khác, từ $f(3 - x) \cdot f(x) = 1 \implies f(3 - x) = \dfrac{1}{f(x)}$, nên:
+    $$ \dfrac{1}{1 + f(3 - x)} = \dfrac{1}{1 + \dfrac{1}{f(x)}} = \dfrac{f(x)}{f(x) + 1} = \dfrac{f(x) + 1 - 1}{f(x) + 1} = 1 - \dfrac{1}{1 + f(x)} $$
+    
+    Do đó:
+    $$ J = \int_{0}^{3} \left( 1 - \dfrac{1}{1 + f(x)} \right) dx = \int_{0}^{3} 1 \, dx - \int_{0}^{3} \dfrac{1}{1 + f(x)} dx = 3 - J $$
+    $$ \implies 2J = 3 \implies J = \dfrac{3}{2} $$
+    
+    **Bước 5: Tổng hợp kết quả**
+    $$ I = -1 + J = -1 + \dfrac{3}{2} = \dfrac{1}{2} $$
+    
+    **Kết luận:** $I = \dfrac{1}{2}$ (hoặc $0.5$).
+    """)
+
+st.markdown("---")
+
+
+
+# ==========================================
+# CÂU HỎI 50
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 50(ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x)$ liên tục trên $[0; 1]$ thỏa mãn $f(1) = 0$, $\int_{0}^{1} [f'(x)]^2 dx = 80$ và $\int_{0}^{1} x \cdot f(x) dx = -2$. Tính tích phân $I = \int_{0}^{1} f(x) dx$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN CÂU 50 ---
+user_answer_50 = st.text_input("Nhập giá trị của I cho Câu 50 (dạng số nguyên -5):", key="q50_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN CÂU 50 ---
+if st.button("Kiểm tra đáp án Câu 50", key="q50_check"):
+    normalized_user_answer_50 = user_answer_50.strip()
+    if normalized_user_answer_50 == "-5":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_50 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Dùng phương pháp tích phân từng phần để biến đổi giả thiết $\int_{0}^{1} x f(x) dx$, sau đó thiết lập hằng đẳng thức bình phương của đạo hàm với hệ số phù hợp.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 50 ---
+st.markdown("---")
+
+if 'q50_solution_shown' not in st.session_state:
+    st.session_state['q50_solution_shown'] = False
+
+col1_50, col2_50 = st.columns([1, 4])
+with col1_50:
+    if st.button("Xem lời giải chi tiết Câu 50", key="q50_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q50_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q50_solution_shown'] = False 
+
+if st.session_state.get('q50_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 50:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Biến đổi giả thiết tích phân bằng phương pháp tích phân từng phần**
+    
+    Xét tích phân $\int_{0}^{1} x \cdot f(x) dx = -2$.
+    Đặt $\begin{cases} u = f(x) \\ dv = x \, dx \end{cases} \implies \begin{cases} du = f'(x) dx \\ v = \dfrac{x^2}{2} \end{cases}$.
+    
+    Áp dụng công thức tích phân từng phần:
+    $$ \int_{0}^{1} x \cdot f(x) dx = \left[ \dfrac{x^2}{2} f(x) \right]_{0}^{1} - \int_{0}^{1} \dfrac{x^2}{2} f'(x) dx $$
+    
+    Vì $f(1) = 0$, ta có biên:
+    $$ \dfrac{1^2}{2} f(1) - \dfrac{0^2}{2} f(0) = 0 - 0 = 0 $$
+    
+    Do đó:
+    $$ -\int_{0}^{1} \dfrac{x^2}{2} f'(x) dx = -2 \implies \int_{0}^{1} x^2 f'(x) dx = 4 $$
+    
+    **Bước 2: Sử dụng đánh giá tích phân bình phương bằng 0**
+    
+    Xét tích phân với tham số $k$:
+    $$ \int_{0}^{1} \left( f'(x) - k x^2 \right)^2 dx = \int_{0}^{1} [f'(x)]^2 dx - 2k \int_{0}^{1} x^2 f'(x) dx + k^2 \int_{0}^{1} x^4 dx $$
+    
+    Thay các giá trị đã biết vào:
+    * $\int_{0}^{1} [f'(x)]^2 dx = 80$
+    * $\int_{0}^{1} x^2 f'(x) dx = 4$
+    * $\int_{0}^{1} x^4 dx = \left[ \dfrac{x^5}{5} \right]_{0}^{1} = \dfrac{1}{5}$
+    
+    Biểu thức trở thành tam thức bậc hai theo ẩn $k$:
+    $$ \int_{0}^{1} \left( f'(x) - k x^2 \right)^2 dx = 80 - 2k(4) + \dfrac{1}{5}k^2 = \dfrac{1}{5}k^2 - 8k + 80 $$
+    
+    Để tam thức đạt giá trị tối ưu sao cho tích phân bằng $0$, ta chọn $k$ tại đỉnh của parabol:
+    $$ k = -\dfrac{-8}{2 \cdot \left(\dfrac{1}{5}\right)} = \dfrac{8}{\dfrac{2}{5}} = 20 $$
+    
+    Thay $k = 20$ vào tam thức:
+    $$ \dfrac{1}{5}(20)^2 - 8(20) + 80 = \dfrac{400}{5} - 160 + 80 = 80 - 160 + 80 = 0 $$
+    
+    Vì tích phân của một hàm số không âm bằng $0$, suy ra:
+    $$ f'(x) - 20x^2 = 0 \iff f'(x) = 20x^2 $$
+    
+    **Bước 3: Tìm hàm số $f(x)$**
+    
+    Lấy nguyên hàm hai vế:
+    $$ f(x) = \int 20x^2 dx = \dfrac{20}{3}x^3 + C $$
+    
+    Sử dụng điều kiện $f(1) = 0$:
+    $$ \dfrac{20}{3}(1)^3 + C = 0 \iff C = -\dfrac{20}{3} $$
+    
+    Vậy hàm số cần tìm là:
+    $$ f(x) = \dfrac{20}{3}x^3 - \dfrac{20}{3} = \dfrac{20}{3}(x^3 - 1) $$
+    
+    **Bước 4: Tính tích phân $I$**
+    $$ I = \int_{0}^{1} f(x) dx = \int_{0}^{1} \dfrac{20}{3}(x^3 - 1) dx = \dfrac{20}{3} \left[ \dfrac{x^4}{4} - x \right]_{0}^{1} $$
+    $$ = \dfrac{20}{3} \left( \dfrac{1}{4} - 1 \right) = \dfrac{20}{3} \left( -\dfrac{3}{4} \right) = -5 $$
+    
+    **Kết luận:** $I = -5$.
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU HỎI 51
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 51(ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x)$ có đạo hàm liên tục trên $[0; 1]$ thỏa mãn $f(0) = 1$, $\int_{0}^{1} [f'(x)]^2 dx = \dfrac{1}{30}$ và $\int_{0}^{1} (2x-1) f(x) dx = -\dfrac{1}{30}$. Tích phân $I = \int_{0}^{1} f(x) dx$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN CÂU 51 ---
+user_answer_51 = st.text_input("Nhập giá trị của I cho Câu 51 (dạng phân số 1/3):", key="q51_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN CÂU 51 ---
+if st.button("Kiểm tra đáp án Câu 51", key="q51_check"):
+    normalized_user_answer_51 = user_answer_51.strip()
+    if normalized_user_answer_51 in ["11/12", "0.9167", "0.917"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_51 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Dùng phương pháp tích phân từng phần với biểu thức $(x^2 - x)$, sau đó thiết lập hằng đẳng thức bình phương tích phân với hệ số $k=1$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 51 ---
+st.markdown("---")
+
+if 'q51_solution_shown' not in st.session_state:
+    st.session_state['q51_solution_shown'] = False
+
+col1_51, col2_51 = st.columns([1, 4])
+with col1_51:
+    if st.button("Xem lời giải chi tiết Câu 51", key="q51_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q51_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q51_solution_shown'] = False 
+
+if st.session_state.get('q51_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 51:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Biến đổi giả thiết tích phân bằng phương pháp tích phân từng phần**
+    
+    Xét tích phân $\int_{0}^{1} (2x - 1) f(x) dx = -\dfrac{1}{30}$.
+    Nhận thấy $2x - 1 = (x^2 - x)'$. Ta đặt $\begin{cases} u = f(x) \\ dv = (2x - 1) dx \end{cases} \implies \begin{cases} du = f'(x) dx \\ v = x^2 - x \end{cases}$.
+    
+    Áp dụng công thức tích phân từng phần:
+    $$ \int_{0}^{1} (2x - 1) f(x) dx = \left[ (x^2 - x) f(x) \right]_{0}^{1} - \int_{0}^{1} (x^2 - x) f'(x) dx $$
+    
+    Thay biên vào:
+    * Tại $x = 1$: $(1^2 - 1)f(1) = 0$
+    * Tại $x = 0$: $(0^2 - 0)f(0) = 0$
+    
+    Do đó phần biên triệt tiêu hoàn toàn, ta có:
+    $$ -\int_{0}^{1} (x^2 - x) f'(x) dx = -\dfrac{1}{30} \implies \int_{0}^{1} (x^2 - x) f'(x) dx = \dfrac{1}{30} $$
+    
+    **Bước 2: Sử dụng đánh giá tích phân bình phương bằng 0**
+    
+    Xét tích phân với tham số $k$:
+    $$ \int_{0}^{1} \left( f'(x) - k(x^2 - x) \right)^2 dx = \int_{0}^{1} [f'(x)]^2 dx - 2k \int_{0}^{1} (x^2 - x) f'(x) dx + k^2 \int_{0}^{1} (x^2 - x)^2 dx $$
+    
+    Thay các giá trị đã biết vào:
+    * $\int_{0}^{1} [f'(x)]^2 dx = \dfrac{1}{30}$
+    * $\int_{0}^{1} (x^2 - x) f'(x) dx = \dfrac{1}{30}$
+    * $\int_{0}^{1} (x^2 - x)^2 dx = \int_{0}^{1} (x^4 - 2x^3 + x^2) dx = \left[ \dfrac{x^5}{5} - \dfrac{x^4}{2} + \dfrac{x^3}{3} \right]_{0}^{1} = \dfrac{1}{5} - \dfrac{1}{2} + \dfrac{1}{3} = \dfrac{1}{30}$
+    
+    Biểu thức trở thành:
+    $$ \int_{0}^{1} \left( f'(x) - k(x^2 - x) \right)^2 dx = \dfrac{1}{30} - 2k\left(\dfrac{1}{30}\right) + k^2\left(\dfrac{1}{30}\right) = \dfrac{1}{30}(k^2 - 2k + 1) = \dfrac{1}{30}(k - 1)^2 $$
+    
+    Chọn $k = 1$, ta có giá trị tích phân bằng $0$:
+    $$ \int_{0}^{1} \left( f'(x) - (x^2 - x) \right)^2 dx = 0 \implies f'(x) - (x^2 - x) = 0 \implies f'(x) = x^2 - x $$
+    
+    **Bước 3: Tìm hàm số $f(x)$**
+    
+    Lấy nguyên hàm hai vế:
+    $$ f(x) = \int (x^2 - x) dx = \dfrac{x^3}{3} - \dfrac{x^2}{2} + C $$
+    
+    Sử dụng điều kiện $f(0) = 1$:
+    $$ \dfrac{0^3}{3} - \dfrac{0^2}{2} + C = 1 \implies C = 1 $$
+    
+    Vậy hàm số cần tìm là:
+    $$ f(x) = \dfrac{x^3}{3} - \dfrac{x^2}{2} + 1 $$
+    
+    **Bước 4: Tính tích phân $I$**
+    $$ I = \int_{0}^{1} f(x) dx = \int_{0}^{1} \left( \dfrac{x^3}{3} - \dfrac{x^2}{2} + 1 \right) dx $$
+    $$ = \left[ \dfrac{x^4}{12} - \dfrac{x^3}{6} + x \right]_{0}^{1} = \dfrac{1}{12} - \dfrac{1}{6} + 1 = \dfrac{1 - 2 + 12}{12} = \dfrac{11}{12} $$
+    
+    **Kết luận:** $I = \dfrac{11}{12}$.
+    """)
