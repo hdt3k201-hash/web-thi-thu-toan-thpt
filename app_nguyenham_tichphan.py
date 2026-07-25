@@ -5327,3 +5327,230 @@ if st.session_state.get('q57_solution_shown') and st.session_state.get('logged_i
     
     **Kết luận:** $I = \dfrac{4}{3}$ (hoặc khoảng $1.333$).
     """)
+
+
+
+# ==========================================
+# CÂU HỎI 58
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 58(ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x)$ thỏa mãn $f(1) = 5$ và $2x \cdot f'(x) + f(x) = 6x$ với mọi $x > 0$. Tính tích phân $I = \int_{4}^{9} f(x) dx$.
+""")
+
+user_answer_58 = st.text_input("Nhập giá trị của I cho Câu 58 (dạng số nguyên 11):", key="q58_ans")
+
+
+if st.button("Kiểm tra đáp án Câu 58", key="q58_check"):
+    normalized_user_answer_58 = user_answer_58.strip()
+    if normalized_user_answer_58 == "71":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_58 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Chia cả hai vế cho $2\sqrt{x}$ để đưa phương trình về dạng đạo hàm của tích $\left(\sqrt{x} \cdot f(x)\right)'$.")
+
+st.markdown("---")
+
+if 'q58_solution_shown' not in st.session_state:
+    st.session_state['q58_solution_shown'] = False
+
+col1_58, col2_58 = st.columns([1, 4])
+with col1_58:
+    if st.button("Xem lời giải chi tiết Câu 58", key="q58_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q58_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q58_solution_shown'] = False 
+
+if st.session_state.get('q58_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 58:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Biến đổi phương trình vi phân**
+    
+    Phương trình cho: $2x \cdot f'(x) + f(x) = 6x$.
+    Chia cả hai vế cho $2\sqrt{x}$ (với $x > 0$):
+    $$ \sqrt{x} \cdot f'(x) + \dfrac{1}{2\sqrt{x}} f(x) = 3\sqrt{x} $$
+    
+    Nhận thấy vế trái chính là đạo hàm của tích:
+    $$ \left( \sqrt{x} \cdot f(x) \right)' = 3\sqrt{x} $$
+    
+    **Bước 2: Tìm hàm số $f(x)$**
+    
+    Lấy nguyên hàm hai vế theo $x$:
+    $$ \sqrt{x} \cdot f(x) = \int 3\sqrt{x} \, dx = 3 \cdot \dfrac{2}{3} x^{\dfrac{3}{2}} + C = 2x^{\dfrac{3}{2}} + C $$
+    
+    **Bước 3: Xác định hằng số $C$**
+    
+    Sử dụng điều kiện $f(1) = 5$:
+    $$ \sqrt{1} \cdot f(1) = 2(1)^{\dfrac{3}{2}} + C \implies 1 \cdot 5 = 2 + C \implies C = 3 $$
+    
+    Do đó biểu thức hàm số là:
+    $$ \sqrt{x} \cdot f(x) = 2x^{\dfrac{3}{2}} + 3 \implies f(x) = 2x + \dfrac{3}{\sqrt{x}} $$
+    
+    **Bước 4: Tính tích phân $I$**
+    $$ I = \int_{4}^{9} f(x) dx = \int_{4}^{9} \left( 2x + \dfrac{3}{\sqrt{x}} \right) dx = \left[ x^2 + 6\sqrt{x} \right]_{4}^{9} $$
+    $$ = \left( 9^2 + 6\sqrt{9} \right) - \left( 4^2 + 6\sqrt{4} \right) = (81 + 18) - (16 + 12) = 99 - 28 = 71 $$
+    
+    **Kết luận:** $I = 71$.
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU HỎI 59
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 59(ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x)$ liên tục trên $[0; 1]$. Biết $\int_{0}^{1} \left[ x \cdot f'(1-x) - f(x) \right] dx = \dfrac{1}{2}$, tính $f(0)$.
+""")
+
+user_answer_59 = st.text_input("Nhập giá trị của $f(0)$ cho Câu 59 (dạng phân số 1/4 hoặc số thập phân 0.25):", key="q59_ans")
+
+if st.button("Kiểm tra đáp án Câu 59", key="q59_check"):
+    normalized_user_answer_59 = user_answer_59.strip()
+    if normalized_user_answer_59 in ["-1/2", "-0.5"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_59 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Đổi biến $t = 1-x$ cho phần tích phân chứa $f'(1-x)$, sau đó dùng phương pháp tích phân từng phần.")
+
+st.markdown("---")
+
+if 'q59_solution_shown' not in st.session_state:
+    st.session_state['q59_solution_shown'] = False
+
+col1_59, col2_59 = st.columns([1, 4])
+with col1_59:
+    if st.button("Xem lời giải chi tiết Câu 59", key="q59_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q59_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q59_solution_shown'] = False 
+
+if st.session_state.get('q59_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 59:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Biến đổi tích phân chứa $f'(1-x)$**
+    
+    Xét tích phân $J = \int_{0}^{1} x \cdot f'(1-x) dx$.
+    Đặt $t = 1 - x \implies x = 1 - t \implies dx = -dt$.
+    Đổi cận: Khi $x = 0 \implies t = 1$; khi $x = 1 \implies t = 0$.
+    
+    Ta có:
+    $$ J = \int_{1}^{0} (1 - t) \cdot f'(t) (-dt) = \int_{0}^{1} (1 - x) f'(x) dx $$
+    
+    **Bước 2: Dùng phương pháp tích phân từng phần cho $J$**
+    
+    Đặt $\begin{cases} u = 1 - x \\ dv = f'(x) dx \end{cases} \implies \begin{cases} du = -dx \\ v = f(x) \end{cases}$.
+    
+    Áp dụng công thức:
+    $$ J = \left[ (1 - x)f(x) \right]_{0}^{1} - \int_{0}^{1} f(x) (-dx) = \left( (0)f(1) - (1)f(0) \right) + \int_{0}^{1} f(x) dx $$
+    $$ J = -f(0) + \int_{0}^{1} f(x) dx $$
+    
+    **Bước 3: Thay vào phương trình giả thiết ban đầu**
+    
+    Theo giả thiết:
+    $$ \int_{0}^{1} \left[ x \cdot f'(1-x) - f(x) \right] dx = \dfrac{1}{2} $$
+    $$ \iff \int_{0}^{1} x \cdot f'(1-x) dx - \int_{0}^{1} f(x) dx = \dfrac{1}{2} $$
+    $$ \iff J - \int_{0}^{1} f(x) dx = \dfrac{1}{2} $$
+    
+    Thay giá trị của $J$ vào:
+    $$ \left( -f(0) + \int_{0}^{1} f(x) dx \right) - \int_{0}^{1} f(x) dx = \dfrac{1}{2} $$
+    $$ \iff -f(0) = \dfrac{1}{2} \implies f(0) = -\dfrac{1}{2} $$
+    
+    **Kết luận:** $f(0) = -\dfrac{1}{2}$ (hoặc $-0.5$).
+    """)
+
+st.markdown("---")
+
+# ==========================================
+# CÂU HỎI 60
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 60(ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $y = f(x)$ liên tục trên $\mathbb{R} \setminus \{0; -1\}$ thỏa mãn điều kiện $f(1) = 2\ln 2$ và $x(x+1) \cdot f'(x) + f(x) = x^2 + 3x + 2$. Giá trị $f(2) = a + b\ln 3$, với $a, b \in \mathbb{Q}$. Tính $a^2 + b^2$.
+""")
+
+user_answer_60 = st.text_input("Nhập giá trị của $a^2 + b^2$ cho Câu 60 (dạng phân số 1/2 hoặc số thập phân 0.5):", key="q60_ans")
+
+if st.button("Kiểm tra đáp án Câu 60", key="q60_check"):
+    normalized_user_answer_60 = user_answer_60.strip()
+    if normalized_user_answer_60 in ["9/2", "4.5"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_60 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Chia cả hai vế cho $(x+1)^2$ để thu gọn vế trái thành đạo hàm $\left(\dfrac{x}{x+1}f(x)\right)'$.")
+
+st.markdown("---")
+
+if 'q60_solution_shown' not in st.session_state:
+    st.session_state['q60_solution_shown'] = False
+
+col1_60, col2_60 = st.columns([1, 4])
+with col1_60:
+    if st.button("Xem lời giải chi tiết Câu 60", key="q60_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q60_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q60_solution_shown'] = False 
+
+if st.session_state.get('q60_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 60:")
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Biến đổi phương trình vi phân**
+    
+    Phương trình cho: $x(x+1) \cdot f'(x) + f(x) = x^2 + 3x + 2 = (x+1)(x+2)$.
+    Chia cả hai vế cho $(x+1)^2$ (với $x > 0$):
+    $$ \dfrac{x}{x+1} f'(x) + \dfrac{1}{(x+1)^2} f(x) = \dfrac{(x+1)(x+2)}{(x+1)^2} = \dfrac{x+2}{x+1} = 1 + \dfrac{1}{x+1} $$
+    
+    Nhận thấy vế trái chính là đạo hàm của thương:
+    $$ \left( \dfrac{x}{x+1} \cdot f(x) \right)' = 1 + \dfrac{1}{x+1} $$
+    
+    **Bước 2: Lấy nguyên hàm hai vế**
+    $$ \dfrac{x}{x+1} \cdot f(x) = \int \left( 1 + \dfrac{1}{x+1} \right) dx = x + \ln(x+1) + C $$
+    
+    **Bước 3: Xác định hằng số $C$**
+    
+    Sử dụng điều kiện $f(1) = 2\ln 2$:
+    $$ \dfrac{1}{1+1} \cdot f(1) = 1 + \ln(1+1) + C $$
+    $$ \dfrac{1}{2} \cdot (2\ln 2) = 1 + \ln 2 + C \implies \ln 2 = 1 + \ln 2 + C \implies C = -1 $$
+    
+    Do đó biểu thức hàm số là:
+    $$ \dfrac{x}{x+1} \cdot f(x) = x + \ln(x+1) - 1 \implies f(x) = \dfrac{x+1}{x} \left( x + \ln(x+1) - 1 \right) $$
+    
+    **Bước 4: Tính $f(2)$ và tìm hệ số $a, b$**
+    $$ f(2) = \dfrac{2+1}{2} \left( 2 + \ln(2+1) - 1 \right) = \dfrac{3}{2} \left( 1 + \ln 3 \right) = \dfrac{3}{2} + \dfrac{3}{2}\ln 3 $$
+    
+    Theo đề bài $f(2) = a + b\ln 3$, suy ra $a = \dfrac{3}{2}$ và $b = \dfrac{3}{2}$ (đều là số hữu tỉ).
+    
+    **Bước 5: Tính $a^2 + b^2$**
+    $$ a^2 + b^2 = \left(\dfrac{3}{2}\right)^2 + \left(\dfrac{3}{2}\right)^2 = \dfrac{9}{4} + \dfrac{9}{4} = \dfrac{18}{4} = \dfrac{9}{2} = 4.5 $$
+    
+    **Kết luận:** $a^2 + b^2 = \dfrac{9}{2}$ (hoặc $4.5$).
+    """)
+
+st.markdown("---")
