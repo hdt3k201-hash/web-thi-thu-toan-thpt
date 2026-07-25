@@ -2324,7 +2324,7 @@ if st.session_state.get('q24_solution_shown') and st.session_state.get('logged_i
 
 st.markdown("---")
 
-import streamlit as st
+
 
 # --- CÂU HỎI 25: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH ---
 st.markdown(
