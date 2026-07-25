@@ -2216,3 +2216,110 @@ if st.session_state.get('q23_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 24: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH VÀ TỐI ƯU HÓA ---
+st.markdown(
+    '<b style="color: blue;">Câu 24 (THPT Thạch Thành 1 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Người ta lát gạch trang trí một mảnh sân hình chữ nhật có kích thước $28\text{ m} \times 16\text{ m}$ như hình vẽ bên dưới, trong đó $(P_1), (P_2)$ là hai parabol đối xứng trục với nhau qua trục đối xứng vuông góc với chiều dài của mảnh sân, $(C)$ là đường tròn có tâm trùng với tâm của mảnh sân và lần lượt có duy nhất một điểm chung với các parabol đó. Chi phí cho phần lát gạch là $240$ nghìn đồng một mét vuông. Trong trường hợp hình tròn $(C)$ có diện tích lớn nhất thì chi phí lát gạch là bao nhiêu triệu đồng? *(Kết quả làm tròn tới hàng phần chục)*.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập chi phí lát gạch (triệu đồng) (ví dụ: 23.3):", key="q24_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đồng bộ đường dẫn ảnh theo đúng tên file trên hệ thống
+        st.image("images/image_fff7be.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi nếu chưa đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_fff7be.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q24_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác làm tròn đến hàng phần chục là 23.3
+    if normalized_user_answer in ["23.3", "23,3"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy chọn hệ trục tọa độ tâm O tại tâm mảnh sân, dùng điều kiện đường tròn tiếp xúc parabol tại đỉnh để tìm bán kính lớn nhất R = d, sau đó dùng tích phân tính diện tích phần màu vàng nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q24_solution_shown' not in st.session_state:
+    st.session_state['q24_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q24_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q24_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q24_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q24_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ trục tọa độ và phương trình parabol**
+    
+    * Chọn hệ trục tọa độ $Oxy$ có gốc $O(0;0)$ trùng với tâm của mảnh sân hình chữ nhật, trục $Ox$ song song với chiều dài ($28\text{ m}$), trục $Oy$ song song với chiều rộng ($16\text{ m}$).
+    * Khi đó, mảnh sân giới hạn bởi $x \in [-14; 14]$ và $y \in [-8; 8]$.
+    * Theo hình vẽ, tại cạnh dưới (và cạnh trên), khoảng cách từ góc sân bên phải đến giao điểm của parabol $(P_2)$ với cạnh sân là $4\text{ m}$. Do đó hoành độ giao điểm này là:
+        $$x = 14 - 4 = 10 \Rightarrow (P_2) \text{ đi qua điểm } (10; 8) \text{ và } (10; -8)$$
+    * Gọi đỉnh của parabol $(P_2)$ (nằm bên phải, quay bề lõm sang phải) là $I_2(-d; 0)$ với $d > 0$ chính là bán kính đường tròn $(C)$. Phương trình của $(P_2)$ có dạng:
+        $$x = ay^2 - d \quad (a > 0)$$
+    * Vì $(P_2)$ đi qua điểm $(10; 8)$, ta có:
+        $$10 = a \cdot 8^2 - d \Leftrightarrow 64a - d = 10 \Leftrightarrow a = \dfrac{10 + d}{64}$$
+    * Do tính chất đối xứng qua trục $Oy$, parabol $(P_1)$ có phương trình: $x = -ay^2 + d$.
+
+    **Bước 2: Tìm bán kính lớn nhất của đường tròn $(C)$**
+    
+    * Đường tròn $(C)$ có tâm $O(0;0)$, bán kính $R = d$ có phương trình: $x^2 + y^2 = d^2$.
+    * Để $(C)$ và $(P_2)$ có **duy nhất một điểm chung** (tiếp xúc nhau tại đỉnh $(-d; 0)$), phương trình hoành độ giao điểm sau không được có nghiệm thực khác tương ứng với điểm trên parabol:
+        $$x^2 + \dfrac{1}{a}(x + d) = d^2 \Leftrightarrow x^2 + \dfrac{1}{a}x + \dfrac{d}{a} - d^2 = 0$$
+    * Phương trình luôn có một nghiệm $x_1 = -d$. Theo định lý Vi-ét, nghiệm còn lại là $x_2 = d - \dfrac{1}{a}$.
+    * Để không phát sinh thêm giao điểm (yêu cầu $x > -d$), ta buộc phải có:
+        $$x_2 \le -d \Leftrightarrow d - \dfrac{1}{a} \le -d \Leftrightarrow a \le \dfrac{1}{2d}$$
+        *(Ý nghĩa hình học: Bán kính cong của parabol tại đỉnh phải lớn hơn hoặc bằng bán kính đường tròn).*
+    * Thay $a = \dfrac{10 + d}{64}$ vào điều kiện trên:
+        $$\dfrac{10 + d}{64} \le \dfrac{1}{2d} \Leftrightarrow d^2 + 10d - 32 \le 0 \Rightarrow 0 < d \le \sqrt{57} - 5$$
+    * Để diện tích đường tròn $(C)$ lớn nhất thì bán kính $d$ đạt giá trị lớn nhất:
+        $$d = \sqrt{57} - 5 \approx 2,5498 \text{ (m)} \Rightarrow a = \dfrac{1}{2d} \approx 0,1961$$
+
+    **Bước 3: Tính diện tích phần lát gạch (phần tô màu vàng)**
+    
+    * Phần gạch lát bao gồm: **Đường tròn $(C)$ ở giữa** + **Vùng phía trên** + **Vùng phía dưới**.
+    * Hai parabol cắt nhau tại các điểm có hoành độ $x = 0 \Rightarrow ay^2 = d \Rightarrow y_0 = \sqrt{\dfrac{d}{a}} = d\sqrt{2} \approx 3,606 \text{ (m)}$.
+    * Do tính đối xứng, tổng diện tích vùng trên và vùng dưới được tính bằng tích phân theo biến $y$ từ $y_0$ đến cạnh biên $y = 8$:
+        $$S_{\text{trên + dưới}} = 2 \int_{y_0}^{8} \left[ (ay^2 - d) - (-ay^2 + d) \right] dy = 4 \int_{y_0}^{8} (ay^2 - d) dy$$
+        $$S_{\text{trên + dưới}} = 4 \left[ \dfrac{a}{3}y^3 - dy \right]_{d\sqrt{2}}^{8} = \dfrac{2048}{3}a - 32d + \dfrac{8\sqrt{2}}{3}d^2$$
+    * Thay các giá trị $d = \sqrt{57} - 5$ và $a = \dfrac{1}{2d}$ vào biểu thức, ta tính được:
+        $$S_{\text{trên + dưới}} \approx 76,7894 \text{ (m}^2\text{)}$$
+    * Diện tích đường tròn $(C)$ là:
+        $$S_{(C)} = \pi d^2 = \pi (\sqrt{57} - 5)^2 \approx 20,4256 \text{ (m}^2\text{)}$$
+    * Tổng diện tích phần lát gạch là:
+        $$S_{\text{lát gạch}} = S_{\text{trên + dưới}} + S_{(C)} \approx 76,7894 + 20,4256 = 97,215 \text{ (m}^2\text{)}$$
+
+    **Bước 4: Tính chi phí và kết luận**
+    
+    * Đơn giá lát gạch là $240\text{ nghìn đồng/m}^2 = 0,24\text{ triệu đồng/m}^2$.
+    * Tổng chi phí cần trả là:
+        $$T = 97,215 \times 0,24 \approx 23,3316 \text{ (triệu đồng)}$$
+    * Làm tròn kết quả đến hàng phần chục (1 chữ số thập phân), ta được **$23,3$** triệu đồng.
+        
+    **Kết luận:** Chi phí lát gạch là **$23,3$** triệu đồng.
+    """)
+
+st.markdown("---")
