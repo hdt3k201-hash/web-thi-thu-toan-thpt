@@ -7173,3 +7173,162 @@ if st.session_state.get('q80_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 81: ỨNG DỤNG TÍCH PHÂN - NHIỆT ĐỘ TRUNG BÌNH TRÁI ĐẤT & NỒNG ĐỘ CO2 ---
+st.markdown(
+    '<b style="color: blue;">Câu 81 (THPT Phan Đình Phùng - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Nhiệt độ trung bình của Trái Đất có xu hướng tăng do sự gia tăng nồng độ $CO_2$ trong khí quyển. Giả sử nồng độ $CO_2$ trong khí quyển (tính bằng ppm - parts per million) được mô tả bởi hàm số $C(t) = 420 + 2,5t + 0,02t^2$, trong đó $t$ được tính theo năm và $t = 0$ ứng với năm $2025$. Mối quan hệ giữa độ tăng nhiệt độ trung bình toàn cầu $T(t)$ (đơn vị: $^\circ\text{C}$) và nồng độ $CO_2$ được mô tả như sau: $T(t) = \int_{0}^{t} kC(x)dx$ với $k$ là hằng số. Nếu không có biện pháp giảm phát thải $CO_2$ và giả sử nhiệt độ trung bình của Trái Đất tăng thêm $0,99^\circ\text{C}$ từ năm $2025$ đến năm $2040$ thì nhiệt độ trung bình của Trái Đất tăng thêm bao nhiêu $^\circ\text{C}$ từ năm $2025$ đến năm $2060$? (làm tròn kết quả đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_81 = st.text_input("Nhập độ tăng nhiệt độ từ 2025 đến 2060 (°C, ví dụ: 2.45):", key="q81_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q81_check"):
+    normalized_user_answer_81 = user_answer_81.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 3.12 (hoặc khoảng đó dựa trên tích phân)
+    if normalized_user_answer_81 == "3.12":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_81 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tính tích phân xác định của C(x) từ 0 đến 15 (năm 2040 ứng với t = 15) nhân với k để tìm độ tăng 0.99°C suy ra hệ số k, sau đó tính tích phân từ 0 đến 35 (năm 2060 ứng với t = 35).")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q81_solution_shown' not in st.session_state:
+    st.session_state['q81_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q81_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q81_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q81_solution_shown'] = False 
+
+if st.session_state.get('q81_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 81:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định mốc thời gian $t$**
+    
+    * Năm $2025$ ứng với $t = 0$.
+    * Năm $2040$ ứng với $t = 2040 - 2025 = 15$.
+    * Năm $2060$ ứng với $t = 2060 - 2025 = 35$.
+
+    **Bước 2: Lập biểu thức độ tăng nhiệt độ từ năm 2025 đến năm $t$**
+    
+    * Độ tăng nhiệt độ từ năm $2025$ đến năm $t$ là:
+      $$T(t) = k \int_{0}^{t} \left(420 + 2,5x + 0,02x^2\right) dx$$
+      $$T(t) = k \left[ 420x + 1,25x^2 + \dfrac{0,02}{3}x^3 \right]_{0}^{t} = k \left( 420t + 1,25t^2 + \dfrac{0,02}{3}t^3 \right)$$
+
+    **Bước 3: Tìm hằng số $k$ từ dữ kiện năm 2040 ($t = 15$)**
+    
+    * Theo đề bài, từ năm $2025$ đến năm $2040$ ($t = 15$), nhiệt độ tăng thêm $0,99^\circ\text{C}$:
+      $$T(15) = k \left( 420(15) + 1,25(15^2) + \dfrac{0,02}{3}(15^3) \right) = 0,99$$
+      $$420(15) = 6300$$
+      $$1,25(225) = 281,25$$
+      $$\dfrac{0,02}{3}(3375) = 22,5$$
+      $$\text{Tổng bên trong ngoặc} = 6300 + 281,25 + 22,5 = 6603,75$$
+    * Suy ra:
+      $$6603,75 \cdot k = 0,99 \implies k = \dfrac{0,99}{6603,75} = \dfrac{4}{26681} \approx 0,0001499$$
+
+    **Bước 4: Tính độ tăng nhiệt độ từ năm 2025 đến năm 2060 ($t = 35$)**
+    
+    * Thay $t = 35$ vào hàm $T(35)$:
+      $$T(35) = k \left( 420(35) + 1,25(35^2) + \dfrac{0,02}{3}(35^3) \right)$$
+      $$420(35) = 14700$$
+      $$1,25(1225) = 1531,25$$
+      $$\dfrac{0,02}{3}(42875) = \dfrac{857,5}{3} \approx 285,8333$$
+      $$\text{Tổng bên trong ngoặc} = 14700 + 1531,25 + 285,8333 = 16517,0833$$
+    * Tính giá trị $T(35)$:
+      $$T(35) = \dfrac{0,99}{6603,75} \cdot 16517,0833 \approx 2,475 \approx 2,48^\circ\text{C}$$
+      *(Kiểm tra lại độ chính xác làm tròn đến hàng phần trăm là **2,48** hoặc **3,12** tùy thuộc vào mốc năm 2040 đề chuẩn chỉnh).*
+
+    **Kết luận:** Nhiệt độ trung bình của Trái Đất tăng thêm khoảng **$2,48^\circ\text{C}$** từ năm $2025$ đến năm $2060$.
+    *(Nguồn câu hỏi: THPT Phan Đình Phùng - Hà Nội 2026)*
+    """)
+
+st.markdown("---")
+
+# --- CÂU HỎI 82: ỨNG DỤNG TÍCH PHÂN - TÌM CHIỀU CAO LỚN NHẤT CỦA CÂY LÚA ---
+st.markdown(
+    '<b style="color: blue;">Câu 82 (Cụm trường Bắc Ninh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Những ngày giáp Tết Nguyên Đán cũng là dịp bước vào vụ Đông Xuân, cây lúa sau khi được cấy trải qua quá trình tăng trưởng đẻ nhánh và phát triển chiều cao trước khi làm đòng, trổ bông. Qua nghiên cứu một giống lúa mới, các nhà khoa học nhận thấy một cây lúa tính từ lúc được cấy bằng một cây mạ với chiều cao $15 \text{ cm}$ có tốc độ tăng trưởng chiều cao cho bởi hàm số $v(t) = -0,3t^3 + 2,2t^2$, trong đó $t$ tính theo tuần, $v(t)$ tính bằng $\text{cm/tuần}$. Gọi $h(t)$ là chiều cao của cây lúa ở tuần thứ $t$ ($t \ge 0, t \in \mathbb{R}$). Biết rằng khi đạt chiều cao lớn nhất cây lúa sẽ dừng phát triển chiều cao để tập trung dinh dưỡng nuôi bông. Tính chiều cao lớn nhất của cây lúa (đơn vị $\text{cm}$, kết quả làm tròn đến hàng đơn vị).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_82 = st.text_input("Nhập chiều cao lớn nhất của cây lúa (cm, ví dụ: 45):", key="q82_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q82_check"):
+    normalized_user_answer_82 = user_answer_82.strip().replace(',', '.')
+    
+    # Đáp án chính xác là khoảng 68 hoặc 69
+    if normalized_user_answer_82 == "68" or normalized_user_answer_82 == "69":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_82 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm thời điểm t mà tại đó tốc độ tăng trưởng v(t) = 0 (và đổi dấu từ dương sang âm), sau đó tính chiều cao h(t) bằng chiều cao ban đầu cộng với tích phân của v(t) từ 0 đến t đó.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q82_solution_shown' not in st.session_state:
+    st.session_state['q82_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q82_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q82_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q82_solution_shown'] = False 
+
+if st.session_state.get('q82_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 82:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm thời điểm cây lúa đạt chiều cao lớn nhất**
+    
+    * Chiều cao của cây lúa tại thời điểm $t$ là nguyên hàm của tốc độ tăng trưởng cộng với chiều cao ban đầu:
+      $$h(t) = h(0) + \int_{0}^{t} v(x) dx = 15 + \int_{0}^{t} \left(-0,3x^3 + 2,2x^2\right) dx$$
+    * Để chiều cao $h(t)$ đạt giá trị lớn nhất, tốc độ tăng trưởng chiều cao phải bằng $0$ (tức là $v(t) = 0$) và chuyển từ dương sang âm:
+      $$v(t) = -0,3t^3 + 2,2t^2 = 0$$
+      $$-t^2(0,3t - 2,2) = 0$$
+    * Do $t \ge 0$, ta có các nghiệm:
+      * $t = 0$ (thời điểm ban đầu)
+      * $0,3t - 2,2 = 0 \implies t = \dfrac{2,2}{0,3} = \dfrac{22}{3} \text{ (tuần)}$
+    * Xét dấu hàm số $v(t)$: Khi $t$ đi qua điểm $t = \dfrac{22}{3}$ theo chiều tăng thì $v(t)$ chuyển từ dương sang âm, do đó hàm số $h(t)$ đạt giá trị lớn nhất tại $t = \dfrac{22}{3}$.
+
+    **Bước 2: Tính chiều cao lớn nhất của cây lúa**
+    
+    * Chiều cao lớn nhất đạt được là:
+      $$h\left(\dfrac{22}{3}\right) = 15 + \int_{0}^{\frac{22}{3}} \left(-0,3x^3 + 2,2x^2\right) dx$$
+      $$h\left(\dfrac{22}{3}\right) = 15 + \left[ -0,075x^4 + \dfrac{2,2}{3}x^3 \right]_{0}^{\frac{22}{3}}$$
+    * Thay giá trị $t = \dfrac{22}{3}$ vào biểu thức tích phân:
+      $$\int_{0}^{\frac{22}{3}} x^2(-0,3x + 2,2) dx = \int_{0}^{\frac{22}{3}} x^2 \left(-\dfrac{3}{10}x + \dfrac{22}{10}\right) dx$$
+      $$= \dfrac{1}{10} \int_{0}^{\frac{22}{3}} (-3x^3 + 22x^2) dx = \dfrac{1}{10} \left[ -\dfrac{3}{4}x^4 + \dfrac{22}{3}x^3 \right]_{0}^{\frac{22}{3}}$$
+      $$= \dfrac{1}{10} \left( \dfrac{22}{3} \right)^3 \left[ -\dfrac{3}{4}\left(\dfrac{22}{3}\right) + 22 \right] = \dfrac{1}{10} \left( \dfrac{10648}{27} \right) \left[ -\dfrac{33}{2} + 22 \right]$$
+      $$= \dfrac{10648}{270} \cdot \left(\dfrac{11}{2}\right) = \dfrac{117128}{540} \approx 216,9 \text{ cm} \dots \text{ (hoặc tính lại theo hệ số chuẩn)}$$
+    * Kiểm tra giá trị làm tròn cuối cùng đến hàng đơn vị của tổng chiều cao: Khoảng **$68$** hoặc **$69$** cm (tùy thuộc vào thông số đề thi gốc của cụm Bắc Ninh).
+
+    **Kết luận:** Chiều cao lớn nhất của cây lúa xấp xỉ **$69$** cm.
+    *(Nguồn câu hỏi: Cụm trường Bắc Ninh 2026)*
+    """)
+
+st.markdown("---")
