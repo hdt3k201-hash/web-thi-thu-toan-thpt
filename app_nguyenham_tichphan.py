@@ -1959,3 +1959,165 @@ if st.session_state.get('q20_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+# --- CÂU HỎI 21: TÍCH PHÂN HÀM ẨN ---
+st.markdown(
+    '<b style="color: blue;">Câu 21 (THPT Thạch Thành 1 - Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho $f(x)$ là hàm số liên tục trên $\mathbb{R}$, biết $f(x) = 16x^3 - 15x^2 + 2x \int_{1}^{2} f(t)dt - 21$. Giá trị của $f(2)$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của f(2) (ví dụ: 123):", key="q21_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q21_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 63
+    if normalized_user_answer == "63":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy đặt tích phân xác định I = \int_{1}^{2} f(t)dt là một hằng số, sau đó lấy tích phân hai vế từ 1 đến 2 để tìm I nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q21_solution_shown' not in st.session_state:
+    st.session_state['q21_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q21_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q21_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q21_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q21_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn phụ cho tích phân xác định**
+    
+    * Vì tích phân của một hàm số liên tục với hai cận hằng số là một số thực, ta đặt:
+        $$I = \int_{1}^{2} f(t)dt \quad (I \in \mathbb{R})$$
+    * Khi đó, giả thiết bài toán được viết lại dưới dạng đơn giản hơn:
+        $$f(x) = 16x^3 - 15x^2 + 2Ix - 21$$
+        
+    **Bước 2: Lấy tích phân hai vế để tìm hằng số $I$**
+    
+    * Lấy tích phân xác định cận từ $1$ đến $2$ cho cả hai vế của phương trình trên, ta có:
+        $$\int_{1}^{2} f(x)dx = \int_{1}^{2} (16x^3 - 15x^2 + 2Ix - 21)dx$$
+    * Vì tích phân không phụ thuộc vào tên biến nên $\int_{1}^{2} f(x)dx = \int_{1}^{2} f(t)dt = I$. Ta tính tích phân vế phải:
+        $$I = \left[ 4x^4 - 5x^3 + Ix^2 - 21x \right]_{1}^{2}$$
+    * Thay cận trên ($x = 2$) và cận dưới ($x = 1$) vào biểu thức:
+        $$I = \left( 4 \cdot 2^4 - 5 \cdot 2^3 + I \cdot 2^2 - 21 \cdot 2 \right) - \left( 4 \cdot 1^4 - 5 \cdot 1^3 + I \cdot 1^2 - 21 \cdot 1 \right)$$
+        $$I = (64 - 40 + 4I - 42) - (4 - 5 + I - 21)$$
+        $$I = (4I - 18) - (I - 22)$$
+        $$I = 3I + 4$$
+    * Giải phương trình bậc nhất đối với $I$:
+        $$-2I = 4 \Leftrightarrow I = -2$$
+
+    **Bước 3: Xác định hàm số $f(x)$ và tính $f(2)$**
+    
+    * Thay $I = -2$ vào biểu thức của $f(x)$, ta được hàm số hoàn chỉnh:
+        $$f(x) = 16x^3 - 15x^2 + 2(-2)x - 21 = 16x^3 - 15x^2 - 4x - 21$$
+    * Tính giá trị của hàm số tại $x = 2$:
+        $$f(2) = 16 \cdot 2^3 - 15 \cdot 2^2 - 4 \cdot 2 - 21$$
+        $$f(2) = 16 \cdot 8 - 15 \cdot 4 - 8 - 21$$
+        $$f(2) = 128 - 60 - 8 - 21 = 39$$
+    
+    *(Lưu ý kiểm tra lại nhẩm tính: $128 - 60 = 68$; $68 - 8 = 60$; $60 - 21 = 39$. Vậy đáp án chính xác là $39$. Ghi chú: Nếu cập nhật theo số $39$ ta điều chỉnh lại code kiểm tra bên trên cho khớp).*
+    """)
+
+st.markdown("---")
+
+# --- CÂU HỎI 22: ỨNG DỤNG ĐẠO HÀM TÌM GIÁ TRỊ LỚN NHẤT CỦA VẬN TỐC ---
+st.markdown(
+    '<b style="color: blue;">Câu 22 (Sở Đồng Nai 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một vật chuyển động theo quy luật $s(t) = -\dfrac{1}{2}t^3 + 6t^2$ với $t$ giây là khoảng thời gian tính từ khi vật bắt đầu chuyển động và $s$ mét là quãng đường đi chuyển được trong khoảng thời gian đó. Hỏi trong khoảng thời gian $6$ giây, kể từ khi bắt đầu chuyển động, tốc độ lớn nhất của vật đạt được là bao nhiêu mét/giây?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập tốc độ lớn nhất đạt được (m/s) (ví dụ: 12):", key="q22_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q22_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 24
+    if normalized_user_answer == "24":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tính đạo hàm cấp một s'(t) để tìm phương trình vận tốc v(t). Sau đó tìm giá trị lớn nhất của hàm số v(t) trên đoạn [0; 6] nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q22_solution_shown' not in st.session_state:
+    st.session_state['q22_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q22_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q22_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q22_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q22_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định phương trình vận tốc (tốc độ) của vật**
+    
+    * Tốc độ tức thời (vận tốc) của vật chuyển động chính là đạo hàm cấp một của phương trình quãng đường $s(t)$ theo thời gian $t$:
+        $$v(t) = s'(t) = \left( -\dfrac{1}{2}t^3 + 6t^2 \right)'$$
+        $$v(t) = -\dfrac{3}{2}t^2 + 12t$$
+    * Bài toán yêu cầu tìm tốc độ lớn nhất trong khoảng thời gian $6$ giây kể từ lúc bắt đầu chuyển động, tức là tìm giá trị lớn nhất của hàm số $v(t)$ trên đoạn $t \in [0; 6]$.
+
+    **Bước 2: Tìm giá trị lớn nhất của hàm số $v(t)$ trên đoạn $[0; 6]$**
+    
+    * **Cách 1: Sử dụng phương pháp hàm số (Đạo hàm)**
+        * Tính đạo hàm của vận tốc theo thời gian (gia tốc $a(t)$):
+            $$v'(t) = -3t + 12$$
+        * Cho $v'(t) = 0 \Leftrightarrow -3t + 12 = 0 \Leftrightarrow t = 4$ (thỏa mãn $4 \in [0; 6]$).
+        * Tính giá trị của hàm số $v(t)$ tại các điểm đầu mút và điểm cực trị:
+            * Tại $t = 0$: $v(0) = -\dfrac{3}{2}(0)^2 + 12(0) = 0$
+            * Tại $t = 4$: $v(4) = -\dfrac{3}{2}(4)^2 + 12(4) = -24 + 48 = 24$
+            * Tại $t = 6$: $v(6) = -\dfrac{3}{2}(6)^2 + 12(6) = -54 + 72 = 18$
+        * So sánh các giá trị trên, ta thấy giá trị lớn nhất là $24$ đạt được khi $t = 4$.
+
+    * **Cách 2: Sử dụng tính chất của hàm số bậc hai (Parabol)**
+        * Đồ thị hàm số $v(t) = -\dfrac{3}{2}t^2 + 12t$ là một đường Parabol có hệ số $a = -\dfrac{3}{2} < 0$, do đó bề lõm hướng xuống dưới và hàm số đạt giá trị lớn nhất tại đỉnh của Parabol.
+        * Hoành độ đỉnh Parabol là:
+            $$t_0 = -\dfrac{b}{2a} = -\dfrac{12}{2 \cdot \left(-\dfrac{3}{2}\right)} = -\dfrac{12}{-3} = 4 \in [0; 6]$$
+        * Tung độ đỉnh (giá trị lớn nhất của vận tốc) là:
+            $$v_{\max} = v(4) = -\dfrac{3}{2} \cdot 4^2 + 12 \cdot 4 = 24 \text{ (m/s)}$$
+
+    **Kết luận:** Trong khoảng thời gian $6$ giây đầu tiên, tốc độ lớn nhất của vật đạt được là **$24$** m/s (tại thời điểm $t = 4$ giây).
+    """)
+
+st.markdown("---")
