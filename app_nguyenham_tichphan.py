@@ -6102,3 +6102,245 @@ if st.session_state.get('q67_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 68: ỨNG DỤNG TÍCH PHÂN TÍNH QUÃNG ĐƯỜNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 68 (Sở Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một vật bắt đầu chuyển động thẳng đều với vận tốc $v_0 = a \text{ (m/s)}$ với $a > 0$. Sau 6 giây chuyển động thì gặp chướng ngại vật nên bắt đầu giảm tốc độ với vận tốc $v(t) = -\dfrac{5}{2}t + b \text{ (m/s)}, (t \ge 6)$ cho đến khi dừng hẳn. Biết rằng, kể từ lúc chuyển động đến lúc dừng thì vật đi được quãng đường là 80 (m). Giá trị của $a^2 - b^2$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_68 = st.text_input("Nhập giá trị của a² - b² (ví dụ: -100):", key="q68_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q68_check"):
+    normalized_user_answer_68 = user_answer_68.strip()
+    
+    # Đáp án chính xác là -525
+    if normalized_user_answer_68 == "-525":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_68 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm mối liên hệ giữa a và b qua tính liên tục của vận tốc tại t=6. Sau đó tính tích phân để ra tổng quãng đường = 80m.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q68_solution_shown' not in st.session_state:
+    st.session_state['q68_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q68_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q68_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q68_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q68_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Khai thác tính liên tục của vận tốc**
+    
+    Tại thời điểm bắt đầu giảm tốc $t = 6$, vận tốc của 2 giai đoạn phải bằng nhau:
+    $$-\dfrac{5}{2}(6) + b = a \Leftrightarrow -15 + b = a \Leftrightarrow b = a + 15 \quad (1)$$
+
+    **Bước 2: Tìm thời điểm vật dừng hẳn**
+    
+    Vật dừng hẳn khi vận tốc bằng 0:
+    $$-\dfrac{5}{2}t + b = 0 \Leftrightarrow \dfrac{5}{2}t = b \Leftrightarrow t = \dfrac{2b}{5}$$
+
+    **Bước 3: Thiết lập phương trình quãng đường**
+    
+    Tổng quãng đường vật đi được là tổng quãng đường của 2 giai đoạn (chuyển động thẳng đều và chuyển động chậm dần):
+    $$S = \int_0^6 a \,dt + \int_6^{\dfrac{2b}{5}} \left( -\dfrac{5}{2}t + b \right) dt = 80$$
+    
+    Tính tích phân giai đoạn 2 (có thể tính theo diện tích tam giác vuông có đáy là $\dfrac{2b}{5} - 6$ và chiều cao là $a$):
+    $$S_2 = \dfrac{1}{2} \cdot a \cdot \left(\dfrac{2b}{5} - 6\right)$$
+    Thay $b = a + 15$ vào:
+    $$S_2 = \dfrac{1}{2} \cdot a \cdot \left(\dfrac{2(a + 15)}{5} - 6\right) = \dfrac{1}{2} \cdot a \cdot \left(\dfrac{2a + 30 - 30}{5}\right) = \dfrac{1}{2} \cdot a \cdot \dfrac{2a}{5} = \dfrac{a^2}{5}$$
+    
+    Ta có phương trình tổng quãng đường:
+    $$6a + \dfrac{a^2}{5} = 80 \Leftrightarrow a^2 + 30a - 400 = 0$$
+    
+    **Bước 4: Giải phương trình và kết luận**
+    
+    Giải phương trình bậc hai ta được:
+    $$\begin{bmatrix} a = 10 \text{ (thỏa mãn } a > 0) \\ a = -40 \text{ (loại)} \end{bmatrix}$$
+    Với $a = 10 \Rightarrow b = 10 + 15 = 25$.
+    
+    Vậy $a^2 - b^2 = 10^2 - 25^2 = 100 - 625 = -525$.
+    *(Nguồn câu hỏi: Sở Thanh Hóa 2026)*
+    """)
+
+st.markdown("---")
+
+# --- CÂU HỎI 69: ỨNG DỤNG TÍCH PHÂN VÀ OXYZ TÍNH THỜI GIAN ---
+st.markdown(
+    '<b style="color: blue;">Câu 69 (THPT Yên Lạc - Phú Thọ 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong không gian Oxyz, đơn vị trên mỗi trục là 1 km, coi mặt đất là mặt phẳng Oxy. Một máy bay phản lực xuất phát từ vị trí $B(2; -1; 0)$ và bay thẳng với vận tốc $v(t) = -\dfrac{1}{1200}t^2 + \dfrac{1}{2}t + 10 \text{ m/s}$ theo hướng véctơ $\vec{u} = (2; 2; 1)$. Một trạm ra đa đặt tại điểm $A(1; 2; 0)$ với bán kính quét tối đa là 100 km. Khi máy bay đến vị trí $C$ có độ cao 6 km so với mặt đất thì máy bay chuyển động thẳng đều theo hướng thoát ra khỏi vùng giám sát của ra đa nhanh nhất, giữ nguyên vận tốc tại thời điểm ở vị trí $C$. Tính thời gian máy bay di chuyển từ lúc xuất phát cho đến khi thoát ra khỏi vùng giám sát của ra đa. Đơn vị phút, làm tròn đến hàng phần chục.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_69 = st.text_input("Nhập giá trị thời gian (ví dụ: 12.3):", key="q69_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q69_check"):
+    normalized_user_answer_69 = user_answer_69.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 21.3
+    if normalized_user_answer_69 == "21.3":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_69 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm tọa độ C, tính quãng đường BC (nhớ đổi ra mét) để tìm thời gian t1 đến C bằng tích phân. Tại C tính được vận tốc chuyển động đều. Quãng đường ngắn nhất để thoát radar nằm trên đường thẳng nối từ tâm A qua C.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q69_solution_shown' not in st.session_state:
+    st.session_state['q69_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q69_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q69_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q69_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q69_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính quãng đường và thời gian máy bay bay từ B đến C**
+    
+    Đường thẳng bay qua $B(2; -1; 0)$ có véc-tơ chỉ phương $\vec{u}=(2; 2; 1)$ nên có phương trình tham số:
+    $$\begin{cases} x = 2 + 2k \\ y = -1 + 2k \\ z = k \end{cases}$$
+    Vị trí C có độ cao 6 km (so với mặt đất Oxy) $\Rightarrow z_C = 6 \Rightarrow k = 6$. 
+    Tọa độ điểm $C(14; 11; 6)$.
+    
+    Khoảng cách từ B đến C:
+    $$BC = \sqrt{(14-2)^2 + (11+1)^2 + (6-0)^2} = \sqrt{12^2 + 12^2 + 6^2} = 18 \text{ (km)} = 18000 \text{ (m)}$$
+    
+    Quãng đường máy bay đi được theo hàm vận tốc:
+    $$S(t) = \int_0^{t_1} \left( -\dfrac{1}{1200}t^2 + \dfrac{1}{2}t + 10 \right) dt = -\dfrac{1}{3600}t_1^3 + \dfrac{1}{4}t_1^2 + 10t_1 = 18000$$
+    Giải phương trình ta được $t_1 = 300 \text{ (s)}$.
+    
+    **Bước 2: Tính vận tốc tại C và quãng đường thoát ra đa nhanh nhất**
+    
+    Vận tốc tại $C$ (lúc $t_1 = 300$):
+    $$v_C = v(300) = -\dfrac{1}{1200}(300)^2 + \dfrac{1}{2}(300) + 10 = 85 \text{ (m/s)}$$
+    
+    Trạm radar đặt tại $A(1; 2; 0)$ có vùng quét là mặt cầu tâm A bán kính $R = 100 \text{ km}$.
+    Khoảng cách từ trạm A đến vị trí C:
+    $$AC = \sqrt{(14-1)^2 + (11-2)^2 + (6-0)^2} = \sqrt{13^2 + 9^2 + 6^2} = \sqrt{286} \text{ (km)}$$
+    
+    Để thoát ra khỏi vùng giám sát nhanh nhất, máy bay chuyển động theo phương của tia $AC$ (đi xa dần tâm $A$). 
+    Khoảng cách cần bay thêm để ra khỏi vùng radar (tới mặt cầu):
+    $$d = R - AC = 100 - \sqrt{286} \text{ (km)} = (100 - \sqrt{286}) \cdot 1000 \text{ (m)}$$
+    
+    **Bước 3: Tính tổng thời gian**
+    
+    Thời gian bay quãng đường thẳng đều:
+    $$t_2 = \dfrac{d}{v_C} = \dfrac{(100 - \sqrt{286}) \cdot 1000}{85} \approx 977,51 \text{ (s)}$$
+    
+    Tổng thời gian kể từ lúc xuất phát:
+    $$T = t_1 + t_2 = 300 + 977,51 = 1277,51 \text{ (s)}$$
+    
+    Đổi ra phút: $\dfrac{1277,51}{60} \approx 21,29 \text{ (phút)}$.
+    Làm tròn đến hàng phần chục ta được kết quả là **$21,3$**.
+    *(Nguồn câu hỏi: THPT Yên Lạc - Phú Thọ 2026)*
+    """)
+
+st.markdown("---")
+
+# --- CÂU HỎI 70: ỨNG DỤNG TÍCH PHÂN - RƠI TỰ DO ---
+st.markdown(
+    '<b style="color: blue;">Câu 70 (Sở Hậu Giang 2025)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Người ta thả một vật từ một vị trí trên cao cho rơi xuống mặt đất theo phương thẳng đứng. Biết gia tốc trọng trường tại nơi thả vật bằng $9,8 \text{ m/s}^2$. Giả sử lực tác động của không khí đối với vật trong quá trình rơi là không đáng kể. Biết rằng sau 4 giây thì vật bắt đầu chạm mặt đất. Hỏi vị trí của vật trước khi thả rơi cao bao nhiêu mét so với mặt đất? (kết quả làm tròn đến hàng phần mười).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_70 = st.text_input("Nhập chiều cao h (ví dụ: 12.3):", key="q70_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q70_check"):
+    normalized_user_answer_70 = user_answer_70.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 78.4
+    if normalized_user_answer_70 == "78.4":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_70 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Nguyên hàm của gia tốc a(t) là vận tốc v(t), và nguyên hàm của v(t) là quãng đường S(t). Do thả rơi nên vận tốc ban đầu bằng 0.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q70_solution_shown' not in st.session_state:
+    st.session_state['q70_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q70_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q70_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q70_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q70_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định hàm vận tốc $v(t)$**
+    
+    Gia tốc trọng trường rơi tự do là một hằng số $a(t) = 9,8 \text{ (m/s}^2\text{)}$.
+    Vận tốc của vật đạt được là nguyên hàm của gia tốc:
+    $$v(t) = \int a(t) \,dt = \int 9,8 \,dt = 9,8t + C$$
+    
+    Vì vật được "thả" rơi từ trên cao nên vận tốc ban đầu $v(0) = 0 \Rightarrow C = 0$.
+    Do đó, hàm vận tốc là:
+    $$v(t) = 9,8t \text{ (m/s)}$$
+    
+    **Bước 2: Tính quãng đường rơi (chiều cao)**
+    
+    Quãng đường vật rơi được từ lúc thả ($t=0$) đến lúc chạm đất ($t=4$) chính là chiều cao ban đầu của vật:
+    $$S = \int_0^4 v(t) \,dt = \int_0^4 9,8t \,dt = 4,9t^2 \Big|_0^4$$
+    $$S = 4,9 \cdot 4^2 = 4,9 \cdot 16 = 78,4 \text{ (m)}$$
+    
+    **Kết luận:** Vị trí của vật trước khi thả rơi cao **$78,4$** mét so với mặt đất.
+    *(Nguồn câu hỏi: Sở Hậu Giang 2025)*
+    """)
+
+st.markdown("---")
