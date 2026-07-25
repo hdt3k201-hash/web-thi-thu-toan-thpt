@@ -1473,3 +1473,109 @@ if st.session_state.get('q15_solution_shown'):
 
 
 
+# --- CÂU HỎI 16: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH TỔNG HỢP ---
+st.markdown(
+    '<b style="color: blue;">Câu 16 (Sở Hải Phòng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Để chuẩn bị cho lễ kỷ niệm 20 năm ngày ra trường, ban tổ chức quyết định đặt hàng một đơn vị thủ công mỹ nghệ để chế tác các huy hiệu cài áo đặc biệt. Huy hiệu được thiết kế trên một phôi bạc hình vuông $ABCD$ có cạnh bằng $20 \text{ mm}$. Theo bản vẽ kỹ thuật từ các nghệ nhân, cấu trúc của huy hiệu được phân chia như sau: lấy một điểm $M$ được xác định bên trong phôi bạc sao cho khoảng cách từ $M$ đến cạnh dưới $OA$ là $4 \text{ mm}$ và cách cạnh bên trái $OC$ là $8 \text{ mm}$, cạnh vòm là một cung tròn đi qua ba điểm $O, M, C$; đường lượn là một phần của đường Parabol đi qua ba điểm $O, M, A$. Phần tô đậm trong bản vẽ sẽ được phủ men sứ màu xanh lam. Các phần còn lại sẽ được giữ nguyên màu bạc để khắc tên trường và niên khóa. Hãy tính diện tích phần cần phủ men sứ màu xanh để đơn vị sản xuất báo giá chính xác chi phí vật liệu. (Kết quả làm tròn đến hàng đơn vị theo đơn vị $\text{mm}^2$).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích phần cần phủ men sứ (làm tròn đến hàng đơn vị, ví dụ: 123):", key="q16_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/image_f591fb.PNG", width=500)
+except Exception as e:
+    st.warning("⚠️ Lỗi: Không thể tải ảnh 'images/image_f591fb.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q16_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    if normalized_user_answer == "197":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Gắn hệ trục tọa độ với $O(0;0)$. Diện tích cần tìm bằng diện tích hình vuông trừ đi diện tích phần màu bạc. Hãy chia nhỏ phần màu bạc thành các hình phẳng tính được bằng tích phân nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q16_solution_shown' not in st.session_state:
+    st.session_state['q16_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q16_solution_btn"):
+        st.session_state['q16_solution_shown'] = True
+
+if st.session_state.get('q16_solution_shown'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Gắn hệ trục tọa độ và xác định các điểm**
+    
+    * Chọn hệ trục toạ độ $Oxy$ với gốc $O(0; 0)$, tia $OA$ nằm trên phần dương trục hoành $Ox$, tia $OC$ nằm trên phần dương trục tung $Oy$.
+    * Hình vuông $OABC$ có cạnh bằng $20$ nên $A(20; 0)$ và $C(0; 20)$.
+    * Khoảng cách từ $M$ đến $OA$ (trục hoành) là $4$, đến $OC$ (trục tung) là $8 \implies M(8; 4)$.
+    * Diện tích hình vuông là $S_{hv} = 20 \times 20 = 400 \text{ (mm}^2\text{)}$.
+    
+    **Bước 2: Viết phương trình các đường cong**
+    
+    * **Đường vòm (Cung tròn đi qua $O, M, C$):**
+        * Phương trình đường tròn có dạng $x^2 + y^2 - 2ax - 2by + c = 0$.
+        * Đi qua $O(0; 0) \implies c = 0$.
+        * Đi qua $C(0; 20) \implies 0 + 400 - 0 - 40b = 0 \implies b = 10$.
+        * Đi qua $M(8; 4) \implies 64 + 16 - 16a - 8(10) = 0 \implies 80 - 16a - 80 = 0 \implies a = 0$.
+        * Tâm đường tròn là $(0; 10)$, bán kính $R = 10$. Phương trình là $x^2 + (y-10)^2 = 100$.
+        * Cung tròn $CM$ nằm bên phải trục tung ($x \ge 0$), nên phương trình là $x = \sqrt{100 - (y-10)^2}$.
+    
+    * **Đường lượn (Parabol đi qua $O, M, A$):**
+        * Phương trình Parabol có dạng $y = ax^2 + bx + c$.
+        * Đi qua $O(0; 0) \implies c = 0$.
+        * Đi qua $A(20; 0) \implies 400a + 20b = 0 \implies b = -20a$.
+        * Đi qua $M(8; 4) \implies 64a + 8b = 4 \implies 64a - 160a = 4 \implies -96a = 4 \implies a = -\dfrac{1}{24}$.
+        * Suy ra $b = -20 \cdot \left(-\dfrac{1}{24}\right) = \dfrac{5}{6}$.
+        * Phương trình Parabol là $y = -\dfrac{1}{24}x^2 + \dfrac{5}{6}x$.
+        
+    **Bước 3: Phân tích và tính diện tích phần màu bạc (chưa tô màu)**
+    
+    Ký hiệu phần màu bạc là $(W)$. Dựa vào hình vẽ, phần $(W)$ được giới hạn bởi trục $Oy$, trục $Ox$, cung tròn $CM$ và cung parabol $MA$. Để tính diện tích $(W)$, ta dùng một đường thẳng nằm ngang $y = 4$ đi qua điểm $M(8; 4)$ để chia $(W)$ thành hai phần dễ tính hơn:
+    
+    * **Phần $W_1$ (nằm giữa trục $Oy$ và cung tròn $CM$):** 
+        * Ứng với khoảng tung độ $y \in [4; 20]$. Diện tích phần này tính theo biến $y$:
+        $$S_1 = \int_{4}^{20} \sqrt{100 - (y-10)^2} \text{d}y$$
+        * Đặt $u = y - 10 \implies \text{d}u = \text{d}y$. Đổi cận: $y = 4 \implies u = -6$; $y = 20 \implies u = 10$.
+        $$S_1 = \int_{-6}^{10} \sqrt{100 - u^2} \text{d}u$$
+        * Tích phân này là diện tích của $1/4$ hình tròn tâm gốc tọa độ (từ $u=0$ đến $u=10$) cộng với diện tích hình phẳng từ $u=-6$ đến $u=0$.
+        * Bấm máy tính hoặc áp dụng công thức nguyên hàm, ta được:
+        $$S_1 = 25\pi + 24 + 50\arcsin(0,6) \approx 134,71 \text{ (mm}^2\text{)}$$
+        
+    * **Phần $W_2$ (nằm dưới đường gấp khúc $K(0; 4) \to M(8; 4) \to A(20; 0)$):**
+        * Diện tích này chính là tổng của diện tích hình chữ nhật tạo bởi $x \in [0; 8], y \in [0; 4]$ và diện tích hình phẳng nằm dưới cung parabol $MA$ (từ $x=8$ đến $x=20$).
+        $$S_2 = S_{hcn} + \int_{8}^{20} \left( -\dfrac{1}{24}x^2 + \dfrac{5}{6}x \right) \text{d}x$$
+        $$S_2 = (8 \times 4) + \left[ -\dfrac{1}{72}x^3 + \dfrac{5}{12}x^2 \right]_{8}^{20}$$
+        $$S_2 = 32 + \left( \dfrac{500}{9} - \dfrac{176}{9} \right) = 32 + \dfrac{324}{9} = 32 + 36 = 68 \text{ (mm}^2\text{)}$$
+        
+    * **Tổng diện tích phần màu bạc:**
+        $$S_W = S_1 + S_2 = 134,71 + 68 = 202,71 \text{ (mm}^2\text{)}$$
+        
+    **Bước 4: Tính diện tích phần phủ men xanh lam**
+    
+    * Diện tích phần phủ men sứ (tô đậm) là phần còn lại của hình vuông:
+        $$S_{xanh} = S_{hv} - S_W = 400 - 202,71 = 197,29 \text{ (mm}^2\text{)}$$
+    * Làm tròn đến hàng đơn vị theo yêu cầu đề bài, ta được **$197 \text{ mm}^2$**.
+    
+    **Kết luận:** Diện tích phần cần phủ men sứ màu xanh lam xấp xỉ **$197 \text{ mm}^2$**.
+    """)
+    st.markdown("---")
+
+
+
