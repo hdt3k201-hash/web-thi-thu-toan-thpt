@@ -6031,3 +6031,74 @@ if st.session_state.get('q66_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 67: ỨNG DỤNG TÍCH PHÂN TÍNH QUÃNG ĐƯỜNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 67 (THPT Ngô Quyền - Hải Phòng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Để đảm bảo an toàn khi lưu thông trên đường, các xe ô tô khi dừng đèn đỏ phải cách nhau tối thiểu 1m. Một ô tô A đang chạy với vận tốc 12m/s bỗng gặp ô tô B đang dừng đèn đỏ nên ô tô A hãm phanh và chuyển động chậm dần đều với vận tốc được biểu thị bởi công thức $v_A(t) = 12 - 3t \text{ (m/s)}$. Hỏi để hai ô tô đạt khoảng cách an toàn khi dừng lại thì ô tô A phải hãm phanh khi cách ô tô B một khoảng ít nhất là bao nhiêu mét?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị (ví dụ: 12):", key="q67_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q67_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 25
+    if normalized_user_answer == "25":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tính quãng đường ô tô A đi được từ lúc hãm phanh đến lúc dừng hẳn bằng tích phân của hàm vận tốc, sau đó cộng thêm khoảng cách an toàn.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q67_solution_shown' not in st.session_state:
+    st.session_state['q67_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q67_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q67_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q67_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q67_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính thời gian từ lúc hãm phanh đến khi ô tô A dừng hẳn**
+    
+    Ô tô A dừng lại khi vận tốc bằng 0, tức là:
+    $$v_A(t) = 0 \Leftrightarrow 12 - 3t = 0 \Leftrightarrow t = 4 \text{ (s)}$$
+    
+    **Bước 2: Tính quãng đường ô tô A đi được trong khoảng thời gian hãm phanh**
+    
+    Quãng đường $S$ ô tô A đi được từ lúc bắt đầu hãm phanh ($t=0$) đến khi dừng hẳn ($t=4$) được tính bằng tích phân của vận tốc $v_A(t)$:
+    $$S = \int_0^4 v_A(t) dt = \int_0^4 (12 - 3t) dt = \left( 12t - \dfrac{3t^2}{2} \right) \Bigg|_0^4$$
+    $$S = \left( 12 \cdot 4 - \dfrac{3 \cdot 4^2}{2} \right) - 0 = 48 - 24 = 24 \text{ (m)}$$
+    
+    **Bước 3: Tính khoảng cách ít nhất cần thiết**
+    
+    Theo đề bài, để đảm bảo an toàn, khi dừng lại hai xe phải cách nhau tối thiểu $1\text{m}$. 
+    Do đó, khoảng cách ban đầu ít nhất từ ô tô A đến ô tô B lúc bắt đầu hãm phanh phải bằng tổng quãng đường hãm phanh và khoảng cách an toàn:
+    $$d = S + 1 = 24 + 1 = 25 \text{ (m)}$$
+    
+    **Kết luận:** Ô tô A phải hãm phanh khi cách ô tô B một khoảng ít nhất là 25 mét.
+    *(Nguồn câu hỏi: THPT Ngô Quyền - Hải Phòng 2026)*
+    """)
+
+st.markdown("---")
