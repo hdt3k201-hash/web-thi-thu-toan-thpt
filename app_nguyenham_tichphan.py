@@ -2344,9 +2344,9 @@ try:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         # Đường dẫn ảnh đã được đồng bộ theo yêu cầu
-        st.image("image_005c79.PNG", width=400)
+        st.image("images/image_005c79.PNG", width=400)
 except FileNotFoundError:
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'image_005c79.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_005c79.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # --- NÚT KIỂM TRA ĐÁP ÁN ---
 if st.button("Kiểm tra đáp án", key="q25_check"):
