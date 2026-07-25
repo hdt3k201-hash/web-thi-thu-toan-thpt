@@ -7603,12 +7603,7 @@ Tốc độ tăng trưởng số lượng một loài vi khuẩn trong phòng th
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 user_answer_86 = st.text_input("Nhập số lượng vi khuẩn (con) :", key="q86_ans")
 
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.image("images/tichphan_tangtruong86.PNG", width=400)
-except FileNotFoundError:
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/tichphan_tangtruong86.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
 
 # Nút kiểm tra Đúng/Sai cho Câu 86
 if st.button("Kiểm tra đáp án", key="q86_check"):
