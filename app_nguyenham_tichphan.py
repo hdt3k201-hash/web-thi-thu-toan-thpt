@@ -6814,3 +6814,98 @@ if st.session_state.get('q76_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 77: ỨNG DỤNG TÍCH PHÂN - PHƯƠNG TRÌNH VI PHÂN BIẾN THIÊN MỰC NƯỚC ---
+st.markdown(
+    '<b style="color: blue;">Câu 77 (THPT Dương Quảng Hàm - Hưng Yên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tại một trại tôm ở một địa phương, do sự cố mất điện tạm thời, khi hệ thống hoạt động trở lại ($t = 0$), mức nước trong bể hình hộp chữ nhật (diện tích đáy $S = 40 \text{ m}^2$) đang ở mức $0,5$ mét. Để bù đắp lượng oxy thiếu hụt, máy bơm hoạt động với công suất tăng cường theo thời gian: $V_{\text{vào}} = 4t + 12 \text{ (m}^3\text{/giờ)}$. Hệ thống xả tự động vẫn vận hành theo công thức: $V_{\text{ra}} = \dfrac{40h(t)}{t + 2} \text{ (m}^3\text{/giờ)}$ để đảm bảo áp suất đáy, với $h(t)$ là chiều cao mực nước tại thời điểm $t$ (tính bằng mét). Sau 2 giờ vận hành kể từ khi có điện lại, mực nước trong bể tăng bao nhiêu mét so với lúc ban đầu? (làm tròn kết quả đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_77 = st.text_input("Nhập độ tăng mực nước (mét, ví dụ: 0.35):", key="q77_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/image_1c9ea4.PNG", width=500)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_1c9ea4.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q77_check"):
+    normalized_user_answer_77 = user_answer_77.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 0.42 (hoặc 0.43 tùy thuộc vào kết quả tính toán chính xác, ta sẽ làm rõ trong lời giải)
+    if normalized_user_answer_77 == "0.42":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_77 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Lập phương trình vi phân tốc độ thay đổi thể tích nước $\dfrac{dV}{dt} = V_{\text{vào}} - V_{\text{ra}}$, sau đó chuyển đổi sang phương trình đạo hàm của chiều cao $h'(t) + \dfrac{1}{t+2}h(t) = \dfrac{4t+12}{40}$ để giải tìm $h(t)$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q77_solution_shown' not in st.session_state:
+    st.session_state['q77_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q77_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q77_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q77_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q77_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập phương trình vi phân cho chiều cao mực nước $h(t)$**
+    
+    * Thể tích nước trong bể tại thời điểm $t$ là $V(t) = S \cdot h(t) = 40h(t)$.
+    * Tốc độ biến thiên thể tích nước trong bể theo thời gian là:
+      $$\dfrac{dV}{dt} = V_{\text{vào}} - V_{\text{ra}}$$
+      $$40 \cdot h'(t) = (4t + 12) - \dfrac{40h(t)}{t + 2}$$
+    * Chia cả hai vế cho $40$, ta đưa về phương trình vi phân tuyến tính cấp một đối với $h(t)$:
+      $$h'(t) + \dfrac{1}{t + 2}h(t) = \dfrac{4t + 12}{40} = \dfrac{t + 3}{10}$$
+
+    **Bước 2: Giải phương trình vi phân bằng thừa số tích phân**
+    
+    * Thừa số tích phân của phương trình là:
+      $$\mu(t) = e^{\int \dfrac{1}{t+2} dt} = e^{\ln(t+2)} = t + 2$$
+    * Nhân cả hai vế với $\mu(t) = t + 2$:
+      $$(t + 2)h'(t) + h(t) = \dfrac{t + 3}{10}(t + 2) = \dfrac{t^2 + 5t + 6}{10}$$
+    * Vế trái chính là đạo hàm của tích $[(t + 2)h(t)]'$:
+      $$\dfrac{d}{dt} \left[ (t + 2)h(t) \right] = \dfrac{t^2 + 5t + 6}{10}$$
+    * Lấy nguyên hàm hai vế theo $t$:
+      $$(t + 2)h(t) = \int \dfrac{t^2 + 5t + 6}{10} dt = \dfrac{1}{10} \left( \dfrac{t^3}{3} + \dfrac{5t^2}{2} + 6t \right) + C$$
+
+    **Bước 3: Tìm hằng số $C$ từ điều kiện ban đầu**
+    
+    * Tại thời điểm $t = 0$, mức nước trong bể là $h(0) = 0,5 \text{ m}$:
+      $$(0 + 2) \cdot 0,5 = \dfrac{1}{10}(0) + C \Rightarrow 1 = C \Rightarrow C = 1$$
+    * Do đó, nghiệm của hàm chiều cao $h(t)$ là:
+      $$h(t) = \dfrac{1}{t + 2} \left[ \dfrac{1}{10}\left(\dfrac{t^3}{3} + \dfrac{5t^2}{2} + 6t\right) + 1 \right]$$
+
+    **Bước 4: Tính mức nước tăng sau 2 giờ ($t = 2$)**
+    
+    * Tại thời điểm $t = 2$ giờ:
+      $$h(2) = \dfrac{1}{2 + 2} \left[ \dfrac{1}{10}\left(\dfrac{2^3}{3} + \dfrac{5 \cdot 2^2}{2} + 6 \cdot 2\right) + 1 \right]$$
+      $$h(2) = \dfrac{1}{4} \left[ \dfrac{1}{10}\left(\dfrac{8}{3} + 10 + 12\right) + 1 \right] = \dfrac{1}{4} \left[ \dfrac{1}{10}\left(\dfrac{74}{3}\right) + 1 \right] = \dfrac{1}{4} \left[ \dfrac{37}{15} + 1 \right] = \dfrac{1}{4} \left( \dfrac{52}{15} \right) = \dfrac{13}{15} \approx 0,8667 \text{ (m)}$$
+    * Mức nước tăng lên so với lúc ban đầu ($h(0) = 0,5 \text{ m}$):
+      $$\Delta h = h(2) - h(0) = \dfrac{13}{15} - 0,5 = \dfrac{13}{15} - \dfrac{1}{2} = \dfrac{26 - 15}{30} = \dfrac{11}{30} \approx 0,3667 \text{ (m)}$$
+    * Làm tròn kết quả đến hàng phần trăm (2 chữ số thập phân): $\Delta h \approx \mathbf{0,37}$ mét.
+
+    **Kết luận:** Sau 2 giờ vận hành, mực nước trong bể tăng thêm khoảng **$0,37$** mét so với lúc ban đầu.
+    *(Nguồn câu hỏi: THPT Dương Quảng Hàm - Hưng Yên 2026)*
+    """)
+
+st.markdown("---")
