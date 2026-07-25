@@ -579,7 +579,6 @@ if st.session_state.get('q6_solution_shown') and st.session_state.get('logged_in
 st.markdown("---")
 
 
-st.markdown("---")
 
 
 # --- CÂU HỎI 7: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH HÌNH PHẲNG ---
