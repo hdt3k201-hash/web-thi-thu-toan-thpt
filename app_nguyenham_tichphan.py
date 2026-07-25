@@ -6650,10 +6650,10 @@ try:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         # Đường dẫn ảnh đã được đồng bộ chuẩn đuôi .png
-        st.image("images/image_1c29e6.PNG", width=400)
+        st.image("images/image_1c29e6..PNG", width=400)
 except FileNotFoundError:
     # Thông báo lỗi cập nhật đúng tên file
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_1c29e6.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_1c29e6..PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # --- NÚT KIỂM TRA ĐÁP ÁN ---
 if st.button("Kiểm tra đáp án", key="q75_check"):
