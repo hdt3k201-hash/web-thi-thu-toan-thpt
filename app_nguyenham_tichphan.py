@@ -8131,11 +8131,14 @@ st.markdown("---")
 
 
 
+
+
 # --- CÂU HỎI 91: DIỆN TÍCH HÌNH PHẢNG ỨNG DỤNG TÍCH PHÂN ---
 st.markdown(
     '<b style="color: blue;">Câu 91 (THPT Trần Nhân Tông - Hà Nội 2026)</b>',
     unsafe_allow_html=True
 )
+
 st.markdown(r"""
 Họa sĩ thiết kế logo hình con cá cho một doanh nghiệp kinh doanh hải sản. Logo là hình giới hạn bởi hai Parabol với các kích thước được cho trong hình sau (đơn vị trên mỗi trục tọa độ là $\text{cm}$):
 
@@ -8148,8 +8151,10 @@ try:
         st.image("images/tran_nhan_tong_2026_q91.PNG", width=450)
 except FileNotFoundError:
     st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/tran_nhan_tong_2026_q91.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
 # --- Ô NHẬP ĐÁP ÁN ---
 user_answer = st.text_input("Nhập diện tích logo (cm², làm tròn đến hàng phần mười, ví dụ: 65.4):", key="q91_ans")
+
 # --- NÚT KIỂM TRA ĐÁP ÁN ---
 if st.button("Kiểm tra đáp án", key="q91_check"):
     normalized_user_answer = user_answer.strip().replace(',', '.')
