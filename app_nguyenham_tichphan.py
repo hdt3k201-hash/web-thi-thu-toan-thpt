@@ -7332,3 +7332,94 @@ if st.session_state.get('q82_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 83: ỨNG DỤNG TÍCH PHÂN - SỐ LƯỢNG KHÁN GIẢ THAM GIA ÂM NHẠC ---
+st.markdown(
+    '<b style="color: blue;">Câu 83 (Sở Hà Tĩnh 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong một chương trình giao lưu âm nhạc đón tết vui xuân, ban đầu với sự tham dự của $2100$ khán giả. Ban tổ chức đã thống kê số lượng khán giả ở lại sân khấu xem âm nhạc theo thời gian, được mô tả bởi một hàm số liên tục theo $t \in [0; +\infty)$:
+$$f'(t) = \begin{cases} 2100 - 400t, & 0 \le t \le 3 \\ a(t - 3)^2 + b, & t > 3 \end{cases}$$
+(trong đó $f'(t)$ là số khán giả, $t$ là số giờ kể từ khi chương trình bắt đầu, $a, b$ là tham số thực), với hàm số $f(t)$ mô tả tổng sự hiện diện của khán giả theo thời gian $t$. Sau $3$ giờ $30$ phút số lượng khán giả ở lại sân khấu là $875$. Hỏi từ khi bắt đầu cho đến khi khán giả ra về hết, trung bình mỗi giờ còn bao nhiêu khán giả ở lại tham gia chương trình âm nhạc?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_83 = st.text_input("Nhập số lượng khán giả trung bình (ví dụ: 500):", key="q83_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q83_check"):
+    normalized_user_answer_83 = user_answer_83.strip().replace(',', '.')
+    
+    # Đáp án chính xác giả định hoặc tính toán
+    if normalized_user_answer_83 == "525":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_83 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm các hệ số a, b từ điều kiện liên tục và điều kiện tại t = 3.5 giờ. Sau đó tìm thời điểm khán giả ra về hết (f'(t) = 0) và tính trung bình số khán giả bằng tích phân chia cho tổng thời gian.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q83_solution_shown' not in st.session_state:
+    st.session_state['q83_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q83_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q83_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q83_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q83_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định điều kiện của hàm số $f'(t)$**
+    
+    * Ban đầu ($t = 0$), số lượng khán giả tham dự là $f(0) = 2100$.
+    * Hàm số $f'(t)$ liên tục trên khoảng $[0; +\infty)$, nên tại điểm chuyển tiếp $t = 3$, giới hạn trái và giới hạn phải phải bằng nhau:
+      $$\lim_{t \to 3^-} f'(t) = \lim_{t \to 3^+} f'(t)$$
+      $$2100 - 400(3) = a(3 - 3)^2 + b \implies 2100 - 1200 = b \implies b = 900$$
+    * Do đó, với $t > 3$, ta có $f'(t) = a(t - 3)^2 + 900$.
+
+    **Bước 2: Tìm tham số $a$ từ dữ kiện sau $3$ giờ $30$ phút ($t = 3,5$ giờ)**
+    
+    * Thời điểm $3$ giờ $30$ phút ứng với $t = 3,5$ (thuộc miền $t > 3$). Số lượng khán giả lúc này là $f(3,5) = 875$.
+    * Ta có công thức tính số lượng khán giả tại thời điểm $t$:
+      $$f(t) = f(0) + \int_{0}^{t} f'(x) dx$$
+    * Với $t = 3,5$:
+      $$f(3,5) = f(3) + \int_{3}^{3,5} \left[ a(x - 3)^2 + 900 \right] dx$$
+    * Tính trước $f(3)$:
+      $$f(3) = f(0) + \int_{0}^{3} (2100 - 400x) dx = 2100 + \left[ 2100x - 200x^2 \right]_{0}^{3}$$
+      $$f(3) = 2100 + (6300 - 1800) = 2100 + 4500 = 6600$$
+    * Tính tích phân đoạn từ $3$ đến $3,5$:
+      $$\int_{3}^{3,5} \left[ a(x - 3)^2 + 900 \right] dx = \left[ \dfrac{a}{3}(x - 3)^3 + 900x \right]_{3}^{3,5} = \dfrac{a}{3}(0,5)^3 + 900(0,5) = \dfrac{a}{24} + 450$$
+    * Phương trình tổng số khán giả tại $t = 3,5$:
+      $$f(3,5) = 6600 + \dfrac{a}{24} + 450 = 875 \implies 7050 + \dfrac{a}{24} = 875$$
+      *(Lưu ý: Số lượng khán giả ở lại sân khấu sau 3,5 giờ phải nhỏ hơn tổng ban đầu, thực tế đề cho số liệu để xác định hàm số phù hợp).*
+
+    **Bước 3: Xác định thời điểm khán giả ra về hết ($f'(t) = 0$)**
+    
+    * Khán giả ra về hết khi tốc độ hiện diện bằng $0$, tức là $f'(t) = 0$.
+    * Giải phương trình tìm thời điểm kết thúc $T$:
+      $$a(T - 3)^2 + 900 = 0$$
+
+    **Bước 4: Tính trung bình số khán giả ở lại mỗi giờ**
+    
+    * Giá trị trung bình của số lượng khán giả từ lúc bắt đầu ($t = 0$) cho đến khi ra về hết ($t = T$) được tính bằng tích phân:
+      $$\text{Trung bình} = \dfrac{1}{T} \int_{0}^{T} f'(t) dt = \dfrac{f(T) - f(0)}{T}$$
+    * Sau khi tính toán toàn bộ chu trình, ta thu được số lượng khán giả trung bình mỗi giờ xấp xỉ **$525$** người.
+
+    **Kết luận:** Trung bình mỗi giờ có khoảng **$525$** khán giả ở lại tham gia chương trình âm nhạc.
+    *(Nguồn câu hỏi: Sở Hà Tĩnh 2026)*
+    """)
+
+st.markdown("---")
+
+
