@@ -5765,3 +5765,91 @@ if st.session_state.get('q63_solution_shown') and st.session_state.get('logged_i
     
     **Kết luận:** Giá trị tích phân bằng $\dfrac{e - 1}{4}$.
     """)
+
+# --- CÂU HỎI 64: ỨNG DỤNG ĐẠO HÀM / TÍCH PHÂN TÌM HÀM SỐ ---
+st.markdown(
+    '<b style="color: blue;">Câu 64 (Sở Lạng Sơn 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Ở giai đoạn thải trừ, giai đoạn cuối sau khi một người uống một liều thuốc, nồng độ thuốc trong máu, ký hiệu là $C(t)$ (đơn vị: mg/l), giảm dần sau $t$ giờ kể từ khi giai đoạn này bắt đầu. Khi đó, tốc độ giảm nồng độ $C'(t)$ tỉ lệ với chính nồng độ hiện có, tức là: $\dfrac{C'(t)}{C(t)} = -k$ ($k$ là một hằng số dương). Biết rằng khi bắt đầu giai đoạn thải trừ, nồng độ thuốc còn lại là 12 mg/l và sau 6 giờ kể từ lúc bắt đầu thải trừ, nồng độ đo được là 3 mg/l. Sau khoảng bao nhiêu giờ thì nồng độ còn lại bằng 2 mg/l? *(kết quả làm tròn đến hàng phần mười)*.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của t (ví dụ: 10.3):", key="q64_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q64_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 7.8
+    if normalized_user_answer == "7.8":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy lấy nguyên hàm hai vế phương trình đã cho để tìm hàm $C(t)$, sau đó dùng dữ kiện $t=0$ và $t=6$ để tìm các hằng số.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q64_solution_shown' not in st.session_state:
+    st.session_state['q64_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q64_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q64_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q64_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q64_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm hàm nồng độ thuốc $C(t)$**
+    
+    Từ giả thiết, ta có phương trình vi phân:
+    $$\dfrac{C'(t)}{C(t)} = -k$$
+    
+    Lấy nguyên hàm hai vế theo biến $t$, ta được:
+    $$\int \dfrac{C'(t)}{C(t)} dt = \int -k dt$$
+    $$\Rightarrow \ln|C(t)| = -kt + C_0$$
+    
+    Vì nồng độ $C(t) > 0$, ta có thể bỏ dấu giá trị tuyệt đối:
+    $$\ln C(t) = -kt + C_0 \Rightarrow C(t) = e^{-kt + C_0} = e^{C_0} \cdot e^{-kt} = A \cdot e^{-kt}$$
+    (với $A = e^{C_0}$ là một hằng số dương).
+
+    **Bước 2: Tìm các hằng số $A$ và $k$**
+    
+    * Khi bắt đầu giai đoạn thải trừ ($t = 0$), nồng độ là 12 mg/l:
+      $$C(0) = 12 \Rightarrow A \cdot e^0 = 12 \Rightarrow A = 12$$
+      Vậy $C(t) = 12e^{-kt}$.
+      
+    * Sau 6 giờ ($t = 6$), nồng độ còn lại là 3 mg/l:
+      $$C(6) = 3 \Rightarrow 12e^{-6k} = 3 \Rightarrow e^{-6k} = \dfrac{3}{12} = \dfrac{1}{4}$$
+      $$\Rightarrow -6k = \ln\left(\dfrac{1}{4}\right) = -2\ln 2 \Rightarrow k = \dfrac{2\ln 2}{6} = \dfrac{\ln 2}{3}$$
+      
+    Từ đó, ta có hàm nồng độ thuốc tại thời điểm $t$ là:
+    $$C(t) = 12e^{-\dfrac{t \ln 2}{3}} = 12 \cdot 2^{-\dfrac{t}{3}}$$
+
+    **Bước 3: Tính thời gian $t$ khi nồng độ còn 2 mg/l**
+    
+    Giải phương trình $C(t) = 2$:
+    $$12 \cdot 2^{-\dfrac{t}{3}} = 2$$
+    $$\Rightarrow 2^{-\dfrac{t}{3}} = \dfrac{2}{12} = \dfrac{1}{6}$$
+    $$\Rightarrow -\dfrac{t}{3} = \log_2\left(\dfrac{1}{6}\right) = -\log_2 6$$
+    $$\Rightarrow t = 3\log_2 6 \approx 7,7548...$$
+    
+    **Kết luận:** Làm tròn kết quả đến hàng phần mười, sau khoảng $7,8$ giờ thì nồng độ còn lại bằng 2 mg/l.
+    *(Nguồn câu hỏi: Sở GD&ĐT Lạng Sơn 2026)*
+    """)
+
+st.markdown("---")
