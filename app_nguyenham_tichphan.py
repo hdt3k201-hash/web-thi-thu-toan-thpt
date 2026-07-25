@@ -8130,4 +8130,92 @@ st.markdown("---")
 
 
 
+# --- CÂU HỎI 92: DIỆN TÍCH HÌNH PHẢNG TRONG LƯỚI Ô VUÔNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 92 (Sở Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong lưới ô vuông có hai đường parabol như hình vẽ. Biết rằng mỗi ô vuông nhỏ có cạnh bằng $1\text{ cm}$. Diện tích của hình phẳng trong lưới ô vuông được giới hạn bởi hai đường parabol (phần gạch chéo) bằng bao nhiêu centimét vuông *(kết quả làm tròn đến hàng phần trăm)*?
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đề bài (cần cập nhật đúng tên file ảnh trong thư mục của bạn)
+        st.image("images/so_ha_noi_2026_q92.PNG", width=400)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/so_ha_noi_2026_q92.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích hình phẳng (cm², làm tròn đến hàng phần trăm, ví dụ: 13.53):", key="q92_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q92_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 13.53
+    if normalized_user_answer == "13.53":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hệ trục tọa độ Oxy với gốc O tại đỉnh parabol dưới. Đếm số ô vuông để tìm tọa độ các đỉnh và điểm đi qua, lập phương trình hai parabol rồi dùng tích phân trị tuyệt đối để tính diện tích nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q92_solution_shown' not in st.session_state:
+    st.session_state['q92_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q92_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q92_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q92_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q92_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chọn hệ trục tọa độ và lập phương trình hai đường Parabol**
+    
+    * Chọn hệ trục tọa độ $Oxy$ với gốc $O(0;0)$ đặt tại đỉnh của đường parabol phía dưới (màu đỏ), trục tung $Oy$ trùng với trục đối xứng của hệ lưới ô vuông, trục hoành $Ox$ trùng với cạnh đáy dưới của lưới.
+    * Đếm trên lưới ô vuông (mỗi ô là $1\text{ cm}$):
+        * Lưới ô vuông có chiều rộng $10\text{ cm}$ (từ $x = -5$ đến $x = 5$) và chiều cao $10\text{ cm}$ (từ $y = 0$ đến $y = 10$).
+        * Parabol thứ nhất $(P_1)$ có đỉnh tại gốc tọa độ $O(0;0)$ và đi qua hai đỉnh ở góc trên của lưới là $(5; 10)$ và $(-5; 10)$.
+          Phương trình của $(P_1)$ có dạng $y = a_1 x^2$. Vì đi qua $(5; 10)$ nên:
+          $$10 = a_1 \cdot 5^2 \iff 25a_1 = 10 \iff a_1 = \dfrac{2}{5} \implies (P_1): y = \dfrac{2}{5}x^2$$
+        * Parabol thứ hai $(P_2)$ có đỉnh nằm trên trục tung cách đáy $2\text{ cm}$, tức điểm $(0; 2)$, và cắt hai biên ở độ cao $7\text{ cm}$, tức đi qua các điểm $(5; 7)$ và $(-5; 7)$.
+          Phương trình của $(P_2)$ có dạng $y = a_2 x^2 + 2$. Vì đi qua $(5; 7)$ nên:
+          $$7 = a_2 \cdot 5^2 + 2 \iff 25a_2 = 5 \iff a_2 = \dfrac{1}{5} \implies (P_2): y = \dfrac{1}{5}x^2 + 2$$
+    
+    **Bước 2: Tìm hoành độ giao điểm của hai parabol**
+    
+    * Phương trình hoành độ giao điểm của $(P_1)$ và $(P_2)$:
+        $$\dfrac{2}{5}x^2 = \dfrac{1}{5}x^2 + 2 \iff \dfrac{1}{5}x^2 = 2 \iff x^2 = 10 \iff x = \pm\sqrt{10}$$
+    * Notice rằng tại $x = \pm\sqrt{10} \approx \pm 3,16$, tung độ $y = \dfrac{2}{5} \cdot 10 = 4$ (hai parabol cắt nhau chính xác trên đường lưới ngang $y = 4$).
+    
+    **Bước 3: Tính diện tích hình phẳng (phần gạch chéo)**
+    
+    * Phần gạch chéo được giới hạn từ $x = -5$ đến $x = 5$. Do tính đối xứng qua trục $Oy$, diện tích hình phẳng là:
+        $$S = \int_{-5}^{5} \left| \left(\dfrac{2}{5}x^2\right) - \left(\dfrac{1}{5}x^2 + 2\right) \right| \text{d}x = 2 \int_{0}^{5} \left| \dfrac{1}{5}x^2 - 2 \right| \text{d}x$$
+    * Tách tích phân theo đoạn $[0; \sqrt{10}]$ (nơi $(P_2)$ nằm trên $(P_1)$) và đoạn $[\sqrt{10}; 5]$ (nơi $(P_1)$ nằm trên $(P_2)$):
+        $$S = 2 \left[ \int_{0}^{\sqrt{10}} \left(2 - \dfrac{1}{5}x^2\right)\text{d}x + \int_{\sqrt{10}}^{5} \left(\dfrac{1}{5}x^2 - 2\right)\text{d}x \right]$$
+    * Tính từng tích phân thành phần:
+        $$\int_{0}^{\sqrt{10}} \left(2 - \dfrac{1}{5}x^2\right)\text{d}x = \left[ 2x - \dfrac{x^3}{15} \right]_{0}^{\sqrt{10}} = 2\sqrt{10} - \dfrac{10\sqrt{10}}{15} = \dfrac{4\sqrt{10}}{3}$$
+        $$\int_{\sqrt{10}}^{5} \left(\dfrac{1}{5}x^2 - 2\right)\text{d}x = \left[ \dfrac{x^3}{15} - 2x \right]_{\sqrt{10}}^{5} = \left(\dfrac{125}{15} - 10\right) - \left(\dfrac{10\sqrt{10}}{15} - 2\sqrt{10}\right) = -\dfrac{5}{3} + \dfrac{4\sqrt{10}}{3}$$
+    * Tổng diện tích:
+        $$S = 2 \left( \dfrac{4\sqrt{10}}{3} - \dfrac{5}{3} + \dfrac{4\sqrt{10}}{3} \right) = \dfrac{16\sqrt{10} - 10}{3} \approx 13,5321 \text{ (cm}^2\text{)}$$
+    * Làm tròn kết quả đến hàng phần trăm ta được $13,53$.
+        
+    **Kết luận:** Diện tích hình phẳng (phần gạch chéo) xấp xỉ **$13,53\text{ cm}^2$**.
+    """)
+
+st.markdown("---")
+
 
