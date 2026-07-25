@@ -4365,3 +4365,227 @@ if st.session_state.get('q46_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+import streamlit as st
+
+# --- CÂU HỎI 47: TÍCH PHÂN HÀM ẨN NÂNG CAO ---
+st.markdown(
+    '<b style="color: blue;">Câu 47 ( ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x)$ có đạo hàm liên tục trên đoạn $[1; 2]$ thỏa mãn $\int_{1}^{2} (x-1)^2 f(x) dx = -\dfrac{1}{3}$, $f(2) = 0$ và $\int_{1}^{2} [f'(x)]^2 dx = 7$. Tính tích phân $I = \int_{1}^{2} f(x) dx$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của I (dạng phân số 6/5 hoặc số thập phân 1.2):", key="q47_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q47_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là -7/5 hoặc -1.4
+    if normalized_user_answer in ["-7/5", "-1.4"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Sử dụng phương pháp tích phân từng phần để liên kết giữa giả thiết tích phân và đạo hàm, sau đó áp dụng hằng đẳng thức/bình phương tích phân để tìm ra biểu thức tường minh của $f'(x)$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q47_solution_shown' not in st.session_state:
+    st.session_state['q47_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q47_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q47_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q47_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q47_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Biến đổi giả thiết tích phân bằng phương pháp tích phân từng phần**
+    
+    Xét tích phân $\int_{1}^{2} (x-1)^2 f(x) dx = -\dfrac{1}{3}$.
+    Đặt $\begin{cases} u = f(x) \\ dv = (x-1)^2 dx \end{cases} \Rightarrow \begin{cases} du = f'(x) dx \\ v = \dfrac{(x-1)^3}{3} \end{cases}$.
+    
+    Áp dụng công thức tích phân từng phần:
+    $$ \int_{1}^{2} (x-1)^2 f(x) dx = \left[ \dfrac{(x-1)^3}{3} f(x) \right]_{1}^{2} - \int_{1}^{2} \dfrac{(x-1)^3}{3} f'(x) dx $$
+    
+    Thay cận vào biểu thức biên:
+    * Tại $x = 2$: $\dfrac{(2-1)^3}{3} f(2) = \dfrac{1}{3} \cdot 0 = 0$ (vì $f(2) = 0$).
+    * Tại $x = 1$: $\dfrac{(1-1)^3}{3} f(1) = 0$.
+    
+    Do đó, biểu thức biên triệt tiêu hoàn toàn. Ta có:
+    $$ -\dfrac{1}{3} \int_{1}^{2} (x-1)^3 f'(x) dx = -\dfrac{1}{3} \implies \int_{1}^{2} (x-1)^3 f'(x) dx = 1 $$
+    
+    **Bước 2: Sử dụng đánh giá tích phân bình phương bằng 0**
+    
+    Xét tích phân với tham số $k$:
+    $$ \int_{1}^{2} \left( f'(x) - k(x-1)^3 \right)^2 dx = \int_{1}^{2} [f'(x)]^2 dx - 2k \int_{1}^{2} (x-1)^3 f'(x) dx + k^2 \int_{1}^{2} (x-1)^6 dx $$
+    
+    Thay các giá trị đã biết vào:
+    * $\int_{1}^{2} [f'(x)]^2 dx = 7$
+    * $\int_{1}^{2} (x-1)^3 f'(x) dx = 1$
+    * $\int_{1}^{2} (x-1)^6 dx = \left[ \dfrac{(x-1)^7}{7} \right]_{1}^{2} = \dfrac{1}{7}$
+    
+    Biểu thức trở thành một tam thức bậc hai theo ẩn $k$:
+    $$ \int_{1}^{2} \left( f'(x) - k(x-1)^3 \right)^2 dx = 7 - 2k + \dfrac{1}{7}k^2 = \dfrac{1}{7}k^2 - 2k + 7 $$
+    
+    Để tìm giá trị nhỏ nhất của tam thức này, ta chọn giá trị $k$ tại đỉnh của parabol:
+    $$ k = -\dfrac{-2}{2 \cdot \left(\dfrac{1}{7}\right)} = 7 $$
+    
+    Thay $k = 7$ vào tam thức:
+    $$ \dfrac{1}{7}(7^2) - 2(7) + 7 = 7 - 14 + 7 = 0 $$
+    
+    Vì tích phân của một hàm số không âm bằng $0$, hàm số dưới dấu tích phân phải đồng nhất bằng $0$ trên đoạn $[1; 2]$:
+    $$ f'(x) - 7(x-1)^3 = 0 \iff f'(x) = 7(x-1)^3 $$
+    
+    **Bước 3: Tìm hàm số $f(x)$**
+    
+    Lấy nguyên hàm hai vế:
+    $$ f(x) = \int 7(x-1)^3 dx = \dfrac{7}{4}(x-1)^4 + C $$
+    
+    Sử dụng điều kiện $f(2) = 0$:
+    $$ \dfrac{7}{4}(2-1)^4 + C = 0 \iff \dfrac{7}{4} + C = 0 \iff C = -\dfrac{7}{4} $$
+    
+    Vậy hàm số cần tìm là:
+    $$ f(x) = \dfrac{7}{4}(x-1)^4 - \dfrac{7}{4} = \dfrac{7}{4} \left( (x-1)^4 - 1 \right) $$
+    
+    **Bước 4: Tính tích phân $I$**
+    $$ I = \int_{1}^{2} f(x) dx = \int_{1}^{2} \left[ \dfrac{7}{4}(x-1)^4 - \dfrac{7}{4} \right] dx $$
+    $$ = \dfrac{7}{4} \left[ \dfrac{(x-1)^5}{5} \right]_{1}^{2} - \dfrac{7}{4} (2 - 1) = \dfrac{7}{4} \left( \dfrac{1}{5} - 0 \right) - \dfrac{7}{4} $$
+    $$ = \dfrac{7}{20} - \dfrac{35}{20} = -\dfrac{28}{20} = -\dfrac{7}{5} = -1.4 $$
+    
+    **Kết luận:** $I = -\dfrac{7}{5}$ (hoặc $-1.4$).
+    """)
+
+st.markdown("---")
+
+import streamlit as st
+
+# --- CÂU HỎI 48: TÍCH PHÂN HÀM ẨN NÂNG CAO ---
+st.markdown(
+    '<b style="color: blue;">Câu 48 (ĐGNL – TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x)$ có đạo hàm liên tục trên đoạn $[0; 1]$ thỏa mãn: $f(1) = 0$, $\int_{0}^{1} [f'(x)]^2 dx = 7$ và $\int_{0}^{1} x^2 f(x) dx = \dfrac{1}{3}$. Tính tích phân $I = \int_{0}^{1} f(x) dx$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của I (dạng phân số 1/5 hoặc số thập phân 0.2):", key="q48_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ theo yêu cầu
+        st.image("images/image_115024.png", width=600)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_115024.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q48_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 7/5 hoặc 1.4
+    if normalized_user_answer in ["7/5", "1.4"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Sử dụng phương pháp tích phân từng phần đối với giả thiết tích phân chứa $x^2 f(x)$, sau đó thiết lập hằng đẳng thức bình phương của đạo hàm để tìm ra biểu thức chính xác của $f'(x)$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q48_solution_shown' not in st.session_state:
+    st.session_state['q48_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q48_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q48_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q48_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q48_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Biến đổi giả thiết tích phân bằng phương pháp tích phân từng phần**
+    
+    Xét tích phân $\int_{0}^{1} x^2 f(x) dx = \dfrac{1}{3}$.
+    Đặt $\begin{cases} u = f(x) \\ dv = x^2 dx \end{cases} \Rightarrow \begin{cases} du = f'(x) dx \\ v = \dfrac{x^3}{3} \end{cases}$.
+    
+    Áp dụng công thức tích phân từng phần:
+    $$ \int_{0}^{1} x^2 f(x) dx = \left[ \dfrac{x^3}{3} f(x) \right]_{0}^{1} - \int_{0}^{1} \dfrac{x^3}{3} f'(x) dx $$
+    
+    Thay cận vào biểu thức biên:
+    * Tại $x = 1$: $\dfrac{1^3}{3} f(1) = \dfrac{1}{3} \cdot 0 = 0$ (vì giả thiết cho $f(1) = 0$).
+    * Tại $x = 0$: $\dfrac{0^3}{3} f(0) = 0$.
+    
+    Do đó, biểu thức biên triệt tiêu. Ta có phương trình:
+    $$ -\dfrac{1}{3} \int_{0}^{1} x^3 f'(x) dx = \dfrac{1}{3} \iff \int_{0}^{1} x^3 f'(x) dx = -1 $$
+    
+    **Bước 2: Sử dụng đánh giá tích phân bình phương bằng 0**
+    
+    Xét tích phân với tham số $k$:
+    $$ \int_{0}^{1} \left( f'(x) - k x^3 \right)^2 dx = \int_{0}^{1} [f'(x)]^2 dx - 2k \int_{0}^{1} x^3 f'(x) dx + k^2 \int_{0}^{1} x^6 dx $$
+    
+    Thay các giá trị đã biết vào:
+    * $\int_{0}^{1} [f'(x)]^2 dx = 7$
+    * $\int_{0}^{1} x^3 f'(x) dx = -1$
+    * $\int_{0}^{1} x^6 dx = \left[ \dfrac{x^7}{7} \right]_{0}^{1} = \dfrac{1}{7}$
+    
+    Biểu thức trở thành một tam thức bậc hai theo biến $k$:
+    $$ \int_{0}^{1} \left( f'(x) - k x^3 \right)^2 dx = 7 - 2k(-1) + \dfrac{1}{7}k^2 = \dfrac{1}{7}k^2 + 2k + 7 $$
+    
+    Để tìm giá trị tối ưu của tam thức, ta chọn giá trị $k$ tại đỉnh của parabol:
+    $$ k = -\dfrac{2}{2 \cdot \left(\dfrac{1}{7}\right)} = -7 $$
+    
+    Thay $k = -7$ vào tam thức:
+    $$ \dfrac{1}{7}(-7)^2 + 2(-7) + 7 = 7 - 14 + 7 = 0 $$
+    
+    Vì tích phân của một hàm số không âm bằng $0$, hàm số dưới dấu tích phân phải đồng nhất bằng $0$ trên đoạn $[0; 1]$:
+    $$ f'(x) - (-7x^3) = 0 \iff f'(x) + 7x^3 = 0 \iff f'(x) = -7x^3 $$
+    
+    **Bước 3: Tìm hàm số $f(x)$**
+    
+    Lấy nguyên hàm hai vế:
+    $$ f(x) = \int -7x^3 dx = -\dfrac{7}{4}x^4 + C $$
+    
+    Sử dụng điều kiện $f(1) = 0$:
+    $$ -\dfrac{7}{4}(1)^4 + C = 0 \iff -\dfrac{7}{4} + C = 0 \iff C = \dfrac{7}{4} $$
+    
+    Vậy hàm số cần tìm là:
+    $$ f(x) = -\dfrac{7}{4}x^4 + \dfrac{7}{4} = \dfrac{7}{4}(1 - x^4) $$
+    
+    **Bước 4: Tính tích phân $I$**
+    $$ I = \int_{0}^{1} f(x) dx = \int_{0}^{1} \dfrac{7}{4}(1 - x^4) dx $$
+    $$ = \dfrac{7}{4} \left[ x - \dfrac{x^5}{5} \right]_{0}^{1} = \dfrac{7}{4} \left( 1 - \dfrac{1}{5} \right) = \dfrac{7}{4} \cdot \dfrac{4}{5} = \dfrac{7}{5} = 1.4 $$
+    
+    **Kết luận:** $I = \dfrac{7}{5}$ (hoặc $1.4$).
+    """)
+
+st.markdown("---")
