@@ -4491,13 +4491,7 @@ Cho hàm số $f(x)$ có đạo hàm liên tục trên đoạn $[0; 1]$ thỏa m
 user_answer = st.text_input("Nhập giá trị của I (dạng phân số 1/5 hoặc số thập phân 0.2):", key="q48_ans")
 
 # --- CHÈN HÌNH ẢNH ---
-try:
-    col1, col2, col3 = st.columns([1, 4, 1])
-    with col2:
-        # Đường dẫn ảnh đã được đồng bộ theo yêu cầu
-        st.image("images/image_115024.png", width=600)
-except FileNotFoundError:
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_115024.png'. Vui lòng kiểm tra lại đường dẫn.")
+
 
 # --- NÚT KIỂM TRA ĐÁP ÁN ---
 if st.button("Kiểm tra đáp án", key="q48_check"):
