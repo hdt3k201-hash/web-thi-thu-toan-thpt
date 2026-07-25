@@ -3417,3 +3417,115 @@ if st.session_state.get('q35_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+# --- CÂU HỎI 36: TÍCH PHÂN DẠNG ĐẶC BIỆT ---
+st.markdown(
+    '<b style="color: blue;">Câu 36 ( ĐGNL - TD ) </b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Biết $\int_{0}^{\pi} \dfrac{x \sin^{2018} x}{\sin^{2018} x + \cos^{2018} x} dx = \dfrac{\pi^a}{b}$ trong đó $a, b$ là các số nguyên dương. Tính $P = 2a + b$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của P:", key="q36_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ theo yêu cầu
+        st.image("images/image_01d3fd.png", width=600)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_01d3fd.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q36_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 8
+    if normalized_user_answer == "8":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Sử dụng tính chất $\int_{0}^{\pi} x f(x) dx = \dfrac{\pi}{2} \int_{0}^{\pi} f(x) dx$ nếu $f(\pi - x) = f(x)$. Sau đó tách cận và dùng tiếp tính chất $\int_{0}^{\pi/2} f(x) dx = \int_{0}^{\pi/2} f(\dfrac{\pi}{2} - x) dx$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q36_solution_shown' not in st.session_state:
+    st.session_state['q36_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q36_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q36_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q36_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q36_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    Đặt $I = \int_{0}^{\pi} \dfrac{x \sin^{2018} x}{\sin^{2018} x + \cos^{2018} x} dx$.
+    
+    **Bước 1: Áp dụng đổi biến $x = \pi - t$**
+    
+    Ta có $dx = -dt$. Khi $x = 0$ thì $t = \pi$; khi $x = \pi$ thì $t = 0$.
+    
+    $$ I = \int_{\pi}^{0} \dfrac{(\pi - t) \sin^{2018}(\pi - t)}{\sin^{2018}(\pi - t) + \cos^{2018}(\pi - t)} (-dt) $$
+    
+    Vì $\sin(\pi - t) = \sin t$ và $\cos(\pi - t) = -\cos t$, ta có $\cos^{2018}(\pi - t) = (-\cos t)^{2018} = \cos^{2018} t$.
+    
+    $$ I = \int_{0}^{\pi} \dfrac{(\pi - x) \sin^{2018} x}{\sin^{2018} x + \cos^{2018} x} dx $$
+    $$ I = \pi \int_{0}^{\pi} \dfrac{\sin^{2018} x}{\sin^{2018} x + \cos^{2018} x} dx - \int_{0}^{\pi} \dfrac{x \sin^{2018} x}{\sin^{2018} x + \cos^{2018} x} dx $$
+    $$ I = \pi \cdot J - I \Rightarrow 2I = \pi \cdot J \Rightarrow I = \dfrac{\pi}{2} \cdot J $$
+    
+    Với $J = \int_{0}^{\pi} \dfrac{\sin^{2018} x}{\sin^{2018} x + \cos^{2018} x} dx$.
+    
+    **Bước 2: Tính tích phân $J$**
+    
+    Tách $J$ thành hai tích phân:
+    $$ J = \int_{0}^{\pi/2} \dfrac{\sin^{2018} x}{\sin^{2018} x + \cos^{2018} x} dx + \int_{\pi/2}^{\pi} \dfrac{\sin^{2018} x}{\sin^{2018} x + \cos^{2018} x} dx = J_1 + J_2 $$
+    
+    Xét $J_2 = \int_{\pi/2}^{\pi} \dfrac{\sin^{2018} x}{\sin^{2018} x + \cos^{2018} x} dx$. 
+    Đặt $x = \pi - u \Rightarrow dx = -du$.
+    Khi $x = \dfrac{\pi}{2} \Rightarrow u = \dfrac{\pi}{2}$; khi $x = \pi \Rightarrow u = 0$.
+    $$ J_2 = \int_{0}^{\pi/2} \dfrac{\sin^{2018} u}{\sin^{2018} u + \cos^{2018} u} du = J_1 $$
+    Suy ra $J = 2J_1$.
+    
+    **Bước 3: Tính tích phân $J_1$**
+    
+    Xét $J_1 = \int_{0}^{\pi/2} \dfrac{\sin^{2018} x}{\sin^{2018} x + \cos^{2018} x} dx$.
+    Đặt $x = \dfrac{\pi}{2} - v \Rightarrow dx = -dv$.
+    Khi $x = 0 \Rightarrow v = \dfrac{\pi}{2}$; khi $x = \dfrac{\pi}{2} \Rightarrow v = 0$.
+    $$ J_1 = \int_{0}^{\pi/2} \dfrac{\sin^{2018}(\dfrac{\pi}{2} - v)}{\sin^{2018}(\dfrac{\pi}{2} - v) + \cos^{2018}(\dfrac{\pi}{2} - v)} dv = \int_{0}^{\pi/2} \dfrac{\cos^{2018} v}{\cos^{2018} v + \sin^{2018} v} dv $$
+    
+    Cộng hai biểu thức của $J_1$:
+    $$ 2J_1 = \int_{0}^{\pi/2} \dfrac{\sin^{2018} x}{\sin^{2018} x + \cos^{2018} x} dx + \int_{0}^{\pi/2} \dfrac{\cos^{2018} x}{\cos^{2018} x + \sin^{2018} x} dx $$
+    $$ 2J_1 = \int_{0}^{\pi/2} \dfrac{\sin^{2018} x + \cos^{2018} x}{\sin^{2018} x + \cos^{2018} x} dx = \int_{0}^{\pi/2} 1 dx = \dfrac{\pi}{2} $$
+    $$ \Rightarrow J_1 = \dfrac{\pi}{4} $$
+    
+    Từ đó, $J = 2J_1 = 2 \cdot \dfrac{\pi}{4} = \dfrac{\pi}{2}$.
+    
+    **Bước 4: Kết luận**
+    
+    Thay $J$ vào $I$:
+    $$ I = \dfrac{\pi}{2} \cdot J = \dfrac{\pi}{2} \cdot \dfrac{\pi}{2} = \dfrac{\pi^2}{4} $$
+    
+    Theo giả thiết, $I = \dfrac{\pi^a}{b}$, suy ra $a = 2$ và $b = 4$ (vì $a, b$ là số nguyên dương).
+    
+    Vậy $P = 2a + b = 2(2) + 4 = 8$.
+    
+    **Kết luận:** $P = 8$.
+    """)
+
+st.markdown("---")
