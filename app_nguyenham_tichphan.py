@@ -7743,4 +7743,99 @@ if st.session_state.get('q87_solution_shown') and st.session_state.get('logged_i
 
 st.markdown("---")
 
+import streamlit as st
+
+st.markdown(
+    '<b style="color: blue;">Câu 88 (Sở An Giang 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x) = \dfrac{1}{4}x^3 + x$. Đường thẳng $d$ đi qua gốc tọa độ $O$ và điểm $P(2; f(2))$ cắt đường thẳng $\Delta: y = -x + 3$ tại điểm $Q$. Gọi $R$ là giao điểm của đường thẳng $\Delta$ với trục hoành. Gọi $A$ là diện tích hình phẳng giới hạn bởi đường cong $y = f(x)$, đường thẳng $\Delta$ và đoạn thẳng $PQ$; $B$ là diện tích hình phẳng giới hạn bởi đường cong $y = f(x)$, đường thẳng $\Delta$ và đoạn thẳng $OR$. Giá trị của $B - A$ là bao nhiêu?
+""")
+
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Sử dụng đúng tên file ảnh bạn đã cung cấp
+        st.image("images/image_3846b9.PNG", width=600)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_3846b9.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của B - A:", key="q88_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q88_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 2
+    if normalized_user_answer == "2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập công thức tính diện tích A và B bằng tích phân. Điểm giao cắt phức tạp giữa đường cong và đường thẳng $\Delta$ sẽ tự động bị triệt tiêu khi lấy B - A!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q88_solution_shown' not in st.session_state:
+    st.session_state['q88_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q88_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q88_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q88_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q88_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định tọa độ các điểm quan trọng**
+    
+    *   Điểm $P(2; f(2))$. Ta có $f(2) = \dfrac{1}{4}(2)^3 + 2 = 4 \Rightarrow P(2; 4)$.
+    *   Đường thẳng $d$ đi qua gốc tọa độ $O(0; 0)$ và $P(2; 4)$ có phương trình là $y = \dfrac{4 - 0}{2 - 0}x \Rightarrow y = 2x$.
+    *   Điểm $Q$ là giao điểm của $d$ và $\Delta: y = -x + 3$. Phương trình hoành độ giao điểm: $2x = -x + 3 \Leftrightarrow 3x = 3 \Leftrightarrow x = 1 \Rightarrow y = 2$. Vậy $Q(1; 2)$.
+    *   Điểm $R$ là giao điểm của $\Delta$ với trục hoành ($y=0$): $-x + 3 = 0 \Leftrightarrow x = 3$. Vậy $R(3; 0)$.
+    *   Gọi $M$ là giao điểm của đường cong $y = f(x)$ và đường thẳng $\Delta$. Hoành độ của $M$ là nghiệm của phương trình $\dfrac{1}{4}x^3 + x = -x + 3$. Giả sử hoành độ giao điểm này là $x = \alpha$ (dựa vào đồ thị ta thấy $1 < \alpha < 2$).
+
+    **Bước 2: Thiết lập tích phân tính diện tích $A$ và $B$**
+    
+    *   **Diện tích $A$:** Hình phẳng $A$ được giới hạn phía trên bởi đoạn $PQ$ (thuộc $d: y=2x$), phía dưới bởi $\Delta$ (trên đoạn $x \in [1; \alpha]$) và đường cong $C$ (trên đoạn $x \in [\alpha; 2]$).
+        $$A = \int_{1}^{2} 2x \text{d}x - \left( \int_{1}^{\alpha} (-x + 3) \text{d}x + \int_{\alpha}^{2} f(x) \text{d}x \right)$$
+        Ta có phần diện tích tam giác phía trên $\int_{1}^{2} 2x \text{d}x = x^2 \Big|_1^2 = 4 - 1 = 3$.
+        Do đó: $$A = 3 - \int_{1}^{\alpha} (-x + 3) \text{d}x - \int_{\alpha}^{2} f(x) \text{d}x$$
+    
+    *   **Diện tích $B$:** Hình phẳng $B$ được giới hạn phía trên bởi đường cong $C$ (trên đoạn $x \in [0; \alpha]$) và $\Delta$ (trên đoạn $x \in [\alpha; 3]$), phía dưới bởi đoạn $OR$ nằm trên trục hoành ($y=0$).
+        $$B = \int_{0}^{\alpha} f(x) \text{d}x + \int_{\alpha}^{3} (-x + 3) \text{d}x$$
+    
+    **Bước 3: Tính $B - A$**
+    
+    Ta lấy $B$ trừ $A$ vế theo vế:
+    $$B - A = \left[ \int_{0}^{\alpha} f(x) \text{d}x + \int_{\alpha}^{3} (-x + 3) \text{d}x \right] - \left[ 3 - \int_{1}^{\alpha} (-x + 3) \text{d}x - \int_{\alpha}^{2} f(x) \text{d}x \right]$$
+    
+    Phá ngoặc và nhóm các tích phân có cùng hàm số dưới dấu tích phân lại với nhau:
+    $$B - A = \left( \int_{0}^{\alpha} f(x) \text{d}x + \int_{\alpha}^{2} f(x) \text{d}x \right) + \left( \int_{\alpha}^{3} (-x + 3) \text{d}x + \int_{1}^{\alpha} (-x + 3) \text{d}x \right) - 3$$
+    
+    Áp dụng tính chất nối cận của tích phân $\left(\int_a^b + \int_b^c = \int_a^c\right)$, giao điểm phức tạp $\alpha$ hoàn toàn bị triệt tiêu:
+    $$B - A = \int_{0}^{2} f(x) \text{d}x + \int_{1}^{3} (-x + 3) \text{d}x - 3$$
+    
+    Bây giờ ta chỉ việc tính 2 tích phân cơ bản:
+    *   $\int_{0}^{2} f(x) \text{d}x = \int_{0}^{2} \left( \dfrac{1}{4}x^3 + x \right) \text{d}x = \left[ \dfrac{1}{16}x^4 + \dfrac{1}{2}x^2 \right]_0^2 = \left( \dfrac{16}{16} + \dfrac{4}{2} \right) - 0 = 1 + 2 = 3$
+    *   $\int_{1}^{3} (-x + 3) \text{d}x = \left[ -\dfrac{1}{2}x^2 + 3x \right]_1^3 = \left( -\dfrac{9}{2} + 9 \right) - \left( -\dfrac{1}{2} + 3 \right) = \dfrac{9}{2} - \dfrac{5}{2} = 2$
+    
+    Thay các kết quả vào biểu thức:
+    $$B - A = 3 + 2 - 3 = 2$$
+        
+    **Kết luận:** Giá trị của $B - A$ là **$2$**.
+    """)
+
+st.markdown("---")
+
 
