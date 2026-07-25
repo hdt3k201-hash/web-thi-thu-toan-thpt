@@ -1384,3 +1384,92 @@ if st.session_state.get('q14_solution_shown'):
 
 
 
+# --- CÂU HỎI 15: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH ---
+st.markdown(
+    '<b style="color: blue;">Câu 15 (ĐGNL ĐHSPHN 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một nhà thiết kế dự định thiết kế một logo cho một công ty (xem hình minh họa bên). Đường viền của logo bao gồm nửa đường tròn đường kính $BC$ bằng $4 \text{ cm}$, hai cung $AB$ và $AC$ lần lượt là một phần của các parabol đỉnh $B$ và đỉnh $C$, trục đối xứng của mỗi parabol vuông góc với đường thẳng $BC$. Tính diện tích logo đó, biết tam giác $ABC$ là tam giác vuông cân tại $A$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích logo (nhập dạng chính xác, ví dụ: 2\pi + 8/3 hoặc làm tròn 8.95):", key="q15_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/image_f58694.PNG", width=400)
+except Exception as e:
+    st.warning("⚠️ Lỗi: Không thể tải ảnh. Vui lòng kiểm tra lại xem file 'images/image_f58694.PNG' đã tồn tại chưa.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q15_check"):
+    # Chuẩn hóa chuỗi nhập vào để check nhiều trường hợp
+    ans = user_answer.strip().replace(' ', '').lower()
+    
+    if ans in ["2\pi+8/3", "8/3+2\pi", "8.95", "8,95"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy gắn hệ trục tọa độ với gốc tại trung điểm BC. Diện tích logo gồm diện tích nửa hình tròn phía dưới và diện tích hình phẳng giới hạn bởi hai parabol phía trên!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q15_solution_shown' not in st.session_state:
+    st.session_state['q15_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q15_solution_btn"):
+        st.session_state['q15_solution_shown'] = True
+
+if st.session_state.get('q15_solution_shown'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Gắn hệ trục tọa độ và xác định tọa độ các điểm**
+    
+    * Chọn hệ trục tọa độ $Oxy$ sao cho gốc $O$ là trung điểm của đoạn thẳng $BC$, trục hoành $Ox$ chứa tia $OC$, trục tung $Oy$ là đường trung trực của $BC$.
+    * Đường kính $BC = 4 \implies OB = OC = 2$. Vậy tọa độ các điểm là: $B(-2; 0)$ và $C(2; 0)$.
+    * Tam giác $ABC$ vuông cân tại $A$. Đường trung tuyến $AO$ ứng với cạnh huyền $BC$ sẽ có độ dài bằng nửa cạnh huyền: $AO = \dfrac{BC}{2} = 2$.
+    * Vì $A$ nằm phía trên trục hoành (theo hình vẽ) thuộc trục tung $Oy$, tọa độ của $A$ là $(0; 2)$.
+    
+    **Bước 2: Tính diện tích nửa hình tròn phía dưới ($S_1$)**
+    
+    * Nửa đường tròn có đường kính $BC = 4 \text{ cm} \implies$ Bán kính $R = 2 \text{ cm}$.
+    * Diện tích nửa hình tròn là:
+        $$S_1 = \dfrac{1}{2} \pi R^2 = \dfrac{1}{2} \pi (2)^2 = 2\pi \text{ (cm}^2\text{)}$$
+        
+    **Bước 3: Thiết lập phương trình các parabol**
+    
+    * **Cung $AB$:** Là một phần của parabol $(P_1)$ có đỉnh $B(-2; 0)$ và trục đối xứng vuông góc với $BC$ (tức là trục đối xứng có phương trình $x = -2$).
+        * Dạng phương trình của $(P_1)$ là: $y = a_1(x + 2)^2$.
+        * $(P_1)$ đi qua $A(0; 2) \implies 2 = a_1(0 + 2)^2 \implies 4a_1 = 2 \implies a_1 = \dfrac{1}{2}$.
+        * Vậy phương trình $(P_1)$ là: $y = \dfrac{1}{2}(x + 2)^2$ với $x \in [-2; 0]$.
+        
+    * **Cung $AC$:** Tương tự, do tính đối xứng qua trục tung $Oy$, parabol $(P_2)$ chứa cung $AC$ có đỉnh $C(2; 0)$ và đi qua $A(0; 2)$.
+        * Phương trình $(P_2)$ là: $y = \dfrac{1}{2}(x - 2)^2$ với $x \in [0; 2]$.
+        
+    **Bước 4: Tính diện tích phần hình phẳng phía trên ($S_2$)**
+    
+    * $S_2$ là diện tích hình phẳng giới hạn bởi các cung parabol $(P_1)$, $(P_2)$ và trục hoành $BC$. Do tính đối xứng, ta có:
+        $$S_2 = 2 \int_{0}^{2} \dfrac{1}{2}(x - 2)^2 \text{d}x = \int_{0}^{2} (x - 2)^2 \text{d}x$$
+    * Tính tích phân:
+        $$S_2 = \left[ \dfrac{(x - 2)^3}{3} \right]_{0}^{2} = 0 - \dfrac{(-2)^3}{3} = \dfrac{8}{3} \text{ (cm}^2\text{)}$$
+        
+    **Bước 5: Tính tổng diện tích logo**
+    
+    * Tổng diện tích logo là tổng của phần phía trên và nửa hình tròn phía dưới:
+        $$S = S_1 + S_2 = 2\pi + \dfrac{8}{3} \text{ (cm}^2\text{)}$$
+    
+    **Kết luận:** Diện tích logo cần thiết kế là **$2\pi + \dfrac{8}{3} \text{ cm}^2$** (xấp xỉ $8,95 \text{ cm}^2$).
+    """)
+    st.markdown("---")
+
+
+
