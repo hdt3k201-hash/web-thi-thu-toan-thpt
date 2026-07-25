@@ -2743,3 +2743,98 @@ if st.session_state.get('q28_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 29: ỨNG DỤNG TÍCH PHÂN TÍNH THỂ TÍCH KHỐI TRÒN XOAY ---
+st.markdown(
+    '<b style="color: blue;">Câu 29 (Cụm các trường Hưng Yên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một thùng làm kem có dạng hình tròn xoay, có mặt cắt qua trục là dạng parabol như hình vẽ. Biết phương trình đường biên parabol có dạng $f(x) = a\sqrt{x}$. Hỏi dung tích của thùng bằng bao nhiêu lít? Kết quả làm tròn đến hàng phần chục.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập dung tích của thùng (lít) (ví dụ: 12.3):", key="q29_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ theo yêu cầu
+        st.image("images/image_00eac9.PNG", width=600)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_00eac9.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q29_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 28.3
+    if normalized_user_answer == "28.3":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Dựa vào hình vẽ, trục đứng là trục x, trục ngang là trục y. Tìm hệ số a bằng cách thế tọa độ điểm tại miệng thùng, sau đó dùng công thức tính thể tích khối tròn xoay quanh trục x.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q29_solution_shown' not in st.session_state:
+    st.session_state['q29_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q29_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q29_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q29_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q29_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích hệ trục tọa độ và hàm số**
+    
+    Quan sát hình vẽ, ta thấy sự bố trí trục tọa độ hơi khác biệt:
+    *   Trục đứng là trục $x$.
+    *   Trục ngang là trục $y$.
+    *   Đường viền biên có phương trình được cho theo biến $x$ là: $y = f(x) = a\sqrt{x}$.
+    
+    Khối tròn xoay (chiếc thùng) được tạo thành khi quay miền phẳng giới hạn bởi đường viền $y = a\sqrt{x}$, trục $x$ (nghĩa là $y=0$), và đường thẳng $x = 20$ xung quanh trục $x$.
+    
+    **Bước 2: Xác định hệ số $a$**
+    
+    Từ các số liệu trên hình, tại vị trí miệng thùng (đỉnh cao nhất):
+    *   Chiều cao của thùng kem dọc theo trục $x$ là $20\text{ cm} \Rightarrow x = 20$.
+    *   Bán kính tương ứng từ tâm (trục $x$) đến mép thùng là $30\text{ cm} \Rightarrow y = 30$.
+    
+    Điểm $(20; 30)$ nằm trên đường biên parabol, nên ta thay vào phương trình $y = a\sqrt{x}$:
+    $$30 = a\sqrt{20} \Rightarrow a = \dfrac{30}{\sqrt{20}} \Rightarrow a^2 = \dfrac{30^2}{20} = \dfrac{900}{20} = 45$$
+    
+    **Bước 3: Tính thể tích khối tròn xoay**
+    
+    Dung tích thùng kem chính là thể tích khối tròn xoay khi quay phần mặt cắt quanh trục $x$:
+    $$V = \pi \int_{0}^{20} y^2 dx = \pi \int_{0}^{20} (a\sqrt{x})^2 dx = \pi \int_{0}^{20} a^2 x dx$$
+    
+    Thay $a^2 = 45$ vào tích phân:
+    $$V = \pi \int_{0}^{20} 45x dx = 45\pi \left[ \dfrac{1}{2}x^2 \right]_{0}^{20}$$
+    $$V = 45\pi \left( \dfrac{1}{2} \cdot 20^2 \right) = 45\pi \cdot 200 = 9000\pi \text{ (cm}^3\text{)}$$
+    
+    **Bước 4: Đổi đơn vị và làm tròn**
+    
+    *   Đổi từ cm³ sang lít ($1 \text{ lít} = 1000 \text{ cm}^3$):
+        $$V = \dfrac{9000\pi}{1000} = 9\pi \text{ (lít)}$$
+    *   Tính giá trị xấp xỉ: $V = 9 \cdot 3,14159265... \approx 28,27433 \text{ lít}$.
+    *   Làm tròn kết quả đến hàng phần chục (một chữ số thập phân): $V \approx 28,3$.
+    
+    **Kết luận:** Dung tích của thùng xấp xỉ **$28,3$** lít.
+    """)
+
+st.markdown("---")
