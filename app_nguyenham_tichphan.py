@@ -3176,3 +3176,95 @@ if st.session_state.get('q32_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 33: ỨNG DỤNG TÍCH PHÂN TÍNH THỂ TÍCH (HÌNH NÓN CỤT) ---
+st.markdown(
+    '<b style="color: blue;">Câu 33 (Sở Cà Mau 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một công ty hóa chất có một bồn chứa dạng hình nón cụt làm bằng thép, bồn có chiều cao là $4\text{ mét}$, bán kính đáy dưới là $1\text{ mét}$ và bán kính đáy trên là $3\text{ mét}$. Giả sử bồn đang trống, người ta bắt đầu bơm một loại dung dịch vào bồn với tốc độ không đổi là $0,5\text{ m}^3\text{/phút}$. Hỏi sau bao lâu (giây) kể từ khi bắt đầu bơm, mực nước trong bồn đạt độ cao $2\text{ mét}$? (Kết quả làm tròn đến chữ số hàng phần mười).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập thời gian (giây) (ví dụ: 123.4):", key="q33_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q33_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 1759.3
+    if normalized_user_answer == "1759.3":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm bán kính mặt nước khi độ cao đạt 2m bằng định lý Talet (hoặc hàm bậc nhất). Sau đó tính thể tích khối nón cụt (phần chứa nước) rồi chia cho tốc độ bơm (nhớ đổi từ phút sang giây).")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q33_solution_shown' not in st.session_state:
+    st.session_state['q33_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q33_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q33_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q33_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q33_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm bán kính mặt dung dịch ở độ cao $2\text{m}$**
+    
+    Gọi $h$ là độ cao của dung dịch tính từ đáy dưới. Bán kính mặt dung dịch ở độ cao $h$ thay đổi tuyến tính theo $h$.
+    Giả sử $r(h) = ah + b$.
+    *   Tại đáy dưới ($h = 0$), bán kính $r(0) = 1\text{ m} \Rightarrow b = 1$.
+    *   Tại đỉnh bồn ($h = 4$), bán kính $r(4) = 3\text{ m} \Rightarrow 4a + 1 = 3 \Rightarrow a = \dfrac{1}{2}$.
+    
+    Vậy hàm số biểu diễn bán kính theo độ cao là: $r(h) = \dfrac{1}{2}h + 1$.
+    
+    Khi mực nước đạt độ cao $h = 2\text{ m}$, bán kính mặt nước là:
+    $$r(2) = \dfrac{1}{2} \cdot 2 + 1 = 2\text{ (m)}$$
+
+    **Bước 2: Tính thể tích dung dịch trong bồn**
+    
+    Phần dung dịch trong bồn tạo thành một hình nón cụt có:
+    *   Bán kính đáy dưới: $R_1 = 1\text{ m}$
+    *   Bán kính đáy trên (mặt dung dịch): $R_2 = 2\text{ m}$
+    *   Chiều cao: $h' = 2\text{ m}$
+    
+    Thể tích khối nón cụt được tính bằng công thức: $V = \dfrac{1}{3}\pi h' (R_1^2 + R_1 R_2 + R_2^2)$
+    $$V = \dfrac{1}{3}\pi \cdot 2 \cdot (1^2 + 1 \cdot 2 + 2^2)$$
+    $$V = \dfrac{2\pi}{3} (1 + 2 + 4) = \dfrac{2\pi}{3} \cdot 7 = \dfrac{14\pi}{3}\text{ (m}^3\text{)}$$
+    
+    *(Cách khác: Dùng tích phân thể tích khối tròn xoay: $V = \pi \int_0^2 (\dfrac{1}{2}h + 1)^2 dh = \dfrac{14\pi}{3}$)*
+
+    **Bước 3: Tính thời gian bơm dung dịch**
+    
+    Tốc độ bơm của công ty là $v = 0,5\text{ m}^3\text{/phút} = \dfrac{1}{2}\text{ m}^3\text{/phút}$.
+    Thời gian cần thiết tính bằng **phút** là:
+    $$t_{phut} = \dfrac{V}{v} = \dfrac{\dfrac{14\pi}{3}}{\dfrac{1}{2}} = \dfrac{28\pi}{3}\text{ (phút)}$$
+    
+    Đổi thời gian ra **giây**:
+    $$t_{giay} = \dfrac{28\pi}{3} \times 60 = 28\pi \times 20 = 560\pi\text{ (giây)}$$
+    
+    Tính giá trị xấp xỉ:
+    $$t_{giay} \approx 560 \times 3,14159265... \approx 1759,2918...\text{ (giây)}$$
+    
+    **Kết luận:** Làm tròn kết quả đến chữ số hàng phần mười, ta được thời gian bơm là **$1759,3$** giây.
+    """)
+
+st.markdown("---")
