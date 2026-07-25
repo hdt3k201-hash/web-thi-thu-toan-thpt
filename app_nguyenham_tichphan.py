@@ -2228,7 +2228,7 @@ Người ta lát gạch trang trí một mảnh sân hình chữ nhật có kíc
 """)
 
 # --- Ô NHẬP ĐÁP ÁN ---
-user_answer = st.text_input("Nhập chi phí lát gạch (triệu đồng) (ví dụ: 23.3):", key="q24_ans")
+user_answer = st.text_input("Nhập chi phí lát gạch (triệu đồng) (ví dụ: 12.3):", key="q24_ans")
 
 # --- CHÈN HÌNH ẢNH ---
 try:
@@ -2320,6 +2320,109 @@ if st.session_state.get('q24_solution_shown') and st.session_state.get('logged_i
     * Làm tròn kết quả đến hàng phần chục (1 chữ số thập phân), ta được **$23,3$** triệu đồng.
         
     **Kết luận:** Chi phí lát gạch là **$23,3$** triệu đồng.
+    """)
+
+st.markdown("---")
+
+import streamlit as st
+
+# --- CÂU HỎI 25: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH ---
+st.markdown(
+    '<b style="color: blue;">Câu 25 (THPT Phụ Dực - Hưng Yên 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Hình bên là hình ảnh một viên gạch men có dạng một hình vuông có độ dài cạnh 8 dm. Hai hình Elip đều có độ dài trục lớn 8 dm và độ dài trục bé 4 dm, các trục song song các cạnh tương ứng của hình vuông và có tâm đối xứng là tâm hình vuông. Đường tròn tiếp xúc với tất cả các cạnh hình vuông. Ở công đoạn tráng men, chi phí nguyên liệu, thi công, kĩ thuật, với mỗi 1 m²: phần tô đen có chi phí 20 nghìn đồng, phần chấm bi, là 1 trong 2 elip như hình vẽ, có chi phí 15 nghìn đồng và phần còn lại có chi phí 10 nghìn đồng. Hãy tính chi phí $a$ triệu đồng của công đoạn tráng men khi doanh nghiệp sản xuất 100000 viên gạch như thế, làm tròn kết quả đến hàng đơn vị.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của a (ví dụ: 123):", key="q25_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ theo yêu cầu
+        st.image("image_005c79.PNG", width=400)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'image_005c79.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q25_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 914
+    if normalized_user_answer == "914":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hệ trục tọa độ, tính diện tích phần giao của hai elip bằng tích phân, sau đó tính diện tích từng phần theo dm² rồi nhân với đơn giá (nhớ đổi sang m²).")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q25_solution_shown' not in st.session_state:
+    st.session_state['q25_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q25_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q25_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q25_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q25_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ tọa độ và các phương trình**
+    
+    Chọn hệ trục tọa độ $Oxy$ với gốc tọa độ $O$ trùng với tâm hình vuông, các trục tọa độ song song với các cạnh hình vuông. Đơn vị trên hệ trục là dm.
+    * Hình vuông có cạnh 8 dm, diện tích $S_{hv} = 8 \times 8 = 64 \text{ (dm}^2\text{)}$.
+    * Đường tròn nội tiếp hình vuông có bán kính $R = 4$, phương trình là $x^2 + y^2 = 16$. Diện tích hình tròn $S_{ht} = \pi R^2 = 16\pi \text{ (dm}^2\text{)}$.
+    * Elip nằm ngang $(E_1)$ có độ dài trục lớn 8 ($a=4$), trục bé 4 ($b=2$), phương trình: $\frac{x^2}{16} + \frac{y^2}{4} = 1$. Diện tích $S_{E1} = \pi ab = 8\pi \text{ (dm}^2\text{)}$.
+    * Elip thẳng đứng $(E_2)$ có độ dài trục lớn 8 ($a=4$), trục bé 4 ($b=2$), phương trình: $\frac{x^2}{4} + \frac{y^2}{16} = 1$. Diện tích $S_{E2} = 8\pi \text{ (dm}^2\text{)}$.
+
+    **Bước 2: Tính diện tích phần giao của hai Elip**
+    
+    Gọi $S_{\cap}$ là diện tích phần giao của $(E_1)$ và $(E_2)$. Do tính đối xứng, ta chỉ cần tính diện tích phần giao trong góc phần tư thứ nhất, rồi nhân 4.
+    * Trong góc phần tư thứ nhất: 
+      $(E_1) \Rightarrow y = \frac{1}{2}\sqrt{16-x^2}$
+      $(E_2) \Rightarrow y = \sqrt{16-4x^2}$
+    * Hoành độ giao điểm của $(E_1)$ và $(E_2)$ thỏa mãn:
+      $$\frac{1}{2}\sqrt{16-x^2} = \sqrt{16-4x^2} \Leftrightarrow 16-x^2 = 4(16-4x^2) \Leftrightarrow 15x^2 = 48 \Leftrightarrow x = \frac{4}{\sqrt{5}}$$
+    * Diện tích phần giao của hai Elip là:
+      $$S_{\cap} = 4 \left( \int_0^{\frac{4}{\sqrt{5}}} \frac{1}{2}\sqrt{16-x^2} dx + \int_{\frac{4}{\sqrt{5}}}^2 \sqrt{16-4x^2} dx \right)$$
+    * Bấm máy tính hoặc giải tích phân, ta thu được: $S_{\cap} = 32\arcsin\left(\frac{1}{\sqrt{5}}\right) \approx 14,739 \text{ (dm}^2\text{)}$.
+    
+    **Bước 3: Tính diện tích các phần để tráng men**
+    
+    * **Phần tô đen (Màu vàng trên hình):** Nằm trong hình tròn và nằm ngoài cả 2 elip. Do cả 2 elip đều nằm trọn trong hình tròn, diện tích phần tô đen là:
+      $$S_1 = S_{ht} - (S_{E1} + S_{E2} - S_{\cap}) = 16\pi - (8\pi + 8\pi - S_{\cap}) = S_{\cap} = 32\arcsin\left(\frac{1}{\sqrt{5}}\right)$$
+    * **Phần chấm bi:** Đề bài nêu rõ là 1 trong 2 elip (nguyên 1 hình elip). Vậy:
+      $$S_2 = S_{E1} = 8\pi$$
+    * **Phần còn lại:** Bằng tổng diện tích hình vuông trừ đi phần tô đen và phần chấm bi:
+      $$S_3 = S_{hv} - S_1 - S_2 = 64 - 32\arcsin\left(\frac{1}{\sqrt{5}}\right) - 8\pi$$
+      
+    **Bước 4: Tính tổng chi phí**
+    
+    Lưu ý: Đơn giá được tính theo m², trong khi diện tích đang tính theo dm². Ta phải nhân diện tích với $10^{-2}$ để đổi sang m² ($1 \text{ dm}^2 = 0,01 \text{ m}^2$).
+    * Chi phí để tráng men **1 viên gạch** là:
+      $$C_1 = (20000 \cdot S_1 + 15000 \cdot S_2 + 10000 \cdot S_3) \cdot 10^{-2}$$
+      $$C_1 = 200 \cdot S_1 + 150 \cdot S_2 + 100 \cdot S_3$$
+      $$C_1 = 100(S_1 + S_2 + S_3) + 100 \cdot S_1 + 50 \cdot S_2$$
+      $$C_1 = 100 \cdot 64 + 100 \cdot 32\arcsin\left(\frac{1}{\sqrt{5}}\right) + 50 \cdot 8\pi$$
+      $$C_1 = 6400 + 3200\arcsin\left(\frac{1}{\sqrt{5}}\right) + 400\pi \approx 9140,31 \text{ (VNĐ)}$$
+    
+    * Chi phí để sản xuất **100.000 viên gạch** là:
+      $$C = 100000 \cdot C_1 = 100000 \cdot 9140,31 = 914.031.000 \text{ (VNĐ)}$$
+      
+    **Kết luận:** Đổi sang đơn vị triệu đồng và làm tròn đến hàng đơn vị, ta được $a \approx 914$.
     """)
 
 st.markdown("---")
