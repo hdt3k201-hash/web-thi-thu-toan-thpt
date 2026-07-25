@@ -3345,3 +3345,75 @@ if st.session_state.get('q34_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 35: TÍCH PHÂN HÀM ẨN ---
+st.markdown(
+    '<b style="color: blue;">Câu 35(ĐGNL - TD) </b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho $f(x)$ là hàm số liên tục trên $\mathbb{R}$ và $\int_{0}^{1} f(x) dx = 4$, $\int_{0}^{3} f(x) dx = 6$. Tính $I = \int_{-1}^{1} f(|2x+1|) dx$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của I:", key="q35_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q35_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 5
+    if normalized_user_answer == "5":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Đặt $u = 2x + 1$, sau đó tách tích phân thành hai khoảng dựa vào dấu của $u$ bên trong trị tuyệt đối. Chú ý tính chất tích phân chẵn lẻ và đổi biến.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q35_solution_shown' not in st.session_state:
+    st.session_state['q35_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q35_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q35_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q35_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q35_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    Đặt $u = 2x+1 \Rightarrow dx = \dfrac{1}{2}du$. 
+    Đổi cận: Khi $x = -1$ thì $u = -1$. Khi $x = 1$ thì $u = 3$.
+    
+    Nên $I = \dfrac{1}{2} \int_{-1}^{3} f(|u|)du = \dfrac{1}{2} \left( \int_{-1}^{0} f(|u|)du + \int_{0}^{3} f(|u|)du \right)$
+    
+    $= \dfrac{1}{2} \left( \int_{-1}^{0} f(-u)du + \int_{0}^{3} f(u)du \right)$.
+    
+    Xét $\int_{0}^{1} f(x)dx = 4$. Đặt $x = -u \Rightarrow dx = -du$.
+    Đổi cận: Khi $x = 0$ thì $u = 0$. Khi $x = 1$ thì $u = -1$.
+    
+    Nên $4 = \int_{0}^{1} f(x)dx = -\int_{0}^{-1} f(-u)du = \int_{-1}^{0} f(-u)du$.
+    
+    Ta có $\int_{0}^{3} f(x)dx = 6 \Rightarrow \int_{0}^{3} f(u)du = 6$.
+    
+    Nên $I = \dfrac{1}{2} \left( \int_{-1}^{0} f(-u)du + \int_{0}^{3} f(u)du \right) = \dfrac{1}{2}(4 + 6) = 5$.
+    
+    **Kết luận:** $I = 5$.
+    """)
+
+st.markdown("---")
