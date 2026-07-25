@@ -8148,7 +8148,7 @@ except FileNotFoundError:
     st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/so_ha_noi_2026_q92.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 # --- Ô NHẬP ĐÁP ÁN ---
-user_answer = st.text_input("Nhập diện tích hình phẳng (cm², làm tròn đến hàng phần trăm, ví dụ: 13.53):", key="q92_ans")
+user_answer = st.text_input("Nhập diện tích hình phẳng (cm², làm tròn đến hàng phần trăm, ví dụ: 19.13):", key="q92_ans")
 
 # --- NÚT KIỂM TRA ĐÁP ÁN ---
 if st.button("Kiểm tra đáp án", key="q92_check"):
@@ -8214,6 +8214,102 @@ if st.session_state.get('q92_solution_shown') and st.session_state.get('logged_i
     * Làm tròn kết quả đến hàng phần trăm ta được $13,53$.
         
     **Kết luận:** Diện tích hình phẳng (phần gạch chéo) xấp xỉ **$13,53\text{ cm}^2$**.
+    """)
+
+st.markdown("---")
+
+
+
+# --- CÂU HỎI 93: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH HÌNH PHẢNG ---
+st.markdown(
+    '<b style="color: blue;">Câu 93 (Liên trường chuyên Đà Nẵng 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho đồ thị của các hàm số $f(x) = -x^4 + x$, $g(x) = x^4 - x^3$ và $h(x) = a(x - x^2)$, với $a \in \mathbb{R}$, tạo thành hai miền hình phẳng có diện tích $S_1$, $S_2$ như hình vẽ, trong đó $S_1$ là phần màu trắng, $S_2$ là phần được tô màu. Biết $S_1 = 2S_2$, hỏi giá trị của biểu thức $1 - 30a$ bằng bao nhiêu?
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đề bài (cần cập nhật đúng tên file ảnh trong thư mục của bạn)
+        st.image("images/lien_truong_dn_2026_q93.PNG", width=450)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/lien_truong_dn_2026_q93.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của biểu thức 1 - 30a (ví dụ: -19):", key="q93_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q93_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là -11
+    if normalized_user_answer == "-11":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tìm hoành độ giao điểm của các đồ thị (x = 0 và x = 1). Tính tổng diện tích S = S1 + S2 bằng tích phân của [f(x) - g(x)]. Từ giả thiết S1 = 2S2 suy ra S2, sau đó lập phương trình tích phân cho S2 theo biến a để tìm a nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q93_solution_shown' not in st.session_state:
+    st.session_state['q93_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q93_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q93_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q93_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q93_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định hoành độ giao điểm (cận tích phân)**
+    
+    * Phương trình hoành độ giao điểm của đồ thị $y = f(x)$ và $y = g(x)$:
+        $$-x^4 + x = x^4 - x^3 \iff 2x^4 - x^3 - x = 0 \iff x(2x^3 - x^2 - 1) = 0$$
+        $$\iff x(x - 1)(2x^2 + x + 1) = 0 \iff \left[ \begin{array}{l} x = 0 \\ x = 1 \end{array} \right.$$
+    * Thử lại với đồ thị $y = h(x) = a(x - x^2)$: ta thấy $h(0) = 0$ và $h(1) = 0$. 
+    * Như vậy cả 3 đồ thị đều cắt nhau tại điểm gốc tọa độ $O(0; 0)$ và điểm $(1; 0)$ trên trục hoành. Do đó, đoạn tích phân ta cần xét là $[0; 1]$.
+    
+    **Bước 2: Tính tổng diện tích $S = S_1 + S_2$**
+    
+    * Tổng diện tích $S$ là miền được giới hạn bởi đồ thị $y = f(x)$ ở phía trên và $y = g(x)$ ở phía dưới trên đoạn $[0; 1]$:
+        $$S = S_1 + S_2 = \int_{0}^{1} \left[ f(x) - g(x) \right] \text{d}x = \int_{0}^{1} \left[ (-x^4 + x) - (x^4 - x^3) \right] \text{d}x$$
+        $$S = \int_{0}^{1} \left( -2x^4 + x^3 + x \right) \text{d}x = \left[ -\dfrac{2}{5}x^5 + \dfrac{1}{4}x^4 + \dfrac{1}{2}x^2 \right]_{0}^{1}$$
+        $$S = -\dfrac{2}{5} + \dfrac{1}{4} + \dfrac{1}{2} = \dfrac{7}{20}$$
+    
+    **Bước 3: Sử dụng giả thiết $S_1 = 2S_2$ để tính $S_2$**
+    
+    * Theo đề bài ta có $S_1 = 2S_2$, thay vào tổng diện tích:
+        $$S_1 + S_2 = 3S_2 = \dfrac{7}{20} \implies S_2 = \dfrac{7}{60}$$
+    
+    **Bước 4: Thiết lập phương trình theo tham số $a$ để tìm $a$**
+    
+    * Miền diện tích $S_2$ (phần tô màu) được giới hạn bởi đồ thị $y = h(x)$ phía trên và $y = g(x)$ phía dưới trên đoạn $[0; 1]$:
+        $$S_2 = \int_{0}^{1} \left[ h(x) - g(x) \right] \text{d}x = \int_{0}^{1} \left[ a(x - x^2) - (x^4 - x^3) \right] \text{d}x$$
+    * Tính tích phân theo $a$:
+        $$S_2 = a \int_{0}^{1} (x - x^2)\text{d}x - \int_{0}^{1} (x^4 - x^3)\text{d}x$$
+        $$S_2 = a \left[ \dfrac{x^2}{2} - \dfrac{x^3}{3} \right]_{0}^{1} - \left[ \dfrac{x^5}{5} - \dfrac{x^4}{4} \right]_{0}^{1} = a\left(\dfrac{1}{2} - \dfrac{1}{3}\right) - \left(\dfrac{1}{5} - \dfrac{1}{4}\right)$$
+        $$S_2 = \dfrac{a}{6} - \left(-\dfrac{1}{20}\right) = \dfrac{a}{6} + \dfrac{1}{20}$$
+    * Cho kết quả này bằng giá trị $S_2 = \dfrac{7}{60}$ đã tìm ở Bước 3:
+        $$\dfrac{a}{6} + \dfrac{1}{20} = \dfrac{7}{60} \iff \dfrac{a}{6} = \dfrac{7}{60} - \dfrac{3}{60} = \dfrac{4}{60} = \dfrac{1}{15}$$
+        $$\implies a = \dfrac{6}{15} = \dfrac{2}{5}$$
+    
+    **Bước 5: Tính giá trị của biểu thức đề bài yêu cầu**
+    
+    * Thay $a = \dfrac{2}{5}$ vào biểu thức $1 - 30a$, ta được:
+        $$1 - 30a = 1 - 30 \cdot \dfrac{2}{5} = 1 - 12 = -11$$
+        
+    **Kết luận:** Giá trị của biểu thức $1 - 30a$ bằng **$-11$**.
     """)
 
 st.markdown("---")
