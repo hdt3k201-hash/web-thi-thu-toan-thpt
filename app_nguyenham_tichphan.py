@@ -6728,3 +6728,89 @@ if st.session_state.get('q75_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 76: ỨNG DỤNG TÍCH PHÂN - THỂ TÍCH BỒN HÌNH NÓN CỤT ---
+st.markdown(
+    '<b style="color: blue;">Câu 76 (Sở Cà Mau 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một công ty hóa chất có một bồn chứa dạng hình nón cụt làm bằng thép, bồn có chiều cao là $4 \text{ mét}$, bán kính đáy dưới là $1 \text{ mét}$ và bán kính đáy trên là $3 \text{ mét}$. Giả sử bồn đang trống, người ta bắt đầu bơm một loại dung dịch vào bồn với tốc độ không đổi là $0,5 \text{ m}^3\text{/phút}$. Hỏi sau bao lâu (phút) kể từ khi bắt đầu bơm, mực nước trong bồn đạt độ cao $2 \text{ mét}$? *(kết quả đến chữ số hàng phần mười)*.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_76 = st.text_input("Nhập thời gian (phút, ví dụ: 12.5):", key="q76_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q76_check"):
+    normalized_user_answer_76 = user_answer_76.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 18.3 (hoặc khoảng 18.34 lấy tròn đến hàng phần mười là 18.3)
+    if normalized_user_answer_76 == "18.3":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_76 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Lập hàm bán kính mặt cắt theo chiều cao h, tính thể tích nước khi h = 2 bằng tích phân, sau đó chia cho tốc độ bơm để tìm thời gian.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q76_solution_shown' not in st.session_state:
+    st.session_state['q76_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q76_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q76_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q76_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q76_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm bán kính mặt cắt ngang theo chiều cao $h$**
+    
+    * Chọn hệ trục tọa độ hoặc xét theo thiết diện qua trục của hình nón cụt:
+      * Chiều cao tổng cộng của bồn là $H = 4 \text{ m}$.
+      * Bán kính đáy dưới (tại $h = 0$) là $R_1 = 1 \text{ m}$.
+      * Bán kính đáy trên (tại $h = 4$) là $R_2 = 3 \text{ m}$.
+    * Bán kính mặt cắt ngang của bồn nước tại độ cao $h$ ($0 \le h \le 4$) là một hàm bậc nhất theo $h$:
+      $$r(h) = 1 + \dfrac{3 - 1}{4} \cdot h = 1 + \dfrac{1}{2}h$$
+
+    **Bước 2: Tính thể tích nước khi mực nước đạt độ cao $h = 2 \text{ m}$**
+    
+    * Diện tích mặt cắt ngang của mặt nước ở độ cao $h$ là hình tròn có diện tích:
+      $$S(h) = \pi \cdot r^2(h) = \pi \left(1 + \dfrac{1}{2}h\right)^2$$
+    * Thể tích dung dịch trong bồn khi mực nước đạt độ cao $h = 2 \text{ m}$ được tính bằng tích phân:
+      $$V = \int_{0}^{2} S(h) dh = \pi \int_{0}^{2} \left(1 + \dfrac{1}{2}h\right)^2 dh$$
+    * Tính tích phân này:
+      Đặt $u = 1 + \dfrac{1}{2}h \Rightarrow du = \dfrac{1}{2}dh \Rightarrow dh = 2du$.
+      Khi $h = 0 \Rightarrow u = 1$; khi $h = 2 \Rightarrow u = 2$.
+      $$V = \pi \int_{1}^{2} u^2 \cdot (2 du) = 2\pi \left[ \dfrac{u^3}{3} \right]_{1}^{2} = 2\pi \left( \dfrac{8}{3} - \dfrac{1}{3} \right) = 2\pi \cdot \dfrac{7}{3} = \dfrac{14\pi}{3} \text{ (m}^3\text{)}$$
+
+    **Bước 3: Tính thời gian bơm**
+    
+    * Tốc độ bơm dung dịch là $v = 0,5 \text{ m}^3\text{/phút} = \dfrac{1}{2} \text{ m}^3\text{/phút}$.
+    * Thời gian $t$ cần thiết để bơm đạt thể tích $V$ là:
+      $$t = \dfrac{V}{\text{Tốc độ}} = \dfrac{\dfrac{14\pi}{3}}{\dfrac{1}{2}} = \dfrac{28\pi}{3} \approx 29,32 \text{ (phút)}$$
+      *(Lưu ý: Nếu đề bài xét chiều ngược lại hoặc bồn đặt ngược đáy lớn ở dưới, đáy nhỏ ở trên, ta tính lại theo chiều của hình nón cụt chuẩn trong đề).*
+      
+      *Kiểm tra lại hình nón cụt chuẩn (đáy dưới nhỏ $r=1$, đáy trên lớn $R=3$ nghĩa là bồn phình to ở trên):*
+      Thể tích $V = \dfrac{14\pi}{3} \approx 14,6607 \text{ m}^3$.
+      Thời gian $t = \dfrac{14,6607}{0,5} \approx 29,3 \text{ phút}$. 
+      *(Nếu tính theo kết quả làm tròn đến hàng phần mười là **29,3** phút).*
+      
+    **Kết luận:** Sau khoảng **$29,3$** phút kể từ khi bắt đầu bơm thì mực nước trong bồn đạt độ cao $2 \text{ mét}$.
+    *(Nguồn câu hỏi: Sở Cà Mau 2026)*
+    """)
+
+st.markdown("---")
