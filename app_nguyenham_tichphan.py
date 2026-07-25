@@ -2838,3 +2838,103 @@ if st.session_state.get('q29_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 30: ỨNG DỤNG TÍCH PHÂN TÍNH THỂ TÍCH VÀ BÀI TOÁN THỰC TẾ ---
+st.markdown(
+    '<b style="color: blue;">Câu 30 (Sở Nghệ An 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một nghệ nhân tại làng nghề đúc đồng, nhận chế tác các mẫu đôn trang trí cao cấp bằng đồng. Mỗi chiếc đôn có dạng khối tròn xoay đặc, cao $40\text{ cm}$, với thiết kế mềm mại và cân đối quanh một trục thẳng đứng. Khi cắt chiếc đôn bởi một mặt phẳng bất kỳ đi qua trục đối xứng, ta thu được một thiết diện giới hạn bởi hai đường parabol đối xứng nhau qua trục này. Theo yêu cầu thiết kế: Mặt trên và mặt đáy của đôn đều là hình tròn có đường kính $30\text{ cm}$; phần thân được bo thon đều về phía trung tâm, tại đó đường kính nhỏ nhất là $24\text{ cm}$. Biết khối lượng riêng của đồng là $8960\text{ kg}/m^3$, giá đồng là $220\text{ nghìn đồng/kg}$ và chi phí gia công cho mỗi sản phẩm là $10\text{ triệu đồng}$, lượng đồng hao hụt trong quá trình gia công được xem là không đáng kể. Tổng chi phí để hoàn thiện một chiếc đôn theo thiết kế trên là bao nhiêu triệu đồng? Không làm tròn kết quả các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần mười.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập tổng chi phí (triệu đồng) (ví dụ: 12.3):", key="q30_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ theo yêu cầu
+        st.image("images/image_00f283.PNG", width=600)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_00f283.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q30_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 52.1
+    if normalized_user_answer == "52.1":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Đặt trục $Ox$ dọc theo trục đôn, gốc $O$ ở chính giữa. Viết phương trình parabol đường sinh, tính thể tích khối tròn xoay, đổi sang $m^3$, tính khối lượng rồi nhân với đơn giá (nhớ cộng thêm chi phí gia công).")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q30_solution_shown' not in st.session_state:
+    st.session_state['q30_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q30_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q30_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q30_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q30_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ trục tọa độ và tìm phương trình đường sinh**
+    
+    Chọn hệ trục tọa độ $Oxy$ sao cho trục $Ox$ trùng với trục đối xứng của chiếc đôn (đặt chiếc đôn nằm ngang), gốc $O$ tại điểm chính giữa trục đôn. Khi đó, khối đôn là khối tròn xoay được tạo thành khi quay miền giới hạn bởi đường parabol và trục $Ox$ xung quanh trục $Ox$.
+    
+    *   Chiều cao đôn là $40\text{ cm}$, suy ra $x \in [-20; 20]$.
+    *   Đường kính phần trung tâm (tại $x = 0$) là $24\text{ cm} \Rightarrow$ bán kính $y = 12$. Điểm $(0; 12)$ thuộc parabol.
+    *   Đường kính 2 đáy (tại $x = \pm 20$) là $30\text{ cm} \Rightarrow$ bán kính $y = 15$. Điểm $(20; 15)$ thuộc parabol.
+    
+    Gọi phương trình parabol có dạng $y = ax^2 + c$.
+    *   Vì đi qua $(0; 12) \Rightarrow c = 12$.
+    *   Vì đi qua $(20; 15) \Rightarrow a(20)^2 + 12 = 15 \Leftrightarrow 400a = 3 \Rightarrow a = \dfrac{3}{400}$.
+    
+    Vậy phương trình đường sinh parabol là: $y = f(x) = \dfrac{3}{400}x^2 + 12$.
+
+    **Bước 2: Tính thể tích chiếc đôn**
+    
+    Thể tích khối đôn tròn xoay là:
+    $$V = \pi \int_{-20}^{20} \left( \dfrac{3}{400}x^2 + 12 \right)^2 dx = 2\pi \int_{0}^{20} \left( \dfrac{9}{160000}x^4 + \dfrac{72}{400}x^2 + 144 \right) dx$$
+    $$V = 2\pi \left[ \dfrac{9}{800000}x^5 + \dfrac{9}{50} \cdot \dfrac{x^3}{3} + 144x \right]_{0}^{20} = 2\pi \left[ \dfrac{9}{800000}x^5 + \dfrac{3}{50}x^3 + 144x \right]_{0}^{20}$$
+    Thay $x = 20$ vào, ta được:
+    $$V = 2\pi (36 + 480 + 2880) = 2\pi (3396) = 6792\pi \text{ (cm}^3)$$
+    
+    Đổi thể tích sang mét khối: $V = 6792\pi \cdot 10^{-6} \text{ (m}^3)$.
+
+    **Bước 3: Tính khối lượng và chi phí**
+    
+    *   **Khối lượng đồng cần dùng:** 
+        $$m = V \times D = \left(6792\pi \cdot 10^{-6}\right) \times 8960 = 60,85632\pi \text{ (kg)}$$
+        
+    *   **Chi phí tiền đồng:**
+        Đơn giá đồng là $220\text{ nghìn đồng/kg} = 0,22\text{ triệu đồng/kg}$.
+        $$T_{dong} = m \times 0,22 = 60,85632\pi \times 0,22 = 13,3883904\pi \text{ (triệu đồng)}$$
+        
+    *   **Tổng chi phí hoàn thiện một chiếc đôn:**
+        Chi phí gia công là $10\text{ triệu đồng}$.
+        $$T = T_{dong} + 10 = 13,3883904\pi + 10$$
+        Sử dụng $\pi \approx 3,14159265...$, ta tính được:
+        $$T \approx 42,06087 + 10 = 52,06087 \text{ (triệu đồng)}$$
+        
+    **Kết luận:** Làm tròn kết quả đến hàng phần mười, tổng chi phí là **$52,1$** triệu đồng.
+    """)
+
+st.markdown("---")
