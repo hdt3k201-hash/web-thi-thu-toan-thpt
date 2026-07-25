@@ -6564,3 +6564,166 @@ if st.session_state.get('q73_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 74: ỨNG DỤNG TÍCH PHÂN TÍNH THỂ TÍCH/LƯỢNG NƯỚC ---
+st.markdown(
+    '<b style="color: blue;">Câu 74 (THPT Phan Đình Phùng - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Người ta xả nước từ một chiếc bể với vận tốc $v(t) = 500 - 10t \text{ (lít/phút)}$, với t là thời gian tính bằng phút. Biết rằng bể sẽ hết nước sau 40 phút kể từ lúc bắt đầu xả. Hỏi ban đầu trong bể có bao nhiêu mét khối nước?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_74 = st.text_input("Nhập thể tích nước theo mét khối (ví dụ: 15):", key="q74_ans")
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q74_check"):
+    normalized_user_answer_74 = user_answer_74.strip()
+    
+    # Đáp án chính xác là 12
+    if normalized_user_answer_74 == "12":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_74 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Lượng nước ban đầu bằng tích phân của hàm vận tốc xả từ t=0 đến t=40. Nhớ đổi đơn vị từ lít sang mét khối.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q74_solution_shown' not in st.session_state:
+    st.session_state['q74_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q74_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q74_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q74_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q74_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính lượng nước đã xả (tính bằng lít)**
+    
+    Lượng nước ban đầu trong bể chính là tổng lượng nước xả ra trong 40 phút. 
+    Áp dụng tích phân cho hàm tốc độ xả nước $v(t)$, ta có thể tích nước là:
+    $$V = \int_{0}^{40} v(t) dt = \int_{0}^{40} (500 - 10t) dt$$
+    
+    Tính tích phân:
+    $$V = \left( 500t - 5t^2 \right) \Bigg|_{0}^{40}$$
+    $$V = (500 \cdot 40 - 5 \cdot 40^2) - 0 = 20000 - 5 \cdot 1600 = 20000 - 8000 = 12000 \text{ (lít)}$$
+    
+    **Bước 2: Đổi đơn vị sang mét khối**
+    
+    Ta có $1 \text{ m}^3 = 1000 \text{ lít}$.
+    Suy ra lượng nước ban đầu trong bể là:
+    $$V = \dfrac{12000}{1000} = 12 \text{ (m}^3)$$
+    
+    **Kết luận:** Ban đầu trong bể có **$12$** mét khối nước.
+    *(Nguồn câu hỏi: THPT Phan Đình Phùng - Hà Nội 2026)*
+    """)
+
+st.markdown("---")
+
+# --- CÂU HỎI 75: ỨNG DỤNG TÍCH PHÂN - MẶT CẮT VÀ TỐC ĐỘ THAY ĐỔI ---
+st.markdown(
+    '<b style="color: blue;">Câu 75 (Sở Thanh Hóa 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một cái chậu đựng nước có dạng hình chóp cụt đều, đáy chậu là tam giác đều cạnh bằng $2 \text{ dm}$, miệng chậu là tam giác đều cạnh bằng $5 \text{ dm}$ và chiều cao chậu nước bằng $3 \text{ dm}$. Người ta bơm nước vào chậu với lưu lượng không đổi $\dfrac{\sqrt{3}}{3} \text{ lít/phút}$. Tại thời điểm $14$ phút sau khi bơm tốc độ dâng lên của nước trong chậu là $\dfrac{1}{a} \text{ dm/phút}$, giá trị của $a$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_75 = st.text_input("Nhập giá trị của a (ví dụ: 29):", key="q75_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/image_1c29e6.PNG", width=600)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_1c29e6.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q75_check"):
+    normalized_user_answer_75 = user_answer_75.strip()
+    
+    # Đáp án chính xác là 12
+    if normalized_user_answer_75 == "12":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_75 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm hàm diện tích mặt cắt S(h) theo chiều cao h. Sử dụng công thức đạo hàm V'(t) = S(h) * h'(t) và tính thể tích V tại t=14 để tìm h tại thời điểm đó.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q75_solution_shown' not in st.session_state:
+    st.session_state['q75_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q75_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q75_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q75_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q75_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm diện tích mặt cắt ngang $S(h)$**
+    
+    Gọi $h$ là chiều cao mực nước trong chậu tại thời điểm $t$ ($0 \le h \le 3$, đơn vị: $\text{dm}$). 
+    Mặt cắt ngang của chậu tại độ cao $h$ là một tam giác đều. Gọi cạnh của tam giác đều này là $x(h)$.
+    Dựa vào định lý Talet (hoặc nội suy tuyến tính) cho hình chóp cụt, độ dài cạnh $x(h)$ tăng đều từ đáy lên miệng chậu:
+    $$x(h) = 2 + \dfrac{h}{3} \cdot (5 - 2) = 2 + h \text{ (dm)}$$
+    Diện tích mặt cắt ngang của nước tại độ cao $h$ là:
+    $$S(h) = \dfrac{\sqrt{3}}{4} \cdot x^2(h) = \dfrac{\sqrt{3}}{4} (h + 2)^2 \text{ (dm}^2\text{)}$$
+
+    **Bước 2: Tìm chiều cao mực nước $h$ tại thời điểm $t = 14$**
+    
+    Lưu lượng bơm nước là $\dfrac{\sqrt{3}}{3} \text{ lít/phút} = \dfrac{\sqrt{3}}{3} \text{ dm}^3\text{/phút}$ (do $1 \text{ lít} = 1 \text{ dm}^3$).
+    Thể tích nước bơm vào chậu sau 14 phút là:
+    $$V(14) = 14 \cdot \dfrac{\sqrt{3}}{3} = \dfrac{14\sqrt{3}}{3} \text{ (dm}^3\text{)}$$
+    
+    Mặt khác, thể tích nước trong chậu theo chiều cao $h$ được tính bằng tích phân của diện tích mặt cắt:
+    $$V = \int_{0}^{h} S(z) dz = \int_{0}^{h} \dfrac{\sqrt{3}}{4} (z + 2)^2 dz = \dfrac{\sqrt{3}}{4} \cdot \left[ \dfrac{(z + 2)^3}{3} \right]_{0}^{h} = \dfrac{\sqrt{3}}{12} \left( (h + 2)^3 - 8 \right)$$
+    
+    Cho $V = \dfrac{14\sqrt{3}}{3}$, ta có:
+    $$\dfrac{\sqrt{3}}{12} \left( (h + 2)^3 - 8 \right) = \dfrac{14\sqrt{3}}{3}$$
+    $$\Leftrightarrow (h + 2)^3 - 8 = 14 \cdot 4 = 56 \Leftrightarrow (h + 2)^3 = 64 \Leftrightarrow h + 2 = 4 \Leftrightarrow h = 2 \text{ (dm)}$$
+    Vậy tại phút thứ 14, mực nước cao $2 \text{ dm}$.
+
+    **Bước 3: Tính tốc độ dâng lên của nước $h'(t)$**
+    
+    Thể tích $V(t)$ liên hệ với chiều cao $h(t)$ qua đạo hàm theo thời gian:
+    $$V'(t) = S(h) \cdot h'(t)$$
+    Trong đó, $V'(t)$ chính là lưu lượng bơm nước, $V'(t) = \dfrac{\sqrt{3}}{3}$.
+    
+    Tại thời điểm $t = 14$, ta có $h = 2$, suy ra diện tích mặt cắt lúc này là:
+    $$S(2) = \dfrac{\sqrt{3}}{4} (2 + 2)^2 = 4\sqrt{3}$$
+    
+    Thay vào công thức đạo hàm:
+    $$\dfrac{\sqrt{3}}{3} = 4\sqrt{3} \cdot h'(14)$$
+    $$h'(14) = \dfrac{\sqrt{3}}{3 \cdot 4\sqrt{3}} = \dfrac{1}{12} \text{ (dm/phút)}$$
+    
+    **Kết luận:** Tốc độ dâng của nước là $\dfrac{1}{12} \text{ dm/phút}$, tức là $\dfrac{1}{a} = \dfrac{1}{12} \Rightarrow a = 12$.
+    *(Nguồn câu hỏi: Sở Thanh Hóa 2026)*
+    """)
+
+st.markdown("---")
