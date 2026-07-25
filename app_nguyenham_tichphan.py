@@ -3825,3 +3825,275 @@ if st.session_state.get('q40_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# --- CÂU HỎI 41: TÍCH PHÂN HÀM LÔ-GA-RÍT ---
+st.markdown(
+    '<b style="color: blue;">Câu 41 ( ĐGNL - TD ) </b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Biết $I = \int_{0}^{4} x \ln(x^2 + 9) dx = a \ln 5 + b \ln 3 + c$ trong đó $a, b, c$ là các số thực. Tính giá trị của biểu thức $T = a + b + c$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của T:", key="q41_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q41_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 8
+    if normalized_user_answer == "8":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Sử dụng phương pháp đổi biến số đặt $u = x^2 + 9$, sau đó dùng phương pháp tích phân từng phần để tính tích phân của hàm lô-ga-rít.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q41_solution_shown' not in st.session_state:
+    st.session_state['q41_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q41_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q41_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q41_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q41_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    Xét tích phân $I = \int_{0}^{4} x \ln(x^2 + 9) dx$.
+    
+    **Bước 1: Đổi biến số**
+    
+    Đặt $u = x^2 + 9 \Rightarrow du = 2x dx \Rightarrow x dx = \dfrac{1}{2} du$.
+    
+    Đổi cận:
+    *   Khi $x = 0 \Rightarrow u = 0^2 + 9 = 9$;
+    *   Khi $x = 4 \Rightarrow u = 4^2 + 9 = 16 + 9 = 25$.
+    
+    Khi đó, tích phân trở thành:
+    $$ I = \dfrac{1}{2} \int_{9}^{25} \ln u \, du $$
+    
+    **Bước 2: Tính tích phân bằng phương pháp tích phân từng phần**
+    
+    Xét nguyên hàm $\int \ln u \, du$. Đặt $\begin{cases} v = \ln u \\ dw = du \end{cases} \Rightarrow \begin{cases} dv = \dfrac{1}{u} du \\ w = u \end{cases}$.
+    
+    Ta có:
+    $$ \int \ln u \, du = u \ln u - \int u \cdot \dfrac{1}{u} du = u \ln u - u $$
+    
+    Do đó:
+    $$ I = \dfrac{1}{2} \left[ u \ln u - u \right]_{9}^{25} $$
+    $$ I = \dfrac{1}{2} \left[ (25 \ln 25 - 25) - (9 \ln 9 - 9) \right] $$
+    
+    **Bước 3: Rút gọn biểu thức**
+    
+    Ta biến đổi các hệ số logarit:
+    *   $25 \ln 25 = 25 \ln(5^2) = 50 \ln 5$
+    *   $9 \ln 9 = 9 \ln(3^2) = 18 \ln 3$
+    
+    Thay vào biểu thức của $I$:
+    $$ I = \dfrac{1}{2} \left( 50 \ln 5 - 25 - 18 \ln 3 + 9 \right) $$
+    $$ I = \dfrac{1}{2} \left( 50 \ln 5 - 18 \ln 3 - 16 \right) $$
+    $$ I = 25 \ln 5 - 9 \ln 3 - 8 $$
+    
+    **Bước 4: Đồng nhất hệ số và tính tổng $T$**
+    
+    Theo giả thiết, $I = a \ln 5 + b \ln 3 + c$, suy ra:
+    *   $a = 25$
+    *   $b = -9$
+    *   $c = -8$
+    
+    Giá trị của biểu thức $T = a + b + c$ là:
+    $$ T = 25 + (-9) + (-8) = 8 $$
+    
+    **Kết luận:** $T = 8$.
+    """)
+
+st.markdown("---")
+
+
+
+# ==========================================
+# CÂU HỎI 42
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 42 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho $\int_{0}^{\pi/2} \dfrac{\cos x}{\sin^2 x - 5\sin x + 6} dx = a\ln \dfrac{4}{b}$. Giá trị của $a + b$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN CÂU 42 ---
+user_answer_42 = st.text_input("Nhập giá trị của a + b:", key="q42_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+# --- NÚT KIỂM TRA ĐÁP ÁN CÂU 42 ---
+if st.button("Kiểm tra đáp án Câu 42", key="q42_check"):
+    normalized_user_answer_42 = user_answer_42.strip()
+    
+    if normalized_user_answer_42 == "4":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_42 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Đặt $t = \sin x$, phân tích mẫu số thành nhân tử $(\sin x - 2)(\sin x - 3)$ và tính tích phân hữu tỉ.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 42 ---
+st.markdown("---")
+
+if 'q42_solution_shown' not in st.session_state:
+    st.session_state['q42_solution_shown'] = False
+
+col1_42, col2_42 = st.columns([1, 4])
+with col1_42:
+    if st.button("Xem lời giải chi tiết Câu 42", key="q42_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q42_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q42_solution_shown'] = False 
+
+if st.session_state.get('q42_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 42:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    Ta có:
+    $$ I = \int_{0}^{\pi/2} \dfrac{\cos x}{\sin^2 x - 5\sin x + 6} dx = \int_{0}^{\pi/2} \dfrac{d(\sin x)}{(\sin x - 2)(\sin x - 3)} $$
+    
+    Đặt $t = \sin x \Rightarrow dt = d(\sin x) = \cos x \, dx$.
+    Đổi cận: Khi $x = 0 \Rightarrow t = 0$; khi $x = \dfrac{\pi}{2} \Rightarrow t = 1$.
+    
+    Khi đó:
+    $$ I = \int_{0}^{1} \dfrac{dt}{(t - 2)(t - 3)} = \int_{0}^{1} \left( \dfrac{-1}{t - 2} + \dfrac{1}{t - 3} \right) dt $$
+    $$ = \left[ \ln|t - 3| - \ln|t - 2| \right]_{0}^{1} = \left[ \ln\left|\dfrac{t - 3}{t - 2}\right| \right]_{0}^{1} $$
+    $$ = \ln\left|\dfrac{1 - 3}{1 - 2}\right| - \ln\left|\dfrac{0 - 3}{0 - 2}\right| = \ln\left|\dfrac{-2}{-1}\right| - \ln\left(\dfrac{3}{2}\right) = \ln 2 - \ln\dfrac{3}{2} = \ln\left(\dfrac{2}{\dfrac{3}{2}}\right) = \ln\dfrac{4}{3} $$
+    
+    Theo giả thiết, $I = a\ln\dfrac{4}{b}$, suy ra $a = 1$ và $b = 3$.
+    Vậy giá trị của $a + b = 1 + 3 = 4$.
+    
+    **Kết luận:** $a + b = 4$.
+    """)
+
+st.markdown("---")
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+
+# ==========================================
+# CÂU HỎI 43
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 43 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $y = f(x)$ có $f(1) = \dfrac{1}{2}$ và $f'(x) = \dfrac{x}{(x+1)^2}$ với $x > -1$. Biết $\int_{1}^{2} f(x) dx = a\ln\dfrac{b}{c} - d$ với $a, b, c, d$ là các số nguyên dương, $b \le 3$ và $\dfrac{b}{c}$ tối giản. Khi đó $a + b + c + d$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN CÂU 43 ---
+user_answer_43 = st.text_input("Nhập giá trị của a + b + c + d:", key="q43_ans")
+
+# --- CHÈN HÌNH ẢNH (Dùng chung 1 ảnh) ---
+
+# --- NÚT KIỂM TRA ĐÁP ÁN CÂU 43 ---
+if st.button("Kiểm tra đáp án Câu 43", key="q43_check"):
+    normalized_user_answer_43 = user_answer_43.strip()
+    
+    if normalized_user_answer_43 == "10":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_43 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tìm hàm số $f(x)$ từ đạo hàm bằng cách nguyên hàm, sử dụng điều kiện $f(1)$ để tìm hằng số $C$, sau đó dùng tích phân từng phần để tính tích phân từ 1 đến 2.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 43 ---
+st.markdown("---")
+
+if 'q43_solution_shown' not in st.session_state:
+    st.session_state['q43_solution_shown'] = False
+
+col1_43, col2_43 = st.columns([1, 4])
+with col1_43:
+    if st.button("Xem lời giải chi tiết Câu 43", key="q43_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q43_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q43_solution_shown'] = False 
+
+if st.session_state.get('q43_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết Câu 43:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Tìm hàm số $f(x)$**
+    
+    Ta có:
+    $$ f(x) = \int f'(x) dx = \int \dfrac{x}{(x+1)^2} dx = \int \dfrac{(x+1) - 1}{(x+1)^2} dx $$
+    $$ = \int \left( \dfrac{1}{x+1} - \dfrac{1}{(x+1)^2} \right) dx = \ln(x+1) + \dfrac{1}{x+1} + C \quad (\text{vì } x > -1) $$
+    
+    Theo giả thiết $f(1) = \dfrac{1}{2}$:
+    $$ \ln(1+1) + \dfrac{1}{1+1} + C = \dfrac{1}{2} \Rightarrow \ln 2 + \dfrac{1}{2} + C = \dfrac{1}{2} \Rightarrow C = -\ln 2 $$
+    
+    Do đó:
+    $$ f(x) = \ln(x+1) + \dfrac{1}{x+1} - \ln 2 = \ln\left(\dfrac{x+1}{2}\right) + \dfrac{1}{x+1} $$
+    
+    **Bước 2: Tính tích phân $\int_{1}^{2} f(x) dx$ bằng phương pháp tích phân từng phần**
+    
+    Áp dụng công thức tích phân từng phần $\int_{a}^{b} u \, dv = uv\Big|_a^b - \int_{a}^{b} v \, du$:
+    $$ \int_{1}^{2} f(x) dx = x f(x) \Big|_{1}^{2} - \int_{1}^{2} x f'(x) dx $$
+    
+    Tính từng phần:
+    1. $x f(x) \Big|_{1}^{2} = 2 f(2) - 1 f(1)$:
+       * $f(2) = \ln(2+1) + \dfrac{1}{2+1} - \ln 2 = \ln 3 + \dfrac{1}{3} - \ln 2 = \ln\dfrac{3}{2} + \dfrac{1}{3}$
+       * $2 f(2) = 2\ln\dfrac{3}{2} + \dfrac{2}{3}$
+       * $1 f(1) = \dfrac{1}{2}$
+       * $2 f(2) - f(1) = 2\ln\dfrac{3}{2} + \dfrac{2}{3} - \dfrac{1}{2} = 2\ln\dfrac{3}{2} + \dfrac{1}{6}$
+       
+    2. $\int_{1}^{2} x f'(x) dx = \int_{1}^{2} \dfrac{x^2}{(x+1)^2} dx$:
+       $$ \int_{1}^{2} \dfrac{x^2}{(x+1)^2} dx = \int_{1}^{2} \dfrac{(x+1)^2 - 2(x+1) + 1}{(x+1)^2} dx = \int_{1}^{2} \left( 1 - \dfrac{2}{x+1} + \dfrac{1}{(x+1)^2} \right) dx $$
+       $$ = \left[ x - 2\ln(x+1) - \dfrac{1}{x+1} \right]_{1}^{2} $$
+       $$ = \left( 2 - 2\ln 3 - \dfrac{1}{3} \right) - \left( 1 - 2\ln 2 - \dfrac{1}{2} \right) $$
+       $$ = \left( 1 + \dfrac{1}{6} \right) - 2(\ln 3 - \ln 2) = \dfrac{7}{6} - 2\ln\dfrac{3}{2} $$
+       
+    Suy ra:
+    $$ \int_{1}^{2} f(x) dx = \left( 2\ln\dfrac{3}{2} + \dfrac{1}{6} \right) - \left( \dfrac{7}{6} - 2\ln\dfrac{3}{2} \right) = 4\ln\dfrac{3}{2} - 1 $$
+    
+    **Bước 3: Đồng nhất hệ số và tính tổng**
+    
+    Theo giả thiết, $\int_{1}^{2} f(x) dx = a\ln\dfrac{b}{c} - d$, ta có:
+    * $a = 4$
+    * $\dfrac{b}{c} = \dfrac{3}{2} \Rightarrow b = 3, c = 2$ (thỏa mãn $b \le 3$ và phân số tối giản)
+    * $d = 1$
+    
+    Tất cả $a, b, c, d$ đều là các số nguyên dương.
+    Giá trị của biểu thức $a + b + c + d$ là:
+    $$ a + b + c + d = 4 + 3 + 2 + 1 = 10 $$
+    
+    **Kết luận:** $a + b + c + d = 10$.
+    """)
+
+st.markdown("---")
