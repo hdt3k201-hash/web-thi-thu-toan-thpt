@@ -7932,3 +7932,105 @@ if st.session_state.get('q89_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+import streamlit as st
+
+# --- CÂU HỎI 90: BÀI TOÁN TỐI ƯU CHI PHÍ NGUYÊN LIỆU (ỨNG DỤNG ĐẠO HÀM) ---
+st.markdown(
+    '<b style="color: blue;">Câu 90 (THPT ĐH-KHTN HN 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một cơ sở sản xuất dự định làm các viên gạch men hình vuông cạnh $60\text{ cm}$. Bề mặt viên gạch được trang trí bởi một hoạ tiết hình chữ nhật màu trắng có tâm trùng với tâm viên gạch. Các đỉnh của hình chữ nhật này nằm trên hai đường parabol đối xứng nhau qua tâm viên gạch. Biết rằng mỗi đường parabol có đỉnh tại trung điểm một cạnh của viên gạch và đi qua hai đầu mút của cạnh đối diện (như hình vẽ mô phỏng). Cho biết chi phí nguyên liệu phần men trắng là $80$ nghìn đồng/$\text{m}^2$, còn phần men màu bao quanh là $200$ nghìn đồng/$\text{m}^2$. 
+
+Hỏi chi phí nguyên liệu thấp nhất để sản xuất một viên gạch là bao nhiêu nghìn đồng? (kết quả làm tròn đến hàng phần mười).
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đề bài (cần cập nhật đúng tên file ảnh trong thư mục của bạn)
+        st.image("images/khtn_hn_2026_q90.PNG", width=400)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/khtn_hn_2026_q90.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập chi phí nguyên liệu thấp nhất (nghìn đồng, làm tròn đến hàng phần mười, ví dụ: 60.2):", key="q90_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q90_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 60.2
+    if normalized_user_answer == "60.2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy lập phương trình parabol trong hệ trục tọa độ, tính diện tích hình chữ nhật màu trắng theo một biến, sau đó tìm giá trị lớn nhất của diện tích bằng đạo hàm để suy ra chi phí thấp nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q90_solution_shown' not in st.session_state:
+    st.session_state['q90_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q90_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q90_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q90_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q90_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chọn hệ trục tọa độ và lập phương trình đường parabol**
+    
+    * Chọn hệ trục tọa độ $Oxy$ với gốc $O(0;0)$ trùng với tâm của viên gạch hình vuông.
+    * Khi đó, viên gạch có cạnh $60\text{ cm}$ sẽ được giới hạn bởi các đường $x = -30, x = 30, y = -30, y = 30$.
+    * Diện tích toàn bộ viên gạch là:
+        $$S = 60 \times 60 = 3600 \text{ (cm}^2\text{)} = 0,36 \text{ (m}^2\text{)}$$
+    * Không mất tính tổng quát, giả sử một parabol $(P_1)$ có đỉnh tại trung điểm cạnh dưới $(0; -30)$ và đi qua hai đỉnh của cạnh đối diện là $(-30; 30)$ và $(30; 30)$. Phương trình của $(P_1)$ có dạng $y = ax^2 - 30$.
+    * Vì $(P_1)$ đi qua điểm $(30; 30)$ nên ta có:
+        $$30 = a \cdot 30^2 - 30 \iff 900a = 60 \iff a = \dfrac{1}{15}$$
+    * Vậy phương trình parabol phía dưới là $(P_1): y = \dfrac{1}{15}x^2 - 30$.
+    * Do tính đối xứng qua tâm $O$, parabol phía trên $(P_2)$ có đỉnh tại $(0; 30)$ sẽ có phương trình:
+        $$(P_2): y = -\dfrac{1}{15}x^2 + 30$$
+    
+    **Bước 2: Biểu diễn diện tích hình chữ nhật màu trắng theo biến $x$**
+    
+    * Do hình chữ nhật màu trắng đối xứng qua tâm $O$, gọi đỉnh ở góc phần tư thứ nhất (nằm trên $(P_2)$) là điểm $M(x; y)$ với $0 < x < 30$ và $y > 0$.
+    * Vì $M \in (P_2)$ nên tọa độ $y = 30 - \dfrac{1}{15}x^2$.
+    * Hình chữ nhật màu trắng có chiều rộng bằng $2x$ và chiều dài bằng $2y$. Diện tích phần men trắng là:
+        $$S_{\text{trắng}}(x) = 2x \cdot 2y = 4x \left(30 - \dfrac{1}{15}x^2\right) = 120x - \dfrac{4}{15}x^3 \text{ (cm}^2\text{)}$$
+    
+    **Bước 3: Tìm giá trị lớn nhất của diện tích phần men trắng**
+    
+    * Ta xét hàm số $f(x) = 120x - \dfrac{4}{15}x^3$ trên khoảng $(0; 30)$.
+    * Đạo hàm:
+        $$f'(x) = 120 - \dfrac{4}{5}x^2$$
+    * Cho $f'(x) = 0 \iff \dfrac{4}{5}x^2 = 120 \iff x^2 = 150 \iff x = \sqrt{150} = 5\sqrt{6} \text{ (cm)}$ (vì $x > 0$).
+    * Giá trị lớn nhất của diện tích men trắng trên viên gạch đạt được tại $x = 5\sqrt{6}$:
+        $$S_{\text{trắng max}} = f(5\sqrt{6}) = 120 \cdot 5\sqrt{6} - \dfrac{4}{15} \cdot (5\sqrt{6})^3 = 600\sqrt{6} - 200\sqrt{6} = 400\sqrt{6} \text{ (cm}^2\text{)}$$
+    * Đổi sang đơn vị mét vuông ($\text{m}^2$):
+        $$S_{\text{trắng max}} = \dfrac{400\sqrt{6}}{10000} = \dfrac{\sqrt{6}}{25} \approx 0,09798 \text{ (m}^2\text{)}$$
+    
+    **Bước 4: Tính chi phí nguyên liệu thấp nhất**
+    
+    * Gọi $S_{\text{trắng}}$ và $S_{\text{màu}}$ lần lượt là diện tích phần men trắng và men màu (đơn vị $\text{m}^2$). Ta có $S_{\text{màu}} = S - S_{\text{trắng}} = 0,36 - S_{\text{trắng}}$.
+    * Tổng chi phí nguyên liệu sản xuất viên gạch là:
+        $$T = 80 \cdot S_{\text{trắng}} + 200 \cdot S_{\text{màu}} = 80 \cdot S_{\text{trắng}} + 200(0,36 - S_{\text{trắng}}) = 72 - 120 \cdot S_{\text{trắng}} \text{ (nghìn đồng)}$$
+    * Vì chi phí $T$ giảm khi diện tích men trắng $S_{\text{trắng}}$ tăng, nên chi phí sản xuất viên gạch thấp nhất khi diện tích phần men trắng lớn nhất ($S_{\text{trắng}} = S_{\text{trắng max}}$).
+    * Chi phí nguyên liệu thấp nhất là:
+        $$T_{\min} = 72 - 120 \cdot \dfrac{\sqrt{6}}{25} = 72 - \dfrac{24\sqrt{6}}{5} \approx 60,242 \text{ (nghìn đồng)}$$
+    * Làm tròn kết quả đến hàng phần mười, ta được $60,2$.
+        
+    **Kết luận:** Chi phí nguyên liệu thấp nhất để sản xuất một viên gạch xấp xỉ **$60,2$ nghìn đồng**.
+    """)
+
+st.markdown("---")
