@@ -8628,3 +8628,100 @@ if st.session_state.get('q96_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+
+# --- CÂU HỎI 97: ỨNG DỤNG TÍCH PHÂN TÍNH DIỆN TÍCH ---
+st.markdown(
+    '<b style="color: blue;">Câu 97 (Chuyên Lê Khiết - Quảng Ngãi 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một viên gạch hình vuông $ABCD$ có cạnh $60$. Người ta trang trí viên gạch bằng các đường cong $(L_1), (L_2)$. Đường cong $(L_1)$ là tập hợp các điểm $M$ thỏa $MC = MA + 50$ hoặc $MA = MC + 50$. Khi quay đường cong $(L_1)$ quanh tâm viên gạch hình vuông một góc $90^\circ$ ta được đường cong $(L_2)$. Tính diện tích hình phẳng giới hạn bởi các đường cong $(L_1), (L_2)$ và các cạnh viên gạch, tức phần màu trắng. Kết quả làm tròn đến hàng đơn vị.
+""")
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("image_aaa942.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'image_aaa942.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập diện tích phần màu trắng (làm tròn đến hàng đơn vị, ví dụ: 1234):", key="q97_ans")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q97_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 2502
+    if normalized_user_answer == "2502":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Gắn hệ trục tọa độ sao cho gốc O là tâm hình vuông, trục Ox dọc theo đường chéo AC. Đường cong L1 là một Hypebol, hãy thiết lập phương trình và dùng tích phân để tính diện tích 4 góc bị cắt!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q97_solution_shown' not in st.session_state:
+    st.session_state['q97_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q97_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q97_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q97_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q97_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chọn hệ trục tọa độ và viết phương trình đường cong $(L_1)$**
+    
+    * Gắn hệ trục tọa độ $Oxy$ với $O$ là tâm hình vuông, trục $Ox$ chứa đường chéo $AC$, trục $Oy$ chứa đường chéo $BD$. 
+    * Vì hình vuông có cạnh bằng $60$ nên đường chéo $AC = BD = 60\sqrt{2}$. 
+    * Tọa độ các đỉnh: $A(-30\sqrt{2}; 0)$, $C(30\sqrt{2}; 0)$, $B(0; -30\sqrt{2})$, $D(0; 30\sqrt{2})$.
+    * Tập hợp các điểm $M$ thỏa mãn $|MA - MC| = 50$ chính là một Hypebol $(L_1)$ nhận $A, C$ làm hai tiêu điểm.
+    * Ta có: $2c = AC = 60\sqrt{2} \implies c = 30\sqrt{2}$.
+    * Trục thực: $2a = 50 \implies a = 25$.
+    * Trục ảo: $b^2 = c^2 - a^2 = (30\sqrt{2})^2 - 25^2 = 1800 - 625 = 1175$.
+    * Phương trình Hypebol $(L_1)$: $\dfrac{x^2}{625} - \dfrac{y^2}{1175} = 1$. Nhánh nằm gần đỉnh $C$ có phương trình $x = 25\sqrt{1 + \dfrac{y^2}{1175}}$.
+    
+    **Bước 2: Tìm tọa độ giao điểm để thiết lập tích phân**
+    
+    * Ta xét diện tích phần tô xám ở góc đỉnh $C$. Phần này được giới hạn bởi Hypebol và hai cạnh $CD, CB$.
+    * Đường thẳng chứa cạnh $CD$ đi qua $C(30\sqrt{2}; 0)$ và $D(0; 30\sqrt{2})$ có phương trình là $x + y = 30\sqrt{2} \implies x = 30\sqrt{2} - y$.
+    * Phương trình hoành độ giao điểm của Hypebol và đường thẳng $CD$:
+      $$25\sqrt{1 + \dfrac{y^2}{1175}} = 30\sqrt{2} - y \implies 625 \left(1 + \dfrac{y^2}{1175}\right) = (30\sqrt{2} - y)^2$$
+      $$\iff 625 + \dfrac{25}{47}y^2 = 1800 - 60\sqrt{2}y + y^2 \iff 22y^2 - 2820\sqrt{2}y + 55225 = 0$$
+    * Giải phương trình bậc hai trên, ta lấy nghiệm nhỏ hơn $30\sqrt{2}$ (thuộc đoạn $CD$): 
+      $$y_0 = \dfrac{235\sqrt{2}}{22} \approx 15,109$$
+    
+    **Bước 3: Tính diện tích phần màu trắng**
+    
+    * Do tính đối xứng, diện tích 4 góc màu xám bằng nhau. Ta tính diện tích $1$ nửa phần xám ở góc $C$ (nằm trên trục $Ox$), sau đó nhân $8$ sẽ ra tổng diện tích phần xám.
+    * Diện tích $1$ nửa phần xám:
+      $$S_1 = \int_{0}^{y_0} \left( x_{CD} - x_{(L_1)} \right) \text{d}y = \int_{0}^{y_0} \left( 30\sqrt{2} - y - 25\sqrt{1 + \dfrac{y^2}{1175}} \right) \text{d}y$$
+    * Bấm máy tính tích phân trên với $y_0 \approx 15,109$, ta được $S_1 \approx 137,264$.
+    * Tổng diện tích phần xám bị cắt bỏ là: $S_{xam} = 8 \cdot S_1 \approx 8 \cdot 137,264 \approx 1098,11 \text{ (cm}^2\text{)}$.
+    * Diện tích viên gạch (hình vuông) là: $S_{total} = 60^2 = 3600 \text{ (cm}^2\text{)}$.
+    * Diện tích phần màu trắng cần tìm là: 
+      $$S = S_{total} - S_{xam} = 3600 - 1098,11 = 2501,89 \text{ (cm}^2\text{)}$$
+    
+    **Bước 4: Làm tròn kết quả**
+    
+    Làm tròn kết quả đến hàng đơn vị, ta được $2502$.
+        
+    **Kết luận:** Diện tích hình phẳng phần màu trắng xấp xỉ **$2502$**.
+    """)
+
+st.markdown("---")
