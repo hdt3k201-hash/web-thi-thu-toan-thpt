@@ -4266,3 +4266,102 @@ if st.session_state.get('q45_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+import streamlit as st
+
+# --- CÂU HỎI 46: TÍCH PHÂN HÀM ẨN NÂNG CAO ---
+st.markdown(
+    '<b style="color: blue;">Câu 46 (ĐGNL - TD)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x)$ có đạo hàm liên tục trên đoạn $[0; 1]$ thỏa mãn $f(1) = 1$, $\int_{0}^{1} [f'(x)]^2 dx = \dfrac{9}{5}$ và $\int_{0}^{1} f(\sqrt{x}) dx = \dfrac{2}{5}$. Tính tích phân $I = \int_{0}^{1} f(x) dx$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer = st.text_input("Nhập giá trị của I (dạng phân số 1/2 hoặc số thập phân 0.5):", key="q46_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q46_check"):
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 1/4 hoặc 0.25
+    if normalized_user_answer in ["1/4", "0.25"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Đặt $t = \sqrt{x}$ để xử lý tích phân chứa hàm hợp, sau đó dùng phương pháp tích phân từng phần để tìm mối liên hệ với $\int x^2 f'(x) dx$, kết hợp với bất đẳng thức tích phân bình phương bằng 0 để suy ra biểu thức của $f'(x)$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q46_solution_shown' not in st.session_state:
+    st.session_state['q46_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q46_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q46_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q46_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q46_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Lời giải**
+    
+    **Bước 1: Xử lý giả thiết $\int_{0}^{1} f(\sqrt{x}) dx = \dfrac{2}{5}$**
+    
+    Đặt $t = \sqrt{x} \Rightarrow t^2 = x \Rightarrow dx = 2t \, dt$.
+    Đổi cận: Khi $x = 0 \Rightarrow t = 0$; khi $x = 1 \Rightarrow t = 1$.
+    
+    Ta có:
+    $$ \int_{0}^{1} f(\sqrt{x}) dx = \int_{0}^{1} f(t) \cdot 2t \, dt = 2 \int_{0}^{1} t f(t) \, dt = \dfrac{2}{5} $$
+    $$ \Rightarrow \int_{0}^{1} t f(t) \, dt = \dfrac{1}{5} \Rightarrow \int_{0}^{1} x f(x) dx = \dfrac{1}{5} $$
+    
+    **Bước 2: Sử dụng phương pháp tích phân từng phần**
+    
+    Xét tích phân $\int_{0}^{1} x f(x) dx$:
+    $$ \int_{0}^{1} x f(x) dx = \left( \dfrac{x^2}{2} f(x) \right)\Bigg|_{0}^{1} - \int_{0}^{1} \dfrac{x^2}{2} f'(x) dx = \dfrac{1}{2} f(1) - \int_{0}^{1} \dfrac{x^2}{2} f'(x) dx $$
+    
+    Vì $f(1) = 1$ và $\int_{0}^{1} x f(x) dx = \dfrac{1}{5}$, ta có:
+    $$ \dfrac{1}{2} \cdot 1 - \int_{0}^{1} \dfrac{x^2}{2} f'(x) dx = \dfrac{1}{5} \Rightarrow \int_{0}^{1} \dfrac{x^2}{2} f'(x) dx = \dfrac{1}{2} - \dfrac{1}{5} = \dfrac{3}{10} $$
+    $$ \Rightarrow \int_{0}^{1} x^2 f'(x) dx = \dfrac{3}{5} $$
+    
+    **Bước 3: Đánh giá biểu thức chứa bình phương đạo hàm**
+    
+    Ta xét tích phân của bình phương hiệu:
+    $$ \int_{0}^{1} \left( f'(x) - 3x^2 \right)^2 dx = \int_{0}^{1} [f'(x)]^2 dx - 2 \int_{0}^{1} 3x^2 f'(x) dx + \int_{0}^{1} (3x^2)^2 dx $$
+    
+    Thay các giá trị đã biết vào:
+    *   $\int_{0}^{1} [f'(x)]^2 dx = \dfrac{9}{5}$
+    *   $2 \int_{0}^{1} 3x^2 f'(x) dx = 6 \int_{0}^{1} x^2 f'(x) dx = 6 \cdot \dfrac{3}{5} = \dfrac{18}{5}$
+    *   $\int_{0}^{1} (3x^2)^2 dx = \int_{0}^{1} 9x^4 dx = \dfrac{9}{5}$
+    
+    Do đó:
+    $$ \int_{0}^{1} \left( f'(x) - 3x^2 \right)^2 dx = \dfrac{9}{5} - \dfrac{18}{5} + \dfrac{9}{5} = 0 $$
+    
+    **Bước 4: Suy ra hàm số $f(x)$**
+    
+    Vì hàm số $g(x) = \left( f'(x) - 3x^2 \right)^2$ liên tục và không âm trên đoạn $[0; 1]$, đồng thời tích phân bằng $0$, nên:
+    $$ f'(x) - 3x^2 = 0 \iff f'(x) = 3x^2 \iff f(x) = x^3 + C $$
+    
+    Vì $f(1) = 1$, ta có:
+    $$ 1^3 + C = 1 \iff C = 0 \implies f(x) = x^3 $$
+    
+    **Bước 5: Tính tích phân $I$**
+    $$ I = \int_{0}^{1} f(x) dx = \int_{0}^{1} x^3 dx = \left( \dfrac{x^4}{4} \right)\Bigg|_{0}^{1} = \dfrac{1}{4} $$
+    
+    **Kết luận:** $I = \dfrac{1}{4}$ (hoặc $0.25$).
+    """)
+
+st.markdown("---")
