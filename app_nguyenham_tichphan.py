@@ -6909,3 +6909,90 @@ if st.session_state.get('q77_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+# --- CÂU HỎI 78: ỨNG DỤNG TÍCH PHÂN - THỂ TÍCH KHỐI TRÒN XOAY & ĐỒNG HỒ CÁT ---
+st.markdown(
+    '<b style="color: blue;">Câu 78 (THPT Mỹ Đình - Hà Nội 2026)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một chiếc đồng hồ cát nghệ thuật bằng thủy tinh có bầu chứa phía trên và bầu chứa phía dưới bằng nhau, bên trong chứa một chất lỏng đặc biệt. Khi bầu phía trên chứa đầy chất lỏng, thể tích chất lỏng bên trong đúng bằng thể tích của một khối tròn xoay sinh ra khi quay quanh trục $Ox$ hình phẳng giới hạn bởi đồ thị hàm số $y = 2\sqrt{x}$, trục hoành và hai đường thẳng $x = 0$, $x = 9$. Các đơn vị trên hệ trục tọa độ được tính bằng centimet. Cổ hẹp xem như không đáng kể. Ban đầu, bầu chứa phía trên đầy chất lỏng. Khi bắt đầu tính giờ, chất lỏng chảy qua cổ hẹp xuống bầu chứa phía dưới với tốc độ không đổi và chảy hết trong đúng 27 phút. Trong suốt quá trình chảy, bề mặt trên của chất lỏng luôn là một mặt phẳng nằm ngang. Gọi $h$ là chiều cao của khối chất lỏng còn lại trong bầu phía trên tại thời điểm $t$, tính từ cổ hẹp hướng lên trên dọc theo trục $Ox$. Hỏi sau bao nhiêu phút kể từ lúc bắt đầu chảy, chiều cao khối chất lỏng còn lại trong bầu phía trên đúng $3 \text{ cm}$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_78 = st.text_input("Nhập thời gian (phút, ví dụ: 12):", key="q78_ans")
+
+# --- CHÈN HÌNH ẢNH ---
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/image_1cacf0.PNG", width=500)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_1cacf0.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q78_check"):
+    normalized_user_answer_78 = user_answer_78.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 1
+    if normalized_user_answer_78 == "1":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_78 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Tính tổng thể tích ban đầu V bằng tích phân từ 0 đến 9. Tính thể tích chất lỏng còn lại khi chiều cao h = 3 (tích phân từ 0 đến 3). Dùng tỉ lệ thời gian chảy đều để suy ra kết quả.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q78_solution_shown' not in st.session_state:
+    st.session_state['q78_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q78_solution_btn"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q78_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q78_solution_shown'] = False 
+
+# Hiển thị lời giải chi tiết khi đủ điều kiện
+if st.session_state.get('q78_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính tổng thể tích chất lỏng ban đầu ($V_{\text{total}}$)**
+    
+    * Thể tích khối tròn xoay khi quay hình phẳng giới hạn bởi $y = 2\sqrt{x}$, trục $Ox$ và các đường thẳng $x = 0$, $x = 9$ quanh trục $Ox$ được tính bằng công thức tích phân:
+      $$V_{\text{total}} = \pi \int_{0}^{9} y^2 dx = \pi \int_{0}^{9} (2\sqrt{x})^2 dx = \pi \int_{0}^{9} 4x dx$$
+    * Tính giá trị tích phân:
+      $$V_{\text{total}} = 4\pi \left[ \dfrac{x^2}{2} \right]_{0}^{9} = 2\pi \left( 9^2 - 0 \right) = 162\pi \text{ (cm}^3\text{)}$$
+    * Đề bài cho biết chất lỏng chảy hết trong đúng $27$ phút với tốc độ chảy không đổi, do đó tốc độ chảy của chất lỏng là:
+      $$v = \dfrac{V_{\text{total}}}{27} = \dfrac{162\pi}{27} = 6\pi \text{ (cm}^3\text{/phút)}$$
+
+    **Bước 2: Tính thể tích chất lỏng còn lại khi chiều cao $h = 3 \text{ cm}$**
+    
+    * Khi chiều cao của khối chất lỏng còn lại trong bầu phía trên là $h = 3 \text{ cm}$ (tính từ cổ hẹp dọc theo trục $Ox$), thể tích chất lỏng còn lại tương ứng là tích phân từ $0$ đến $3$:
+      $$V(3) = \pi \int_{0}^{3} (2\sqrt{x})^2 dx = \pi \int_{0}^{3} 4x dx$$
+    * Tính giá trị tích phân này:
+      $$V(3) = 4\pi \left[ \dfrac{x^2}{2} \right]_{0}^{3} = 2\pi \left( 3^2 - 0 \right) = 18\pi \text{ (cm}^3\text{)}$$
+
+    **Bước 3: Tính thời gian $t$ để thể tích chất lỏng còn lại bằng $18\pi \text{ cm}^3$**
+    
+    * Lượng chất lỏng đã chảy xuống bầu dưới sau thời gian $t$ là:
+      $$\Delta V = V_{\text{total}} - V(3) = 162\pi - 18\pi = 144\pi \text{ (cm}^3\text{)}$$
+    * Vì chất lỏng chảy với tốc độ không đổi $v = 6\pi \text{ cm}^3\text{/phút}$, thời gian $t$ cần thiết để chảy được lượng thể tích $\Delta V$ là:
+      $$t = \dfrac{\Delta V}{v} = \dfrac{144\pi}{6\pi} = 24 \text{ (phút)}$$
+    * *Hoặc tính trực tiếp theo thời gian còn lại:*
+      Thời gian để thể tích $V(3)$ chảy hết là:
+      $$t_{\text{còn}} = \dfrac{V(3)}{v} = \dfrac{18\pi}{6\pi} = 3 \text{ (phút)}$$
+      Vậy thời gian kể từ lúc bắt đầu chảy đến khi chiều cao còn lại $3 \text{ cm}$ là:
+      $$t = 27 - 3 = 24 \text{ (phút)}$$
+
+    **Kết luận:** Sau **$24$** phút kể từ lúc bắt đầu chảy, chiều cao khối chất lỏng còn lại trong bầu phía trên đúng $3 \text{ cm}$.
+    *(Nguồn câu hỏi: THPT Mỹ Đình - Hà Nội 2026)*
+    """)
+
+st.markdown("---")
