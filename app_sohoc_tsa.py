@@ -1734,3 +1734,282 @@ if st.session_state.get('q19_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 20
+# ==========================================
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 20 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 
+st.markdown(r"""
+Có bao nhiêu số tự nhiên $n$ có 3 chữ số sao cho biểu thức $n^2 + 3n + 5$ chia hết cho $11$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_20 = st.text_input("Nhập số lượng giá trị của n:", key="q20_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q20_check"):
+    normalized_user_answer = user_answer_20.strip()
+    
+    # Đáp án chính xác là 82
+    if normalized_user_answer == "82":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_20 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thử thêm bớt để tạo thành hằng đẳng thức theo module 11 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q20_solution_shown' not in st.session_state:
+    st.session_state['q20_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q20_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q20_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q20_solution_shown'] = False 
+
+if st.session_state.get('q20_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Biến đổi biểu thức về dạng bình phương**
+    
+    Ta cần tìm $n$ sao cho $n^2 + 3n + 5 \equiv 0 \pmod{11}$.
+    
+    Nhân cả 2 vế với 4 (vì 4 và 11 nguyên tố cùng nhau), ta được:
+    $$4n^2 + 12n + 20 \equiv 0 \pmod{11}$$
+    $$(2n + 3)^2 + 11 \equiv 0 \pmod{11}$$
+    $$(2n + 3)^2 \equiv 0 \pmod{11}$$
+    
+    *Cách 2 (Thêm bớt trực tiếp):*
+    Ta có: $n^2 + 3n + 5 = n^2 - 8n + 16 - 11 = (n - 4)^2 - 11$.
+    Để biểu thức chia hết cho $11$ thì $(n - 4)^2 \vdots 11$.
+    
+    **Bước 2: Tìm điều kiện của $n$**
+    
+    Vì $11$ là số nguyên tố nên $(n - 4)^2 \vdots 11 \Leftrightarrow n - 4 \vdots 11$.
+    
+    Do đó, $n \equiv 4 \pmod{11}$, hay $n = 11k + 4$ (với $k \in \mathbb{Z}$).
+    
+    **Bước 3: Kết hợp điều kiện n có 3 chữ số**
+    
+    Vì $n$ là số tự nhiên có 3 chữ số nên:
+    $$100 \le n \le 999$$
+    $$100 \le 11k + 4 \le 999$$
+    $$96 \le 11k \le 995$$
+    $$\dfrac{96}{11} \le k \le \dfrac{995}{11}$$
+    $$8,72 \le k \le 90,45$$
+    
+    Vì $k \in \mathbb{Z}$ nên $k \in \{9; 10; 11; ... ; 90\}$.
+    
+    **Bước 4: Tính số lượng giá trị thỏa mãn**
+    
+    Số lượng các giá trị của $k$ (cũng chính là số lượng các giá trị của $n$ thỏa mãn) là:
+    $$90 - 9 + 1 = 82 \text{ (số)}$$
+    
+    **Kết luận:** Có **$82$** số tự nhiên thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 21
+# ==========================================
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 21 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Cho dãy số $(u_n)$ thỏa mãn $u_1 = 1$, $u_2 = 3$ và $u_{n+2} = 3u_{n+1} - 2u_n$ với mọi $n \ge 1$. 
+
+Tính tổng $10$ số hạng đầu tiên của dãy số: $S = u_1 + u_2 + ... + u_{10}$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_21 = st.text_input("Nhập tổng S:", key="q21_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q21_check"):
+    normalized_user_answer = user_answer_21.strip()
+    
+    # Đáp án chính xác là 2036
+    if normalized_user_answer == "2036":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_21 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập công thức tổng quát của dãy số trước khi tính tổng nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q21_solution_shown' not in st.session_state:
+    st.session_state['q21_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q21_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q21_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q21_solution_shown'] = False 
+
+if st.session_state.get('q21_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm công thức tổng quát của dãy số $(u_n)$**
+    
+    Từ hệ thức truy hồi $u_{n+2} = 3u_{n+1} - 2u_n$, ta có phương trình đặc trưng:
+    $$\lambda^2 - 3\lambda + 2 = 0 \Leftrightarrow \lambda_1 = 1, \lambda_2 = 2$$
+    
+    Do đó, công thức tổng quát của dãy số có dạng:
+    $$u_n = A \cdot 1^n + B \cdot 2^n = A + B \cdot 2^n$$
+    
+    Dựa vào điều kiện ban đầu, ta có hệ phương trình:
+    $$
+    \begin{cases}
+    u_1 = A + 2B = 1 \\
+    u_2 = A + 4B = 3
+    \end{cases}
+    \Rightarrow 
+    \begin{cases}
+    2B = 2 \\
+    A + 2B = 1
+    \end{cases}
+    \Rightarrow 
+    \begin{cases}
+    B = 1 \\
+    A = -1
+    \end{cases}
+    $$
+    
+    Vậy số hạng tổng quát của dãy số là:
+    $$u_n = 2^n - 1 \quad (\forall n \ge 1)$$
+    
+    **Bước 2: Tính tổng $S = u_1 + u_2 + ... + u_{10}$**
+    
+    Ta thay công thức tổng quát vào tổng $S$:
+    $$S = (2^1 - 1) + (2^2 - 1) + ... + (2^{10} - 1)$$
+    $$S = (2^1 + 2^2 + ... + 2^{10}) - (\underbrace{1 + 1 + ... + 1}_{10 \text{ số}})$$
+    
+    Tổng các số hạng của cấp số nhân $2^1 + 2^2 + ... + 2^{10}$ là:
+    $$S_{CSN} = \dfrac{2(1 - 2^{10})}{1 - 2} = 2^{11} - 2 = 2048 - 2 = 2046$$
+    
+    **Bước 3: Kết luận kết quả**
+    
+    $$S = 2046 - 10 = 2036$$
+    
+    **Kết luận:** Tổng $10$ số hạng đầu tiên của dãy số là **$2036$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 22
+# ==========================================
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 22 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Tìm số nguyên dương $m$ nhỏ nhất sao cho biểu thức $3^{2026} + m$ chia hết cho $17$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_22 = st.text_input("Nhập giá trị m nhỏ nhất:", key="q22_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q22_check"):
+    normalized_user_answer = user_answer_22.strip()
+    
+    # Đáp án chính xác là 9
+    if normalized_user_answer == "9":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_22 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy sử dụng định lý Fermat nhỏ để xét số dư của lũy thừa nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q22_solution_shown' not in st.session_state:
+    st.session_state['q22_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q22_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q22_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q22_solution_shown'] = False 
+
+if st.session_state.get('q22_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm số dư của $3^{2026}$ khi chia cho $17$**
+    
+    Vì $17$ là số nguyên tố và $(3, 17) = 1$, theo định lý Fermat nhỏ, ta có:
+    $$3^{16} \equiv 1 \pmod{17}$$
+    
+    Ta thực hiện phép chia phần mũ $2026$ cho $16$:
+    $$2026 = 16 \times 126 + 10$$
+    
+    Do đó:
+    $$3^{2026} = 3^{16 \times 126 + 10} = (3^{16})^{126} \cdot 3^{10} \equiv 1^{126} \cdot 3^{10} \equiv 3^{10} \pmod{17}$$
+    
+    **Bước 2: Tính số dư của $3^{10}$ modulo $17$**
+    
+    Ta tính lần lượt để hạ bậc:
+    *   $3^2 = 9$
+    *   $3^4 = 81 = 17 \times 4 + 13 \equiv 13 \equiv -4 \pmod{17}$
+    *   $3^8 = (3^4)^2 \equiv (-4)^2 = 16 \equiv -1 \pmod{17}$
+    
+    Suy ra:
+    $$3^{10} = 3^8 \cdot 3^2 \equiv (-1) \cdot 9 = -9 \equiv 8 \pmod{17}$$
+    
+    Vậy $3^{2026} \equiv 8 \pmod{17}$.
+    
+    **Bước 3: Tìm $m$ nhỏ nhất**
+    
+    Để $(3^{2026} + m) \vdots 17$, ta phải có:
+    $$8 + m \equiv 0 \pmod{17}$$
+    $$m \equiv -8 \equiv 9 \pmod{17}$$
+    
+    Hay $m = 17k + 9$ (với $k \in \mathbb{N}$).
+    
+    Vì bài toán yêu cầu tìm số nguyên dương $m$ nhỏ nhất, ta chọn $k = 0$. Khi đó:
+    $$m = 9$$
+    
+    **Kết luận:** Giá trị nguyên dương $m$ nhỏ nhất cần tìm là **$9$**.
+    """)
+    
+st.markdown("---")
