@@ -4726,3 +4726,851 @@ if st.session_state.get('q52_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 53: HỢP SỐ NÂNG CAO
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 53 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên dương $n$. Xét số $S_n = n^6 + 27$. Hỏi có bao nhiêu giá trị nguyên dương của $n$ thuộc đoạn $[1; 2026]$ để $S_n$ là một **hợp số**?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_53 = st.text_input("Nhập số lượng giá trị của n:", key="q53_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q53_check"):
+    normalized_user_answer_53 = user_answer_53.strip().replace(',', '.')
+    
+    if normalized_user_answer_53 == "2026":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_53 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy phân tích biểu thức thành nhân tử sử dụng hằng đẳng thức tổng lập phương nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q53_solution_shown' not in st.session_state:
+    st.session_state['q53_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q53_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q53_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q53_solution_shown'] = False 
+
+if st.session_state.get('q53_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích biểu thức thành nhân tử**
+    
+    Ta biến đổi biểu thức $S_n = n^6 + 27$ bằng cách áp dụng hằng đẳng thức tổng hai lập phương ($a^3 + b^3 = (a+b)(a^2 - ab + b^2)$ với $a = n^2$ và $b = 3$):
+    $$S_n = (n^2)^3 + 3^3 = (n^2 + 3)(n^4 - 3n^2 + 9)$$
+    
+    **Bước 2: Đánh giá các nhân tử**
+    
+    *   Xét nhân tử thứ nhất: Với mọi số nguyên dương $n$, ta luôn có $n^2 \ge 1$, do đó:
+        $$n^2 + 3 \ge 1 + 3 = 4 > 1$$
+        
+    *   Xét nhân tử thứ hai, ta biến đổi thành tổng các bình phương:
+        $$n^4 - 3n^2 + 9 = (n^2)^2 - 2 \cdot n^2 \cdot \frac{3}{2} + \frac{9}{4} + \frac{27}{4} = \left(n^2 - \dfrac{3}{2}\right)^2 + \dfrac{27}{4} \ge \dfrac{27}{4} > 1$$
+        Hoặc phân tích gọn hơn: $n^4 - 3n^2 + 9 = (n^2 - 1)^2 + n^2 + 8 \ge 8 > 1$ với mọi số nguyên dương $n$.
+        
+    Vì cả hai nhân tử $(n^2 + 3)$ và $(n^4 - 3n^2 + 9)$ đều lớn hơn $1$ với mọi số nguyên dương $n$, nên tích của chúng luôn là một **hợp số** với mọi $n \ge 1$.
+    
+    **Bước 3: Đếm số lượng giá trị thỏa mãn**
+    
+    Do tính chất trên nghiệm đúng với mọi số nguyên dương $n$, tất cả các giá trị của $n$ thuộc đoạn $[1; 2026]$ đều làm cho $S_n$ thành hợp số.
+    
+    Số lượng các giá trị của $n$ là:
+    $$2026 - 1 + 1 = 2026 \text{ (giá trị)}$$
+    
+    **Kết luận:** Có tổng cộng **$2026$** giá trị của $n$ thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 54: TÌM 3 CHỮ SỐ TẬN CÙNG
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 54 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tìm $3$ chữ số tận cùng của số $A = 7^{2026}$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_54 = st.text_input("Nhập 3 chữ số tận cùng:", key="q54_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q54_check"):
+    normalized_user_answer_54 = user_answer_54.strip().replace(',', '.')
+    
+    if normalized_user_answer_54 == "649":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_54 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy áp dụng Định lý Euler với mô-đun $1000$ để hạ bậc số mũ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q54_solution_shown' not in st.session_state:
+    st.session_state['q54_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q54_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q54_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q54_solution_shown'] = False 
+
+if st.session_state.get('q54_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập bài toán đồng dư**
+    
+    Tìm $3$ chữ số tận cùng của số $A = 7^{2026}$ tương đương với việc tìm số dư của phép chia $7^{2026}$ cho $1000$:
+    $$A \equiv 7^{2026} \pmod{1000}$$
+    
+    **Bước 2: Áp dụng Định lý Euler**
+    
+    Ta có $\text{gcd}(7, 1000) = 1$. Tính hàm số Euler của $1000$:
+    $$\phi(1000) = 1000 \cdot \left(1 - \dfrac{1}{2}\right)\left(1 - \dfrac{1}{5}\right) = 1000 \cdot \dfrac{1}{2} \cdot \dfrac{4}{5} = 400$$
+    
+    Theo **Định lý Euler**, ta có:
+    $$7^{400} \equiv 1 \pmod{1000}$$
+    
+    Thực hiện chia số mũ cho chu kỳ $400$:
+    $$2026 = 400 \times 5 + 26$$
+    
+    Do đó:
+    $$7^{2026} = 7^{400 \times 5 + 26} = (7^{400})^5 \cdot 7^{26} \equiv 1^5 \cdot 7^{26} \equiv 7^{26} \pmod{1000}$$
+    
+    **Bước 3: Thu gọn số dư của $7^{26} \pmod{1000}$**
+    
+    Ta tính lần lượt các lũy thừa của $7$:
+    *   $7^2 = 49$
+    *   $7^4 = 2401 \equiv 401 \pmod{1000}$
+    *   $7^6 = 401 \times 49 = 19649 \equiv 649 \pmod{1000}$
+    *   $7^{12} = (649)^2 = 421201 \equiv 201 \pmod{1000}$
+    *   $7^{24} = (7^{12})^2 \equiv 201^2 = 40401 \equiv 401 \pmod{1000}$
+    
+    Suy ra:
+    $$7^{26} = 7^{24} \cdot 7^2 \equiv 401 \times 49 = 19649 \equiv 649 \pmod{1000}$$
+    
+    **Kết luận:** $3$ chữ số tận cùng của số $A = 7^{2026}$ là **$649$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 55: TOÁN THỰC TẾ SỐ HỌC
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 55 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một hệ thống xử lý dữ liệu tự động gồm ba máy chủ vận hành liên tục. Máy chủ thứ nhất cứ sau mỗi $33$ phút hoàn thành một chu trình và dư ra $12$ phút bảo trì; máy chủ thứ hai cứ sau mỗi $52$ phút hoàn thành một chu trình và dư ra $31$ phút bảo trì; máy chủ thứ ba cứ sau mỗi $77$ phút hoàn thành một chu trình và dư ra $56$ phút bảo trì. 
+
+Để đồng bộ hóa toàn bộ hệ thống, tổng số phút $n$ từ lúc khởi động đến khi cả ba máy chủ đạt trạng thái đồng bộ phải là một số tự nhiên thỏa mãn các điều kiện trên đồng thời chia hết cho $23$. Hỏi giá trị nhỏ nhất của $n$ là bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_55 = st.text_input("Nhập giá trị của n:", key="q55_ans")
+
+# Khối chèn hình ảnh minh họa
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q55_check"):
+    normalized_user_answer_55 = user_answer_55.strip().replace(',', '.')
+    
+    if normalized_user_answer_55 == "180159":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_55 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hệ đồng dư thức dựa vào phần bù số dư ($33 - 12 = 21$), tìm BCNN và giải điều kiện chia hết cho 23 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q55_solution_shown' not in st.session_state:
+    st.session_state['q55_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q55_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q55_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q55_solution_shown'] = False 
+
+if st.session_state.get('q55_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ đồng dư thức**
+    
+    Theo giả thiết bài toán, gọi $n$ là số phút cần tìm. Ta có các điều kiện đồng dư sau:
+    *   $n \equiv 12 \pmod{33} \iff n + 21 \equiv 0 \pmod{33}$ (vì $33 - 12 = 21$)
+    *   $n \equiv 31 \pmod{52} \iff n + 21 \equiv 0 \pmod{52}$ (vì $52 - 31 = 21$)
+    *   $n \equiv 56 \pmod{77} \iff n + 21 \equiv 0 \pmod{77}$ (vì $77 - 56 = 21$)
+    *   $n \equiv 0 \pmod{23}$
+    
+    Từ ba điều kiện đầu, ta suy ra $(n + 21)$ đồng thời chia hết cho các số $33, 52$ và $77$.
+    
+    **Bước 2: Tìm Bội chung nhỏ nhất (BCNN)**
+    
+    Phân tích các số chia ra thừa số nguyên tố:
+    *   $33 = 3 \times 11$
+    *   $52 = 2^2 \times 13$
+    *   $77 = 7 \times 11$
+    
+    Bội chung nhỏ nhất của chúng là:
+    $$\text{BCNN}(33, 52, 77) = 2^2 \times 3 \times 7 \times 11 \times 13 = 12012$$
+    
+    Do đó, ta có dạng tổng quát của $n$:
+    $$n + 21 = 12012k \implies n = 12012k - 21 \quad (k \in \mathbb{N}^*)$$
+    
+    **Bước 3: Sử dụng điều kiện chia hết cho 23**
+    
+    Vì $n$ chia hết cho $23$, ta thay biểu thức của $n$ vào điều kiện modulo $23$:
+    $$12012k - 21 \equiv 0 \pmod{23}$$
+    
+    Thu gọn hệ số theo modulo $23$:
+    $$12012 = 23 \times 522 + 6 \equiv 6 \pmod{23}$$
+    $$-21 \equiv 2 \pmod{23}$$
+    
+    Phương trình đồng dư trở thành:
+    $$6k + 2 \equiv 0 \pmod{23} \iff 6k \equiv -2 \equiv 21 \pmod{23}$$
+    
+    Rút gọn biểu thức cho $3$:
+    $$2k \equiv 7 \equiv 30 \pmod{23} \implies k \equiv 15 \pmod{23}$$
+    
+    Suy ra:
+    $$k = 23m + 15 \quad (m \in \mathbb{N})$$
+    
+    **Bước 4: Tính giá trị $n$ nhỏ nhất**
+    
+    Thay $k$ ngược lại vào biểu thức của $n$:
+    $$n = 12012(23m + 15) - 21 = 276276m + 180180 - 21 = 276276m + 180159$$
+    
+    Để tìm số tự nhiên $n$ nhỏ nhất, ta chọn giá trị $m = 0$:
+    $$n = 276276 \times 0 + 180159 = 180159$$
+    
+    **Kết luận:** Giá trị nhỏ nhất của $n$ là **$180159$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 56 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 56. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho tập hợp $A$ gồm các số nguyên dương $x$ sao cho $1 \le x \le 2026$ và $x$ nguyên tố cùng nhau với $2026$. Gọi $S$ là tổng tất cả các phần tử của tập $A$. Tính số dư khi chia $S$ cho số nguyên tố $1009$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 56) ---
+user_ans_56 = st.text_input("Nhập số dư của S khi chia cho 1009:", key="q56_ans")
+
+if st.button("Kiểm tra đáp án Câu 56", key="q56_check"):
+    norm_ans_56 = user_ans_56.strip()
+    
+    # Đáp án chính xác là 12
+    if norm_ans_56 == "12":
+        st.success("🎉 Xuất sắc! Bạn đã kết hợp cực kỳ uyển chuyển công thức tổng các phần tử nguyên tố cùng nhau với phép đồng dư modulo. Lời giải Câu 56 đã được mở khóa.")
+    elif user_ans_56 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 56.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Sử dụng tính chất tổng các số nguyên tố cùng nhau với $N$ là $S = \dfrac{N \cdot \phi(N)}{2}$ với $N > 2$, sau đó tính modulo $1009$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 56 ---
+st.markdown("---")
+
+if 'q56_solution_shown' not in st.session_state:
+    st.session_state['q56_solution_shown'] = False
+
+col1_56, col2_56 = st.columns([1, 4])
+with col1_56:
+    if st.button("Xem lời giải Câu 56", key="q56_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q56_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q56_solution_shown'] = False 
+
+if st.session_state.get('q56_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 56 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Phân tích cấu trúc tập hợp và tính tổng $S$**
+    
+    Ta có $N = 2026 = 2 \times 1013$ (với $1013$ là số nguyên tố).
+    Đối với mọi số nguyên dương $N > 2$, tổng $S$ tất cả các số nguyên dương $x \le N$ và nguyên tố cùng nhau với $N$ được tính bởi công thức kinh điển:
+    $$S = \dfrac{N \cdot \phi(N)}{2}$$
+    trong đó $\phi(N)$ là hàm số Euler.
+    
+    Tính $\phi(2026)$:
+    $$\phi(2026) = 2026 \times \left(1 - \dfrac{1}{2}\right) \times \left(1 - \dfrac{1}{1013}\right) = 2026 \times \dfrac{1}{2} \times \dfrac{1012}{1013} = 1013 \times \dfrac{1012}{1013} = 1012$$
+    
+    Thay vào công thức tính tổng $S$:
+    $$S = \dfrac{2026 \times 1012}{2} = 1013 \times 1012 = 1025156$$
+    
+    **Bước 2: Tính số dư của $S$ khi chia cho $1009$**
+    
+    Ta cần tìm số dư của $S = 1013 \times 1012$ khi chia cho số nguyên tố $1009$:
+    *   $1013 = 1009 + 4 \equiv 4 \pmod{1009}$
+    *   $1012 = 1009 + 3 \equiv 3 \pmod{1009}$
+    
+    Do đó:
+    $$S \equiv 4 \times 3 = 12 \pmod{1009}$$
+    
+    **Bước 3: Kết luận**
+    
+    Số dư của tổng $S$ khi chia cho $1009$ là $12$.
+    
+    ---
+    **👉 Đáp số Câu 56:** `12`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 57 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 57. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 1009$. Hỏi có bao nhiêu phần tử $g$ thuộc tập hợp $\{1, 2, 3, \dots, 1008\}$ sao cho $g$ là một **căn nguyên thủy** (primitive root) modulo $1009$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 57) ---
+user_ans_57 = st.text_input("Nhập số lượng căn nguyên thủy:", key="q57_ans")
+
+if st.button("Kiểm tra đáp án Câu 57", key="q57_check"):
+    norm_ans_57 = user_ans_57.strip()
+    
+    # Đáp án chính xác là 288
+    if norm_ans_57 == "288":
+        st.success("🎉 Xuất sắc! Bạn đã nắm vững lý thuyết căn nguyên thủy và áp dụng hàm Euler một cách hoàn hảo. Lời giải Câu 57 đã được mở khóa.")
+    elif user_ans_57 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 57.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Số lượng căn nguyên thủy modulo một số nguyên tố $p$ được tính bằng công thức $\phi(p-1)$. Hãy phân tích $1008$ ra thừa số nguyên tố.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 57 ---
+st.markdown("---")
+
+if 'q57_solution_shown' not in st.session_state:
+    st.session_state['q57_solution_shown'] = False
+
+col1_57, col2_57 = st.columns([1, 4])
+with col1_57:
+    if st.button("Xem lời giải Câu 57", key="q57_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q57_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q57_solution_shown'] = False 
+
+if st.session_state.get('q57_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 57 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Nhận diện định lý về căn nguyên thủy**
+    
+    Theo lý thuyết số học cao cấp, số lượng các **căn nguyên thủy** (primitive roots) phân biệt modulo một số nguyên tố $p$ được xác định chính xác bởi công thức:
+    $$\text{Số lượng} = \phi(p - 1)$$
+    trong đó $\phi$ là hàm số Euler.
+    
+    **Bước 2: Áp dụng vào số nguyên tố $p = 1009$**
+    
+    Với $p = 1009$, ta có:
+    $$p - 1 = 1009 - 1 = 1008$$
+    
+    Phân tích số $1008$ ra thừa số nguyên tố:
+    $$1008 = 2^4 \times 3^2 \times 7$$
+    
+    **Bước 3: Tính giá trị của hàm Euler $\phi(1008)$**
+    
+    Sử dụng công thức tính giá trị hàm Euler qua phân tích chuẩn tắc:
+    $$\phi(1008) = 1008 \times \left(1 - \dfrac{1}{2}\right) \times \left(1 - \dfrac{1}{3}\right) \times \left(1 - \dfrac{1}{7}\right)$$
+    $$\phi(1008) = 1008 \times \dfrac{1}{2} \times \dfrac{2}{3} \times \dfrac{6}{7}$$
+    $$\phi(1008) = 504 \times \dfrac{2}{3} \times \dfrac{6}{7} = 336 \times \dfrac{6}{7} = 48 \times 6 = 288$$
+    
+    **Bước 4: Kết luận**
+    
+    Số lượng các căn nguyên thủy modulo $1009$ là $288$.
+    
+    ---
+    **👉 Đáp số Câu 57:** `288`
+    """)
+
+st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 58: SỐ LẬP PHƯƠNG NÂNG CAO
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 58 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên dương $n$. Xét số $S_n = n^3 + 3n^2 + 3n$. Hỏi có bao nhiêu giá trị nguyên dương của $n$ thuộc đoạn $[1; 2026]$ để $S_n$ là một **số lập phương**?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_58 = st.text_input("Nhập số lượng giá trị của n:", key="q58_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q58_check"):
+    normalized_user_answer_58 = user_answer_58.strip().replace(',', '.')
+    
+    if normalized_user_answer_58 == "0":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_58 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy biến đổi biểu thức về dạng $(n+1)^3 - 1$ và đánh giá kẹp giữa hai số lập phương liên tiếp nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q58_solution_shown' not in st.session_state:
+    st.session_state['q58_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q58_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q58_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q58_solution_shown'] = False 
+
+if st.session_state.get('q58_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Biến đổi biểu thức**
+    
+    Ta xét cấu trúc của biểu thức $S_n$:
+    $$S_n = n^3 + 3n^2 + 3n$$
+    
+    Thêm và bớt $1$ đơn vị để đưa về hằng đẳng thức lập phương của một tổng:
+    $$S_n = (n^3 + 3n^2 + 3n + 1) - 1 = (n + 1)^3 - 1$$
+    
+    **Bước 2: Đánh giá khoảng giá trị của $S_n$**
+    
+    Với mọi số nguyên dương $n \ge 1$, ta có bất đẳng thức sau:
+    $n \ge 1 \implies n + 1 \ge 2$, do đó:
+    $$(n + 1)^3 > n^3$$
+    
+    Mặt khác, vì $1 > 0$, ta suy ra:
+    $$(n + 1)^3 - 1 < (n + 1)^3$$
+    
+    Kết hợp lại, ta được:
+    $$n^3 < (n + 1)^3 - 1 < (n + 1)^3$$
+    
+    **Bước 3: Kết luận**
+    
+    Biểu thức $S_n = (n + 1)^3 - 1$ nằm kẹp giữa hai lập phương liên tiếp là $n^3$ và $(n + 1)^3$ với mọi số nguyên dương $n$. 
+    
+    Do đó, $S_n$ không thể là lập phương của bất kỳ số nguyên nào.
+    
+    **Kết luận:** Không có giá trị nguyên dương nào của $n$ thỏa mãn yêu cầu bài toán, số lượng giá trị bằng **$0$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 59: CHIA HẾT NÂNG CAO
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 59 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên dương $n$. Hỏi có bao nhiêu giá trị nguyên dương của $n$ thuộc đoạn $[1; 2026]$ để biểu thức $P_n = n^4 - 2n^3 - n^2 + 2n$ chia hết cho $24$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_59 = st.text_input("Nhập số lượng giá trị của n:", key="q59_ans")
+
+# Khối chèn hình ảnh minh họa
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q59_check"):
+    normalized_user_answer_59 = user_answer_59.strip().replace(',', '.')
+    
+    if normalized_user_answer_59 == "2026":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_59 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy phân tích đa thức thành tích của các số nguyên liên tiếp nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q59_solution_shown' not in st.session_state:
+    st.session_state['q59_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q59_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q59_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q59_solution_shown'] = False 
+
+if st.session_state.get('q59_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích đa thức thành nhân tử**
+    
+    Ta biến đổi biểu thức $P_n$:
+    $$P_n = n^4 - 2n^3 - n^2 + 2n$$
+    $$P_n = n^3(n - 2) - n(n - 2)$$
+    $$P_n = (n - 2)(n^3 - n)$$
+    $$P_n = (n - 2)n(n^2 - 1)$$
+    $$P_n = (n - 2)(n - 1)n(n + 1)$$
+    
+    Sắp xếp lại các nhân tử theo thứ tự tăng dần:
+    $$P_n = (n - 2)(n - 1)n(n + 1)$$
+    
+    **Bước 2: Chứng minh tính chất chia hết cho $24$**
+    
+    Biểu thức $P_n$ chính là tích của $4$ số nguyên liên tiếp: $(n-2)$, $(n-1)$, $n$ và $(n+1)$.
+    
+    *   Trong $4$ số nguyên liên tiếp luôn có ít nhất một bội của $4$, một số chẵn khác (suy ra tích chia hết cho $8$).
+    *   Trong $4$ số nguyên liên tiếp luôn có ít nhất một bội của $3$.
+    *   Vì $\text{gcd}(8, 3) = 1$, tích của $4$ số nguyên liên tiếp luôn chia hết cho $8 \times 3 = 24$ với mọi số nguyên $n \ge 1$.
+    
+    **Bước 3: Đếm số lượng giá trị thỏa mãn**
+    
+    Tính chất trên đúng với mọi số nguyên dương $n \ge 1$. Do đó, với mọi $n$ thuộc đoạn $[1; 2026]$, biểu thức $P_n$ luôn chia hết cho $24$.
+    
+    Số lượng các giá trị của $n$ là:
+    $$2026 - 1 + 1 = 2026 \text{ (giá trị)}$$
+    
+    **Kết luận:** Có tổng cộng **$2026$** giá trị của $n$ thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 60: TOÁN THỰC TẾ SỐ HỌC
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 60 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một hệ thống xử lý dữ liệu tự động gồm ba máy chủ vận hành liên tục. Máy chủ thứ nhất cứ sau mỗi $42$ phút hoàn thành một chu trình và dư ra $15$ phút bảo trì; máy chủ thứ hai cứ sau mỗi $56$ phút hoàn thành một chu trình và dư ra $29$ phút bảo trì; máy chủ thứ ba cứ sau mỗi $70$ phút hoàn thành một chu trình và dư ra $43$ phút bảo trì. 
+
+Để đồng bộ hóa toàn bộ hệ thống, tổng số phút $n$ từ lúc khởi động đến khi cả ba máy chủ đạt trạng thái bảo trì đồng thời phải là một số tự nhiên thỏa mãn các điều kiện trên đồng thời chia hết cho $17$. Hỏi giá trị nhỏ nhất của $n$ là bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_60 = st.text_input("Nhập giá trị của n:", key="q60_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q60_check"):
+    normalized_user_answer_60 = user_answer_60.strip().replace(',', '.')
+    
+    if normalized_user_answer_60 == "13413":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_60 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hệ đồng dư thức dựa vào phần bù số dư ($42 - 15 = 27$), tìm BCNN và giải điều kiện chia hết cho 17 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q60_solution_shown' not in st.session_state:
+    st.session_state['q60_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q60_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q60_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q60_solution_shown'] = False 
+
+if st.session_state.get('q60_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ đồng dư thức**
+    
+    Theo giả thiết bài toán, gọi $n$ là số phút cần tìm. Ta có các điều kiện đồng dư sau:
+    *   $n \equiv 15 \pmod{42} \iff n + 27 \equiv 0 \pmod{42}$ (vì $42 - 15 = 27$)
+    *   $n \equiv 29 \pmod{56} \iff n + 27 \equiv 0 \pmod{56}$ (vì $56 - 29 = 27$)
+    *   $n \equiv 43 \pmod{70} \iff n + 27 \equiv 0 \pmod{70}$ (vì $70 - 43 = 27$)
+    *   $n \equiv 0 \pmod{17}$
+    
+    Từ ba điều kiện đầu, ta suy ra $(n + 27)$ đồng thời chia hết cho các số $42, 56$ và $70$.
+    
+    **Bước 2: Tìm Bội chung nhỏ nhất (BCNN)**
+    
+    Phân tích các số chia ra thừa số nguyên tố:
+    *   $42 = 2 \times 3 \times 7$
+    *   $56 = 2^3 \times 7$
+    *   $70 = 2 \times 5 \times 7$
+    
+    Bội chung nhỏ nhất của chúng là:
+    $$\text{BCNN}(42, 56, 70) = 2^3 \times 3 \times 5 \times 7 = 840$$
+    
+    Do đó, ta có dạng tổng quát của $n$:
+    $$n + 27 = 840k \implies n = 840k - 27 \quad (k \in \mathbb{N}^*)$$
+    
+    **Bước 3: Sử dụng điều kiện chia hết cho 17**
+    
+    Vì $n$ chia hết cho $17$, ta thay biểu thức của $n$ vào điều kiện modulo $17$:
+    $$840k - 27 \equiv 0 \pmod{17}$$
+    
+    Thu gọn hệ số theo modulo $17$:
+    $$840 = 17 \times 49 + 7 \equiv 7 \pmod{17}$$
+    $$-27 \equiv 7 \pmod{17}$$
+    
+    Phương trình đồng dư trở thành:
+    $$7k + 7 \equiv 0 \pmod{17} \iff 7(k + 1) \equiv 0 \pmod{17}$$
+    
+    Vì $\text{gcd}(7, 17) = 1$, suy ra:
+    $$k + 1 \equiv 0 \pmod{17} \iff k \equiv 16 \pmod{17}$$
+    
+    Đặt $k = 17m + 16$ với $m \in \mathbb{N}$.
+    
+    **Bước 4: Tính giá trị $n$ nhỏ nhất**
+    
+    Thay $k$ ngược lại vào biểu thức của $n$:
+    $$n = 840(17m + 16) - 27 = 14280m + 13440 - 27 = 14280m + 13413$$
+    
+    Để tìm số tự nhiên $n$ nhỏ nhất, ta chọn giá trị $m = 0$:
+    $$n = 14280 \times 0 + 13413 = 13413$$
+    
+    **Kết luận:** Giá trị nhỏ nhất của $n$ là **$13413$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 61 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 61. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 2027$. Xét tập hợp tất cả các số nguyên $n$ thuộc đoạn $[1; 2026]$ sao cho phương trình đồng dư $x^3 \equiv n \pmod{2027}$ có nghiệm nguyên $x$. Tính số lượng phần tử của tập hợp này.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 61) ---
+user_ans_61 = st.text_input("Nhập số lượng phần tử thỏa mãn:", key="q61_ans")
+
+if st.button("Kiểm tra đáp án Câu 61", key="q61_check"):
+    norm_ans_61 = user_ans_61.strip()
+    
+    # Đáp án chính xác là 2026
+    if norm_ans_61 == "2026":
+        st.success("🎉 Xuất sắc! Bạn đã nắm vững tính chất song ánh của lũy thừa trong trường hữu hạn khi $\gcd(3, p-1) = 1$ cực kỳ sâu sắc. Lời giải Câu 61 đã được mở khóa.")
+    elif user_ans_61 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 61.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy kiểm tra ước chung lớn nhất của số mũ $3$ và $p-1 = 2026$. Nếu $\gcd(3, 2026) = 1$, ánh xạ lũy thừa bậc 3 là một song ánh.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 61 ---
+st.markdown("---")
+
+if 'q61_solution_shown' not in st.session_state:
+    st.session_state['q61_solution_shown'] = False
+
+col1_61, col2_61 = st.columns([1, 4])
+with col1_61:
+    if st.button("Xem lời giải Câu 61", key="q61_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q61_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q61_solution_shown'] = False 
+
+if st.session_state.get('q61_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 61 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Phân tích điều kiện của số mũ và mô-đun**
+    
+    Xét phương trình đồng dư:
+    $$x^3 \equiv n \pmod{2027}$$
+    với số nguyên tố $p = 2027$ và $n \in \{1, 2, 3, \dots, 2026\}$.
+    
+    Ta xét số nguyên tố trừ đi $1$:
+    $$p - 1 = 2027 - 1 = 2026$$
+    
+    Tính ước chung lớn nhất giữa số mũ và $p-1$:
+    $$\gcd(3, 2026) = 1$$
+    
+    **Bước 2: Áp dụng tính chất song ánh (bijective map)**
+    
+    Theo lý thuyết số học cao cấp, khi $\gcd(k, p-1) = 1$, ánh xạ lũy thừa $f(x) = x^k \pmod p$ là một **phép song ánh** (hoán vị toàn bộ) trên tập hợp các thặng dư thu gọn $\mathbb{F}_p^*$.
+    Điều này có nghĩa là với mọi giá trị $n$ từ $1$ đến $p-1$, phương trình $x^k \equiv n \pmod p$ luôn có **duy nhất một nghiệm** phân biệt.
+    
+    **Bước 3: Kết luận**
+    
+    Vì mọi số nguyên $n$ thuộc đoạn từ $1$ đến $2026$ đều thỏa mãn điều kiện có nghiệm nguyên $x$, số lượng các giá trị của $n$ chính bằng tổng số phần tử của đoạn này, tức là $2026$ phần tử.
+    
+    ---
+    **👉 Đáp số Câu 61:** `2026`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 62 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 62. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 1009$. Tính số dư khi chia số tổ hợp $\dbinom{2018}{1009}$ cho số nguyên tố $1009$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 62) ---
+user_ans_62 = st.text_input("Nhập số dư của số tổ hợp khi chia cho 1009:", key="q62_ans")
+
+if st.button("Kiểm tra đáp án Câu 62", key="q62_check"):
+    norm_ans_62 = user_ans_62.strip()
+    
+    # Đáp án chính xác là 2
+    if norm_ans_62 == "2":
+        st.success("🎉 Xuất sắc! Bạn đã vận dụng Định lý Lucas một cách vô cùng sắc bén và tinh tế. Lời giải Câu 62 đã được mở khóa.")
+    elif user_ans_62 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 62.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy biểu diễn các số $2018$ và $1009$ dưới dạng hệ cơ số $1009$, sau đó áp dụng Định lý Lucas: $\dbinom{m}{k} \pmod p$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 62 ---
+st.markdown("---")
+
+if 'q62_solution_shown' not in st.session_state:
+    st.session_state['q62_solution_shown'] = False
+
+col1_62, col2_62 = st.columns([1, 4])
+with col1_62:
+    if st.button("Xem lời giải Câu 62", key="q62_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q62_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q62_solution_shown'] = False 
+
+if st.session_state.get('q62_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 62 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Nhận diện cấu trúc và Định lý Lucas**
+    
+    Bài toán yêu cầu tìm số dư của $\dbinom{2018}{1009}$ khi chia cho số nguyên tố $p = 1009$. 
+    Ta sử dụng **Định lý Lucas**, phát biểu rằng nếu các số nguyên không âm $m$ và $k$ được biểu diễn trong hệ cơ số $p$ là:
+    $$m = m_d p^d + m_{d-1} p^{d-1} + \dots + m_1 p + m_0$$
+    $$k = k_d p^d + k_{d-1} p^{d-1} + \dots + k_1 p + k_0$$
+    thì:
+    $$\dbinom{m}{k} \equiv \prod_{i=0}^{d} \dbinom{m_i}{k_i} \pmod p$$
+    
+    **Bước 2: Biểu diễn các số theo hệ cơ số $1009$**
+    
+    Với $p = 1009$:
+    *   $2018 = 2 \times 1009 + 0 \implies$ các chữ số trong hệ cơ số $1009$ là $m_1 = 2, m_0 = 0$.
+    *   $1009 = 1 \times 1009 + 0 \implies$ các chữ số trong hệ cơ số $1009$ là $k_1 = 1, k_0 = 0$.
+    
+    **Bước 3: Áp dụng Định lý Lucas để tính toán**
+    
+    $$\dbinom{2018}{1009} \equiv \dbinom{2}{1} \times \dbinom{0}{0} \pmod{1009}$$
+    
+    Ta tính từng thành phần:
+    *   $\dbinom{2}{1} = 2$
+    *   $\dbinom{0}{0} = 1$
+    
+    Nhân các kết quả lại:
+    $$\dbinom{2018}{1009} \equiv 2 \times 1 = 2 \pmod{1009}$$
+    
+    **Bước 4: Kết luận**
+    
+    Số dư của phép chia là $2$.
+    
+    ---
+    **👉 Đáp số Câu 62:** `2`
+    """)
+
+st.markdown("---")
