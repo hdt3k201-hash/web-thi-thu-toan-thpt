@@ -544,3 +544,99 @@ if st.session_state.get('q6_solution_shown') and st.session_state.get('logged_in
     """)
 
 st.markdown("---")
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 7. [TSA ]</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 
+st.markdown(r"""
+Cho số tự nhiên $M = 20^{26}$. Gọi $S$ là tập hợp tất cả các ước số nguyên dương của $M$. Chọn ngẫu nhiên một số từ tập $S$, xác suất để số được chọn là một **số chính phương** có dạng phân số tối giản là $\frac{a}{b}$ (với $a, b \in \mathbb{N}^*$). 
+
+Hãy tính giá trị của $a + b$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập đáp án (giá trị a + b):", key="q7_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q7_check"):
+    # Chuẩn hóa đầu vào (loại bỏ khoảng trắng thừa)
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 67 (a = 14, b = 53)
+    if normalized_user_answer == "67":
+        st.success("🎉 Chính xác! Bạn có tư duy số học và tổ hợp rất xuất sắc. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Để một ước số là số chính phương thì số mũ của các thừa số nguyên tố trong phân tích chuẩn tắc phải là số chẵn nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q7_solution_shown' not in st.session_state:
+    st.session_state['q7_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q7_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q7_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q7_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q7_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết (Tư duy TSA):")
+    
+    st.markdown(r"""
+    Bài toán yêu cầu kết hợp tư duy **Số học (Lý thuyết chia hết & Số chính phương)** và **Tổ hợp (Xác suất cổ điển)**.
+    
+    **Bước 1: Tìm không gian mẫu (Tổng số ước số nguyên dương của $M$)**
+    
+    Phân tích $M$ ra thừa số nguyên tố:
+    $$M = 20^{26} = (2^2 \times 5)^{26} = 2^{52} \times 5^{26}$$
+    
+    Một ước số nguyên dương bất kỳ $d$ của $M$ đều có dạng $d = 2^x \times 5^y$, trong đó:
+    *   Số mũ $x \in \{0, 1, 2, \dots, 52\}$ $\rightarrow$ có $52 - 0 + 1 = 53$ cách chọn.
+    *   Số mũ $y \in \{0, 1, 2, \dots, 26\}$ $\rightarrow$ có $26 - 0 + 1 = 27$ cách chọn.
+    
+    Số phần tử của không gian mẫu (tổng số ước nguyên dương của $M$) là:
+    $$n(\Omega) = 53 \times 27 = 1431$$
+    
+    **Bước 2: Tìm số kết quả thuận lợi (Ước số là số chính phương)**
+    
+    Để ước số $d = 2^x \times 5^y$ là một **số chính phương** thì các số mũ $x$ và $y$ đồng thời phải là **các số chẵn**.
+    
+    *   Số mũ $x \in \{0, 2, 4, \dots, 52\}$ $\rightarrow$ có $\frac{52 - 0}{2} + 1 = 27$ cách chọn.
+    *   Số mũ $y \in \{0, 2, 4, \dots, 26\}$ $\rightarrow$ có $\frac{26 - 0}{2} + 1 = 14$ cách chọn.
+    
+    Áp dụng quy tắc nhân, số lượng ước số là số chính phương của $M$ là:
+    $$n(A) = 27 \times 14 = 378$$
+    
+    **Bước 3: Tính xác suất và kết luận**
+    
+    Xác suất để chọn được ước số là số chính phương là:
+    $$P(A) = \frac{n(A)}{n(\Omega)} = \frac{378}{1431}$$
+    
+    Rút gọn phân số (chia cả tử và mẫu cho $27$):
+    $$P(A) = \frac{14}{53}$$
+    
+    Vì $\frac{14}{53}$ là phân số tối giản nên ta có $a = 14$ và $b = 53$.
+    
+    Giá trị cần tìm là:
+    $$a + b = 14 + 53 = 67$$
+    
+    ---
+    **👉 Đáp số:** `67`
+    """)
+    
+st.markdown("---")
