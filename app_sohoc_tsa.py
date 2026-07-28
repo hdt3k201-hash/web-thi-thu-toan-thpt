@@ -210,7 +210,7 @@ st.markdown("---")
 
 # Tiêu đề câu hỏi
 st.markdown(
-    '<b style="color: blue;">Câu 3. [Trả lời ngắn - Vận dụng Mô hình hóa (Diophantine)]</b>',
+    '<b style="color: blue;">Câu 3. [Trả lời ngắn ]</b>',
     unsafe_allow_html=True
 )
 
@@ -297,4 +297,265 @@ if st.session_state.get('q3_solution_shown') and st.session_state.get('logged_in
     **Kết luận:** Đoàn khách du lịch đó có tổng cộng **$11$** người.
     """)
     
+st.markdown("---")
+
+
+
+# ==================== CÂU 4 ====================
+st.markdown(
+    '<b style="color: blue;">Câu 4. [Trả lời ngắn ]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một trường THPT tổ chức cho học sinh đi trải nghiệm thực tế. Nếu xếp mỗi xe $36$ học sinh, $40$ học sinh hay $45$ học sinh thì đều thừa ra $3$ học sinh. Tuy nhiên, nếu xếp mỗi xe đúng $19$ học sinh thì vừa đủ chỗ không thừa em nào. Biết số lượng học sinh của trường nằm trong khoảng từ $1000$ đến $2000$ em. Tính tổng số học sinh của trường đó.
+""")
+
+user_answer_4 = st.text_input("Nhập tổng số học sinh:", key="q4_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/cau4.PNG", width=400)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/cau4.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+if st.button("Kiểm tra đáp án", key="q4_check"):
+    normalized_ans_4 = user_answer_4.strip().replace(',', '.')
+    if normalized_ans_4 == "1083":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_4 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tìm BCNN của $36, 40, 45$ và kết hợp điều kiện chia hết cho $19$ trong khoảng cho trước nhé!")
+
+st.markdown("---")
+
+if 'q4_solution_shown' not in st.session_state:
+    st.session_state['q4_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q4_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q4_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q4_solution_shown'] = False 
+
+if st.session_state.get('q4_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Thiết lập biểu thức toán học**
+    
+    Gọi số học sinh của trường là $x$ (học sinh), điều kiện: $1000 \le x \le 2000$ và $x \in \mathbb{N}^*$.
+    
+    Theo đề bài, khi xếp mỗi xe $36, 40$ hay $45$ học sinh đều thừa $3$ học sinh, nên $(x - 3)$ chia hết cho cả $36, 40$ và $45$.
+    
+    Do đó, $(x - 3) \in \text{BC}(36, 40, 45)$.
+    
+    **Bước 2: Tìm Bội chung nhỏ nhất ($\text{BCNN}$)**
+    
+    Ta phân tích các số ra thừa số nguyên tố:
+    *   $36 = 2^2 \cdot 3^2$
+    *   $40 = 2^3 \cdot 5$
+    *   $45 = 3^2 \cdot 5$
+    
+    $\text{BCNN}(36, 40, 45) = 2^3 \cdot 3^2 \cdot 5 = 8 \cdot 9 \cdot 5 = 360$.
+    
+    Suy ra: $(x - 3)$ là bội của $360$, hay $x - 3 = 360k$ với $k \in \mathbb{N}$.
+    
+    $\Rightarrow x = 360k + 3$.
+    
+    **Bước 3: Kết hợp điều kiện khoảng giá trị và tính chia hết**
+    
+    Vì số học sinh nằm trong khoảng từ $1000$ đến $2000$:
+    $$1000 \le 360k + 3 \le 2000$$
+    $$\Leftrightarrow 997 \le 360k \le 1997 \Rightarrow 2,77 \le k \le 5,54$$
+    Vì $k \in \mathbb{N}$ nên $k \in \{3, 4, 5\}$.
+    
+    Mặt khác, khi xếp mỗi xe đúng $19$ học sinh thì vừa đủ, nên $x$ phải chia hết cho $19$:
+    *   Với $k = 3 \Rightarrow x = 360 \cdot 3 + 3 = 1083$. Ta thấy $1083 \div 19 = 57$ (thỏa mãn).
+    *   Với $k = 4 \Rightarrow x = 360 \cdot 4 + 3 = 1443$ (không chia hết cho $19$).
+    *   Với $k = 5 \Rightarrow x = 360 \cdot 5 + 3 = 1803$ (không chia hết cho $19$).
+    
+    **Kết luận:** Tổng số học sinh của trường là **$1083$**.
+    """)
+
+st.markdown("---")
+
+# ==================== CÂU 5 ====================
+st.markdown(
+    '<b style="color: blue;">Câu 5. [Trả lời ngắn ]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Hệ thống mã khóa két sắt của một ngân hàng sử dụng một mật khẩu là số tự nhiên có $4$ chữ số. Chuyên gia bảo mật phát hiện ra rằng mật khẩu này là một số cực kỳ đặc biệt: nó có giá trị đúng bằng bình phương của số tạo bởi hai chữ số cuối cùng của chính nó. Hãy tìm mật khẩu của két sắt đó.
+""")
+
+user_answer_5 = st.text_input("Nhập mật khẩu két sắt:", key="q5_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/cau5.PNG", width=400)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/cau5.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+if st.button("Kiểm tra đáp án", key="q5_check"):
+    normalized_ans_5 = user_answer_5.strip().replace(',', '.')
+    if normalized_ans_5 == "5776":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_5 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập phương trình đại số dựa trên hai chữ số cuối cùng và điều kiện đồng dư nhé!")
+
+st.markdown("---")
+
+if 'q5_solution_shown' not in st.session_state:
+    st.session_state['q5_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q5_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q5_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q5_solution_shown'] = False 
+
+if st.session_state.get('q5_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn và thiết lập phương trình**
+    
+    Gọi số cần tìm là $\overline{abcd}$ với $a \in \{1, 2, \dots, 9\}$ và $b, c, d \in \{0, 1, \dots, 9\}$.
+    Số tạo bởi hai chữ số cuối cùng là $\overline{cd}$.
+    
+    Theo đề bài, mật khẩu có giá trị bằng bình phương của hai chữ số cuối:
+    $$\overline{abcd} = \overline{cd}^{\,2}$$
+    
+    Vì $\overline{abcd} = 100 \cdot \overline{ab} + \overline{cd}$, ta suy ra:
+    $$100 \cdot \overline{ab} + \overline{cd} = \overline{cd}^{\,2}$$
+    $$\Leftrightarrow 100 \cdot \overline{ab} = \overline{cd}(\overline{cd} - 1)$$
+    
+    **Bước 2: Phân tích điều kiện và đồng dư thức**
+    
+    Phương trình trên cho thấy tích $\overline{cd}(\overline{cd} - 1)$ phải chia hết cho $100$.
+    Vì số có $4$ chữ số có bình phương nằm trong đoạn từ $1000$ đến $9999$, ta có:
+    $$\sqrt{1000} \le \overline{cd} \le \sqrt{9999} \Rightarrow 32 \le \overline{cd} \le 99$$
+    
+    Ta có điều kiện đồng dư:
+    $$\overline{cd}^{\,2} \equiv \overline{cd} \pmod{100} \Leftrightarrow \overline{cd}(\overline{cd} - 1) \equiv 0 \pmod{100}$$
+    
+    Các nghiệm của phương trình đồng dư với số có hai chữ số là $\overline{cd} \in \{00, 01, 25, 76\}$. 
+    Kết hợp với điều kiện $32 \le \overline{cd} \le 99$, ta chọn được duy nhất:
+    $$\overline{cd} = 76$$
+    
+    **Bước 3: Tính toán giá trị mật khẩu**
+    
+    Thay $\overline{cd} = 76$ vào bình phương:
+    $$\overline{cd}^{\,2} = 76^2 = 5776$$
+    
+    Số $5776$ thỏa mãn đúng yêu cầu: là số có $4$ chữ số và có hai chữ số tận cùng là $76$, bình phương lên chính bằng nó ($76^2 = 5776$).
+    
+    **Kết luận:** Mật khẩu của két sắt là **$5776$**.
+    """)
+
+st.markdown("---")
+
+# ==================== CÂU 6 ====================
+st.markdown(
+    '<b style="color: blue;">Câu 6. [Trả lời ngắn ]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong dự án "Ánh sáng học đường", Đoàn thanh niên cần mua hai loại bóng đèn LED: loại $9\text{W}$ giá $45.000$ đồng/chiếc và loại $18\text{W}$ giá $70.000$ đồng/chiếc. Tổng số tiền thanh toán trên hóa đơn đúng bằng $500.000$ đồng. Biết rằng Đoàn trường đã mua số lượng bóng đèn loại $9\text{W}$ nhiều hơn số bóng đèn loại $18\text{W}$. Hỏi Đoàn trường đã mua tổng cộng bao nhiêu bóng đèn?
+""")
+
+user_answer_6 = st.text_input("Nhập tổng số bóng đèn:", key="q6_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/cau6.PNG", width=400)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/cau6.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+if st.button("Kiểm tra đáp án", key="q6_check"):
+    normalized_ans_6 = user_answer_6.strip().replace(',', '.')
+    if normalized_ans_6 == "10":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_6 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập phương trình nghiệm nguyên tuyến tính và đối chiếu điều kiện số lượng nhé!")
+
+st.markdown("---")
+
+if 'q6_solution_shown' not in st.session_state:
+    st.session_state['q6_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q6_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q6_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q6_solution_shown'] = False 
+
+if st.session_state.get('q6_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    st.markdown(r"""
+    **Bước 1: Lập phương trình nghiệm nguyên**
+    
+    Gọi $x$ là số lượng bóng đèn loại $9\text{W}$ và $y$ là số lượng bóng đèn loại $18\text{W}$ mà Đoàn trường đã mua.
+    Điều kiện: $x, y \in \mathbb{N}^*$ và $x > y$.
+    
+    Tổng số tiền thanh toán là $500.000$ đồng, ta có phương trình:
+    $$45.000x + 70.000y = 500.000$$
+    $$\Leftrightarrow 45x + 70y = 500$$
+    $$\Leftrightarrow 9x + 14y = 100 \quad (1)$$
+    
+    **Bước 2: Giải phương trình Diophantine**
+    
+    Từ phương trình $(1)$, ta biểu diễn ẩn $x$ theo $y$:
+    $$9x = 100 - 14y \Rightarrow x = \dfrac{100 - 14y}{9} = 11 - y + \dfrac{1 - 5y}{9}$$
+    
+    Để $x \in \mathbb{Z}$, biểu thức $\dfrac{1 - 5y}{9}$ phải là một số nguyên, đặt $\dfrac{1 - 5y}{9} = k$ ($k \in \mathbb{Z}$).
+    $$\Rightarrow 1 - 5y = 9k \Leftrightarrow 5y = 1 - 9k \Leftrightarrow y = \dfrac{1 - 9k}{5} = -2k + \dfrac{1 + k}{5}$$
+    
+    Đặt $\dfrac{1 + k}{5} = m$ ($m \in \mathbb{Z}$) $\Rightarrow k = 5m - 1$.
+    Thay ngược lại để tính $y$ theo $m$:
+    $$y = -2(5m - 1) + m = -10m + 2 + m = 2 - 9m$$
+    
+    Thay giá trị của $y$ vào biểu thức tính $x$:
+    $$x = \dfrac{100 - 14(2 - 9m)}{9} = \dfrac{72 + 126m}{9} = 8 + 14m$$
+    
+    **Bước 3: Kiểm tra điều kiện nghiệm nguyên dương**
+    
+    Vì $x, y \in \mathbb{N}^*$ và $x > y$:
+    *   $x > 0 \Rightarrow 8 + 14m > 0 \Rightarrow m \ge 0$
+    *   $y > 0 \Rightarrow 2 - 9m > 0 \Rightarrow m < \dfrac{2}{9}$
+    
+    Vì $m$ là số nguyên nên ta chọn được duy nhất $m = 0$.
+    
+    Với $m = 0$, ta tính được:
+    *   $x = 8 + 14(0) = 8$ (số bóng đèn loại $9\text{W}$)
+    *   $y = 2 - 9(0) = 2$ (số bóng đèn loại $18\text{W}$)
+    
+    Kiểm tra điều kiện $x > y$, tức $8 > 2$ (thỏa mãn đề bài).
+    
+    **Bước 4: Tính tổng số bóng đèn**
+    
+    Tổng số bóng đèn Đoàn trường đã mua là:
+    $$x + y = 8 + 2 = 10 \text{ (bóng đèn)}$$
+    
+    **Kết luận:** Đoàn trường đã mua tổng cộng **$10$** bóng đèn.
+    """)
+
 st.markdown("---")
