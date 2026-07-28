@@ -1560,3 +1560,177 @@ if st.session_state.get('q17_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 18 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 18. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho dãy số $(u_n)$ được xác định bởi $u_1 = 1$, $u_2 = 3$ và hệ thức truy hồi $u_{n+1} = 3u_n - 2u_{n-1}$ với mọi $n \ge 2$. Tìm số dư của số hạng $u_{2026}$ khi chia cho số nguyên tố $1009$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 18) ---
+user_ans_18 = st.text_input("Nhập số dư của u_{2026} khi chia cho 1009:", key="q18_ans")
+
+if st.button("Kiểm tra đáp án Câu 18", key="q18_check"):
+    norm_ans_18 = user_ans_18.strip()
+    
+    # Đáp án chính xác là 14
+    if norm_ans_18 == "14":
+        st.success("🎉 Chính xác! Bạn đã tìm công thức tổng quát và vận dụng định lý Fermat nhỏ cực kỳ xuất sắc. Lời giải Câu 18 đã được mở khóa.")
+    elif user_ans_18 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 18.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Tìm công thức tổng quát của dãy số dạng $u_n = 2^n - 1$, sau đó dùng định lý Fermat nhỏ để tính $2^{2026} \pmod{1009}$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 18 ---
+st.markdown("---")
+
+if 'q18_solution_shown' not in st.session_state:
+    st.session_state['q18_solution_shown'] = False
+
+col1_18, col2_18 = st.columns([1, 4])
+with col1_18:
+    if st.button("Xem lời giải Câu 18", key="q18_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q18_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q18_solution_shown'] = False 
+
+if st.session_state.get('q18_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 18 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Tìm công thức tổng quát của dãy số $(u_n)$**
+    
+    Phương trình đặc trưng của hệ thức truy hồi $u_{n+1} - 3u_n + 2u_{n-1} = 0$ là:
+    $$r^2 - 3r + 2 = 0 \iff \begin{cases} r = 1 \\ r = 2 \end{cases}$$
+    
+    Do đó, số hạng tổng quát của dãy số có dạng:
+    $$u_n = A \cdot 1^n + B \cdot 2^n = A + B \cdot 2^n$$
+    
+    Sử dụng điều kiện ban đầu ($u_1 = 1$, $u_2 = 3$), ta có hệ phương trình:
+    $$\begin{cases} u_1 = A + 2B = 1 \\ u_2 = A + 4B = 3 \end{cases} \iff \begin{cases} 2B = 2 \\ A + 2(1) = 1 \end{cases} \iff \begin{cases} A = -1 \\ B = 1 \end{cases}$$
+    
+    Vậy công thức tổng quát của dãy số là:
+    $$u_n = 2^n - 1 \quad (\forall n \ge 1)$$
+    
+    **Bước 2: Tính số hạng $u_{2026}$ modulo $1009$**
+    
+    Ta cần tính số dư của $u_{2026} = 2^{2026} - 1$ khi chia cho số nguyên tố $1009$.
+    
+    Theo **Định lý Fermat nhỏ**, vì $1009$ là số nguyên tố và $\gcd(2, 1009) = 1$, ta có:
+    $$2^{1008} \equiv 1 \pmod{1009}$$
+    
+    Chia số mũ $2026$ cho $1008$:
+    $$2026 = 2 \times 1008 + 10$$
+    
+    Do đó:
+    $$2^{2026} = (2^{1008})^2 \cdot 2^{10} \equiv 1^2 \cdot 1024 \pmod{1009}$$
+    
+    Vì $1024 = 1 \times 1009 + 15$, suy ra:
+    $$2^{2026} \equiv 15 \pmod{1009}$$
+    
+    **Bước 3: Kết luận**
+    
+    Số dư của $u_{2026}$ khi chia cho $1009$ là:
+    $$u_{2026} = 2^{2026} - 1 \equiv 15 - 1 = 14 \pmod{1009}$$
+    
+    ---
+    **👉 Đáp số Câu 18:** `14`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 19 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 19. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho tập hợp $S = \{1, 2, 3, \dots, 100\}$. Gọi $K$ là số các tập con gồm đúng 3 phần tử được chọn từ tập $S$ sao cho tổng các phần tử của tập con đó chia hết cho $3$. Tính giá trị của $K$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 19) ---
+user_ans_19 = st.text_input("Nhập giá trị của K:", key="q19_ans")
+
+if st.button("Kiểm tra đáp án Câu 19", key="q19_check"):
+    norm_ans_19 = user_ans_19.strip()
+    
+    # Đáp án chính xác là 53922
+    if norm_ans_19 == "53922":
+        st.success("🎉 Chính xác! Bạn đã phân chia số dư mô-đun 3 và áp dụng tổ hợp vô cùng chính xác. Lời giải Câu 19 đã được mở khóa.")
+    elif user_ans_19 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 19.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Chia tập $S$ thành 3 tập con dựa theo số dư khi chia cho $3$, sau đó xét các trường hợp chọn 3 phần tử sao cho tổng chia hết cho $3$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 19 ---
+st.markdown("---")
+
+if 'q19_solution_shown' not in st.session_state:
+    st.session_state['q19_solution_shown'] = False
+
+col1_19, col2_19 = st.columns([1, 4])
+with col1_19:
+    if st.button("Xem lời giải Câu 19", key="q19_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q19_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q19_solution_shown'] = False 
+
+if st.session_state.get('q19_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 19 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Phân chia tập hợp $S$ theo số dư khi chia cho $3$**
+    
+    Chia tập hợp $S = \{1, 2, 3, \dots, 100\}$ thành ba tập hợp con rời nhau dựa trên số dư khi chia cho $3$:
+    *   $R_0$: Các số chia hết cho $3$ ($n \equiv 0 \pmod 3$), gồm: $\{3, 6, 9, \dots, 99\}$. 
+        Số lượng phần tử là: $|R_0| = \dfrac{99}{3} = 33$ phần tử.
+    *   $R_1$: Các số chia $3$ dư $1$ ($n \equiv 1 \pmod 3$), gồm: $\{1, 4, 7, \dots, 100\}$. 
+        Số lượng phần tử là: $|R_1| = \dfrac{100 - 1}{3} + 1 = 34$ phần tử.
+    *   $R_2$: Các số chia $3$ dư $2$ ($n \equiv 2 \pmod 3$), gồm: $\{2, 5, 8, \dots, 98\}$. 
+        Số lượng phần tử là: $|R_2| = \dfrac{98 - 2}{3} + 1 = 33$ phần tử.
+    
+    **Bước 2: Xét các trường hợp chọn 3 phần tử có tổng chia hết cho $3$**
+    
+    Gọi bộ 3 phần tử được chọn là $\{a, b, c\}$. Tổng $a + b + c$ chia hết cho $3$ khi và chỉ khi tổng số dư của ba phần tử đó khi chia cho $3$ phải chia hết cho $3$. Ta có các trường hợp sau:
+    
+    1. **Trường hợp 1: Cả 3 phần tử đều thuộc $R_0$** (số dư dạng $0 + 0 + 0 \equiv 0 \pmod 3$).
+       Số cách chọn là: 
+       $$\mathbf{C_1} = \dbinom{33}{3} = \dfrac{33 \times 32 \times 31}{6} = 5456$$
+       
+    2. **Trường hợp 2: Cả 3 phần tử đều thuộc $R_1$** (số dư dạng $1 + 1 + 1 = 3 \equiv 0 \pmod 3$).
+       Số cách chọn là: 
+       $$\mathbf{C_2} = \dbinom{34}{3} = \dfrac{34 \times 33 \times 32}{6} = 5984$$
+       
+    3. **Trường hợp 3: Cả 3 phần tử đều thuộc $R_2$** (số dư dạng $2 + 2 + 2 = 6 \equiv 0 \pmod 3$).
+       Số cách chọn là: 
+       $$\mathbf{C_3} = \dbinom{33}{3} = \dfrac{33 \times 32 \times 31}{6} = 5456$$
+       
+    4. **Trường hợp 4: Mỗi tập hợp $R_0, R_1, R_2$ được chọn đúng 1 phần tử** (số dư dạng $0 + 1 + 2 = 3 \equiv 0 \pmod 3$).
+       Số cách chọn là: 
+       $$\mathbf{C_4} = |R_0| \times |R_1| \times |R_2| = 33 \times 34 \times 33 = 37026$$
+       
+    **Bước 3: Tính tổng số cách chọn $K$**
+    
+    Áp dụng quy tắc cộng, tổng số tập con $K$ thỏa mãn yêu cầu bài toán là:
+    $$K = C_1 + C_2 + C_3 + C_4 = 5456 + 5984 + 5456 + 37026 = 53922$$
+    
+    ---
+    **👉 Đáp số Câu 19:** `53922`
+    """)
+
+st.markdown("---")
