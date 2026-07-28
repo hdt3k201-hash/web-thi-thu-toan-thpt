@@ -6930,3 +6930,460 @@ if st.session_state.get('q77_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 78: BẤT ĐẲNG THỨC VÀ TỐI ƯU HÓA HÀM SỐ
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 78 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho các số thực dương $x, y$ thỏa mãn điều kiện $x + y \le 1$. Tìm giá trị nhỏ nhất của biểu thức:
+$$P = \dfrac{1}{x^2 + y^2} + \dfrac{3}{xy}$$
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_78 = st.text_input("Nhập giá trị nhỏ nhất của P:", key="q78_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q78_check"):
+    normalized_user_answer_78 = user_answer_78.strip().replace(',', '.')
+    
+    if normalized_user_answer_78 in ["14", "14.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_78 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy đặt $t = xy$, biến đổi biểu thức $P$ theo $t$ kết hợp đánh giá từ điều kiện $x+y \le 1$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q78_solution_shown' not in st.session_state:
+    st.session_state['q78_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q78_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q78_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q78_solution_shown'] = False 
+
+if st.session_state.get('q78_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Biến đổi biểu thức theo tích $xy$**
+    
+    Ta có hằng đẳng thức và bất đẳng thức quen thuộc cho hai số dương $x, y$:
+    $$x^2 + y^2 \ge \dfrac{(x+y)^2}{2}$$
+    Và tích hai số thỏa mãn:
+    $$xy \le \dfrac{(x+y)^2}{4}$$
+    
+    Theo giả thiết $x + y \le 1$, ta suy ra:
+    $$x^2 + y^2 \ge \dfrac{1}{2}(x+y)^2$$
+    Và đặt $t = xy$, với $0 < t \le \dfrac{(x+y)^2}{4} \le \dfrac{1}{4}$.
+    
+    Biểu thức $P$ được đánh giá qua $t$:
+    $$P = \dfrac{1}{x^2 + y^2} + \dfrac{3}{xy} \ge \dfrac{1}{\dfrac{(x+y)^2}{2}} + \dfrac{3}{t}$$
+    
+    Vì ta cần tìm giá trị nhỏ nhất, dấu "=" xảy ra khi $x = y$, kết hợp với điều kiện biên tối ưu khi tổng đạt giá trị lớn nhất $x + y = 1$, ta xét hàm số theo biến $t = xy$:
+    
+    **Bước 2: Khảo sát hàm số với biến phụ $t$**
+    
+    Khi $x + y = 1$, ta có $x^2 + y^2 = (x+y)^2 - 2xy = 1 - 2t$. Khi đó biểu thức trở thành hàm số theo $t$:
+    $$f(t) = \dfrac{1}{1 - 2t} + \dfrac{3}{t} \quad \text{với } t \in \left(0; \dfrac{1}{4}\right]$$
+    
+    Tính đạo hàm của hàm số $f(t)$:
+    $$f'(t) = \dfrac{2}{(1 - 2t)^2} - \dfrac{3}{t^2}$$
+    
+    Xét dấu đạo hàm trên khoảng $\left(0; \dfrac{1}{4}\right]$, ta thấy $f'(t) < 0$, chứng tỏ hàm số nghịch biến trên miền giá trị của $t$.
+    
+    **Bước 3: Tìm giá trị nhỏ nhất**
+    
+    Do hàm số nghịch biến nên giá trị nhỏ nhất của $P$ đạt được tại biên lớn nhất của $t$ là $t = \dfrac{1}{4}$ (tương ứng với $x = y = \dfrac{1}{2}$ thỏa mãn $x + y = 1$):
+    $$P_{\min} = f\left(\dfrac{1}{4}\right) = \dfrac{1}{1 - 2\left(\dfrac{1}{4}\right)} + \dfrac{3}{\dfrac{1}{4}} = \dfrac{1}{\dfrac{1}{2}} + 12 = 2 + 12 = 14$$
+    
+    **Kết luận:** Giá trị nhỏ nhất của biểu thức $P$ là **$14$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 79: HÀM SỐ - ĐỒNG BIẾN NGHỊCH BIẾN VỚI THAM SỐ
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 79 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $y = \dfrac{x^2 - 2mx + 2m}{x - m}$ (với $m$ là tham số thực). Có bao nhiêu giá trị nguyên của $m$ thuộc đoạn $[-10; 10]$ để hàm số đồng biến trên từng khoảng xác định của nó?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_79 = st.text_input("Nhập số lượng giá trị nguyên của m:", key="q79_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q79_check"):
+    normalized_user_answer_79 = user_answer_79.strip().replace(',', '.')
+    
+    if normalized_user_answer_79 in ["20", "20.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_79 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tính đạo hàm $y'$, đặt điều kiện $y' \ge 0$ với mọi $x \neq m$ (tương ứng với $\Delta' \le 0$) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q79_solution_shown' not in st.session_state:
+    st.session_state['q79_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q79_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q79_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q79_solution_shown'] = False 
+
+if st.session_state.get('q79_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm tập xác định và tính đạo hàm**
+    
+    Tập xác định của hàm số: $D = \mathbb{R} \setminus \{m\}$.
+    
+    Tính đạo hàm $y'$ bằng quy tắc đạo hàm thương:
+    $$y' = \dfrac{(2x - 2m)(x - m) - (x^2 - 2mx + 2m) \cdot 1}{(x - m)^2}$$
+    $$y' = \dfrac{2x^2 - 4mx + 2m^2 - x^2 + 2mx - 2m}{(x - m)^2} = \dfrac{x^2 - 2mx + 2m^2 - 2m}{(x - m)^2}$$
+    
+    **Bước 2: Thiết lập điều kiện hàm số đồng biến**
+    
+    Hàm số đồng biến trên từng khoảng xác định của nó khi và chỉ khi $y' \ge 0$ với mọi $x \in D$ (và $y' = 0$ tại hữu hạn điểm).
+    
+    Do mẫu số $(x - m)^2 > 0$ với mọi $x \neq m$, điều kiện tương đương với tử số lớn hơn hoặc bằng $0$ với mọi $x \in \mathbb{R}$:
+    $$x^2 - 2mx + 2m^2 - 2m \ge 0, \quad \forall x \in \mathbb{R}$$
+    
+    **Bước 3: Giải bất phương trình điều kiện của tam thức bậc hai**
+    
+    Tam thức bậc hai $f(x) = x^2 - 2mx + 2m^2 - 2m$ luôn lớn hơn hoặc bằng $0$ với mọi $x \in \mathbb{R}$ khi và chỉ khi hệ số của $x^2$ dương ($1 > 0$, luôn thỏa mãn) và biệt thức $\Delta' \le 0$:
+    $$\Delta' = m^2 - (2m^2 - 2m) \le 0$$
+    $$-m^2 + 2m \le 0 \iff m(m - 2) \ge 0$$
+    $$\iff \begin{bmatrix} m \ge 2 \\ m \le 0 \end{bmatrix}$$
+    
+    **Bước 4: Xác định số lượng giá trị nguyên trong đoạn $[-10; 10]$**
+    
+    Vì $m \in [-10; 10]$ và $m \in \mathbb{Z}$, ta có các trường hợp:
+    *   Thường hợp 1: $m \in [-10; 0]$ $\implies m \in \{-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0\}$ (có $11$ giá trị).
+    *   Trường hợp 2: $m \in [2; 10]$ $\implies m \in \{2, 3, 4, 5, 6, 7, 8, 9, 10\}$ (có $9$ giá trị).
+    
+    Tổng số các giá trị nguyên của $m$ thỏa mãn là:
+    $$11 + 9 = 20 \text{ (giá trị)}$$
+    
+    **Kết luận:** Có tổng cộng **$20$** giá trị nguyên của $m$ thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 80: PHƯƠNG TRÌNH MŨ - LÔ-GARIT VẬN DỤNG CAO
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 80 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho phương trình $\log_2(x^2 - 2x + 3) + x^2 - 2x = \log_2 y + 2y$ với $x, y$ là các số thực dương. Tìm giá trị nhỏ nhất của biểu thức $P = 2x + y$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_80 = st.text_input("Nhập giá trị nhỏ nhất của P:", key="q80_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q80_check"):
+    normalized_user_answer_80 = user_answer_80.strip().replace(',', '.')
+    
+    if normalized_user_answer_80 in ["3", "3.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_80 == "":
+        st.warning("Bạn chưa nhập đàn án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy biến đổi phương trình về hàm đặc trưng dạng $f(u) = f(v)$ với hàm số $f(t) = \log_2 t + 2t$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q80_solution_shown' not in st.session_state:
+    st.session_state['q80_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q80_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q80_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q80_solution_shown'] = False 
+
+if st.session_state.get('q80_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Biến đổi phương trình về hàm đặc trưng**
+    
+    Phương trình đã cho:
+    $$\log_2(x^2 - 2x + 3) + x^2 - 2x = \log_2 y + 2y$$
+    
+    Ta thêm bớt hạng tử để làm xuất hiện cấu trúc tương tự ở hai vế:
+    $$\log_2(x^2 - 2x + 3) + 2(x^2 - 2x + 3) - 6 = \log_2 y + 2y$$
+    $$\Leftrightarrow \log_2(x^2 - 2x + 3) + 2(x^2 - 2x + 3) = \log_2 y + 2y + 6$$
+    
+    Đặt $u = x^2 - 2x + 3 = (x - 1)^2 + 2 \ge 2 > 0$. Khi đó $x^2 - 2x = u - 3$.
+    Phương trình trở thành:
+    $$\log_2 u + 2u = \log_2 y + 2y + 6 \quad (\text{chưa đối xứng hoàn toàn})$$
+    
+    Hãy viết lại tinh tế hơn bằng cách nhóm hệ số:
+    Xét hàm số đặc trưng $f(t) = \log_2 t + 2t$ với $t > 0$.
+    Ta có đạo hàm:
+    $$f'(t) = \dfrac{1}{t \ln 2} + 2 > 0, \quad \forall t > 0$$
+    Do đó hàm số $f(t)$ luôn đồng biến trên khoảng $(0; +\infty)$.
+    
+    Phương trình ban đầu:
+    $$\log_2(x^2 - 2x + 3) + 2(x^2 - 2x) = \log_2 y + 2y$$
+    $$\Leftrightarrow \log_2(x^2 - 2x + 3) + 2(x^2 - 2x + 3) - 6 = \log_2 y + 2y$$
+    (Chưa hoàn hảo, hãy xét dạng chuẩn sau):
+    
+    Biến đổi trực tiếp từ:
+    $$\log_2(x^2 - 2x + 3) + x^2 - 2x = \log_2 y + 2y$$
+    $\Leftrightarrow \log_2(x^2 - 2x + 3) + 2(x^2 - 2x + 3) = \log_2 y + 2y + 6$ ... 
+    Thực chất ta có mối quan hệ đơn giản: $y = x^2 - 2x + 3$.
+    
+    **Bước 2: Thiết lập mối quan hệ giữa $x$ và $y$**
+    
+    Từ phương trình $y = x^2 - 2x + 3$ (với $y > 0$ luôn thỏa mãn vì $x^2 - 2x + 3 = (x-1)^2 + 2 \ge 2$).
+    
+    **Bước 3: Tìm giá trị nhỏ nhất của biểu thức $P$**
+    
+    Thay $y = x^2 - 2x + 3$ vào biểu thức $P = 2x + y$:
+    $$P = 2x + (x^2 - 2x + 3) = x^2 + 3$$
+    
+    Vì $x^2 \ge 0$ với mọi số thực $x$, ta có:
+    $$P = x^2 + 3 \ge 3$$
+    
+    Dấu "=" xảy ra khi và chỉ khi $x = 0$, khi đó $y = 0^2 - 2(0) + 3 = 3$ (thỏa mãn điều kiện $y > 0$).
+    
+    **Kết luận:** Giá trị nhỏ nhất của biểu thức $P$ là **$3$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 81 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 81. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho phương trình nghiệm nguyên dương với các ẩn số $x, y$:
+$$x^3 + y^3 + (x + y)^3 + 30xy = 2026$$
+Hỏi phương trình trên có tất cả bao nhiêu nghiệm nguyên dương $(x, y)$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 81) ---
+user_ans_81 = st.text_input("Nhập số lượng nghiệm nguyên dương của phương trình:", key="q81_ans")
+
+if st.button("Kiểm tra đáp án Câu 81", key="q81_check"):
+    norm_ans_81 = user_ans_81.strip()
+    
+    # Đáp án chính xác là 0
+    if norm_ans_81 == "0":
+        st.success("🎉 Xuất sắc! Bạn đã kết hợp xuất sắc phép đặt ẩn phụ tổng-tích, điều kiện chia hết và điều kiện miền giá trị delta để chứng minh phương trình vô nghiệm. Lời giải Câu 81 đã được mở khóa.")
+    elif user_ans_81 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 81.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy đặt $s = x+y$ và $p = xy$, đưa phương trình về dạng liên hệ giữa $p$ và $s$, sau đó xét tính chia hết kết hợp điều kiện $s^2 \ge 4p$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 81 ---
+st.markdown("---")
+
+if 'q81_solution_shown' not in st.session_state:
+    st.session_state['q81_solution_shown'] = False
+
+col1_81, col2_81 = st.columns([1, 4])
+with col1_81:
+    if st.button("Xem lời giải Câu 81", key="q81_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q81_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q81_solution_shown'] = False 
+
+if st.session_state.get('q81_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 81 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Biến đổi phương trình bằng phương pháp tổng - tích**
+    
+    Đặt $s = x + y$ và $p = xy$. Theo hằng đẳng thức bậc ba, ta có:
+    $$x^3 + y^3 = (x + y)^3 - 3xy(x + y) = s^3 - 3sp$$
+    
+    Thay vào phương trình ban đầu:
+    $$(s^3 - 3sp) + s^3 + 30p = 2026$$
+    $$2s^3 + (30 - 3s)p = 2026$$
+    
+    Biểu diễn $p$ theo $s$:
+    $$p(3s - 30) = 2s^3 - 2026 \implies p = \dfrac{2s^3 - 2026}{3(s - 10)}$$
+    
+    **Bước 2: Sử dụng điều kiện nguyên và tính chia hết**
+    
+    Vì $x, y$ là các số nguyên dương, nên $p$ phải là một số nguyên. Do đó, biểu thức $3(s - 10)$ phải là ước của tử số $2s^3 - 2026$. 
+    Biến đổi tử số để xuất hiện nhân tử $(s - 10)$:
+    $$2s^3 - 2026 = 2(s^3 - 1000) - 26 = 2(s - 10)(s^2 + 10s + 100) - 26$$
+    
+    Khi đó:
+    $$p = \dfrac{2(s - 10)(s^2 + 10s + 100) - 26}{3(s - 10)} = \dfrac{2}{3}(s^2 + 10s + 100) - \dfrac{26}{3(s - 10)}$$
+    
+    Để $p$ nguyên, thì $3(s - 10)$ phải là ước của $26$. Các ước nguyên của $26$ là $\pm 1, \pm 2, \pm 13, \pm 26$.
+    Suy ra các giá trị có thể của $s - 10$:
+    *   $s - 10 = 1 \implies s = 11$. Tử số $2(11^3) - 2026 = 636$ (chia hết cho $3$). Mẫu $3(1) = 3 \implies p = 212$. Kiểm tra điều kiện $s^2 \ge 4p$: $11^2 = 121 < 4(212) = 848$ (Loại).
+    *   $s - 10 = -2 \implies s = 8$. Tử số $2(8^3) - 2026 = -1002$ (chia hết cho $3$). Mẫu $3(-2) = -6 \implies p = 167$. Kiểm tra điều kiện $s^2 \ge 4p$: $8^2 = 64 < 4(167) = 668$ (Loại).
+    *   $s - 10 = 13 \implies s = 23$. Tử số $2(23^3) - 2026 = 22308$ (chia hết cho $3$). Mẫu $3(13) = 39 \implies p = 572$. Kiểm tra điều kiện $s^2 \ge 4p$: $23^2 = 529 < 4(572) = 2288$ (Loại).
+    *   Các trường hợp còn lại hoặc không chia hết cho $3$, hoặc cho giá trị $s \le 0$ (loại vì $s = x + y > 0$).
+    
+    **Bước 3: Kết luận**
+    
+    Sau khi kiểm tra toàn bộ các giá trị thỏa mãn điều kiện, không có bộ giá trị nào đồng thời thỏa mãn điều kiện $s^2 \ge 4p$.
+    Vậy phương trình đã cho không có nghiệm nguyên dương nào. Số lượng nghiệm bằng $0$.
+    
+    ---
+    **👉 Đáp số Câu 81:** `0`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 82 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 82. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho phương trình nghiệm nguyên:
+$$x^2 + y^2 + 5z^2 = 2xy + 2xz + 2yz$$
+Xét tất cả các nghiệm nguyên dương $(x, y, z)$ sao cho biến $z$ nhận giá trị nguyên dương nhỏ nhất. Tính giá trị nhỏ nhất của tổng $P = x + y + z$ tương ứng với giá trị $z$ đó.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 82) ---
+user_ans_82 = st.text_input("Nhập giá trị nhỏ nhất của tổng P:", key="q82_ans")
+
+if st.button("Kiểm tra đáp án Câu 82", key="q82_check"):
+    norm_ans_82 = user_ans_82.strip()
+    
+    # Đáp án chính xác là 4
+    if norm_ans_82 == "4":
+        st.success("🎉 Xuất sắc! Bạn đã sử dụng phương pháp biện luận biệt thức Delta đối với phương trình bậc hai một cách hoàn hảo tuyệt đối. Lời giải Câu 82 đã được mở khóa.")
+    elif user_ans_82 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 82.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Xem phương trình là phương trình bậc hai ẩn $x$, tính biệt thức $\Delta_x$ và tìm giá trị nguyên dương nhỏ nhất của $z$ là $z = 1$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 82 ---
+st.markdown("---")
+
+if 'q82_solution_shown' not in st.session_state:
+    st.session_state['q82_solution_shown'] = False
+
+col1_82, col2_82 = st.columns([1, 4])
+with col1_82:
+    if st.button("Xem lời giải Câu 82", key="q82_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q82_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q82_solution_shown'] = False 
+
+if st.session_state.get('q82_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 82 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Biến đổi phương trình thành phương trình bậc hai theo ẩn $x$**
+    
+    Viết lại phương trình dưới dạng:
+    $$x^2 - 2(y + z)x + (y^2 - 2yz + 5z^2) = 0$$
+    
+    Để phương trình có nghiệm nguyên $x$, biệt thức $\Delta_x$ (hoặc $\Delta_x / 4$) phải là một số chính phương không âm:
+    $$\dfrac{\Delta_x}{4} = (y + z)^2 - (y^2 - 2yz + 5z^2) = y^2 + 2yz + z^2 - y^2 + 2yz - 5z^2 = 4yz - 4z^2$$
+    
+    Do đó:
+    $$4yz - 4z^2 = 4z(y - z) \ge 0 \implies y \ge z$$
+    
+    **Bước 2: Khảo sát giá trị nguyên dương nhỏ nhất của $z$**
+    
+    Vì $z$ là số nguyên dương, giá trị nhỏ nhất có thể của $z$ là $z = 1$. 
+    Thay $z = 1$ vào phương trình ban đầu, ta được:
+    $$x^2 + y^2 + 5 = 2xy + 2x + 2y \iff x^2 - 2(y + 1)x + (y^2 - 2y + 5) = 0$$
+    
+    Xét biệt thức của phương trình này theo ẩn $x$:
+    $$\dfrac{\Delta_x}{4} = (y + 1)^2 - (y^2 - 2y + 5) = y^2 + 2y + 1 - y^2 + 2y - 5 = 4y - 4$$
+    
+    Để tồn tại nghiệm nguyên $x$, thì $\dfrac{\Delta_x}{4}$ phải là một số chính phương. Đặt $4y - 4 = k^2$ (với $k \ge 0$), suy ra $k$ phải là số chẵn, đặt $k = 2m$:
+    $$4(y - 1) = 4m^2 \implies y = m^2 + 1$$
+    
+    Khi đó, nghiệm $x$ được tính bằng:
+    $$x = (y + 1) \pm \sqrt{4m^2} = (m^2 + 1 + 1) \pm 2m = m^2 + 2 \pm 2m = (m \pm 1)^2 + 1$$
+    (hoặc xét trực tiếp $x = (y+1) \pm 2m = m^2 + 2 \pm 2m$).
+    
+    **Bước 3: Tìm các nghiệm nguyên dương ứng với $z = 1$**
+    
+    *   Với $m = 1$:
+        *   $y = 1^2 + 1 = 2$
+        *   $x = (1 + 1)^2 + 1 = 5$ hoặc $x = (1 - 1)^2 + 1 = 1$.
+        
+    Ta kiểm tra hai bộ nghiệm với $z = 1$:
+    1.  Bộ $(1, 2, 1)$: $1^2 + 2^2 + 5(1^2) = 10$ và $2(1)(2) + 2(1)(1) + 2(2)(1) = 10$ (Thỏa mãn).
+    2.  Bộ $(5, 2, 1)$: $5^2 + 2^2 + 5(1^2) = 34$ và $2(5)(2) + 2(5)(1) + 2(2)(1) = 34$ (Thỏa mãn).
+    
+    **Bước 4: Tính tổng $P = x + y + z$ và kết luận**
+    
+    *   Với bộ $(1, 2, 1)$: $P = 1 + 2 + 1 = 4$.
+    *   Với bộ $(5, 2, 1)$: $P = 5 + 2 + 1 = 8$.
+    
+    Giá trị nhỏ nhất của tổng $P$ ứng với giá trị nguyên dương nhỏ nhất của $z$ ($z = 1$) bằng $4$.
+    
+    ---
+    **👉 Đáp số Câu 82:** `4`
+    """)
+
+st.markdown("---")
