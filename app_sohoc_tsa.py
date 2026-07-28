@@ -5097,12 +5097,7 @@ Cho số nguyên dương $A = 2^{2026} + 3^{2026} + 6^{2026}$. Tìm số dư khi
 user_answer = st.text_input("Nhập số dư của phép chia:", key="q57_ans")
 
 # Khối chèn hình ảnh minh họa
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.image("images/tsa_q57.PNG", width=400)
-except FileNotFoundError:
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/tsa_q57.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
 
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q57_check"):
