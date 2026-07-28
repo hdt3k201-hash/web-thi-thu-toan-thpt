@@ -6933,22 +6933,23 @@ st.markdown("---")
 
 
 
+
+
 # ==========================================
-# CÂU 78: BẤT ĐẲNG THỨC VÀ TỐI ƯU HÓA HÀM SỐ
+# CÂU 78: PHƯƠNG TRÌNH NGHIỆM NGUYÊN
 # ==========================================
 
 st.markdown(
-    '<b style="color: blue;">Câu 78 (Trả lời ngắn _ TSA)</b>',
+    '<b style="color: blue;">Câu 78 (TSA 2026 - Chuyên đề Số học)</b>',
     unsafe_allow_html=True
 )
 
 st.markdown(r"""
-Cho các số thực dương $x, y$ thỏa mãn điều kiện $x + y \le 1$. Tìm giá trị nhỏ nhất của biểu thức:
-$$P = \dfrac{1}{x^2 + y^2} + \dfrac{3}{xy}$$
+Cho phương trình $\dfrac{1}{x} + \dfrac{1}{y} = \dfrac{1}{2026}$ với $x, y$ là các số nguyên dương. Hỏi có bao nhiêu cặp số nguyên dương $(x, y)$ với $x \le y$ thỏa mãn phương trình trên?
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer_78 = st.text_input("Nhập giá trị nhỏ nhất của P:", key="q78_ans")
+user_answer_78 = st.text_input("Nhập số lượng cặp nghiệm $(x, y)$:", key="q78_ans")
 
 # Khối chèn hình ảnh minh họa
 
@@ -6957,12 +6958,12 @@ user_answer_78 = st.text_input("Nhập giá trị nhỏ nhất của P:", key="q
 if st.button("Kiểm tra đáp án", key="q78_check"):
     normalized_user_answer_78 = user_answer_78.strip().replace(',', '.')
     
-    if normalized_user_answer_78 in ["14", "14.0"]:
+    if normalized_user_answer_78 == "9":
         st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
     elif user_answer_78 == "":
         st.warning("Bạn chưa nhập đáp án.")
     else:
-        st.error("Sai rồi. Gợi ý: Hãy đặt $t = xy$, biến đổi biểu thức $P$ theo $t$ kết hợp đánh giá từ điều kiện $x+y \le 1$ nhé!")
+        st.error("Sai rồi. Gợi ý: Hãy biến đổi phương trình về dạng nhân tử $(x - 2026)(y - 2026) = 2026^2$ để đếm số ước số nhé!")
 
 # --- XEM LỜI GIẢI CHI TIẾT ---
 st.markdown("---")
@@ -6983,58 +6984,59 @@ if st.session_state.get('q78_solution_shown') and st.session_state.get('logged_i
     st.info("### Lời giải chi tiết:")
     
     st.markdown(r"""
-    **Bước 1: Biến đổi biểu thức theo tích $xy$**
+    **Bước 1: Biến đổi phương trình về dạng tích**
     
-    Ta có hằng đẳng thức và bất đẳng thức quen thuộc cho hai số dương $x, y$:
-    $$x^2 + y^2 \ge \dfrac{(x+y)^2}{2}$$
-    Và tích hai số thỏa mãn:
-    $$xy \le \dfrac{(x+y)^2}{4}$$
+    Ta có phương trình ban đầu:
+    $$\dfrac{1}{x} + \dfrac{1}{y} = \dfrac{1}{2026}$$
     
-    Theo giả thiết $x + y \le 1$, ta suy ra:
-    $$x^2 + y^2 \ge \dfrac{1}{2}(x+y)^2$$
-    Và đặt $t = xy$, với $0 < t \le \dfrac{(x+y)^2}{4} \le \dfrac{1}{4}$.
+    Quy đồng mẫu số và nhân chéo, ta được:
+    $$2026(x + y) = xy \iff xy - 2026x - 2026y = 0$$
     
-    Biểu thức $P$ được đánh giá qua $t$:
-    $$P = \dfrac{1}{x^2 + y^2} + \dfrac{3}{xy} \ge \dfrac{1}{\dfrac{(x+y)^2}{2}} + \dfrac{3}{t}$$
+    Thêm $2026^2$ vào hai vế để phân tích thành nhân tử:
+    $$xy - 2026x - 2026y + 2026^2 = 2026^2$$
+    $$x(y - 2026) - 2026(y - 2026) = 2026^2$$
+    $$(x - 2026)(y - 2026) = 2026^2$$
     
-    Vì ta cần tìm giá trị nhỏ nhất, dấu "=" xảy ra khi $x = y$, kết hợp với điều kiện biên tối ưu khi tổng đạt giá trị lớn nhất $x + y = 1$, ta xét hàm số theo biến $t = xy$:
+    **Bước 2: Phân tích thừa số nguyên tố của $2026^2$**
     
-    **Bước 2: Khảo sát hàm số với biến phụ $t$**
+    Ta có phân tích ra thừa số nguyên tố của $2026$:
+    $$2026 = 2 \times 1013$$
+    (với $1013$ là một số nguyên tố).
     
-    Khi $x + y = 1$, ta có $x^2 + y^2 = (x+y)^2 - 2xy = 1 - 2t$. Khi đó biểu thức trở thành hàm số theo $t$:
-    $$f(t) = \dfrac{1}{1 - 2t} + \dfrac{3}{t} \quad \text{với } t \in \left(0; \dfrac{1}{4}\right]$$
+    Do đó:
+    $$2026^2 = 2^2 \times 1013^2$$
     
-    Tính đạo hàm của hàm số $f(t)$:
-    $$f'(t) = \dfrac{2}{(1 - 2t)^2} - \dfrac{3}{t^2}$$
+    Số các ước số nguyên dương của $2026^2$ được tính bằng công thức:
+    $$d(2026^2) = (2 + 1)(2 + 1) = 3 \times 3 = 9$$
     
-    Xét dấu đạo hàm trên khoảng $\left(0; \dfrac{1}{4}\right]$, ta thấy $f'(t) < 0$, chứng tỏ hàm số nghịch biến trên miền giá trị của $t$.
+    **Bước 3: Đếm số cặp nghiệm thỏa mãn điều kiện $x \le y$**
     
-    **Bước 3: Tìm giá trị nhỏ nhất**
+    Vì $x, y$ là các số nguyên dương và $x \le y$, nên ta suy ra $x - 2026 \le y - 2026$. 
+    Do tích $(x - 2026)(y - 2026) = 2026^2 > 0$, hai nhân tử này phải cùng dấu và vì $x \le y$ nên cả hai nhân tử phải là các ước nguyên dương của $2026^2$.
     
-    Do hàm số nghịch biến nên giá trị nhỏ nhất của $P$ đạt được tại biên lớn nhất của $t$ là $t = \dfrac{1}{4}$ (tương ứng với $x = y = \dfrac{1}{2}$ thỏa mãn $x + y = 1$):
-    $$P_{\min} = f\left(\dfrac{1}{4}\right) = \dfrac{1}{1 - 2\left(\dfrac{1}{4}\right)} + \dfrac{3}{\dfrac{1}{4}} = \dfrac{1}{\dfrac{1}{2}} + 12 = 2 + 12 = 14$$
+    Ứng với mỗi ước nguyên dương của $2026^2$, ta xác định được duy nhất một cặp $(x, y)$. Vì tổng số ước nguyên dương là $9$, nên có đúng $9$ cặp nghiệm $(x, y)$ thỏa mãn.
     
-    **Kết luận:** Giá trị nhỏ nhất của biểu thức $P$ là **$14$**.
+    **Kết luận:** Số lượng cặp nghiệm nguyên dương thỏa mãn là **$9$**.
     """)
     
 st.markdown("---")
 
 
 # ==========================================
-# CÂU 79: HÀM SỐ - ĐỒNG BIẾN NGHỊCH BIẾN VỚI THAM SỐ
+# CÂU 79: ĐỊNH LÝ LEGENDRE VÀ GIAI THỪA
 # ==========================================
 
 st.markdown(
-    '<b style="color: blue;">Câu 79 (Trả lời ngắn _ TSA)</b>',
+    '<b style="color: blue;">Câu 79 (TSA 2026 - Chuyên đề Số học)</b>',
     unsafe_allow_html=True
 )
 
 st.markdown(r"""
-Cho hàm số $y = \dfrac{x^2 - 2mx + 2m}{x - m}$ (với $m$ là tham số thực). Có bao nhiêu giá trị nguyên của $m$ thuộc đoạn $[-10; 10]$ để hàm số đồng biến trên từng khoảng xác định của nó?
+Tìm số chữ số $0$ tận cùng của số $S = 2026!$ khi viết dưới dạng số thập phân.
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer_79 = st.text_input("Nhập số lượng giá trị nguyên của m:", key="q79_ans")
+user_answer_79 = st.text_input("Nhập số lượng chữ số 0 tận cùng:", key="q79_ans")
 
 # Khối chèn hình ảnh minh họa
 
@@ -7043,12 +7045,12 @@ user_answer_79 = st.text_input("Nhập số lượng giá trị nguyên của m:
 if st.button("Kiểm tra đáp án", key="q79_check"):
     normalized_user_answer_79 = user_answer_79.strip().replace(',', '.')
     
-    if normalized_user_answer_79 in ["20", "20.0"]:
+    if normalized_user_answer_79 == "505":
         st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
     elif user_answer_79 == "":
         st.warning("Bạn chưa nhập đáp án.")
     else:
-        st.error("Sai rồi. Gợi ý: Hãy tính đạo hàm $y'$, đặt điều kiện $y' \ge 0$ với mọi $x \neq m$ (tương ứng với $\Delta' \le 0$) nhé!")
+        st.error("Sai rồi. Gợi ý: Hãy sử dụng Định lý Legendre để tính số mũ của thừa số 5 trong phân tích tiêu chuẩn của $2026!$ nhé!")
 
 # --- XEM LỜI GIẢI CHI TIẾT ---
 st.markdown("---")
@@ -7069,58 +7071,49 @@ if st.session_state.get('q79_solution_shown') and st.session_state.get('logged_i
     st.info("### Lời giải chi tiết:")
     
     st.markdown(r"""
-    **Bước 1: Tìm tập xác định và tính đạo hàm**
+    **Bước 1: Phân tích bản chất số chữ số 0 tận cùng**
     
-    Tập xác định của hàm số: $D = \mathbb{R} \setminus \{m\}$.
+    Số chữ số $0$ tận cùng của một số nguyên dương chính bằng số thừa số nguyên tố $10$ trong phân tích tiêu chuẩn của số đó. 
+    Vì $10 = 2 \times 5$ và trong dãy từ $1$ đến $2026$, số lượng thừa số $2$ luôn lớn hơn rất nhiều so với số lượng thừa số $5$, nên số chữ số $0$ tận cùng của $2026!$ đúng bằng số mũ của thừa số $5$ trong phân tích tiêu chuẩn của $2026!$.
     
-    Tính đạo hàm $y'$ bằng quy tắc đạo hàm thương:
-    $$y' = \dfrac{(2x - 2m)(x - m) - (x^2 - 2mx + 2m) \cdot 1}{(x - m)^2}$$
-    $$y' = \dfrac{2x^2 - 4mx + 2m^2 - x^2 + 2mx - 2m}{(x - m)^2} = \dfrac{x^2 - 2mx + 2m^2 - 2m}{(x - m)^2}$$
+    **Bước 2: Áp dụng Định lý Legendre**
     
-    **Bước 2: Thiết lập điều kiện hàm số đồng biến**
+    Số mũ của số nguyên tố $p$ trong phân tích tiêu chuẩn của $n!$ được tính bởi công thức Legendre:
+    $$v_p(n!) = \sum_{k=1}^{\infty} \left\lfloor \dfrac{n}{p^k} \right\rfloor$$
     
-    Hàm số đồng biến trên từng khoảng xác định của nó khi và chỉ khi $y' \ge 0$ với mọi $x \in D$ (và $y' = 0$ tại hữu hạn điểm).
+    Với $n = 2026$ và $p = 5$, ta tính các thương số phần nguyên:
+    *   $\left\lfloor \dfrac{2026}{5} \right\rfloor = 405$
+    *   $\left\lfloor \dfrac{2026}{25} \right\rfloor = 81$
+    *   $\left\lfloor \dfrac{2026}{125} \right\rfloor = 16$
+    *   $\left\lfloor \dfrac{2026}{625} \right\rfloor = 3$
+    *   Với $p^k = 3125 > 2026$, các thương số tiếp theo bằng $0$.
     
-    Do mẫu số $(x - m)^2 > 0$ với mọi $x \neq m$, điều kiện tương đương với tử số lớn hơn hoặc bằng $0$ với mọi $x \in \mathbb{R}$:
-    $$x^2 - 2mx + 2m^2 - 2m \ge 0, \quad \forall x \in \mathbb{R}$$
+    **Bước 3: Tính tổng số lượng thừa số 5**
     
-    **Bước 3: Giải bất phương trình điều kiện của tam thức bậc hai**
+    Cộng các giá trị phần nguyên vừa tìm được:
+    $$v_5(2026!) = 405 + 81 + 16 + 3 = 505$$
     
-    Tam thức bậc hai $f(x) = x^2 - 2mx + 2m^2 - 2m$ luôn lớn hơn hoặc bằng $0$ với mọi $x \in \mathbb{R}$ khi và chỉ khi hệ số của $x^2$ dương ($1 > 0$, luôn thỏa mãn) và biệt thức $\Delta' \le 0$:
-    $$\Delta' = m^2 - (2m^2 - 2m) \le 0$$
-    $$-m^2 + 2m \le 0 \iff m(m - 2) \ge 0$$
-    $$\iff \begin{bmatrix} m \ge 2 \\ m \le 0 \end{bmatrix}$$
-    
-    **Bước 4: Xác định số lượng giá trị nguyên trong đoạn $[-10; 10]$**
-    
-    Vì $m \in [-10; 10]$ và $m \in \mathbb{Z}$, ta có các trường hợp:
-    *   Thường hợp 1: $m \in [-10; 0]$ $\implies m \in \{-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0\}$ (có $11$ giá trị).
-    *   Trường hợp 2: $m \in [2; 10]$ $\implies m \in \{2, 3, 4, 5, 6, 7, 8, 9, 10\}$ (có $9$ giá trị).
-    
-    Tổng số các giá trị nguyên của $m$ thỏa mãn là:
-    $$11 + 9 = 20 \text{ (giá trị)}$$
-    
-    **Kết luận:** Có tổng cộng **$20$** giá trị nguyên của $m$ thỏa mãn yêu cầu bài toán.
+    **Kết luận:** Số chữ số $0$ tận cùng của $2026!$ là **$505$**.
     """)
     
 st.markdown("---")
 
 
 # ==========================================
-# CÂU 80: PHƯƠNG TRÌNH MŨ - LÔ-GARIT VẬN DỤNG CAO
+# CÂU 80: ĐỒNG DƯ THỨC VÀ ĐỊNH LÝ FERMAT NHỎ
 # ==========================================
 
 st.markdown(
-    '<b style="color: blue;">Câu 80 (Trả lời ngắn _ TSA)</b>',
+    '<b style="color: blue;">Câu 80 (TSA 2026 - Chuyên đề Số học)</b>',
     unsafe_allow_html=True
 )
 
 st.markdown(r"""
-Cho phương trình $\log_2(x^2 - 2x + 3) + x^2 - 2x = \log_2 y + 2y$ với $x, y$ là các số thực dương. Tìm giá trị nhỏ nhất của biểu thức $P = 2x + y$.
+Tìm số dư khi chia số nguyên dương $A = 3^{2026} + 2026^3$ cho số nguyên tố $13$.
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
-user_answer_80 = st.text_input("Nhập giá trị nhỏ nhất của P:", key="q80_ans")
+user_answer_80 = st.text_input("Nhập số dư của phép chia:", key="q80_ans")
 
 # Khối chèn hình ảnh minh họa
 
@@ -7129,12 +7122,12 @@ user_answer_80 = st.text_input("Nhập giá trị nhỏ nhất của P:", key="q
 if st.button("Kiểm tra đáp án", key="q80_check"):
     normalized_user_answer_80 = user_answer_80.strip().replace(',', '.')
     
-    if normalized_user_answer_80 in ["3", "3.0"]:
+    if normalized_user_answer_80 == "8":
         st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
     elif user_answer_80 == "":
-        st.warning("Bạn chưa nhập đàn án.")
+        st.warning("Bạn chưa nhập đáp án.")
     else:
-        st.error("Sai rồi. Gợi ý: Hãy biến đổi phương trình về hàm đặc trưng dạng $f(u) = f(v)$ với hàm số $f(t) = \log_2 t + 2t$ nhé!")
+        st.error("Sai rồi. Gợi ý: Hãy áp dụng Định lý nhỏ Fermat để thu gọn số mũ của $3^{2026}$ và tính số dư của $2026^3$ theo mô-đun $13$ nhé!")
 
 # --- XEM LỜI GIẢI CHI TIẾT ---
 st.markdown("---")
@@ -7155,50 +7148,37 @@ if st.session_state.get('q80_solution_shown') and st.session_state.get('logged_i
     st.info("### Lời giải chi tiết:")
     
     st.markdown(r"""
-    **Bước 1: Biến đổi phương trình về hàm đặc trưng**
+    **Bước 1: Tính số dư của số hạng $3^{2026}$ theo mô-đun $13$**
     
-    Phương trình đã cho:
-    $$\log_2(x^2 - 2x + 3) + x^2 - 2x = \log_2 y + 2y$$
+    Theo Định lý nhỏ Fermat, với $p = 13$ là số nguyên tố và $\text{gcd}(3, 13) = 1$, ta có:
+    $$3^{12} \equiv 1 \pmod{13}$$
     
-    Ta thêm bớt hạng tử để làm xuất hiện cấu trúc tương tự ở hai vế:
-    $$\log_2(x^2 - 2x + 3) + 2(x^2 - 2x + 3) - 6 = \log_2 y + 2y$$
-    $$\Leftrightarrow \log_2(x^2 - 2x + 3) + 2(x^2 - 2x + 3) = \log_2 y + 2y + 6$$
+    Thực hiện phép chia số mũ cho chu kỳ $12$:
+    $$2026 = 12 \times 168 + 10$$
     
-    Đặt $u = x^2 - 2x + 3 = (x - 1)^2 + 2 \ge 2 > 0$. Khi đó $x^2 - 2x = u - 3$.
-    Phương trình trở thành:
-    $$\log_2 u + 2u = \log_2 y + 2y + 6 \quad (\text{chưa đối xứng hoàn toàn})$$
+    Do đó:
+    $$3^{2026} = (3^{12})^{168} \cdot 3^{10} \equiv 1^{168} \cdot 3^{10} \equiv 3^{10} \pmod{13}$$
     
-    Hãy viết lại tinh tế hơn bằng cách nhóm hệ số:
-    Xét hàm số đặc trưng $f(t) = \log_2 t + 2t$ với $t > 0$.
-    Ta có đạo hàm:
-    $$f'(t) = \dfrac{1}{t \ln 2} + 2 > 0, \quad \forall t > 0$$
-    Do đó hàm số $f(t)$ luôn đồng biến trên khoảng $(0; +\infty)$.
+    Ta tính tiếp giá trị của $3^{10} \pmod{13}$:
+    *   $3^3 = 27 \equiv 1 \pmod{13}$
+    *   $3^{10} = (3^3)^3 \cdot 3 \equiv 1^3 \cdot 3 = 3 \pmod{13}$
     
-    Phương trình ban đầu:
-    $$\log_2(x^2 - 2x + 3) + 2(x^2 - 2x) = \log_2 y + 2y$$
-    $$\Leftrightarrow \log_2(x^2 - 2x + 3) + 2(x^2 - 2x + 3) - 6 = \log_2 y + 2y$$
-    (Chưa hoàn hảo, hãy xét dạng chuẩn sau):
+    Vậy $3^{2026} \equiv 3 \pmod{13}$.
     
-    Biến đổi trực tiếp từ:
-    $$\log_2(x^2 - 2x + 3) + x^2 - 2x = \log_2 y + 2y$$
-    $\Leftrightarrow \log_2(x^2 - 2x + 3) + 2(x^2 - 2x + 3) = \log_2 y + 2y + 6$ ... 
-    Thực chất ta có mối quan hệ đơn giản: $y = x^2 - 2x + 3$.
+    **Bước 2: Tính số dư của số hạng $2026^3$ theo mô-đun $13$**
     
-    **Bước 2: Thiết lập mối quan hệ giữa $x$ và $y$**
+    Thực hiện phép chia cơ số cho $13$:
+    $$2026 = 13 \times 155 + 11 \equiv 11 \equiv -2 \pmod{13}$$
     
-    Từ phương trình $y = x^2 - 2x + 3$ (với $y > 0$ luôn thỏa mãn vì $x^2 - 2x + 3 = (x-1)^2 + 2 \ge 2$).
+    Do đó:
+    $$2026^3 \equiv (-2)^3 = -8 \equiv 5 \pmod{13}$$
     
-    **Bước 3: Tìm giá trị nhỏ nhất của biểu thức $P$**
+    **Bước 3: Tổng hợp kết quả**
     
-    Thay $y = x^2 - 2x + 3$ vào biểu thức $P = 2x + y$:
-    $$P = 2x + (x^2 - 2x + 3) = x^2 + 3$$
+    Số dư của biểu thức $A = 3^{2026} + 2026^3$ khi chia cho $13$ là:
+    $$A \equiv 3 + 5 = 8 \pmod{13}$$
     
-    Vì $x^2 \ge 0$ với mọi số thực $x$, ta có:
-    $$P = x^2 + 3 \ge 3$$
-    
-    Dấu "=" xảy ra khi và chỉ khi $x = 0$, khi đó $y = 0^2 - 2(0) + 3 = 3$ (thỏa mãn điều kiện $y > 0$).
-    
-    **Kết luận:** Giá trị nhỏ nhất của biểu thức $P$ là **$3$**.
+    **Kết luận:** Số dư của phép chia $A$ cho $13$ là **$8$**.
     """)
     
 st.markdown("---")
