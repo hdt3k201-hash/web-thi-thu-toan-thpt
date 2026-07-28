@@ -1196,3 +1196,186 @@ if st.session_state.get('q13_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 14 - CHUYÊN ĐỀ: CẤU TRÚC HÀM SỐ ƯỚC SỐ & TỐI ƯU (VDC)
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 14. [Trả lời ngắn - TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tìm số nguyên dương $n$ **nhỏ nhất** thỏa mãn đồng thời hai điều kiện sau:
+1. Số $n$ chia hết cho $6$.
+2. Số $n$ có đúng $20$ ước số nguyên dương.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 14) ---
+user_ans_14 = st.text_input("Nhập giá trị nhỏ nhất của số n:", key="q14_ans")
+
+if st.button("Kiểm tra đáp án Câu 14", key="q14_check"):
+    norm_ans_14 = user_ans_14.strip()
+    
+    # Đáp án chính xác là 240
+    if norm_ans_14 == "240":
+        st.success("🎉 Chính xác! Bạn có tư duy tối ưu hóa và phân tích hàm ước số cực kỳ sắc bén. Lời giải Câu 14 đã được mở khóa.")
+    elif user_ans_14 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 14.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Phân tích số lượng ước $20 = 10 \times 2 = 5 \times 4 = 5 \times 2 \times 2$. Để $n$ nhỏ nhất và chia hết cho $6 = 2 \times 3$, hãy gán số mũ lớn nhất cho thừa số nguyên tố nhỏ nhất (số $2$).")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 14 ---
+st.markdown("---")
+
+if 'q14_solution_shown' not in st.session_state:
+    st.session_state['q14_solution_shown'] = False
+
+col1_14, col2_14 = st.columns([1, 4])
+with col1_14:
+    if st.button("Xem lời giải Câu 14", key="q14_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q14_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q14_solution_shown'] = False 
+
+if st.session_state.get('q14_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 14 (Tư duy TSA):")
+    st.markdown(r"""
+    Đây là bài toán kết hợp lý thuyết cấu trúc số và tối ưu hóa rời rạc.
+    
+    **Bước 1: Lý thuyết cấu trúc số lượng ước số**
+    
+    Một số nguyên dương $n$ khi phân tích ra thừa số nguyên tố có dạng:
+    $$n = p_1^{a_1} \cdot p_2^{a_2} \cdots p_k^{a_k}$$
+    Khi đó, tổng số ước số nguyên dương của $n$ (ký hiệu là $\tau(n)$) được tính bởi công thức:
+    $$\tau(n) = (a_1 + 1)(a_2 + 1)\cdots(a_k + 1) = 20$$
+    
+    Do $n \text{ } \vdots \text{ } 6 \implies n \text{ } \vdots \text{ } (2 \times 3)$, số $n$ bắt buộc phải chứa ít nhất hai thừa số nguyên tố là $2$ và $3$.
+    
+    **Bước 2: Phân tích số $20$ thành tích các thừa số lớn hơn $1$**
+    
+    Ta có các cách phân tích số $20$ sau:
+    *   $20 = 20$ (Loại, vì tương ứng với $n = p^{19}$, chỉ có $1$ thừa số nguyên tố).
+    *   $20 = 10 \times 2 \implies n = p_1^9 \cdot p_2^1$.
+    *   $20 = 5 \times 4 \implies n = p_1^4 \cdot p_2^3$.
+    *   $20 = 5 \times 2 \times 2 \implies n = p_1^4 \cdot p_2^1 \cdot p_3^1$.
+    
+    **Bước 3: Tìm cực trị trong từng trường hợp (Ưu tiên số mũ lớn cho nguyên tố nhỏ)**
+    
+    *   **Trường hợp 1: $n = p_1^9 \cdot p_2^1$**
+        Vì $n$ chứa thừa số $2$ và $3$, để $n$ nhỏ nhất ta chọn $p_1 = 2, p_2 = 3$:
+        $$n = 2^9 \cdot 3^1 = 512 \times 3 = 1536$$
+        
+    *   **Trường hợp 2: $n = p_1^4 \cdot p_2^3$**
+        Để $n$ nhỏ nhất, gán số mũ lớn ($4$) cho nguyên tố nhỏ ($2$), số mũ nhỏ ($3$) cho nguyên tố lớn hơn ($3$):
+        $$n = 2^4 \cdot 3^3 = 16 \times 27 = 432$$
+        
+    *   **Trường hợp 3: $n = p_1^4 \cdot p_2^1 \cdot p_3^1$**
+        Ở đây $n$ có $3$ thừa số nguyên tố. Do $n \text{ } \vdots \text{ } 6$, ta đã có $2$ và $3$. Để $n$ nhỏ nhất, thừa số nguyên tố thứ ba $p_3$ phải là số nguyên tố nhỏ nhất tiếp theo, tức là $p_3 = 5$.
+        Gán số mũ cao nhất ($4$) cho số nguyên tố nhỏ nhất ($2$):
+        $$n = 2^4 \cdot 3^1 \cdot 5^1 = 16 \times 3 \times 5 = 240$$
+        
+    **Bước 4: Kết luận**
+    
+    So sánh các giá trị tìm được ($1536 > 432 > 240$), số nguyên dương nhỏ nhất thỏa mãn yêu cầu bài toán là $240$.
+    
+    ---
+    **👉 Đáp số Câu 14:** `240`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 15 - CHUYÊN ĐỀ: THUẬT TOÁN EUCLID & PHÂN SỐ TỐI GIẢN (VDC)
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 15. [Trả lời ngắn - TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có bao nhiêu số nguyên dương $n$ thuộc đoạn $[1; 2026]$ sao cho phân số sau **KHÔNG** phải là phân số tối giản (chưa tối giản):
+$$P = \frac{n^2 + 4}{n + 5}$$
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 15) ---
+user_ans_15 = st.text_input("Nhập số lượng giá trị n thỏa mãn:", key="q15_ans")
+
+if st.button("Kiểm tra đáp án Câu 15", key="q15_check"):
+    norm_ans_15 = user_ans_15.strip()
+    
+    # Đáp án chính xác là 70
+    if norm_ans_15 == "70":
+        st.success("🎉 Chính xác! Bạn đã vận dụng thuật toán Euclid cho đa thức và tính chất ước chung lớn nhất vô cùng bậc thầy. Lời giải Câu 15 đã được mở khóa.")
+    elif user_ans_15 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 15.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy biến đổi tử số $n^2 + 4 = (n+5)(n-5) + 29$. Để phân số chưa tối giản thì tử số và mẫu số phải có ước chung lớn hơn $1$, dẫn đến $n + 5$ phải chia hết cho $29$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 15 ---
+st.markdown("---")
+
+if 'q15_solution_shown' not in st.session_state:
+    st.session_state['q15_solution_shown'] = False
+
+col1_15, col2_15 = st.columns([1, 4])
+with col1_15:
+    if st.button("Xem lời giải Câu 15", key="q15_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q15_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q15_solution_shown'] = False 
+
+if st.session_state.get('q15_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 15 (Tư duy TSA):")
+    st.markdown(r"""
+    Để giải bài toán phân số tối giản chứa đa thức, công cụ mạnh mẽ nhất là **Thuật toán Euclid (Tìm ước chung lớn nhất của hai đa thức)**.
+    
+    **Bước 1: Tìm ước chung lớn nhất của tử số và mẫu số**
+    
+    Gọi $d = \gcd(n^2 + 4, n + 5)$ là ước chung lớn nhất của tử số và mẫu số ($d \in \mathbb{N}^*$).
+    
+    Thực hiện phép chia đa thức $n^2 + 4$ cho $n + 5$, ta có biến đổi sau:
+    $$n^2 + 4 = n^2 - 25 + 29 = (n + 5)(n - 5) + 29$$
+    
+    Theo tính chất của ước chung lớn nhất:
+    $$d = \gcd\left((n + 5)(n - 5) + 29, n + 5\right) = \gcd(29, n + 5)$$
+    
+    **Bước 2: Biện luận điều kiện để phân số KHÔNG tối giản**
+    
+    Vì $29$ là **số nguyên tố**, nên ước chung lớn nhất $d$ chỉ có thể nhận hai giá trị là $1$ hoặc $29$.
+    *   Nếu $d = 1$, phân số $P$ là phân số tối giản.
+    *   Để phân số $P$ **KHÔNG** tối giản (chưa tối giản) thì buộc ta phải có $d > 1$, tức là:
+        $$d = 29 \iff (n + 5) \text{ } \vdots \text{ } 29$$
+        
+    **Bước 3: Tìm quy luật và đếm số lượng giá trị $n \in [1; 2026]$**
+    
+    Để $(n + 5) \text{ } \vdots \text{ } 29$, thì số $n$ phải có dạng:
+    $$n + 5 = 29k \iff n = 29k - 5 \quad (k \in \mathbb{Z})$$
+    *(Hoặc viết dưới dạng số dư: $n \equiv 24 \pmod{29}$, tức $n = 29m + 24$ với $m \ge 0$).*
+    
+    Áp dụng điều kiện giới hạn của đề bài ($1 \le n \le 2026$):
+    $$1 \le 29k - 5 \le 2026$$
+    $$\iff 6 \le 29k \le 2031$$
+    $$\iff 0.2 \le k \le 70.03$$
+    
+    Vì $k$ là số nguyên ($k \in \mathbb{Z}$), nên $k$ có thể nhận các giá trị:
+    $$k \in \{1; 2; 3; \dots; 70\}$$
+    
+    Số lượng giá trị $k$ thỏa mãn (cũng chính là số lượng số nguyên dương $n$ cần tìm) là:
+    $$70 - 1 + 1 = 70 \text{ (giá trị)}$$
+    
+    *(Cụ thể, các giá trị của $n$ là: $24, 53, 82, \dots, 2025$).*
+    
+    ---
+    **👉 Đáp số Câu 15:** `70`
+    """)
+
+st.markdown("---")
