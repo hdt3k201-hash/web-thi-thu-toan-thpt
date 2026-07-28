@@ -6514,3 +6514,400 @@ if st.session_state.get('q72_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 73: SỐ HỌC VẬN DỤNG CAO - ĐỒNG DƯ THỨC
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 73 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 2011$. Xét số các giá trị nguyên dương $n$ thuộc đoạn $[1; 2010]$ sao cho phương trình đồng dư $x^3 \equiv n \pmod{2011}$ có đúng $3$ nghiệm phân biệt thuộc tập hợp $\{1, 2, \dots, 2010\}$. 
+
+Hỏi có bao nhiêu giá trị của $n$ thỏa mãn điều kiện trên?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_73 = st.text_input("Nhập số lượng giá trị của n:", key="q73_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q73_check"):
+    normalized_user_answer_73 = user_answer_73.strip().replace(',', '.')
+    
+    if normalized_user_answer_73 == "670":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_73 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy sử dụng lý thuyết thặng dư bậc ba trong số học và tính chất của nhóm nhân modulo nguyên tố nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q73_solution_shown' not in st.session_state:
+    st.session_state['q73_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q73_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q73_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q73_solution_shown'] = False 
+
+if st.session_state.get('q73_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích điều kiện số nghiệm của phương trình đồng dư**
+    
+    Xét phương trình đồng dư bậc ba:
+    $$x^3 \equiv n \pmod p$$
+    với $p = 2011$ là số nguyên tố và $1 \le n \le p-1$.
+    
+    Theo lý thuyết thặng dư lũy thừa, phương trình $x^k \equiv n \pmod p$ có số nghiệm là $\gcd(k, p-1)$ nếu $n^{\dfrac{p-1}{\gcd(k, p-1)}} \equiv 1 \pmod p$, và có $0$ nghiệm nếu ngược lại (với $n \not\equiv 0 \pmod p$).
+    
+    **Bước 2: Áp dụng vào bài toán**
+    
+    Ở đây $k = 3$ và $p = 2011$. Ta tính ước chung lớn nhất:
+    $$\gcd(3, p-1) = \gcd(3, 2010) = 3$$
+    (vì tổng các chữ số của $2010$ là $3$, chia hết cho $3$).
+    
+    Do đó, phương trình $x^3 \equiv n \pmod{2011}$ sẽ có đúng $3$ nghiệm phân biệt khi và chỉ khi $n$ là thặng dư bậc ba thực sự, tức là thỏa mãn điều kiện:
+    $$n^{\dfrac{2010}{3}} \equiv 1 \pmod{2011} \iff n^{670} \equiv 1 \pmod{2011}$$
+    
+    **Bước 3: Tính số lượng các giá trị của $n$**
+    
+    Số lượng các thặng dư bậc ba phân biệt trong hệ thặng dư thu gọn modulo $p$ được xác định bởi công thức:
+    $$\dfrac{p-1}{\gcd(3, p-1)} = \dfrac{2010}{3} = 670$$
+    
+    Vậy có đúng $670$ giá trị của $n$ trong đoạn $[1; 2010]$ thỏa mãn yêu cầu bài toán.
+    
+    **Kết luận:** Số lượng giá trị của $n$ là **$670$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 74: ĐẠI SỐ NÂNG CAO - ĐA THỨC VÀ ĐẠO HÀM
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 74 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho đa thức $P(x) = x^{2026} + a_1 x^{2025} + a_2 x^{2024} + \dots + a_{2025}x + a_{2026}$ có $2026$ nghiệm thực phân biệt $x_1, x_2, \dots, x_{2026}$. Tính giá trị của biểu thức:
+$$S = \dfrac{1}{P'(x_1)} + \dfrac{1}{P'(x_2)} + \dfrac{1}{P'(x_3)} + \dots + \dfrac{1}{P'(x_{2026})}$$
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_74 = st.text_input("Nhập giá trị của S:", key="q74_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q74_check"):
+    normalized_user_answer_74 = user_answer_74.strip().replace(',', '.')
+    
+    if normalized_user_answer_74 == "0":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_74 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy phân tích hàm phân thức $\dfrac{1}{P(x)}$ thành tổng các phân thức đơn giản hoặc xét giới hạn khi $x \to \infty$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q74_solution_shown' not in st.session_state:
+    st.session_state['q74_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q74_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q74_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q74_solution_shown'] = False 
+
+if st.session_state.get('q74_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích đa thức thành nhân tử**
+    
+    Vì đa thức $P(x)$ có hệ số cao nhất bằng $1$ và có $2026$ nghiệm thực phân biệt $x_1, x_2, \dots, x_{2026}$, ta viết lại dưới dạng:
+    $$P(x) = \prod_{i=1}^{2026} (x - x_i)$$
+    
+    **Bước 2: Sử dụng khai triển phân thức tối giản (Lagrange)**
+    
+    Xét hàm số phân thức hữu tỉ:
+    $$F(x) = \dfrac{1}{P(x)}$$
+    Vì bậc của tử số bằng $0$ và bậc của mẫu số bằng $2026 \ge 2$, ta có thể phân tích $F(x)$ thành tổng các phân thức đơn giản:
+    $$\dfrac{1}{P(x)} = \sum_{i=1}^{2026} \dfrac{1}{P'(x_i)(x - x_i)}$$
+    
+    **Bước 3: Xét giới hạn để tìm tổng các nghịch đảo đạo hàm**
+    
+    Nhân cả hai vế với $x$, ta được:
+    $$\dfrac{x}{P(x)} = \sum_{i=1}^{2026} \dfrac{x}{P'(x_i)(x - x_i)}$$
+    
+    Lấy giới hạn khi $x \to \infty$:
+    *   Vế trái: $\lim_{x \to \infty} \dfrac{x}{P(x)} = \lim_{x \to \infty} \dfrac{x}{x^{2026} + \dots} = 0$ (vì bậc mẫu lớn hơn bậc tử).
+    *   Vế phải: $\lim_{x \to \infty} \sum_{i=1}^{2026} \dfrac{x}{P'(x_i)(x - x_i)} = \sum_{i=1}^{2026} \dfrac{1}{P'(x_i)}$.
+    
+    Từ đó suy ra:
+    $$\sum_{i=1}^{2026} \dfrac{1}{P'(x_i)} = 0$$
+    
+    **Kết luận:** Giá trị của biểu thức $S$ là **$0$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 75: SỐ HỌC VẬN DỤNG CAO - HỆ ĐỒNG DƯ THỨC
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 75 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tìm một số nguyên dương $n$ nằm trong khoảng $[2000; 5000]$ sao cho khi chia $n$ cho các số $11, 13, 17$ đều dư $5$, đồng thời $n$ chia hết cho $7$. 
+
+Hãy nhập giá trị của $n$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_75 = st.text_input("Nhập giá trị của n:", key="q75_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q75_check"):
+    normalized_user_answer_75 = user_answer_75.strip().replace(',', '.')
+    
+    if normalized_user_answer_75 == "2436":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_75 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hệ đồng dư thức cho $n - 5$, tìm BCNN của các mô-đun và kết hợp điều kiện chia hết cho 7 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q75_solution_shown' not in st.session_state:
+    st.session_state['q75_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q75_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q75_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q75_solution_shown'] = False 
+
+if st.session_state.get('q75_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ đồng dư thức**
+    
+    Theo giả thiết, số nguyên dương $n$ thỏa mãn các điều kiện:
+    *   $n \equiv 5 \pmod{11} \iff n - 5 \vdots 11$
+    *   $n \equiv 5 \pmod{13} \iff n - 5 \vdots 13$
+    *   $n \equiv 5 \pmod{17} \iff n - 5 \vdots 17$
+    
+    Từ đó suy ra $(n - 5)$ đồng thời chia hết cho các số nguyên tố $11, 13$ và $17$.
+    
+    **Bước 2: Tìm Bội chung nhỏ nhất (BCNN)**
+    
+    Vì $11, 13, 17$ đôi một nguyên tố cùng nhau, ta có:
+    $$\text{BCNN}(11, 13, 17) = 11 \times 13 \times 17 = 2431$$
+    
+    Do đó, dạng tổng quát của $n$ là:
+    $$n - 5 = 2431k \iff n = 2431k + 5 \quad (k \in \mathbb{N}^*)$$
+    
+    **Bước 3: Sử dụng điều kiện khoảng giá trị của $n$**
+    
+    Vì $2000 \le n \le 5000$, ta có:
+    $$2000 \le 2431k + 5 \le 5000 \iff 1995 \le 2431k \le 4995 \iff 0,82 \le k \le 2,05$$
+    
+    Vì $k$ là số nguyên dương ($k \in \mathbb{N}^*$), ta chọn duy nhất $k = 1$.
+    
+    **Bước 4: Kiểm tra điều kiện chia hết cho 7**
+    
+    Với $k = 1$, ta tính được:
+    $$n = 2431 \times 1 + 5 = 2436$$
+    
+    Kiểm tra tính chia hết cho $7$:
+    $$2436 \div 7 = 348 \quad (\text{chia hết hoàn toàn})$$
+    
+    Giá trị này hoàn toàn nằm trong khoảng $[2000; 5000]$ và thỏa mãn tất cả các yêu cầu của bài toán.
+    
+    **Kết luận:** Giá trị của $n$ là **$2436$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 76 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 76. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 1009$. Hỏi có bao nhiêu số nguyên $x$ thuộc đoạn $[1, 1008]$ đồng thời là một **thặng dư chính phương** và là một **căn nguyên thủy** (primitive root) modulo $1009$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 76) ---
+user_ans_76 = st.text_input("Nhập số lượng số nguyên x thỏa mãn:", key="q76_ans")
+
+if st.button("Kiểm tra đáp án Câu 76", key="q76_check"):
+    norm_ans_76 = user_ans_76.strip()
+    
+    # Đáp án chính xác là 0
+    if norm_ans_76 == "0":
+        st.success("🎉 Xuất sắc! Bạn đã nhận bản chất cốt lõi giữa căn nguyên thủy và tiêu chuẩn Euler cho thặng dư chính phương. Lời giải Câu 76 đã được mở khóa.")
+    elif user_ans_76 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 76.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy kiểm tra giá trị của $g^{(p-1)/2} \pmod p$ đối với căn nguyên thủy $g$ và áp dụng tiêu chuẩn Euler.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 76 ---
+st.markdown("---")
+
+if 'q76_solution_shown' not in st.session_state:
+    st.session_state['q76_solution_shown'] = False
+
+col1_76, col2_76 = st.columns([1, 4])
+with col1_76:
+    if st.button("Xem lời giải Câu 76", key="q76_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q76_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q76_solution_shown'] = False 
+
+if st.session_state.get('q76_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 76 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Phân tích tính chất của căn nguyên thủy**
+    
+    Giả sử $g$ là một căn nguyên thủy modulo số nguyên tố $p = 1009$. Theo định nghĩa, cấp (order) của $g$ modulo $1009$ đúng bằng $p - 1 = 1008$. 
+    Khi đó, theo tính chất lũy thừa trong trường hữu hạn, ta có:
+    $$g^{\dfrac{p-1}{2}} = g^{504} \equiv -1 \pmod{1009}$$
+    
+    **Bước 2: Áp dụng Tiêu chuẩn Euler cho thặng dư chính phương**
+    
+    Theo **Tiêu chuẩn Euler**, một số nguyên $a$ (với $\gcd(a, p) = 1$) là một thặng dư chính phương modulo $p$ khi và chỉ khi:
+    $$a^{\dfrac{p-1}{2}} \equiv 1 \pmod p$$
+    
+    **Bước 3: Đối chiếu điều kiện và kết luận**
+    
+    Để một số vừa là căn nguyên thủy vừa là thặng dư chính phương, nó phải đồng thời thỏa mãn $g^{504} \equiv -1 \pmod{1009}$ và $g^{504} điều kiện 1 \pmod{1009}$, điều này là **vô lý** vì $-1 \not\equiv 1 \pmod{1009}$ trong trường có đặc số khác $2$.
+    
+    Do đó, không tồn tại bất kỳ phần tử nào thỏa mãn đồng thời hai điều kiện trên. Số lượng phần tử cần tìm bằng $0$.
+    
+    ---
+    **👉 Đáp số Câu 76:** `0`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 77 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 77. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 2027$. Tính số lượng các số nguyên $x$ thuộc đoạn $[1, 2026]$ thỏa mãn phương trình đồng dư:
+$$x^2 + x + 1 \equiv 0 \pmod{2027}$$
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 77) ---
+user_ans_77 = st.text_input("Nhập số lượng nghiệm nguyên thỏa mãn:", key="q77_ans")
+
+if st.button("Kiểm tra đáp án Câu 77", key="q77_check"):
+    norm_ans_77 = user_ans_77.strip()
+    
+    # Đáp án chính xác là 0
+    if norm_ans_77 == "0":
+        st.success("🎉 Xuất sắc! Bạn đã nhìn thấu mối liên hệ giữa đa thức bậc hai và nghiệm của đơn vị bậc ba dựa trên điều kiện chia hết của mô-đun. Lời giải Câu 77 đã được mở khóa.")
+    elif user_ans_77 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 77.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Nhân cả hai vế của phương trình với $x - 1$ để đưa về phương trình $x^3 \equiv 1 \pmod p$, sau đó kiểm tra điều kiện $3 \mid (p-1)$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 77 ---
+st.markdown("---")
+
+if 'q77_solution_shown' not in st.session_state:
+    st.session_state['q77_solution_shown'] = False
+
+col1_77, col2_77 = st.columns([1, 4])
+with col1_77:
+    if st.button("Xem lời giải Câu 77", key="q77_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q77_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q77_solution_shown'] = False 
+
+if st.session_state.get('q77_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 77 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Biến đổi đại số phương trình đồng dư**
+    
+    Xét phương trình đồng dư:
+    $$x^2 + x + 1 \equiv 0 \pmod{2027}$$
+    
+    Nhân cả hai vế với biểu thức $x - 1$ (với lưu ý $x \not\equiv 1 \pmod{2027}$, vì nếu $x \equiv 1$ thì $1^2 + 1 + 1 = 3 \not\equiv 0 \pmod{2027}$):
+    $$(x - 1)(x^2 + x + 1) \equiv 0 \pmod{2027} \iff x^3 \equiv 1 \pmod{2027}$$
+    
+    **Bước 2: Kiểm tra điều kiện tồn tại nghiệm của phương trình bậc ba**
+    
+    Trong trường hữu hạn modulo số nguyên tố $p = 2027$, phương trình $x^3 \equiv 1 \pmod p$ có các nghiệm khác $1$ khi và chỉ khi số nguyên tố $p$ thỏa mãn điều kiện **$3$ chia hết cho $p - 1$** (tức là $3 \mid (p - 1)$).
+    
+    Ta kiểm tra với $p = 2027$:
+    $$p - 1 = 2026$$
+    Tổng các chữ số của $2026$ là $2 + 0 + 2 + 6 = 10$, không chia hết cho $3$. Do đó $3 \nmid 2026$.
+    
+    **Bước 3: Kết luận**
+    
+    Vì $3$ không là ước của $p - 1$, phương trình $x^3 \equiv 1 \pmod{2027}$ chỉ có nghiệm duy nhất là $x \equiv 1 \pmod{2027}$. Tuy nhiên, $x = 1$ không thỏa mãn phương trình ban đầu ($1^2 + 1 + 1 = 3 \neq 0$).
+    
+    Vậy phương trình đồng dư đã cho **không có nghiệm nào** thuộc đoạn $[1, 2026]$. Số lượng nghiệm bằng $0$.
+    
+    ---
+    **👉 Đáp số Câu 77:** `0`
+    """)
+
+st.markdown("---")
