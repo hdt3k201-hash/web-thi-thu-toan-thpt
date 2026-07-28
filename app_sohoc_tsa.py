@@ -1301,7 +1301,7 @@ st.markdown(
 
 st.markdown(r"""
 Có bao nhiêu số nguyên dương $n$ thuộc đoạn $[1; 2026]$ sao cho phân số sau **KHÔNG** phải là phân số tối giản (chưa tối giản):
-$$P = \frac{n^2 + 4}{n + 5}$$
+$$P = \dfrac{n^2 + 4}{n + 5}$$
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 15) ---
@@ -1376,6 +1376,187 @@ if st.session_state.get('q15_solution_shown') and st.session_state.get('logged_i
     
     ---
     **👉 Đáp số Câu 15:** `70`
+    """)
+
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 16 - CHUYÊN ĐỀ: SỐ NGUYÊN TỐ & ĐỒNG DƯ THỨC (VDC)
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 16. [Trả lời ngắn - TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có bao nhiêu số nguyên tố $p$ thuộc khoảng $(0; 2026)$ sao cho biểu thức sau cũng là một **số nguyên tố**:
+$$A = p^2 + 2^p$$
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 16) ---
+user_ans_16 = st.text_input("Nhập số lượng số nguyên tố p thỏa mãn:", key="q16_ans")
+
+if st.button("Kiểm tra đáp án Câu 16", key="q16_check"):
+    norm_ans_16 = user_ans_16.strip()
+    
+    # Đáp án chính xác là 1 (chỉ có p = 3)
+    if norm_ans_16 == "1":
+        st.success("🎉 Chính xác! Bạn đã dùng phương pháp xét số dư theo Mô-đun 3 cực kỳ chuẩn xác để chứng minh tính duy nhất. Lời giải Câu 16 đã được mở khóa.")
+    elif user_ans_16 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 16.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy thử nghiệm với các số nguyên tố nhỏ ($p = 2, 3$), sau đó với $p > 3$, hãy xét số dư của $p^2$ và $2^p$ khi chia cho $3$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 16 ---
+st.markdown("---")
+
+if 'q16_solution_shown' not in st.session_state:
+    st.session_state['q16_solution_shown'] = False
+
+col1_16, col2_16 = st.columns([1, 4])
+with col1_16:
+    if st.button("Xem lời giải Câu 16", key="q16_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q16_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q16_solution_shown'] = False 
+
+if st.session_state.get('q16_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 16 (Tư duy TSA):")
+    st.markdown(r"""
+    Để giải bài toán số nguyên tố với số mũ biến thiên, phương pháp hiệu quả nhất là **xét tính chia hết cho $3$ (Mô-đun $3$)**.
+    
+    **Bước 1: Thử trực tiếp với các số nguyên tố nhỏ ($p = 2$ và $p = 3$)**
+    
+    *   **With $p = 2$:** Ta có $A = 2^2 + 2^2 = 4 + 4 = 8$. Vì $8$ là số hợp số nên $p = 2$ (Loại).
+    *   **Với $p = 3$:** Ta có $A = 3^2 + 2^3 = 9 + 8 = 17$. Vì $17$ là số nguyên tố nên **$p = 3$ thỏa mãn**.
+    
+    **Bước 2: Chứng minh không tồn tại nghiệm với mọi số nguyên tố $p > 3$**
+    
+    Với mọi số nguyên tố $p > 3$, số $p$ chắc chắn là **số lẻ** và **không chia hết cho $3$**.
+    
+    1.  **Xét số dư của $p^2$ khi chia cho $3$:**
+        Mọi số nguyên không chia hết cho $3$ khi bình phương lên luôn chia $3$ dư $1$.
+        $$\implies p^2 \equiv 1 \pmod 3 \quad (1)$$
+        
+    2.  **Xét số dư của $2^p$ khi chia cho $3$:**
+        Vì $p > 3$ là số nguyên tố nên $p$ là số lẻ, ta đặt $p = 2k + 1$ ($k \in \mathbb{N}^*$).
+        Ta có:
+        $$2^p = 2^{2k+1} = 2 \cdot (2^2)^k = 2 \cdot 4^k$$
+        Vì $4 \equiv 1 \pmod 3 \implies 4^k \equiv 1 \pmod 3$.
+        $$\implies 2^p \equiv 2 \cdot 1 \equiv 2 \pmod 3 \quad (2)$$
+        
+    **Bước 3: Tổng hợp kết quả**
+    
+    từ $(1)$ và $(2)$, cộng vế theo vế ta được:
+    $$A = p^2 + 2^p \equiv 1 + 2 \equiv 3 \equiv 0 \pmod 3$$
+    
+    Nghĩa là với mọi số nguyên tố $p > 3$, biểu thức $A = p^2 + 2^p$ luôn chia hết cho $3$. 
+    Hơn nữa, vì $p > 3 \implies A > 17 > 3$. Một số lớn hơn $3$ và chia hết cho $3$ chắc chắn là **hợp số**.
+    
+    **Bước 4: Kết luận**
+    
+    Trong khoảng $(0; 2026)$, chỉ có **duy nhất $1$ số nguyên tố** thỏa mãn bài toán là $p = 3$.
+    
+    ---
+    **👉 Đáp số Câu 16:** `1`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 17 - CHUYÊN ĐỀ: CÔNG THỨC LEGENDRE & GIAI THỪA (VDC)
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 17. [Trả lời ngắn - TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tìm số nguyên tự nhiên $k$ **lớn nhất** sao cho số $2026!$ (giai thừa của $2026$) chia hết cho $12^k$:
+$$2026! \text{ } \vdots \text{ } 12^k$$
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 17) ---
+user_ans_17 = st.text_input("Nhập giá trị lớn nhất của k:", key="q17_ans")
+
+if st.button("Kiểm tra đáp án Câu 17", key="q17_check"):
+    norm_ans_17 = user_ans_17.strip()
+    
+    # Đáp án chính xác là 1009 (Bẫy kinh điển: v_2/2 nhỏ hơn v_3)
+    if norm_ans_17 == "1009":
+        st.success("🎉 Xuất sắc! Bạn đã vượt qua 'bẫy tư duy' kinh điển của TSA. Số mũ của thừa số 2 mới là yếu tố giới hạn chứ không phải thừa số 3! Lời giải Câu 17 đã được mở khóa.")
+    elif norm_ans_17 == "1010":
+        st.error("❌ Bạn đã rơi vào 'bẫy' rồi! 1010 là số mũ của thừa số 3 trong 2026!. Nhưng $12 = 2^2 \times 3$, hãy kiểm tra xem số mũ của $2^2$ trong 2026! có đủ 1010 không nhé!")
+    elif user_ans_17 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 17.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Sử dụng công thức Legendre $v_p(n!) = \sum \lfloor \frac{n}{p^i} \rfloor$ để tính số mũ của nguyên tố $2$ và $3$ trong $2026!$. Chú ý $12 = 2^2 \times 3^1$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 17 ---
+st.markdown("---")
+
+if 'q17_solution_shown' not in st.session_state:
+    st.session_state['q17_solution_shown'] = False
+
+col1_17, col2_17 = st.columns([1, 4])
+with col1_17:
+    if st.button("Xem lời giải Câu 17", key="q17_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q17_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q17_solution_shown'] = False 
+
+if st.session_state.get('q17_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 17 (Tư duy TSA):")
+    st.markdown(r"""
+    Đây là một bài toán Số học có **bẫy tư duy rất sâu** nhằm phân loại học sinh giỏi thực sự trong kỳ thi TSA.
+    
+    **Bước 1: Phân tích cơ số và yêu cầu bài toán**
+    
+    Ta phân tích số $12$ ra thừa số nguyên tố:
+    $$12 = 2^2 \times 3^1 \implies 12^k = 2^{2k} \times 3^k$$
+    
+    Để $2026!$ chia hết cho $12^k$, thì số mũ của nguyên tố $2$ trong $2026!$ phải $\ge 2k$, và số mũ của nguyên tố $3$ phải $\ge k$.
+    
+    Gọi $v_p(n!)$ là số mũ của số nguyên tố $p$ trong phân tích ra thừa số nguyên tố của $n!$. Theo **công thức Legendre**:
+    $$v_p(n!) = \lfloor \frac{n}{p} \rfloor + \lfloor \frac{n}{p^2} \rfloor + \lfloor \frac{n}{p^3} \rfloor + \cdots$$
+    
+    **Bước 2: Tính số mũ của nguyên tố $3$ trong $2026!$ ($v_3$)**
+    
+    $$v_3(2026!) = \lfloor \frac{2026}{3} \rfloor + \lfloor \frac{2026}{9} \rfloor + \lfloor \frac{2026}{27} \rfloor + \lfloor \frac{2026}{81} \rfloor + \lfloor \frac{2026}{243} \rfloor + \lfloor \frac{2026}{729} \rfloor$$
+    $$v_3(2026!) = 675 + 225 + 75 + 25 + 8 + 2 = 1010$$
+    
+    $\implies$ Từ điều kiện thừa số $3$, ta có $k \le 1010$. *(90% học sinh chủ quan dừng ở đây và chọn đáp số 1010).*
+    
+    **Bước 3: Tính số mũ của nguyên tố $2$ trong $2026!$ ($v_2$) - BẢN CHẤT CỦA BẪY!**
+    
+    Thông thường thừa số lớn hơn (số $3$) sẽ là yếu tố giới hạn. Nhưng vì số $12$ cần tới **HAI** thừa số $2$ ($2^2$), ta buộc phải kiểm tra $v_2(2026!)$:
+    
+    $$v_2(2026!) = \lfloor \frac{2026}{2} \rfloor + \lfloor \frac{2026}{4} \rfloor + \lfloor \frac{2026}{8} \rfloor + \lfloor \frac{2026}{16} \rfloor + \lfloor \frac{2026}{32} \rfloor + \lfloor \frac{2026}{64} \rfloor + \lfloor \frac{2026}{128} \rfloor + \lfloor \frac{2026}{256} \rfloor + \lfloor \frac{2026}{512} \rfloor + \lfloor \frac{2026}{1024} \rfloor$$
+    $$v_2(2026!) = 1013 + 506 + 253 + 126 + 63 + 31 + 15 + 7 + 3 + 1 = 2018$$
+    
+    Do đó, trong $2026!$ có chứa thừa số $2^{2018}$. 
+    Số lượng cụm $2^2$ (tức là $4$) tối đa có thể tạo ra là:
+    $$\lfloor \frac{v_2}{2} \rfloor = \lfloor \frac{2018}{2} \rfloor = 1009$$
+    
+    **Bước 4: Sử dụng tư duy "Nút thắt cổ chai" để kết luận**
+    
+    Trong số $2026!$, ta có:
+    *   Tạo được tối đa **$1009$** thừa số $4$ ($2^2$).
+    *   Tạo được tối đa **$1010$** thừa số $3$.
+    
+    Vì $12 = 4 \times 3$, số lượng thừa số $12$ tối đa ghép được sẽ bị giới hạn bởi số nhỏ hơn giữa $1009$ và $1010$.
+    $$k_{max} = \min(1009; 1010) = 1009$$
+    
+    ---
+    **👉 Đáp số Câu 17:** `1009`
     """)
 
 st.markdown("---")
