@@ -4302,3 +4302,427 @@ if st.session_state.get('q47_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 48: HỢP SỐ NÂNG CAO
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 48 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên dương $n$. Xét số $S_n = n^4 + 4$. Hỏi có bao nhiêu giá trị nguyên dương của $n$ thuộc đoạn $[1; 2026]$ để $S_n$ là một **hợp số**?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_48 = st.text_input("Nhập số lượng giá trị của n:", key="q48_ans")
+
+# Khối chèn hình ảnh minh họa
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q48_check"):
+    normalized_user_answer_48 = user_answer_48.strip().replace(',', '.')
+    
+    if normalized_user_answer_48 == "2025":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_48 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy phân tích hằng đẳng thức Sophie Germain cho biểu thức $n^4 + 4$ và kiểm tra trường hợp $n = 1$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q48_solution_shown' not in st.session_state:
+    st.session_state['q48_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q48_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q48_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q48_solution_shown'] = False 
+
+if st.session_state.get('q48_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích biểu thức thành nhân tử (Hằng đẳng thức Sophie Germain)**
+    
+    Ta biến đổi biểu thức $S_n = n^4 + 4$:
+    $$S_n = n^4 + 4n^2 + 4 - 4n^2 = (n^2 + 2)^2 - (2n)^2$$
+    $$S_n = (n^2 - 2n + 2)(n^2 + 2n + 2) = \left[(n - 1)^2 + 1\right]\left[(n + 1)^2 + 1\right]$$
+    
+    **Bước 2: Xét tính nguyên tố và hợp số theo giá trị của $n$**
+    
+    *   Với $n = 1$: 
+        $$S_1 = 1^4 + 4 = 5$$
+        Số $5$ là số nguyên tố (không phải là hợp số). Do đó $n = 1$ không thỏa mãn.
+        
+    *   Với $n \ge 2$:
+        Ta có $(n - 1)^2 + 1 \ge (2 - 1)^2 + 1 = 2$ và $(n + 1)^2 + 1 > 2$.
+        Khi đó $S_n$ là tích của hai số tự nhiên lớn hơn $1$, suy ra $S_n$ luôn là một **hợp số** với mọi $n \ge 2$.
+        
+    **Bước 3: Đếm số lượng giá trị thỏa mãn**
+    
+    Yêu cầu $n$ là số nguyên dương thuộc đoạn $[1; 2026]$ và $S_n$ là hợp số, tức là $n \in \{2, 3, 4, \dots, 2026\}$.
+    
+    Số lượng các giá trị của $n$ là:
+    $$2026 - 2 + 1 = 2025 \text{ (giá trị)}$$
+    
+    **Kết luận:** Có tổng cộng **$2025$** giá trị của $n$ thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 49: TÌM 3 CHỮ SỐ TẬN CÙNG
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 49 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tìm $3$ chữ số tận cùng của số $A = 3^{2026}$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_49 = st.text_input("Nhập 3 chữ số tận cùng:", key="q49_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q49_check"):
+    normalized_user_answer_49 = user_answer_49.strip().replace(',', '.')
+    
+    if normalized_user_answer_49 == "329":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_49 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy áp dụng Định lý Euler với mô-đun $1000$ và tính chất lũy thừa bậc cao nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q49_solution_shown' not in st.session_state:
+    st.session_state['q49_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q49_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q49_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q49_solution_shown'] = False 
+
+if st.session_state.get('q49_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đưa bài toán về đồng dư thức**
+    
+    Tìm $3$ chữ số tận cùng của $A = 3^{2026}$ tương đương với việc tìm số dư của phép chia $3^{2026}$ cho $1000$, tức là giải bài toán đồng dư:
+    $$A \equiv 3^{2026} \pmod{1000}$$
+    
+    **Bước 2: Áp dụng Định lý Euler để thu gọn số mũ**
+    
+    Ta có $\text{gcd}(3, 1000) = 1$. Theo hàm số Euler:
+    $$\phi(1000) = 1000 \cdot \left(1 - \dfrac{1}{2}\right)\left(1 - \dfrac{1}{5}\right) = 1000 \cdot \dfrac{1}{2} \cdot \dfrac{4}{5} = 400$$
+    
+    Theo **Định lý Euler**, ta có:
+    $$3^{400} \equiv 1 \pmod{1000}$$
+    
+    Thực hiện chia số mũ cho chu kỳ $400$:
+    $$2026 = 400 \times 5 + 26$$
+    
+    Do đó:
+    $$3^{2026} = 3^{400 \times 5 + 26} = (3^{400})^5 \cdot 3^{26} \equiv 1^5 \cdot 3^{26} \equiv 3^{26} \pmod{1000}$$
+    
+    **Bước 3: Tính toán giá trị của $3^{26} \pmod{1000}$**
+    
+    Ta tính lần lượt các lũy thừa của $3$:
+    *   $3^6 = 729$
+    *   $3^{10} = 243^2 = 59049 \equiv 49 \pmod{1000}$
+    *   $3^{20} = (3^{10})^2 \equiv 49^2 = 2401 \equiv 401 \pmod{1000}$
+    
+    Suy ra:
+    $$3^{26} = 3^{20} \cdot 3^6 \equiv 401 \cdot 729 \pmod{1000}$$
+    
+    Thực hiện phép nhân:
+    $$401 \cdot 729 = 401 \cdot (700 + 29) = 280700 + 11629 = 292329 \equiv 329 \pmod{1000}$$
+    
+    **Kết luận:** $3$ chữ số tận cùng của số $A = 3^{2026}$ là **$329$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 50: TOÁN THỰC TẾ SỐ HỌC (HỆ ĐỒNG DƯ)
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 50 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một nhà máy dệt có ba dây chuyền tự động vận hành liên tục. Dây chuyền thứ nhất cứ sau mỗi $28$ phút hoàn thành một chu trình và dư ra $11$ phút chuẩn bị; dây chuyền thứ hai cứ sau mỗi $45$ phút hoàn thành một chu trình và dư ra $28$ phút chuẩn bị; dây chuyền thứ ba cứ sau mỗi $65$ phút hoàn thành một chu trình và dư ra $48$ phút chuẩn bị. 
+
+Để đồng bộ hóa hệ thống điện trung tâm, tổng số phút $n$ từ lúc khởi động đến khi cả ba dây chuyền đạt trạng thái đồng bộ phải là một số tự nhiên thỏa mãn các điều kiện trên đồng thời chia hết cho $19$. Hỏi giá trị nhỏ nhất của $n$ là bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_50 = st.text_input("Nhập giá trị của n:", key="q50_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q50_check"):
+    normalized_user_answer_50 = user_answer_50.strip().replace(',', '.')
+    
+    if normalized_user_answer_50 == "294823":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_50 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hệ đồng dư thức dựa vào phần bù số dư ($28 - 11 = 17$), tìm BCNN và giải điều kiện chia hết cho 19 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q50_solution_shown' not in st.session_state:
+    st.session_state['q50_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q50_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q50_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q50_solution_shown'] = False 
+
+if st.session_state.get('q50_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ đồng dư thức**
+    
+    Theo giả thiết bài toán, gọi $n$ là số phút cần tìm. Ta có các điều kiện sau:
+    *   $n \equiv 11 \pmod{28} \iff n + 17 \equiv 0 \pmod{28}$ (vì $28 - 11 = 17$)
+    *   $n \equiv 28 \pmod{45} \iff n + 17 \equiv 0 \pmod{45}$ (vì $45 - 28 = 17$)
+    *   $n \equiv 48 \pmod{65} \iff n + 17 \equiv 0 \pmod{65}$ (vì $65 - 48 = 17$)
+    *   $n \equiv 0 \pmod{19}$
+    
+    Từ ba điều kiện đầu, ta suy ra $(n + 17)$ đồng thời chia hết cho các số $28, 45$ và $65$.
+    
+    **Bước 2: Tính Bội chung nhỏ nhất (BCNN)**
+    
+    Phân tích các số chia ra thừa số nguyên tố:
+    *   $28 = 2^2 \times 7$
+    *   $45 = 3^2 \times 5$
+    *   $65 = 5 \times 13$
+    
+    Bội chung nhỏ nhất của chúng là:
+    $$\text{BCNN}(28, 45, 65) = 2^2 \times 3^2 \times 5 \times 7 \times 13 = 4 \times 9 \times 35 \times 13 = 16380$$
+    
+    Do đó, ta có dạng tổng quát của $n$:
+    $$n + 17 = 16380k \implies n = 16380k - 17 \quad (k \in \mathbb{N}^*)$$
+    
+    **Bước 3: Sử dụng điều kiện chia hết cho 19**
+    
+    Vì $n$ chia hết cho $19$, ta thay biểu thức của $n$ vào điều kiện modulo $19$:
+    $$16380k - 17 \equiv 0 \pmod{19}$$
+    
+    Thu gọn hệ số $16380$ theo modulo $19$:
+    $$16380 = 19 \times 862 + 2 \equiv 2 \pmod{19}$$
+    
+    Phương trình đồng dư trở thành:
+    $$2k - 17 \equiv 0 \pmod{19} \iff 2k \equiv 17 \equiv 36 \pmod{19}$$
+    $$\implies k \equiv 18 \pmod{19}$$
+    
+    Suy ra:
+    $$k = 19m + 18 \quad (m \in \mathbb{N})$$
+    
+    **Bước 4: Tính giá trị $n$ nhỏ nhất**
+    
+    Thay $k$ ngược lại vào biểu thức của $n$:
+    $$n = 16380(19m + 18) - 17 = 311220m + 294840 - 17 = 311220m + 294823$$
+    
+    Để tìm số tự nhiên $n$ nhỏ nhất, ta chọn giá trị $m = 0$:
+    $$n = 311220 \times 0 + 294823 = 294823$$
+    
+    **Kết luận:** Giá trị nhỏ nhất của $n$ là **$294823$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 51 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 51. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 2027$. Xét tất cả các số nguyên $x$ thỏa mãn điều kiện $1 \le x \le 2026$. Gọi $S$ là tổng tất cả các giá trị của $x$ thỏa mãn phương trình đồng dư:
+$$\prod_{k=1}^{2026} (x - k) \equiv 0 \pmod{2027}$$
+Tính giá trị của $S$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 51) ---
+user_ans_51 = st.text_input("Nhập giá trị của tổng S:", key="q51_ans")
+
+if st.button("Kiểm tra đáp án Câu 51", key="q51_check"):
+    norm_ans_51 = user_ans_51.strip()
+    
+    # Đáp án chính xác là 2053351
+    if norm_ans_51 == "2053351":
+        st.success("🎉 Xuất sắc! Bạn đã nhận diện bản chất đa thức đồng dư trong trường hữu hạn cực kỳ sâu sắc. Lời giải Câu 51 đã được mở khóa.")
+    elif user_ans_51 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 51.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Phương trình đồng dư trên có tập nghiệm chính là tất cả các số nguyên từ $1$ đến $2026$. Hãy tính tổng của cấp số cộng này.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 51 ---
+st.markdown("---")
+
+if 'q51_solution_shown' not in st.session_state:
+    st.session_state['q51_solution_shown'] = False
+
+col1_51, col2_51 = st.columns([1, 4])
+with col1_51:
+    if st.button("Xem lời giải Câu 51", key="q51_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q51_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q51_solution_shown'] = False 
+
+if st.session_state.get('q51_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 51 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Phân tích cấu trúc phương trình đồng dư**
+    
+    Phương trình cần xét là:
+    $$\prod_{k=1}^{2026} (x - k) \equiv 0 \pmod{2027}$$
+    
+    Một tích các thừa số đồng dư với $0$ theo mô-đun một số nguyên tố $p = 2027$ khi và chỉ khi có ít nhất một thừa số chia hết cho $2027$. 
+    Điều này có nghĩa là:
+    $$x - k \equiv 0 \pmod{2027} \iff x \equiv k \pmod{2027}$$
+    với mỗi $k \in \{1, 2, 3, \dots, 2026\}$.
+    
+    **Bước 2: Xác định tập nghiệm trong miền giới hạn**
+    
+    Vì bài toán yêu cầu tìm các nghiệm $x$ thỏa mãn điều kiện $1 \le x \le 2026$, nên mọi giá trị $x \in \{1, 2, 3, \dots, 2026\}$ khi thay vào đều làm cho đúng một thừa số trong tích triệt tiêu (bằng $0$), đồng thời không vượt quá giá trị của số nguyên tố $p = 2027$.
+    
+    Do đó, tập hợp tất cả các nghiệm $x$ thỏa mãn yêu cầu bài toán chính là:
+    $$X = \{1, 2, 3, \dots, 2026\}$$
+    
+    **Bước 3: Tính tổng $S$ và kết luận**
+    
+    Tổng $S$ là tổng của tất cả các phần tử trong tập nghiệm $X$:
+    $$S = \sum_{k=1}^{2026} k = \dfrac{2026 \times (1 + 2026)}{2} = 1013 \times 2027 = 2053351$$
+    
+    Vậy giá trị của tổng $S$ là $2053351$.
+    
+    ---
+    **👉 Đáp số Câu 51:** `2053351`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 52 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 52. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 1009$. Tính số lượng các số nguyên $x$ thỏa mãn đồng thời hai điều kiện: $1 \le x \le 1008$ và biểu thức $x^2 + 1$ chia hết cho $1009$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 52) ---
+user_ans_52 = st.text_input("Nhập số lượng số nguyên x thỏa mãn:", key="q52_ans")
+
+if st.button("Kiểm tra đáp án Câu 52", key="q52_check"):
+    norm_ans_52 = user_ans_52.strip()
+    
+    # Đáp án chính xác là 2
+    if norm_ans_52 == "2":
+        st.success("🎉 Xuất sắc! Bạn đã vận dụng lý thuyết thặng dư chính phương và tiêu chuẩn Euler cực kỳ đỉnh cao. Lời giải Câu 52 đã được mở khóa.")
+    elif user_ans_52 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 52.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Chuyển bài toán về phương trình đồng dư $x^2 \equiv -1 \pmod{1009}$. Kiểm tra xem $-1$ có phải là thặng dư chính phương modulo $1009$ hay không (dùng tính chất $p \equiv 1 \pmod 4$).")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 52 ---
+st.markdown("---")
+
+if 'q52_solution_shown' not in st.session_state:
+    st.session_state['q52_solution_shown'] = False
+
+col1_52, col2_52 = st.columns([1, 4])
+with col1_52:
+    if st.button("Xem lời giải Câu 52", key="q52_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q52_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q52_solution_shown'] = False 
+
+if st.session_state.get('q52_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 52 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Chuyển đổi bài toán về phương trình đồng dư**
+    
+    Biểu thức $x^2 + 1$ chia hết cho $1009$ tương đương với phương trình đồng dư:
+    $$x^2 + 1 \equiv 0 \pmod{1009} \iff x^2 \equiv -1 \pmod{1009}$$
+    
+    **Bước 2: Kiểm tra tính thặng dư chính phương của $-1$ modulo $1009$**
+    
+    Ta có số nguyên tố $p = 1009$. 
+    Thực hiện phép chia $1009$ cho $4$:
+    $$1009 = 4 \times 252 + 1 \implies p \equiv 1 \pmod 4$$
+    
+    Theo định lý về thặng dư chính phương (hoặc Tiêu chuẩn Euler), đối với bất kỳ số nguyên tố dạng $p \equiv 1 \pmod 4$, số $-1$ luôn là một **thặng dư chính phương** modulo $p$. 
+    Điều này có nghĩa là phương trình $x^2 \equiv -1 \pmod p$ luôn có **đúng hai nghiệm phân biệt** không đồng dư modulo $p$.
+    
+    **Bước 3: Xác định vị trí của các nghiệm trong khoảng cho phép**
+    
+    Giả sử phương trình có nghiệm $x_0$. Khi đó:
+    *   Nghiệm thứ nhất là $x_0$.
+    *   Nghiệm thứ hai là $p - x_0 = 1009 - x_0$.
+    
+    Vì $x_0$ và $1009 - x_0$ đều nằm trong khoảng từ $1$ đến $1008$ (không có nghiệm nào trùng với $0$ hay $1009$), cả hai nghiệm này đều thỏa mãn hoàn hảo điều kiện bài toán yêu cầu: $1 \le x \le 1008$.
+    
+    **Bước 4: Kết luận**
+    
+    Số lượng các số nguyên $x$ thỏa mãn yêu cầu bài toán là $2$.
+    
+    ---
+    **👉 Đáp số Câu 52:** `2`
+    """)
+
+st.markdown("---")
