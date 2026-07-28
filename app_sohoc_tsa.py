@@ -5605,3 +5605,449 @@ if st.session_state.get('q62_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 63: ĐỒNG DƯ THỨC VÀ ĐỊNH LÝ TRUNG HOA
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 63 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên dương $A = 3^{2026} + 5^{2026} + 7^{2026}$. Tìm số dư khi chia số $A$ cho $143$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_63 = st.text_input("Nhập số dư của phép chia:", key="q63_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q63_check"):
+    normalized_user_answer_63 = user_answer_63.strip().replace(',', '.')
+    
+    if normalized_user_answer_63 == "45":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_63 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy phân tích $143 = 11 \times 13$, sau đó dùng Định lý Tiểu Fermat để tính số dư theo từng mô-đun rồi kết hợp hệ đồng dư nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q63_solution_shown' not in st.session_state:
+    st.session_state['q63_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q63_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q63_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q63_solution_shown'] = False 
+
+if st.session_state.get('q63_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích mô-đun và thiết lập bài toán**
+    
+    Ta có $143 = 11 \times 13$ với $\text{gcd}(11, 13) = 1$. Để tìm số dư của $A = 3^{2026} + 5^{2026} + 7^{2026}$ khi chia cho $143$, ta tính số dư của $A$ lần lượt theo mô-đun $11$ và mô-đun $13$.
+    
+    **Bước 2: Tính số dư của $A$ theo mô-đun $11$**
+    
+    Theo Định lý Tiểu Fermat, ta có $a^{10} \equiv 1 \pmod{11}$. Chia số mũ cho chu kỳ $10$:
+    $$2026 = 10 \times 202 + 6$$
+    
+    Do đó:
+    *   $3^{2026} = (3^{10})^{202} \cdot 3^6 \equiv 1 \cdot 729 \equiv 3 \pmod{11}$
+    *   $5^{2026} = (5^{10})^{202} \cdot 5^6 \equiv 1 \cdot 5 \equiv 5 \pmod{11}$ (vì $5^6 = 15625 \equiv 5 \pmod{11}$)
+    *   $7^{2026} = (7^{10})^{202} \cdot 7^6 \equiv 1 \cdot 4 \pmod{11}$ (vì $7^6 \equiv 4 \pmod{11}$)
+    
+    Cộng lại, ta được:
+    $$A \equiv 3 + 5 + 4 = 12 \equiv 1 \pmod{11}$$
+    
+    **Bước 3: Tính số dư của $A$ theo mô-đun $13$**
+    
+    Theo Định lý Tiểu Fermat, ta có $a^{12} \equiv 1 \pmod{13}$. Chia số mũ cho chu kỳ $12$:
+    $$2026 = 12 \times 168 + 10$$
+    
+    Do đó:
+    *   $3^{2026} = (3^{12})^{168} \cdot 3^{10} \equiv 1 \cdot 3 = 3 \pmod{13}$ (vì $3^3 \equiv 1 \implies 3^{10} \equiv 3$)
+    *   $5^{2026} = (5^{12})^{168} \cdot 5^{10} \equiv 1 \cdot (-1) \pmod{13}$ (vì $5^4 \equiv 1 \implies 5^{10} \equiv 5^2 = 25 \equiv -1 \pmod{13}$)
+    *   $7^{2026} = (7^{12})^{168} \cdot 7^{10} \equiv 1 \cdot 4 \pmod{13}$ (vì $7^{10} \equiv 4 \pmod{13}$)
+    
+    Cộng lại, ta được:
+    $$A \equiv 3 + (-1) + 4 = 6 \pmod{13}$$
+    
+    **Bước 4: Giải hệ đồng dư thức**
+    
+    Ta có hệ:
+    $$\begin{cases} A \equiv 1 \pmod{11} \\ A \equiv 6 \pmod{13} \end{cases}$$
+    
+    Đặt $A = 11k + 1$. Thay vào phương trình thứ hai:
+    $$11k + 1 \equiv 6 \pmod{13} \implies 11k \equiv 5 \pmod{13}$$
+    
+    Vì $11 \equiv -2 \pmod{13}$, ta có $-2k \equiv 5 \equiv 18 \pmod{13} \implies k \equiv -9 \equiv 4 \pmod{13}$.
+    Suy ra $k = 13m + 4$, dẫn đến:
+    $$A = 11(13m + 4) + 1 = 143m + 45$$
+    
+    **Kết luận:** Số dư của phép chia $A$ cho $143$ là **$45$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 64: TOÁN THỰC TẾ SỐ HỌC NÂNG CAO
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 64 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một hệ thống xử lý dữ liệu gồm ba máy chủ vận hành liên tục. Máy chủ thứ nhất cứ sau mỗi $45$ phút hoàn thành một chu trình và dư ra $18$ phút bảo trì; máy chủ thứ hai cứ sau mỗi $60$ phút hoàn thành một chu trình và dư ra $33$ phút bảo trì; máy chủ thứ ba cứ sau mỗi $75$ phút hoàn thành một chu trình và dư ra $48$ phút bảo trì. 
+
+Để đồng bộ hóa toàn bộ hệ thống, tổng số phút $n$ từ lúc khởi động đến khi cả ba máy chủ đạt trạng thái bảo trì đồng thời phải là một số tự nhiên thỏa mãn các điều kiện trên đồng thời chia hết cho $19$. Hỏi giá trị nhỏ nhất của $n$ là bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_64 = st.text_input("Nhập giá trị của n:", key="q64_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q64_check"):
+    normalized_user_answer_64 = user_answer_64.strip().replace(',', '.')
+    
+    if normalized_user_answer_64 == "6327":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_64 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập phần bù thời gian bắt đầu bảo trì ($45 - 18 = 27$), tìm BCNN và giải điều kiện chia hết cho 19 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q64_solution_shown' not in st.session_state:
+    st.session_state['q64_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q64_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q64_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q64_solution_shown'] = False 
+
+if st.session_state.get('q64_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ đồng dư thức thời gian bảo trì**
+    
+    Gọi $n$ là số phút cần tìm. Thời điểm bắt đầu bảo trì trong mỗi chu kỳ của các máy chủ là:
+    *   Máy 1: $45 - 18 = 27$ phút $\implies n \equiv 27 \pmod{45}$
+    *   Máy 2: $60 - 33 = 27$ phút $\implies n \equiv 27 \pmod{60}$
+    *   Máy 3: $75 - 48 = 27$ phút $\implies n \equiv 27 \pmod{75}$
+    
+    Do đó, ta có $(n - 27)$ đồng thời chia hết cho $45$, $60$ và $75$.
+    
+    **Bước 2: Tìm Bội chung nhỏ nhất (BCNN)**
+    
+    Phân tích ra thừa số nguyên tố:
+    *   $45 = 3^2 \times 5$
+    *   $60 = 2^2 \times 3 \times 5$
+    *   $75 = 3 \times 5^2$
+    
+    Bội chung nhỏ nhất của chúng là:
+    $$\text{BCNN}(45, 60, 75) = 2^2 \times 3^2 \times 5^2 = 900$$
+    
+    Dạng tổng quát của $n$:
+    $$n - 27 = 900k \implies n = 900k + 27 \quad (k \in \mathbb{N})$$
+    
+    **Bước 3: Sử dụng điều kiện chia hết cho 19**
+    
+    Vì $n$ chia hết cho $19$, ta thay vào phương trình đồng dư mô-đun $19$:
+    $$900k + 27 \equiv 0 \pmod{19}$$
+    
+    Thu gọn hệ số theo mô-đun $19$:
+    $$900 = 19 \times 47 + 7 \equiv 7 \pmod{19}$$
+    $$27 = 19 \times 1 + 8 \equiv 8 \pmod{19}$$
+    
+    Phương trình trở thành:
+    $$7k + 8 \equiv 0 \pmod{19} \implies 7k \equiv -8 \equiv 11 \pmod{19}$$
+    
+    Nhân cả hai vế với nghịch đảo của $7$ modulo $19$ (là $11$ vì $7 \times 11 = 77 \equiv 1 \pmod{19}$):
+    $$k \equiv 11 \times 11 = 121 \equiv 7 \pmod{19}$$
+    
+    Đặt $k = 19m + 7$ với $m \in \mathbb{N}$.
+    
+    **Bước 4: Tính giá trị $n$ nhỏ nhất**
+    
+    Thay $k$ vào biểu thức của $n$:
+    $$n = 900(19m + 7) + 27 = 17100m + 6300 + 27 = 17100m + 6327$$
+    
+    Để $n$ đạt giá trị nguyên dương nhỏ nhất, ta chọn $m = 0$:
+    $$n = 6327$$
+    
+    **Kết luận:** Giá trị nhỏ nhất của $n$ là **$6327$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 65: HỢP SỐ NÂNG CAO - HẰNG ĐẲNG THỨC SOPHIE GERMAIN
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 65 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên dương $n$. Xét số $S_n = n^4 + 324$. Hỏi có bao nhiêu giá trị nguyên dương của $n$ thuộc đoạn $[1; 2026]$ để $S_n$ là một **hợp số**?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_65 = st.text_input("Nhập số lượng giá trị của n:", key="q65_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q65_check"):
+    normalized_user_answer_65 = user_answer_65.strip().replace(',', '.')
+    
+    if normalized_user_answer_65 == "2026":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_65 == "":
+        st.warning("You chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy áp dụng hằng đẳng thức Sophie Germain cho biểu thức $n^4 + 4 \cdot 3^4$ để phân tích thành nhân tử nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q65_solution_shown' not in st.session_state:
+    st.session_state['q65_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q65_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q65_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q65_solution_shown'] = False 
+
+if st.session_state.get('q65_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích biểu thức thành nhân tử**
+    
+    Ta nhận thấy $324 = 4 \times 81 = 4 \times 3^4$. Khi đó biểu thức được viết lại dưới dạng:
+    $$S_n = n^4 + 4 \cdot 3^4$$
+    
+    Áp dụng hằng đẳng thức mở rộng Sophie Germain ($a^4 + 4b^4 = (a^2 - 2ab + 2b^2)(a^2 + 2ab + 2b^2)$) với $a = n$ và $b = 3$:
+    $$S_n = (n^2 - 2 \cdot n \cdot 3 + 2 \cdot 3^2)(n^2 + 2 \cdot n \cdot 3 + 2 \cdot 3^2)$$
+    $$S_n = (n^2 - 6n + 18)(n^2 + 6n + 18)$$
+    
+    **Bước 2: Đánh giá giá trị các nhân tử**
+    
+    *   Xét nhân tử thứ nhất, biến đổi về tổng bình phương:
+        $$n^2 - 6n + 18 = (n - 3)^2 + 9$$
+        Vì $(n - 3)^2 \ge 0$ với mọi số nguyên $n$, ta có:
+        $$(n - 3)^2 + 9 \ge 9 > 1$$
+        
+    *   Xét nhân tử thứ hai:
+        $$n^2 + 6n + 18 = (n + 3)^2 + 9$$
+        Với mọi số nguyên dương $n \ge 1$, ta luôn có:
+        $$(n + 3)^2 + 9 \ge 4^2 + 9 = 25 > 1$$
+        
+    Vì cả hai nhân tử $(n^2 - 6n + 18)$ và $(n^2 + 6n + 18)$ đều lớn hơn $1$ với mọi số nguyên dương $n$, nên tích của chúng luôn là một **hợp số**.
+    
+    **Bước 3: Đếm số lượng giá trị thỏa mãn**
+    
+    Do tính chất trên đúng với mọi số nguyên dương $n \ge 1$, tất cả các giá trị của $n$ thuộc đoạn $[1; 2026]$ đều làm cho $S_n$ là hợp số.
+    
+    Số lượng các giá trị của $n$ là:
+    $$2026 - 1 + 1 = 2026 \text{ (giá trị)}$$
+    
+    **Kết luận:** Có tổng cộng **$2026$** giá trị của $n$ thỏa mãn yêu cầu bài toán.
+    """)
+
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 66 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 66. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 2027$. Xét tập hợp tất cả các nghiệm nguyên $x$ thuộc đoạn $[1, 2026]$ của phương trình đồng dư:
+$$x^{2026} \equiv 1 \pmod{2027}$$
+Gọi $P$ là tích của tất cả các phần tử thuộc tập nghiệm này. Tính số dư của $P$ khi chia cho $2027$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 66) ---
+user_ans_66 = st.text_input("Nhập số dư của P khi chia cho 2027:", key="q66_ans")
+
+if st.button("Kiểm tra đáp án Câu 66", key="q66_check"):
+    norm_ans_66 = user_ans_66.strip()
+    
+    # Đáp án chính xác là 2026
+    if norm_ans_66 == "2026":
+        st.success("🎉 Xuất sắc! Bạn đã nhận diện toàn bộ nghiệm bằng Định lý Fermat nhỏ và rút gọn tích bằng Định lý Wilson cực kỳ sắc bén. Lời giải Câu 66 đã được mở khóa.")
+    elif user_ans_66 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 66.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Theo Định lý Fermat nhỏ, mọi số nguyên từ $1$ đến $2026$ đều là nghiệm. Tích của chúng là $2026!$, hãy dùng Định lý Wilson để tính modulo $2027$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 66 ---
+st.markdown("---")
+
+if 'q66_solution_shown' not in st.session_state:
+    st.session_state['q66_solution_shown'] = False
+
+col1_66, col2_66 = st.columns([1, 4])
+with col1_66:
+    if st.button("Xem lời giải Câu 66", key="q66_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q66_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q66_solution_shown'] = False 
+
+if st.session_state.get('q66_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 66 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Xác định tập hợp nghiệm của phương trình đồng dư**
+    
+    Phương trình cần xét là:
+    $$x^{2026} \equiv 1 \pmod{2027}$$
+    với số nguyên tố $p = 2027$ và điều kiện nghiệm $x \in [1, 2026]$.
+    
+    Theo **Định lý Fermat nhỏ**, với mọi số nguyên tố $p$ và mọi số nguyên $x$ không chia hết cho $p$ (tức là $1 \le x \le p-1$), ta luôn có:
+    $$x^{p-1} \equiv 1 \pmod p$$
+    
+    Ở đây $p - 1 = 2027 - 1 = 2026$, do đó **mọi** số nguyên $x$ thuộc đoạn $[1, 2026]$ đều thỏa mãn phương trình đồng dư trên. 
+    Tập hợp tất cả các nghiệm là:
+    $$X = \{1, 2, 3, \dots, 2026\}$$
+    
+    **Bước 2: Tính tích $P$ của tất cả các nghiệm**
+    
+    Tích của tất cả các phần tử trong tập nghiệm chính là giai thừa của $2026$:
+    $$P = 1 \times 2 \times 3 \times \dots \times 2026 = 2026!$$
+    
+    **Bước 3: Áp dụng Định lý Wilson để tìm số dư**
+    
+    Theo **Định lý Wilson**, với $p$ là số nguyên tố, ta có:
+    $$(p - 1)! \equiv -1 \pmod p$$
+    
+    Áp dụng với $p = 2027$, ta thu được:
+    $$2026! \equiv -1 \pmod{2027}$$
+    
+    Vì $-1 \equiv 2026 \pmod{2027}$, số dư của tích $P$ khi chia cho $2027$ là $2026$.
+    
+    **Bước 4: Kết luận**
+    
+    Số dư của $P$ khi chia cho $2027$ là $2026$.
+    
+    ---
+    **👉 Đáp số Câu 66:** `2026`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 67 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 67. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 1009$. Xét tổng các nghịch đảo:
+$$S = \sum_{k=1}^{1008} \dfrac{1}{k} = 1 + \dfrac{1}{2} + \dfrac{1}{3} + \dots + \dfrac{1}{1008}$$
+Biết rằng tổng $S$ có thể quy đồng và viết dưới dạng phân số tối giản $\dfrac{a}{b}$. Tính số dư của tử số $a$ khi chia cho số nguyên tố $1009$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 67) ---
+user_ans_67 = st.text_input("Nhập số dư của tử số a khi chia cho 1009:", key="q67_ans")
+
+if st.button("Kiểm tra đáp án Câu 67", key="q67_check"):
+    norm_ans_67 = user_ans_67.strip()
+    
+    # Đáp án chính xác là 0
+    if norm_ans_67 == "0":
+        st.success("🎉 Xuất sắc! Bạn đã vận dụng định lý Wolstenholme về tổng điều hòa trong trường nguyên tố một cách đỉnh cao tuyệt đối. Lời giải Câu 67 đã được mở khóa.")
+    elif user_ans_67 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 67.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy áp dụng định lý Wolstenholme cho tổng điều hòa modulo số nguyên tố lớn hơn hoặc bằng $5$ ($1009 \ge 5$).")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 67 ---
+st.markdown("---")
+
+if 'q67_solution_shown' not in st.session_state:
+    st.session_state['q67_solution_shown'] = False
+
+col1_67, col2_67 = st.columns([1, 4])
+with col1_67:
+    if st.button("Xem lời giải Câu 67", key="q67_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q67_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q67_solution_shown'] = False 
+
+if st.session_state.get('q67_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 67 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Nhận diện định lý Wolstenholme (Wolstenholme's Theorem)**
+    
+    Trong lý thuyết số học cao cấp, định lý Wolstenholme phát biểu rằng với bất kỳ số nguyên tố $p \ge 5$, tổng điều hòa:
+    $$H_{p-1} = \sum_{k=1}^{p-1} \dfrac{1}{k} = 1 + \dfrac{1}{2} + \dots + \dfrac{1}{p-1}$$
+    khi quy đồng mẫu số và viết dưới dạng phân số tối giản $\dfrac{a}{b}$, thì tử số $a$ phải chia hết cho $p^2$. 
+    Nói cách khác, ta có đồng dư thức modulo $p^2$:
+    $$\sum_{k=1}^{p-1} \dfrac{1}{k} \equiv 0 \pmod{p^2}$$
+    
+    **Bước 2: Áp dụng vào bài toán với $p = 1009$**
+    
+    Vì $1009$ là một số nguyên tố lớn hơn $5$, ta áp dụng trực tiếp định lý Wolstenholme cho $p = 1009$:
+    $$\sum_{k=1}^{1008} \dfrac{1}{k} \equiv 0 \pmod{1009^2}$$
+    
+    Điều này đồng nghĩa với việc tổng $S$ quy đồng thành phân số tối giản $\dfrac{a}{b}$ sẽ có tử số $a$ chia hết cho $1009^2$, suy ra $a$ đặc biệt chia hết cho $1009$.
+    
+    **Bước 3: Kết luận**
+    
+    Số dư của tử số $a$ khi chia cho số nguyên tố $1009$ bằng $0$.
+    
+    ---
+    **👉 Đáp số Câu 67:** `0`
+    """)
+
+st.markdown("---")
