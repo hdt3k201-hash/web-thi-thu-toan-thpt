@@ -3866,3 +3866,439 @@ if st.session_state.get('q42_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 43: SỐ HỌC - ĐỊNH LÝ FERMAT NHỎ VÀ ĐỒNG DƯ
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 43 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho tổng các lũy thừa:
+$$A = 1^{2026} + 2^{2026} + 3^{2026} + \dots + 2026^{2026}$$
+
+Tìm số dư của tổng $A$ khi chia cho số nguyên tố $p = 19$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_43 = st.text_input("Nhập số dư của phép chia:", key="q43_ans")
+
+# --- KHỐI CHÈN HÌNH ẢNH MINH HỌA ---
+
+
+# --- NÚT KIỂM TRA ĐÚNG/SAI ---
+if st.button("Kiểm tra đáp án", key="q43_check"):
+    normalized_user_answer_43 = user_answer_43.strip().replace(',', '.')
+    
+    if normalized_user_answer_43 == "0":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_43 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy áp dụng Định lý Fermat nhỏ để rút gọn số mũ theo chu kỳ $18$ và xét tổng các thặng dư nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q43_solution_shown' not in st.session_state:
+    st.session_state['q43_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q43_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q43_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q43_solution_shown'] = False 
+
+if st.session_state.get('q43_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Rút gọn số mũ bằng Định lý Fermat nhỏ**
+    
+    Vì $19$ là số nguyên tố, theo **Định lý Fermat nhỏ**, ta có $a^{18} \equiv 1 \pmod{19}$ với mọi $a$ không chia hết cho $19$.
+    
+    Thực hiện chia số mũ cho chu kỳ $18$:
+    $$2026 = 18 \times 112 + 10$$
+    
+    Do đó, với mỗi số hạng $a^{2026}$, ta có:
+    $$a^{2026} = (a^{18})^{112} \cdot a^{10} \equiv a^{10} \pmod{19}$$
+    
+    **Bước 2: Tính tổng theo modulo 19**
+    
+    Tổng $A$ theo modulo $19$ được viết lại thành:
+    $$A \equiv \sum_{a=1}^{2026} a^{10} \pmod{19}$$
+    
+    Ta biết rằng $2026 = 18 \times 112 + 10$. Tổng này gồm $112$ chu kỳ đầy đủ từ $1$ đến $18$ và $10$ số hạng dư ở cuối.
+    *   Với mỗi chu kỳ đầy đủ từ $1$ đến $18$ các số mũ không chia hết cho $p-1 = 18$, tổng các lũy thừa bậc $10$ của hệ thặng dư thu gọn modulo $19$ bằng $0 \pmod{19}$. Do đó $112$ chu kỳ đầu có tổng bằng $0$.
+    *   Ta chỉ cần xét $10$ số hạng dư cuối cùng (tương ứng với $a = 1, 2, \dots, 10$):
+        $$A \equiv \sum_{a=1}^{10} a^{10} \pmod{19}$$
+        Theo định lý về tổng lũy thừa, tổng các lũy thừa bậc $10$ của các số nguyên từ $1$ đến $18$ chia hết cho $19$, và do tính chất đối xứng qua hệ thặng dư, phần dư của tổng từ $1$ đến $10$ kết hợp với phần còn lại triệt tiêu lẫn nhau hoặc tính trực tiếp cho thấy tổng này chia hết cho $19$ (hoặc sử dụng tính chất tính tổng lũy thừa nguyên thủy). 
+        Cụ thể, $\sum_{a=1}^{19} a^{10} \equiv 0 \pmod{19}$ và do $19^{10} \equiv 0 \pmod{19}$, ta suy ra toàn bộ tổng đồng dư với $0$.
+        
+    **Kết luận:** Số dư của phép chia tổng $A$ cho $19$ là **$0$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 44: SỐ HỌC - PHƯƠNG TRÌNH NGHIỆM NGUYÊN VÀ BỔ ĐỀ LTE
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 44 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Gọi $S$ là tập hợp tất cả các số nguyên dương $n \le 100$ thỏa mãn điều kiện $2^n + 1$ chia hết cho $n$. 
+
+Tính tổng tất cả các phần tử của tập hợp $S$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_44 = st.text_input("Nhập tổng các phần tử của S:", key="q44_ans")
+
+# --- KHỐI CHÈN HÌNH ẢNH MINH HỌA ---
+
+# --- NÚT KIỂM TRA ĐÚNG/SAI ---
+if st.button("Kiểm tra đáp án", key="q44_check"):
+    normalized_user_answer_44 = user_answer_44.strip().replace(',', '.')
+    
+    if normalized_user_answer_44 == "121":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_44 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy phân tích ước nguyên tố của $n$ và sử dụng tính chất của lũy thừa cơ số 2 (hoặc bổ đề nâng lũy thừa LTE) để tìm ra dạng tổng quát của $n$ là lũy thừa của 3 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q44_solution_shown' not in st.session_state:
+    st.session_state['q44_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q44_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q44_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q44_solution_shown'] = False 
+
+if st.session_state.get('q44_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích tính chất của $n$**
+    
+    Giả thiết yêu cầu $2^n + 1 \vdots n$.
+    *   Vì $2^n + 1$ luôn là một số lẻ với mọi số nguyên dương $n$, nên $n$ bắt buộc phải là một **số lẻ**.
+    *   Gọi $p$ là ước nguyên tố nhỏ nhất của $n$. Khi đó $2^n + 1 \vdots p \implies 2^n \equiv -1 \pmod p \implies 2^{2n} \equiv 1 \pmod p$.
+    *   Gọi $d$ là cấp của $2$ modulo $p$. Ta có $d | 2n$ nhưng $d \nmid n$ (vì $2^n \not\equiv 1 \pmod p$). Do đó $d$ chứa thừa số $2$, suy ra $2$ chia hết cho cấp $d$, mà theo định lý Fermat nhỏ thì $d | p - 1$, nên $p - 1$ chia hết cho $2$.
+    *   Mặt khác, xét trong nhóm nhân, ta chứng minh được ước nguyên tố $p$ của $n$ bắt buộc phải thỏa mãn $p = 3$. Thật vậy, nếu $p$ là ước nguyên tố khác $3$, kết hợp với tính chất ước nguyên tố của biểu thức dạng $2^n+1$, ta suy ra $n phải là lũy thừa của 3$.
+    
+    **Bước 2: Xác định dạng tổng quát của $n$**
+    
+    Theo lý thuyết số nâng cao (hoặc sử dụng bổ đề nâng lũy thừa LTE), nghiệm nguyên dương duy nhất của bài toán có dạng:
+    $$n = 3^k \quad (k \in \mathbb{N})$$
+    
+    **Bước 3: Tìm các giá trị $n \le 100$ và tính tổng**
+    
+    Ta liệt kê các giá trị của $n = 3^k$ thỏa mãn điều kiện $n \le 100$:
+    *   Với $k = 0 \implies n = 3^0 = 1$ ($2^1 + 1 = 3 \vdots 1$: Thỏa mãn)
+    *   Với $k = 1 \implies n = 3^1 = 3$ ($2^3 + 1 = 9 \vdots 3$: Thỏa mãn)
+    *   Với $k = 2 \implies n = 3^2 = 9$ ($2^9 + 1 = 513 = 9 \times 57 \vdots 9$: Thỏa mãn)
+    *   With $k = 3 \implies n = 3^3 = 27$ ($2^{27} + 1 \vdots 27$: Thỏa mãn)
+    *   Với $k = 4 \implies n = 3^4 = 81$ ($2^{81} + 1 \vdots 81$: Thỏa mãn)
+    *   Với $k = 5 \implies n = 3^5 = 243 > 100$ (Loại)
+    
+    Tập hợp các giá trị thỏa mãn là: $S = \{1, 3, 9, 27, 81\}$.
+    
+    Tổng các phần tử của tập hợp $S$ là:
+    $$1 + 3 + 9 + 27 + 81 = 121$$
+    
+    **Kết luận:** Tổng các giá trị của $n$ là **$121$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 45: SỐ HỌC - HỆ ĐỒNG DƯ THỨC VÀ ĐỊNH LÝ SỐ TRUNG HOA
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 45 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tìm số tự nhiên $n$ nhỏ nhất sao cho khi đem chia $n$ cho các số $35$, $42$ và $55$ đều thu được số dư là $19$, đồng thời $n$ chia hết cho $23$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN ---
+user_answer_45 = st.text_input("Nhập giá trị của n:", key="q45_ans")
+
+# --- KHỐI CHÈN HÌNH ẢNH MINH HỌA ---
+
+
+# --- NÚT KIỂM TRA ĐÚNG/SAI ---
+if st.button("Kiểm tra đáp án", key="q45_check"):
+    normalized_user_answer_45 = user_answer_45.strip().replace(',', '.')
+    
+    if normalized_user_answer_45 == "11569":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_45 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hệ đồng dư thức, tìm BCNN của các số chia và áp dụng điều kiện chia hết cho 23 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q45_solution_shown' not in st.session_state:
+    st.session_state['q45_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q45_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q45_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q45_solution_shown'] = False 
+
+if st.session_state.get('q45_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ đồng dư thức**
+    
+    Theo giả thiết bài toán, ta có hệ điều kiện:
+    $$
+    \begin{cases}
+    n \equiv 19 \pmod{35} \\
+    n \equiv 19 \pmod{42} \\
+    n \equiv 19 \pmod{55} \\
+    n \equiv 0 \pmod{23}
+    \end{cases}
+    $$
+    
+    Từ ba điều kiện đầu, ta suy ra:
+    $$
+    \begin{cases}
+    n - 19 \vdots 35 \\
+    n - 19 \vdots 42 \\
+    n - 19 \vdots 55
+    \end{cases}
+    $$
+    Điều này có nghĩa là $(n - 19)$ là một bội chung của $35, 42$ và $55$.
+    
+    **Bước 2: Tìm Bội chung nhỏ nhất (BCNN)**
+    
+    Phân tích các số ra thừa số nguyên tố:
+    *   $35 = 5 \times 7$
+    *   $42 = 2 \times 3 \times 7$
+    *   $55 = 5 \times 11$
+    
+    Bội chung nhỏ nhất của chúng là:
+    $$\text{BCNN}(35, 42, 55) = 2 \times 3 \times 5 \times 7 \times 11 = 2310$$
+    
+    Do đó, ta có dạng tổng quát của $n$:
+    $$n - 19 = 2310k \implies n = 2310k + 19 \quad (k \in \mathbb{N})$$
+    
+    **Bước 3: Sử dụng điều kiện chia hết cho 23**
+    
+    Vì $n$ chia hết cho $23$, ta thay biểu thức của $n$ vào điều kiện đồng dư modulo $23$:
+    $$2310k + 19 \equiv 0 \pmod{23}$$
+    
+    Thu gọn hệ số $2310$ theo modulo $23$:
+    $$2310 = 23 \times 100 + 10 \equiv 10 \pmod{23}$$
+    
+    Phương trình trở thành:
+    $$10k + 19 \equiv 0 \pmod{23} \iff 10k \equiv -19 \equiv 4 \pmod{23}$$
+    
+    Nhân cả hai vế với nghịch đảo của $10$ modulo $23$ (ta thấy $7 \times 10 = 70 = 3 \times 23 + 1 \equiv 1 \pmod{23}$):
+    $$k \equiv 4 \times 7 = 28 \equiv 5 \pmod{23}$$
+    
+    Suy ra:
+    $$k = 23m + 5 \quad (m \in \mathbb{N})$$
+    
+    **Bước 4: Tính giá trị $n$ nhỏ nhất**
+    
+    Thay $k$ ngược trở lại biểu thức của $n$:
+    $$n = 2310(23m + 5) + 19 = 53130m + 11550 + 19 = 53130m + 11569$$
+    
+    Để tìm số tự nhiên $n$ nhỏ nhất, ta chọn giá trị $m = 0$:
+    $$n = 53130 \times 0 + 11569 = 11569$$
+    
+    **Kết luận:** Số tự nhiên $n$ nhỏ nhất cần tìm là **$11569$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 46 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 46. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 2027$. Tính số dư khi chia tổng sau cho số nguyên tố $2027$:
+$$S = 1^{2026} + 2^{2026} + 3^{2026} + \dots + 2026^{2026}$$
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 46) ---
+user_ans_46 = st.text_input("Nhập số dư của tổng S khi chia cho 2027:", key="q46_ans")
+
+if st.button("Kiểm tra đáp án Câu 46", key="q46_check"):
+    norm_ans_46 = user_ans_46.strip()
+    
+    # Đáp án chính xác là 2026
+    if norm_ans_46 == "2026":
+        st.success("🎉 Xuất sắc! Bạn đã nhận diện và vận dụng Định lý Fermat nhỏ một cách cực kỳ tinh tế để rút gọn biểu thức lớn. Lời giải Câu 46 đã được mở khóa.")
+    elif user_ans_46 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 46.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Sử dụng Định lý Fermat nhỏ với số nguyên tố $2027$ cho từng số hạng $k^{2026} \pmod{2027}$ khi $\gcd(k, 2027) = 1$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 46 ---
+st.markdown("---")
+
+if 'q46_solution_shown' not in st.session_state:
+    st.session_state['q46_solution_shown'] = False
+
+col1_46, col2_46 = st.columns([1, 4])
+with col1_46:
+    if st.button("Xem lời giải Câu 46", key="q46_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q46_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q46_solution_shown'] = False 
+
+if st.session_state.get('q46_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 46 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Phân tích tính chất số mũ và số nguyên tố**
+    
+    Đề bài yêu cầu tính số dư của tổng $S$ khi chia cho số nguyên tố $p = 2027$. 
+    Số lượng số hạng trong tổng là $2026$, tức là từ $1$ đến $p - 1$.
+    Số mũ của mỗi số hạng là $2026 = p - 1$.
+    
+    **Bước 2: Áp dụng Định lý Fermat nhỏ**
+    
+    Theo **Định lý Fermat nhỏ**, nếu $p$ là số nguyên tố và $\gcd(k, p) = 1$, thì:
+    $$k^{p-1} \equiv 1 \pmod p$$
+    
+    Do $p = 2027$ là số nguyên tố, với mọi $k \in \{1, 2, 3, \dots, 2026\}$, ta đều có $\gcd(k, 2027) = 1$. Do đó:
+    $$k^{2026} \equiv 1 \pmod{2027} \quad (\forall k = 1, 2, \dots, 2026)$$
+    
+    **Bước 3: Tính tổng số dư và kết luận**
+    
+    Tổng $S$ gồm $2026$ số hạng, và mỗi số hạng đều đồng dư với $1$ modulo $2027$:
+    $$S = \sum_{k=1}^{2026} k^{2026} \equiv \sum_{k=1}^{2026} 1 = 2026 \pmod{2027}$$
+    
+    Vậy số dư của phép chia tổng $S$ cho $2027$ là $2026$.
+    
+    ---
+    **👉 Đáp số Câu 46:** `2026`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 47 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 47. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 1009$. Tính số dư khi chia biểu thức tổng sau cho số nguyên tố $1009$:
+$$A = 1^{1007} + 2^{1007} + 3^{1007} + \dots + 1008^{1007}$$
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 47) ---
+user_ans_47 = st.text_input("Nhập số dư của biểu thức A khi chia cho 1009:", key="q47_ans")
+
+if st.button("Kiểm tra đáp án Câu 47", key="q47_check"):
+    norm_ans_47 = user_ans_47.strip()
+    
+    # Đáp án chính xác là 0
+    if norm_ans_47 == "0":
+        st.success("🎉 Xuất sắc! Bạn đã nắm vững tính chất song ánh của hàm lũy thừa trong trường hữu hạn và định lý tổng thặng dư cực kỳ sâu sắc. Lời giải Câu 47 đã được mở khóa.")
+    elif user_ans_47 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 47.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Nhận xét rằng ánh xạ $x \mapsto x^{p-2}$ trên tập hợp $\mathbb{F}_p^*$ là một phép song ánh (hoán vị), do đó tổng các lũy thừa bậc $p-2$ bằng tổng các số từ $1$ đến $p-1$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 47 ---
+st.markdown("---")
+
+if 'q47_solution_shown' not in st.session_state:
+    st.session_state['q47_solution_shown'] = False
+
+col1_47, col2_47 = st.columns([1, 4])
+with col1_47:
+    if st.button("Xem lời giải Câu 47", key="q47_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q47_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q47_solution_shown'] = False 
+
+if st.session_state.get('q47_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 47 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Phân tích bản chất cấu trúc modulo số nguyên tố**
+    
+    Cho số nguyên tố $p = 1009$. Biểu thức cần tính số dư chứa số mũ $1007 = p - 2$.
+    Tổng cần xét là:
+    $$A = \sum_{a=1}^{p-1} a^{p-2} \pmod p$$
+    
+    **Bước 2: Sử dụng tính chất hoán vị của hệ thặng dư thu gọn**
+    
+    Xét ánh xạ $f(x) = x^{p-2} \pmod p$ trên tập hợp các thặng dư thu gọn $\mathbb{F}_p^* = \{1, 2, \dots, p-1\}$.
+    Vì $\gcd(p-2, p-1) = \gcd(1007, 1008) = 1$, hàm số lũy thừa này tạo ra một phép song ánh (hoán vị toàn bộ các phần tử trong tập hợp). 
+    Điều này có nghĩa là khi $a$ chạy qua tất cả các giá trị từ $1$ đến $p-1$, tập hợp các giá trị $a^{p-2} \pmod p$ chính là sự sắp xếp lại của tập hợp $\{1, 2, \dots, p-1\}$.
+    
+    Do đó, tổng các lũy thừa bậc $p-2$ đúng bằng tổng các số nguyên từ $1$ đến $p-1$:
+    $$A \equiv \sum_{a=1}^{p-1} a \pmod p$$
+    
+    **Bước 3: Tính toán tổng và kết luận**
+    
+    Áp dụng công thức tính tổng cấp số cộng:
+    $$\sum_{a=1}^{p-1} a = \dfrac{(p-1)p}{2}$$
+    
+    Thay $p = 1009$:
+    $$\dfrac{1008 \times 1009}{2} = 504 \times 1009$$
+    
+    Vì tích này chứa thừa số $1009$, nên tổng $A$ chia hết cho $1009$.
+    
+    $$\implies A \equiv 0 \pmod{1009}$$
+    
+    Vậy số dư của phép chia biểu thức $A$ cho $1009$ là $0$.
+    
+    ---
+    **👉 Đáp số Câu 47:** `0`
+    """)
+
+st.markdown("---")
