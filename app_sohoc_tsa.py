@@ -8684,3 +8684,451 @@ if st.session_state.get('q97_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 98: HÀM SỐ PHẦN NGUYÊN VÀ ĐỒNG DƯ
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 98 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $f(x) = \lfloor x \rfloor + \lfloor 2x \rfloor + \lfloor 3x \rfloor$ với $x \ge 0$. Gọi $S$ là tập hợp tất cả các giá trị nguyên $m$ thuộc đoạn $[0; 2026]$ sao cho phương trình $f(x) = m$ có nghiệm thực. Hỏi tập hợp $S$ có bao nhiêu phần tử?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_98 = st.text_input("Nhập số lượng phần tử của tập S:", key="q98_ans")
+
+# Khối chèn hình ảnh minh họa
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q98_check"):
+    normalized_user_answer_98 = user_answer_98.strip().replace(',', '.')
+    
+    if normalized_user_answer_98 == "1352":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_98 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy phân tích các giá trị mà hàm số đạt được trên các đoạn $[n, n+1)$ để tìm ra các giá trị $m$ bị khuyết nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q98_solution_shown' not in st.session_state:
+    st.session_state['q98_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q98_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q98_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q98_solution_shown'] = False 
+
+if st.session_state.get('q98_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích hàm số trên đoạn $[n, n+1)$ với $n \in \mathbb{N}$**
+    
+    Với mỗi $x \in [n, n+1)$, ta đặt $x = n + \{x\}$ trong đó $\{x\} \in [0, 1)$. Khi đó:
+    * $\lfloor x \rfloor = n$
+    * $\lfloor 2x \rfloor = \lfloor 2n + 2\{x\} \rfloor = 2n + \lfloor 2\{x\} \rfloor$
+    * $\lfloor 3x \rfloor = \lfloor 3n + 3\{x\} \rfloor = 3n + \lfloor 3\{x\} \rfloor$
+    
+    Do đó, hàm số trở thành:
+    $$f(x) = 6n + \lfloor 2\{x\} \rfloor + \lfloor 3\{x\} \rfloor$$
+    
+    **Bước 2: Khảo sát các giá trị của $f(x)$ khi $\{x\}$ thay đổi trong $[0, 1)$**
+    
+    Khi $\{x\}$ chạy từ $0$ đến $1$, biểu thức $\lfloor 2\{x\} \rfloor + \lfloor 3\{x\} \rfloor$ nhận các giá trị:
+    * Nếu $\{x\} \in \left[0, \dfrac{1}{3}\right)$: $\lfloor 2\{x\} \rfloor = 0, \lfloor 3\{x\} \rfloor = 0 \implies f(x) = 6n$
+    * Nếu $\{x\} \in \left[\dfrac{1}{3}, \dfrac{1}{2}\right)$: $\lfloor 2\{x\} \rfloor = 0, \lfloor 3\{x\} \rfloor = 1 \implies f(x) = 6n + 1$
+    * Nếu $\{x\} \in \left[\dfrac{1}{2}, \dfrac{2}{3}\right)$: $\lfloor 2\{x\} \rfloor = 1, \lfloor 3\{x\} \rfloor = 1 \implies f(x) = 6n + 2$
+    * Nếu $\{x\} \in \left[\dfrac{2}{3}, 1\right)$: $\lfloor 2\{x\} \rfloor = 1, \lfloor 3\{x\} \rfloor = 2 \implies f(x) = 6n + 3$
+    
+    Như vậy, với mỗi số nguyên không âm $n$, phương trình $f(x) = m$ có nghiệm khi và chỉ khi $m$ có dạng $6n, 6n+1, 6n+2, 6n+3$. Các giá trị $6n+4$ và $6n+5$ không bao giờ là giá trị của hàm số $f(x)$.
+    
+    **Bước 3: Đếm số lượng giá trị hợp lệ trong đoạn $[0; 2026]$**
+    
+    Thực hiện phép chia $2026$ cho $6$:
+    $$2026 = 6 \times 337 + 4$$
+    
+    * Có $337$ chu kỳ hoàn chỉnh từ $0$ đến $6 \times 337 - 1$. Mỗi chu kỳ gồm $6$ số nguyên liên tiếp, trong đó có đúng $4$ giá trị hợp lệ thuộc tập $S$. Số lượng giá trị hợp lệ là:
+      $$337 \times 4 = 1348$$
+    * Xét các số còn lại từ $2022$ đến $2026$ (gồm $5$ số: $2022, 2023, 2024, 2025, 2026$), ta có các giá trị hợp lệ tương ứng với $n = 337$ là $6(337) = 2022$, $2023$, $2024$, $2025$ (tổng cộng có thêm $4$ giá trị hợp lệ, còn $2026 = 6(337) + 4$ là không hợp lệ).
+    
+    **Bước 4: Tổng hợp kết quả**
+    
+    Tổng số phần tử của tập $S$ là:
+    $$1348 + 4 = 1352$$
+    
+    **Kết luận:** Tập hợp $S$ có **$1352$** phần tử.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 99: PHƯƠNG TRÌNH NGHIỆM NGUYÊN HÀM MŨ
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 99 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Phương trình $2^x + 3^y = z^2$ có bao nhiêu nghiệm nguyên dương $(x, y, z)$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_99 = st.text_input("Nhập số lượng nghiệm nguyên dương:", key="q99_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q99_check"):
+    normalized_user_answer_99 = user_answer_99.strip().replace(',', '.')
+    
+    if normalized_user_answer_99 == "1":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_99 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy xét tính chẵn lẻ của $y$ và xét phương trình theo mô-đun hoặc phân tích nhân tử nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q99_solution_shown' not in st.session_state:
+    st.session_state['q99_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q99_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q99_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q99_solution_shown'] = False 
+
+if st.session_state.get('q99_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xét tính chẵn lẻ của $y$**
+    
+    Xét phương trình $2^x + 3^y = z^2$ với $x, y, z \in \mathbb{N}^*$.
+    * Nếu $y$ là số lẻ: Ta xét phương trình theo mô-đun $3$.
+      Vì $2^x \equiv (-1)^x \pmod 3$ và $3^y \equiv 0 \pmod 3$, nên $z^2 \equiv (-1)^x \pmod 3$.
+      Nếu $x$ lẻ, $z^2 \equiv -1 \equiv 2 \pmod 3$ (vô lý vì số chính phương chia cho $3$ chỉ có số dư là $0$ hoặc $1$).
+      Nếu $x$ chẵn, đặt $x = 2k$, phương trình trở thành $2^{2k} + 3^y = z^2 \iff 3^y = (z - 2^k)(z + 2^k)$.
+      Vì cả hai thừa số là lũy thừa của $3$, ta có $z - 2^k = 3^a$ và $z + 2^k = 3^b$ với $a < b$ và $a + b = y$.
+      Trừ hai vế ta được $2 \cdot 2^k = 3^a(3^{b-a} - 1) \implies 2^{k+1} = 3^a(3^{b-a} - 1)$. Do $3^a$ lẻ nên $3^a = 1 \implies a = 0$.
+      Khi đó $2^{k+1} = 3^b - 1$. Thử các giá trị nhỏ của $b$ ta thấy chỉ có $b = 2$ cho nghiệm $k = 2$ (tức $x = 4$, $y = 2$, $z = 5$).
+    
+    **Bước 2: Xét trường hợp $y$ chẵn**
+    
+    Đặt $y = 2k$ ($k \in \mathbb{N}^*$), phương trình trở thành:
+    $$2^x = z^2 - (3^k)^2 = (z - 3^k)(z + 3^k)$$
+    
+    Vì tích bằng lũy thừa của $2$, cả hai thừa số đều là lũy thừa của $2$. Đặt:
+    $$\begin{cases} z - 3^k = 2^a \\ z + 3^k = 2^b \end{cases} \quad \text{với } a < b \text{ và } a + b = x$$
+    
+    Trừ hai vế phương trình, ta thu được:
+    $$2 \cdot 3^k = 2^b - 2^a = 2^a(2^{b-a} - 1)$$
+    
+    Vì $3^k$ là số lẻ, thừa số $2^a$ phải chứa toàn bộ lũy thừa $2$ ở vế trái, suy ra $2^a = 2 \implies a = 1$.
+    Phương trình rút gọn thành:
+    $$3^k = 2^{b-1} - 1 \iff 3^k + 1 = 2^{b-1}$$
+    
+    **Bước 3: Giải phương trình $3^k + 1 = 2^{b-1}$**
+    
+    * Nếu $k = 1$: $3^1 + 1 = 4 = 2^2 \implies b - 1 = 2 \implies b = 3$.
+      Từ đó $a = 1, b = 3 \implies x = a + b = 4$.
+      Và $y = 2k = 2$.
+      Tính $z$: $z + 3^1 = 2^3 = 8 \implies z = 5$.
+      Ta tìm được nghiệm nguyên dương duy nhất: $(x, y, z) = (4, 2, 5)$.
+    * Nếu $k \ge 2$: Xét theo mô-đun $3$, ta có $0 + 1 \equiv 2^{b-1} \pmod 3 \implies (-1)^{b-1} \equiv 1 \pmod 3$, suy ra $b-1$ là số chẵn, đặt $b-1 = 2m$.
+      Khi đó $3^k = (2^m - 1)(2^m + 1)$. Vì hai thừa số bên phải là hai lũy thừa của $2$ chênh lệch nhau $2$ đơn vị, mà chỉ có $3^1 - 3^0 = 2$ trong lũy thừa của $3$, ta suy ra $2^m - 1 = 1 \implies m = 1$, dẫn đến $k = 1$ (mâu thuẫn với giả thiết $k \ge 2$).
+    
+    **Bước 4: Kết luận**
+    
+    Phương trình chỉ có duy nhất một nghiệm nguyên dương $(4, 2, 5)$.
+    
+    **Kết luận:** Số lượng nghiệm nguyên dương của phương trình là **$1$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 100: CỰC TRỊ HÀM SỐ BẬC BA VÀ ĐẠI SỐ
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 100 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho hàm số $y = x^3 - 3mx^2 + 3(m^2 - 1)x - m^3$. Gọi $x_1, x_2$ là hai điểm cực trị của hàm số. Tìm tổng bình phương tất cả các giá trị thực của tham số $m$ sao cho $x_1^2 + x_2^2 - x_1x_2 = 7$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_100 = st.text_input("Nhập tổng bình phương các giá trị của m:", key="q100_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q100_check"):
+    normalized_user_answer_100 = user_answer_100.strip().replace(',', '.')
+    
+    if normalized_user_answer_100 == "8":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_100 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tính đạo hàm, sử dụng hệ thức Vi-ét để biến đổi biểu thức $x_1^2 + x_2^2 - x_1x_2$ về dạng $(x_1+x_2)^2 - 3x_1x_2$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q100_solution_shown' not in st.session_state:
+    st.session_state['q100_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q100_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q100_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q100_solution_shown'] = False 
+
+if st.session_state.get('q100_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính đạo hàm và tìm điều kiện có cực trị**
+    
+    Ta có đạo hàm của hàm số:
+    $$y' = 3x^2 - 6mx + 3(m^2 - 1)$$
+    
+    Hàm số có hai điểm cực trị $x_1, x_2$ khi và chỉ khi phương trình $y' = 0$ có hai nghiệm phân biệt:
+    $$x^2 - 2mx + m^2 - 1 = 0$$
+    Delta phẩy của phương trình là:
+    $$\Delta' = m^2 - (m^2 - 1) = 1 > 0 \quad (\text{luôn đúng với mọi } m)$$
+    
+    **Bước 2: Áp dụng hệ thức Vi-ét**
+    
+    Theo định lý Vi-ét, hoành độ hai điểm cực trị thỏa mãn:
+    $$\begin{cases} x_1 + x_2 = 2m \\ x_1x_2 = m^2 - 1 \end{cases}$$
+    
+    **Bước 3: Biến đổi và giải phương trình chứa tham số $m$**
+    
+    Biểu thức bài toán cho là:
+    $$x_1^2 + x_2^2 - x_1x_2 = 7 \iff (x_1 + x_2)^2 - 3x_1x_2 = 7$$
+    
+    Thay hệ thức Vi-ét vào phương trình trên:
+    $$(2m)^2 - 3(m^2 - 1) = 7$$
+    $$4m^2 - 3m^2 + 3 = 7 \iff m^2 + 3 = 7 \iff m^2 = 4 \iff \begin{bmatrix} m = 2 \\ m = -2 \end{bmatrix}$$
+    
+    Các giá trị này đều thỏa mãn điều kiện phương trình có hai nghiệm phân biệt.
+    
+    **Bước 4: Tính tổng bình phương các giá trị của $m$**
+    
+    Tổng bình phương các giá trị của $m$ tìm được là:
+    $$T = 2^2 + (-2)^2 = 4 + 4 = 8$$
+    
+    **Kết luận:** Tổng bình phương các giá trị của $m$ là **$8$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 101: CHIA ĐA THỨC VÀ ĐỊNH LÝ DƯ
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 101 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho đa thức $P(x)$ khi chia cho đa thức $x^2 - 3x + 2$ và khi chia cho đa thức $x^2 - 5x + 6$ đều có chung số dư là $3x - 1$. Tìm số dư $R(x) = ax + b$ khi chia đa thức $P(x)$ cho đa thức $x^2 - 4x + 3$. Tính giá trị của biểu thức $T = a^2 + b^2$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_101 = st.text_input("Nhập giá trị của biểu thức T:", key="q101_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q101_check"):
+    normalized_user_answer_101 = user_answer_101.strip().replace(',', '.')
+    
+    if normalized_user_answer_101 == "10":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_101 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy phân tích các đa thức chia thành nhân tử và tính giá trị của $P(x)$ tại các nghiệm nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q101_solution_shown' not in st.session_state:
+    st.session_state['q101_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q101_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q101_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q101_solution_shown'] = False 
+
+if st.session_state.get('q101_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích các đa thức chia thành nhân tử**
+    
+    Ta có các phân tích thành nhân tử:
+    * $x^2 - 3x + 2 = (x - 1)(x - 2)$
+    * $x^2 - 5x + 6 = (x - 2)(x - 3)$
+    * $x^2 - 4x + 3 = (x - 1)(x - 3)$
+    
+    **Bước 2: Thiết lập giá trị của đa thức $P(x)$ tại các điểm mấu chốt**
+    
+    Theo giả thiết, khi chia $P(x)$ cho $x^2 - 3x + 2$, số dư là $3x - 1$:
+    $$P(x) = Q_1(x)(x - 1)(x - 2) + 3x - 1$$
+    Thay các nghiệm $x = 1$ và $x = 2$, ta được:
+    * $P(1) = 3(1) - 1 = 2$
+    * $P(2) = 3(2) - 1 = 5$
+    
+    Tương tự, khi chia $P(x)$ cho $x^2 - 5x + 6$, số dư cũng là $3x - 1$:
+    $$P(x) = Q_2(x)(x - 2)(x - 3) + 3x - 1$$
+    Thay nghiệm $x = 3$, ta được:
+    * $P(3) = 3(3) - 1 = 8$
+    
+    **Bước 3: Xác định số dư khi chia $P(x)$ cho $x^2 - 4x + 3$**
+    
+    Gọi số dư khi chia $P(x)$ cho $x^2 - 4x + 3 = (x - 1)(x - 3)$ là đa thức bậc nhất $R(x) = ax + b$:
+    $$P(x) = Q_3(x)(x - 1)(x - 3) + ax + b$$
+    
+    Thay lần lượt các giá trị $x = 1$ và $x = 3$ vào biểu thức trên:
+    * Với $x = 1$: $P(1) = a(1) + b = a + b = 2$
+    * Với $x = 3$: $P(3) = a(3) + b = 3a + b = 8$
+    
+    Giải hệ phương trình bậc nhất hai ẩn:
+    $$\begin{cases} a + b = 2 \\ 3a + b = 8 \end{cases} \iff \begin{cases} 2a = 6 \\ b = 2 - a \end{cases} \iff \begin{cases} a = 3 \\ b = -1 \end{cases}$$
+    
+    Vậy số dư là $R(x) = 3x - 1$.
+    
+    **Bước 4: Tính giá trị biểu thức $T$**
+    
+    $$T = a^2 + b^2 = 3^2 + (-1)^2 = 9 + 1 = 10$$
+    
+    **Kết luận:** Giá trị của biểu thức $T$ là **$10$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 102: TỔ HỢP VÀ SỐ HỌC NÂNG CAO
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 102 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên dương $n$ thỏa mãn phương trình $C_{2n}^{0} + C_{2n}^{2} + C_{2n}^{4} + \dots + C_{2n}^{2n} = 2048$. Tìm số dư khi chia số $A = 2^n + 5^n$ cho số nguyên tố $13$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_102 = st.text_input("Nhập số dư của phép chia:", key="q102_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q102_check"):
+    normalized_user_answer_102 = user_answer_102.strip().replace(',', '.')
+    
+    if normalized_user_answer_102 == "11":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_102 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy dùng khai triển nhị thức Newton để tìm $n$, sau đó tính số dư theo mô-đun $13$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q102_solution_shown' not in st.session_state:
+    st.session_state['q102_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q102_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q102_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q102_solution_shown'] = False 
+
+if st.session_state.get('q102_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm số nguyên dương $n$ từ khai triển nhị thức Newton**
+    
+    Xét khai triển nhị thức Newton của $(1 + x)^{2n}$ và $(1 - x)^{2n}$:
+    $$(1 + x)^{2n} = C_{2n}^{0} + C_{2n}^{1}x + C_{2n}^{2}x^2 + \dots + C_{2n}^{2n}x^{2n}$$
+    $$(1 - x)^{2n} = C_{2n}^{0} - C_{2n}^{1}x + C_{2n}^{2}x^2 - \dots + C_{2n}^{2n}x^{2n}$$
+    
+    Cộng hai vế lại với nhau và chọn $x = 1$, ta được:
+    $$(1 + 1)^{2n} + (1 - 1)^{2n} = 2(C_{2n}^{0} + C_{2n}^{2} + C_{2n}^{4} + \dots + C_{2n}^{2n})$$
+    $$2^{2n} = 2(C_{2n}^{0} + C_{2n}^{2} + C_{2n}^{4} + \dots + C_{2n}^{2n})$$
+    $$\implies C_{2n}^{0} + C_{2n}^{2} + C_{2n}^{4} + \dots + C_{2n}^{2n} = 2^{2n-1}$$
+    
+    Theo giả thiết, ta có phương trình:
+    $$2^{2n-1} = 2048 = 2^{11} \iff 2n - 1 = 11 \iff 2n = 12 \iff n = 6$$
+    
+    **Bước 2: Tính số dư của biểu thức $A = 2^6 + 5^6$ theo mô-đun $13$**
+    
+    Thay $n = 6$ vào biểu thức $A$:
+    $$A = 2^6 + 5^6 = 64 + 15625 = 15689$$
+    
+    Xét từng số hạng theo mô-đun $13$:
+    * Đối với hạng tử $2^6$:
+      $$2^6 = 64 = 13 \times 4 + 12 \equiv 12 \pmod{13} \quad (\text{hoặc } 64 \equiv -1 \pmod{13})$$
+    * Đối với hạng tử $5^6$:
+      $$5^2 = 25 \equiv -1 \pmod{13}$$
+      $$5^6 = (5^2)^3 \equiv (-1)^3 = -1 \equiv 12 \pmod{13}$$
+    
+    **Bước 3: Tổng hợp kết quả phép chia**
+    
+    $$A \equiv 12 + 12 = 24 \equiv 11 \pmod{13}$$
+    
+    **Kết luận:** Số dư khi chia $A$ cho $13$ là **$11$**.
+    """)
+    
+st.markdown("---")
