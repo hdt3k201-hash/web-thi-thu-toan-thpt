@@ -6770,6 +6770,7 @@ st.markdown("---")
 
 
 
+
 # =====================================================================
 # CÂU HỎI SỐ 76 - [Trả lời ngắn _ TSA]
 # =====================================================================
@@ -6780,22 +6781,22 @@ st.markdown(
 )
 
 st.markdown(r"""
-Cho số nguyên tố $p = 1009$. Hỏi có bao nhiêu số nguyên $x$ thuộc đoạn $[1, 1008]$ đồng thời là một **thặng dư chính phương** và là một **căn nguyên thủy** (primitive root) modulo $1009$?
+Cho số nguyên $N = 3^{2026} + 5^{2026}$. Tính số dư của $N$ khi chia cho số nguyên tố $13$.
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 76) ---
-user_ans_76 = st.text_input("Nhập số lượng số nguyên x thỏa mãn:", key="q76_ans")
+user_ans_76 = st.text_input("Nhập số dư của N khi chia cho 13:", key="q76_ans")
 
 if st.button("Kiểm tra đáp án Câu 76", key="q76_check"):
     norm_ans_76 = user_ans_76.strip()
     
-    # Đáp án chính xác là 0
-    if norm_ans_76 == "0":
-        st.success("🎉 Xuất sắc! Bạn đã nhận bản chất cốt lõi giữa căn nguyên thủy và tiêu chuẩn Euler cho thặng dư chính phương. Lời giải Câu 76 đã được mở khóa.")
+    # Đáp án chính xác là 2
+    if norm_ans_76 == "2":
+        st.success("🎉 Xuất sắc! Bạn đã vận dụng thành thạo tính chất đồng dư và cấp của số nguyên modulo một số nguyên tố. Lời giải Câu 76 đã được mở khóa.")
     elif user_ans_76 == "":
         st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 76.")
     else:
-        st.error("❌ Chưa đúng. Gợi ý: Hãy kiểm tra giá trị của $g^{(p-1)/2} \pmod p$ đối với căn nguyên thủy $g$ và áp dụng tiêu chuẩn Euler.")
+        st.error("❌ Chưa đúng. Gợi ý: Hãy xét riêng số dư của từng lũy thừa $3^{2026}$ và $5^{2026}$ khi chia cho $13$ bằng cách tìm chu kỳ tuần hoàn của số mũ.")
 
 # --- XEM LỜI GIẢI CHI TIẾT CÂU 76 ---
 st.markdown("---")
@@ -6815,28 +6816,46 @@ with col1_76:
 if st.session_state.get('q76_solution_shown') and st.session_state.get('logged_in'):
     st.info("### 💡 Hướng dẫn giải chi tiết Câu 76 (Tư duy TSA):")
     st.markdown(r"""
-    **Bước 1: Phân tích tính chất của căn nguyên thủy**
+    **Bước 1: Xét số dư của số hạng thứ nhất $3^{2026}$ khi chia cho $13$**
     
-    Giả sử $g$ là một căn nguyên thủy modulo số nguyên tố $p = 1009$. Theo định nghĩa, cấp (order) của $g$ modulo $1009$ đúng bằng $p - 1 = 1008$. 
-    Khi đó, theo tính chất lũy thừa trong trường hữu hạn, ta có:
-    $$g^{\dfrac{p-1}{2}} = g^{504} \equiv -1 \pmod{1009}$$
+    Ta tính các lũy thừa của $3$ modulo $13$:
+    *   $3^1 \equiv 3 \pmod{13}$
+    *   $3^2 \equiv 9 \pmod{13}$
+    *   $3^3 = 27 \equiv 1 \pmod{13}$
     
-    **Bước 2: Áp dụng Tiêu chuẩn Euler cho thặng dư chính phương**
+    Vì $3^3 \equiv 1 \pmod{13}$, chu kỳ lặp lại của số dư là $3$. Ta chia số mũ $2026$ cho $3$:
+    $$2026 = 3 \times 675 + 1$$
     
-    Theo **Tiêu chuẩn Euler**, một số nguyên $a$ (với $\gcd(a, p) = 1$) là một thặng dư chính phương modulo $p$ khi và chỉ khi:
-    $$a^{\dfrac{p-1}{2}} \equiv 1 \pmod p$$
+    Do đó:
+    $$3^{2026} = (3^3)^{675} \times 3^1 \equiv 1^{675} \times 3 \equiv 3 \pmod{13}$$
     
-    **Bước 3: Đối chiếu điều kiện và kết luận**
+    **Bước 2: Xét số dư của số hạng thứ hai $5^{2026}$ khi chia cho $13$**
     
-    Để một số vừa là căn nguyên thủy vừa là thặng dư chính phương, nó phải đồng thời thỏa mãn $g^{504} \equiv -1 \pmod{1009}$ và $g^{504} điều kiện 1 \pmod{1009}$, điều này là **vô lý** vì $-1 \not\equiv 1 \pmod{1009}$ trong trường có đặc số khác $2$.
+    Ta tính các lũy thừa của $5$ modulo $13$:
+    *   $5^1 \equiv 5 \pmod{13}$
+    *   $5^2 = 25 \equiv -1 \pmod{13}$
+    *   $5^4 \equiv (-1)^2 = 1 \pmod{13}$
     
-    Do đó, không tồn tại bất kỳ phần tử nào thỏa mãn đồng thời hai điều kiện trên. Số lượng phần tử cần tìm bằng $0$.
+    Vì $5^4 \equiv 1 \pmod{13}$, chu kỳ lặp lại của số dư là $4$. Ta chia số mũ $2026$ cho $4$:
+    $$2026 = 4 \times 506 + 2$$
+    
+    Do đó:
+    $$5^{2026} = (5^4)^{506} \times 5^2 \equiv 1^{506} \times (-1) \equiv -1 \pmod{13}$$
+    
+    **Bước 3: Tổng hợp kết quả**
+    
+    Thay các giá trị vừa tìm được vào biểu thức $N$:
+    $$N = 3^{2026} + 5^{2026} \equiv 3 + (-1) = 2 \pmod{13}$$
+    
+    **Bước 4: Kết luận**
+    
+    Số dư của $N$ khi chia cho $13$ là $2$.
     
     ---
-    **👉 Đáp số Câu 76:** `0`
+    **👉 Đáp số Câu 76:** `2`
     """)
 
-st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown("---")
 
 # =====================================================================
 # CÂU HỎI SỐ 77 - [Trả lời ngắn _ TSA]
