@@ -45,89 +45,78 @@ st.markdown(
 st.markdown("---")
 
 
-# --- CÂU HỎI 1: THỂ TÍCH KHỐI ĐA DIỆN VÀ KHỐI TRÒN XOAY ---
+import streamlit as st
+
+# Tiêu đề câu hỏi
 st.markdown(
-    '<b style="color: blue;">Câu 1 (Đề thi Tốt Nghiệp THPT 2025)</b>',
+    '<b style="color: blue;">Câu 1. [Trả lời ngắn ]</b>',
     unsafe_allow_html=True
 )
 
+# Nội dung câu hỏi 
 st.markdown(r"""
-Để đặt một vật trang trí trên mặt bàn, người ta thiết kế một chân đế như sau. Lấy một khối gỗ có dạng khối chóp cụt tứ giác đều với độ dài hai cạnh đáy lần lượt bằng $7,4\text{ cm}$ và $10,4\text{ cm}$, bề dày của khối gỗ bằng $1,5\text{ cm}$. Sau đó khoét bỏ một phần của khối gỗ sao cho phần đó có dạng vật thể $H$, ở đó $H$ nhận được bằng cách cắt khối cầu bán kính $5,5\text{ cm}$ bởi một mặt phẳng cắt mà mặt cắt là hình tròn có bán kính $3,5\text{ cm}$ (xem hình dưới).
-
-Thể tích của khối chân đế bằng bao nhiêu centimét khối (không làm tròn kết quả các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần mười)?
+Cho số tự nhiên $N = 202600$. Có bao nhiêu ước số nguyên dương của $N$ chia hết cho $10$?
 """)
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        # Đường dẫn ảnh đã được đồng bộ
-        st.image("images/tp_2026.PNG", width=400)
-except FileNotFoundError:
-    # Thông báo lỗi cập nhật đúng tên file
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/tp_2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
-# --- Ô NHẬP ĐÁP ÁN ---
-user_answer = st.text_input("Nhập thể tích khối chân đế (làm tròn đến hàng phần mười, ví dụ: 12.3):", key="q1_ans")
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng ước số:", key="q1_ans")
 
-# --- CHÈN HÌNH ẢNH ---
-
-
-# --- NÚT KIỂM TRA ĐÁP ÁN ---
+# Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q1_check"):
-    normalized_user_answer = user_answer.strip().replace(',', '.')
+    # Chuẩn hóa đầu vào (loại bỏ khoảng trắng thừa)
+    normalized_user_answer = user_answer.strip()
     
-    # Đáp án chính xác là 94.7
-    if normalized_user_answer == "94.7":
+    # Đáp án chính xác là 12
+    if normalized_user_answer == "12":
         st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
     elif user_answer == "":
         st.warning("Bạn chưa nhập đáp án.")
     else:
-        st.error("Sai rồi. Gợi ý: Hãy tính thể tích khối chóp cụt ban đầu, sau đó trừ đi thể tích của phần chỏm cầu bị khoét (có thể dùng tích phân để tính thể tích chỏm cầu nhé)!")
+        st.error("Sai rồi. Hãy cẩn thận phân tích số $N$ ra thừa số nguyên tố và nhớ áp dụng quy tắc nhân nhé!")
 
 # --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
 st.markdown("---")
 
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
 if 'q1_solution_shown' not in st.session_state:
     st.session_state['q1_solution_shown'] = False
 
 col1, col2 = st.columns([1, 4])
 with col1:
-    if st.button("Xem lời giải chi tiết", key="q1_solution_btn"):
+    if st.button("Xem lời giải chi tiết", key="q1_solution"):
+        # Kiểm tra điều kiện đăng nhập
         if st.session_state.get('logged_in'):
             st.session_state['q1_solution_shown'] = True
         else:
             st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
             st.session_state['q1_solution_shown'] = False 
 
-# Hiển thị lời giải chi tiết khi đủ điều kiện
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
 if st.session_state.get('q1_solution_shown') and st.session_state.get('logged_in'):
-    st.info("### Lời giải chi tiết:")
+    st.info("### Hướng dẫn chi tiết:")
     
     st.markdown(r"""
-    **Bước 1: Tính thể tích khối chóp cụt tứ giác đều (khối gỗ ban đầu)**
+    **Bước 1: Phân tích số $N$ ra thừa số nguyên tố:**
     
-    * Khối chóp cụt có đáy lớn là hình vuông cạnh $a = 10,4\text{ cm}$, đáy nhỏ là hình vuông cạnh $b = 7,4\text{ cm}$ và chiều cao $h_1 = 1,5\text{ cm}$.
-    * Diện tích đáy lớn: $S_1 = 10,4^2 = 108,16\text{ (cm}^2\text{)}$
-    * Diện tích đáy nhỏ: $S_2 = 7,4^2 = 54,76\text{ (cm}^2\text{)}$
-    * Thể tích khối gỗ ban đầu là:
-        $$V_1 = \dfrac{1}{3}h_1(S_1 + \sqrt{S_1 S_2} + S_2) = \dfrac{1}{3} \cdot 1,5 \cdot (108,16 + 10,4 \cdot 7,4 + 54,76) = 119,94 \text{ (cm}^3\text{)}$$
+    Ta có:
+    $$N = 202600 = 2026 \times 100$$
+    $$N = (2 \times 1013) \times (2^2 \times 5^2)$$
+    $$N = 2^3 \times 5^2 \times 1013^1$$
     
-    **Bước 2: Tính thể tích phần khoét đi (chỏm cầu $H$)**
+    **Bước 2: Tìm điều kiện của các ước số chia hết cho $10$:**
     
-    * Khối cầu có bán kính $R = 5,5\text{ cm}$. Mặt cắt là hình tròn có bán kính $r = 3,5\text{ cm}$.
-    * Khoảng cách từ tâm khối cầu đến mặt phẳng cắt là:
-        $$d = \sqrt{R^2 - r^2} = \sqrt{5,5^2 - 3,5^2} = \sqrt{18} = 3\sqrt{2} \text{ (cm)}$$
-    * Thể tích chỏm cầu $H$ được tính bằng ứng dụng tích phân (như hệ trục tọa độ đã cho trên hình, quay hình phẳng giới hạn bởi đường tròn $x^2 + y^2 = 5,5^2$ quanh trục $Ox$ từ mặt cắt $x = 3\sqrt{2}$ đến $x = 5,5$):
-        $$V_2 = \pi \int_{3\sqrt{2}}^{5,5} (5,5^2 - x^2) \text{d}x = \pi \left[ 30,25x - \dfrac{x^3}{3} \right]_{3\sqrt{2}}^{5,5}$$
-        $$V_2 = \pi \left( \dfrac{332,75 - 218,25\sqrt{2}}{3} \right) \approx 25,236 \text{ (cm}^3\text{)}$$
-    *(Lưu ý: Cũng có thể dùng công thức thể tích chỏm cầu $V_2 = \pi h_2^2 \left(R - \dfrac{h_2}{3}\right)$ với chiều cao chỏm cầu $h_2 = 5,5 - 3\sqrt{2}$)*
+    Để một ước số $d$ của $N$ chia hết cho $10$ (tức là chia hết cho $2 \times 5$), thì $d$ phải có dạng $d = 2^x \times 5^y \times 1013^z$ trong đó:
     
-    **Bước 3: Tính thể tích khối chân đế**
+    *   Số mũ $x \in \{1, 2, 3\}$ (có $3$ cách chọn, do $d$ phải chứa ít nhất thừa số $2^1$).
+    *   Số mũ $y \in \{1, 2\}$ (có $2$ cách chọn, do $d$ phải chứa ít nhất thừa số $5^1$).
+    *   Số mũ $z \in \{0, 1\}$ (có $2$ cách chọn).
     
-    * Thể tích của khối chân đế là phần còn lại sau khi khoét:
-        $$V = V_1 - V_2 = 119,94 - \pi \left( \dfrac{332,75 - 218,25\sqrt{2}}{3} \right) \approx 94,704 \text{ (cm}^3\text{)}$$
-    * Làm tròn kết quả cuối cùng đến hàng phần mười, ta được $94,7$.
-        
-    **Kết luận:** Thể tích của khối chân đế xấp xỉ **$94,7\text{ cm}^3$**.
+    **Bước 3: Tính toán kết quả**
+    
+    Áp dụng quy tắc nhân, số lượng ước số thỏa mãn yêu cầu bài toán là:
+    $$3 \times 2 \times 2 = 12 \text{ (ước số)}$$
+    
+    **Đáp số:** $12$
     """)
-
+    
 st.markdown("---")
