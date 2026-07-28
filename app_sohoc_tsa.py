@@ -6334,6 +6334,8 @@ st.markdown("---")
 
 
 
+
+
 # =====================================================================
 # CÂU HỎI SỐ 71 - [Trả lời ngắn _ TSA]
 # =====================================================================
@@ -6344,22 +6346,22 @@ st.markdown(
 )
 
 st.markdown(r"""
-Cho số nguyên tố $p = 1009$. Gọi $P$ là tích của tất cả các căn nguyên thủy (primitive roots) modulo $1009$. Tính số dư của tích $P$ khi chia cho số nguyên tố $1009$.
+Tìm số dư của phép chia khi chia số $7^{2026}$ cho $1000$.
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 71) ---
-user_ans_71 = st.text_input("Nhập số dư của P khi chia cho 1009:", key="q71_ans")
+user_ans_71 = st.text_input("Nhập số dư khi chia cho 1000:", key="q71_ans")
 
 if st.button("Kiểm tra đáp án Câu 71", key="q71_check"):
     norm_ans_71 = user_ans_71.strip()
     
-    # Đáp án chính xác là 1
-    if norm_ans_71 == "1":
-        st.success("🎉 Xuất sắc! Bạn đã vận dụng Định lý Gauss về tích các căn nguyên thủy một cách tuyệt đỉnh. Lời giải Câu 71 đã được mở khóa.")
+    # Đáp án chính xác là 649
+    if norm_ans_71 == "649":
+        st.success("🎉 Xuất sắc! Bạn đã vận dụng Định lý Euler để thu gọn số mũ cực kỳ chính xác. Lời giải Câu 71 đã được mở khóa.")
     elif user_ans_71 == "":
         st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 71.")
     else:
-        st.error("❌ Chưa đúng. Gợi ý: Sử dụng Định lý Gauss cho tích các căn nguyên thủy modulo $p$: $P \equiv (-1)^{\phi(p-1)} \pmod p$, với lưu ý tính chẵn lẻ của $\phi(1008)$.")
+        st.error("❌ Chưa đúng. Gợi ý: Tính hàm số Euler $\phi(1000) = 400$, sau đó áp dụng định lý Euler để hạ số mũ $2026$ xuống modulo $400$.")
 
 # --- XEM LỜI GIẢI CHI TIẾT CÂU 71 ---
 st.markdown("---")
@@ -6379,32 +6381,44 @@ with col1_71:
 if st.session_state.get('q71_solution_shown') and st.session_state.get('logged_in'):
     st.info("### 💡 Hướng dẫn giải chi tiết Câu 71 (Tư duy TSA):")
     st.markdown(r"""
-    **Bước 1: Nhận diện Định lý Gauss về tích các căn nguyên thủy**
+    **Bước 1: Tính giá trị hàm số Euler $\phi(1000)$**
     
-    Theo lý thuyết số học cao cấp, tích $P$ của tất cả các căn nguyên thủy phân biệt modulo một số nguyên tố $p > 3$ thỏa mãn định lý Gauss:
-    $$P \equiv (-1)^{\phi(p-1)} \pmod p$$
-    trong đó $\phi$ là hàm số Euler.
+    Phân tích mẫu số ra thừa số nguyên tố:
+    $$1000 = 10^3 = 2^3 \times 5^3$$
     
-    **Bước 2: Tính giá trị của $\phi(p-1)$ với $p = 1009$**
+    Áp dụng công thức tính hàm số Euler:
+    $$\phi(1000) = 1000 \times \left(1 - \dfrac{1}{2}\right) \times \left(1 - \dfrac{1}{5}\right) = 1000 \times \dfrac{1}{2} \times \dfrac{4}{5} = 400$$
     
-    Ta có $p - 1 = 1008$. Phân tích $1008$ ra thừa số nguyên tố:
-    $$1008 = 2^4 \times 3^2 \times 7$$
+    **Bước 2: Áp dụng Định lý Euler để thu gọn số mũ**
     
-    Tính giá trị của hàm Euler $\phi(1008)$:
-    $$\phi(1008) = 1008 \times \left(1 - \dfrac{1}{2}\right) \times \left(1 - \dfrac{1}{3}\right) \times \left(1 - \dfrac{1}{7}\right) = 288$$
+    Vì $\gcd(7, 1000) = 1$, theo Định lý Euler ta có:
+    $$7^{400} \equiv 1 \pmod{1000}$$
     
-    Vì $288$ là một số nguyên chẵn, ta có:
-    $$(-1)^{\phi(1008)} = (-1)^{288} = 1$$
+    Chia số mũ $2026$ cho $\phi(1000) = 400$:
+    $$2026 = 400 \times 5 + 26$$
     
-    **Bước 3: Kết luận**
+    Do đó:
+    $$7^{2026} = (7^{400})^5 \times 7^{26} \equiv 1^5 \times 7^{26} \equiv 7^{26} \pmod{1000}$$
     
-    Áp dụng vào đồng dư thức, ta thu được:
-    $$P \equiv 1 \pmod{1009}$$
+    **Bước 3: Tính toán giá trị của $7^{26} \pmod{1000}$**
     
-    Số dư của tích $P$ khi chia cho $1009$ bằng $1$.
+    Sử dụng phương pháp bình phương có lặp (lũy thừa nhị phân):
+    *   $7^2 = 49 \pmod{1000}$
+    *   $7^4 = 49^2 = 2401 \equiv 401 \pmod{1000}$
+    *   $7^8 \equiv 401^2 = 160801 \equiv 801 \pmod{1000}$
+    *   $7^{16} \equiv 801^2 = 641601 \equiv 601 \pmod{1000}$
+    
+    Kết hợp các số mũ để tính $7^{26} = 7^{16} \times 7^8 \times 7^2$:
+    $$7^{26} \equiv 601 \times 801 \times 49 \pmod{1000}$$
+    $$601 \times 801 = 481401 \equiv 401 \pmod{1000}$$
+    $$401 \times 49 = 19649 \equiv 649 \pmod{1000}$$
+    
+    **Bước 4: Kết luận**
+    
+    Số dư của phép chia là $649$.
     
     ---
-    **👉 Đáp số Câu 71:** `1`
+    **👉 Đáp số Câu 71:** `649`
     """)
 
 st.markdown("<br><br>", unsafe_allow_html=True)
@@ -6419,22 +6433,23 @@ st.markdown(
 )
 
 st.markdown(r"""
-Cho số nguyên tố $p = 1009$. Gọi $v_{1009}(N)$ là số mũ lớn nhất của $1009$ trong phân tích tiêu chuẩn của số nguyên dương $N$. Tính giá trị của $v_{1009}\left(\dbinom{1100}{500}\right)$.
+Tìm số nguyên dương $x$ nhỏ nhất thỏa mãn hệ phương trình đồng dư sau:
+$$\begin{cases} x \equiv 2 \pmod 5 \\ x \equiv 3 \pmod 7 \\ x \equiv 2 \pmod{11} \end{cases}$$
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 72) ---
-user_ans_72 = st.text_input("Nhập giá trị của v_{1009}:", key="q72_ans")
+user_ans_72 = st.text_input("Nhập giá trị của x:", key="q72_ans")
 
 if st.button("Kiểm tra đáp án Câu 72", key="q72_check"):
     norm_ans_72 = user_ans_72.strip()
     
-    # Đáp án chính xác là 1
-    if norm_ans_72 == "1":
-        st.success("🎉 Xuất sắc! Bạn đã áp dụng Định lý Kummer thông qua số lần nhớ trong hệ cơ số nguyên tố cực kỳ chính xác. Lời giải Câu 72 đã được mở khóa.")
+    # Đáp án chính xác là 332
+    if norm_ans_72 == "332":
+        st.success("🎉 Xuất sắc! Bạn đã giải hệ đồng dư bằng Định lý phần dư Trung Hoa một cách hoàn hảo. Lời giải Câu 72 đã được mở khóa.")
     elif user_ans_72 == "":
         st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 72.")
     else:
-        st.error("❌ Chưa đúng. Gợi ý: Sử dụng Định lý Kummer: số mũ của $p$ chia hết hệ số tổ hợp $\dbinom{n}{k}$ đúng bằng số lần nhớ (carries) khi thực hiện phép cộng $k + (n-k)$ trong hệ cơ số $p$.")
+        st.error("❌ Chưa đúng. Gợi ý: Sử dụng Định lý phần dư Trung Hoa (Chinese Remainder Theorem) với các mô-đun đôi một nguyên tố cùng nhau $5, 7, 11$.")
 
 # --- XEM LỜI GIẢI CHI TIẾT CÂU 72 ---
 st.markdown("---")
@@ -6454,41 +6469,48 @@ with col1_72:
 if st.session_state.get('q72_solution_shown') and st.session_state.get('logged_in'):
     st.info("### 💡 Hướng dẫn giải chi tiết Câu 72 (Tư duy TSA):")
     st.markdown(r"""
-    **Bước 1: Nhận diện Định lý Kummer**
+    **Bước 1: Kiểm tra điều kiện của Định lý phần dư Trung Hoa**
     
-    Theo **Định lý Kummer**, số mũ lớn nhất của số nguyên tố $p$ chia hết hệ số tổ hợp $\dbinom{n}{k}$ (tức là $v_p\left(\dbinom{n}{k}\right)$) đúng bằng **số lần nhớ** (number of carries) khi thực hiện phép cộng hai số $k$ và $n - k$ trong hệ cơ số $p$.
+    Hệ phương trình đồng dư gồm các mô-đun:
+    $$m_1 = 5, \quad m_2 = 7, \quad m_3 = 11$$
+    Các số này đôi một nguyên tố cùng nhau. Tích của các mô-đun là:
+    $$N = 5 \times 7 \times 11 = 385$$
     
-    **Bước 2: Thiết lập bài toán trong hệ cơ số $p = 1009$**
+    **Bước 2: Tìm nghiệm cơ sở cho từng phương trình thành phần**
     
-    Ở đây ta có:
-    *   $n = 1100$
-    *   $k = 500$
-    *   $n - k = 1100 - 500 = 600$
+    Ta tính các giá trị $N_i = \dfrac{N}{m_i}$ và tìm nghịch đảo mô-đun tương ứng:
+    1.  **Với phương trình 1 ($x \equiv 2 \pmod 5$):**
+        *   $N_1 = \dfrac{385}{5} = 77$
+        *   Ta có $77 \equiv 2 \pmod 5$. Nghịch đảo của $2$ modulo $5$ là $3$ (vì $2 \times 3 = 6 \equiv 1 \pmod 5$).
+        *   Thành phần thứ nhất: $2 \times 77 \times 3 = 462$.
+        
+    2.  **Với phương trình 2 ($x \equiv 3 \pmod 7$):**
+        *   $N_2 = \dfrac{385}{7} = 55$
+        *   Ta có $55 \equiv 6 \pmod 7$. Nghịch đảo của $6$ modulo $7$ là $6$ (vì $6 \times 6 = 36 \equiv 1 \pmod 7$).
+        *   Thành phần thứ hai: $3 \times 55 \times 6 = 990$.
+        
+    3.  **Với phương trình 3 ($x \equiv 2 \pmod{11}$):**
+        *   $N_3 = \dfrac{385}{11} = 35$
+        *   Ta có $35 \equiv 2 \pmod{11}$. Nghịch đảo của $2$ modulo $11$ là $6$ (vì $2 \times 6 = 12 \equiv 1 \pmod{11}$).
+        *   Thành phần thứ ba: $2 \times 35 \times 6 = 420$.
+        
+    **Bước 3: Tổng hợp nghiệm tổng quát**
     
-    Ta thực hiện phép cộng $k + (n - k) = 500 + 600 = 1100$ trong hệ cơ số $1009$:
-    *   Viết các số dưới dạng biểu diễn trong hệ cơ số $1009$:
-        *   $500 = 0 \times 1009 + 500$
-        *   $600 = 0 \times 1009 + 600$
+    Nghiệm tổng quát của hệ có dạng:
+    $$x \equiv 462 + 990 + 420 \pmod{385}$$
+    $$x \equiv 1872 \pmod{385}$$
     
-    **Bước 3: Thực hiện phép cộng và đếm số lần nhớ**
+    Rút gọn số dư trong khoảng từ $0$ đến $384$:
+    $$1872 = 385 \times 4 + 332$$
     
-    Thực hiện cộng theo từng hàng (tương ứng với các lũy thừa của $1009$):
-    1.  **Hàng đơn vị ($1009^0$):** 
-        $$500 + 600 = 1100$$
-        Vì $1100 \ge 1009$, ta viết phần dư $1100 - 1009 = 91$ xuống và **nhớ $1$** sang hàng tiếp theo. (Số lần nhớ ở đây là $1$).
-    2.  **Hàng thứ nhất ($1009^1$):** 
-        $$0 + 0 + \text{nhớ } 1 = 1$$
-        Viết $1$ và không có nhớ.
-    
-    Tổng số lần nhớ trong quá trình cộng là đúng $1$ lần.
+    Do đó, nghiệm nguyên dương nhỏ nhất của hệ là $332$.
     
     **Bước 4: Kết luận**
     
-    Theo Định lý Kummer, ta có:
-    $$v_{1009}\left(\dbinom{1100}{500}\right) = 1$$
+    Số nguyên dương $x$ nhỏ nhất thỏa mãn là $332$.
     
     ---
-    **👉 Đáp số Câu 72:** `1`
+    **👉 Đáp số Câu 72:** `332`
     """)
 
 st.markdown("---")
