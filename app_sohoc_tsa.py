@@ -7802,3 +7802,443 @@ if st.session_state.get('q87_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 88: ĐỒNG DƯ THỨC VÀ ĐỊNH LÝ NHỎ FERMAT
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 88 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên dương $A = 2025^{2026^{2027}}$. Tìm số dư khi chia $A$ cho số nguyên tố $17$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_88 = st.text_input("Nhập số dư của phép chia:", key="q88_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q88_check"):
+    normalized_user_answer_88 = user_answer_88.strip().replace(',', '.')
+    
+    if normalized_user_answer_88 == "1":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_88 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy áp dụng Định lý nhỏ Fermat kết hợp với tính chu kỳ số mũ theo mô-đun nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q88_solution_shown' not in st.session_state:
+    st.session_state['q88_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q88_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q88_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q88_solution_shown'] = False 
+
+if st.session_state.get('q88_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xét cơ số theo mô-đun $17$**
+    
+    Ta có $2025 = 17 \times 119 + 2$, suy ra:
+    $$2025 \equiv 2 \pmod{17}$$
+    
+    Do đó, biểu thức trở thành:
+    $$A \equiv 2^{2026^{2027}} \pmod{17}$$
+    
+    **Bước 2: Xác định chu kỳ số mũ theo Định lý nhỏ Fermat**
+    
+    Vì $17$ là số nguyên tố và $\gcd(2, 17) = 1$, theo Định lý nhỏ Fermat, ta có:
+    $$2^{16} \equiv 1 \pmod{17}$$
+    
+    Do đó, ta cần tìm số dư của số mũ $E = 2026^{2027}$ khi chia cho chu kỳ $16$.
+    
+    **Bước 3: Xét số mũ $E = 2026^{2027}$ theo mô-đun $16$**
+    
+    Ta có $2026 = 16 \times 126 + 10 \equiv 10 \pmod{16}$. Suy ra:
+    $$E \equiv 10^{2027} \pmod{16}$$
+    
+    Vì các lũy thừa của $10$ với số mũ từ $4$ trở lên đều chia hết cho $16$:
+    *   $10^1 \equiv 10 \pmod{16}$
+    *   $10^2 \equiv 4 \pmod{16}$
+    *   $10^3 \equiv 8 \pmod{16}$
+    *   $10^4 \equiv 0 \pmod{16}$ và với mọi $k \ge 4$, $10^k \equiv 0 \pmod{16}$.
+    
+    Vì $2027 \ge 4$, nên $10^{2027} \equiv 0 \pmod{16}$. Điều này có nghĩa là $2026^{2027}$ là một số chia hết cho $16$, tức là $2026^{2027} = 16m$ với $m$ là số nguyên dương.
+    
+    **Bước 4: Tính giá trị của $A$ theo mô-đun $17$**
+    
+    Thay số mũ vừa tìm được vào biểu thức:
+    $$A \equiv 2^{16m} = (2^{16})^m \equiv 1^m = 1 \pmod{17}$$
+    
+    **Kết luận:** Số dư khi chia $A$ cho $17$ là **$1$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 89: CHIA ĐA THỨC VÀ ĐỒNG DƯ THỨC ĐA THỨC
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 89 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho đa thức $P(x) = x^{2026} + x^{2025} + 1$. Khi chia đa thức $P(x)$ cho đa thức $Q(x) = x^2 + x + 1$, ta được số dư là đa thức bậc nhất $R(x) = ax + b$. Tính giá trị của biểu thức $T = a^2 + b^2$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_89 = st.text_input("Nhập giá trị của biểu thức T:", key="q89_ans")
+
+# Khối chèn hình ảnh minh họa
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q89_check"):
+    normalized_user_answer_89 = user_answer_89.strip().replace(',', '.')
+    
+    if normalized_user_answer_89 == "5":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_89 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy sử dụng hằng đẳng thức $x^3 - 1 = (x-1)(x^2 + x + 1)$ để thu gọn số mũ của đa thức nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q89_solution_shown' not in st.session_state:
+    st.session_state['q89_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q89_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q89_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q89_solution_shown'] = False 
+
+if st.session_state.get('q89_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập mối liên hệ đa thức**
+    
+    Ta có hằng đẳng thức đáng chú ý:
+    $$x^3 - 1 = (x - 1)(x^2 + x + 1)$$
+    
+    Do đó, trong vành đa thức, khi xét phép chia cho $Q(x) = x^2 + x + 1$, ta có thể thay thế tương đương từ hệ thức:
+    $$x^3 \equiv 1 \pmod{x^2 + x + 1}$$
+    
+    **Bước 2: Thu gọn số mũ của các hạng tử trong $P(x)$**
+    
+    *   Đối với số hạng $x^{2026}$:
+        Thực hiện phép chia số mũ cho $3$: $2026 = 3 \times 675 + 1$.
+        $$x^{2026} = (x^3)^{675} \cdot x \equiv 1^{675} \cdot x = x \pmod{x^2 + x + 1}$$
+        
+    *   Đối với số hạng $x^{2025}$:
+        Thực hiện phép chia số mũ cho $3$: $2025 = 3 \times 675$.
+        $$x^{2025} = (x^3)^{675} \equiv 1^{675} = 1 \pmod{x^2 + x + 1}$$
+        
+    **Bước 3: Xác định đa thức số dư $R(x)$**
+    
+    Thay các kết quả thu gọn vào đa thức $P(x)$:
+    $$P(x) = x^{2026} + x^{2025} + 1 \equiv x + 1 + 1 = x + 2 \pmod{x^2 + x + 1}$$
+    
+    Vì đa thức dư có dạng $R(x) = ax + b$, đồng nhất hệ số ta thu được:
+    $$a = 1, \quad b = 2$$
+    
+    **Bước 4: Tính giá trị biểu thức $T$**
+    
+    Thay giá trị $a$ và $b$ vào biểu thức $T$:
+    $$T = a^2 + b^2 = 1^2 + 2^2 = 5$$
+    
+    **Kết luận:** Giá trị của biểu thức $T$ là **$5$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 90: TỔNG PHẦN NGUYÊN VÀ HÀM ƯỚC SỐ
+# ==========================================
+st.markdown(
+    '<b style="color: blue;">Câu 90 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tính giá trị của biểu thức $S = \sum_{k=1}^{2026} \left\lfloor \dfrac{2026}{k} \right\rfloor$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_90 = st.text_input("Nhập giá trị của biểu thức S:", key="q90_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q90_check"):
+    normalized_user_answer_90 = user_answer_90.strip().replace(',', '.')
+    
+    if normalized_user_answer_90 == "16157":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_90 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy đổi thứ tự tổng để đưa bài toán về tổng số ước số của các số nguyên từ $1$ đến $2026$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q90_solution_shown' not in st.session_state:
+    st.session_state['q90_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q90_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q90_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q90_solution_shown'] = False 
+
+if st.session_state.get('q90_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích bản chất của tổng phần nguyên**
+    
+    Ký hiệu $\left\lfloor \dfrac{2026}{k} \right\rfloor$ biểu diễn số lượng các bội số của $k$ nhỏ hơn hoặc bằng $2026$.
+    
+    **Bước 2: Đổi thứ tự tổng (Phương pháp đếm theo ước số)**
+    
+    Xét mỗi số nguyên dương $m$ trong đoạn từ $1$ đến $2026$. Số $m$ này sẽ xuất hiện bao nhiêu lần trong tổng $S$? 
+    Số $m$ chỉ xuất hiện ở những số hạng mà $m$ là bội của $k$, điều này tương đương với việc $k$ là một ước số của $m$. Do đó, số lần xuất hiện của $m$ trong tổng đúng bằng số ước số của $m$, ký hiệu là $d(m)$.
+    
+    Vì vậy, ta có thể đổi thứ tự tổng:
+    $$S = \sum_{m=1}^{2026} d(m) = \sum_{k=1}^{2026} \left\lfloor \dfrac{2026}{k} \right\rfloor$$
+    
+    **Bước 3: Áp dụng công thức tính nhanh tổng ước số**
+    
+    Với $n = 2026$, ta có $\sqrt{2026} \approx 45{,}01$, suy ra phần nguyên lớn nhất là $m = \lfloor \sqrt{2026} \rfloor = 45$.
+    
+    Sử dụng phương pháp phân hoạch (kỹ thuật nhóm đối xứng Dirichlet):
+    $$\sum_{k=1}^{n} \left\lfloor \dfrac{n}{k} \right\rfloor = 2 \sum_{k=1}^{m} \left\lfloor \dfrac{n}{k} \right\rfloor - m^2$$
+    
+    **Bước 4: Tính toán giá trị cụ thể**
+    
+    *   Tính tổng các thương số phần nguyên từ $k = 1$ đến $m = 45$:
+        $$\sum_{k=1}^{45} \left\lfloor \dfrac{2026}{k} \right\rfloor = 9091$$
+    *   Thay vào công thức trên:
+        $$S = 2 \times 9091 - 45^2 = 18182 - 2025 = 16157$$
+    
+    **Kết luận:** Giá trị của biểu thức $S$ là **$16157$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 91 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 91. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho các số nguyên dương $x, y, z$ thỏa mãn phương trình:
+$$x! + y! = 2^z$$
+với điều kiện $x \le y$. Gọi $S$ là tổng tất cả các giá trị của biểu thức $T = x + y + z$ ứng với mọi bộ nghiệm nguyên dương $(x, y, z)$ thỏa mãn. Tính giá trị của tổng $S$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 91) ---
+user_ans_91 = st.text_input("Nhập giá trị của tổng S:", key="q91_ans")
+
+if st.button("Kiểm tra đáp án Câu 91", key="q91_check"):
+    norm_ans_91 = user_ans_91.strip()
+    
+    # Đáp án chính xác là 17
+    if norm_ans_91 == "17":
+        st.success("🎉 Xuất sắc! Bạn đã khai thác triệt để tính chất chia hết modulo 4 đối với giai thừa để tìm trọn vẹn các nghiệm. Lời giải Câu 91 đã được mở khóa.")
+    elif user_ans_91 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 91.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy xét các trường hợp của $x$ và $y$ kết hợp với tính chất chia hết cho $4$ của các giai thừa từ $4!$ trở lên.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 91 ---
+st.markdown("---")
+
+if 'q91_solution_shown' not in st.session_state:
+    st.session_state['q91_solution_shown'] = False
+
+col1_91, col2_91 = st.columns([1, 4])
+with col1_91:
+    if st.button("Xem lời giải Câu 91", key="q91_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q91_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q91_solution_shown'] = False 
+
+if st.session_state.get('q91_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 91 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Phân tích trường hợp khi $y \ge 4$**
+    
+    Với mọi số nguyên dương $y \ge 4$, giá trị của $y!$ luôn chia hết cho $4$ (vì chứa thừa số $2 \times 4 = 8$ hoặc $3 \times 4$, v.v.).
+    *   Nếu $x \ge 4$ và $y \ge 4$, thì cả $x!$ và $y!$ đều chia hết cho $4$, dẫn đến tổng $x! + y! \equiv 0 \pmod 4$.
+        Trong khi đó, vế phải $2^z$ chia hết cho $4$ khi và chỉ khi $z \ge 2$. Nếu $z = 1$, $2^1 = 2 \not\equiv 0 \pmod 4$, nhưng nếu $z \ge 2$ thì $x! + y!$ rất lớn so với $2^z$ hoặc không thỏa mãn (thử trực tiếp thấy không có nghiệm).
+    *   Do đó, để phương trình có nghiệm, các biến $x, y$ phải nhỏ hơn $4$.
+    
+    **Bước 2: Khảo sát các giá trị nhỏ của $x$ và $y$ (với $1 \le x \le y < 4$ và $x \le y$)**
+    
+    Ta xét các trường hợp cụ thể:
+    1.  **Nếu $x = 1$:** Phương trình trở thành $1! + y! = 2^z \implies 1 + y! = 2^z$.
+        *   Nếu $y = 1$: $1 + 1 = 2 = 2^1 \implies z = 1$. Ta được bộ nghiệm **$(1, 1, 1)$**. Giá trị $T = 1 + 1 + 1 = 3$.
+        *   Nếu $y = 2$: $1 + 2! = 3 \neq 2^z$ (loại).
+        *   Nếu $y = 3$: $1 + 3! = 7 \neq 2^z$ (loại).
+        
+    2.  **Nếu $x = 2$:** Phương trình trở thành $2! + y! = 2^z \implies 2 + y! = 2^z$.
+        *   Nếu $y = 2$: $2 + 2! = 4 = 2^2 \implies z = 2$. Ta được bộ nghiệm **$(2, 2, 2)$**. Giá trị $T = 2 + 2 + 2 = 6$.
+        *   Nếu $y = 3$: $2 + 3! = 8 = 2^3 \implies z = 3$. Ta được bộ nghiệm **$(2, 3, 3)$**. Giá trị $T = 2 + 3 + 3 = 8$.
+        
+    3.  **Nếu $x = 3$:** Phương trình trở thành $3! + y! = 2^z \implies 6 + y! = 2^z$.
+        *   Nếu $y = 3$: $6 + 6 = 12 \neq 2^z$ (loại).
+        
+    **Bước 3: Tổng hợp các bộ nghiệm và tính tổng $S$**
+    
+    Tất cả các bộ nghiệm nguyên dương $(x, y, z)$ thỏa mãn điều kiện đề bài gồm:
+    *   Bộ 1: $(1, 1, 1) \implies T_1 = 3$
+    *   Bộ 2: $(2, 2, 2) \implies T_2 = 6$
+    *   Bộ 3: $(2, 3, 3) \implies T_3 = 8$
+    
+    Tổng tất cả các giá trị của $T$ là:
+    $$S = 3 + 6 + 8 = 17$$
+    
+    ---
+    **👉 Đáp số Câu 91:** `17`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 92 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 92. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tìm số lượng nghiệm nguyên dương $(x, y)$ của phương trình:
+$$x^3 - y^3 = xy + 61$$
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 92) ---
+user_ans_92 = st.text_input("Nhập số lượng nghiệm nguyên dương:", key="q92_ans")
+
+if st.button("Kiểm tra đáp án Câu 92", key="q92_check"):
+    norm_ans_92 = user_ans_92.strip()
+    
+    # Đáp án chính xác là 1
+    if norm_ans_92 == "1":
+        st.success("🎉 Xuất sắc! Bạn đã biến đổi phương trình bằng hiệu hai lập phương và sử dụng biện luận biệt thức Delta cực kỳ sắc bén. Lời giải Câu 92 đã được mở khóa.")
+    elif user_ans_92 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 92.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Đặt $d = x - y$ (với $d \ge 1$), đưa phương trình về phương trình bậc hai theo ẩn $y$ và dùng điều kiện biệt thức $\Delta$ là số chính phương.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 92 ---
+st.markdown("---")
+
+if 'q92_solution_shown' not in st.session_state:
+    st.session_state['q92_solution_shown'] = False
+
+col1_92, col2_92 = st.columns([1, 4])
+with col1_92:
+    if st.button("Xem lời giải Câu 92", key="q92_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q92_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q92_solution_shown'] = False 
+
+if st.session_state.get('q92_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 92 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn phụ chuyển đổi cấu trúc phương trình**
+    
+    Nhận xét rằng nếu $x \le y$, vế trái $x^3 - y^3 \le 0$ trong khi vế phải $xy + 61 > 0$, do đó bắt buộc phải có $x > y$. 
+    Đặt $d = x - y$ với $d$ là số nguyên dương ($d \ge 1$). Khi đó $x = y + d$.
+    
+    Thay vào phương trình ban đầu:
+    $$(y + d)^3 - y^3 = (y + d)y + 61$$
+    $$3y^2d + 3yd^2 + d^3 = y^2 + dy + 61$$
+    
+    **Bước 2: Viết lại thành phương trình bậc hai ẩn $y$**
+    
+    Chuyển vế và nhóm các số hạng theo lũy thừa của $y$:
+    $$y^2(3d - 1) + y(3d^2 - d) + (d^3 - 61) = 0$$
+    
+    Để phương trình tồn tại nghiệm nguyên $y$, biệt thức $\Delta$ của phương trình bậc hai này phải là một số chính phương không âm:
+    $$\Delta = (3d^2 - d)^2 - 4(3d - 1)(d^3 - 61)$$
+    
+    Khai triển và rút gọn biểu thức $\Delta$:
+    $$\Delta = 9d^4 - 6d^3 + d^2 - 4(3d^4 - d^3 - 183d + 61)$$
+    $$\Delta = 9d^4 - 6d^3 + d^2 - 12d^4 + 4d^3 + 732d - 244$$
+    $$\Delta = -3d^4 - 2d^3 + d^2 + 732d - 244$$
+    
+    **Bước 3: Khảo sát giá trị của $d$ để $\Delta$ là số chính phương**
+    
+    Vì $d$ là số nguyên dương, ta đánh giá giá trị của $\Delta$ với các số nguyên dương $d$:
+    *   Với $d = 1$: 
+        $$\Delta = -3(1) - 2(1) + 1 + 732(1) - 244 = 484 = 22^2 \quad (\text{thỏa mãn})$$
+    *   Với $d = 2$: 
+        $$\Delta = -3(16) - 2(8) + 4 + 732(2) - 244 = 1160 \quad (\text{không phải số chính phương})$$
+    *   Với $d \ge 6$: Biểu thức chứa $-3d^4$ tăng trưởng âm rất nhanh, khiến $\Delta < 0$. Các giá trị $d = 3, 4, 5$ cũng được kiểm tra trực tiếp và đều không cho giá trị $\Delta$ là số chính phương.
+    
+    **Bước 4: Tìm nghiệm nguyên dương $(x, y)$ tương ứng**
+    
+    Với $d = 1$, ta thay vào phương trình bậc hai theo $y$:
+    $$(3(1) - 1)y^2 + (3(1)^2 - 1)y + (1^3 - 61) = 0$$
+    $$2y^2 + 2y - 60 = 0 \iff y^2 + y - 30 = 0$$
+    
+    Giải phương trình này ta được hai nghiệm: $y = 5$ hoặc $y = -6$. Vì $y$ là số nguyên dương, ta chọn **$y = 5$**.
+    
+    Từ đó tính được $x = y + d = 5 + 1 = 6$.
+    
+    Kiểm tra lại với bộ nghiệm $(6, 5)$:
+    $$6^3 - 5^3 = 216 - 125 = 91$$
+    $$6 \times 5 + 61 = 30 + 61 = 91 \quad (\text{thỏa mãn})$$
+    
+    **Bước 5: Kết luận**
+    
+    Phương trình chỉ có duy nhất $1$ nghiệm nguyên dương $(x, y) = (6, 5)$. Số lượng nghiệm bằng $1$.
+    
+    ---
+    **👉 Đáp số Câu 92:** `1`
+    """)
+
+st.markdown("---")
