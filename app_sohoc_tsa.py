@@ -840,3 +840,188 @@ if st.session_state.get('q9_solution_shown') and st.session_state.get('logged_in
     """)
     
 st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 10 - CHUYÊN ĐỀ: LÝ THUYẾT ĐỒNG DƯ & SỐ DƯ (VDC)
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 10. [Trả lời ngắn - TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Gọi $r$ là số dư trong phép chia số $A = 2026^{2026}$ cho $100$. 
+
+Hãy tính giá trị của $r$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 10) ---
+user_ans_10 = st.text_input("Nhập giá trị của r (số dư):", key="q10_ans")
+
+if st.button("Kiểm tra đáp án Câu 10", key="q10_check"):
+    norm_ans_10 = user_ans_10.strip()
+    
+    # Đáp án chính xác là 76
+    if norm_ans_10 == "76":
+        st.success("🎉 Chính xác! Bạn đã vận dụng rất xuất sắc lý thuyết đồng dư và tính chất chu kỳ số dư. Lời giải Câu 10 đã được mở khóa.")
+    elif user_ans_10 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 10.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy tách $100 = 4 \times 25$. Tìm số dư của $A$ khi chia cho $4$ và $25$ (sử dụng Định lý Euler/Fermat hoặc nhị phân Newton), sau đó dùng Định lý số dư Trung Hoa.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 10 ---
+st.markdown("---")
+
+if 'q10_solution_shown' not in st.session_state:
+    st.session_state['q10_solution_shown'] = False
+
+col1_10, col2_10 = st.columns([1, 4])
+with col1_10:
+    if st.button("Xem lời giải Câu 10", key="q10_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q10_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q10_solution_shown'] = False 
+
+if st.session_state.get('q10_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 10 (Tư duy TSA):")
+    st.markdown(r"""
+    Để tìm số dư của $A = 2026^{2026}$ khi chia cho $100$, ta tìm số dư của $A$ khi chia cho $4$ và $25$ (vì $\gcd(4, 25) = 1$ và $4 \times 25 = 100$).
+    
+    **Bước 1: Tìm số dư của $A$ khi chia cho $4$**
+    
+    Ta có $2026$ là số chẵn nên $2026 \text{ } \vdots \text{ } 2 \implies 2026^2 \text{ } \vdots \text{ } 4$.
+    Do số mũ $2026 \ge 2$ nên $A = 2026^{2026} \equiv 0 \pmod 4$. $\quad (1)$
+    
+    **Bước 2: Tìm số dư của $A$ khi chia cho $25$**
+    
+    Ta có: $2026 = 81 \times 25 + 1 \implies 2026 \equiv 1 \pmod{25}$.
+    
+    Áp dụng tính chất đồng dư:
+    $$A = 2026^{2026} \equiv 1^{2026} \equiv 1 \pmod{25} \quad (2)$$
+    
+    *(Lưu ý: Nếu số dư cơ số không phải là 1, ta sẽ dùng Định lý Euler: $a^{\varphi(25)} = a^{20} \equiv 1 \pmod{25}$ với $\gcd(a, 5)=1$).*
+    
+    **Bước 3: Kết hợp bằng hệ phương trình đồng dư**
+    
+    từ $(1)$ và $(2)$, gọi $r$ là số dư cần tìm ($0 \le r < 100$), ta có hệ:
+    $$\begin{cases} r \equiv 0 \pmod 4 \\ r \equiv 1 \pmod{25} \end{cases}$$
+    
+    từ phương trình thứ hai, $r$ có thể là các giá trị thuộc tập $\{1; 26; 51; 76\}$.
+    Trong các giá trị trên, chỉ có duy nhất số $76$ chia hết cho $4$.
+    
+    Vậy $A \equiv 76 \pmod{100}$, tức là số dư khi chia cho $100$ là $76$.
+    
+    ---
+    **👉 Đáp số Câu 10:** `76`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 11 - CHUYÊN ĐỀ: PHƯƠNG TRÌNH NGHIỆM NGUYÊN & ƯCLN (VDC)
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 11. [Trả lời ngắn - TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có bao nhiêu cặp số nguyên dương $(x; y)$ thỏa mãn đồng thời hai điều kiện sau:
+1. Phương trình nghiệm nguyên: $x^2 - 2y^2 = 1$
+2. Giá trị của $x$ nhỏ hơn $2000$ ($x < 2000$).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 11) ---
+user_ans_11 = st.text_input("Nhập số lượng cặp số (x; y) thỏa mãn:", key="q11_ans")
+
+if st.button("Kiểm tra đáp án Câu 11", key="q11_check"):
+    norm_ans_11 = user_ans_11.strip()
+    
+    # Đáp án chính xác là 3
+    if norm_ans_11 == "3":
+        st.success("🎉 Chính xác! Bạn đã nắm rất vững phương pháp giải phương trình Pell (phương trình nghiệm nguyên bậc hai). Lời giải Câu 11 đã được mở khóa.")
+    elif user_ans_11 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 11.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Đây là dạng phương trình Pell $x^2 - Dy^2 = 1$. Hãy tìm nghiệm nhỏ nhất $(x_1, y_1) = (3, 2)$ và sử dụng công thức truy hồi hoặc mò trực tiếp các giá trị của $x < 2000$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 11 ---
+st.markdown("---")
+
+if 'q11_solution_shown' not in st.session_state:
+    st.session_state['q11_solution_shown'] = False
+
+col1_11, col2_11 = st.columns([1, 4])
+with col1_11:
+    if st.button("Xem lời giải Câu 11", key="q11_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q11_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q11_solution_shown'] = False 
+
+if st.session_state.get('q11_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 11 (Tư duy TSA):")
+    st.markdown(r"""
+    Phương trình $x^2 - 2y^2 = 1$ là một **phương trình Pell** dạng cơ bản. Để giải phương trình nghiệm nguyên này trong giới hạn $x < 2000$, ta có thể sử dụng phương pháp nghiệm truy hồi hoặc đánh giá theo tính chất số học.
+    
+    **Bước 1: Tìm nghiệm nguyên dương nhỏ nhất (Nghiệm cơ sở)**
+    
+    Thử trực tiếp với các giá trị nhỏ của $y$:
+    *   Với $y = 1 \implies x^2 = 3$ (loại).
+    *   Với $y = 2 \implies x^2 = 2(2^2) + 1 = 9 \implies x = 3$ (thỏa mãn).
+    
+    Vậy nghiệm nguyên dương nhỏ nhất là $(x_1; y_1) = (3; 2)$.
+    
+    **Bước 2: Sử dụng công thức nghiệm của phương trình Pell**
+    
+    Các nghiệm nguyên dương $(x_n; y_n)$ của phương trình được xác định bởi công thức:
+    $$x_n + y_n\sqrt{2} = (3 + 2\sqrt{2})^n \quad \text{với } n = 1, 2, 3, \dots$$
+    
+    Từ đây ta suy ra hệ thức truy hồi để tìm các nghiệm tiếp theo một cách cực kỳ nhanh chóng:
+    $$\begin{cases} x_{n+1} = 3x_n + 4y_n \\ y_{n+1} = 2x_n + 3y_n \end{cases}$$
+    
+    **Bước 3: Liệt kê các nghiệm và đối chiếu điều kiện $x < 2000$**
+    
+    *   **Với $n = 1$:** Ta có nghiệm thứ nhất $(x_1; y_1) = \mathbf{(3; 2)}$.
+        $(x_1 = 3 < 2000 \implies \text{Thỏa mãn})$.
+        
+    *   **Với $n = 2$:** Áp dụng công thức truy hồi:
+        $x_2 = 3(3) + 4(2) = 17$
+        $y_2 = 2(3) + 3(2) = 12$
+        Ta có nghiệm thứ hai là $(x_2; y_2) = \mathbf{(17; 12)}$.
+        $(x_2 = 17 < 2000 \implies \text{Thỏa mãn})$.
+        *(Kiểm tra lại: $17^2 - 2 \times 12^2 = 289 - 288 = 1$).*
+        
+    *   **Với $n = 3$:** Áp dụng công thức truy hồi:
+        $x_3 = 3(17) + 4(12) = 99$
+        $y_3 = 2(17) + 3(12) = 70$
+        Ta có nghiệm thứ ba là $(x_3; y_3) = \mathbf{(99; 70)}$.
+        $(x_3 = 99 < 2000 \implies \text{Thỏa mãn})$.
+        *(Kiểm tra lại: $99^2 - 2 \times 70^2 = 9801 - 9800 = 1$).*
+        
+    *   **Với $n = 4$:** Áp dụng công thức truy hồi:
+        $x_4 = 3(99) + 4(70) = 297 + 280 = 577$
+        $y_4 = 2(99) + 3(70) = 198 + 210 = 408$
+        Ta có nghiệm thứ tư là $(x_4; y_4) = \mathbf{(577; 408)}$.
+        $(x_4 = 577 < 2000 \implies \text{Thỏa mãn})$.
+
+    *   **Với $n = 5$:** Áp dụng công thức truy hồi:
+        $x_5 = 3(577) + 4(408) = 1731 + 1632 = 3363$.
+        Vì $x_5 = 3363 > 2000$ nên nghiệm này và các nghiệm sau đó đều không thỏa mãn điều kiện bài toán.
+        
+    **Bước 4: Kết luận**
+    
+    Có tất cả **4** cặp số nguyên dương $(x; y)$ thỏa mãn bài toán là: $(3; 2), (17; 12), (99; 70)$ và $(577; 408)$.
+    
+    ---
+    **👉 Đáp số Câu 11:** `4`
+    """)
+
+st.markdown("---")
