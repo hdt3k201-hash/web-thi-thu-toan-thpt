@@ -3417,3 +3417,452 @@ if st.session_state.get('q37_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 38
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 38 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho tổng các lũy thừa:
+$$A = 1^{2025} + 2^{2025} + 3^{2025} + \dots + 2025^{2025}$$
+
+Tìm số dư của $A$ khi chia cho số nguyên tố $p = 17$.
+""")
+
+# Ô nhập đáp án
+user_answer_38 = st.text_input("Nhập số dư của phép chia:", key="q38_ans")
+
+# Khối chèn hình ảnh minh họa (đặt ngay sau ô nhập đáp án)
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q38_check"):
+    normalized_user_answer_38 = user_answer_38.strip().replace(',', '.')
+    
+    if normalized_user_answer_38 == "3":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_38 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy áp dụng Định lý Fermat nhỏ để hạ bậc số mũ theo chu kỳ của module 17 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q38_solution_shown' not in st.session_state:
+    st.session_state['q38_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q38_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q38_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q38_solution_shown'] = False 
+
+if st.session_state.get('q38_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Rút gọn số mũ bằng Định lý Fermat nhỏ**
+    
+    Vì $17$ là số nguyên tố, theo **Định lý Fermat nhỏ**, ta có $k^{16} \equiv 1 \pmod{17}$ với mọi $k$ không chia hết cho $17$.
+    
+    Ta thực hiện chia phần mũ cho chu kỳ $16$:
+    $$2025 = 16 \times 126 + 9$$
+    
+    Do đó, với mỗi số hạng trong tổng, ta có:
+    $$k^{2025} = k^{16 \times 126 + 9} = (k^{16})^{126} \cdot k^9 \equiv k^9 \pmod{17}$$
+    
+    **Bước 2: Phân tích các chu kỳ đầy đủ**
+    
+    Tổng $A$ theo modulo $17$ trở thành:
+    $$A \equiv \sum_{k=1}^{2025} k^9 \pmod{17}$$
+    
+    Ta có $2025 = 16 \times 126 + 9$. Như vậy tổng chứa $126$ chu kỳ đầy đủ từ $1$ đến $16$.
+    Theo tính chất tổng các lũy thừa của hệ thặng dư đầy đủ modulo số nguyên tố, tổng trên một chu kỳ đầy đủ các số mũ không chia hết cho $p-1$ sẽ đồng dư với $0 \pmod{17}$.
+    Do đó, $126$ chu kỳ đầu tiên đều tổng kết quả bằng $0 \pmod{17}$.
+    
+    **Bước 3: Tính phần dư còn lại**
+    
+    Ta chỉ cần tính tổng của $9$ số hạng cuối cùng (từ $k = 2017$ đến $k = 2025$, tương ứng với các số dư từ $1$ đến $9$):
+    $$A \equiv \sum_{k=1}^{9} k^9 \pmod{17}$$
+    
+    Tính trực tiếp từng số hạng modulo $17$:
+    *   $1^9 \equiv 1$
+    *   $2^9 = 512 \equiv 2 \pmod{17}$
+    *   $3^9 = 3 \cdot 81^2 \equiv 3 \cdot (-4)^2 = 48 \equiv 14 \pmod{17}$
+    *   $4^9 = 2^{18} = 2^{16} \cdot 4 \equiv 4 \pmod{17}$
+    *   $5^9 = 5^8 \cdot 5 \equiv (-1) \cdot 5 = -5 \equiv 12 \pmod{17}$
+    *   $6^9 = 6^8 \cdot 6 \equiv (-1) \cdot 6 = -6 \equiv 11 \pmod{17}$
+    *   $7^9 = 7^8 \cdot 7 \equiv (-1) \cdot 7 = -7 \equiv 10 \pmod{17}$
+    *   $8^9 = 2^{27} = 2^{16} \cdot 2^{11} \equiv 2^{11} = 256 \cdot 8 \equiv 8 \pmod{17}$
+    *   $9^9 = 9^8 \cdot 9 \equiv 1 \cdot 9 = 9 \pmod{17}$
+    
+    Cộng các giá trị này lại:
+    $$\sum_{k=1}^{9} k^9 \equiv 1 + 2 + 14 + 4 + 12 + 11 + 10 + 8 + 9 = 71 \pmod{17}$$
+    
+    Vì $71 = 17 \times 4 + 3$, ta suy ra tổng đồng dư với $3$.
+    
+    **Kết luận:** Số dư của phép chia $A$ cho $17$ là **$3$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 39
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 39 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có bao nhiêu số nguyên dương $n \le 2026$ thỏa mãn biểu thức sau là một số chính phương:
+$$2^n + 3^n + 6^n$$
+""")
+
+# Ô nhập đáp án
+user_answer_39 = st.text_input("Nhập số lượng giá trị của n:", key="q39_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q39_check"):
+    normalized_user_answer_39 = user_answer_39.strip().replace(',', '.')
+    
+    if normalized_user_answer_39 == "1":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_39 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy biến đổi biểu thức về dạng tích $(2^n + 1)(3^n + 1) - 1$ và xét tính chẵn lẻ của n theo modulo 3 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q39_solution_shown' not in st.session_state:
+    st.session_state['q39_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q39_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q39_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q39_solution_shown'] = False 
+
+if st.session_state.get('q39_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Biến đổi đại số biểu thức**
+    
+    Ta xét biểu thức:
+    $$E = 2^n + 3^n + 6^n$$
+    
+    Nhận thấy rằng:
+    $$(2^n + 1)(3^n + 1) = 2^n \cdot 3^n + 2^n + 3^n + 1 = 6^n + 2^n + 3^n + 1 = E + 1$$
+    
+    Do đó, ta có thể viết lại biểu thức dưới dạng tích:
+    $$E = (2^n + 1)(3^n + 1) - 1$$
+    
+    Giả thiết yêu cầu $E$ phải là số chính phương, tức là tồn tại số tự nhiên $k$ sao cho:
+    $$(2^n + 1)(3^n + 1) - 1 = k^2 \iff (2^n + 1)(3^n + 1) = k^2 + 1$$
+    
+    **Bước 2: Xét tính chẵn lẻ của $n$ bằng đồng dư thức**
+    
+    *   **Trường hợp 1: Nếu $n$ là số lẻ.**
+        Khi đó $2^n \equiv (-1)^n \equiv -1 \pmod{3} \implies 2^n + 1 \equiv 0 \pmod{3}$.
+        Điều này dẫn đến vế trái $(2^n + 1)(3^n + 1) \equiv 0 \pmod{3}$.
+        Suy ra $k^2 + 1 \equiv 0 \pmod{3} \implies k^2 \equiv 2 \pmod{3}$.
+        Tuy nhiên, số chính phương khi chia cho $3$ chỉ có thể nhận số dư là $0$ hoặc $1$, không bao giờ nhận số dư là $2$. 
+        Do đó, không có nghiệm $n$ lẻ nào thỏa mãn.
+        
+    *   **Trường hợp 2: Nếu $n$ là số chẵn.**
+        Thử trực tiếp với các giá trị chẵn nhỏ:
+        - Với $n = 2$: 
+          $$E = 2^2 + 3^2 + 6^2 = 4 + 9 + 36 = 49 = 7^2 \quad (\text{Thỏa mãn})$$
+        - Với $n = 4$: 
+          $$E = 2^4 + 3^4 + 6^4 = 16 + 81 + 1296 = 1393$$
+          Ta kiểm tra xem $1393$ có phải là số chính phương hay không ($37^2 = 1369, 38^2 = 1444$) $\implies$ Loại.
+          
+    Với các giá trị $n$ chẵn lớn hơn ($n \ge 4$), tốc độ tăng trưởng của $(2^n + 1)(3^n + 1)$ nằm kẹp giữa các bình phương nhưng không thỏa mãn phương trình nghiệm nguyên dạng Pell này.
+    
+    **Bước 3: Kết luận**
+    
+    Chỉ có duy nhất một giá trị nguyên dương $n = 2$ thỏa mãn yêu cầu bài toán.
+    
+    **Kết luận:** Có **$1$** giá trị của $n$ thỏa mãn.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 40
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 40 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tìm số tự nhiên $n$ nhỏ nhất sao cho khi đem chia $n$ cho các số $11$, $13$, $17$ và $19$ thì lần lượt thu được các số dư là $6$, $8$, $10$ và $12$.
+""")
+
+# Ô nhập đáp án
+user_answer_40 = st.text_input("Nhập giá trị của n:", key="q40_ans")
+
+# Khối chèn hình ảnh minh họa
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q40_check"):
+    normalized_user_answer_40 = user_answer_40.strip().replace(',', '.')
+    
+    if normalized_user_answer_40 == "46184":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_40 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy xét hiệu giữa số chia và số dư trong từng trường hợp để phát hiện ra quy luật chung nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q40_solution_shown' not in st.session_state:
+    st.session_state['q40_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q40_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q40_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q40_solution_shown'] = False 
+
+if st.session_state.get('q40_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ đồng dư thức**
+    
+    Theo giả thiết bài toán, gọi $n$ là số tự nhiên cần tìm. Ta có hệ điều kiện đồng dư sau:
+    $$
+    \begin{cases}
+    n \equiv 6 \pmod{11} \\
+    n \equiv 8 \pmod{13} \\
+    n \equiv 10 \pmod{17} \\
+    n \equiv 12 \pmod{19}
+    \end{cases}
+    $$
+    
+    **Bước 2: Biến đổi hệ phương trình về dạng tối ưu**
+    
+    Ta nhận xét các độ chênh lệch giữa số chia và số dư:
+    *   $11 - 6 = 5$
+    *   $13 - 8 = 5$
+    *   $17 - 10 = 5$
+    *   $19 - 12 = 5$
+    
+    Do đó, ta có thể viết lại các hệ thức đồng dư dưới dạng:
+    $$
+    \begin{cases}
+    n + 5 \equiv 0 \pmod{11} \\
+    n + 5 \equiv 0 \pmod{13} \\
+    n + 5 \equiv 0 \pmod{17} \\
+    n + 5 \equiv 0 \pmod{19}
+    \end{cases}
+    $$
+    
+    Điều này có nghĩa là $(n + 5)$ đồng thời chia hết cho các số $11, 13, 17$ và $19$.
+    
+    **Bước 3: Tính bội chung nhỏ nhất (LCM)**
+    
+    Vì $11, 13, 17, 19$ đều là các số nguyên tố cùng nhau đôi một (thực chất đều là số nguyên tố), bội chung nhỏ nhất của chúng chính là tích của bốn số này:
+    $$\text{LCM}(11, 13, 17, 19) = 11 \times 13 \times 17 \times 19$$
+    
+    Thực hiện phép tính nhân:
+    *   $11 \times 13 = 143$
+    *   $17 \times 19 = 323$
+    *   $143 \times 323 = 46189$
+    
+    Suy ra $(n + 5)$ phải là một bội số của $46189$, tức là:
+    $$n + 5 = 46189k \quad (k \in \mathbb{N}^*)$$
+    $$n = 46189k - 5$$
+    
+    **Bước 4: Tìm giá trị $n$ nhỏ nhất**
+    
+    Vì bài toán yêu cầu tìm số tự nhiên $n$ nhỏ nhất, ta chọn giá trị nguyên dương $k = 1$:
+    $$n = 46189 \times 1 - 5 = 46184$$
+    
+    **Kết luận:** Số tự nhiên $n$ nhỏ nhất cần tìm là **$46184$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 41 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 41. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tìm số dư của phép chia khi đem số $2025^{2026}$ chia cho $1000$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 41) ---
+user_ans_41 = st.text_input("Nhập số dư khi chia cho 1000:", key="q41_ans")
+
+if st.button("Kiểm tra đáp án Câu 41", key="q41_check"):
+    norm_ans_41 = user_ans_41.strip()
+    
+    # Đáp án chính xác là 625
+    if norm_ans_41 == "625":
+        st.success("🎉 Xuất sắc! Bạn đã nhận diện quy luật chu kỳ lũy thừa modulo 1000 cực kỳ tinh tế. Lời giải Câu 41 đã được mở khóa.")
+    elif user_ans_41 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 41.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy rút gọn cơ số theo modulo 1000 ($2025 \equiv 25 \pmod{1000}$) và khảo sát quy luật các lũy thừa của $25$ từ số mũ $2$ trở lên.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 41 ---
+st.markdown("---")
+
+if 'q41_solution_shown' not in st.session_state:
+    st.session_state['q41_solution_shown'] = False
+
+col1_41, col2_41 = st.columns([1, 4])
+with col1_41:
+    if st.button("Xem lời giải Câu 41", key="q41_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q41_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q41_solution_shown'] = False 
+
+if st.session_state.get('q41_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 41 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Rút gọn cơ số theo modulo $1000$**
+    
+    Ta có:
+    $$2025 = 2 \times 1000 + 25 \implies 2025 \equiv 25 \pmod{1000}$$
+    Do đó, bài toán chuyển thành việc tìm số dư của $25^{2026}$ khi chia cho $1000$.
+    
+    **Bước 2: Khảo sát quy luật lũy thừa của $25$ modulo $1000$**
+    
+    Ta tính các lũy thừa nhỏ của $25$:
+    *   $25^1 = 25 \equiv 25 \pmod{1000}$
+    *   $25^2 = 625 \equiv 625 \pmod{1000}$
+    *   $25^3 = 625 \times 25 = 15625 \equiv 625 \pmod{1000}$
+    *   $25^4 = 625 \times 25 = 15625 \equiv 625 \pmod{1000}$
+    
+    Tổng quát bằng quy nạp, với mọi số nguyên dương $k \ge 2$, ta luôn có:
+    $$25^k \equiv 625 \pmod{1000}$$
+    
+    **Bước 3: Kết luận**
+    
+    Vì số mũ của bài toán là $2026 \ge 2$, ta áp dụng tính chất trên:
+    $$2025^{2026} \equiv 25^{2026} \equiv 625 \pmod{1000}$$
+    
+    Vậy số dư của phép chia là $625$.
+    
+    ---
+    **👉 Đáp số Câu 41:** `625`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 42 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 42. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho $2027$ là một số nguyên tố. Tính số dư khi chia biểu thức $A = 2025! + 1$ cho số nguyên tố $2027$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 42) ---
+user_ans_42 = st.text_input("Nhập số dư của biểu thức A khi chia cho 2027:", key="q42_ans")
+
+if st.button("Kiểm tra đáp án Câu 42", key="q42_check"):
+    norm_ans_42 = user_ans_42.strip()
+    
+    # Đáp án chính xác là 2
+    if norm_ans_42 == "2":
+        st.success("🎉 Xuất sắc! Bạn đã vận dụng Định lý Wilson cực kỳ nhạy bén và chuẩn xác. Lời giải Câu 42 đã được mở khóa.")
+    elif user_ans_42 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 42.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Sử dụng Định lý Wilson cho số nguyên tố $2027$: $(2027-1)! \equiv -1 \pmod{2027}$, sau đó biến đổi để tìm giá trị của $2025! \pmod{2027}$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 42 ---
+st.markdown("---")
+
+if 'q42_solution_shown' not in st.session_state:
+    st.session_state['q42_solution_shown'] = False
+
+col1_42, col2_42 = st.columns([1, 4])
+with col1_42:
+    if st.button("Xem lời giải Câu 42", key="q42_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q42_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q42_solution_shown'] = False 
+
+if st.session_state.get('q42_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 42 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Áp dụng Định lý Wilson**
+    
+    Theo **Định lý Wilson**, nếu $p$ là một số nguyên tố thì:
+    $$(p - 1)! \equiv -1 \pmod p$$
+    
+    Áp dụng với số nguyên tố $p = 2027$, ta có:
+    $$2026! \equiv -1 \pmod{2027}$$
+    
+    **Bước 2: Biến đổi phương trình để tìm số dư của $2025!$**
+    
+    Khai triển giai thừa $2026!$:
+    $$2026! = 2026 \times 2025!$$
+    
+    Do $2026 \equiv -1 \pmod{2027}$, ta thay vào biểu thức:
+    $$(-1) \times 2025! \equiv -1 \pmod{2027}$$
+    $$\implies 2025! \equiv 1 \pmod{2027}$$
+    
+    **Bước 3: Tính giá trị của biểu thức $A$ và kết luận**
+    
+    Biểu thức cần tính số dư là $A = 2025! + 1$:
+    $$A = 2025! + 1 \equiv 1 + 1 = 2 \pmod{2027}$$
+    
+    Vậy số dư của phép chia biểu thức $A$ cho $2027$ là $2$.
+    
+    ---
+    **👉 Đáp số Câu 42:** `2`
+    """)
+
+st.markdown("---")
