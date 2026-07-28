@@ -2956,3 +2956,464 @@ if st.session_state.get('q32_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 33: TỔ HỢP - SỐ HỌC NÂNG CAO
+# ==========================================
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 33 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Cho tập hợp các chữ số $S = \{0, 1, 2, 3, 4, 5\}$. Gọi $T$ là tập hợp tất cả các số tự nhiên có $5$ chữ số đôi một khác nhau được lập từ các phần tử của tập hợp $S$. 
+
+Hỏi có bao nhiêu số thuộc tập $T$ thỏa mãn điều kiện số đó chia hết cho $6$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_33 = st.text_input("Nhập số lượng số thỏa mãn:", key="q33_ans")
+
+# Khối chèn hình ảnh minh họa
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q33_check"):
+    normalized_user_answer_33 = user_answer_33.strip()
+    
+    # Đáp án chính xác là 108
+    if normalized_user_answer_33 == "108":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_33 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Số chia hết cho 6 khi vừa chia hết cho 2 (tận cùng chẵn) vừa chia hết cho 3 (tổng chữ số chia hết cho 3). Hãy chia trường hợp theo chữ số bị bỏ lại nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q33_solution_shown' not in st.session_state:
+    st.session_state['q33_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q33_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q33_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q33_solution_shown'] = False 
+
+if st.session_state.get('q33_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích điều kiện chia hết cho 6**
+    
+    Một số tự nhiên chia hết cho $6$ khi và chỉ khi nó đồng thời chia hết cho $2$ và $3$.
+    *   Chia hết cho $2$: Chữ số tận cùng phải là số chẵn thuộc tập $\{0, 2, 4\}$.
+    *   Chia hết cho $3$: Tổng các chữ số của số đó phải chia hết cho $3$.
+    
+    Tổng tất cả các chữ số của tập $S$ là: $0 + 1 + 2 + 3 + 4 + 5 = 15$.
+    Vì số cần lập có $5$ chữ số, ta phải bỏ đi $1$ chữ số $x$ từ tập $S$. Để tổng $5$ chữ số còn lại chia hết cho $3$, chữ số $x$ bị bỏ đi phải chia hết cho $3$. Do đó, $x \in \{0, 3\}$.
+    
+    **Bước 2: Xét các trường hợp chọn chữ số**
+    
+    *   **Trường hợp 1: Bỏ đi chữ số $0$ (tập các chữ số còn lại là $\{1, 2, 3, 4, 5\}$)**
+        - Tổng các chữ số là $15$ (chia hết cho $3$, nên mọi số lập ra từ $5$ chữ số này đều chia hết cho $3$).
+        - Để số lập được chia hết cho $2$, chữ số tận cùng phải chẵn, tức là thuộc tập $\{2, 4\}$ ($2$ cách chọn).
+        - $4$ chữ số còn lại sắp xếp vào $4$ vị trí có $4! = 24$ cách.
+        - Số lượng số trong trường hợp này là: $2 \times 24 = 48$ (số).
+        
+    *   **Trường hợp 2: Bỏ đi chữ số $3$ (tập các chữ số còn lại là $\{0, 1, 2, 4, 5\}$)**
+        - Tổng các chữ số là $12$ (chia hết cho $3$).
+        - Chữ số tận cùng phải thuộc tập chẵn $\{0, 2, 4\}$. Ta chia thành 2 nhánh nhỏ:
+          + *Nhánh a:* Chữ số tận cùng là $0$ ($1$ cách chọn). Chữ số đầu tiên có $4$ cách chọn (từ $\{1, 2, 4, 5\}$). $3$ chữ số giữa có $3! = 6$ cách sắp xếp. Số lượng số là: $1 \times 4 \times 6 = 24$ (số).
+          + *Nhánh b:* Chữ số tận cùng là $2$ hoặc $4$ ($2$ cách chọn). Chữ số đầu tiên khác $0$ và khác chữ số tận cùng nên có $3$ cách chọn. $3$ chữ số còn lại sắp xếp vào $3$ vị trí có $3! = 6$ cách. Số lượng số là: $2 \times 3 \times 6 = 36$ (số).
+        - Tổng số lượng số trong trường hợp 2 là: $24 + 36 = 60$ (số).
+        
+    **Bước 3: Tổng kết kết quả**
+    
+    Tổng số các số thỏa mãn yêu cầu bài toán là:
+    $$48 + 60 = 108 \text{ (số)}$$
+    
+    **Kết luận:** Có **$108$** số thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 34: SỐ HỌC - TỔNG LŨY THỪA VÀ ĐỒNG DƯ
+# ==========================================
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 34 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Tìm số nguyên dương $n$ nhỏ nhất sao cho tổng $S_n = 1^3 + 2^3 + 3^3 + \dots + n^3$ chia hết cho $2026$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_34 = st.text_input("Nhập giá trị của n:", key="q34_ans")
+
+# Khối chèn hình ảnh minh họa
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q34_check"):
+    normalized_user_answer_34 = user_answer_34.strip()
+    
+    # Đáp án chính xác là 1012
+    if normalized_user_answer_34 == "1012":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_34 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thu gọn tổng S_n theo hằng đẳng thức lũy thừa bậc ba và phân tích số nguyên tố của 2026 nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q34_solution_shown' not in st.session_state:
+    st.session_state['q34_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q34_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q34_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q34_solution_shown'] = False 
+
+if st.session_state.get('q34_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Biến đổi tổng $S_n$**
+    
+    Ta có công thức tính tổng lũy thừa bậc ba quen thuộc:
+    $$S_n = 1^3 + 2^3 + 3^3 + \dots + n^3 = \left(\dfrac{n(n+1)}{2}\right)^2$$
+    
+    **Bước 2: Phân tích điều kiện chia hết**
+    
+    Yêu cầu bài toán là $S_n \vdots 2026$. Phân tích số $2026$ thành thừa số nguyên tố:
+    $$2026 = 2 \times 1013$$
+    (với $1013$ là một số nguyên tố).
+    
+    Do đó, để $S_n = \left(\dfrac{n(n+1)}{2}\right)^2$ chia hết cho $2026$, ta suy ra $\left(\dfrac{n(n+1)}{2}\right)^2$ phải chia hết cho $1013$ (vì $1013$ là số nguyên tố nên nếu bình phương chia hết cho nó thì bản thân cơ sở cũng phải chia hết cho $1013$).
+    Điều này dẫn đến $\dfrac{n(n+1)}{2}$ phải chia hết cho $1013$, tức là:
+    $$n(n+1) \vdots 2026 = 2 \times 1013$$
+    
+    **Bước 3: Tìm giá trị $n$ nhỏ nhất**
+    
+    Vì $1013$ là số nguyên tố và đóng vai trò là ước nguyên tố lớn, trong hai số tự nhiên liên tiếp $n$ và $n+1$, bắt buộc phải có một số chia hết cho $1013$.
+    Để tìm số nguyên dương $n$ nhỏ nhất, ta xét trường hợp số nhỏ hơn là bội của $1013$, tức là $n = 1013$. Khi đó $n(n+1) = 1013 \times 1014 = 1013 \times 2 \times 507 = 2026 \times 507 \vdots 2026$ (thỏa mãn).
+    Tuy nhiên, ta còn một trường hợp nhỏ hơn là $n$ sao cho $n+1 = 1013 \Rightarrow n = 1012$.
+    Khi $n = 1012$, ta có:
+    $$n(n+1) = 1012 \times 1013 = (2 \times 506) \times 1013 = 506 \times (2 \times 1013) = 506 \times 2026 \vdots 2026$$
+    
+    Do đó, số nguyên dương $n$ nhỏ nhất thỏa mãn là $n = 1012$.
+    
+    **Kết luận:** Giá trị của $n$ là **$1012$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 35: SỐ HỌC - ĐỊNH LÝ FERMAT NHỎ VÀ ĐỒNG DƯ NÂNG CAO
+# ==========================================
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 35 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Tính số dư của tổng $A = 1^{2026} + 2^{2026} + 3^{2026} + \dots + 10^{2026}$ khi chia cho số nguyên tố $p = 11$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_35 = st.text_input("Nhập số dư của phép chia:", key="q35_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q35_check"):
+    normalized_user_answer_35 = user_answer_35.strip()
+    
+    # Đáp án chính xác là 0
+    if normalized_user_answer_35 == "0":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_35 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy áp dụng Định lý Fermat nhỏ $a^{p-1} \equiv 1 \pmod p$ để rút gọn số mũ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) %> ---
+st.markdown("---")
+
+if 'q35_solution_shown' not in st.session_state:
+    st.session_state['q35_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q35_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q35_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q35_solution_shown'] = False 
+
+if st.session_state.get('q35_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Rút gọn số mũ bằng Định lý Fermat nhỏ**
+    
+    Theo **Định lý Fermat nhỏ**, với mọi số nguyên $a$ không chia hết cho số nguyên tố $p = 11$, ta có:
+    $$a^{10} \equiv 1 \pmod{11}$$
+    
+    Xét số mũ $2026$, ta thực hiện phép chia cho chu kỳ $10$:
+    $$2026 = 10 \times 202 + 6$$
+    
+    Do đó, với mỗi số hạng $a^{2026}$ (với $a \in \{1, 2, \dots, 10\}$), ta có:
+    $$a^{2026} = a^{10 \times 202 + 6} = (a^{10})^{202} \cdot a^6 \equiv 1^{202} \cdot a^6 \equiv a^6 \pmod{11}$$
+    
+    **Bước 2: Tính tổng các giá trị $a^6 \pmod{11}$**
+    
+    Tổng $A$ theo modulo $11$ trở thành:
+    $$A \equiv \sum_{a=1}^{10} a^6 \pmod{11}$$
+    
+    Ta tính lần lượt giá trị của $a^6 \pmod{11}$ cho các số từ $1$ đến $10$:
+    *   $1^6 \equiv 1$
+    *   $2^6 = 64 \equiv 9$
+    *   $3^6 = (3^2)^3 = 9^3 \equiv (-2)^3 = -8 \equiv 3$
+    *   $4^6 = (2^2)^6 = 2^{12} = 2^{10} \times 2^2 \equiv 1 \times 4 = 4$
+    *   $5^6 = (5^2)^3 = 25^3 \equiv 3^3 = 27 \equiv 5$
+    *   $6^6 \equiv (-5)^6 = 5^6 \equiv 5$
+    *   $7^6 \equiv (-4)^6 = 4^6 \equiv 4$
+    *   $8^6 \equiv (-3)^6 = 3^6 \equiv 3$
+    *   $9^6 \equiv (-2)^6 = 2^6 \equiv 9$
+    *   $10^6 \equiv (-1)^6 = 1^6 \equiv 1$
+    
+    **Bước 3: Tổng hợp và tính số dư**
+    
+    Cộng các số dư vừa tìm được:
+    $$\sum_{a=1}^{10} a^6 \equiv 1 + 9 + 3 + 4 + 5 + 5 + 4 + 3 + 9 + 1 = 44 \pmod{11}$$
+    
+    Vì $44 = 4 \times 11$, ta suy ra:
+    $$44 \equiv 0 \pmod{11}$$
+    
+    **Kết luận:** Số dư của phép chia tổng $A$ cho $11$ là **$0$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 36 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 36. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho dãy số $(x_n)$ được xác định bởi $x_1 = 1$, $x_2 = 2$ và hệ thức truy hồi $x_{n+2} = 5x_{n+1} - 6x_n$ với mọi $n \ge 1$. Tìm số dư của số hạng $x_{2026}$ khi chia cho số nguyên tố $11$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 36) ---
+user_ans_36 = st.text_input("Nhập số dư của x_{2026} khi chia cho 11:", key="q36_ans")
+
+if st.button("Kiểm tra đáp án Câu 36", key="q36_check"):
+    norm_ans_36 = user_ans_36.strip()
+    
+    # Đáp án chính xác là 10
+    if norm_ans_36 == "10":
+        st.success("🎉 Chính xác! Bạn đã tìm công thức tổng quát của dãy số và áp dụng định lý Fermat nhỏ cực kỳ xuất sắc. Lời giải Câu 36 đã được mở khóa.")
+    elif user_ans_36 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 36.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Tìm phương trình đặc trưng để xác định công thức tổng quát $x_n = 2^{n-1}$, sau đó dùng định lý Fermat nhỏ tính $2^{2025} \pmod{11}$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 36 ---
+st.markdown("---")
+
+if 'q36_solution_shown' not in st.session_state:
+    st.session_state['q36_solution_shown'] = False
+
+col1_36, col2_36 = st.columns([1, 4])
+with col1_36:
+    if st.button("Xem lời giải Câu 36", key="q36_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q36_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q36_solution_shown'] = False 
+
+if st.session_state.get('q36_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 36 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Tìm công thức tổng quát của dãy số $(x_n)$**
+    
+    Phương trình đặc trưng của hệ thức truy hồi tuyến tính cấp hai $x_{n+2} - 5x_{n+1} + 6x_n = 0$ là:
+    $$r^2 - 5r + 6 = 0 \iff (r - 2)(r - 3) = 0 \iff \begin{cases} r = 2 \\ r = 3 \end{cases}$$
+    
+    Do đó, số hạng tổng quát của dãy số có dạng:
+    $$x_n = A \cdot 2^n + B \cdot 3^n$$
+    
+    Sử dụng điều kiện ban đầu ($x_1 = 1$, $x_2 = 2$), ta thiết lập hệ phương trình:
+    $$\begin{cases} x_1 = 2A + 3B = 1 \\ x_2 = 4A + 9B = 2 \end{cases}$$
+    
+    Nhân phương trình thứ nhất với $2$, ta có $4A + 6B = 2$. Trừ vế theo vế cho phương trình thứ hai:
+    $$(4A + 9B) - (4A + 6B) = 2 - 2 \iff 3B = 0 \iff B = 0$$
+    
+    Thay $B = 0$ vào phương trình đầu tiên:
+    $$2A = 1 \iff A = \dfrac{1}{2}$$
+    
+    Vậy công thức tổng quát của dãy số là:
+    $$x_n = \dfrac{1}{2} \cdot 2^n = 2^{n-1} \quad (\forall n \ge 1)$$
+    
+    **Bước 2: Tính số dư của $x_{2026}$ khi chia cho $11$**
+    
+    Ta cần tìm số dư của $x_{2026} = 2^{2025}$ khi chia cho số nguyên tố $11$.
+    Theo **Định lý Fermat nhỏ**, vì $11$ là số nguyên tố và $\gcd(2, 11) = 1$, ta có:
+    $$2^{10} \equiv 1 \pmod{11}$$
+    
+    Chia số mũ $2025$ cho $10$:
+    $$2025 = 10 \times 202 + 5$$
+    
+    Do đó:
+    $$2^{2025} = (2^{10})^{202} \cdot 2^5 \equiv 1^{202} \cdot 32 \equiv 32 \pmod{11}$$
+    
+    Vì $32 = 2 \times 11 + 10$, suy ra:
+    $$2^{2025} \equiv 10 \pmod{11}$$
+    
+    **Bước 3: Kết luận**
+    
+    Số dư của số hạng $x_{2026}$ khi chia cho $11$ là $10$.
+    
+    ---
+    **👉 Đáp số Câu 36:** `10`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 37 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 37. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có bao nhiêu cặp số nguyên dương $(x, y)$ thỏa mãn phương trình:
+$$\text{lcm}(x, y) + \text{gcd}(x, y) = 2026$$
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 37) ---
+user_ans_37 = st.text_input("Nhập số lượng cặp số nguyên dương (x, y):", key="q37_ans")
+
+if st.button("Kiểm tra đáp án Câu 37", key="q37_check"):
+    norm_ans_37 = user_ans_37.strip()
+    
+    # Đáp án chính xác là 13
+    if norm_ans_37 == "13":
+        st.success("🎉 Xuất sắc! Bạn đã sử dụng tính chất ước chung lớn nhất và phân tích tiêu chuẩn thừa số nguyên tố tuyệt đối hoàn hảo. Lời giải Câu 37 đã được mở khóa.")
+    elif user_ans_37 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 37.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Đặt $g = \text{gcd}(x, y)$, viết $x = ga, y = gb$ với $\text{gcd}(a, b) = 1$. Phương trình trở thành $g(ab + 1) = 2026$. Suy ra $g$ là ước của $2026$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 37 ---
+st.markdown("---")
+
+if 'q37_solution_shown' not in st.session_state:
+    st.session_state['q37_solution_shown'] = False
+
+col1_37, col2_37 = st.columns([1, 4])
+with col1_37:
+    if st.button("Xem lời giải Câu 37", key="q37_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q37_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q37_solution_shown'] = False 
+
+if st.session_state.get('q37_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 37 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Biến đổi phương trình về dạng ước số**
+    
+    Gọi $g = \text{gcd}(x, y)$ là ước chung lớn nhất của $x$ và $y$. Khi đó tồn tại các số nguyên dương $a, b$ sao cho:
+    $$x = ga, \quad y = gb \quad \text{với} \quad \text{gcd}(a, b) = 1$$
+    
+    Ta có tích và bội chung nhỏ nhất:
+    $$\text{lcm}(x, y) = \dfrac{xy}{\text{gcd}(x, y)} = \dfrac{(ga)(gb)}{g} = gab$$
+    
+    Thay vào phương trình đã cho:
+    $$gab + g = 2026 \iff g(ab + 1) = 2026$$
+    
+    Vì $g$ và $ab + 1$ là các số nguyên dương, nên $g$ phải là một **ước số nguyên dương** của $2026$.
+    
+    **Bước 2: Phân tích các ước số của $2026$**
+    
+    Phân tích số $2026$ ra thừa số nguyên tố:
+    $$2026 = 2 \times 1013$$
+    (với $1013$ là một số nguyên tố).
+    Các ước số nguyên dương của $2026$ là: $1, 2, 1013, 2026$.
+    
+    Ta xét từng trường hợp của $g$:
+    
+    1.  **Trường hợp 1: $g = 1$**
+        $$ab + 1 = 2026 \iff ab = 2025$$
+        Phân tích $2025$ ra thừa số nguyên tố: $2025 = 3^4 \times 5^2$.
+        Vì $\text{gcd}(a, b) = 1$, mỗi thừa số nguyên tố ($3$ và $5$) phải phân phối hoàn toàn cho hoặc $a$ hoặc $b$. 
+        Số các cặp số nguyên dương $(a, b)$ thỏa mãn $\text{gcd}(a, b) = 1$ và $ab = 2025$ là $2^k$, với $k$ là số lượng thừa số nguyên tố phân biệt của $2025$ ($k = 2$).
+        $$\implies 2^2 = 4 \text{ cặp } (a, b)$$
+        Vì $g = 1$, ta thu được **$4$ cặp** $(x, y)$.
+        
+    2.  **Trường hợp 2: $g = 2$**
+        $$ab + 1 = \dfrac{2026}{2} = 1013 \iff ab = 1012$$
+        Phân tích $1012$ ra thừa số nguyên tố: $1012 = 4 \times 253 = 2^2 \times 11 \times 23$.
+        Số lượng thừa số nguyên tố phân biệt là $k = 3$ ($2, 11, 23$).
+        Số các cặp $(a, b)$ thỏa mãn là:
+        $$2^3 = 8 \text{ cặp } (a, b)$$
+        Vì $g = 2$, ta thu được **$8$ cặp** $(x, y)$.
+        
+    3.  **Trường hợp 3: $g = 1013$**
+        $$ab + 1 = \dfrac{2026}{1013} = 2 \iff ab = 1$$
+        Phương trình chỉ có duy nhất nghiệm nguyên dương $a = 1, b = 1$.
+        Thu được **$1$ cặp** $(x, y) = (1013, 1013)$.
+        
+    4.  **Trường hợp 4: $g = 2026$**
+        $$ab + 1 = \dfrac{2026}{2026} = 1 \iff ab = 0$$
+        Phương trình vô nghiệm vì $a, b \ge 1 \implies ab \ge 1$.
+        
+    **Bước 3: Tổng hợp kết quả**
+    
+    Tổng số các cặp số nguyên dương $(x, y)$ thỏa mãn yêu cầu bài toán là:
+    $$\text{Tổng số cặp} = 4 + 8 + 1 + 0 = 13$$
+    
+    ---
+    **👉 Đáp số Câu 37:** `13`
+    """)
+
+st.markdown("---")
