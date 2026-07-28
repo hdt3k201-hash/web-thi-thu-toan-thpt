@@ -1025,3 +1025,174 @@ if st.session_state.get('q11_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 12 - CHUYÊN ĐỀ: DÃY SỐ TRUY HỒI & ĐỒNG DƯ THỨC (VDC)
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 12. [Trả lời ngắn - Mức độ Vận dụng cao]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho dãy số $(u_n)$ được xác định bởi $u_1 = 5$, $u_2 = 17$ và hệ thức truy hồi:
+$$u_{n+2} = 5u_{n+1} - 4u_n \quad (\forall n \ge 1)$$
+
+Tính số dư khi chia số hạng $u_{2026}$ cho $7$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 12) ---
+user_ans_12 = st.text_input("Nhập số dư của u_{2026} khi chia cho 7:", key="q12_ans")
+
+if st.button("Kiểm tra đáp án Câu 12", key="q12_check"):
+    norm_ans_12 = user_ans_12.strip()
+    
+    # Đáp án chính xác là 5
+    if norm_ans_12 == "5":
+        st.success("🎉 Chính xác! Bạn đã tìm công thức tổng quát và vận dụng tính chất chu kỳ số dư rất xuất sắc. Lời giải Câu 12 đã được mở khóa.")
+    elif user_ans_12 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 12.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy giải phương trình đặc trưng $r^2 - 5r + 4 = 0$ để tìm công thức tổng quát $u_n = 4^n + 1$, sau đó xét chu kỳ số dư của $4^n$ khi chia cho $7$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 12 ---
+st.markdown("---")
+
+if 'q12_solution_shown' not in st.session_state:
+    st.session_state['q12_solution_shown'] = False
+
+col1_12, col2_12 = st.columns([1, 4])
+with col1_12:
+    if st.button("Xem lời giải Câu 12", key="q12_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q12_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q12_solution_shown'] = False 
+
+if st.session_state.get('q12_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 12 (Tư duy TSA):")
+    st.markdown(r"""
+    Bài toán kết hợp hai kỹ thuật quan trọng: **Tìm số hạng tổng quát của dãy truy hồi tuyến tính cấp 2** và **Tìm số dư bằng chu kỳ đồng dư**.
+    
+    **Bước 1: Tìm công thức số hạng tổng quát của dãy số $(u_n)$**
+    
+    Xét phương trình đặc trưng của hệ thức truy hồi $u_{n+2} - 5u_{n+1} + 4u_n = 0$:
+    $$r^2 - 5r + 4 = 0 \iff \left[ \begin{array}{l} r = 1 \\ r = 4 \end{array} \right.$$
+    
+    Do đó, công thức tổng quát của dãy số có dạng:
+    $$u_n = A \cdot 1^n + B \cdot 4^n = A + B \cdot 4^n$$
+    
+    Sử dụng các điều kiện ban đầu ($u_1 = 5, u_2 = 17$), ta lập hệ phương trình:
+    $$\begin{cases} u_1 = A + 4B = 5 \\ u_2 = A + 16B = 17 \end{cases} \iff \begin{cases} 12B = 12 \\ A = 5 - 4B \end{cases} \iff \begin{cases} A = 1 \\ B = 1 \end{cases}$$
+    
+    Vậy công thức số hạng tổng quát là:
+    $$u_n = 4^n + 1 \quad (\forall n \ge 1)$$
+    
+    **Bước 2: Tính số dư của $u_{2026}$ khi chia cho $7$**
+    
+    Ta cần tính số dư của $u_{2026} = 4^{2026} + 1$ khi chia cho $7$. Hãy xét chu kỳ lũy thừa của $4$ modulo $7$:
+    *   $4^1 \equiv 4 \pmod 7$
+    *   $4^2 = 16 \equiv 2 \pmod 7$
+    *   $4^3 = 64 \equiv 1 \pmod 7$
+    
+    Ta thấy chu kỳ số dư lặp lại sau mỗi **3** bước.
+    
+    Xét số mũ $2026$ khi chia cho $3$:
+    $$2026 = 3 \times 675 + 1 \implies 2026 \equiv 1 \pmod 3$$
+    
+    Do đó:
+    $$4^{2026} = (4^3)^{675} \cdot 4^1 \equiv 1^{675} \cdot 4 \equiv 4 \pmod 7$$
+    
+    **Bước 3: Kết luận**
+    
+    Thay vào biểu thức của $u_{2026}$, ta có:
+    $$u_{2026} = 4^{2026} + 1 \equiv 4 + 1 \equiv 5 \pmod 7$$
+    
+    Vậy số dư khi chia số hạng $u_{2026}$ cho $7$ là $5$.
+    
+    ---
+    **👉 Đáp số Câu 12:** `5`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 13 - CHUYÊN ĐỀ: SỐ HỌC & TỔ HỢP (VDC)
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 13. [Trả lời ngắn - Mức độ Vận dụng cao]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên dương $N = 2^{10} \cdot 3^8 \cdot 5^6$. Tính số lượng các ước số dương của $N$ đồng thời là bội của số $M = 2^5 \cdot 3^3 \cdot 5^2$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 13) ---
+user_ans_13 = st.text_input("Nhập số lượng ước số thỏa mãn:", key="q13_ans")
+
+if st.button("Kiểm tra đáp án Câu 13", key="q13_check"):
+    norm_ans_13 = user_ans_13.strip()
+    
+    # Đáp án chính xác là 180
+    if norm_ans_13 == "180":
+        st.success("🎉 Chính xác! Bạn đã hiểu rất rõ bản chất của quan hệ chia hết và quy tắc đếm tổ hợp. Lời giải Câu 13 đã được mở khóa.")
+    elif user_ans_13 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 13.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Gọi ước số là $d = 2^x \cdot 3^y \cdot 5^z$. Để $d$ vừa là ước của $N$ vừa là bội của $M$ thì $5 \le x \le 10$, $3 \le y \le 8$ và $2 \le z \le 6$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 13 ---
+st.markdown("---")
+
+if 'q13_solution_shown' not in st.session_state:
+    st.session_state['q13_solution_shown'] = False
+
+col1_13, col2_13 = st.columns([1, 4])
+with col1_13:
+    if st.button("Xem lời giải Câu 13", key="q13_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q13_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q13_solution_shown'] = False 
+
+if st.session_state.get('q13_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 13 (Tư duy TSA):")
+    st.markdown(r"""
+    Đây là bài toán tổ hợp số học tiêu biểu trong đề thi TSA. Để giải quyết, ta sử dụng điều kiện cần và đủ của phép chia hết trong dạng phân tích ra thừa số nguyên tố.
+    
+    **Bước 1: Thiết lập dạng của ước số thỏa mãn**
+    
+    Một số nguyên dương $d$ là ước của $N = 2^{10} \cdot 3^8 \cdot 5^6$ nên $d$ chỉ chứa các thừa số nguyên tố $2, 3, 5$. Do đó, $d$ có dạng:
+    $$d = 2^x \cdot 3^y \cdot 5^z \quad (x, y, z \in \mathbb{N})$$
+    
+    Để $d$ **là ước của $N$** thì số mũ của các thừa số không được vượt quá số mũ tương ứng trong $N$:
+    $$x \le 10; \quad y \le 8; \quad z \le 6$$
+    
+    Đồng thời, để $d$ **là bội của $M = 2^5 \cdot 3^3 \cdot 5^2$** (tức là $d$ chia hết cho $M$) thì số mũ của các thừa số trong $d$ phải lớn hơn hoặc bằng số mũ tương ứng trong $M$:
+    $$x \ge 5; \quad y \ge 3; \quad z \ge 2$$
+    
+    **Bước 2: Đếm số cách chọn các số mũ $x, y, z$**
+    
+    Kết hợp hai điều kiện trên, ta có miền giá trị cho từng số mũ:
+    *   Số mũ $x \in \{5, 6, 7, 8, 9, 10\}$ $\implies$ Có $10 - 5 + 1 = \mathbf{6}$ cách chọn.
+    *   Số mũ $y \in \{3, 4, 5, 6, 7, 8\}$ $\implies$ Có $8 - 3 + 1 = \mathbf{6}$ cách chọn.
+    *   Số mũ $z \in \{2, 3, 4, 5, 6\}$ $\implies$ Có $6 - 2 + 1 = \mathbf{5}$ cách chọn.
+    
+    **Bước 3: Tính kết quả bằng quy tắc nhân**
+    
+    Mỗi ước số thỏa mãn yêu cầu bài toán tương ứng duy nhất với một bộ ba số mũ $(x; y; z)$. 
+    Áp dụng quy tắc nhân, tổng số lượng các ước số dương cần tìm là:
+    $$6 \times 6 \times 5 = 180 \text{ (ước số)}$$
+    
+    ---
+    **👉 Đáp số Câu 13:** `180`
+    """)
+
+st.markdown("---")
