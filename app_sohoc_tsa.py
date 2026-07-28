@@ -8242,3 +8242,445 @@ if st.session_state.get('q92_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 93: ĐỒNG DƯ THỨC VÀ ĐỊNH LÝ NHỎ FERMAT
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 93 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên dương $A = 2^{2026} + 5^{2026}$. Tìm số dư khi chia số $A$ cho số nguyên tố $17$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_93 = st.text_input("Nhập số dư của phép chia:", key="q93_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q93_check"):
+    normalized_user_answer_93 = user_answer_93.strip().replace(',', '.')
+    
+    if normalized_user_answer_93 == "13":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_93 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy áp dụng Định lý nhỏ Fermat với chu kỳ mô-đun $16$ để thu gọn số mũ của từng hạng tử nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q93_solution_shown' not in st.session_state:
+    st.session_state['q93_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q93_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q93_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q93_solution_shown'] = False 
+
+if st.session_state.get('q93_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Áp dụng Định lý nhỏ Fermat**
+    
+    Vì $17$ là số nguyên tố và $\gcd(2, 17) = \gcd(5, 17) = 1$, theo Định lý nhỏ Fermat, ta có:
+    $$2^{16} \equiv 1 \pmod{17}$$
+    $$5^{16} \equiv 1 \pmod{17}$$
+    
+    **Bước 2: Thu gọn số mũ theo chu kỳ $16$**
+    
+    Thực hiện phép chia số mũ cho chu kỳ $16$:
+    $$2026 = 16 \times 126 + 10$$
+    
+    Do đó, các số hạng được thu gọn như sau:
+    * Đối với hạng tử $2^{2026}$:
+      $$2^{2026} = (2^{16})^{126} \cdot 2^{10} \equiv 1^{126} \cdot 2^{10} = 1024 \pmod{17}$$
+      Ta có $1024 = 17 \times 60 + 4$, suy ra $2^{2026} \equiv 4 \pmod{17}$.
+      
+    * Đối với hạng tử $5^{2026}$:
+      $$5^{2026} = (5^{16})^{126} \cdot 5^{10} \equiv 1^{126} \cdot 5^{10} \pmod{17}$$
+      Ta tính lần lượt:
+      * $5^2 = 25 \equiv 8 \pmod{17}$
+      * $5^4 \equiv 8^2 = 64 \equiv 13 \equiv -4 \pmod{17}$
+      * $5^8 \equiv (-4)^2 = 16 \equiv -1 \pmod{17}$
+      * $5^{10} = 5^8 \cdot 5^2 \equiv (-1) \cdot 8 = -8 \equiv 9 \pmod{17}$
+      
+    **Bước 3: Tổng hợp kết quả**
+    
+    Tổng số dư của biểu thức $A$ theo mô-đun $17$ là:
+    $$A \equiv 4 + 9 = 13 \pmod{17}$$
+    
+    **Kết luận:** Số dư khi chia $A$ cho $17$ là **$13$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 94: CHIA ĐA THỨC VÀ ĐƠN VỊ ẢO ĐẠI SỐ
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 94 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho đa thức $P(x) = x^{2026} - 2x^{1013} + 3$. Khi chia đa thức $P(x)$ cho đa thức $Q(x) = x^2 - x + 1$, ta được số dư là đa thức $R(x) = ax + b$. Tính giá trị của biểu thức $T = a^3 + b^3$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_94 = st.text_input("Nhập giá trị của biểu thức T:", key="q94_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q94_check"):
+    normalized_user_answer_94 = user_answer_94.strip().replace(',', '.')
+    
+    if normalized_user_answer_94 == "2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_94 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy sử dụng hằng đẳng thức $x^3 + 1 = (x + 1)(x^2 - x + 1)$ để hạ bậc số mũ của đa thức nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q94_solution_shown' not in st.session_state:
+    st.session_state['q94_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q94_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q94_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q94_solution_shown'] = False 
+
+if st.session_state.get('q94_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập mối quan hệ chia hết đa thức**
+    
+    Ta có hằng đẳng thức:
+    $x^3 + 1 = (x + 1)(x^2 - x + 1)$
+    
+    Do đó, trong phép chia cho đa thức $x^2 - x + 1$, ta có quan hệ đồng dư đa thức:
+    $x^3 \equiv -1 \pmod{x^2 - x + 1}$
+    
+    **Bước 2: Thu gọn các hạng tử của $P(x)$**
+    
+    * Xét số hạng $x^{2026}$:
+      Thực hiện chia số mũ cho $3$: $2026 = 3 \times 675 + 1$.
+      $$x^{2026} = (x^3)^{675} \cdot x \equiv (-1)^{675} \cdot x = -x \pmod{x^2 - x + 1}$$
+      
+    * Xét số hạng $x^{1013}$:
+      Thực hiện chia số mũ cho $3$: $1013 = 3 \times 337 + 2$.
+      $$x^{1013} = (x^3)^{337} \cdot x^2 \equiv (-1)^{337} \cdot x^2 = -x^2 \pmod{x^2 - x + 1}$$
+      Mặt khác, từ $x^2 - x + 1 = 0$, ta suy ra $x^2 = x - 1$. Do đó:
+      $$-x^2 = -(x - 1) = -x + 1$$
+      
+    **Bước 3: Xác định đa thức số dư $R(x)$**
+    
+    Thay thế các giá trị vừa thu gọn vào đa thức $P(x)$:
+    $$P(x) \equiv -x - 2(-x + 1) + 3 \pmod{x^2 - x + 1}$$
+    $$P(x) \equiv -x + 2x - 2 + 3 = x + 1 \pmod{x^2 - x + 1}$$
+    
+    Đồng nhất với dạng số dư tổng quát $R(x) = ax + b$, ta thu được:
+    $$a = 1, \quad b = 1$$
+    
+    **Bước 4: Tính giá trị biểu thức $T$**
+    
+    $$T = a^3 + b^3 = 1^3 + 1^3 = 2$$
+    
+    **Kết luận:** Giá trị của biểu thức $T$ là **$2$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 95: PHƯƠNG TRÌNH NGHIỆM NGUYÊN VÀ ƯỚC SỐ
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 95 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho phương trình $\dfrac{1}{x} + \dfrac{1}{y} = \dfrac{1}{2026^2}$ với $x, y$ là các số nguyên dương. Hỏi có bao nhiêu cặp số nguyên dương $(x, y)$ thỏa mãn phương trình trên?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_95 = st.text_input("Nhập số lượng cặp nghiệm $(x, y)$:", key="q95_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q95_check"):
+    normalized_user_answer_95 = user_answer_95.strip().replace(',', '.')
+    
+    if normalized_user_answer_95 == "25":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_95 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy biến đổi phương trình về dạng nhân tử $(x - N)(y - N) = N^2$ với $N = 2026^2$ để đếm số ước số nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q95_solution_shown' not in st.session_state:
+    st.session_state['q95_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q95_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q95_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q95_solution_shown'] = False 
+
+if st.session_state.get('q95_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Biến đổi phương trình về dạng nhân tử**
+    
+    Đặt $N = 2026^2$. Phương trình đã cho trở thành:
+    $$\dfrac{1}{x} + \dfrac{1}{y} = \dfrac{1}{N}$$
+    
+    Quy đồng mẫu số và nhân chéo:
+    $$N(x + y) = xy \iff xy - Nx - Ny = 0$$
+    
+    Cộng thêm $N^2$ vào hai vế để phân tích thành nhân tử:
+    $$xy - Nx - Ny + N^2 = N^2$$
+    $$x(y - N) - N(y - N) = N^2$$
+    $$(x - N)(y - N) = N^2$$
+    
+    **Bước 2: Lập luận điều kiện nghiệm nguyên dương**
+    
+    Vì $x, y > 0$ và $\dfrac{1}{x} + \dfrac{1}{y} = \dfrac{1}{N}$, ta dễ dàng suy ra $x > N$ và $y > N$. Do đó các nhân tử $(x - N)$ và $(y - N)$ đều là các số nguyên dương.
+    
+    Số các cặp nghiệm nguyên dương $(x, y)$ thỏa mãn đúng bằng số các ước số nguyên dương của $N^2$.
+    
+    **Bước 3: Tính số lượng ước số của $N^2$**
+    
+    Ta có phân tích ra thừa số nguyên tố của $2026$:
+    $$2026 = 2 \times 1013$$
+    
+    Suy ra:
+    $$N = 2026^2 = 2^2 \times 1013^2$$
+    $$N^2 = (2^2 \times 1013^2)^2 = 2^4 \times 1013^4$$
+    
+    Số các ước số nguyên dương của $N^2$ là:
+    $$d(N^2) = (4 + 1)(4 + 1) = 5 \times 5 = 25$$
+    
+    **Kết luận:** Số lượng cặp số nguyên dương $(x, y)$ thỏa mãn là **$25$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 96: ĐỊNH LÝ LEGENDRE VÀ TỔ HỢP
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 96 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tìm số mũ của thừa số nguyên tố $3$ trong phân tích tiêu chuẩn của số tổ hợp $S = C_{2026}^{1013}$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_96 = st.text_input("Nhập số mũ của thừa số 3:", key="q96_ans")
+
+# Khối chèn hình ảnh minh họa
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q96_check"):
+    normalized_user_answer_96 = user_answer_96.strip().replace(',', '.')
+    
+    if normalized_user_answer_96 == "4":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_96 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy áp dụng công thức Legendre để tính số mũ của $3$ trong phân tích giai thừa $v_3(n!) = \sum \left\lfloor \dfrac{n}{3^k} \right\rfloor$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q96_solution_shown' not in st.session_state:
+    st.session_state['q96_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q96_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q96_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q96_solution_shown'] = False 
+
+if st.session_state.get('q96_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Biểu diễn số tổ hợp qua giai thừa**
+    
+    Ta có công thức số tổ hợp:
+    $$S = C_{2026}^{1013} = \dfrac{2026!}{1013! \cdot 1013!}$$
+    
+    Số mũ của số nguyên tố $3$ trong phân tích tiêu chuẩn của $S$ được tính bởi:
+    $$v_3(S) = v_3(2026!) - 2v_3(1013!)$$
+    
+    **Bước 2: Áp dụng Định lý Legendre để tính số mũ**
+    
+    Công thức Legendre cho số mũ của nguyên tố $p$ trong $n!$ là:
+    $$v_p(n!) = \sum_{k=1}^{\infty} \left\lfloor \dfrac{n}{p^k} \right\rfloor$$
+    
+    * Tính $v_3(2026!)$ với $n = 2026$:
+      * $\left\lfloor \dfrac{2026}{3} \right\rfloor = 675$
+      * $\left\lfloor \dfrac{2026}{9} \right\rfloor = 225$
+      * $\left\lfloor \dfrac{2026}{27} \right\rfloor = 75$
+      * $\left\lfloor \dfrac{2026}{81} \right\rfloor = 25$
+      * $\left\lfloor \dfrac{2026}{243} \right\rfloor = 8$
+      * $\left\lfloor \dfrac{2026}{729} \right\rfloor = 2$
+      * Các lũy thừa cao hơn cho thương số bằng $0$.
+      
+      Cộng lại: $v_3(2026!) = 675 + 225 + 75 + 25 + 8 + 2 = 1010$.
+      
+    * Tính $v_3(1013!)$ với $n = 1013$:
+      * $\left\lfloor \dfrac{1013}{3} \right\rfloor = 337$
+      * $\left\lfloor \dfrac{1013}{9} \right\rfloor = 112$
+      * $\left\lfloor \dfrac{1013}{27} \right\rfloor = 37$
+      * $\left\lfloor \dfrac{1013}{81} \right\rfloor = 12$
+      * $\left\lfloor \dfrac{1013}{243} \right\rfloor = 4$
+      * $\left\lfloor \dfrac{1013}{729} \right\rfloor = 1$
+      
+      Cộng lại: $v_3(1013!) = 337 + 112 + 37 + 12 + 4 + 1 = 503$.
+      
+    **Bước 3: Tính số mũ của $3$ trong $S$**
+    
+    $$v_3(S) = 1010 - 2 \times 503 = 1010 - 1006 = 4$$
+    
+    **Kết luận:** Số mũ của thừa số nguyên tố $3$ trong phân tích tiêu chuẩn của $C_{2026}^{1013}$ là **$4$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 97: DÃY SỐ VÀ ĐỒNG DƯ THỨC
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 97 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho dãy số $(u_n)$ được xác định bởi $u_1 = 3$, $u_2 = 11$ và hệ thức truy hồi $u_{n+2} = 5u_{n+1} - 6u_n$ với mọi $n \ge 1$. Tìm số dư khi chia số hạng $u_{2026}$ cho số nguyên tố $13$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_97 = st.text_input("Nhập số dư của phép chia:", key="q97_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q97_check"):
+    normalized_user_answer_97 = user_answer_97.strip().replace(',', '.')
+    
+    if normalized_user_answer_97 == "8":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_97 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy giải phương trình đặc trưng tìm công thức tổng quát của dãy số rồi dùng Định lý nhỏ Fermat nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q97_solution_shown' not in st.session_state:
+    st.session_state['q97_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q97_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q97_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q97_solution_shown'] = False 
+
+if st.session_state.get('q97_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm công thức tổng quát của dãy số**
+    
+    Phương trình đặc trưng của hệ thức sai phân tuyến tính cấp hai là:
+    $$r^2 - 5r + 6 = 0 \iff (r - 2)(r - 3) = 0 \iff \begin{bmatrix} r = 2 \\ r = 3 \end{bmatrix}$$
+    
+    Do đó, công thức tổng quát của dãy số có dạng:
+    $$u_n = A \cdot 2^n + B \cdot 3^n$$
+    
+    Sử dụng điều kiện đầu để tìm các hằng số $A$ và $B$:
+    * Với $n = 1$: $2A + 3B = 3$
+    * Với $n = 2$: $4A + 9B = 11$
+    
+    Giải hệ phương trình này, ta thu được $A = -1$ và $B = \dfrac{5}{3}$. Vậy số hạng tổng quát là:
+    $$u_n = -2^n + \dfrac{5}{3} \cdot 3^n = -2^n + 5 \cdot 3^{n-1}$$
+    
+    **Bước 2: Tính số hạng $u_{2026}$ theo mô-đun $13$**
+    
+    Ta cần tìm số dư của biểu thức:
+    $$u_{2026} = -2^{2026} + 5 \cdot 3^{2025} \pmod{13}$$
+    
+    * Xét phần $-2^{2026} \pmod{13}$:
+      Theo Định lý nhỏ Fermat, $2^{12} \equiv 1 \pmod{13}$.
+      Thực hiện chia số mũ cho chu kỳ $12$: $2026 = 12 \times 168 + 10$.
+      $$2^{2026} = (2^{12})^{168} \cdot 2^{10} \equiv 1^{168} \cdot 1024 \pmod{13}$$
+      Vì $1024 = 13 \times 78 + 10 \equiv 10 \pmod{13}$, nên $-2^{2026} \equiv -10 \equiv 3 \pmod{13}$.
+      
+    * Xét phần $5 \cdot 3^{2025} \pmod{13}$:
+      Theo Định lý nhỏ Fermat, $3^{12} \equiv 1 \pmod{13}$, hoặc đơn giản hơn $3^3 = 27 \equiv 1 \pmod{13}$.
+      Thực hiện chia số mũ cho $3$: $2025 = 3 \times 675$ (chia hết cho $3$).
+      $$3^{2025} = (3^3)^{675} \equiv 1^{675} = 1 \pmod{13}$$
+      Do đó: $5 \cdot 3^{2025} \equiv 5 \cdot 1 = 5 \pmod{13}$.
+      
+    **Bước 3: Tổng hợp kết quả**
+    
+    $$u_{2026} \equiv 3 + 5 = 8 \pmod{13}$$
+    
+    **Kết luận:** Số dư khi chia $u_{2026}$ cho $13$ là **$8$**.
+    """)
+    
+st.markdown("---")
