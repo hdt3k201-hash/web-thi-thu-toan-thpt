@@ -2013,3 +2013,497 @@ if st.session_state.get('q22_solution_shown') and st.session_state.get('logged_i
     """)
     
 st.markdown("---")
+
+
+
+# ==========================================
+import streamlit as st
+
+# ==========================================
+# CÂU 23: TOÁN THỰC TẾ SỐ HỌC (BÀI TOÁN ĐIỀU PHỐI / ĐỊNH LÝ PHẦN DƯ TRUNG HOA)
+# ==========================================
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 23 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh / text
+st.markdown(r"""
+Một công ty logistics tại Hà Nội cần điều phối một số lượng lớn các container hàng hóa xuất khẩu. Người quản lý kho nhận thấy quy luật sau:
+*   Nếu xếp các container lên các xe tải loại chở được $11$ chiếc/xe thì còn dư $5$ chiếc.
+*   Nếu xếp các container lên các xe tải loại chở được $13$ chiếc/xe thì còn dư $8$ chiếc.
+*   Nếu xếp các container lên các siêu trọng tải loại chở được $17$ chiếc/xe thì còn dư $12$ chiếc.
+
+Biết rằng tổng số container của công ty nằm trong khoảng từ $2000$ đến $3000$ chiếc. Hãy tính chính xác số lượng container mà công ty đang có.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_23 = st.text_input("Nhập số lượng container:", key="q23_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/logistics_containers.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/logistics_containers.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q23_check"):
+    normalized_user_answer_23 = user_answer_23.strip()
+    
+    # Đáp án chính xác là 2205
+    if normalized_user_answer_23 == "2205":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_23 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hệ phương trình đồng dư và giải bằng phương pháp thế dần nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q23_solution_shown' not in st.session_state:
+    st.session_state['q23_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q23_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q23_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q23_solution_shown'] = False 
+
+if st.session_state.get('q23_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ phương trình đồng dư**
+    
+    Gọi $N$ là tổng số lượng container cần tìm ($2000 \le N \le 3000, N \in \mathbb{N}^*$).
+    Theo bài ra, ta có hệ điều kiện đồng dư:
+    $$
+    \begin{cases}
+    N \equiv 5 \pmod{11} \quad (1) \\
+    N \equiv 8 \pmod{13} \quad (2) \\
+    N \equiv 12 \pmod{17} \quad (3)
+    \end{cases}
+    $$
+    
+    **Bước 2: Giải hệ đồng dư bằng phương pháp thế**
+    
+    Từ phương trình $(1)$, ta có $N = 11k + 5$ ($k \in \mathbb{Z}$).
+    Thế vào phương trình $(2)$:
+    $$11k + 5 \equiv 8 \pmod{13}$$
+    $$11k \equiv 3 \pmod{13}$$
+    Nhân cả 2 vế với $6$ (vì $11 \times 6 = 66 \equiv 1 \pmod{13}$):
+    $$k \equiv 3 \times 6 \equiv 18 \equiv 5 \pmod{13}$$
+    Suy ra $k = 13m + 5$ ($m \in \mathbb{Z}$).
+    
+    Thay $k$ trở lại vào biểu thức của $N$:
+    $$N = 11(13m + 5) + 5 = 143m + 60$$
+    
+    Tiếp tục thế vào phương trình $(3)$:
+    $$143m + 60 \equiv 12 \pmod{17}$$
+    Ta có $143 = 17 \times 8 + 7$, nên $143m \equiv 7m \pmod{17}$.
+    $$7m + 60 \equiv 12 \pmod{17}$$
+    $$7m \equiv -48 \equiv -48 + 17 \times 3 \equiv 3 \pmod{17}$$
+    Nhân cả 2 vế với $5$ (vì $7 \times 5 = 35 \equiv 1 \pmod{17}$):
+    $$m \equiv 3 \times 5 \equiv 15 \pmod{17}$$
+    Suy ra $m = 17t + 15$ ($t \in \mathbb{Z}$).
+    
+    **Bước 3: Tìm công thức tổng quát và kết luận**
+    
+    Thay $m$ vào biểu thức của $N$:
+    $$N = 143(17t + 15) + 60 = 2431t + 2145 + 60 = 2431t + 2205$$
+    
+    Vì số container nằm trong khoảng $2000 \le N \le 3000$:
+    $$2000 \le 2431t + 2205 \le 3000$$
+    $$-205 \le 2431t \le 795$$
+    $$\dfrac{-205}{2431} \le t \le \dfrac{795}{2431}$$
+    
+    Do $t$ là số nguyên nên $t = 0$.
+    Với $t = 0$, ta có:
+    $$N = 2205$$
+    
+    **Kết luận:** Số lượng container của công ty là **$2205$** chiếc.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 24: TOÁN THỰC TẾ SỐ HỌC (BẢO MẬT/MÃ HÓA DIFFIE-HELLMAN)
+# ==========================================
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 24 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh / text
+st.markdown(r"""
+Trong thuật toán trao đổi khóa bảo mật thông tin trên nền tảng thi trực tuyến, khóa chung $K$ giữa máy chủ và người dùng được tính dựa trên lý thuyết số bằng công thức: 
+$$K = (g^a \bmod p)^b \bmod p$$
+Trong đó $p$ là một số nguyên tố, $g$ là cơ số công khai, còn $a$ và $b$ lần lượt là các khóa bí mật của người dùng và máy chủ. 
+Theo tính chất của phép đồng dư, ta có $K \equiv g^{a \cdot b} \pmod p$ và $0 \le K < p$.
+
+Giả sử hệ thống chọn số nguyên tố $p = 19$, cơ số $g = 5$. Trình duyệt của học sinh sinh ra khóa bí mật $a = 125$, và máy chủ của trường sinh ra khóa bí mật $b = 455$. 
+
+Hãy tính giá trị khóa chung $K$ (là một số tự nhiên) mà hai bên sẽ sử dụng để mã hóa dữ liệu.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_24 = st.text_input("Nhập giá trị khóa chung K:", key="q24_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/diffie_hellman_crypto.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/diffie_hellman_crypto.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q24_check"):
+    normalized_user_answer_24 = user_answer_24.strip()
+    
+    # Đáp án chính xác là 17
+    if normalized_user_answer_24 == "17":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_24 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy sử dụng Định lý Fermat nhỏ $g^{p-1} \equiv 1 \pmod p$ để hạ bậc lũy thừa nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q24_solution_shown' not in st.session_state:
+    st.session_state['q24_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q24_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q24_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q24_solution_shown'] = False 
+
+if st.session_state.get('q24_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích bài toán bằng lý thuyết đồng dư**
+    
+    Khóa chung $K$ được tính bằng:
+    $$K \equiv 5^{125 \times 455} \pmod{19} \quad (\text{với } 0 \le K < 19)$$
+    
+    Vì $19$ là số nguyên tố và $(5, 19) = 1$, theo **Định lý Fermat nhỏ**, ta có:
+    $$5^{18} \equiv 1 \pmod{19}$$
+    
+    Do đó, để tìm số dư của lũy thừa $5^{125 \times 455}$ cho $19$, ta cần tìm số dư của số mũ $E = 125 \times 455$ khi chia cho $18$.
+    
+    **Bước 2: Rút gọn số mũ**
+    
+    Ta xét số dư của từng thừa số trong số mũ khi chia cho $18$:
+    *   $125 = 18 \times 6 + 17 \equiv 17 \equiv -1 \pmod{18}$
+    *   $455 = 18 \times 25 + 5 \equiv 5 \pmod{18}$
+    
+    Suy ra số mũ $E$ thỏa mãn:
+    $$E = 125 \times 455 \equiv (-1) \times 5 = -5 \equiv 13 \pmod{18}$$
+    
+    Như vậy, $E = 18k + 13$. Khi đó:
+    $$5^{125 \times 455} = 5^{18k + 13} = (5^{18})^k \cdot 5^{13} \equiv 1^k \cdot 5^{13} \equiv 5^{13} \pmod{19}$$
+    
+    **Bước 3: Tính $5^{13} \pmod{19}$ bằng phương pháp hạ bậc**
+    
+    Ta tính lần lượt các lũy thừa của $5$ theo modulo $19$:
+    *   $5^2 = 25 \equiv 6 \pmod{19}$
+    *   $5^4 = (5^2)^2 \equiv 6^2 = 36 \equiv -2 \pmod{19}$
+    *   $5^8 = (5^4)^2 \equiv (-2)^2 = 4 \pmod{19}$
+    
+    Phân tích số mũ $13 = 8 + 4 + 1$, ta có:
+    $$5^{13} = 5^8 \cdot 5^4 \cdot 5^1 \equiv 4 \cdot (-2) \cdot 5 \pmod{19}$$
+    $$5^{13} \equiv -40 \pmod{19}$$
+    
+    Ta thực hiện phép chia để đưa về số dư dương:
+    $$-40 = 19 \times (-3) + 17 \Rightarrow -40 \equiv 17 \pmod{19}$$
+    
+    Vậy $5^{125 \times 455} \equiv 17 \pmod{19}$.
+    
+    **Kết luận:** Giá trị khóa chung cần tìm là **$K = 17$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 25
+# ==========================================
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 25 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi
+st.markdown(r"""
+Gọi $S$ là tập hợp các số tự nhiên có 4 chữ số đôi một khác nhau được lập từ các chữ số $0, 1, 2, 3, 4, 5, 6, 7$. Chọn ngẫu nhiên một số từ tập $S$. Biết xác suất để số được chọn chia hết cho $15$ là $\dfrac{a}{b}$ (với $a, b$ là các số nguyên dương và phân số là tối giản). 
+
+Tính giá trị biểu thức $T = a + b$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_25 = st.text_input("Nhập giá trị của T:", key="q25_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q25_check"):
+    normalized_user_answer = user_answer_25.strip()
+    
+    # Đáp án chính xác là 268
+    if normalized_user_answer == "268":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_25 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Số chia hết cho 15 cần chia hết cho 5 và 3. Hãy chia làm 2 trường hợp: tận cùng là 0 hoặc tận cùng là 5 và phân chia các tập số dư nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+if 'q25_solution_shown' not in st.session_state:
+    st.session_state['q25_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q25_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q25_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q25_solution_shown'] = False 
+
+if st.session_state.get('q25_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số phần tử của không gian mẫu**
+    
+    Số các số tự nhiên có 4 chữ số phân biệt từ $8$ chữ số đã cho là:
+    $n(\Omega) = 7 \times A_7^3 = 7 \times 7 \times 6 \times 5 = 1470$ (số).
+    
+    **Bước 2: Phân tích điều kiện chia hết cho 15**
+    
+    Số được chọn $\overline{xyzt} \vdots 15 \Leftrightarrow \overline{xyzt} \vdots 5$ và $\overline{xyzt} \vdots 3$.
+    Do đó tận cùng $t \in \{0, 5\}$. Chia làm hai trường hợp:
+    
+    *   **Trường hợp 1: $t = 0$**
+        Ta cần chọn $3$ chữ số $\{x, y, z\}$ từ $\{1, 2, 3, 4, 5, 6, 7\}$ sao cho tổng của chúng chia hết cho $3$.
+        Chia tập này theo module 3: 
+        $G_0 = \{3, 6\}$ (có $2$ số); $G_1 = \{1, 4, 7\}$ (có $3$ số); $G_2 = \{2, 5\}$ (có $2$ số).
+        Để tổng 3 chữ số chia hết cho 3, ta có các cách lấy:
+        + 3 số cùng nhóm: Chỉ có thể lấy $3$ số từ $G_1$ (có $C_3^3 = 1$ bộ).
+        + 3 số từ 3 nhóm khác nhau: Chọn 1 số từ mỗi nhóm, có $C_2^1 \cdot C_3^1 \cdot C_2^1 = 12$ bộ.
+        Vậy có tổng cộng $1 + 12 = 13$ bộ.
+        Hoán vị 3 chữ số ở các vị trí $x, y, z$, ta được: $13 \times 3! = \mathbf{78}$ số.
+        
+    *   **Trường hợp 2: $t = 5$**
+        Ta cần chọn $3$ chữ số $\{x, y, z\}$ từ $\{0, 1, 2, 3, 4, 6, 7\}$ sao cho tổng của chúng cộng $5$ chia hết cho $3$, tức là $(x+y+z) \equiv 1 \pmod 3$.
+        Chia tập này theo module 3: 
+        $G_0 = \{0, 3, 6\}$ (có $3$ số); $G_1 = \{1, 4, 7\}$ (có $3$ số); $G_2 = \{2\}$ (có $1$ số).
+        Để $(x+y+z) \equiv 1 \pmod 3$, ta có các cách lấy 3 phần tử:
+        + 2 số từ $G_0$, 1 số từ $G_1$: Có $C_3^2 \cdot C_3^1 = 9$ bộ.
+        + 2 số từ $G_1$, 1 số từ $G_2$: Có $C_3^2 \cdot C_1^1 = 3$ bộ.
+        Tổng cộng có $12$ bộ. 
+        Tuy nhiên cần trừ đi trường hợp chữ số $0$ đứng đầu:
+        Trong 9 bộ ở nhóm đầu, các bộ chứa chữ số $0$ được tạo bởi: lấy $0$, lấy $1$ số từ $\{3, 6\}$ và $1$ số từ $\{1, 4, 7\}$ $\Rightarrow$ có $1 \times C_2^1 \times C_3^1 = 6$ bộ. 
+        Đối với $6$ bộ chứa $0$ này, khi sắp xếp thành số có 3 chữ số ($x \neq 0$), có $2 \times 2! = 4$ cách lập $\Rightarrow$ được $6 \times 4 = 24$ số.
+        Các bộ không chứa $0$ còn lại có $12 - 6 = 6$ bộ. Với mỗi bộ ta hoán vị tùy ý $3!$ cách $\Rightarrow$ được $6 \times 6 = 36$ số.
+        Vậy ở trường hợp 2 có tất cả: $24 + 36 = \mathbf{60}$ số.
+        
+    **Bước 3: Tính xác suất**
+    
+    Tổng số các số chia hết cho 15 là: $n(A) = 78 + 60 = 138$ số.
+    Xác suất là: $P(A) = \dfrac{138}{1470} = \dfrac{23}{245}$.
+    
+    Vì phân số $\dfrac{23}{245}$ là tối giản, nên $a = 23, b = 245$.
+    Vậy $T = a + b = 23 + 245 = 268$.
+    
+    **Kết luận:** Giá trị cần tìm là **$268$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 26 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 26. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tính số dư khi chia tổng $S = 1^5 + 2^5 + 3^5 + \dots + 2026^5$ cho $7$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 26) ---
+user_ans_26 = st.text_input("Nhập số dư của tổng S khi chia cho 7:", key="q26_ans")
+
+if st.button("Kiểm tra đáp án Câu 26", key="q26_check"):
+    norm_ans_26 = user_ans_26.strip()
+    
+    # Đáp án chính xác là 3
+    if norm_ans_26 == "3":
+        st.success("🎉 Chính xác! Bạn đã vận dụng tính chất chu kỳ số dư lũy thừa bậc cao rất xuất sắc. Lời giải Câu 26 đã được mở khóa.")
+    elif user_ans_26 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 26.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy xét giá trị của $a^5 \pmod 7$ với các số dư từ $0$ đến $6$ để tìm chu kỳ lặp lại của tổng sau mỗi $7$ số hạng.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 26 ---
+st.markdown("---")
+
+if 'q26_solution_shown' not in st.session_state:
+    st.session_state['q26_solution_shown'] = False
+
+col1_26, col2_26 = st.columns([1, 4])
+with col1_26:
+    if st.button("Xem lời giải Câu 26", key="q26_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q26_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q26_solution_shown'] = False 
+
+if st.session_state.get('q26_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 26 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Khảo sát tính chất chu kỳ modulo $7$ của hàm số $f(a) = a^5 \pmod 7$**
+    
+    Ta xét giá trị của $a^5$ khi chia cho $7$ với mọi số dư $a \in \{0, 1, 2, 3, 4, 5, 6\}$:
+    *   $0^5 \equiv 0 \pmod 7$
+    *   $1^5 \equiv 1 \pmod 7$
+    *   $2^5 = 32 \equiv 4 \pmod 7$
+    *   $3^5 = 243 \equiv 5 \pmod 7$
+    *   $4^5 = 1024 \equiv 2 \pmod 7$
+    *   $5^5 = 3125 \equiv 3 \pmod 7$
+    *   $6^5 = 7776 \equiv 6 \pmod 7$
+    
+    Tổng các số dư trong một chu kỳ gồm $7$ số liên tiếp là:
+    $$0 + 1 + 4 + 5 + 2 + 3 + 6 = 21 \equiv 0 \pmod 7$$
+    Điều này có nghĩa là tổng của bất kỳ $7$ số hạng liên tiếp nào trong tổng $S$ đều chia hết cho $7$.
+    
+    **Bước 2: Phân tích số lượng số hạng của tổng $S$**
+    
+    Tổng $S$ có tổng cộng $2026$ số hạng (từ $1^5$ đến $2026^5$).
+    Thực hiện phép chia $2026$ cho $7$:
+    $$2026 = 7 \times 289 + 3$$
+    
+    Như vậy, tổng $S$ được chia thành $289$ nhóm, mỗi nhóm gồm $7$ số hạng liên tiếp (tổng các nhóm này chia hết cho $7$) và dư ra $3$ số hạng ở đầu nhóm tiếp theo.
+    
+    **Bước 3: Tính toán phần dư**
+    
+    Do $289$ nhóm đầu tiên đều đồng dư với $0 \pmod 7$, ta chỉ cần tính tổng của $3$ số hạng dư ra:
+    $$S \equiv 1^5 + 2^5 + 3^5 \pmod 7$$
+    $$S \equiv 1 + 32 + 243 = 276 \pmod 7$$
+    
+    Thực hiện phép chia $276$ cho $7$:
+    $$276 = 7 \times 39 + 3 \implies 276 \equiv 3 \pmod 7$$
+    
+    **Bước 4: Kết luận**
+    
+    Số dư của tổng $S$ khi chia cho $7$ là $3$.
+    
+    ---
+    **👉 Đáp số Câu 26:** `3`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 27 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 27. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số tự nhiên $N = 2026!$ (giai thừa của $2026$). Hỏi số $N$ có tận cùng bằng bao nhiêu chữ số $0$ liên tiếp tính từ phải sang trái?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 27) ---
+user_ans_27 = st.text_input("Nhập số lượng chữ số 0 tận cùng:", key="q27_ans")
+
+if st.button("Kiểm tra đáp án Câu 27", key="q27_check"):
+    norm_ans_27 = user_ans_27.strip()
+    
+    # Đáp án chính xác là 505
+    if norm_ans_27 == "505":
+        st.success("🎉 Chính xác! Bạn đã nắm vững công thức Legendre để đếm số mũ thừa số nguyên tố rất tuyệt vời. Lời giải Câu 27 đã được mở khóa.")
+    elif user_ans_27 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 27.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Số chữ số 0 tận cùng của $N!$ bằng số mũ của thừa số nguyên tố $5$ trong phân tích chuẩn tắc. Hãy sử dụng công thức Legendre: $v_5(N!) = \sum \left\lfloor \dfrac{N}{5^i} \right\rfloor$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 27 ---
+st.markdown("---")
+
+if 'q27_solution_shown' not in st.session_state:
+    st.session_state['q27_solution_shown'] = False
+
+col1_27, col2_27 = st.columns([1, 4])
+with col1_27:
+    if st.button("Xem lời giải Câu 27", key="q27_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q27_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q27_solution_shown'] = False 
+
+if st.session_state.get('q27_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 27 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Bản chất của số chữ số $0$ tận cùng**
+    
+    Số chữ số $0$ tận cùng liên tiếp của một số nguyên dương chính là số lượng thừa số $10$ ($10 = 2 \times 5$) có trong phân tích ra thừa số nguyên tố của số đó. 
+    Vì trong dãy từ $1$ đến $2026$, số lượng bội của $2$ luôn nhiều hơn rất nhiều so với số lượng bội của $5$, nên số chữ số $0$ tận cùng của $2026!$ sẽ được quyết định hoàn toàn bởi số mũ của thừa số nguyên tố $5$.
+    
+    **Bước 2: Áp dụng công thức Legendre**
+    
+    Số mũ của thừa số nguyên tố $p$ trong $N!$ được tính bởi công thức Legendre:
+    $$v_p(N!) = \sum_{k=1}^{\infty} \left\lfloor \dfrac{N}{p^k} \right\rfloor = \left\lfloor \dfrac{N}{p} \right\rfloor + \left\lfloor \dfrac{N}{p^2} \right\rfloor + \left\lfloor \dfrac{N}{p^3} \right\rfloor + \dots$$
+    
+    Với $N = 2026$ và $p = 5$, ta tính các thành phần:
+    *   $\left\lfloor \dfrac{2026}{5} \right\rfloor = \left\lfloor 405.2 \right\rfloor = 405$
+    *   $\left\lfloor \dfrac{2026}{25} \right\rfloor = \left\lfloor 81.04 \right\rfloor = 81$
+    *   $\left\lfloor \dfrac{2026}{125} \right\rfloor = \left\lfloor 16.208 \right\rfloor = 16$
+    *   $\left\lfloor \dfrac{2026}{625} \right\rfloor = \left\lfloor 3.2416 \right\rfloor = 3$
+    *   Các lũy thừa tiếp theo ($5^5 = 3125 > 2026$) sẽ cho phần nguyên bằng $0$.
+    
+    **Bước 3: Tính tổng số mũ và kết luận**
+    
+    Tổng số mũ của thừa số $5$ trong $2026!$ là:
+    $$v_5(2026!) = 405 + 81 + 16 + 3 = 505$$
+    
+    Vậy số $2026!$ có tận cùng bằng $505$ chữ số $0$ liên tiếp.
+    
+    ---
+    **👉 Đáp số Câu 27:** `505`
+    """)
+
+st.markdown("---")
