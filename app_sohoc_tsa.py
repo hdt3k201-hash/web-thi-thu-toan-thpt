@@ -2493,3 +2493,466 @@ if st.session_state.get('q27_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 28: SỐ HỌC BẢO MẬT (ĐỊNH LÝ FERMAT NHỎ)
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 28 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Để thiết lập mã bảo mật cho hệ thống thi trực tuyến, hệ thống sinh ra một bài toán thử thách người dùng. Học sinh Minh Đăng tham gia hệ thống và được cấp một chuỗi dữ liệu gốc. Hệ thống yêu cầu Đăng tìm một mã số bí mật $M$ (là một số tự nhiên từ $0$ đến $12$) để giải mã. Biết rằng $M$ chính là số dư của phép chia $2026^{2025^{2024}}$ cho $13$.
+
+Tính giá trị của mã số bí mật $M$.
+""")
+
+user_answer_28 = st.text_input("Nhập mã số M (từ 0 đến 12):", key="q28_ans")
+
+
+if st.button("Kiểm tra đáp án", key="q28_check"):
+    normalized_user_answer_28 = user_answer_28.strip()
+    
+    if normalized_user_answer_28 == "8":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_28 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy dùng Định lý Fermat nhỏ $a^{12} \equiv 1 \pmod{13}$ để xét số dư của phần mũ nhé!")
+
+st.markdown("---")
+
+if 'q28_solution_shown' not in st.session_state:
+    st.session_state['q28_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q28_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q28_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q28_solution_shown'] = False 
+
+if st.session_state.get('q28_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích cơ số theo module 13**
+    
+    Ta cần tìm $M \equiv 2026^{2025^{2024}} \pmod{13}$.
+    Ta có $2026 = 13 \times 155 + 11$, suy ra $2026 \equiv 11 \equiv -2 \pmod{13}$.
+    Do đó, $M \equiv (-2)^{E} \pmod{13}$, với số mũ $E = 2025^{2024}$.
+    
+    **Bước 2: Tìm số dư của phần mũ $E$ theo module 12**
+    
+    Vì $13$ là số nguyên tố và $(-2, 13) = 1$, theo **Định lý Fermat nhỏ**, ta có:
+    $$(-2)^{12} \equiv 1 \pmod{13}$$
+    Vậy ta cần tìm số dư của $E = 2025^{2024}$ khi chia cho $12$.
+    
+    Ta có $2025 = 12 \times 168 + 9$, suy ra $2025 \equiv 9 \pmod{12}$.
+    Do đó, $E \equiv 9^{2024} \pmod{12}$.
+    
+    Xét các lũy thừa của $9$ theo module $12$:
+    *   $9^1 = 9 \equiv 9 \pmod{12}$
+    *   $9^2 = 81 = 12 \times 6 + 9 \equiv 9 \pmod{12}$
+    
+    Bằng quy nạp, ta dễ dàng thấy $9^k \equiv 9 \pmod{12}$ với mọi số nguyên dương $k$.
+    Suy ra $E \equiv 9 \pmod{12}$, hay $E = 12k + 9$ (với $k \in \mathbb{N}$).
+    
+    **Bước 3: Tính giá trị của $M$**
+    
+    Thay $E$ vào biểu thức của $M$:
+    $$M \equiv (-2)^{12k + 9} = \left((-2)^{12}\right)^k \cdot (-2)^9 \equiv 1^k \cdot (-512) \pmod{13}$$
+    
+    Ta tính số dư của $-512$ khi chia cho $13$:
+    $$-512 = 13 \times (-40) + 8 \Rightarrow -512 \equiv 8 \pmod{13}$$
+    
+    Vậy $M = 8$.
+    
+    **Kết luận:** Mã số bí mật cần tìm là **$8$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 29: PHƯƠNG TRÌNH DIOPHANTINE 
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 29 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có bao nhiêu cặp số nguyên $(x; y)$ thỏa mãn phương trình sau:
+$$x^2 y - 2x^2 - y + 2026 = 0$$
+""")
+
+user_answer_29 = st.text_input("Nhập số lượng cặp (x; y) thỏa mãn:", key="q29_ans")
+
+
+
+if st.button("Kiểm tra đáp án", key="q29_check"):
+    normalized_user_answer_29 = user_answer_29.strip()
+    
+    if normalized_user_answer_29 == "5":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_29 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy phân tích phương trình thành nhân tử dạng $(x^2 - A)(y - B) = K$ và đánh giá các ước số.")
+
+st.markdown("---")
+
+if 'q29_solution_shown' not in st.session_state:
+    st.session_state['q29_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q29_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q29_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q29_solution_shown'] = False 
+
+if st.session_state.get('q29_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích phương trình thành nhân tử**
+    
+    Ta biến đổi phương trình đã cho:
+    $$x^2 y - 2x^2 - y + 2026 = 0$$
+    $$x^2(y - 2) - (y - 2) - 2 + 2026 = 0$$
+    $$(x^2 - 1)(y - 2) = -2024$$
+    
+    Do $x, y \in \mathbb{Z}$ nên $(x^2 - 1)$ và $(y - 2)$ phải là các ước số nguyên của $-2024$.
+    
+    **Bước 2: Đánh giá điều kiện của $x$**
+    
+    Đặt $D = x^2 - 1$. Vì $x^2 \ge 0 \Rightarrow D \ge -1$.
+    Mặt khác, $D + 1 = x^2$ phải là một số chính phương. Do đó ta chỉ cần tìm các ước $D$ của $-2024$ thỏa mãn hai điều kiện:
+    1.  $D \ge -1$
+    2.  $D + 1$ là số chính phương.
+    
+    Phân tích ra thừa số nguyên tố: $-2024 = - (8 \times 253) = -2^3 \cdot 11 \cdot 23$.
+    Các ước $D \ge -1$ của $-2024$ là tập hợp:
+    $$D \in \{-1, 1, 2, 4, 8, 11, 22, 23, 44, 46, 88, 92, 184, 253, 506, 1012, 2024\}$$
+    
+    **Bước 3: Lọc các giá trị $D$ thỏa mãn $D + 1$ là số chính phương**
+    
+    Ta kiểm tra lần lượt các giá trị $D$:
+    *   $D = -1 \Rightarrow x^2 = 0 \Rightarrow x = 0$ (Chọn).
+    *   $D = 1 \Rightarrow x^2 = 2$ (Loại).
+    *   $D = 2 \Rightarrow x^2 = 3$ (Loại).
+    *   $D = 4 \Rightarrow x^2 = 5$ (Loại).
+    *   $D = 8 \Rightarrow x^2 = 9 \Rightarrow x = \pm 3$ (Chọn).
+    *   Kiểm tra nhanh các giá trị tiếp theo: $12, 23, 24, 45, 47, 89, 93, 185, 254, 507, 1013$ đều không phải số chính phương.
+    *   $D = 2024 \Rightarrow x^2 = 2025 \Rightarrow x = \pm 45$ (Chọn).
+    
+    Vậy chỉ có $3$ giá trị $D \in \{-1; 8; 2024\}$ thỏa mãn.
+    
+    **Bước 4: Tìm $y$ tương ứng và kết luận số cặp**
+    
+    *   **Trường hợp 1:** $D = -1 \Rightarrow x = 0$.
+        $(-1)(y - 2) = -2024 \Rightarrow y - 2 = 2024 \Rightarrow y = 2026$.
+        $\Rightarrow$ Ta được **$1$** cặp: $(0; 2026)$.
+        
+    *   **Trường hợp 2:** $D = 8 \Rightarrow x \in \{-3; 3\}$.
+        $8(y - 2) = -2024 \Rightarrow y - 2 = -253 \Rightarrow y = -251$.
+        $\Rightarrow$ Ta được **$2$** cặp: $(3; -251)$ và $(-3; -251)$.
+        
+    *   **Trường hợp 3:** $D = 2024 \Rightarrow x \in \{-45; 45\}$.
+        $2024(y - 2) = -2024 \Rightarrow y - 2 = -1 \Rightarrow y = 1$.
+        $\Rightarrow$ Ta được **$2$** cặp: $(45; 1)$ và $(-45; 1)$.
+        
+    Tổng số cặp số nguyên $(x; y)$ thỏa mãn là $1 + 2 + 2 = 5$.
+    
+    **Kết luận:** Có **$5$** cặp số thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 30: HỆ THỨC ĐỒNG DƯ THỰC TẾ (CHINESE REMAINDER THEOREM)
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 30 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Trong một sự kiện xếp hình quy mô lớn, có $2026$ người tham gia được xếp thành một hàng ngang, đánh số thứ tự vị trí từ $1$ đến $2026$ (từ trái qua phải). Ban tổ chức thực hiện điểm danh kép bằng cách đếm theo chu kỳ:
+*   **Người thứ nhất (đi từ trái sang phải):** Đếm bắt đầu từ $1$ đến $7$, sau đó lặp lại chu kỳ (người thứ 8 đếm $1$, người thứ 9 đếm $2$,...).
+*   **Người thứ hai (đi từ phải sang trái):** Đếm bắt đầu từ $1$ đến $5$, sau đó lặp lại chu kỳ (người ở vị trí 2026 đếm $1$, vị trí 2025 đếm $2$,...).
+
+Hỏi trong toàn bộ hàng ngang, có bao nhiêu người nhận được cùng một con số đếm từ cả hai phía?
+""")
+
+user_answer_30 = st.text_input("Nhập số lượng người:", key="q30_ans")
+
+
+
+if st.button("Kiểm tra đáp án", key="q30_check"):
+    normalized_user_answer_30 = user_answer_30.strip()
+    
+    if normalized_user_answer_30 == "290":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_30 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Gọi vị trí của người đó là k. Thiết lập hệ đồng dư modulo 7 và modulo 5, sau đó giải trên tập 1 <= k <= 2026.")
+
+st.markdown("---")
+
+if 'q30_solution_shown' not in st.session_state:
+    st.session_state['q30_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q30_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q30_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q30_solution_shown'] = False 
+
+if st.session_state.get('q30_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Toán học hóa bài toán bằng đồng dư thức**
+    
+    Gọi $k$ là vị trí của một người trong hàng ngang ($1 \le k \le 2026$).
+    
+    *   Theo chiều từ trái sang phải, số đếm mà người ở vị trí $k$ nhận được là $L(k)$. 
+        Do chu kỳ đếm là $7$ nên $L(k) \equiv k \pmod 7$. (Lưu ý: kết quả đếm $1,2,3,4,5,6,7$ tương ứng với số dư $1,2,3,4,5,6,0$ theo modulo 7, ta quy ước số dư 0 là giá trị đếm 7).
+    *   Theo chiều từ phải sang trái, vị trí đếm tương ứng của người đó là $2026 - k + 1 = 2027 - k$. 
+        Số đếm nhận được là $R(k)$, với chu kỳ $5$, nên $R(k) \equiv 2027 - k \pmod 5$.
+        
+    Bài toán yêu cầu $L(k) = R(k)$. Gọi giá trị chung này là $v$. Do chu kỳ đếm từ phải qua trái nhỏ hơn, nên $v \in \{1, 2, 3, 4, 5\}$.
+    Ta có hệ phương trình đồng dư:
+    $$
+    \begin{cases}
+    k \equiv v \pmod 7 \\
+    2027 - k \equiv v \pmod 5
+    \end{cases}
+    $$
+    
+    **Bước 2: Giải hệ phương trình đồng dư**
+    
+    Từ phương trình thứ hai, ta có:
+    $$2027 - k \equiv v \pmod 5 \Rightarrow 2 - k \equiv v \pmod 5 \Rightarrow k \equiv 2 - v \pmod 5$$
+    
+    Vậy ta cần giải hệ:
+    $$
+    \begin{cases}
+    k \equiv v \pmod 7 \\
+    k \equiv 2 - v \pmod 5
+    \end{cases}
+    $$
+    
+    Vì ƯCLN$(7, 5) = 1$, theo Định lý phần dư Trung Hoa, với mỗi giá trị cố định của $v$, hệ sẽ có nghiệm duy nhất theo modulo $35$ (do $7 \times 5 = 35$).
+    Cụ thể, xét $5$ trường hợp của $v$:
+    *   $v = 1$: $k \equiv 1 \pmod 7$ và $k \equiv 1 \pmod 5 \Rightarrow \mathbf{k \equiv 1 \pmod{35}}$.
+    *   $v = 2$: $k \equiv 2 \pmod 7$ và $k \equiv 0 \pmod 5 \Rightarrow \mathbf{k \equiv 30 \pmod{35}}$.
+    *   $v = 3$: $k \equiv 3 \pmod 7$ và $k \equiv -1 \equiv 4 \pmod 5 \Rightarrow \mathbf{k \equiv 24 \pmod{35}}$.
+    *   $v = 4$: $k \equiv 4 \pmod 7$ và $k \equiv 3 \pmod 5 \Rightarrow \mathbf{k \equiv 18 \pmod{35}}$.
+    *   $v = 5$: $k \equiv 5 \pmod 7$ và $k \equiv 2 \pmod 5 \Rightarrow \mathbf{k \equiv 12 \pmod{35}}$.
+    
+    Như vậy, vị trí $k$ thỏa mãn yêu cầu nếu và chỉ nếu $k$ chia cho $35$ có số dư rơi vào tập $S_{du} = \{1, 12, 18, 24, 30\}$.
+    
+    **Bước 3: Đếm số lượng giá trị $k$ trên tập $[1; 2026]$**
+    
+    Ta xét sự phân bố của $k$ trên đoạn từ $1$ đến $2026$:
+    Thực hiện phép chia: $2026 = 35 \times 57 + 31$.
+    
+    *   Trong $57$ chu kỳ hoàn chỉnh đầu tiên (từ $k=1$ đến $k=35 \times 57 = 1995$), mỗi chu kỳ độ dài $35$ chứa chính xác $5$ giá trị dư thuộc tập $S_{du}$. 
+        Số lượng người thỏa mãn là: $57 \times 5 = 285$ (người).
+        
+    *   Trong phần dư còn lại (từ $k=1996$ đến $k=2026$), tức là các số dư từ $1$ đến $31$ khi chia cho $35$. 
+        Tập $S_{du} = \{1, 12, 18, 24, 30\}$ đều có giá trị $\le 31$, nên tất cả $5$ số dư này đều xuất hiện thêm một lần nữa trong phần đoạn dư cuối cùng này.
+        Số lượng người thỏa mãn thêm là: $5$ (người).
+        
+    Tổng số người nhận được cùng một con số đếm là:
+    $$285 + 5 = 290 \text{ (người)}$$
+    
+    **Kết luận:** Có **$290$** người thỏa mãn yêu cầu.
+    """)
+    
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 31 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 31. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Tìm số nguyên dương $n$ lớn nhất thỏa mãn phương trình:
+$$\sum_{k=1}^{\infty} \left\lfloor \dfrac{n}{2^k} \right\rfloor = 2026$$
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 31) ---
+user_ans_31 = st.text_input("Nhập giá trị lớn nhất của n:", key="q31_ans")
+
+if st.button("Kiểm tra đáp án Câu 31", key="q31_check"):
+    norm_ans_31 = user_ans_31.strip()
+    
+    # Đáp án chính xác là 2035
+    if norm_ans_31 == "2035":
+        st.success("🎉 Xuất sắc! Bạn có tư duy toán học rời rạc và biểu diễn nhị phân cực kỳ đỉnh cao. Lời giải Câu 31 đã được mở khóa.")
+    elif user_ans_31 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 31.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Sử dụng tính chất của tổng phần nguyên với cơ số 2: $\sum \left\lfloor \dfrac{n}{2^k} \right\rfloor = n - S_2(n)$, trong đó $S_2(n)$ là tổng các chữ số trong biểu diễn nhị phân của $n$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 31 ---
+st.markdown("---")
+
+if 'q31_solution_shown' not in st.session_state:
+    st.session_state['q31_solution_shown'] = False
+
+col1_31, col2_31 = st.columns([1, 4])
+with col1_31:
+    if st.button("Xem lời giải Câu 31", key="q31_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q31_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q31_solution_shown'] = False 
+
+if st.session_state.get('q31_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 31 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Chuyển đổi biểu thức tổng phần nguyên sang dạng nhị phân**
+    
+    Theo định lý cơ bản về tổng phần nguyên các lũy thừa của $2$, đối với mọi số nguyên dương $n$, ta có hằng đẳng thức Legendre mở rộng:
+    $$\sum_{k=1}^{\infty} \left\lfloor \dfrac{n}{2^k} \right\rfloor = n - S_2(n)$$
+    trong đó $S_2(n)$ là **tổng các chữ số $1$** trong biểu diễn nhị phân của số $n$.
+    
+    Theo đề bài, ta có phương trình:
+    $$n - S_2(n) = 2026 \iff n = 2026 + S_2(n)$$
+    
+    **Bisết 2: Đánh giá giá trị của $S_2(n)$**
+    
+    Vì $n$ là một số nguyên dương lân cận của $2026$, ta biểu diễn số $2026$ dưới dạng hệ nhị phân:
+    $$2026 = 1024 + 512 + 256 + 128 + 64 + 32 + 8 + 2 = 11111101010_2$$
+    Số các chữ số $1$ của $2026$ là $S_2(2026) = 8$.
+    
+    Do $n$ xấp xỉ $2026$, số chữ số nhị phân của $n$ không vượt quá $11$ bit, dẫn đến tổng các chữ số nhị phân $S_2(n)$ thường dao động trong khoảng từ $1$ đến $11$.
+    Ta thử nghiệm giá trị của $S_2(n)$ để tìm $n$ tối đa:
+    
+    *   Nếu ta giả sử $S_2(n) = 9$, ta thử chọn $n = 2026 + 9 = 2035$.
+        Biểu diễn nhị phân của $2035$:
+        $$2035 = 2034 + 1 = 11111110010_2 + 1_2 = 11111110011_2$$
+        Đếm số chữ số $1$ trong $2035$, ta thấy có đúng **$9$ chữ số $1$**, tức là $S_2(2035) = 9$.
+        Thay vào phương trình:
+        $$2035 - S_2(2035) = 2035 - 9 = 2026 \quad (\text{Thỏa mãn})$$
+        
+    *   Nếu thử các giá trị lớn hơn chẳng hạn $n = 2036$, ta có $2036 = 11111110100_2$ $\implies S_2(2036) = 8$, khi đó $2036 - 8 = 2028 \neq 2026$.
+    
+    **Bước 3: Kết luận**
+    
+    Giá trị nguyên dương $n$ lớn nhất thỏa mãn yêu cầu bài toán là $2035$.
+    
+    ---
+    **👉 Đáp số Câu 31:** `2035`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 32 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 32. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên dương $N = 2^{10} \cdot 3^5$. Tính tổng tất cả các ước số nguyên dương của $N$ mà các ước số đó đồng thời là **số chính phương**.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 32) ---
+user_ans_32 = st.text_input("Nhập tổng các ước số chính phương:", key="q32_ans")
+
+if st.button("Kiểm tra đáp án Câu 32", key="q32_check"):
+    norm_ans_32 = user_ans_32.strip()
+    
+    # Đáp án chính xác là 124215
+    if norm_ans_32 == "124215":
+        st.success("🎉 Chính xác! Bạn đã nắm vững tính chất hàm nhân tính và điều kiện số mũ chẵn của ước số chính phương. Lời giải Câu 32 đã được mở khóa.")
+    elif user_ans_32 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 32.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Ước số của $N$ có dạng $d = 2^x \cdot 3^y$. Để $d$ là số chính phương thì các số mũ $x$ và $y$ phải là các số chẵn. Hãy tính tích các tổng cấp số nhân tương ứng.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 32 ---
+st.markdown("---")
+
+if 'q32_solution_shown' not in st.session_state:
+    st.session_state['q32_solution_shown'] = False
+
+col1_32, col2_32 = st.columns([1, 4])
+with col1_32:
+    if st.button("Xem lời giải Câu 32", key="q32_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q32_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q32_solution_shown'] = False 
+
+if st.session_state.get('q32_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 32 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Thiết lập dạng tổng quát của ước số chính phương**
+    
+    Mọi ước số nguyên dương $d$ của $N = 2^{10} \cdot 3^5$ đều có dạng phân tích chuẩn tắc:
+    $$d = 2^x \cdot 3^y$$
+    trong đó các số mũ thỏa mãn điều kiện: $0 \le x \le 10$ và $0 \le y \le 5$.
+    
+    Để ước số $d$ là một **số chính phương**, thì tất cả các số mũ trong phân tích ra thừa số nguyên tố của nó bắt buộc phải là **số chẵn**. Do đó:
+    *   Số mũ $x$ phải là số chẵn thuộc đoạn $[0; 10]$ $\implies x \in \{0, 2, 4, 6, 8, 10\}$.
+    *   Số mũ $y$ phải là số chẵn thuộc đoạn $[0; 5]$ $\implies y \in \{0, 2, 4\}$.
+    
+    **Bước 2: Xây dựng công thức tính tổng các ước số chính phương**
+    
+    Gọi $S$ là tổng tất cả các ước số chính phương cần tìm. Theo tính chất phân phối (hàm nhân tính), tổng $S$ được tính bằng tích của hai tổng cấp số nhân ứng với các biến số mũ $x$ và $y$:
+    $$S = \left(\sum_{x \in \{0, 2, 4, 6, 8, 10\}} 2^x\right) \times \left(\sum_{y \in \{0, 2, 4\}} 3^y\right)$$
+    
+    **Bước 3: Tính toán chi tiết các thành phần**
+    
+    1.  **Tính tổng thứ nhất (với cơ số $2$):**
+        $$T_1 = 2^0 + 2^2 + 2^4 + 2^6 + 2^8 + 2^{10}$$
+        $$T_1 = 1 + 4 + 16 + 64 + 256 + 1024 = 1365$$
+        
+    2.  **Tính tổng thứ hai (với cơ số $3$):**
+        $$T_2 = 3^0 + 3^2 + 3^4$$
+        $$T_2 = 1 + 9 + 81 = 91$$
+        
+    **Bước 4: Tính kết quả cuối cùng**
+    
+    Nhân hai kết quả lại với nhau:
+    $$S = T_1 \times T_2 = 1365 \times 91 = 124215$$
+    
+    ---
+    **👉 Đáp số Câu 32:** `124215`
+    """)
+
+st.markdown("---")
