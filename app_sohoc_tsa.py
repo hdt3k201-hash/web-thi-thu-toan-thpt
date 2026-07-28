@@ -5080,38 +5080,50 @@ st.markdown("<br><br>", unsafe_allow_html=True)
 # CÂU HỎI SỐ 57 - [Trả lời ngắn _ TSA]
 # =====================================================================
 
+# ==========================================
+# CÂU 57: SỐ HỌC - ĐỒNG DƯ THỨC NÂNG CAO
+# ==========================================
+
 st.markdown(
-    '<b style="color: blue;">Câu 57. [Trả lời ngắn _ TSA]</b>',
+    '<b style="color: blue;">Câu 57 (Đề tham khảo TSA 2026)</b>',
     unsafe_allow_html=True
 )
 
 st.markdown(r"""
-Cho số nguyên tố $p = 1009$. Hỏi có bao nhiêu phần tử $g$ thuộc tập hợp $\{1, 2, 3, \dots, 1008\}$ sao cho $g$ là một **căn nguyên thủy** (primitive root) modulo $1009$?
+Cho số nguyên dương $A = 2^{2026} + 3^{2026} + 6^{2026}$. Tìm số dư khi chia số $A$ cho $77$.
 """)
 
-# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 57) ---
-user_ans_57 = st.text_input("Nhập số lượng căn nguyên thủy:", key="q57_ans")
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số dư của phép chia:", key="q57_ans")
 
-if st.button("Kiểm tra đáp án Câu 57", key="q57_check"):
-    norm_ans_57 = user_ans_57.strip()
+# Khối chèn hình ảnh minh họa
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("images/tsa_q57.PNG", width=400)
+except FileNotFoundError:
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/tsa_q57.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q57_check"):
+    normalized_user_answer = user_answer.strip().replace(',', '.')
     
-    # Đáp án chính xác là 288
-    if norm_ans_57 == "288":
-        st.success("🎉 Xuất sắc! Bạn đã nắm vững lý thuyết căn nguyên thủy và áp dụng hàm Euler một cách hoàn hảo. Lời giải Câu 57 đã được mở khóa.")
-    elif user_ans_57 == "":
-        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 57.")
+    if normalized_user_answer == "28":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
     else:
-        st.error("❌ Chưa đúng. Gợi ý: Số lượng căn nguyên thủy modulo một số nguyên tố $p$ được tính bằng công thức $\phi(p-1)$. Hãy phân tích $1008$ ra thừa số nguyên tố.")
+        st.error("Sai rồi. Gợi ý: Hãy phân tích $77 = 7 \times 11$, sau đó áp dụng Định lý Tiểu Fermat để tìm số dư theo từng mô-đun nhé!")
 
-# --- XEM LỜI GIẢI CHI TIẾT CÂU 57 ---
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
 st.markdown("---")
 
 if 'q57_solution_shown' not in st.session_state:
     st.session_state['q57_solution_shown'] = False
 
-col1_57, col2_57 = st.columns([1, 4])
-with col1_57:
-    if st.button("Xem lời giải Câu 57", key="q57_solution"):
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q57_solution"):
         if st.session_state.get('logged_in'):
             st.session_state['q57_solution_shown'] = True
         else:
@@ -5119,37 +5131,61 @@ with col1_57:
             st.session_state['q57_solution_shown'] = False 
 
 if st.session_state.get('q57_solution_shown') and st.session_state.get('logged_in'):
-    st.info("### 💡 Hướng dẫn giải chi tiết Câu 57 (Tư duy TSA):")
+    st.info("### Lời giải chi tiết:")
+    
     st.markdown(r"""
-    **Bước 1: Nhận diện định lý về căn nguyên thủy**
+    **Bước 1: Phân tích mô-đun và thiết lập bài toán đồng dư**
     
-    Theo lý thuyết số học cao cấp, số lượng các **căn nguyên thủy** (primitive roots) phân biệt modulo một số nguyên tố $p$ được xác định chính xác bởi công thức:
-    $$\text{Số lượng} = \phi(p - 1)$$
-    trong đó $\phi$ là hàm số Euler.
+    Yêu cầu bài toán là tìm số dư của biểu thức $A = 2^{2026} + 3^{2026} + 6^{2026}$ khi chia cho $77$. 
+    Vì $77 = 7 \times 11$ và $\text{gcd}(7, 11) = 1$, ta sẽ tính số dư của $A$ lần lượt theo mô-đun $7$ và mô-đun $11$, sau đó kết hợp lại.
     
-    **Bước 2: Áp dụng vào số nguyên tố $p = 1009$**
+    **Bước 2: Tính số dư của $A$ theo mô-đun $7$**
     
-    Với $p = 1009$, ta có:
-    $$p - 1 = 1009 - 1 = 1008$$
+    Theo Định lý Tiểu Fermat, ta có $2^6 \equiv 1 \pmod 7$, $3^6 \equiv 1 \pmod 7$ và $6 \equiv -1 \pmod 7$.
+    Thực hiện chia số mũ cho chu kỳ $6$:
+    $$2026 = 6 \times 337 + 4$$
     
-    Phân tích số $1008$ ra thừa số nguyên tố:
-    $$1008 = 2^4 \times 3^2 \times 7$$
+    Do đó:
+    *   $2^{2026} = (2^6)^{337} \cdot 2^4 \equiv 1^{337} \cdot 16 \equiv 2 \pmod 7$
+    *   $3^{2026} = (3^6)^{337} \cdot 3^4 \equiv 1^{337} \cdot 81 \equiv 4 \pmod 7$
+    *   $6^{2026} \equiv (-1)^{2026} \equiv 1 \pmod 7$
     
-    **Bước 3: Tính giá trị của hàm Euler $\phi(1008)$**
+    Cộng các số dư lại, ta được:
+    $$A \equiv 2 + 4 + 1 = 7 \equiv 0 \pmod 7$$
     
-    Sử dụng công thức tính giá trị hàm Euler qua phân tích chuẩn tắc:
-    $$\phi(1008) = 1008 \times \left(1 - \dfrac{1}{2}\right) \times \left(1 - \dfrac{1}{3}\right) \times \left(1 - \dfrac{1}{7}\right)$$
-    $$\phi(1008) = 1008 \times \dfrac{1}{2} \times \dfrac{2}{3} \times \dfrac{6}{7}$$
-    $$\phi(1008) = 504 \times \dfrac{2}{3} \times \dfrac{6}{7} = 336 \times \dfrac{6}{7} = 48 \times 6 = 288$$
+    **Bước 3: Tính số dư của $A$ theo mô-đun $11$**
     
-    **Bước 4: Kết luận**
+    Theo Định lý Tiểu Fermat, với số nguyên tố $11$, ta có $a^{10} \equiv 1 \pmod{11}$ với mọi $a$ không chia hết cho $11$.
+    Thực hiện chia số mũ cho chu kỳ $10$:
+    $$2026 = 10 \times 202 + 6$$
     
-    Số lượng các căn nguyên thủy modulo $1009$ là $288$.
+    Do đó:
+    *   $2^{2026} = (2^{10})^{202} \cdot 2^6 \equiv 1^{202} \cdot 64 \equiv 9 \pmod{11}$
+    *   $3^{2026} = (3^{10})^{202} \cdot 3^6 \equiv 1^{202} \cdot 729 \equiv 3 \pmod{11}$
+    *   $6^{2026} = (6^{10})^{202} \cdot 6^6 \equiv 1^{202} \cdot (6^2)^3 \equiv 36^3 \equiv 3^3 = 27 \equiv 5 \pmod{11}$
     
-    ---
-    **👉 Đáp số Câu 57:** `288`
+    Cộng các số dư lại, ta được:
+    $$A \equiv 9 + 3 + 5 = 17 \equiv 6 \pmod{11}$$
+    
+    **Bước 4: Giải hệ đồng dư để tìm số dư theo mô-đun $77$**
+    
+    Ta có hệ đồng dư thức:
+    $$\begin{cases} A \equiv 0 \pmod 7 \\ A \equiv 6 \pmod{11} \end{cases}$$
+    
+    Từ phương trình thứ nhất, ta đặt $A = 7k$ ($k \in \mathbb{N}$). Thay vào phương trình thứ hai:
+    $$7k \equiv 6 \pmod{11}$$
+    
+    Nhân cả hai vế với nghịch đảo mô-đun của $7$ modulo $11$ (ta có $7 \times 8 = 56 \equiv 1 \pmod{11}$):
+    $$k \equiv 6 \times 8 = 48 \equiv 4 \pmod{11}$$
+    
+    Suy ra $k = 11m + 4$ ($m \in \mathbb{N}$). Khi đó:
+    $$A = 7(11m + 4) = 77m + 28$$
+    
+    Vậy số dư của $A$ khi chia cho $77$ là $28$.
+    
+    **Kết luận:** Số dư cần tìm là **$28$**.
     """)
-
+    
 st.markdown("---")
 
 
