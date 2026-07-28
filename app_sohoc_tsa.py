@@ -7367,3 +7367,438 @@ if st.session_state.get('q82_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+
+# ==========================================
+# CÂU 83: DÃY SỐ VÀ ĐỒNG DƯ THỨC NÂNG CAO
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 83 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho dãy số $(u_n)$ được xác định bởi $u_1 = 5$, $u_2 = 13$ và hệ thức truy hồi $u_{n+2} = 5u_{n+1} - 6u_n$ với mọi $n \ge 1$. Tìm số dư khi chia số hạng $u_{2026}$ cho $11$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_83 = st.text_input("Nhập số dư của phép chia:", key="q83_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q83_check"):
+    normalized_user_answer_83 = user_answer_83.strip().replace(',', '.')
+    
+    if normalized_user_answer_83 == "1":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_83 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy giải phương trình đặc trưng để tìm số hạng tổng quát của dãy số, sau đó áp dụng Định lý nhỏ Fermat nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q83_solution_shown' not in st.session_state:
+    st.session_state['q83_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q83_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q83_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q83_solution_shown'] = False 
+
+if st.session_state.get('q83_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm công thức tổng quát của dãy số**
+    
+    Phương trình sai phân tuyến tính cấp hai có phương trình đặc trưng:
+    $$r^2 - 5r + 6 = 0 \iff (r - 2)(r - 3) = 0 \iff \begin{bmatrix} r = 2 \\ r = 3 \end{bmatrix}$$
+    
+    Do đó, số hạng tổng quát của dãy số có dạng:
+    $$u_n = A \cdot 2^n + B \cdot 3^n$$
+    
+    Sử dụng điều kiện đầu để tìm các hằng số $A$ và $B$:
+    *   Với $n = 1$: $2A + 3B = u_1 = 5$
+    *   Với $n = 2$: $4A + 9B = u_2 = 13$
+    
+    Giải hệ phương trình trên, ta được $A = 1$ và $B = 1$. Vậy công thức tổng quát của dãy số là:
+    $$u_n = 2^n + 3^n$$
+    
+    **Bước 2: Tính số hạng $u_{2026}$ theo mô-đun $11$**
+    
+    Ta cần tìm số dư của $u_{2026} = 2^{2026} + 3^{2026}$ khi chia cho $11$.
+    Theo Định lý nhỏ Fermat, vì $11$ là số nguyên tố nên $2^{10} \equiv 1 \pmod{11}$ và $3^{10} \equiv 1 \pmod{11}$.
+    
+    Thực hiện chia số mũ cho chu kỳ $10$:
+    $$2026 = 10 \times 202 + 6$$
+    
+    Do đó:
+    *   $2^{2026} = (2^{10})^{202} \cdot 2^6 \equiv 1^{202} \cdot 64 \equiv 9 \pmod{11}$ (vì $64 = 5 \times 11 + 9$)
+    *   $3^{2026} = (3^{10})^{202} \cdot 3^6 \equiv 1^{202} \cdot 729 \equiv 3 \pmod{11}$ (vì $729 = 66 \times 11 + 3$)
+    
+    **Bước 3: Tổng hợp kết quả**
+    
+    Cộng các số dư lại ta được:
+    $$u_{2026} \equiv 9 + 3 = 12 \equiv 1 \pmod{11}$$
+    
+    **Kết luận:** Số dư của phép chia $u_{2026}$ cho $11$ là **$1$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 84: ƯỚC CHUNG LỚN NHẤT VÀ TẬP HỢP SỐ
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 84 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Có bao nhiêu giá trị nguyên dương của $n$ thỏa mãn $1 \le n \le 2026$ sao cho ước chung lớn nhất $\gcd(n^2 + 3n + 5, n + 1) = 1$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_84 = st.text_input("Nhập số lượng giá trị của n:", key="q84_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q84_check"):
+    normalized_user_answer_84 = user_answer_84.strip().replace(',', '.')
+    
+    if normalized_user_answer_84 == "1350":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_84 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thực hiện phép chia đa thức để rút gọn biểu thức ước chung lớn nhất về một hằng số nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q84_solution_shown' not in st.session_state:
+    st.session_state['q84_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q84_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q84_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q84_solution_shown'] = False 
+
+if st.session_state.get('q84_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Rút gọn biểu thức ước chung lớn nhất**
+    
+    Gọi $d = \gcd(n^2 + 3n + 5, n + 1)$. Ta thực hiện phép chia đa thức:
+    $$n^2 + 3n + 5 = (n + 1)(n + 2) + 3$$
+    
+    Do $d$ là ước của $n^2 + 3n + 5$ và chia hết cho $(n + 1)$, nên $d$ cũng phải là ước của hiệu:
+    $$(n^2 + 3n + 5) - (n + 1)(n + 2) = 3$$
+    
+    Vì vậy, $d$ chỉ có thể nhận các giá trị thuộc tập ước nguyên dương của $3$, tức là $d \in \{1, 3\}$.
+    
+    **Bước 2: Thiết lập điều kiện để ước chung lớn nhất bằng 1**
+    
+    Yêu cầu bài toán là $\gcd(n^2 + 3n + 5, n + 1) = 1$, điều này xảy ra khi và chỉ khi $d \neq 3$, tức là $(n + 1)$ **không chia hết cho $3$**.
+    
+    **Bước 3: Đếm số lượng giá trị của $n$ thỏa mãn**
+    
+    Xét điều kiện của $n$: $1 \le n \le 2026$. Suy ra miền giá trị của biểu thức $(n + 1)$ là:
+    $$2 \le n + 1 \le 2027$$
+    
+    Tổng số các số nguyên liên tiếp trong đoạn $[2; 2027]$ là:
+    $$2027 - 2 + 1 = 2026 \text{ (số)}$$
+    
+    Trong đoạn này, số các số là bội của $3$ (tức là $n + 1 \vdots 3$) bắt đầu từ $3$ đến $2025$ là một cấp số cộng công sai $3$:
+    $$\text{Số các bội của } 3 = \dfrac{2025 - 3}{3} + 1 = 675 + 1 = 676 \text{ (số)}$$
+    
+    Số các giá trị của $n$ sao cho $(n + 1)$ không chia hết cho $3$ là:
+    $$2026 - 676 = 1350 \text{ (giá trị)}$$
+    
+    **Kết luận:** Có tổng cộng **$1350$** giá trị của $n$ thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 85: PHƯƠNG TRÌNH BẬC HAI VÀ TỔNG LẬP PHƯƠNG NGHIỆM
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 85 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho phương trình bậc hai $x^2 - mx + m^2 - 3 = 0$ (với $m$ là tham số thực). Có bao nhiêu giá trị nguyên của $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho tổng lập phương các nghiệm $S = x_1^3 + x_2^3$ là một số nguyên chia hết cho $7$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_85 = st.text_input("Nhập số lượng giá trị nguyên của m:", key="q85_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q85_check"):
+    normalized_user_answer_85 = user_answer_85.strip().replace(',', '.')
+    
+    if normalized_user_answer_85 == "3":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_85 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy đặt điều kiện delta dương để có hai nghiệm phân biệt, sau đó dùng định lý Vi-et biểu diễn $x_1^3 + x_2^3$ theo $m$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q85_solution_shown' not in st.session_state:
+    st.session_state['q85_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q85_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q85_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q85_solution_shown'] = False 
+
+if st.session_state.get('q85_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm điều kiện để phương trình có hai nghiệm phân biệt**
+    
+    Phương trình $x^2 - mx + m^2 - 3 = 0$ có hai nghiệm phân biệt $x_1, x_2$ khi và chỉ khi biệt thức $\Delta > 0$:
+    $$\Delta = m^2 - 4(1)(m^2 - 3) = -3m^2 + 12 > 0$$
+    $$-3m^2 > -12 \iff m^2 < 4 \iff -2 < m < 2$$
+    
+    Vì $m$ là số nguyên, ta suy ra các giá trị có thể của $m$ là:
+    $$m \in \{-1, 0, 1\}$$
+    
+    **Bước 2: Biểu diễn tổng lập phương nghiệm theo tham số $m$**
+    
+    Theo định lý Vi-et, ta có:
+    $$\begin{cases} x_1 + x_2 = m \\ x_1 x_2 = m^2 - 3 \end{cases}$$
+    
+    Biến đổi biểu thức tổng lập phương các nghiệm:
+    $$S = x_1^3 + x_2^3 = (x_1 + x_2)^3 - 3x_1 x_2 (x_1 + x_2)$$
+    $$S = m^3 - 3(m^2 - 3)m = m^3 - 3m^3 + 9m = 9m - 2m^3$$
+    
+    **Bước 3: Kiểm tra điều kiện chia hết cho $7$**
+    
+    Ta xét giá trị của $S$ với từng giá trị nguyên của $m$ thuộc tập $\{-1, 0, 1\}$:
+    *   Với $m = 0$: $S = 9(0) - 2(0)^3 = 0$. Vì $0$ chia hết cho $7$ nên $m = 0$ thỏa mãn.
+    *   Với $m = 1$: $S = 9(1) - 2(1)^3 = 7$. Vì $7$ chia hết cho $7$ nên $m = 1$ thỏa mãn.
+    *   Với $m = -1$: $S = 9(-1) - 2(-1)^3 = -9 + 2 = -7$. Vì $-7$ chia hết cho $7$ nên $m = -1$ thỏa mãn.
+    
+    Cả ba giá trị $m \in \{-1, 0, 1\}$ đều thỏa mãn tất cả các điều kiện của bài toán.
+    
+    **Kết luận:** Có tổng cộng **$3$** giá trị nguyên của $m$ thỏa mãn yêu cầu bài toán.
+    """)
+    
+st.markdown("---")
+
+
+# =====================================================================
+# CÂU HỎI SỐ 86 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 86. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho các số nguyên dương $x, y, z$ thỏa mãn phương trình nghiệm nguyên:
+$$3^x + 2^{2y} = z^2$$
+Tính giá trị của biểu thức $T = x + y + z$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 86) ---
+user_ans_86 = st.text_input("Nhập giá trị của biểu thức T:", key="q86_ans")
+
+if st.button("Kiểm tra đáp án Câu 86", key="q86_check"):
+    norm_ans_86 = user_ans_86.strip()
+    
+    # Đáp án chính xác là 9
+    if norm_ans_86 == "9":
+        st.success("🎉 Xuất sắc! Bạn đã biến đổi và khai thác tính chất lũy thừa của số nguyên tố một cách cực kỳ tinh tế. Lời giải Câu 86 đã được mở khóa.")
+    elif user_ans_86 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 86.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Chuyển $2^{2y}$ sang vế phải để tạo hằng đẳng thức hiệu hai bình phương $z^2 - (2^y)^2 = 3^x$, sau đó phân tích thành nhân tử.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 86 ---
+st.markdown("---")
+
+if 'q86_solution_shown' not in st.session_state:
+    st.session_state['q86_solution_shown'] = False
+
+col1_86, col2_86 = st.columns([1, 4])
+with col1_86:
+    if st.button("Xem lời giải Câu 86", key="q86_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q86_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q86_solution_shown'] = False 
+
+if st.session_state.get('q86_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 86 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Biến đổi phương trình về dạng tích**
+    
+    Phương trình đã cho được viết lại thành:
+    $$3^x = z^2 - (2^y)^2$$
+    
+    Áp dụng hằng đẳng thức hiệu hai bình phương ở vế phải:
+    $$3^x = (z - 2^y)(z + 2^y)$$
+    
+    **Bước 2: Phân tích ước số của $3^x$**
+    
+    Vì $3^x$ là một lũy thừa của số nguyên tố $3$ và $z - 2^y < z + 2^y$, cả hai thừa số $(z - 2^y)$ và $(z + 2^y)$ buộc phải là các lũy thừa của $3$. 
+    Đặt:
+    $$\begin{cases} z - 2^y = 3^a \\ z + 2^y = 3^b \end{cases}$$
+    với $a < b$ và $a + b = x$ ($a, b$ là các số nguyên không âm).
+    
+    **Bước 3: Giải hệ phương trình mũ**
+    
+    Lấy phương trình dưới trừ phương trình trên:
+    $$(z + 2^y) - (z - 2^y) = 3^b - 3^a \implies 2 \cdot 2^y = 2^{y+1} = 3^a(3^{b-a} - 1)$$
+    
+    Vì vế trái $2^{y+1}$ chỉ có ước nguyên tố là $2$, nên thừa số $3^a$ ở vế phải bắt buộc phải bằng $1$ (nếu $3^a > 1$ thì vế phải sẽ chia hết cho $3$, vô lý). 
+    Do đó:
+    $$3^a = 1 \implies a = 0$$
+    
+    Khi đó phương trình trở thành:
+    $$2^{y+1} = 3^b - 1$$
+    
+    **Bước 4: Tìm nghiệm cụ thể**
+    
+    Thử các giá trị nguyên dương của $b$:
+    *   Nếu $b = 1$: $2^{y+1} = 3^1 - 1 = 2 \implies y + 1 = 1 \implies y = 0$ (loại vì $y$ là số nguyên dương).
+    *   Nếu $b = 2$: $2^{y+1} = 3^2 - 1 = 8 = 2^3 \implies y + 1 = 3 \implies y = 2$.
+    *   Nếu $b \ge 3$: $3^b - 1$ chia hết cho $3^{2} - 1 = 8$ (hoặc dùng tính chất đồng dư modulo $8$), khi xét các giá trị lớn hơn sẽ thấy không thỏa mãn.
+    
+    Với $b = 2$ và $y = 2$:
+    *   Ta có $a = 0 \implies x = a + b = 0 + 2 = 2$.
+    *   Tính $z$ từ phương trình $z + 2^y = 3^b \implies z + 2^2 = 3^2 \implies z + 4 = 9 \implies z = 5$.
+    
+    Kiểm tra lại các nghiệm: $x = 2, y = 2, z = 5$ đều là các số nguyên dương và thỏa mãn $3^2 + 2^{2(2)} = 9 + 16 = 25 = 5^2$ (thỏa mãn).
+    
+    **Bước 5: Tính giá trị biểu thức $T$ và kết luận**
+    
+    Giá trị của biểu thức $T = x + y + z = 2 + 2 + 5 = 9$.
+    
+    ---
+    **👉 Đáp số Câu 86:** `9`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 87 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 87. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho $S$ là tổng tất cả các số nguyên $n$ thuộc đoạn $[-2026, 2026]$ sao cho giá trị của phân số $\dfrac{n^3 - 2n^2 + 3}{n - 1}$ là một số nguyên. Tính giá trị của tổng $S$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 87) ---
+user_ans_87 = st.text_input("Nhập giá trị của tổng S:", key="q87_ans")
+
+if st.button("Kiểm tra đáp án Câu 87", key="q87_check"):
+    norm_ans_87 = user_ans_87.strip()
+    
+    # Đáp án chính xác là 4
+    if norm_ans_87 == "4":
+        st.success("🎉 Xuất sắc! Bạn đã thực hiện phép chia đa thức và tìm ước số nguyên một cách hoàn hảo. Lời giải Câu 87 đã được mở khóa.")
+    elif user_ans_87 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 87.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Thực hiện phép chia đa thức tử cho mẫu để tách phần nguyên và phần phân thức $\dfrac{2}{n-1}$, sau đó tìm các ước của $2$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 87 ---
+st.markdown("---")
+
+if 'q87_solution_shown' not in st.session_state:
+    st.session_state['q87_solution_shown'] = False
+
+col1_87, col2_87 = st.columns([1, 4])
+with col1_87:
+    if st.button("Xem lời giải Câu 87", key="q87_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q87_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q87_solution_shown'] = False 
+
+if st.session_state.get('q87_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 87 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Rút gọn biểu thức phân số bằng phép chia đa thức**
+    
+    Xét phân số cần tìm giá trị nguyên:
+    $$P(n) = \dfrac{n^3 - 2n^2 + 3}{n - 1}$$
+    
+    Thực hiện phép chia đa thức $n^3 - 2n^2 + 3$ cho $n - 1$:
+    *   $n^3 - 2n^2 + 3 = n^2(n - 1) - n(n - 1) - (n - 1) + 2$
+    *   Hay: $n^3 - 2n^2 + 3 = (n - 1)(n^2 - n - 1) + 2$
+    
+    Do đó, phân số được viết lại thành:
+    $$P(n) = n^2 - n - 1 + \dfrac{2}{n - 1}$$
+    
+    **Bước 2: Lập điều kiện để phân số nhận giá trị nguyên**
+    
+    Vì $n$ là số nguyên, biểu thức $n^2 - n - 1$ luôn là một số nguyên. Do đó, để $P(n)$ là một số nguyên thì phần dư $\dfrac{2}{n - 1}$ bắt buộc phải là một số nguyên.
+    
+    Điều này xảy ra khi và chỉ khi $(n - 1)$ là ước nguyên của $2$.
+    
+    **Bước 3: Tìm các giá trị của $n$**
+    
+    Các ước nguyên của $2$ gồm: $\pm 1, \pm 2$. Ta giải các trường hợp sau:
+    1.  $n - 1 = 1 \implies n = 2$.
+    2.  $n - 1 = -1 \implies n = 0$.
+    3.  $n - 1 = 2 \implies n = 3$.
+    4.  $n - 1 = -2 \implies n = -1$.
+    
+    **Bước 4: Kiểm tra điều kiện thuộc đoạn $[-2026, 2026]$ và tính tổng $S$**
+    
+    Tất cả các giá trị tìm được là $n \in \{2, 0, 3, -1\}$, đều thỏa mãn nằm trong đoạn $[-2026, 2026]$.
+    
+    Tính tổng $S$ của các giá trị này:
+    $$S = 2 + 0 + 3 + (-1) = 4$$
+    
+    ---
+    **👉 Đáp số Câu 87:** `4`
+    """)
+
+st.markdown("---")
