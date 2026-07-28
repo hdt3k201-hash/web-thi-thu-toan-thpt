@@ -313,12 +313,7 @@ Một trường THPT tổ chức cho học sinh đi trải nghiệm thực tế.
 
 user_answer_4 = st.text_input("Nhập tổng số học sinh:", key="q4_ans")
 
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.image("images/cau4.PNG", width=400)
-except FileNotFoundError:
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/cau4.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
 
 if st.button("Kiểm tra đáp án", key="q4_check"):
     normalized_ans_4 = user_answer_4.strip().replace(',', '.')
@@ -396,12 +391,7 @@ Hệ thống mã khóa két sắt của một ngân hàng sử dụng một mậ
 
 user_answer_5 = st.text_input("Nhập mật khẩu két sắt:", key="q5_ans")
 
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.image("images/cau5.PNG", width=400)
-except FileNotFoundError:
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/cau5.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
 
 if st.button("Kiểm tra đáp án", key="q5_check"):
     normalized_ans_5 = user_answer_5.strip().replace(',', '.')
@@ -478,12 +468,7 @@ Trong dự án "Ánh sáng học đường", Đoàn thanh niên cần mua hai lo
 
 user_answer_6 = st.text_input("Nhập tổng số bóng đèn:", key="q6_ans")
 
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.image("images/cau6.PNG", width=400)
-except FileNotFoundError:
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/cau6.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
 
 if st.button("Kiểm tra đáp án", key="q6_check"):
     normalized_ans_6 = user_answer_6.strip().replace(',', '.')
