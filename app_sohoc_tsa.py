@@ -39,7 +39,7 @@ else:
 # 2. Giao diện chính hiển thị câu hỏi
 # Tiêu đề chuyên đề căn giữa màn hình, màu xanh đậm (Dark Blue)
 st.markdown(
-    '<h2 style="text-align: center; color: blue;">CHUYÊN ĐỀ: SỐ HỌC TSA</h2>',
+    '<h2 style="text-align: center; color: red;">CHUYÊN ĐỀ: SỐ HỌC TSA</h2>',
     unsafe_allow_html=True
 )
 st.markdown("---")
