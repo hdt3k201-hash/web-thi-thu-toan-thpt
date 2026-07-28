@@ -2042,14 +2042,7 @@ Biết rằng tổng số container của công ty nằm trong khoảng từ $20
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 user_answer_23 = st.text_input("Nhập số lượng container:", key="q23_ans")
 
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        # Đường dẫn ảnh đã được đồng bộ
-        st.image("images/logistics_containers.PNG", width=400)
-except FileNotFoundError:
-    # Thông báo lỗi cập nhật đúng tên file
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/logistics_containers.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
 
 # Nút kiểm tra Đúng/Sai
 if st.button("Kiểm tra đáp án", key="q23_check"):
@@ -2161,14 +2154,7 @@ Hãy tính giá trị khóa chung $K$ (là một số tự nhiên) mà hai bên 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
 user_answer_24 = st.text_input("Nhập giá trị khóa chung K:", key="q24_ans")
 
-try:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        # Đường dẫn ảnh đã được đồng bộ
-        st.image("images/diffie_hellman_crypto.PNG", width=400)
-except FileNotFoundError:
-    # Thông báo lỗi cập nhật đúng tên file
-    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/diffie_hellman_crypto.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
 
 
 # Nút kiểm tra Đúng/Sai
