@@ -555,7 +555,7 @@ st.markdown(
 
 # Nội dung câu hỏi 
 st.markdown(r"""
-Cho số tự nhiên $M = 20^{26}$. Gọi $S$ là tập hợp tất cả các ước số nguyên dương của $M$. Chọn ngẫu nhiên một số từ tập $S$, xác suất để số được chọn là một **số chính phương** có dạng phân số tối giản là $\frac{a}{b}$ (với $a, b \in \mathbb{N}^*$). 
+Cho số tự nhiên $M = 20^{26}$. Gọi $S$ là tập hợp tất cả các ước số nguyên dương của $M$. Chọn ngẫu nhiên một số từ tập $S$, xác suất để số được chọn là một **số chính phương** có dạng phân số tối giản là $\dfrac{a}{b}$ (với $a, b \in \mathbb{N}^*$). 
 
 Hãy tính giá trị của $a + b$.
 """)
@@ -637,6 +637,206 @@ if st.session_state.get('q7_solution_shown') and st.session_state.get('logged_in
     
     ---
     **👉 Đáp số:** `67`
+    """)
+    
+st.markdown("---")
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 8. [Trả lời ngắn - TSA]</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 
+st.markdown(r"""
+Có bao nhiêu số tự nhiên $n$ có $3$ chữ số ($100 \le n \le 999$) sao cho biểu thức:
+$$A = n^3 - n$$
+chia hết cho $24$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng số tự nhiên n thỏa mãn:", key="q8_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q8_check"):
+    # Chuẩn hóa đầu vào (loại bỏ khoảng trắng thừa)
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 562
+    if normalized_user_answer == "562":
+        st.success("🎉 Chính xác! Bạn đã phân tích tính chất chia hết và đếm tập hợp rất xuất sắc. Lời giải đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy phân tích $A = n(n-1)(n+1)$ và xét riêng 2 trường hợp $n$ là số lẻ và $n$ là số chẵn nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q8_solution_shown' not in st.session_state:
+    st.session_state['q8_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q8_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q8_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q8_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q8_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết (Tư duy TSA):")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích biểu thức và yêu cầu bài toán**
+    
+    Ta có: $A = n^3 - n = (n - 1)n(n + 1)$. Đây là tích của $3$ số nguyên liên tiếp.
+    
+    Trong $3$ số nguyên liên tiếp luôn có ít nhất một số chia hết cho $2$ và một số chia hết cho $3$. Do $\gcd(2, 3) = 1$ nên $A$ luôn chia hết cho $6$ với mọi $n \in \mathbb{N}$.
+    
+    Để $A \text{ } \vdots \text{ } 24$ (mà $24 = 3 \times 8$ và $\gcd(3, 8) = 1$), ta chỉ cần tìm điều kiện để $A \text{ } \vdots \text{ } 8$.
+    
+    **Bước 2: Xét tính chẵn lẻ của $n$**
+    
+    *   **Trường hợp 1: $n$ là số lẻ ($n = 2k + 1$)**
+        Khi đó, $n - 1 = 2k$ và $n + 1 = 2k + 2$ là **hai số chẵn liên tiếp**.
+        Tích của hai số chẵn liên tiếp luôn chia hết cho $8$. Do đó, $(n - 1)(n + 1) \text{ } \vdots \text{ } 8 \implies A \text{ } \vdots \text{ } 8$.
+        $\rightarrow$ **Mọi số lẻ $n$ đều thỏa mãn bài toán.**
+        
+    *   **Trường hợp 2: $n$ là số chẵn ($n = 2k$)**
+        Khi đó, $n - 1$ và $n + 1$ là hai số lẻ nên không chứa thừa số $2$ nào.
+        Để $A = n(n-1)(n+1) \text{ } \vdots \text{ } 8$ thì bắt buộc bản thân số $n$ phải chia hết cho $8$.
+        $\rightarrow$ **Các số chẵn $n$ thỏa mãn khi và chỉ khi $n$ là bội của $8$.**
+        
+    **Bước 3: Đếm số lượng số $n$ có $3$ chữ số ($100 \le n \le 999$)**
+    
+    Tổng số các số tự nhiên có $3$ chữ số là: $999 - 100 + 1 = 900$ số.
+    
+    1.  **Số lượng số lẻ:**
+        Từ $101$ đến $999$ có: $\frac{999 - 101}{2} + 1 = 450$ số.
+        
+    2.  **Số lượng số chia hết cho $8$ (đều là số chẵn):**
+        Số nhỏ nhất có $3$ chữ số chia hết cho $8$ là $104$ ($8 \times 13$).
+        Số lớn nhất có $3$ chữ số chia hết cho $8$ là $992$ ($8 \times 124$).
+        Số lượng số là: $124 - 13 + 1 = 112$ số.
+        
+    Vì tập hợp các số lẻ và tập hợp các số chia hết cho $8$ là rời nhau (không trùng lặp), tổng số giá trị $n$ thỏa mãn là:
+    $$450 + 112 = 562 \text{ (số)}$$
+    
+    ---
+    **👉 Đáp số:** `562`
+    """)
+    
+st.markdown("---")
+
+
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 9. [Trả lời ngắn - TSA]</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi 
+st.markdown(r"""
+Cho biểu thức đại số:
+$$P(n) = n^4 + 2n^3 + 2n^2 + 11n - 13$$
+Gọi $S$ là tập hợp tất cả các số nguyên dương $n$ để $P(n)$ là một **số chính phương**. 
+
+Hãy tính **tổng** các phần tử của tập hợp $S$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng các giá trị n thỏa mãn:", key="q9_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q9_check"):
+    # Chuẩn hóa đầu vào (loại bỏ khoảng trắng thừa)
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 9 (S = {2, 7} => 2 + 7 = 9)
+    if normalized_user_answer == "9":
+        st.success("🎉 Chính xác! Bạn đã sử dụng phương pháp 'Kẹp giữa hai số chính phương' cực kỳ bậc thầy. Lời giải đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Hãy chứng minh với $n \ge 2$, biểu thức $P(n)$ luôn bị kẹp giữa $(n^2+n)^2$ và $(n^2+n+2)^2$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q9_solution_shown' not in st.session_state:
+    st.session_state['q9_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q9_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q9_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q9_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q9_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết (Tư duy TSA):")
+    
+    st.markdown(r"""
+    Để giải bài toán số chính phương với đa thức bậc 4, phương pháp hiệu quả nhất là **Phương pháp kẹp (Sandwich Method)** giữa hai số chính phương liên tiếp.
+    
+    **Bước 1: So sánh $P(n)$ với các bình phương lân cận**
+    
+    Ta xét bình phương của biểu thức $(n^2 + n)$:
+    $$(n^2 + n)^2 = n^4 + 2n^3 + n^2$$
+    Xét hiệu: $P(n) - (n^2 + n)^2 = n^2 + 11n - 13$.
+    Với mọi số nguyên dương $n \ge 2$, ta dễ dàng thấy $n^2 + 11n - 13 > 0$. 
+    $\implies P(n) > (n^2 + n)^2 \text{ với mọi } n \ge 2 \quad (1)$
+    
+    Tiếp tục xét bình phương của biểu thức $(n^2 + n + 2)$:
+    $$(n^2 + n + 2)^2 = n^4 + 2n^3 + 5n^2 + 4n + 4$$
+    Xét hiệu: $(n^2 + n + 2)^2 - P(n) = 3n^2 - 7n + 17$.
+    Do tam thức bậc hai $3n^2 - 7n + 17$ có $\Delta = (-7)^2 - 4 \times 3 \times 17 = -155 < 0$, nên $3n^2 - 7n + 17 > 0$ với mọi $n \in \mathbb{R}$.
+    $\implies P(n) < (n^2 + n + 2)^2 \text{ với mọi } n \in \mathbb{N}^* \quad (2)$
+    
+    **Bước 2: Sử dụng nguyên lý kẹp**
+    
+    từ $(1)$ và $(2)$, với mọi $n \ge 2$, ta có bất đẳng thức:
+    $$(n^2 + n)^2 < P(n) < (n^2 + n + 2)^2$$
+    
+    Vì $P(n)$ là một số chính phương và nằm nghiêm ngặt giữa hai số chính phương cách nhau $2$ đơn vị, nên **$P(n)$ buộc phải bằng số chính phương ở chính giữa**, tức là:
+    $$P(n) = (n^2 + n + 1)^2$$
+    
+    **Bước 3: Giải phương trình tìm $n$**
+    
+    Ta có phương trình:
+    $$n^4 + 2n^3 + 2n^2 + 11n - 13 = (n^2 + n + 1)^2$$
+    $$\iff n^4 + 2n^3 + 2n^2 + 11n - 13 = n^4 + 2n^3 + 3n^2 + 2n + 1$$
+    $$\iff n^2 - 9n + 14 = 0$$
+    $$\iff (n - 2)(n - 7) = 0 \implies \left[ \begin{array}{l} n = 2 \\ n = 7 \end{array} \right.$$
+    
+    Cả hai giá trị $n=2$ và $n=7$ đều thỏa mãn điều kiện $n \ge 2$ và là số nguyên dương:
+    *   Với $n = 2 \implies P(2) = 49 = 7^2$ (thỏa mãn).
+    *   Với $n = 7 \implies P(7) = 3249 = 57^2$ (thỏa mãn).
+    
+    *(Lưu ý: Kiểm tra riêng với $n=1$ ta có $P(1) = 3$ không phải số chính phương).*
+    
+    **Bước 4: Kết luận**
+    
+    Tập hợp các giá trị thỏa mãn là $S = \{2; 7\}$.
+    Tổng các phần tử của $S$ là: $2 + 7 = 9$.
+    
+    ---
+    **👉 Đáp số:** `9`
     """)
     
 st.markdown("---")
