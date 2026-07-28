@@ -6051,3 +6051,444 @@ if st.session_state.get('q67_solution_shown') and st.session_state.get('logged_i
     """)
 
 st.markdown("---")
+
+
+# ==========================================
+# CÂU 68: TỔNG GIAI THỪA VÀ ĐỒNG DƯ THỨC
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 68 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho tổng số học $S = 1! + 2! + 3! + \dots + 2026!$. Tìm số dư khi chia số $S$ cho $7$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_68 = st.text_input("Nhập số dư của phép chia:", key="q68_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q68_check"):
+    normalized_user_answer_68 = user_answer_68.strip().replace(',', '.')
+    
+    if normalized_user_answer_68 == "5":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_68 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Từ $7!$ trở đi, các số hạng đều chia hết cho $7$, hãy tính tổng các số hạng từ $1!$ đến $6!$ theo mô-đun $7$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q68_solution_shown' not in st.session_state:
+    st.session_state['q68_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q68_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q68_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q68_solution_shown'] = False 
+
+if st.session_state.get('q68_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đánh giá các số hạng theo mô-đun $7$**
+    
+    Ta cần tìm số dư của $S = 1! + 2! + 3! + \dots + 2026!$ khi chia cho $7$.
+    *   Với mọi số nguyên $k \ge 7$, tích $k! = 1 \times 2 \times \dots \times 7 \times \dots \times k$ chứa thừa số $7$ nên $k! \vdots 7$.
+    *   Do đó, từ $7!$ đến $2026!$ đều chia hết cho $7$, tức là:
+        $$7! \equiv 8! \equiv \dots \equiv 2026! \equiv 0 \pmod 7$$
+        
+    **Bước 2: Thu gọn tổng $S$**
+    
+    Số dư của $S$ khi chia cho $7$ chỉ phụ thuộc vào tổng các số hạng từ $1!$ đến $6!$:
+    $$S \equiv 1! + 2! + 3! + 4! + 5! + 6! \pmod 7$$
+    
+    **Bước 3: Tính giá trị từng số hạng modulo $7$**
+    
+    *   $1! = 1 \equiv 1 \pmod 7$
+    *   $2! = 2 \equiv 2 \pmod 7$
+    *   $3! = 6 \equiv 6 \pmod 7$
+    *   $4! = 24 = 3 \times 7 + 3 \equiv 3 \pmod 7$
+    *   $5! = 120 = 17 \times 7 + 1 \equiv 1 \pmod 7$
+    *   $6! = 720 = 102 \times 7 + 6 \equiv 6 \pmod 7$ (hoặc theo Định lý Wilson: $6! \equiv -1 \equiv 6 \pmod 7$)
+    
+    **Bước 4: Tổng hợp kết quả**
+    
+    Cộng các số dư lại ta được:
+    $$S \equiv 1 + 2 + 6 + 3 + 1 + 6 = 19$$
+    
+    Thực hiện phép chia $19$ cho $7$:
+    $$19 = 2 \times 7 + 5 \equiv 5 \pmod 7$$
+    
+    **Kết luận:** Số dư của phép chia $S$ cho $7$ là **$5$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 69: PHƯƠNG TRÌNH TRÙNG PHƯƠNG VÀ CẤP SỐ CỘNG
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 69 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho phương trình trùng phương $x^4 - 100x^2 + m = 0$ (với $m$ là tham số thực). Biết rằng phương trình có bốn nghiệm phân biệt lập thành một cấp số cộng. Tính giá trị của tham số $m$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_69 = st.text_input("Nhập giá trị của m:", key="q69_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q69_check"):
+    normalized_user_answer_69 = user_answer_69.strip().replace(',', '.')
+    
+    if normalized_user_answer_69 == "900":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_69 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy đặt ẩn phụ $t = x^2$, thiết lập mối quan hệ giữa các nghiệm và áp dụng định lý Vi-et nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q69_solution_shown' not in st.session_state:
+    st.session_state['q69_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q69_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q69_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q69_solution_shown'] = False 
+
+if st.session_state.get('q69_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn phụ và điều kiện có nghiệm**
+    
+    Đặt $t = x^2$ ($t \ge 0$). Phương trình trở thành:
+    $$t^2 - 100t + m = 0 \quad (1)$$
+    
+    Để phương trình ban đầu có bốn nghiệm phân biệt, phương trình $(1)$ phải có hai nghiệm dương phân biệt $0 < t_1 < t_2$. 
+    Khi đó, bốn nghiệm của phương trình theo thứ tự tăng dần là:
+    $$x_1 = -\sqrt{t_2}, \quad x_2 = -\sqrt{t_1}, \quad x_3 = \sqrt{t_1}, \quad x_4 = \sqrt{t_2}$$
+    
+    **Bước 2: Thiết lập điều kiện lập thành cấp số cộng**
+    
+    Vì tính đối xứng, bốn nghiệm lập thành một cấp số cộng khi và chỉ khi khoảng cách giữa các nghiệm liên tiếp bằng nhau:
+    $$x_2 - x_1 = x_3 - x_2 = x_4 - x_3$$
+    $$\Leftrightarrow -\sqrt{t_1} - (-\sqrt{t_2}) = \sqrt{t_1} - (-\sqrt{t_1}) \Leftrightarrow \sqrt{t_2} - \sqrt{t_1} = 2\sqrt{t_1}$$
+    $$\Leftrightarrow \sqrt{t_2} = 3\sqrt{t_1} \Leftrightarrow t_2 = 9t_1$$
+    
+    **Bước 3: Sử dụng định lý Vi-et**
+    
+    Theo định lý Vi-et cho phương trình $(1)$, ta có:
+    $$\begin{cases} t_1 + t_2 = 100 \\ t_1 t_2 = m \end{cases}$$
+    
+    Thay $t_2 = 9t_1$ vào phương trình tổng nghiệm:
+    $$t_1 + 9t_1 = 100 \Leftrightarrow 10t_1 = 100 \Leftrightarrow t_1 = 10$$
+    
+    Từ đó suy ra:
+    $$t_2 = 9 \times 10 = 90$$
+    
+    **Bước 4: Tính giá trị của $m$**
+    
+    Thay $t_1 = 10$ và $t_2 = 90$ vào phương trình tích nghiệm:
+    $$m = t_1 t_2 = 10 \times 90 = 900$$
+    
+    (Thỏa mãn điều kiện $\Delta = 100^2 - 4m > 0 \Leftrightarrow 10000 - 3600 > 0$ và hai nghiệm dương).
+    
+    **Kết luận:** Giá trị của tham số $m$ là **$900$**.
+    """)
+    
+st.markdown("---")
+
+
+# ==========================================
+# CÂU 70: TOÁN THỰC TẾ SỐ HỌC - ĐỒNG DƯ THỨC
+# ==========================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 70 (Trả lời ngắn _ TSA)</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Một nhà máy sản xuất các linh kiện điện tử và đóng gói vào các hộp để xuất kho. Nếu đóng gói mỗi hộp $12$ cái thì thừa $5$ cái; nếu đóng gói mỗi hộp $15$ cái thì thừa $8$ cái; nếu đóng gói mỗi hộp $18$ cái thì thừa $11$ cái. Biết rằng số lượng linh kiện của nhà máy là một số tự nhiên nằm trong khoảng từ $2000$ đến $3000$ cái và chia hết cho $7$. Tính số lượng linh kiện của nhà máy.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer_70 = st.text_input("Nhập số lượng linh kiện:", key="q70_ans")
+
+# Khối chèn hình ảnh minh họa
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q70_check"):
+    normalized_user_answer_70 = user_answer_70.strip().replace(',', '.')
+    
+    if normalized_user_answer_70 == "2513":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer_70 == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy nhận xét phần bù số dư của các phép chia đều bằng $7$ ($12-5 = 7$, $15-8 = 7$, $18-11 = 7$), tìm bội chung nhỏ nhất và kết hợp điều kiện chia hết cho $7$ nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q70_solution_shown' not in st.session_state:
+    st.session_state['q70_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q70_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q70_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q70_solution_shown'] = False 
+
+if st.session_state.get('q70_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ đồng dư thức**
+    
+    Gọi $N$ là số lượng linh kiện của nhà máy ($2000 \le N \le 3000$, $N \in \mathbb{N}$).
+    Theo giả thiết, ta có các điều kiện đồng dư sau:
+    *   $N \equiv 5 \pmod{12} \iff N + 7 \equiv 0 \pmod{12}$
+    *   $N \equiv 8 \pmod{15} \iff N + 7 \equiv 0 \pmod{15}$
+    *   $N \equiv 11 \pmod{18} \iff N + 7 \equiv 0 \pmod{18}$
+    
+    Từ đó suy ra $(N + 7)$ đồng thời chia hết cho $12, 15$ và $18$.
+    
+    **Bước 2: Tìm Bội chung nhỏ nhất (BCNN)**
+    
+    Phân tích ra thừa số nguyên tố:
+    *   $12 = 2^2 \times 3$
+    *   $15 = 3 \times 5$
+    *   $18 = 2 \times 3^2$
+    
+    Bội chung nhỏ nhất của chúng là:
+    $$\text{BCNN}(12, 15, 18) = 2^2 \times 3^2 \times 5 = 180$$
+    
+    Do đó, ta có dạng tổng quát của $N$:
+    $$N + 7 = 180k \implies N = 180k - 7 \quad (k \in \mathbb{N}^*)$$
+    
+    **Bước 3: Sử dụng điều kiện khoảng giá trị của $N$**
+    
+    Vì $2000 \le N \le 3000$, ta thay biểu thức của $N$ vào:
+    $$2000 \le 180k - 7 \le 3000 \Leftrightarrow 2007 \le 180k \le 3007$$
+    $$\Leftrightarrow 11,15 \le k \le 16,7$$
+    
+    Vì $k$ là số nguyên, ta suy ra $k \in \{12, 13, 14, 15, 16\}$.
+    
+    **Bước 4: Sử dụng điều kiện chia hết cho $7$**
+    
+    Theo bài toán, $N$ chia hết cho $7$, tức là:
+    $$180k - 7 \equiv 0 \pmod 7$$
+    
+    Thu gọn hệ số theo mô-đun $7$:
+    $$180 = 25 \times 7 + 5 \equiv 5 \pmod 7$$
+    $$-7 \equiv 0 \pmod 7$$
+    
+    Phương trình đồng dư trở thành:
+    $$5k \equiv 0 \pmod 7 \iff k \equiv 0 \pmod 7$$
+    
+    Vì $k \in \{12, 13, 14, 15, 16\}$, giá trị duy nhất chia hết cho $7$ là $k = 14$.
+    
+    **Bước 5: Tính giá trị chính xác của $N$**
+    
+    Thay $k = 14$ vào biểu thức của $N$:
+    $$N = 180 \times 14 - 7 = 2520 - 7 = 2513$$
+    
+    Giá trị $2513$ thỏa mãn toàn bộ điều kiện bài toán ($2000 \le 2513 \le 3000$ và chia hết cho $7$).
+    
+    **Kết luận:** Số lượng linh kiện của nhà máy là **$2513$**.
+    """)
+    
+st.markdown("---")
+
+
+
+# =====================================================================
+# CÂU HỎI SỐ 71 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 71. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 1009$. Gọi $P$ là tích của tất cả các căn nguyên thủy (primitive roots) modulo $1009$. Tính số dư của tích $P$ khi chia cho số nguyên tố $1009$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 71) ---
+user_ans_71 = st.text_input("Nhập số dư của P khi chia cho 1009:", key="q71_ans")
+
+if st.button("Kiểm tra đáp án Câu 71", key="q71_check"):
+    norm_ans_71 = user_ans_71.strip()
+    
+    # Đáp án chính xác là 1
+    if norm_ans_71 == "1":
+        st.success("🎉 Xuất sắc! Bạn đã vận dụng Định lý Gauss về tích các căn nguyên thủy một cách tuyệt đỉnh. Lời giải Câu 71 đã được mở khóa.")
+    elif user_ans_71 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 71.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Sử dụng Định lý Gauss cho tích các căn nguyên thủy modulo $p$: $P \equiv (-1)^{\phi(p-1)} \pmod p$, với lưu ý tính chẵn lẻ của $\phi(1008)$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 71 ---
+st.markdown("---")
+
+if 'q71_solution_shown' not in st.session_state:
+    st.session_state['q71_solution_shown'] = False
+
+col1_71, col2_71 = st.columns([1, 4])
+with col1_71:
+    if st.button("Xem lời giải Câu 71", key="q71_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q71_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q71_solution_shown'] = False 
+
+if st.session_state.get('q71_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 71 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Nhận diện Định lý Gauss về tích các căn nguyên thủy**
+    
+    Theo lý thuyết số học cao cấp, tích $P$ của tất cả các căn nguyên thủy phân biệt modulo một số nguyên tố $p > 3$ thỏa mãn định lý Gauss:
+    $$P \equiv (-1)^{\phi(p-1)} \pmod p$$
+    trong đó $\phi$ là hàm số Euler.
+    
+    **Bước 2: Tính giá trị của $\phi(p-1)$ với $p = 1009$**
+    
+    Ta có $p - 1 = 1008$. Phân tích $1008$ ra thừa số nguyên tố:
+    $$1008 = 2^4 \times 3^2 \times 7$$
+    
+    Tính giá trị của hàm Euler $\phi(1008)$:
+    $$\phi(1008) = 1008 \times \left(1 - \dfrac{1}{2}\right) \times \left(1 - \dfrac{1}{3}\right) \times \left(1 - \dfrac{1}{7}\right) = 288$$
+    
+    Vì $288$ là một số nguyên chẵn, ta có:
+    $$(-1)^{\phi(1008)} = (-1)^{288} = 1$$
+    
+    **Bước 3: Kết luận**
+    
+    Áp dụng vào đồng dư thức, ta thu được:
+    $$P \equiv 1 \pmod{1009}$$
+    
+    Số dư của tích $P$ khi chia cho $1009$ bằng $1$.
+    
+    ---
+    **👉 Đáp số Câu 71:** `1`
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# =====================================================================
+# CÂU HỎI SỐ 72 - [Trả lời ngắn _ TSA]
+# =====================================================================
+
+st.markdown(
+    '<b style="color: blue;">Câu 72. [Trả lời ngắn _ TSA]</b>',
+    unsafe_allow_html=True
+)
+
+st.markdown(r"""
+Cho số nguyên tố $p = 1009$. Gọi $v_{1009}(N)$ là số mũ lớn nhất của $1009$ trong phân tích tiêu chuẩn của số nguyên dương $N$. Tính giá trị của $v_{1009}\left(\dbinom{1100}{500}\right)$.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA (CÂU 72) ---
+user_ans_72 = st.text_input("Nhập giá trị của v_{1009}:", key="q72_ans")
+
+if st.button("Kiểm tra đáp án Câu 72", key="q72_check"):
+    norm_ans_72 = user_ans_72.strip()
+    
+    # Đáp án chính xác là 1
+    if norm_ans_72 == "1":
+        st.success("🎉 Xuất sắc! Bạn đã áp dụng Định lý Kummer thông qua số lần nhớ trong hệ cơ số nguyên tố cực kỳ chính xác. Lời giải Câu 72 đã được mở khóa.")
+    elif user_ans_72 == "":
+        st.warning("⚠️ Bạn chưa nhập đáp án cho Câu 72.")
+    else:
+        st.error("❌ Chưa đúng. Gợi ý: Sử dụng Định lý Kummer: số mũ của $p$ chia hết hệ số tổ hợp $\dbinom{n}{k}$ đúng bằng số lần nhớ (carries) khi thực hiện phép cộng $k + (n-k)$ trong hệ cơ số $p$.")
+
+# --- XEM LỜI GIẢI CHI TIẾT CÂU 72 ---
+st.markdown("---")
+
+if 'q72_solution_shown' not in st.session_state:
+    st.session_state['q72_solution_shown'] = False
+
+col1_72, col2_72 = st.columns([1, 4])
+with col1_72:
+    if st.button("Xem lời giải Câu 72", key="q72_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q72_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q72_solution_shown'] = False 
+
+if st.session_state.get('q72_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### 💡 Hướng dẫn giải chi tiết Câu 72 (Tư duy TSA):")
+    st.markdown(r"""
+    **Bước 1: Nhận diện Định lý Kummer**
+    
+    Theo **Định lý Kummer**, số mũ lớn nhất của số nguyên tố $p$ chia hết hệ số tổ hợp $\dbinom{n}{k}$ (tức là $v_p\left(\dbinom{n}{k}\right)$) đúng bằng **số lần nhớ** (number of carries) khi thực hiện phép cộng hai số $k$ và $n - k$ trong hệ cơ số $p$.
+    
+    **Bước 2: Thiết lập bài toán trong hệ cơ số $p = 1009$**
+    
+    Ở đây ta có:
+    *   $n = 1100$
+    *   $k = 500$
+    *   $n - k = 1100 - 500 = 600$
+    
+    Ta thực hiện phép cộng $k + (n - k) = 500 + 600 = 1100$ trong hệ cơ số $1009$:
+    *   Viết các số dưới dạng biểu diễn trong hệ cơ số $1009$:
+        *   $500 = 0 \times 1009 + 500$
+        *   $600 = 0 \times 1009 + 600$
+    
+    **Bước 3: Thực hiện phép cộng và đếm số lần nhớ**
+    
+    Thực hiện cộng theo từng hàng (tương ứng với các lũy thừa của $1009$):
+    1.  **Hàng đơn vị ($1009^0$):** 
+        $$500 + 600 = 1100$$
+        Vì $1100 \ge 1009$, ta viết phần dư $1100 - 1009 = 91$ xuống và **nhớ $1$** sang hàng tiếp theo. (Số lần nhớ ở đây là $1$).
+    2.  **Hàng thứ nhất ($1009^1$):** 
+        $$0 + 0 + \text{nhớ } 1 = 1$$
+        Viết $1$ và không có nhớ.
+    
+    Tổng số lần nhớ trong quá trình cộng là đúng $1$ lần.
+    
+    **Bước 4: Kết luận**
+    
+    Theo Định lý Kummer, ta có:
+    $$v_{1009}\left(\dbinom{1100}{500}\right) = 1$$
+    
+    ---
+    **👉 Đáp số Câu 72:** `1`
+    """)
+
+st.markdown("---")
