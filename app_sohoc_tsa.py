@@ -9132,3 +9132,89 @@ if st.session_state.get('q102_solution_shown') and st.session_state.get('logged_
     """)
     
 st.markdown("---")
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 103. [Trắc nghiệm]</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh / đề bài
+st.markdown(r"""
+Tìm số dư khi chia biểu thức $A = 3^{2026}$ cho $11$.
+""")
+
+# --- CÁC LỰA CHỌN TRẮC NGHIỆM ---
+options = ["A. 1", "B. 3", "C. 5", "D. 9"]
+
+# Tạo bảng chọn trắc nghiệm (index=None để ban đầu chưa chọn đáp án)
+user_choice = st.radio(
+    "Chọn đáp án đúng:", 
+    options, 
+    key="q103_mcq", 
+    index=None 
+)
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q103_check_mcq"):
+    if user_choice == "B. 3":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_choice is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy áp dụng định lý Fermat nhỏ hoặc tính chất đồng dư thức nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q103_solution_shown' not in st.session_state:
+    st.session_state['q103_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q103_solution_mcq"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q103_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q103_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q103_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Phương pháp:** Sử dụng **Định lý Fermat nhỏ** hoặc tính chất đồng dư thức.
+    
+    Vì $11$ là số nguyên tố và $\gcd(3, 11) = 1$, theo định lý Fermat nhỏ ta có:
+    $$3^{10} \equiv 1 \pmod{11}$$
+    
+    **Bước 1: Phân tích số mũ $2026$**
+    
+    Chia $2026$ cho $10$, ta được:
+    $$2026 = 10 \cdot 202 + 6$$
+    
+    **Bước 2: Biến đổi biểu thức $A$**
+    
+    $$A = 3^{2026} = 3^{10 \cdot 202 + 6} = (3^{10})^{202} \cdot 3^6$$
+    
+    Do $3^{10} \equiv 1 \pmod{11}$, suy ra:
+    $$A \equiv (1)^{202} \cdot 3^6 \equiv 3^6 \pmod{11}$$
+    
+    **Bước 3: Tính số dư của $3^6$ khi chia cho $11$**
+    
+    Ta có: $3^3 = 27 = 11 \cdot 2 + 5 \equiv 5 \pmod{11}$.
+    
+    Suy ra:
+    $$3^6 = (3^3)^2 \equiv 5^2 \equiv 25 \pmod{11}$$
+    
+    Vì $25 = 11 \cdot 2 + 3 \equiv 3 \pmod{11}$, nên $3^6 \equiv 3 \pmod{11}$.
+    
+    **Kết luận:** Số dư khi chia $A = 3^{2026}$ cho $11$ là **$3$**. Do đó, chọn đáp án **B**.
+    """)
+    
+st.markdown("---")
