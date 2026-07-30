@@ -58,21 +58,7 @@ st.markdown("---")
 
 
 
-# 1. Chèn CSS để dàn đều khoảng cách của st.radio
-st.markdown(
-    """
-    <style>
-    /* Nhắm mục tiêu vào thẻ div bọc các nút radio của Streamlit */
-    div[data-testid="stRadio"] > div {
-        display: flex;
-        justify-content: space-around; /* Dàn đều khoảng trống giữa các đáp án */
-        width: 100%; /* Mở rộng tối đa chiều ngang */
-        padding: 10px 0; /* Thêm chút khoảng không phía trên/dưới cho thoáng */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
 
 
@@ -106,6 +92,35 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
+
+
+
+
+
+
+# 1. Chèn CSS để dàn đều khoảng cách của st.radio
+st.markdown(
+    """
+    <style>
+    /* Nhắm mục tiêu vào thẻ div bọc các nút radio của Streamlit */
+    div[data-testid="stRadio"] > div {
+        display: flex;
+        justify-content: space-around; /* Dàn đều khoảng trống giữa các đáp án */
+        width: 100%; /* Mở rộng tối đa chiều ngang */
+        padding: 10px 0; /* Thêm chút khoảng không phía trên/dưới cho thoáng */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
+
+
+
+
+
+
 
 # 2. Danh sách 4 đáp án (Sử dụng LaTeX để tạo vòng tròn màu xanh ngọc)
 # Ký hiệu r ở trước chuỗi giúp Python đọc đúng các mã lệnh của LaTeX
