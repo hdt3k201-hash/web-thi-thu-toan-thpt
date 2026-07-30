@@ -47,15 +47,47 @@ st.markdown(
 st.markdown("---")
 
 # Đề bài
-st.markdown("**Câu 1:** Cho hàm số $y = x^3 - 3x + 2$. Tọa độ điểm cực đại của đồ thị hàm số là:")
+# ==========================================
+# GIAO DIỆN CÂU HỎI ĐÃ ĐƯỢC ĐÓNG KHUNG VÀ LÀM ĐẸP
+# ==========================================
 
-# Danh sách 4 đáp án
+# 1. Hiển thị đề bài trong khung, chữ "Câu 1." màu xanh ngọc giống ảnh
+st.markdown(
+    """
+    <div style="
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 1. </span> 
+        Cho hàm số $y = x^3 - 3x + 2$. Tọa độ điểm cực đại của đồ thị hàm số là:
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án
 options = [
     "A. (1; 0)",
     "B. (-1; 4)",
     "C. (-1; 0)",
     "D. (1; 4)"
 ]
+
+# 3. Sử dụng st.radio với tham số horizontal=True để dàn hàng ngang
+user_choice = st.radio(
+    "Chọn đáp án của bạn:", 
+    options, 
+    index=None, 
+    key="q1_radio", 
+    horizontal=True # <--- Lệnh này giúp đáp án nằm ngang giống trong ảnh
+)
 
 # Sử dụng st.radio để tạo trắc nghiệm 4 đáp án
 # index=None giúp mặc định không có đáp án nào được chọn sẵn
