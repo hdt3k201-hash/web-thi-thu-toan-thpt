@@ -2,7 +2,14 @@ import streamlit as st
 
 # Cấu hình trang
 st.set_page_config(page_title="Trắc nghiệm Hàm số", layout="centered")
+# 1. Đọc thông số từ URL (do WordPress truyền sang)
+params = st.query_params
 
+# Nếu trên URL có chứa tham số 'auth_status=success', tự động cho phép xem lời giải
+if params.get("auth_status") == "success":
+    st.session_state['logged_in'] = True
+    st.sidebar.success("✅ Đã đồng bộ tài khoản từ Website!")
+else:
 # ==========================================
 # 1. QUẢN LÝ TRẠNG THÁI ĐĂNG NHẬP
 # ==========================================
