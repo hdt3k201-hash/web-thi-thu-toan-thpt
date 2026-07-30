@@ -2,8 +2,15 @@ import streamlit as st
 
 # Cấu hình trang
 st.set_page_config(page_title="Trắc nghiệm Hàm số", layout="centered")
-# 1. Đọc thông số từ URL (do WordPress truyền sang)
-# 1. Đọc thông số từ URL (do WordPress truyền sang)
+
+# ==========================================
+# 1. QUẢN LÝ ĐĂNG NHẬP (Từ URL WordPress hoặc nhập thủ công)
+# ==========================================
+# Khởi tạo trạng thái đăng nhập mặc định nếu chưa có
+if 'logged_in' not in st.session_state:
+    st.session_state['logged_in'] = False
+
+# Đọc thông số từ URL
 params = st.query_params
 
 # Nếu trên URL có chứa tham số 'auth_status=success', tự động cho phép xem lời giải
@@ -11,10 +18,7 @@ if params.get("auth_status") == "success":
     st.session_state['logged_in'] = True
     st.sidebar.success("✅ Đã đồng bộ tài khoản từ Website!")
 else:
-    # Nếu không có tham số từ web, hiển thị form đăng nhập dự phòng như cũ
-    if 'logged_in' not in st.session_state:
-        st.session_state['logged_in'] = False
-
+    # Nếu không có tham số từ web, hiển thị form đăng nhập dự phòng ở Sidebar
     with st.sidebar:
         st.header("Tài khoản học sinh")
         if not st.session_state['logged_in']:
@@ -46,12 +50,10 @@ st.markdown(
 )
 st.markdown("---")
 
-# Đề bài
 # ==========================================
-# GIAO DIỆN CÂU HỎI ĐÃ ĐƯỢC ĐÓNG KHUNG VÀ LÀM ĐẸP
+# CÂU 1
 # ==========================================
-
-# 1. Hiển thị đề bài trong khung, chữ "Câu 1." màu xanh ngọc giống ảnh
+# 1. Hiển thị đề bài trong khung, chữ "Câu 1." màu xanh ngọc (Đã sửa lại công thức toán)
 st.markdown(
     """
     <div style="
@@ -66,7 +68,7 @@ st.markdown(
         font-size: 18px;
     ">
         <span style="color: #008080; font-weight: bold;">Câu 1. </span> 
-        Cho hàm số $y = x^3 - 3x + 2$. Tọa độ điểm cực đại của đồ thị hàm số là:
+        Cho hàm số y = x<sup>3</sup> - 3x + 2. Tọa độ điểm cực đại của đồ thị hàm số là:
     </div>
     """, 
     unsafe_allow_html=True
@@ -80,18 +82,14 @@ options = [
     "D. (1; 4)"
 ]
 
-# 3. Sử dụng st.radio với tham số horizontal=True để dàn hàng ngang
+# 3. Sử dụng st.radio với tham số horizontal=True để dàn hàng ngang (Đã xóa dòng lệnh bị trùng)
 user_choice = st.radio(
     "Chọn đáp án của bạn:", 
     options, 
     index=None, 
     key="q1_radio", 
-    horizontal=True # <--- Lệnh này giúp đáp án nằm ngang giống trong ảnh
+    horizontal=True 
 )
-
-# Sử dụng st.radio để tạo trắc nghiệm 4 đáp án
-# index=None giúp mặc định không có đáp án nào được chọn sẵn
-user_choice = st.radio("Chọn đáp án của bạn:", options, index=None, key="q1_radio")
 
 # Nút kiểm tra đáp án
 if st.button("Kiểm tra đáp án", key="q1_check"):
@@ -107,7 +105,8 @@ if st.button("Xem lời giải chi tiết", key="q1_solution"):
     # Kiểm tra điều kiện đăng nhập
     if st.session_state['logged_in']:
         st.info("Lời giải chi tiết:")
-        st.markdown("Tập xác định: $D = \mathbb{R}$")
+        # Thêm chữ r vào trước chuỗi markdown để LaTeX \mathbb không bị lỗi
+        st.markdown(r"Tập xác định: $D = \mathbb{R}$") 
         st.markdown("Đạo hàm:")
         
         # Streamlit hỗ trợ render trực tiếp LaTeX
