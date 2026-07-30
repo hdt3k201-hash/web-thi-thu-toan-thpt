@@ -51,6 +51,39 @@ st.markdown(
 st.markdown("---")
 
 # ==========================================
+
+
+
+
+
+
+
+# 1. Chèn CSS để dàn đều khoảng cách của st.radio
+st.markdown(
+    """
+    <style>
+    /* Nhắm mục tiêu vào thẻ div bọc các nút radio của Streamlit */
+    div[data-testid="stRadio"] > div {
+        display: flex;
+        justify-content: space-around; /* Dàn đều khoảng trống giữa các đáp án */
+        width: 100%; /* Mở rộng tối đa chiều ngang */
+        padding: 10px 0; /* Thêm chút khoảng không phía trên/dưới cho thoáng */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
+
+
+
+
+
+
+
+
+
 # CÂU 1
 # ==========================================
 # 1. Hiển thị đề bài trong khung, chữ "Câu 1." màu xanh ngọc (Đã sửa lại công thức toán)
