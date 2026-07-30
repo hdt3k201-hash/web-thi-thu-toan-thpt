@@ -36,7 +36,9 @@ else:
 # ==========================================
 # 2. GIAO DIỆN CHÍNH: CÂU HỎI TRẮC NGHIỆM
 # ==========================================
-st.title("Chuyên đề: Hàm số (Trắc nghiệm)")
+<h1 style="text-align: center; color: #CC0000; font-family: 'Segoe UI', Roboto, sans-serif; font-weight: bold; font-size: 2.5em; margin-top: 50px;">
+    Chuyên đề: Hàm số (Trắc nghiệm)
+</h1>
 st.markdown("---")
 
 # Đề bài
