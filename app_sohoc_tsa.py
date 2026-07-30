@@ -9218,3 +9218,126 @@ if st.session_state.get('q103_solution_shown') and st.session_state.get('logged_
     """)
     
 st.markdown("---")
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 104. [Trắc nghiệm Đúng / Sai]</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi (Câu dẫn)
+st.markdown(r"""
+Cho số nguyên dương $N = p^3 \cdot q^2$, với $p$ và $q$ là hai số nguyên tố phân biệt. Các phát biểu sau đây là Đúng hay Sai?
+""")
+
+# --- DANH SÁCH CÁC PHÁT BIỂU VÀ ĐÁP ÁN ---
+statements = {
+    "a": {
+        "text": "Số lượng ước số nguyên dương của $N$ là $12$.",
+        "answer": "Đúng"
+    },
+    "b": {
+        "text": "Số lượng ước số nguyên dương của $N^2$ là $144$.",
+        "answer": "Sai"
+    },
+    "c": {
+        "text": "Tồn tại cặp số nguyên tố $(p, q)$ để $N$ là một số chính phương.",
+        "answer": "Sai"
+    },
+    "d": {
+        "text": "Tổng tất cả các ước số nguyên dương của $N$ luôn chia hết cho $(p + 1)$.",
+        "answer": "Đúng"
+    }
+}
+
+# --- TẠO GIAO DIỆN CHỌN ĐÚNG/SAI ---
+user_answers = {}
+
+# Lặp qua từng phát biểu để in ra text và tạo nút chọn
+for key, data in statements.items():
+    st.markdown(f"**Ý {key})** {data['text']}")
+    user_answers[key] = st.radio(
+        f"Chọn đáp án cho ý {key}:",
+        ["Đúng", "Sai"],
+        key=f"q104_{key}",
+        index=None,
+        horizontal=True
+    )
+    st.write("") # Thêm một chút khoảng trống giữa các ý
+
+# --- NÚT KIỂM TRA ĐÁP ÁN ---
+if st.button("Kiểm tra đáp án", key="q104_check"):
+    # Kiểm tra xem người dùng đã chọn hết các ý chưa
+    if any(ans is None for ans in user_answers.values()):
+        st.warning("⚠️ Vui lòng chọn Đúng hoặc Sai cho TẤT CẢ các phát biểu trước khi kiểm tra!")
+    else:
+        # Đếm số câu trả lời đúng
+        correct_count = 0
+        feedback_details = []
+        
+        for key in statements:
+            if user_answers[key] == statements[key]["answer"]:
+                correct_count += 1
+                feedback_details.append(f"- Ý {key}: ✅ Chính xác")
+            else:
+                feedback_details.append(f"- Ý {key}: ❌ Sai (Đáp án là {statements[key]['answer']})")
+                
+        # Hiển thị kết quả tổng quan
+        if correct_count == len(statements):
+            st.success(f"🎉 Xuất sắc! Bạn đã trả lời đúng trọn vẹn {correct_count}/{len(statements)} ý. Lời giải đã được mở.")
+        else:
+            st.error(f"Bạn trả lời đúng {correct_count}/{len(statements)} ý. Xem lại chi tiết bên dưới nhé!")
+            # In ra chi tiết ý nào đúng, ý nào sai
+            for fb in feedback_details:
+                st.write(fb)
+
+# --- XEM LỜI GIẢI CHI TIẾT ---
+st.markdown("---")
+
+if 'q104_solution_shown' not in st.session_state:
+    st.session_state['q104_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q104_solution"):
+        if st.session_state.get('logged_in'):
+            st.session_state['q104_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q104_solution_shown'] = False 
+
+# Nội dung lời giải
+if st.session_state.get('q104_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Kiến thức cần nhớ:** Nếu phân tích tiêu chuẩn của $X = p_1^{a_1} \cdot p_2^{a_2} \dots p_k^{a_k}$ thì:
+    - Số lượng ước dương là: $(a_1 + 1)(a_2 + 1) \dots (a_k + 1)$.
+    - Tổng các ước dương là: $(1 + p_1 + p_1^2 + \dots + p_1^{a_1}) \dots (1 + p_k + p_k^2 + \dots + p_k^{a_k})$.
+
+    **Giải thích từng ý:**
+    
+    *   **Ý a) ĐÚNG.** 
+    Vì $p, q$ là các số nguyên tố phân biệt nên $N = p^3 \cdot q^2$ đã là dạng phân tích tiêu chuẩn.
+    Số lượng ước số nguyên dương của $N$ là: $(3 + 1)(2 + 1) = 4 \cdot 3 = 12$.
+    
+    *   **Ý b) SAI.** 
+    Ta có $N^2 = (p^3 \cdot q^2)^2 = p^6 \cdot q^4$. 
+    Số lượng ước số nguyên dương của $N^2$ là: $(6 + 1)(4 + 1) = 7 \cdot 5 = 35$ (chứ không phải lấy $12^2 = 144$).
+    
+    *   **Ý c) SAI.** 
+    Để một số là số chính phương, tất cả các số mũ trong phân tích tiêu chuẩn của nó phải là số chẵn. 
+    Ở đây, số mũ của $p$ trong $N$ là $3$ (một số lẻ). Do đó, với mọi số nguyên tố $p$ và $q$, $N$ không bao giờ có thể là số chính phương.
+    
+    *   **Ý d) ĐÚNG.** 
+    Công thức tính tổng tất cả các ước nguyên dương của $N$ là:
+    $$S = (1 + p + p^2 + p^3)(1 + q + q^2)$$
+    Chú ý phân tích đa thức thành nhân tử: 
+    $$1 + p + p^2 + p^3 = (1 + p) + p^2(1 + p) = (1 + p)(1 + p^2)$$
+    Vậy $S = (1 + p)(1 + p^2)(1 + q + q^2)$. 
+    Rõ ràng trong tích này có chứa nhân tử $(p + 1)$, suy ra tổng các ước của $N$ luôn chia hết cho $(p + 1)$.
+    """)
+    
+st.markdown("---")
