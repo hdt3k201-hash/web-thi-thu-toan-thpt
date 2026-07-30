@@ -36,9 +36,14 @@ else:
 # ==========================================
 # 2. GIAO DIỆN CHÍNH: CÂU HỎI TRẮC NGHIỆM
 # ==========================================
-<h1 style="text-align: center; color: #CC0000; font-family: 'Segoe UI', Roboto, sans-serif; font-weight: bold; font-size: 2.5em; margin-top: 50px;">
-    Chuyên đề: Hàm số (Trắc nghiệm)
-</h1>
+st.markdown(
+    """
+    <h1 style="text-align: center; color: #CC0000; font-family: 'Segoe UI', Roboto, sans-serif; font-weight: bold; font-size: 2.5em; margin-top: 20px; margin-bottom: 20px;">
+        Chuyên đề: Hàm số (Trắc nghiệm)
+    </h1>
+    """, 
+    unsafe_allow_html=True
+)
 st.markdown("---")
 
 # Đề bài
