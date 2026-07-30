@@ -105,7 +105,7 @@ st.markdown(
     /* Nhắm mục tiêu vào thẻ div bọc các nút radio của Streamlit */
     div[data-testid="stRadio"] > div {
         display: flex;
-        justify-content: space-around; /* Dàn đều khoảng trống giữa các đáp án */
+        justify-content: space-between; /* Dàn đều khoảng trống giữa các đáp án */
         width: 100%; /* Mở rộng tối đa chiều ngang */
         padding: 10px 0; /* Thêm chút khoảng không phía trên/dưới cho thoáng */
     }
