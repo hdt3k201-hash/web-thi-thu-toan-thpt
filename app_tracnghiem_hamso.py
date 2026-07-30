@@ -74,15 +74,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# 2. Danh sách 4 đáp án
+# 2. Danh sách 4 đáp án (Sử dụng LaTeX để tạo vòng tròn màu xanh ngọc)
+# Ký hiệu r ở trước chuỗi giúp Python đọc đúng các mã lệnh của LaTeX
 options = [
-    "A. (1; 0)",
-    "B. (-1; 4)",
-    "C. (-1; 0)",
-    "D. (1; 4)"
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ (1; 0)",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ (-1; 4)",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ (-1; 0)",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ (1; 4)"
 ]
 
-# 3. Sử dụng st.radio với tham số horizontal=True để dàn hàng ngang (Đã xóa dòng lệnh bị trùng)
+# 3. Sử dụng st.radio với tham số horizontal=True để dàn hàng ngang
 user_choice = st.radio(
     "Chọn đáp án của bạn:", 
     options, 
@@ -93,7 +94,8 @@ user_choice = st.radio(
 
 # Nút kiểm tra đáp án
 if st.button("Kiểm tra đáp án", key="q1_check"):
-    if user_choice == "B. (-1; 4)":
+    # MẸO: Thay vì gõ lại chuỗi dài, ta so sánh với options[1] (Tức là đáp án B, vì đếm từ 0, 1, 2, 3)
+    if user_choice == options[1]: 
         st.success("Chính xác! Chúc mừng bạn.")
     elif user_choice is None:
         st.warning("Bạn chưa chọn đáp án nào.")
