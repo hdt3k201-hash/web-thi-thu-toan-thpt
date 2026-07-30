@@ -52,24 +52,6 @@ st.markdown("---")
 
 # ==========================================
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # CÂU 1
 # ==========================================
 # 1. Hiển thị đề bài trong khung, chữ "Câu 1." màu xanh ngọc (Đã sửa lại công thức toán)
@@ -92,34 +74,6 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
-
-
-
-
-
-
-# 1. Chèn CSS để dàn đều khoảng cách của st.radio
-st.markdown(
-    """
-    <style>
-    /* Nhắm mục tiêu vào thẻ div bọc các nút radio của Streamlit */
-    div[data-testid="stRadio"] > div {
-        display: flex;
-        justify-content: space-between; /* Dàn đều khoảng trống giữa các đáp án */
-        width: 100%; /* Mở rộng tối đa chiều ngang */
-        padding: 10px 0; /* Thêm chút khoảng không phía trên/dưới cho thoáng */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-
-
-
-
-
-
 
 
 # 2. Danh sách 4 đáp án (Sử dụng LaTeX để tạo vòng tròn màu xanh ngọc)
