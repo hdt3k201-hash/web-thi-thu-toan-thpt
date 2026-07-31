@@ -1760,7 +1760,7 @@ st.markdown(
 )
 
 # Chèn hình ảnh đồ thị
-st.image("images/image_8568dd.PNG", use_container_width=True)
+st.image("images/image_8568dd1.PNG", use_container_width=True)
 
 st.markdown(
     r"""
