@@ -1911,6 +1911,98 @@ if st.button("Xem lời giải chi tiết", key="q26_solution"):
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
 
+import streamlit as st
+
+# CÂU 27
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 27. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Bắc Ninh 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> liên tục trên $\mathbb{R}$ và có bảng xét dấu đạo hàm như hình vẽ sau:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Chèn hình ảnh bảng xét dấu đạo hàm
+st.image("images/image_84f896.PNG", use_container_width=True)
+
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        margin-bottom: 10px;
+    ">
+        Số điểm cực tiểu của đồ thị hàm số <span style="white-space: nowrap;">$y = f(x)$</span> là:
+    </span>
+    """,
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án (Sử dụng horizontal=True vì đáp án ngắn)
+options_27 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $0$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $3$."
+]
+
+# 3. Nút chọn đáp án
+user_choice_27 = st.radio(
+    "Chọn đáp án của bạn (Câu 27):", 
+    options_27, 
+    index=None, 
+    key="q27_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra
+if st.button("Kiểm tra đáp án", key="q27_check"):
+    if user_choice_27 == options_27[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_27 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+# 5. Nút lời giải
+if st.button("Xem lời giải chi tiết", key="q27_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Hàm số $y = f(x)$ được cho là **liên tục trên $\mathbb{R}$**.")
+        
+        st.markdown(r"Dựa vào bảng xét dấu đạo hàm, ta xét sự đổi dấu của $f'(x)$:")
+        st.markdown(r"- Khi qua điểm $x = -1$, $f'(x)$ đổi dấu từ dương $(+)$ sang âm $(-)$ $\Rightarrow$ $x = -1$ là điểm cực đại.")
+        st.markdown(r"- Khi qua điểm $x = 0$, $f'(x)$ đổi dấu từ âm $(-)$ sang dương $(+)$ $\Rightarrow$ $x = 0$ là điểm cực tiểu.")
+        st.markdown(r"- Khi qua điểm $x = 1$, $f'(x)$ đổi dấu từ dương $(+)$ sang âm $(-)$ $\Rightarrow$ $x = 1$ là điểm cực đại.")
+        
+        st.markdown(r"> **Lưu ý:** Mặc dù tại $x = -1$ và $x = 1$, đạo hàm $f'(x)$ không xác định (ký hiệu `||`), nhưng do hàm số $f(x)$ liên tục trên $\mathbb{R}$ nên nó vẫn liên tục tại các điểm này. Vì vậy, sự đổi dấu của $f'(x)$ qua các điểm đó vẫn tạo ra điểm cực trị.")
+        
+        st.markdown(r"Vậy đồ thị hàm số có đúng $1$ điểm cực tiểu.")
+        
+        st.markdown(r"**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
 
 
 
