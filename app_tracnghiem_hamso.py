@@ -1709,5 +1709,150 @@ if st.button("Xem lời giải chi tiết", key="q24_solution"):
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
 
+import streamlit as st
+
+# CÂU 25
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 25. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Phụ Dực - Hưng Yên 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = \dfrac{x^2 - x - 1}{x - 2}$</span> có đồ thị $(C)$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án
+options_25 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ Tập xác định của hàm số là $D = \mathbb{R} \setminus \{2\}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ Tiệm cận xiên của đồ thị $(C)$ là đường thẳng $y = x - 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ Tâm đối xứng của đồ thị $(C)$ là $I(2; 3)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ Đồ thị hàm số đi qua $A(1; 1)$."
+]
+
+# 3. Nút chọn đáp án
+user_choice_25 = st.radio(
+    "Chọn đáp án của bạn (Câu 25):", 
+    options_25, 
+    index=None, 
+    key="q25_radio", 
+    horizontal=False 
+)
+
+# 4. Nút kiểm tra
+if st.button("Kiểm tra đáp án", key="q25_check"):
+    # Tuỳ thuộc vào đề muốn hỏi mệnh đề nào đúng/sai, ở đây tạm để check đáp án A
+    if user_choice_25 == options_25[0]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_25 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+# 5. Nút lời giải
+if st.button("Xem lời giải chi tiết", key="q25_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết và xét tính đúng/sai của từng mệnh đề (Câu 25):")
+        
+        st.markdown(r"Ta có: $y = \dfrac{x^2 - x - 1}{x - 2} = x + 1 + \dfrac{1}{x - 2}$")
+        
+        st.markdown(r"**A (Mệnh đề a) - ĐÚNG:** Điều kiện $x - 2 \neq 0 \Leftrightarrow x \neq 2$. Tập xác định $D = \mathbb{R} \setminus \{2\}$.")
+        
+        st.markdown(r"**B (Mệnh đề b) - SAI:** Từ phép chia đa thức ta thấy $\lim_{x \to \infty} \left[ y - (x + 1) \right] = 0$. Tiệm cận xiên phải là đường thẳng $y = x + 1$.")
+        
+        st.markdown(r"**C (Mệnh đề c) - ĐÚNG:** Đồ thị có tiệm cận đứng $x = 2$, tiệm cận xiên $y = x + 1$. Giao điểm của hai đường tiệm cận là tâm đối xứng, tọa độ $I(2; 3)$.")
+        
+        st.markdown(r"**D (Mệnh đề d) - ĐÚNG:** Thay $x = 1$ vào hàm số, ta có $y = \dfrac{1^2 - 1 - 1}{1 - 2} = \dfrac{-1}{-1} = 1$. Vậy đồ thị đi qua điểm $A(1; 1)$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# Tạo vạch ngăn cách giữa 2 câu
+st.divider()
+
+# CÂU 26
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 26. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Yên Hòa - Hà Nội 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x) = \dfrac{x^2 - 3x + 5}{x + 1}$.</span> Giả sử đồ thị hàm số $y = f(x)$ có hai điểm cực trị là $A$ và $B$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án
+options_26 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ Tiệm cận đứng của đồ thị hàm số $y = f(x)$ là đường thẳng $x = -1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ Đạo hàm của hàm số $y = f(x)$ là $f'(x) = \dfrac{x^2 + 2x - 8}{(x + 1)^2}$, $\forall x \neq -1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ Hai điểm $A$ và $B$ nằm về hai phía của trục hoành và $AB = 5\sqrt{17}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ Gọi $y = g(x)$ là một nguyên hàm của hàm số $f'(x)$ thỏa mãn $g(0) = 12$. Giả sử $C, D$ là hai điểm cực trị của đồ thị hàm số $y = g(x)$ thì 4 điểm $A, B, C, D$ lập thành tứ giác có diện tích là $42$ đơn vị diện tích."
+]
+
+# 3. Nút chọn đáp án
+user_choice_26 = st.radio(
+    "Chọn đáp án của bạn (Câu 26):", 
+    options_26, 
+    index=None, 
+    key="q26_radio", 
+    horizontal=False 
+)
+
+# 4. Nút kiểm tra
+if st.button("Kiểm tra đáp án", key="q26_check"):
+    if user_choice_26 == options_26[0]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_26 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+# 5. Nút lời giải
+if st.button("Xem lời giải chi tiết", key="q26_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết và xét tính đúng/sai của từng mệnh đề (Câu 26):")
+        
+        st.markdown(r"**A (Mệnh đề a) - ĐÚNG:** Phương trình mẫu số $x + 1 = 0 \Leftrightarrow x = -1$. Tại $x = -1$ tử số bằng $9 \neq 0$. Vậy tiệm cận đứng là $x = -1$.")
+        
+        st.markdown(r"**B (Mệnh đề b) - ĐÚNG:** Ta có $f'(x) = \dfrac{(2x-3)(x+1) - (x^2-3x+5)\cdot 1}{(x+1)^2} = \dfrac{x^2 + 2x - 8}{(x+1)^2}$.")
+        
+        st.markdown(r"**C (Mệnh đề c) - SAI:** Xét $f'(x) = 0 \Leftrightarrow x^2 + 2x - 8 = 0 \Leftrightarrow \left[ \begin{array}{ll} x = 2 \Rightarrow y = 1 \\ x = -4 \Rightarrow y = -11 \end{array} \right.$. Ta có hai điểm cực trị $A(2; 1)$ và $B(-4; -11)$. Tung độ trái dấu nên A, B nằm về hai phía trục hoành. Tuy nhiên khoảng cách $AB = \sqrt{(-4 - 2)^2 + (-11 - 1)^2} = \sqrt{36 + 144} = 6\sqrt{5} \neq 5\sqrt{17}$.")
+        
+        st.markdown(r"**D (Mệnh đề d) - ĐÚNG:** $g(x) = \int f'(x) dx = f(x) + C$. Theo giả thiết $g(0) = f(0) + C = 5 + C = 12 \Rightarrow C = 7$. Do đó $g(x) = f(x) + 7$. Các điểm cực trị của đồ thị hàm số $g(x)$ có tọa độ là: $C(2; 1+7) = (2; 8)$ và $D(-4; -11+7) = (-4; -4)$. Dễ thấy đoạn $AC$ cùng hoành độ nên độ dài $AC = |8 - 1| = 7$, tương tự đoạn $BD$ có độ dài $BD = |-4 - (-11)| = 7$. Suy ra $AC \parallel BD$ (do cùng song song trục $Oy$) và $AC = BD$, do đó tứ giác tạo bởi 4 điểm là hình bình hành. Diện tích $S = AC \cdot d(AC, BD) = 7 \cdot |2 - (-4)| = 7 \cdot 6 = 42$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+
 
 
