@@ -1781,9 +1781,6 @@ if st.button("Xem lời giải chi tiết", key="q25_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
-# Tạo vạch ngăn cách giữa 2 câu
-st.divider()
-
 # CÂU 26
 # ==========================================
 # 1. Hiển thị đề bài trong khung
