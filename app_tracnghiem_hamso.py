@@ -2988,4 +2988,124 @@ if st.button("Xem lời giải chi tiết", key="q42_solution"):
 
 
 
+# CÂU 43
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 43. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm trường Nghệ An 2026) </span>
+        Hàm số nào dưới đây có đồ thị là đường cong như hình vẽ?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_660b43.png", use_container_width=True)
+
+options_43 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = -x^4 + 3x + 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $y = x^3 - 3x + 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $y = -x^2 + 3x + 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $y = -x^3 + 3x + 1$."
+]
+
+user_choice_43 = st.radio(
+    "Chọn đáp án của bạn (Câu 43):", 
+    options_43, 
+    index=None, 
+    key="q43_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q43_check"):
+    if user_choice_43 == options_43[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_43 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q43_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Đồ thị hàm số đã cho có dạng hình chữ N ngược, đây là đồ thị của hàm số bậc ba $y = ax^3 + bx^2 + cx + d$ với hệ số $a < 0$.")
+        st.markdown(r"Trong các phương án đưa ra, chỉ có duy nhất hàm số $y = -x^3 + 3x + 1$ là hàm bậc ba có hệ số $a = -1 < 0$.")
+        st.markdown(r"**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 44
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 44. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm trường Nghệ An 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> có bảng biến thiên như sau:<br>
+        Giá trị cực đại của hàm số <span style="white-space: nowrap;">$y = f(x)$</span> là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_660b431.png", use_container_width=True)
+
+options_44 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $5$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $0$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $-3$."
+]
+
+user_choice_44 = st.radio(
+    "Chọn đáp án của bạn (Câu 44):", 
+    options_44, 
+    index=None, 
+    key="q44_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q44_check"):
+    if user_choice_44 == options_44[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_44 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q44_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào bảng biến thiên, qua điểm $x = 1$, đạo hàm $y'$ đổi dấu từ dương $(+)$ sang âm $(-)$ nên hàm số đạt cực đại tại $x = 1$.")
+        st.markdown(r"Giá trị cực đại tương ứng của hàm số là $y_{CĐ} = f(1) = 0$.")
+        st.markdown(r"**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+
 
