@@ -52,16 +52,15 @@ st.markdown(
 
 # ==========================================
 
-import streamlit as st
-
 # CÂU 1
+
 import streamlit as st
 
 # CÂU 1
 # ==========================================
 # 1. Hiển thị đề bài trong khung
-# MẸO QUAN TRỌNG: Dùng thẻ <span style="display: block;"> thay vì <div>
-# để Streamlit không bỏ qua việc render công thức Toán LaTeX bên trong HTML.
+# MẸO: Thêm <span style="white-space: nowrap;"> bọc quanh công thức toán
+# để tránh tình trạng công thức bị rớt dòng làm đôi.
 st.markdown(
     r"""
     <span style="
@@ -75,11 +74,13 @@ st.markdown(
         margin-bottom: 20px;
         font-family: 'Times New Roman', Times, serif; 
         font-size: 18px;
+        line-height: 1.6;
     ">
         <span style="color: #008080; font-weight: bold;">Câu 1. </span> 
         <span style="color: #009900; font-weight: bold;">(THPT Lê Thánh Tông HCM 2026) </span>
-        Tiệm cận ngang của đồ thị hàm số :
-        $y = \dfrac{2x - 3}{x + 1}$ là đường thẳng có phương trình:
+        Tiệm cận ngang của đồ thị hàm số 
+        <span style="white-space: nowrap;">$y = \dfrac{2x - 3}{x + 1}$</span> 
+        là đường thẳng có phương trình:
     </span>
     """, 
     unsafe_allow_html=True
@@ -120,7 +121,6 @@ if st.button("Xem lời giải chi tiết", key="q1_solution"):
         st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{-1\}$") 
         st.markdown(r"Ta có giới hạn của hàm số khi $x \to \pm\infty$:")
         
-        # Đã cập nhật \dfrac cho lời giải chi tiết đẹp hơn
         st.latex(r"\lim_{x \to +\infty} y = \lim_{x \to +\infty} \dfrac{2x - 3}{x + 1} = 2")
         st.latex(r"\lim_{x \to -\infty} y = \lim_{x \to -\infty} \dfrac{2x - 3}{x + 1} = 2")
         
