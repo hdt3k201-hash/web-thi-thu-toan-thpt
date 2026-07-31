@@ -1658,3 +1658,76 @@ if st.button("Xem lời giải chi tiết", key="q23_solution"):
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
 
+import streamlit as st
+
+# CÂU 24
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 24. </span> 
+        <span style="color: #009900; font-weight: bold;">(Chuyên Trần Phú - Hải Phòng 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> liên tục trên $\mathbb{R}$ và có đồ thị là đường cong trong hình dưới đây. Hàm số đã cho đồng biến trên khoảng nào dưới đây?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Chèn hình ảnh đồ thị
+st.image("images/image_85701f.PNG", use_container_width=True)
+
+# 2. Danh sách 4 đáp án (Sử dụng horizontal=True vì đáp án ngắn)
+options_24 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $(0;1)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $(-1;1)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $(-\infty;1)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $(0;+\infty)$."
+]
+
+# 3. Nút chọn đáp án
+user_choice_24 = st.radio(
+    "Chọn đáp án của bạn (Câu 24):", 
+    options_24, 
+    index=None, 
+    key="q24_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra
+if st.button("Kiểm tra đáp án", key="q24_check"):
+    if user_choice_24 == options_24[0]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_24 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+# 5. Nút lời giải
+if st.button("Xem lời giải chi tiết", key="q24_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Dựa vào đồ thị hàm số, ta thấy đồ thị có hướng đi lên (từ trái sang phải) trên các khoảng $(-\infty; -1)$ và $(0; 1)$.")
+        
+        st.markdown(r"Do đó, hàm số đồng biến trên các khoảng $(-\infty; -1)$ và $(0; 1)$.")
+        
+        st.markdown(r"Đối chiếu với các đáp án, khoảng $(0; 1)$ nằm trong đáp án A.")
+        
+        st.markdown(r"**Chọn đáp án A.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
