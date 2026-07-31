@@ -1577,4 +1577,84 @@ if st.button("Xem lời giải chi tiết", key="q22_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+import streamlit as st
+
+# CÂU 23
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 23. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Đồng Hỷ - Thái Nguyên 2026) </span>
+        Hàm số nào sau đây có đồ thị là đường cong như hình vẽ?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Chèn hình ảnh đồ thị
+st.image("images/image_85c6ee.PNG", use_container_width=True)
+
+# 2. Danh sách 4 đáp án
+options_23 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = x - \dfrac{1}{x - 1}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $y = -x + \dfrac{1}{x - 1}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $y = -x - \dfrac{1}{x - 1}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $y = x + \dfrac{1}{x - 1}$."
+]
+
+# 3. Nút chọn đáp án
+user_choice_23 = st.radio(
+    "Chọn đáp án của bạn (Câu 23):", 
+    options_23, 
+    index=None, 
+    key="q23_radio", 
+    horizontal=False 
+)
+
+# 4. Nút kiểm tra
+if st.button("Kiểm tra đáp án", key="q23_check"):
+    if user_choice_23 == options_23[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_23 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+# 5. Nút lời giải
+if st.button("Xem lời giải chi tiết", key="q23_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Quan sát đồ thị, ta thấy:")
+        st.markdown(r"- Đồ thị có tiệm cận đứng là $x = 1$.")
+        st.markdown(r"- Điểm cực đại của đồ thị là điểm có tọa độ $(0; -1)$.")
+        st.markdown(r"- Điểm cực tiểu của đồ thị là điểm có tọa độ $(2; 3)$.")
+        
+        st.markdown(r"Thay tọa độ điểm cực tiểu $(2; 3)$ vào các đáp án, ta được:")
+        st.markdown(r"- **A:** $y(2) = 2 - \dfrac{1}{2 - 1} = 1 \neq 3$ (Loại).")
+        st.markdown(r"- **B:** $y(2) = -2 + \dfrac{1}{2 - 1} = -1 \neq 3$ (Loại).")
+        st.markdown(r"- **C:** $y(2) = -2 - \dfrac{1}{2 - 1} = -3 \neq 3$ (Loại).")
+        st.markdown(r"- **D:** $y(2) = 2 + \dfrac{1}{2 - 1} = 3$ (Thỏa mãn).")
+        
+        st.markdown(r"Thử lại với đáp án D: Hàm số $y = x + \dfrac{1}{x - 1}$ có tập xác định $D = \mathbb{R} \setminus \{1\}$.")
+        st.markdown(r"Đạo hàm: $y' = 1 - \dfrac{1}{(x - 1)^2}$. Cho $y' = 0 \Leftrightarrow (x - 1)^2 = 1 \Leftrightarrow \left[ \begin{array}{ll} x = 2 \Rightarrow y = 3 \\ x = 0 \Rightarrow y = -1 \end{array} \right.$. Kết quả này hoàn toàn phù hợp với tọa độ các điểm cực trị trên đồ thị.")
+        
+        st.markdown(r"**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
 
