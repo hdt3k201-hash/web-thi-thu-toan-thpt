@@ -1821,4 +1821,96 @@ if st.button("Xem lời giải chi tiết", key="q25_solution"):
 
 
 
+# CÂU 26
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 26. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Bắc Ninh 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> liên tục và có đồ thị trên đoạn $[-4; 3]$ như hình vẽ.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Chèn hình ảnh đồ thị
+# Lưu ý: Sửa lại đường dẫn ảnh cho khớp với thực tế trên kho lưu trữ của bạn nếu cần
+st.image("images/image_84ffdd.PNG", use_container_width=True)
+
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        margin-bottom: 10px;
+    ">
+        Giá trị nhỏ nhất của hàm số <span style="white-space: nowrap;">$y = f(x)$</span> trên đoạn $[0; 3]$ là:
+    </span>
+    """,
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án (Sử dụng horizontal=True vì đáp án ngắn)
+options_26 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $-4$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $-3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $-2$."
+]
+
+# 3. Nút chọn đáp án
+user_choice_26 = st.radio(
+    "Chọn đáp án của bạn (Câu 26):", 
+    options_26, 
+    index=None, 
+    key="q26_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra
+if st.button("Kiểm tra đáp án", key="q26_check"):
+    if user_choice_26 == options_26[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_26 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+# 5. Nút lời giải
+if st.button("Xem lời giải chi tiết", key="q26_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Quan sát đồ thị hàm số trên đoạn đang xét là $[0; 3]$, ta thấy:")
+        
+        st.markdown(r"- Tại $x = 0$, $y = -1$.")
+        st.markdown(r"- Tại $x = 1$, $y = -2$ (đây là điểm thấp nhất trên đoạn này).")
+        st.markdown(r"- Tại $x = 3$, $y = 2$.")
+        
+        st.markdown(r"Do đó, $\min_{[0; 3]} f(x) = -2$ tại $x = 1$.")
+        
+        st.markdown(r"> **Lưu ý:** Cần đọc kỹ đoạn đề bài yêu cầu là $[0; 3]$. Nếu nhìn nhầm sang đoạn $[-4; 3]$ thì sẽ dễ chọn sai đáp án B ($-3$).")
+        
+        st.markdown(r"**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+
 
