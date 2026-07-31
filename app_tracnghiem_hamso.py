@@ -3720,3 +3720,65 @@ if st.button("Xem lời giải chi tiết", key="q54_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+
+
+# CÂU 55
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 55. </span> 
+        <span style="color: #009900; font-weight: bold;">(Chuyên Hạ Long 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$f(x)$</span> xác định và có đạo hàm trên $\mathbb{R}$ và có bảng biến thiên như sau:<br>
+        Giá trị cực đại của hàm số bằng
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_5b29f6.PNG", use_container_width=True)
+
+options_55 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $-2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $0$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $-3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $1$."
+]
+
+user_choice_55 = st.radio(
+    "Chọn đáp án của bạn (Câu 55):", 
+    options_55, 
+    index=None, 
+    key="q55_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q55_check"):
+    if user_choice_55 == options_55[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_55 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q55_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào bảng biến thiên, ta thấy đạo hàm $y'$ đổi dấu từ dương $(+)$ sang âm $(-)$ khi đi qua điểm $x = -2$.")
+        st.markdown(r"Do đó, hàm số đạt cực đại tại $x = -2$.")
+        st.markdown(r"Giá trị cực đại tương ứng của hàm số là $y_{CĐ} = 1$.")
+        st.markdown(r"**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
