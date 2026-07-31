@@ -272,3 +272,208 @@ if st.button("Xem lời giải chi tiết", key="q3_solution"):
         st.markdown("**Chọn đáp án A.**")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+# ==========================================
+# CÂU 4
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 4. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT ĐH-KHTN HN 2026) </span>
+        Tiệm cận xiên của đồ thị hàm số 
+        <span style="white-space: nowrap;">$y = \dfrac{2x^2 + x}{x + 1}$</span> là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+options_q4 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = 2x + 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $y = 2x - 3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $y = 2x$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $y = 2x - 1$."
+]
+
+user_choice_q4 = st.radio(
+    "Chọn đáp án của bạn cho Câu 4:", 
+    options_q4, 
+    index=None, 
+    key="q4_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q4_check"):
+    # Đáp án đúng là D -> tương ứng với options_q4[3]
+    if user_choice_q4 == options_q4[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_q4 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q4_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Thực hiện phép chia đa thức tử số cho mẫu số, ta được:")
+        st.latex(r"y = \dfrac{2x^2 + x}{x + 1} = \dfrac{2x(x + 1) - x}{x + 1} = \dfrac{2x(x + 1) - (x + 1) + 1}{x + 1}")
+        st.latex(r"y = 2x - 1 + \dfrac{1}{x + 1}")
+        
+        st.markdown(r"Ta có $\lim_{x \to \pm\infty} \left[ y - (2x - 1) \right] = \lim_{x \to \pm\infty} \dfrac{1}{x + 1} = 0$")
+        st.markdown(r"Vậy đường thẳng **$y = 2x - 1$** là tiệm cận xiên của đồ thị hàm số.")
+        st.markdown("**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+st.write("---") # Đường gạch ngang phân cách giữa các câu
+
+
+# ==========================================
+# CÂU 5
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 5. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Đồng Hỷ - Thái Nguyên 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = \dfrac{x + 2026}{x - 2025}$</span> có đồ thị $(C)$. Đồ thị $(C)$ có đường tiệm cận đứng là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+options_q5 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $x = 2025$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $x = -2024$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $x = 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $x = 6$."
+]
+
+user_choice_q5 = st.radio(
+    "Chọn đáp án của bạn cho Câu 5:", 
+    options_q5, 
+    index=None, 
+    key="q5_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q5_check"):
+    # Đáp án đúng là A -> tương ứng với options_q5[0]
+    if user_choice_q5 == options_q5[0]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_q5 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q5_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{2025\}$")
+        st.markdown(r"Hàm số là phân thức bậc nhất trên bậc nhất. Đường tiệm cận đứng là nghiệm của mẫu số (và không trùng với nghiệm tử số).")
+        st.latex(r"\lim_{x \to 2025^+} \dfrac{x + 2026}{x - 2025} = +\infty")
+        st.markdown(r"Vậy tiệm cận đứng của đồ thị hàm số là đường thẳng **$x = 2025$**.")
+        st.markdown("**Chọn đáp án A.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+st.write("---") # Đường gạch ngang phân cách giữa các câu
+
+
+# ==========================================
+# CÂU 6
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 6. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Đồng Hỷ - Thái Nguyên 2026) </span>
+        Giá trị lớn nhất của hàm số <span style="white-space: nowrap;">$y = x^3 - 3x + 1$</span> trên đoạn <span style="white-space: nowrap;">$[-2; 2]$</span> là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+options_q6 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $-1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $-2$."
+]
+
+user_choice_q6 = st.radio(
+    "Chọn đáp án của bạn cho Câu 6:", 
+    options_q6, 
+    index=None, 
+    key="q6_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q6_check"):
+    # Đáp án đúng là C -> tương ứng với options_q6[2]
+    if user_choice_q6 == options_q6[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_q6 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q6_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Xét hàm số $y = x^3 - 3x + 1$ trên đoạn $[-2; 2]$.")
+        st.markdown(r"Đạo hàm: $y' = 3x^2 - 3$")
+        
+        st.latex(r"y' = 0 \Leftrightarrow 3x^2 - 3 = 0 \Leftrightarrow \left[\begin{array}{l} x = 1 \in [-2; 2] \\ x = -1 \in [-2; 2] \end{array}\right.")
+        
+        st.markdown(r"Ta tính các giá trị tại 2 đầu mút và các điểm làm cho đạo hàm bằng $0$:")
+        st.markdown(r"- $y(-2) = (-2)^3 - 3(-2) + 1 = -1$")
+        st.markdown(r"- $y(-1) = (-1)^3 - 3(-1) + 1 = 3$")
+        st.markdown(r"- $y(1) = 1^3 - 3(1) + 1 = -1$")
+        st.markdown(r"- $y(2) = 2^3 - 3(2) + 1 = 3$")
+        
+        st.markdown(r"So sánh các kết quả trên, ta thấy $\max_{[-2; 2]} y = 3$.")
+        st.markdown("**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
