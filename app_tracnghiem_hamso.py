@@ -1493,3 +1493,88 @@ if st.button("Xem lời giải chi tiết", key="q21_solution"):
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
 
+# CÂU 22
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 22. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Đồng Hỷ - Thái Nguyên 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> có bảng biến thiên như sau:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Chèn hình ảnh bảng biến thiên
+st.image("images/image_85d958.png", use_container_width=True)
+
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        margin-bottom: 10px;
+    ">
+        Điểm cực đại của hàm số <span style="white-space: nowrap;">$y = f(x)$</span> là:
+    </span>
+    """,
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án (Sử dụng horizontal=True vì đáp án ngắn)
+options_22 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = 2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $x = 2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $x = 3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $y = -1$."
+]
+
+# 3. Nút chọn đáp án
+user_choice_22 = st.radio(
+    "Chọn đáp án của bạn (Câu 22):", 
+    options_22, 
+    index=None, 
+    key="q22_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra
+if st.button("Kiểm tra đáp án", key="q22_check"):
+    if user_choice_22 == options_22[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_22 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+# 5. Nút lời giải
+if st.button("Xem lời giải chi tiết", key="q22_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Dựa vào bảng biến thiên, ta thấy $f'(x)$ đổi dấu từ dương $(+)$ sang âm $(-)$ khi đi qua điểm $x = 3$.")
+        
+        st.markdown(r"Do đó, hàm số đạt cực đại tại $x = 3$.")
+        
+        st.markdown(r"> **Lưu ý:** Khái niệm **Điểm cực đại của hàm số** là chỉ giá trị của $x$. Nếu đề hỏi **Giá trị cực đại của hàm số** thì đáp án mới là $y = 2$.")
+        
+        st.markdown(r"**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
