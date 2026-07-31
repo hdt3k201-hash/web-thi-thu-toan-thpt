@@ -2073,6 +2073,78 @@ if st.button("Xem lời giải chi tiết", key="q28_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+import streamlit as st
+
+# CÂU 29
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 29. </span> 
+        <span style="color: #009900; font-weight: bold;">(Mã 101 – 2020 Lần 1) </span>
+        Cho hàm số <span style="white-space: nowrap;">$f(x)$</span> có bảng biến thiên như sau:<br>
+        Hàm số đã cho đồng biến trên khoảng nào dưới đây?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Chèn hình ảnh đồ thị
+st.image("images/image_775c3c.PNG", use_container_width=True)
+
+# 2. Danh sách 4 đáp án (Sử dụng horizontal=True vì đáp án ngắn)
+options_29 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $(-\infty; -1)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $(0; 1)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $(-1; 1)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $(-1; 0)$."
+]
+
+# 3. Nút chọn đáp án
+user_choice_29 = st.radio(
+    "Chọn đáp án của bạn (Câu 29):", 
+    options_29, 
+    index=None, 
+    key="q29_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra
+if st.button("Kiểm tra đáp án", key="q29_check"):
+    if user_choice_29 == options_29[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_29 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+# 5. Nút lời giải
+if st.button("Xem lời giải chi tiết", key="q29_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Quan sát bảng biến thiên, ta thấy đạo hàm $f'(x)$ mang dấu $(+)$ trên các khoảng $(-1; 0)$ và $(1; +\infty)$.")
+        
+        st.markdown(r"Do đó, hàm số đã cho đồng biến trên các khoảng $(-1; 0)$ và $(1; +\infty)$.")
+        
+        st.markdown(r"Đối chiếu với các đáp án, ta thấy khoảng $(-1; 0)$ nằm ở đáp án D.")
+        
+        st.markdown(r"**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
 
 
 
