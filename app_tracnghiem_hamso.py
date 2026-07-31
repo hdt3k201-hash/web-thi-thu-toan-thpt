@@ -1,4 +1,5 @@
 import streamlit as st
+import math
 
 # Cấu hình trang
 st.set_page_config(page_title="Trắc nghiệm Hàm số", layout="centered")
@@ -1845,6 +1846,139 @@ if st.button("Xem lời giải chi tiết", key="q26_solution"):
         st.markdown(r"**C (Mệnh đề c) - SAI:** Xét $f'(x) = 0 \Leftrightarrow x^2 + 2x - 8 = 0 \Leftrightarrow \left[ \begin{array}{ll} x = 2 \Rightarrow y = 1 \\ x = -4 \Rightarrow y = -11 \end{array} \right.$. Ta có hai điểm cực trị $A(2; 1)$ và $B(-4; -11)$. Tung độ trái dấu nên A, B nằm về hai phía trục hoành. Tuy nhiên khoảng cách $AB = \sqrt{(-4 - 2)^2 + (-11 - 1)^2} = \sqrt{36 + 144} = 6\sqrt{5} \neq 5\sqrt{17}$.")
         
         st.markdown(r"**D (Mệnh đề d) - ĐÚNG:** $g(x) = \int f'(x) dx = f(x) + C$. Theo giả thiết $g(0) = f(0) + C = 5 + C = 12 \Rightarrow C = 7$. Do đó $g(x) = f(x) + 7$. Các điểm cực trị của đồ thị hàm số $g(x)$ có tọa độ là: $C(2; 1+7) = (2; 8)$ và $D(-4; -11+7) = (-4; -4)$. Dễ thấy đoạn $AC$ cùng hoành độ nên độ dài $AC = |8 - 1| = 7$, tương tự đoạn $BD$ có độ dài $BD = |-4 - (-11)| = 7$. Suy ra $AC \parallel BD$ (do cùng song song trục $Oy$) và $AC = BD$, do đó tứ giác tạo bởi 4 điểm là hình bình hành. Diện tích $S = AC \cdot d(AC, BD) = 7 \cdot |2 - (-4)| = 7 \cdot 6 = 42$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 27
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 27. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Thị Minh Khai - Khánh Hòa 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$f(x) = x^3 - 2x^2 - 4x + 9$.</span>
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án
+options_27 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $f(5) = 64$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ Đạo hàm của hàm số đã cho là $f'(x) = 3x^2 - 2x - 4$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ Tổng các nghiệm của phương trình $f'(x) = 0$ là $\dfrac{8}{3}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ Giá trị nhỏ nhất của $f(x)$ trên đoạn $[1; 3]$ bằng $1$."
+]
+
+# 3. Nút chọn đáp án
+user_choice_27 = st.radio(
+    "Chọn đáp án của bạn (Câu 27):", 
+    options_27, 
+    index=None, 
+    key="q27_radio", 
+    horizontal=False 
+)
+
+# 4. Nút kiểm tra
+if st.button("Kiểm tra đáp án", key="q27_check"):
+    # Tùy thuộc vào việc đề bài hỏi mệnh đề nào đúng/sai, có thể thiết lập điều kiện tại đây.
+    if user_choice_27 is not None:
+        st.success("Bạn đã chọn một đáp án. Hãy xem lời giải chi tiết để đối chiếu đúng/sai nhé!")
+    else:
+        st.warning("Bạn chưa chọn đáp án nào.")
+
+# 5. Nút lời giải
+if st.button("Xem lời giải chi tiết", key="q27_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết và xét tính đúng/sai của từng mệnh đề (Câu 27):")
+        
+        st.markdown(r"**A (Mệnh đề a) - ĐÚNG:** Thay $x = 5$ vào hàm số, ta có $f(5) = 5^3 - 2(5)^2 - 4(5) + 9 = 125 - 50 - 20 + 9 = 64$.")
+        
+        st.markdown(r"**B (Mệnh đề b) - SAI:** Đạo hàm đúng của hàm số phải là $f'(x) = 3x^2 - 4x - 4$.")
+        
+        st.markdown(r"**C (Mệnh đề c) - SAI:** Phương trình $f'(x) = 0 \Leftrightarrow 3x^2 - 4x - 4 = 0$. Theo định lý Vi-ét, tổng các nghiệm là $x_1 + x_2 = -\dfrac{b}{a} = \dfrac{4}{3} \neq \dfrac{8}{3}$.")
+        
+        st.markdown(r"**D (Mệnh đề d) - ĐÚNG:** Xét hàm số trên đoạn $[1; 3]$. Ta có $f'(x) = 0 \Leftrightarrow 3x^2 - 4x - 4 = 0 \Leftrightarrow x = 2 \in [1; 3]$ hoặc $x = -\dfrac{2}{3} \notin [1; 3]$. Tính các giá trị: $f(1) = 4$, $f(2) = 1$, $f(3) = 6$. Vậy $\min_{[-1; 3]} f(x) = 1$ tại $x = 2$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 28
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 28. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Văn Trỗi - Hà Tĩnh 2026) </span>
+        Một công ty công nghệ phát hành một video quảng cáo trên mạng xã hội. Số lượng người xem tích lũy $P(t)$, đơn vị: người, sau thời gian $t$, đơn vị: ngày, được mô hình hóa bởi hàm số 
+        <span style="white-space: nowrap;">$P(t) = \dfrac{100000}{1 + 999e^{-0.5t}}$.</span> 
+        Số lượng người xem tối đa dự kiến trong tệp khách hàng tiềm năng là $100000$ người. Tốc độ lan truyền video tại thời điểm $t$ được xác định bởi hàm số $P'(t)$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án
+options_28 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ Tại thời điểm bắt đầu phát hành video, $t = 0$, đã có $100$ người xem video này.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ Để đạt được $90\%$ số lượng người xem mục tiêu, tương ứng $90000$ người, công ty cần khoảng $18$ ngày, làm tròn đến hàng đơn vị.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ Sau $10$ ngày kể từ khi phát hành, tổng số lượng người xem video đạt hơn $15000$ người.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ Tại thời điểm $t = 5$, tốc độ lan truyền của video vẫn đang trên đà tăng."
+]
+
+# 3. Nút chọn đáp án
+user_choice_28 = st.radio(
+    "Chọn đáp án của bạn (Câu 28):", 
+    options_28, 
+    index=None, 
+    key="q28_radio", 
+    horizontal=False 
+)
+
+# 4. Nút kiểm tra
+if st.button("Kiểm tra đáp án", key="q28_check"):
+    if user_choice_28 is not None:
+        st.success("Bạn đã chọn một đáp án. Hãy xem lời giải chi tiết để đối chiếu đúng/sai nhé!")
+    else:
+        st.warning("Bạn chưa chọn đáp án nào.")
+
+# 5. Nút lời giải
+if st.button("Xem lời giải chi tiết", key="q28_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết và xét tính đúng/sai của từng mệnh đề (Câu 28):")
+        
+        st.markdown(r"**A (Mệnh đề a) - ĐÚNG:** Tại $t = 0$, ta có $P(0) = \dfrac{100000}{1 + 999e^{0}} = \dfrac{100000}{1000} = 100$ người.")
+        
+        st.markdown(r"**B (Mệnh đề b) - ĐÚNG:** Giải phương trình $P(t) = 90000 \Leftrightarrow \dfrac{100000}{1 + 999e^{-0.5t}} = 90000 \Leftrightarrow 1 + 999e^{-0.5t} = \dfrac{10}{9} \Leftrightarrow 999e^{-0.5t} = \dfrac{1}{9}$. Suy ra $e^{-0.5t} = \dfrac{1}{8991} \Leftrightarrow t = -2\ln\left(\dfrac{1}{8991}\right) \approx 18,2$. Làm tròn đến hàng đơn vị, công ty cần khoảng $18$ ngày.")
+        
+        st.markdown(r"**C (Mệnh đề c) - SAI:** Tại $t = 10$, số người xem là $P(10) = \dfrac{100000}{1 + 999e^{-5}} \approx 12935$ người, chưa đạt mốc $15000$ người.")
+        
+        st.markdown(r"**D (Mệnh đề d) - ĐÚNG:** Tốc độ lan truyền là $P'(t)$. Tốc độ này đang tăng khi đạo hàm bậc hai $P''(t) > 0$. Đồ thị hàm logistic đạt tốc độ tăng trưởng lớn nhất (điểm uốn) khi $P(t) = \dfrac{100000}{2} = 50000$, tương ứng $1 + 999e^{-0.5t} = 2 \Leftrightarrow e^{-0.5t} = \dfrac{1}{999} \Leftrightarrow t = 2\ln(999) \approx 13,8$ ngày. Trong giai đoạn từ $t = 0$ đến $t = 13,8$, tốc độ $P'(t)$ luôn đồng biến. Do đó tại $t = 5$, tốc độ vẫn đang trên đà tăng.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
