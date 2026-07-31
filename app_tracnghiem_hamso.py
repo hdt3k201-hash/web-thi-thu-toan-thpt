@@ -477,3 +477,273 @@ if st.button("Xem lời giải chi tiết", key="q6_solution"):
         st.markdown("**Chọn đáp án C.**")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+# ==========================================
+# CÂU 7 (Tương ứng Câu 11 trong ảnh)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 7. </span> 
+        <span style="color: #009900; font-weight: bold;">(Chuyên Trần Phú - Hải Phòng 2026) </span>
+        Số điểm cực tiểu của đồ thị hàm số 
+        <span style="white-space: nowrap;">$y = \dfrac{1}{5}x^5 - \dfrac{3}{4}x^4 + \dfrac{2}{3}x^3 + \dfrac{1}{2}$</span> là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+options_q7 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $0$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $1$."
+]
+
+user_choice_q7 = st.radio(
+    "Chọn đáp án của bạn cho Câu 7:", 
+    options_q7, 
+    index=None, 
+    key="q7_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q7_check"):
+    # Đáp án đúng là D -> tương ứng với options_q7[3]
+    if user_choice_q7 == options_q7[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_q7 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q7_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Tập xác định: $D = \mathbb{R}$")
+        st.markdown(r"Đạo hàm:")
+        st.latex(r"y' = x^4 - 3x^3 + 2x^2 = x^2(x^2 - 3x + 2)")
+        st.latex(r"y' = 0 \Leftrightarrow x^2(x - 1)(x - 2) = 0 \Leftrightarrow \left[\begin{array}{l} x = 0 \text{ (nghiệm kép)} \\ x = 1 \text{ (nghiệm đơn)} \\ x = 2 \text{ (nghiệm đơn)} \end{array}\right.")
+        
+        st.markdown(r"Qua nghiệm kép $x = 0$, đạo hàm $y'$ không đổi dấu.")
+        st.markdown(r"Qua nghiệm đơn $x = 1$, $y'$ đổi dấu từ $(+)$ sang $(-)$ nên $x = 1$ là điểm cực đại.")
+        st.markdown(r"Qua nghiệm đơn $x = 2$, $y'$ đổi dấu từ $(-)$ sang $(+)$ nên $x = 2$ là điểm cực tiểu.")
+        st.markdown(r"Vậy đồ thị hàm số có đúng $1$ điểm cực tiểu.")
+        st.markdown("**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+# ==========================================
+# CÂU 8 (Tương ứng Câu 12 trong ảnh)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 8. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Gia Thiều - Hà Nội 2026) </span>
+        Cho hàm số $f(x)$ xác định trên $\mathbb{R}$ thỏa mãn đồng thời hai điều kiện: $f(x)$ là hàm số lẻ và 
+        <span style="white-space: nowrap;">$f(x) = x^2$</span> với mọi <span style="white-space: nowrap;">$x \le 0$</span>. Giá trị của $f(2)$ bằng:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+options_q8 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $-4$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $-2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $0$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $4$."
+]
+
+user_choice_q8 = st.radio(
+    "Chọn đáp án của bạn cho Câu 8:", 
+    options_q8, 
+    index=None, 
+    key="q8_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q8_check"):
+    # Đáp án đúng là A -> tương ứng với options_q8[0]
+    if user_choice_q8 == options_q8[0]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_q8 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q8_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Vì $f(x)$ là hàm số lẻ trên $\mathbb{R}$ nên ta có tính chất: $f(-x) = -f(x)$ với mọi $x \in \mathbb{R}$.")
+        st.markdown(r"Thay $x = -2$, ta được:")
+        st.latex(r"f(2) = -f(-2)")
+        st.markdown(r"Theo giả thiết, $f(x) = x^2$ với mọi $x \le 0$. Vì $-2 \le 0$ nên:")
+        st.latex(r"f(-2) = (-2)^2 = 4")
+        st.markdown(r"Suy ra $f(2) = -4$.")
+        st.markdown("**Chọn đáp án A.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+# ==========================================
+# CÂU 9 (Tương ứng Câu 13 trong ảnh)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 9. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Gia Thiều - Hà Nội 2026) </span>
+        Giá trị cực tiểu của hàm số <span style="white-space: nowrap;">$y = 4x^3 - 6x^2 + 11$</span> bằng:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+options_q9 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $0$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $9$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $11$."
+]
+
+user_choice_q9 = st.radio(
+    "Chọn đáp án của bạn cho Câu 9:", 
+    options_q9, 
+    index=None, 
+    key="q9_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q9_check"):
+    # Đáp án đúng là C -> tương ứng với options_q9[2]
+    if user_choice_q9 == options_q9[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_q9 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q9_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Ta có đạo hàm:")
+        st.latex(r"y' = 12x^2 - 12x = 12x(x - 1)")
+        st.latex(r"y' = 0 \Leftrightarrow \left[\begin{array}{l} x = 0 \\ x = 1 \end{array}\right.")
+        
+        st.markdown(r"Tính đạo hàm cấp hai: $y'' = 24x - 12$")
+        st.markdown(r"- Với $x = 0 \Rightarrow y''(0) = -12 < 0 \Rightarrow x = 0$ là điểm cực đại.")
+        st.markdown(r"- Với $x = 1 \Rightarrow y''(1) = 12 > 0 \Rightarrow x = 1$ là điểm cực tiểu.")
+        
+        st.markdown(r"Vậy giá trị cực tiểu của hàm số là: $y_{CT} = y(1) = 4(1)^3 - 6(1)^2 + 11 = 9$.")
+        st.markdown("**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+# ==========================================
+# CÂU 10 (Tương ứng Câu 14 trong ảnh)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 10. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Gia Thiều - Hà Nội 2026) </span>
+        Hàm số <span style="white-space: nowrap;">$y = -2x^3 + 9x^2 + 24x - 114$</span> đồng biến trên khoảng nào dưới đây?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+options_q10 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $(-1; 4)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $(-4; -1)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $(-\infty; -1)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $(4; +\infty)$."
+]
+
+user_choice_q10 = st.radio(
+    "Chọn đáp án của bạn cho Câu 10:", 
+    options_q10, 
+    index=None, 
+    key="q10_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q10_check"):
+    # Đáp án đúng là A -> tương ứng với options_q10[0]
+    if user_choice_q10 == options_q10[0]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_q10 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q10_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Tập xác định: $D = \mathbb{R}$")
+        st.markdown(r"Đạo hàm: $y' = -6x^2 + 18x + 24$")
+        
+        st.markdown(r"Hàm số đồng biến khi $y' > 0$:")
+        st.latex(r"-6x^2 + 18x + 24 > 0 \Leftrightarrow x^2 - 3x - 4 < 0 \Leftrightarrow -1 < x < 4")
+        
+        st.markdown(r"Vậy hàm số đồng biến trên khoảng $(-1; 4)$.")
+        st.markdown("**Chọn đáp án A.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
