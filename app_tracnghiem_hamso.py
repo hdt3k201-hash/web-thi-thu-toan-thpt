@@ -3904,3 +3904,122 @@ if st.button("Xem lời giải chi tiết", key="q57_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+
+
+# CÂU 58
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 58. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Than Uyên - Lai Châu 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> liên tục trên đoạn <span style="white-space: nowrap;">$[-1; 3]$</span> và có đồ thị như hình vẽ. Giá trị lớn nhất của hàm số đã cho trên đoạn <span style="white-space: nowrap;">$[-1; 3]$</span> bằng
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_5b0fb1.png", use_container_width=True)
+
+options_58 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $0$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $3$."
+]
+
+user_choice_58 = st.radio(
+    "Chọn đáp án của bạn (Câu 58):", 
+    options_58, 
+    index=None, 
+    key="q58_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q58_check"):
+    if user_choice_58 == options_58[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_58 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q58_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào đồ thị hàm số trên đoạn $[-1; 3]$, ta thấy điểm cao nhất của đồ thị có tọa độ là $(3; 3)$.")
+        st.markdown(r"Do đó, giá trị lớn nhất của hàm số trên đoạn $[-1; 3]$ là $\max\limits_{[-1; 3]} f(x) = f(3) = 3$.")
+        st.markdown(r"**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 59
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 59. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Than Uyên - Lai Châu 2026) </span>
+        Hàm số <span style="white-space: nowrap;">$y = \dfrac{ax+b}{cx+d}$</span> <span style="white-space: nowrap;">$(c \neq 0, ad - bc \neq 0)$</span> có đồ thị dưới đây. Đường tiệm cận đứng của đồ thị hàm số là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_5b0fb111.PNG", use_container_width=True)
+
+options_59 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $x = -1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $x = 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $x = 2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $y = -1$."
+]
+
+user_choice_59 = st.radio(
+    "Chọn đáp án của bạn (Câu 59):", 
+    options_59, 
+    index=None, 
+    key="q59_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q59_check"):
+    if user_choice_59 == options_59[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_59 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q59_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào đồ thị hàm số, khi $x \to 2^+$ thì $y \to -\infty$ và khi $x \to 2^-$ thì $y \to +\infty$.")
+        st.markdown(r"Đường thẳng mà đồ thị hàm số tiến sát tới theo phương thẳng đứng là $x = 2$.")
+        st.markdown(r"Do đó, đường tiệm cận đứng của đồ thị hàm số là $x = 2$.")
+        st.markdown(r"**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
