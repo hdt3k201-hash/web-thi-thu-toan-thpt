@@ -1731,3 +1731,179 @@ if st.button("Xem lời giải chi tiết", key="q24_solution"):
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
 
+import streamlit as st
+
+# CÂU 25
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 25. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Gia Thiều - Hà Nội 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$f(x)$</span> liên tục trên đoạn $[-1; 5]$ và có đồ thị như hình vẽ bên (các điểm cực trị của đồ thị thể hiện rõ trên hình). Gọi $M$ và $m$ lần lượt là giá trị lớn nhất và nhỏ nhất của hàm số đã cho trên $[-1; 5]$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Chèn hình ảnh đồ thị
+st.image("images/image_8568dd.PNG", use_container_width=True)
+
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        margin-bottom: 10px;
+    ">
+        Giá trị của $M - m$ bằng:
+    </span>
+    """,
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án (Sử dụng horizontal=True vì đáp án ngắn)
+options_25 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $4$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $5$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $6$."
+]
+
+# 3. Nút chọn đáp án
+user_choice_25 = st.radio(
+    "Chọn đáp án của bạn (Câu 25):", 
+    options_25, 
+    index=None, 
+    key="q25_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra
+if st.button("Kiểm tra đáp án", key="q25_check"):
+    if user_choice_25 == options_25[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_25 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+# 5. Nút lời giải
+if st.button("Xem lời giải chi tiết", key="q25_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Quan sát đồ thị hàm số trên đoạn $[-1; 5]$, ta thấy:")
+        
+        st.markdown(r"- Điểm cao nhất của đồ thị có tọa độ $(4; 3) \Rightarrow M = \max_{[-1; 5]} f(x) = 3$.")
+        st.markdown(r"- Điểm thấp nhất của đồ thị có tọa độ $(2; -2)$ và $(-1; -2) \Rightarrow m = \min_{[-1; 5]} f(x) = -2$.")
+        
+        st.markdown(r"Do đó, $M - m = 3 - (-2) = 5$.")
+        
+        st.markdown(r"**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+import streamlit as st
+
+# CÂU 25
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 25. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Gia Thiều - Hà Nội 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$f(x)$</span> liên tục trên đoạn $[-1; 5]$ và có đồ thị như hình vẽ bên (các điểm cực trị của đồ thị thể hiện rõ trên hình). Gọi $M$ và $m$ lần lượt là giá trị lớn nhất và nhỏ nhất của hàm số đã cho trên $[-1; 5]$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Chèn hình ảnh đồ thị
+st.image("images/image_8568dd.PNG", use_container_width=True)
+
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        margin-bottom: 10px;
+    ">
+        Giá trị của $M - m$ bằng:
+    </span>
+    """,
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án (Sử dụng horizontal=True vì đáp án ngắn)
+options_25 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $4$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $5$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $6$."
+]
+
+# 3. Nút chọn đáp án
+user_choice_25 = st.radio(
+    "Chọn đáp án của bạn (Câu 25):", 
+    options_25, 
+    index=None, 
+    key="q25_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra
+if st.button("Kiểm tra đáp án", key="q25_check"):
+    if user_choice_25 == options_25[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_25 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+# 5. Nút lời giải
+if st.button("Xem lời giải chi tiết", key="q25_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Quan sát đồ thị hàm số trên đoạn $[-1; 5]$, ta thấy:")
+        
+        st.markdown(r"- Điểm cao nhất của đồ thị có tọa độ $(4; 3) \Rightarrow M = \max_{[-1; 5]} f(x) = 3$.")
+        st.markdown(r"- Điểm thấp nhất của đồ thị có tọa độ $(2; -2)$ và $(-1; -2) \Rightarrow m = \min_{[-1; 5]} f(x) = -2$.")
+        
+        st.markdown(r"Do đó, $M - m = 3 - (-2) = 5$.")
+        
+        st.markdown(r"**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
