@@ -3782,3 +3782,125 @@ if st.button("Xem lời giải chi tiết", key="q55_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+
+
+# CÂU 56
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 56. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Than Uyên - Lai Châu 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> có bảng biến thiên như hình vẽ dưới đây.<br>
+        Hàm số đã cho nghịch biến trên khoảng
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_5b2279.PNG", use_container_width=True)
+
+options_56 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $(0; +\infty)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $(-\infty; 0)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $(0; 1)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $(-\infty; 5)$."
+]
+
+user_choice_56 = st.radio(
+    "Chọn đáp án của bạn (Câu 56):", 
+    options_56, 
+    index=None, 
+    key="q56_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q56_check"):
+    if user_choice_56 == options_56[1]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_56 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q56_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào bảng biến thiên, ta thấy đạo hàm $f'(x) < 0$ trên các khoảng $(-\infty; 0)$ và $(1; +\infty)$.")
+        st.markdown(r"Do đó, hàm số nghịch biến trên khoảng $(-\infty; 0)$ và $(1; +\infty)$.")
+        st.markdown(r"Đối chiếu với các đáp án, ta thấy khoảng $(-\infty; 0)$ thỏa mãn.")
+        st.markdown(r"**Chọn đáp án B.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 57
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 57. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Than Uyên - Lai Châu 2026) </span>
+        Cho hàm số bậc ba <span style="white-space: nowrap;">$y = f(x)$</span> có bảng biến thiên như sau:<br>
+        Điểm cực tiểu của đồ thị hàm số là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_5b22791.PNG", use_container_width=True)
+
+options_57 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $(-1; 0)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $(1; 0)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $(-1; 4)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $(1; 4)$."
+]
+
+user_choice_57 = st.radio(
+    "Chọn đáp án của bạn (Câu 57):", 
+    options_57, 
+    index=None, 
+    key="q57_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q57_check"):
+    if user_choice_57 == options_57[1]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_57 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q57_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào bảng biến thiên, ta thấy đạo hàm $f'(x)$ đổi dấu từ âm $(-)$ sang dương $(+)$ khi đi qua điểm $x = 1$.")
+        st.markdown(r"Do đó, hàm số đạt cực tiểu tại $x = 1$, với giá trị cực tiểu tương ứng là $y = 0$.")
+        st.markdown(r"Vậy điểm cực tiểu của **đồ thị** hàm số có tọa độ là $(1; 0)$.")
+        st.markdown(r"**Chọn đáp án B.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
