@@ -2949,7 +2949,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image("images/image_75e0fa1.png", use_container_width=True)
+st.image("images/image_75e0fa1.PNG", use_container_width=True)
 
 options_42 = [
     r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $0$.",
