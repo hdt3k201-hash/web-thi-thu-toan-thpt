@@ -2145,6 +2145,82 @@ if st.button("Xem lời giải chi tiết", key="q29_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+import streamlit as st
+
+# CÂU 30
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 30. </span> 
+        <span style="color: #009900; font-weight: bold;">(Mã 104 - 2017) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> có bảng xét dấu đạo hàm như sau:<br>
+        Mệnh đề nào dưới đây <b>đúng</b>?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Chèn hình ảnh bảng xét dấu
+st.image("images/image_774613.PNG", use_container_width=True)
+
+# 2. Danh sách 4 đáp án (Để horizontal=False vì đáp án là dạng câu dài)
+options_30 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ Hàm số nghịch biến trên khoảng $(-\infty; -2)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ Hàm số đồng biến trên khoảng $(-2; 0)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ Hàm số đồng biến trên khoảng $(-\infty; 0)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ Hàm số nghịch biến trên khoảng $(0; 2)$."
+]
+
+# 3. Nút chọn đáp án
+user_choice_30 = st.radio(
+    "Chọn đáp án của bạn (Câu 30):", 
+    options_30, 
+    index=None, 
+    key="q30_radio", 
+    horizontal=False 
+)
+
+# 4. Nút kiểm tra
+if st.button("Kiểm tra đáp án", key="q30_check"):
+    if user_choice_30 == options_30[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_30 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+# 5. Nút lời giải
+if st.button("Xem lời giải chi tiết", key="q30_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Dựa vào bảng xét dấu đạo hàm, ta thấy:")
+        st.markdown(r"- $y' > 0$ trên các khoảng $(-\infty; -2)$ và $(2; +\infty)$ nên hàm số đồng biến trên các khoảng này.")
+        st.markdown(r"- $y' < 0$ trên các khoảng $(-2; 0)$ và $(0; 2)$ nên hàm số nghịch biến trên các khoảng này.")
+        
+        st.markdown(r"Đối chiếu với các phương án:")
+        st.markdown(r"- **A sai** vì hàm số đồng biến trên $(-\infty; -2)$.")
+        st.markdown(r"- **B sai** vì hàm số nghịch biến trên $(-2; 0)$.")
+        st.markdown(r"- **C sai** vì hàm số không đồng biến trên toàn bộ $(-\infty; 0)$.")
+        st.markdown(r"- **D đúng** vì hàm số nghịch biến trên $(0; 2)$.")
+        
+        st.markdown(r"**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
 
 
 
