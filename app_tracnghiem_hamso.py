@@ -1520,7 +1520,7 @@ st.markdown(
 )
 
 # Chèn hình ảnh bảng biến thiên
-st.image("images/image_85d958.png", use_container_width=True)
+st.image("images/image_85d958.PNG", use_container_width=True)
 
 st.markdown(
     r"""
