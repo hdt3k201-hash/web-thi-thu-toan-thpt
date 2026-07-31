@@ -1492,5 +1492,146 @@ if st.button("Xem lời giải chi tiết", key="q21_solution"):
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
 
+import streamlit as st
+
+# CÂU 22
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 22. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Phú Thọ 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = \dfrac{x^2 - 3x + 6}{x - 1}$</span>. Có bao nhiêu mệnh đề đúng trong các mệnh đề sau?<br>
+        <span style="color: #0000ff; font-weight: bold;">a)</span> Đường tiệm cận xiên của đồ thị hàm số là đường thẳng <span style="white-space: nowrap;">$y = ax + b$</span>. Khi đó <span style="white-space: nowrap;">$a - 2b = 5$</span>.<br>
+        <span style="color: #0000ff; font-weight: bold;">b)</span> Đường thẳng đi qua hai điểm cực trị của đồ thị hàm số có phương trình là <span style="white-space: nowrap;">$y = 2x - 3$</span>.<br>
+        <span style="color: #0000ff; font-weight: bold;">c)</span> Gọi <span style="white-space: nowrap;">$A, B$</span> lần lượt là các điểm cực đại, cực tiểu của đồ thị hàm số và <span style="white-space: nowrap;">$O$</span> là gốc tọa độ. Diện tích tam giác <span style="white-space: nowrap;">$OAB$</span> bằng $6$.<br>
+        <span style="color: #0000ff; font-weight: bold;">d)</span> Hàm số nghịch biến trên khoảng <span style="white-space: nowrap;">$(-1; 3)$</span>.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án
+options_22 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $4$."
+]
+
+# 3. Sử dụng st.radio
+user_choice_22 = st.radio(
+    "Chọn đáp án của bạn:", 
+    options_22, 
+    index=None, 
+    key="q22_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q22_check"):
+    if user_choice_22 == options_22[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_22 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+# 5. Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q22_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Ta có <span style='white-space: nowrap;'>$y = \dfrac{x^2 - 3x + 6}{x - 1} = x - 2 + \dfrac{4}{x - 1}$</span>.", unsafe_allow_html=True) 
+        st.markdown(r"**a) Đúng.** Tiệm cận xiên là <span style='white-space: nowrap;'>$y = x - 2 \Rightarrow a = 1, b = -2 \Rightarrow a - 2b = 1 - 2(-2) = 5$</span>.", unsafe_allow_html=True)
+        st.markdown(r"**b) Đúng.** Đạo hàm <span style='white-space: nowrap;'>$y' = \dfrac{x^2 - 2x - 3}{(x - 1)^2}$</span>. Cho <span style='white-space: nowrap;'>$y' = 0 \Leftrightarrow \left[ \begin{array}{l} x = -1 \Rightarrow y = -5 \\ x = 3 \Rightarrow y = 3 \end{array} \right.$</span>. Điểm cực đại <span style='white-space: nowrap;'>$A(-1; -5)$</span>, điểm cực tiểu <span style='white-space: nowrap;'>$B(3; 3)$</span>. Phương trình đường thẳng qua hai điểm cực trị là <span style='white-space: nowrap;'>$y = 2x - 3$</span>.", unsafe_allow_html=True)
+        st.markdown(r"**c) Đúng.** Diện tích tam giác <span style='white-space: nowrap;'>$OAB$</span> là <span style='white-space: nowrap;'>$S = \dfrac{1}{2} |x_A y_B - x_B y_A| = \dfrac{1}{2} |-1 \cdot 3 - 3 \cdot (-5)| = 6$</span>.", unsafe_allow_html=True)
+        st.markdown(r"**d) Sai.** Hàm số không xác định tại <span style='white-space: nowrap;'>$x = 1$</span> nên hàm số nghịch biến trên các khoảng <span style='white-space: nowrap;'>$(-1; 1)$</span> và <span style='white-space: nowrap;'>(1; 3)$</span>, không thể kết luận nghịch biến trên khoảng <span style='white-space: nowrap;'>$(-1; 3)$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Vậy có 3 mệnh đề đúng. **Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 23
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 23. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Hải Phòng 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x) = \dfrac{x^2 + 3x + 5}{x - 1}$</span> có đồ thị $(C)$. Có bao nhiêu mệnh đề đúng trong các mệnh đề sau?<br>
+        <span style="color: #0000ff; font-weight: bold;">a)</span> <span style="white-space: nowrap;">$y' = f'(x) = \dfrac{x^2 - 2x - 8}{(x - 1)^2}$</span>, <span style="white-space: nowrap;">$\forall x \neq 1$</span>.<br>
+        <span style="color: #0000ff; font-weight: bold;">b)</span> Tiệm cận xiên của đồ thị hàm số là đường thẳng có phương trình <span style="white-space: nowrap;">$y = x + 3$</span>.<br>
+        <span style="color: #0000ff; font-weight: bold;">c)</span> Khoảng cách giữa hai điểm cực trị của đồ thị $(C)$ bằng <span style="white-space: nowrap;">$6\sqrt{5}$</span>.<br>
+        <span style="color: #0000ff; font-weight: bold;">d)</span> Gọi $M$ là một điểm trên đồ thị $(C)$. Tiếp tuyến tại $M$ tạo với hai đường tiệm cận của $(C)$ một tam giác có diện tích bằng $18$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án
+options_23 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $4$."
+]
+
+# 3. Sử dụng st.radio
+user_choice_23 = st.radio(
+    "Chọn đáp án của bạn:", 
+    options_23, 
+    index=None, 
+    key="q23_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q23_check"):
+    if user_choice_23 == options_23[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_23 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+# 5. Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q23_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Ta có <span style='white-space: nowrap;'>$y = \dfrac{x^2 + 3x + 5}{x - 1} = x + 4 + \dfrac{9}{x - 1}$</span>.", unsafe_allow_html=True) 
+        st.markdown(r"**a) Đúng.** Đạo hàm <span style='white-space: nowrap;'>$y' = 1 - \dfrac{9}{(x - 1)^2} = \dfrac{(x - 1)^2 - 9}{(x - 1)^2} = \dfrac{x^2 - 2x - 8}{(x - 1)^2}$</span>.", unsafe_allow_html=True)
+        st.markdown(r"**b) Sai.** Tiệm cận xiên là đường thẳng <span style='white-space: nowrap;'>$y = x + 4$</span>.", unsafe_allow_html=True)
+        st.markdown(r"**c) Đúng.** Cho <span style='white-space: nowrap;'>$y' = 0 \Leftrightarrow x^2 - 2x - 8 = 0 \Leftrightarrow \left[ \begin{array}{l} x = -2 \Rightarrow y = -1 \\ x = 4 \Rightarrow y = 11 \end{array} \right.$</span>. Điểm cực đại <span style='white-space: nowrap;'>$A(-2; -1)$</span>, điểm cực tiểu <span style='white-space: nowrap;'>$B(4; 11)$</span>. Khoảng cách <span style='white-space: nowrap;'>$AB = \sqrt{(4 - (-2))^2 + (11 - (-1))^2} = \sqrt{36 + 144} = \sqrt{180} = 6\sqrt{5}$</span>.", unsafe_allow_html=True)
+        st.markdown(r"**d) Đúng.** Với hàm số có dạng <span style='white-space: nowrap;'>$y = ax + b + \dfrac{c}{dx + e}$</span>, diện tích tam giác tạo bởi tiếp tuyến bất kỳ và hai đường tiệm cận luôn là hằng số <span style='white-space: nowrap;'>$S = \dfrac{2|c|}{|d|} = \dfrac{2|9|}{|1|} = 18$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Vậy có 3 mệnh đề đúng. **Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
 
 
