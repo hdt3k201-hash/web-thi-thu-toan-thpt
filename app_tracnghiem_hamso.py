@@ -3107,5 +3107,126 @@ if st.button("Xem lời giải chi tiết", key="q44_solution"):
 
 
 
+import streamlit as st
 
+# CÂU 45
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 45. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Hưng Yên 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> có đồ thị như hình vẽ.<br>
+        Đồ thị hàm số đã cho có đường tiệm cận ngang là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_65f43c.PNG", use_container_width=True)
+
+options_45 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $x = 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $y = 2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $y = 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $y = 3$."
+]
+
+user_choice_45 = st.radio(
+    "Chọn đáp án của bạn (Câu 45):", 
+    options_45, 
+    index=None, 
+    key="q45_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q45_check"):
+    if user_choice_45 == options_45[1]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_45 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q45_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào đồ thị ở câu trên, khi $x \to +\infty$ hoặc $x \to -\infty$, đồ thị hàm số tiến sát về đường thẳng nằm ngang đi qua điểm có tung độ bằng $2$ trên trục $Oy$.")
+        st.markdown(r"Do đó, đường tiệm cận ngang của đồ thị hàm số là $y = 2$.")
+        st.markdown(r"*(Lưu ý: Đường thẳng $x = 1$ là tiệm cận đứng).*")
+        st.markdown(r"**Chọn đáp án B.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 46
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 46. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Hưng Yên 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> có đồ thị như hình vẽ.<br>
+        Điểm cực đại của hàm số đã cho là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_65f43c1.PNG", use_container_width=True)
+
+options_46 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $x = 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $x = 2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $x = 0$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $x = -2$."
+]
+
+user_choice_46 = st.radio(
+    "Chọn đáp án của bạn (Câu 46):", 
+    options_46, 
+    index=None, 
+    key="q46_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q46_check"):
+    if user_choice_46 == options_46[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_46 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q46_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Quan sát đồ thị hàm số ở câu dưới, ta thấy đồ thị có một điểm 'nhô lên' (chuyển từ đồng biến sang nghịch biến) tại vị trí trục tung.")
+        st.markdown(r"Hoành độ tại điểm này là $x = 0$ (với tung độ $y = 1$).")
+        st.markdown(r"Vậy điểm cực đại của hàm số là $x = 0$.")
+        st.markdown(r"*(Tại $x = 2$, đồ thị có điểm 'lõm xuống' nên $x = 2$ là điểm cực tiểu của hàm số).*")
+        st.markdown(r"**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
