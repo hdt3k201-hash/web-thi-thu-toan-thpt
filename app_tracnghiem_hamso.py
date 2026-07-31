@@ -1154,6 +1154,236 @@ if st.button("Xem lời giải chi tiết", key="q16_solution"):
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
 
+
+
+
+
+Trò chuyện với Gemini
+chuyển và giải cho tôi mấy câu trên ảnh để đưa lên github theo cấu trúc code sau. đánh số thứ tự từ câu 17 : # CÂU 1
+
+# ==========================================
+
+# 1. Hiển thị đề bài trong khung
+
+# MẸO: Thêm <span style="white-space: nowrap;"> bọc quanh công thức toán
+
+# để tránh tình trạng công thức bị rớt dòng làm đôi.
+
+st.markdown(
+
+    r"""
+
+    <span style="
+
+        display: block; 
+
+        border: 1px solid #cccccc; 
+
+        border-left: 4px solid #008080; 
+
+        border-radius: 8px; 
+
+        padding: 15px 20px; 
+
+        background-color: #fcfcfc; 
+
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+
+        margin-bottom: 20px;
+
+        font-family: 'Times New Roman', Times, serif; 
+
+        font-size: 18px;
+
+        line-height: 1.6;
+
+    ">
+
+        <span style="color: #008080; font-weight: bold;">Câu 1. </span> 
+
+        <span style="color: #009900; font-weight: bold;">(THPT Lê Thánh Tông HCM 2026) </span>
+
+        Tiệm cận ngang của đồ thị hàm số 
+
+        <span style="white-space: nowrap;">$y = \dfrac{2x - 3}{x + 1}$</span> 
+
+        là đường thẳng có phương trình:
+
+    </span>
+
+    """, 
+
+    unsafe_allow_html=True
+
+)
+
+
+
+# 2. Danh sách 4 đáp án (Sử dụng LaTeX để tạo vòng tròn màu xanh ngọc)
+
+options = [
+
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = -1$.",
+
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $x = -1$.",
+
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $y = 2$.",
+
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $x = 2$."
+
+]
+
+
+
+# 3. Sử dụng st.radio với tham số horizontal=True để dàn hàng ngang
+
+user_choice = st.radio(
+
+    "Chọn đáp án của bạn:", 
+
+    options, 
+
+    index=None, 
+
+    key="q1_radio", 
+
+    horizontal=True 
+
+)
+
+
+
+# 4. Nút kiểm tra đáp án
+
+if st.button("Kiểm tra đáp án", key="q1_check"):
+
+    if user_choice == options[2]: 
+
+        st.success("Chính xác! Chúc mừng bạn.")
+
+    elif user_choice is None:
+
+        st.warning("Bạn chưa chọn đáp án nào.")
+
+    else:
+
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+
+
+# 5. Nút xem lời giải chi tiết
+
+if st.button("Xem lời giải chi tiết", key="q1_solution"):
+
+    # Kiểm tra điều kiện đăng nhập
+
+    if st.session_state.get('logged_in', True): 
+
+        st.info("Lời giải chi tiết:")
+
+        
+
+        st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{-1\}$") 
+
+        st.markdown(r"Ta có giới hạn của hàm số khi $x \to \pm\infty$:")
+
+        
+
+        st.latex(r"\lim_{x \to +\infty} y = \lim_{x \to +\infty} \dfrac{2x - 3}{x + 1} = 2")
+
+        st.latex(r"\lim_{x \to -\infty} y = \lim_{x \to -\infty} \dfrac{2x - 3}{x + 1} = 2")
+
+        
+
+        st.markdown(r"Do đó, đường thẳng **$y = 2$** là tiệm cận ngang của đồ thị hàm số.")
+
+        st.markdown("**Chọn đáp án C.**")
+
+    else:
+
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.") 
+
+
+# CÂU 17
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 17. </span> 
+        Cho hàm số <span style="white-space: nowrap;">$f(x) = 2x^3 - 9x^2 - 24x + 1$</span>. Có bao nhiêu khẳng định đúng trong các khẳng định sau?<br>
+        <span style="color: #cc0000; font-weight: bold;">(1)</span> Điểm cực đại của hàm số là <span style="white-space: nowrap;">$x = -1$</span>.<br>
+        <span style="color: #cc0000; font-weight: bold;">(2)</span> Điểm cực tiểu của hàm số là <span style="white-space: nowrap;">$x = 4$</span>.<br>
+        <span style="color: #cc0000; font-weight: bold;">(3)</span> Giá trị cực đại của hàm số là <span style="white-space: nowrap;">$y = 14$</span>.<br>
+        <span style="color: #cc0000; font-weight: bold;">(4)</span> Giá trị cực tiểu của hàm số là <span style="white-space: nowrap;">$y = -111$</span>.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án (Sử dụng LaTeX để tạo vòng tròn màu xanh ngọc)
+options_17 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $4$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $2$."
+]
+
+# 3. Sử dụng st.radio với tham số horizontal=True để dàn hàng ngang
+user_choice_17 = st.radio(
+    "Chọn đáp án của bạn:", 
+    options_17, 
+    index=None, 
+    key="q17_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q17_check"):
+    if user_choice_17 == options_17[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_17 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+# 5. Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q17_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Tập xác định: $D = \mathbb{R}$.") 
+        st.markdown(r"Đạo hàm: <span style='white-space: nowrap;'>$f'(x) = 6x^2 - 18x - 24$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Cho <span style='white-space: nowrap;'>$f'(x) = 0 \Leftrightarrow 6x^2 - 18x - 24 = 0 \Leftrightarrow \left[ \begin{array}{l} x = -1 \\ x = 4 \end{array} \right.$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Bảng xét dấu $f'(x)$: $f'(x) > 0$ khi $x \in (-\infty; -1) \cup (4; +\infty)$; $f'(x) < 0$ khi $x \in (-1; 4)$.", unsafe_allow_html=True)
+        st.markdown(r"$\Rightarrow$ Hàm số đạt cực đại tại <span style='white-space: nowrap;'>$x = -1$</span> và đạt cực tiểu tại <span style='white-space: nowrap;'>$x = 4$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Giá trị cực đại: <span style='white-space: nowrap;'>$y_{CĐ} = f(-1) = 2(-1)^3 - 9(-1)^2 - 24(-1) + 1 = 14$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Giá trị cực tiểu: <span style='white-space: nowrap;'>$y_{CT} = f(4) = 2(4)^3 - 9(4)^2 - 24(4) + 1 = -111$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Vậy cả 4 khẳng định trên đều đúng.", unsafe_allow_html=True)
+        st.markdown("**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+
+
+
+
+
+
+
 # CÂU 18
 # ==========================================
 # 1. Hiển thị đề bài trong khung
