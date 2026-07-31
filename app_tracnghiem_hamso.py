@@ -3480,3 +3480,122 @@ if st.button("Xem lời giải chi tiết", key="q50_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+import streamlit as st
+
+# CÂU 51
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 51. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Khuyến - LHT - HCM 2026) </span>
+        Trong hệ trục tọa độ $Oxy$, tiệm cận ngang của đồ thị hàm số <span style="white-space: nowrap;">$y = \dfrac{2}{x-2}$</span> có phương trình là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+options_51 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = 2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $y = -1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $y = 0$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $x = 2$."
+]
+
+user_choice_51 = st.radio(
+    "Chọn đáp án của bạn (Câu 51):", 
+    options_51, 
+    index=None, 
+    key="q51_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q51_check"):
+    if user_choice_51 == options_51[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_51 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q51_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Ta có: $\lim\limits_{x \to +\infty} y = \lim\limits_{x \to +\infty} \dfrac{2}{x-2} = 0$ và $\lim\limits_{x \to -\infty} y = \lim\limits_{x \to -\infty} \dfrac{2}{x-2} = 0$.")
+        st.markdown(r"Do đó, đường thẳng $y = 0$ là tiệm cận ngang của đồ thị hàm số.")
+        st.markdown(r"**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 52
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 52. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Khuyến - LHT - HCM 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> có một phần đồ thị như hình bên.<br>
+        Khoảng đồng biến của hàm số <span style="white-space: nowrap;">$y = f(x)$</span> là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_5b9e1b.png", use_container_width=True)
+
+options_52 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $(2; 4)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $(0; 3)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $(-1; 0)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $(1; 3)$."
+]
+
+user_choice_52 = st.radio(
+    "Chọn đáp án của bạn (Câu 52):", 
+    options_52, 
+    index=None, 
+    key="q52_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q52_check"):
+    if user_choice_52 == options_52[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_52 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q52_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào đồ thị hàm số, ta thấy đồ thị đi lên từ trái sang phải trên khoảng $(1; 3)$.")
+        st.markdown(r"Do đó, hàm số đồng biến trên khoảng $(1; 3)$.")
+        st.markdown(r"**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
