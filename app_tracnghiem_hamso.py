@@ -2611,4 +2611,127 @@ if st.button("Xem lời giải chi tiết", key="q36_solution"):
 
 
 
+# CÂU 37
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 37. </span> 
+        <span style="color: #009900; font-weight: bold;">(ĐGNL DHSPHN 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> có đạo hàm trên $\mathbb{R}$. Biết hàm số <span style="white-space: nowrap;">$y = f'(x)$</span> có đồ thị như hình vẽ. Phát biểu nào sau đây là đúng?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_75f0d5.png", use_container_width=True)
+
+options_37 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ Hàm số $y = f(x)$ đạt cực đại tại $x_1 = -2$ và đạt cực tiểu tại $x_2 = 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ Hàm số $y = f(x)$ đạt cực tiểu tại hai điểm $x_1 = -2$ và $x_2 = 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ Hàm số $y = f(x)$ đạt cực đại tại hai điểm $x_1 = -2$ và $x_2 = 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ Hàm số $y = f(x)$ đạt cực tiểu tại $x_1 = -2$ và đạt cực đại tại $x_2 = 1$."
+]
+
+user_choice_37 = st.radio(
+    "Chọn đáp án của bạn (Câu 37):", 
+    options_37, 
+    index=None, 
+    key="q37_radio", 
+    horizontal=False 
+)
+
+if st.button("Kiểm tra đáp án", key="q37_check"):
+    if user_choice_37 == options_37[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_37 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q37_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào đồ thị của hàm số $y = f'(x)$, ta thấy đồ thị cắt trục hoành tại hai điểm $x = -2$ và $x = 1$.")
+        st.markdown(r"- Với $x < -2$, đồ thị nằm phía dưới trục hoành nên $f'(x) < 0$.")
+        st.markdown(r"- Với $-2 < x < 1$, đồ thị nằm phía trên trục hoành nên $f'(x) > 0$.")
+        st.markdown(r"- Với $x > 1$, đồ thị nằm phía dưới trục hoành nên $f'(x) < 0$.")
+        st.markdown(r"Do đó, qua điểm $x = -2$, đạo hàm $f'(x)$ đổi dấu từ âm sang dương nên hàm số đạt cực tiểu tại $x = -2$.")
+        st.markdown(r"Qua điểm $x = 1$, đạo hàm $f'(x)$ đổi dấu từ dương sang âm nên hàm số đạt cực đại tại $x = 1$.")
+        st.markdown(r"**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 38
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 38. </span> 
+        <span style="color: #009900; font-weight: bold;">(ĐGNL DHSPHN 2026) </span>
+        Tiệm cận xiên của đồ thị hàm số <span style="white-space: nowrap;">$y = \dfrac{x^2 + x + 2}{x + 2}$</span> là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+options_38 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = x - 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $y = x + 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $y = x - 2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $y = x + 2$."
+]
+
+user_choice_38 = st.radio(
+    "Chọn đáp án của bạn (Câu 38):", 
+    options_38, 
+    index=None, 
+    key="q38_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q38_check"):
+    if user_choice_38 == options_38[0]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_38 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q38_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Thực hiện phép chia đa thức tử cho mẫu, ta có:")
+        st.markdown(r"$x^2 + x + 2 = (x + 2)(x - 1) + 4$")
+        st.markdown(r"Do đó: $y = \dfrac{x^2 + x + 2}{x + 2} = x - 1 + \dfrac{4}{x + 2}$")
+        st.markdown(r"Vì $\lim_{x \to \pm\infty} \left[ y - (x - 1) \right] = \lim_{x \to \pm\infty} \dfrac{4}{x + 2} = 0$, nên đường thẳng $y = x - 1$ là tiệm cận xiên của đồ thị hàm số.")
+        st.markdown(r"**Chọn đáp án A.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+
 
