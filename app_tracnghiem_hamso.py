@@ -3354,3 +3354,129 @@ if st.button("Xem lời giải chi tiết", key="q48_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+import streamlit as st
+
+# CÂU 49
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 49. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Thọ Xuân 5 - Thanh Hóa 2026) </span>
+        Cho hàm số bậc ba <span style="white-space: nowrap;">$y = f(x)$</span> có đồ thị đạo hàm <span style="white-space: nowrap;">$y = f'(x)$</span> như hình sau.<br>
+        Hàm số đã cho nghịch biến trên khoảng
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_6587f8.PNG", use_container_width=True)
+
+options_49 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $(-1; 0)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $(2; 3)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $(1; 2)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $(3; 4)$."
+]
+
+user_choice_49 = st.radio(
+    "Chọn đáp án của bạn (Câu 49):", 
+    options_49, 
+    index=None, 
+    key="q49_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q49_check"):
+    if user_choice_49 == options_49[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_49 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q49_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào đồ thị của hàm số $y = f'(x)$, ta thấy đồ thị nằm dưới trục hoành (tức là $f'(x) < 0$) khi $x \in (0; 2)$.")
+        st.markdown(r"Do đó, hàm số $y = f(x)$ nghịch biến trên khoảng $(0; 2)$.")
+        st.markdown(r"Vì khoảng $(1; 2)$ là tập con của khoảng $(0; 2)$ nên hàm số cũng nghịch biến trên khoảng $(1; 2)$.")
+        st.markdown(r"**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 50
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 50. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Thọ Xuân 5 - Thanh Hóa 2026) </span>
+        Giá trị lớn nhất của hàm số <span style="white-space: nowrap;">$y = x^3 - 3x$</span> trên đoạn <span style="white-space: nowrap;">$[0; 3]$</span> bằng
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+options_50 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $0$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $18$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $-2$."
+]
+
+user_choice_50 = st.radio(
+    "Chọn đáp án của bạn (Câu 50):", 
+    options_50, 
+    index=None, 
+    key="q50_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q50_check"):
+    if user_choice_50 == options_50[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_50 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q50_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Xét hàm số $y = x^3 - 3x$ trên đoạn $[0; 3]$.")
+        st.markdown(r"Đạo hàm: $y' = 3x^2 - 3 = 3(x^2 - 1)$.")
+        st.markdown(r"Cho $y' = 0 \implies 3(x^2 - 1) = 0 \implies \left[\begin{array}{l} x = 1 \in [0; 3] \\ x = -1 \notin [0; 3] \text{ (loại)} \end{array}\right.$")
+        st.markdown(r"Tính giá trị của hàm số tại các điểm đầu mút và điểm cực trị trên đoạn:")
+        st.markdown(r"- $y(0) = 0^3 - 3(0) = 0$")
+        st.markdown(r"- $y(1) = 1^3 - 3(1) = -2$")
+        st.markdown(r"- $y(3) = 3^3 - 3(3) = 27 - 9 = 18$")
+        st.markdown(r"So sánh các giá trị trên, ta thấy giá trị lớn nhất của hàm số trên đoạn $[0; 3]$ bằng $18$.")
+        st.markdown(r"**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
