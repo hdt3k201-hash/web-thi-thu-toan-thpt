@@ -2251,7 +2251,7 @@ st.markdown(
 )
 
 # Chèn hình ảnh bảng biến thiên
-st.image("images/image_76dd911.PNG", use_container_width=True)
+st.image("images/image_76dd9111.PNG", use_container_width=True)
 
 # 2. Danh sách 4 đáp án (Sử dụng horizontal=True vì đáp án ngắn)
 options_31 = [
