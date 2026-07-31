@@ -79,7 +79,6 @@ st.markdown(
         <span style="color: #008080; font-weight: bold;">Câu 1. </span> 
         <span style="color: #009900; font-weight: bold;">(THPT Lê Thánh Tông HCM 2026) </span>
         Tiệm cận ngang của đồ thị hàm số :
-        
         $y = \dfrac{2x - 3}{x + 1}$ là đường thẳng có phương trình:
     </span>
     """, 
