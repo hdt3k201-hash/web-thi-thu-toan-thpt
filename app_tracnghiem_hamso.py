@@ -2420,4 +2420,126 @@ if st.button("Xem lời giải chi tiết", key="q33_solution"):
 
 
 
+# CÂU 34
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 34. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm trường Hà Tĩnh 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$f(x) = ax^3 + bx^2 + cx + d$</span> có đồ thị như hình sau đây.<br>
+        Số nghiệm dương của phương trình <span style="white-space: nowrap;">$2f(x) - 3 = 0$</span> là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_7664de.PNG", use_container_width=True)
+
+options_34 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $0$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $2$."
+]
+
+user_choice_34 = st.radio(
+    "Chọn đáp án của bạn (Câu 34):", 
+    options_34, 
+    index=None, 
+    key="q34_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q34_check"):
+    if user_choice_34 == options_34[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_34 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q34_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Ta có phương trình: $2f(x) - 3 = 0 \iff f(x) = \dfrac{3}{2} = 1.5$.")
+        st.markdown(r"Số nghiệm của phương trình chính là số giao điểm của đồ thị hàm số $y = f(x)$ và đường thẳng nằm ngang $y = 1.5$.")
+        st.markdown(r"Quan sát đồ thị, đường thẳng $y = 1.5$ cắt đồ thị hàm số tại 3 điểm phân biệt, trong đó có 2 giao điểm có hoành độ dương và 1 giao điểm có hoành độ âm.")
+        st.markdown(r"Do đó, phương trình đã cho có 2 nghiệm dương.")
+        st.markdown(r"**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 35
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 35. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm trường Hà Tĩnh 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> có bảng biến thiên như sau:<br>
+        Giá trị cực đại của hàm số <span style="white-space: nowrap;">$y = f(x)$</span> là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_7664de1.PNG", use_container_width=True)
+
+options_35 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = -3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $y = -6$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $x = -7$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $x = -4$."
+]
+
+user_choice_35 = st.radio(
+    "Chọn đáp án của bạn (Câu 35):", 
+    options_35, 
+    index=None, 
+    key="q35_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q35_check"):
+    if user_choice_35 == options_35[0]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_35 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q35_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào bảng biến thiên, ta thấy hàm số đạt cực đại tại điểm $x = -4$ và giá trị cực đại của hàm số là $y_{CĐ} = -3$.")
+        st.markdown(r"**Chọn đáp án A.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+
 
