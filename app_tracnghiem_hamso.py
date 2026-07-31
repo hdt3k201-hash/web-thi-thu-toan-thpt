@@ -1153,4 +1153,262 @@ if st.button("Xem lời giải chi tiết", key="q16_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+# CÂU 18
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r'''
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 18. </span> 
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> có đạo hàm <span style="white-space: nowrap;">$f'(x) = (x-2)^2(1-x)$</span> với mọi <span style="white-space: nowrap;">$x \in \mathbb{R}$</span>. Hàm số đã cho đồng biến trên khoảng nào dưới đây?
+    </span>
+    ''', 
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án (Sử dụng LaTeX để tạo vòng tròn màu xanh ngọc)
+options_18 = [
+    r"$\color{#008080}{	extcircled{\small 	extbf{A}}}\;$ $(1;2)$.",
+    r"$\color{#008080}{	extcircled{\small 	extbf{B}}}\;$ $(1;+\infty)$.",
+    r"$\color{#008080}{	extcircled{\small 	extbf{C}}}\;$ $(2;+\infty)$.",
+    r"$\color{#008080}{	extcircled{\small 	extbf{D}}}\;$ $(-\infty;1)$."
+]
+
+# 3. Sử dụng st.radio với tham số horizontal=True để dàn hàng ngang
+user_choice_18 = st.radio(
+    "Chọn đáp án của bạn:", 
+    options_18, 
+    index=None, 
+    key="q18_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q18_check"):
+    if user_choice_18 == options_18[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_18 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+# 5. Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q18_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Ta có <span style='white-space: nowrap;'>$f'(x) = (x - 2)^2(1 - x)$</span>.", unsafe_allow_html=True) 
+        st.markdown(r"Cho <span style='white-space: nowrap;'>$f'(x) = 0 \Leftrightarrow \left[  egin{array}{l} x = 2 \ x = 1 \end{array} 
+ight.$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Do <span style='white-space: nowrap;'>$(x-2)^2 \ge 0$</span> với mọi <span style='white-space: nowrap;'>$x \in \mathbb{R}$</span> nên dấu của <span style='white-space: nowrap;'>$f'(x)$</span> phụ thuộc vào nhị thức <span style='white-space: nowrap;'>$1-x$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Hàm số đồng biến khi <span style='white-space: nowrap;'>$f'(x) > 0 \Leftrightarrow 1 - x > 0 \Leftrightarrow x < 1$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Vậy hàm số đồng biến trên khoảng <span style='white-space: nowrap;'>$(-\infty; 1)$</span>.", unsafe_allow_html=True)
+        st.markdown("**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 19
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r'''
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 19. </span> 
+        Hỏi hàm số <span style="white-space: nowrap;">$y = 2x^4 + 1$</span> đồng biến trên khoảng nào?
+    </span>
+    ''', 
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án
+options_19 = [
+    r"$\color{#008080}{	extcircled{\small 	extbf{A}}}\;$ $(-\infty;0)$.",
+    r"$\color{#008080}{	extcircled{\small 	extbf{B}}}\;$ $(-\infty;-rac{1}{2})$.",
+    r"$\color{#008080}{	extcircled{\small 	extbf{C}}}\;$ $(0;+\infty)$.",
+    r"$\color{#008080}{	extcircled{\small 	extbf{D}}}\;$ $(-rac{1}{2};+\infty)$."
+]
+
+# 3. Sử dụng st.radio
+user_choice_19 = st.radio(
+    "Chọn đáp án của bạn:", 
+    options_19, 
+    index=None, 
+    key="q19_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q19_check"):
+    if user_choice_19 == options_19[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_19 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+# 5. Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q19_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Tập xác định: $D = \mathbb{R}$.") 
+        st.markdown(r"Đạo hàm: <span style='white-space: nowrap;'>$y' = 8x^3$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Cho <span style='white-space: nowrap;'>$y' = 0 \Leftrightarrow 8x^3 = 0 \Leftrightarrow x = 0$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Hàm số đồng biến khi <span style='white-space: nowrap;'>$y' > 0 \Leftrightarrow 8x^3 > 0 \Leftrightarrow x > 0$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Vậy hàm số đồng biến trên khoảng <span style='white-space: nowrap;'>$(0; +\infty)$</span>.", unsafe_allow_html=True)
+        st.markdown("**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 20
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r'''
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 20. </span> 
+        Hàm số <span style="white-space: nowrap;">$y = \dfrac{2}{x^2+1}$</span> nghịch biến trên khoảng nào dưới đây?
+    </span>
+    ''', 
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án
+options_20 = [
+    r"$\color{#008080}{	extcircled{\small 	extbf{A}}}\;$ $(-\infty;+\infty)$.",
+    r"$\color{#008080}{	extcircled{\small 	extbf{B}}}\;$ $(0;+\infty)$.",
+    r"$\color{#008080}{	extcircled{\small 	extbf{C}}}\;$ $(-\infty;0)$.",
+    r"$\color{#008080}{	extcircled{\small 	extbf{D}}}\;$ $(-1;1)$."
+]
+
+# 3. Sử dụng st.radio
+user_choice_20 = st.radio(
+    "Chọn đáp án của bạn:", 
+    options_20, 
+    index=None, 
+    key="q20_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q20_check"):
+    if user_choice_20 == options_20[1]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_20 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+# 5. Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q20_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Tập xác định: $D = \mathbb{R}$.") 
+        st.latex(r"y' = \dfrac{-2 \cdot (x^2+1)'}{(x^2+1)^2} = \dfrac{-4x}{(x^2+1)^2}")
+        st.markdown(r"Cho <span style='white-space: nowrap;'>$y' = 0 \Leftrightarrow -4x = 0 \Leftrightarrow x = 0$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Hàm số nghịch biến khi <span style='white-space: nowrap;'>$y' < 0 \Leftrightarrow \dfrac{-4x}{(x^2+1)^2} < 0 \Leftrightarrow x > 0$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Vậy hàm số nghịch biến trên khoảng <span style='white-space: nowrap;'>$(0; +\infty)$</span>.", unsafe_allow_html=True)
+        st.markdown("**Chọn đáp án B.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# CÂU 21
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+st.markdown(
+    r'''
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 21. </span> 
+        Cho hàm số <span style="white-space: nowrap;">$y = \sqrt{2x^2+1}$</span>. Mệnh đề nào dưới đây <b>đúng</b>?
+    </span>
+    ''', 
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án
+options_21 = [
+    r"$\color{#008080}{	extcircled{\small 	extbf{A}}}\;$ Hàm số đồng biến trên khoảng $(0;+\infty)$.",
+    r"$\color{#008080}{	extcircled{\small 	extbf{B}}}\;$ Hàm số đồng biến trên khoảng $(-\infty;0)$.",
+    r"$\color{#008080}{	extcircled{\small 	extbf{C}}}\;$ Hàm số nghịch biến trên khoảng $(0;+\infty)$.",
+    r"$\color{#008080}{	extcircled{\small 	extbf{D}}}\;$ Hàm số nghịch biến trên khoảng $(-1;1)$."
+]
+
+# 3. Sử dụng st.radio
+user_choice_21 = st.radio(
+    "Chọn đáp án của bạn:", 
+    options_21, 
+    index=None, 
+    key="q21_radio", 
+    horizontal=True 
+)
+
+# 4. Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q21_check"):
+    if user_choice_21 == options_21[0]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_21 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+# 5. Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q21_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Tập xác định: $D = \mathbb{R}$.") 
+        st.latex(r"y' = \dfrac{(2x^2+1)'}{2\sqrt{2x^2+1}} = \dfrac{4x}{2\sqrt{2x^2+1}} = \dfrac{2x}{\sqrt{2x^2+1}}")
+        st.markdown(r"Cho <span style='white-space: nowrap;'>$y' = 0 \Leftrightarrow 2x = 0 \Leftrightarrow x = 0$</span>.", unsafe_allow_html=True)
+        st.markdown(r"Bảng xét dấu: với $x > 0$ thì $y' > 0$; với $x < 0$ thì $y' < 0$.", unsafe_allow_html=True)
+        st.markdown(r"Vậy hàm số đồng biến trên khoảng <span style='white-space: nowrap;'>$(0; +\infty)$</span> và nghịch biến trên khoảng <span style='white-space: nowrap;'>$(-\infty; 0)$</span>.", unsafe_allow_html=True)
+        st.markdown("**Chọn đáp án A.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
 
