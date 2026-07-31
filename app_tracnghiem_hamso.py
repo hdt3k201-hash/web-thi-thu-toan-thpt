@@ -2540,6 +2540,75 @@ if st.button("Xem lời giải chi tiết", key="q35_solution"):
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
 
+import streamlit as st
+
+# CÂU 36
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 36. </span> 
+        <span style="color: #009900; font-weight: bold;">(Liên trường Nghệ An 2026) </span>
+        Bạn Hải có một tấm bìa hình vuông cạnh <span style="white-space: nowrap;">$40\text{ cm}$</span>. Bạn muốn cắt bỏ ở bốn góc bốn hình vuông nhỏ bằng nhau để gấp và dán lại thành một hộp hình hộp chữ nhật không có nắp (tham khảo hình vẽ).<br>
+        Để hộp có thể tích lớn nhất thì độ dài cạnh của hình vuông nhỏ bị cắt là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_7655f9.PNG", use_container_width=True)
+
+options_36 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $6\text{ cm}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $5\text{ cm}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $\dfrac{20}{3}\text{ cm}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $\dfrac{10}{3}\text{ cm}$."
+]
+
+user_choice_36 = st.radio(
+    "Chọn đáp án của bạn (Câu 36):", 
+    options_36, 
+    index=None, 
+    key="q36_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q36_check"):
+    if user_choice_36 == options_36[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_36 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q36_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Gọi $x$ (cm) là độ dài cạnh của hình vuông nhỏ bị cắt ở bốn góc với điều kiện $0 < x < 20$.")
+        st.markdown(r"Khi đó, kích thước của hình hộp chữ nhật không có nắp được tạo thành là:")
+        st.markdown(r"- Chiều cao: $x$")
+        st.markdown(r"- Chiều dài đáy: $40 - 2x$")
+        st.markdown(r"- Chiều rộng đáy: $40 - 2x$")
+        st.markdown(r"Thể tích của hình hộp chữ nhật là: $V(x) = x(40 - 2x)^2 = 4x(20 - x)^2$.")
+        st.markdown(r"Ta có đạo hàm: $V'(x) = 4(20 - x)^2 + 4x \cdot 2(20 - x)(-1) = 4(20 - x)(20 - x - 2x) = 4(20 - x)(20 - 3x)$.")
+        st.markdown(r"Cho $V'(x) = 0 \implies \left[\begin{array}{l} x = 20 \text{ (loại)}\\ x = \dfrac{20}{3} \text{ (nhận)} \end{array}\right.$")
+        st.markdown(r"Dựa vào bảng biến thiên hoặc chiều biến thiên của hàm số, thể tích $V(x)$ đạt giá trị lớn nhất khi $x = \dfrac{20}{3}$.")
+        st.markdown(r"**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
 
 
 
