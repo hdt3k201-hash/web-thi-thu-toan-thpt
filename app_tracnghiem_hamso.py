@@ -55,12 +55,17 @@ st.markdown(
 import streamlit as st
 
 # CÂU 1
+import streamlit as st
+
+# CÂU 1
 # ==========================================
-# 1. Hiển thị đề bài trong khung, chữ "Câu 1." màu xanh ngọc, tên trường màu xanh lá
-# Thêm tiền tố r vào chuỗi (r""") để Streamlit render đúng công thức LaTeX phân số
+# 1. Hiển thị đề bài trong khung
+# MẸO QUAN TRỌNG: Dùng thẻ <span style="display: block;"> thay vì <div>
+# để Streamlit không bỏ qua việc render công thức Toán LaTeX bên trong HTML.
 st.markdown(
     r"""
-    <div style="
+    <span style="
+        display: block; 
         border: 1px solid #cccccc; 
         border-left: 4px solid #008080; 
         border-radius: 8px; 
@@ -74,13 +79,12 @@ st.markdown(
         <span style="color: #008080; font-weight: bold;">Câu 1. </span> 
         <span style="color: #009900; font-weight: bold;">(THPT Lê Thánh Tông HCM 2026) </span>
         Tiệm cận ngang của đồ thị hàm số $y = \dfrac{2x - 3}{x + 1}$ là đường thẳng có phương trình:
-    </div>
+    </span>
     """, 
     unsafe_allow_html=True
 )
 
 # 2. Danh sách 4 đáp án (Sử dụng LaTeX để tạo vòng tròn màu xanh ngọc)
-# Cập nhật các đáp án A, B, C, D từ ảnh
 options = [
     r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = -1$.",
     r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $x = -1$.",
@@ -99,7 +103,6 @@ user_choice = st.radio(
 
 # 4. Nút kiểm tra đáp án
 if st.button("Kiểm tra đáp án", key="q1_check"):
-    # Đáp án đúng là C -> tương ứng với options[2]
     if user_choice == options[2]: 
         st.success("Chính xác! Chúc mừng bạn.")
     elif user_choice is None:
@@ -110,16 +113,15 @@ if st.button("Kiểm tra đáp án", key="q1_check"):
 # 5. Nút xem lời giải chi tiết
 if st.button("Xem lời giải chi tiết", key="q1_solution"):
     # Kiểm tra điều kiện đăng nhập
-    if st.session_state.get('logged_in', True): # Dùng .get() để tránh lỗi nếu 'logged_in' chưa được khởi tạo
+    if st.session_state.get('logged_in', True): 
         st.info("Lời giải chi tiết:")
         
-        # Lời giải cho bài toán tìm tiệm cận ngang
         st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{-1\}$") 
         st.markdown(r"Ta có giới hạn của hàm số khi $x \to \pm\infty$:")
         
-        # Trình bày công thức Toán rõ ràng bằng st.latex
-        st.latex(r"\lim_{x \to +\infty} y = \lim_{x \to +\infty} \frac{2x - 3}{x + 1} = 2")
-        st.latex(r"\lim_{x \to -\infty} y = \lim_{x \to -\infty} \frac{2x - 3}{x + 1} = 2")
+        # Đã cập nhật \dfrac cho lời giải chi tiết đẹp hơn
+        st.latex(r"\lim_{x \to +\infty} y = \lim_{x \to +\infty} \dfrac{2x - 3}{x + 1} = 2")
+        st.latex(r"\lim_{x \to -\infty} y = \lim_{x \to -\infty} \dfrac{2x - 3}{x + 1} = 2")
         
         st.markdown(r"Do đó, đường thẳng **$y = 2$** là tiệm cận ngang của đồ thị hàm số.")
         st.markdown("**Chọn đáp án C.**")
