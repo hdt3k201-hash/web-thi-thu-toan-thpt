@@ -2297,4 +2297,127 @@ if st.button("Xem lời giải chi tiết", key="q31_solution"):
 
 
 
+# CÂU 32
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 32. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Thị Minh Khai - Hà Nội 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$f(x)$</span> có bảng xét dấu của đạo hàm như sau:<br>
+        Hàm số đã cho nghịch biến trên khoảng nào dưới đây?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_767364.PNG", use_container_width=True)
+
+options_32 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $(-3; 0)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $(0; +\infty)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $(0; 2)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $(-\infty; -3)$."
+]
+
+user_choice_32 = st.radio(
+    "Chọn đáp án của bạn (Câu 32):", 
+    options_32, 
+    index=None, 
+    key="q32_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q32_check"):
+    if user_choice_32 == options_32[0]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_32 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q32_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào bảng xét dấu đạo hàm, ta thấy $f'(x) < 0$ trên các khoảng $(-3; 0)$ và $(2; +\infty)$.")
+        st.markdown(r"Do đó, hàm số nghịch biến trên khoảng $(-3; 0)$.")
+        st.markdown(r"**Chọn đáp án A.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 33
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 33. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Thị Minh Khai - Hà Nội 2026) </span>
+        Bảng biến thiên sau đây là của hàm số nào?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_7673641.PNG", use_container_width=True)
+
+options_33 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = \dfrac{2x+3}{x+1}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $y = \dfrac{2x-1}{x-1}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $y = \dfrac{2x-1}{x+1}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $y = \dfrac{x+1}{2x-1}$."
+]
+
+user_choice_33 = st.radio(
+    "Chọn đáp án của bạn (Câu 33):", 
+    options_33, 
+    index=None, 
+    key="q33_radio", 
+    horizontal=False 
+)
+
+if st.button("Kiểm tra đáp án", key="q33_check"):
+    if user_choice_33 == options_33[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_33 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q33_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Quan sát bảng biến thiên, ta thấy:")
+        st.markdown(r"- Tiệm cận đứng của đồ thị là $x = -1$, loại các đáp án có mẫu chứa $x - 1$ (loại B, D).")
+        st.markdown(r"- Tiệm cận ngang là $y = 2$.")
+        st.markdown(r"- Chiều biến thiên: hàm số đồng biến trên các khoảng $(-\infty; -1)$ và $(-1; +\infty)$, do đó $y' > 0$.")
+        st.markdown(r"Xét hàm số ở đáp án C: $y = \dfrac{2x-1}{x+1}$, ta có đạo hàm $y' = \dfrac{2(1) - (-1)\cdot 1}{(x+1)^2} = \dfrac{3}{(x+1)^2} > 0$ với mọi $x \neq -1$.")
+        st.markdown(r"**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+
 
