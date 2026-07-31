@@ -52,11 +52,14 @@ st.markdown(
 
 # ==========================================
 
+import streamlit as st
+
 # CÂU 1
 # ==========================================
-# 1. Hiển thị đề bài trong khung, chữ "Câu 1." màu xanh ngọc (Đã sửa lại công thức toán)
+# 1. Hiển thị đề bài trong khung, chữ "Câu 1." màu xanh ngọc, tên trường màu xanh lá
+# Thêm tiền tố r vào chuỗi (r""") để Streamlit render đúng công thức LaTeX phân số
 st.markdown(
-    """
+    r"""
     <div style="
         border: 1px solid #cccccc; 
         border-left: 4px solid #008080; 
@@ -69,20 +72,20 @@ st.markdown(
         font-size: 18px;
     ">
         <span style="color: #008080; font-weight: bold;">Câu 1. </span> 
-        Cho hàm số y = x<sup>3</sup> - 3x + 2. Tọa độ điểm cực đại của đồ thị hàm số là:
+        <span style="color: #009900; font-weight: bold;">(THPT Lê Thánh Tông HCM 2026) </span>
+        Tiệm cận ngang của đồ thị hàm số $y = \frac{2x - 3}{x + 1}$ là đường thẳng có phương trình:
     </div>
     """, 
     unsafe_allow_html=True
 )
 
-
 # 2. Danh sách 4 đáp án (Sử dụng LaTeX để tạo vòng tròn màu xanh ngọc)
-# Ký hiệu r ở trước chuỗi giúp Python đọc đúng các mã lệnh của LaTeX
+# Cập nhật các đáp án A, B, C, D từ ảnh
 options = [
-    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ (1; 0)",
-    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ (-1; 4)",
-    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ (-1; 0)",
-    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ (1; 4)"
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = -1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $x = -1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $y = 2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $x = 2$."
 ]
 
 # 3. Sử dụng st.radio với tham số horizontal=True để dàn hàng ngang
@@ -94,32 +97,31 @@ user_choice = st.radio(
     horizontal=True 
 )
 
-# Nút kiểm tra đáp án
+# 4. Nút kiểm tra đáp án
 if st.button("Kiểm tra đáp án", key="q1_check"):
-    # MẸO: Thay vì gõ lại chuỗi dài, ta so sánh với options[1] (Tức là đáp án B, vì đếm từ 0, 1, 2, 3)
-    if user_choice == options[1]: 
+    # Đáp án đúng là C -> tương ứng với options[2]
+    if user_choice == options[2]: 
         st.success("Chính xác! Chúc mừng bạn.")
     elif user_choice is None:
         st.warning("Bạn chưa chọn đáp án nào.")
     else:
         st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
 
-# Nút xem lời giải chi tiết
+# 5. Nút xem lời giải chi tiết
 if st.button("Xem lời giải chi tiết", key="q1_solution"):
     # Kiểm tra điều kiện đăng nhập
-    if st.session_state['logged_in']:
+    if st.session_state.get('logged_in', True): # Dùng .get() để tránh lỗi nếu 'logged_in' chưa được khởi tạo
         st.info("Lời giải chi tiết:")
-        # Thêm chữ r vào trước chuỗi markdown để LaTeX \mathbb không bị lỗi
-        st.markdown(r"Tập xác định: $D = \mathbb{R}$") 
-        st.markdown("Đạo hàm:")
         
-        # Streamlit hỗ trợ render trực tiếp LaTeX
-        st.latex(r"y' = 3x^2 - 3")
-        st.latex(r"y' = 0 \Leftrightarrow \left[\begin{array}{l} x = 1 \Rightarrow y = 0 \\ x = -1 \Rightarrow y = 4 \end{array}\right.")
+        # Lời giải cho bài toán tìm tiệm cận ngang
+        st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{-1\}$") 
+        st.markdown(r"Ta có giới hạn của hàm số khi $x \to \pm\infty$:")
         
-        st.markdown("Lập bảng biến thiên, ta thấy hàm số đạt cực đại tại $x = -1$, giá trị cực đại $y_{CĐ} = 4$.")
-        st.markdown("**Vậy tọa độ điểm cực đại là $(-1; 4)$. Chọn đáp án B.**")
+        # Trình bày công thức Toán rõ ràng bằng st.latex
+        st.latex(r"\lim_{x \to +\infty} y = \lim_{x \to +\infty} \frac{2x - 3}{x + 1} = 2")
+        st.latex(r"\lim_{x \to -\infty} y = \lim_{x \to -\infty} \frac{2x - 3}{x + 1} = 2")
+        
+        st.markdown(r"Do đó, đường thẳng **$y = 2$** là tiệm cận ngang của đồ thị hàm số.")
+        st.markdown("**Chọn đáp án C.**")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
-        
-st.markdown("---")
