@@ -198,7 +198,7 @@ if st.button("Xem lời giải chi tiết", key="q2_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
-st.write("---") # Đường gạch ngang phân cách giữa các câu
+
 
 # ==========================================
 # CÂU 3
@@ -341,7 +341,7 @@ if st.button("Xem lời giải chi tiết", key="q4_solution"):
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
 
-st.write("---") # Đường gạch ngang phân cách giữa các câu
+
 
 
 # ==========================================
@@ -406,7 +406,7 @@ if st.button("Xem lời giải chi tiết", key="q5_solution"):
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
 
-st.write("---") # Đường gạch ngang phân cách giữa các câu
+
 
 
 # ==========================================
