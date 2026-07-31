@@ -54,7 +54,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image("image_58dcbe.png", use_container_width=True)
+
 
 st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
 
