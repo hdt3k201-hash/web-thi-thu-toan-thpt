@@ -1015,4 +1015,142 @@ if st.button("Xem lời giải chi tiết", key="q14_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+import streamlit as st
+
+# ==========================================
+# CÂU 15 (Tương ứng Câu 42 trong ảnh)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 15. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Cà Mau 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = x^3 - 3x^2 + 2$.</span> Gọi <span style="white-space: nowrap;">$M, m$</span> lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của hàm số trên đoạn <span style="white-space: nowrap;">$[-2; 2]$</span>. Khi đó <span style="white-space: nowrap;">$M - m$</span> bằng
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+options_q15 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $4$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $16$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $20$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $2$."
+]
+
+user_choice_q15 = st.radio(
+    "Chọn đáp án của bạn cho Câu 15:", 
+    options_q15, 
+    index=None, 
+    key="q15_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q15_check"):
+    # Đáp án đúng là C -> tương ứng với options_q15[2] (20)
+    if user_choice_q15 == options_q15[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_q15 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q15_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Xét hàm số $y = x^3 - 3x^2 + 2$ trên đoạn $[-2; 2]$.")
+        st.markdown(r"Đạo hàm: $y' = 3x^2 - 6x$")
+        
+        st.latex(r"y' = 0 \Leftrightarrow 3x^2 - 6x = 0 \Leftrightarrow \left[\begin{array}{l} x = 0 \in [-2; 2] \\ x = 2 \in [-2; 2] \end{array}\right.")
+        
+        st.markdown(r"Tính giá trị của hàm số tại các điểm tới hạn và các đầu mút:")
+        st.markdown(r"- $y(-2) = (-2)^3 - 3(-2)^2 + 2 = -18$")
+        st.markdown(r"- $y(0) = 0^3 - 3(0)^2 + 2 = 2$")
+        st.markdown(r"- $y(2) = 2^3 - 3(2)^2 + 2 = -2$")
+        
+        st.markdown(r"Từ các giá trị trên, ta suy ra:")
+        st.latex(r"M = \max_{[-2; 2]} y = 2")
+        st.latex(r"m = \min_{[-2; 2]} y = -18")
+        
+        st.markdown(r"Khi đó: $M - m = 2 - (-18) = 20$.")
+        st.markdown("**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# ==========================================
+# CÂU 16 (Tương ứng Câu 43 trong ảnh)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 16. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Đà Nẵng 2026) </span>
+        Đồ thị hàm số <span style="white-space: nowrap;">$y = \dfrac{2x - 1}{x + 2}$</span> có tiệm cận ngang là:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+options_q16 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = -\dfrac{1}{2}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $y = \dfrac{1}{2}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $y = 2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $y = -2$."
+]
+
+user_choice_q16 = st.radio(
+    "Chọn đáp án của bạn cho Câu 16:", 
+    options_q16, 
+    index=None, 
+    key="q16_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q16_check"):
+    # Đáp án đúng là C -> tương ứng với options_q16[2] (y = 2)
+    if user_choice_q16 == options_q16[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_q16 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q16_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{-2\}$")
+        st.markdown(r"Ta tính giới hạn của hàm số khi $x \to \pm\infty$:")
+        st.latex(r"\lim_{x \to \pm\infty} y = \lim_{x \to \pm\infty} \dfrac{2x - 1}{x + 2} = \lim_{x \to \pm\infty} \dfrac{2 - \dfrac{1}{x}}{1 + \dfrac{2}{x}} = 2")
+        
+        st.markdown(r"Vậy tiệm cận ngang của đồ thị hàm số là đường thẳng **$y = 2$**.")
+        st.markdown("**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
 
