@@ -3230,3 +3230,127 @@ if st.button("Xem lời giải chi tiết", key="q46_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+
+import streamlit as st
+
+# CÂU 47
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 47. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Hưng Yên 2026) </span>
+        Trong các hàm số cho dưới đây, hàm số nào đồng biến trên khoảng <span style="white-space: nowrap;">$(-\infty; +\infty)$</span>?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+options_47 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = -x^3 + 3x + 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $y = 2x^3 + x - 5$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $y = \sqrt{x}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $y = \dfrac{2x - 1}{x + 1}$."
+]
+
+user_choice_47 = st.radio(
+    "Chọn đáp án của bạn (Câu 47):", 
+    options_47, 
+    index=None, 
+    key="q47_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q47_check"):
+    if user_choice_47 == options_47[1]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_47 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q47_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Xét từng phương án:")
+        st.markdown(r"- **A.** $y = -x^3 + 3x + 1 \implies y' = -3x^2 + 3$. Cho $y' = 0 \iff x = \pm 1$. Hàm số không đồng biến trên $\mathbb{R}$.")
+        st.markdown(r"- **B.** $y = 2x^3 + x - 5 \implies y' = 6x^2 + 1 > 0, \forall x \in \mathbb{R}$. Hàm số đồng biến trên khoảng $(-\infty; +\infty)$.")
+        st.markdown(r"- **C.** $y = \sqrt{x}$ có tập xác định $D = [0; +\infty)$ nên không thể đồng biến trên $(-\infty; +\infty)$.")
+        st.markdown(r"- **D.** $y = \dfrac{2x - 1}{x + 1}$ có tập xác định $D = \mathbb{R} \setminus \{-1\}$ nên không thể đồng biến trên $(-\infty; +\infty)$.")
+        st.markdown(r"**Chọn đáp án B.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 48
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 48. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Thọ Xuân 5 - Thanh Hóa 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> liên tục trên đoạn <span style="white-space: nowrap;">$[1; 5]$</span> và có đồ thị như hình vẽ sau.<br>
+        Trên đoạn <span style="white-space: nowrap;">$[1; 5]$</span>, hàm số đã cho đạt giá trị lớn nhất tại điểm:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_659a44.png", use_container_width=True)
+
+options_48 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $x = 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $x = 4$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $x = 5$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $x = 2$."
+]
+
+user_choice_48 = st.radio(
+    "Chọn đáp án của bạn (Câu 48):", 
+    options_48, 
+    index=None, 
+    key="q48_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q48_check"):
+    if user_choice_48 == options_48[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_48 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q48_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Quan sát đồ thị hàm số $y = f(x)$ trên đoạn $[1; 5]$, ta thấy điểm cao nhất của đồ thị có tọa độ là $(2; 4)$.")
+        st.markdown(r"Do đó, giá trị lớn nhất của hàm số trên đoạn $[1; 5]$ là $\max\limits_{[1; 5]} f(x) = f(2) = 4$.")
+        st.markdown(r"Hàm số đạt giá trị lớn nhất tại điểm $x = 2$.")
+        st.markdown(r"**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
