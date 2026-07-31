@@ -3599,3 +3599,124 @@ if st.button("Xem lời giải chi tiết", key="q52_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+import streamlit as st
+
+# CÂU 53
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 53. </span> 
+        <span style="color: #009900; font-weight: bold;">(Chuyên Hạ Long 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x) = ax^4 + bx^3 + cx^2 + dx + e$</span> có đạo hàm <span style="white-space: nowrap;">$f'(x)$</span> và đồ thị hàm số <span style="white-space: nowrap;">$y = f'(x)$</span> cắt trục hoành tại các điểm có hoành độ <span style="white-space: nowrap;">$-1; 0; 2$</span> như hình bên. Hỏi hàm số <span style="white-space: nowrap;">$y = f(x)$</span> đồng biến trên khoảng nào sau đây?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_5b8ebc.png", use_container_width=True)
+
+options_53 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $(-\infty; -1)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $(1; +\infty)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $(0; 2)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $(-1; 0)$."
+]
+
+user_choice_53 = st.radio(
+    "Chọn đáp án của bạn (Câu 53):", 
+    options_53, 
+    index=None, 
+    key="q53_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q53_check"):
+    if user_choice_53 == options_53[3]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_53 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q53_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào đồ thị hàm số $y = f'(x)$, ta thấy đồ thị nằm phía trên trục hoành (tức là $f'(x) > 0$) khi $x \in (-1; 0)$ và $x \in (2; +\infty)$.")
+        st.markdown(r"Do đó, hàm số $y = f(x)$ đồng biến trên các khoảng $(-1; 0)$ và $(2; +\infty)$.")
+        st.markdown(r"Đối chiếu với các đáp án, ta thấy khoảng $(-1; 0)$ thỏa mãn.")
+        st.markdown(r"**Chọn đáp án D.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 54
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 54. </span> 
+        <span style="color: #009900; font-weight: bold;">(Chuyên Hạ Long 2026) </span>
+        Tính đạo hàm của hàm số <span style="white-space: nowrap;">$y = e^x + \log x$</span>.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+options_54 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y' = e^x - \dfrac{1}{x \ln 10}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $y' = e^x + \dfrac{1}{x}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $y' = e^x + \dfrac{1}{x \ln 10}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $y' = e^x - \dfrac{1}{x}$."
+]
+
+user_choice_54 = st.radio(
+    "Chọn đáp án của bạn (Câu 54):", 
+    options_54, 
+    index=None, 
+    key="q54_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q54_check"):
+    if user_choice_54 == options_54[2]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_54 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q54_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Áp dụng các công thức đạo hàm cơ bản:")
+        st.markdown(r"- Đạo hàm của hàm số mũ: $(e^x)' = e^x$.")
+        st.markdown(r"- Đạo hàm của hàm logarit cơ số 10: $(\log x)' = \dfrac{1}{x \ln 10}$.")
+        st.markdown(r"Vậy đạo hàm của hàm số đã cho là: $y' = (e^x + \log x)' = e^x + \dfrac{1}{x \ln 10}$.")
+        st.markdown(r"**Chọn đáp án C.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
