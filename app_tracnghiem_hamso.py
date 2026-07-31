@@ -2863,6 +2863,129 @@ if st.button("Xem lời giải chi tiết", key="q40_solution"):
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
 
+import streamlit as st
+
+# CÂU 41
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 41. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm trường Nghệ An 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> liên tục trên $\mathbb{R}$ và có bảng biến thiên như sau:<br>
+        Hàm số <span style="white-space: nowrap;">$y = f(x)$</span> đồng biến trên khoảng nào sau đây?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_75e0fa.png", use_container_width=True)
+
+options_41 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $(1; +\infty)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $(-2; 1)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $(-2; 3)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $(-\infty; -2)$."
+]
+
+user_choice_41 = st.radio(
+    "Chọn đáp án của bạn (Câu 41):", 
+    options_41, 
+    index=None, 
+    key="q41_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q41_check"):
+    if user_choice_41 == options_41[1]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_41 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q41_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào bảng biến thiên, ta thấy $f'(x) > 0$ trên khoảng $(-2; 1)$.")
+        st.markdown(r"Do đó, hàm số đồng biến trên khoảng $(-2; 1)$.")
+        st.markdown(r"**Chọn đáp án B.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 42
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 42. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm trường Nghệ An 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x)$</span> xác định trên $\mathbb{R} \setminus \{-1\}$, liên tục trên mỗi khoảng xác định và có bảng biến thiên như hình:<br>
+        Hỏi đồ thị hàm số có bao nhiêu đường tiệm cận ngang?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_75e0fa1.png", use_container_width=True)
+
+options_42 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $0$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $3$."
+]
+
+user_choice_42 = st.radio(
+    "Chọn đáp án của bạn (Câu 42):", 
+    options_42, 
+    index=None, 
+    key="q42_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q42_check"):
+    if user_choice_42 == options_42[1]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_42 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q42_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào bảng biến thiên, ta có:")
+        st.markdown(r"- $\lim_{x \to -\infty} f(x) = 2 \implies y = 2$ là một đường tiệm cận ngang.")
+        st.markdown(r"- $\lim_{x \to +\infty} f(x) = -1 \implies y = -1$ là một đường tiệm cận ngang.")
+        st.markdown(r"Vậy đồ thị hàm số có tổng cộng 2 đường tiệm cận ngang.")
+        st.markdown(r"**Chọn đáp án B.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
 
 
 
