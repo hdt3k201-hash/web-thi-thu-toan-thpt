@@ -1633,5 +1633,81 @@ if st.button("Xem lời giải chi tiết", key="q23_solution"):
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
 
+import streamlit as st
+
+# CÂU 24
+# ==========================================
+# 1. Hiển thị đề bài trong khung
+# MẸO: Thêm <span style="white-space: nowrap;"> bọc quanh công thức toán
+# để tránh tình trạng công thức bị rớt dòng làm đôi.
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 24. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Thanh Hóa 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$f(x) = x^3 - 3x$.</span>
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# 2. Danh sách 4 đáp án (Sử dụng LaTeX để tạo vòng tròn màu xanh ngọc)
+# Chuyển các mệnh đề a, b, c, d thành các phương án A, B, C, D
+options = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ Tập xác định của hàm số đã cho là $\mathbb{R}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ Hàm số $f(x)$ có đạo hàm là $f'(x) = 3x^2 - 3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ Hàm số $f(x)$ đồng biến trên khoảng $(-1; 1)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ Hàm số $f(x)$ đạt giá trị nhỏ nhất trên đoạn $[-3; 2]$ tại $x = 1$."
+]
+
+# 3. Sử dụng st.radio để dàn hàng (Chuyển horizontal=False vì chữ dài)
+user_choice = st.radio(
+    "Chọn đáp án của bạn:", 
+    options, 
+    index=None, 
+    key="q24_radio", 
+    horizontal=False 
+)
+
+# 4. Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q24_check"):
+    # Tuỳ thuộc vào đề muốn hỏi mệnh đề nào đúng/sai, ở đây tạm để check đáp án A
+    if user_choice == options[0]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại tính toán nhé!")
+
+# 5. Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q24_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết và xét tính đúng/sai của từng mệnh đề:")
+        
+        st.markdown(r"**A (Mệnh đề a) - ĐÚNG:** Hàm đa thức bậc ba có tập xác định là $D = \mathbb{R}$.")
+        
+        st.markdown(r"**B (Mệnh đề b) - ĐÚNG:** Đạo hàm của hàm số là $f'(x) = 3x^2 - 3$.")
+        
+        st.markdown(r"**C (Mệnh đề c) - SAI:** Cho $f'(x) = 0 \Leftrightarrow 3x^2 - 3 = 0 \Leftrightarrow x = \pm 1$. Lập bảng biến thiên, ta thấy trên khoảng $(-1; 1)$ thì $f'(x) < 0$, do đó hàm số **nghịch biến** trên khoảng này.")
+        
+        st.markdown(r"**D (Mệnh đề d) - SAI:** Xét hàm số trên đoạn $[-3; 2]$: Ta có $f(-3) = -18$, $f(-1) = 2$, $f(1) = -2$, $f(2) = 2$. Vậy giá trị nhỏ nhất của hàm số trên đoạn $[-3; 2]$ là $\min f(x) = -18$ tại $x = -3$.")
+        
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
 
 
