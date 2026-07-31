@@ -2732,6 +2732,137 @@ if st.button("Xem lời giải chi tiết", key="q38_solution"):
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
 
+import streamlit as st
+
+# CÂU 39
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 39. </span> 
+        <span style="color: #009900; font-weight: bold;">(ĐGNL DHSPHN 2026) </span>
+        Bạn Long định gấp một cái hộp có dạng hình lăng trụ tứ giác đều với tổng diện tích tất cả các mặt là <span style="white-space: nowrap;">$96\text{ cm}^2$</span>. Thể tích cái hộp mà bạn Long định gấp lớn nhất bằng bao nhiêu?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+options_39 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $32\text{ cm}^3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $64\text{ cm}^3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $108\text{ cm}^3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $96\text{ cm}^3$."
+]
+
+user_choice_39 = st.radio(
+    "Chọn đáp án của bạn (Câu 39):", 
+    options_39, 
+    index=None, 
+    key="q39_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q39_check"):
+    if user_choice_39 == options_39[1]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_39 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q39_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Gọi cạnh đáy của hình lăng trụ tứ giác đều là $x$ ($x > 0$) và chiều cao của lăng trụ là $h$ ($h > 0$).")
+        st.markdown(r"Tổng diện tích tất cả các mặt của hình lăng trụ là: $S_{tp} = 2x^2 + 4xh = 96$.")
+        st.markdown(r"Từ phương trình diện tích toàn phần, ta suy ra chiều cao: $4xh = 96 - 2x^2 \implies h = \dfrac{48 - x^2}{2x}$ (với $0 < x < \sqrt{48}$).")
+        st.markdown(r"Thể tích của hình hộp là: $V = x^2h = x^2 \left(\dfrac{48 - x^2}{2x}\right) = \dfrac{48x - x^3}{2}$.")
+        st.markdown(r"Xét hàm số $V(x) = \dfrac{48x - x^3}{2}$ với $x > 0$, ta có đạo hàm: $V'(x) = \dfrac{48 - 3x^2}{2}$.")
+        st.markdown(r"Cho $V'(x) = 0 \implies 3x^2 = 48 \implies x^2 = 16 \implies x = 4$ (vì $x > 0$).")
+        st.markdown(r"Dựa vào chiều biến thiên, thể tích đạt giá trị lớn nhất tại $x = 4$.")
+        st.markdown(r"Thể tích lớn nhất của hộp là: $V(4) = \dfrac{48(4) - 4^3}{2} = \dfrac{192 - 64}{2} = 64\text{ cm}^3$.")
+        st.markdown(r"**Chọn đáp án B.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU 40
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 40. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm trường Nghệ An 2026) </span>
+        Giá trị nhỏ nhất của hàm số <span style="white-space: nowrap;">$y = x^4 - 2x^2 + 3$</span> trên đoạn <span style="white-space: nowrap;">$[0; 2]$</span> bằng:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+options_40 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $-2$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $4$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $3$."
+]
+
+user_choice_40 = st.radio(
+    "Chọn đáp án của bạn (Câu 40):", 
+    options_40, 
+    index=None, 
+    key="q40_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q40_check"):
+    if user_choice_40 == options_40[0]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_40 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q40_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Xét hàm số $y = x^4 - 2x^2 + 3$ trên đoạn $[0; 2]$.")
+        st.markdown(r"Đạo hàm: $y' = 4x^3 - 4x = 4x(x^2 - 1)$.")
+        st.markdown(r"Cho $y' = 0 \implies 4x(x^2 - 1) = 0 \implies \left[\begin{array}{l} x = 0 \\ x = 1 \\ x = -1 \text{ (loại vì không thuộc }[0; 2]) \end{array}\right.$")
+        st.markdown(r"Tính giá trị của hàm số tại các điểm cần thiết:")
+        st.markdown(r"- $y(0) = 0^4 - 2(0)^2 + 3 = 3$")
+        st.markdown(r"- $y(1) = 1^4 - 2(1)^2 + 3 = 2$")
+        st.markdown(r"- $y(2) = 2^4 - 2(2)^2 + 3 = 16 - 8 + 3 = 11$")
+        st.markdown(r"So sánh các giá trị trên, ta thấy giá trị nhỏ nhất của hàm số trên đoạn $[0; 2]$ bằng $2$.")
+        st.markdown(r"**Chọn đáp án A.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
 
 
 
