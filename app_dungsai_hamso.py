@@ -6626,3 +6626,217 @@ if st.button("Xem lời giải chi tiết Câu 64", key="q64_solution"):
         st.markdown(r"**d) Mệnh đề Đúng:** Thực hiện phép chia đa thức: $2x^2 - x + 1 = (2x - 3)(x + 1) + 4$. Do đó $y = 2x - 3 + \dfrac{4}{x + 1}$, suy ra đường tiệm cận xiên là $y = 2x - 3$.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# ==========================================
+# CÂU HỎI 65 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 65. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Phú Thọ 2026) </span>
+        Cho hàm số $y = \dfrac{x^2 - 3x + 6}{x - 1}$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Đường tiệm cận xiên của đồ thị hàm số là đường thẳng $y = ax + b$. Khi đó $a - 2b = 5$.")
+with col2:
+    ans_a65 = st.radio("q65a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q65_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Đường thẳng đi qua hai điểm cực trị của đồ thị hàm số có phương trình là $y = 2x - 3$.")
+with col4:
+    ans_b65 = st.radio("q65b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q65_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Gọi $A, B$ lần lượt là các điểm cực đại, cực tiểu của đồ thị hàm số và $O$ là gốc tọa độ. Diện tích tam giác $OAB$ bằng $6$.")
+with col6:
+    ans_c65 = st.radio("q65c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q65_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Hàm số nghịch biến trên khoảng $(-1; 3)$.")
+with col8:
+    ans_d65 = st.radio("q65d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q65_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q65_check"):
+    if None in [ans_a65, ans_b65, ans_c65, ans_d65]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đ, b-Đ, c-Đ, d-S
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "Đ", "d": "S"}
+        user_answers = {"a": ans_a65, "b": ans_b65, "c": ans_c65, "d": ans_d65}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q65_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"Ta có: $y = \dfrac{x^2 - 3x + 6}{x - 1} = \dfrac{x(x - 1) - 2x + 6}{x - 1} = x - 2 + \dfrac{4}{x - 1}$.")
+        st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{1\}$.")
+        st.markdown(r"Đạo hàm: $y' = 1 - \dfrac{4}{(x - 1)^2} = \dfrac{x^2 - 2x - 3}{(x - 1)^2}$.")
+        st.markdown(r"$y' = 0 \iff x^2 - 2x - 3 = 0 \iff \left[ \begin{array}{l} x = -1 \implies y = -5 \\ x = 3 \implies y = 3 \end{array} \right.$.")
+        st.markdown(r"Đồ thị hàm số có điểm cực đại $A(-1; -5)$ và điểm cực tiểu $B(3; 3)$.")
+        st.markdown("---")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Đồ thị hàm số có đường tiệm cận xiên là $y = x - 2$.")
+        st.markdown(r"Suy ra $a = 1, b = -2$. Khi đó $a - 2b = 1 - 2(-2) = 5$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Đường thẳng đi qua hai điểm cực trị $A(-1; -5)$ và $B(3; 3)$ có phương trình là:")
+        st.markdown(r"$\dfrac{x - (-1)}{3 - (-1)} = \dfrac{y - (-5)}{3 - (-5)} \iff \dfrac{x + 1}{4} = \dfrac{y + 5}{8} \iff y = 2x - 3$.")
+        st.markdown(r"*(Hoặc áp dụng công thức đường thẳng qua 2 cực trị $y = \dfrac{(\text{tử})'}{(\text{mẫu})'} = \dfrac{2x - 3}{1} = 2x - 3$.)*")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có $O(0; 0)$, $\overrightarrow{OA} = (-1; -5)$, $\overrightarrow{OB} = (3; 3)$.")
+        st.markdown(r"Diện tích tam giác $OAB$: $S = \dfrac{1}{2} |x_A \cdot y_B - x_B \cdot y_A| = \dfrac{1}{2} |(-1) \cdot 3 - 3 \cdot (-5)| = \dfrac{1}{2} |-3 + 15| = 6$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Hàm số nghịch biến trên các khoảng $(-1; 1)$ và $(1; 3)$.")
+        st.markdown(r"Không thể kết luận hàm số nghịch biến trên khoảng $(-1; 3)$ vì hàm số gián đoạn tại $x = 1$.")
+        
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+
+
+# ==========================================
+# CÂU HỎI 66 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 66. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Hải Phòng 2026) </span>
+        Cho hàm số $y = f(x) = \dfrac{x^2 + 3x + 5}{x - 1}$ có đồ thị $(C)$. Khi đó
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** $y' = f'(x) = \dfrac{x^2 - 2x - 8}{(x - 1)^2}, \forall x \neq 1$.")
+with col2:
+    ans_a66 = st.radio("q66a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q66_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Tiệm cận xiên của đồ thị hàm số là đường thẳng có phương trình $y = x + 3$.")
+with col4:
+    ans_b66 = st.radio("q66b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q66_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Khoảng cách giữa hai điểm cực trị của đồ thị $(C)$ bằng $6\sqrt{5}$.")
+with col6:
+    ans_c66 = st.radio("q66c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q66_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Gọi $M$ là một điểm trên đồ thị $(C)$. Tiếp tuyến tại $M$ tạo với hai đường tiệm cận của $(C)$ một tam giác có diện tích bằng $18$.")
+with col8:
+    ans_d66 = st.radio("q66d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q66_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q66_check"):
+    if None in [ans_a66, ans_b66, ans_c66, ans_d66]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đ, b-S, c-Đ, d-Đ
+        correct_answers = {"a": "Đ", "b": "S", "c": "Đ", "d": "Đ"}
+        user_answers = {"a": ans_a66, "b": ans_b66, "c": ans_c66, "d": ans_d66}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q66_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"Ta có: $y = \dfrac{x^2 + 3x + 5}{x - 1} = x + 4 + \dfrac{9}{x - 1}$.")
+        st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{1\}$.")
+        st.markdown("---")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Đạo hàm: $y' = 1 - \dfrac{9}{(x - 1)^2} = \dfrac{(x - 1)^2 - 9}{(x - 1)^2} = \dfrac{x^2 - 2x - 8}{(x - 1)^2}, \forall x \neq 1$.")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Từ biểu diễn $y = x + 4 + \dfrac{9}{x - 1}$, ta thấy $\lim_{x \to \pm\infty} (y - (x + 4)) = 0$.")
+        st.markdown(r"Do đó, tiệm cận xiên của đồ thị hàm số là đường thẳng $y = x + 4$.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có $y' = 0 \iff x^2 - 2x - 8 = 0 \iff \left[ \begin{array}{l} x = 4 \implies y = 11 \\ x = -2 \implies y = -1 \end{array} \right.$.")
+        st.markdown(r"Hai điểm cực trị của đồ thị là $A(-2; -1)$ và $B(4; 11)$.")
+        st.markdown(r"Khoảng cách $AB = \sqrt{(4 - (-2))^2 + (11 - (-1))^2} = \sqrt{6^2 + 12^2} = \sqrt{36 + 144} = \sqrt{180} = 6\sqrt{5}$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Đồ thị $(C)$ có TCĐ $x = 1$ và TCX $y = x + 4$. Giao điểm 2 tiệm cận là $I(1; 5)$.")
+        st.markdown(r"Gọi $M\left(m; m + 4 + \dfrac{9}{m - 1}\right)$ thuộc $(C)$ ($m \neq 1$).")
+        st.markdown(r"Phương trình tiếp tuyến $\Delta$ tại $M$: $y = \left( 1 - \dfrac{9}{(m - 1)^2} \right)(x - m) + m + 4 + \dfrac{9}{m - 1}$.")
+        st.markdown(r"Giao điểm của $\Delta$ với TCĐ $x = 1$ là $E\left(1; 5 + \dfrac{18}{m - 1}\right) \implies \overrightarrow{IE} = \left(0; \dfrac{18}{m - 1}\right)$.")
+        st.markdown(r"Giao điểm của $\Delta$ với TCX $y = x + 4$ là $F(2m - 1; 2m + 3) \implies \overrightarrow{IF} = (2m - 2; 2m - 2)$.")
+        st.markdown(r"Diện tích tam giác $IEF$ là: $S = \dfrac{1}{2} |x_{\overrightarrow{IE}} \cdot y_{\overrightarrow{IF}} - x_{\overrightarrow{IF}} \cdot y_{\overrightarrow{IE}}| = \dfrac{1}{2} \left| 0 - (2m - 2) \cdot \dfrac{18}{m - 1} \right| = \dfrac{1}{2} \cdot |-36| = 18$.")
+        st.markdown(r"*(Cách nhớ nhanh: Tiếp tuyến của hàm số $y = ax + b + \dfrac{k}{x - x_0}$ tạo với hai tiệm cận một tam giác có diện tích không đổi $S = 2|k|$. Ở đây $k = 9 \implies S = 18$.)*")
+        
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
