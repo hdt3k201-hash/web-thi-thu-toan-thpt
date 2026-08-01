@@ -590,3 +590,97 @@ if st.button("Xem lời giải chi tiết", key="q5_solution"):
         st.markdown(r"Ta có các hệ số: $a = -1, b = 2, c = -4, d = -2$. Tổng $a + b + c + d = (-1) + 2 + (-4) + (-2) = -5$.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# CÂU HỎI 6 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 6. </span> 
+        Cho hàm số $y = x^3 - 3x^2 + 5$ có đồ thị là $(C)$. (Sở Phú Thọ 2026)
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số đã cho nghịch biến trên khoảng $(0; 2)$.")
+with col2:
+    ans_a = st.radio("q6a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q6_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số đã cho có hai điểm cực trị.")
+with col4:
+    ans_b = st.radio("q6b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q6_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Giá trị nhỏ nhất của hàm số đã cho trên khoảng $(0; +\infty)$ bằng $2$.")
+with col6:
+    ans_c = st.radio("q6c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q6_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Tiếp tuyến của đồ thị $(C)$ tại điểm có hoành độ bằng $1$ là đường thẳng có phương trình $y = -3x + 3$.")
+with col8:
+    ans_d = st.radio("q6d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q6_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q6_check"):
+    if None in [ans_a, ans_b, ans_c, ans_d]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Đúng, c-Sai, d-Sai
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "S", "d": "S"}
+        user_answers = {"a": ans_a, "b": ans_b, "c": ans_c, "d": ans_d}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q6_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state['logged_in']:
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Tập xác định: $D = \mathbb{R}$.")
+        st.markdown(r"Đạo hàm: $y' = 3x^2 - 6x$. Cho $y' = 0 \Leftrightarrow \left[ \begin{array}{l} x = 0 \\ x = 2 \end{array} \right.$.")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:** Xét trên khoảng $(0; 2)$, ta có $y' = 3x^2 - 6x < 0$. Do đó hàm số nghịch biến trên khoảng $(0; 2)$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:** Đạo hàm $y'$ đổi dấu hai lần (từ dương sang âm khi qua $x=0$ và từ âm sang dương khi qua $x=2$), nên hàm số có hai điểm cực trị (đạt cực đại tại $x=0$ và cực tiểu tại $x=2$).")
+        
+        st.markdown(r"**c) Mệnh đề Sai:** Xét hàm số trên khoảng $(0; +\infty)$:")
+        st.markdown(r"Hàm số nghịch biến trên $(0; 2)$ và đồng biến trên $(2; +\infty)$.")
+        st.markdown(r"Do đó, giá trị nhỏ nhất của hàm số trên khoảng $(0; +\infty)$ đạt được tại $x = 2$.")
+        st.latex(r"\min_{(0; +\infty)} y = y(2) = 2^3 - 3 \cdot 2^2 + 5 = 1 \neq 2")
+        
+        st.markdown(r"**d) Mệnh đề Sai:** Gọi $(x_0; y_0)$ là toạ độ tiếp điểm. Theo đề bài hoành độ $x_0 = 1$.")
+        st.markdown(r"Tung độ tiếp điểm: $y_0 = y(1) = 1^3 - 3 \cdot 1^2 + 5 = 3$.")
+        st.markdown(r"Hệ số góc của tiếp tuyến: $k = y'(1) = 3 \cdot 1^2 - 6 \cdot 1 = -3$.")
+        st.markdown(r"Phương trình tiếp tuyến của $(C)$ tại điểm có hoành độ bằng $1$ là:")
+        st.latex(r"y = k(x - x_0) + y_0 \Leftrightarrow y = -3(x - 1) + 3 \Leftrightarrow y = -3x + 6")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
