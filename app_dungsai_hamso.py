@@ -5355,3 +5355,117 @@ if st.button("Xem lời giải chi tiết", key="q51_solution"):
        
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+import streamlit as st
+
+# CÂU HỎI 52 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 52. </span> 
+        <span style="color: #009900; font-weight: bold;">(Chuyên KHTN HN 2026) </span>
+        Một nhóm nghiên cứu quan sát sự phát triển của một quần thể vi khuẩn trong môi trường nuôi cấy hạn chế.<br>
+        - Giai đoạn 1 (từ $t = 0$ đến $t = 3$ giờ): Số lượng vi khuẩn tăng trưởng theo hàm mũ $N(t) = 50e^{0.8t}$ (với $t$ tính bằng giờ, $N$ tính bằng triệu cá thể).<br>
+        - Giai đoạn 2 (sau 3 giờ): Do nguồn dinh dưỡng cạn kiệt, tốc độ tăng trưởng giảm dần. Từ thời điểm này, số lượng vi khuẩn tuân theo hàm số $M(t) = A - Be^{-0.6t}$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Lệnh chèn hình ảnh gốc
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Số lượng vi khuẩn tại thời điểm bắt đầu là 50 triệu cá thể.")
+with col2:
+    ans_a52 = st.radio("q52a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q52_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Tốc độ tăng trưởng của vi khuẩn tại thời điểm $t = 3$ lớn hơn 440 triệu cá thể/giờ.")
+with col4:
+    ans_b52 = st.radio("q52b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q52_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Giá trị $B = \dfrac{200}{3}$.")
+with col6:
+    ans_c52 = st.radio("q52c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q52_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Số lượng vi khuẩn tối đa (ngưỡng bão hòa) mà môi trường này có thể duy trì là 1285 triệu cá thể (kết quả làm tròn đến hàng đơn vị).")
+with col8:
+    ans_d52 = st.radio("q52d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q52_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q52_check"):
+    if None in [ans_a52, ans_b52, ans_c52, ans_d52]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đ, b-Đ, c-S, d-S
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "S", "d": "S"}
+        user_answers = {"a": ans_a52, "b": ans_b52, "c": ans_c52, "d": ans_d52}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q52_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"- Giai đoạn 1 ($0 \le t \le 3$): $N(t) = 50e^{0.8t} \implies N'(t) = 40e^{0.8t}$.")
+        st.markdown(r"- Giai đoạn 2 ($t > 3$): $M(t) = A - Be^{-0.6t} \implies M'(t) = 0.6Be^{-0.6t}$.")
+        st.markdown(r"- Để sự phát triển diễn ra tự nhiên, số lượng vi khuẩn và tốc độ tăng trưởng phải liên tục tại thời điểm chuyển tiếp $t = 3$. Do đó, ta có hệ điều kiện:")
+        st.markdown(r"$\begin{cases} M(3) = N(3) \\ M'(3) = N'(3) \end{cases} \iff \begin{cases} A - Be^{-1.8} = 50e^{2.4} \quad (1) \\ 0.6Be^{-1.8} = 40e^{2.4} \quad (2) \end{cases}$")
+        st.markdown("---")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Tại thời điểm bắt đầu $t = 0$, số lượng vi khuẩn là: $N(0) = 50e^0 = 50$ (triệu cá thể).")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Tốc độ tăng trưởng của vi khuẩn tại thời điểm $t = 3$ là đạo hàm $N'(3)$:")
+        st.markdown(r"$N'(3) = 40e^{0.8 \times 3} = 40e^{2.4} \approx 440.93$ (triệu cá thể/giờ).")
+        st.markdown(r"Vì $440.93 > 440$, mệnh đề này đúng.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Giải phương trình (2) từ hệ điều kiện:")
+        st.markdown(r"$0.6Be^{-1.8} = 40e^{2.4} \implies Be^{-1.8} = \dfrac{40}{0.6}e^{2.4} = \dfrac{200}{3}e^{2.4}$.")
+        st.markdown(r"Suy ra $B = \dfrac{200}{3}e^{2.4} \cdot e^{1.8} = \dfrac{200}{3}e^{4.2}$.")
+        st.markdown(r"Giá trị của $B$ phụ thuộc vào $e^{4.2}$, không phải là hằng số $\dfrac{200}{3}$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Thay $Be^{-1.8} = \dfrac{200}{3}e^{2.4}$ vào phương trình (1):")
+        st.markdown(r"$A - \dfrac{200}{3}e^{2.4} = 50e^{2.4} \implies A = 50e^{2.4} + \dfrac{200}{3}e^{2.4} = \dfrac{350}{3}e^{2.4}$.")
+        st.markdown(r"Số lượng vi khuẩn tối đa (ngưỡng bão hòa) đạt được khi $t \to +\infty$:")
+        st.markdown(r"$\lim_{t \to +\infty} M(t) = \lim_{t \to +\infty} (A - Be^{-0.6t}) = A$.")
+        st.markdown(r"Giá trị bão hoà là: $A = \dfrac{350}{3}e^{2.4} \approx 1286.037$ (triệu cá thể).")
+        st.markdown(r"Làm tròn đến hàng đơn vị ta được **1286**. Mệnh đề cho kết quả là 1285 nên bị sai.")
+        
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
