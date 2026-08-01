@@ -2953,3 +2953,110 @@ if st.button("Xem lời giải chi tiết", key="q28_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+# CÂU HỎI 29 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 29. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Cửa Lò - Nghệ An 2026) (Đề số 14) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x) = \dfrac{x^2 + bx + c}{x - 2}$</span> có đạo hàm $f'(x)$. Đồ thị của hàm số $f'(x)$ như hình vẽ sau:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_d0fd38.PNG", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Phương trình $f'(x) = 0$ có hai nghiệm $x = 1$ và $x = 3$.")
+with col2:
+    ans_a29 = st.radio("q29a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q29_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số $y = f(x)$ nghịch biến trên khoảng $(1; 3)$.")
+with col4:
+    ans_b29 = st.radio("q29b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q29_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Hàm số $y = f(x)$ đạt cực đại tại $x = 1$ và đạt cực tiểu tại $x = 3$.")
+with col6:
+    ans_c29 = st.radio("q29c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q29_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Nếu $f(0) = 1$ thì $\max_{[3; 4]} f(x) = 6$.")
+with col8:
+    ans_d29 = st.radio("q29d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q29_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q29_check"):
+    if None in [ans_a29, ans_b29, ans_c29, ans_d29]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Đúng, c-Đúng, d-Đúng
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "Đ", "d": "Đ"}
+        user_answers = {"a": ans_a29, "b": ans_b29, "c": ans_c29, "d": ans_d29}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q29_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích từ đồ thị của $f'(x)$:**")
+        st.markdown(r"- Đồ thị hàm số $f'(x)$ cắt trục hoành tại hai điểm có hoành độ $x = 1$ và $x = 3$.")
+        st.markdown(r"- Trên khoảng $(1; 2)$ và $(2; 3)$, đồ thị nằm phía dưới trục hoành, nghĩa là $f'(x) < 0$.")
+        st.markdown(r"- Trên các khoảng $(-\infty; 1)$ và $(3; +\infty)$, đồ thị nằm phía trên trục hoành, nghĩa là $f'(x) > 0$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Dựa vào đồ thị của $f'(x)$, các giao điểm với trục hoành tương ứng với các nghiệm của phương trình $f'(x) = 0$, đó là $x = 1$ và $x = 3$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Trên khoảng $(1; 3)$ (lưu ý điểm $x = 2$ là tiệm cận đứng nhưng ta xét tính nghịch biến trên khoảng giao nhau), ta có $f'(x) < 0$. Do đó hàm số $y = f(x)$ nghịch biến trên khoảng $(1; 3)$.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Khi $x$ đi qua $1$, $f'(x)$ đổi dấu từ dương sang âm $\implies x = 1$ là điểm cực đại.")
+        st.markdown(r"Khi $x$ đi qua $3$, $f'(x)$ đổi dấu từ âm sang dương $\implies x = 3$ là điểm cực tiểu.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Ta tính đạo hàm $f'(x)$: $f(x) = \dfrac{x^2 + bx + c}{x - 2} \implies f'(x) = \dfrac{(2x + b)(x - 2) - (x^2 + bx + c)}{(x - 2)^2} = \dfrac{x^2 - 4x - 2b - c}{(x - 2)^2}$.")
+        st.markdown(r"Theo đồ thị, phương trình $f'(x) = 0$ có hai nghiệm $x = 1$ và $x = 3$, và mẫu số bằng $0$ tại $x = 2$.")
+        st.markdown(r"Do đó tử số của $f'(x)$ phải có dạng $a(x - 1)(x - 3) = x^2 - 4x + 3$ (vì hệ số của $x^2$ là $1$).")
+        st.markdown(r"Đồng nhất hệ số tử số: $\begin{cases} -4 = -4 \\ -2b - c = 3 \end{cases}$.")
+        st.markdown(r"Mặt khác, từ giả thiết $f(0) = 1 \implies \dfrac{0 + 0 + c}{0 - 2} = 1 \implies -\dfrac{c}{2} = 1 \implies c = -2$.")
+        st.markdown(r"Thay $c = -2$ vào $-2b - c = 3 \implies -2b - (-2) = 3 \implies -2b = 1 \implies b = -0,5$.")
+        st.markdown(r"Vậy hàm số là $f(x) = \dfrac{x^2 - 0,5x - 2}{x - 2}$.")
+        st.markdown(r"Xét hàm số trên đoạn $[3; 4]$:")
+        st.markdown(r"Vì hàm số đồng biến trên khoảng $(3; +\infty)$ (vì $f'(x) > 0$ khi $x > 3$), nên hàm số đồng biến trên đoạn $[3; 4]$.")
+        st.markdown(r"Do đó, giá trị lớn nhất trên đoạn $[3; 4]$ đạt được tại đầu mút $x = 4$:")
+        st.markdown(r"$\max_{[3; 4]} f(x) = f(4) = \dfrac{4^2 - 0,5(4) - 2}{4 - 2} = \dfrac{16 - 2 - 2}{2} = \dfrac{12}{2} = 6$.")
+        st.markdown(r"Phát biểu này hoàn toàn chính xác.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
