@@ -4732,3 +4732,108 @@ if st.button("Xem lời giải chi tiết", key="q45_solution"):
         st.markdown(r"Vì $m \in \mathbb{Z}$ nên $m \in \{5; 6; 7; 8; 9; 10; 11; 12; 13\}$. Có tất cả $9$ giá trị thỏa mãn.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+# CÂU HỎI 46 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 46. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Trần Nhân Tông - Hà Nội 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x) = \dfrac{x^2 - 2x + 5}{x - 1}$</span> có đồ thị là $(C)$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số đồng biến trên khoảng $(2; +\infty)$.")
+with col2:
+    ans_a46 = st.radio("q46a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q46_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Gọi $x_1, x_2$ là hai nghiệm của phương trình $f'(x) = 0$. Khi đó $x_1^2 + x_2^2 = 10$.")
+with col4:
+    ans_b46 = st.radio("q46b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q46_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Hàm số có tập xác định là $D = \mathbb{R} \setminus \{1\}$.")
+with col6:
+    ans_c46 = st.radio("q46c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q46_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Gọi $(d)$ là tiếp tuyến với đồ thị hàm số $(C)$ tại điểm $M(2;5)$. Biết $(d)$ cắt hai đường tiệm cận của $(C)$ tại hai điểm $A, B$. Gọi $I$ là tâm đối xứng của $(C)$. Diện tích tam giác $IAB$ bằng $8$ (đvdt).")
+with col8:
+    ans_d46 = st.radio("q46d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q46_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q46_check"):
+    if None in [ans_a46, ans_b46, ans_c46, ans_d46]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-S, b-Đ, c-Đ, d-Đ
+        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "Đ"}
+        user_answers = {"a": ans_a46, "b": ans_b46, "c": ans_c46, "d": ans_d46}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q46_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số:**")
+        st.markdown(r"- Tập xác định: $D = \mathbb{R} \setminus \{1\}$.")
+        st.markdown(r"- Ta có $y = f(x) = \dfrac{x^2 - 2x + 5}{x - 1} = x - 1 + \dfrac{4}{x - 1}$.")
+        st.markdown(r"- Đạo hàm: $y' = 1 - \dfrac{4}{(x - 1)^2} = \dfrac{(x - 1)^2 - 4}{(x - 1)^2} = \dfrac{x^2 - 2x - 3}{(x - 1)^2}$.")
+        st.markdown(r"- $y' = 0 \iff x^2 - 2x - 3 = 0 \iff \left[ \begin{array}{l} x = -1 \\ x = 3 \end{array} \right.$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Hàm số đồng biến khi $y' > 0 \iff x \in (-\infty; -1) \cup (3; +\infty)$. Do đó, hàm số không đồng biến trên toàn bộ khoảng $(2; +\infty)$ (vì trên $(2; 3)$ hàm số nghịch biến).")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Phương trình $f'(x) = 0$ có hai nghiệm là $x_1 = -1$ và $x_2 = 3$.")
+        st.markdown(r"Khi đó $x_1^2 + x_2^2 = (-1)^2 + 3^2 = 10$.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Hàm số có nghĩa khi $x - 1 \neq 0 \iff x \neq 1$. Vậy tập xác định là $D = \mathbb{R} \setminus \{1\}$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"- Đồ thị hàm số có tiệm cận đứng $x = 1$ và tiệm cận xiên $y = x - 1$. Giao điểm của hai tiệm cận là tâm đối xứng $I(1; 0)$.")
+        st.markdown(r"- Tại điểm $M(2; 5)$, ta có $f'(2) = 1 - \dfrac{4}{(2 - 1)^2} = -3$.")
+        st.markdown(r"- Phương trình tiếp tuyến $(d)$ tại $M$: $y = -3(x - 2) + 5 \iff y = -3x + 11$.")
+        st.markdown(r"- $(d)$ cắt TCĐ $x = 1$ tại $A$: Thay $x = 1$ vào phương trình $(d)$, ta được $y = -3(1) + 11 = 8 \implies A(1; 8)$.")
+        st.markdown(r"- $(d)$ cắt TCX $y = x - 1$ tại $B$: Giải phương trình $-3x + 11 = x - 1 \iff 4x = 12 \iff x = 3 \implies y = 2 \implies B(3; 2)$.")
+        st.markdown(r"- Ta có $I(1; 0), A(1; 8), B(3; 2)$.")
+        st.markdown(r"- $\vec{IA} = (0; 8)$, đoạn $IA$ nằm trên đường thẳng $x = 1$. Độ dài $IA = 8$.")
+        st.markdown(r"- Khoảng cách từ $B$ đến đường thẳng $IA$ là $d(B, IA) = |x_B - 1| = |3 - 1| = 2$.")
+        st.markdown(r"- Diện tích tam giác $IAB$ là $S = \dfrac{1}{2} \cdot IA \cdot d(B, IA) = \dfrac{1}{2} \cdot 8 \cdot 2 = 8$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
