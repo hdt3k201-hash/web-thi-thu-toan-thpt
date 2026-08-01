@@ -2415,3 +2415,207 @@ if st.button("Xem lời giải chi tiết", key="q23_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+
+# CÂU HỎI 24 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 24. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Than Uyên - Lai Châu 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x) = \dfrac{2x - 3}{x - 1}$</span> có đồ thị $(C)$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số $y = f(x)$ đồng biến trên mỗi khoảng $(-\infty; 1)$ và $(1; +\infty)$.")
+with col2:
+    ans_a24 = st.radio("q24a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q24_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số $y = f(x)$ không có cực trị.")
+with col4:
+    ans_b24 = st.radio("q24b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q24_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Giá trị lớn nhất của hàm số $f(x)$ trên đoạn $[-3; 0]$ là $3$.")
+with col6:
+    ans_c24 = st.radio("q24c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q24_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Tâm đối xứng của đồ thị $(C)$ có tọa độ là $(2; 1)$.")
+with col8:
+    ans_d24 = st.radio("q24d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q24_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q24_check"):
+    if None in [ans_a24, ans_b24, ans_c24, ans_d24]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Đúng, c-Đúng, d-Sai
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "Đ", "d": "S"}
+        user_answers = {"a": ans_a24, "b": ans_b24, "c": ans_c24, "d": ans_d24}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q24_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Tập xác định:** $\mathscr{D} = \mathbb{R} \setminus \{1\}$.")
+        st.markdown(r"**Đạo hàm:** $y' = \dfrac{2(-1) - (-3)1}{(x - 1)^2} = \dfrac{1}{(x - 1)^2} > 0, \forall x \neq 1$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Vì $y' > 0$ với mọi $x \neq 1$, nên hàm số đồng biến trên các khoảng $(-\infty; 1)$ và $(1; +\infty)$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Vì $y'$ luôn mang một dấu (dương) trên từng khoảng xác định và không bao giờ bằng $0$, hàm số không có điểm cực trị.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Trên đoạn $[-3; 0]$, hàm số liên tục và đồng biến. Do đó, giá trị lớn nhất đạt được tại $x = 0$.")
+        st.markdown(r"Ta có $f(0) = \dfrac{2(0) - 3}{0 - 1} = 3$. Vậy $\max_{[-3; 0]} f(x) = 3$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Tiệm cận đứng của đồ thị là đường thẳng $x = 1$. Tiệm cận ngang là đường thẳng $y = 2$. Tâm đối xứng của đồ thị là giao điểm của hai tiệm cận, có tọa độ là $I(1; 2)$. Phát biểu tâm đối xứng là $(2; 1)$ là sai.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+st.markdown("---")
+
+# CÂU HỎI 25 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 25. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Than Uyên - Lai Châu 2026) </span>
+        Một cửa hàng bán tạp chí với giá 20 nghìn đồng một cuốn. Chi phí xuất bản $x$ cuốn tạp chí (bao gồm: lương cán bộ, công nhân viên, giấy in,...) được cho bởi công thức $C(x) = 0,0001x^2 - 0,2x + 10000$, $C(x)$ được tính theo đơn vị vạn đồng. Chi phí phát hành cho mỗi cuốn là 4 nghìn đồng. Các khoản thu bao gồm: tiền bán tạp chí và 90 triệu đồng trợ cấp cho báo chí. Giả sử số cuốn in ra đều được bán hết. Xét tính đúng sai của các mệnh đề sau:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Tổng chi phí $T(x)$ (xuất bản và phát hành) cho $x$ cuốn tạp chí là $T(x) = 0,0001x^2 + 0,2x + 10000$.")
+with col2:
+    ans_a25 = st.radio("q25a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q25_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Số tiền lãi khi in $x$ cuốn tạp chí là $L(x) = -0,0001x^2 + 1,8x - 1000$.")
+with col4:
+    ans_b25 = st.radio("q25b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q25_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Để có lãi cần in từ 574 đến 17426 cuốn.")
+with col6:
+    ans_c25 = st.radio("q25c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q25_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Lãi nhiều nhất khi in 10000 cuốn.")
+with col8:
+    ans_d25 = st.radio("q25d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q25_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q25_check"):
+    if None in [ans_a25, ans_b25, ans_c25, ans_d25]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Sai, c-Đúng, d-Sai
+        correct_answers = {"a": "Đ", "b": "S", "c": "Đ", "d": "S"}
+        user_answers = {"a": ans_a25, "b": ans_b25, "c": ans_c25, "d": ans_d25}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q25_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Quy đổi đơn vị:**")
+        st.markdown(r"Ta sẽ đưa mọi thứ về đơn vị **vạn đồng** ($10.000$ VNĐ).")
+        st.markdown(r"- Giá bán: 20 nghìn đồng $= 2$ vạn đồng.")
+        st.markdown(r"- Chi phí phát hành mỗi cuốn: 4 nghìn đồng $= 0,4$ vạn đồng.")
+        st.markdown(r"- Trợ cấp: 90 triệu đồng $= 9000$ vạn đồng.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Tổng chi phí $T(x)$ bằng chi phí xuất bản cộng chi phí phát hành.")
+        st.markdown(r"Chi phí phát hành $x$ cuốn là $0,4x$ vạn đồng.")
+        st.markdown(r"$T(x) = C(x) + 0,4x = (0,0001x^2 - 0,2x + 10000) + 0,4x = 0,0001x^2 + 0,2x + 10000$.")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Tổng doanh thu $R(x)$ từ việc bán tạp chí và trợ cấp là: $R(x) = 2x + 9000$ (vạn đồng).")
+        st.markdown(r"Số tiền lãi $L(x) = R(x) - T(x) = (2x + 9000) - (0,0001x^2 + 0,2x + 10000)$")
+        st.markdown(r"$L(x) = -0,0001x^2 + 1,8x - 1000$.")
+        st.markdown(r"Mệnh đề b trong ảnh bị thiếu dấu trừ ở hệ số $x^2$. Chú ý đề trong ảnh ghi $L(x) = 0,0001x^2 + 1,8x - 1000$. Vậy mệnh đề này là Sai.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Để có lãi thì $L(x) > 0 \iff -0,0001x^2 + 1,8x - 1000 > 0$.")
+        st.markdown(r"Giải phương trình $-0,0001x^2 + 1,8x - 1000 = 0$, ta có các nghiệm:")
+        st.markdown(r"$\Delta' = 0,9^2 - (-0,0001)(-1000) = 0,81 - 0,1 = 0,71$.")
+        st.markdown(r"$x_{1,2} = \dfrac{-0,9 \pm \sqrt{0,71}}{-0,0001} = 9000 \mp 10000\sqrt{0,71}$.")
+        st.markdown(r"$x_1 = 9000 - 10000\sqrt{0,71} \approx 9000 - 8426,1 = 573,9$.")
+        st.markdown(r"$x_2 = 9000 + 10000\sqrt{0,71} \approx 9000 + 8426,1 = 17426,1$.")
+        st.markdown(r"Vậy cần in khoảng từ 574 đến 17426 cuốn để có lãi. Mệnh đề này là Đúng.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Hàm số $L(x) = -0,0001x^2 + 1,8x - 1000$ là một parabol bề lõm quay xuống.")
+        st.markdown(r"Lãi nhiều nhất đạt được tại đỉnh của parabol: $x = -\dfrac{b}{2a} = -\dfrac{1,8}{2(-0,0001)} = \dfrac{1,8}{0,0002} = 9000$.")
+        st.markdown(r"Vậy lãi nhiều nhất khi in 9000 cuốn, không phải 10000 cuốn. Mệnh đề này Sai.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
