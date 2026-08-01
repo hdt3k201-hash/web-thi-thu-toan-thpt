@@ -685,3 +685,98 @@ if st.button("Xem lời giải chi tiết", key="q6_solution"):
         st.latex(r"y = k(x - x_0) + y_0 \Leftrightarrow y = -3(x - 1) + 3 \Leftrightarrow y = -3x + 6")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# CÂU HỎI 7 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 7. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Phú Thọ 2026) </span>
+         Tại một khu bảo tồn thiên nhiên, các nhà khoa học đã thả một số cá thể của một loài động vật quý hiếm trong một khu rừng rộng $10$ hecta và theo dõi sự tăng trưởng số lượng của chúng. Họ thấy rằng số lượng cá thể của loài động vật đó sau $t$ năm kể từ khi nuôi tại khu bảo tồn được xấp xỉ bởi hàm số $h(t) = 70\log_2\left(\dfrac{8t+1}{t+1}\right) + 30$ ($t$ là số thực dương) và tốc độ tăng trưởng số lượng cá thể của loài động vật đó tại thời điểm sau đúng $t$ năm kể từ khi nuôi được xấp xỉ bởi hàm số $h'(t)$ (đơn vị: cá thể / năm).
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Thời điểm ban đầu, người ta thả nuôi $30$ cá thể.")
+with col2:
+    ans_a = st.radio("q7a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q7_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Sau $9$ tháng kể từ khi bắt đầu nuôi, số lượng cá thể của loài động vật đó là $170$.")
+with col4:
+    ans_b = st.radio("q7b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q7_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Tốc độ tăng trưởng số lượng cá thể của loài động vật đó tại thời điểm đúng $6$ năm kể từ khi nuôi là $\dfrac{10}{7}$ (cá thể / năm).")
+with col6:
+    ans_c = st.radio("q7c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q7_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Số lượng cá thể của loài động vật đó không vượt quá $240$.")
+with col8:
+    ans_d = st.radio("q7d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q7_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q7_check"):
+    if None in [ans_a, ans_b, ans_c, ans_d]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Đúng, c-Sai, d-Đúng
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "S", "d": "Đ"}
+        user_answers = {"a": ans_a, "b": ans_b, "c": ans_c, "d": ans_d}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q7_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state['logged_in']:
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:** Thời điểm ban đầu ứng với $t = 0$. Số lượng cá thể lúc đó là:")
+        st.latex(r"h(0) = 70 \log_2\left(\dfrac{8 \cdot 0 + 1}{0 + 1}\right) + 30 = 70 \log_2(1) + 30 = 0 + 30 = 30")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:** Sau $9$ tháng, ứng với thời gian $t = \dfrac{9}{12} = \dfrac{3}{4}$ (năm). Số lượng cá thể là:")
+        st.latex(r"h\left(\dfrac{3}{4}\right) = 70 \log_2\left(\dfrac{8 \cdot \dfrac{3}{4} + 1}{\dfrac{3}{4} + 1}\right) + 30 = 70 \log_2\left(\dfrac{7}{\dfrac{7}{4}}\right) + 30 = 70 \log_2(4) + 30 = 70 \cdot 2 + 30 = 170")
+        
+        st.markdown(r"**c) Mệnh đề Sai:** Tốc độ tăng trưởng là đạo hàm của hàm số $h(t)$. Ta có:")
+        st.latex(r"h'(t) = 70 \cdot \dfrac{\left(\dfrac{8t+1}{t+1}\right)'}{\dfrac{8t+1}{t+1} \cdot \ln 2} = 70 \cdot \dfrac{\dfrac{7}{(t+1)^2}}{\dfrac{8t+1}{t+1} \cdot \ln 2} = \dfrac{490}{(t+1)(8t+1) \ln 2}")
+        st.markdown(r"Tốc độ tăng trưởng tại thời điểm đúng $6$ năm ($t = 6$) là:")
+        st.latex(r"h'(6) = \dfrac{490}{(6+1)(8 \cdot 6 + 1) \ln 2} = \dfrac{490}{7 \cdot 49 \ln 2} = \dfrac{10}{7 \ln 2} \neq \dfrac{10}{7}")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:** Biến đổi biểu thức trong logarit, ta có:")
+        st.latex(r"\dfrac{8t+1}{t+1} = \dfrac{8(t+1) - 7}{t+1} = 8 - \dfrac{7}{t+1}")
+        st.markdown(r"Vì $t > 0 \Rightarrow t + 1 > 1 \Rightarrow \dfrac{7}{t+1} > 0$. Do đó $8 - \dfrac{7}{t+1} < 8$.")
+        st.markdown(r"Do cơ số $2 > 1$ nên hàm số $y = \log_2 x$ đồng biến, suy ra:")
+        st.latex(r"h(t) = 70 \log_2\left(8 - \dfrac{7}{t+1}\right) + 30 < 70 \log_2(8) + 30 = 70 \cdot 3 + 30 = 240")
+        st.markdown(r"Vậy số lượng cá thể của loài động vật đó luôn bé hơn $240$, tức là không bao giờ vượt quá $240$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
