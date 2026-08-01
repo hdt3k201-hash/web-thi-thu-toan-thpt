@@ -1766,8 +1766,8 @@ if st.button("Kiểm tra đáp án", key="q17_check"):
     if None in [ans_a17, ans_b17, ans_c17, ans_d17]:
         st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
     else:
-        # Đáp án chuẩn: a-Sai, b-Đúng, c-Đúng, d-Đúng
-        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "Đ"}
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Sai, d-Đúng
+        correct_answers = {"a": "S", "b": "Đ", "c": "S", "d": "Đ"}
         user_answers = {"a": ans_a17, "b": ans_b17, "c": ans_c17, "d": ans_d17}
         
         # Đếm số câu đúng
@@ -1798,19 +1798,8 @@ if st.button("Xem lời giải chi tiết", key="q17_solution"):
         st.markdown(r"Có tiệm cận đứng $x = 1$, tiệm cận ngang $y = 1$.")
         st.markdown(r"Hình vẽ hoàn toàn phù hợp với các đặc điểm này của đồ thị hàm số $f(x) = \dfrac{x - 2}{x - 1}$.")
         
-        st.markdown(r"**c) Mệnh đề Đúng:**")
-        st.markdown(r"Xét hàm số $f(x) = \dfrac{x - 2}{x - 1}$ trên đoạn $\left[\dfrac{3}{2}; 3\right]$.")
-        st.markdown(r"Vì $f'(x) > 0, \forall x \neq 1$ nên $f(x)$ đồng biến trên $\left[\dfrac{3}{2}; 3\right]$.")
-        st.markdown(r"Ta có: $f\left(\dfrac{3}{2}\right) = \dfrac{\dfrac{3}{2} - 2}{\dfrac{3}{2} - 1} = -1$ và $f(3) = \dfrac{3 - 2}{3 - 1} = \dfrac{1}{2}$.")
-        st.markdown(r"Suy ra $y = |f(x)|$ trên đoạn $\left[\dfrac{3}{2}; 3\right]$ có giá trị lớn nhất $M = \max\left\{\left|f\left(\dfrac{3}{2}\right)\right|, |f(3)|\right\} = \max\left\{1, \dfrac{1}{2}\right\} = 1$.")
-        st.markdown(r"Vì đồ thị cắt trục hoành tại $x=2 \in \left[\dfrac{3}{2}; 3\right]$ nên hàm số $|f(x)|$ đạt giá trị nhỏ nhất $m = 0$ tại $x=2$.")
-        st.markdown(r"Do đó: $2M + 2026m = 2\cdot1 + 2026\cdot0 = 2$. Phép tính trong đề là $2M + 2026m = 2027$ bị sai. Chờ chút, có vẻ có lỗi trong đề bài ở ảnh, $2M + 2026m$ phải bằng 2. Ta sẽ kiểm tra lại.")
-        st.markdown(r"Ah, đọc kỹ đề bài: $M$ là giá trị lớn nhất, $m$ là giá trị nhỏ nhất của $y=|f(x)|$ trên đoạn $[3/2; 3]$. $f(3/2)=-1 \implies |f(3/2)|=1$. $f(3)=1/2 \implies |f(3)|=1/2$. Trên đoạn $[3/2; 3]$ có nghiệm $x=2 \implies f(2)=0 \implies |f(2)|=0$. Vậy $m=0, M=1$.")
-        st.markdown(r"Vậy $2M + 2026m = 2(1) + 2026(0) = 2 \neq 2027$. Mệnh đề c) đáng lẽ là **Sai** theo đề này. Hãy kiểm tra lại.")
-        st.markdown(r"Xin lỗi, tôi sẽ sửa lại đáp án c là Sai và giải thích: $2M + 2026m = 2(1) + 2026(0) = 2 \neq 2027$. Do đó, mệnh đề c là sai.")
-        
-        st.markdown(r"**Sửa lại đáp án chuẩn phần c:**")
-        st.markdown(r"Đáp án c là **Sai**.")
+
+
         st.markdown(r"**c) Mệnh đề Sai:**")
         st.markdown(r"Xét hàm số $f(x) = \dfrac{x - 2}{x - 1}$ trên $\left[\dfrac{3}{2}; 3\right]$. Ta có $f\left(\dfrac{3}{2}\right) = -1, f(3) = \dfrac{1}{2}$.")
         st.markdown(r"Do hàm số liên tục và $f(2) = 0$ nên giá trị nhỏ nhất của $|f(x)|$ là $m = 0$. Giá trị lớn nhất của $|f(x)|$ là $M = \max(|-1|, |1/2|) = 1$.")
