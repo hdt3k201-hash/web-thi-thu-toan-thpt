@@ -4176,3 +4176,116 @@ if st.button("Xem lời giải chi tiết", key="q40_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+# ==========================================
+# CÂU HỎI 41 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 41. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Bãi Cháy - Quảng Ninh 2026) </span>
+        Cho hàm số $y = \dfrac{x^2 + bx + c}{x + n}$ có đồ thị và hai đường tiệm cận $d_1, d_2$ như hình vẽ dưới đây.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_bfbed8.PNG", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Đồ thị hàm số có tiệm cận đứng là đường thẳng $x = -1$.")
+with col2:
+    ans_a41 = st.radio("q41a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q41_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số đồng biến trên khoảng $(0; +\infty)$.")
+with col4:
+    ans_b41 = st.radio("q41b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q41_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Đồ thị hàm số có $2$ trục đối xứng, trong đó có một trục đối xứng là đường thẳng $y = (p + \sqrt{q})(x + 1) - r$ ($p, q, r$ là các số nguyên). Khi đó $p + q + r = 4$.")
+with col6:
+    ans_c41 = st.radio("q41c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q41_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Điểm $M(1212; 2025)$ và hai điểm cực trị của đồ thị hàm số thẳng hàng.")
+with col8:
+    ans_d41 = st.radio("q41d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q41_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q41_check"):
+    if None in [ans_a41, ans_b41, ans_c41, ans_d41]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Đúng, c-Đúng, d-Sai
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "Đ", "d": "S"}
+        user_answers = {"a": ans_a41, "b": ans_b41, "c": ans_c41, "d": ans_d41}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q41_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số từ đồ thị:**")
+        st.markdown(r"- Quan sát đồ thị, đường tiệm cận đứng là $d_1: x = -1$. Do đó nghiệm của mẫu số là $x = -1 \Rightarrow -1 + n = 0 \Rightarrow n = 1$.")
+        st.markdown(r"- Giao điểm của tiệm cận đứng và tiệm cận xiên là $I(-1; -1)$. Tiệm cận xiên $d_2$ đi qua gốc tọa độ $(0; 0)$ nên có phương trình $y = x$.")
+        st.markdown(r"Ta có phép chia đa thức: $y = \dfrac{x^2 + bx + c}{x + 1} = x + (b - 1) + \dfrac{c - b + 1}{x + 1}$.")
+        st.markdown(r"Để tiệm cận xiên là $y = x$ thì phần hệ số tự do phải bằng 0, tức là $b - 1 = 0 \Rightarrow b = 1$.")
+        st.markdown(r"- Hàm số trở thành $y = \dfrac{x^2 + x + c}{x + 1}$. Đồ thị đi qua điểm cực tiểu có tọa độ $(0; 1)$. Thay vào ta được: $\dfrac{c}{1} = 1 \Rightarrow c = 1$.")
+        st.markdown(r"Vậy hàm số cần tìm là: **$y = \dfrac{x^2 + x + 1}{x + 1} = x + \dfrac{1}{x + 1}$**.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Như đã phân tích từ đồ thị, tiệm cận đứng là đường thẳng $x = -1$.")
+
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Đạo hàm: $y' = 1 - \dfrac{1}{(x + 1)^2}$.")
+        st.markdown(r"Với mọi $x \in (0; +\infty)$, ta có $x > 0 \Rightarrow x + 1 > 1 \Rightarrow (x + 1)^2 > 1 \Rightarrow \dfrac{1}{(x + 1)^2} < 1 \Rightarrow y' > 0$.")
+        st.markdown(r"Vậy hàm số đồng biến trên khoảng $(0; +\infty)$.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Đồ thị hàm phân thức bậc hai trên bậc nhất có 2 trục đối xứng chính là 2 đường phân giác của góc tạo bởi 2 đường tiệm cận. Giao điểm hai tiệm cận là $I(-1; -1)$.")
+        st.markdown(r"Hai đường tiệm cận có phương trình là $x + 1 = 0$ và $x - y = 0$.")
+        st.markdown(r"Phương trình đường phân giác:")
+        st.markdown(r"$$\dfrac{x + 1}{1} = \pm \dfrac{x - y}{\sqrt{1^2 + (-1)^2}} \Leftrightarrow \sqrt{2}(x + 1) = \pm (x - y)$$")
+        st.markdown(r"- Trờng hợp 1 (dấu `+`): $\sqrt{2}x + \sqrt{2} = x - y \Rightarrow y = (1 - \sqrt{2})x - \sqrt{2} = (1 - \sqrt{2})(x + 1) - 1$.")
+        st.markdown(r"- Trờng hợp 2 (dấu `-`): $\sqrt{2}x + \sqrt{2} = -x + y \Rightarrow y = (1 + \sqrt{2})x + \sqrt{2} = (1 + \sqrt{2})(x + 1) - 1$.")
+        st.markdown(r"Đồng nhất dạng $y = (p + \sqrt{q})(x + 1) - r$ với đường thẳng ở trường hợp 2, ta được $p = 1, q = 2, r = 1$.")
+        st.markdown(r"Khi đó $p + q + r = 1 + 2 + 1 = 4$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Hàm số $y = \dfrac{x^2 + x + 1}{x + 1}$ có đường thẳng đi qua hai điểm cực trị được tính nhanh bằng công thức $y = \dfrac{(x^2 + x + 1)'}{(x + 1)'} = 2x + 1$.")
+        st.markdown(r"(Hai điểm cực trị là $A(0; 1)$ và $B(-2; -3)$).")
+        st.markdown(r"Kiểm tra xem điểm $M(1212; 2025)$ có thuộc đường thẳng $y = 2x + 1$ hay không: thay $x = 1212$ ta được $y = 2 \cdot 1212 + 1 = 2425 \neq 2025$.")
+        st.markdown(r"Vậy điểm $M$ không nằm trên đường thẳng đi qua hai điểm cực trị (chúng không thẳng hàng).")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
