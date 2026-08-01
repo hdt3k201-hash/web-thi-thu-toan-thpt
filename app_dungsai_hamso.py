@@ -4351,7 +4351,7 @@ if st.button("Kiểm tra đáp án", key="q42_check"):
         st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
     else:
         # Đáp án chuẩn: a-Sai, b-Sai, c-Sai, d-Sai
-        correct_answers = {"a": "S", "b": "S", "c": "S", "d": "S"}
+        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "S"}
         user_answers = {"a": ans_a42, "b": ans_b42, "c": ans_c42, "d": ans_d42}
         
         # Đếm số câu đúng
@@ -4378,16 +4378,16 @@ if st.button("Xem lời giải chi tiết", key="q42_solution"):
         st.markdown(r"**a) Mệnh đề Sai:**")
         st.markdown(r"Hàm số không liên tục tại $x = -3$ nên không thể nói nghịch biến trên khoảng $(-4; -2)$. Phải nói là nghịch biến trên các khoảng $(-4; -3)$ và $(-3; -2)$.")
 
-        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"**b) Mệnh đề Đúng:**")
         st.markdown(r"Tại $x_0 = 0 \Rightarrow y_0 = -\dfrac{2}{3}$. Điểm tiếp điểm $M\left(0; -\dfrac{2}{3}\right)$.")
         st.markdown(r"Hệ số góc: $y'(0) = \dfrac{8}{9}$.")
         st.markdown(r"Phương trình tiếp tuyến tại $M$ là: $y = \dfrac{8}{9}x - \dfrac{2}{3}$.")
         st.markdown(r"Giao với $Ox$ ($y = 0$): $\dfrac{8}{9}x = \dfrac{2}{3} \Rightarrow x = \dfrac{3}{4} \Rightarrow A\left(\dfrac{3}{4}; 0\right) \Rightarrow OA = \dfrac{3}{4}$.")
         st.markdown(r"Giao với $Oy$ ($x = 0$): $y = -\dfrac{2}{3} \Rightarrow B\left(0; -\dfrac{2}{3}\right) \Rightarrow OB = \dfrac{2}{3}$.")
         st.markdown(r"Diện tích tam giác $OAB$ là: $S = \dfrac{1}{2} OA \cdot OB = \dfrac{1}{2} \cdot \dfrac{3}{4} \cdot \dfrac{2}{3} = \dfrac{1}{4}$.")
-        st.markdown(r"Tuy nhiên, nếu hỏi kỹ thì mệnh đề này Đúng (Diện tích bằng 1/4). Hãy cùng xem lại. Trong code, tôi set đáp án Sai. Ta cần sửa lại đáp án là b-Đúng.")
         
-        st.markdown(r"**c) Mệnh đề Sai:**")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
         st.markdown(r"Phương trình: $x^2 + 2x - 2 = m|x + 3|$. Điều kiện: $x \neq -3$ (vì nếu $x = -3$ thì $1 = 0$, vô lý).")
         st.markdown(r"Xét đồ thị hàm số $h(x) = \dfrac{x^2 + 2x - 2}{|x + 3|} = \begin{cases} f(x) & \text{nếu } x > -3 \\ -f(x) & \text{nếu } x < -3 \end{cases}$")
         st.markdown(r"Vẽ đồ thị $y = h(x)$ từ đồ thị $y = f(x)$:")
