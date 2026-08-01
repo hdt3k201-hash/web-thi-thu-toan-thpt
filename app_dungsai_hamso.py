@@ -4520,3 +4520,104 @@ if st.button("Xem lời giải chi tiết", key="q43_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+# CÂU HỎI 44 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 44. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Trung Thiên - Hà Tĩnh 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = -x^3 + 3x^2 + 4$</span> có đồ thị $(C)$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số có đạo hàm là $y' = -3x^2 + 6x$.")
+with col2:
+    ans_a44 = st.radio("q44a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q44_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số đồng biến trên khoảng $(0; 2)$.")
+with col4:
+    ans_b44 = st.radio("q44b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q44_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Đồ thị $(C)$ có hai điểm cực trị và đường thẳng qua hai điểm cực trị là $2x + y - 4 = 0$.")
+with col6:
+    ans_c44 = st.radio("q44c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q44_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Diện tích $\Delta AOB$ bằng $4$ trong đó $A$ và $B$ là hai điểm cực trị của $(C)$.")
+with col8:
+    ans_d44 = st.radio("q44d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q44_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q44_check"):
+    if None in [ans_a44, ans_b44, ans_c44, ans_d44]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Đúng, c-Sai, d-Đúng
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "S", "d": "Đ"}
+        user_answers = {"a": ans_a44, "b": ans_b44, "c": ans_c44, "d": ans_d44}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q44_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có hàm số $y = -x^3 + 3x^2 + 4$. Đạo hàm của hàm số là $y' = -3x^2 + 6x$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Xét $y' = 0 \iff -3x^2 + 6x = 0 \iff \left[ \begin{array}{l} x = 0 \\ x = 2 \end{array} \right.$.")
+        st.markdown(r"Bảng xét dấu $y'$:")
+        st.markdown(r"- $y' > 0$ khi $x \in (0; 2)$.")
+        st.markdown(r"- $y' < 0$ khi $x \in (-\infty; 0) \cup (2; +\infty)$.")
+        st.markdown(r"Vậy hàm số đồng biến trên khoảng $(0; 2)$.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Với $x = 0 \implies y = 4$. Điểm cực tiểu của đồ thị hàm số là $A(0; 4)$.")
+        st.markdown(r"Với $x = 2 \implies y = -2^3 + 3 \cdot 2^2 + 4 = 8$. Điểm cực đại của đồ thị hàm số là $B(2; 8)$.")
+        st.markdown(r"Đường thẳng đi qua hai điểm cực trị $A(0; 4)$ và $B(2; 8)$ có phương trình:")
+        st.markdown(r"$\frac{x - 0}{2 - 0} = \frac{y - 4}{8 - 4} \iff \frac{x}{2} = \frac{y - 4}{4} \iff 2x = y - 4 \iff 2x - y + 4 = 0$.")
+        st.markdown(r"Mệnh đề cho đường thẳng là $2x + y - 4 = 0$ là sai.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có 3 điểm $O(0; 0)$, $A(0; 4)$, $B(2; 8)$.")
+        st.markdown(r"Điểm $A(0; 4)$ nằm trên trục tung $Oy$ nên độ dài đoạn $OA = |y_A| = 4$.")
+        st.markdown(r"Khoảng cách từ điểm $B(2; 8)$ đến trục $Oy$ (chứa đoạn $OA$) là $d(B, Oy) = |x_B| = 2$.")
+        st.markdown(r"Diện tích tam giác $AOB$ là: $S_{\Delta AOB} = \frac{1}{2} \cdot OA \cdot d(B, Oy) = \frac{1}{2} \cdot 4 \cdot 2 = 4$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
