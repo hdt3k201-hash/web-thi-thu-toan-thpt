@@ -609,7 +609,8 @@ st.markdown(
         line-height: 1.6;
     ">
         <span style="color: #008080; font-weight: bold;">Câu 6. </span> 
-        Cho hàm số $y = x^3 - 3x^2 + 5$ có đồ thị là $(C)$. (Sở Phú Thọ 2026)
+         <span style="color: #009900; font-weight: bold;">(Sở Phú Thọ 2026) </span>
+        Cho hàm số $y = x^3 - 3x^2 + 5$ có đồ thị là $(C)$. 
     </span>
     """, 
     unsafe_allow_html=True
