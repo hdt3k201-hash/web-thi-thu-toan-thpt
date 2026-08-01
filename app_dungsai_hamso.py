@@ -1497,3 +1497,111 @@ if st.button("Xem lời giải chi tiết", key="q14_solution"):
         st.markdown(r"Vậy chi phí ít nhất để làm bể xấp xỉ $4,44$ triệu đồng.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# CÂU HỎI 15 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 15. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm trường Nghệ An 2026) </span>
+        Cho hàm số $y = f(x) = \dfrac{ax + b}{cx - 1}$ (với $a, b, c$ là các số thực) có đồ thị được cho ở hình
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_dbe1e3.png", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Đồ thị hàm số có một đường tiệm cận đứng $x = 1$ và một đường tiệm cận ngang $y = -1$")
+with col2:
+    ans_a15 = st.radio("q15a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q15_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Giá trị $a + 2b - 3c = 5$")
+with col4:
+    ans_b15 = st.radio("q15b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q15_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Đạo hàm của $f'(x) < 0$ với mọi số $x \in \mathbb{R} \setminus \{1\}$")
+with col6:
+    ans_c15 = st.radio("q15c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q15_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** M, N là hai điểm thuộc hai nhánh khác nhau của đồ thị khi đó MN ngắn nhất bằng $\sqrt{10}$")
+with col8:
+    ans_d15 = st.radio("q15d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q15_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q15_check"):
+    if None in [ans_a15, ans_b15, ans_c15, ans_d15]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Sai, c-Đúng, d-Sai
+        correct_answers = {"a": "Đ", "b": "S", "c": "Đ", "d": "S"}
+        user_answers = {"a": ans_a15, "b": ans_b15, "c": ans_c15, "d": ans_d15}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q15_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Dựa vào đồ thị hàm số, ta xác định các yếu tố của hàm số $y = \dfrac{ax + b}{cx - 1}$:")
+        st.markdown(r"- Tiệm cận đứng: Đường thẳng $x = 1$. Mà theo công thức, TCĐ là $x = \dfrac{1}{c} \Rightarrow \dfrac{1}{c} = 1 \Rightarrow c = 1$.")
+        st.markdown(r"- Tiệm cận ngang: Đường thẳng $y = -1$. Mà theo công thức, TCN là $y = \dfrac{a}{c} \Rightarrow \dfrac{a}{1} = -1 \Rightarrow a = -1$.")
+        st.markdown(r"- Đồ thị đi qua điểm $(0; -2)$ trên trục tung, thay $x=0, y=-2$ vào hàm số: $\dfrac{b}{-1} = -2 \Rightarrow b = 2$.")
+        st.markdown(r"Vậy hàm số là $y = \dfrac{-x + 2}{x - 1}$.")
+
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Nhìn trực tiếp từ đồ thị, đường tiệm cận đứng là $x = 1$ và đường tiệm cận ngang là $y = -1$.")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Ta có $a = -1, b = 2, c = 1$.")
+        st.markdown(r"Giá trị biểu thức $a + 2b - 3c = -1 + 2(2) - 3(1) = -1 + 4 - 3 = 0$.")
+        st.markdown(r"Do đó, $a + 2b - 3c = 5$ là sai.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có hàm số $f(x) = \dfrac{-x + 2}{x - 1}$.")
+        st.markdown(r"Đạo hàm: $f'(x) = \dfrac{(-1)(-1) - 2(1)}{(x - 1)^2} = \dfrac{1 - 2}{(x - 1)^2} = \dfrac{-1}{(x - 1)^2}$.")
+        st.markdown(r"Rõ ràng $f'(x) < 0$ với mọi $x \neq 1$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Ta biến đổi hàm số: $y = \dfrac{-x + 2}{x - 1} = \dfrac{-(x - 1) + 1}{x - 1} = -1 + \dfrac{1}{x - 1}$.")
+        st.markdown(r"Đồ thị $(C)$ nhận giao điểm hai tiệm cận $I(1; -1)$ làm tâm đối xứng.")
+        st.markdown(r"Khoảng cách ngắn nhất giữa hai điểm $M, N$ thuộc hai nhánh của đồ thị hàm số phân thức đạt được khi $M, N$ là các đỉnh của hyperbol, đồng thời $M, N$ đối xứng nhau qua tâm $I$.")
+        st.markdown(r"Tịnh tiến hệ tọa độ về tâm $I$, đồ thị có dạng $Y = \dfrac{1}{X}$.")
+        st.markdown(r"Gọi khoảng cách từ điểm thuộc đồ thị đến tâm $I$ là $d$. Ta có $d^2 = X^2 + Y^2 = X^2 + \dfrac{1}{X^2} \ge 2\sqrt{X^2 \cdot \dfrac{1}{X^2}} = 2$ (BĐT AM-GM).")
+        st.markdown(r"$\Rightarrow d_{min} = \sqrt{2}$.")
+        st.markdown(r"Khoảng cách ngắn nhất $MN_{min} = 2d_{min} = 2\sqrt{2} = \sqrt{8}$.")
+        st.markdown(r"Vì $\sqrt{8} \neq \sqrt{10}$, nên phát biểu $MN$ ngắn nhất bằng $\sqrt{10}$ là sai.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
