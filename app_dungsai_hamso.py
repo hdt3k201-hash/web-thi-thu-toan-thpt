@@ -72,7 +72,7 @@ st.markdown(
     ">
         <span style="color: #008080; font-weight: bold;">Câu 1. </span> 
         <span style="color: #009900; font-weight: bold;">(THPT Lê Thánh Tông HCM 2026) </span>
-        Cho hàm số $y = f(x) = \dfrac{-x^2 + 10x - 12}{x}$ có đồ thị $(C)$.
+       Cho hàm số <span style="white-space: nowrap;">$y = f(x) = \dfrac{-x^2 + 10x - 12}{x}$</span> có đồ thị $(C)$.
     </span>
     """, 
     unsafe_allow_html=True
