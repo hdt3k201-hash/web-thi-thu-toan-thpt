@@ -3060,3 +3060,102 @@ if st.button("Xem lời giải chi tiết", key="q29_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+
+# CÂU HỎI 30 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 30. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Ninh Bình 2026) </span>
+        Cho hàm số bậc bốn $y = f(x)$. Hàm số $y = f'(x)$ có đồ thị như hình vẽ.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Thay thế đường dẫn ảnh cho phù hợp với dự án của bạn
+st.image("images/image_q30.png", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số $y = f(x)$ nghịch biến trên khoảng $(-\infty; -2)$.")
+with col2:
+    ans_a30 = st.radio("q30a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q30_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số $y = f(x)$ có ba điểm cực trị.")
+with col4:
+    ans_b30 = st.radio("q30b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q30_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Giá trị nhỏ nhất của hàm số $y = f(x)$ trên đoạn $[-2; 2]$ là $f(0)$.")
+with col6:
+    ans_c30 = st.radio("q30c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q30_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Biết $f(0) > 0$ khi đó phương trình $f(x) = 0$ có tối đa ba nghiệm.")
+with col8:
+    ans_d30 = st.radio("q30d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q30_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q30_check"):
+    if None in [ans_a30, ans_b30, ans_c30, ans_d30]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Đúng, d-Sai
+        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "S"}
+        user_answers = {"a": ans_a30, "b": ans_b30, "c": ans_c30, "d": ans_d30}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q30_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích đồ thị hàm số $y = f'(x)$:**")
+        st.markdown(r"- Dựa vào đồ thị, $f'(x) = 0$ tại các điểm $x = -2$, $x = 0$ và $x = 2$.")
+        st.markdown(r"- Dấu của $f'(x)$: $f'(x) > 0$ trên $(-\infty; -2)$ và $(0; 2)$; $f'(x) < 0$ trên $(-2; 0)$ và $(2; +\infty)$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Trên khoảng $(-\infty; -2)$, ta thấy đồ thị $f'(x)$ nằm phía trên trục hoành nên $f'(x) > 0$. Do đó, hàm số $y = f(x)$ đồng biến trên khoảng $(-\infty; -2)$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Phương trình $f'(x) = 0$ có 3 nghiệm phân biệt $x \in \{-2; 0; 2\}$ và $f'(x)$ đổi dấu khi qua 3 điểm này nên hàm số $y = f(x)$ có 3 điểm cực trị.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Trên đoạn $[-2; 2]$, hàm số nghịch biến trên $(-2; 0)$ và đồng biến trên $(0; 2)$. Bảng biến thiên cho thấy điểm thấp nhất trên đoạn này đạt tại $x = 0$. Do đó, giá trị nhỏ nhất của hàm số trên $[-2; 2]$ là $f(0)$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Từ dấu của $f'(x)$, hàm số đạt cực tiểu tại $x = 0$ và đạt cực đại tại $x = \pm 2$.")
+        st.markdown(r"Khi $f(0) > 0$, giá trị cực tiểu của đồ thị nằm trên trục hoành. Vì $\lim_{x \to \pm\infty} f(x) = -\infty$, đồ thị hàm số sẽ đi từ $-\infty$, cắt trục hoành tại một điểm thuộc $(-\infty; -2)$, sau đó luôn nằm trên trục hoành cho tới khi cắt trục hoành lần thứ hai tại một điểm thuộc $(2; +\infty)$ và đi xuống $-\infty$.")
+        st.markdown(r"Như vậy, phương trình $f(x) = 0$ có **chính xác 2 nghiệm phân biệt**. Phát biểu nói có tối đa 3 nghiệm là chưa chính xác về số lượng nghiệm cụ thể của phương trình này.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
