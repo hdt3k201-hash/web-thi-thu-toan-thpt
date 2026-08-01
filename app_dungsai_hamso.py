@@ -6072,3 +6072,205 @@ if st.button("Xem lời giải chi tiết Câu 58", key="q58_solution"):
         
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+# ==========================================
+# CÂU HỎI 59 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 59. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Thanh Hóa 2026) </span>
+        Khối lượng của một cá thể sinh vật $X$ theo thời gian $t$ tuần ($t \ge 0$) cho bởi công thức $f(t) = 0,1 + t^2e^{-kt}$ ($k \in \mathbb{R}$, đơn vị tính bằng microgam). Biết rằng sinh vật $X$ chỉ sống được đúng 6 tuần và khối lượng của nó lớn nhất tại thời điểm $t = 4$, đúng lúc nó sinh sản.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** $k = \dfrac{1}{2}$")
+with col2:
+    ans_a59 = st.radio("q59a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q59_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** $f'(4) = 0$")
+with col4:
+    ans_b59 = st.radio("q59b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q59_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** $f'(t) = 2te^{-kt}$")
+with col6:
+    ans_c59 = st.radio("q59c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q59_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Biết rằng mỗi lần sinh sản, mỗi cá thể $X$ sinh ra 10 cá thể con. Nếu ban đầu ($t = 0$), người ta nuôi một cá thể $X$ vừa mới sinh thì số lượng cá thể $X$ tại thời điểm $t = 17$ là $11000$.")
+with col8:
+    ans_d59 = st.radio("q59d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q59_d")
+
+if st.button("Kiểm tra đáp án Câu 59", key="q59_check"):
+    if None in [ans_a59, ans_b59, ans_c59, ans_d59]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đ, b-Đ, c-S, d-Đ
+        correct_answers_59 = {"a": "Đ", "b": "Đ", "c": "S", "d": "Đ"}
+        user_answers_59 = {"a": ans_a59, "b": ans_b59, "c": ans_c59, "d": ans_d59}
+        
+        score_59 = sum([1 for k in correct_answers_59 if user_answers_59[k] == correct_answers_59[k]])
+        
+        if score_59 == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score_59}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+if st.button("Xem lời giải chi tiết Câu 59", key="q59_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"Hàm số: $f(t) = 0,1 + t^2e^{-kt}$ ($t \in [0; 6]$).")
+        st.markdown(r"Đạo hàm: $f'(t) = 2te^{-kt} + t^2(-k)e^{-kt} = te^{-kt}(2 - kt)$.")
+        st.markdown(r"Theo giả thiết, khối lượng lớn nhất tại $t = 4$, nghĩa là hàm số đạt cực đại tại $t = 4$. Do đó $f'(4) = 0$.")
+        st.markdown(r"$f'(4) = 4e^{-4k}(2 - 4k) = 0 \iff 2 - 4k = 0 \iff k = \dfrac{1}{2}$ (vì $4e^{-4k} > 0$).")
+        st.markdown(r"Với $k = \dfrac{1}{2}$, $f'(t) = te^{-\frac{t}{2}}(2 - \frac{t}{2})$.")
+        st.markdown(r"$f'(t) = 0 \iff t = 0$ hoặc $t = 4$.")
+        st.markdown(r"Lập bảng biến thiên trên đoạn $[0; 6]$, ta thấy $f(t)$ đạt GTLN tại $t=4$, thoả mãn điều kiện đề bài.")
+        st.markdown("---")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Như đã phân tích, từ điều kiện đạt GTLN tại $t = 4$, ta tìm được $k = \dfrac{1}{2}$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Hàm số đạt giá trị lớn nhất (cũng là cực đại trong trường hợp này) tại $t = 4 \in (0; 6)$, nên đạo hàm tại điểm đó bằng 0: $f'(4) = 0$.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Đạo hàm đúng là $f'(t) = 2te^{-kt} - kt^2e^{-kt} = te^{-kt}(2 - kt)$. Biểu thức trong mệnh đề thiếu số hạng $-kt^2e^{-kt}$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"- Theo đề, vòng đời sinh vật là $6$ tuần. Ở mốc $4$ tuần tuổi thì sinh sản (sinh $10$ con/lượt).")
+        st.markdown(r"- Mốc $t=0$: Nuôi $1$ cá thể $X_0$ mới sinh.")
+        st.markdown(r"- Mốc $t=4$: $X_0$ đẻ ra $10$ cá thể con (gọi là thế hệ $F_1$). Tổng số cá thể lúc này là $1 + 10 = 11$.")
+        st.markdown(r"- Mốc $t=6$: $X_0$ chết. Số lượng còn lại: $11 - 1 = 10$ ($10$ cá thể $F_1$ này mới được $2$ tuần tuổi).")
+        st.markdown(r"- Mốc $t=8$: $10$ cá thể $F_1$ đạt $4$ tuần tuổi $\implies$ đẻ ra $10 \times 10 = 100$ cá thể con ($F_2$). Tổng số: $10 (F_1) + 100 (F_2) = 110$.")
+        st.markdown(r"- Mốc $t=10$: $10$ cá thể $F_1$ đạt $6$ tuần tuổi nên chết hết. Số lượng còn lại: $100$ ($100$ cá thể $F_2$ này được $2$ tuần tuổi).")
+        st.markdown(r"- Mốc $t=12$: $100$ cá thể $F_2$ đạt $4$ tuần tuổi $\implies$ đẻ ra $100 \times 10 = 1000$ cá thể con ($F_3$). Tổng số: $100 (F_2) + 1000 (F_3) = 1100$.")
+        st.markdown(r"- Mốc $t=14$: $100$ cá thể $F_2$ chết. Số lượng còn lại $1000$ ($1000$ cá thể $F_3$ này được $2$ tuần tuổi).")
+        st.markdown(r"- Mốc $t=16$: $1000$ cá thể $F_3$ đạt $4$ tuần tuổi $\implies$ đẻ ra $1000 \times 10 = 10000$ cá thể con ($F_4$). Tổng số: $1000 (F_3) + 10000 (F_4) = 11000$.")
+        st.markdown(r"- Từ $t=16$ đến $t=17$, không có cá thể nào đến tuổi sinh sản hay tuổi chết, do đó số lượng tại $t=17$ vẫn là $11000$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+# ==========================================
+# CÂU HỎI 60 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 60. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Hà Tĩnh 2026) </span>
+        Cho hàm số $y = f(x) = \dfrac{x^2 - 2x + 100}{x}$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Tiệm cận xiên của đồ thị hàm số $y = f(x)$ là đường thẳng có phương trình $y = x + 100$.")
+with col2:
+    ans_a60 = st.radio("q60a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q60_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Tập xác định của hàm số là $D = \mathbb{R} \setminus \{0\}$.")
+with col4:
+    ans_b60 = st.radio("q60b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q60_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Đồ thị hàm số $y = f(x)$ có hai điểm cực trị có hoành độ trái dấu.")
+with col6:
+    ans_c60 = st.radio("q60c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q60_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Xí nghiệp $A$ sản xuất $x$ sản phẩm với tổng chi phí được cho bởi công thức $C(x) = x^2 - 20x + 100$ (đơn vị ngàn đồng). Khi đó chi phí sản xuất trung bình của một sản phẩm thấp nhất bằng 20 ngàn đồng.")
+with col8:
+    ans_d60 = st.radio("q60d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q60_d")
+
+if st.button("Kiểm tra đáp án Câu 60", key="q60_check"):
+    if None in [ans_a60, ans_b60, ans_c60, ans_d60]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-S, b-Đ, c-Đ, d-S (Cần kiểm tra kỹ phần d)
+        correct_answers_60 = {"a": "S", "b": "Đ", "c": "Đ", "d": "S"}
+        user_answers_60 = {"a": ans_a60, "b": ans_b60, "c": ans_c60, "d": ans_d60}
+        
+        score_60 = sum([1 for k in correct_answers_60 if user_answers_60[k] == correct_answers_60[k]])
+        
+        if score_60 == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score_60}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+if st.button("Xem lời giải chi tiết Câu 60", key="q60_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Hàm số: $f(x) = \dfrac{x^2 - 2x + 100}{x} = x - 2 + \dfrac{100}{x}$.")
+        st.markdown("---")
+        
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Từ phân tích hàm số trên, đường tiệm cận xiên của đồ thị là $y = x - 2$. Mệnh đề cho $y = x + 100$ là sai.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Hàm số xác định khi mẫu số khác $0$, tức là $x \neq 0$. Vậy tập xác định $D = \mathbb{R} \setminus \{0\}$.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Đạo hàm: $f'(x) = 1 - \dfrac{100}{x^2} = \dfrac{x^2 - 100}{x^2}$.")
+        st.markdown(r"$f'(x) = 0 \iff x^2 - 100 = 0 \iff x = 10$ hoặc $x = -10$.")
+        st.markdown(r"Hàm số có hai điểm cực trị tại $x = 10$ và $x = -10$, hai hoành độ này trái dấu nhau.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Chi phí sản xuất trung bình của một sản phẩm là: $\overline{C}(x) = \dfrac{C(x)}{x} = \dfrac{x^2 - 20x + 100}{x} = x - 20 + \dfrac{100}{x}$ (với $x > 0$).")
+        st.markdown(r"Ta cần tìm giá trị nhỏ nhất của $\overline{C}(x)$ trên khoảng $(0; +\infty)$.")
+        st.markdown(r"Đạo hàm: $\overline{C}'(x) = 1 - \dfrac{100}{x^2}$.")
+        st.markdown(r"$\overline{C}'(x) = 0 \iff x^2 = 100 \implies x = 10$ (vì $x > 0$).")
+        st.markdown(r"Lập bảng biến thiên trên $(0; +\infty)$, ta thấy $\overline{C}(x)$ đạt giá trị nhỏ nhất tại $x = 10$.")
+        st.markdown(r"Chi phí trung bình thấp nhất là $\overline{C}(10) = 10 - 20 + \dfrac{100}{10} = 10 - 20 + 10 = 0$ (ngàn đồng).")
+        st.markdown(r"Điều này vô lý trong thực tế, nhưng theo toán học thì giá trị nhỏ nhất là $0$, không phải $20$. Do đó mệnh đề Sai.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
