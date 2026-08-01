@@ -4620,4 +4620,115 @@ if st.button("Xem lời giải chi tiết", key="q44_solution"):
         st.markdown(r"Diện tích tam giác $AOB$ là: $S_{\Delta AOB} = \frac{1}{2} \cdot OA \cdot d(B, Oy) = \frac{1}{2} \cdot 4 \cdot 2 = 4$.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+# CÂU HỎI 45 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 45. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Trãi - Hà Nội 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = \dfrac{x^2 - 3x + 6}{x - 1}$</span>.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
 
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Tọa độ điểm cực tiểu của đồ thị hàm số là $(a;b)$. Khi đó, ta có $a^2 + b = 12$.")
+with col2:
+    ans_a45 = st.radio("q45a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q45_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Tiệm cận xiên của đồ thị hàm số là $y = x - 2$.")
+with col4:
+    ans_b45 = st.radio("q45b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q45_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Gọi $I$ là giao điểm hai đường tiệm cận của đồ thị hàm số. Tiếp tuyến của đồ thị hàm số tại điểm có hoành độ $x = 2$ cắt hai đường tiệm cận tại $A, B$. Diện tích tam giác $IAB$ bằng $12$.")
+with col6:
+    ans_c45 = st.radio("q45c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q45_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Có tất cả $9$ giá trị nguyên của tham số $m$ để phương trình $\dfrac{x^2 - 3x + 6}{x - 1} = m$ có hai nghiệm phân biệt $x_1, x_2$ thỏa mãn $x_1 < 2 < x_2 < 15$.")
+with col8:
+    ans_d45 = st.radio("q45d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q45_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q45_check"):
+    if None in [ans_a45, ans_b45, ans_c45, ans_d45]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Đúng, c-Sai, d-Đúng
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "S", "d": "Đ"}
+        user_answers = {"a": ans_a45, "b": ans_b45, "c": ans_c45, "d": ans_d45}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q45_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số:**")
+        st.markdown(r"- Tập xác định: $D = \mathbb{R} \setminus \{1\}$.")
+        st.markdown(r"- Ta có thể viết lại hàm số: $y = f(x) = \dfrac{x^2 - 3x + 6}{x - 1} = x - 2 + \dfrac{4}{x - 1}$.")
+        st.markdown(r"- Đạo hàm: $y' = 1 - \dfrac{4}{(x - 1)^2} = \dfrac{x^2 - 2x - 3}{(x - 1)^2}$.")
+        st.markdown(r"- Giải $y' = 0 \iff x^2 - 2x - 3 = 0 \iff \left[ \begin{array}{l} x = -1 \implies y = -5 \\ x = 3 \implies y = 3 \end{array} \right.$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Qua các điểm làm $y'=0$, ta thấy qua $x = 3$ thì $y'$ đổi dấu từ âm sang dương nên hàm số đạt cực tiểu tại $x = 3$.")
+        st.markdown(r"Tọa độ điểm cực tiểu là $(3; 3) \implies a = 3, b = 3$.")
+        st.markdown(r"Khi đó: $a^2 + b = 3^2 + 3 = 12$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có $\lim_{x \to \pm\infty} \left[ y - (x - 2) \right] = \lim_{x \to \pm\infty} \dfrac{4}{x - 1} = 0$.")
+        st.markdown(r"Do đó đường thẳng $y = x - 2$ là tiệm cận xiên của đồ thị hàm số.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Giao điểm của tiệm cận đứng $x = 1$ và tiệm cận xiên $y = x - 2$ là $I(1; -1)$.")
+        st.markdown(r"Tại $x = 2$, ta có $y(2) = 4$ và $y'(2) = 1 - \dfrac{4}{(2 - 1)^2} = -3$. Phương trình tiếp tuyến tại $M(2; 4)$ là: $y = -3(x - 2) + 4 \iff y = -3x + 10$.")
+        st.markdown(r"Tìm tọa độ giao điểm của tiếp tuyến với hai tiệm cận:")
+        st.markdown(r"- Với $x = 1 \implies y = -3(1) + 10 = 7 \implies A(1; 7)$.")
+        st.markdown(r"- Với $y = x - 2 \implies -3x + 10 = x - 2 \iff 4x = 12 \iff x = 3 \implies y = 1 \implies B(3; 1)$.")
+        st.markdown(r"Ta có $\vec{IA} = (0; 8) \implies IA = 8$. Khoảng cách từ điểm $B$ đến đường thẳng $IA$ (tức đường thẳng $x = 1$) là $d(B, IA) = |x_B - 1| = |3 - 1| = 2$.")
+        st.markdown(r"Diện tích tam giác $IAB$ là $S = \dfrac{1}{2} \cdot IA \cdot d(B, IA) = \dfrac{1}{2} \cdot 8 \cdot 2 = 8 \neq 12$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Xét phương trình $f(x) = m$. Để phương trình có hai nghiệm phân biệt thì đường thẳng $y = m$ phải cắt đồ thị tại 2 điểm, tức là $m < -5$ hoặc $m > 3$.")
+        st.markdown(r"- Nếu $m < -5$, hai nghiệm đều nhỏ hơn $1$, không thỏa mãn $x_2 > 2$.")
+        st.markdown(r"- Nếu $m > 3$, phương trình luôn có 2 nghiệm $x_1 \in (1; 3)$ và $x_2 \in (3; +\infty)$, thỏa mãn $x_1 < x_2$.")
+        st.markdown(r"Để $x_1 < 2 < x_2 < 15$, ta xét sự biến thiên của hàm số:")
+        st.markdown(r"+ Trên khoảng $(1; 3)$, hàm số nghịch biến nên để $x_1 < 2$ thì $f(x_1) > f(2) \iff m > 4$.")
+        st.markdown(r"+ Trên khoảng $(3; +\infty)$, hàm số đồng biến nên để $x_2 < 15$ thì $f(x_2) < f(15) \iff m < \dfrac{15^2 - 3(15) + 6}{15 - 1} = \dfrac{186}{14} = \dfrac{93}{7} \approx 13,28$.")
+        st.markdown(r"Kết hợp lại ta được: $4 < m < \dfrac{93}{7}$.")
+        st.markdown(r"Vì $m \in \mathbb{Z}$ nên $m \in \{5; 6; 7; 8; 9; 10; 11; 12; 13\}$. Có tất cả $9$ giá trị thỏa mãn.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
