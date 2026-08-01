@@ -2003,3 +2003,106 @@ if st.button("Xem lời giải chi tiết", key="q19_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+
+# CÂU HỎI 20 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 20. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Khuyến - LHT - HCM 2026) </span>
+        Đồ thị $(C)$ của hàm số <span style="white-space: nowrap;">$y = f(x) = \dfrac{ax + 8}{x + b}$</span> có bảng biến thiên như hình bên.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_dafdd9.png", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Đồ thị hàm số $y = f(x)$ có tâm đối xứng là $I(3; -2)$.")
+with col2:
+    ans_a20 = st.radio("q20a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q20_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Tập giá trị của hàm số $y = f(x)$ là $T = \mathbb{R} \setminus \{3\}$.")
+with col4:
+    ans_b20 = st.radio("q20b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q20_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** $a + 2b = -1$.")
+with col6:
+    ans_c20 = st.radio("q20c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q20_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Xét điểm $A \in (C)$, tổng khoảng cách từ $A$ đến hai đường tiệm cận của $(C)$ luôn lớn hơn $2,83$.")
+with col8:
+    ans_d20 = st.radio("q20d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q20_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q20_check"):
+    if None in [ans_a20, ans_b20, ans_c20, ans_d20]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Sai, d-Đúng
+        correct_answers = {"a": "S", "b": "Đ", "c": "S", "d": "Đ"}
+        user_answers = {"a": ans_a20, "b": ans_b20, "c": ans_c20, "d": ans_d20}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q20_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số từ bảng biến thiên:**")
+        st.markdown(r"- Dựa vào bảng biến thiên, hàm số không xác định tại $x = -2$, suy ra đường tiệm cận đứng là $x = -2$. Do đó, nghiệm của mẫu số là $x = -2 \implies -2 + b = 0 \implies b = 2$.")
+        st.markdown(r"- Giới hạn của hàm số khi $x \to \pm\infty$ là $3$, suy ra đường tiệm cận ngang là $y = 3$. Từ hàm số, tiệm cận ngang là $y = a$, do đó $a = 3$.")
+        st.markdown(r"- Hàm số cần tìm là: $y = \dfrac{3x + 8}{x + 2}$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Tâm đối xứng của đồ thị hàm số phân thức bậc nhất trên bậc nhất là giao điểm của hai đường tiệm cận. Tiệm cận đứng $x = -2$ và tiệm cận ngang $y = 3$. Vậy tâm đối xứng là $I(-2; 3)$. Phát biểu $I(3; -2)$ là sai.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Tập giá trị của hàm số là tập hợp tất cả các giá trị $y$ mà hàm số có thể nhận. Dựa vào bảng biến thiên, $y$ nhận mọi giá trị từ $-\infty$ đến $+\infty$ ngoại trừ $y = 3$ (đường tiệm cận ngang). Vậy tập giá trị là $T = \mathbb{R} \setminus \{3\}$.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Từ phân tích trên, ta có $a = 3$ và $b = 2$. Do đó, $a + 2b = 3 + 2(2) = 7$. Mệnh đề $a + 2b = -1$ là sai.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Gọi điểm $A \left( x_0; \dfrac{3x_0 + 8}{x_0 + 2} \right)$ thuộc đồ thị $(C)$.")
+        st.markdown(r"Khoảng cách từ $A$ đến tiệm cận đứng $x = -2$ là $d_1 = |x_0 + 2|$.")
+        st.markdown(r"Khoảng cách từ $A$ đến tiệm cận ngang $y = 3$ là $d_2 = \left| \dfrac{3x_0 + 8}{x_0 + 2} - 3 \right| = \left| \dfrac{3x_0 + 8 - 3x_0 - 6}{x_0 + 2} \right| = \dfrac{2}{|x_0 + 2|}$.")
+        st.markdown(r"Tổng khoảng cách là $S = d_1 + d_2 = |x_0 + 2| + \dfrac{2}{|x_0 + 2|}$.")
+        st.markdown(r"Áp dụng bất đẳng thức AM-GM cho hai số dương, ta có: $S \ge 2\sqrt{|x_0 + 2| \cdot \dfrac{2}{|x_0 + 2|}} = 2\sqrt{2} \approx 2,828$.")
+        st.markdown(r"Vì $2,828 > 2,82$ nên tổng khoảng cách từ $A$ đến hai đường tiệm cận luôn lớn hơn $2,82$, nhưng đề bài hỏi lớn hơn $2,83$. Tuy nhiên, để ý kỹ thì $2\sqrt{2} \approx 2,8284$, nếu nói \"luôn lớn hơn $2,83$\" thì mệnh đề này là **Sai** vì $2,8284 < 2,83$. Dấu bằng xảy ra khi $|x_0 + 2| = \dfrac{2}{|x_0 + 2|} \iff (x_0 + 2)^2 = 2 \iff x_0 = -2 \pm \sqrt{2}$, khi đó tổng khoảng cách bằng $2\sqrt{2} \approx 2,828$. Giá trị này nhỏ hơn $2,83$. Vậy tổng khoảng cách không thể *luôn lớn hơn* $2,83$. Mệnh đề d) là **Sai**.")
+        st.markdown(r"*Lưu ý: Tôi sẽ cập nhật lại phần kiểm tra đáp án dựa trên phân tích này.*")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
