@@ -271,3 +271,102 @@ if st.button("Xem lời giải chi tiết", key="q2_solution"):
         st.markdown(r"$T(10) = 0,2 \cdot 10^2 + 2 \cdot 10 + 500 = 20 + 20 + 500 = 540$ (triệu đồng) $= 0,54$ tỉ đồng.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# CÂU HỎI 3 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 3. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Đồng Hỷ - Thái Nguyên 2026) </span>
+        Đồ thị của hàm số <span style="white-space: nowrap;">$y = ax + b + \dfrac{c}{x + d}$</span> là hình dưới đây
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+st.image("images/image_ddafda.png", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số nghịch biến trên khoảng $(0;1)$.")
+with col2:
+    ans_a3 = st.radio("q3a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q3_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** $\lim\limits_{x \to 1^+} y = -\infty$.")
+with col4:
+    ans_b3 = st.radio("q3b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q3_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Phương trình đường tiệm cận xiên của đồ thị hàm số là: $y = x + 1$.")
+with col6:
+    ans_c3 = st.radio("q3c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q3_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Tổng $a + b + c + d = 2$.")
+with col8:
+    ans_d3 = st.radio("q3d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q3_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q3_check"):
+    if None in [ans_a3, ans_b3, ans_c3, ans_d3]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Sai, c-Đúng, d-Đúng
+        correct_answers = {"a": "Đ", "b": "S", "c": "Đ", "d": "Đ"}
+        user_answers = {"a": ans_a3, "b": ans_b3, "c": ans_c3, "d": ans_d3}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q3_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số từ đồ thị:**")
+        st.markdown(r"- **Tiệm cận đứng (TCĐ):** Dựa vào đồ thị, TCĐ là $x = 1$. Suy ra mẫu số bằng $0$ tại $x = 1 \implies 1 + d = 0 \implies d = -1$. Hàm số có dạng $y = ax + b + \dfrac{c}{x - 1}$.")
+        st.markdown(r"- **Tiệm cận xiên (TCX):** Đường thẳng màu đỏ đi qua hai điểm $(0; 1)$ và $(1; 2)$. Giả sử TCX là $y = mx + n$, ta có hệ phương trình: $\begin{cases} 1 = m \cdot 0 + n \\ 2 = m \cdot 1 + n \end{cases} \implies \begin{cases} n = 1 \\ m = 1 \end{cases}$. Vậy phương trình TCX là $y = x + 1$. Đồng nhất hệ số, ta được $a = 1, b = 1$. Hàm số có dạng $y = x + 1 + \dfrac{c}{x - 1}$.")
+        st.markdown(r"- **Tìm $c$:** Đồ thị đi qua gốc tọa độ $O(0; 0)$. Thay $x = 0, y = 0$ ta được: $0 = 0 + 1 + \dfrac{c}{0 - 1} \implies c = 1$.")
+        st.markdown(r"**Kết luận hàm số:** $y = x + 1 + \dfrac{1}{x - 1}$. Đạo hàm: $y' = 1 - \dfrac{1}{(x-1)^2} = \dfrac{x^2 - 2x}{(x-1)^2}$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Với mọi $x \in (0; 1)$, ta có $x^2 - 2x = x(x - 2) < 0$ và $(x - 1)^2 > 0$. Do đó $y' < 0$ trên $(0; 1)$, hàm số nghịch biến trên khoảng này.")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Ta tính giới hạn: $\lim\limits_{x \to 1^+} y = \lim\limits_{x \to 1^+} \left( x + 1 + \dfrac{1}{x - 1} \right) = +\infty$. (Nhìn vào đồ thị nhánh bên phải TCĐ cũng đang hướng lên trên).")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Theo phân tích ở trên, đường tiệm cận xiên đi qua $(0;1)$ và $(1;2)$ có phương trình là $y = x + 1$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có $a = 1, b = 1, c = 1, d = -1$. Tổng $a + b + c + d = 1 + 1 + 1 + (-1) = 2$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
