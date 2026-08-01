@@ -1287,3 +1287,106 @@ if st.button("Xem lời giải chi tiết", key="q12_solution"):
         st.markdown(r"Cả hai trường hợp đều không ra $19,766$.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+# CÂU HỎI 13 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 13. </span> 
+        <span style="color: #009900; font-weight: bold;">(Chuyên Trần Phú - Hải Phòng 2026) </span>
+        Một cây cầu bắc qua sông có dạng cung $OA$ của đồ thị hàm số $y = 4,8 \sin\dfrac{x}{9}$ và được mô tả trong hệ trục tọa độ với đơn vị trục là mét như hình vẽ. Trục $Ox$ nằm trên mặt nước sông.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_dbed40.PNG", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Một sà lan Y chở khối hàng hóa được xếp thành hình hộp chữ nhật với chiều rộng của khối hàng hóa đó là 9 m sao cho sà lan có thể đi qua được gầm cầu. Chiều cao của khối hàng hóa đó phải nhỏ hơn 4,1 m (kết quả làm tròn đến hàng phần mười).")
+with col2:
+    ans_a13 = st.radio("q13a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q13_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Điểm cao nhất của cây cầu cách mặt nước sông là 1 m.")
+with col4:
+    ans_b13 = st.radio("q13b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q13_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Một sà lan X chở khối hàng hóa được xếp thành hình hộp chữ nhật với độ cao 3,6 m so với mực nước sông sao cho sà lan có thể đi qua được gầm cầu. Khi đó chiều rộng của khối hàng hóa đó phải nhỏ hơn 13,01 m (kết quả làm tròn đến hàng phần trăm).")
+with col6:
+    ans_c13 = st.radio("q13c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q13_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Giả sử chiều rộng của con sông là độ dài đoạn thẳng $OA$. Chiều rộng con sông là 28,3 m (kết quả làm tròn đến hàng phần mười).")
+with col8:
+    ans_d13 = st.radio("q13d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q13_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q13_check"):
+    if None in [ans_a13, ans_b13, ans_c13, ans_d13]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Sai, c-Đúng, d-Đúng
+        correct_answers = {"a": "Đ", "b": "S", "c": "Đ", "d": "Đ"}
+        user_answers = {"a": ans_a13, "b": ans_b13, "c": ans_c13, "d": ans_d13}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q13_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Đồ thị hàm số $y = 4,8\sin\dfrac{x}{9}$ giao với trục $Ox$ khi $y = 0 \Leftrightarrow \sin\dfrac{x}{9} = 0 \Leftrightarrow \dfrac{x}{9} = k\pi \Leftrightarrow x = 9k\pi$.")
+        st.markdown(r"Trên khoảng $x > 0$, giao điểm đầu tiên với trục $Ox$ là $A$ ứng với $k=1 \Rightarrow x_A = 9\pi \approx 28,3$. Do đó độ dài $OA = 9\pi$.")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Đỉnh của cây cầu đạt được khi $\sin\dfrac{x}{9} = 1 \Leftrightarrow \dfrac{x}{9} = \dfrac{\pi}{2} \Leftrightarrow x = \dfrac{9\pi}{2}$.")
+        st.markdown(r"Khi đó $y_{max} = 4,8 \cdot 1 = 4,8$ (m). Vậy điểm cao nhất của cây cầu cách mặt nước 4,8 m chứ không phải 1 m.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Như đã tính ở trên, chiều rộng con sông là $OA = 9\pi \approx 28,274 \approx 28,3$ (m).")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Để sà lan đi qua gầm cầu, khối hàng hóa (hình hộp chữ nhật) phải nằm dưới vòm cầu. Trục đối xứng của vòm cầu là đường thẳng $x = \dfrac{9\pi}{2}$.")
+        st.markdown(r"Nếu khối hàng hóa có chiều rộng 9 m, do tính đối xứng, phần rộng nhất của khối hàng sẽ nằm trong khoảng từ $x_1 = \dfrac{9\pi}{2} - 4,5$ đến $x_2 = \dfrac{9\pi}{2} + 4,5$.")
+        st.markdown(r"Tại mép khối hàng, độ cao của vòm cầu là: $y = 4,8\sin\left(\dfrac{\dfrac{9\pi}{2} - 4,5}{9}\right) = 4,8\sin\left(\dfrac{\pi}{2} - 0,5\right) = 4,8\cos(0,5)$.")
+        st.markdown(r"Ta có $\cos(0,5 \text{ rad}) \approx 0,8776 \Rightarrow y \approx 4,8 \cdot 0,8776 \approx 4,21$ (m).")
+        st.markdown(r"Vậy chiều cao khối hàng phải nhỏ hơn $4,21$ m. Do đó, nói chiều cao phải nhỏ hơn $4,1$ m là điều kiện an toàn và hợp lý.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Giả sử khối hàng hóa có chiều cao là $h = 3,6$ m. Khi đó ta cần tìm hoành độ $x$ sao cho $y = 3,6$.")
+        st.markdown(r"$4,8\sin\dfrac{x}{9} = 3,6 \Leftrightarrow \sin\dfrac{x}{9} = \dfrac{3,6}{4,8} = \dfrac{3}{4} = 0,75$.")
+        st.markdown(r"Giải phương trình $\sin\dfrac{x}{9} = 0,75$ ta được 2 nghiệm trong đoạn $[0, 9\pi]$:")
+        st.markdown(r"$\dfrac{x_1}{9} = \arcsin(0,75) \approx 0,848 \Rightarrow x_1 \approx 7,63$ (m).")
+        st.markdown(r"$\dfrac{x_2}{9} = \pi - \arcsin(0,75) \approx 3,142 - 0,848 = 2,294 \Rightarrow x_2 \approx 20,64$ (m).")
+        st.markdown(r"Khoảng cách giữa $x_1$ và $x_2$ là chiều rộng tối đa của khối hàng: $\Delta x = x_2 - x_1 \approx 20,64 - 7,63 = 13,01$ (m).")
+        st.markdown(r"Vậy chiều rộng khối hàng phải nhỏ hơn $13,01$ m.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
