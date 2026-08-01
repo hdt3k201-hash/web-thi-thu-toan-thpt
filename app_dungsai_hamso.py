@@ -3743,3 +3743,110 @@ if st.button("Xem lời giải chi tiết Câu 36", key="q36_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+# ==========================================
+# CÂU HỎI 37 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 37. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Lê Thánh Tông - HCM 2026) </span>
+        Cho hàm số $y = \dfrac{x - 1}{x + 2}$ có đồ thị $(C)$. Gọi $I$ là giao điểm của hai tiệm cận của $(C)$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số đồng biến trên $\mathbb{R} \setminus \{-2\}$.")
+with col2:
+    ans_a37 = st.radio("q37a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q37_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số có tâm đối xứng $I(-2; 1)$.")
+with col4:
+    ans_b37 = st.radio("q37b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q37_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Phương trình tiếp tuyến của đồ thị $(C)$ tại điểm $x = 1$ là $y = \dfrac{1}{3}x - \dfrac{1}{3}$.")
+with col6:
+    ans_c37 = st.radio("q37c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q37_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Xét tam giác đều $ABI$ có hai đỉnh $A, B$ thuộc $(C)$, $AB = 2\sqrt{3}$.")
+with col8:
+    ans_d37 = st.radio("q37d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q37_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q37_check"):
+    if None in [ans_a37, ans_b37, ans_c37, ans_d37]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Đúng, d-Đúng
+        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "Đ"}
+        user_answers = {"a": ans_a37, "b": ans_b37, "c": ans_c37, "d": ans_d37}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q37_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số:**")
+        st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{-2\}$.")
+        st.markdown(r"Đạo hàm: $y' = \dfrac{1 \cdot 2 - (-1) \cdot 1}{(x + 2)^2} = \dfrac{3}{(x + 2)^2} > 0, \forall x \neq -2$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Mặc dù $y' > 0, \forall x \neq -2$, nhưng theo quy ước toán học, ta không được kết luận hàm số đồng biến trên các tập hợp như $\mathbb{R} \setminus \{-2\}$ hoặc $(-\infty; -2) \cup (-2; +\infty)$. Kết luận chuẩn xác phải là: hàm số đồng biến trên từng khoảng $(-\infty; -2)$ và $(-2; +\infty)$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Đồ thị $(C)$ có đường tiệm cận đứng là $x = -2$ và đường tiệm cận ngang là $y = 1$. Giao điểm của hai tiệm cận là $I(-2; 1)$. Đồ thị hàm phân thức bậc nhất trên bậc nhất luôn nhận giao điểm của hai tiệm cận làm tâm đối xứng.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Tại $x_0 = 1$, ta có $y_0 = \dfrac{1 - 1}{1 + 2} = 0$. Điểm tiếp điểm là $M(1; 0)$.")
+        st.markdown(r"Hệ số góc của tiếp tuyến là $y'(1) = \dfrac{3}{(1 + 2)^2} = \dfrac{1}{3}$.")
+        st.markdown(r"Phương trình tiếp tuyến tại $M(1; 0)$ là: $y = \dfrac{1}{3}(x - 1) + 0 \Leftrightarrow y = \dfrac{1}{3}x - \dfrac{1}{3}$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Thực hiện phép tịnh tiến hệ tọa độ $Oxy$ về hệ tọa độ $IXY$ qua phép biến đổi: $\begin{cases} x = X - 2 \\ y = Y + 1 \end{cases}$.")
+        st.markdown(r"Phương trình của $(C)$ trong hệ trục tọa độ mới $IXY$ là: $Y + 1 = \dfrac{X - 2 - 1}{X - 2 + 2} \Leftrightarrow Y + 1 = \dfrac{X - 3}{X} = 1 - \dfrac{3}{X} \Leftrightarrow XY = -3$.")
+        st.markdown(r"Giả sử điểm $A\left(a; -\dfrac{3}{a}\right)$ và $B\left(b; -\dfrac{3}{b}\right)$ nằm trên nhánh của đồ thị trong hệ $IXY$. (với điểm $I$ nay trở thành gốc toạ độ, $I(0;0)$)")
+        st.markdown(r"Để $\Delta ABI$ đều thì $IA = IB = AB \implies IA^2 = IB^2 \implies a^2 + \dfrac{9}{a^2} = b^2 + \dfrac{9}{b^2}$.")
+        st.markdown(r"$\implies (a^2 - b^2) \left(1 - \dfrac{9}{a^2b^2}\right) = 0$. Vì $A \neq B$ và không đối xứng nhau qua $I$ (nếu đối xứng qua $I$ thì 3 điểm thẳng hàng), nên $a^2 \neq b^2 \implies a^2b^2 = 9 \implies ab = 3$ (ta xét $ab=3$ để $A, B$ có thể tạo thành tam giác với $I$).")
+        st.markdown(r"Thay $b = \dfrac{3}{a}$ vào tọa độ của $B$, ta được $B\left(\dfrac{3}{a}; -a\right)$.")
+        st.markdown(r"Khi đó $AB^2 = \left(a - \dfrac{3}{a}\right)^2 + \left(-\dfrac{3}{a} + a\right)^2 = 2\left(a - \dfrac{3}{a}\right)^2 = 2\left(a^2 + \dfrac{9}{a^2} - 6\right)$.")
+        st.markdown(r"Do $AB^2 = IA^2 \implies 2\left(a^2 + \dfrac{9}{a^2} - 6\right) = a^2 + \dfrac{9}{a^2} \implies a^2 + \dfrac{9}{a^2} = 12$.")
+        st.markdown(r"Suy ra $IA^2 = 12 \implies IA = 2\sqrt{3}$. Vậy cạnh của tam giác đều là $AB = IA = 2\sqrt{3}$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
