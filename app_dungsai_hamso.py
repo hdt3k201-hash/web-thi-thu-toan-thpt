@@ -5469,3 +5469,200 @@ if st.button("Xem lời giải chi tiết", key="q52_solution"):
         
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# ==========================================
+# CÂU HỎI 53 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 53. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Quảng Ninh 2026) </span>
+        Cho hàm số $y = f(x) = \dfrac{x^2 - x - 12}{x - 2}$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Đồ thị hàm số $f(x)$ đi qua điểm $(4; 0)$.")
+with col2:
+    ans_a53 = st.radio("q53a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q53_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Đồ thị hàm số $f(x)$ có đường tiệm cận xiên là đường thẳng $y = x - 1$.")
+with col4:
+    ans_b53 = st.radio("q53b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q53_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Đồ thị hàm số $f(x)$ có tâm đối xứng là điểm $I(2; 3)$.")
+with col6:
+    ans_c53 = st.radio("q53c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q53_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Phương trình đường tiếp tuyến của đồ thị hàm số $f(x)$ tại điểm $x = 3$ có dạng $y = mx + n$, giá trị $m - n$ bằng $50$.")
+with col8:
+    ans_d53 = st.radio("q53d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q53_d")
+
+if st.button("Kiểm tra đáp án Câu 53", key="q53_check"):
+    if None in [ans_a53, ans_b53, ans_c53, ans_d53]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đ, b-S, c-Đ, d-Đ
+        correct_answers_53 = {"a": "Đ", "b": "S", "c": "Đ", "d": "Đ"}
+        user_answers_53 = {"a": ans_a53, "b": ans_b53, "c": ans_c53, "d": ans_d53}
+        
+        score_53 = sum([1 for k in correct_answers_53 if user_answers_53[k] == correct_answers_53[k]])
+        
+        if score_53 == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score_53}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+if st.button("Xem lời giải chi tiết Câu 53", key="q53_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{2\}$.")
+        st.markdown(r"Thực hiện phép chia đa thức tử cho mẫu, ta được: $y = f(x) = \dfrac{x(x - 2) + x - 12}{x - 2} = x + 1 - \dfrac{10}{x - 2}$.")
+        st.markdown(r"Đạo hàm: $f'(x) = 1 + \dfrac{10}{(x - 2)^2}$.")
+        st.markdown("---")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Thay $x = 4$ vào hàm số, ta có $f(4) = \dfrac{4^2 - 4 - 12}{4 - 2} = \dfrac{16 - 16}{2} = 0$. Vậy đồ thị đi qua điểm $(4; 0)$.")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Từ biểu thức $y = x + 1 - \dfrac{10}{x - 2}$, ta thấy $\lim_{x \to \pm \infty} [y - (x + 1)] = \lim_{x \to \pm \infty} \left(-\dfrac{10}{x - 2}\right) = 0$.")
+        st.markdown(r"Do đó đường tiệm cận xiên là đường thẳng $y = x + 1$, không phải $y = x - 1$.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Hàm số có tiệm cận đứng là $x = 2$ và tiệm cận xiên là $y = x + 1$.")
+        st.markdown(r"Tọa độ tâm đối xứng $I$ là giao điểm của hai đường tiệm cận: $x_I = 2 \implies y_I = 2 + 1 = 3$. Vậy $I(2; 3)$ là tâm đối xứng.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Hệ số góc của tiếp tuyến tại $x = 3$ là $m = f'(3) = 1 + \dfrac{10}{(3 - 2)^2} = 11$.")
+        st.markdown(r"Tung độ tiếp điểm là $y_0 = f(3) = 3 + 1 - \dfrac{10}{3 - 2} = -6$.")
+        st.markdown(r"Phương trình tiếp tuyến: $y = 11(x - 3) - 6 \iff y = 11x - 39$.")
+        st.markdown(r"So sánh với dạng $y = mx + n$, ta có $m = 11, n = -39$. Giá trị $m - n = 11 - (-39) = 50$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+st.markdown("---")
+
+# ==========================================
+# CÂU HỎI 54 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 54. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Ngô Quyền - Hải Phòng 2026) </span>
+        Cho hàm số $y = \dfrac{x^2 - x + 2}{x - 2}$ có đồ thị $(C)$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số nghịch biến trên khoảng $(1; 3)$.")
+with col2:
+    ans_a54 = st.radio("q54a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q54_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số có hai điểm cực trị.")
+with col4:
+    ans_b54 = st.radio("q54b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q54_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** $M$ là điểm bất kỳ thuộc đồ thị $(C)$. Tích khoảng cách từ $M$ đến tiệm cận đứng và tiệm cận xiên của đồ thị $(C)$ bằng $2\sqrt{2}$.")
+with col6:
+    ans_c54 = st.radio("q54c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q54_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Đồ thị $(C)$ có tiệm cận đứng là đường thẳng $x = 2$.")
+with col8:
+    ans_d54 = st.radio("q54d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q54_d")
+
+if st.button("Kiểm tra đáp án Câu 54", key="q54_check"):
+    if None in [ans_a54, ans_b54, ans_c54, ans_d54]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-S, b-Đ, c-Đ, d-Đ
+        correct_answers_54 = {"a": "S", "b": "Đ", "c": "Đ", "d": "Đ"}
+        user_answers_54 = {"a": ans_a54, "b": ans_b54, "c": ans_c54, "d": ans_d54}
+        
+        score_54 = sum([1 for k in correct_answers_54 if user_answers_54[k] == correct_answers_54[k]])
+        
+        if score_54 == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score_54}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+if st.button("Xem lời giải chi tiết Câu 54", key="q54_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{2\}$.")
+        st.markdown(r"Ta biến đổi hàm số: $y = \dfrac{x(x - 2) + x + 2}{x - 2} = x + 1 + \dfrac{4}{x - 2}$.")
+        st.markdown(r"Đạo hàm: $y' = 1 - \dfrac{4}{(x - 2)^2} = \dfrac{(x - 2)^2 - 4}{(x - 2)^2} = \dfrac{x^2 - 4x}{(x - 2)^2}$.")
+        st.markdown(r"$y' = 0 \iff x^2 - 4x = 0 \iff x = 0$ hoặc $x = 4$.")
+        st.markdown("---")
+        
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Bảng xét dấu $y'$ cho thấy: $y' < 0$ khi $x \in (0; 2)$ và $x \in (2; 4)$.")
+        st.markdown(r"Vậy hàm số nghịch biến trên các khoảng $(0; 2)$ và $(2; 4)$.")
+        st.markdown(r"Mệnh đề nói hàm số nghịch biến trên khoảng $(1; 3)$ là sai vì hàm số gián đoạn tại $x = 2 \in (1; 3)$. Phải nói là nghịch biến trên các khoảng $(1; 2)$ và $(2; 3)$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Đạo hàm $y'$ đổi dấu qua $x = 0$ (từ dương sang âm) và $x = 4$ (từ âm sang dương). Vậy hàm số có hai điểm cực trị (1 cực đại, 1 cực tiểu).")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Tiệm cận đứng (TCĐ) $\Delta_1: x - 2 = 0$.")
+        st.markdown(r"Tiệm cận xiên (TCX): $y = x + 1 \implies \Delta_2: x - y + 1 = 0$.")
+        st.markdown(r"Giả sử điểm $M \left(x_0; x_0 + 1 + \dfrac{4}{x_0 - 2}\right)$ thuộc đồ thị $(C)$.")
+        st.markdown(r"Khoảng cách từ $M$ đến TCĐ: $d_1 = \dfrac{|x_0 - 2|}{\sqrt{1^2 + 0^2}} = |x_0 - 2|$.")
+        st.markdown(r"Khoảng cách từ $M$ đến TCX: $d_2 = \dfrac{|x_0 - (x_0 + 1 + \dfrac{4}{x_0 - 2}) + 1|}{\sqrt{1^2 + (-1)^2}} = \dfrac{|-\dfrac{4}{x_0 - 2}|}{\sqrt{2}} = \dfrac{4}{\sqrt{2}|x_0 - 2|} = \dfrac{2\sqrt{2}}{|x_0 - 2|}$.")
+        st.markdown(r"Tích khoảng cách: $d_1 \cdot d_2 = |x_0 - 2| \cdot \dfrac{2\sqrt{2}}{|x_0 - 2|} = 2\sqrt{2}$. (Luôn không đổi).")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có $\lim_{x \to 2^+} y = \lim_{x \to 2^+} \dfrac{x^2 - x + 2}{x - 2} = +\infty$ (hoặc $\lim_{x \to 2^-} y = -\infty$).")
+        st.markdown(r"Vậy đường thẳng $x = 2$ là tiệm cận đứng của đồ thị hàm số.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
