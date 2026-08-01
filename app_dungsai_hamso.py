@@ -5044,3 +5044,106 @@ if st.button("Xem lời giải chi tiết", key="q48_solution"):
         st.markdown(r"- Như đã phân tích, đường tiệm cận xiên của đồ thị hàm số có phương trình $y = 2x + 5$, không phải $y = 2x - 5$.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU HỎI 49 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 49. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm trường Sở Phú Thọ 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = \dfrac{x^2 - 3x + 5}{x + 1}$</span> có đồ thị $(C)$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Đường thẳng $y = x + 1$ là tiệm cận xiên của đồ thị $(C)$.")
+with col2:
+    ans_a49 = st.radio("q49a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q49_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Đồ thị $(C)$ có tiệm cận đứng là đường thẳng $x = -1$.")
+with col4:
+    ans_b49 = st.radio("q49b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q49_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Đường thẳng đi qua điểm cực đại và điểm cực tiểu của đồ thị hàm số là $y = 2x + 3$.")
+with col6:
+    ans_c49 = st.radio("q49c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q49_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Hàm số nghịch biến trên khoảng $(-4; -1)$ và $(-1; 2)$.")
+with col8:
+    ans_d49 = st.radio("q49d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q49_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q49_check"):
+    if None in [ans_a49, ans_b49, ans_c49, ans_d49]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Sai, d-Đúng
+        correct_answers = {"a": "S", "b": "Đ", "c": "S", "d": "Đ"}
+        user_answers = {"a": ans_a49, "b": ans_b49, "c": ans_c49, "d": ans_d49}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q49_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số:**")
+        st.markdown(r"- Tập xác định: $D = \mathbb{R} \setminus \{-1\}$.")
+        st.markdown(r"- Ta biến đổi hàm số: $y = \dfrac{x^2 - 3x + 5}{x + 1} = x - 4 + \dfrac{9}{x + 1}$.")
+        st.markdown(r"- Đạo hàm: $y' = 1 - \dfrac{9}{(x + 1)^2} = \dfrac{(x + 1)^2 - 9}{(x + 1)^2} = \dfrac{x^2 + 2x - 8}{(x + 1)^2}$.")
+        st.markdown(r"- Giải $y' = 0 \iff x^2 + 2x - 8 = 0 \iff \left[ \begin{array}{l} x = -4 \implies y = -11 \\ x = 2 \implies y = 1 \end{array} \right.$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Từ phân tích $y = x - 4 + \dfrac{9}{x + 1}$, ta thấy $\lim_{x \to \pm\infty} [y - (x - 4)] = \lim_{x \to \pm\infty} \dfrac{9}{x + 1} = 0$.")
+        st.markdown(r"Vậy đường tiệm cận xiên của đồ thị $(C)$ là $y = x - 4$, chứ không phải $y = x + 1$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có $\lim_{x \to -1^+} y = +\infty$ và $\lim_{x \to -1^-} y = -\infty$.")
+        st.markdown(r"Do đó đồ thị $(C)$ có tiệm cận đứng là đường thẳng $x = -1$.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Điểm cực đại là $A(-4; -11)$ và điểm cực tiểu là $B(2; 1)$.")
+        st.markdown(r"Đường thẳng đi qua $A$ và $B$ có phương trình: $\dfrac{x + 4}{2 + 4} = \dfrac{y + 11}{1 + 11} \iff \dfrac{x + 4}{6} = \dfrac{y + 11}{12} \iff 2(x + 4) = y + 11 \iff y = 2x - 3$.")
+        st.markdown(r"Hoặc có thể dùng công thức nhanh, đường thẳng qua 2 điểm cực trị của đồ thị hàm số $y = \dfrac{u}{v}$ là $y = \dfrac{u'}{v'} = \dfrac{2x - 3}{1} = 2x - 3$.")
+        st.markdown(r"Mệnh đề cho đường thẳng $y = 2x + 3$ là sai.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có $y' < 0 \iff x^2 + 2x - 8 < 0 \iff -4 < x < 2$.")
+        st.markdown(r"Kết hợp với điều kiện $x \neq -1$, hàm số nghịch biến trên các khoảng $(-4; -1)$ và $(-1; 2)$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
