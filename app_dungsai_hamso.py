@@ -5964,7 +5964,7 @@ if st.button("Xem lời giải chi tiết Câu 57", key="q57_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
-st.markdown("---")
+
 
 # ==========================================
 # CÂU HỎI 58 (ĐÚNG/SAI)
@@ -5985,46 +5985,49 @@ st.markdown(
         line-height: 1.6;
     ">
         <span style="color: #008080; font-weight: bold;">Câu 58. </span> 
-        <span style="color: #009900; font-weight: bold;">(THPT Trần Phú - Phú Thọ 2026) </span>
-        Cho hàm số $y = \dfrac{x^2 - 2x + 2}{x - 1}$.
+        <span style="color: #009900; font-weight: bold;">(Sở Thanh Hóa 2026) </span>
+        Cho hàm số $y = \dfrac{mx^2 + nx - 1}{px - 2}$ có đồ thị như hình vẽ bên.
     </span>
     """, 
     unsafe_allow_html=True
 )
-st.info("Lưu ý: Nội dung câu 58 (Câu 70 trong ảnh) hoàn toàn giống với câu 57 (Câu 69 trong ảnh).")
+
+# Lệnh chèn hình ảnh sau đề bài
+st.image("images/image_52a53e.png", caption="Đồ thị hàm số Câu 58", use_column_width=True)
 
 st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
 
 col1, col2 = st.columns([4, 1])
 with col1:
-    st.markdown(r"**a)** Đạo hàm của hàm số là $y' = \dfrac{x^2 - 2x}{x + 1}$.")
+    st.markdown(r"**a)** Đường tiệm cận đứng của đồ thị là đường thẳng $x = 2$.")
 with col2:
     ans_a58 = st.radio("q58a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q58_a")
 
 col3, col4 = st.columns([4, 1])
 with col3:
-    st.markdown(r"**b)** Giá trị cực đại của hàm số bằng $-2$.")
+    st.markdown(r"**b)** Tâm đối xứng của đồ thị là điểm $I(3; 2)$.")
 with col4:
     ans_b58 = st.radio("q58b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q58_b")
 
 col5, col6 = st.columns([4, 1])
 with col5:
-    st.markdown(r"**c)** Đường thẳng đi qua hai điểm cực trị của đồ thị hàm số đã cho có phương trình là $y = 2x - 2$.")
+    st.markdown(r"**c)** Ta có $m + 2n - 3p = -4$.")
 with col6:
     ans_c58 = st.radio("q58c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q58_c")
 
 col7, col8 = st.columns([4, 1])
 with col7:
-    st.markdown(r"**d)** Điểm cực tiểu của hàm số bằng $0$.")
+    st.markdown(r"**d)** Hàm số nghịch biến trên khoảng $(1; 3)$.")
 with col8:
     ans_d58 = st.radio("q58d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q58_d")
 
+# Nút kiểm tra đáp án
 if st.button("Kiểm tra đáp án Câu 58", key="q58_check"):
     if None in [ans_a58, ans_b58, ans_c58, ans_d58]:
         st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
     else:
-        # Đáp án chuẩn tương tự câu 57: a-S, b-Đ, c-Đ, d-S
-        correct_answers_58 = {"a": "S", "b": "Đ", "c": "Đ", "d": "S"}
+        # Đáp án chuẩn: a-Đ, b-S, c-Đ, d-S
+        correct_answers_58 = {"a": "Đ", "b": "S", "c": "Đ", "d": "S"}
         user_answers_58 = {"a": ans_a58, "b": ans_b58, "c": ans_c58, "d": ans_d58}
         
         score_58 = sum([1 for k in correct_answers_58 if user_answers_58[k] == correct_answers_58[k]])
@@ -6034,9 +6037,38 @@ if st.button("Kiểm tra đáp án Câu 58", key="q58_check"):
         else:
             st.error(f"Bạn đã trả lời đúng {score_58}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
 
+# Nút xem lời giải chi tiết
 if st.button("Xem lời giải chi tiết Câu 58", key="q58_solution"):
+    # Kiểm tra điều kiện đăng nhập
     if st.session_state.get('logged_in', True):
-        st.info("Lời giải chi tiết hoàn toàn giống với Câu 57. Vui lòng xem lại phần giải thích chi tiết ở Câu 57 phía trên.")
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích đồ thị:**")
+        st.markdown(r"- Từ đồ thị, ta thấy đường tiệm cận đứng là đường thẳng $x = 2$.")
+        st.markdown(r"- Đồ thị có hai điểm cực trị là: điểm cực đại $A(1; 1)$ và điểm cực tiểu $B(3; 5)$.")
+        st.markdown(r"- Tâm đối xứng $I$ của đồ thị là trung điểm của đoạn thẳng nối hai điểm cực trị $A$ và $B$.")
+        st.markdown(r"Tọa độ $I$ là: $\begin{cases} x_I = \dfrac{1 + 3}{2} = 2 \\ y_I = \dfrac{1 + 5}{2} = 3 \end{cases} \implies I(2; 3)$.")
+        st.markdown("---")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Nhìn vào đồ thị ta thấy rõ đường tiệm cận đứng là $x = 2$.")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Theo phân tích ở trên, tâm đối xứng của đồ thị là điểm $I(2; 3)$, không phải $I(3; 2)$.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"- Hàm số $y = \dfrac{mx^2 + nx - 1}{px - 2}$ có tiệm cận đứng khi mẫu số bằng $0 \implies px - 2 = 0 \iff x = \dfrac{2}{p}$.")
+        st.markdown(r"Từ đồ thị ta có TCĐ $x = 2 \implies \dfrac{2}{p} = 2 \implies p = 1$.")
+        st.markdown(r"Hàm số trở thành: $y = \dfrac{mx^2 + nx - 1}{x - 2}$.")
+        st.markdown(r"- Đồ thị đi qua điểm cực đại $A(1; 1)$, thay toạ độ vào hàm số ta được: $1 = \dfrac{m(1)^2 + n(1) - 1}{1 - 2} \implies 1 = \dfrac{m + n - 1}{-1} \implies m + n - 1 = -1 \implies m + n = 0 \quad (1)$.")
+        st.markdown(r"- Đồ thị đi qua điểm cực tiểu $B(3; 5)$, thay toạ độ vào hàm số ta được: $5 = \dfrac{m(3)^2 + n(3) - 1}{3 - 2} \implies 5 = \dfrac{9m + 3n - 1}{1} \implies 9m + 3n = 6 \implies 3m + n = 2 \quad (2)$.")
+        st.markdown(r"- Giải hệ gồm (1) và (2) ta được: $m = 1; n = -1$.")
+        st.markdown(r"Vậy $m = 1, n = -1, p = 1$.")
+        st.markdown(r"Tính giá trị biểu thức: $m + 2n - 3p = 1 + 2(-1) - 3(1) = 1 - 2 - 3 = -4$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Từ đồ thị, hàm số nghịch biến (đồ thị đi xuống từ trái sang phải) trên các khoảng $(1; 2)$ và $(2; 3)$.")
+        st.markdown(r"Việc kết luận hàm số nghịch biến trên khoảng $(1; 3)$ là sai vì hàm số bị gián đoạn tại $x = 2 \in (1; 3)$.")
+        
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
-
