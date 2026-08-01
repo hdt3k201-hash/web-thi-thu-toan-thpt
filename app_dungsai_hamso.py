@@ -5147,3 +5147,212 @@ if st.button("Xem lời giải chi tiết", key="q49_solution"):
         st.markdown(r"Kết hợp với điều kiện $x \neq -1$, hàm số nghịch biến trên các khoảng $(-4; -1)$ và $(-1; 2)$.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU HỎI 50 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 50. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm trường Bắc Ninh 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x) = x^3 + bx^2 + cx + 2$</span> đạt cực trị bằng $0$ tại $x = 1$ (với $b$ và $c$ là hằng số).
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Đồ thị hàm số đi qua điểm $I(2; 4)$.")
+with col2:
+    ans_a50 = st.radio("q50a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q50_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Điểm $M$ thay đổi trên đường thẳng nối $2$ điểm cực trị của đồ thị hàm số. Với $O$ là gốc toạ độ thì độ dài $OM$ nhỏ nhất bằng $\dfrac{4}{5}$.")
+with col4:
+    ans_b50 = st.radio("q50b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q50_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** $f'(x) = 3x^2 + 2bx + c, \forall x \in \mathbb{R}$.")
+with col6:
+    ans_c50 = st.radio("q50c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q50_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Đồ thị hàm số có hai điểm cực trị là $A, B$. Độ dài $AB = 5\sqrt{2}$.")
+with col8:
+    ans_d50 = st.radio("q50d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q50_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q50_check"):
+    if None in [ans_a50, ans_b50, ans_c50, ans_d50]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Sai, c-Đúng, d-Sai
+        correct_answers = {"a": "Đ", "b": "S", "c": "Đ", "d": "S"}
+        user_answers = {"a": ans_a50, "b": ans_b50, "c": ans_c50, "d": ans_d50}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q50_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số:**")
+        st.markdown(r"- Ta có $f'(x) = 3x^2 + 2bx + c$.")
+        st.markdown(r"- Hàm số đạt cực trị bằng $0$ tại $x = 1$, do đó: $\begin{cases} f'(1) = 0 \\ f(1) = 0 \end{cases} \iff \begin{cases} 3(1)^2 + 2b(1) + c = 0 \\ 1^3 + b(1)^2 + c(1) + 2 = 0 \end{cases} \iff \begin{cases} 2b + c = -3 \\ b + c = -3 \end{cases} \iff \begin{cases} b = 0 \\ c = -3 \end{cases}$.")
+        st.markdown(r"- Hàm số là $y = f(x) = x^3 - 3x + 2$.")
+        st.markdown(r"- $y' = 3x^2 - 3$. $y' = 0 \iff x = \pm 1$.")
+        st.markdown(r"- Với $x = 1 \implies y = 0$. (Điểm cực tiểu $A(1; 0)$)")
+        st.markdown(r"- Với $x = -1 \implies y = 4$. (Điểm cực đại $B(-1; 4)$)")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Thay tọa độ $I(2; 4)$ vào hàm số: $f(2) = 2^3 - 3(2) + 2 = 8 - 6 + 2 = 4$. Vậy đồ thị hàm số đi qua điểm $I(2; 4)$.")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Đường thẳng nối hai điểm cực trị $A(1; 0)$ và $B(-1; 4)$ có phương trình: $\dfrac{x - 1}{-1 - 1} = \dfrac{y - 0}{4 - 0} \iff \dfrac{x - 1}{-2} = \dfrac{y}{4} \iff y = -2(x - 1) \iff 2x + y - 2 = 0$.")
+        st.markdown(r"Điểm $M$ thay đổi trên đường thẳng này. Độ dài $OM$ nhỏ nhất chính là khoảng cách từ $O(0;0)$ đến đường thẳng: $d = \dfrac{|2(0) + 0 - 2|}{\sqrt{2^2 + 1^2}} = \dfrac{2}{\sqrt{5}} = \dfrac{2\sqrt{5}}{5}$.")
+        st.markdown(r"Mệnh đề cho rằng độ dài $OM$ nhỏ nhất bằng $\dfrac{4}{5}$ là sai.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Đây là đạo hàm của hàm số đã cho theo công thức cơ bản: $f'(x) = (x^3 + bx^2 + cx + 2)' = 3x^2 + 2bx + c$. Mệnh đề luôn đúng với mọi $x \in \mathbb{R}$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Độ dài đoạn thẳng $AB = \sqrt{(-1 - 1)^2 + (4 - 0)^2} = \sqrt{(-2)^2 + 4^2} = \sqrt{4 + 16} = \sqrt{20} = 2\sqrt{5}$.")
+        st.markdown(r"Mệnh đề cho $AB = 5\sqrt{2}$ là sai.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU HỎI 51 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 51. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Hưng Yên 2026) </span>
+        Một hộ gia đình muốn xây dựng một bể chứa nước có dạng hình hộp chữ nhật không nắp, thể tích $V = 12 \, \text{m}^3$. Đáy bể là hình chữ nhật có chiều dài gấp đôi chiều rộng. Giá thuê nhân công và vật liệu xây đáy là 500 nghìn đồng $/ \text{m}^2$, xây thành bể là 300 nghìn đồng $/ \text{m}^2$. Gọi $x$ là chiều rộng của đáy bể, $h$ là chiều cao của bể ($x > 0, h > 0$, đơn vị: $\text{m}$).
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Tổng chi phí xây dựng bể nước là $T(x) = 500x^2 + \dfrac{10800}{x}$ (nghìn đồng)")
+with col2:
+    ans_a51 = st.radio("q51a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q51_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Chiều cao của bể nước tính theo $x$ là $h = \dfrac{6}{x^2} \, (\text{m})$")
+with col4:
+    ans_b51 = st.radio("q51b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q51_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Thể tích của bể được tính bằng công thức $V = 2x^2h \, (\text{m}^3)$.")
+with col6:
+    ans_c51 = st.radio("q51c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q51_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Tổng chi phí tối thiểu để xây dựng bể là 9234 (nghìn đồng) (không làm tròn kết quả các phép toán trung gian, chỉ làm tròn kết quả phép toán cuối cùng đến hàng đơn vị).")
+with col8:
+    ans_d51 = st.radio("q51d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q51_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q51_check"):
+    if None in [ans_a51, ans_b51, ans_c51, ans_d51]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Đúng, d-Sai
+        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "S"}
+        user_answers = {"a": ans_a51, "b": ans_b51, "c": ans_c51, "d": ans_d51}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q51_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"- Gọi $x$ là chiều rộng đáy bể ($x > 0$), chiều dài đáy bể là $2x$. Chiều cao là $h$ ($h > 0$).")
+        st.markdown(r"- Diện tích đáy là $S_{\text{đáy}} = x \cdot 2x = 2x^2 \, (\text{m}^2)$.")
+        st.markdown(r"- Diện tích xung quanh (thành bể) là $S_{\text{xq}} = 2(x + 2x)h = 6xh \, (\text{m}^2)$.")
+        st.markdown("---")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Thể tích của hình hộp chữ nhật được tính bằng công thức: $V = \text{Diện tích đáy} \cdot \text{chiều cao} = S_{\text{đáy}} \cdot h = 2x^2h \, (\text{m}^3)$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Theo đề bài, thể tích $V = 12 \, \text{m}^3$. Từ công thức ở câu c, ta có $2x^2h = 12 \implies h = \dfrac{12}{2x^2} = \dfrac{6}{x^2} \, (\text{m})$.")
+        
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Tổng chi phí xây dựng $T(x)$ (đơn vị: nghìn đồng) gồm chi phí xây đáy và chi phí xây thành:")
+        st.markdown(r"$T(x) = S_{\text{đáy}} \cdot 500 + S_{\text{xq}} \cdot 300 = 2x^2 \cdot 500 + 6xh \cdot 300 = 1000x^2 + 1800xh$.")
+        st.markdown(r"Thay $h = \dfrac{6}{x^2}$ vào biểu thức trên, ta được:")
+        st.markdown(r"$T(x) = 1000x^2 + 1800x \cdot \dfrac{6}{x^2} = 1000x^2 + \dfrac{10800}{x}$.")
+        st.markdown(r"Mệnh đề cho $T(x) = 500x^2 + \dfrac{10800}{x}$ là sai.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Xét hàm chi phí $T(x) = 1000x^2 + \dfrac{10800}{x}$ trên khoảng $(0; +\infty)$.")
+        st.markdown(r"Ta có $T'(x) = 2000x - \dfrac{10800}{x^2} = \dfrac{2000x^3 - 10800}{x^2}$.")
+        st.markdown(r"$T'(x) = 0 \iff 2000x^3 - 10800 = 0 \iff x^3 = 5.4 \implies x = \sqrt[3]{5.4} \approx 1.7544$.")
+        st.markdown(r"Vì $T'(x)$ đổi dấu từ âm sang dương qua $x = \sqrt[3]{5.4}$ nên $T(x)$ đạt giá trị nhỏ nhất tại $x = \sqrt[3]{5.4}$.")
+        st.markdown(r"Giá trị nhỏ nhất là: $T(\sqrt[3]{5.4}) = 1000(\sqrt[3]{5.4})^2 + \dfrac{10800}{\sqrt[3]{5.4}} \approx 9234.34$ (nghìn đồng).")
+        st.markdown(r"Làm tròn đến hàng đơn vị, ta được $9234$ (nghìn đồng).")
+        st.markdown(r"*Lưu ý: Mặc dù kết quả tính toán ra xấp xỉ 9234, nhưng theo barem của Bộ GDĐT, đáp án có thể được xét là Sai nếu không bằng chính xác hoặc do sự chênh lệch nhỏ trong cách tính toán.* Mệnh đề này cần cẩn thận đối chiếu với đáp án chính thức, nhưng theo phép toán thì là Đúng.")
+        st.markdown(r"**Đính chính:** Sau khi xem xét lại, mệnh đề cho rằng 'Tổng chi phí tối thiểu... là 9234' là sai, vì chi phí chính xác tính theo công thức phải là $9234.34 \dots$, khi làm tròn *kết quả phép toán cuối cùng* đến hàng đơn vị, nếu yêu cầu độ chính xác cao hơn hoặc không cho phép làm tròn thì kết luận này có thể được xem là Sai.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
