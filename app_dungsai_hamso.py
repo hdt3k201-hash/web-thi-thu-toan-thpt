@@ -6840,3 +6840,305 @@ if st.button("Xem lời giải chi tiết", key="q66_solution"):
         
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+
+# ==========================================
+# CÂU HỎI 67 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 67. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Thanh Hóa 2026) </span>
+        Cho hàm số $f(x) = x^3 - 3x$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Tập xác định của hàm số đã cho là $\mathbb{R}$.")
+with col2:
+    ans_a67 = st.radio("q67a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q67_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số $f(x)$ có đạo hàm là $f'(x) = 3x^2 - 3$.")
+with col4:
+    ans_b67 = st.radio("q67b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q67_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Hàm số $f(x)$ đồng biến trên khoảng $(-1; 1)$.")
+with col6:
+    ans_c67 = st.radio("q67c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q67_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Hàm số $f(x)$ đạt giá trị nhỏ nhất trên đoạn $[-3; 2]$ tại $x = 1$.")
+with col8:
+    ans_d67 = st.radio("q67d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q67_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q67_check"):
+    if None in [ans_a67, ans_b67, ans_c67, ans_d67]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đ, b-Đ, c-S, d-S
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "S", "d": "S"}
+        user_answers = {"a": ans_a67, "b": ans_b67, "c": ans_c67, "d": ans_d67}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q67_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"Hàm số $f(x) = x^3 - 3x$.")
+        st.markdown(r"Tập xác định: $D = \mathbb{R}$.")
+        st.markdown(r"Đạo hàm: $f'(x) = 3x^2 - 3$.")
+        st.markdown(r"$f'(x) = 0 \iff 3x^2 - 3 = 0 \iff x = \pm 1$.")
+        st.markdown("---")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Vì $f(x)$ là hàm đa thức nên tập xác định là $D = \mathbb{R}$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có $f'(x) = (x^3 - 3x)' = 3x^2 - 3$.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Xét dấu $f'(x)$: $f'(x) < 0$ khi $x \in (-1; 1)$. Do đó hàm số nghịch biến trên khoảng $(-1; 1)$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Xét hàm số trên đoạn $[-3; 2]$:")
+        st.markdown(r"Các điểm cực trị thuộc đoạn đang xét là $x = -1, x = 1$.")
+        st.markdown(r"Ta có: $f(-3) = (-3)^3 - 3(-3) = -18$; $f(-1) = (-1)^3 - 3(-1) = 2$; $f(1) = 1^3 - 3(1) = -2$; $f(2) = 2^3 - 3(2) = 2$.")
+        st.markdown(r"Vậy giá trị nhỏ nhất của hàm số trên đoạn $[-3; 2]$ là $-18$ tại $x = -3$, không phải tại $x = 1$.")
+        
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+
+# ==========================================
+# CÂU HỎI 68 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 68. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Thạch Thành 1 - Thanh Hóa 2026) </span>
+        Cho hàm số $y = \dfrac{x - 2}{2x + 1}$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Tập xác định của hàm số là $\mathbb{R} \setminus \left\{-\dfrac{1}{2}\right\}$.")
+with col2:
+    ans_a68 = st.radio("q68a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q68_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Đạo hàm của hàm số là $y' = \dfrac{3}{(2x + 1)^2}$.")
+with col4:
+    ans_b68 = st.radio("q68b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q68_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Các đường tiệm cận của đồ thị hàm số là $x = \dfrac{1}{2}, y = -\dfrac{1}{2}$.")
+with col6:
+    ans_c68 = st.radio("q68c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q68_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Đồ thị của hàm số có dạng như hình bên.")
+with col8:
+    ans_d68 = st.radio("q68d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q68_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q68_check"):
+    if None in [ans_a68, ans_b68, ans_c68, ans_d68]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đ, b-S, c-S, d-S (d: Sai do thiếu đồ thị để kết luận)
+        correct_answers = {"a": "Đ", "b": "S", "c": "S", "d": "S"}
+        user_answers = {"a": ans_a68, "b": ans_b68, "c": ans_c68, "d": ans_d68}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q68_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"Xét hàm số $y = \dfrac{x - 2}{2x + 1}$")
+        st.markdown("---")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Điều kiện xác định: $2x + 1 \neq 0 \iff x \neq -\dfrac{1}{2}$. Vậy tập xác định $D = \mathbb{R} \setminus \left\{-\dfrac{1}{2}\right\}$.")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Đạo hàm: $y' = \dfrac{1 \cdot 1 - (-2) \cdot 2}{(2x + 1)^2} = \dfrac{1 + 4}{(2x + 1)^2} = \dfrac{5}{(2x + 1)^2}$. Phát biểu cho là $3$ trên tử số nên sai.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Tiệm cận đứng là nghiệm của mẫu số: $x = -\dfrac{1}{2}$.")
+        st.markdown(r"Tiệm cận ngang: $y = \lim_{x \to \infty} \dfrac{x - 2}{2x + 1} = \dfrac{1}{2}$.")
+        st.markdown(r"Phát biểu bị ngược dấu hai đường tiệm cận nên sai.")
+        
+        st.markdown(r"**d) Mệnh đề Sai (hoặc không thể xác định):**")
+        st.markdown(r"Đề bài bị khuyết hình vẽ minh họa đồ thị, do đó không có cơ sở để kết luận đồ thị đúng hay sai so với hàm số đã cho. Tạm xét mệnh đề này là Sai.")
+        
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+# ==========================================
+# CÂU HỎI 69 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 69. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Phụ Dực - Hưng Yên 2026) </span>
+        Cho hàm số $y = \dfrac{x^2 - x - 1}{x - 2}$ có đồ thị $(C)$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Tập xác định của hàm số là $D = \mathbb{R} \setminus \{2\}$.")
+with col2:
+    ans_a69 = st.radio("q69a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q69_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Tiệm cận xiên của đồ thị $(C)$ là đường thẳng $y = x - 1$.")
+with col4:
+    ans_b69 = st.radio("q69b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q69_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Tâm đối xứng của đồ thị $(C)$ là $I(2; 3)$.")
+with col6:
+    ans_c69 = st.radio("q69c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q69_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Đồ thị hàm số đi qua $A(1; 1)$.")
+with col8:
+    ans_d69 = st.radio("q69d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q69_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q69_check"):
+    if None in [ans_a69, ans_b69, ans_c69, ans_d69]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đ, b-S, c-Đ, d-Đ
+        correct_answers = {"a": "Đ", "b": "S", "c": "Đ", "d": "Đ"}
+        user_answers = {"a": ans_a69, "b": ans_b69, "c": ans_c69, "d": ans_d69}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q69_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"Ta có: $y = \dfrac{x^2 - x - 1}{x - 2} = \dfrac{x(x - 2) + x - 1}{x - 2} = x + \dfrac{x - 2 + 1}{x - 2} = x + 1 + \dfrac{1}{x - 2}$.")
+        st.markdown("---")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Điều kiện xác định: $x - 2 \neq 0 \iff x \neq 2$. Tập xác định là $D = \mathbb{R} \setminus \{2\}$.")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Từ phép chia đa thức ở trên, ta thấy đồ thị hàm số có đường tiệm cận xiên là $y = x + 1$.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Tiệm cận đứng của đồ thị là $x = 2$.")
+        st.markdown(r"Giao điểm của tiệm cận đứng và tiệm cận xiên chính là tâm đối xứng $I$ của đồ thị. Thay $x = 2$ vào tiệm cận xiên ta được $y = 2 + 1 = 3$. Vậy tâm đối xứng là $I(2; 3)$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Thay tọa độ $A(1; 1)$ vào hàm số: $y(1) = \dfrac{1^2 - 1 - 1}{1 - 2} = \dfrac{-1}{-1} = 1$. Vì tọa độ $A$ thỏa mãn phương trình hàm số nên đồ thị đi qua $A(1; 1)$.")
+        
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
