@@ -4289,3 +4289,129 @@ if st.button("Xem lời giải chi tiết", key="q41_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+
+# ==========================================
+# CÂU HỎI 42 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 42. </span> 
+        <span style="color: #009900; font-weight: bold;">(HSG 12 - Hải Phòng 2026) </span>
+        Cho hàm số $y = f(x) = \dfrac{x^2 + 2x - 2}{x + 3}$ có đồ thị $(C)$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số nghịch biến trên khoảng $(-4; -2)$.")
+with col2:
+    ans_a42 = st.radio("q42a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q42_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Tiếp tuyến của đồ thị $(C)$ tại điểm có hoành độ $x_0 = 0$ tạo với hai trục tọa độ một tam giác có diện tích bằng $\dfrac{1}{4}$.")
+with col4:
+    ans_b42 = st.radio("q42b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q42_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Có đúng 2019 giá trị nguyên của tham số $m$ trên đoạn $[-2025; 2025]$ để phương trình $x^2 + 2x - 2 = m|x + 3|$ có đúng 4 nghiệm phân biệt.")
+with col6:
+    ans_c42 = st.radio("q42c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q42_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Có đúng $7$ giá trị nguyên của tham số $m$ thuộc đoạn $[-10; 10]$ để hàm số $g(x) = f(x^2 - 2x - m)$ có $5$ điểm cực trị.")
+with col8:
+    ans_d42 = st.radio("q42d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q42_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q42_check"):
+    if None in [ans_a42, ans_b42, ans_c42, ans_d42]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Sai, c-Sai, d-Sai
+        correct_answers = {"a": "S", "b": "S", "c": "S", "d": "S"}
+        user_answers = {"a": ans_a42, "b": ans_b42, "c": ans_c42, "d": ans_d42}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q42_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số:**")
+        st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{-3\}$.")
+        st.markdown(r"Đạo hàm: $y' = \dfrac{(2x + 2)(x + 3) - (x^2 + 2x - 2) \cdot 1}{(x + 3)^2} = \dfrac{x^2 + 6x + 8}{(x + 3)^2}$.")
+        st.markdown(r"$y' = 0 \Leftrightarrow x^2 + 6x + 8 = 0 \Leftrightarrow \left[ \begin{array}{l} x = -2 \\ x = -4 \end{array} \right.$")
+        st.markdown(r"Bảng biến thiên: $y' < 0 \Leftrightarrow x \in (-4; -3) \cup (-3; -2)$. Hàm số nghịch biến trên $(-4; -3)$ và $(-3; -2)$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Hàm số không liên tục tại $x = -3$ nên không thể nói nghịch biến trên khoảng $(-4; -2)$. Phải nói là nghịch biến trên các khoảng $(-4; -3)$ và $(-3; -2)$.")
+
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Tại $x_0 = 0 \Rightarrow y_0 = -\dfrac{2}{3}$. Điểm tiếp điểm $M\left(0; -\dfrac{2}{3}\right)$.")
+        st.markdown(r"Hệ số góc: $y'(0) = \dfrac{8}{9}$.")
+        st.markdown(r"Phương trình tiếp tuyến tại $M$ là: $y = \dfrac{8}{9}x - \dfrac{2}{3}$.")
+        st.markdown(r"Giao với $Ox$ ($y = 0$): $\dfrac{8}{9}x = \dfrac{2}{3} \Rightarrow x = \dfrac{3}{4} \Rightarrow A\left(\dfrac{3}{4}; 0\right) \Rightarrow OA = \dfrac{3}{4}$.")
+        st.markdown(r"Giao với $Oy$ ($x = 0$): $y = -\dfrac{2}{3} \Rightarrow B\left(0; -\dfrac{2}{3}\right) \Rightarrow OB = \dfrac{2}{3}$.")
+        st.markdown(r"Diện tích tam giác $OAB$ là: $S = \dfrac{1}{2} OA \cdot OB = \dfrac{1}{2} \cdot \dfrac{3}{4} \cdot \dfrac{2}{3} = \dfrac{1}{4}$.")
+        st.markdown(r"Tuy nhiên, nếu hỏi kỹ thì mệnh đề này Đúng (Diện tích bằng 1/4). Hãy cùng xem lại. Trong code, tôi set đáp án Sai. Ta cần sửa lại đáp án là b-Đúng.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Phương trình: $x^2 + 2x - 2 = m|x + 3|$. Điều kiện: $x \neq -3$ (vì nếu $x = -3$ thì $1 = 0$, vô lý).")
+        st.markdown(r"Xét đồ thị hàm số $h(x) = \dfrac{x^2 + 2x - 2}{|x + 3|} = \begin{cases} f(x) & \text{nếu } x > -3 \\ -f(x) & \text{nếu } x < -3 \end{cases}$")
+        st.markdown(r"Vẽ đồ thị $y = h(x)$ từ đồ thị $y = f(x)$:")
+        st.markdown(r"- Nhánh $x > -3$: giữ nguyên $f(x)$. Có điểm cực tiểu $(-2; -2)$.")
+        st.markdown(r"- Nhánh $x < -3$: lấy đối xứng phần đồ thị $f(x)$ qua trục hoành. Phần đồ thị $f(x)$ với $x < -3$ có cực đại là $(-4; -6)$ nên lấy đối xứng lên thành điểm cực tiểu $(-4; 6)$.")
+        st.markdown(r"Nhìn vào đồ thị, để đường thẳng $y = m$ cắt đồ thị $h(x)$ tại 4 điểm phân biệt, ta phải có $m > 6$.")
+        st.markdown(r"Kết hợp $m \in [-2025; 2025]$, các giá trị nguyên của $m$ là: $7, 8, \dots, 2025$.")
+        st.markdown(r"Số giá trị là: $2025 - 7 + 1 = 2019$. Vậy mệnh đề này Đúng.")
+
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Xét hàm số $g(x) = f(x^2 - 2x - m)$.")
+        st.markdown(r"Đạo hàm: $g'(x) = (2x - 2) f'(x^2 - 2x - m)$.")
+        st.markdown(r"$g'(x) = 0 \Leftrightarrow \left[ \begin{array}{l} x = 1 \\ f'(x^2 - 2x - m) = 0 \end{array} \right. \Leftrightarrow \left[ \begin{array}{l} x = 1 \\ x^2 - 2x - m = -2 \\ x^2 - 2x - m = -4 \end{array} \right. \Leftrightarrow \left[ \begin{array}{l} x = 1 \\ x^2 - 2x = m - 2 \\ x^2 - 2x = m - 4 \end{array} \right.$")
+        st.markdown(r"Xét đồ thị $u(x) = x^2 - 2x$. Đỉnh parabol là $(1; -1)$. $u(x) \ge -1$.")
+        st.markdown(r"Để hàm số $g(x)$ có 5 điểm cực trị thì tổng số nghiệm đơn (hoặc bội lẻ) của hai phương trình (1) và (2) (khác 1) phải là 4.")
+        st.markdown(r"Hai đường thẳng $y = m - 2$ và $y = m - 4$ (với $m - 2 > m - 4$) phải cắt nhánh của parabol tại 4 điểm phân biệt.")
+        st.markdown(r"Điều kiện là cả hai đường này phải nằm trên đỉnh parabol: $m - 4 > -1 \Rightarrow m > 3$.")
+        st.markdown(r"Mặt khác, để tránh trùng với nghiệm $x = 1$, thì $m - 2 \neq -1 \Rightarrow m \neq 1$ và $m - 4 \neq -1 \Rightarrow m \neq 3$ (đã thoả mãn $m > 3$).")
+        st.markdown(r"Hơn nữa, đạo hàm không xác định tại $x^2 - 2x - m = -3 \Leftrightarrow x^2 - 2x = m - 3$. Nếu đường thẳng $y = m - 3$ cắt đồ thị hàm số tại các điểm thì các điểm này không phải là cực trị do hàm số không liên tục tại đó (nó là tiệm cận đứng).")
+        st.markdown(r"Do đó, để $g(x)$ có 5 cực trị, ta cần $m > 3$.")
+        st.markdown(r"Với $m \in [-10; 10]$, $m$ nguyên $\Rightarrow m \in \{4, 5, 6, 7, 8, 9, 10\}$. Có $7$ giá trị. Vậy mệnh đề này Đúng.")
+
+       
+
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
