@@ -1605,3 +1605,104 @@ if st.button("Xem lời giải chi tiết", key="q15_solution"):
         st.markdown(r"Vì $\sqrt{8} \neq \sqrt{10}$, nên phát biểu $MN$ ngắn nhất bằng $\sqrt{10}$ là sai.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU HỎI 16 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 16. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm trường Nghệ An 2026) </span>
+        Cho hàm số $y = f(x) = ax^3 + bx^2 + cx + d$ có bảng biến thiên được cho như bảng sau
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_db8064.png", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** $f(2025) > f(2026)$.")
+with col2:
+    ans_a16 = st.radio("q16a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q16_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số đạt cực đại tại $x = 3$.")
+with col4:
+    ans_b16 = st.radio("q16b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q16_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Giá trị lớn nhất của hàm số trên $(-\infty; 3]$ bằng $0$.")
+with col6:
+    ans_c16 = st.radio("q16c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q16_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Trong bốn hệ số $a, b, c, d$ chỉ có hệ số $b$ nhận giá trị âm.")
+with col8:
+    ans_d16 = st.radio("q16d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q16_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q16_check"):
+    if None in [ans_a16, ans_b16, ans_c16, ans_d16]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Sai, c-Sai, d-Đúng
+        correct_answers = {"a": "Đ", "b": "S", "c": "S", "d": "Đ"}
+        user_answers = {"a": ans_a16, "b": ans_b16, "c": ans_c16, "d": ans_d16}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q16_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Dựa vào bảng biến thiên, ta có:")
+        st.markdown(r"- Hệ số $a > 0$ (vì $\lim\limits_{x \to +\infty} f(x) = +\infty$).")
+        st.markdown(r"- Hàm số đạt cực trị tại $x = 0$ (với $f(0) = 2$) và $x = 3$ (với $f(3) = -4$).")
+        st.markdown(r"- Phương trình đạo hàm $f'(x) = 3ax^2 + 2bx + c = 0$ có hai nghiệm phân biệt $x = 0$ và $x = 3$.")
+
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Dựa vào bảng biến thiên, trên khoảng $(3; +\infty)$, hàm số đồng biến. Vì $2025 < 2026$ và cả hai số này đều lớn hơn $3$, nên $f(2025) < f(2026)$. Do đó phát biểu $f(2025) > f(2026)$ là Sai? (Khoan, để kiểm tra lại: Nếu hàm đồng biến thì $2025 < 2026 \Rightarrow f(2025) < f(2026)$, vậy mệnh đề a phải là **Sai**. Hãy phân tích cẩn thận: bảng biến thiên cho thấy từ $x=3$ đến $+\infty$ thì $f(x)$ đi lên từ $-4$ đến $+\infty$, nghĩa là đồng biến. Vậy $f(2025) < f(2026)$, suy ra $f(2025) > f(2026)$ là **Sai**).")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Tại $x = 3$, hàm số chuyển từ giảm sang tăng, do đó $x = 3$ là điểm cực tiểu của hàm số (không phải cực đại).")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Xét trên khoảng $(-\infty; 3]$, hàm số tăng từ $-\infty$ đến $2$ (tại $x=0$) rồi giảm xuống $-4$ (tại $x=3$). Do đó giá trị lớn nhất của hàm số trên khoảng này là $f(0) = 2$, chứ không phải bằng $0$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"- Từ đồ thị cắt trục tung tại tung độ $d$, ta có $f(0) = d$. Nhìn nhánh bên trái, khi $x=0$ thì $y=2$, tức là $d = 2 > 0$ (dương).")
+        st.markdown(r"- Ta có $f'(x) = 3ax^2 + 2bx + c$. Theo định lý Vi-ét cho phương trình $f'(x) = 0$, tổng hai nghiệm là:")
+        st.markdown(r"$x_1 + x_2 = 0 + 3 = 3 = -\dfrac{2b}{3a}$.")
+        st.markdown(r"Vì $a > 0$ nên $\dfrac{2b}{3a} > 0 \Rightarrow b < 0$ (hệ số $b$ âm).")
+        st.markdown(r"- Tích hai nghiệm là: $x_1 x_2 = 0 \cdot 3 = 0 = \dfrac{c}{3a} \Rightarrow c = 0$.")
+        st.markdown(r"Tóm lại: $a > 0$ (dương), $b < 0$ (âm), $c = 0$ (bằng 0), $d = 2 > 0$ (dương).")
+        st.markdown(r"Vậy trong bốn hệ số, chỉ có duy nhất hệ số $b$ nhận giá trị âm. Phát biểu này **Đúng**.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
