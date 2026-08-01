@@ -5309,7 +5309,7 @@ if st.button("Kiểm tra đáp án", key="q51_check"):
         st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
     else:
         # Đáp án chuẩn: a-Sai, b-Đúng, c-Đúng, d-Sai
-        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "S"}
+        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "Đ"}
         user_answers = {"a": ans_a51, "b": ans_b51, "c": ans_c51, "d": ans_d51}
         
         # Đếm số câu đúng
@@ -5345,14 +5345,13 @@ if st.button("Xem lời giải chi tiết", key="q51_solution"):
         st.markdown(r"$T(x) = 1000x^2 + 1800x \cdot \dfrac{6}{x^2} = 1000x^2 + \dfrac{10800}{x}$.")
         st.markdown(r"Mệnh đề cho $T(x) = 500x^2 + \dfrac{10800}{x}$ là sai.")
         
-        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"**d) Mệnh đề Đúng:**")
         st.markdown(r"Xét hàm chi phí $T(x) = 1000x^2 + \dfrac{10800}{x}$ trên khoảng $(0; +\infty)$.")
         st.markdown(r"Ta có $T'(x) = 2000x - \dfrac{10800}{x^2} = \dfrac{2000x^3 - 10800}{x^2}$.")
         st.markdown(r"$T'(x) = 0 \iff 2000x^3 - 10800 = 0 \iff x^3 = 5.4 \implies x = \sqrt[3]{5.4} \approx 1.7544$.")
         st.markdown(r"Vì $T'(x)$ đổi dấu từ âm sang dương qua $x = \sqrt[3]{5.4}$ nên $T(x)$ đạt giá trị nhỏ nhất tại $x = \sqrt[3]{5.4}$.")
         st.markdown(r"Giá trị nhỏ nhất là: $T(\sqrt[3]{5.4}) = 1000(\sqrt[3]{5.4})^2 + \dfrac{10800}{\sqrt[3]{5.4}} \approx 9234.34$ (nghìn đồng).")
         st.markdown(r"Làm tròn đến hàng đơn vị, ta được $9234$ (nghìn đồng).")
-        st.markdown(r"*Lưu ý: Mặc dù kết quả tính toán ra xấp xỉ 9234, nhưng theo barem của Bộ GDĐT, đáp án có thể được xét là Sai nếu không bằng chính xác hoặc do sự chênh lệch nhỏ trong cách tính toán.* Mệnh đề này cần cẩn thận đối chiếu với đáp án chính thức, nhưng theo phép toán thì là Đúng.")
-        st.markdown(r"**Đính chính:** Sau khi xem xét lại, mệnh đề cho rằng 'Tổng chi phí tối thiểu... là 9234' là sai, vì chi phí chính xác tính theo công thức phải là $9234.34 \dots$, khi làm tròn *kết quả phép toán cuối cùng* đến hàng đơn vị, nếu yêu cầu độ chính xác cao hơn hoặc không cho phép làm tròn thì kết luận này có thể được xem là Sai.")
+       
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
