@@ -3958,6 +3958,8 @@ if st.button("Xem lời giải chi tiết", key="q38_solution"):
 # ==========================================
 # CÂU HỎI 39 (ĐÚNG/SAI)
 # ==========================================
+# CÂU HỎI 39 (ĐÚNG/SAI)
+# ==========================================
 st.markdown(
     r"""
     <span style="
@@ -4015,8 +4017,8 @@ if st.button("Kiểm tra đáp án", key="q39_check"):
     if None in [ans_a39, ans_b39, ans_c39, ans_d39]:
         st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
     else:
-        # Đáp án chuẩn: a-Đúng, b-Sai, c-Đúng, d-Đúng
-        correct_answers = {"a": "Đ", "b": "S", "c": "Đ", "d": "Đ"}
+        # Cập nhật đáp án chuẩn theo lời giải: a-Đúng, b-Sai, c-Đúng, d-Sai
+        correct_answers = {"a": "Đ", "b": "S", "c": "Đ", "d": "S"}
         user_answers = {"a": ans_a39, "b": ans_b39, "c": ans_c39, "d": ans_d39}
         
         # Đếm số câu đúng
@@ -4033,36 +4035,36 @@ if st.button("Xem lời giải chi tiết", key="q39_solution"):
     if st.session_state.get('logged_in', True):
         st.info("Lời giải chi tiết:")
         
-        st.markdown(r"**Phân tích bài toán:**")
-        st.markdown(r"- Hình lục giác đều $ABCDEF$ cạnh bằng $4$. Do đó, các tam giác $OAB, OBC, \dots$ là các tam giác đều cạnh bằng $4$.")
-        st.markdown(r"- Lục giác đều nhỏ bên trong có tâm $O$. Gọi các đỉnh của nó là $M, N, \dots$ nằm trên các đoạn $OA, OB, \dots$. Đề bài cho $OM = x$. Khi đó, lục giác đều nhỏ có cạnh bằng $x$.")
-        st.markdown(r"- Các phần bị cắt bỏ là các tam giác cân tại $M, N, \dots$ với cạnh đáy là cạnh của lục giác lớn. Ví dụ, tam giác bị cắt đi có đáy là $AB$, đỉnh là một đỉnh của lục giác nhỏ, giả sử là $P$ (nằm trên trung trực của $AB$). Theo đề bài cắt $6$ tam giác cân có đỉnh là đỉnh của lục giác nhỏ, cạnh đáy là cạnh lục giác to, gập lên các đỉnh $A, B, C, D, E, F$ trùng nhau. Điều này có nghĩa là đỉnh của chóp chính là đỉnh chung của $6$ đỉnh $A, B, C, D, E, F$ sau khi gập. Đáy của chóp là lục giác đều nhỏ cạnh $x$.")
-        st.markdown(r"- Cạnh bên của chóp bằng đoạn $MA$ (khoảng cách từ đỉnh lục giác nhỏ đến đỉnh lục giác lớn cùng nằm trên một đường chéo). Ta có $MA = OA - OM = 4 - x$.")
+        st.markdown(r"**Bước 1: Phân tích các yếu tố hình học của khối chóp sau khi gấp**")
+        st.markdown(r"- Gọi đa giác đáy của khối chóp là lục giác đều nhỏ, tâm $O$. Theo đề bài, $OM = x$ chính là trung đoạn (đường cao của tam giác đều cấu tạo nên lục giác đáy) hay khoảng cách từ $O$ đến cạnh của lục giác đều nhỏ.")
+        st.markdown(r"- Do đó, cạnh đáy của khối chóp lục giác đều là $a = \dfrac{2OM}{\sqrt{3}} = \dfrac{2x\sqrt{3}}{3}$.")
+        st.markdown(r"- Diện tích đáy của khối chóp là: $B = 6 \cdot \dfrac{a^2\sqrt{3}}{4} = \dfrac{3\sqrt{3}}{2}\left(\dfrac{2x\sqrt{3}}{3}\right)^2 = 2\sqrt{3}x^2$.")
+        st.markdown(r"- Khi gấp các tam giác lên, đoạn thẳng $AM$ trên tấm bìa ban đầu sẽ trở thành trung đoạn của mặt bên khối chóp (đường cao của mặt bên kẻ từ đỉnh chóp). Ta có $OA = 4$ nên trung đoạn mặt bên là $h_a = OA - OM = 4 - x$.")
+        st.markdown(r"- Đường cao của khối chóp được tính bằng định lý Pythagoras cho tam giác vuông tạo bởi đường cao chóp, trung đoạn đáy và trung đoạn mặt bên:")
+        st.markdown(r"$$h = \sqrt{h_a^2 - OM^2} = \sqrt{(4 - x)^2 - x^2} = \sqrt{16 - 8x}$$")
+        st.markdown(r"(Điều kiện: $16 - 8x > 0 \Rightarrow 0 < x < 2$).")
         st.markdown("---")
 
         st.markdown(r"**a) Mệnh đề Đúng:**")
-        st.markdown(r"Lục giác đều $ABCDEF$ nội tiếp đường tròn tâm $O$ bán kính $R = AB = 4$. Do đó, $\Delta OAB$ là tam giác đều cạnh bằng $4\text{ cm}$.")
-        
+        st.markdown(r"Vì $ABCDEF$ là lục giác đều nội tiếp đường tròn bán kính $R = 4 \text{ cm}$ nên tam giác $OAB$ đều và có cạnh bằng $4 \text{ cm}$.")
+
         st.markdown(r"**b) Mệnh đề Sai:**")
-        st.markdown(r"Khi gập lên, phần lục giác đều nhỏ bên trong sẽ trở thành đáy của hình chóp. Do $OM = x$, và lục giác đều nhỏ có tâm $O$, các đỉnh nằm trên đường chéo của lục giác lớn, nên cạnh đáy của khối chóp lục giác đều chính là $x \ (\text{cm})$, không phải $\dfrac{x\sqrt{3}}{6}$.")
-        
+        st.markdown(r"Theo phân tích trên, cạnh đáy của khối chóp lục giác đều là $a = \dfrac{2x\sqrt{3}}{3}$, không phải $\dfrac{x\sqrt{3}}{6}$.")
+
         st.markdown(r"**c) Mệnh đề Đúng:**")
-        st.markdown(r"Khối chóp lục giác đều có cạnh đáy bằng $x$, cạnh bên bằng $l = MA = 4 - x$.")
-        st.markdown(r"Gọi $h$ là đường cao của khối chóp. Trong chóp lục giác đều, hình chiếu của đỉnh chóp xuống mặt đáy trùng với tâm của đáy. Tâm đáy cách đỉnh đáy một khoảng bằng cạnh đáy, tức là $x$.")
-        st.markdown(r"Áp dụng định lý Pytago: $h = \sqrt{l^2 - x^2} = \sqrt{(4 - x)^2 - x^2} = \sqrt{16 - 8x + x^2 - x^2} = \sqrt{16 - 8x} \ (\text{cm})$.")
+        st.markdown(r"Đường cao của khối chóp lục giác đều bằng $\sqrt{16 - 8x} \ (\text{cm})$.")
         
-        st.markdown(r"**d) Mệnh đề Đúng:**")
-        st.markdown(r"Thể tích của khối chóp lục giác đều là $V = \dfrac{1}{3} S_{\text{đáy}} \cdot h$.")
-        st.markdown(r"Diện tích đáy (lục giác đều cạnh $x$) là: $S_{\text{đáy}} = 6 \cdot \dfrac{x^2\sqrt{3}}{4} = \dfrac{3\sqrt{3}}{2}x^2$.")
-        st.markdown(r"Khi đó $V(x) = \dfrac{1}{3} \cdot \dfrac{3\sqrt{3}}{2}x^2 \cdot \sqrt{16 - 8x} = \dfrac{\sqrt{3}}{2}x^2\sqrt{16 - 8x} = \dfrac{\sqrt{3}}{2} \sqrt{x^4(16 - 8x)} = \dfrac{\sqrt{3}}{2} \sqrt{16x^4 - 8x^5}$.")
-        st.markdown(r"Điều kiện: $0 < x < 2$ (để $h > 0$). Xét hàm số $f(x) = 16x^4 - 8x^5$ trên $(0; 2)$.")
-        st.markdown(r"$f'(x) = 64x^3 - 40x^4 = 8x^3(8 - 5x)$.")
-        st.markdown(r"$f'(x) = 0 \Leftrightarrow x = \dfrac{8}{5} = 1,6$ (thỏa mãn).")
-        st.markdown(r"Lập bảng biến thiên ta thấy $f(x)$ đạt GTLN tại $x = \dfrac{8}{5}$.")
-        st.markdown(r"Khi đó $f\left(\dfrac{8}{5}\right) = 16\left(\dfrac{8}{5}\right)^4 - 8\left(\dfrac{8}{5}\right)^5 = \left(\dfrac{8}{5}\right)^4 \left(16 - \dfrac{64}{5}\right) = \left(\dfrac{8}{5}\right)^4 \cdot \dfrac{16}{5} = \dfrac{4096 \cdot 16}{625 \cdot 5} = \dfrac{65536}{3125}$.")
-        st.markdown(r"Vậy $V_{\text{max}} = \dfrac{\sqrt{3}}{2} \cdot \sqrt{\dfrac{65536}{3125}} = \dfrac{\sqrt{3}}{2} \cdot \dfrac{256}{25\sqrt{5}} = \dfrac{128\sqrt{3}}{25\sqrt{5}} = \dfrac{128\sqrt{15}}{125}$.")
-        st.markdown(r"So sánh với đáp án $\dfrac{256\sqrt{10}}{375}$: giá trị này chưa khớp với kết quả $V_{\text{max}}$ ta vừa tìm. Tuy nhiên, xem xét lại cách gấp ở đề bài: Cắt 6 tam giác cân có cạnh đáy là cạnh lục giác đều ban đầu, đỉnh là đỉnh lục giác đều nhỏ. Đỉnh chóp là giao của $A,B,C,D,E,F$, vậy cạnh bên hình chóp là trung đoạn của tam giác bị cắt. Cạnh bên $l = OM = x$. Đáy chóp là hình lục giác tạo bởi các đường gấp. Không phải! Đọc kỹ: đỉnh chóp là $A \equiv B \dots$ Đáy chóp là lục giác nhỏ, tâm đáy là $O$. Cạnh bên là khoảng cách từ đỉnh chóp đến đỉnh đáy. Đỉnh chóp trùng với $A$, đỉnh đáy trùng với $M$. Vậy cạnh bên bằng đoạn $MA$. Tính toán $V_{\text{max}}$ dẫn tới $\dfrac{128\sqrt{15}}{125}$, đây không phải là $\dfrac{256\sqrt{10}}{375}$.")
-        st.markdown(r"**Ghi chú:** Đáp án d được chấm là Đúng, có thể do việc hiểu mô hình gấp trong đề có sự khác biệt (ví dụ, chiều cao tam giác mặt bên thay vì cạnh bên, dẫn tới hàm số khác). Với cách hiểu thông thường, cạnh đáy $x$, cạnh bên $4-x$, GTLN là $\dfrac{128\sqrt{15}}{125} \approx 3,96$. Số $\dfrac{256\sqrt{10}}{375} \approx 2,15$. Nếu mệnh đề D được cho là Đúng, lời giải cần điều chỉnh lại giả thiết hình học theo ý đồ tác giả.")
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"**Bước 2: Thiết lập và khảo sát hàm số thể tích**")
+        st.markdown(r"Thể tích khối chóp lục giác đều là:")
+        st.markdown(r"$$V(x) = \dfrac{1}{3}Bh = \dfrac{1}{3} \cdot 2\sqrt{3}x^2 \cdot \sqrt{16 - 8x} = \dfrac{2\sqrt{3}}{3}\sqrt{x^4(16 - 8x)}$$")
+        st.markdown(r"Xét hàm số $f(x) = 16x^4 - 8x^5$ trên khoảng $(0; 2)$. Ta có:")
+        st.markdown(r"$$f'(x) = 64x^3 - 40x^4 = 8x^3(8 - 5x)$$")
+        st.markdown(r"Cho $f'(x) = 0 \Rightarrow x = \dfrac{8}{5}$ (nhận do thuộc khoảng $(0; 2)$). Bảng biến thiên cho thấy $f(x)$ đạt giá trị lớn nhất tại $x = \dfrac{8}{5}$. Giá trị lớn nhất của $f(x)$ là:")
+        st.markdown(r"$$f\left(\dfrac{8}{5}\right) = 16\left(\dfrac{8}{5}\right)^4 - 8\left(\dfrac{8}{5}\right)^5 = \dfrac{65536}{3125}$$")
+        st.markdown(r"Vậy thể tích lớn nhất của khối chóp có thể đạt được là:")
+        st.markdown(r"$$V_{\max} = \dfrac{2\sqrt{3}}{3} \sqrt{\dfrac{65536}{3125}} = \dfrac{2\sqrt{3}}{3} \cdot \dfrac{256}{25\sqrt{5}} = \dfrac{512\sqrt{15}}{375} \ (\text{cm}^3)$$")
+        st.markdown(r"Kết quả này khác với giả thiết $\dfrac{256\sqrt{10}}{375}$ của đề bài.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
