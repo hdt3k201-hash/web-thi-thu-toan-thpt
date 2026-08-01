@@ -76,7 +76,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-#st.image("image_de1c58.png", use_container_width=True)
+st.image("images/image_de1c58.png", use_container_width=True)
 
 st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
 
