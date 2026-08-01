@@ -6274,3 +6274,199 @@ if st.button("Xem lời giải chi tiết Câu 60", key="q60_solution"):
         st.markdown(r"Điều này vô lý trong thực tế, nhưng theo toán học thì giá trị nhỏ nhất là $0$, không phải $20$. Do đó mệnh đề Sai.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# ==========================================
+# CÂU HỎI 61 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 61. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở TT Huế 2026) </span>
+        Cho hàm số $y = f(x) = \dfrac{x^2 - 5x + 4}{x - 5}$ với $x \neq 5$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** $f'(x) = 1 - \dfrac{4}{(x - 5)^2}$ với mọi $x \neq 5$.")
+with col2:
+    ans_a61 = st.radio("q61a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q61_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Đồ thị hàm số cắt trục hoành tại hai điểm phân biệt.")
+with col4:
+    ans_b61 = st.radio("q61b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q61_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Hàm số đạt cực đại tại $x = 3$.")
+with col6:
+    ans_c61 = st.radio("q61c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q61_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Giá trị cực tiểu bằng $3$.")
+with col8:
+    ans_d61 = st.radio("q61d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q61_d")
+
+if st.button("Kiểm tra đáp án Câu 61", key="q61_check"):
+    if None in [ans_a61, ans_b61, ans_c61, ans_d61]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đ, b-Đ, c-Đ, d-S
+        correct_answers_61 = {"a": "Đ", "b": "Đ", "c": "Đ", "d": "S"}
+        user_answers_61 = {"a": ans_a61, "b": ans_b61, "c": ans_c61, "d": ans_d61}
+        
+        score_61 = sum([1 for k in correct_answers_61 if user_answers_61[k] == correct_answers_61[k]])
+        
+        if score_61 == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score_61}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+if st.button("Xem lời giải chi tiết Câu 61", key="q61_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"**Phân tích hàm số:**")
+        st.markdown(r"Ta có thể viết lại hàm số $y = \dfrac{x^2 - 5x + 4}{x - 5} = \dfrac{x(x - 5) + 4}{x - 5} = x + \dfrac{4}{x - 5}$ với $x \neq 5$.")
+        st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{5\}$.")
+        st.markdown("---")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Đạo hàm: $f'(x) = (x)' + \left(\dfrac{4}{x - 5}\right)' = 1 - \dfrac{4}{(x - 5)^2}$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Phương trình hoành độ giao điểm của đồ thị với trục hoành: $f(x) = 0 \iff x^2 - 5x + 4 = 0$ (điều kiện $x \neq 5$).")
+        st.markdown(r"Phương trình có 2 nghiệm phân biệt là $x = 1$ và $x = 4$ (cả hai đều thoả mãn). Vậy đồ thị cắt trục hoành tại 2 điểm phân biệt.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Xét $f'(x) = 0 \iff 1 - \dfrac{4}{(x - 5)^2} = 0 \iff (x - 5)^2 = 4 \iff x - 5 = 2$ hoặc $x - 5 = -2$.")
+        st.markdown(r"$\implies x = 7$ hoặc $x = 3$.")
+        st.markdown(r"Lập bảng xét dấu $f'(x)$:")
+        st.markdown(r"- Trên khoảng $(-\infty; 3)$: $f'(x) > 0$")
+        st.markdown(r"- Trên khoảng $(3; 5)$: $f'(x) < 0$")
+        st.markdown(r"Hàm số đổi chiều từ đồng biến sang nghịch biến khi qua $x = 3$, do đó đạt cực đại tại $x = 3$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Từ bảng xét dấu, $f'(x) < 0$ trên $(5; 7)$ và $f'(x) > 0$ trên $(7; +\infty)$.")
+        st.markdown(r"Hàm số đạt cực tiểu tại $x = 7$.")
+        st.markdown(r"Giá trị cực tiểu là $f(7) = 7 + \dfrac{4}{7 - 5} = 7 + 2 = 9$. Mệnh đề cho bằng $3$ là sai.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+# ==========================================
+# CÂU HỎI 62 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 62. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Cao Bằng 2026) </span>
+        Cho hàm số $y = f(x) = \dfrac{x^2 + 4x - 1}{x - 1}$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số đã cho có tập xác định là $D = \mathbb{R} \setminus \{1\}$.")
+with col2:
+    ans_a62 = st.radio("q62a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q62_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số đã cho có đạo hàm là $f'(x) = \dfrac{x^2 - 2x - 3}{(x - 1)^2}$.")
+with col4:
+    ans_b62 = st.radio("q62b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q62_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Giá trị nhỏ nhất của hàm số $f(x)$ trên đoạn $[2; 3]$ bằng $7$.")
+with col6:
+    ans_c62 = st.radio("q62c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q62_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Phương trình đường tiệm cận xiên của đồ thị hàm số $f(x)$ là $y = x + 5$.")
+with col8:
+    ans_d62 = st.radio("q62d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q62_d")
+
+if st.button("Kiểm tra đáp án Câu 62", key="q62_check"):
+    if None in [ans_a62, ans_b62, ans_c62, ans_d62]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đ, b-Đ, c-S, d-Đ
+        correct_answers_62 = {"a": "Đ", "b": "Đ", "c": "S", "d": "Đ"}
+        user_answers_62 = {"a": ans_a62, "b": ans_b62, "c": ans_c62, "d": ans_d62}
+        
+        score_62 = sum([1 for k in correct_answers_62 if user_answers_62[k] == correct_answers_62[k]])
+        
+        if score_62 == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score_62}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+if st.button("Xem lời giải chi tiết Câu 62", key="q62_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Hàm số phân thức xác định khi mẫu thức khác $0$, tức là $x - 1 \neq 0 \iff x \neq 1$. Tập xác định là $D = \mathbb{R} \setminus \{1\}$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Áp dụng quy tắc tính đạo hàm $y = \dfrac{u}{v}$, ta có:")
+        st.markdown(r"$f'(x) = \dfrac{(x^2 + 4x - 1)'(x - 1) - (x^2 + 4x - 1)(x - 1)'}{(x - 1)^2}$")
+        st.markdown(r"$f'(x) = \dfrac{(2x + 4)(x - 1) - (x^2 + 4x - 1)}{(x - 1)^2}$")
+        st.markdown(r"$f'(x) = \dfrac{2x^2 - 2x + 4x - 4 - x^2 - 4x + 1}{(x - 1)^2} = \dfrac{x^2 - 2x - 3}{(x - 1)^2}$.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Xét hàm số trên đoạn $[2; 3]$:")
+        st.markdown(r"$f'(x) = 0 \iff x^2 - 2x - 3 = 0 \implies x = -1$ (loại vì không thuộc đoạn) hoặc $x = 3$ (nhận).")
+        st.markdown(r"Tính các giá trị tại hai đầu mút của đoạn:")
+        st.markdown(r"$f(2) = \dfrac{2^2 + 4(2) - 1}{2 - 1} = \dfrac{4 + 8 - 1}{1} = 11$.")
+        st.markdown(r"$f(3) = \dfrac{3^2 + 4(3) - 1}{3 - 1} = \dfrac{9 + 12 - 1}{2} = 10$.")
+        st.markdown(r"Vậy giá trị nhỏ nhất của hàm số trên đoạn $[2; 3]$ là $10$, không phải $7$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Thực hiện phép chia đa thức $x^2 + 4x - 1$ cho $x - 1$:")
+        st.markdown(r"$x^2 + 4x - 1 = x(x - 1) + 5x - 1 = x(x - 1) + 5(x - 1) + 4 = (x + 5)(x - 1) + 4$.")
+        st.markdown(r"Hàm số được viết lại dưới dạng: $y = x + 5 + \dfrac{4}{x - 1}$.")
+        st.markdown(r"Do $\lim_{x \to \pm\infty} \dfrac{4}{x - 1} = 0$, đường thẳng $y = x + 5$ là tiệm cận xiên của đồ thị hàm số.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
