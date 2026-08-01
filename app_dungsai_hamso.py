@@ -6470,3 +6470,159 @@ if st.button("Xem lời giải chi tiết Câu 62", key="q62_solution"):
         st.markdown(r"Do $\lim_{x \to \pm\infty} \dfrac{4}{x - 1} = 0$, đường thẳng $y = x + 5$ là tiệm cận xiên của đồ thị hàm số.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+# ==========================================
+# CÂU HỎI 63 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 63. </span> 
+        Cho hàm số $y = \dfrac{x^2 - x + 1}{x - 1}$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Tập xác định của hàm số là $D = \mathbb{R} \setminus \{1\}$.")
+with col2:
+    ans_a63 = st.radio("q63a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q63_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Đạo hàm của hàm số là $y' = \dfrac{x^2 - 2x}{(x - 1)^2}$.")
+with col4:
+    ans_b63 = st.radio("q63b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q63_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Hàm số đạt cực đại tại $x = 0$ và đạt cực tiểu tại $x = 2$.")
+with col6:
+    ans_c63 = st.radio("q63c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q63_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Phương trình đường tiệm cận xiên của đồ thị hàm số là $y = x$.")
+with col8:
+    ans_d63 = st.radio("q63d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q63_d")
+
+if st.button("Kiểm tra đáp án Câu 63", key="q63_check"):
+    if None in [ans_a63, ans_b63, ans_c63, ans_d63]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đ, b-Đ, c-Đ, d-Đ
+        correct_answers_63 = {"a": "Đ", "b": "Đ", "c": "Đ", "d": "Đ"}
+        user_answers_63 = {"a": ans_a63, "b": ans_b63, "c": ans_c63, "d": ans_d63}
+        
+        score_63 = sum([1 for k in correct_answers_63 if user_answers_63[k] == correct_answers_63[k]])
+        
+        if score_63 == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score_63}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+if st.button("Xem lời giải chi tiết Câu 63", key="q63_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"**a) Mệnh đề Đúng:** Mẫu số $x - 1 \neq 0 \iff x \neq 1$, nên tập xác định $D = \mathbb{R} \setminus \{1\}$.")
+        st.markdown(r"**b) Mệnh đề Đúng:** $y' = \dfrac{(2x - 1)(x - 1) - (x^2 - x + 1)(1)}{(x - 1)^2} = \dfrac{2x^2 - 3x + 1 - x^2 + x - 1}{(x - 1)^2} = \dfrac{x^2 - 2x}{(x - 1)^2}$.")
+        st.markdown(r"**c) Mệnh đề Đúng:** $y' = 0 \iff x^2 - 2x = 0 \iff x = 0$ hoặc $x = 2$. Lập bảng biến thiên ta thấy hàm số đạt cực đại tại $x = 0$ và đạt cực tiểu tại $x = 2$.")
+        st.markdown(r"**d) Mệnh đề Đúng:** Ta viết lại hàm số: $y = \dfrac{x(x - 1) + 1}{x - 1} = x + \dfrac{1}{x - 1}$. Do $\lim_{x \to \pm\infty} \dfrac{1}{x - 1} = 0$, đường thẳng $y = x$ là tiệm cận xiên.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
+# ==========================================
+# CÂU HỎI 64 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 64. </span> 
+        Cho hàm số $y = \dfrac{2x^2 - x + 1}{x + 1}$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Tập xác định của hàm số là $D = \mathbb{R} \setminus \{-1\}$.")
+with col2:
+    ans_a64 = st.radio("q64a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q64_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Đạo hàm của hàm số là $y' = \dfrac{2x^2 + 4x - 2}{(x + 1)^2}$.")
+with col4:
+    ans_b64 = st.radio("q64b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q64_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Đồ thị hàm số có hai điểm cực trị.")
+with col6:
+    ans_c64 = st.radio("q64c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q64_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Phương trình tiệm cận xiên của đồ thị hàm số là $y = 2x - 3$.")
+with col8:
+    ans_d64 = st.radio("q64d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q64_d")
+
+if st.button("Kiểm tra đáp án Câu 64", key="q64_check"):
+    if None in [ans_a64, ans_b64, ans_c64, ans_d64]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đ, b-Đ, c-Đ, d-Đ
+        correct_answers_64 = {"a": "Đ", "b": "Đ", "c": "Đ", "d": "Đ"}
+        user_answers_64 = {"a": ans_a64, "b": ans_b64, "c": ans_c64, "d": ans_d64}
+        
+        score_64 = sum([1 for k in correct_answers_64 if user_answers_64[k] == correct_answers_64[k]])
+        
+        if score_64 == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score_64}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+if st.button("Xem lời giải chi tiết Câu 64", key="q64_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"**a) Mệnh đề Đúng:** Điều kiện $x + 1 \neq 0 \iff x \neq -1$, nên tập xác định $D = \mathbb{R} \setminus \{-1\}$.")
+        st.markdown(r"**b) Mệnh đề Đúng:** $y' = \dfrac{(4x - 1)(x + 1) - (2x^2 - x + 1)(1)}{(x + 1)^2} = \dfrac{4x^2 + 4x - x - 1 - 2x^2 + x - 1}{(x + 1)^2} = \dfrac{2x^2 + 4x - 2}{(x + 1)^2}$.")
+        st.markdown(r"**c) Mệnh đề Đúng:** $y' = 0 \iff 2x^2 + 4x - 2 = 0 \iff x^2 + 2x - 1 = 0$ có hai nghiệm phân biệt và đổi dấu qua các nghiệm đó, nên đồ thị hàm số có hai điểm cực trị.")
+        st.markdown(r"**d) Mệnh đề Đúng:** Thực hiện phép chia đa thức: $2x^2 - x + 1 = (2x - 3)(x + 1) + 4$. Do đó $y = 2x - 3 + \dfrac{4}{x + 1}$, suy ra đường tiệm cận xiên là $y = 2x - 3$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
