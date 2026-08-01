@@ -1811,3 +1811,99 @@ if st.button("Xem lời giải chi tiết", key="q17_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+# CÂU HỎI 18 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 18. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Thọ Xuân 5-Thanh Hóa 2026) </span>
+        Cho hàm số $y = f(x)$ có bảng biến thiên như sau.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_db0ca7.PNG", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số đồng biến trên khoảng $(-\infty; -2)$.")
+with col2:
+    ans_a18 = st.radio("q18a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q18_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Biết rằng hàm số $y = f(x)$ có đồ thị đi qua điểm $A(1; 3)$ và đạt giá trị nhỏ nhất trên đoạn $[-1; 2]$ tại $x = 1$. Khi đó: $f(-1) + f(2) - 2f(1) > 0$.")
+with col4:
+    ans_b18 = st.radio("q18b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q18_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Hàm số $y = f(x)$ có 2 điểm cực tiểu.")
+with col6:
+    ans_c18 = st.radio("q18c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q18_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Hàm số đạt cực đại tại $x = 2$.")
+with col8:
+    ans_d18 = st.radio("q18d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q18_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q18_check"):
+    if None in [ans_a18, ans_b18, ans_c18, ans_d18]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Đúng, c-Sai, d-Sai
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "S", "d": "S"}
+        user_answers = {"a": ans_a18, "b": ans_b18, "c": ans_c18, "d": ans_d18}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q18_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Dựa vào bảng biến thiên, ta thấy trên khoảng $(-\infty; -1)$, đạo hàm $f'(x) > 0$. Vì khoảng $(-\infty; -2)$ là tập con của $(-\infty; -1)$ nên $f'(x) > 0$ trên $(-\infty; -2)$. Do đó, hàm số đồng biến trên khoảng $(-\infty; -2)$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Hàm số đạt giá trị nhỏ nhất trên đoạn $[-1; 2]$ tại $x = 1$. Suy ra $f(1)$ là giá trị nhỏ nhất trên đoạn này.")
+        st.markdown(r"Do đó, ta có $f(-1) > f(1)$ và $f(2) > f(1)$.")
+        st.markdown(r"Cộng vế theo vế hai bất phương trình ta được: $f(-1) + f(2) > 2f(1) \implies f(-1) + f(2) - 2f(1) > 0$.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Quan sát dấu của $f'(x)$ từ bảng biến thiên:")
+        st.markdown(r"- Tại $x = -1$, $f'(x)$ đổi dấu từ $(+)$ sang $(-)$ nên $x = -1$ là điểm cực đại.")
+        st.markdown(r"- Tại $x = 1$, $f'(x)$ đổi dấu từ $(-)$ sang $(+)$ nên $x = 1$ là điểm cực tiểu.")
+        st.markdown(r"- Tại $x = 2$, $f'(x) = 0$ nhưng không đổi dấu (vẫn giữ dấu $(+)$) nên $x = 2$ không phải là điểm cực trị.")
+        st.markdown(r"Vậy hàm số chỉ có đúng **1** điểm cực tiểu.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Như đã phân tích ở câu c, tại $x = 2$ đạo hàm $f'(x)$ không đổi dấu khi đi qua điểm này. Do đó, hàm số không đạt cực trị (không đạt cực đại cũng không đạt cực tiểu) tại $x = 2$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
