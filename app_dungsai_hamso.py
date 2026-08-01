@@ -371,7 +371,22 @@ if st.button("Xem lời giải chi tiết", key="q3_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
-# CÂU HỎI 4 (ĐÚNG/SAI)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # CÂU HỎI 4 (ĐÚNG/SAI)
 st.markdown(
     r"""
     <span style="
@@ -429,8 +444,8 @@ if st.button("Kiểm tra đáp án", key="q4_check"):
     if None in [ans_a4, ans_b4, ans_c4, ans_d4]:
         st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
     else:
-        # Đáp án chuẩn: a-Đúng, b-Đúng, c-Sai, d-Đúng
-        correct_answers = {"a": "Đ", "b": "Đ", "c": "S", "d": "Đ"}
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Sai, d-Đúng
+        correct_answers = {"a": "S", "b": "Đ", "c": "S", "d": "Đ"}
         user_answers = {"a": ans_a4, "b": ans_b4, "c": ans_c4, "d": ans_d4}
         
         # Đếm số câu đúng
@@ -459,9 +474,8 @@ if st.button("Xem lời giải chi tiết", key="q4_solution"):
         st.markdown(r"  Vậy hàm số là $f(x) = -x^3 + 3x$.")
         st.markdown("---")
 
-        st.markdown(r"**a) Mệnh đề Đúng:**")
-        st.markdown(r"Trong 4 giá trị $a = -1, b = 0, c = 3, d = 0$, có đúng 2 giá trị bằng $0$ là $b$ và $d$. **(Lưu ý: Mệnh đề a ghi là "có đúng một giá trị bằng 0", do đó mệnh đề này là Sai. Ở trên setup Đ/S đang để là Đ, ta cần sửa lại)**.")
-        st.markdown(r"*Đính chính: Trong 4 giá trị a,b,c,d có $b=0, d=0$ nên có 2 giá trị bằng 0. Mệnh đề a là SAI.*")
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Trong 4 giá trị $a = -1, b = 0, c = 3, d = 0$, có tới 2 giá trị bằng $0$ là $b$ và $d$. Do đó mệnh đề phát biểu có đúng một giá trị bằng $0$ là **Sai**.")
         
         st.markdown(r"**b) Mệnh đề Đúng:**")
         st.markdown(r"Hàm số $f(x) = -x^3 + 3x$ có tập xác định là $D = \mathbb{R}$.")
@@ -469,11 +483,10 @@ if st.button("Xem lời giải chi tiết", key="q4_solution"):
         st.markdown(r"Vậy $f(x)$ là hàm số lẻ.")
         
         st.markdown(r"**c) Mệnh đề Sai:**")
-        st.markdown(r"Điểm cực tiểu của đồ thị hàm số là điểm $(-1; -2)$. $x=-1$ là điểm cực tiểu của hàm số.")
+        st.markdown(r"Điểm cực tiểu của đồ thị hàm số là điểm $(-1; -2)$. Còn $x = -1$ là hoành độ cực tiểu.")
         
         st.markdown(r"**d) Mệnh đề Đúng:**")
         st.markdown(r"Đường thẳng $y = \dfrac{2025}{2026}$ là đường thẳng song song với trục hoành.")
-        st.markdown(r"Vì $-2 < \dfrac{2025}{2026} < 2$ (giá trị cực tiểu và giá trị cực đại), đường thẳng $y = \dfrac{2025}{2026}$ cắt đồ thị hàm số $y = f(x)$ tại 3 điểm phân biệt.")
-        st.markdown(r"Do đó phương trình $f(x) = \dfrac{2025}{2026}$ có 3 nghiệm thực.")
+        st.markdown(r"Vì $-2 < \dfrac{2025}{2026} < 2$, đường thẳng cắt đồ thị hàm số tại 3 điểm phân biệt, nên phương trình có 3 nghiệm thực.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
