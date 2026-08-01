@@ -4351,7 +4351,7 @@ if st.button("Kiểm tra đáp án", key="q42_check"):
         st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
     else:
         # Đáp án chuẩn: a-Sai, b-Sai, c-Sai, d-Sai
-        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "S"}
+        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "Đ"}
         user_answers = {"a": ans_a42, "b": ans_b42, "c": ans_c42, "d": ans_d42}
         
         # Đếm số câu đúng
@@ -4397,7 +4397,7 @@ if st.button("Xem lời giải chi tiết", key="q42_solution"):
         st.markdown(r"Kết hợp $m \in [-2025; 2025]$, các giá trị nguyên của $m$ là: $7, 8, \dots, 2025$.")
         st.markdown(r"Số giá trị là: $2025 - 7 + 1 = 2019$. Vậy mệnh đề này Đúng.")
 
-        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"**d) Mệnh đề Đúng:**")
         st.markdown(r"Xét hàm số $g(x) = f(x^2 - 2x - m)$.")
         st.markdown(r"Đạo hàm: $g'(x) = (2x - 2) f'(x^2 - 2x - m)$.")
         st.markdown(r"$g'(x) = 0 \Leftrightarrow \left[ \begin{array}{l} x = 1 \\ f'(x^2 - 2x - m) = 0 \end{array} \right. \Leftrightarrow \left[ \begin{array}{l} x = 1 \\ x^2 - 2x - m = -2 \\ x^2 - 2x - m = -4 \end{array} \right. \Leftrightarrow \left[ \begin{array}{l} x = 1 \\ x^2 - 2x = m - 2 \\ x^2 - 2x = m - 4 \end{array} \right.$")
