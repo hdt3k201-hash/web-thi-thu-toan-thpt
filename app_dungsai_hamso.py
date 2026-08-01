@@ -873,3 +873,100 @@ if st.button("Xem lời giải chi tiết", key="q8_solution"):
         st.markdown(r"**d) Mệnh đề Sai:** Đường tiệm cận đứng của đồ thị hàm số là đường thẳng $x = 5$, không phải $y = 5$. (Phương trình $y = c$ là dạng của tiệm cận ngang).")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# CÂU HỎI 9 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 9. </span> 
+        <span style="color: #009900; font-weight: bold;">(Chuyên Vinh 2026) </span>
+        Cho hàm số $f(x) = \dfrac{3x + 1}{x + 4}$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số $f(x)$ có đạo hàm là $f'(x) = \dfrac{11}{(x + 4)^2}$.")
+with col2:
+    ans_a9 = st.radio("q9a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q9_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Với $x_1; x_2 \in \mathbb{R}$ thỏa mãn $x_1 < -4 < x_2$ thì $f(x_1) < f(x_2)$.")
+with col4:
+    ans_b9 = st.radio("q9b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q9_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Tọa độ giao điểm của hai đường tiệm cận của đồ thị hàm số là: $(3; -4)$.")
+with col6:
+    ans_c9 = st.radio("q9c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q9_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Giá trị nhỏ nhất của hàm số $f(x)$ trên đoạn $[0; 1]$ bằng $\dfrac{1}{4}$.")
+with col8:
+    ans_d9 = st.radio("q9d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q9_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q9_check"):
+    if None in [ans_a9, ans_b9, ans_c9, ans_d9]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Sai, c-Sai, d-Đúng
+        correct_answers = {"a": "Đ", "b": "S", "c": "S", "d": "Đ"}
+        user_answers = {"a": ans_a9, "b": ans_b9, "c": ans_c9, "d": ans_d9}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q9_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{-4\}$.")
+        st.markdown(r"Tính đạo hàm: $f'(x) = \dfrac{3 \cdot 4 - 1 \cdot 1}{(x + 4)^2} = \dfrac{11}{(x + 4)^2}$.")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Ta có $f'(x) > 0, \forall x \neq -4$, nên hàm số đồng biến trên các khoảng $(-\infty; -4)$ và $(-4; +\infty)$. Tuy nhiên, nó không đồng biến trên $\mathbb{R} \setminus \{-4\}$.")
+        st.markdown(r"Giới hạn tại tiệm cận: $\lim\limits_{x \to -4^-} f(x) = +\infty$ và $\lim\limits_{x \to -4^+} f(x) = -\infty$.")
+        st.markdown(r"Vì vậy, khi $x_1 < -4 < x_2$, ta có thể thấy $f(x_1)$ mang giá trị rất lớn (dương) và $f(x_2)$ mang giá trị rất bé (âm).")
+        st.markdown(r"Ví dụ: Chọn $x_1 = -5 \Rightarrow f(-5) = \dfrac{3(-5) + 1}{-5 + 4} = 14$. Chọn $x_2 = 0 \Rightarrow f(0) = \dfrac{1}{4}$. Rõ ràng $f(-5) > f(0)$.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Đồ thị hàm số có đường tiệm cận đứng là $x = -4$ (nghiệm của mẫu).")
+        st.markdown(r"Đường tiệm cận ngang là $y = \dfrac{3}{1} = 3$ (tỉ số các hệ số của $x$).")
+        st.markdown(r"Tọa độ giao điểm của hai đường tiệm cận là $I(-4; 3)$, không phải $(3; -4)$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Hàm số xác định và liên tục trên đoạn $[0; 1]$.")
+        st.markdown(r"Vì $f'(x) > 0$ với mọi $x \in [0; 1]$ nên hàm số đồng biến trên đoạn này.")
+        st.markdown(r"Do đó, giá trị nhỏ nhất của hàm số đạt được tại đầu mút bên trái: $\min\limits_{[0; 1]} f(x) = f(0) = \dfrac{3(0) + 1}{0 + 4} = \dfrac{1}{4}$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
