@@ -3159,3 +3159,100 @@ if st.button("Xem lời giải chi tiết", key="q30_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+# CÂU HỎI 31 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 31. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Ninh Bình 2026) </span>
+        Cho hàm số $y = \dfrac{x^2 + x + 1}{x + 1}$
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_d08fde.PNG", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số có tập xác định là $D = \mathbb{R}$.")
+with col2:
+    ans_a31 = st.radio("q31a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q31_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** $y' = \dfrac{x^2 + 2x}{(x + 1)^2}, \forall x \neq -1$.")
+with col4:
+    ans_b31 = st.radio("q31b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q31_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Hàm số có bảng biến thiên như hình trên.")
+with col6:
+    ans_c31 = st.radio("q31c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q31_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Khoảng cách giữa 2 điểm cực trị của đồ thị hàm số là $2\sqrt{5}$.")
+with col8:
+    ans_d31 = st.radio("q31d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q31_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q31_check"):
+    if None in [ans_a31, ans_b31, ans_c31, ans_d31]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Đúng, d-Đúng
+        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "Đ"}
+        user_answers = {"a": ans_a31, "b": ans_b31, "c": ans_c31, "d": ans_d31}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q31_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số:**")
+        st.markdown(r"- Điều kiện xác định: $x + 1 \neq 0 \Leftrightarrow x \neq -1$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Hàm số có điều kiện là mẫu số khác không ($x \neq -1$). Do đó, tập xác định của hàm số là $D = \mathbb{R} \setminus \{-1\}$, chứ không phải $D = \mathbb{R}$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Áp dụng quy tắc đạo hàm của thương $\left(\dfrac{u}{v}\right)' = \dfrac{u'v - uv'}{v^2}$:")
+        st.markdown(r"$y' = \dfrac{(2x + 1)(x + 1) - (x^2 + x + 1) \cdot 1}{(x + 1)^2} = \dfrac{2x^2 + 3x + 1 - x^2 - x - 1}{(x + 1)^2} = \dfrac{x^2 + 2x}{(x + 1)^2}$.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Giải phương trình $y' = 0 \Leftrightarrow x^2 + 2x = 0 \Leftrightarrow \left[ \begin{array}{l} x = 0 \\ x = -2 \end{array} \right.$.")
+        st.markdown(r"Tính các giá trị: $y(0) = \dfrac{0 + 0 + 1}{0 + 1} = 1$ và $y(-2) = \dfrac{4 - 2 + 1}{-2 + 1} = -3$. Các khoảng đơn điệu và giới hạn khớp hoàn toàn với bảng biến thiên đã cho.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Đồ thị hàm số có hai điểm cực trị là điểm cực đại $A(-2; -3)$ và điểm cực tiểu $B(0; 1)$.")
+        st.markdown(r"Khoảng cách giữa hai điểm này là: $AB = \sqrt{(0 - (-2))^2 + (1 - (-3))^2} = \sqrt{2^2 + 4^2} = \sqrt{4 + 16} = \sqrt{20} = 2\sqrt{5}$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
