@@ -5867,3 +5867,176 @@ if st.button("Xem lời giải chi tiết Câu 56", key="q56_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+
+
+
+# ==========================================
+# CÂU HỎI 57 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 57. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Trần Phú - Phú Thọ 2026) </span>
+        Cho hàm số $y = \dfrac{x^2 - 2x + 2}{x - 1}$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Đạo hàm của hàm số là $y' = \dfrac{x^2 - 2x}{x + 1}$.")
+with col2:
+    ans_a57 = st.radio("q57a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q57_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Giá trị cực đại của hàm số bằng $-2$.")
+with col4:
+    ans_b57 = st.radio("q57b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q57_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Đường thẳng đi qua hai điểm cực trị của đồ thị hàm số đã cho có phương trình là $y = 2x - 2$.")
+with col6:
+    ans_c57 = st.radio("q57c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q57_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Điểm cực tiểu của hàm số bằng $0$.")
+with col8:
+    ans_d57 = st.radio("q57d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q57_d")
+
+if st.button("Kiểm tra đáp án Câu 57", key="q57_check"):
+    if None in [ans_a57, ans_b57, ans_c57, ans_d57]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-S, b-Đ, c-Đ, d-S 
+        correct_answers_57 = {"a": "S", "b": "Đ", "c": "Đ", "d": "S"}
+        user_answers_57 = {"a": ans_a57, "b": ans_b57, "c": ans_c57, "d": ans_d57}
+        
+        score_57 = sum([1 for k in correct_answers_57 if user_answers_57[k] == correct_answers_57[k]])
+        
+        if score_57 == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score_57}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+if st.button("Xem lời giải chi tiết Câu 57", key="q57_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"Hàm số: $y = \dfrac{x^2 - 2x + 2}{x - 1}$. Tập xác định: $D = \mathbb{R} \setminus \{1\}$.")
+        st.markdown(r"Ta có thể viết lại hàm số dưới dạng: $y = \dfrac{x(x - 1) - (x - 1) + 1}{x - 1} = x - 1 + \dfrac{1}{x - 1}$.")
+        st.markdown(r"Đạo hàm: $y' = 1 - \dfrac{1}{(x - 1)^2} = \dfrac{(x - 1)^2 - 1}{(x - 1)^2} = \dfrac{x^2 - 2x}{(x - 1)^2}$.")
+        st.markdown(r"$y' = 0 \iff x^2 - 2x = 0 \iff x = 0$ hoặc $x = 2$.")
+        st.markdown(r"Với $x = 0 \implies y = -2$. (Hàm số đạt cực đại tại $x=0$)")
+        st.markdown(r"Với $x = 2 \implies y = 2$. (Hàm số đạt cực tiểu tại $x=2$)")
+        st.markdown("---")
+        
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Theo tính toán, đạo hàm là $y' = \dfrac{x^2 - 2x}{(x - 1)^2}$. Mẫu số trong phát biểu là $x + 1$ là không chính xác.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Lập bảng biến thiên ta thấy $y'$ đổi dấu từ dương sang âm khi qua $x = 0$. Vậy hàm số đạt cực đại tại $x = 0$, giá trị cực đại là $y_{CĐ} = -2$.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Đường thẳng đi qua 2 điểm cực trị của hàm phân thức $y = \dfrac{u(x)}{v(x)}$ có phương trình là $y = \dfrac{u'(x)}{v'(x)}$.")
+        st.markdown(r"Áp dụng vào bài toán: $y = \dfrac{(x^2 - 2x + 2)'}{(x - 1)'} = \dfrac{2x - 2}{1} = 2x - 2$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Hàm số đạt cực tiểu tại điểm $x = 2$, và giá trị cực tiểu (thường gọi tắt là điểm cực tiểu của hàm số) là $y_{CT} = 2$. Mệnh đề cho bằng $0$ là sai.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+st.markdown("---")
+
+# ==========================================
+# CÂU HỎI 58 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 58. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Trần Phú - Phú Thọ 2026) </span>
+        Cho hàm số $y = \dfrac{x^2 - 2x + 2}{x - 1}$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+st.info("Lưu ý: Nội dung câu 58 (Câu 70 trong ảnh) hoàn toàn giống với câu 57 (Câu 69 trong ảnh).")
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Đạo hàm của hàm số là $y' = \dfrac{x^2 - 2x}{x + 1}$.")
+with col2:
+    ans_a58 = st.radio("q58a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q58_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Giá trị cực đại của hàm số bằng $-2$.")
+with col4:
+    ans_b58 = st.radio("q58b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q58_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Đường thẳng đi qua hai điểm cực trị của đồ thị hàm số đã cho có phương trình là $y = 2x - 2$.")
+with col6:
+    ans_c58 = st.radio("q58c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q58_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Điểm cực tiểu của hàm số bằng $0$.")
+with col8:
+    ans_d58 = st.radio("q58d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q58_d")
+
+if st.button("Kiểm tra đáp án Câu 58", key="q58_check"):
+    if None in [ans_a58, ans_b58, ans_c58, ans_d58]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn tương tự câu 57: a-S, b-Đ, c-Đ, d-S
+        correct_answers_58 = {"a": "S", "b": "Đ", "c": "Đ", "d": "S"}
+        user_answers_58 = {"a": ans_a58, "b": ans_b58, "c": ans_c58, "d": ans_d58}
+        
+        score_58 = sum([1 for k in correct_answers_58 if user_answers_58[k] == correct_answers_58[k]])
+        
+        if score_58 == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score_58}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+if st.button("Xem lời giải chi tiết Câu 58", key="q58_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết hoàn toàn giống với Câu 57. Vui lòng xem lại phần giải thích chi tiết ở Câu 57 phía trên.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
