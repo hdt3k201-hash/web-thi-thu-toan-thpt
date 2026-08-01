@@ -3850,3 +3850,108 @@ if st.button("Xem lời giải chi tiết", key="q37_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+# ==========================================
+# CÂU HỎI 38 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 38. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm trường Nghệ An 2026) </span>
+        Cho hàm số $y = f(x) = ax^3 + bx^2 + cx + d$ có bảng biến thiên như sau:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_c0a340.png", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số có hệ số $a < 0$.")
+with col2:
+    ans_a38 = st.radio("q38a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q38_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Đồ thị hàm số đi qua hai điểm $(1; 2)$, $(3; 4)$.")
+with col4:
+    ans_b38 = st.radio("q38b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q38_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** $f'(x) = 0$ tại các giá trị $x = 2$, $x = 4$.")
+with col6:
+    ans_c38 = st.radio("q38c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q38_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Giá trị nhỏ nhất của hàm số trên $[2; 4]$ bằng $\dfrac{7}{2}$.")
+with col8:
+    ans_d38 = st.radio("q38d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q38_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q38_check"):
+    if None in [ans_a38, ans_b38, ans_c38, ans_d38]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Đúng, c-Sai, d-Sai
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "S", "d": "S"}
+        user_answers = {"a": ans_a38, "b": ans_b38, "c": ans_c38, "d": ans_d38}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q38_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số từ bảng biến thiên:**")
+        st.markdown(r"- Dựa vào bảng biến thiên, ta thấy $\lim_{x \to +\infty} y = -\infty$, do đó hệ số $a < 0$.")
+        st.markdown(r"- Đồ thị hàm số đạt cực tiểu tại $x = 1, y = 2$ và đạt cực đại tại $x = 3, y = 4$.")
+        st.markdown(r"Ta có hệ phương trình:")
+        st.markdown(r"$\begin{cases} f'(1) = 0 \\ f'(3) = 0 \\ f(1) = 2 \\ f(3) = 4 \end{cases} \Leftrightarrow \begin{cases} 3a + 2b + c = 0 \\ 27a + 6b + c = 0 \\ a + b + c + d = 2 \\ 27a + 9b + 3c + d = 4 \end{cases} \Leftrightarrow \begin{cases} a = -\dfrac{1}{2} \\ b = 3 \\ c = -\dfrac{9}{2} \\ d = 4 \end{cases}$")
+        st.markdown(r"Vậy hàm số cần tìm là $f(x) = -\dfrac{1}{2}x^3 + 3x^2 - \dfrac{9}{2}x + 4$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Như phân tích ở trên, nhánh cuối của đồ thị đi xuống (hoặc $\lim_{x \to +\infty} f(x) = -\infty$) nên $a < 0$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Từ bảng biến thiên, tại $x = 1$ thì $y = 2$ và tại $x = 3$ thì $y = 4$. Do đó đồ thị đi qua hai điểm $(1; 2)$ và $(3; 4)$.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Bảng biến thiên cho thấy $f'(x) = 0$ tại $x = 1$ và $x = 3$, không phải $x = 2$ và $x = 4$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Xét hàm số $f(x) = -\dfrac{1}{2}x^3 + 3x^2 - \dfrac{9}{2}x + 4$ trên đoạn $[2; 4]$.")
+        st.markdown(r"Ta có $f'(x) = -\dfrac{3}{2}x^2 + 6x - \dfrac{9}{2}$. $f'(x) = 0 \Leftrightarrow x = 1 \notin [2; 4]$ hoặc $x = 3 \in [2; 4]$.")
+        st.markdown(r"Tính các giá trị: $f(2) = -\dfrac{1}{2}(8) + 3(4) - \dfrac{9}{2}(2) + 4 = 3$.")
+        st.markdown(r"$f(3) = 4$.")
+        st.markdown(r"$f(4) = -\dfrac{1}{2}(64) + 3(16) - \dfrac{9}{2}(4) + 4 = -32 + 48 - 18 + 4 = 2$.")
+        st.markdown(r"Vậy giá trị nhỏ nhất của hàm số trên đoạn $[2; 4]$ là $2$, không phải $\dfrac{7}{2}$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
