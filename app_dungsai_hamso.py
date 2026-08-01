@@ -4068,3 +4068,111 @@ if st.button("Xem lời giải chi tiết", key="q39_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+# ==========================================
+# CÂU HỎI 40 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 40. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Bãi Cháy - Quảng Ninh 2026) </span>
+        Nhà máy $A$ chuyên sản xuất một loại sản phẩm cho nhà máy $B$. Hai nhà máy thỏa thuận rằng, hàng tháng nhà máy $A$ cung cấp cho nhà máy $B$ số lượng sản phẩm theo đơn đặt hàng của nhà máy $B$ (tối đa 100 tấn sản phẩm). Biết rằng, nếu số lượng đặt hàng là $x$ (tấn) sản phẩm thì giá bán cho mỗi tấn sản phẩm là $P(x) = 45 - 0,001x^2$ (triệu đồng) và chi phí để nhà máy $A$ sản xuất được $x$ (tấn) sản phẩm trong một tháng là $C(x) = 100 + 30x$ (triệu đồng, gồm 100 triệu đồng chi phí cố định và 30 triệu đồng cho mỗi tấn sản phẩm).
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Số tiền nhà máy $A$ thu được khi bán 10 tấn sản phẩm cho nhà máy $B$ là 500 triệu đồng.")
+with col2:
+    ans_a40 = st.radio("q40a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q40_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Nhà máy $A$ bán cho nhà máy $B$ là 70 tấn sản phẩm mỗi tháng thì thu được lợi nhuận lớn nhất.")
+with col4:
+    ans_b40 = st.radio("q40b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q40_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Chi phí để nhà máy $A$ sản xuất 10 tấn sản phẩm trong một tháng là 400 triệu đồng.")
+with col6:
+    ans_c40 = st.radio("q40c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q40_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Lợi nhuận nhà máy $A$ thu được khi bán $x$ (tấn) sản phẩm ($0 \le x \le 100$) cho nhà máy $B$ là $H(x) = -0,001x^3 + 15x - 100$ (triệu đồng).")
+with col8:
+    ans_d40 = st.radio("q40d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q40_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q40_check"):
+    if None in [ans_a40, ans_b40, ans_c40, ans_d40]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Sai, c-Đúng, d-Đúng
+        correct_answers = {"a": "S", "b": "S", "c": "Đ", "d": "Đ"}
+        user_answers = {"a": ans_a40, "b": ans_b40, "c": ans_c40, "d": ans_d40}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q40_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"- Gọi $x$ là số tấn sản phẩm bán ra ($0 \le x \le 100$).")
+        st.markdown(r"- Doanh thu thu được khi bán $x$ tấn sản phẩm là: $R(x) = x \cdot P(x) = x(45 - 0,001x^2) = 45x - 0,001x^3$ (triệu đồng).")
+        st.markdown(r"- Chi phí sản xuất $x$ tấn sản phẩm là: $C(x) = 100 + 30x$ (triệu đồng).")
+        st.markdown(r"- Hàm lợi nhuận là: $H(x) = R(x) - C(x) = (45x - 0,001x^3) - (100 + 30x) = -0,001x^3 + 15x - 100$ (triệu đồng).")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Số tiền thu được (doanh thu) khi bán 10 tấn sản phẩm là $R(10)$.")
+        st.markdown(r"$R(10) = 10 \cdot (45 - 0,001 \cdot 10^2) = 10 \cdot (45 - 0,1) = 10 \cdot 44,9 = 449$ (triệu đồng).")
+        st.markdown(r"Kết quả này khác $500$ triệu đồng.")
+
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Chi phí sản xuất 10 tấn sản phẩm là: $C(10) = 100 + 30 \cdot 10 = 100 + 300 = 400$ (triệu đồng).")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Như phân tích ban đầu, hàm lợi nhuận thu được là $H(x) = -0,001x^3 + 15x - 100$. Mệnh đề này hoàn toàn chính xác.")
+
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Xét hàm lợi nhuận $H(x) = -0,001x^3 + 15x - 100$ trên đoạn $[0; 100]$.")
+        st.markdown(r"Đạo hàm: $H'(x) = -0,003x^2 + 15$.")
+        st.markdown(r"$H'(x) = 0 \Leftrightarrow -0,003x^2 + 15 = 0 \Leftrightarrow x^2 = 5000 \Rightarrow x = 50\sqrt{2} \approx 70,71$ (nhận do $x \in [0; 100]$).")
+        st.markdown(r"Lập bảng biến thiên, ta thấy $H(x)$ đồng biến trên $(0; 50\sqrt{2})$ và nghịch biến trên $(50\sqrt{2}; 100)$. Do đó, lợi nhuận đạt lớn nhất tại $x = 50\sqrt{2} \approx 70,71$.")
+        st.markdown(r"Nếu tính sản lượng theo đơn vị tấn chẵn (số nguyên), ta cần so sánh lợi nhuận tại $x = 70$ và $x = 71$:")
+        st.markdown(r"- $H(70) = -0,001 \cdot 70^3 + 15 \cdot 70 - 100 = 607$ (triệu đồng).")
+        st.markdown(r"- $H(71) = -0,001 \cdot 71^3 + 15 \cdot 71 - 100 = 607,089$ (triệu đồng).")
+        st.markdown(r"Vì $H(71) > H(70)$, lợi nhuận khi bán 71 tấn lớn hơn bán 70 tấn. Do đó, khẳng định bán 70 tấn sản phẩm thu lợi nhuận lớn nhất là sai.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
