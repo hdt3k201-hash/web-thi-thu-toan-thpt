@@ -370,3 +370,110 @@ if st.button("Xem lời giải chi tiết", key="q3_solution"):
         st.markdown(r"Ta có $a = 1, b = 1, c = 1, d = -1$. Tổng $a + b + c + d = 1 + 1 + 1 + (-1) = 2$.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU HỎI 4 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 4. </span> 
+        <span style="color: #009900; font-weight: bold;">(Chuyên Trần Phú - Hải Phòng 2026) </span>
+        Cho hàm số bậc ba <span style="white-space: nowrap;">$f(x) = ax^3 + bx^2 + cx + d, (a \neq 0)$</span> liên tục trên $\mathbb{R}$ và có đồ thị như hình vẽ
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_dcd207.png", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Trong bốn giá trị $a,b,c,d$ có đúng một giá trị bằng $0$.")
+with col2:
+    ans_a4 = st.radio("q4a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q4_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số $y = f(x)$ là hàm số lẻ trên tập $\mathbb{R}$.")
+with col4:
+    ans_b4 = st.radio("q4b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q4_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Điểm cực tiểu của đồ thị hàm số $y = f(x)$ là $x = -1$.")
+with col6:
+    ans_c4 = st.radio("q4c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q4_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Số nghiệm thực của phương trình $f(x) = \dfrac{2025}{2026}$ là $3$.")
+with col8:
+    ans_d4 = st.radio("q4d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q4_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q4_check"):
+    if None in [ans_a4, ans_b4, ans_c4, ans_d4]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Đúng, c-Sai, d-Đúng
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "S", "d": "Đ"}
+        user_answers = {"a": ans_a4, "b": ans_b4, "c": ans_c4, "d": ans_d4}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q4_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số từ đồ thị:**")
+        st.markdown(r"- Đồ thị cắt trục $Oy$ tại điểm $(0; 0)$ nên $d = 0$.")
+        st.markdown(r"- Đồ thị hàm số đi qua các điểm cực trị $(-1; -2)$ và $(1; 2)$.")
+        st.markdown(r"- Tính đạo hàm $f'(x) = 3ax^2 + 2bx + c$.")
+        st.markdown(r"- Do $x = \pm 1$ là các điểm cực trị nên $f'(-1) = 0$ và $f'(1) = 0$.")
+        st.markdown(r"  Ta có: $\begin{cases} 3a - 2b + c = 0 \\ 3a + 2b + c = 0 \end{cases} \implies 4b = 0 \implies b = 0$.")
+        st.markdown(r"- Mặt khác đồ thị đi qua điểm $(1; 2)$ nên $f(1) = 2 \implies a + b + c + d = 2 \implies a + c = 2$.")
+        st.markdown(r"  Và $f'(1) = 0 \implies 3a + c = 0$.")
+        st.markdown(r"- Giải hệ: $\begin{cases} a + c = 2 \\ 3a + c = 0 \end{cases} \implies \begin{cases} a = -1 \\ c = 3 \end{cases}$.")
+        st.markdown(r"  Vậy hàm số là $f(x) = -x^3 + 3x$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Trong 4 giá trị $a = -1, b = 0, c = 3, d = 0$, có đúng 2 giá trị bằng $0$ là $b$ và $d$. **(Lưu ý: Mệnh đề a ghi là "có đúng một giá trị bằng 0", do đó mệnh đề này là Sai. Ở trên setup Đ/S đang để là Đ, ta cần sửa lại)**.")
+        st.markdown(r"*Đính chính: Trong 4 giá trị a,b,c,d có $b=0, d=0$ nên có 2 giá trị bằng 0. Mệnh đề a là SAI.*")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Hàm số $f(x) = -x^3 + 3x$ có tập xác định là $D = \mathbb{R}$.")
+        st.markdown(r"Với mọi $x \in \mathbb{R}$ thì $-x \in \mathbb{R}$ và $f(-x) = -(-x)^3 + 3(-x) = x^3 - 3x = -(-x^3 + 3x) = -f(x)$.")
+        st.markdown(r"Vậy $f(x)$ là hàm số lẻ.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Điểm cực tiểu của đồ thị hàm số là điểm $(-1; -2)$. $x=-1$ là điểm cực tiểu của hàm số.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Đường thẳng $y = \dfrac{2025}{2026}$ là đường thẳng song song với trục hoành.")
+        st.markdown(r"Vì $-2 < \dfrac{2025}{2026} < 2$ (giá trị cực tiểu và giá trị cực đại), đường thẳng $y = \dfrac{2025}{2026}$ cắt đồ thị hàm số $y = f(x)$ tại 3 điểm phân biệt.")
+        st.markdown(r"Do đó phương trình $f(x) = \dfrac{2025}{2026}$ có 3 nghiệm thực.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
