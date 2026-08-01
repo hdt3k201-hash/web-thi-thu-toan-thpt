@@ -2736,3 +2736,110 @@ if st.button("Xem lời giải chi tiết", key="q26_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+# CÂU HỎI 27 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 27. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Cửa Lò - Nghệ An 2026) </span>
+        Đậu đỏ là một loại thực phẩm quen thuộc trong bữa ăn của người Việt Nam. Ngoài giá trị dinh dưỡng cao, đậu đỏ còn có nhiều công dụng tuyệt vời cho sức khỏe và sắc đẹp như: Chống oxy hóa, giúp cơ bắp con người khỏe mạnh, tăng cường sức khỏe cho tim mạch con người, lợi ích hệ tiêu hóa, bổ thận, cung cấp vitamin bổ dưỡng cho cơ thể, đào thải độc tố, giải độc, tốt cho hệ miễn dịch, giúp huyết áp ổn định, da đẹp. Cây đậu đỏ khi trồng có chiều cao $6 \text{ cm}$. Khảo sát cho thấy độ cao tính bằng centimet của cây đậu đỏ tại thời điểm $t$ kể từ khi được trồng được cho bởi hàm số $h(t) = -0,005t^4 + bt^3 + c$ (Trong đó $b, c \in \mathbb{R}$), với $t$ tính theo tuần. Giả sử $h'(t)$ là tốc độ tăng chiều cao của cây đậu đỏ sau khi trồng. (Đơn vị của $h'(t)$ là centimet/tuần). Biết $h'(5) = 5$. (Hình bên dưới mô tả hạt và cây đậu đỏ). Xét tính đúng, sai của các mệnh đề sau:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số $h(t)$ có công thức $h(t) = -0,005t^4 + 0,1t^3$.")
+with col2:
+    ans_a27 = st.radio("q27a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q27_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Giai đoạn tăng trưởng của cây đậu đỏ kéo dài 15 tuần.")
+with col4:
+    ans_b27 = st.radio("q27b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q27_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Chiều cao tối đa của cây đậu đỏ là 90 centimet.")
+with col6:
+    ans_c27 = st.radio("q27c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q27_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Vào thời điểm cây đậu đỏ phát triển nhanh nhất thì chiều cao của cây là 56 centimet.")
+with col8:
+    ans_d27 = st.radio("q27d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q27_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q27_check"):
+    if None in [ans_a27, ans_b27, ans_c27, ans_d27]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Sai, d-Đúng
+        correct_answers = {"a": "S", "b": "Đ", "c": "S", "d": "Đ"}
+        user_answers = {"a": ans_a27, "b": ans_b27, "c": ans_c27, "d": ans_d27}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q27_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"Tại thời điểm $t = 0$ (khi bắt đầu trồng), cây có chiều cao $6 \text{ cm}$.")
+        st.markdown(r"Ta có: $h(0) = c = 6$.")
+        st.markdown(r"Đạo hàm: $h'(t) = -0,02t^3 + 3bt^2$.")
+        st.markdown(r"Theo đề bài: $h'(5) = 5 \iff -0,02 \cdot 5^3 + 3b \cdot 5^2 = 5 \iff -2,5 + 75b = 5 \iff 75b = 7,5 \iff b = 0,1$.")
+        st.markdown(r"Vậy hàm số mô hình hoá là: $h(t) = -0,005t^4 + 0,1t^3 + 6$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Hàm số tìm được là $h(t) = -0,005t^4 + 0,1t^3 + 6$. Công thức trong phát biểu a) thiếu hằng số $c=6$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Giai đoạn tăng trưởng là lúc tốc độ tăng trưởng $h'(t) > 0$.")
+        st.markdown(r"$h'(t) = -0,02t^3 + 0,3t^2 = t^2(-0,02t + 0,3)$.")
+        st.markdown(r"Để $h'(t) > 0$ thì $-0,02t + 0,3 > 0 \iff t < 15$.")
+        st.markdown(r"Vì $t \ge 0$, nên giai đoạn tăng trưởng kéo dài trong $15$ tuần đầu.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Cây đạt chiều cao lớn nhất khi $h'(t) = 0 \iff t = 15$.")
+        st.markdown(r"Chiều cao lớn nhất là: $h(15) = -0,005 \cdot 15^4 + 0,1 \cdot 15^3 + 6 = -253,125 + 337,5 + 6 = 90,375 \text{ (cm)}$.")
+        st.markdown(r"Phát biểu cho rằng chiều cao tối đa là $90 \text{ cm}$ là sai.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Tốc độ phát triển nhanh nhất khi $h'(t)$ lớn nhất.")
+        st.markdown(r"Xét hàm tốc độ $v(t) = h'(t) = -0,02t^3 + 0,3t^2$.")
+        st.markdown(r"$v'(t) = -0,06t^2 + 0,6t$.")
+        st.markdown(r"$v'(t) = 0 \iff -0,06t(t - 10) = 0 \iff t = 0$ hoặc $t = 10$.")
+        st.markdown(r"Tại $t = 10$, $v''(10) = -0,12(10) + 0,6 = -0,6 < 0$, nên vận tốc đạt cực đại tại $t = 10$ tuần.")
+        st.markdown(r"Chiều cao của cây tại thời điểm này là: $h(10) = -0,005 \cdot 10^4 + 0,1 \cdot 10^3 + 6 = -50 + 100 + 6 = 56 \text{ (cm)}$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
