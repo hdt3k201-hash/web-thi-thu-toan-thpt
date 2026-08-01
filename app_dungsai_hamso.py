@@ -2843,3 +2843,113 @@ if st.button("Xem lời giải chi tiết", key="q27_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+# CÂU HỎI 28 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 28. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Cửa Lò - Nghệ An 2026) </span>
+        Cho hàm số bậc ba $y = f(x) = ax^3 + bx^2 + cx + d$ có đồ thị là đường cong như hình vẽ bên.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_d10476.png", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Trong các số $a, b, c, d$ có ba giá trị dương.")
+with col2:
+    ans_a28 = st.radio("q28a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q28_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số đạt giá trị lớn nhất trên $(-2; 1)$ bằng 3.")
+with col4:
+    ans_b28 = st.radio("q28b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q28_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Tâm đối xứng của đồ thị hàm số có hoành độ bằng 1.")
+with col6:
+    ans_c28 = st.radio("q28c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q28_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Phương trình $f(f(x)) = \dfrac{5}{2}$ có sáu nghiệm phân biệt.")
+with col8:
+    ans_d28 = st.radio("q28d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q28_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q28_check"):
+    if None in [ans_a28, ans_b28, ans_c28, ans_d28]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Sai, d-Sai
+        correct_answers = {"a": "S", "b": "Đ", "c": "S", "d": "S"}
+        user_answers = {"a": ans_a28, "b": ans_b28, "c": ans_c28, "d": ans_d28}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q28_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Xác định hàm số từ đồ thị:**")
+        st.markdown(r"- Đồ thị cắt trục tung tại $(0; 1) \implies d = 1$.")
+        st.markdown(r"- Đồ thị có hai điểm cực trị là $(-1; 3)$ và $(1; -1)$.")
+        st.markdown(r"Ta có $f'(x) = 3ax^2 + 2bx + c$.")
+        st.markdown(r"Hệ phương trình từ cực trị:")
+        st.markdown(r"$\begin{cases} f'(-1) = 3a - 2b + c = 0 \\ f'(1) = 3a + 2b + c = 0 \end{cases} \implies b = 0$ và $c = -3a$.")
+        st.markdown(r"Lại có $f(1) = -1 \implies a(1)^3 + 0 + (-3a)(1) + 1 = -1 \implies -2a = -2 \implies a = 1$.")
+        st.markdown(r"Suy ra $c = -3$.")
+        st.markdown(r"Vậy $f(x) = x^3 - 3x + 1$. Các hệ số là $a = 1, b = 0, c = -3, d = 1$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Ta có $a = 1 > 0$, $b = 0$, $c = -3 < 0$, $d = 1 > 0$. Chỉ có 2 giá trị dương là $a$ và $d$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Trên khoảng $(-2; 1)$, đồ thị hàm số đi từ điểm $(-2; -1)$ lên cực đại $(-1; 3)$ rồi xuống đến gần $(1; -1)$. Do đó, giá trị lớn nhất trên khoảng này đạt được tại điểm cực đại $x = -1$, bằng $3$.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Tâm đối xứng $I$ của hàm số bậc ba là trung điểm của đoạn nối hai điểm cực trị $(-1; 3)$ và $(1; -1)$.")
+        st.markdown(r"Tọa độ $I$: $x_I = \dfrac{-1 + 1}{2} = 0$, $y_I = \dfrac{3 + (-1)}{2} = 1 \implies I(0; 1)$. Hoành độ tâm đối xứng là $0$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Xét phương trình $f(f(x)) = \dfrac{5}{2} = 2,5$. Đặt $t = f(x)$, ta có $f(t) = 2,5$.")
+        st.markdown(r"Dựa vào đồ thị, đường thẳng $y = 2,5$ cắt đồ thị tại 3 điểm phân biệt có hoành độ $t_1, t_2, t_3$ thoả mãn:")
+        st.markdown(r"- $t_1 \in (-2; -1)$ (nhánh bên trái cực đại).")
+        st.markdown(r"- $t_2 \in (-1; 0)$ (nhánh giữa).")
+        st.markdown(r"- $t_3 \in (1; 2)$ (nhánh bên phải cực tiểu).")
+        st.markdown(r"Tiếp tục giải $f(x) = t_i$:")
+        st.markdown(r"- Với $t_1 < -1$: Đường thẳng $y = t_1$ nằm dưới điểm cực tiểu $(1; -1)$, nên cắt đồ thị tại 1 điểm duy nhất. $\implies 1$ nghiệm.")
+        st.markdown(r"- Với $t_2 \in (-1; 0) \subset (-1; 3)$: Đường thẳng $y = t_2$ cắt đồ thị tại 3 điểm phân biệt. $\implies 3$ nghiệm.")
+        st.markdown(r"- Với $t_3 \in (1; 2) \subset (-1; 3)$: Đường thẳng $y = t_3$ cắt đồ thị tại 3 điểm phân biệt. $\implies 3$ nghiệm.")
+        st.markdown(r"Tổng số nghiệm là $1 + 3 + 3 = 7$ nghiệm phân biệt. Phát biểu có 6 nghiệm là sai.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
