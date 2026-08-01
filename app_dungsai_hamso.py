@@ -1907,3 +1907,99 @@ if st.button("Xem lời giải chi tiết", key="q18_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+# CÂU HỎI 19 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 19. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Thọ Xuân 5-Thanh Hóa 2026) </span>
+        Sau khi phát hiện một bệnh dịch, các chuyên gia y tế ước tính số người nhiễm bệnh kể từ ngày xuất hiện bệnh nhân đầu tiên đến ngày thứ $t$ là $f(t) = 45t^2 - t^3$ với $t \ge 0$. Nếu coi $y = f(t)$ là hàm số xác định trên $[0; +\infty)$ thì $f'(t)$ được xem là tốc độ truyền bệnh (người/ngày) tại thời điểm $t$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Đến ngày thứ 45 thì không còn người nhiễm bệnh.")
+with col2:
+    ans_a19 = st.radio("q19a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q19_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Trong 35 ngày đầu tiên thì số người nhiễm bệnh luôn tăng.")
+with col4:
+    ans_b19 = st.radio("q19b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q19_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Tốc độ truyền bệnh tại thời điểm $t$ là $f'(t) = 90t - 3t^2$.")
+with col6:
+    ans_c19 = st.radio("q19c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q19_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Số người bị nhiễm bệnh từ ngày xuất hiện bệnh nhân đầu tiên đến ngày thứ 13 là 4752.")
+with col8:
+    ans_d19 = st.radio("q19d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q19_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q19_check"):
+    if None in [ans_a19, ans_b19, ans_c19, ans_d19]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Sai, c-Đúng, d-Sai
+        correct_answers = {"a": "Đ", "b": "S", "c": "Đ", "d": "S"}
+        user_answers = {"a": ans_a19, "b": ans_b19, "c": ans_c19, "d": ans_d19}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q19_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Thay $t = 45$ vào hàm số, ta có: $f(45) = 45 \cdot (45)^2 - 45^3 = 45^3 - 45^3 = 0$.")
+        st.markdown(r"Như vậy, đến ngày thứ 45 số người nhiễm bệnh là 0 (không còn người nhiễm bệnh).")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Ta có tốc độ truyền bệnh là $f'(t) = 90t - 3t^2$.")
+        st.markdown(r"Xét dấu $f'(t) > 0 \iff 90t - 3t^2 > 0 \iff 3t(30 - t) > 0 \iff 0 < t < 30$.")
+        st.markdown(r"Số người nhiễm bệnh chỉ tăng trong khoảng thời gian 30 ngày đầu tiên ($0 < t < 30$). Từ ngày 30 trở đi ($t > 30$), $f'(t) < 0$ nên số người nhiễm bệnh bắt đầu giảm. Do đó phát biểu trong 35 ngày đầu tiên số người bệnh luôn tăng là sai.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Tốc độ truyền bệnh chính là đạo hàm của hàm số $f(t)$ mô tả số người nhiễm bệnh.")
+        st.markdown(r"Đạo hàm: $f'(t) = \left(45t^2 - t^3\right)' = 90t - 3t^2$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Để tính số người bị nhiễm bệnh đến ngày thứ 13, ta thay $t = 13$ vào hàm số $f(t)$:")
+        st.markdown(r"$f(13) = 45 \cdot (13)^2 - 13^3 = 45 \cdot 169 - 2197 = 7605 - 2197 = 5408$ (người).")
+        st.markdown(r"Con số $4752$ tương ứng với ngày thứ 12: $f(12) = 45 \cdot 12^2 - 12^3 = 45 \cdot 144 - 1728 = 4752$. Do đó mệnh đề này sai.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
