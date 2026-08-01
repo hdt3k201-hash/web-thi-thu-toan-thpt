@@ -2122,7 +2122,7 @@ st.markdown(
         font-size: 18px;
         line-height: 1.6;
     ">
-        <span style="color: #008080; font-weight: bold;">Câu 21 (Câu 26 trong đề). </span> 
+        <span style="color: #008080; font-weight: bold;">Câu 21 . </span> 
         <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Khuyến - LHT - HCM 2026) </span>
         Diện tích bao phủ của cỏ Posidonia (một loài tảo biển) trên đáy ở một vùng vịnh theo thời gian được một nhóm các nhà sinh vật học quan sát và mô hình hoá bởi hàm số $f(t) = \dfrac{k}{1 + 14e^{-0,3t}}$ (hecta), trong đó thời gian $t$ tính bằng năm, $k$ là số thực dương. Năm 2024 (ứng với $t = 0$) là thời điểm các nhà sinh vật học bắt đầu quan sát, lúc đó diện tích của cỏ Posidonia đã bao phủ là 1 (hecta).
     </span>
@@ -2230,7 +2230,7 @@ st.markdown(
         font-size: 18px;
         line-height: 1.6;
     ">
-        <span style="color: #008080; font-weight: bold;">Câu 22 (Câu 27 trong đề). </span> 
+        <span style="color: #008080; font-weight: bold;">Câu 22 . </span> 
         <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Khuyến - LHT - HCM 2026) </span>
         Cho hàm số $f(x) = 3x - \log_5(x - 1)$
     </span>
@@ -2310,6 +2310,108 @@ if st.button("Xem lời giải chi tiết", key="q22_solution"):
         st.markdown(r"Sử dụng xấp xỉ $\ln 5 \approx 1,609$, ta có:")
         st.markdown(r"$y_{\min} \approx 3 + \dfrac{1}{1,609} + \log_5(3 \cdot 1,609) \approx 3 + 0,621 + \log_5(4,827) \approx 3,621 + 0,979 = 4,6$.")
         st.markdown(r"Vì $4,6 > 4,5 = \dfrac{9}{2}$, nên giá trị nhỏ nhất của hàm số lớn hơn $\dfrac{9}{2}$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU HỎI 23 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 23 . </span> 
+        <span style="color: #009900; font-weight: bold;">(Chuyên Hạ Long 2026) </span>
+        Một xưởng mộc dùng gỗ sồi để sản xuất 5 chiếc bàn mỗi ngày. Chi phí cho mỗi lần vận chuyển nguyên liệu là 5625 USD, chi phí để lưu trữ một đơn vị nguyên liệu là 10 USD mỗi ngày, trong đó một đơn vị là lượng nguyên liệu cần thiết để sản xuất một chiếc bàn, và lưu ý rằng trong mỗi ngày của chu kì sản xuất (thời gian giữa hai lần nhập nguyên liệu liên tiếp) thì lượng nguyên liệu lưu trữ trung bình mỗi ngày được tính bằng một nửa tổng lượng nguyên liệu tồn kho đầu kì và lượng nguyên liệu tồn kho cuối kì. Giả sử nguyên liệu được nhập về sau mỗi $x$ ngày.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Một chu kì sản xuất, xưởng mộc phải nhập về $5x$ đơn vị nguyên liệu.")
+with col2:
+    ans_a23 = st.radio("q23a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q23_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Chi phí để lưu trữ nguyên liệu trong $x$ ngày của một chu kì sản xuất là $50x^2$ USD.")
+with col4:
+    ans_b23 = st.radio("q23b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q23_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Hàm chi phí trung bình mỗi ngày trong một chu kì sản xuất là $c(x) = 50x + \dfrac{5625}{x}$.")
+with col6:
+    ans_c23 = st.radio("q23c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q23_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Để chi phí trung bình mỗi ngày của một chu kì sản xuất là ít nhất thì xưởng mộc nên nhập hàng sau mỗi 15 ngày và mỗi lần nhập về 75 đơn vị nguyên liệu.")
+with col8:
+    ans_d23 = st.radio("q23d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q23_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q23_check"):
+    if None in [ans_a23, ans_b23, ans_c23, ans_d23]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Sai, c-Sai, d-Đúng
+        correct_answers = {"a": "Đ", "b": "S", "c": "S", "d": "Đ"}
+        user_answers = {"a": ans_a23, "b": ans_b23, "c": ans_c23, "d": ans_d23}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q23_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Xưởng mộc sản xuất 5 chiếc bàn mỗi ngày, tức là tiêu thụ 5 đơn vị nguyên liệu/ngày. Chu kì sản xuất dài $x$ ngày, nên tổng lượng nguyên liệu cần thiết cho một chu kì (lượng cần nhập về) là $5x$ đơn vị nguyên liệu.")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Lượng nguyên liệu tồn kho đầu kì là $5x$ đơn vị. Cuối chu kì, lượng nguyên liệu dùng hết nên tồn kho cuối kì là $0$.")
+        st.markdown(r"Lượng nguyên liệu lưu trữ trung bình mỗi ngày là: $\dfrac{5x + 0}{2} = 2,5x$ (đơn vị).")
+        st.markdown(r"Chi phí lưu trữ nguyên liệu cho mỗi ngày là: $2,5x \cdot 10 = 25x$ (USD).")
+        st.markdown(r"Chi phí lưu trữ nguyên liệu trong suốt chu kì $x$ ngày là: $25x \cdot x = 25x^2$ (USD).")
+        st.markdown(r"Phát biểu $50x^2$ là sai.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Tổng chi phí cho một chu kì $x$ ngày bao gồm chi phí vận chuyển (cố định mỗi lần nhập) và chi phí lưu trữ:")
+        st.markdown(r"$C_{\text{tổng}} = 5625 + 25x^2$ (USD).")
+        st.markdown(r"Hàm chi phí trung bình mỗi ngày trong một chu kì là:")
+        st.markdown(r"$c(x) = \dfrac{C_{\text{tổng}}}{x} = \dfrac{5625 + 25x^2}{x} = 25x + \dfrac{5625}{x}$.")
+        st.markdown(r"Phát biểu $c(x) = 50x + \dfrac{5625}{x}$ là sai.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Ta cần tìm $x$ để chi phí trung bình mỗi ngày $c(x) = 25x + \dfrac{5625}{x}$ đạt giá trị nhỏ nhất (với $x > 0$).")
+        st.markdown(r"Áp dụng bất đẳng thức AM-GM cho hai số dương $25x$ và $\dfrac{5625}{x}$:")
+        st.markdown(r"$c(x) = 25x + \dfrac{5625}{x} \ge 2\sqrt{25x \cdot \dfrac{5625}{x}} = 2\sqrt{140625} = 750$.")
+        st.markdown(r"Dấu '=' xảy ra khi và chỉ khi: $25x = \dfrac{5625}{x} \iff x^2 = \dfrac{5625}{25} = 225 \implies x = 15$ (ngày).")
+        st.markdown(r"Khi $x = 15$, lượng nguyên liệu cần nhập mỗi lần là $5x = 5 \cdot 15 = 75$ đơn vị.")
+        st.markdown(r"Vậy để tối ưu chi phí, nên nhập hàng sau mỗi 15 ngày và mỗi lần nhập 75 đơn vị nguyên liệu. Phát biểu này hoàn toàn chính xác.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
