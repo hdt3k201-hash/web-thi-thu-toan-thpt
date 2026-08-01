@@ -1390,3 +1390,110 @@ if st.button("Xem lời giải chi tiết", key="q13_solution"):
         st.markdown(r"Vậy chiều rộng khối hàng phải nhỏ hơn $13,01$ m.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# CÂU HỎI 14 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 14. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm trường Hà Tĩnh 2026) </span>
+        Bác Bình dự định làm một bể cá bằng kính cường lực dạng hình hộp chữ nhật không nắp. Bể có thể tích $3m^3$ và có chiều dài gấp đôi chiều rộng. Chi phí làm bể gồm hai phần: phần làm đáy bể là $500$ ngàn đồng trên $1 m^2$ và phần làm mặt xung quanh là $400$ ngàn đồng trên $1 m^2$. Chi phí vận hành bể cá trong một tháng là $400$ ngàn đồng.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_dbe5e1.png", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Chi phí vận hành bể cá trong một năm là 4,8 triệu đồng.")
+with col2:
+    ans_a14 = st.radio("q14a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q14_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Nếu chiều rộng của bể là $1m$ thì chiều cao của bể là $3m$.")
+with col4:
+    ans_b14 = st.radio("q14b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q14_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Nếu chiều rộng của bể là $x(m)$ thì diện tích xung quanh của bể là $\dfrac{9}{x} (m^2)$.")
+with col6:
+    ans_c14 = st.radio("q14c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q14_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Chi phí ít nhất để làm bể $4,44$ triệu đồng (làm tròn đến hàng phần trăm).")
+with col8:
+    ans_d14 = st.radio("q14d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q14_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q14_check"):
+    if None in [ans_a14, ans_b14, ans_c14, ans_d14]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Sai, c-Đúng, d-Đúng
+        correct_answers = {"a": "Đ", "b": "S", "c": "Đ", "d": "Đ"}
+        user_answers = {"a": ans_a14, "b": ans_b14, "c": ans_c14, "d": ans_d14}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q14_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Gọi chiều rộng của bể là $x$ (m) ($x > 0$).")
+        st.markdown(r"Theo đề bài, chiều dài gấp đôi chiều rộng nên chiều dài là $2x$ (m).")
+        st.markdown(r"Gọi $h$ là chiều cao của bể (m).")
+        st.markdown(r"Thể tích của bể là $V = x \cdot 2x \cdot h = 2x^2h = 3 \Rightarrow h = \dfrac{3}{2x^2}$.")
+
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Chi phí vận hành 1 tháng là 400 ngàn đồng $= 0,4$ triệu đồng.")
+        st.markdown(r"Chi phí vận hành trong 1 năm (12 tháng) là: $12 \times 0,4 = 4,8$ (triệu đồng).")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Nếu chiều rộng $x = 1$ m, thay vào biểu thức của $h$ ta có: $h = \dfrac{3}{2 \cdot 1^2} = 1,5$ (m).")
+        st.markdown(r"Chiều cao là $1,5$ m, không phải $3$ m.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Diện tích xung quanh của bể (gồm 4 mặt) là: $S_{xq} = 2h(x + 2x) = 6xh$.")
+        st.markdown(r"Thay $h = \dfrac{3}{2x^2}$ vào ta được: $S_{xq} = 6x \cdot \dfrac{3}{2x^2} = \dfrac{9}{x} \ (m^2)$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Diện tích đáy bể là: $S_{đáy} = x \cdot 2x = 2x^2 \ (m^2)$.")
+        st.markdown(r"Hàm chi phí làm bể (đơn vị: ngàn đồng) là:")
+        st.markdown(r"$C(x) = 500 \cdot S_{đáy} + 400 \cdot S_{xq} = 500 \cdot 2x^2 + 400 \cdot \dfrac{9}{x} = 1000x^2 + \dfrac{3600}{x}$.")
+        st.markdown(r"Áp dụng bất đẳng thức AM-GM cho 3 số dương, ta có:")
+        st.markdown(r"$C(x) = 1000x^2 + \dfrac{1800}{x} + \dfrac{1800}{x} \ge 3 \sqrt[3]{1000x^2 \cdot \dfrac{1800}{x} \cdot \dfrac{1800}{x}}$")
+        st.markdown(r"$C(x) \ge 3 \sqrt[3]{3.240.000.000} \approx 3 \cdot 1479,8 = 4439,4$ (ngàn đồng).")
+        st.markdown(r"Đổi $4439,4$ ngàn đồng $\approx 4,44$ triệu đồng.")
+        st.markdown(r"Dấu '=' xảy ra khi $1000x^2 = \dfrac{1800}{x} \Leftrightarrow x^3 = 1,8 \Leftrightarrow x = \sqrt[3]{1,8}$.")
+        st.markdown(r"Vậy chi phí ít nhất để làm bể xấp xỉ $4,44$ triệu đồng.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
