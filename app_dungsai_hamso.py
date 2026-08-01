@@ -3454,3 +3454,191 @@ if st.button("Xem lời giải chi tiết Câu 33", key="q33_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+
+# ==========================================
+# CÂU HỎI 34 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 34. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Liên cấp đại học Hồng Đức 2026) </span>
+        Số dân của một thị trấn sau $t$ năm kể từ năm 1970 được ước tính bởi công thức $f(t) = \dfrac{26t + 10}{t + 5}$ ($f(t)$ được tính bằng nghìn người).
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Số dân của thị trấn vào đầu năm 1980 là 18 nghìn người.")
+with col2:
+    ans_a34 = st.radio("q34a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q34_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Số dân của thị trấn vào đầu năm 1995 là 23 nghìn người.")
+with col4:
+    ans_b34 = st.radio("q34b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q34_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Xem $f$ là một hàm số xác định trên nửa khoảng $[0; +\infty)$. Vậy hàm số đồng biến trên $[0; +\infty)$.")
+with col6:
+    ans_c34 = st.radio("q34c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q34_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Đạo hàm của hàm số $f$ biểu thị tốc độ tăng dân số của thị trấn (tính bằng nghìn người/năm). Vào năm 1998 thì tốc độ tăng dân số là 0,125 nghìn người/năm.")
+with col8:
+    ans_d34 = st.radio("q34d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q34_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án Câu 34", key="q34_check"):
+    if None in [ans_a34, ans_b34, ans_c34, ans_d34]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Sai, c-Đúng, d-Sai
+        correct_answers = {"a": "Đ", "b": "S", "c": "Đ", "d": "S"}
+        user_answers = {"a": ans_a34, "b": ans_b34, "c": ans_c34, "d": ans_d34}
+        
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết Câu 34", key="q34_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số:** Ta tính đạo hàm $f'(t) = \dfrac{26 \cdot 5 - 10 \cdot 1}{(t + 5)^2} = \dfrac{120}{(t + 5)^2}$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Năm 1980 tương ứng với $t = 1980 - 1970 = 10$. Số dân khi đó là $f(10) = \dfrac{26(10) + 10}{10 + 5} = \dfrac{270}{15} = 18$ (nghìn người).")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Năm 1995 tương ứng với $t = 1995 - 1970 = 25$. Số dân khi đó là $f(25) = \dfrac{26(25) + 10}{25 + 5} = \dfrac{660}{30} = 22$ (nghìn người), không phải 23 nghìn người.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Từ phần phân tích, $f'(t) = \dfrac{120}{(t + 5)^2} > 0$ với mọi $t \ge 0$. Do đó, hàm số đồng biến trên nửa khoảng $[0; +\infty)$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Năm 1998 tương ứng với $t = 1998 - 1970 = 28$. Tốc độ tăng dân số tại thời điểm này là: $f'(28) = \dfrac{120}{(28 + 5)^2} = \dfrac{120}{1089} \approx 0,110$ (nghìn người/năm). Kết quả này khác 0,125.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+st.markdown("<br><br>", unsafe_allow_html=True) # Khoảng cách giữa 2 câu
+
+# ==========================================
+# CÂU HỎI 35 (ĐÚNG/SAI)
+# ==========================================
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 35. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Lê Thánh Tông - HCM 2026) </span>
+        Cho hàm số $f(x) = e^x - 2x + e$. Xét tính đúng sai các mệnh đề sau:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Tập xác định của hàm số $f(x)$ là $D = \mathbb{R}$.")
+with col2:
+    ans_a35 = st.radio("q35a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q35_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Đạo hàm của hàm số $f(x)$ là $f'(x) = e^x - 2$.")
+with col4:
+    ans_b35 = st.radio("q35b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q35_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Giá trị lớn nhất của hàm số $f(x)$ trên đoạn $[0; 2]$ bằng $e^2 + e$.")
+with col6:
+    ans_c35 = st.radio("q35c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q35_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Đường cong $y = f(x)$ cắt đường thẳng $y = -2x$ tại hai điểm phân biệt.")
+with col8:
+    ans_d35 = st.radio("q35d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q35_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án Câu 35", key="q35_check"):
+    if None in [ans_a35, ans_b35, ans_c35, ans_d35]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Đúng, b-Đúng, c-Sai, d-Sai
+        correct_answers = {"a": "Đ", "b": "Đ", "c": "S", "d": "S"}
+        user_answers = {"a": ans_a35, "b": ans_b35, "c": ans_c35, "d": ans_d35}
+        
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết Câu 35", key="q35_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**a) Mệnh đề Đúng:**")
+        st.markdown(r"Các biểu thức $e^x$ và đa thức $-2x + e$ đều có nghĩa với mọi $x \in \mathbb{R}$. Do đó, tập xác định là $D = \mathbb{R}$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Áp dụng các quy tắc tính đạo hàm cơ bản: $f'(x) = (e^x)' - (2x)' + (e)' = e^x - 2$.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Xét trên đoạn $[0; 2]$, phương trình $f'(x) = 0 \Leftrightarrow e^x - 2 = 0 \Leftrightarrow x = \ln 2 \approx 0,693 \in [0; 2]$.")
+        st.markdown(r"Tính các giá trị:")
+        st.markdown(r"- $f(0) = e^0 - 0 + e = e + 1$")
+        st.markdown(r"- $f(\ln 2) = e^{\ln 2} - 2\ln 2 + e = 2 - 2\ln 2 + e$")
+        st.markdown(r"- $f(2) = e^2 - 4 + e$")
+        st.markdown(r"So sánh các giá trị này, ta nhận thấy giá trị lớn nhất là $\max_{x \in [0; 2]} f(x) = f(2) = e^2 - 4 + e$. Giá trị này hoàn toàn khác với $e^2 + e$.")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Xét phương trình hoành độ giao điểm: $e^x - 2x + e = -2x \Leftrightarrow e^x + e = 0 \Leftrightarrow e^x = -e$.")
+        st.markdown(r"Vì hàm số mũ luôn nhận giá trị dương ($e^x > 0, \forall x$) và $-e < 0$, nên phương trình vô nghiệm. Vậy đường cong không cắt đường thẳng $y = -2x$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
