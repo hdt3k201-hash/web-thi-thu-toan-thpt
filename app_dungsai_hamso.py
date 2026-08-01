@@ -1726,7 +1726,7 @@ st.markdown(
     ">
         <span style="color: #008080; font-weight: bold;">Câu 17. </span> 
         <span style="color: #009900; font-weight: bold;">(Sở Hưng Yên 2026) </span>
-        Cho hàm số $f(x) = \dfrac{x - 2}{x - 1}$ có đồ thị là đường cong $(C)$.
+        Cho hàm số <span style="white-space: nowrap;">$f(x) = \dfrac{x - 2}{x - 1}$</span> có đồ thị là đường cong $(C)$.
     </span>
     """, 
     unsafe_allow_html=True
@@ -1784,28 +1784,41 @@ if st.button("Xem lời giải chi tiết", key="q17_solution"):
     if st.session_state.get('logged_in', True):
         st.info("Lời giải chi tiết:")
         
-        st.markdown(r"Tập xác định của hàm số: $D = \mathbb{R} \setminus \{1\}$.")
-        st.markdown(r"Đạo hàm: $f'(x) = \dfrac{1 \cdot (-1) - (-2) \cdot 1}{(x - 1)^2} = \dfrac{-1}{(x - 1)^2} < 0, \forall x \neq 1$.")
-        
+        st.markdown(r"**Phân tích hàm số:** $f(x) = \dfrac{x - 2}{x - 1}$")
+        st.markdown(r"Tập xác định: $\mathscr{D} = \mathbb{R} \setminus \{1\}$.")
+        st.markdown(r"Đạo hàm: $f'(x) = \dfrac{1\cdot(-1) - 1\cdot(-2)}{(x - 1)^2} = \dfrac{1}{(x - 1)^2} > 0, \forall x \in \mathscr{D}$.")
+        st.markdown(r"Hàm số đồng biến trên các khoảng $(-\infty; 1)$ và $(1; +\infty)$.")
+        st.markdown("---")
+
         st.markdown(r"**a) Mệnh đề Sai:**")
-        st.markdown(r"Vì $f'(x) < 0$ với mọi $x \neq 1$, hàm số nghịch biến trên từng khoảng $(-\infty; 1)$ và $(1; +\infty)$. Do đó, nói hàm số đồng biến trên khoảng $(-\infty; +\infty)$ là sai.")
+        st.markdown(r"Hàm số gián đoạn tại $x = 1$ nên không thể đồng biến trên $(-\infty; +\infty)$. Nó chỉ đồng biến trên từng khoảng xác định.")
         
         st.markdown(r"**b) Mệnh đề Đúng:**")
-        st.markdown(r"Đồ thị hàm số có tiệm cận đứng $x = 1$, tiệm cận ngang $y = 1$, cắt trục tung tại $(0; 2)$ và trục hoành tại $(2; 0)$, nghịch biến trên các nhánh. Hình vẽ hoàn toàn khớp với các đặc điểm này.")
+        st.markdown(r"Đồ thị hàm số đi qua điểm $(0; 2)$ và $(2; 0)$.")
+        st.markdown(r"Có tiệm cận đứng $x = 1$, tiệm cận ngang $y = 1$.")
+        st.markdown(r"Hình vẽ hoàn toàn phù hợp với các đặc điểm này của đồ thị hàm số $f(x) = \dfrac{x - 2}{x - 1}$.")
         
         st.markdown(r"**c) Mệnh đề Đúng:**")
-        st.markdown(r"Xét hàm số $g(x) = |f(x)| = \left|\dfrac{x - 2}{x - 1}\right|$ trên đoạn $\left[\dfrac{3}{2}; 3\right]$.")
-        st.markdown(r"Trên đoạn này, biểu thức $f(x) = \dfrac{x - 2}{x - 1}$ đổi dấu từ âm sang dương (tại $x = 2$).")
-        st.markdown(r"Cụ thể:")
-        st.markdown(r"- Tại $x = \dfrac{3}{2}$: $f\left(\dfrac{3}{2}\right) = \dfrac{\dfrac{3}{2} - 2}{\dfrac{3}{2} - 1} = \dfrac{-0,5}{0,5} = -1 \Rightarrow g\left(\dfrac{3}{2}\right) = |-1| = 1$.")
-        st.markdown(r"- Tại $x = 2$: $f(2) = 0 \Rightarrow g(2) = 0$.")
-        st.markdown(r"- Tại $x = 3$: $f(3) = \dfrac{3 - 2}{3 - 1} = \dfrac{1}{2} = 0,5 \Rightarrow g(3) = |0,5| = 0,5$.")
-        st.markdown(r"Do đó, giá trị lớn nhất trên đoạn là $M = g\left(\dfrac{3}{2}\right) = 1$ và giá trị nhỏ nhất là $m = g(2) = 0$.")
-        st.markdown(r"Thay vào biểu thức: $2M + 2026m = 2(1) + 2026(0) = 2$. (Khoan, kiểm tra lại biểu thức đề bài: $2M + 2026m = 2027$? Nếu $M=1, m=0$ thì $2(1)+0=2 \neq 2027$. Hãy tính lại các giá trị trên đoạn $\left[\dfrac{3}{2}; 3\right]$).")
-        st.markdown(r"À, ta xét hàm $g(x) = |f(x)|$. Trên đoạn $\left[\dfrac{3}{2}; 3\right]$, tập giá trị của $f(x)$ đi từ $f\left(\dfrac{3}{2}\right) = -1$ đến $f(3) = \dfrac{1}{2}$, qua $0$ tại $x=2$. Do đó $|f(x)|$ nhận giá trị lớn nhất là tại điểm mút hoặc điểm cực trị của hàm trị tuyệt đối. Các giá trị của $g(x)$ tại các đầu mút và điểm triệt tiêu là: $g(3/2) = 1$, $g(2) = 0$, $g(3) = 1/2$. Vậy $M = 1$, $m = 0$. Sao cho $2M + 2026m = 2$? Nếu đề cho $2027$ thì có thể số liệu hoặc hàm số khác, hoặc $M$ và $m$ được xét trong bài gốc khác. Tuy nhiên, theo dữ liệu này, ta ghi nhận kết quả logic giải toán là thế).")
+        st.markdown(r"Xét hàm số $f(x) = \dfrac{x - 2}{x - 1}$ trên đoạn $\left[\dfrac{3}{2}; 3\right]$.")
+        st.markdown(r"Vì $f'(x) > 0, \forall x \neq 1$ nên $f(x)$ đồng biến trên $\left[\dfrac{3}{2}; 3\right]$.")
+        st.markdown(r"Ta có: $f\left(\dfrac{3}{2}\right) = \dfrac{\dfrac{3}{2} - 2}{\dfrac{3}{2} - 1} = -1$ và $f(3) = \dfrac{3 - 2}{3 - 1} = \dfrac{1}{2}$.")
+        st.markdown(r"Suy ra $y = |f(x)|$ trên đoạn $\left[\dfrac{3}{2}; 3\right]$ có giá trị lớn nhất $M = \max\left\{\left|f\left(\dfrac{3}{2}\right)\right|, |f(3)|\right\} = \max\left\{1, \dfrac{1}{2}\right\} = 1$.")
+        st.markdown(r"Vì đồ thị cắt trục hoành tại $x=2 \in \left[\dfrac{3}{2}; 3\right]$ nên hàm số $|f(x)|$ đạt giá trị nhỏ nhất $m = 0$ tại $x=2$.")
+        st.markdown(r"Do đó: $2M + 2026m = 2\cdot1 + 2026\cdot0 = 2$. Phép tính trong đề là $2M + 2026m = 2027$ bị sai. Chờ chút, có vẻ có lỗi trong đề bài ở ảnh, $2M + 2026m$ phải bằng 2. Ta sẽ kiểm tra lại.")
+        st.markdown(r"Ah, đọc kỹ đề bài: $M$ là giá trị lớn nhất, $m$ là giá trị nhỏ nhất của $y=|f(x)|$ trên đoạn $[3/2; 3]$. $f(3/2)=-1 \implies |f(3/2)|=1$. $f(3)=1/2 \implies |f(3)|=1/2$. Trên đoạn $[3/2; 3]$ có nghiệm $x=2 \implies f(2)=0 \implies |f(2)|=0$. Vậy $m=0, M=1$.")
+        st.markdown(r"Vậy $2M + 2026m = 2(1) + 2026(0) = 2 \neq 2027$. Mệnh đề c) đáng lẽ là **Sai** theo đề này. Hãy kiểm tra lại.")
+        st.markdown(r"Xin lỗi, tôi sẽ sửa lại đáp án c là Sai và giải thích: $2M + 2026m = 2(1) + 2026(0) = 2 \neq 2027$. Do đó, mệnh đề c là sai.")
+        
+        st.markdown(r"**Sửa lại đáp án chuẩn phần c:**")
+        st.markdown(r"Đáp án c là **Sai**.")
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"Xét hàm số $f(x) = \dfrac{x - 2}{x - 1}$ trên $\left[\dfrac{3}{2}; 3\right]$. Ta có $f\left(\dfrac{3}{2}\right) = -1, f(3) = \dfrac{1}{2}$.")
+        st.markdown(r"Do hàm số liên tục và $f(2) = 0$ nên giá trị nhỏ nhất của $|f(x)|$ là $m = 0$. Giá trị lớn nhất của $|f(x)|$ là $M = \max(|-1|, |1/2|) = 1$.")
+        st.markdown(r"Vậy $2M + 2026m = 2(1) + 2026(0) = 2 \neq 2027$. Mệnh đề này sai.")
         
         st.markdown(r"**d) Mệnh đề Đúng:**")
-        st.markdown(r"Giới hạn $\lim\limits_{x \to \pm\infty} \dfrac{x - 2}{x - 1} = 1 \Rightarrow$ tiệm cận ngang là $y = 1$.")
-        st.markdown(r"Vì mẫu số có nghiệm $x = 1$ và tử số tại $x = 1$ bằng $-1 \neq 0 \Rightarrow$ tiệm cận đứng là $x = 1$.")
+        st.markdown(r"Hàm số $y = \dfrac{x - 2}{x - 1}$ có $\lim_{x\to\pm\infty} y = 1$ nên $y=1$ là tiệm cận ngang.")
+        st.markdown(r"Và $\lim_{x\to 1^+} y = -\infty, \lim_{x\to 1^-} y = +\infty$ nên $x=1$ là tiệm cận đứng.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
