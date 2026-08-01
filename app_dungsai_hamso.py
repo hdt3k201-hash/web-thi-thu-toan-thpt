@@ -490,3 +490,103 @@ if st.button("Xem lời giải chi tiết", key="q4_solution"):
         st.markdown(r"Vì $-2 < \dfrac{2025}{2026} < 2$, đường thẳng cắt đồ thị hàm số tại 3 điểm phân biệt, nên phương trình có 3 nghiệm thực.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU HỎI 5 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 5. </span> 
+        <span style="color: #009900; font-weight: bold;">(Sở Bắc Ninh 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = f(x) = \dfrac{ax^2 + bx + c}{x + d}$</span> có bảng biến thiên như hình vẽ dưới đây.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_dc6d22.png", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Hàm số $y = f(x)$ đồng biến trên khoảng $(0; 4)$.")
+with col2:
+    ans_a5 = st.radio("q5a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q5_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Tích giá trị cực đại và cực tiểu của hàm số $y = f(x)$ bằng $-12$.")
+with col4:
+    ans_b5 = st.radio("q5b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q5_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Cho điểm $M$ có hoành độ lớn hơn $2$, di chuyển trên đồ thị hàm số $y = f(x)$. Giá trị nhỏ nhất của tổng khoảng cách từ điểm $M$ đến hai trục tọa độ bằng $4 + 4\sqrt{2}$.")
+with col6:
+    ans_c5 = st.radio("q5c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q5_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** $a + b + c + d = -5$.")
+with col8:
+    ans_d5 = st.radio("q5d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q5_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q5_check"):
+    if None in [ans_a5, ans_b5, ans_c5, ans_d5]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Đúng, d-Đúng
+        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "Đ"}
+        user_answers = {"a": ans_a5, "b": ans_b5, "c": ans_c5, "d": ans_d5}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q5_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số từ bảng biến thiên:**")
+        st.markdown(r"- Dựa vào bảng biến thiên, hàm số không xác định tại $x = 2$, suy ra $2 + d = 0 \implies d = -2$.")
+        st.markdown(r"- Tại $x = 0$, ta có $f(0) = \dfrac{c}{-2} = 2 \implies c = -4$ và $f'(0) = 0$.")
+        st.markdown(r"- Tại $x = 4$, ta có $f(4) = -6$ và $f'(4) = 0$.")
+        st.markdown(r"- Tính đạo hàm $f'(x) = \dfrac{ax^2 - 4ax - 2b + 4}{(x - 2)^2}$. Từ $f'(0) = 0 \implies b = 2$. Từ $f'(4) = 0$ và điểm đi qua ta tìm được $a = -1$.")
+        st.markdown(r"- Vậy hàm số cần tìm là: $f(x) = \dfrac{-x^2 + 2x - 4}{x - 2}$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Hàm số có tiệm cận đứng $x = 2$ nên đồ thị bị ngắt quãng, ta lấy $x_1 = 1 \in (0; 2)$ thì $f(1) = 3$ và $x_2 = 3 \in (2; 4)$ thì $f(3) = -7$. Vì $1 < 3$ nhưng $f(1) > f(3)$ nên hàm số không đồng biến trên khoảng $(0; 4)$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Dựa vào bảng biến thiên, giá trị cực tiểu của hàm số là $y_{\text{CT}} = 2$ (tại $x = 0$) và giá trị cực đại là $y_{\text{CĐ}} = -6$ (tại $x = 4$).")
+        st.markdown(r"Tích giá trị cực đại và cực tiểu là: $(-6) \cdot 2 = -12$.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Với $x > 2$, điểm $M(x; f(x))$ có tung độ $f(x) < 0$. Tổng khoảng cách từ $M$ đến hai trục tọa độ là $S = x + (-f(x)) = x - \dfrac{-x^2 + 2x - 4}{x - 2} = 2x + \dfrac{4}{x - 2}$.")
+        st.markdown(r"Đặt $t = x - 2 > 0$, ta có $S = 2(t + 2) + \dfrac{4}{t} = 2t + \dfrac{4}{t} + 4 \ge 2\sqrt{8} + 4 = 4 + 4\sqrt{2}$ (theo bất đẳng thức AM-GM). Dấu bằng xảy ra khi $t = \sqrt{2}$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có các hệ số: $a = -1, b = 2, c = -4, d = -2$. Tổng $a + b + c + d = (-1) + 2 + (-4) + (-2) = -5$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
