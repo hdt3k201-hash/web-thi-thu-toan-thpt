@@ -4837,3 +4837,210 @@ if st.button("Xem lời giải chi tiết", key="q46_solution"):
         st.markdown(r"- Diện tích tam giác $IAB$ là $S = \dfrac{1}{2} \cdot IA \cdot d(B, IA) = \dfrac{1}{2} \cdot 8 \cdot 2 = 8$.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU HỎI 47 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 47. </span> 
+        <span style="color: #009900; font-weight: bold;">(Cụm Hải Phòng 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = -x^3 + 3x^2 + 4$</span> có đồ thị $(C)$. Xét tính đúng sai của các mệnh đề sau:
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Đồ thị $(C)$ có hai điểm cực trị và phương trình đường thẳng đi qua hai điểm cực trị là $2x + y - 4 = 0$.")
+with col2:
+    ans_a47 = st.radio("q47a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q47_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Tập xác định của hàm số là $D = \mathbb{R}$ và $y' = -3x^3 + 6x$.")
+with col4:
+    ans_b47 = st.radio("q47b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q47_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Hàm số đồng biến trên khoảng $(0; 2)$.")
+with col6:
+    ans_c47 = st.radio("q47c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q47_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Diện tích của tam giác $OAB$ bằng $4$, với $O$ là gốc tọa độ và $A, B$ là các điểm cực trị của $(C)$.")
+with col8:
+    ans_d47 = st.radio("q47d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q47_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q47_check"):
+    if None in [ans_a47, ans_b47, ans_c47, ans_d47]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Sai, c-Đúng, d-Đúng
+        correct_answers = {"a": "S", "b": "S", "c": "Đ", "d": "Đ"}
+        user_answers = {"a": ans_a47, "b": ans_b47, "c": ans_c47, "d": ans_d47}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q47_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số:**")
+        st.markdown(r"- Tập xác định: $D = \mathbb{R}$.")
+        st.markdown(r"- Đạo hàm: $y' = -3x^2 + 6x$.")
+        st.markdown(r"- $y' = 0 \iff -3x^2 + 6x = 0 \iff \left[ \begin{array}{l} x = 0 \implies y = 4 \\ x = 2 \implies y = 8 \end{array} \right.$.")
+        st.markdown(r"- Điểm cực tiểu: $A(0; 4)$, Điểm cực đại: $B(2; 8)$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Đường thẳng đi qua hai điểm cực trị $A(0; 4)$ và $B(2; 8)$ có phương trình:")
+        st.markdown(r"$\dfrac{x - 0}{2 - 0} = \dfrac{y - 4}{8 - 4} \iff \dfrac{x}{2} = \dfrac{y - 4}{4} \iff 2x = y - 4 \iff 2x - y + 4 = 0$.")
+        st.markdown(r"Mệnh đề cho đường thẳng là $2x + y - 4 = 0$ là sai.")
+        
+        st.markdown(r"**b) Mệnh đề Sai:**")
+        st.markdown(r"Tập xác định của hàm số là $D = \mathbb{R}$ là đúng. Tuy nhiên, đạo hàm $y' = -3x^2 + 6x$, chứ không phải $y' = -3x^3 + 6x$.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có $y' = -3x^2 + 6x$. Xét dấu $y'$, ta thấy $y' > 0$ khi $x \in (0; 2)$. Do đó hàm số đồng biến trên khoảng $(0; 2)$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Các đỉnh của tam giác $OAB$ là $O(0; 0)$, $A(0; 4)$ và $B(2; 8)$.")
+        st.markdown(r"Điểm $A$ nằm trên trục $Oy$ nên độ dài đoạn $OA = 4$.")
+        st.markdown(r"Khoảng cách từ $B(2; 8)$ đến trục $Oy$ (đường thẳng $OA$) là $h = |x_B| = 2$.")
+        st.markdown(r"Diện tích $\Delta OAB$ là $S = \dfrac{1}{2} \cdot OA \cdot h = \dfrac{1}{2} \cdot 4 \cdot 2 = 4$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+# CÂU HỎI 48 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 48. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Lê Quý Đôn - Đống Đa 2026) </span>
+        Cho hàm số <span style="white-space: nowrap;">$y = \dfrac{2x^2 - 5x + 7}{x - 5}$</span> có đồ thị $(C)$.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Tiếp tuyến của đồ thị $(C)$ tại điểm $M(3; -5)$ cắt đường tiệm cận đứng và tiệm cận xiên lần lượt tại $P, Q$. Diện tích tam giác $OPQ$ là $52$ với $O$ là gốc tọa độ.")
+with col2:
+    ans_a48 = st.radio("q48a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q48_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Tổng tất cả các giá trị cực trị của hàm số bằng $30$.")
+with col4:
+    ans_b48 = st.radio("q48b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q48_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Hàm số nghịch biến trên khoảng $(-1; 5)$.")
+with col6:
+    ans_c48 = st.radio("q48c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q48_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Đường tiệm cận xiên của đồ thị $(C)$ có phương trình $y = 2x - 5$.")
+with col8:
+    ans_d48 = st.radio("q48d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q48_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q48_check"):
+    if None in [ans_a48, ans_b48, ans_c48, ans_d48]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Sai, d-Sai
+        correct_answers = {"a": "S", "b": "Đ", "c": "S", "d": "S"}
+        user_answers = {"a": ans_a48, "b": ans_b48, "c": ans_c48, "d": ans_d48}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q48_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích hàm số:**")
+        st.markdown(r"- Hàm số $y = f(x) = \dfrac{2x^2 - 5x + 7}{x - 5} = 2x + 5 + \dfrac{32}{x - 5}$.")
+        st.markdown(r"- Tập xác định: $D = \mathbb{R} \setminus \{5\}$.")
+        st.markdown(r"- Đạo hàm: $y' = 2 - \dfrac{32}{(x - 5)^2} = \dfrac{2(x - 5)^2 - 32}{(x - 5)^2} = \dfrac{2x^2 - 20x + 18}{(x - 5)^2}$.")
+        st.markdown(r"- $y' = 0 \iff 2x^2 - 20x + 18 = 0 \iff \left[ \begin{array}{l} x = 1 \implies y = -1 \\ x = 9 \implies y = 31 \end{array} \right.$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"- Tiệm cận đứng: $x = 5$.")
+        st.markdown(r"- Tiệm cận xiên: $y = 2x + 5$.")
+        st.markdown(r"- Tại $x = 3 \implies y(3) = -5$. Đạo hàm tại $x = 3$ là $y'(3) = 2 - \dfrac{32}{(3 - 5)^2} = 2 - \dfrac{32}{4} = -6$.")
+        st.markdown(r"- Phương trình tiếp tuyến tại $M(3; -5)$ là: $y = -6(x - 3) - 5 \iff y = -6x + 13$.")
+        st.markdown(r"- Tọa độ giao điểm $P$ của tiếp tuyến với tiệm cận đứng $x = 5$: $y_P = -6(5) + 13 = -17 \implies P(5; -17)$.")
+        st.markdown(r"- Tọa độ giao điểm $Q$ của tiếp tuyến với tiệm cận xiên $y = 2x + 5$: Giải phương trình $-6x + 13 = 2x + 5 \iff 8x = 8 \iff x = 1 \implies y = 7 \implies Q(1; 7)$.")
+        st.markdown(r"- Ta tính diện tích $\Delta OPQ$ theo công thức $S = \dfrac{1}{2}|x_P y_Q - x_Q y_P| = \dfrac{1}{2}|5 \cdot 7 - 1 \cdot (-17)| = \dfrac{1}{2}|35 + 17| = \dfrac{52}{2} = 26 \neq 52$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"- Hàm số đạt cực đại tại $x = 1$, giá trị cực đại $y_{\text{CĐ}} = -1$.")
+        st.markdown(r"- Hàm số đạt cực tiểu tại $x = 9$, giá trị cực tiểu $y_{\text{CT}} = 31$.")
+        st.markdown(r"- Tổng tất cả các giá trị cực trị của hàm số là: $y_{\text{CĐ}} + y_{\text{CT}} = -1 + 31 = 30$.")
+        
+        st.markdown(r"**c) Mệnh đề Sai:**")
+        st.markdown(r"- Ta có $y' < 0 \iff 2x^2 - 20x + 18 < 0 \iff 1 < x < 9$.")
+        st.markdown(r"- Kết hợp với điều kiện xác định $x \neq 5$, hàm số nghịch biến trên các khoảng $(1; 5)$ và $(5; 9)$.")
+        st.markdown(r"- Hàm số không nghịch biến trên khoảng $(-1; 5)$ vì trên khoảng $(-1; 1)$, $y' > 0$ (hàm số đồng biến).")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"- Như đã phân tích, đường tiệm cận xiên của đồ thị hàm số có phương trình $y = 2x + 5$, không phải $y = 2x - 5$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
