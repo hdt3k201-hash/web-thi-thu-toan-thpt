@@ -163,3 +163,111 @@ if st.button("Xem lời giải chi tiết", key="q1_solution"):
         st.markdown(r"Vậy diện tích ao nuôi tôm lớn nhất là $S_{\max} = 5 \cdot 4\sqrt{5} = 20\sqrt{5} \text{ (m}^2\text{)}$.")
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# CÂU HỎI 2 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 2. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT ĐH-KHTN HN 2026) </span>
+        Chi phí vận hành trung bình (tính bằng triệu đồng/ chuyến) của một công ty vận tải khi vận hành $x$ chuyến xe mỗi ngày được cho bởi hàm số <span style="white-space: nowrap;">$A(x) = 0,2x + 2 + \dfrac{500}{x}$</span> với <span style="white-space: nowrap;">$10 \le x \le 100$</span>.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.image("images/image_ddafda.png", use_container_width=True)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Đạo hàm của hàm chi phí trung bình là <span style='white-space: nowrap;'>$A'(x) = \dfrac{0,2x^2 + 500}{x^2}$</span>.", unsafe_allow_html=True)
+with col2:
+    ans_a2 = st.radio("q2a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q2_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Chi phí trung bình trên mỗi chuyến xe thấp nhất là $22$ triệu.")
+with col4:
+    ans_b2 = st.radio("q2b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q2_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Nếu do giới hạn về số lượng tài xế khiến công ty chỉ có thể vận hành tối đa $40$ chuyến xe mỗi ngày. Chi phí trung bình cho mỗi chuyến xe trong trường hợp này thấp nhất bằng $22,5$ triệu đồng.")
+with col6:
+    ans_c2 = st.radio("q2c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q2_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Tổng chi phí vận hành của công ty vận tải trong một ngày thấp nhất là $1,1$ tỉ đồng.")
+with col8:
+    ans_d2 = st.radio("q2d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q2_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q2_check"):
+    if None in [ans_a2, ans_b2, ans_c2, ans_d2]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Đúng, d-Sai
+        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "S"}
+        user_answers = {"a": ans_a2, "b": ans_b2, "c": ans_c2, "d": ans_d2}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q2_solution"):
+    # Kiểm tra điều kiện đăng nhập
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"Xét hàm số $A(x) = 0,2x + 2 + \dfrac{500}{x}$ trên đoạn $[10; 100]$.")
+        st.markdown(r"Đạo hàm: $A'(x) = 0,2 - \dfrac{500}{x^2} = \dfrac{0,2x^2 - 500}{x^2}$.")
+        st.markdown(r"$A'(x) = 0 \iff 0,2x^2 - 500 = 0 \iff x^2 = 2500 \implies x = 50$ (do $x \in [10; 100]$).")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Đạo hàm đúng phải là $A'(x) = \dfrac{0,2x^2 - 500}{x^2}$.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Ta tính các giá trị của hàm số tại các biên và điểm cực trị:")
+        st.markdown(r"- $A(10) = 0,2 \cdot 10 + 2 + \dfrac{500}{10} = 2 + 2 + 50 = 54$")
+        st.markdown(r"- $A(50) = 0,2 \cdot 50 + 2 + \dfrac{500}{50} = 10 + 2 + 10 = 22$")
+        st.markdown(r"- $A(100) = 0,2 \cdot 100 + 2 + \dfrac{500}{100} = 20 + 2 + 5 = 27$")
+        st.markdown(r"Vậy chi phí trung bình thấp nhất là $22$ (triệu đồng/chuyến) khi vận hành $50$ chuyến.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Với điều kiện mới, số chuyến xe tối đa là $40$, ta xét hàm số trên đoạn $[10; 40]$.")
+        st.markdown(r"Vì $A'(x) = \dfrac{0,2x^2 - 500}{x^2} < 0$ với mọi $x \in (10; 40)$ nên hàm số nghịch biến (giảm liên tục) trên đoạn này.")
+        st.markdown(r"Do đó, chi phí trung bình thấp nhất đạt được tại $x = 40$:")
+        st.markdown(r"$A(40) = 0,2 \cdot 40 + 2 + \dfrac{500}{40} = 8 + 2 + 12,5 = 22,5$ (triệu đồng).")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Gọi $T(x)$ là tổng chi phí vận hành trong một ngày, ta có:")
+        st.latex(r"T(x) = x \cdot A(x) = x \left( 0,2x + 2 + \dfrac{500}{x} \right) = 0,2x^2 + 2x + 500")
+        st.markdown(r"Xét hàm $T(x)$ trên đoạn $[10; 100]$:")
+        st.markdown(r"$T'(x) = 0,4x + 2 > 0$ với mọi $x \in [10; 100]$. Do đó hàm $T(x)$ luôn đồng biến.")
+        st.markdown(r"Tổng chi phí vận hành thấp nhất đạt được tại $x = 10$:")
+        st.markdown(r"$T(10) = 0,2 \cdot 10^2 + 2 \cdot 10 + 500 = 20 + 20 + 500 = 540$ (triệu đồng) $= 0,54$ tỉ đồng.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
