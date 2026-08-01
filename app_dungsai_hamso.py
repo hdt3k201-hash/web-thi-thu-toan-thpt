@@ -2106,3 +2106,210 @@ if st.button("Xem lời giải chi tiết", key="q20_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+# CÂU HỎI 21 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 21 (Câu 26 trong đề). </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Khuyến - LHT - HCM 2026) </span>
+        Diện tích bao phủ của cỏ Posidonia (một loài tảo biển) trên đáy ở một vùng vịnh theo thời gian được một nhóm các nhà sinh vật học quan sát và mô hình hoá bởi hàm số $f(t) = \dfrac{k}{1 + 14e^{-0,3t}}$ (hecta), trong đó thời gian $t$ tính bằng năm, $k$ là số thực dương. Năm 2024 (ứng với $t = 0$) là thời điểm các nhà sinh vật học bắt đầu quan sát, lúc đó diện tích của cỏ Posidonia đã bao phủ là 1 (hecta).
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Giá trị $k = 2$.")
+with col2:
+    ans_a21 = st.radio("q21a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q21_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Theo thời gian, diện tích bao phủ của cỏ Posidonia ở vịnh này sẽ không vượt quá 15 (hecta).")
+with col4:
+    ans_b21 = st.radio("q21b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q21_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Khi diện tích cỏ bao phủ 5 (hecta) thì tốc độ bao phủ ở thời điểm đó là 1 (hecta/ năm).")
+with col6:
+    ans_c21 = st.radio("q21c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q21_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Nhóm các nhà sinh vật học dự đoán được tốc độ thay đổi diện tích bao phủ của cỏ Posidonia trong năm 2035 là nhanh nhất.")
+with col8:
+    ans_d21 = st.radio("q21d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q21_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q21_check"):
+    if None in [ans_a21, ans_b21, ans_c21, ans_d21]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Đúng, d-Sai
+        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "S"}
+        user_answers = {"a": ans_a21, "b": ans_b21, "c": ans_c21, "d": ans_d21}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q21_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Phân tích bài toán:**")
+        st.markdown(r"Năm 2024 tương ứng $t = 0$, diện tích bao phủ là 1 hecta $\implies f(0) = 1$.")
+        st.markdown(r"Ta có: $f(0) = \dfrac{k}{1 + 14e^0} = \dfrac{k}{15} = 1 \implies k = 15$.")
+        st.markdown(r"Vậy hàm số mô hình hoá là: $f(t) = \dfrac{15}{1 + 14e^{-0,3t}}$.")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Theo phân tích trên, ta tính được $k = 15$. Phát biểu $k = 2$ là sai.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Theo thời gian ($t \to +\infty$), ta xét giới hạn của hàm số:")
+        st.markdown(r"$\lim_{t \to +\infty} f(t) = \lim_{t \to +\infty} \dfrac{15}{1 + 14e^{-0,3t}} = \dfrac{15}{1 + 0} = 15$.")
+        st.markdown(r"Vì $14e^{-0,3t} > 0, \forall t \ge 0$ nên mẫu số luôn lớn hơn 1, do đó $f(t) < 15$. Diện tích bao phủ sẽ tiệm cận nhưng không vượt quá 15 hecta.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Khi diện tích bao phủ là 5 hecta, ta có $f(t) = 5$:")
+        st.markdown(r"$\dfrac{15}{1 + 14e^{-0,3t}} = 5 \implies 1 + 14e^{-0,3t} = 3 \implies 14e^{-0,3t} = 2 \implies e^{-0,3t} = \dfrac{1}{7}$.")
+        st.markdown(r"Tốc độ bao phủ tại thời điểm $t$ là đạo hàm $f'(t)$:")
+        st.markdown(r"$f'(t) = \dfrac{-15 \cdot (-0,3 \cdot 14e^{-0,3t})}{(1 + 14e^{-0,3t})^2} = \dfrac{63e^{-0,3t}}{(1 + 14e^{-0,3t})^2}$.")
+        st.markdown(r"Thay $e^{-0,3t} = \dfrac{1}{7}$ và $1 + 14e^{-0,3t} = 3$ vào, ta được: $f'(t) = \dfrac{63 \cdot \frac{1}{7}}{3^2} = \dfrac{9}{9} = 1$ (hecta/năm).")
+        
+        st.markdown(r"**d) Mệnh đề Sai:**")
+        st.markdown(r"Tốc độ thay đổi diện tích bao phủ nhanh nhất khi $f'(t)$ đạt giá trị lớn nhất.")
+        st.markdown(r"Đặt $x = e^{-0,3t} > 0$. Ta khảo sát hàm $g(x) = \dfrac{63x}{(1 + 14x)^2}$.")
+        st.markdown(r"Áp dụng Cauchy cho mẫu: $1 + 14x \ge 2\sqrt{14x} \implies (1 + 14x)^2 \ge 56x$.")
+        st.markdown(r"Suy ra $g(x) = \dfrac{63x}{(1 + 14x)^2} \le \dfrac{63x}{56x} = 1,125$.")
+        st.markdown(r"Dấu '=' xảy ra khi $1 = 14x \implies x = \dfrac{1}{14} \implies e^{-0,3t} = \dfrac{1}{14} \implies -0,3t = \ln\left(\dfrac{1}{14}\right) \implies t = \dfrac{\ln 14}{0,3} \approx 8,8$ (năm).")
+        st.markdown(r"Năm đạt tốc độ nhanh nhất là $2024 + 8,8 \approx 2032$ (cuối năm 2032/đầu năm 2033), không phải năm 2035.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+st.markdown("---")
+
+# CÂU HỎI 22 (ĐÚNG/SAI)
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 22 (Câu 27 trong đề). </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Khuyến - LHT - HCM 2026) </span>
+        Cho hàm số $f(x) = 3x - \log_5(x - 1)$
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
+
+# Hiển thị các phát biểu và tuỳ chọn Đúng/Sai
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.markdown(r"**a)** Đạo hàm của hàm số $f(x)$ là $f'(x) = 3 - \dfrac{1}{x - 1}, \forall x \in (1; +\infty)$.")
+with col2:
+    ans_a22 = st.radio("q22a", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q22_a")
+
+col3, col4 = st.columns([4, 1])
+with col3:
+    st.markdown(r"**b)** Hàm số $f(x)$ có một điểm cực tiểu.")
+with col4:
+    ans_b22 = st.radio("q22b", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q22_b")
+
+col5, col6 = st.columns([4, 1])
+with col5:
+    st.markdown(r"**c)** Hàm số đồng biến trên khoảng $(2; +\infty)$.")
+with col6:
+    ans_c22 = st.radio("q22c", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q22_c")
+
+col7, col8 = st.columns([4, 1])
+with col7:
+    st.markdown(r"**d)** Giá trị nhỏ nhất của hàm số trên khoảng $(1; +\infty)$ lớn hơn $\dfrac{9}{2}$.")
+with col8:
+    ans_d22 = st.radio("q22d", ["Đ", "S"], index=None, horizontal=True, label_visibility="collapsed", key="q22_d")
+
+# Nút kiểm tra đáp án
+if st.button("Kiểm tra đáp án", key="q22_check"):
+    if None in [ans_a22, ans_b22, ans_c22, ans_d22]:
+        st.warning("Bạn chưa chọn đủ đáp án cho tất cả các phát biểu (a, b, c, d).")
+    else:
+        # Đáp án chuẩn: a-Sai, b-Đúng, c-Đúng, d-Đúng
+        correct_answers = {"a": "S", "b": "Đ", "c": "Đ", "d": "Đ"}
+        user_answers = {"a": ans_a22, "b": ans_b22, "c": ans_c22, "d": ans_d22}
+        
+        # Đếm số câu đúng
+        score = sum([1 for k in correct_answers if user_answers[k] == correct_answers[k]])
+        
+        if score == 4:
+            st.success("Tuyệt vời! Bạn đã trả lời chính xác tất cả các phát biểu.")
+        else:
+            st.error(f"Bạn đã trả lời đúng {score}/4 phát biểu. Hãy xem lại kỹ hơn nhé!")
+
+# Nút xem lời giải chi tiết
+if st.button("Xem lời giải chi tiết", key="q22_solution"):
+    if st.session_state.get('logged_in', True):
+        st.info("Lời giải chi tiết:")
+        
+        st.markdown(r"**Tập xác định:** $\mathscr{D} = (1; +\infty)$")
+        st.markdown(r"**Đạo hàm:** $f'(x) = 3 - \dfrac{1}{(x - 1)\ln 5}$")
+        st.markdown("---")
+
+        st.markdown(r"**a) Mệnh đề Sai:**")
+        st.markdown(r"Công thức đạo hàm của $\log_a u$ là $\dfrac{u'}{u \ln a}$. Do đó, $f'(x) = 3 - \dfrac{1}{(x - 1)\ln 5}$. Phát biểu trong bài thiếu $\ln 5$ dưới mẫu số.")
+        
+        st.markdown(r"**b) Mệnh đề Đúng:**")
+        st.markdown(r"Giải phương trình $f'(x) = 0 \iff 3 = \dfrac{1}{(x - 1)\ln 5} \iff x - 1 = \dfrac{1}{3\ln 5} \iff x = 1 + \dfrac{1}{3\ln 5}$.")
+        st.markdown(r"Vì $\ln 5 > 0$ nên $x = 1 + \dfrac{1}{3\ln 5} > 1$ (thuộc tập xác định).")
+        st.markdown(r"Khi $x$ đi qua giá trị này, $f'(x)$ đổi dấu từ âm sang dương, nên hàm số đạt cực tiểu tại $x_0 = 1 + \dfrac{1}{3\ln 5}$. Hàm số chỉ có đúng một điểm cực trị và là cực tiểu.")
+        
+        st.markdown(r"**c) Mệnh đề Đúng:**")
+        st.markdown(r"Ta có điểm cực tiểu $x_0 = 1 + \dfrac{1}{3\ln 5} \approx 1,207$.")
+        st.markdown(r"Vì $2 > 1,207$ nên trên khoảng $(2; +\infty)$, ta luôn có $x > x_0 \implies f'(x) > 0$.")
+        st.markdown(r"Do đó, hàm số đồng biến trên khoảng $(2; +\infty)$.")
+        
+        st.markdown(r"**d) Mệnh đề Đúng:**")
+        st.markdown(r"Giá trị nhỏ nhất của hàm số đạt được tại điểm cực tiểu $x_0 = 1 + \dfrac{1}{3\ln 5}$.")
+        st.markdown(r"$y_{\min} = f(x_0) = 3\left(1 + \dfrac{1}{3\ln 5}\right) - \log_5\left(\dfrac{1}{3\ln 5}\right) = 3 + \dfrac{1}{\ln 5} + \log_5(3\ln 5)$.")
+        st.markdown(r"Sử dụng xấp xỉ $\ln 5 \approx 1,609$, ta có:")
+        st.markdown(r"$y_{\min} \approx 3 + \dfrac{1}{1,609} + \log_5(3 \cdot 1,609) \approx 3 + 0,621 + \log_5(4,827) \approx 3,621 + 0,979 = 4,6$.")
+        st.markdown(r"Vì $4,6 > 4,5 = \dfrac{9}{2}$, nên giá trị nhỏ nhất của hàm số lớn hơn $\dfrac{9}{2}$.")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
