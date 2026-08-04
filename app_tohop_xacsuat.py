@@ -202,19 +202,19 @@ if st.session_state.get('q2_solution_shown') and st.session_state.get('logged_in
     **Bước 1: Sắp xếp các quyển sách thành một hàng ngang**
     
     * Số cách xếp 8 quyển sách khác nhau thành một hàng ngang là hoán vị của 8 phần tử:
-        $$8! = 40.320 	ext{ (cách)}$$
+        $$8! = 40.320 	{ (cách)}$$
     
     **Bước 2: Sử dụng phương pháp "vách ngăn"**
     
     * Khi xếp 8 quyển sách thành một hàng ngang, ta có $7$ khoảng trống ở giữa các quyển sách (không tính hai đầu mút vì mỗi ngăn phải có ít nhất 1 quyển sách).
     * Việc chia 8 quyển sách này vào 4 ngăn khác nhau (mỗi ngăn ít nhất 1 quyển) tương đương với việc đặt $3$ vách ngăn vào $3$ trong số $7$ khoảng trống đó (để chia thành 4 phần tương ứng cho 4 ngăn theo thứ tự 1, 2, 3, 4).
     * Số cách đặt 3 vách ngăn là tổ hợp chập 3 của 7:
-        $$C_7^3 = \dfrac{7!}{3!(7-3)!} = 35 	ext{ (cách)}$$
+        $$C_7^3 = \dfrac{7!}{3!(7-3)!} = 35 	{ (cách)}$$
     
     **Bước 3: Tính tổng số cách xếp $T$ và giá trị cần tìm**
     
     * Theo quy tắc nhân, tổng số cách xếp $T$ là:
-        $$T = 8! \cdot C_7^3 = 40.320 \cdot 35 = 1.411.200 	ext{ (cách)}$$
+        $$T = 8! \cdot C_7^3 = 40.320 \cdot 35 = 1.411.200 	{ (cách)}$$
     * Theo yêu cầu bài toán, ta cần tính giá trị của $\dfrac{T}{400}$:
         $$\dfrac{T}{400} = \dfrac{1.411.200}{400} = 3528$$
     
