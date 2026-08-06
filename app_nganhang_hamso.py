@@ -11753,3 +11753,116 @@ if st.session_state.get('q122_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Thể tích lớn nhất làm tròn đến hàng chục là **$40$**.
     """)
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 123</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+ Cho một tấm nhôm hình vuông cạnh $6\text{ cm}$. Người ta muốn cắt một hình thang như hình vẽ.
+Tìm tổng $x + y$ để diện tích hình thang $EFGH$ đạt giá trị nhỏ nhất *(làm tròn đến hàng phần trăm)*.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng x + y (cm):", key="q123_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_c4579b.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_c4579b.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q123_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 4.95
+    if normalized_user_answer in ["4.95", "4.950"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập điều kiện hai đáy EH và FG song song để tìm mối liên hệ xy = 6, sau đó tính diện tích EFGH và dùng BĐT AM-GM nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q123_solution_shown' not in st.session_state:
+    st.session_state['q123_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q123_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q123_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q123_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q123_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích tọa độ và điều kiện hình thang**
+    
+    * Gắn hệ trục tọa độ $Oxy$ sao cho gốc $D(0; 0)$, khi đó:
+        * $A(0; 6)$, $B(6; 6)$, $C(6; 0)$, $D(0; 0)$.
+    * Tọa độ các điểm trên các cạnh:
+        * $E \in AB$ có $AE = 2\text{ cm} \implies E(2; 6)$ và $EB = 4\text{ cm}$.
+        * $F \in BC$ có $BF = 3\text{ cm} \implies F(6; 3)$ và $FC = 3\text{ cm}$.
+        * $H \in AD$ có $AH = x\text{ cm} \implies H(0; 6 - x)$ và $HD = 6 - x\text{ cm}$.
+        * $G \in CD$ có $CG = y\text{ cm} \implies G(6 - y; 0)$ và $GD = 6 - y\text{ cm}$.
+    
+    * Tứ giác $EFGH$ là hình thang với hai đáy là $EH$ và $FG$:
+        * $\vec{EH} = (-2; -x)$
+        * $\vec{GF} = (y; 3)$
+    * Do $EH \parallel FG$ nên hai véc-tơ cùng phương:
+      $$\frac{-2}{y} = \frac{-x}{-3} \iff \frac{2}{y} = \frac{x}{3} \iff xy = 6 \implies y = \frac{6}{x}$$
+    
+    **Bước 2: Tính diện tích hình thang $EFGH$**
+    
+    * Diện tích hình thang $S_{EFGH}$ bằng diện tích hình vuông $ABCD$ trừ đi tổng diện tích 4 tam giác vuông ở các góc:
+      $$S_{EFGH} = S_{ABCD} - S_{\triangle AHE} - S_{\triangle EBF} - S_{\triangle FCG} - S_{\triangle GDH}$$
+    * Ta có:
+        * $S_{ABCD} = 6 \times 6 = 36\text{ cm}^2$
+        * $S_{\triangle AHE} = \frac{1}{2} \cdot AE \cdot AH = \frac{1}{2} \cdot 2 \cdot x = x$
+        * $S_{\triangle EBF} = \frac{1}{2} \cdot EB \cdot BF = \frac{1}{2} \cdot 4 \cdot 3 = 6$
+        * $S_{\triangle FCG} = \frac{1}{2} \cdot FC \cdot CG = \frac{1}{2} \cdot 3 \cdot y = 1,5y$
+        * $S_{\triangle GDH} = \frac{1}{2} \cdot GD \cdot DH = \frac{1}{2}(6 - y)(6 - x) = 18 - 3x - 3y + 0,5xy$
+    * Tổng diện tích 4 tam giác vuông:
+      $$S_{\text{cắt}} = x + 6 + 1,5y + 18 - 3x - 3y + 0,5xy = 24 - 2x - 1,5y + 0,5xy$$
+    * Thay $xy = 6$ vào:
+      $$S_{\text{cắt}} = 24 - 2x - 1,5y + 0,5(6) = 27 - 2x - 1,5y$$
+    * Vậy diện tích hình thang $EFGH$ là:
+      $$S_{EFGH} = 36 - (27 - 2x - 1,5y) = 9 + 2x + 1,5y$$
+    
+    **Bước 3: Tìm giá trị nhỏ nhất của diện tích $S_{EFGH}$**
+    
+    * Thay $y = \dfrac{6}{x}$ vào biểu thức diện tích:
+      $$S(x) = 9 + 2x + 1,5 \cdot \frac{6}{x} = 9 + 2x + \frac{9}{x}$$
+    * Áp dụng bất đẳng thức AM-GM cho hai số dương $2x$ và $\dfrac{9}{x}$:
+      $$2x + \frac{9}{x} \ge 2\sqrt{2x \cdot \frac{9}{x}} = 2\sqrt{18} = 6\sqrt{2}$$
+    * Do đó $S_{EFGH} \ge 9 + 6\sqrt{2}$. Dấu "=" xảy ra khi:
+      $$2x = \frac{9}{x} \iff 2x^2 = 9 \iff x = \sqrt{4,5} = \frac{3\sqrt{2}}{2}\text{ cm}$$
+    * Suy ra:
+      $$y = \frac{6}{x} = \frac{6}{\sqrt{4,5}} = 2\sqrt{2}\text{ cm}$$
+    
+    **Bước 4: Tính tổng $x + y$**
+    
+    * Khi diện tích $EFGH$ đạt giá trị nhỏ nhất, tổng $x + y$ bằng:
+      $$x + y = \frac{3\sqrt{2}}{2} + 2\sqrt{2} = \frac{7\sqrt{2}}{2} \approx 4,9497...$$
+    * Làm tròn đến hàng phần trăm theo yêu cầu bài toán, ta được **$4,95$**.
+    
+    **Kết luận:** Tổng $x + y$ bằng **$4,95\text{ cm}$**.
+    """)
