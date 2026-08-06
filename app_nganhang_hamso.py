@@ -10951,3 +10951,95 @@ if st.session_state.get('q114_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Giá trị của $a$ là **$100$**.
     """)
+
+import streamlit as st
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 115</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+**Câu 12:** Vào lúc 12 giờ 7 phút anh Hùng chạy xe xuất phát từ điểm $A$ và đi đến điểm $C$ với vận tốc là $60\text{ km/h}$. Biết rằng 7 phút trước đó anh Quang chạy xe xuất phát từ điểm $B$ và đi đến điểm $A$ với vận tốc là $30\text{ km/h}$ sao cho hai quãng đường của hai xe hợp nhau 1 góc 60 độ như hình vẽ dưới đây. Cho trước $AB = 42\text{ km}$ và vào lúc $a$ giờ $b$ phút thì anh Quang và anh Hùng ở vị trí có cự li gần nhất để vẫy tay chào nhau với $a, b \in \mathbb{N}^*$. Tính $a + b$? Xem như hai xe đều chuyển động đều và không có tác dụng ngoại lực hay yếu tố nào khác.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của a + b:", key="q115_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_c538f9.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_c538f9.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q115_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 41
+    if normalized_user_answer == "41":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập biểu thức tính khoảng cách theo thời gian t và dùng đạo hàm (hoặc đỉnh parabol) để tìm giá trị nhỏ nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q115_solution_shown' not in st.session_state:
+    st.session_state['q115_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q115_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q115_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q115_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q115_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chọn mốc thời gian và thiết lập khoảng cách theo thời gian**
+    
+    * Chọn mốc thời gian là 12 giờ 00 phút. Gọi $t$ (phút) là thời gian trôi qua kể từ mốc này ($t \ge 7$).
+    * Anh Quang xuất phát lúc 12 giờ 00 phút (trước anh Hùng 7 phút). Sau $t$ phút, quãng đường anh Quang đi được từ $B$ về $A$ là:
+        $$s_Q = 30 \cdot \frac{t}{60} = 0,5t \text{ (km)}$$
+    * Khoảng cách từ vị trí của anh Quang đến điểm $A$ lúc này là:
+        $$x = 42 - 0,5t \text{ (km)}$$
+    * Anh Hùng xuất phát lúc 12 giờ 7 phút. Tại thời điểm $t$, anh Hùng đã đi được $t - 7$ phút. Quãng đường anh Hùng đi được từ $A$ đến $C$ là:
+        $$y = 60 \cdot \frac{t - 7}{60} = t - 7 \text{ (km)}$$
+    
+    **Bước 2: Lập hàm số khoảng cách giữa hai xe**
+    
+    * Gọi $d$ là khoảng cách giữa anh Quang và anh Hùng tại thời điểm $t$. Áp dụng định lý côsin trong tam giác với góc $\widehat{BAC} = 60^\circ$:
+        $$d^2 = x^2 + y^2 - 2xy \cos(60^\circ) = x^2 + y^2 - xy$$
+    * Thay các biểu thức $x$ và $y$ vào, ta được:
+        $$d^2 = (42 - 0,5t)^2 + (t - 7)^2 - (42 - 0,5t)(t - 7)$$
+        $$d^2 = (1764 - 42t + 0,25t^2) + (t^2 - 14t + 49) - (42t - 294 - 0,5t^2 + 3,5t)$$
+        $$d^2 = 1,25t^2 - 56t + 1813 - 45,5t + 0,5t^2 + 294$$
+        $$d^2 = 1,75t^2 - 101,5t + 2107$$
+    
+    **Bước 3: Tìm vị trí có cự li gần nhất**
+    
+    * Xét hàm số $f(t) = 1,75t^2 - 101,5t + 2107$. Đây là một parabol có bề lõm hướng lên (do $a = 1,75 > 0$).
+    * Hàm số đạt giá trị nhỏ nhất tại đỉnh:
+        $$t = -\frac{b}{2a} = \frac{101,5}{2 \cdot 1,75} = \frac{101,5}{3,5} = 29$$
+    * Vậy khoảng cách giữa hai xe ngắn nhất sau 29 phút kể từ 12 giờ 00 phút, tức là vào lúc 12 giờ 29 phút.
+    * Ta có $a = 12$ và $b = 29$.
+    * Suy ra: $a + b = 12 + 29 = 41$.
+    
+    **Kết luận:** Giá trị của $a + b$ là **$41$**.
+    """)
