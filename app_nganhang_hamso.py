@@ -10649,18 +10649,18 @@ if st.session_state.get('q111_solution_shown') and st.session_state.get('logged_
     
     **Bước 2: Xây dựng phương trình và điều kiện**
     
-    * Khi ô tô ôm cua sát nhất, giả sử 2 đỉnh ngoài của ô tô trượt trên 2 trục $Ox$ và $Oy$. Gọi $\alpha \in \left(0; \frac{\pi}{2}\right)$ là góc tạo bởi chiều dài xe và trục $Ox$.
+    * Khi ô tô ôm cua sát nhất, giả sử 2 đỉnh ngoài của ô tô trượt trên 2 trục $Ox$ và $Oy$. Gọi $\alpha \in \left(0; \dfrac{\pi}{2}\right)$ là góc tạo bởi chiều dài xe và trục $Ox$.
     * Chiều dài xe $L = 5\text{ m}$, chiều rộng $w = 1,9\text{ m}$. 
     * Phương trình đường thẳng chứa mép trong của ô tô (đường thẳng $CD$ song song với chiều dài xe và cách gốc $O$ một đoạn $\ge$ bù trừ độ rộng) được xác định bởi:
         $$x\sin\alpha + y\cos\alpha = L\sin\alpha\cos\alpha + w$$
         $$\iff x\sin\alpha + y\cos\alpha = 5\sin\alpha\cos\alpha + 1,9$$
     * Để ô tô không bị kẹt ở khúc cua, khoảng cách từ tâm $M$ đến đường mép trong này phải lớn hơn hoặc bằng bán kính đường tròn $R = 2\text{ m}$:
-        $$\frac{|4,6\sin\alpha + (a+2)\cos\alpha - (5\sin\alpha\cos\alpha + 1,9)|}{\sqrt{\sin^2\alpha + \cos^2\alpha}} \ge 2$$
+        $$\dfrac{|4,6\sin\alpha + (a+2)\cos\alpha - (5\sin\alpha\cos\alpha + 1,9)|}{\sqrt{\sin^2\alpha + \cos^2\alpha}} \ge 2$$
     * Vì biểu thức bên trong dấu giá trị tuyệt đối mang giá trị dương trong thực tế hình học của bài toán, ta bỏ trị tuyệt đối và có:
         $$4,6\sin\alpha + (a+2)\cos\alpha - 5\sin\alpha\cos\alpha - 1,9 \ge 2$$
         $$\iff (a+2)\cos\alpha \ge 5\sin\alpha\cos\alpha - 4,6\sin\alpha + 3,9$$
         $$\iff a \ge \frac{5\sin\alpha\cos\alpha - 4,6\sin\alpha + 3,9}{\cos\alpha} - 2$$
-    * Đặt hàm số $f(\alpha) = 5\sin\alpha - 4,6\tan\alpha + \frac{3,9}{\cos\alpha} - 2$. Để xe luôn qua được cua thì bề rộng $a$ phải lớn hơn hoặc bằng giá trị lớn nhất của $f(\alpha)$ trên khoảng $\left(0; \frac{\pi}{2}\right)$.
+    * Đặt hàm số $f(\alpha) = 5\sin\alpha - 4,6\tan\alpha + \dfrac{3,9}{\cos\alpha} - 2$. Để xe luôn qua được cua thì bề rộng $a$ phải lớn hơn hoặc bằng giá trị lớn nhất của $f(\alpha)$ trên khoảng $\left(0; \frac{\pi}{2}\right)$.
     
     **Bước 3: Khảo sát hàm số để tìm giá trị lớn nhất**
     
