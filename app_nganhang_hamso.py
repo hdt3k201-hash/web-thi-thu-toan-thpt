@@ -12283,3 +12283,489 @@ if st.session_state.get('q127_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Tổng độ dài hai đoạn cáp treo là **$50\text{ m}$**.
     """)
+
+import streamlit as st
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 128</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Trên sân vận động, người ta tổ chức một cuộc thi chạy thông minh. Sân vận động là hình chữ nhật $ABCD$ có kích thước $AB = 100\text{ m}$ và $CD = 80\text{ m}$. Ở chính giữa sân người ta vẽ một hình tròn có tâm trùng với tâm của hình chữ nhật, bán kính bằng $25\text{ m}$ như hình vẽ. Lấy $E$ là một vị trí trên cạnh $AB$ sao cho $EB = 20\text{ m}$. Mỗi vận động viên cần xuất phát từ một điểm $M$ trên đường tròn và chạy theo cung đường $MDCBEM$. Vận động viên thắng cuộc là người chạy với quãng đường ngắn nhất. Tính độ dài quãng đường ngắn nhất vận động viên phải chạy (đơn vị m, kết quả làm tròn đến hàng đơn vị).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập độ dài quãng đường ngắn nhất (m):", key="q128_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_a9fe53.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_a9fe53.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q128_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 313
+    if normalized_user_answer in ["313", "313.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tách tổng quãng đường thành phần cố định (các cạnh hình chữ nhật) và phần biến đổi (MD + EM), sau đó áp dụng bất đẳng thức tam giác nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q128_solution_shown' not in st.session_state:
+    st.session_state['q128_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q128_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q128_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q128_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q128_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ trục tọa độ và tọa độ các điểm**
+    
+    * Chọn hệ trục tọa độ $Oxy$ sao cho gốc tọa độ $O(0; 0)$ trùng với tâm của hình chữ nhật $ABCD$.
+    * Hình chữ nhật $ABCD$ có chiều dài $AB = 100\text{ m}$ và chiều rộng $AD = 80\text{ m}$.
+    * Tọa độ các đỉnh của hình chữ nhật:
+        $$A(-50; 40), \ B(50; 40), \ C(50; -40), \ D(-50; -40)$$
+    * Điểm $E$ nằm trên cạnh $AB$ sao cho $EB = 20\text{ m}$, suy ra hoành độ của $E$ là $x_E = 50 - 20 = 30$, do đó tọa độ điểm $E$ là:
+        $$E(30; 40)$$
+    * Đường tròn ở chính giữa sân có tâm $O(0; 0)$ và bán kính $R = 25\text{ m}$, có phương trình:
+        $$x^2 + y^2 = 25^2 = 625$$
+
+    **Bước 2: Phân tích quãng đường di chuyển của vận động viên**
+    
+    * Vận động viên xuất phát từ điểm $M$ trên đường tròn và di chuyển theo hành trình $M \to D \to C \to B \to E \to M$.
+    * Tổng độ dài quãng đường di chuyển là:
+        $$S = MD + DC + CB + BE + EM = (MD + EM) + (DC + CB + BE)$$
+    * Trong đó, phần độ dài các cạnh cố định của hình chữ nhật là:
+        $$DC + CB + BE = 100 + 80 + 20 = 200\text{ m}$$
+
+    **Bước 3: Tìm giá trị nhỏ nhất của tổng khoảng cách $MD + EM$**
+    
+    * Áp dụng bất đẳng thức tam giác cho ba điểm $M, D, E$ (với $M$ là điểm nằm trên đường tròn):
+        $$MD + EM \ge DE$$
+    * Tính độ dài đoạn thẳng $DE$ bằng công thức khoảng cách giữa hai điểm $D(-50; -40)$ và $E(30; 40)$:
+        $$DE = \sqrt{(30 - (-50))^2 + (40 - (-40))^2} = \sqrt{80^2 + 80^2} = \sqrt{12800} = 80\sqrt{2}\text{ m}$$
+    * Đường thẳng $DE$ đi qua $D$ và $E$ có phương trình là $y = x + 10$. Khoảng cách từ tâm $O(0; 0)$ đến đường thẳng $DE$ là:
+        $$d = \dfrac{|0 - 0 + 10|}{\sqrt{1^2 + (-1)^2}} = \dfrac{10}{\sqrt{2}} = 5\sqrt{2} \approx 7.07\text{ m} < R = 25\text{ m}$$
+    * Vì khoảng cách từ tâm đến đường thẳng nhỏ hơn bán kính nên đường thẳng $DE$ cắt đường tròn tại hai điểm nằm phía trong đoạn thẳng $DE$. 
+    * Do đó, dấu bằng của bất đẳng thức xảy ra khi điểm $M$ trùng với giao điểm của đoạn thẳng $DE$ và đường tròn. Khi đó:
+        $$(MD + EM)_{\min} = DE = 80\sqrt{2}\text{ m}$$
+
+    **Bước 4: Tính tổng quãng đường ngắn nhất và làm tròn**
+    
+    * Quãng đường ngắn nhất vận động viên phải chạy là:
+        $$S_{\min} = 200 + 80\sqrt{2} \approx 200 + 113.137 = 313.137\text{ m}$$
+    * Làm tròn kết quả đến hàng đơn vị theo yêu cầu bài toán, ta được **$313$**.
+    
+    **Kết luận:** Độ dài quãng đường ngắn nhất vận động viên phải chạy là **$313\text{ m}$**.
+    """)
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 128</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Trên sân vận động, người ta tổ chức một cuộc thi chạy thông minh. Sân vận động là hình chữ nhật $ABCD$ có kích thước $AB = 100\text{ m}$ và $CD = 80\text{ m}$. Ở chính giữa sân người ta vẽ một hình tròn có tâm trùng với tâm của hình chữ nhật, bán kính bằng $25\text{ m}$ như hình vẽ. Lấy $E$ là một vị trí trên cạnh $AB$ sao cho $EB = 20\text{ m}$. Mỗi vận động viên cần xuất phát từ một điểm $M$ trên đường tròn và chạy theo cung đường $MDCBEM$. Vận động viên thắng cuộc là người chạy với quãng đường ngắn nhất. Tính độ dài quãng đường ngắn nhất vận động viên phải chạy (đơn vị m, kết quả làm tròn đến hàng đơn vị).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập độ dài quãng đường ngắn nhất (m):", key="q128_ans")
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q128_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 313
+    if normalized_user_answer in ["313", "313.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tách tổng quãng đường thành phần cố định (các cạnh hình chữ nhật) và phần biến đổi (MD + EM), sau đó áp dụng bất đẳng thức tam giác nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q128_solution_shown' not in st.session_state:
+    st.session_state['q128_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q128_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q128_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q128_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q128_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ trục tọa độ và tọa độ các điểm**
+    
+    * Chọn hệ trục tọa độ $Oxy$ sao cho gốc tọa độ $O(0; 0)$ trùng với tâm của hình chữ nhật $ABCD$.
+    * Hình chữ nhật $ABCD$ có chiều dài $AB = 100\text{ m}$ và chiều rộng $AD = 80\text{ m}$.
+    * Tọa độ các đỉnh của hình chữ nhật:
+        $$A(-50; 40), \ B(50; 40), \ C(50; -40), \ D(-50; -40)$$
+    * Điểm $E$ nằm trên cạnh $AB$ sao cho $EB = 20\text{ m}$, suy ra hoành độ của $E$ là $x_E = 50 - 20 = 30$, do đó tọa độ điểm $E$ là:
+        $$E(30; 40)$$
+    * Đường tròn ở chính giữa sân có tâm $O(0; 0)$ và bán kính $R = 25\text{ m}$, có phương trình:
+        $$x^2 + y^2 = 25^2 = 625$$
+
+    **Bước 2: Phân tích quãng đường di chuyển của vận động viên**
+    
+    * Vận động viên xuất phát từ điểm $M$ trên đường tròn và di chuyển theo hành trình $M \to D \to C \to B \to E \to M$.
+    * Tổng độ dài quãng đường di chuyển là:
+        $$S = MD + DC + CB + BE + EM = (MD + EM) + (DC + CB + BE)$$
+    * Trong đó, phần độ dài các cạnh cố định của hình chữ nhật là:
+        $$DC + CB + BE = 100 + 80 + 20 = 200\text{ m}$$
+
+    **Bước 3: Tìm giá trị nhỏ nhất của tổng khoảng cách $MD + EM$**
+    
+    * Áp dụng bất đẳng thức tam giác cho ba điểm $M, D, E$ (với $M$ là điểm nằm trên đường tròn):
+        $$MD + EM \ge DE$$
+    * Tính độ dài đoạn thẳng $DE$ bằng công thức khoảng cách giữa hai điểm $D(-50; -40)$ và $E(30; 40)$:
+        $$DE = \sqrt{(30 - (-50))^2 + (40 - (-40))^2} = \sqrt{80^2 + 80^2} = \sqrt{12800} = 80\sqrt{2}\text{ m}$$
+    * Đường thẳng $DE$ đi qua $D$ và $E$ có phương trình là $y = x + 10$. Khoảng cách từ tâm $O(0; 0)$ đến đường thẳng $DE$ là:
+        $$d = \dfrac{|0 - 0 + 10|}{\sqrt{1^2 + (-1)^2}} = \dfrac{10}{\sqrt{2}} = 5\sqrt{2} \approx 7.07\text{ m} < R = 25\text{ m}$$
+    * Vì khoảng cách từ tâm đến đường thẳng nhỏ hơn bán kính nên đường thẳng $DE$ cắt đường tròn tại hai điểm nằm phía trong đoạn thẳng $DE$. 
+    * Do đó, dấu bằng của bất đẳng thức xảy ra khi điểm $M$ trùng với giao điểm của đoạn thẳng $DE$ và đường tròn. Khi đó:
+        $$(MD + EM)_{\min} = DE = 80\sqrt{2}\text{ m}$$
+
+    **Bước 4: Tính tổng quãng đường ngắn nhất và làm tròn**
+    
+    * Quãng đường ngắn nhất vận động viên phải chạy là:
+        $$S_{\min} = 200 + 80\sqrt{2} \approx 200 + 113.137 = 313.137\text{ m}$$
+    * Làm tròn kết quả đến hàng đơn vị theo yêu cầu bài toán, ta được **$313$**.
+    
+    **Kết luận:** Độ dài quãng đường ngắn nhất vận động viên phải chạy là **$313\text{ m}$**.
+    """)
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 129</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một tấm biển quảng cáo lớn hình chữ nhật được treo dọc trên mặt tiền của một trung tâm thương mại. Mép dưới của biển quảng cáo cách mặt đất $9\text{ m}$, mép trên của biển cách mặt đất $19\text{ m}$. Một người đi xe đạp di chuyển thẳng hướng về phía tòa nhà với phương trình chuyển động là $s(t) = t^2 + 2t\text{ (mét)}$, trong đó $t$ là thời gian tính bằng giây kể từ lúc bắt đầu quan sát. Giả sử rằng mắt quan sát của người đi xe đạp luôn cách mặt đất là $1\text{ m}$ trong suốt quá trình di chuyển, tức $MN = 1\text{ m}$. Biết rằng tại thời điểm $t = 0$, người đó cách tòa nhà $48\text{ m}$. Biết tốc độ thay đổi của góc nhìn $\theta\text{ (rad/s)}$ tại thời điểm $t = 4$ giây là $k$. Khi đó giá trị của $100k$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của 100k:", key="q129_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_a98957.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_a98957.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q129_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 7.5
+    if normalized_user_answer in ["7.5", "7.50"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tính khoảng cách x(t) từ người đến tòa nhà, biểu diễn góc nhìn $\theta$ qua hàm lượng giác arctan, sau đó lấy đạo hàm theo thời gian t nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q129_solution_shown' not in st.session_state:
+    st.session_state['q129_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q129_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q129_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q129_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q129_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định vị trí và khoảng cách từ mắt người đến biển quảng cáo**
+    
+    * Mắt người quan sát luôn cách mặt đất $1\text{ m}$:
+        * Độ cao của mép dưới biển quảng cáo so với mắt người là: $9 - 1 = 8\text{ m}$.
+        * Độ cao của mép trên biển quảng cáo so với mắt người là: $19 - 1 = 18\text{ m}$.
+    * Gọi $x(t)$ là khoảng cách từ người đi xe đạp đến chân tòa nhà tại thời điểm $t$ (giây).
+    * Theo giả thiết, tại $t = 0$, người đó cách tòa nhà $48\text{ m}$ và phương trình chuyển động tiến về phía tòa nhà là $s(t) = t^2 + 2t\text{ (m)}$.
+    * Do đó, khoảng cách từ người đến tòa nhà tại thời điểm $t$ là:
+      $$x(t) = 48 - s(t) = 48 - (t^2 + 2t)$$
+    * Vận tốc di chuyển của người (tốc độ thay đổi khoảng cách $x$ theo thời gian $t$) là:
+      $$x'(t) = -\dfrac{ds}{dt} = -(2t + 2)$$
+
+    **Bước 2: Thiết lập hàm biểu diễn góc nhìn $\theta$**
+    
+    * Gọi $\alpha_1$ là góc nâng từ phương ngang lên mép dưới của biển, ta có $\tan \alpha_1 = \dfrac{8}{x}$.
+    * Gọi $\alpha_2$ là góc nâng từ phương ngang lên mép trên của biển, ta có $\tan \alpha_2 = \dfrac{18}{x}$.
+    * Góc nhìn $\theta$ của người đó thỏa mãn:
+      $$\theta = \alpha_2 - \alpha_1 \implies \theta = \arctan\left(\dfrac{18}{x}\right) - \arctan\left(\dfrac{8}{x}\right)$$
+
+    **Bước 3: Tính tốc độ thay đổi góc nhìn tại thời điểm $t = 4$ giây**
+    
+    * Tại thời điểm $t = 4\text{ s}$:
+        * Quãng đường đi được: $s(4) = 4^2 + 2(4) = 24\text{ m}$.
+        * Khoảng cách đến tòa nhà: $x(4) = 48 - 24 = 24\text{ m}$.
+        * Vận tốc di chuyển: $x'(4) = -(2(4) + 2) = -10\text{ m/s}$.
+    * Lấy đạo hàm hai vế của biểu thức $\theta$ theo biến không gian $x$:
+      $$\dfrac{d\theta}{dx} = \dfrac{-\dfrac{18}{x^2}}{1 + \left(\dfrac{18}{x}\right)^2} - \left(\dfrac{-\dfrac{8}{x^2}}{1 + \left(\dfrac{8}{x}\right)^2}\right) = \dfrac{-18}{x^2 + 324} + \dfrac{8}{x^2 + 64}$$
+    * Thay $x = 24$ vào:
+      $$\left.\dfrac{d\theta}{dx}\right|_{x=24} = \dfrac{-18}{24^2 + 324} + \dfrac{8}{24^2 + 64} = \dfrac{-18}{576 + 324} + \dfrac{8}{576 + 64} = \dfrac{-18}{900} + \dfrac{8}{640}$$
+      $$\left.\dfrac{d\theta}{dx}\right|_{x=24} = -\dfrac{1}{50} + \dfrac{1}{80} = \dfrac{-8 + 5}{400} = -\dfrac{3}{400}$$
+    * Theo quy tắc đạo hàm hàm hợp, tốc độ thay đổi góc nhìn theo thời gian $t$ là:
+      $$k = \left.\dfrac{d\theta}{dt}\right|_{t=4} = \left.\dfrac{d\theta}{dx}\right|_{x=24} \cdot x'(4) = \left(-\dfrac{3}{400}\right) \cdot (-10) = \dfrac{3}{40} = 0.075\text{ rad/s}$$
+
+    **Bước 4: Tính giá trị của $100k$**
+    
+    * Ta có:
+      $$100k = 100 \cdot \dfrac{3}{40} = \dfrac{300}{40} = 7.5$$
+    
+    **Kết luận:** Giá trị của $100k$ bằng **$7.5$**.
+    """)
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 130</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một doanh nghiệp dự định sản xuất không quá $500$ sản phẩm. Nếu doanh nghiệp sản xuất $x$ sản phẩm ($1 \le x \le 500$) thì doanh thu nhận được khi bán hết số sản phẩm đó là $F(x) = -x^3 - 1999x^2 + 1001000x + 250000$ (đồng). Trong đó chi phí vận hành máy móc cho mỗi sản phẩm là $G(x) = \dfrac{200000x}{3x + 2}$ (đồng). Tổng chi phí mua nguyên vật liệu là $H(x) = 2x^3 + 100000x - 50000$ (đồng), nhưng do doanh nghiệp đó mua nguyên vật liệu với số lượng lớn nên được giảm $2\%$ cho $180$ sản phẩm đầu tiên doanh nghiệp sản xuất và giảm $3\%$ cho các sản phẩm tiếp theo. Doanh nghiệp cần sản xuất bao nhiêu sản phẩm để lợi nhuận thu được là lớn nhất?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng sản phẩm:", key="q130_ans")
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q130_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 165
+    if normalized_user_answer in ["165"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập hàm lợi nhuận P(x) bằng Doanh thu trừ đi tổng chi phí (vận hành máy móc và nguyên vật liệu sau giảm giá), sau đó tính đạo hàm để tìm điểm cực đại nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q130_solution_shown' not in st.session_state:
+    st.session_state['q130_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q130_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q130_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q130_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q130_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định hàm tổng chi phí nguyên vật liệu sau khi giảm giá**
+    
+    * Chi phí nguyên vật liệu ban đầu trước khi giảm giá có hàm chi phí biên (chi phí cho sản phẩm thứ $x$) là đạo hàm của hàm $H(x)$:
+      $$h(x) = H'(x) = (2x^3 + 100000x - 50000)' = 6x^2 + 100000$$
+    * Do chính sách giảm giá của nhà cung cấp:
+        * Với $1 \le x \le 180$ (180 sản phẩm đầu tiên), chi phí được giảm $2\%$, nên chi phí thực tế cho sản phẩm thứ $x$ là:
+          $$C'_{\text{NL}}(x) = 0,98 \cdot (6x^2 + 100000) = 5,88x^2 + 98000$$
+        * Với $180 < x \le 500$ (các sản phẩm tiếp theo), chi phí được giảm $3\%$, nên chi phí thực tế cho sản phẩm thứ $x$ là:
+          $$C'_{\text{NL}}(x) = 0,97 \cdot (6x^2 + 100000) = 5,82x^2 + 97000$$
+    
+    **Bước 2: Thiết lập hàm lợi nhuận $P(x)$**
+    
+    * Lợi nhuận $P(x)$ bằng doanh thu $F(x)$ trừ đi tổng chi phí (gồm chi phí vận hành máy móc và chi phí nguyên vật liệu):
+      $$P(x) = F(x) - G(x) - C_{\text{NL}}(x)$$
+    * Để tìm cực trị của hàm lợi nhuận, ta xét đạo hàm của hàm lợi nhuận (lợi nhuận biên) $P'(x) = F'(x) - G'(x) - C'_{\text{NL}}(x)$:
+        * Ta có đạo hàm doanh thu: $F'(x) = -3x^2 - 3998x + 1001000$
+        * Đạo hàm chi phí vận hành máy móc: $G'(x) = \dfrac{400000}{(3x + 2)^2}$
+    
+    * **Trường hợp 1: $1 \le x \le 180$**
+      $$P'(x) = (-3x^2 - 3998x + 1001000) - \dfrac{400000}{(3x + 2)^2} - (5,88x^2 + 98000)$$
+      $$P'(x) = -8,88x^2 - 3998x + 903000 - \dfrac{400000}{(3x + 2)^2}$$
+      * Giải phương trình $P'(x) = 0$ trên đoạn $[1; 180]$, ta tìm được nghiệm xấp xỉ:
+        $$x \approx 165,17$$
+      * Kiểm tra dấu của $P'(x)$:
+        * Khi $x = 165$, ta có $P'(165) \approx 1570,38 > 0$.
+        * Khi $x = 166$, ta có $P'(166) \approx -5366,88 < 0$.
+      * Do đó, hàm số đạt giá trị lớn nhất tại $x = 165$ trong khoảng này.
+    
+    * **Trường hợp 2: $180 < x \le 500$**
+      $$P'(x) = (-3x^2 - 3998x + 1001000) - \dfrac{400000}{(3x + 2)^2} - (5,82x^2 + 97000)$$
+      $$P'(x) = -8,88x^2 - 3998x + 903000 - \dots \text{ (giá trị này luôn âm khi } x > 180 \text{)}$$
+      * Thậm chí tại $x = 180$, $P'(180) < 0$ và tiếp tục giảm mạnh khi $x$ tăng, nên hàm số nghịch biến trên khoảng $(180; 500]$.
+    
+    **Bước 3: Kết luận**
+    
+    * So sánh giá trị lợi nhuận, doanh nghiệp đạt lợi nhuận lớn nhất khi sản xuất số lượng sản phẩm là nguyên dương và thỏa mãn đỉnh đạo hàm đổi dấu từ dương sang âm.
+    * Vậy số sản phẩm cần sản xuất để lợi nhuận lớn nhất là **$165$** sản phẩm.
+    
+    **Kết luận:** Doanh nghiệp cần sản xuất **$165$** sản phẩm.
+    """)
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 131</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một nhà sản xuất sử dụng mô hình toán học để thiết kế một dòng ghế ngã lưng thư giãn cao cấp. Hình dáng của mặt ghế được mô hình hóa bằng đồ thị của hàm số: $y = f(x) = \dfrac{2}{3}a^2x^3 - 4ax^2 + 6x - \dfrac{1}{a}\text{ } (a > 0)$.
+Trong đó một đơn vị trên trục ứng với $10\text{ cm}$ ngoài thực tế. Tiêu chí quan trọng của sự thoải mái là chiều dài đùi của người sử dụng phải vừa vặn với khoảng cách theo phương ngang giữa điểm lồi cao nhất và điểm lõm thấp nhất của mặt ghế. Ngoài ra, để mang lại cảm giác ngồi chắc chắn và an toàn cho người dùng thì độ sâu lòng ghế (khoảng cách theo phương thẳng đứng giữa điểm cao nhất và điểm thấp nhất của mặt ghế) phải bằng $40\text{ cm}$. Hỏi chiếc ghế được sản xuất ra sẽ phù hợp nhất với người có chiều dài đùi là bao nhiêu centimet?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập chiều dài đùi phù hợp (cm):", key="q131_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_a97a71.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_a97a71.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q131_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 30
+    if normalized_user_answer in ["30", "30.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập 답 án.")
+    else:
+        st.error("Sai rồi. Hãy tính đạo hàm f'(x) để tìm tọa độ hai điểm cực trị, thiết lập phương trình độ sâu lòng ghế theo a để tìm a, sau đó tính khoảng cách ngang giữa hai cực trị nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q131_solution_shown' not in st.session_state:
+    st.session_state['q131_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q131_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q131_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q131_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q131_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tìm tọa độ các điểm cực trị của hàm số**
+    
+    * Đạo hàm của hàm số $f(x)$ là:
+      $$f'(x) = 2a^2x^2 - 8ax + 6$$
+    * Cho $f'(x) = 0 \iff 2a^2x^2 - 8ax + 6 = 0 \iff a^2x^2 - 4ax + 3 = 0$.
+    * Đặt $t = ax$, phương trình trở thành:
+      $$t^2 - 4t + 3 = 0 \iff \begin{bmatrix} t = 1 \\ t = 3 \end{bmatrix}$$
+    * Với $a > 0$, ta tìm được hoành độ hai điểm cực trị:
+        * Điểm cực đại (điểm lồi cao nhất): $x_1 = \dfrac{1}{a}$
+        * Điểm cực tiểu (điểm lõm thấp nhất): $x_2 = \dfrac{3}{a}$
+    
+    **Bước 2: Thiết lập phương trình theo điều kiện độ sâu lòng ghế**
+    
+    * Độ sâu lòng ghế là khoảng cách theo phương thẳng đứng giữa điểm cực đại và điểm cực tiểu, tương ứng với hiệu giá trị hàm số:
+      $$\Delta y = f(x_1) - f(x_2)$$
+    * Tính giá trị hàm số tại các điểm cực trị:
+        * Tại $x_1 = \dfrac{1}{a}$: 
+          $$f\left(\dfrac{1}{a}\right) = \dfrac{2}{3}a^2\left(\dfrac{1}{a}\right)^3 - 4a\left(\dfrac{1}{a}\right)^2 + 6\left(\dfrac{1}{a}\right) - \dfrac{1}{a} = \dfrac{2}{3a} - \dfrac{4}{a} + \dfrac{6}{a} - \dfrac{1}{a} = \dfrac{5}{3a}$$
+        * Tại $x_2 = \dfrac{3}{a}$:
+          $$f\left(\dfrac{3}{a}\right) = \dfrac{2}{3}a^2\left(\dfrac{3}{a}\right)^3 - 4a\left(\dfrac{3}{a}\right)^2 + 6\left(\dfrac{3}{a}\right) - \dfrac{1}{a} = \dfrac{18}{a} - \dfrac{36}{a} + \dfrac{18}{a} - \dfrac{1}{a} = -\dfrac{1}{a}$$
+    * Do đó, độ sâu lòng ghế tính theo đơn vị trên hệ trục tọa độ là:
+      $$\Delta y = f(x_1) - f(x_2) = \dfrac{5}{3a} - \left(-\dfrac{1}{a}\right) = \dfrac{8}{3a}$$
+    * Theo đề bài, độ sâu thực tế của ghế bằng $40\text{ cm}$, và $1$ đơn vị trên trục ứng với $10\text{ cm}$, suy ra độ sâu theo đơn vị toán học là:
+      $$\Delta y = \dfrac{40}{10} = 4\text{ (đơn vị)}$$
+    * Từ đây ta suy ra giá trị của $a$:
+      $$\dfrac{8}{3a} = 4 \iff 12a = 8 \iff a = \dfrac{2}{3}$$
+    
+    **Bước 3: Tính chiều dài đùi phù hợp với tiêu chí thoải mái**
+    * Khoảng cách theo phương ngang giữa điểm lồi cao nhất và điểm lõm thấp nhất trên hệ trục tọa độ là:
+      $$\Delta x = x_2 - x_1 = \dfrac{3}{a} - \dfrac{1}{a} = \dfrac{2}{a}$$
+    * Thay $a = \dfrac{2}{3}$ vào, ta được:
+      $$\Delta x = \dfrac{2}{\dfrac{2}{3}} = 3\text{ (đơn vị)}$$
+    * Quy đổi ra thực tế (với $1$ đơn vị ứng với $10\text{ cm}$):
+      $$\text{Chiều dài đùi} = 3 \times 10 = 30\text{ cm}$$
+    
+    **Kết luận:** Chiếc ghế được sản xuất ra sẽ phù hợp nhất với người có chiều dài đùi là **$30\text{ cm}$**.
+    """)
