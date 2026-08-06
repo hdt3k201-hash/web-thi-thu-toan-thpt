@@ -12772,3 +12772,199 @@ if st.session_state.get('q132_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Khoảng cách từ vị trí được chọn làm gốc tọa độ đến điểm $M$ là **$34,1\text{ m}$**.
     """)
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 133</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Hình dáng phần đất liền của hai xã thuộc tỉnh Đồng Tháp được mô hình hóa bởi đồ thị hàm số $y = \frac{x^2 + ax + b}{x - 2}$; biết đồ thị có một điểm cực trị là $(1; 1)$, với hệ trục tọa độ $Oxy$ như hình vẽ, đơn vị trên mỗi trục là $10$ mét. Để thuận tiện cho giao thông hai xã, lãnh đạo tỉnh đã phê duyệt dự án xây một chiếc cầu nối phần đất liền của hai xã này. Nhằm tiết kiệm chi phí cho công trình, người kỹ sư trưởng thiết kế có nhiệm vụ nghiên cứu để chọn được hai vị trí $A, B$ trên phần đất liền hai xã sao cho độ dài chiếc cầu (đoạn $AB$) là ngắn nhất có thể. Hỏi độ dài ngắn nhất của chiếc cầu đó (tính theo đường chim bay) là bao nhiêu mét (làm tròn đến hàng phần chục)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập độ dài ngắn nhất của chiếc cầu (m):", key="q133_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_a9095b.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_a9095b.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q133_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 43.9
+    if normalized_user_answer in ["43.9", "43.90"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy dùng giả thiết điểm cực trị để tìm hàm số, sau đó tìm giá trị nhỏ nhất của khoảng cách giữa hai điểm thuộc hai nhánh đồ thị thông qua AM-GM nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q133_solution_shown' not in st.session_state:
+    st.session_state['q133_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q133_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q133_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q133_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q133_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định các hệ số $a$ và $b$ của hàm số**
+    
+    * Hàm số đã cho là $y = \frac{x^2 + ax + b}{x - 2}$. Tập xác định $D = \mathbb{R} \setminus \{2\}$.
+    * Đạo hàm: 
+      $$y' = \frac{(2x + a)(x - 2) - (x^2 + ax + b)}{(x - 2)^2} = \frac{x^2 - 4x - 2a - b}{(x - 2)^2}$$
+    * Đồ thị có điểm cực trị là $M(1; 1)$, suy ra đồ thị đi qua $M$ và đạo hàm tại $x = 1$ bằng $0$:
+      $$\begin{cases} y(1) = 1 \\ y'(1) = 0 \end{cases} \iff \begin{cases} \frac{1 + a + b}{-1} = 1 \\ 1 - 4 - 2a - b = 0 \end{cases} \iff \begin{cases} a + b = -2 \\ 2a + b = -3 \end{cases}$$
+    * Giải hệ phương trình, ta được $a = -1$ và $b = -1$.
+    * Vậy hàm số là $y = \frac{x^2 - x - 1}{x - 2} = x + 1 + \frac{1}{x - 2}$.
+    
+    **Bước 2: Chuyển trục tọa độ và thiết lập khoảng cách $AB$**
+    
+    * Đồ thị hàm số có tiệm cận đứng $x = 2$, tiệm cận xiên $y = x + 1$. Tâm đối xứng của đồ thị là giao điểm hai tiệm cận $I(2; 3)$.
+    * Hai điểm $A, B$ nằm trên phần đất liền hai xã, tức là thuộc hai nhánh của đồ thị phân tách bởi tiệm cận đứng $x = 2$. Đoạn $AB$ ngắn nhất khi $A$ và $B$ đối xứng nhau qua tâm $I$.
+    * Tịnh tiến hệ trục $Oxy$ theo vectơ $\vec{OI}$ đến hệ trục $IXY$ với $\begin{cases} x = X + 2 \\ y = Y + 3 \end{cases}$.
+    * Phương trình hàm số trong hệ trục $IXY$ là:
+      $$Y + 3 = (X + 2) + 1 + \frac{1}{X} \iff Y = X + \frac{1}{X}$$
+    * Gọi $A(X_0; Y_0)$ thuộc nhánh phải ($X_0 > 0$), do đối xứng nên $B(-X_0; -Y_0)$.
+    * Bình phương khoảng cách $AB$:
+      $$AB^2 = (-2X_0)^2 + (-2Y_0)^2 = 4X_0^2 + 4\left(X_0 + \frac{1}{X_0}\right)^2$$
+      $$AB^2 = 4X_0^2 + 4\left(X_0^2 + 2 + \frac{1}{X_0^2}\right) = 8X_0^2 + \frac{4}{X_0^2} + 8$$
+    
+    **Bước 3: Tìm giá trị nhỏ nhất và kết luận**
+    
+    * Áp dụng bất đẳng thức AM-GM cho 2 số dương $8X_0^2$ và $\frac{4}{X_0^2}$:
+      $$8X_0^2 + \frac{4}{X_0^2} \ge 2\sqrt{8X_0^2 \cdot \frac{4}{X_0^2}} = 2\sqrt{32} = 8\sqrt{2}$$
+    * Suy ra: 
+      $$AB^2 \ge 8 + 8\sqrt{2} \implies AB \ge \sqrt{8 + 8\sqrt{2}} \approx 4,3947...$$
+    * Vì đơn vị trên mỗi trục tọa độ là $10\text{ m}$, nên độ dài thực tế của cây cầu là:
+      $$d_{\text{min}} = 10 \times 4,3947 \approx 43,947\text{ m}$$
+    * Làm tròn đến hàng phần chục theo yêu cầu bài toán, ta được **$43,9\text{ m}$**.
+    
+    **Kết luận:** Độ dài ngắn nhất của chiếc cầu là **$43,9\text{ m}$**.
+    """)
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 134</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một cái chậu đựng nước có dạng hình chóp cụt đều đáy là các tam giác cạnh bằng $1\text{ dm}$ và $3\text{ dm}$. Chiều cao chậu nước bằng $4\text{ dm}$. Người ta bơm nước vào chậu với lưu lượng không đổi $0,5\text{ lít/phút}$. Đến phút thứ $10$ thì tốc độ dâng lên của nước trong chậu là bao nhiêu $\text{dm/phút}$? (Kết quả được làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tốc độ dâng của nước (dm/phút):", key="q134_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_a8b302.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_a8b302.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q134_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 0.17
+    if normalized_user_answer in ["0.17", "0.170"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hàm số thể tích theo chiều cao h, áp dụng đạo hàm để tìm mối liên hệ giữa tốc độ thay đổi thể tích và tốc độ thay đổi chiều cao (quy tắc chuỗi)!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q134_solution_shown' not in st.session_state:
+    st.session_state['q134_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q134_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q134_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q134_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q134_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm số diện tích mặt thoáng và thể tích nước theo chiều cao $h$**
+    
+    * Gọi $h$ ($0 \le h \le 4$) là chiều cao của mực nước tại thời điểm $t$ (đơn vị: dm).
+    * Chậu nước là hình chóp cụt đều đáy tam giác nên mặt thoáng của nước cũng là một tam giác đều.
+    * Gọi $a(h)$ là độ dài cạnh đáy của mặt thoáng ở độ cao $h$. Theo định lý Thales (hoặc nội suy tuyến tính), ta có:
+      $$a(h) = a_{\text{đáy nhỏ}} + \dfrac{a_{\text{đáy lớn}} - a_{\text{đáy nhỏ}}}{H} \cdot h = 1 + \dfrac{3 - 1}{4}h = 1 + 0,5h$$
+    * Diện tích mặt thoáng của nước tại độ cao $h$ là:
+      $$S(h) = \dfrac{[a(h)]^2 \sqrt{3}}{4} = \dfrac{(1 + 0,5h)^2 \sqrt{3}}{4} = \dfrac{\sqrt{3}}{16}(h + 2)^2$$
+    * Thể tích nước trong chậu $V(h)$ là nguyên hàm của diện tích mặt thoáng theo chiều cao $h$:
+      $$V(h) = \int_0^h S(x) dx = \int_0^h \dfrac{\sqrt{3}}{16}(x + 2)^2 dx = \dfrac{\sqrt{3}}{48} (x + 2)^3 \Big|_0^h = \dfrac{\sqrt{3}}{48} \left[ (h + 2)^3 - 8 \right]$$
+    
+    **Bước 2: Sử dụng đạo hàm để tìm tốc độ dâng của nước**
+    
+    * Đạo hàm hai vế của $V(h)$ theo thời gian $t$ (áp dụng quy tắc chuỗi):
+      $$\dfrac{dV}{dt} = \dfrac{dV}{dh} \cdot \dfrac{dh}{dt} = V'(h) \cdot \dfrac{dh}{dt}$$
+    * Ta biết rằng đạo hàm của thể tích theo chiều cao chính là diện tích mặt cắt ngang tại đó, tức là $V'(h) = S(h)$. Suy ra:
+      $$\dfrac{dV}{dt} = S(h) \cdot \dfrac{dh}{dt} \implies \dfrac{dh}{dt} = \dfrac{\dfrac{dV}{dt}}{S(h)}$$
+    * Trong đó:
+      * $\dfrac{dV}{dt} = 0,5 \text{ dm}^3/\text{phút}$ (vì 1 lít = 1 dm³) là tốc độ bơm nước vào.
+      * $\dfrac{dh}{dt}$ chính là tốc độ dâng lên của mực nước mà ta cần tìm.
+    
+    **Bước 3: Tính toán giá trị tại thời điểm $t = 10$ phút**
+    
+    * Tại phút thứ $10$, thể tích nước trong chậu là:
+      $$V = 10 \times 0,5 = 5 \text{ dm}^3$$
+    * Tìm chiều cao $h$ tại thời điểm này:
+      $$\dfrac{\sqrt{3}}{48} \left[ (h + 2)^3 - 8 \right] = 5 \iff (h + 2)^3 - 8 = \dfrac{240}{\sqrt{3}} = 80\sqrt{3}$$
+      $$\implies (h + 2)^3 = 8 + 80\sqrt{3} \implies (h + 2)^2 = (8 + 80\sqrt{3})^{\frac{2}{3}}$$
+    * Diện tích mặt thoáng tại thời điểm đó là:
+      $$S(h) = \dfrac{\sqrt{3}}{16}(h + 2)^2 = \dfrac{\sqrt{3}}{16} (8 + 80\sqrt{3})^{\frac{2}{3}}$$
+    * Tốc độ dâng lên của nước là:
+      $$\dfrac{dh}{dt} = \dfrac{0,5}{S(h)} = \dfrac{1}{2 \cdot \dfrac{\sqrt{3}}{16} (8 + 80\sqrt{3})^{\frac{2}{3}}} = \dfrac{8}{\sqrt{3}(8 + 80\sqrt{3})^{\frac{2}{3}}}$$
+    * Bấm máy tính tính giá trị xấp xỉ:
+      $$\dfrac{dh}{dt} \approx \dfrac{8}{\sqrt{3} \times (146,564)^{\frac{2}{3}}} \approx \dfrac{8}{1,732 \times 27,794} \approx 0,16618... \text{ dm/phút}$$
+    
+    **Bước 4: Kết luận**
+    
+    * Làm tròn kết quả đến hàng phần trăm theo yêu cầu bài toán, ta được **$0,17$**.
+    * Vậy tốc độ dâng lên của nước ở phút thứ 10 là **$0,17 \text{ dm/phút}$**.
+    """)
