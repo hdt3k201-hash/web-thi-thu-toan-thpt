@@ -11252,7 +11252,7 @@ st.markdown(
 
 # Nội dung câu hỏi (đã được diễn đạt lại để tránh vi phạm bản quyền)
 st.markdown(r"""
-**Câu 15:** Một hãng sản xuất điện thoại đang bán ra 2000 chiếc mỗi tuần với mức giá 20 triệu đồng/chiếc. Chi phí sản xuất ban đầu cho mỗi chiếc là 10 triệu đồng và chi phí cố định hàng tuần là 20.000 triệu đồng. Nghiên cứu thị trường cho thấy, cứ giảm giá bán 1 triệu đồng/chiếc thì lượng tiêu thụ sẽ tăng thêm 200 chiếc mỗi tuần. Đi kèm với đó, do sản xuất thay đổi, chi phí để làm ra một chiếc điện thoại cũng tăng thêm 0,5 triệu đồng cho mỗi 1 triệu đồng giảm giá. Hỏi công ty cần thiết lập mức giá bán là bao nhiêu để đạt được lợi nhuận hàng tuần cao nhất? (Đơn vị tính: triệu đồng, kết quả làm tròn đến chữ số thập phân thứ hai).
+ Một hãng sản xuất điện thoại đang bán ra 2000 chiếc mỗi tuần với mức giá 20 triệu đồng/chiếc. Chi phí sản xuất ban đầu cho mỗi chiếc là 10 triệu đồng và chi phí cố định hàng tuần là 20.000 triệu đồng. Nghiên cứu thị trường cho thấy, cứ giảm giá bán 1 triệu đồng/chiếc thì lượng tiêu thụ sẽ tăng thêm 200 chiếc mỗi tuần. Đi kèm với đó, do sản xuất thay đổi, chi phí để làm ra một chiếc điện thoại cũng tăng thêm 0,5 triệu đồng cho mỗi 1 triệu đồng giảm giá. Hỏi công ty cần thiết lập mức giá bán là bao nhiêu để đạt được lợi nhuận hàng tuần cao nhất? (Đơn vị tính: triệu đồng, kết quả làm tròn đến chữ số thập phân thứ hai).
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
@@ -11443,4 +11443,207 @@ if st.session_state.get('q119_solution_shown') and st.session_state.get('logged_
     * Làm tròn đến hàng phần trăm theo yêu cầu, ta được **$1,41$**.
     
     **Kết luận:** Khoảng cách từ quầy thu vé đến giao điểm hai tuyến đường là **$1,41$**.
+    """)
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 120</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+ Trong quang học, chúng ta đã biết đến định luật quang học về độ chiếu sáng. Nó được phát biểu như sau: Khi một nguồn sáng chiếu lên một mặt phẳng, độ chiếu sáng từ nguồn sáng đến một điểm cho bởi công thức $T = I \cdot \dfrac{\cos \alpha}{AB^2}$, trong đó $I$ là độ phát sáng của nguồn; $\alpha$ là góc hợp bởi tia sáng và phương thẳng đứng (minh họa như hình vẽ). Một đồng xu được đặt cách ngọn nến một khoảng $BC = 20\text{ cm}$. Để tạo hiệu ứng, người ta đặt một tấm kính lọc phía trên đồng xu với hệ số truyền sáng của kính là $k = \sin^2 \alpha$. Hỏi ngọn lửa của cây nến nên đặt ở độ cao bằng bao nhiêu cm để độ sáng thực tế chiếu lên đồng xu là lớn nhất, biết độ sáng thực tế $T' = kT$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập độ cao h (cm):", key="q120_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_c46e82.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_c46e82.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q120_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 10
+    if normalized_user_answer == "10":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy biểu diễn độ sáng T' thành một hàm số theo biến h (hoặc góc α), sau đó sử dụng đạo hàm để tìm giá trị lớn nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q120_solution_shown' not in st.session_state:
+    st.session_state['q120_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q120_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q120_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q120_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q120_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích mô hình hình học**
+    
+    * Gọi $h$ là độ cao của ngọn lửa cây nến so với mặt bàn, ta có $AC = h$ ($h > 0$).
+    * Tam giác $ACB$ vuông tại $C$. Khoảng cách từ ngọn nến đến đồng xu là $BC = 20\text{ cm}$.
+    * Phương thẳng đứng đi qua $B$ song song với $AC$, do đó góc tạo bởi tia sáng $AB$ và phương thẳng đứng tại $B$ bằng với góc $\widehat{CAB}$ (hai góc so le trong). Vậy $\widehat{CAB} = \alpha$.
+    * Áp dụng định lý Pytago trong $\triangle ACB$:
+      $$AB = \sqrt{AC^2 + BC^2} = \sqrt{h^2 + 20^2} = \sqrt{h^2 + 400}$$
+    * Các hệ thức lượng trong tam giác vuông:
+      $$\sin \alpha = \dfrac{BC}{AB} = \dfrac{20}{\sqrt{h^2 + 400}} \implies \sin^2 \alpha = \dfrac{400}{h^2 + 400}$$
+      $$\cos \alpha = \dfrac{AC}{AB} = \dfrac{h}{\sqrt{h^2 + 400}}$$
+    
+    **Bước 2: Thiết lập hàm số tính độ sáng thực tế $T'$**
+    
+    * Độ sáng thực tế là $T' = k \cdot T$. Thay $k = \sin^2 \alpha$ và $T = I \cdot \dfrac{\cos \alpha}{AB^2}$, ta được:
+      $$T' = \sin^2 \alpha \cdot I \cdot \dfrac{\cos \alpha}{AB^2} = I \cdot \dfrac{\sin^2 \alpha \cdot \cos \alpha}{AB^2}$$
+    * Biểu diễn $T'$ hoàn toàn theo biến $h$:
+      $$T' = I \cdot \dfrac{400}{h^2 + 400} \cdot \dfrac{h}{\sqrt{h^2 + 400}} \cdot \dfrac{1}{h^2 + 400}$$
+      $$T' = 400I \cdot \dfrac{h}{(h^2 + 400)^{5/2}}$$
+    * Vì $400I$ là một hằng số dương, để $T'$ đạt giá trị lớn nhất thì hàm số $f(h) = \dfrac{h}{(h^2 + 400)^{5/2}}$ phải đạt giá trị lớn nhất trên khoảng $(0; +\infty)$.
+    
+    **Bước 3: Tìm cực đại của hàm số $f(h)$**
+    
+    * Tính đạo hàm $f'(h)$ theo quy tắc đạo hàm của thương:
+      $$f'(h) = \dfrac{1 \cdot (h^2 + 400)^{5/2} - h \cdot \dfrac{5}{2}(h^2 + 400)^{3/2} \cdot 2h}{\left[(h^2 + 400)^{5/2}\right]^2}$$
+      $$f'(h) = \dfrac{(h^2 + 400)^{3/2} \cdot [(h^2 + 400) - 5h^2]}{(h^2 + 400)^5} = \dfrac{400 - 4h^2}{(h^2 + 400)^{7/2}}$$
+    * Giải phương trình $f'(h) = 0$:
+      $$400 - 4h^2 = 0 \iff 4h^2 = 400 \iff h^2 = 100$$
+    * Vì $h > 0$, ta nhận nghiệm $h = 10$.
+    * Lập bảng biến thiên ta thấy $f'(h) > 0$ khi $0 < h < 10$ và $f'(h) < 0$ khi $h > 10$. Vậy $f(h)$ đạt giá trị lớn nhất tại $h = 10$.
+    
+    **Kết luận:** Cần đặt ngọn lửa cây nến ở độ cao **10 cm**.
+    """)
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 121</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+ Trước sự phát triển của ngành vật liệu bán dẫn, anh Khoa mở nhà máy sản xuất vi mạch với thiết kế của vi mạch có dạng hình chữ nhật có kích thước $a\text{ (pm)} \times b\text{ (pm)}$ với $1\text{ pm} = 10^{-12}\text{ m}$. Biết rằng chi phí để sản xuất vi mạch bao gồm 50 (triệu đồng) chi phí cho nguyên vật liệu ban đầu, 15 (triệu đồng)/1pm chi phí gia công lắp màng Silic xung quanh thành vi mạch (xem như độ dày khi gia công là không đáng kể) và 32 (triệu đồng)/1pm² tiền gia công phủ chất làm mát bao quanh cả 2 bề mặt vi mạch (xem như cả bề mặt là hình chữ nhật có kích thước như trên). Biết rằng đơn giá bán ra mỗi chiếc vi mạch là 428 (triệu đồng/pm²) và nếu cả 2 kích thước thành phần của vi mạch giảm đi 15 pm thì lợi nhuận thu được mỗi chiếc bằng chi phí sản xuất của mỗi chiếc vi mạch đó. Khi lợi nhuận đạt giá trị nhỏ nhất thì chu vi của vi mạch là bao nhiêu pm. (Kết quả làm tròn đến số thập phân thứ nhất)
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập chu vi của vi mạch (pm):", key="q121_ans")
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q121_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 63.2
+    if normalized_user_answer == "63.2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy đổi ẩn $x = a - 15, y = b - 15$, thiết lập phương trình liên hệ giữa $x, y$ và dùng bất đẳng thức AM-GM để tìm giá trị nhỏ nhất nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q121_solution_shown' not in st.session_state:
+    st.session_state['q121_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q121_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q121_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q121_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q121_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập biểu thức chi phí, doanh thu và lợi nhuận**
+    
+    * Kích thước ban đầu của vi mạch là $a \times b$ ($\text{pm}$).
+    * **Chi phí sản xuất $C(a, b)$:**
+        * Chi phí nguyên vật liệu ban đầu: $50$ triệu đồng.
+        * Chi phí lắp màng Silic xung quanh thành vi mạch (chu vi $2(a+b)$): $15 \cdot 2(a+b) = 30(a+b)$ triệu đồng.
+        * Chi phí phủ chất làm mát cả 2 bề mặt (diện tích $2ab$): $32 \cdot 2ab = 64ab$ triệu đồng.
+        * Tổng chi phí: $C(a, b) = 50 + 30(a+b) + 64ab$.
+    * **Doanh thu $R(a, b)$:**
+        * $R(a, b) = 428ab$ triệu đồng.
+    * **Lợi nhuận $L(a, b)$:**
+        * $L(a, b) = R(a, b) - C(a, b) = 428ab - [50 + 30(a+b) + 64ab] = 364ab - 30(a+b) - 50$.
+    
+    **Bước 2: Xử lý điều kiện khi giảm kích thước đi 15 pm**
+    
+    * Đặt $x = a - 15$ và $y = b - 15$ ($x, y > 0$).
+    * Khi giảm mỗi kích thước đi 15 pm, lợi nhuận thu được bằng chi phí sản xuất:
+        $$L(x, y) = C(x, y)$$
+        $$\iff 364xy - 30(x+y) - 50 = 50 + 30(x+y) + 64xy$$
+        $$\iff 300xy - 60(x+y) - 100 = 0 \iff 15xy - 3(x+y) - 5 = 0$$
+        $$\iff x + y = 5xy - \frac{5}{3} \quad (1)$$
+    
+    **Bước 3: Biểu diễn lợi nhuận ban đầu $L(a, b)$ theo $x$ và $y$**
+    
+    * Ta có $a = x + 15$ và $b = y + 15$. Khi đó:
+        * $a + b = x + y + 30$
+        * $ab = (x + 15)(y + 15) = xy + 15(x+y) + 225$
+    * Thay vào biểu thức lợi nhuận $L(a, b)$:
+        $$L(a, b) = 364[xy + 15(x+y) + 225] - 30(x+y+30) - 50$$
+        $$L(a, b) = 364xy + 5430(x+y) + 80950$$
+    * Thay (1) vào $L(a, b)$:
+        $$L(a, b) = 364xy + 5430\left(5xy - \frac{5}{3}\right) + 80950 = 27514xy + 71900$$
+    
+    **Bước 4: Tìm điều kiện để lợi nhuận nhỏ nhất**
+    
+    * Để $L(a, b)$ đạt giá trị nhỏ nhất thì tích $u = xy$ phải nhỏ nhất.
+    * Theo bất đẳng thức AM-GM: $(x+y)^2 \ge 4xy \iff \left(5u - \frac{5}{3}\right)^2 \ge 4u$.
+    * Biến đổi bất đẳng thức:
+        $$25u^2 - \frac{50}{3}u + \frac{25}{9} \ge 4u \iff 225u^2 - 186u + 25 \ge 0$$
+    * Vì $x + y = 5u - \frac{5}{3} > 0 \implies u > \frac{1}{3}$, giải bất đẳng thức ta được nghiệm:
+        $$u \ge \frac{31 + 4\sqrt{21}}{75} \approx 0,6577$$
+    * Giá trị nhỏ nhất của $u = xy$ đạt được khi dấu "=" xảy ra, tức là $x = y$.
+    
+    **Bước 5: Tính chu vi của vi mạch**
+    
+    * Khi $x = y$, từ (1) ta có:
+        $$2x = 5x^2 - \frac{5}{3} \iff 15x^2 - 6x - 5 = 0$$
+    * Giải phương trình bậc hai lấy nghiệm dương $x > 0$:
+        $$x = \frac{3 + 2\sqrt{21}}{15} \approx 0,8110\text{ (pm)}$$
+    * Chu vi của vi mạch ban đầu là:
+        $$P = 2(a + b) = 2(x + 15 + y + 15) = 2(2x + 30) = 4x + 60$$
+        $$P = 4 \cdot \frac{3 + 2\sqrt{21}}{15} + 60 \approx 3,2440 + 60 = 63,2440\text{ (pm)}$$
+    * Làm tròn đến số thập phân thứ nhất, ta được **$63,2$**.
+    
+    **Kết luận:** Chu vi của vi mạch khi lợi nhuận đạt giá trị nhỏ nhất là **$63,2\text{ pm}$**.
     """)
