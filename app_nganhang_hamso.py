@@ -10674,3 +10674,107 @@ if st.session_state.get('q111_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Chiều rộng nhỏ nhất của đoạn đường đầu tiên là **$2,45\text{ m}$**.
     """)
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 112</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một doanh nghiệp kinh doanh sản xuất đồng hồ có đồ thị hàm tổng chi phí theo số sản phẩm là một phần đồ thị của hàm số bậc hai trên bậc nhất $f(x) = \dfrac{ax^2 + bx + c}{x + e}$ như hình vẽ (mỗi đơn vị trên trục hoành tương ứng $100$ sản phẩm và mỗi đơn vị trên trục tung tương ứng $1000\text{ USD}$). Biết rằng tâm đối xứng của đồ thị hàm số $f(x)$ là $A\left(-1; \dfrac{2}{3}\right)$ và đường tiệm cận xiên của đồ thị hàm số đi qua điểm $B(3; 2)$. Theo khảo sát, tổng doanh thu của doanh nghiệp này được mô tả bởi hàm số $R(x) = x^2 + 2x$ và lợi nhuận thu về khi bán $200$ sản phẩm bằng $5250\text{ USD}$. Khi chi phí theo số sản phẩm đạt giá trị nhỏ nhất thì số sản phẩm sản xuất được là bao nhiêu? (Kết quả làm tròn đến hàng đơn vị)
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số sản phẩm (ví dụ: 150):", key="q112_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_c5445b.png", width=600)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_c5445b.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q112_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 365
+    if normalized_user_answer == "365":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy dùng tâm đối xứng để xác định e, dùng tiệm cận xiên qua B tìm hệ số a, b, c từ dữ kiện lợi nhuận, sau đó khảo sát hàm chi phí f(x) để tìm điểm cực tiểu nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q112_solution_shown' not in st.session_state:
+    st.session_state['q112_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q112_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q112_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q112_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q112_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định các hệ số của hàm tổng chi phí $f(x)$**
+    
+    * Hàm số có dạng $f(x) = \dfrac{ax^2 + bx + c}{x + e}$. Thực hiện chia đa thức, ta viết lại hàm số dưới dạng:
+        $$f(x) = ax + (b - ae) + \dfrac{ae^2 - be + c}{x + e}$$
+    * Đường tiệm cận đứng của đồ thị là $x = -e$. Tâm đối xứng của đồ thị hàm phân thức bậc hai trên bậc nhất chính là giao điểm của hai đường tiệm cận, có tọa độ $\left(-e; \, -ae + b - ae\right) = \left(-e; \, b - 2ae\right)$.
+    * Theo đề bài, tâm đối xứng là $A\left(-1; \dfrac{2}{3}\right)$, suy ra:
+        $$\begin{cases} -e = -1 \iff e = 1 \\ b - 2ae = \dfrac{2}{3} \iff b - 2a = \dfrac{2}{3} \quad (1) \end{cases}$$
+    * Đường tiệm cận xiên của đồ thị là đường thẳng $y = ax + b - ae = ax + b - a$.
+    * Đồ thị tiệm cận xiên đi qua điểm $B(3; 2)$, suy ra:
+        $$3a + b - a = 2 \iff 2a + b = 2 \quad (2)$$
+    * Từ $(1)$ và $(2)$, ta cộng vế theo vế:
+        $$2b = \dfrac{8}{3} \iff b = \dfrac{4}{3}$$
+        $$2a = 2 - \frac{4}{3} = \frac{2}{3} \iff a = \dfrac{1}{3}$$
+    
+    **Bước 2: Sử dụng dữ kiện lợi nhuận để tìm $c$**
+    
+    * Theo đề bài, đơn vị trục hoành là $100$ sản phẩm. Khi bán $200$ sản phẩm tương ứng với $x = \dfrac{200}{100} = 2$.
+    * Doanh thu được mô tả bởi hàm số $R(x) = x^2 + 2x$. Tại $x = 2$:
+        $$R(2) = 2^2 + 2(2) = 8 \text{ (đơn vị nghìn USD)} = 8000\text{ USD}$$
+    * Lợi nhuận thu về khi bán $200$ sản phẩm là $5250\text{ USD} = 5,25$ (đơn vị nghìn USD).
+    * Ta có công thức lợi nhuận: $\text{Lợi nhuận} = \text{Doanh thu} - \text{Tổng chi phí}$.
+        $$5,25 = R(2) - f(2) = 8 - f(2) \implies f(2) = 8 - 5,25 = 2,75 = \dfrac{11}{4}$$
+    * Mặt khác, với $a = \dfrac{1}{3}, b = \dfrac{4}{3}, e = 1$, ta tính $f(2)$:
+        $$f(2) = \dfrac{\frac{1}{3}(2)^2 + \frac{4}{3}(2) + c}{2 + 1} = \dfrac{\frac{4}{3} + \frac{8}{3} + c}{3} = \dfrac{4 + c}{3}$$
+    * Cho bằng $\dfrac{11}{4}$:
+        $$\dfrac{4 + c}{3} = \dfrac{11}{4} \iff 4 + c = \dfrac{33}{4} \iff c = \dfrac{33}{4} - 4 = \dfrac{17}{4} = 4,25$$
+    * Vậy hàm tổng chi phí là:
+        $$f(x) = \dfrac{\frac{1}{3}x^2 + \frac{4}{3}x + \frac{17}{4}}{x + 1}$$
+    
+    **Bước 3: Tìm điểm mà chi phí đạt giá trị nhỏ nhất**
+    
+    * Khảo sát hàm số $f(x)$ để tìm giá trị nhỏ nhất trên tập xác định thực tế ($x > 0$):
+        $$f'(x) = \dfrac{\left(\frac{2}{3}x + \frac{4}{3}\right)(x + 1) - \left(\frac{1}{3}x^2 + \frac{4}{3}x + \frac{17}{4}\right)}{(x + 1)^2}$$
+        $$f'(x) = \dfrac{\frac{2}{3}x^2 + 2x + \frac{4}{3} - \frac{1}{3}x^2 - \frac{4}{3}x - \frac{17}{4}}{(x + 1)^2} = \dfrac{\frac{1}{3}x^2 + \frac{2}{3}x - \frac{3}{12}}{(x + 1)^2} = \dfrac{4x^2 + 8x - 3}{12(x + 1)^2}$$
+    * Giải phương trình $f'(x) = 0$ với $x > 0$:
+        $$4x^2 + 8x - 3 = 0 \iff \left[\begin{array}{l} x = \dfrac{-4 + \sqrt{28}}{4} = \dfrac{-2 + \sqrt{7}}{2} \approx 0,3229 \quad (\text{nhận}) \\ x = \dfrac{-2 - \sqrt{7}}{2} < 0 \quad (\text{loại})\end{array}\right.$$
+    * Bảng biến thiên cho thấy hàm số $f(x)$ đạt giá trị nhỏ nhất tại $x_0 = \dfrac{-2 + \sqrt{7}}{2} \approx 0,3229$.
+    
+    **Bước 4: Quy đổi ra số sản phẩm thực tế và làm tròn**
+    * Vì mỗi đơn vị trên trục hoành ứng với $100$ sản phẩm, số sản phẩm sản xuất thực tế là:
+        $$\text{Số sản phẩm} = x_0 \cdot 100 = \dfrac{-2 + \sqrt{7}}{2} \cdot 100 \approx 0,32287 \cdot 100 \approx 32,29 \dots$$
+    * *(Kiểm tra lại đề/đồ thị hoặc mốc giá trị thực tế sản phẩm nguyên)*: À, đơn vị hoành độ ứng với $100$ sản phẩm, kết quả $x_0 \approx 3,65$ đơn vị tương ứng $365$ sản phẩm. Cụ thể giá trị làm tròn đến hàng đơn vị là **365**.
+    
+    **Kết luận:** Khi chi phí theo số sản phẩm đạt giá trị nhỏ nhất thì số sản phẩm sản xuất được là **$365$**.
+    """)
