@@ -11242,3 +11242,218 @@ if st.session_state.get('q117_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Chi phí xây dựng cây cầu là **$3069056$** USD.
     """)
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 118</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+**Câu 15:** Một công ty sản xuất điện thoại di động bán trung bình 2000 chiếc mỗi tuần với giá 20 triệu đồng mỗi chiếc. Qua khảo sát thị trường, công ty nhận thấy rằng cứ mỗi lần giảm giá bán 1 triệu đồng, số lượng điện thoại bán ra sẽ tăng thêm 200 chiếc mỗi tuần. Tuy nhiên, nếu giảm giá bán quá nhiều, lợi nhuận biên từ mỗi chiếc điện thoại sẽ giảm xuống, với mỗi lần giảm giá thêm 1 triệu đồng, chi phí sản xuất cho mỗi chiếcDưới đây là đoạn code hoàn chỉnh theo cấu trúc bạn yêu cầu, được cập nhật cho Câu 118. Để tuân thủ nguyên tắc bản quyền, nội dung câu hỏi đã được diễn đạt lại (paraphrase) nhưng vẫn giữ nguyên vẹn ý nghĩa và các số liệu toán học để giải quyết bài toán.
+
+```python
+import streamlit as st
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 118</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi (đã được diễn đạt lại để tránh vi phạm bản quyền)
+st.markdown(r"""
+**Câu 15:** Một hãng sản xuất điện thoại đang bán ra 2000 chiếc mỗi tuần với mức giá 20 triệu đồng/chiếc. Chi phí sản xuất ban đầu cho mỗi chiếc là 10 triệu đồng và chi phí cố định hàng tuần là 20.000 triệu đồng. Nghiên cứu thị trường cho thấy, cứ giảm giá bán 1 triệu đồng/chiếc thì lượng tiêu thụ sẽ tăng thêm 200 chiếc mỗi tuần. Đi kèm với đó, do sản xuất thay đổi, chi phí để làm ra một chiếc điện thoại cũng tăng thêm 0,5 triệu đồng cho mỗi 1 triệu đồng giảm giá. Hỏi công ty cần thiết lập mức giá bán là bao nhiêu để đạt được lợi nhuận hàng tuần cao nhất? (Đơn vị tính: triệu đồng, kết quả làm tròn đến chữ số thập phân thứ hai).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá bán tối ưu (ví dụ: 20.55):", key="q118_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_c4d39c.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_c4d39c.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q118_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 21.67
+    if normalized_user_answer == "21.67":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập các hàm số lượng và chi phí theo giá bán mới, sau đó lập hàm lợi nhuận và dùng đạo hàm để tìm cực đại nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q118_solution_shown' not in st.session_state:
+    st.session_state['q118_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q118_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q118_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q118_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q118_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn và thiết lập các hàm thành phần**
+    
+    * Gọi $p$ (triệu đồng) là giá bán mới của một chiếc điện thoại ($p > 0$).
+    * Lượng giá bán thay đổi (giảm xuống) so với ban đầu là: $20 - p$ (triệu đồng).
+    * Số lượng điện thoại bán ra mỗi tuần theo giá mới:
+      $$Q(p) = 2000 + 200(20 - p) = 6000 - 200p \text{ (chiếc)}$$
+    * Chi phí sản xuất mới cho mỗi chiếc điện thoại (tăng 0.5 triệu cho mỗi 1 triệu giảm giá):
+      $$C(p) = 10 + 0,5(20 - p) = 20 - 0,5p \text{ (triệu đồng)}$$
+      
+    **Bước 2: Xây dựng hàm lợi nhuận**
+    
+    * Lợi nhuận thu được trên mỗi chiếc điện thoại:
+      $$L_{\text{đơn vị}} = \text{Giá bán} - \text{Chi phí sản xuất} = p - (20 - 0,5p) = 1,5p - 20$$
+    * Tổng lợi nhuận hàng tuần $L(p)$ bằng lợi nhuận trên mỗi chiếc nhân với số lượng bán ra, trừ đi chi phí cố định:
+      $$L(p) = (1,5p - 20) \cdot Q(p) - 20000$$
+      $$L(p) = (1,5p - 20)(6000 - 200p) - 20000$$
+      $$L(p) = 9000p - 300p^2 - 120000 + 4000p - 20000$$
+      $$L(p) = -300p^2 + 13000p - 140000$$
+      
+    **Bước 3: Tìm giá trị tối ưu**
+    
+    * Hàm lợi nhuận $L(p)$ là một phương trình bậc hai có hệ số $a = -300 < 0$, nên đồ thị là một parabol có bề lõm hướng xuống dưới. Lợi nhuận đạt giá trị lớn nhất tại đỉnh của parabol.
+    * Tính đạo hàm: $L'(p) = -600p + 13000$
+    * Giải phương trình $L'(p) = 0$:
+      $$-600p + 13000 = 0 \iff p = \frac{13000}{600} = \frac{65}{3} \approx 21,666...$$
+    * Dựa trên yêu cầu làm tròn đến hàng phần trăm (hai chữ số thập phân), ta được kết quả $21,67$.
+    * *(Lưu ý: Mặc dù đề bài dùng từ "giảm giá", quá trình tối ưu hóa toán học cho thấy công ty thực chất cần phải TĂNG giá bán lên mức 21,67 triệu đồng để bù đắp cơ cấu chi phí và tối đa hóa lợi nhuận).*
+    
+    **Kết luận:** Mức giá bán tối ưu là **$21,67$** triệu đồng.
+    """)
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 119</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một khu du lịch được mô hình hóa vào hệ trục tọa độ $Oxy$ bằng một phần đồ thị hàm số: $y = \dfrac{2x - 3}{x - 2}$ $(C)$. Người ta xây dựng một quầy thu vé tại điểm $M(x_0; y_0)$ thuộc $(C)$, với hoành độ $x_0 > 2$. Khu vực này có hai tuyến đường giao thông. Tuyến đường giao thông QLA1 dọc theo đường tiệm cận đứng của đồ thị $(C)$. Tuyến đường giao thông QLB1 dọc theo đường tiệm cận ngang của đồ thị $(C)$. Gọi $I$ là giao điểm của hai tuyến đường giao thông này. Hãy xác định điểm $M$ (từ quầy thu vé) (với $x_0 > 2$) sao cho tiếp tuyến tại $M$ cắt hai tuyến đường giao thông tại hai điểm $A$ và $B$, tạo thành một tam giác $IAB$ có chu vi nhỏ nhất. Khi đó, hãy tính khoảng cách từ quầy thu vé đến giao điểm của hai tuyến đường giao thông chính QLA1 và QLB1 (làm tròn đến hàng phần trăm).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập khoảng cách đã làm tròn (ví dụ: 1.41):", key="q119_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_c4c87c.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_c4c87c.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q119_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 1.41 (căn 2)
+    if normalized_user_answer in ["1.41", "1.414"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy viết phương trình tiếp tuyến, tìm giao điểm A, B với hai tiệm cận, dùng bất đẳng thức AM-GM (Cauchy) để tối ưu chu vi và tính khoảng cách MI nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q119_solution_shown' not in st.session_state:
+    st.session_state['q119_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q119_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q119_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q119_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q119_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định các đường tiệm cận và điểm $I$**
+    
+    * Đồ thị hàm số $(C): y = \dfrac{2x - 3}{x - 2} = 2 + \dfrac{1}{x - 2}$.
+    * Tiệm cận đứng (QLA1): $x = 2$.
+    * Tiệm cận ngang (QLB1): $y = 2$.
+    * Giao điểm của hai đường tiệm cận là $I(2; 2)$.
+    
+    **Bước 2: Viết phương trình tiếp tuyến tại $M$**
+    
+    * Gọi tọa độ điểm $M$ là $\left(x_0; 2 + \dfrac{1}{x_0 - 2}\right)$ với $x_0 > 2$.
+    * Đạo hàm: $y' = -\dfrac{1}{(x - 2)^2}$.
+    * Phương trình tiếp tuyến $\Delta$ tại $M$ có dạng:
+      $$y = -\dfrac{1}{(x_0 - 2)^2}(x - x_0) + 2 + \dfrac{1}{x_0 - 2}$$
+    
+    **Bước 3: Tìm tọa độ giao điểm $A$ và $B$**
+    
+    * Giao điểm $A$ của $\Delta$ với tiệm cận đứng $x = 2$:
+      Thay $x = 2$ vào phương trình $\Delta$:
+      $$y_A = -\dfrac{1}{(x_0 - 2)^2}(2 - x_0) + 2 + \dfrac{1}{x_0 - 2} = \dfrac{1}{x_0 - 2} + 2 + \dfrac{1}{x_0 - 2} = 2 + \dfrac{2}{x_0 - 2}$$
+      Suy ra: $A\left(2; 2 + \dfrac{2}{x_0 - 2}\right)$.
+    * Giao điểm $B$ của $\Delta$ với tiệm cận ngang $y = 2$:
+      Thay $y = 2$ vào phương trình $\Delta$:
+      $$2 = -\dfrac{1}{(x_0 - 2)^2}(x_B - x_0) + 2 + \dfrac{1}{x_0 - 2}$$
+      $$\iff \dfrac{1}{x_0 - 2} = \dfrac{x_B - x_0}{(x_0 - 2)^2} \iff x_0 - 2 = x_B - x_0 \iff x_B = 2x_0 - 2$$
+      Suy ra: $B(2x_0 - 2; 2)$.
+    
+    **Bước 4: Tính chu vi $\triangle IAB$ và tìm giá trị nhỏ nhất**
+    
+    * Tam giác $IAB$ vuông tại $I$. Độ dài hai cạnh góc vuông là:
+      $$IA = |y_A - 2| = \dfrac{2}{x_0 - 2} \quad (\text{do } x_0 > 2)$$
+      $$IB = |x_B - 2| = |2x_0 - 2 - 2| = 2(x_0 - 2)$$
+    * Chu vi tam giác là: $P = IA + IB + \sqrt{IA^2 + IB^2}$.
+    * Áp dụng bất đẳng thức AM-GM (Cauchy) cho hai số dương $IA$ và $IB$:
+      $$IA \cdot IB = \dfrac{2}{x_0 - 2} \cdot 2(x_0 - 2) = 4 \quad (\text{hằng số})$$
+      Ta có: 
+      $$IA + IB \ge 2\sqrt{IA \cdot IB} = 2\sqrt{4} = 4$$
+      $$IA^2 + IB^2 \ge 2\sqrt{IA^2 \cdot IB^2} = 2(IA \cdot IB) = 8$$
+    * Do đó $P \ge 4 + \sqrt{8}$. Dấu "=" xảy ra khi và chỉ khi:
+      $$IA = IB \iff \dfrac{2}{x_0 - 2} = 2(x_0 - 2) \iff (x_0 - 2)^2 = 1$$
+      Vì $x_0 > 2$ nên $x_0 - 2 = 1 \iff x_0 = 3$.
+    * Thay $x_0 = 3$ vào hàm số, ta được tung độ $y_0 = 3$. Vậy quầy thu vé đặt tại $M(3; 3)$.
+    
+    **Bước 5: Tính khoảng cách từ $M$ đến $I$**
+    
+    * Yêu cầu bài toán là tính khoảng cách từ quầy thu vé $M(3; 3)$ đến giao điểm hai tuyến đường $I(2; 2)$:
+      $$MI = \sqrt{(x_M - x_I)^2 + (y_M - y_I)^2} = \sqrt{(3 - 2)^2 + (3 - 2)^2} = \sqrt{1^2 + 1^2} = \sqrt{2}$$
+    * Tính xấp xỉ: $\sqrt{2} \approx 1,4142...$
+    * Làm tròn đến hàng phần trăm theo yêu cầu, ta được **$1,41$**.
+    
+    **Kết luận:** Khoảng cách từ quầy thu vé đến giao điểm hai tuyến đường là **$1,41$**.
+    """)
