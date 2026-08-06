@@ -11153,7 +11153,7 @@ st.markdown(
 
 # Nội dung câu hỏi từ hình ảnh
 st.markdown(r"""
-**Câu 14:** Một ngọn đồi được giới hạn bởi một đường cong trong hệ tọa độ $Oxy$ và được mô tả bằng một phần của đồ thị hàm số bậc ba $f(x)$ (tham khảo hình vẽ). Vị trí điểm cực đại là $(4; 8)$ với đơn vị của hệ trục là $100\text{ m}$ và vị trí điểm cực tiểu là gốc tọa độ $O$. Một con đường được xây dựng dọc theo đồi có phương trình $d: y = 20 - 2x$. Người ta muốn xây dựng một cây cầu dạng đoạn thẳng nối từ ngọn đồi ra mặt đường. Biết rằng chi phí xây dựng cầu phụ thuộc vào chiều dài của cây cầu, công thức chi phí xây dựng là $C = 20000L + 500H$ (USD), trong đó $L$ là chiều dài cây cầu và $H$ là độ cao chênh lệch giữa hai đầu cầu được tính dựa vào $L_{\min}$. Hỏi chi phí xây dựng cây cầu là bao nhiêu nếu người ta muốn tối ưu hóa chiều dài cây cầu $L_{\min}$? (làm tròn đến hàng đơn vị)
+ Một ngọn đồi được giới hạn bởi một đường cong trong hệ tọa độ $Oxy$ và được mô tả bằng một phần của đồ thị hàm số bậc ba $f(x)$ (tham khảo hình vẽ). Vị trí điểm cực đại là $(4; 8)$ với đơn vị của hệ trục là $100\text{ m}$ và vị trí điểm cực tiểu là gốc tọa độ $O$. Một con đường được xây dựng dọc theo đồi có phương trình $d: y = 20 - 2x$. Người ta muốn xây dựng một cây cầu dạng đoạn thẳng nối từ ngọn đồi ra mặt đường. Biết rằng chi phí xây dựng cầu phụ thuộc vào chiều dài của cây cầu, công thức chi phí xây dựng là $C = 20000L + 500H$ (USD), trong đó $L$ là chiều dài cây cầu và $H$ là độ cao chênh lệch giữa hai đầu cầu được tính dựa vào $L_{\min}$. Hỏi chi phí xây dựng cây cầu là bao nhiêu nếu người ta muốn tối ưu hóa chiều dài cây cầu $L_{\min}$? (làm tròn đến hàng đơn vị)
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
@@ -11243,19 +11243,6 @@ if st.session_state.get('q117_solution_shown') and st.session_state.get('logged_
     **Kết luận:** Chi phí xây dựng cây cầu là **$3069056$** USD.
     """)
 
-
-# Tiêu đề câu hỏi
-st.markdown(
-    '<b style="color: blue;">Câu 118</b>',
-    unsafe_allow_html=True
-)
-
-# Nội dung câu hỏi từ hình ảnh
-st.markdown(r"""
-**Câu 15:** Một công ty sản xuất điện thoại di động bán trung bình 2000 chiếc mỗi tuần với giá 20 triệu đồng mỗi chiếc. Qua khảo sát thị trường, công ty nhận thấy rằng cứ mỗi lần giảm giá bán 1 triệu đồng, số lượng điện thoại bán ra sẽ tăng thêm 200 chiếc mỗi tuần. Tuy nhiên, nếu giảm giá bán quá nhiều, lợi nhuận biên từ mỗi chiếc điện thoại sẽ giảm xuống, với mỗi lần giảm giá thêm 1 triệu đồng, chi phí sản xuất cho mỗi chiếcDưới đây là đoạn code hoàn chỉnh theo cấu trúc bạn yêu cầu, được cập nhật cho Câu 118. Để tuân thủ nguyên tắc bản quyền, nội dung câu hỏi đã được diễn đạt lại (paraphrase) nhưng vẫn giữ nguyên vẹn ý nghĩa và các số liệu toán học để giải quyết bài toán.
-
-```python
-import streamlit as st
 
 # Tiêu đề câu hỏi
 st.markdown(
