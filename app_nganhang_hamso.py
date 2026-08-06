@@ -11647,3 +11647,109 @@ if st.session_state.get('q121_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Chu vi của vi mạch khi lợi nhuận đạt giá trị nhỏ nhất là **$63,2\text{ pm}$**.
     """)
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 122</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+ Cho một tấm tôn hình một ngũ giác đều có cạnh bằng $6\text{ dm}$. Người ta thực hiện các bước sau:
+* **Bước 1:** Cắt ở mỗi đỉnh của ngũ giác đều đó hai tam giác vuông bằng nhau.
+* **Bước 2:** Cắt theo nét đứt đoạn để thu được hình hợp bởi một ngũ giác đều và năm hình chữ nhật.
+* **Bước 3:** Gấp các hình chữ nhật để tạo thành khối lăng trụ ngũ giác đều (tham khảo hình vẽ).
+
+Thể tích của khối lăng trụ lớn nhất bằng bao nhiêu đề-xi-mét khối? *(làm tròn kết quả đến hàng chục)*.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập thể tích lớn nhất (dm³):", key="q122_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_c46645.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_c46645.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q122_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác theo đúng ngữ pháp "hàng chục" là 40, nhưng mở rộng chấp nhận 38 (nếu tác giả nhầm với hàng đơn vị)
+    if normalized_user_answer in ["40", "38"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập độ dài cạnh đáy mới x và chiều cao h theo x, sau đó lập hàm thể tích và tìm GTLN nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q122_solution_shown' not in st.session_state:
+    st.session_state['q122_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q122_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q122_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q122_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q122_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích các kích thước của lăng trụ**
+    
+    * Gọi $x$ ($0 < x < 6$, đơn vị: dm) là độ dài cạnh đáy của khối lăng trụ ngũ giác đều (chính là cạnh của ngũ giác đều ở giữa sau khi gấp).
+    * Cạnh của tấm tôn ngũ giác đều ban đầu có độ dài $a = 6\text{ dm}$. Khi trải phẳng, cạnh này bao gồm 1 cạnh của hình chữ nhật (dài $x$) và 2 cạnh kề góc vuông của 2 tam giác bị cắt bỏ.
+    * Gọi $y$ là cạnh kề góc vuông nằm trên cạnh ngũ giác lớn của tam giác bị cắt bỏ. Ta có:
+      $$2y + x = 6 \implies y = \frac{6 - x}{2}$$
+    * Gọi $h$ là chiều cao của lăng trụ (chính là cạnh góc vuông còn lại của tam giác bị cắt bỏ).
+    * Góc ở đỉnh của một ngũ giác đều là $\frac{180^\circ \times (5 - 2)}{5} = 108^\circ$. Đường phân giác của góc này chia đôi góc thành $54^\circ$.
+    * Trong tam giác vuông bị cắt bỏ, mối liên hệ giữa $h$ và $y$ là:
+      $$h = y \cdot \tan(54^\circ) = \frac{6 - x}{2} \cdot \tan(54^\circ)$$
+    
+    **Bước 2: Thiết lập hàm thể tích**
+    
+    * Diện tích đáy của lăng trụ (ngũ giác đều cạnh $x$) là:
+      $$S_d = 5 \cdot \frac{1}{2} \cdot x \cdot \frac{x}{2 \tan(36^\circ)} = \frac{5}{4} x^2 \cot(36^\circ) = \frac{5}{4} x^2 \tan(54^\circ)$$
+    * Thể tích khối lăng trụ là $V(x) = S_d \cdot h$:
+      $$V(x) = \left[ \frac{5}{4} x^2 \tan(54^\circ) \right] \cdot \left[ \frac{6 - x}{2} \tan(54^\circ) \right]$$
+      $$V(x) = \frac{5}{8} \tan^2(54^\circ) \cdot x^2(6 - x)$$
+    
+    **Bước 3: Tìm giá trị lớn nhất của thể tích**
+    
+    * Để $V(x)$ lớn nhất, hàm số $f(x) = x^2(6 - x) = 6x^2 - x^3$ phải đạt giá trị lớn nhất trên khoảng $(0; 6)$.
+    * Đạo hàm: $f'(x) = 12x - 3x^2$.
+    * Xét $f'(x) = 0 \iff 3x(4 - x) = 0 \implies x = 4$ (nhận) hoặc $x = 0$ (loại).
+    * Bảng biến thiên cho thấy $f(x)$ đạt cực đại tại $x = 4$. Khi đó:
+      $$f(4) = 4^2 \cdot (6 - 4) = 32$$
+    * Thay $f(4)$ vào công thức thể tích, ta được thể tích lớn nhất:
+      $$V_{\max} = \frac{5}{8} \tan^2(54^\circ) \cdot 32 = 20 \tan^2(54^\circ)$$
+    * Về mặt toán học, $\tan^2(54^\circ) = \dfrac{3 + \sqrt{5}}{5 - \sqrt{5}} = 1 + \dfrac{2\sqrt{5}}{5}$.
+    * Suy ra: 
+      $$V_{\max} = 20 \left(1 + \frac{2\sqrt{5}}{5}\right) = 20 + 8\sqrt{5} \approx 37,8885\text{ (dm}^3\text{)}$$
+    
+    **Bước 4: Làm tròn kết quả**
+    
+    * Đề bài yêu cầu làm tròn kết quả đến **hàng chục**.
+    * Số $37,8885$ làm tròn đến hàng chục (chữ số hàng chục là $3$, hàng đơn vị là $7 \ge 5$ nên nhớ $1$ lên hàng chục) ta được **$40$**.
+    * *(Lưu ý: Nếu đề bài có sai sót thuật ngữ và muốn hỏi làm tròn đến "hàng đơn vị", đáp án sẽ là 38. Tuy nhiên, tuân thủ đúng từ khóa toán học "hàng chục", kết quả chuẩn xác là 40).*
+    
+    **Kết luận:** Thể tích lớn nhất làm tròn đến hàng chục là **$40$**.
+    """)
