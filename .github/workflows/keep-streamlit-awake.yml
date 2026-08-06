@@ -1,6 +1,6 @@
 name: Keep Streamlit Apps Awake
 
-# Chạy tự động mỗi 10 phút để ping tất cả app, tránh bị Streamlit Cloud đưa vào trạng thái sleep.
+# Chạy tự động mỗi 20 phút để ping tất cả app, tránh bị Streamlit Cloud đưa vào trạng thái sleep.
 # Có thể chạy thủ công từ tab Actions trên GitHub (nút "Run workflow").
 on:
   schedule:
@@ -11,55 +11,53 @@ jobs:
   ping-apps:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping app_tohop_xacsuat.py
+      - name: Ping app_tohop_xacsuat
         run: |
-          curl -sS -o /dev/null -w "app_tohop_xacsuat.py -> HTTP %{http_code}\n" \
-            "https://web-thi-thu-toan-thpt-tohopxacsuat.streamlit.app/" || echo "app_tohop_xacsuat.py: request failed"
+          curl -sS -o /dev/null -w "app_tohop_xacsuat -> HTTP %{http_code}\n" \
+            "https://web-thi-thu-toan-thpt-tohopxacsuat.streamlit.app/" || echo "app_tohop_xacsuat: request failed"
 
-      - name: Ping app_dungsai_hamso.py
+      - name: Ping app_dungsai_hamso
         run: |
-          curl -sS -o /dev/null -w "app_dungsai_hamso.py -> HTTP %{http_code}\n" \
-            "https://web-thi-thu-toan-thpt-dungsaihamso.streamlit.app/" || echo "app_dungsai_hamso.py: request failed"
+          curl -sS -o /dev/null -w "app_dungsai_hamso -> HTTP %{http_code}\n" \
+            "https://web-thi-thu-toan-thpt-dungsaihamso.streamlit.app/" || echo "app_dungsai_hamso: request failed"
 
-      - name: Ping app_nganhang_hamso.py
+      - name: Ping app_nganhang_hamso
         run: |
-          curl -sS -o /dev/null -w "app_nganhang_hamso.py -> HTTP %{http_code}\n" \
-            "https://web-thi-thu-toan-thpt-nganhanghamso.streamlit.app/" || echo "app_nganhang_hamso.py: request failed"
+          curl -sS -o /dev/null -w "app_nganhang_hamso -> HTTP %{http_code}\n" \
+            "https://web-thi-thu-toan-thpt-nganhanghamso.streamlit.app/" || echo "app_nganhang_hamso: request failed"
 
-      - name: Ping app_nguyenham_tichphan.py
+      - name: Ping app_nguyenham_tichphan
         run: |
-          curl -sS -o /dev/null -w "app_nguyenham_tichphan.py -> HTTP %{http_code}\n" \
-            "https://web-thi-thu-toan-thpt-nguyenhamtichphan.streamlit.app/" || echo "app_nguyenham_tichphan.py: request failed"
+          curl -sS -o /dev/null -w "app_nguyenham_tichphan -> HTTP %{http_code}\n" \
+            "https://web-thi-thu-toan-thpt-nguyenhamtichphan.streamlit.app/" || echo "app_nguyenham_tichphan: request failed"
 
-      - name: Ping app_sohoc_tsa.py
+      - name: Ping app_sohoc_tsa
         run: |
-          curl -sS -o /dev/null -w "app_sohoc_tsa.py -> HTTP %{http_code}\n" \
-            "https://web-thi-thu-toan-thpt-sohoctsa.streamlit.app/" || echo "app_sohoc_tsa.py: request failed"
+          curl -sS -o /dev/null -w "app_sohoc_tsa -> HTTP %{http_code}\n" \
+            "https://web-thi-thu-toan-thpt-sohoctsa.streamlit.app/" || echo "app_sohoc_tsa: request failed"
 
-      - name: Ping app_theochuong.py
+      - name: Ping app_theochuong
         run: |
-          curl -sS -o /dev/null -w "app_theochuong.py -> HTTP %{http_code}\n" \
-            "https://thi-thu-toan-12-theo-chuong-thaytung.streamlit.app/" || echo "app_theochuong.py: request failed"
+          curl -sS -o /dev/null -w "app_theochuong -> HTTP %{http_code}\n" \
+            "https://thi-thu-toan-12-theo-chuong-thaytung.streamlit.app/" || echo "app_theochuong: request failed"
 
-      - name: Ping app_thihocky.py
+      - name: Ping app_thihocky
         run: |
-          curl -sS -o /dev/null -w "app_thihocky.py -> HTTP %{http_code}\n" \
-            "https://web-thi-thu-toan-thpt-thihocky.streamlit.app/" || echo "app_thihocky.py: request failed"
+          curl -sS -o /dev/null -w "app_thihocky -> HTTP %{http_code}\n" \
+            "https://web-thi-thu-toan-thpt-thihocky.streamlit.app/" || echo "app_thihocky: request failed"
 
-      - name: Ping app_tracnghiem_hamso.py
+      - name: Ping app_tracnghiem_hamso
         run: |
-          curl -sS -o /dev/null -w "app_tracnghiem_hamso.py -> HTTP %{http_code}\n" \
-            "https://web-thi-thu-toan-thpt-tracnghiemhamso.streamlit.app/" || echo "app_tracnghiem_hamso.py: request failed"
+          curl -sS -o /dev/null -w "app_tracnghiem_hamso -> HTTP %{http_code}\n" \
+            "https://web-thi-thu-toan-thpt-tracnghiemhamso.streamlit.app/" || echo "app_tracnghiem_hamso: request failed"
 
-      - name: Ping app_hsa.py
+      - name: Ping app_hsa
         run: |
-          curl -sS -o /dev/null -w "app_hsa.py -> HTTP %{http_code}\n" \
-            "https://toanthaytung-hsa.streamlit.app/" || echo "app_hsa.py: request failed"
+          curl -sS -o /dev/null -w "app_hsa -> HTTP %{http_code}\n" \
+            "https://toanthaytung-hsa.streamlit.app/" || echo "app_hsa: request failed"
 
-      # Chưa có URL của app.py (app chính) — thêm khối sau khi có link:
-      # - name: Ping app.py
+      # Thêm khối lệnh dưới đây khi bạn đã có URL cho app chính (app.py)
+      # - name: Ping app_chinh
       #   run: |
-      #     curl -sS -o /dev/null -w "app.py -> HTTP %{http_code}\n" \
-      #       "https://URL-CUA-APP-CHINH.streamlit.app/" || echo "app.py: request failed"
-
-      
+      #     curl -sS -o /dev/null -w "app_chinh -> HTTP %{http_code}\n" \
+      #       "https://URL-CUA-APP-CHINH.streamlit.app/" || echo "app_chinh: request failed"
