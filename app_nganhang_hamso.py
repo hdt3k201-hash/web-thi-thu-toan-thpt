@@ -11866,3 +11866,102 @@ if st.session_state.get('q123_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Tổng $x + y$ bằng **$4,95\text{ cm}$**.
     """)
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 124</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một miếng bìa hình tròn tâm $O$ có bán kính bằng $12\text{ cm}$. Ta cắt tấm bìa như hình vẽ rồi ghép thành hình chóp tam giác đều. Thể tích lớn nhất thu được của khối chóp tam giác bằng bao nhiêu centimet khối *(kết quả làm tròn đến hàng đơn vị)*?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập thể tích lớn nhất (cm³):", key="q124_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_c4579b.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_c4579b.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q124_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 214
+    if normalized_user_answer in ["214"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy biểu diễn bán kính nội tiếp đáy x = a/(2√3), tính chiều cao khối chóp h = √[(12-x)² - x²] rồi dùng đạo hàm hoặc BĐT AM-GM nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q124_solution_shown' not in st.session_state:
+    st.session_state['q124_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q124_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q124_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q124_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q124_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Đặt ẩn và xác định mối liên hệ các đại lượng**
+    
+    * Gọi đáy của khối chóp tam giác đều là tam giác đều $ABC$ cạnh $a > 0$.
+    * Bán kính đường tròn nội tiếp tam giác đáy $ABC$ là:
+      $$x = r_{\text{nội tiếp}} = \frac{a}{2\sqrt{3}} \implies a = 2\sqrt{3}x \quad (0 < x < 6)$$
+    * Diện tích đáy $S_{\text{đáy}}$ của khối chóp là:
+      $$S_{\text{đáy}} = \frac{a^2\sqrt{3}}{4} = \frac{(2\sqrt{3}x)^2\sqrt{3}}{4} = 3\sqrt{3}x^2$$
+    * Đường cao của mặt bên (trung đoạn của hình chóp) nối từ đỉnh trên hình tròn đến cạnh đáy có độ dài:
+      $$l = R - x = 12 - x$$
+    * Chiều cao $h$ của khối chóp tam giác đều được tính theo định lý Pitago:
+      $$h = \sqrt{l^2 - x^2} = \sqrt{(12 - x)^2 - x^2} = \sqrt{144 - 24x} = 2\sqrt{6(6 - x)}$$
+    
+    **Bước 2: Lập công thức tính thể tích khối chóp**
+    
+    * Thể tích $V$ của khối chóp là:
+      $$V(x) = \frac{1}{3} \cdot S_{\text{đáy}} \cdot h = \frac{1}{3} \cdot \left(3\sqrt{3}x^2\right) \cdot 2\sqrt{6(6 - x)} = 6\sqrt{2} x^2 \sqrt{6 - x}$$
+    
+    **Bước 3: Tìm giá trị lớn nhất của $V(x)$ bằng BĐT AM-GM (hoặc Đạo hàm)**
+    
+    * Xét biểu thức dưới căn $f(x) = x^4(6 - x)$:
+      $$4 \cdot f(x) = x \cdot x \cdot x \cdot x \cdot (24 - 4x)$$
+    * Áp dụng bất đẳng thức AM-GM cho 5 số dương $x, x, x, x$ và $(24 - 4x)$:
+      $$x \cdot x \cdot x \cdot x \cdot (24 - 4x) \le \left(\frac{x + x + x + x + 24 - 4x}{5}\right)^5 = \left(\frac{24}{5}\right)^5$$
+    * Suy ra:
+      $$f(x) \le \frac{1}{4} \cdot \left(\frac{24}{5}\right)^5$$
+    * Dấu "=" xảy ra khi:
+      $$x = 24 - 4x \iff 5x = 24 \iff x = 4,8\text{ cm}$$
+    
+    **Bước 4: Tính thể tích lớn nhất**
+    
+    * Thay $x = 4,8$ vào công thức thể tích:
+      $$V_{\max} = 6\sqrt{2} \cdot (4,8)^2 \cdot \sqrt{6 - 4,8} = 6\sqrt{2} \cdot 23,04 \cdot \sqrt{1,2} = \frac{6912\sqrt{15}}{125} \approx 214,16\text{ cm}^3$$
+    * Làm tròn đến hàng đơn vị theo yêu cầu bài toán, ta được **$214$**.
+    
+    **Kết luận:** Thể tích lớn nhất thu được của khối chóp bằng **$214\text{ cm}^3$**.
+    """)
+
+
