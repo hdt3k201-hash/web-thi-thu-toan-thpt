@@ -12177,3 +12177,109 @@ if st.session_state.get('q126_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Giá trị của $a$ bằng **$200$**.
     """)
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 127</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Thành phố A dự định xây một cây cầu bắc qua một con sông chảy qua hẻm núi. Hẻm có chiều ngang $80\text{ m}$, một bên cao $40\text{ m}$ và một bên cao $30\text{ m}$. Mô hình thiết kế của cây cầu được gắn hệ trục tọa độ $Oxy$ như hình vẽ bên dưới. Cây cầu $XY$ xuyên qua hẻm núi được mô hình hóa bằng phương trình: $y = \dfrac{1}{25600}x^3 + ax + b$ với $a, b$ là các số thực. Hai cáp treo $MN, PQ$ (cùng song song với trục $Oy$) là đoạn nối giữa khung của parabol và cầu $XY$. Tổng độ dài hai đoạn cáp treo dài bao nhiêu mét (làm tròn kết quả đến hàng chục của đơn vị mét)? Biết rằng $N$ và $Q$ là hai điểm đối xứng qua trục $Oy$ và $MN$ là đoạn có độ dài lớn nhất.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng độ dài hai đoạn cáp treo (m):", key="q127_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_aa0537.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_aa0537.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q127_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 50
+    if normalized_user_answer in ["50", "50.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tìm a, b của phương trình cầu, thiết lập hàm độ dài cáp treo L(x) theo Parabol, tìm điểm cực đại cho MN và tính tổng L(x) + L(-x) nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q127_solution_shown' not in st.session_state:
+    st.session_state['q127_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q127_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q127_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q127_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q127_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định phương trình đường cong cầu $XY$ và khung parabol**
+    
+    * **Phương trình cầu $XY$:** $y = \dfrac{1}{25600}x^3 + ax + b$.
+        * Dựa vào hình vẽ, hẻm có chiều ngang $80\text{ m}$ nên hai chân bờ ứng với $x = -40$ và $x = 40$. Tọa độ hai điểm $X(-40; 40)$ và $Y(40; 30)$.
+        * Thay tọa độ điểm $X$ và $Y$ vào phương trình:
+          $$\begin{cases} \dfrac{1}{25600}(-40)^3 + a(-40) + b = 40 \\ \dfrac{1}{25600}(40)^3 + a(40) + b = 30 \end{cases} \iff \begin{cases} -2.5 - 40a + b = 40 \\ 2.5 + 40a + b = 30 \end{cases}$$
+        * Cộng và trừ hai phương trình, ta tìm được: $b = 35$ và $a = -\dfrac{3}{16} = -0.1875$.
+        * Vậy phương trình cầu $XY$ là: 
+          $$y = \dfrac{1}{25600}x^3 - \dfrac{3}{16}x + 35$$
+          
+    * **Phương trình khung parabol:**
+        * Parabol có đỉnh ở $(0; 60)$ và đi qua hai điểm gốc $(-40; 0)$ và $(40; 0)$, nên phương trình có dạng: $y = c x^2 + 60$.
+        * Thay điểm $(40; 0)$ vào ta được: $c(40)^2 + 60 = 0 \implies c = -\dfrac{60}{1600} = -\dfrac{3}{80}$.
+        * Vậy phương trình parabol là: 
+          $$y = -\dfrac{3}{80}x^2 + 60$$
+
+    **Bước 2: Thiết lập hàm độ dài cáp treo và tìm điểm $MN$ lớn nhất**
+    
+    * Gọi điểm $N$ trên parabol và điểm $M$ trên cầu $XY$ có cùng hoành độ $x \in [-40; 40]$.
+    * Độ dài đoạn cáp treo $MN$ là hiệu tung độ giữa parabol và cầu $XY$:
+      $$L(x) = \left(-\dfrac{3}{80}x^2 + 60\right) - \left(\dfrac{1}{25600}x^3 - \dfrac{3}{16}x + 35\right)$$
+      $$L(x) = -\dfrac{1}{25600}x^3 - \dfrac{3}{80}x^2 + \dfrac{3}{16}x + 25$$
+    * Tính đạo hàm của $L(x)$:
+      $$L'(x) = -\dfrac{3}{25600}x^2 - \dfrac{3}{40}x + \dfrac{3}{16}$$
+    * Cho $L'(x) = 0 \iff x^2 + 640x - 1600 = 0$.
+    * Giải phương trình trên đoạn $[-40; 40]$, ta được nghiệm thỏa mãn:
+      $$x = 40\sqrt{65} - 320 \approx 2.49\text{ m}$$
+    * Đây là hoành độ mà tại đó đoạn cáp treo $MN$ đạt độ dài lớn nhất.
+
+    **Bước 3: Tính tổng độ dài hai đoạn cáp treo $MN$ và $PQ$**
+    
+    * Do $N$ và $Q$ đối xứng nhau qua trục $Oy$, hoành độ của $Q$ là $-x$, và độ dài đoạn cáp treo $PQ$ là $L(-x)$.
+    * Tổng độ dài hai đoạn cáp treo là:
+      $$S = L(x) + L(-x)$$
+    * Ta có:
+      $$L(x) + L(-x) = 2 \cdot \left(-\dfrac{3}{80}x^2 + 60\right) - 70 = -\dfrac{3}{40}x^2 + 50$$
+    * Thay $x = 40\sqrt{65} - 320$ vào biểu thức, ta tính được:
+      $$S = 1920\sqrt{65} - 15430 \approx 49.53\text{ m}$$
+
+    **Bước 4: Làm tròn kết quả**
+    
+    * Làm tròn kết quả đến hàng chục của đơn vị mét, giá trị $49.53\text{ m}$ được làm tròn thành **$50\text{ m}$**.
+    
+    **Kết luận:** Tổng độ dài hai đoạn cáp treo là **$50\text{ m}$**.
+    """)
