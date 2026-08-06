@@ -10778,3 +10778,176 @@ if st.session_state.get('q112_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Khi chi phí theo số sản phẩm đạt giá trị nhỏ nhất thì số sản phẩm sản xuất được là **$365$**.
     """)
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 113</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một doanh nghiệp sản xuất độc quyền một loại sản phẩm. Biết nhu cầu thị trường là $Q = 10000 - P$, trong đó $Q$ là số sản phẩm và $P$ là giá bán sản phẩm (đơn vị: nghìn đồng). Doanh nghiệp chi ra rằng chi phí khi sản xuất $Q$ sản phẩm là $C(Q) = Q^2 + 6000Q - 2000$ (nghìn đồng). Giả sử mức thuế phụ thu trên một đơn vị sản phẩm bán được là $T$ (nghìn đồng) (Nói cách khác: mức thuế phụ thu tỉ lệ thuận với đơn giá bán ra với hằng số không đổi và không vượt quá đơn giá bán ra). Để nhà nước thu được số tiền thuế phụ thu lớn nhất và doanh nghiệp cũng thu được lợi nhuận lớn nhất theo mức thuế phụ thu đó (xem như số sản phẩm sản xuất bán ra được doanh nghiệp bán hết) thì mức thuế phụ thu phải là bao nhiêu? (làm tròn đến chục nghìn đồng)
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập mức thuế phụ thu T (nghìn đồng):", key="q113_ans")
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q113_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 2000
+    if normalized_user_answer == "2000":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hàm lợi nhuận của doanh nghiệp theo sản lượng Q và thuế T, tìm sản lượng tối ưu theo T, sau đó lập hàm tổng tiền thuế thu được và tìm giá trị lớn nhất của nó!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q113_solution_shown' not in st.session_state:
+    st.session_state['q113_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q113_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q113_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q113_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q113_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hàm lợi nhuận của doanh nghiệp theo sản lượng và thuế**
+    
+    * Hàm cầu thị trường là $Q = 10000 - P \implies P = 10000 - Q$, trong đó $P$ là giá bán sản phẩm (nghìn đồng).
+    * Hàm chi phí sản xuất $Q$ sản phẩm là: $C(Q) = Q^2 + 6000Q - 2000$ (nghìn đồng).
+    * Giả sử mức thuế phụ thu trên một đơn vị sản phẩm là $T$ (nghìn đồng). Khi đó, tổng số tiền thuế mà doanh nghiệp phải nộp phụ thuộc vào số lượng sản phẩm bán ra là $T \cdot Q$.
+    * Hàm lợi nhuận của doanh nghiệp sau khi chịu thuế là:
+        $$\Pi(Q) = P \cdot Q - C(Q) - T \cdot Q$$
+        $$\Pi(Q) = (10000 - Q)Q - (Q^2 + 6000Q - 2000) - T \cdot Q$$
+        $$\Pi(Q) = 10000Q - Q^2 - Q^2 - 6000Q + 2000 - TQ$$
+        $$\Pi(Q) = -2Q^2 + (4000 - T)Q + 2000$$
+    
+    **Bước 2: Tìm sản lượng tối ưu để doanh nghiệp đạt lợi nhuận lớn nhất**
+    
+    * Vì hàm lợi nhuận $\Pi(Q)$ là một hàm bậc hai đối với $Q$ có hệ số $a = -2 < 0$, đồ thị là một parabol quay bề lõm xuống dưới, nên lợi nhuận đạt giá trị lớn nhất tại đỉnh của parabol:
+        $$\Pi'(Q) = -4Q + 4000 - T = 0 \iff Q = \frac{4000 - T}{4} = 1000 - \frac{T}{4}$$
+    * Với mức sản lượng này, doanh nghiệp sẽ đạt lợi nhuận lớn nhất tương ứng với mức thuế $T$ cho trước.
+    
+    **Bước 3: Lập hàm tổng số tiền thuế thu được và tìm giá trị lớn nhất**
+    
+    * Tổng số tiền thuế phụ thu mà nhà nước thu được là:
+        $$R_{\text{tax}} = T \cdot Q = T \left(1000 - \frac{T}{4}\right) = 1000T - \frac{1}{4}T^2$$
+    * Xét hàm số $R_{\text{tax}}(T) = -\frac{1}{4}T^2 + 1000T$ theo biến $T$. Đây là một parabol có hệ số $a = -\frac{1}{4} < 0$, do đó tổng số tiền thuế đạt giá trị lớn nhất tại hoành độ đỉnh:
+        $$T = -\dfrac{b}{2a} = -\dfrac{1000}{2 \cdot \left(-\dfrac{1}{4}\right)} = \dfrac{1000}{\dfrac{1}{2}} = 2000$$
+    * Kiểm tra điều kiện thực tế tại $T = 2000$:
+        * Sản lượng: $Q = 1000 - \frac{2000}{4} = 500$.
+        * Giá bán: $P = 10000 - 500 = 9500$.
+        * Điều kiện $T \le P \iff 2000 \le 9500$ (thỏa mãn).
+    
+    **Bước 4: Kết luận**
+    
+    * Mức thuế phụ thu để nhà nước thu được tổng tiền thuế lớn nhất và doanh nghiệp đạt lợi nhuận lớn nhất là $2000$ nghìn đồng (tức $2$ triệu đồng).
+    
+    **Kết luận:** Mức thuế phụ thu phải là **$2000$** nghìn đồng.
+    """)
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 114</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một doanh nghiệp kinh doanh một loại sản phẩm $T$ được sản xuất trong nước. Qua nghiên cứu thấy rằng nếu chi phí sản xuất mỗi sản phẩm $T$ là $x$ (USD) thì số sản phẩm $T$ các nhà máy sản xuất sẽ là $R(x) = x - 200$ và số sản phẩm $T$ mà doanh nghiệp bán được trên thị trường trong nước sẽ là $Q(x) = 4200 - x$. Số sản phẩm còn dư doanh nghiệp xuất khẩu ra thị trường quốc tế với giá bán mỗi sản phẩm ổn định trên thị trường quốc tế là $x_0 = 3200$ (USD). Nhà nước đánh thuế trên mỗi sản phẩm xuất khẩu là $a$ (USD) và luôn đảm bảo tỉ lệ giữa lãi xuất khẩu của doanh nghiệp và thuế thu được của nhà nước tương ứng là $4:1$. Hãy xác định giá trị của $a$ biết lãi mà doanh nghiệp thu được do xuất khẩu là nhiều nhất.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của a (USD):", key="q114_ans")
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q114_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 100
+    if normalized_user_answer in ["100", "100.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hàm số lượng xuất khẩu, tính lợi nhuận xuất khẩu theo x và a, sử dụng tỉ lệ thuế để biểu diễn a theo x rồi tìm giá trị lớn nhất của hàm lợi nhuận nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q114_solution_shown' not in st.session_state:
+    st.session_state['q114_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q114_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q114_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q114_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q114_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Tính số lượng sản phẩm xuất khẩu**
+    
+    * Số sản phẩm được sản xuất trong nước là: $R(x) = x - 200$.
+    * Số sản phẩm tiêu thụ trên thị trường trong nước là: $Q(x) = 4200 - x$.
+    * Số lượng sản phẩm còn dư đem đi xuất khẩu ra thị trường quốc tế là:
+        $$E(x) = R(x) - Q(x) = (x - 200) - (4200 - x) = 2x - 4400$$
+    * Điều kiện để có sản phẩm xuất khẩu: $2x - 4400 > 0 \iff x > 2200$.
+    
+    **Bước 2: Thiết lập mối quan hệ giữa thuế $a$ và chi phí $x$**
+    
+    * Giá bán xuất khẩu ổn định là $x_0 = 3200\text{ USD}$.
+    * Chi phí sản xuất mỗi sản phẩm là $x\text{ USD}$, thuế xuất khẩu mỗi sản phẩm là $a\text{ USD}$. 
+    * Lãi ròng thu được trên mỗi sản phẩm xuất khẩu của doanh nghiệp là: $3200 - x - a$.
+    * Tổng tiền thuế nhà nước thu được trên mỗi sản phẩm xuất khẩu là: $a$.
+    * Theo đề bài, tỉ lệ giữa lãi xuất khẩu của doanh nghiệp và thuế thu được của nhà nước là $4:1$, suy ra:
+        $$\dfrac{3200 - x - a}{a} = 4 \iff 3200 - x - a = 4a \iff 3200 - x = 5a \iff a = \dfrac{3200 - x}{5}$$
+    
+    **Bước 3: Xây dựng hàm lợi nhuận xuất khẩu và tìm giá trị lớn nhất**
+    
+    * Tổng lợi nhuận doanh nghiệp thu được từ việc xuất khẩu là:
+        $$\Pi(x) = E(x) \cdot (3200 - x - a) = (2x - 4400) \cdot (3200 - x - \dfrac{3200 - x}{5})$$
+        $$\Pi(x) = 2(x - 2200) \cdot \left(\dfrac{4(3200 - x)}{5}\right) = \dfrac{8}{5}(x - 2200)(3200 - x)$$
+    * Khảo sát hàm số $\Pi(x)$ trên khoảng $(2200; 3200)$:
+        $$\Pi(x) = \dfrac{8}{5} (-x^2 + 5400x - 704000)$$
+    * Tính đạo hàm $\Pi'(x)$:
+        $$\Pi'(x) = \dfrac{8}{5}(-2x + 5400)$$
+    * Cho $\Pi'(x) = 0 \iff -2x + 5400 = 0 \iff x = 2700\text{ (nhận vì } 2200 < 2700 < 3200\text{)}$
+    * Bảng biến thiên cho thấy hàm số đạt giá trị lớn nhất tại $x = 2700$.
+    
+    **Bước 4: Tính giá trị của $a$**
+    
+    * Thay $x = 2700$ vào biểu thức tính $a$:
+        $$a = \dfrac{3200 - 2700}{5} = \dfrac{500}{5} = 100$$
+    
+    **Kết luận:** Giá trị của $a$ là **$100$**.
+    """)
