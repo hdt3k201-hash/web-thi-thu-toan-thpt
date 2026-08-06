@@ -10962,7 +10962,7 @@ st.markdown(
 
 # Nội dung câu hỏi từ hình ảnh
 st.markdown(r"""
-**Câu 12:** Vào lúc 12 giờ 7 phút anh Hùng chạy xe xuất phát từ điểm $A$ và đi đến điểm $C$ với vận tốc là $60\text{ km/h}$. Biết rằng 7 phút trước đó anh Quang chạy xe xuất phát từ điểm $B$ và đi đến điểm $A$ với vận tốc là $30\text{ km/h}$ sao cho hai quãng đường của hai xe hợp nhau 1 góc 60 độ như hình vẽ dưới đây. Cho trước $AB = 42\text{ km}$ và vào lúc $a$ giờ $b$ phút thì anh Quang và anh Hùng ở vị trí có cự li gần nhất để vẫy tay chào nhau với $a, b \in \mathbb{N}^*$. Tính $a + b$? Xem như hai xe đều chuyển động đều và không có tác dụng ngoại lực hay yếu tố nào khác.
+** Vào lúc 12 giờ 7 phút anh Hùng chạy xe xuất phát từ điểm $A$ và đi đến điểm $C$ với vận tốc là $60\text{ km/h}$. Biết rằng 7 phút trước đó anh Quang chạy xe xuất phát từ điểm $B$ và đi đến điểm $A$ với vận tốc là $30\text{ km/h}$ sao cho hai quãng đường của hai xe hợp nhau 1 góc 60 độ như hình vẽ dưới đây. Cho trước $AB = 42\text{ km}$ và vào lúc $a$ giờ $b$ phút thì anh Quang và anh Hùng ở vị trí có cự li gần nhất để vẫy tay chào nhau với $a, b \in \mathbb{N}^*$. Tính $a + b$? Xem như hai xe đều chuyển động đều và không có tác dụng ngoại lực hay yếu tố nào khác.
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
