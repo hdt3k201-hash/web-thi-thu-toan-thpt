@@ -10129,7 +10129,7 @@ st.markdown(
 
 # Nội dung câu hỏi từ hình ảnh
 st.markdown(r"""
-Một công ty kinh doanh và nghiên cứu thị trường trước khi tung sản phẩm mới thì nhận thấy rằng với hai món hàng hóa loại $A, B$ lần lượt có giá sản xuất là $2\text{ USD}$ và $5\text{ USD}$ thì hàm lợi ích (là hàm hai biến chỉ sự phụ thuộc của đại lượng lợi ích kinh doanh so với số lượng hàng hóa) của chúng là $y(x_1, x_2) = (x_1)^{\frac{1}{3}}(x_2)^{\frac{1}{2}}$ với $x_1, x_2$ lần lượt là số lượng hàng hóa loại $A, B$. Nếu vốn để sản xuất hàng ban đầu là $1000\text{ USD}$. Hỏi cần sản xuất số lượng hàng loại $B$ là bao nhiêu để đạt doanh thu (lợi ích) tối đa?
+Một công ty kinh doanh và nghiên cứu thị trường trước khi tung sản phẩm mới thì nhận thấy rằng với hai món hàng hóa loại $A, B$ lần lượt có giá sản xuất là $2\text{ USD}$ và $5\text{ USD}$ thì hàm lợi ích (là hàm hai biến chỉ sự phụ thuộc của đại lượng lợi ích kinh doanh so với số lượng hàng hóa) của chúng là $y(x_1, x_2) = (x_1)^{\dfrac{1}{3}}(x_2)^{\dfrac{1}{2}}$ với $x_1, x_2$ lần lượt là số lượng hàng hóa loại $A, B$. Nếu vốn để sản xuất hàng ban đầu là $1000\text{ USD}$. Hỏi cần sản xuất số lượng hàng loại $B$ là bao nhiêu để đạt doanh thu (lợi ích) tối đa?
 """)
 
 # --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
@@ -10202,4 +10202,90 @@ if st.session_state.get('q106_solution_shown') and st.session_state.get('logged_
     """)
 
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 107</b>',
+    unsafe_allow_html=True
+)
 
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Người ta cần bơm $10$ lít khí vào bên trong một quả khinh khí cầu. Biết rằng do sức chịu đựng của máy móc có giới hạn nhất định (nếu quá máy sẽ hỏng) nên người ta chia ra làm ba lần bơm. Theo lẽ thường, nếu có $x$ lít khí được bơm ra thì thời gian bơm sẽ là $5x^2$ (giây) nhưng do máy đã cũ nên ở lần thứ 3 gặp trục trặc và thời gian bơm ở lần 3 bị chuyển thành $3x^3$ (giây) (bơm được $x$ lít thì cần thời gian là $3x^3$). Tìm tổng thời gian bơm ngắn nhất mà máy có thể bơm được (làm tròn đến hàng đơn vị). Coi như thể tích khí ở mỗi lần bơm máy đều chịu được.
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập tổng thời gian ngắn nhất (giây):", key="q107_ans")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q107_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 184
+    if normalized_user_answer == "184":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy gọi thể tích 3 lần bơm là x, y, z. Dùng bất đẳng thức đánh giá tổng thời gian 2 lần đầu theo z, sau đó khảo sát hàm số theo ẩn z nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q107_solution_shown' not in st.session_state:
+    st.session_state['q107_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q107_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q107_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q107_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q107_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập các biến và hàm mục tiêu**
+    
+    * Gọi thể tích khí bơm vào ở lần 1, lần 2, lần 3 lần lượt là $x, y, z$ (lít). Điều kiện: $x, y, z \ge 0$.
+    * Tổng thể tích khí cần bơm là $10$ lít nên ta có phương trình ràng buộc: 
+        $$x + y + z = 10 \iff x + y = 10 - z \quad (0 \le z \le 10)$$
+    * Tổng thời gian bơm trong 3 lần là hàm mục tiêu:
+        $$T = 5x^2 + 5y^2 + 3z^3 = 5(x^2 + y^2) + 3z^3$$
+    
+    **Bước 2: Đánh giá hàm thời gian để đưa về một ẩn $z$**
+    
+    * Áp dụng hệ quả của bất đẳng thức Cauchy $(x-y)^2 \ge 0 \implies x^2 + y^2 \ge \dfrac{(x+y)^2}{2}$, ta có:
+        $$5(x^2 + y^2) \ge 5 \cdot \dfrac{(x+y)^2}{2} = \dfrac{5}{2}(10-z)^2$$
+    * Dấu "=" (thời gian ngắn nhất cho 2 lần đầu) xảy ra khi $x = y = \dfrac{10-z}{2}$.
+    * Do đó, tổng thời gian $T$ thỏa mãn:
+        $$T \ge \dfrac{5}{2}(10-z)^2 + 3z^3$$
+    
+    **Bước 3: Khảo sát hàm số để tìm giá trị nhỏ nhất**
+    
+    * Xét hàm số $f(z) = \dfrac{5}{2}(10-z)^2 + 3z^3$ trên đoạn $[0; 10]$.
+    * Đạo hàm: 
+        $$f'(z) = \dfrac{5}{2} \cdot 2 \cdot (10-z) \cdot (-1) + 9z^2 = -5(10-z) + 9z^2 = 9z^2 + 5z - 50$$
+    * Giải phương trình $f'(z) = 0$:
+        $$9z^2 + 5z - 50 = 0$$
+        $$\Delta = 5^2 - 4 \cdot 9 \cdot (-50) = 1825 \implies \sqrt{\Delta} = 5\sqrt{73}$$
+        $$z_1 = \dfrac{-5 + 5\sqrt{73}}{18} \approx 2,0956 \quad (\text{nhận vì } z_1 \in [0; 10])$$
+        $$z_2 = \dfrac{-5 - 5\sqrt{73}}{18} < 0 \quad (\text{loại})$$
+    * Bảng biến thiên sẽ chỉ ra hàm số $f(z)$ đạt giá trị cực tiểu tại $z = z_1 \approx 2,0956$.
+    * Thay $z \approx 2,0956$ vào hàm $f(z)$ để tìm thời gian nhỏ nhất:
+        $$f(2,0956) \approx \dfrac{5}{2}(10 - 2,0956)^2 + 3(2,0956)^3 \approx 156,197 + 27,609 \approx 183,806 \text{ (giây)}$$
+    * *(Mở rộng: Kiểm tra tại các biên $f(0) = 250$ và $f(10) = 3000$ đều lớn hơn $183,806$.)*
+    
+    **Bước 4: Kết luận**
+    
+    * Tổng thời gian bơm ngắn nhất là $\approx 183,806$ giây.
+    * Đề bài yêu cầu làm tròn đến hàng đơn vị, số thập phân phần mười là $8 \ge 5$ nên ta làm tròn lên thành **184**.
+    
+    **Kết luận:** Tổng thời gian bơm ngắn nhất là **$184$**.
+    """)
