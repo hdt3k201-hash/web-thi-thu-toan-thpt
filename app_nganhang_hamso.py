@@ -10121,4 +10121,85 @@ if st.session_state.get('q105_solution_shown') and st.session_state.get('logged_
     
 st.markdown("---")
 
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 106</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một công ty kinh doanh và nghiên cứu thị trường trước khi tung sản phẩm mới thì nhận thấy rằng với hai món hàng hóa loại $A, B$ lần lượt có giá sản xuất là $2\text{ USD}$ và $5\text{ USD}$ thì hàm lợi ích (là hàm hai biến chỉ sự phụ thuộc của đại lượng lợi ích kinh doanh so với số lượng hàng hóa) của chúng là $y(x_1, x_2) = (x_1)^{\frac{1}{3}}(x_2)^{\frac{1}{2}}$ với $x_1, x_2$ lần lượt là số lượng hàng hóa loại $A, B$. Nếu vốn để sản xuất hàng ban đầu là $1000\text{ USD}$. Hỏi cần sản xuất số lượng hàng loại $B$ là bao nhiêu để đạt doanh thu (lợi ích) tối đa?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số lượng hàng loại B (ví dụ: 100):", key="q106_ans")
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q106_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 120
+    if normalized_user_answer == "120":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy thiết lập phương trình ràng buộc về vốn, rút một ẩn theo ẩn kia và tìm giá trị lớn nhất của hàm số nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q106_solution_shown' not in st.session_state:
+    st.session_state['q106_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q106_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q106_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q106_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q106_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập phương trình ràng buộc**
+    
+    * Gọi $x_1, x_2$ lần lượt là số lượng hàng hóa loại $A$ và $B$ ($x_1 > 0, x_2 > 0$).
+    * Chi phí sản xuất cho một đơn vị hàng hóa $A$ là $2\text{ USD}$ và $B$ là $5\text{ USD}$.
+    * Tổng số vốn ban đầu là $1000\text{ USD}$, ta có phương trình ràng buộc:
+        $$2x_1 + 5x_2 = 1000 \iff 2x_1 = 1000 - 5x_2 \iff x_1 = 500 - 2,5x_2$$
+    * Từ điều kiện $x_1 > 0 \implies 500 - 2,5x_2 > 0 \implies 0 < x_2 < 200$.
+    
+    **Bước 2: Xây dựng hàm mục tiêu và tìm giá trị lớn nhất**
+    
+    * Hàm lợi ích được cho là: $y = (x_1)^{\frac{1}{3}}(x_2)^{\frac{1}{2}}$.
+    * Để tối đa hóa $y$, ta có thể tối đa hóa hàm số $f(x_2) = y^6$ (vì $y > 0$).
+        $$f(x_2) = (x_1)^2 \cdot (x_2)^3 = (500 - 2,5x_2)^2 \cdot x_2^3$$
+    * Tính đạo hàm $f'(x_2)$:
+        $$f'(x_2) = 2(500 - 2,5x_2)(-2,5) \cdot x_2^3 + (500 - 2,5x_2)^2 \cdot 3x_2^2$$
+        $$f'(x_2) = (500 - 2,5x_2) \cdot x_2^2 \cdot \left[ -5x_2 + 3(500 - 2,5x_2) \right]$$
+        $$f'(x_2) = (500 - 2,5x_2) \cdot x_2^2 \cdot (1500 - 12,5x_2)$$
+    * Giải phương trình $f'(x_2) = 0$ trên khoảng $(0; 200)$:
+        $$1500 - 12,5x_2 = 0 \iff 12,5x_2 = 1500 \iff x_2 = 120$$
+    
+    **Bước 3: Đánh giá và kết luận**
+    
+    * Trên khoảng $(0; 200)$, $f'(x_2) > 0$ khi $x_2 \in (0; 120)$ và $f'(x_2) < 0$ khi $x_2 \in (120; 200)$.
+    * Do đó, hàm số $f(x_2)$ (và kéo theo là hàm lợi ích $y$) đạt giá trị lớn nhất tại $x_2 = 120$. 
+    * *(Mở rộng: Khi đó số lượng hàng hóa loại A tương ứng là $x_1 = 500 - 2,5 \cdot 120 = 200$)*.
+    
+    **Kết luận:** Để đạt lợi ích tối đa, cần sản xuất **$120$** hàng hóa loại $B$.
+    """)
+
+
 
