@@ -12668,3 +12668,107 @@ if st.session_state.get('q131_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Chiếc ghế được sản xuất ra sẽ phù hợp nhất với người có chiều dài đùi là **$30\text{ cm}$**.
     """)
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 132</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Mảnh đất vườn của nhà anh Điệp có một phần ranh giới cũng là một phần đường cong $(C): y = \dfrac{x + a}{x + b}$, bao quanh nó là sông nước. Với hệ trục tọa độ $Oxy$ thích hợp, đơn vị trên mỗi trục là $10$ mét thì đường cong $(C)$ đi qua điểm $(2; 3)$ và có đường tiệm cận đứng $x = 1$. Hàng ngày anh Điệp phải dùng thuyền máy để vận chuyển trái cây từ khu vườn của mình đến hai tuyến đường $\Delta_1: 2x + y - 4 = 0$ và $\Delta_2: x + 2y - 2 = 0$ cho những người lái buôn từ nơi khác đến. Anh Điệp cần xác định một vị trí $M(x_0; y_0)$ thuộc khu vườn của mình để tổng các khoảng cách từ vị trí $M$ đó đến hai tuyến đường $\Delta_1, \Delta_2$ là bé nhất. Hỏi khoảng cách từ vị trí được chọn làm gốc tọa độ đến điểm $M$ là bao nhiêu mét (làm tròn đến hàng phần chục)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập khoảng cách từ gốc tọa độ đến M (m):", key="q132_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_a910ff.PNG", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_a910ff.PNG'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q132_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 34.1
+    if normalized_user_answer in ["34.1", "34.10"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tìm a và b của hàm số, thiết lập hàm tổng khoảng cách từ M(x, y) đến hai đường thẳng, sau đó dùng đạo hàm để tìm tọa độ M và tính khoảng cách thực tế theo tỷ lệ 10m nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q132_solution_shown' not in st.session_state:
+    st.session_state['q132_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q132_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q132_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q132_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q132_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định phương trình đường cong $(C)$**
+    
+    * Đường cong $(C)$ có dạng $y = \dfrac{x + a}{x + b}$.
+    * Do đường cong có tiệm cận đứng là $x = 1$, ta suy ra nghiệm của mẫu số bằng $1$:
+      $$1 + b = 0 \implies b = -1$$
+    * Đường cong $(C)$ đi qua điểm $(2; 3)$, thay vào ta được:
+      $$3 = \dfrac{2 + a}{2 - 1} \implies 3 = 2 + a \implies a = 1$$
+    * Vậy phương trình đường cong ranh giới khu vườn là:
+      $$y = \dfrac{x + 1}{x - 1} \quad (\text{với } x > 1)$$
+
+    **Bước 2: Thiết lập hàm tổng khoảng cách từ điểm $M$ đến hai đường thẳng**
+    
+    * Gọi $M\left(x; \dfrac{x + 1}{x - 1}\right)$ là một điểm bất kỳ thuộc khu vườn ($x > 1$).
+    * Khoảng cách từ điểm $M$ đến hai đường thẳng $\Delta_1: 2x + y - 4 = 0$ và $\Delta_2: x + 2y - 2 = 0$ lần lượt là:
+      $$d(M, \Delta_1) = \dfrac{\left|2x + \dfrac{x + 1}{x - 1} - 4\right|}{\sqrt{2^2 + 1^2}} = \dfrac{2x + \dfrac{x + 1}{x - 1} - 4}{\sqrt{5}}$$
+      $$d(M, \Delta_2) = \dfrac{\left|x + 2\dfrac{x + 1}{x - 1} - 2\right|}{\sqrt{1^2 + 2^2}} = \dfrac{x + 2\dfrac{x + 1}{x - 1} - 2}{\sqrt{5}}$$
+      *(Do với mọi $x > 1$, cả hai biểu thức trong dấu giá trị tuyệt đối đều dương).*
+    * Tổng khoảng cách từ $M$ đến hai đường thẳng là:
+      $$S(x) = d(M, \Delta_1) + d(M, \Delta_2) = \dfrac{1}{\sqrt{5}} \left(3x + 3y - 6\right) = \dfrac{3}{\sqrt{5}} \left(x + \dfrac{x + 1}{x - 1} - 2\right)$$
+      $$S(x) = \dfrac{3}{\sqrt{5}} \cdot \dfrac{x^2 - 2x + 3}{x - 1}$$
+
+    **Bước 3: Tìm giá trị nhỏ nhất và tọa độ điểm $M$**
+    
+    * Xét hàm số $f(x) = \dfrac{x^2 - 2x + 3}{x - 1}$ trên khoảng $(1; +\infty)$.
+    * Tính đạo hàm của $f(x)$:
+      $$f'(x) = \dfrac{(2x - 2)(x - 1) - (x^2 - 2x + 3)\cdot 1}{(x - 1)^2} = \dfrac{x^2 - 2x - 1}{(x - 1)^2}$$
+    * Cho $f'(x) = 0 \iff x^2 - 2x - 1 = 0$.
+    * Do $x > 1$, ta nhận nghiệm:
+      $$x_0 = 1 + \sqrt{2}$$
+    * Tung độ tương ứng của điểm $M$ là:
+      $$y_0 = \dfrac{(1 + \sqrt{2}) + 1}{(1 + \sqrt{2}) - 1} = \dfrac{2 + \sqrt{2}}{\sqrt{2}} = 1 + \sqrt{2}$$
+    * Vậy tọa độ điểm $M$ trên hệ trục tọa độ là $M(1 + \sqrt{2}; 1 + \sqrt{2})$.
+
+    **Bước 4: Tính khoảng cách từ gốc tọa độ đến điểm $M$ thực tế**
+    
+    * Khoảng cách từ gốc tọa độ $O(0; 0)$ đến điểm $M$ tính theo đơn vị hệ trục tọa độ là:
+      $$OM = \sqrt{x_0^2 + y_0^2} = \sqrt{(1 + \sqrt{2})^2 + (1 + \sqrt{2})^2} = \sqrt{2}(1 + \sqrt{2}) = 2 + \sqrt{2}$$
+    * Theo giả thiết, đơn vị trên mỗi trục ứng với $10$ mét, do đó khoảng cách thực tế từ gốc tọa độ đến điểm $M$ là:
+      $$d_{\text{thực tế}} = 10 \cdot OM = 10(2 + \sqrt{2}) \approx 34,142\text{ m}$$
+    * Làm tròn kết quả đến hàng phần chục theo yêu cầu đề bài, ta được **$34,1\text{ m}$**.
+    
+    **Kết luận:** Khoảng cách từ vị trí được chọn làm gốc tọa độ đến điểm $M$ là **$34,1\text{ m}$**.
+    """)
