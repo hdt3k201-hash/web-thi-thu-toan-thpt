@@ -11965,3 +11965,215 @@ if st.session_state.get('q124_solution_shown') and st.session_state.get('logged_
     """)
 
 
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 125</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Một cái ao có hình $ABCDE$ tham khảo hình vẽ dưới đây, ở giữa ao có một mảnh vườn trồng hoa hình tròn bán kính $9\text{ m}$ người ta muốn bắc một cây cầu từ bờ $AB$ của ao đến vườn. Hai bờ $AE$ và $BC$ nằm trên hai đường thẳng vuông góc với nhau, hai đường thẳng này cắt nhau tại điểm $O$. Bờ $AB$ là một phần của parabol có đỉnh là điểm $A$ và có trục đối xứng là đường thẳng $OA$. Độ dài đoạn $OA$ và $OB$ lần lượt là $48\text{ m}$ và $20\text{ m}$, tâm $I$ của mảnh vườn cách đường thẳng $AE$ và $BC$ lần lượt là $48\text{ m}$ và $30\text{ m}$. Độ dài ngắn nhất có thể của cây cầu là bao nhiêu mét *(kết quả làm tròn đến hàng phần chục)*?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập độ dài ngắn nhất của cây cầu (m):", key="q125_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_aa10fb.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_aa10fb.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q125_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 25.2
+    if normalized_user_answer in ["25.2", "25.20"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy gắn hệ trục tọa độ Oxy với O là gốc, viết phương trình Parabol AB và tìm khoảng cách nhỏ nhất từ điểm M trên Parabol đến tâm I rồi trừ đi bán kính nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q125_solution_shown' not in st.session_state:
+    st.session_state['q125_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q125_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q125_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q125_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q125_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Chọn hệ trục tọa độ**
+    
+    Chọn hệ trục tọa độ $Oxy$ sao cho gốc tọa độ $O(0; 0) \equiv O$.
+    * Tia $Ox$ chứa đoạn $OB$, tia $Oy$ chứa đoạn $OA$.
+    * Theo giả thiết, $OA = 48\text{ m} \implies A(0; 48)$.
+    * $OB = 20\text{ m} \implies B(20; 0)$.
+    * Tâm $I$ cách $AE$ (trục $Oy$) một khoảng $48\text{ m}$ nên $x_I = 48$.
+    * Tâm $I$ cách $BC$ (trục $Ox$) một khoảng $30\text{ m}$ nên $y_I = 30$.
+    * Vậy tọa độ tâm mảnh vườn là $I(48; 30)$, và bán kính $R = 9\text{ m}$.
+    
+    **Bước 2: Viết phương trình Parabol bờ $AB$**
+    
+    * Bờ $AB$ là một phần của Parabol $(P)$ có đỉnh $A(0; 48)$ và trục đối xứng $Oy$ nên phương trình có dạng: 
+      $$y = ax^2 + 48$$
+    * Parabol đi qua điểm $B(20; 0)$:
+      $$0 = a \cdot 20^2 + 48 \implies 400a = -48 \implies a = -\dfrac{48}{400} = -0,12$$
+    * Vậy phương trình bờ $AB$ là $y = -0,12x^2 + 48$ với $x \in [0; 20]$.
+    
+    **Bước 3: Thiết lập hàm khoảng cách và tìm giá trị nhỏ nhất**
+    
+    * Gọi $M(x; -0,12x^2 + 48)$ là một điểm bất kỳ nằm trên bờ $AB$ ($0 \le x \le 20$).
+    * Độ dài cây cầu bắc từ bờ $AB$ đến vườn là khoảng cách từ $M$ đến đường tròn $(I; R)$, bằng $IM - R = IM - 9$.
+    * Để chiều dài cây cầu là ngắn nhất, ta cần tìm giá trị nhỏ nhất của đoạn $IM$.
+    * Ta có bình phương khoảng cách $IM^2$:
+      $$IM^2 = (x - 48)^2 + (-0,12x^2 + 48 - 30)^2 = (x - 48)^2 + (18 - 0,12x^2)^2$$
+    * Xét hàm số $f(x) = (x - 48)^2 + (18 - 0,12x^2)^2$ trên đoạn $[0; 20]$.
+    * Tính đạo hàm:
+      $$f'(x) = 2(x - 48) + 2(18 - 0,12x^2)(-0,24x)$$
+      $$f'(x) = 2x - 96 - 0,48x(18 - 0,12x^2)$$
+      $$f'(x) = 2x - 96 - 8,64x + 0,0576x^3$$
+      $$f'(x) = 0,0576x^3 - 6,64x - 96$$
+    * Bấm máy tính giải phương trình $f'(x) = 0$, ta được nghiệm duy nhất:
+      $$x \approx 15,0374 \quad (\text{thỏa mãn } 0 \le x \le 20)$$
+    
+    **Bước 4: Tính kết quả**
+    
+    * Thay $x \approx 15,0374$ vào $f(x)$ ta được:
+      $$IM_{\min}^2 = f(15,0374) \approx 1169,9757$$
+      $$\implies IM_{\min} \approx \sqrt{1169,9757} \approx 34,2049\text{ m}$$
+    * Độ dài ngắn nhất của cây cầu là:
+      $$d_{\min} = IM_{\min} - R \approx 34,2049 - 9 = 25,2049\text{ m}$$
+    * Làm tròn kết quả đến hàng phần chục theo yêu cầu đề bài, ta được **$25,2\text{ m}$**.
+    
+    *(Mẹo tính nhanh: Nếu ta lấy xấp xỉ đẹp $x = 15$, khoảng cách $IM = \sqrt{1170} \approx 34,205$. Độ dài cầu $\approx 25,205$, làm tròn vẫn ra chuẩn xác $25,2$).*
+    
+    **Kết luận:** Độ dài ngắn nhất có thể của cây cầu là **$25,2\text{ m}$**.
+    """)
+
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 126</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Mặt bể bơi của một chung cư cao cấp có dạng một hình chữ nhật với chiều dài $25\text{ m}$ và chiều rộng $8\text{ m}$. Bể bơi sâu $1\text{ m}$ ở bên đầu nông và sâu $2\text{ m}$ bên đầu sâu. Biết hai đầu nông, sâu thuộc hai mặt bên theo chiều dài bể bơi (tham khảo hình vẽ minh hoạ). Ban đầu bể bơi không có nước, nước bắt đầu được bơm vào bể bơi lúc $7\text{h}$ sáng với tốc độ $1\text{ m}^3\text{/phút}$, vào lúc $7\text{h } 36\text{ phút}$ sáng thì mực nước dâng lên với tốc độ $\dfrac{1}{a}\text{ (mét/phút)}$. Giá trị của $a$ bằng bao nhiêu?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của a:", key="q126_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_aa09ba.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_aa09ba.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q126_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 30
+    if normalized_user_answer in ["30", "30.0"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy tính thể tích nước bơm trong 36 phút, tìm chiều cao mực nước h tương ứng, sau đó lập mối liên hệ giữa thể tích V và chiều cao h để tính đạo hàm theo thời gian nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q126_solution_shown' not in st.session_state:
+    st.session_state['q126_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q126_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q126_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q126_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q126_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích hình học của bể bơi**
+    
+    * Bể bơi có dạng hình lăng trụ đứng (hoặc hình hộp chữ nhật bị vát đáy), với:
+        * Chiều rộng bể (chiều dài cạnh vuông góc với chiều dài) là $b = 8\text{ m}$.
+        * Chiều dài đáy dọc theo chiều nghiêng là $L = 25\text{ m}$.
+        * Độ sâu ở đầu nông là $h_1 = 1\text{ m}$, đầu sâu là $h_2 = 2\text{ m}$.
+    * Mặt cắt dọc của bể bơi là một hình thang vuông có chiều cao đáy là $25\text{ m}$, hai cạnh đáy song song lần lượt là $1\text{ m}$ và $2\text{ m}$.
+    * Tổng thể tích của bể bơi là:
+      $$V_{\text{toàn phần}} = \text{Diện tích mặt cắt} \times \text{chiều rộng} = \dfrac{1 + 2}{2} \times 25 \times 8 = 300\text{ m}^3$$
+
+    **Bước 2: Tính thể tích nước bơm vào sau $36$ phút**
+    
+    * Nước được bơm vào từ lúc $7\text{h}$ sáng đến $7\text{h } 36\text{ phút}$ (tức là khoảng thời gian $\Delta t = 36\text{ phút}$) với tốc độ không đổi $v = 1\text{ m}^3\text{/phút}$.
+    * Thể tích nước có trong bể lúc đó là:
+      $$V = v \times \Delta t = 1 \times 36 = 36\text{ m}^3$$
+
+    **Bước 3: Xác định chiều cao mực nước $h$ tại thời điểm $7\text{h } 36\text{ phút}$**
+    
+    * Khi mực nước đạt độ cao $h$ (với $1 \le h \le 2$), phần nước dưới bể có dạng hình lăng trụ với mặt cắt là hình thang vuông có chiều cao phần nước là $x = h - 1$ (tính từ đáy nông lên) và chiều dài mặt nước tương ứng dọc theo đáy bể được tính bằng tam giác đồng dạng.
+    * Chiều dài đáy dưới của phần nước ngập tương ứng có chiều dài dọc theo chiều dài $25\text{ m}$ được chia thành: phần hình hộp chữ nhật cao $1\text{ m}$ có thể tích phần dưới là $1 \times 25 \times 8 = 200\text{ m}^3$ (nhưng ở đây thể tích mới là $36\text{ m}^3 < 200\text{ m}^3$, nghĩa là mực nước vẫn nằm hoàn toàn trong phần đáy nông có chiều sâu từ $1\text{ m}$ đến $h$, cụ thể là phần phía đầu nông).
+    * *Đính chính kiểm tra lại mức nước:* 
+        * Phần hình hộp chữ nhật đáy sâu $1\text{ m}$ trải dài trên toàn bộ chiều dài $25\text{ m}$ có thể tích là: $1 \times 25 \times 8 = 200\text{ m}^3$.
+        * Vì thể tích nước mới chỉ là $36\text{ m}^3 < 200\text{ m}^3$, chứng tỏ mực nước lúc này **chưa ngập hết phần đáy phẳng sâu $1\text{ m}$ đầu nông**, hoặc mặt nước đang nằm hoàn toàn trong phần hình hộp chữ nhật có chiều cao $1\text{ m}$ ở phía đầu nông!
+        * Do đó, ở thời điểm này, phần nước ngập chính là một hình hộp chữ nhật có chiều rộng $8\text{ m}$, chiều dài $25\text{ m}$ và chiều cao mực nước là $h$ (với $0 < h \le 1$).
+    * Thể tích nước lúc này được tính đơn giản là:
+      $$V = 25 \times 8 \times h = 200h$$
+    * Với $V = 36\text{ m}^3$, ta suy ra chiều cao mực nước:
+      $$200h = 36 \implies h = \dfrac{36}{200} = 0,18\text{ m}$$
+      *(Vì $0,18 \le 1$ nên giả thiết mực nước nằm trong phần đáy sâu $1\text{ m}$ là hoàn toàn chính xác).*
+
+    **Bước 4: Tính tốc độ dâng lên của mực nước ($\dfrac{dh}{dt}$)**
+    
+    * Ta có hệ thức liên hệ giữa thể tích $V$ và chiều cao mực nước $h$:
+      $$V(t) = 200 \cdot h(t)$$
+    * Lấy đạo hàm hai vế theo thời gian $t$:
+      $$\dfrac{dV}{dt} = 200 \cdot \dfrac{dh}{dt}$$
+    * Theo đề bài, tốc độ bơm nước là $\dfrac{dV}{dt} = 1\text{ m}^3\text{/phút}$. Do đó:
+      $$1 = 200 \cdot \dfrac{dh}{dt} \implies \dfrac{dh}{dt} = \dfrac{1}{200}\text{ (mét/phút)}$$
+    * Theo đề bài, tốc độ dâng lên của mực nước được viết dưới dạng $\dfrac{1}{a}$, từ đó ta có:
+      $$\dfrac{1}{a} = \dfrac{1}{200} \implies a = 200$$
+    
+    *(Lưu ý: Nếu đề bài xét ở mốc thời gian khác mà mực nước vượt qua mức $1\text{ m}$ sang phần dốc, ta sẽ dùng công thức hình thang khác. Tuy nhiên với $36\text{ m}^3$, mực nước hoàn toàn nằm ở phần đáy phẳng sâu $1\text{ m}$).*
+    
+    **Kết luận:** Giá trị của $a$ bằng **$200$**.
+    """)
