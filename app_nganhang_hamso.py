@@ -11043,3 +11043,202 @@ if st.session_state.get('q115_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Giá trị của $a + b$ là **$41$**.
     """)
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 116</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+ Một chiếc bàn có dạng một nửa của hình lục giác đều cạnh bằng $4\text{ m}$ đang trượt trên một đoạn dốc có góc nghiêng so với mặt đất nằm ngang là $120^\circ$ như hình vẽ. Khi đầu dưới của chiếc bàn trên mặt đất trượt ra xa bức tường với vận tốc không đổi $2\text{ m/s}$ thì đầu trên cùng của chiếc bàn sẽ trượt dọc theo bức tường. Khi điểm đầu chiếc bàn (trên dốc) có chiều cao cách mặt đất $3\text{ m}$ thì tốc độ di chuyển của nó bằng bao nhiêu? (kết quả làm tròn đến hàng đơn vị).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập kết quả đã làm tròn (ví dụ: 5):", key="q116_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_c4e2c3.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_c4e2c3.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q116_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 2
+    if normalized_user_answer == "2":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy chú ý độ dài thực tế của đoạn AD, thiết lập phương trình liên hệ khoảng cách thông qua định lý Cô-sin và dùng đạo hàm theo thời gian t nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q116_solution_shown' not in st.session_state:
+    st.session_state['q116_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q116_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q116_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q116_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q116_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Phân tích mô hình và thiết lập phương trình**
+    
+    * Ký hiệu $O$ là giao điểm giữa mặt dốc và mặt đất. Theo hình vẽ, góc tạo bởi mặt dốc $OA$ và mặt đất $OD$ là $\widehat{AOD} = 120^\circ$.
+    * Chiếc bàn là một nửa hình lục giác đều cạnh $a = 4\text{ m}$, do đó khoảng cách giữa hai đầu $A$ và $D$ chính là đường chéo lớn của lục giác đều: 
+      $$AD = 2a = 2 \cdot 4 = 8\text{ m}$$
+    * Gọi khoảng cách từ $O$ đến $D$ là $x(t)$ và từ $O$ đến $A$ là $y(t)$. Áp dụng định lý Cô-sin trong tam giác $\triangle AOD$:
+      $$AD^2 = OA^2 + OD^2 - 2 \cdot OA \cdot OD \cdot \cos(120^\circ)$$
+      $$8^2 = y^2 + x^2 - 2xy \left(-\frac{1}{2}\right)$$
+      $$x^2 + y^2 + xy = 64 \quad (1)$$
+    
+    **Bước 2: Sử dụng đạo hàm để tìm liên hệ vận tốc**
+    
+    * Đạo hàm hai vế phương trình (1) theo thời gian $t$:
+      $$2x \cdot x' + 2y \cdot y' + x'y + xy' = 0$$
+      $$x'(2x + y) + y'(x + 2y) = 0$$
+      $$y' = -x' \frac{2x + y}{x + 2y} \quad (2)$$
+    * Đề bài cho vận tốc đầu $D$ trượt ra xa là $x' = 2\text{ m/s}$.
+    
+    **Bước 3: Xác định tọa độ tại thời điểm cần tính**
+    
+    * Khi đầu $A$ cách mặt đất $3\text{ m}$, ta kẻ đường vuông góc từ $A$ xuống mặt đất (kéo dài tia đối của $OD$). Góc hợp bởi mặt dốc và phương ngang bên ngoài tam giác là $180^\circ - 120^\circ = 60^\circ$.
+    * Chiều cao của $A$ là:
+      $$h_A = OA \cdot \sin(60^\circ) = y \frac{\sqrt{3}}{2}$$
+    * Suy ra: $y \frac{\sqrt{3}}{2} = 3 \Rightarrow y = \frac{6}{\sqrt{3}} = 2\sqrt{3} \approx 3,464\text{ m}$.
+    * Thay $y = 2\sqrt{3}$ vào phương trình (1) để tìm $x$:
+      $$x^2 + x(2\sqrt{3}) + (2\sqrt{3})^2 = 64 \iff x^2 + 2\sqrt{3}x - 52 = 0$$
+      Giải phương trình bậc hai (lấy nghiệm $x > 0$):
+      $$x = -\sqrt{3} + \sqrt{(\sqrt{3})^2 - 1(-52)} = \sqrt{55} - \sqrt{3} \approx 5,684\text{ m}$$
+    
+    **Bước 4: Tính tốc độ của điểm A**
+    
+    * Thay các giá trị $x, y$ và $x'$ vào phương trình (2):
+      $$y' = -2 \cdot \frac{2(\sqrt{55} - \sqrt{3}) + 2\sqrt{3}}{(\sqrt{55} - \sqrt{3}) + 2(2\sqrt{3})} = -2 \cdot \frac{2\sqrt{55}}{\sqrt{55} + 3\sqrt{3}} = \frac{-4\sqrt{55}}{\sqrt{55} + 3\sqrt{3}}$$
+    * Tính xấp xỉ bằng số:
+      $$y' \approx \frac{-4 \cdot 7,416}{7,416 + 5,196} \approx \frac{-29,664}{12,612} \approx -2,35\text{ m/s}$$
+    * Tốc độ di chuyển của $A$ là độ lớn của vận tốc: $|y'| \approx 2,35\text{ m/s}$.
+    * Làm tròn kết quả đến hàng đơn vị, ta được **$2$**.
+    
+    **Kết luận:** Tốc độ di chuyển bằng **$2\text{ m/s}$**.
+    """)
+
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 117</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+**Câu 14:** Một ngọn đồi được giới hạn bởi một đường cong trong hệ tọa độ $Oxy$ và được mô tả bằng một phần của đồ thị hàm số bậc ba $f(x)$ (tham khảo hình vẽ). Vị trí điểm cực đại là $(4; 8)$ với đơn vị của hệ trục là $100\text{ m}$ và vị trí điểm cực tiểu là gốc tọa độ $O$. Một con đường được xây dựng dọc theo đồi có phương trình $d: y = 20 - 2x$. Người ta muốn xây dựng một cây cầu dạng đoạn thẳng nối từ ngọn đồi ra mặt đường. Biết rằng chi phí xây dựng cầu phụ thuộc vào chiều dài của cây cầu, công thức chi phí xây dựng là $C = 20000L + 500H$ (USD), trong đó $L$ là chiều dài cây cầu và $H$ là độ cao chênh lệch giữa hai đầu cầu được tính dựa vào $L_{\min}$. Hỏi chi phí xây dựng cây cầu là bao nhiêu nếu người ta muốn tối ưu hóa chiều dài cây cầu $L_{\min}$? (làm tròn đến hàng đơn vị)
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập chi phí đã làm tròn (ví dụ: 3069056):", key="q117_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_c4daff.png", width=400)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_c4daff.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q117_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip().replace(',', '').replace('.', '')
+    
+    # Đáp án chính xác là 3069056 (hoặc 30691 nếu không nhân 100m, chấp nhận cả hai trường hợp)
+    if normalized_user_answer in ["3069056", "30691"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Hãy lập phương trình đồ thị $f(x)$, dùng đạo hàm để tìm điểm có tiếp tuyến song song với đường thẳng $d$, sau đó tính khoảng cách và quy đổi đơn vị nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q117_solution_shown' not in st.session_state:
+    st.session_state['q117_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q117_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q117_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q117_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q117_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Lập phương trình hàm số $f(x)$**
+    
+    * Gọi hàm số bậc ba là $f(x) = ax^3 + bx^2 + cx + d$.
+    * Đồ thị có điểm cực tiểu tại gốc tọa độ $O(0; 0) \Rightarrow f(0) = 0$ và $f'(0) = 0$. Từ đó suy ra $c = 0$ và $d = 0$. Vậy $f(x) = ax^3 + bx^2$.
+    * Đồ thị có điểm cực đại tại $(4; 8)$:
+        * $f(4) = 8 \Rightarrow 64a + 16b = 8 \Rightarrow 8a + 2b = 1$ (1).
+        * $f'(4) = 0 \Rightarrow 48a + 8b = 0 \Rightarrow b = -6a$ (2).
+    * Thay (2) vào (1): $8a - 12a = 1 \Rightarrow a = -\dfrac{1}{4}$, suy ra $b = \dfrac{3}{2}$.
+    * Vậy phương trình ngọn đồi là: $f(x) = -\dfrac{1}{4}x^3 + \dfrac{3}{2}x^2$.
+    
+    **Bước 2: Tìm vị trí xây cầu để $L$ ngắn nhất**
+    
+    * Cây cầu ngắn nhất khi nó được nối từ một điểm $M$ trên ngọn đồi mà tại đó tiếp tuyến của đồi song song với con đường $d: y = -2x + 20 \iff 2x + y - 20 = 0$.
+    * Hệ số góc của $d$ là $-2$. Xét $f'(x) = -2$:
+        $$-\dfrac{3}{4}x^2 + 3x = -2 \iff 3x^2 - 12x - 8 = 0$$
+    * Giải phương trình trên, lấy nghiệm $x > 0$ (vị trí đồi bên phải):
+        $$x_0 = \dfrac{6 + 2\sqrt{15}}{3} = 2 + \dfrac{2\sqrt{15}}{3}$$
+    * Tung độ tương ứng: $y_0 = f(x_0) = \dfrac{4}{3}x_0 + \dfrac{4}{3} = \dfrac{12 + 8\sqrt{15}}{9}$.
+    
+    **Bước 3: Tính chiều dài và độ cao trên hệ trục tọa độ**
+    
+    * Chiều dài cầu trên mặt phẳng tọa độ ($L_c$) chính là khoảng cách từ $M(x_0; y_0)$ đến $d$:
+        $$L_c = \dfrac{|2x_0 + y_0 - 20|}{\sqrt{2^2 + 1^2}} = \dfrac{108 - 20\sqrt{15}}{9\sqrt{5}} \approx 1,51756$$
+    * Chênh lệch độ cao giữa hai đầu cầu trên hệ trục tọa độ ($H_c$) là khoảng cách theo trục tung. Dựa vào hình chiếu và hệ số góc đường thẳng vuông góc, ta có:
+        $$H_c = \dfrac{L_c}{\sqrt{5}} = \dfrac{108 - 20\sqrt{15}}{45} \approx 0,67868$$
+    
+    **Bước 4: Tính chi phí xây dựng thực tế**
+    
+    * Do đơn vị hệ trục là $100\text{ m}$, chiều dài thực tế $L$ và độ cao thực tế $H$ tính bằng mét là:
+        $$L = 100 \cdot L_c \approx 151,756\text{ (m)}$$
+        $$H = 100 \cdot H_c \approx 67,868\text{ (m)}$$
+    * Áp dụng công thức tính chi phí (USD):
+        $$C = 20000L + 500H = 20000 \cdot (100 \cdot L_c) + 500 \cdot (100 \cdot H_c)$$
+        $$C \approx 20000 \cdot 151,756138 + 500 \cdot 67,86766 \approx 3035122,76 + 33933,83 = 3069056,59$$
+    * Làm tròn đến hàng đơn vị, ta được chi phí là **$3069056$** (USD).
+    *(Lưu ý: Nếu không quy đổi sang mét mà dùng trực tiếp đơn vị trục, đáp án sẽ là 30691).*
+    
+    **Kết luận:** Chi phí xây dựng cây cầu là **$3069056$** USD.
+    """)
