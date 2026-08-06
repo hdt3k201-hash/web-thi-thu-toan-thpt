@@ -10289,3 +10289,292 @@ if st.session_state.get('q107_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Tổng thời gian bơm ngắn nhất là **$184$**.
     """)
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 108</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Anh Hùng lái một chiếc xe Mercedes G63 chạy về hướng Đông với vận tốc $v_1 = 40\text{ km/h}$ và một chiếc máy bay đang bay ngang về hướng Bắc có vận tốc là $v_2 = 100\text{ km/h}$. Tại vị trí cầm lái, xem như tầm nhìn của anh Hùng là vô cực và không bị giới hạn, anh Hùng có thể thấy được chiếc máy bay ấy cách $1\text{ km}$ về hướng Đông, $2\text{ km}$ về hướng Nam và cách $2\text{ km}$ so với mặt đất (xem như mặt đất là hoàn toàn bằng phẳng và cũng chính là địa hình mà chiếc xe đang chạy, độ cao của máy bay là không đổi). Biết rằng cả hai phương tiện đều chuyển động thẳng đều và quy ước $t = 0$ là mốc tại vị trí ban đầu của cả hai phương tiện đó, sau khoảng bao nhiêu $m$ phút $n$ giây thì khoảng cách giữa hai phương tiện là ngắn nhất $\forall m,n \in \mathbb{Z}$ và làm tròn lên. Tính giá trị của biểu thức $m + n$?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập giá trị của m + n:", key="q108_ans")
+
+
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q108_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 16
+    if normalized_user_answer == "16":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy gắn hệ trục tọa độ Oxyz, viết phương trình chuyển động của 2 phương tiện theo thời gian t, sau đó tìm t để bình phương khoảng cách đạt giá trị nhỏ nhất!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q108_solution_shown' not in st.session_state:
+    st.session_state['q108_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q108_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q108_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q108_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q108_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ trục tọa độ không gian $Oxyz$**
+    
+    * Chọn gốc tọa độ $O(0; 0; 0)$ là vị trí ban đầu của chiếc xe Mercedes ($t=0$).
+    * Trục $Ox$ hướng về phía Đông, trục $Oy$ hướng về phía Bắc, trục $Oz$ hướng thẳng đứng lên trời.
+    * Xe Mercedes chạy về hướng Đông (cùng chiều trục $Ox$) với $v_1 = 40\text{ km/h}$. Tọa độ của xe tại thời điểm $t$ (giờ) là:
+        $$A(40t; 0; 0)$$
+    * Máy bay ở vị trí ban đầu cách xe $1\text{ km}$ về hướng Đông ($x=1$), $2\text{ km}$ về hướng Nam ($y=-2$, vì hướng Bắc là chiều dương), và cao $2\text{ km}$ ($z=2$). 
+    * Vậy tọa độ ban đầu của máy bay là $B_0(1; -2; 2)$.
+    * Máy bay bay về hướng Bắc (cùng chiều trục $Oy$) với $v_2 = 100\text{ km/h}$. Tọa độ của máy bay tại thời điểm $t$ (giờ) là:
+        $$B(1; -2 + 100t; 2)$$
+    
+    **Bước 2: Xây dựng hàm khoảng cách**
+    
+    * Bình phương khoảng cách giữa hai phương tiện tại thời điểm $t$ là:
+        $$d^2(t) = AB^2 = (1 - 40t)^2 + (-2 + 100t - 0)^2 + (2 - 0)^2$$
+        $$d^2(t) = (1 - 80t + 1600t^2) + (4 - 400t + 10000t^2) + 4$$
+        $$d^2(t) = 11600t^2 - 480t + 9$$
+    
+    **Bước 3: Tìm thời gian để khoảng cách ngắn nhất**
+    
+    * Xét hàm số $f(t) = 11600t^2 - 480t + 9$ (đây là một parabol quay bề lõm lên trên).
+    * Khoảng cách ngắn nhất khi $f(t)$ đạt giá trị nhỏ nhất. Điểm cực tiểu xảy ra tại:
+        $$t = -\dfrac{b}{2a} = \dfrac{480}{2 \cdot 11600} = \dfrac{480}{23200} = \dfrac{3}{145} \text{ (giờ)}$$
+    * Đổi thời gian $t$ ra phút và giây:
+        $$t = \dfrac{3}{145} \cdot 60 = \dfrac{36}{29} \text{ (phút)} \approx 1,2414 \text{ phút}$$
+    * Phần nguyên là $1$ phút. Phần lẻ đổi ra giây:
+        $$\left( \dfrac{36}{29} - 1 \right) \cdot 60 = \dfrac{7}{29} \cdot 60 = \dfrac{420}{29} \approx 14,48 \text{ (giây)}$$
+    * Theo đề bài, ta cần làm tròn lên cho số giây (vì $m, n \in \mathbb{Z}$), do đó $14,48$ giây làm tròn lên thành $15$ giây.
+    * Suy ra: $m = 1$ và $n = 15$.
+    
+    **Bước 4: Tính giá trị biểu thức**
+    
+    * Giá trị biểu thức cần tìm là:
+        $$m + n = 1 + 15 = 16$$
+    
+    **Kết luận:** Giá trị của biểu thức $m + n$ là **$16$**.
+    """)
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 109</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Nhà của ba bạn An, Bình và Cường ở ba vị trí $A, B, C$ tạo thành một tam giác vuông tại đỉnh $C$ có $AC = 4\text{ km}$, $BC = 3\text{ km}$ và có ba con đường thẳng tiếp nối giữa nhà ba bạn. Một buổi chiều sau giờ học, lúc 5 giờ đúng, An đạp xe đạp đi thẳng từ nhà mình đến nhà Bình với vận tốc $10\text{ km/h}$, cùng lúc đó Cường lại đi bộ từ nhà mình theo con đường thẳng hướng đến nhà An với vận tốc $4\text{ km/h}$. Hỏi sau bao nhiêu phút kể từ 5 giờ thì khoảng cách giữa An và Cường là nhỏ nhất? (làm tròn đến hàng đơn vị nếu kết quả không phải là số nguyên).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập số phút (ví dụ: 15):", key="q109_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_c5bc21.png", width=600)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_c5bc21.png'. Vولي lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q109_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 17
+    if normalized_user_answer == "17":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hệ tọa độ Oxy với C là gốc, tính tọa độ của An và Cường theo thời gian t, sau đó tìm t để bình phương khoảng cách đạt giá trị nhỏ nhất!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q109_solution_shown' not in st.session_state:
+    st.session_state['q109_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q109_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q109_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q109_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q109_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ trục tọa độ $Oxy$**
+    
+    * Chọn gốc tọa độ $C(0; 0)$ là nhà của Cường.
+    * Tia $CA$ trùng với trục dương $Ox$, tia $CB$ trùng với trục dương $Oy$.
+    * Theo đề bài, ta có tọa độ ban đầu của ba nhà là:
+        * $C(0; 0)$
+        * $A(4; 0)$ (vì $AC = 4\text{ km}$)
+        * $B(0; 3)$ (vì $BC = 3\text{ km}$)
+    
+    **Bước 2: Viết phương trình chuyển động theo thời gian $t$ (giờ)**
+    
+    * Gọi $t$ là thời gian đi (tính bằng giờ, $t \ge 0$).
+    * **Về phía An:** An xuất phát từ $A(4; 0)$ đi đến $B(0; 3)$ với vận tốc $v_1 = 10\text{ km/h}$. 
+        * Quãng đường $AB = \sqrt{4^2 + 3^2} = 5\text{ km}$.
+        * Véc-tơ chỉ phương của đoạn thẳng $AB$ là $\vec{AB} = (-4; 3)$, đơn vị hướng đi có độ dài là $5$.
+        * Tọa độ của An tại thời điểm $t$ là:
+            $$A_t \left( 4 - \frac{4}{5} \cdot 10t; \, 0 + \frac{3}{5} \cdot 10t \right) = (4 - 8t; \, 6t)$$
+    * **Về phía Cường:** Cường xuất phát từ $C(0; 0)$ đi thẳng về hướng nhà An ($A(4; 0)$) với vận tốc $v_2 = 4\text{ km/h}$.
+        * Hướng đi từ $C$ đến $A$ trùng với trục $Ox$, vectơ đơn vị hướng đi là $(1; 0)$.
+        * Tọa độ của Cường tại thời điểm $t$ là:
+            $$C_t (0 + 4t; \, 0) = (4t; \, 0)$$
+    
+    **Bước 3: Xây dựng hàm khoảng cách và tìm cực trị**
+    
+    * Bình phương khoảng cách giữa An và Cường tại thời điểm $t$ là:
+        $$d^2(t) = A_t C_t^2 = \big[(4 - 8t) - 4t\big]^2 + (6t - 0)^2$$
+        $$d^2(t) = (4 - 12t)^2 + 36t^2$$
+        $$d^2(t) = 16 - 96t + 144t^2 + 36t^2 = 180t^2 - 96t + 16$$
+    * Khoảng cách $d(t)$ nhỏ nhất khi và chỉ khi bình phương khoảng cách $d^2(t)$ đạt giá trị nhỏ nhất.
+    * Xét hàm số bậc hai $f(t) = 180t^2 - 96t + 16$ với hệ số $a = 180 > 0$. Đỉnh của parabol đạt giá trị nhỏ nhất tại:
+        $$t = -\dfrac{b}{2a} = \dfrac{96}{2 \cdot 180} = \dfrac{96}{360} = \dfrac{4}{15} \text{ (giờ)}$$
+    
+    **Bước 4: Đổi đơn vị và kết luận**
+    
+    * Đổi thời gian $t$ ra phút:
+        $$t = \dfrac{4}{15} \cdot 60 = 16 \text{ (phút)}$$
+    * Thời gian tính từ 5 giờ đúng đến lúc khoảng cách ngắn nhất là chính xác $16$ phút (là một số nguyên nên không cần làm tròn thêm).
+    
+    **Kết luận:** Sau **$16$** phút kể từ 5 giờ thì khoảng cách giữa An và Cường là nhỏ nhất.
+    """)
+
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 110</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Trong mặt phẳng địa hình lý tưởng với hệ quy chiếu $Oxy$ như hình vẽ, một chiếc tàu ngầm đang đứng yên (gọi là chất điểm $A(x_1; 0)$) phóng một quả ngư lôi theo quỹ đạo là một parabol $P_1$ từ điểm $A$ xuống dưới nước và trồi lên trên mặt nước tại hoành độ điểm $C(x_3; 0)$ (xem như mặt nước biển là trục hoành và quỹ đạo của ngư lôi không thay đổi trong suốt hành trình) và nhắm đến căn cứ quân sự (gọi là chất điểm $D(x_4; 0)$). Cùng lúc ấy căn cứ quân sự này phóng một tên lửa tầm nhiệt từ điểm $D$ theo quỹ đạo là một parabol $P_2$ và lao xuống mặt nước biển tại điểm $B(x_2; 0)$ sao cho $BC = 150\text{ km}$. Biết rằng có hai trường hợp hai đầu đạn đụng nhau là khi đỉnh của parabol này nằm trên quỹ đạo của parabol kia và $P_1, P_2$ lần lượt là các đồ thị của hàm số $f(x), g(x)$ sao cho $g(x) = -f(100 - x)$. Khi ấy khoảng cách từ căn cứ quân sự $D$ đến tàu ngầm $A$ bằng bao nhiêu $\text{km}$ (làm tròn đến hàng đơn vị)?
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập khoảng cách AD (km):", key="q110_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Đường dẫn ảnh đã được đồng bộ
+        st.image("images/image_c5b2a0.png", width=600)
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/image_c5b2a0.png'. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q110_check"):
+    # Chuẩn hóa đầu vào
+    normalized_user_answer = user_answer.strip()
+    
+    # Đáp án chính xác là 874
+    if normalized_user_answer == "874":
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy tìm mối liên hệ các nghiệm giữa f(x) và g(x) qua phép biến đổi g(x) = -f(100 - x), giải hệ tìm x2, x3 rồi dùng điều kiện đỉnh V1 thuộc P2 để lập phương trình tìm x1!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q110_solution_shown' not in st.session_state:
+    st.session_state['q110_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q110_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q110_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q110_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q106_solution_shown') and st.session_state.get('logged_in'):
+    pass
+if st.session_state.get('q110_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Xác định quan hệ các hoành độ giao điểm từ phép biến đổi hàm số**
+    
+    * Giả sử hàm số $f(x)$ của parabol $P_1$ có dạng $f(x) = a(x - x_1)(x - x_3)$ với $a > 0$ và $x_1 < x_3$.
+    * Đồ thị $P_2$ biểu diễn hàm số $g(x) = -f(100 - x)$.
+    * Các hoành độ giao điểm của $P_2$ với trục hoành là nghiệm của $g(x) = 0 \iff f(100 - x) = 0$:
+        $$\left[\begin{array}{l} 100 - x = x_1 \iff x = 100 - x_1 \\ 100 - x = x_3 \iff x = 100 - x_3 \end{array}\right.$$
+    * Vì $x_1 < x_3 \implies 100 - x_3 < 100 - x_1$.
+    * Quan sát thứ tự trên hình vẽ ta có $x_1 < x_2 < x_3 < x_4$, suy ra:
+        $$x_2 = 100 - x_3 \quad \text{và} \quad x_4 = 100 - x_1$$
+    
+    **Bước 2: Tìm giá trị của $x_2$ và $x_3$**
+    
+    * Theo đề bài, độ dài đoạn $BC = 150\text{ km} \implies x_3 - x_2 = 150$.
+    * Mặt khác từ $x_2 = 100 - x_3 \implies x_3 + x_2 = 100$.
+    * Giải hệ phương trình:
+        $$\begin{cases} x_3 - x_2 = 150 \\ x_3 + x_2 = 100 \end{cases} \implies \begin{cases} x_3 = 125 \\ x_2 = -25 \end{cases}$$
+    
+    **Bước 3: Lập phương trình tìm $x_1$ từ điều kiện đỉnh nằm trên đồ thị**
+    
+    * Hoành độ đỉnh của $P_1$ là $x_{V1} = \dfrac{x_1 + x_3}{2} = \dfrac{x_1 + 125}{2}$.
+    * Tung độ đỉnh của $P_1$ là $y_{V1} = f(x_{V1}) = a\left(\dfrac{x_1 + 125}{2} - x_1\right)\left(\dfrac{x_1 + 125}{2} - 125\right) = -\dfrac{a}{4}(125 - x_1)^2$.
+    * Đỉnh $V_1(x_{V1}; y_{V1})$ thuộc $P_2 \implies g(x_{V1}) = y_{V1}$:
+        $$-a(x_{V1} - x_2)(x_{V1} - x_4) = -\dfrac{a}{4}(125 - x_1)^2$$
+        $$\iff (x_{V1} - x_2)(x_{V1} - x_4) = \dfrac{1}{4}(125 - x_1)^2$$
+    * Thay $x_2 = -25$, $x_4 = 100 - x_1$ và $x_{V1} = \dfrac{x_1 + 125}{2}$ vào biểu thức:
+        $$\left(\dfrac{x_1 + 175}{2}\right)\left(\dfrac{3x_1 - 75}{2}\right) = \dfrac{(125 - x_1)^2}{4}$$
+        $$\iff (x_1 + 175)(3x_1 - 75) = (125 - x_1)^2$$
+        $$\iff 3x_1^2 + 450x_1 - 13125 = x_1^2 - 250x_1 + 15625$$
+        $$\iff 2x_1^2 + 700x_1 - 28750 = 0 \iff x_1^2 + 350x_1 - 14375 = 0$$
+    * Giải phương trình bậc hai (chọn nghiệm $x_1 < x_2 = -25$):
+        $$x_1 = -175 - 150\sqrt{2} \approx -387,13$$
+    
+    **Bước 4: Tính khoảng cách $AD$ và làm tròn**
+    
+    * Khoảng cách từ căn cứ quân sự $D$ đến tàu ngầm $A$ là:
+        $$AD = x_4 - x_1 = (100 - x_1) - x_1 = 100 - 2x_1$$
+        $$AD = 100 - 2(-175 - 150\sqrt{2}) = 450 + 300\sqrt{2} \approx 874,26\text{ km}$$
+    * Làm tròn đến hàng đơn vị ta được $874\text{ km}$.
+    
+    **Kết luận:** Khoảng cách từ căn cứ quân sự $D$ đến tàu ngầm $A$ bằng **$874\text{ km}$**.
+    """)
