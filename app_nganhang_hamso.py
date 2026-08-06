@@ -10578,3 +10578,99 @@ if st.session_state.get('q110_solution_shown') and st.session_state.get('logged_
     
     **Kết luận:** Khoảng cách từ căn cứ quân sự $D$ đến tàu ngầm $A$ bằng **$874\text{ km}$**.
     """)
+# Tiêu đề câu hỏi
+st.markdown(
+    '<b style="color: blue;">Câu 111</b>',
+    unsafe_allow_html=True
+)
+
+# Nội dung câu hỏi từ hình ảnh
+st.markdown(r"""
+Hình vẽ bên dưới mô tả đoạn đường đi vào gara ô tô, đoạn đường đầu tiên rộng $a \text{ (m)}$ và đoạn đường thẳng vào cổng gara rộng $2,6\text{ m}$. Khúc cua cong là một phần tư đường tròn tâm $M$ bán kính bằng $2\text{ m}$. Biết xe ôtô có kích thước $5\text{ m} \times 1,9\text{ m}$, để tính toán và thiết kế đường đi cho ôtô ta coi ôtô là một khối hộp chữ nhật có chiều dài $5\text{ m}$, chiều rộng $1,9\text{ m}$. Hỏi chiều rộng nhỏ nhất của đoạn đường đầu tiên là bao nhiêu mét để ôtô có thể đi vào gara được? (làm tròn kết quả đến hàng phần trăm, giả thiết ôtô không đi ra ngoài đường, không đi nghiêng và ôtô không bị biến dạng).
+""")
+
+# --- Ô NHẬP ĐÁP ÁN VÀ KIỂM TRA ---
+user_answer = st.text_input("Nhập chiều rộng nhỏ nhất a (ví dụ: 2.50):", key="q111_ans")
+
+try:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Hiển thị 2 hình ảnh đề bài
+        st.image("images/image_c54fd9.png", use_container_width=True)
+        
+except FileNotFoundError:
+    # Thông báo lỗi cập nhật đúng tên file
+    st.warning("⚠️ Lỗi: Không tìm thấy file ảnh. Vui lòng kiểm tra lại đường dẫn.")
+
+# Nút kiểm tra Đúng/Sai
+if st.button("Kiểm tra đáp án", key="q111_check"):
+    # Chuẩn hóa đầu vào (hỗ trợ cả dấu phẩy và dấu chấm)
+    normalized_user_answer = user_answer.strip().replace(',', '.')
+    
+    # Đáp án chính xác là 2.45
+    if normalized_user_answer in ["2.45"]:
+        st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
+    elif user_answer == "":
+        st.warning("Bạn chưa nhập đáp án.")
+    else:
+        st.error("Sai rồi. Gợi ý: Hãy thiết lập hệ tọa độ tại góc vuông ngoài cùng, lập phương trình mép trong của xe theo góc nghiêng α và dùng điều kiện khoảng cách tới tâm M để tìm min/max nhé!")
+
+# --- XEM LỜI GIẢI CHI TIẾT (ĐIỀU KIỆN ĐĂNG NHẬP) ---
+st.markdown("---")
+
+# Khởi tạo trạng thái hiển thị lời giải nếu chưa có
+if 'q111_solution_shown' not in st.session_state:
+    st.session_state['q111_solution_shown'] = False
+
+col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Xem lời giải chi tiết", key="q111_solution"):
+        # Kiểm tra điều kiện đăng nhập
+        if st.session_state.get('logged_in'):
+            st.session_state['q111_solution_shown'] = True
+        else:
+            st.warning("🔒 Vui lòng Đăng nhập trên website để xem lời giải chi tiết.")
+            st.session_state['q111_solution_shown'] = False 
+
+# Hiển thị lời giải nếu được yêu cầu và thỏa mãn điều kiện
+if st.session_state.get('q111_solution_shown') and st.session_state.get('logged_in'):
+    st.info("### Lời giải chi tiết:")
+    
+    st.markdown(r"""
+    **Bước 1: Thiết lập hệ tọa độ và mô hình toán học**
+    
+    * Chọn hệ trục tọa độ $Oxy$ với gốc $O(0; 0)$ là góc vuông ngoài cùng của lề đường (giao của mép đường thẳng $2,6\text{ m}$ và mép ngang $a\text{ m}$).
+    * Trục $Ox$ nằm dọc theo mép tường ngang bên ngoài, trục $Oy$ nằm dọc theo mép tường dọc bên ngoài.
+    * Khi đó, bề rộng đoạn thẳng đứng là $2,6\text{ m}$ nên mép trong thẳng đứng là đường $x = 2,6$. Bề rộng đoạn ngang là $a$ nên mép trong ngang là đường $y = a$.
+    * Tâm của khúc cua phần tư đường tròn $M$ có bán kính $R = 2\text{ m}$ sẽ có tọa độ: 
+        $$x_M = 2,6 + 2 = 4,6$$
+        $$y_M = a + 2$$
+        $\Rightarrow M(4,6; a+2)$.
+    
+    **Bước 2: Xây dựng phương trình và điều kiện**
+    
+    * Khi ô tô ôm cua sát nhất, giả sử 2 đỉnh ngoài của ô tô trượt trên 2 trục $Ox$ và $Oy$. Gọi $\alpha \in \left(0; \frac{\pi}{2}\right)$ là góc tạo bởi chiều dài xe và trục $Ox$.
+    * Chiều dài xe $L = 5\text{ m}$, chiều rộng $w = 1,9\text{ m}$. 
+    * Phương trình đường thẳng chứa mép trong của ô tô (đường thẳng $CD$ song song với chiều dài xe và cách gốc $O$ một đoạn $\ge$ bù trừ độ rộng) được xác định bởi:
+        $$x\sin\alpha + y\cos\alpha = L\sin\alpha\cos\alpha + w$$
+        $$\iff x\sin\alpha + y\cos\alpha = 5\sin\alpha\cos\alpha + 1,9$$
+    * Để ô tô không bị kẹt ở khúc cua, khoảng cách từ tâm $M$ đến đường mép trong này phải lớn hơn hoặc bằng bán kính đường tròn $R = 2\text{ m}$:
+        $$\frac{|4,6\sin\alpha + (a+2)\cos\alpha - (5\sin\alpha\cos\alpha + 1,9)|}{\sqrt{\sin^2\alpha + \cos^2\alpha}} \ge 2$$
+    * Vì biểu thức bên trong dấu giá trị tuyệt đối mang giá trị dương trong thực tế hình học của bài toán, ta bỏ trị tuyệt đối và có:
+        $$4,6\sin\alpha + (a+2)\cos\alpha - 5\sin\alpha\cos\alpha - 1,9 \ge 2$$
+        $$\iff (a+2)\cos\alpha \ge 5\sin\alpha\cos\alpha - 4,6\sin\alpha + 3,9$$
+        $$\iff a \ge \frac{5\sin\alpha\cos\alpha - 4,6\sin\alpha + 3,9}{\cos\alpha} - 2$$
+    * Đặt hàm số $f(\alpha) = 5\sin\alpha - 4,6\tan\alpha + \frac{3,9}{\cos\alpha} - 2$. Để xe luôn qua được cua thì bề rộng $a$ phải lớn hơn hoặc bằng giá trị lớn nhất của $f(\alpha)$ trên khoảng $\left(0; \frac{\pi}{2}\right)$.
+    
+    **Bước 3: Khảo sát hàm số để tìm giá trị lớn nhất**
+    
+    * Tính đạo hàm $f'(\alpha)$ và cho $f'(\alpha) = 0$, ta thu được phương trình:
+        $$5\cos^3\alpha + 3,9\sin\alpha - 4,6 = 0$$
+    * Sử dụng máy tính cầm tay (chức năng Solve hoặc Table), ta giải được nghiệm gần đúng:
+        $$\sin\alpha \approx 0,686 \quad \text{và} \quad \cos\alpha \approx 0,727$$
+    * Thay $\sin\alpha$ và $\cos\alpha$ trở lại vào hàm $f(\alpha)$ để tìm giá trị lớn nhất:
+        $$a_{\max} = f(\alpha_{\text{nghiệm}}) \approx 2,453 \text{ m}$$
+    * Làm tròn kết quả đến hàng phần trăm theo yêu cầu bài toán ta được $2,45\text{ m}$.
+    
+    **Kết luận:** Chiều rộng nhỏ nhất của đoạn đường đầu tiên là **$2,45\text{ m}$**.
+    """)
