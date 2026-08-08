@@ -4023,3 +4023,249 @@ if st.button("Xem lời giải chi tiết", key="q59_solution"):
     else:
         st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
 
+
+
+# CÂU 60
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 60. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Than Uyên - Lai Châu 2026) </span>
+        Trong $5$ giây đầu tiên, một chất điểm chuyển động theo phương trình $S(t) = -t^3 + 6t^2 + t + 5$ trong đó $t$ tính bằng giây và $S(t)$ tính bằng mét. Tính vận tốc của vật tại thời điểm $t = 3$ giây.
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+options_60 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $35 \text{ m/s}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $10 \text{ m/s}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $64 \text{ m/s}$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $13 \text{ m/s}$."
+]
+
+user_choice_60 = st.radio(
+    "Chọn đáp án của bạn (Câu 60):", 
+    options_60, 
+    index=None, 
+    key="q60_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q60_check"):
+    if user_choice_60 == options_60[1]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_60 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q60_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Phương trình vận tốc của chất điểm là đạo hàm bậc nhất của phương trình quãng đường theo thời gian $t$:")
+        st.markdown(r"$v(t) = S'(t) = -3t^2 + 12t + 1$")
+        st.markdown(r"Vận tốc của vật tại thời điểm $t = 3$ giây là:")
+        st.markdown(r"$v(3) = -3 \cdot 3^2 + 12 \cdot 3 + 1 = -27 + 36 + 1 = 10 \text{ (m/s)}$.")
+        st.markdown(r"**Chọn đáp án B.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# CÂU 61
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 61. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Khuyến - HCM 2026) </span>
+        Cho hàm số $f(x)$ có bảng biến thiên sau. Hàm số đã cho có điểm cực đại là
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+# Bạn có thể chèn file cắt ảnh bảng biến thiên của Câu 61 vào đây nhé!
+st.image("images/bang_bien_thien_cau_61.png", use_container_width=True) 
+
+options_61 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $(0; 3)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $x = 0$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $y = 3$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $y = 1$."
+]
+
+user_choice_61 = st.radio(
+    "Chọn đáp án của bạn (Câu 61):", 
+    options_61, 
+    index=None, 
+    key="q61_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q61_check"):
+    if user_choice_61 == options_61[1]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_61 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q61_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Dựa vào bảng biến thiên, ta thấy $f'(x)$ đổi dấu từ $(+)$ sang $(-)$ khi qua điểm $x = 0$.")
+        st.markdown(r"Lưu ý phân biệt các khái niệm:")
+        st.markdown(r"- **Điểm cực đại của hàm số** là $x = 0$.")
+        st.markdown(r"- **Giá trị cực đại của hàm số** là $y = 3$.")
+        st.markdown(r"- **Điểm cực đại của đồ thị hàm số** là $(0; 3)$.")
+        st.markdown(r"Do đề bài hỏi 'điểm cực đại của hàm số' nên ta chọn $x = 0$.")
+        st.markdown(r"**Chọn đáp án B.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# CÂU 62
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 62. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Khuyến - HCM 2026) </span>
+        Hàm số $y = \sqrt{-x^2 + 2x}$ đồng biến trên khoảng nào?
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+options_62 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $(0; 1)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $(1; 2)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $(-\infty; 0)$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $(2; +\infty)$."
+]
+
+user_choice_62 = st.radio(
+    "Chọn đáp án của bạn (Câu 62):", 
+    options_62, 
+    index=None, 
+    key="q62_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q62_check"):
+    if user_choice_62 == options_62[0]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_62 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q62_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Tập xác định của hàm số: $-x^2 + 2x \ge 0 \Leftrightarrow x \in [0; 2]$.")
+        st.markdown(r"Ta có đạo hàm: $y' = \dfrac{(-x^2 + 2x)'}{2\sqrt{-x^2 + 2x}} = \dfrac{-2x + 2}{2\sqrt{-x^2 + 2x}} = \dfrac{-x + 1}{\sqrt{-x^2 + 2x}}$ với $x \in (0; 2)$.")
+        st.markdown(r"Để hàm số đồng biến thì $y' > 0 \Leftrightarrow \dfrac{-x + 1}{\sqrt{-x^2 + 2x}} > 0 \Leftrightarrow -x + 1 > 0 \Leftrightarrow x < 1$.")
+        st.markdown(r"Kết hợp với điều kiện xác định $x \in (0; 2)$, ta được $x \in (0; 1)$.")
+        st.markdown(r"Vậy hàm số đồng biến trên khoảng $(0; 1)$.")
+        st.markdown(r"**Chọn đáp án A.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+# CÂU 63
+st.markdown(
+    r"""
+    <span style="
+        display: block; 
+        border: 1px solid #cccccc; 
+        border-left: 4px solid #008080; 
+        border-radius: 8px; 
+        padding: 15px 20px; 
+        background-color: #fcfcfc; 
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: 18px;
+        line-height: 1.6;
+    ">
+        <span style="color: #008080; font-weight: bold;">Câu 63. </span> 
+        <span style="color: #009900; font-weight: bold;">(THPT Nguyễn Khuyến - HCM 2026) </span>
+        Cho hàm số $y = \dfrac{x^2 - 3x + 4}{x + 1}$. Tiệm cận đứng của đồ thị hàm số là
+    </span>
+    """, 
+    unsafe_allow_html=True
+)
+
+options_63 = [
+    r"$\color{#008080}{\textcircled{\small \textbf{A}}}\;$ $y = 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{B}}}\;$ $x = -1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{C}}}\;$ $x = 1$.",
+    r"$\color{#008080}{\textcircled{\small \textbf{D}}}\;$ $y = -1$."
+]
+
+user_choice_63 = st.radio(
+    "Chọn đáp án của bạn (Câu 63):", 
+    options_63, 
+    index=None, 
+    key="q63_radio", 
+    horizontal=True 
+)
+
+if st.button("Kiểm tra đáp án", key="q63_check"):
+    if user_choice_63 == options_63[1]: 
+        st.success("Chính xác! Chúc mừng bạn.")
+    elif user_choice_63 is None:
+        st.warning("Bạn chưa chọn đáp án nào.")
+    else:
+        st.error("Sai rồi. Hãy kiểm tra lại nhé!")
+
+if st.button("Xem lời giải chi tiết", key="q63_solution"):
+    if st.session_state.get('logged_in', True): 
+        st.info("Lời giải chi tiết:")
+        st.markdown(r"Tập xác định: $D = \mathbb{R} \setminus \{-1\}$.")
+        st.markdown(r"Xét nghiệm của mẫu số là $x + 1 = 0 \Leftrightarrow x = -1$.")
+        st.markdown(r"Thay $x = -1$ vào tử số ta được: $(-1)^2 - 3(-1) + 4 = 8 \neq 0$.")
+        st.markdown(r"Hơn nữa, ta có $\lim\limits_{x \to -1^+} \dfrac{x^2 - 3x + 4}{x + 1} = +\infty$ và $\lim\limits_{x \to -1^-} \dfrac{x^2 - 3x + 4}{x + 1} = -\infty$.")
+        st.markdown(r"Do đó, đường thẳng $x = -1$ là tiệm cận đứng của đồ thị hàm số.")
+        st.markdown(r"**Chọn đáp án B.**")
+    else:
+        st.warning("🔒 Vui lòng Đăng nhập ở thanh menu bên trái để xem lời giải chi tiết.")
+
+
+
