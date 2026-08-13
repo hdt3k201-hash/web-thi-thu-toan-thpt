@@ -13,51 +13,45 @@ jobs:
     steps:
       - name: Ping app_tohop_xacsuat
         run: |
-          curl -sS -o /dev/null -w "app_tohop_xacsuat -> HTTP %{http_code}\n" \
+          curl -m 60 -sS -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0" -o /dev/null -w "app_tohop_xacsuat -> HTTP %{http_code}\n" \
             "https://web-thi-thu-toan-thpt-tohopxacsuat.streamlit.app/" || echo "app_tohop_xacsuat: request failed"
 
       - name: Ping app_dungsai_hamso
         run: |
-          curl -sS -o /dev/null -w "app_dungsai_hamso -> HTTP %{http_code}\n" \
+          curl -m 60 -sS -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0" -o /dev/null -w "app_dungsai_hamso -> HTTP %{http_code}\n" \
             "https://web-thi-thu-toan-thpt-dungsaihamso.streamlit.app/" || echo "app_dungsai_hamso: request failed"
 
       - name: Ping app_nganhang_hamso
         run: |
-          curl -sS -o /dev/null -w "app_nganhang_hamso -> HTTP %{http_code}\n" \
+          curl -m 60 -sS -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0" -o /dev/null -w "app_nganhang_hamso -> HTTP %{http_code}\n" \
             "https://web-thi-thu-toan-thpt-nganhanghamso.streamlit.app/" || echo "app_nganhang_hamso: request failed"
 
       - name: Ping app_nguyenham_tichphan
         run: |
-          curl -sS -o /dev/null -w "app_nguyenham_tichphan -> HTTP %{http_code}\n" \
+          curl -m 60 -sS -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0" -o /dev/null -w "app_nguyenham_tichphan -> HTTP %{http_code}\n" \
             "https://web-thi-thu-toan-thpt-nguyenhamtichphan.streamlit.app/" || echo "app_nguyenham_tichphan: request failed"
 
       - name: Ping app_sohoc_tsa
         run: |
-          curl -sS -o /dev/null -w "app_sohoc_tsa -> HTTP %{http_code}\n" \
+          curl -m 60 -sS -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0" -o /dev/null -w "app_sohoc_tsa -> HTTP %{http_code}\n" \
             "https://web-thi-thu-toan-thpt-sohoctsa.streamlit.app/" || echo "app_sohoc_tsa: request failed"
 
       - name: Ping app_theochuong
         run: |
-          curl -sS -o /dev/null -w "app_theochuong -> HTTP %{http_code}\n" \
+          curl -m 60 -sS -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0" -o /dev/null -w "app_theochuong -> HTTP %{http_code}\n" \
             "https://thi-thu-toan-12-theo-chuong-thaytung.streamlit.app/" || echo "app_theochuong: request failed"
 
       - name: Ping app_thihocky
         run: |
-          curl -sS -o /dev/null -w "app_thihocky -> HTTP %{http_code}\n" \
+          curl -m 60 -sS -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0" -o /dev/null -w "app_thihocky -> HTTP %{http_code}\n" \
             "https://web-thi-thu-toan-thpt-thihocky.streamlit.app/" || echo "app_thihocky: request failed"
 
       - name: Ping app_tracnghiem_hamso
         run: |
-          curl -sS -o /dev/null -w "app_tracnghiem_hamso -> HTTP %{http_code}\n" \
+          curl -m 60 -sS -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0" -o /dev/null -w "app_tracnghiem_hamso -> HTTP %{http_code}\n" \
             "https://web-thi-thu-toan-thpt-tracnghiemhamso.streamlit.app/" || echo "app_tracnghiem_hamso: request failed"
 
       - name: Ping app_hsa
         run: |
-          curl -sS -o /dev/null -w "app_hsa -> HTTP %{http_code}\n" \
+          curl -m 60 -sS -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0" -o /dev/null -w "app_hsa -> HTTP %{http_code}\n" \
             "https://toanthaytung-hsa.streamlit.app/" || echo "app_hsa: request failed"
-
-      # Thêm khối lệnh dưới đây khi bạn đã có URL cho app chính (app.py)
-      # - name: Ping app_chinh
-      #   run: |
-      #     curl -sS -o /dev/null -w "app_chinh -> HTTP %{http_code}\n" \
-      #       "https://URL-CUA-APP-CHINH.streamlit.app/" || echo "app_chinh: request failed"
