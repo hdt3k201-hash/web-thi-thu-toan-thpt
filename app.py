@@ -1,5 +1,15 @@
 import streamlit as st
 
+# Ẩn hoàn toàn giao diện mặc định của Streamlit
+hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 # Cấu hình giao diện trang web trải rộng toàn màn hình
 st.set_page_config(page_title="Hệ Thống Thi Thử - Lớp Toán Thầy Tùng", layout="wide")
 
