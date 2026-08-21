@@ -5993,7 +5993,7 @@ st.markdown(
 )
 
 # Lệnh chèn hình ảnh sau đề bài
-st.image("images/image_52a53e.png", caption="Đồ thị hàm số Câu 58", use_column_width=True)
+st.image("images/image_52a53e.png", caption="Đồ thị hàm số Câu 58", use_container_width=True)
 
 st.markdown("**Chọn Đúng (Đ) hoặc Sai (S) cho từng phát biểu:**")
 
