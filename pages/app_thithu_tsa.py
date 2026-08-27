@@ -113,7 +113,9 @@ def verify_wp_token(token):
     if not token:
         return None
     try:
-        raw = base64.urlsafe_b64decode(token.encode("utf-8")).decode("utf-8")
+        # Tự động bù dấu '=' bị WordPress cắt bỏ
+        padded_token = token + '=' * (-len(token) % 4)
+        raw = base64.urlsafe_b64decode(padded_token.encode("utf-8")).decode("utf-8")
         name, ts_str, sig = raw.rsplit("|", 2)
     except Exception:
         return None
