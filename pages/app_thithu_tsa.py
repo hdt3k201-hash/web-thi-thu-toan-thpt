@@ -89,6 +89,49 @@ app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024  # 8MB / request
 # Đổi mật khẩu quản trị bằng biến môi trường ADMIN_PASSWORD khi deploy thật.
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "tsa2026")
 
+# =======================================================================
+# SSO VỚI WORDPRESS: chỉ học sinh ĐÃ ĐĂNG NHẬP trên web chính (WordPress)
+# mới được vào thi. WordPress tạo 1 "vé" (token) đã ký bằng mã bí mật dùng
+# chung (WP_SSO_SECRET), gắn vào URL nhúng iframe dạng ?wp_token=...
+# App này giải mã + kiểm tra chữ ký token đó để xác nhận chính WordPress
+# đã tạo ra (không ai giả mạo được nếu không biết mã bí mật).
+# Đổi WP_SSO_SECRET bằng biến môi trường khi deploy thật, và PHẢI dùng
+# ĐÚNG chuỗi bí mật giống hệt bên WordPress (functions.php).
+# =======================================================================
+import hmac
+import hashlib
+import base64
+import time
+
+WP_SSO_SECRET = os.environ.get("WP_SSO_SECRET", "doi-chuoi-bi-mat-nay-khi-deploy")
+WP_TOKEN_MAX_AGE = 900  # token chỉ có hiệu lực 15 phút kể từ lúc WordPress tạo ra
+
+
+def verify_wp_token(token):
+    """Giải mã & kiểm tra chữ ký token do WordPress tạo. Trả về họ tên học sinh
+    nếu token hợp lệ và chưa hết hạn, trả về None nếu token sai/giả mạo/hết hạn."""
+    if not token:
+        return None
+    try:
+        raw = base64.urlsafe_b64decode(token.encode("utf-8")).decode("utf-8")
+        name, ts_str, sig = raw.rsplit("|", 2)
+    except Exception:
+        return None
+
+    expected_sig = hmac.new(
+        WP_SSO_SECRET.encode("utf-8"), f"{name}|{ts_str}".encode("utf-8"), hashlib.sha256
+    ).hexdigest()
+    if not hmac.compare_digest(sig, expected_sig):
+        return None
+
+    try:
+        if time.time() - int(ts_str) > WP_TOKEN_MAX_AGE:
+            return None
+    except ValueError:
+        return None
+
+    return name
+
 
 # =======================================================================
 # 1) NGÂN HÀNG ĐỀ THI - MỖI ĐỀ CÓ CÂU HỎI RIÊNG, ĐỘC LẬP HOÀN TOÀN
@@ -1176,6 +1219,25 @@ TPL_LOGIN = BASE_HEAD + """
 </div>
 """ + BASE_FOOT
 
+TPL_LOGIN_BLOCKED = BASE_HEAD + """
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="card shadow-sm admin-box">
+      <div class="card-body text-center">
+        <h5 class="fw-bold mb-3">Cần đăng nhập trên focusedu.com.vn</h5>
+        <p class="text-muted small">
+          Bạn cần đăng nhập tài khoản trên website chính trước, sau đó vào lại
+          mục "Thi thử TSA" để bắt đầu làm bài.
+        </p>
+        <a href="https://focusedu.com.vn/wp-login.php" class="btn btn-tsa w-100 mt-2">
+          Đăng nhập ngay
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+""" + BASE_FOOT
+
 TPL_ADMIN_LOGIN = BASE_HEAD + """
 <div class="row justify-content-center">
   <div class="col-md-5">
@@ -1566,20 +1628,21 @@ def index():
     )
 
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/login", methods=["GET"])
 def student_login():
-    """KHÔNG CẦN TÀI KHOẢN: học sinh chỉ cần nhập họ tên là vào thi được ngay."""
+    """BẮT BUỘC ĐĂNG NHẬP WORDPRESS: chỉ vào thi được khi có token hợp lệ
+    (?wp_token=...) do WordPress tạo ra khi học sinh đã đăng nhập trên web
+    chính. Không có/token sai/hết hạn -> chặn, không cho nhập tên tay nữa."""
     if session.get("student_name"):
         return redirect(url_for("index"))
-    error = None
-    if request.method == "POST":
-        full_name = (request.form.get("full_name") or "").strip()
-        if not full_name:
-            error = "Vui lòng nhập họ tên."
-        else:
-            session["student_name"] = full_name
-            return redirect(url_for("index"))
-    return render_template_string(TPL_LOGIN, title="Nhập họ tên", error=error)
+
+    wp_token = request.args.get("wp_token")
+    name = verify_wp_token(wp_token)
+    if name:
+        session["student_name"] = name
+        return redirect(url_for("index"))
+
+    return render_template_string(TPL_LOGIN_BLOCKED, title="Cần đăng nhập")
 
 
 @app.route("/logout")
