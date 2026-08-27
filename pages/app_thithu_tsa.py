@@ -111,25 +111,30 @@ def verify_wp_token(token):
     """Giải mã & kiểm tra chữ ký token do WordPress tạo. Trả về họ tên học sinh
     nếu token hợp lệ và chưa hết hạn, trả về None nếu token sai/giả mạo/hết hạn."""
     if not token:
+        print("DEBUG FLASK: Không nhận được token trong URL (token rỗng)")
         return None
     try:
-        # Tự động bù dấu '=' bị WordPress cắt bỏ
         padded_token = token + '=' * (-len(token) % 4)
         raw = base64.urlsafe_b64decode(padded_token.encode("utf-8")).decode("utf-8")
         name, ts_str, sig = raw.rsplit("|", 2)
-    except Exception:
+    except Exception as e:
+        print(f"DEBUG FLASK: Lỗi decode Base64: {e}")
         return None
 
     expected_sig = hmac.new(
         WP_SSO_SECRET.encode("utf-8"), f"{name}|{ts_str}".encode("utf-8"), hashlib.sha256
     ).hexdigest()
+
     if not hmac.compare_digest(sig, expected_sig):
+        print("DEBUG FLASK: Sai chữ ký HMAC (Mã secret không khớp giữa WP và Flask)")
         return None
 
     try:
         if time.time() - int(ts_str) > WP_TOKEN_MAX_AGE:
+            print(f"DEBUG FLASK: Token hết hạn! Giờ server: {time.time()}, Giờ token: {ts_str}")
             return None
-    except ValueError:
+    except Exception as e:
+        print(f"DEBUG FLASK: Lỗi kiểm tra thời gian: {e}")
         return None
 
     return name
