@@ -102,8 +102,8 @@ import hmac
 import hashlib
 import base64
 import time
-
-WP_SSO_SECRET = os.environ.get("WP_SSO_SECRET", "doi-chuoi-bi-mat-nay-khi-deploy")
+import os
+WP_SSO_SECRET = "FocusEdu2026-Sso-Xk9mQp3vLr7z"
 WP_TOKEN_MAX_AGE = 900  # token chỉ có hiệu lực 15 phút kể từ lúc WordPress tạo ra
 
 
