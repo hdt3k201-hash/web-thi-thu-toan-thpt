@@ -2464,7 +2464,7 @@ Tính giá trị:
         "id": 'de3_sh_19',
         "type": 'short',
         "content": 'Cho đồ thị hàm số là một parabol \\( (P): y = ax^2 + bx + c \\), có đỉnh \\( I(6; -12) \\). Đồ thị cắt trục hoành tại điểm \\( M \\) có hoành độ bằng 8. Tính giá trị biểu thức \\( a + b + c \\).',
-        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau19-de3.PNG",
+       
         "blanks": [
             {"label": 'a + b + c =', "answers": ['63']}
         ],
@@ -2492,7 +2492,7 @@ Giá trị biểu thức: \\( a + b + c = 3 - 36 + 96 = 63 \\)."""
         "id": 'de3_sh_20',
         "type": 'short',
         "content": 'Khảo sát một xe máy đang di chuyển trên đường trong vòng 6s cho biết vận tốc của xe đang di chuyển có biểu thức \\( v(t) = 12 + 4t - t^2 \\) (m/s). Xe có vận tốc lớn hơn 15 m/s trong khoảng thời gian \\( (a; b) \\). Xác định khoảng thời gian đó.',
-        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau20-de3.PNG",
+        
         "blanks": [
             {"label": 'Khoảng thời gian (a; b) là:', "answers": ['(1;3)', '(1; 3)', '1;3']}
         ],
@@ -2524,7 +2524,158 @@ Gộp cả hai điều kiện, ta cần:
 \\( \\cos x \\neq 0 \\Leftrightarrow x \\neq \\dfrac{\\pi}{2} + k\\pi \\quad (k \\in \\mathbb{Z}) \\).
 
 Vậy tập xác định của hàm số là \\( D = \\mathbb{R} \\setminus \\left\\{ \\dfrac{\\pi}{2} + k\\pi \\;\\middle|\\; k \\in \\mathbb{Z} \\right\\} \\)."""
-    }
+    },
+
+    # ---------------- TRẢ LỜI NGẮN (short) - ĐỀ 3 ----------------
+
+{
+    "id": 'de3_sh_22',
+    "type": 'short',
+    "content": 'Cho hàm số \\(y = \\dfrac{3\\tan x - 5}{1 - \\sin^2 x} \\). Tìm tập xác định \\( D \\) của hàm số.',
+    "blanks": [
+        {"label": 'D =', "answers": ['R\\{\\pi/2 + k\\pi}', '\\mathbb{R}\\setminus\\{\\dfrac{\\pi}{2}+k\\pi|k\\in\\mathbb{Z}\\}', 'R \\ {\\pi/2 + k\\pi}']}
+    ],
+    "points": 1,
+    "explanation": """Hàm số xác định khi và chỉ khi thỏa mãn đồng thời các điều kiện:
+
+1) Biểu thức \\( \\tan x \\) có nghĩa \\( \\Leftrightarrow \\cos x \\ne 0 \\).
+
+2) Mẫu số khác 0: \\( 1 - \\sin^2 x \\ne 0 \\Leftrightarrow \\cos^2 x \\ne 0 \\Leftrightarrow \\cos x \\ne 0 \\).
+
+Gộp hai điều kiện trên, ta cần:
+\\(\\cos x \\ne 0 \\Leftrightarrow x \\ne \\dfrac{\\pi}{2} + k\\pi \\quad (k \\in \\mathbb{Z}) \\).
+
+Vậy tập xác định của hàm số là \\(D = \\mathbb{R} \\setminus \\left\\{\\dfrac{\\pi}{2} + k\\pi \\mid k \\in \\mathbb{Z}\\right\\} \\)."""
+},
+
+{
+    "id": 'de3_sh_23',
+    "type": 'short',
+    "content": 'Cho hình \\((H)\\) được giới hạn bởi đồ thị hàm số \\(y = \\sqrt{4k^2 - x^2} \\) \\((k \\ge 0)\\) và trục hoành. Thể tích khối tròn xoay khi quay \\((H)\\) quanh trục \\(Ox\\) là \\(V\\). Có bao nhiêu giá trị nguyên của \\(k\\) thỏa mãn \\(V < 6400\\pi\\)?',
+    "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau23-de3.PNG',
+    "blanks": [
+        {"label": 'Số giá trị nguyên của k =', "answers": ['9']}
+    ],
+    "points": 1,
+    "explanation": """Đồ thị hàm số \\(y = \\sqrt{4k^2 - x^2} \\) \\((y \\ge 0)\\) biểu diễn nửa trên của đường tròn tâm \\(O\\), bán kính \\(R = 2k\\).
+
+Khi quay hình phẳng \\((H)\\) (nửa hình tròn) quanh trục hoành \\(Ox\\), ta thu được khối cầu bán kính \\(R = 2k\\).
+
+Thể tích khối cầu tạo thành là:
+\\( V = \\dfrac{4}{3}\\pi R^3 = \\dfrac{4}{3}\\pi (2k)^3 = \\dfrac{32}{3}\\pi k^3 \\).
+
+Theo giả thiết:
+\\( V < 6400\\pi \\Leftrightarrow \\dfrac{32}{3}\\pi k^3 < 6400\\pi \\Leftrightarrow k^3 < \\dfrac{6400 \\cdot 3}{32} \\Leftrightarrow k^3 < 600 \\).
+
+Suy ra \\( k < \\sqrt[3]{600} \\approx 8.43 \\).
+
+Vì \\( k \\ge 0 \\) và \\(k \\in \\mathbb{Z} \\), nên \\(k \\in \\{0; 1; 2; 3; 4; 5; 6; 7; 8\\} \\).
+
+Vậy có tất cả 9 giá trị nguyên của \\(k\\) thỏa mãn."""
+},
+
+{
+    "id": 'de3_sh_24',
+    "type": 'short',
+    "content": 'Trong không gian \\(Oxyz\\), cho hai vectơ \\(\\vec{u} = (1; m; 1-2m) \\) và \\(\\vec{v} = (-5; m+1; 3) \\). Tính tổng các giá trị của \\(m\\) thỏa mãn \\(\\sin(\\vec{u}, \\vec{v}) \\) đạt giá trị lớn nhất.',
+    "blanks": [
+        {"label": 'Tổng các giá trị của m =', "answers": ['5']}
+    ],
+    "points": 1,
+    "explanation": """Góc giữa hai vectơ nằm trong khoảng \\([0^\\circ; 180^\\circ] \\).
+Do đó, \\(\\sin(\\vec{u}, \\vec{v}) \\) đạt giá trị cực đại bằng 1 khi và chỉ khi góc giữa hai vectơ bằng \\(90^\\circ \\), tức là \\(\\vec{u} \\perp \\vec{v} \\).
+
+Điều kiện vuông góc:
+\\( \\vec{u} \\cdot \\vec{v} = 0 \\Leftrightarrow x_u x_v + y_u y_v + z_u z_v = 0 \\).
+
+Thay tọa độ vào ta có:
+\\( 1 \\cdot (-5) + m(m+1) + (1-2m) \\cdot 3 = 0 \\)
+\\( \\Leftrightarrow -5 + m^2 + m + 3 - 6m = 0 \\)
+\\( \\Leftrightarrow m^2 - 5m - 2 = 0 \\).
+
+Phương trình bậc hai có \\( \\Delta = (-5)^2 - 4(1)(-2) = 33 > 0 \\) nên luôn có 2 nghiệm phân biệt \\(m_1, m_2\\).
+
+Theo định lý Vi-ét, tổng các giá trị của \\(m\\) là:
+\\( S = m_1 + m_2 = -\\dfrac{-5}{1} = 5 \\)."""
+},
+
+{
+    "id": 'de3_sh_25',
+    "type": 'short',
+    "content": 'Cho tập \\(A\\) là tập gồm các số tự nhiên có 3 chữ số được tạo bởi 5 chữ số \\(\\{0, 1, 2, 3, 5\\}\\). Chọn ngẫu nhiên 1 số trong tập \\(A\\), xác suất để chọn được số thỏa mãn tổng các chữ số bằng 8 là \\(\\dfrac{a}{b}\\) (với \\(\\dfrac{a}{b}\\) là phân số tối giản). Tính giá trị của \\(10a - b\\).',
+    "blanks": [
+        {"label": '10a - b =', "answers": ['30']}
+    ],
+    "points": 1,
+    "explanation": """Gọi số có 3 chữ số cần lập là \\(\\overline{xyz}\\). Các chữ số có thể lặp lại.
+
+- Chữ số \\( x \\ne 0 \\): có 4 cách chọn \\((x \\in \\{1, 2, 3, 5\\})\\).
+- Chữ số \\(y, z \\in \\{0, 1, 2, 3, 5\\} \\): mỗi vị trí có 5 cách chọn.
+Số phần tử của tập \\(A\\) là: \\( n(\\Omega) = 4 \\cdot 5 \\cdot 5 = 100 \\) (số).
+
+Gọi biến cố \\(M\\): "Số lấy được có tổng các chữ số bằng 8".
+Xét các bộ 3 chữ số được lấy từ \\(\\{0, 1, 2, 3, 5\\}\\) có tổng bằng 8:
+
+- Bộ \\((5, 3, 0)\\): Lập được các số 530, 503, 350, 305 (4 số).
+- Bộ \\((5, 2, 1)\\): Lập được các số 521, 512, 251, 215, 152, 125 (6 số).
+- Bộ \\((3, 3, 2)\\): Lập được các số 332, 323, 233 (3 số).
+
+Số kết quả thuận lợi cho \\(M\\) là: \\( n(M) = 4 + 6 + 3 = 13 \\) (số).
+
+Xác suất: \\(P(M) = \\dfrac{13}{100} \\).
+Phân số đã tối giản nên \\( a = 13, b = 100 \\).
+
+Giá trị biểu thức: \\( 10a - b = 10(13) - 100 = 30 \\)."""
+},
+
+{
+    "id": 'de3_sh_26',
+    "type": 'short',
+    "content": 'Biết công thức tính thể tích tứ diện: \\(V_{OABC} = \\dfrac{1}{6} \\left\vert{} [\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC} \\right\vert{} \\). Trong không gian \\(Oxyz\\), cho điểm \\(A(-1; 2; 3)\\) và \\(B(3; -4; 1)\\). Điểm \\(C \\in Ox\\) thỏa mãn \\(V_{OABC} = 42\\). Hoành độ của điểm \\(C\\) là?',
+    "blanks": [
+        {"label": 'Hoành độ điểm C =', "answers": ['\\pm 18', '18 hoặc -18', '±18', '18; -18']}
+    ],
+    "points": 1,
+    "explanation": """Điểm \\(C \\in Ox \\Rightarrow C(x; 0; 0) \\Rightarrow \\vec{OC} = (x; 0; 0)\\).
+
+Ta có: \\(\\vec{OA} = (-1; 2; 3) \\) và \\(\\vec{OB} = (3; -4; 1) \\).
+
+Tích có hướng:
+\\([\\vec{OA}, \\vec{OB}] = (2\\cdot 1 - 3\\cdot(-4); 3\\cdot 3 - (-1)\\cdot 1; (-1)\\cdot(-4) - 2\\cdot 3) = (14; 10; -2) \\).
+
+Tích vô hướng:
+\\( [\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC} = 14x + 10 \\cdot 0 + (-2) \\cdot 0 = 14x \\).
+
+Theo giả thiết thể tích tứ diện \\(V_{OABC} = 42\\):
+\\( \\dfrac{1}{6}\vert{}14x\vert{} = 42 \\Leftrightarrow \vert{}14x\vert{} = 252 \\Leftrightarrow \vert{}x\vert{} = 18 \\Leftrightarrow \\left[ \\begin{array}{l} x = 18 \\\\ x = -18 \\end{array} \\right. \\)
+
+Vậy hoành độ điểm \\(C\\) là \\(18\\) hoặc \\(-18\\) (viết là \\(\\pm 18\\))."""
+},
+
+{
+    "id": 'de3_sh_27',
+    "type": 'short',
+    "content": 'Biết công thức tính thể tích tứ diện: \\(V_{OABC} = \\dfrac{1}{6} \\left\vert{} [\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC} \\right\vert{} \\). Trong không gian \\(Oxyz\\), cho điểm \\(A(-1; 2; 3)\\) và \\(B(3; -4; 1)\\). Điểm \\(C \\in Ox\\) thỏa mãn \\(V_{OABC} = 42\\). Giá trị hoành độ của điểm \\(C\\) là:',
+    "blanks": [
+        {"label": 'Hoành độ điểm C =', "answers": ['\\pm 18', '18 hoặc -18', '±18', '18; -18']}
+    ],
+    "points": 1,
+    "explanation": """Vì điểm \\(C \\in Ox \\Rightarrow C(x; 0; 0) \\Rightarrow \\vec{OC} = (x; 0; 0) \\).
+
+Ta có: \\(\\vec{OA} = (-1; 2; 3) \\) và \\(\\vec{OB} = (3; -4; 1) \\).
+
+Tính tích có hướng:
+\\([\\vec{OA}, \\vec{OB}] = (14; 10; -2) \\).
+
+Tính tích vô hướng:
+\\( [\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC} = 14x \\).
+
+Thể tích khối tứ diện:
+\\( V_{OABC} = \\dfrac{1}{6}\vert{}14x\vert{} = 42 \\Leftrightarrow \vert{}14x\vert{} = 252 \\Leftrightarrow \vert{}x\vert{} = 18 \\Leftrightarrow \\left[ \\begin{array}{l} x = 18 \\\\ x = -18 \\end{array} \\right. \\)
+
+Vậy hoành độ điểm \\(C\\) có thể là \\(18\\) hoặc \\(-18\\)."""
+},
+          
         ] # dấu kết thúc toàn bộ đề
     }     # dấu kết thúc toàn bộ đề
 ]          # dấu kết thúc toàn bộ đề
