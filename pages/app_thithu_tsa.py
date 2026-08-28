@@ -2334,8 +2334,8 @@ Dấu "=" xảy ra khi \\( x=y=z=\\sqrt{3} \\). Vậy giá trị nhỏ nhất c�
         "explanation": "Số phần tử của không gian mẫu: Xếp 10 học sinh thành một hàng ngang có \\( n(\\Omega)=10! \\) cách.\n\nGọi biến cố \\( A \\): \"Không có bất kì 2 bạn nam nào đứng cạnh nhau\".\n\n- Bước 1: Xếp 7 bạn nữ thành một hàng ngang có \\( 7! \\) cách. Khi đó tạo ra 8 khoảng trống (gồm 6 khoảng giữa các bạn nữ và 2 khoảng ở hai đầu).\n\n- Bước 2: Xếp 3 bạn nam vào 8 khoảng trống đó có \\( A_8^3 \\) cách.\n\nSuy ra số kết quả thuận lợi cho biến cố \\( A \\) là \\( n(A)=7! \\cdot A_8^3 \\).\n\nXác suất cần tìm: \\( P(A) = \\dfrac{n(A)}{n(\\Omega)} = \\dfrac{7! \\cdot A_8^3}{10!} = \\dfrac{7! \\cdot 8 \\cdot 7 \\cdot 6}{10 \\cdot 9 \\cdot 8 \\cdot 7!} = \\dfrac{7 \\cdot 6}{10 \\cdot 9} = \\dfrac{42}{90} = \\dfrac{7}{15} \\)."
     }
 
-        ],
-    },
+        ]
+    }
 ]
 
 
