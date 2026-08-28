@@ -2629,52 +2629,26 @@ Giá trị biểu thức: \\( 10a - b = 10(13) - 100 = 30 \\)."""
 },
 
 {
-    "id": 'de3_sh_26',
-    "type": 'short',
-    "content": 'Biết công thức tính thể tích tứ diện: \\(V_{OABC} = \\dfrac{1}{6} \\left\vert{} [\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC} \\right\vert{} \\). Trong không gian \\(Oxyz\\), cho điểm \\(A(-1; 2; 3)\\) và \\(B(3; -4; 1)\\). Điểm \\(C \\in Ox\\) thỏa mãn \\(V_{OABC} = 42\\). Hoành độ của điểm \\(C\\) là?',
-    "blanks": [
-        {"label": 'Hoành độ điểm C =', "answers": ['\\pm 18', '18 hoặc -18', '±18', '18; -18']}
-    ],
-    "points": 1,
-    "explanation": """Điểm \\(C \\in Ox \\Rightarrow C(x; 0; 0) \\Rightarrow \\vec{OC} = (x; 0; 0)\\).
-
-Ta có: \\(\\vec{OA} = (-1; 2; 3) \\) và \\(\\vec{OB} = (3; -4; 1) \\).
-
-Tích có hướng:
-\\([\\vec{OA}, \\vec{OB}] = (2\\cdot 1 - 3\\cdot(-4); 3\\cdot 3 - (-1)\\cdot 1; (-1)\\cdot(-4) - 2\\cdot 3) = (14; 10; -2) \\).
-
-Tích vô hướng:
-\\( [\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC} = 14x + 10 \\cdot 0 + (-2) \\cdot 0 = 14x \\).
-
-Theo giả thiết thể tích tứ diện \\(V_{OABC} = 42\\):
-\\( \\dfrac{1}{6}\vert{}14x\vert{} = 42 \\Leftrightarrow \vert{}14x\vert{} = 252 \\Leftrightarrow \vert{}x\vert{} = 18 \\Leftrightarrow \\left[ \\begin{array}{l} x = 18 \\\\ x = -18 \\end{array} \\right. \\)
-
-Vậy hoành độ điểm \\(C\\) là \\(18\\) hoặc \\(-18\\) (viết là \\(\\pm 18\\))."""
-},
+        "id": "de3_sh_26",
+        "type": "short",
+        "content": "Biết công thức tính thể tích tứ diện: \\( V_{OABC} = \\frac{1}{6} |[\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC}| \\). Trong không gian Oxyz, cho điểm \\( A(-1; 2; 3) \\) và \\( B(3; -4; 1) \\). Điểm \\( C \\in Ox \\) thỏa mãn \\( V_{OABC} = 42 \\). Hoành độ của điểm C là?",
+        "blanks": [
+            {"label": "Hoành độ điểm C =", "answers": ["18", "-18", "18 hoặc -18", "18;-18"]}
+        ],
+        "points": 1,
+        "explanation": """Vì \\( C \\in Ox \\) nên tọa độ điểm C có dạng \\( C(x; 0; 0) \\).\nTa có các vectơ:\n\\( \\vec{OA} = (-1; 2; 3) \\)\n\\( \\vec{OB} = (3; -4; 1) \\)\n\\( \\vec{OC} = (x; 0; 0) \\)\nTích có hướng của hai vectơ \\( \\vec{OA} \\) và \\( \\vec{OB} \\):\n\\( [\\vec{OA}, \\vec{OB}] = (2\\cdot 1 - 3\\cdot(-4); 3\\cdot 3 - (-1)\\cdot 1; (-1)\\cdot(-4) - 2\\cdot 3) = (14; 10; -2) \\).\nTích hỗn tạp:\n\\( [\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC} = 14\\cdot x + 10\\cdot 0 + (-2)\\cdot 0 = 14x \\).\nThể tích khối tứ diện OABC là:\n\\( V_{OABC} = \\frac{1}{6} |14x| = \\frac{7}{3}|x| \\).\nTheo đề bài \\( V_{OABC} = 42 \\Leftrightarrow \\frac{7}{3}|x| = 42 \\Leftrightarrow |x| = 18 \\Leftrightarrow x = 18 \\) hoặc \\( x = -18 \\).\nVậy hoành độ điểm C là 18 hoặc -18."""
+    },
 
 {
-    "id": 'de3_sh_27',
-    "type": 'short',
-    "content": 'Biết công thức tính thể tích tứ diện: \\(V_{OABC} = \\dfrac{1}{6} \\left\vert{} [\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC} \\right\vert{} \\). Trong không gian \\(Oxyz\\), cho điểm \\(A(-1; 2; 3)\\) và \\(B(3; -4; 1)\\). Điểm \\(C \\in Ox\\) thỏa mãn \\(V_{OABC} = 42\\). Giá trị hoành độ của điểm \\(C\\) là:',
-    "blanks": [
-        {"label": 'Hoành độ điểm C =', "answers": ['\\pm 18', '18 hoặc -18', '±18', '18; -18']}
-    ],
-    "points": 1,
-    "explanation": """Vì điểm \\(C \\in Ox \\Rightarrow C(x; 0; 0) \\Rightarrow \\vec{OC} = (x; 0; 0) \\).
-
-Ta có: \\(\\vec{OA} = (-1; 2; 3) \\) và \\(\\vec{OB} = (3; -4; 1) \\).
-
-Tính tích có hướng:
-\\([\\vec{OA}, \\vec{OB}] = (14; 10; -2) \\).
-
-Tính tích vô hướng:
-\\( [\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC} = 14x \\).
-
-Thể tích khối tứ diện:
-\\( V_{OABC} = \\dfrac{1}{6}\vert{}14x\vert{} = 42 \\Leftrightarrow \vert{}14x\vert{} = 252 \\Leftrightarrow \vert{}x\vert{} = 18 \\Leftrightarrow \\left[ \\begin{array}{l} x = 18 \\\\ x = -18 \\end{array} \\right. \\)
-
-Vậy hoành độ điểm \\(C\\) có thể là \\(18\\) hoặc \\(-18\\)."""
-},
+        "id": "de3_sh_27",
+        "type": "short",
+        "content": "Biết công thức tính thể tích tứ diện: \\( V_{OABC} = \\frac{1}{6} |[\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC}| \\). Trong không gian Oxyz, cho điểm \\( A(-1; 2; 3) \\) và \\( B(3; -4; 1) \\). Điểm \\( C \\in Ox \\) thỏa mãn \\( V_{OABC} = 42 \\). Giá trị hoành độ dương của điểm C là:",
+        "blanks": [
+            {"label": "Hoành độ dương điểm C =", "answers": ["18"]}
+        ],
+        "points": 1,
+        "explanation": """Vì \\( C \\in Ox \\) nên \\( C(x; 0; 0) \\).\nTa có \\( \\vec{OA} = (-1; 2; 3) \\), \\( \\vec{OB} = (3; -4; 1) \\), \\( \\vec{OC} = (x; 0; 0) \\).\nTính tích có hướng: \\( [\\vec{OA}, \\vec{OB}] = (14; 10; -2) \\).\nSuy ra \\( [\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC} = 14x \\).\nThể tích tứ diện: \\( V_{OABC} = \\frac{1}{6}|14x| = \\frac{7}{3}|x| = 42 \\Leftrightarrow |x| = 18 \\Leftrightarrow x = \\pm 18 \\).\nDo đề bài yêu cầu giá trị hoành độ dương nên ta chọn \\( x = 18 \\)."""
+    },
 
           # ---------------- TRẢ LỜI NGẮN (short) ----------------
     {
@@ -2691,7 +2665,7 @@ Vậy hoành độ điểm \\(C\\) có thể là \\(18\\) hoặc \\(-18\\)."""
         "id": "de3_sh_29",
         "type": "short",
         "content": "Phương trình \\( \\sin^2 x = (1 - \\cos x)(1 + \\sin x) \\) có bao nhiêu nghiệm \\( x \\in [0, 2026\\pi] \\)?[cite: 4]",
-        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau29.PNG",
+       
         "blanks": [
             {"label": "Số nghiệm =", "answers": ["3040"]}
         ],
@@ -2702,7 +2676,7 @@ Vậy hoành độ điểm \\(C\\) có thể là \\(18\\) hoặc \\(-18\\)."""
         "id": "de3_sh_30",
         "type": "short",
         "content": "Bạn Duy có 1000 viên bi được đánh số từ 1 đến 1000. Gọi P là xác suất bạn Duy chọn ra 2 viên bi sao cho có đúng 1 viên chia hết cho 4 hoặc 6 nhưng không chia hết cho 4 và 5, giá trị của P(A) = ... % (Làm tròn đến 3 chữ số hàng thập phân)[cite: 4].",
-        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau30.PNG",
+        
         "blanks": [
             {"label": "P(A) (%) =", "answers": ["40.623"]}
         ],
@@ -2713,7 +2687,7 @@ Vậy hoành độ điểm \\(C\\) có thể là \\(18\\) hoặc \\(-18\\)."""
         "id": "de3_sh_31",
         "type": "short",
         "content": "Trong không gian Oxyz, cho mặt cầu (S): \\( (x+2)^2 + y^2 + z^2 = 25 \\) tâm I và điểm \\( M(-2; 0; 4) \\). Dây AB cắt mặt cầu (S) và đi qua M sao cho góc tạo bởi AB và IM bằng \\( 60^\\circ \\). Tính:\\na) \\( d(I; AB) \\)\\nb) Độ dài đoạn AB[cite: 4]",
-        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau31.PNG",
+       
         "blanks": [
             {"label": "a) d(I; AB) =", "answers": ["2\\sqrt{3}"]},
             {"label": "b) Độ dài AB =", "answers": ["2\\sqrt{13}"]}
