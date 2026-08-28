@@ -1713,7 +1713,120 @@ Xác suất của biến cố A:
 
 Theo giả thiết, phân số này tối giản là \\( \\dfrac{a}{b} \\), suy ra \\( a=3, b=13 \\). Vậy \\( S=a+b=3+13=16 \\).""",
             },
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de2_mc_21',
+                "type": 'mc4',
+                "content": 'Một nhà máy cần sản xuất các thùng đựng sơn hình trụ có dung tích cố định bằng \\( 16\\pi \\) dm³. Để tiết kiệm nguyên liệu nhất (tức diện tích toàn phần của hình trụ đạt giá trị nhỏ nhất), bán kính đáy R của thùng sơn phải bằng bao nhiêu?',
+                "options": {
+                    'A': '\\( R = 1 \\) dm',
+                    'B': '\\( R = 2 \\) dm',
+                    'C': '\\( R = 4 \\) dm',
+                    'D': '\\( R = \\sqrt{2} \\) dm',
+                },
+                "correct": 'B',
+                "points": 1,
+                "explanation": """Thể tích khối trụ được tính bởi công thức: \\( V=\\pi R^2 h = 16\\pi \\Rightarrow h=\\dfrac{16}{R^2} \\).
 
+Diện tích toàn phần của hình trụ:
+\\( S_{tp} = 2\\pi R^2+2\\pi Rh = 2\\pi R^2+2\\pi R\\left(\\dfrac{16}{R^2}\\right) = 2\\pi R^2+\\dfrac{32\\pi}{R} \\)
+
+Khảo sát hàm số \\( S_{tp}(R) \\) với \\( R>0 \\):
+\\( S_{tp}' = 4\\pi R-\\dfrac{32\\pi}{R^2} = 0 \\Rightarrow R^3=8 \\Rightarrow R=2 \\) (dm)
+
+Kiểm tra đạo hàm hoặc bảng biến thiên thấy \\( S_{tp} \\) đạt giá trị nhỏ nhất tại \\( R=2 \\) dm. Đáp án B.""",
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de2_tf_22",
+                "type": "truefalse",
+                "content": "Trong không gian Oxyz, cho mặt phẳng \\( (P): 2x-2y+z-5=0 \\) và điểm \\( A(1;-2;3) \\). Xét tính đúng/sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "Khoảng cách từ điểm A đến mặt phẳng (P) bằng 2.", "correct": False},
+                    {"text": "Đường thẳng \\( \\Delta \\) đi qua A và vuông góc với (P) có phương trình tham số là \\( x=1+2t,\\;y=-2-2t,\\;z=3+t \\).", "correct": True},
+                    {"text": "Hình chiếu vuông góc của điểm A trên mặt phẳng (P) là điểm \\( H\\left(\\dfrac13;-\\dfrac23;\\dfrac{10}{3}\\right) \\).", "correct": True},
+                    {"text": "Mặt cầu tâm A tiếp xúc với mặt phẳng (P) có phương trình là \\( (x-1)^2+(y+2)^2+(z-3)^2=\\dfrac{16}{9} \\).", "correct": True}
+                ],
+                "points": 1,
+                "explanation": """a) Khoảng cách từ \\( A(1;-2;3) \\) đến (P) là:
+\\( d(A,(P)) = \\dfrac{|2(1)-2(-2)+3-5|}{\\sqrt{2^2+(-2)^2+1^2}} = \\dfrac{|2+4+3-5|}{\\sqrt9} = \\dfrac43 \\ne 2 \\) \\( \\Rightarrow \\) Sai.
+
+b) Vectơ pháp tuyến của (P) là \\( \\vec{n}=(2;-2;1) \\), đây cũng là vectơ chỉ phương của đường thẳng \\( \\Delta \\) vuông góc với (P). Phương trình tham số của \\( \\Delta \\) qua \\( A(1;-2;3) \\) là hoàn toàn chính xác \\( \\Rightarrow \\) Đúng.
+
+c) Viết phương trình tham số của đường thẳng \\( \\Delta \\) qua A vuông góc với (P), sau đó tìm giao điểm H của \\( \\Delta \\) và (P) ta được \\( H\\left(\\dfrac13;-\\dfrac23;\\dfrac{10}{3}\\right) \\) \\( \\Rightarrow \\) Đúng.
+
+d) Bán kính mặt cầu tiếp xúc với (P) chính là \\( R=d(A,(P))=\\dfrac43 \\), do đó phương trình mặt cầu là \\( (x-1)^2+(y+2)^2+(z-3)^2=\\left(\\dfrac43\\right)^2=\\dfrac{16}{9} \\) \\( \\Rightarrow \\) Đúng.""",
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de2_sh_23',
+                "type": 'short',
+                "content": 'Một chiếc ly thủy tinh có phần lòng bên trong được thiết kế bằng cách quay hình phẳng giới hạn bởi parabol \\( y=x^2 \\) và đường thẳng \\( y=4 \\) quanh trục tung Oy. Thể tích phần chứa nước tối đa của chiếc ly đó là \\( V=k\\pi \\). Giá trị của k bằng bao nhiêu?',
+                "blanks": [
+                    {"label": 'k =', "answers": ['8']},
+                ],
+                "points": 1,
+                "explanation": """Miền giới hạn khi quay quanh trục Oy từ \\( y=0 \\) đến \\( y=4 \\), với phương trình đường sinh \\( x^2=y \\).
+
+Công thức tính thể tích khối tròn xoay khi quay quanh trục Oy:
+\\( V = \\pi\\displaystyle\\int_0^4 x^2\\,dy = \\pi\\displaystyle\\int_0^4 y\\,dy = \\pi\\cdot\\dfrac{y^2}{2}\\Big|_0^4 = \\dfrac{16\\pi}{2} = 8\\pi \\)
+
+Suy ra \\( k=8 \\).""",
+            },
+
+            # ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+                "id": "de2_dd_24",
+                "type": "dragdrop",
+                "content": "Cho khai triển nhị thức Newton của \\( (x+2)^n \\;(n\\in\\mathbb{N}^*) \\), biết tổng các hệ số của khai triển bằng 243. Kéo và thả các phương án lựa chọn thích hợp vào ô trống:",
+                "options_pool": [
+                    "\\( 3 \\)",
+                    "\\( 5 \\)",
+                    "\\( 7 \\)",
+                    "\\( 80 \\)",
+                    "\\( 243 \\)",
+                    "\\( 729 \\)"
+                ],
+                "blanks": [
+                    {"label": "Giá trị của n bằng:", "answer": "5"},
+                    {"label": "Hệ số của số hạng chứa x² trong khai triển bằng:", "answer": "80"}
+                ],
+                "points": 1,
+                "explanation": """Tổng các hệ số của khai triển \\( (x+2)^n \\) được tính bằng cách thay \\( x=1 \\) vào biểu thức: \\( (1+2)^n = 3^n \\).
+
+Theo đề bài: \\( 3^n = 243 = 3^5 \\Rightarrow n=5 \\).
+
+Số hạng tổng quát trong khai triển \\( (x+2)^5 \\) là: \\( T_{k+1} = C_5^k x^{5-k}2^k \\).
+
+Để tìm hệ số của số hạng chứa \\( x^2 \\), ta cho \\( 5-k=2 \\Rightarrow k=3 \\).
+
+Hệ số tương ứng là: \\( C_5^3\\cdot2^3 = 10\\cdot8 = 80 \\).
+
+Vậy \\( n=5 \\), hệ số của \\( x^2 \\) là 80.""",
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de2_sh_25',
+                "type": 'short',
+                "content": 'Cho hàm số \\( f(x) = \\begin{cases} \\dfrac{x^2-3x+2}{x-1} & \\text{khi } x>1 \\\\ ax+2 & \\text{khi } x\\le1 \\end{cases} \\). Để hàm số có giới hạn hữu hạn tại điểm \\( x=1 \\), giá trị của tham số a bằng bao nhiêu?',
+                "blanks": [
+                    {"label": 'a =', "answers": ['-3']},
+                ],
+                "points": 1,
+                "explanation": """Để hàm số có giới hạn tại \\( x=1 \\), giới hạn bên phải và giới hạn bên trái tại điểm \\( x=1 \\) phải tồn tại và bằng nhau, tức là:
+\\( \\lim\\limits_{x\\to1^+} f(x) = \\lim\\limits_{x\\to1^-} f(x) \\)
+
+Tính giới hạn bên phải:
+\\( \\lim\\limits_{x\\to1^+} f(x) = \\lim\\limits_{x\\to1^+}\\dfrac{x^2-3x+2}{x-1} = \\lim\\limits_{x\\to1^+}\\dfrac{(x-1)(x-2)}{x-1} = \\lim\\limits_{x\\to1^+}(x-2) = 1-2 = -1 \\)
+
+Tính giới hạn bên trái:
+\\( \\lim\\limits_{x\\to1^-} f(x) = \\lim\\limits_{x\\to1^-}(ax+2) = a+2 \\)
+
+Từ điều kiện tồn tại giới hạn: \\( a+2=-1 \\Rightarrow a=-3 \\).""",
+            },
           
         ], # kết thúc đề 2
     },  # kết thúc đề 2
