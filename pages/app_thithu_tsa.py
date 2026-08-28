@@ -1450,11 +1450,273 @@ Phân số thu được là \\( \\dfrac1{13} \\), đã tối giản. Đồng nh�
 Giá trị của \\( T=a+b=1+13=14 \\).""",
             },
 
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de2_mc_11',
+                "type": 'mc4',
+                "content": 'Cho hàm số: \\( y = \\dfrac{3\\tan x - 5}{1-\\sin^2 x} \\). Tập xác định của hàm số là:',
+                "options": {
+                    'A': '\\( D = \\mathbb{R}\\setminus\\left\\{\\dfrac{\\pi}{2}+k\\pi \\mid k\\in\\mathbb{Z}\\right\\} \\)',
+                    'B': '\\( D = \\mathbb{R}\\setminus\\{k\\pi \\mid k\\in\\mathbb{Z}\\} \\)',
+                    'C': '\\( D = \\mathbb{R}\\setminus\\left\\{\\dfrac{\\pi}{4}+k\\dfrac{\\pi}{2} \\mid k\\in\\mathbb{Z}\\right\\} \\)',
+                    'D': '\\( D = \\mathbb{R}\\setminus\\left\\{\\dfrac{\\pi}{2}+k2\\pi \\mid k\\in\\mathbb{Z}\\right\\} \\)',
+                },
+                "correct": 'A',
+                "points": 1,
+                "explanation": """Hàm số xác định khi và chỉ khi thỏa mãn đồng thời hai điều kiện:
+\\( \\cos x \\ne 0 \\) (điều kiện của \\( \\tan x \\))
+\\( 1-\\sin^2 x \\ne 0 \\) (điều kiện mẫu số khác 0)
 
+\\( \\Leftrightarrow \\begin{cases}\\cos x\\ne0\\\\ \\cos^2 x\\ne0\\end{cases} \\Leftrightarrow \\cos x\\ne0 \\)
+
+\\( \\Leftrightarrow x \\ne \\dfrac{\\pi}{2}+k\\pi \\;(k\\in\\mathbb{Z}) \\)
+
+Vậy tập xác định của hàm số là \\( D = \\mathbb{R}\\setminus\\left\\{\\dfrac{\\pi}{2}+k\\pi \\mid k\\in\\mathbb{Z}\\right\\} \\). Đáp án A.""",
+            },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de2_mc_12',
+                "type": 'mc4',
+                "content": 'Có 12 cây bút có chiều dài lập thành một cấp số cộng. Biết rằng cây bút thứ nhất dài 48 cm và cây thứ ba dài 42 cm. Cây bút cuối cùng trong bộ sưu tập này có chiều dài bằng bao nhiêu?',
+                "options": {
+                    'A': '12 cm',
+                    'B': '15 cm',
+                    'C': '16 cm',
+                    'D': '18 cm',
+                },
+                "correct": 'B',
+                "points": 1,
+                "explanation": """Gọi chiều dài của 12 cây bút lần lượt là \\( u_1, u_2, \\ldots, u_{12} \\) lập thành cấp số cộng có công sai d.
+
+Theo giả thiết, cây bút thứ nhất dài 48 cm và cây thứ ba dài 42 cm, suy ra:
+\\( \\begin{cases} u_1 = 48 \\\\ u_3 = 42 \\end{cases} \\Leftrightarrow \\begin{cases} u_1=48 \\\\ u_1+2d=42 \\end{cases} \\)
+
+\\( \\Rightarrow 48+2d=42 \\Leftrightarrow d=-3 \\)
+
+Cây bút cuối cùng trong bộ sưu tập là \\( u_{12} \\). Áp dụng công thức số hạng tổng quát:
+\\( u_{12} = u_1+11d = 48+11\\cdot(-3) = 15 \\) (cm)
+
+Vậy cây bút cuối cùng dài 15 cm. Đáp án B.""",
+            },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de2_mc_13',
+                "type": 'mc4',
+                "content": 'Tính \\( L = \\lim\\limits_{x\\to0}\\dfrac{1-\\cos 2x}{x} \\).',
+                "options": {
+                    'A': '\\( L = 2 \\)',
+                    'B': '\\( L = 1 \\)',
+                    'C': '\\( L = 0 \\)',
+                    'D': '\\( L = -2 \\)',
+                },
+                "correct": 'C',
+                "points": 1,
+                "explanation": """Sử dụng công thức nhân đôi \\( \\cos 2x = 1-2\\sin^2 x \\), ta biến đổi biểu thức giới hạn:
+
+\\( L = \\lim\\limits_{x\\to0}\\dfrac{1-(1-2\\sin^2 x)}{x} = \\lim\\limits_{x\\to0}\\dfrac{2\\sin^2 x}{x} = \\lim\\limits_{x\\to0}\\left(2\\sin x\\cdot\\dfrac{\\sin x}{x}\\right) \\)
+
+Áp dụng giới hạn cơ bản \\( \\lim\\limits_{x\\to0}\\dfrac{\\sin x}{x}=1 \\) và \\( \\lim\\limits_{x\\to0}\\sin x=0 \\), ta có:
+
+\\( L = 2\\cdot0\\cdot1 = 0 \\). Đáp án C.""",
+            },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de2_mc_14',
+                "type": 'mc4',
+                "content": 'Cho cấp số nhân \\( (u_n) \\) thỏa mãn \\( u_2=6 \\) và \\( u_5=\\dfrac{3}{4} \\). Giá trị công bội q của cấp số nhân đã cho bằng:',
+                "options": {
+                    'A': '\\( q = 2 \\)',
+                    'B': '\\( q = \\dfrac{1}{2} \\)',
+                    'C': '\\( q = -\\dfrac{1}{2} \\)',
+                    'D': '\\( q = 8 \\)',
+                },
+                "correct": 'B',
+                "points": 1,
+                "explanation": """Gọi \\( u_1 \\) là số hạng đầu và q là công bội của cấp số nhân. Theo định nghĩa:
+
+\\( \\begin{cases} u_2 = u_1\\cdot q = 6 \\\\ u_5 = u_1\\cdot q^4 = \\dfrac34 \\end{cases} \\)
+
+Lấy phương trình thứ hai chia cho phương trình thứ nhất vế theo vế (do \\( u_2\\ne0\\Rightarrow q\\ne0, u_1\\ne0 \\)):
+
+\\( \\dfrac{u_1\\cdot q^4}{u_1\\cdot q} = \\dfrac{3/4}{6} \\Leftrightarrow q^3 = \\dfrac18 = \\left(\\dfrac12\\right)^3 \\)
+
+Suy ra \\( q = \\dfrac12 \\). Đáp án B.""",
+            },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de2_mc_15',
+                "type": 'mc4',
+                "content": 'Cho hàm số: \\( y = 4\\sin^2 x + 3 \\). Giá trị nhỏ nhất của hàm số bằng:',
+                "options": {
+                    'A': '3',
+                    'B': '4',
+                    'C': '7',
+                    'D': '-1',
+                },
+                "correct": 'A',
+                "points": 1,
+                "explanation": """Tập xác định: \\( D = \\mathbb{R} \\).
+
+Ta biết rằng với mọi \\( x\\in\\mathbb{R} \\), ta luôn có:
+\\( -1\\le\\sin x\\le1 \\Rightarrow 0\\le\\sin^2 x\\le1 \\)
+
+Nhân các vế với 4 và cộng thêm 3, ta được:
+\\( 0 \\le 4\\sin^2 x \\le 4 \\)
+\\( \\Rightarrow 0+3 \\le 4\\sin^2 x+3 \\le 4+3 \\)
+\\( \\Rightarrow 3 \\le y \\le 7 \\)
+
+Do đó, giá trị nhỏ nhất của hàm số là 3. Dấu "=" xảy ra khi \\( \\sin^2 x=0 \\Leftrightarrow \\sin x=0 \\Leftrightarrow x=k\\pi \\;(k\\in\\mathbb{Z}) \\). Đáp án A.""",
+            },
+
+                      # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de2_mc_16',
+                "type": 'mc4',
+                "content": 'Một bệnh nhân được tiêm một liều thuốc kháng sinh 500mg. Nghiên cứu y học động học cho thấy, sau mỗi giờ, lượng thuốc trong máu của bệnh nhân sẽ giảm đi 15% so với giờ trước đó do quá trình đào thải tự nhiên. Hỏi sau ít nhất bao nhiêu giờ thì lượng thuốc trong máu bệnh nhân giảm xuống dưới mức an toàn 100mg? (Giả sử bệnh nhân không được tiêm thêm thuốc trong suốt quá trình này).',
+                "options": {
+                    'A': '9 giờ',
+                    'B': '10 giờ',
+                    'C': '11 giờ',
+                    'D': '12 giờ',
+                },
+                "correct": 'B',
+                "points": 1,
+                "explanation": """Đây là bài toán mô hình hóa thực tiễn dạng suy giảm mũ. Gọi \\( M(t) \\) là lượng thuốc trong máu sau t giờ kể từ lúc tiêm. Ban đầu lượng thuốc là \\( M(0)=500 \\)mg.
+
+Vì mỗi giờ lượng thuốc giảm 15%, nghĩa là lượng thuốc còn lại sau mỗi giờ bằng 85% lượng thuốc của giờ ngay trước đó. Ta thiết lập được hàm số mô hình hóa lượng thuốc theo thời gian:
+\\( M(t) = 500\\cdot(0.85)^t \\)
+
+Để lượng thuốc trong máu giảm xuống dưới 100mg, ta cần giải bất phương trình:
+\\( 500\\cdot(0.85)^t < 100 \\Leftrightarrow (0.85)^t < 0.2 \\)
+
+Lấy logarit cơ số 0.85 hai vế. Lưu ý cơ số \\( 0.85<1 \\) nên bất đẳng thức đổi chiều:
+\\( t > \\log_{0.85}(0.2) \\approx 9.903 \\)
+
+Do yêu cầu tìm số giờ trọn vẹn (ít nhất) để lượng thuốc chắc chắn nằm dưới ngưỡng 100mg, ta chọn số nguyên nhỏ nhất thỏa mãn, tức là \\( t=10 \\).
+
+Vậy sau ít nhất 10 giờ, lượng thuốc sẽ dưới mức 100mg. Đáp án B.""",
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de2_tf_17",
+                "type": "truefalse",
+                "content": "Cho hàm số phân thức \\( y = \\dfrac{2x-1}{x+1} \\). Xét tính đúng/sai của các mệnh đề sau đây:",
+                "statements": [
+                    {"text": "Đồ thị hàm số có tiệm cận đứng là đường thẳng \\( x=-1 \\) và tiệm cận ngang là đường thẳng \\( y=2 \\).", "correct": True},
+                    {"text": "Hàm số đã cho đồng biến trên tập \\( \\mathbb{R}\\setminus\\{-1\\} \\).", "correct": False},
+                    {"text": "Đồ thị hàm số cắt trục hoành tại điểm có hoành độ \\( x=\\dfrac12 \\).", "correct": True},
+                    {"text": "Tâm đối xứng của đồ thị hàm số là điểm \\( I(1;2) \\).", "correct": False}
+                ],
+                "points": 1,
+                "explanation": """a) Ta có \\( \\lim\\limits_{x\\to\\pm\\infty} y = \\lim\\limits_{x\\to\\pm\\infty}\\dfrac{2-1/x}{1+1/x}=2 \\), suy ra đường thẳng \\( y=2 \\) là tiệm cận ngang.
+
+Lại có \\( \\lim\\limits_{x\\to-1^+}\\dfrac{2x-1}{x+1}=-\\infty \\), suy ra đường thẳng \\( x=-1 \\) là tiệm cận đứng \\( \\Rightarrow \\) Đúng.
+
+b) Tập xác định \\( D=\\mathbb{R}\\setminus\\{-1\\} \\). Đạo hàm:
+\\( y' = \\dfrac{2\\cdot1-(-1)\\cdot1}{(x+1)^2} = \\dfrac{3}{(x+1)^2} > 0,\\;\\forall x\\ne-1 \\)
+
+Tuy nhiên, theo đúng chuẩn mực toán học, hàm số chỉ đồng biến trên từng khoảng xác định là \\( (-\\infty;-1) \\) và \\( (-1;+\\infty) \\). Không được dùng ký hiệu tập hợp \\( \\mathbb{R}\\setminus\\{-1\\} \\) để kết luận khoảng đơn điệu \\( \\Rightarrow \\) Sai.
+
+c) Giao điểm với trục hoành thỏa mãn \\( y=0 \\Leftrightarrow \\dfrac{2x-1}{x+1}=0 \\Leftrightarrow 2x-1=0 \\Leftrightarrow x=\\dfrac12 \\) \\( \\Rightarrow \\) Đúng.
+
+d) Tâm đối xứng của đồ thị hàm phân thức bậc nhất/bậc nhất chính là giao điểm của hai đường tiệm cận. Tiệm cận đứng \\( x=-1 \\), tiệm cận ngang \\( y=2 \\) nên tâm đối xứng phải là điểm \\( I(-1;2) \\), chứ không phải \\( I(1;2) \\) \\( \\Rightarrow \\) Sai.""",
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de2_sh_18',
+                "type": 'short',
+                "content": 'Trong mật mã học RSA, phép toán lũy thừa mô-đun (chia lấy dư) đóng vai trò cốt lõi trong việc tạo khóa bảo mật. Áp dụng tư duy thuật toán, hãy tìm số dư của phép chia \\( 2^{2026} \\) cho 7.',
+                "blanks": [
+                    {"label": 'Số dư =', "answers": ['2']},
+                ],
+                "points": 1,
+                "explanation": """Để xử lý số mũ cực lớn, ta sử dụng tính chất của đồng dư thức (Modulo arithmetic). Ta tìm một lũy thừa cơ sở của 2 sao cho giá trị của nó gần với một bội số của 7. Nhận thấy \\( 2^3=8 \\) chia 7 dư 1. Do đó, ta có thể viết dưới dạng đồng dư:
+\\( 2^3 \\equiv 1 \\pmod{7} \\)
+
+Tiếp theo, ta phân tích số mũ 2026 theo cơ số 3 bằng phép chia có dư:
+\\( 2026 = 3\\times675+1 \\)
+
+Khi đó, ta tách biểu thức lũy thừa ban đầu thành:
+\\( 2^{2026} = 2^{3\\times675+1} = (2^3)^{675}\\cdot2^1 = 8^{675}\\cdot2 \\)
+
+Áp dụng tính chất nhân và lũy thừa của đồng dư thức:
+\\( 8^{675}\\cdot2 \\equiv 1^{675}\\cdot2 \\pmod7 \\equiv 1\\cdot2 \\pmod7 \\equiv 2 \\pmod7 \\)
+
+Vậy, số dư của phép chia \\( 2^{2026} \\) cho 7 là 2.""",
+            },
+
+            # ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+                "id": "de2_dd_19",
+                "type": "dragdrop",
+                "content": "Trong không gian với hệ tọa độ Oxyz, cho hai điểm \\( A(1;2;-1) \\) và \\( B(3;0;3) \\). Một thiết bị bay không người lái (Drone) được lập trình di chuyển trên một quỹ đạo là mặt cầu (S) nhận đoạn thẳng AB làm đường kính. Kéo và thả các phương án trong khung (một phương án có thể được dùng nhiều lần hoặc không dùng) để hoàn thành các thông số của quỹ đạo (S) dưới đây:",
+                "options_pool": [
+                    "\\( 1 \\)",
+                    "\\( 2 \\)",
+                    "\\( 3 \\)",
+                    "\\( 6 \\)",
+                    "\\( 24 \\)"
+                ],
+                "blanks": [
+                    {"label": "Hoành độ tâm I của mặt cầu (S) là:", "answer": "2"},
+                    {"label": "Tung độ tâm I của mặt cầu (S) là:", "answer": "1"},
+                    {"label": "Bình phương bán kính R² của mặt cầu (S) là:", "answer": "6"}
+                ],
+                "points": 1,
+                "explanation": """Mặt cầu (S) nhận đoạn thẳng AB làm đường kính nên tâm I của mặt cầu chính là trung điểm của đoạn thẳng AB. Tọa độ điểm I được xác định bởi công thức trung bình cộng:
+\\( x_I = \\dfrac{x_A+x_B}{2} = \\dfrac{1+3}{2} = 2 \\)
+\\( y_I = \\dfrac{y_A+y_B}{2} = \\dfrac{2+0}{2} = 1 \\)
+\\( z_I = \\dfrac{z_A+z_B}{2} = \\dfrac{-1+3}{2} = 1 \\)
+
+Vậy tọa độ tâm là \\( I(2;1;1) \\). Từ đây ta xác định được: Hoành độ là 2, tung độ là 1.
+
+Bán kính R của mặt cầu bằng một nửa độ dài đường kính AB. Ta tính khoảng cách AB:
+\\( AB = \\sqrt{(3-1)^2+(0-2)^2+(3-(-1))^2} = \\sqrt{2^2+(-2)^2+4^2} = \\sqrt{4+4+16} = \\sqrt{24} \\)
+
+Suy ra \\( R = \\dfrac{AB}{2} = \\dfrac{\\sqrt{24}}{2} \\). Để tìm bình phương bán kính, ta tính:
+\\( R^2 = \\left(\\dfrac{\\sqrt{24}}{2}\\right)^2 = \\dfrac{24}{4} = 6 \\)
+
+Thứ tự kéo thả chính xác từ trên xuống dưới là: 2, 1, 6.""",
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de2_sh_20',
+                "type": 'short',
+                "content": 'Một lớp học có 15 học sinh, bao gồm 8 học sinh nam và 7 học sinh nữ. Giáo viên chủ nhiệm cần chọn ngẫu nhiên 4 học sinh để tham gia vào đội thanh niên xung kích của trường. Xác suất để trong 4 học sinh được chọn, số học sinh nữ chiếm ưu thế (nhiều hơn số học sinh nam) được viết dưới dạng phân số tối giản \\( \\dfrac{a}{b} \\) (với \\( a, b \\in \\mathbb{N}^* \\)). Tính giá trị của biểu thức \\( S = a+b \\).',
+                "blanks": [
+                    {"label": 'S =', "answers": ['16']},
+                ],
+                "points": 1,
+                "explanation": """Phép thử: Chọn ngẫu nhiên 4 học sinh từ tổng số 15 học sinh. Số phần tử của không gian mẫu là số tổ hợp chập 4 của 15:
+\\( |\\Omega| = C_{15}^4 = 1365 \\)
+
+Gọi biến cố A: "Trong 4 học sinh được chọn, số học sinh nữ nhiều hơn số học sinh nam". Vì tổng số học sinh được chọn là 4, để số nữ lớn hơn số nam, ta chỉ có 2 trường hợp thỏa mãn:
+
+Trường hợp 1: Chọn 3 học sinh nữ và 1 học sinh nam. Số cách chọn:
+\\( C_7^3\\cdot C_8^1 = 35\\cdot8 = 280 \\) (cách)
+
+Trường hợp 2: Chọn 4 học sinh nữ và 0 học sinh nam. Số cách chọn:
+\\( C_7^4\\cdot C_8^0 = 35\\cdot1 = 35 \\) (cách)
+
+Vì hai trường hợp này là độc lập và xung khắc, ta áp dụng quy tắc cộng để tìm số kết quả thuận lợi cho biến cố A:
+\\( |A| = 280+35 = 315 \\)
+
+Xác suất của biến cố A:
+\\( P(A) = \\dfrac{|A|}{|\\Omega|} = \\dfrac{315}{1365} = \\dfrac{63}{273} = \\dfrac{9}{39} = \\dfrac{3}{13} \\)
+
+Theo giả thiết, phân số này tối giản là \\( \\dfrac{a}{b} \\), suy ra \\( a=3, b=13 \\). Vậy \\( S=a+b=3+13=16 \\).""",
+            },
 
           
-        ],
-    },
+        ], # kết thúc đề 2
+    },  # kết thúc đề 2
     {
         "id": 'de3',
         "name": 'Đề số 3 - Giải tích & Đại số',
