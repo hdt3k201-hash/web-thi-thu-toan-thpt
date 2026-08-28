@@ -3030,7 +3030,213 @@ $|\\vec{OI}| = \\sqrt{4^2 + (-4)^2 + 2^2} = \\sqrt{16+16+4} = \\sqrt{36} = 6$.""
                 ],
                 "points": 1,
               "explanation": "a) Tính thử vài số hạng đầu: \\( u_1 = 4 \\), \\( u_2 = 3(4) - 4 = 8 \\), \\( u_3 = 3(8) - 4 = 20 \\).\n..."
-            }
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+    {
+        "id": "de4_tf_10",
+        "type": "truefalse",
+        "content": "Cho dãy số \\( (u_n) \\) xác định bởi công thức truy hồi \\( \\begin{cases} u_1 = 4 \\\\ u_{n+1} = 3u_n - 4 \\end{cases} \\) với mọi \\( n \\ge 1 \\). Xét tính đúng/sai của các mệnh đề sau:",
+        "statements": [
+            {"text": "Dãy số \\( (u_n) \\) là một cấp số cộng.", "correct": False},
+            {"text": "Dãy số \\( (v_n) \\) xác định bởi \\( v_n = u_n - 2 \\) là một cấp số nhân.", "correct": True},
+            {"text": "Số dư khi chia số hạng \\( u_{2025} \\) cho 9 là bằng 2.", "correct": True}
+        ],
+        "points": 1,
+        "explanation": """a) Ta có \\( u_1 = 4, u_2 = 8, u_3 = 20 \\). Vì \\( 20 - 8 \\neq 8 - 4 \\) nên \\( (u_n) \\) không phải là cấp số cộng \\( \\Rightarrow \\) Sai.
+        
+b) Ta có \\( v_{n+1} = u_{n+1} - 2 = (3u_n - 4) - 2 = 3u_n - 6 = 3(u_n - 2) = 3v_n \\). 
+Vì \\( v_{n+1} = 3v_n \\) nên \\( (v_n) \\) là một cấp số nhân với công bội \\( q = 3 \\) và \\( v_1 = 4 - 2 = 2 \\) \\( \\Rightarrow \\) Đúng.
+
+c) Từ câu b, số hạng tổng quát của cấp số nhân là \\( v_n = 2 \\cdot 3^{n-1} \\). 
+Suy ra \\( u_n = v_n + 2 = 2 \\cdot 3^{n-1} + 2 \\).
+Với \\( n = 2025 \\), ta có \\( u_{2025} = 2 \\cdot 3^{2024} + 2 \\).
+Vì \\( 3^{2024} = 9 \\cdot 3^{2022} \\) chia hết cho 9, nên \\( 2 \\cdot 3^{2024} \\) cũng chia hết cho 9. Do đó \\( u_{2025} \\) chia 9 dư 2 \\( \\Rightarrow \\) Đúng."""
+    },
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+    {
+        "id": "de4_mc_11",
+        "type": "mc4",
+        "content": "Cho tham số \\( m \\) thỏa mãn giới hạn \\( \\lim_{x\\to+\\infty} (\\sqrt{x^2-5x+6} - mx) = +\\infty \\). Khi đó giá trị nguyên âm lớn nhất của \\( m \\) bằng?",
+        "options": {
+            "A": "-1",
+            "B": "-2",
+            "C": "-4",
+            "D": "-3"
+        },
+        "correct": "A",
+        "points": 1,
+        "explanation": """Khi \\( x \\to +\\infty \\), ta có \\( \\sqrt{x^2-5x+6} \\sim x \\).
+Biểu thức có thể viết lại: \\( x \\left( \\sqrt{1 - \\dfrac{5}{x} + \\dfrac{6}{x^2}} - m \\right) \\).
+Giới hạn tiến tới \\( +\\infty \\) khi và chỉ khi phần trong ngoặc dương khi \\( x \\to +\\infty \\).
+Tức là \\( 1 - m > 0 \\Leftrightarrow m < 1 \\).
+Vì đề bài yêu cầu tìm giá trị nguyên âm lớn nhất của \\( m \\), ta chọn \\( m = -1 \\). Đáp án A."""
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_13",
+        "type": "short",
+        "content": "Bạn Hùng có 10 quyển sách khác nhau gồm 4 quyển Toán, 3 quyển Tiếng Anh và 3 quyển Vật lý. Số cách xếp chúng lên kệ sao cho các quyển cùng môn đứng cạnh nhau bằng",
+        "blanks": [
+            {"label": "Số cách xếp bằng:", "answers": ["5184"]}
+        ],
+        "points": 1,
+        "explanation": """Đầu tiên, ta coi mỗi môn học là một \"khối\". Có 3 môn nên có \\( 3! = 6 \\) cách xếp vị trí các khối.
+Bên trong mỗi khối, ta có thể hoán vị các quyển sách khác nhau:
+- Khối Toán có \\( 4! = 24 \\) cách.
+- Khối Tiếng Anh có \\( 3! = 6 \\) cách.
+- Khối Vật lý có \\( 3! = 6 \\) cách.
+Theo quy tắc nhân, tổng số cách xếp là: \\( 6 \\cdot 24 \\cdot 6 \\cdot 6 = 5184 \\) (cách)."""
+    },
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+    {
+        "id": "de4_dd_14",
+        "type": "dragdrop",
+        "content": "Cho đa giác đều (H) có tất cả 30 đỉnh. Chọn ngẫu nhiên đồng thời 4 đỉnh của đa giác (H). Biết xác suất để 4 đỉnh được chọn tạo thành một hình chữ nhật có thể viết được dưới dạng phân số tối giản \\( \\dfrac{a}{b} \\). Kéo và thả phương án thích hợp vào ô trống:",
+        "options_pool": ["261", "262", "272", "273"],
+        "blanks": [
+            {"label": "Giá trị của \\( a+b \\) bằng", "answer": "262"}
+        ],
+        "points": 1,
+        "explanation": """Không gian mẫu: Số cách chọn ngẫu nhiên 4 đỉnh từ 30 đỉnh là \\( n(\\Omega) = C_{30}^4 = 27405 \\).
+Đa giác đều 30 đỉnh có 15 đường chéo đi qua tâm đa giác. Cứ 2 đường chéo đi qua tâm bất kỳ sẽ tạo thành 1 hình chữ nhật.
+Do đó, số hình chữ nhật tạo thành là \\( C_{15}^2 = 105 \\).
+Xác suất để 4 đỉnh tạo thành hình chữ nhật là: \\( P = \\dfrac{105}{27405} = \\dfrac{1}{261} \\).
+Phân số tối giản, nên \\( a = 1, b = 261 \\).
+Vậy \\( a + b = 262 \\)."""
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_15",
+        "type": "short",
+        "content": "Cho nguyên hàm \\( \\int \\dfrac{\\cos^2 x - \\sin^2 x}{\\sin^2 x \\cos^2 x} dx = a \\tan x + b \\cot x + C \\). Khi đó giá trị của biểu thức \\( a+2b \\) bằng",
+        "blanks": [
+            {"label": "a + 2b =", "answers": ["-3"]}
+        ],
+        "points": 1,
+        "explanation": """Biến đổi biểu thức dưới dấu tích phân:
+\\( \\int \\dfrac{\\cos^2 x - \\sin^2 x}{\\sin^2 x \\cos^2 x} dx = \\int \\left( \\dfrac{1}{\\sin^2 x} - \\dfrac{1}{\\cos^2 x} \\right) dx \\)
+\\( = -\\cot x - \\tan x + C \\).
+Đối chiếu với giả thiết \\( a \\tan x + b \\cot x + C \\), ta suy ra \\( a = -1 \\) và \\( b = -1 \\).
+Giá trị biểu thức: \\( a + 2b = -1 + 2(-1) = -3 \\)."""
+    },
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+    {
+        "id": "de4_dd_16",
+        "type": "dragdrop",
+        "content": "Biết \\( \\int_0^a \\dfrac{dx}{x^2+a^2} = A \\) và \\( \\int_0^{b\\pi} 2 dx = B \\). Lấy \\( \\pi \\approx 3,14 \\). Kéo và thả phương án thích hợp vào ô trống:",
+        "options_pool": ["15,7", "6,28", "9,42", "3\\pi", "5\\pi", "6\\pi"],
+        "blanks": [
+            {"label": "Giá trị của \\( 16Aa - \\dfrac{B}{2b} \\) xấp xỉ là", "answer": "9,42"}
+        ],
+        "points": 1,
+        "explanation": """Tính tích phân \\( A \\): Đặt \\( x = a \\tan t \\Rightarrow dx = a \\sec^2 t dt \\). Đổi cận: \\( x=0 \\Rightarrow t=0 \\); \\( x=a \\Rightarrow t=\\dfrac{\\pi}{4} \\).
+\\( A = \\int_0^{\\pi/4} \\dfrac{a \\sec^2 t}{a^2(1+\\tan^2 t)} dt = \\int_0^{\\pi/4} \\dfrac{1}{a} dt = \\dfrac{\\pi}{4a} \\).
+Suy ra \\( 16Aa = 16 \\cdot a \\cdot \\dfrac{\\pi}{4a} = 4\\pi \\).
+Tính tích phân \\( B \\): \\( B = \\int_0^{b\\pi} 2 dx = 2b\\pi \\).
+Suy ra \\( \\dfrac{B}{2b} = \\dfrac{2b\\pi}{2b} = \\pi \\).
+Vậy \\( 16Aa - \\dfrac{B}{2b} = 4\\pi - \\pi = 3\\pi \\).
+Với \\( \\pi \\approx 3,14 \\), ta có \\( 3 \\cdot 3,14 = 9,42 \\)."""
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_17",
+        "type": "short",
+        "content": "Cho hàm số \\( f(x) \\) thỏa mãn \\( g(x) = f(x) + x^2 - 2x \\) và có đạo hàm \\( g'(x) = x^2 - 2x + 3 \\). Biết \\( f(2) = \\dfrac{1}{3} \\), giá trị của \\( f(0) \\) là",
+        "blanks": [
+            {"label": "f(0) =", "answers": ["-13/3"]}
+        ],
+        "points": 1,
+        "explanation": """Ta có: \\( g'(x) = f'(x) + 2x - 2 \\).
+Mà \\( g'(x) = x^2 - 2x + 3 \\), nên:
+\\( f'(x) + 2x - 2 = x^2 - 2x + 3 \\Rightarrow f'(x) = x^2 - 4x + 5 \\).
+Lấy nguyên hàm: \\( f(x) = \\dfrac{x^3}{3} - 2x^2 + 5x + C \\).
+Thay \\( f(2) = \\dfrac{1}{3} \\):
+\\( \\dfrac{8}{3} - 2(4) + 5(2) + C = \\dfrac{1}{3} \\)
+\\( \\Leftrightarrow \\dfrac{8}{3} + 2 + C = \\dfrac{1}{3} \\Leftrightarrow \\dfrac{14}{3} + C = \\dfrac{1}{3} \\Rightarrow C = -\\dfrac{13}{3} \\).
+Vậy \\( f(0) = C = -\\dfrac{13}{3} \\)."""
+    },
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+    {
+        "id": "de4_tf_18",
+        "type": "truefalse",
+        "content": "Cho elip \\( (E): \\dfrac{x^2}{100} + \\dfrac{y^2}{36} = 1 \\) có hai tiêu điểm \\( F_1, F_2 \\). Gọi \\( M \\in (E) \\) và đặt \\( T = MF_1 \\cdot MF_2 \\). Xét tính đúng/sai của các mệnh đề sau:",
+        "statements": [
+            {"text": "Ta có \\( T = 100 - \\dfrac{(MF_1 - MF_2)^2}{4} \\)", "correct": True},
+            {"text": "Giá trị lớn nhất của biểu thức \\( T \\) là bằng 100.", "correct": True},
+            {"text": "Giá trị nhỏ nhất của biểu thức \\( T \\) là bằng 64.", "correct": False}
+        ],
+        "points": 1,
+        "explanation": """Từ phương trình elip, ta có \\( a^2 = 100 \\Rightarrow a = 10 \\) và \\( b^2 = 36 \\). 
+Tính chất của elip: \\( MF_1 + MF_2 = 2a = 20 \\).
+
+a) Khai triển hằng đẳng thức:
+\\( (MF_1 + MF_2)^2 - (MF_1 - MF_2)^2 = 4 MF_1 \\cdot MF_2 \\)
+\\( \\Leftrightarrow 20^2 - (MF_1 - MF_2)^2 = 4T \\)
+\\( \\Leftrightarrow 400 - (MF_1 - MF_2)^2 = 4T \\Rightarrow T = 100 - \\dfrac{(MF_1 - MF_2)^2}{4} \\) \\( \\Rightarrow \\) Đúng.
+
+b) Từ câu a, ta thấy \\( T \\le 100 \\). Dấu \"=\" xảy ra khi \\( MF_1 = MF_2 \\), tức là \\( M \\) nằm trên trục tung. Vậy Max \\( T = 100 \\) \\( \\Rightarrow \\) Đúng.
+
+c) Ta có bán tiêu cự \\( c = \\sqrt{a^2 - b^2} = \\sqrt{100 - 36} = 8 \\).
+Công thức bán kính qua tiêu: \\( MF_1 = a + ex \\), \\( MF_2 = a - ex \\) với \\( e = \\dfrac{c}{a} = \\dfrac{4}{5} \\).
+\\( T = a^2 - e^2 x^2 = 100 - \\dfrac{16}{25}x^2 \\).
+Biểu thức đạt giá trị nhỏ nhất khi \\( x^2 \\) lớn nhất, tức là \\( M \\) nằm trên trục hoành (\\( x = \\pm 10 \\)).
+Khi đó, Min \\( T = 100 - \\dfrac{16}{25}(100) = 100 - 64 = 36 \\). Mệnh đề nói bằng 64 \\( \\Rightarrow \\) Sai."""
+    },
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+    {
+        "id": "de4_mc_19",
+        "type": "mc4",
+        "content": "Cho một hình chữ nhật có 2 cạnh đều là số tự nhiên. Với \\( S \\) là diện tích hình chữ nhật, \\( P \\) là chu vi hình chữ nhật. Biểu thức \\( A = S + 2P \\), có thể nhận giá trị nào sau đây?",
+        "options": {
+            "A": "36",
+            "B": "60",
+            "C": "68",
+            "D": "76"
+        },
+        "correct": "C",
+        "points": 1,
+        "explanation": """Gọi 2 cạnh của hình chữ nhật là \\( x, y \\in \\mathbb{N}^* \\).
+Ta có \\( S = xy \\) và \\( P = 2(x+y) \\).
+Biểu thức \\( A = xy + 4(x+y) = (x+4)(y+4) - 16 \\).
+Suy ra: \\( A + 16 = (x+4)(y+4) \\).
+Vì \\( x, y \\ge 1 \\) nên \\( x+4 \\ge 5 \\) và \\( y+4 \\ge 5 \\).
+Thử các đáp án:
+A. \\( 36 + 16 = 52 \\). Không có hai ước nguyên dương nào của 52 cùng lớn hơn hoặc bằng 5 (chỉ có \\( 4 \\times 13 \\)).
+B. \\( 60 + 16 = 76 \\). Không thỏa mãn (ước là \\( 4 \\times 19 \\)).
+C. \\( 68 + 16 = 84 \\). Ta có \\( 84 = 6 \\times 14 \\). Thỏa mãn \\( x+4=6 \\Rightarrow x=2 \\) và \\( y+4=14 \\Rightarrow y=10 \\) (hoặc ngược lại).
+D. \\( 76 + 16 = 92 \\). Không thỏa mãn (ước là \\( 4 \\times 23 \\)).
+Vậy đáp án đúng là C."""
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_20",
+        "type": "short",
+        "content": "Giải bất phương trình \\( \\log_2(x-1) < 1 \\). Nếu tập nghiệm là khoảng \\( (a; b) \\) thì giá trị của biểu thức \\( S = a+b \\) bằng",
+        "blanks": [
+            {"label": "S =", "answers": ["4"]}
+        ],
+        "points": 1,
+        "explanation": """Điều kiện xác định: \\( x - 1 > 0 \\Leftrightarrow x > 1 \\).
+Bất phương trình: \\( \\log_2(x-1) < \\log_2(2) \\)
+\\( \\Leftrightarrow x - 1 < 2 \\Leftrightarrow x < 3 \\).
+Kết hợp điều kiện, ta có tập nghiệm là \\( (1; 3) \\).
+Suy ra \\( a = 1, b = 3 \\). Giá trị \\( S = a + b = 1 + 3 = 4 \\)."""
+    }
+
+
+
+          
+          
         ] # Đóng danh sách questions của Đề 4
     } # Đóng dictionary của Đề 4
 ] # Dấu kết thúc toàn bộ danh sách đề thi (Nằm sát lề trái, không lùi dấu cách nào)
