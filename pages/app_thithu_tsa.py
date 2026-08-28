@@ -163,7 +163,7 @@ EXAMS = [
             {
                 "id": 'de_tsa11_mc_01',
                 "type": 'mc4',
-                "content": 'Câu 1. Cho hàm số \\( y = \\dfrac{\\sin x + 2\\cos x + m}{\\cos x - 2\\sin x + 3} \\). Có bao nhiêu giá trị nguyên của tham số \\( m \\) để tập giá trị của hàm số này chứa đoạn \\( [-1; 1] \\)?',
+                "content": ' Cho hàm số \\( y = \\dfrac{\\sin x + 2\\cos x + m}{\\cos x - 2\\sin x + 3} \\). Có bao nhiêu giá trị nguyên của tham số \\( m \\) để tập giá trị của hàm số này chứa đoạn \\( [-1; 1] \\)?',
                 "options": {
                     'A': '0',
                     'B': '1',
@@ -179,7 +179,7 @@ EXAMS = [
             {
                 "id": 'de_tsa11_tf_01',
                 "type": 'truefalse',
-                "content": "Câu 2. Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh \\( a \\). Tam giác SAB đều và nằm trong mặt phẳng vuông góc với đáy. Gọi M, N lần lượt là trung điểm của SC và SD. Xét tính Đúng/Sai của các mệnh đề sau:",
+                "content": " Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh \\( a \\). Tam giác SAB đều và nằm trong mặt phẳng vuông góc với đáy. Gọi M, N lần lượt là trung điểm của SC và SD. Xét tính Đúng/Sai của các mệnh đề sau:",
                 "statements": [
                     {"text": 'Góc tạo bởi mặt phẳng (SCD) và mặt đáy bằng \\( 60^\\circ \\)', "correct": False},
                     {"text": 'Khoảng cách giữa hai đường thẳng AM và SB bằng \\( \\dfrac{a\\sqrt3}{4} \\)', "correct": True},
@@ -194,7 +194,7 @@ EXAMS = [
             {
                 "id": 'de_tsa11_sh_01',
                 "type": 'short',
-                "content": 'Câu 3. Xếp 10 học sinh gồm 5 nam và 5 nữ vào 10 chiếc ghế được xếp thành một vòng tròn. Tính xác suất để không có bất kỳ 2 học sinh cùng giới tính nào ngồi cạnh nhau, đồng thời học sinh nam tên A và học sinh nữ tên B (là 2 lớp trưởng) bắt buộc phải ngồi đối diện nhau. Biết xác suất là phân số tối giản \\( \\dfrac{p}{q} \\). Tính giá trị của biểu thức \\( S = p + q \\).',
+                "content": ' Xếp 10 học sinh gồm 5 nam và 5 nữ vào 10 chiếc ghế được xếp thành một vòng tròn. Tính xác suất để không có bất kỳ 2 học sinh cùng giới tính nào ngồi cạnh nhau, đồng thời học sinh nam tên A và học sinh nữ tên B (là 2 lớp trưởng) bắt buộc phải ngồi đối diện nhau. Biết xác suất là phân số tối giản \\( \\dfrac{p}{q} \\). Tính giá trị của biểu thức \\( S = p + q \\).',
                 "blanks": [
                     {"label": 'S = p + q =', "answers": ['631']},
                 ],
@@ -206,7 +206,7 @@ EXAMS = [
             {
                 "id": 'de_tsa11_dd_01',
                 "type": 'dragdrop',
-                "content": 'Câu 4. Một con robot xuất phát từ gốc tọa độ O(0, 0) trên mặt phẳng Oxy, hướng theo chiều dương của trục Ox. Lập trình di chuyển của robot được thiết lập như sau: Bước 1: Tiến thẳng về phía trước 12 cm đến điểm A₁. Bước n (với n ≥ 2): Quay trái một góc 90°, sau đó tiến thẳng một đoạn bằng \\( \\dfrac{2}{3} \\) độ dài của đoạn đường di chuyển ngay trước đó để tới điểm Aₙ. Quá trình này lặp lại vô hạn lần và robot tiến dần đến một điểm tới hạn M(X; Y). Kéo và thả các kết quả sau vào ô tương ứng:',
+                "content": ' Một con robot xuất phát từ gốc tọa độ O(0, 0) trên mặt phẳng Oxy, hướng theo chiều dương của trục Ox. Lập trình di chuyển của robot được thiết lập như sau: Bước 1: Tiến thẳng về phía trước 12 cm đến điểm A₁. Bước n (với n ≥ 2): Quay trái một góc 90°, sau đó tiến thẳng một đoạn bằng \\( \\dfrac{2}{3} \\) độ dài của đoạn đường di chuyển ngay trước đó để tới điểm Aₙ. Quá trình này lặp lại vô hạn lần và robot tiến dần đến một điểm tới hạn M(X; Y). Kéo và thả các kết quả sau vào ô tương ứng:',
                 "image": 'images/de_tsa11_cau4_robot.PNG',
                 "options_pool": ['36', '108/13', '72/13', '24', '36/13'],
                 "blanks": [
