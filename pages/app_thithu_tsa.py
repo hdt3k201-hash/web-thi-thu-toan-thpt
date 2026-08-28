@@ -155,8 +155,8 @@ def verify_wp_token(token):
 EXAMS = [
     {
         "id": 'de1',
-        "name": 'Đề số 1 - Tổng hợp cơ bản',
-        "description": '12 câu hỏi, đủ 4 dạng: trắc nghiệm, đúng/sai, trả lời ngắn, kéo thả.',
+        "name": 'Đề số 1 - Tổng ôn TSA lớp 11',
+        "description": '40 câu hỏi, đủ 4 dạng: trắc nghiệm, đúng/sai, trả lời ngắn, kéo thả.',
         "questions": [
 
             # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
