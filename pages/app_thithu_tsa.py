@@ -2232,28 +2232,28 @@ Dấu "=" xảy ra khi \\( x=y=z=\\sqrt{3} \\). Vậy giá trị nhỏ nhất c�
         {"text": "Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\left(\\dfrac{\\pi}{8}\\right) \\) có đúng 01 nghiệm.", "correct": True}
     ],
     "points": 1,
-    "explanation": """Ta có công thức hạ bậc: \\( 1+\\cos x = 2\\cos^2\\left(\\dfrac{x}{2}\\right) \\).[cite: 1]
-Suy ra \\( \\sqrt{1+\\cos x} = \\sqrt{2} \\left| \\cos\\left(\\dfrac{x}{2}\\right) \\right| \\).[cite: 1]
+    "explanation": """Ta có công thức hạ bậc: \\( 1+\\cos x = 2\\cos^2\\left(\\dfrac{x}{2}\\right) \\).
+Suy ra \\( \\sqrt{1+\\cos x} = \\sqrt{2} \\left| \\cos\\left(\\dfrac{x}{2}\\right) \\right| \\).
 Vì \\( x \\in (0,\\pi) \\Rightarrow \\dfrac{x}{2} \\in \\left(0,\\dfrac{\\pi}{2}\\right) \\Rightarrow \\cos\\left(\\dfrac{x}{2}\\right) > 0 \\).[cite: 1]
-Do đó: \\( \\sqrt{1+\\cos x} = \\sqrt{2}\\cos\\left(\\dfrac{x}{2}\\right) \\).[cite: 1]
+Do đó: \\( \\sqrt{1+\\cos x} = \\sqrt{2}\\cos\\left(\\dfrac{x}{2}\\right) \\).
 
-1. Mệnh đề 1: Sai.[cite: 1]
+1. Mệnh đề 1: Sai.
 Phương trình tương đương: \\( \\sqrt{2}\\cos\\left(\\dfrac{x}{2}\\right) = \\cos\\left(\\dfrac{x}{2}\\right) \\Leftrightarrow (\\sqrt{2}-1)\\cos\\left(\\dfrac{x}{2}\\right) = 0 \\Leftrightarrow \\cos\\left(\\dfrac{x}{2}\\right) = 0 \\).[cite: 1]
-Tuy nhiên với \\( x \\in (0,\\pi) \\) thì \\( \\cos\\left(\\dfrac{x}{2}\\right) > 0 \\).[cite: 1]
-Phương trình vô nghiệm.[cite: 1]
+Tuy nhiên với \\( x \\in (0,\\pi) \\) thì \\( \\cos\\left(\\dfrac{x}{2}\\right) > 0 \\).
+Phương trình vô nghiệm.
 
-2. Mệnh đề 2: Đúng.[cite: 1]
+2. Mệnh đề 2: Đúng.
 Phương trình tương đương: \\( \\sqrt{2}\\cos\\left(\\dfrac{x}{2}\\right) = \\cos\\left(\\dfrac{x}{4}\\right) \\Leftrightarrow \\sqrt{2}\\left[2\\cos^2\\left(\\dfrac{x}{4}\\right)-1\\right] = \\cos\\left(\\dfrac{x}{4}\\right) \\).[cite: 1]
-Đặt \\( t = \\cos\\left(\\dfrac{x}{4}\\right) \\).[cite: 1]
+Đặt \\( t = \\cos\\left(\\dfrac{x}{4}\\right) \\).
 Với \\( x \\in (0,\\pi) \\Rightarrow \\dfrac{x}{4} \\in \\left(0,\\dfrac{\\pi}{4}\\right) \\Rightarrow t \\in \\left(\\dfrac{\\sqrt{2}}{2}, 1\\right) \\).[cite: 1]
-Phương trình trở thành \\( 2\\sqrt{2}t^2 - t - \\sqrt{2} = 0 \\).[cite: 1]
-Bấm máy ta được \\( t_1 = \\dfrac{1+\\sqrt{17}}{4\\sqrt{2}} \\approx 0.905 \\) (thỏa mãn) và \\( t_2 < 0 \\) (loại).[cite: 1]
-Vậy phương trình có nghiệm.[cite: 1]
+Phương trình trở thành \\( 2\\sqrt{2}t^2 - t - \\sqrt{2} = 0 \\).
+Bấm máy ta được \\( t_1 = \\dfrac{1+\\sqrt{17}}{4\\sqrt{2}} \\approx 0.905 \\) (thỏa mãn) và \\( t_2 < 0 \\) (loại).
+Vậy phương trình có nghiệm.
 
-3. Mệnh đề 3: Đúng.[cite: 1]
+3. Mệnh đề 3: Đúng.
 Phương trình tương đương: \\( \\sqrt{2}\\cos\\left(\\dfrac{x}{2}\\right) = \\cos\\left(\\dfrac{\\pi}{8}\\right) \\Leftrightarrow \\cos\\left(\\dfrac{x}{2}\\right) = \\dfrac{\\cos\\left(\\dfrac{\\pi}{8}\\right)}{\\sqrt{2}} \\approx 0.653 \\).[cite: 1]
-Hàm số \\( y = \\cos\\left(\\dfrac{x}{2}\\right) \\) nghịch biến trên \\( (0, \\pi) \\) và nhận giá trị từ 1 đến 0.[cite: 1]
-Vì \\( 0.653 \\in (0, 1) \\) nên phương trình có duy nhất 1 nghiệm.[cite: 1]"""
+Hàm số \\( y = \\cos\\left(\\dfrac{x}{2}\\right) \\) nghịch biến trên \\( (0, \\pi) \\) và nhận giá trị từ 1 đến 0.
+Vì \\( 0.653 \\in (0, 1) \\) nên phương trình có duy nhất 1 nghiệm."""
 },
 
 # ---------------- TRẢ LỜI NGẮN (short) ----------------
@@ -2265,25 +2265,25 @@ Vì \\( 0.653 \\in (0, 1) \\) nên phương trình có duy nhất 1 nghiệm.[ci
         {"label": "a + b/2 =", "answers": ["4"]}
     ],
     "points": 1,
-    "explanation": """Điều kiện: \\( x > 0 \\).[cite: 1]
-Đặt \\( u = \\log_2 x \\) và \\( v = \\log_3\\dfrac{36}{x} \\).[cite: 1]
+    "explanation": """Điều kiện: \\( x > 0 \\).
+Đặt \\( u = \\log_2 x \\) và \\( v = \\log_3\\dfrac{36}{x} \\).
 Bất phương trình trở thành: \\( u^2 + v \\le (1+v)u \\Leftrightarrow u^2 - u - uv + v \\le 0 \\Leftrightarrow u(u-1) - v(u-1) \\le 0 \\Leftrightarrow (u-1)(u-v) \\le 0 \\).[cite: 1]
 
 Ta xét 2 trường hợp:
 - TH1: \\( u \\ge 1 \\) và \\( u \\le v \\).[cite: 1]
-\\( \\Leftrightarrow \\log_2 x \\ge 1 \\) và \\( \\log_2 x \\le \\log_3\\dfrac{36}{x} \\).[cite: 1]
-\\( \\Leftrightarrow x \\ge 2 \\) và \\( \\log_2 x + \\log_3 x \\le \\log_3 36 \\).[cite: 1]
-Xét hàm số \\( f(x) = \\log_2 x + \\log_3 x \\) đồng biến trên \\( (0, +\\infty) \\).[cite: 1]
-Ta thấy \\( f(4) = \\log_2 4 + \\log_3 4 = 2 + \\log_3 4 = \\log_3 9 + \\log_3 4 = \\log_3 36 \\).[cite: 1]
-Do đó \\( f(x) \\le f(4) \\Leftrightarrow x \\le 4 \\).[cite: 1]
-Kết hợp điều kiện ta được \\( x \\in [2, 4] \\).[cite: 1]
+\\( \\Leftrightarrow \\log_2 x \\ge 1 \\) và \\( \\log_2 x \\le \\log_3\\dfrac{36}{x} \\).
+\\( \\Leftrightarrow x \\ge 2 \\) và \\( \\log_2 x + \\log_3 x \\le \\log_3 36 \\).
+Xét hàm số \\( f(x) = \\log_2 x + \\log_3 x \\) đồng biến trên \\( (0, +\\infty) \\).
+Ta thấy \\( f(4) = \\log_2 4 + \\log_3 4 = 2 + \\log_3 4 = \\log_3 9 + \\log_3 4 = \\log_3 36 \\).
+Do đó \\( f(x) \\le f(4) \\Leftrightarrow x \\le 4 \\).
+Kết hợp điều kiện ta được \\( x \\in [2, 4] \\).
 
-- TH2: \\( u \\le 1 \\) và \\( u \\ge v \\).[cite: 1]
-\\( \\Leftrightarrow \\log_2 x \\le 1 \\) và \\( \\log_2 x \\ge \\log_3\\dfrac{36}{x} \\).[cite: 1]
-\\( \\Leftrightarrow x \\le 2 \\) và \\( f(x) \\ge f(4) \\Rightarrow x \\ge 4 \\) (Hệ vô nghiệm).[cite: 1]
+- TH2: \\( u \\le 1 \\) và \\( u \\ge v \\).
+\\( \\Leftrightarrow \\log_2 x \\le 1 \\) và \\( \\log_2 x \\ge \\log_3\\dfrac{36}{x} \\).
+\\( \\Leftrightarrow x \\le 2 \\) và \\( f(x) \\ge f(4) \\Rightarrow x \\ge 4 \\) (Hệ vô nghiệm).
 
-Vậy tập nghiệm là \\( [2, 4] \\Rightarrow a=2, b=4 \\).[cite: 1]
-Suy ra \\( a + \\dfrac{b}{2} = 2 + \\dfrac{4}{2} = 4 \\).[cite: 1]"""
+Vậy tập nghiệm là \\( [2, 4] \\Rightarrow a=2, b=4 \\).
+Suy ra \\( a + \\dfrac{b}{2} = 2 + \\dfrac{4}{2} = 4 \\)."""
 },
 
 {
@@ -2294,13 +2294,13 @@ Suy ra \\( a + \\dfrac{b}{2} = 2 + \\dfrac{4}{2} = 4 \\).[cite: 1]"""
         {"label": "Số năm Bính Tuất đã có là:", "answers": ["16"]}
     ],
     "points": 1,
-    "explanation": """Hệ thống Can Chi lặp lại theo chu kỳ là BCNN của 10 (Thiên Can) và 12 (Địa Chi) tức là 60 năm.[cite: 1]
-Số năm từ 1011 đến 2025 là: \\( 2025 - 1010 = 1015 \\) năm.[cite: 1]
-Ta thực hiện phép chia: \\( \\dfrac{1015}{60} \\approx 16.91 \\).[cite: 1]
-Do đó, trong khoảng thời gian này có trọn vẹn 16 chu kỳ 60 năm.[cite: 1]
-Các năm Bính Tuất sẽ có dạng \\( 1010 + 60k \\) với \\( k \\in \\mathbb{N}^* \\).[cite: 1]
+    "explanation": """Hệ thống Can Chi lặp lại theo chu kỳ là BCNN của 10 (Thiên Can) và 12 (Địa Chi) tức là 60 năm.
+Số năm từ 1011 đến 2025 là: \\( 2025 - 1010 = 1015 \\) năm.
+Ta thực hiện phép chia: \\( \\dfrac{1015}{60} \\approx 16.91 \\).
+Do đó, trong khoảng thời gian này có trọn vẹn 16 chu kỳ 60 năm.
+Các năm Bính Tuất sẽ có dạng \\( 1010 + 60k \\) với \\( k \\in \\mathbb{N}^* \\).
 Ta có: \\( 1011 \\le 1010 + 60k \\le 2025 \\Leftrightarrow 1 \\le 60k \\le 1015 \\Leftrightarrow \\dfrac{1}{60} \\le k \\le \\dfrac{1015}{60} \\approx 16.91 \\).[cite: 1]
-Vì \\( k \\in \\mathbb{N} \\) nên \\( k \\in \\{1; 2; ...; 16\\} \\).[cite: 1]
+Vì \\( k \\in \\mathbb{N} \\) nên \\( k \\in \\{1; 2; ...; 16\\} \\).
 Vậy có đúng 16 năm Bính Tuất.[cite: 1]"""
 },
 
@@ -2313,20 +2313,20 @@ Vậy có đúng 16 năm Bính Tuất.[cite: 1]"""
         {"label": "Số báo danh của Nam:", "answers": ["3285"]}
     ],
     "points": 1,
-    "explanation": """Số \\( \\overline{3a8b} \\) chia hết cho 5 nên chữ số tận cùng \\( b \\in \\{0, 5\\} \\).[cite: 1]
+    "explanation": """Số \\( \\overline{3a8b} \\) chia hết cho 5 nên chữ số tận cùng \\( b \\in \\{0, 5\\} \\).
 
-- Trường hợp 1: Nếu \\( b=0 \\), số trở thành \\( \\overline{3a80} \\).[cite: 1]
-Để số này chia hết cho 9 thì tổng các chữ số \\( (3+a+8+0) = 11+a \\) phải chia hết cho 9.[cite: 1]
-Vì \\( a \\) là chữ số \\( (0 \\le a \\le 9) \\) nên \\( 11+a = 18 \\Rightarrow a=7 \\).[cite: 1]
-Ta được số 3780. Đây là số chẵn.[cite: 1]
+- Trường hợp 1: Nếu \\( b=0 \\), số trở thành \\( \\overline{3a80} \\).
+Để số này chia hết cho 9 thì tổng các chữ số \\( (3+a+8+0) = 11+a \\) phải chia hết cho 9.
+Vì \\( a \\) là chữ số \\( (0 \\le a \\le 9) \\) nên \\( 11+a = 18 \\Rightarrow a=7 \\).
+Ta được số 3780. Đây là số chẵn.
 
-- Trường hợp 2: Nếu \\( b=5 \\), số trở thành \\( \\overline{3a85} \\).[cite: 1]
-Để số này chia hết cho 9 thì tổng các chữ số \\( (3+a+8+5) = 16+a \\) phải chia hết cho 9.[cite: 1]
-Vì \\( 0 \\le a \\le 9 \\) nên \\( 16+a = 18 \\Rightarrow a=2 \\).[cite: 1]
-Ta được số 3285. Đây là số lẻ.[cite: 1]
+- Trường hợp 2: Nếu \\( b=5 \\), số trở thành \\( \\overline{3a85} \\).
+Để số này chia hết cho 9 thì tổng các chữ số \\( (3+a+8+5) = 16+a \\) phải chia hết cho 9.
+Vì \\( 0 \\le a \\le 9 \\) nên \\( 16+a = 18 \\Rightarrow a=2 \\).
+Ta được số 3285. Đây là số lẻ.
 
-Theo giả thiết, số báo danh của Hiếu là số chẵn nên của Hiếu là 3780.[cite: 1]
-Suy ra số báo danh của Nam là 3285.[cite: 1]"""
+Theo giả thiết, số báo danh của Hiếu là số chẵn nên của Hiếu là 3780.
+Suy ra số báo danh của Nam là 3285."""
 },
 
 {
@@ -2338,10 +2338,75 @@ Suy ra số báo danh của Nam là 3285.[cite: 1]"""
         {"label": "Giá trị nhỏ nhất của y là:", "answers": ["-2"]}
     ],
     "points": 1,
-    "explanation": """Sử dụng công thức lượng giác phụ chéo: \\( \\sin\\left(x+\\dfrac{\\pi}{2}\\right) = \\cos x \\).[cite: 1]
-Khi đó hàm số được viết lại: \\( y = 4\\sin x\\cos x = 2(2\\sin x\\cos x) = 2\\sin(2x) \\).[cite: 1]
-Vì \\( -1 \\le \\sin(2x) \\le 1 \\) với mọi \\( x \\in \\mathbb{R} \\), ta suy ra \\( -2 \\le y \\le 2 \\).[cite: 1]
-Vậy Giá trị lớn nhất của y là 2, Giá trị nhỏ nhất của y là -2.[cite: 1]"""
+    "explanation": """Sử dụng công thức lượng giác phụ chéo: \\( \\sin\\left(x+\\dfrac{\\pi}{2}\\right) = \\cos x \\).
+Khi đó hàm số được viết lại: \\( y = 4\\sin x\\cos x = 2(2\\sin x\\cos x) = 2\\sin(2x) \\).
+Vì \\( -1 \\le \\sin(2x) \\le 1 \\) với mọi \\( x \\in \\mathbb{R} \\), ta suy ra \\( -2 \\le y \\le 2 \\).
+Vậy Giá trị lớn nhất của y là 2, Giá trị nhỏ nhất của y là -2."""
+},
+          # ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de3_sh_06",
+    "type": "short",
+    "content": "Cho hàm số: \\( f(x)=(x+10)^6 \\). Tính \\( f''(2) \\).",
+    "blanks": [
+        {"label": "\\( f''(2) = \\)", "answers": ["622080"]}
+    ],
+    "points": 1,
+    "explanation": "Ta tính đạo hàm cấp 1: \\( f'(x)=6(x+10)^5 \\).\n\nTiếp tục tính đạo hàm cấp 2: \\( f''(x)=6 \\cdot 5(x+10)^4=30(x+10)^4 \\).\n\nThay \\( x=2 \\) vào biểu thức đạo hàm cấp 2 ta được: \\( f''(2)=30(2+10)^4=30 \\cdot 12^4=30 \\cdot 20736=622080 \\)."
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de3_mc_07",
+    "type": "mc4",
+    "content": "Cho hàm số: \\( y=\\dfrac{1+x}{1-x} \\). Nhận xét nào sau đây đúng?",
+    "options": {
+        "A": "Đồ thị hàm có TCN \\( y=1 \\), TCĐ \\( x=1 \\)",
+        "B": "Đồ thị hàm có TCN \\( y=-1 \\), TCĐ \\( x=1 \\)",
+        "C": "Đồ thị hàm có TCN \\( y=1 \\), TCĐ \\( x=-1 \\)",
+        "D": "Đồ thị hàm có TCN \\( y=-1 \\), TCĐ \\( x=-1 \\)"
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": "Hàm số đã cho là hàm phân thức bậc nhất trên bậc nhất: \\( y=\\dfrac{x+1}{-x+1} \\).\n\n- Tiệm cận ngang (TCN): \\( \\lim_{x\\to\\pm\\infty} y = \\lim_{x\\to\\pm\\infty} \\dfrac{x+1}{-x+1} = \\dfrac{1}{-1} = -1 \\). Suy ra TCN là đường thẳng \\( y=-1 \\).\n\n- Tiệm cận đứng (TCĐ): Nghiệm của mẫu thức là \\( -x+1=0 \\Leftrightarrow x=1 \\). Hơn nữa, tử số tại \\( x=1 \\) bằng \\( 2 \\neq 0 \\). Suy ra TCĐ là đường thẳng \\( x=1 \\).\n\nĐối chiếu với các đáp án, ta thấy Đáp án B là chính xác."
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de3_tf_08",
+    "type": "truefalse",
+    "content": "Cho hình lăng trụ đứng \\( ABC.A'B'C' \\) có tam giác \\( ABC \\) vuông cân tại \\( A \\). Biết \\( BC=3\\sqrt{2}a \\), \\( AA'=4a \\). Các nhận định sau đây đúng hay sai?",
+    "image": "CHÈN_LINK_ẢNH_CÂU_8_VÀO_ĐÂY", 
+    "statements": [
+        {"text": "\\( AB'=3a \\).", "correct": false},
+        {"text": "Thể tích hình lăng trụ: \\( V=6a^3 \\).", "correct": false}
+    ],
+    "points": 1,
+    "explanation": "Vì tam giác \\( ABC \\) vuông cân tại \\( A \\), áp dụng định lý Pytago ta có:\n\n\\( AB^2+AC^2=BC^2 \\Leftrightarrow 2AB^2=(3\\sqrt{2}a)^2=18a^2 \\Rightarrow AB=AC=3a \\).\n\n1. Xét mệnh đề 1: Do hình lăng trụ đứng nên \\( BB' \\perp (ABC) \\Rightarrow BB' \\perp AB \\). Tam giác \\( ABB' \\) vuông tại \\( B \\), ta có:\n\n\\( AB'=\\sqrt{AB^2+BB'^2}=\\sqrt{(3a)^2+(4a)^2}=\\sqrt{9a^2+16a^2}=5a \\neq 3a \\). \\( \\Rightarrow \\) Sai.\n\n2. Xét mệnh đề 2: Thể tích lăng trụ được tính theo công thức \\( V=B\\cdot h \\):\n\n\\( V = S_{\\triangle ABC} \\cdot AA' = \\left( \\dfrac{1}{2}AB \\cdot AC \\right) \\cdot AA' = \\left( \\dfrac{1}{2} \\cdot 3a \\cdot 3a \\right) \\cdot 4a = 18a^3 \\neq 6a^3 \\). \\( \\Rightarrow \\) Sai."
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de3_sh_09",
+    "type": "short",
+    "content": "Tính \\( l=\\lim_{x\\to 0}\\dfrac{1-\\cos 2x}{x} \\).",
+    "blanks": [
+        {"label": "l =", "answers": ["0"]}
+    ],
+    "points": 1,
+    "explanation": "Ta có công thức nhân đôi: \\( 1-\\cos 2x=2\\sin^2 x \\).\n\nKhi đó, giới hạn được viết lại thành: \\( l=\\lim_{x\\to 0}\\dfrac{2\\sin^2 x}{x} = \\lim_{x\\to 0}\\left( 2\\sin x \\cdot \\dfrac{\\sin x}{x} \\right) \\).\n\nVì \\( \\lim_{x\\to 0}\\sin x=0 \\) và \\( \\lim_{x\\to 0}\\dfrac{\\sin x}{x}=1 \\),\n\nnên \\( l=2 \\cdot 0 \\cdot 1 = 0 \\)."
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de3_sh_10",
+    "type": "short",
+    "content": "Một hàng học sinh gồm 3 nam và 7 nữ được xếp thành 1 hàng ngang. Xác suất để không có bất kì 2 bạn nam nào đứng cạnh nhau là bao nhiêu?",
+    "blanks": [
+        {"label": "Xác suất =", "answers": ["7/15"]}
+    ],
+    "points": 1,
+    "explanation": "Số phần tử của không gian mẫu: Xếp 10 học sinh thành một hàng ngang có \\( n(\\Omega)=10! \\) cách.\n\nGọi biến cố \\( A \\): \"Không có bất kì 2 bạn nam nào đứng cạnh nhau\".\n\n- Bước 1: Xếp 7 bạn nữ thành một hàng ngang có \\( 7! \\) cách. Khi đó tạo ra 8 khoảng trống (gồm 6 khoảng giữa các bạn nữ và 2 khoảng ở hai đầu).\n\n- Bước 2: Xếp 3 bạn nam vào 8 khoảng trống đó có \\( A_8^3 \\) cách.\n\nSuy ra số kết quả thuận lợi cho biến cố \\( A \\) là \\( n(A)=7! \\cdot A_8^3 \\).\n\nXác suất cần tìm: \\( P(A) = \\dfrac{n(A)}{n(\\Omega)} = \\dfrac{7! \\cdot A_8^3}{10!} = \\dfrac{7! \\cdot 8 \\cdot 7 \\cdot 6}{10 \\cdot 9 \\cdot 8 \\cdot 7!} = \\dfrac{7 \\cdot 6}{10 \\cdot 9} = \\dfrac{42}{90} = \\dfrac{7}{15} \\)."
 },
         ],
     },
