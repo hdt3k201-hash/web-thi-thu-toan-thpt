@@ -1125,131 +1125,151 @@ Vậy \\( T = m^2+n^3 = 9 + (-8) = 1 \\).""",
     },      # kết thúc hết 1 đề
     {
         "id": 'de2',
-        "name": 'Đề số 2 - Hình học & Xác suất',
-        "description": '10 câu hỏi thiên về hình học không gian và xác suất thống kê.',
+        "name": 'Đề số 2 - ÔN TẬP TSA ĐỢT 1 - 2027',
+        "description": '40 câu hỏi ôn tập đợt 1.',
         "questions": [
 
             # ---------------- ĐÚNG / SAI (truefalse) ----------------
+                       # ---------------- TRẢ LỜI NGẮN (short) ----------------
             {
-                "id": 'de2_tf_03',
-                "type": 'truefalse',
-                "content": 'Cho hình chóp đều S.ABCD có \\( SA = 2 \\), \\( AB = 1 \\). Các nhận định sau đúng hay sai?',
-                "statements": [
-                    {"text": 'SA và CD không vuông góc nhau', "correct": True},
-                    {"text": 'Góc giữa SA và CD là \\( 30^\\circ \\)', "correct": False},
-                    {"text": 'Khoảng cách giữa SA và CD bằng 1', "correct": False},
+                "id": 'de2_sh_01',
+                "type": 'short',
+                "content": 'Một nhà máy sản xuất cần lắp đặt một đường ống dẫn nước từ trạm bơm A trên bờ biển (được coi là một đường thẳng) đến một giàn khoan B trên biển. Biết khoảng cách từ B đến bờ biển là \\( BH = 6 \\) km, và khoảng cách từ A đến H dọc theo bờ biển là \\( AH = 8 \\) km. Chi phí lắp đặt mỗi km đường ống trên bờ là 30.000 USD, và dưới biển là 50.000 USD. Người ta quyết định chọn một điểm M nằm trên đoạn AH để lắp đặt đường ống từ A đến M (trên bờ) và từ M đến B (dưới biển). Tính khoảng cách AM (theo km) để tổng chi phí lắp đặt là nhỏ nhất.',
+                "blanks": [
+                    {"label": 'AM =', "answers": ['3.5', '3,5', '7/2']},
                 ],
                 "points": 1,
-                "explanation": 'CD ∥ AB nên góc(SA,CD) = góc(SA,AB) = \\( \\widehat{SAB} \\). Tam giác SAB có \\( SA=SB=2 \\), \\( AB=1 \\), \\( \\cos\\widehat{SAB}=\\dfrac{4+1-4}{2\\cdot2\\cdot1}=\\dfrac{1}{4}>0 \\) nên \\( \\widehat{SAB}\\ne90^\\circ \\) (mệnh đề 1 Đúng), \\( \\widehat{SAB}\\approx75.5^\\circ\\ne30^\\circ \\) (mệnh đề 2 Sai). \\( d(SA,CD)=\\sqrt{\\dfrac{14}{15}}\\approx0.966\\ne1 \\) (mệnh đề 3 Sai).',
-            },
-            {
-                "id": 'de2_tf_04',
-                "type": 'truefalse',
-                "content": 'Trong không gian Oxyz, cho ba điểm \\( A(1;2;3) \\), \\( B(3;4;5) \\), \\( C(6;7;9) \\). Xét tính đúng/sai của các mệnh đề sau:',
-                "statements": [
-                    {"text": '\\( \\overrightarrow{AB} = (2; 2; 2) \\)', "correct": True},
-                    {"text": 'Ba điểm A, B, C thẳng hàng', "correct": False},
-                ],
-                "points": 1,
-                "explanation": '\\( \\overrightarrow{AB}=(2;2;2) \\) đúng theo định nghĩa toạ độ vector. \\( \\overrightarrow{AC}=(5;5;6) \\); tỉ lệ \\( \\dfrac{5}{2}=\\dfrac{5}{2}\\ne\\dfrac{6}{2} \\) nên \\( \\overrightarrow{AB}, \\overrightarrow{AC} \\) không cùng phương \\( \\Rightarrow \\) A, B, C không thẳng hàng.',
-            },
-            {
-                "id": 'de2_tf_05',
-                "type": 'truefalse',
-                "content": 'Kim tự tháp Louvre có dạng hình chóp tứ giác đều, cao 20.6 mét, đáy mỗi cạnh 35 mét. Xét tính đúng/sai của các mệnh đề sau:',
-                "statements": [
-                    {"text": 'Khoảng cách giữa đỉnh và mặt đất bằng 20.6 m', "correct": True},
-                    {"text": 'Cạnh bên của kim tự tháp vuông góc với mặt đất', "correct": False},
-                    {"text": 'Đáy của kim tự tháp là hình vuông', "correct": True},
-                ],
-                "points": 1,
-                "explanation": 'Khoảng cách đỉnh-đáy chính là chiều cao hình chóp = 20.6m (Đúng). Cạnh bên hình chóp đều tạo góc nhọn với đáy, không vuông góc (Sai). Đáy hình chóp tứ giác đều luôn là hình vuông (Đúng).',
-            },
+                "explanation": """Đặt \\( HM = x \\) (với \\( 0 \\le x \\le 8 \\)). Suy ra \\( AM = 8-x \\).
 
-            # ---------------- TRẢ LỜI NGẮN (short) ----------------
-            {
-                "id": 'de2_sh_06',
-                "type": 'short',
-                "content": 'Một hàng học sinh gồm 3 nam và 7 nữ được xếp thành 1 hàng ngang. Xác suất để không có bất kì 2 bạn nam nào đứng cạnh nhau (dạng phân số a/b):',
-                "blanks": [
-                    {"label": 'Xác suất =', "answers": ['7/15', '7 / 15']},
-                ],
-                "points": 1,
-                "explanation": 'Xếp 7 nữ: 7! cách, tạo 8 khoảng trống. Xếp 3 nam vào 8 khoảng: A(8,3) cách. P = 7!·A(8,3)/10! = 7/15.',
-            },
-            {
-                "id": 'de2_sh_07',
-                "type": 'short',
-                "content": 'Cho hình (H) giới hạn bởi \\( y = \\sqrt{4k^2-x^2} \\) \\( (k\\ge0) \\) và trục hoành. Thể tích khối tròn xoay khi quay (H) quanh Ox là V. Có bao nhiêu giá trị nguyên của k thoả \\( V < 6400\\pi \\)?',
-                "blanks": [
-                    {"label": 'Số giá trị nguyên', "answers": ['9']},
-                ],
-                "points": 1,
-                "explanation": '(H) là nửa hình tròn bán kính \\( 2k \\), quay quanh Ox tạo khối cầu: \\( V=\\dfrac{4}{3}\\pi(2k)^3 \\). \\( V<6400\\pi \\Leftrightarrow k^3<600 \\Leftrightarrow k<8.43 \\). Với k nguyên, \\( k\\ge0 \\): \\( k\\in\\{0,...,8\\} \\Rightarrow \\) 9 giá trị.',
-            },
-            {
-                "id": 'de2_sh_08',
-                "type": 'short',
-                "content": 'Cho tập A gồm các số có 3 chữ số tạo bởi {0,1,2,3,5}. Xác suất lấy được số có tổng các chữ số bằng 8 là a/b (tối giản). Tính 10a - b = ?',
-                "blanks": [
-                    {"label": '10a - b =', "answers": ['30']},
-                ],
-                "points": 1,
-                "explanation": 'n(Ω)=4·5·5=100. Bộ tổng 8: (5,3,0)→4 số, (5,2,1)→6 số, (3,3,2)→3 số ⇒ 13 số. P=13/100 ⇒ a=13,b=100 ⇒ 10a-b=30.',
-            },
-            {
-                "id": 'de2_sh_09',
-                "type": 'short',
-                "content": 'Cho tứ diện ABCD có AB, AC, AD đôi một vuông góc. Biết BD=BC=5, AC=4. M, N, P lần lượt là trung điểm BC, CD, BD. Thể tích tứ diện A.MNP bằng?',
-                "blanks": [
-                    {"label": 'Thể tích', "answers": ['2']},
-                ],
-                "points": 1,
-                "explanation": 'AB=3, AD=4 (Pytago). V(ABCD)=(1/6)·3·4·4=8. (MNP) đồng dạng (BCD) tỉ số 1/2 nên diện tích bằng 1/4, chiều cao từ A không đổi ⇒ V(A.MNP)=8/4=2.',
-            },
+Quãng đường ống dưới biển: \\( MB = \\sqrt{BH^2+HM^2} = \\sqrt{36+x^2} \\).
 
-            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
-            {
-                "id": 'de2_mc_02',
-                "type": 'mc4',
-                "content": 'Trong không gian Oxyz, có điểm \\( A(a,b,c) \\) và điểm \\( B(m,n,p) \\) di chuyển nhưng luôn thoả mãn: \\( a^2+b^2+c^2 = 9 \\) và \\( m^2+n^2+p^2 = 36 \\). Nhận định nào sau đây là SAI?',
-                "options": {
-                    'A': 'Điểm A thuộc một mặt cầu cố định.',
-                    'B': 'Độ dài ngắn nhất của AB là 3.',
-                    'C': 'Độ dài AB đạt cực tiểu \\( \\Leftrightarrow \\overrightarrow{OA} \\cdot \\overrightarrow{OB} = 36 \\).',
-                    'D': 'Độ dài AB đạt cực tiểu \\( \\Leftrightarrow \\) A là trung điểm OB.',
-                },
-                "correct": 'C',
-                "points": 1,
-                "explanation": 'A thuộc mặt cầu tâm O bán kính \\( R_1=3 \\); B thuộc mặt cầu tâm O bán kính \\( R_2=6 \\). AB nhỏ nhất khi O, A, B thẳng hàng cùng chiều: \\( AB_{min} = R_2-R_1 = 3 \\) (B đúng), khi đó A là trung điểm OB (D đúng), A thuộc mặt cầu cố định (A đúng). \\( \\overrightarrow{OA} \\cdot \\overrightarrow{OB} = |OA||OB|\\cos 0^\\circ = 3\\cdot6 = 18 \\ne 36 \\) nên C sai.',
-            },
-            {
-                "id": 'de2_mc_03',
-                "type": 'mc4',
-                "content": 'Cho mẫu A có phần tử lớn nhất là 378, nhỏ nhất là 310, trung bình 344, độ lệch chuẩn 12. Nếu mẫu B được tạo từ mẫu A bỏ đi 2 phần tử 378 và 310 thì nhận định nào sau đây đúng?',
-                "options": {
-                    'A': 'Mẫu B có trung bình lớn hơn A, độ lệch chuẩn lớn hơn A.',
-                    'B': 'Mẫu B có trung bình bé hơn A, độ lệch chuẩn lớn hơn A.',
-                    'C': 'Mẫu B có trung bình lớn hơn A, độ lệch chuẩn bé hơn A.',
-                    'D': 'Mẫu B có trung bình bằng A, độ lệch chuẩn bé hơn A.',
-                },
-                "correct": 'D',
-                "points": 1,
-                "explanation": '\\( 378+310=688=2\\cdot344 \\) nên trung bình mẫu B vẫn bằng 344. Hai giá trị bị loại cách xa trung bình (34 đơn vị, lớn hơn nhiều so với độ lệch chuẩn gốc 12) nên loại chúng làm giảm độ phân tán \\( \\Rightarrow \\) độ lệch chuẩn mẫu B bé hơn. Đáp án D.',
+Hàm tổng chi phí (đơn vị: chục nghìn USD):
+\\( f(x) = 3(8-x) + 5\\sqrt{36+x^2} \\)
+
+Đạo hàm: \\( f'(x) = -3 + \\dfrac{5x}{\\sqrt{36+x^2}} \\)
+
+Giải \\( f'(x)=0 \\):
+\\( \\dfrac{5x}{\\sqrt{36+x^2}} = 3 \\Leftrightarrow 5x = 3\\sqrt{36+x^2} \\)
+\\( \\Leftrightarrow 25x^2 = 9(36+x^2) \\Leftrightarrow 16x^2 = 324 \\)
+\\( \\Rightarrow x^2 = \\dfrac{324}{16} \\Rightarrow x = 4.5 \\) (thỏa mãn \\( x\\in[0;8] \\))
+
+Lập bảng biến thiên: tại \\( x=4.5 \\), hàm chi phí đạt cực tiểu.
+
+Khi đó \\( AM = 8-4.5 = 3.5 \\) km.""",
             },
 
             # ---------------- KÉO THẢ (dragdrop) ----------------
             {
-                "id": 'de2_dd_01',
-                "type": 'dragdrop',
-                "content": "Cho lăng trụ đều ABC.A'B'C' có \\( AB = 4 \\), \\( AA' = 3 \\). Kéo và thả các phương án lựa chọn thích hợp vào từng ô trống.",
-                "options_pool": ['12√3', '8√3', '4√3'],
+                "id": "de2_dd_02",
+                "type": "dragdrop",
+                "content": "Cho khối nón \\( (N) \\) có bán kính đáy \\( R = 3 \\) cm và chiều cao \\( h = 4 \\) cm. Một mặt cầu \\( (S) \\) được gọi là nội tiếp khối nón nếu nó tiếp xúc với mặt đáy và tất cả các đường sinh của nón. Hãy kéo thả các giá trị số phù hợp vào các đại lượng tương ứng dưới đây:",
+                "options_pool": [
+                    "\\( 1.5 \\)",
+                    "\\( 4.5\\pi \\)",
+                    "\\( 5 \\)",
+                    "\\( 15\\pi \\)",
+                    "\\( 12\\pi \\)"
+                ],
                 "blanks": [
-                    {"label": "V(ABC.A'B'C') =", "answer": '12√3'},
-                    {"label": "V(A.BCC'B') =", "answer": '8√3'},
+                    {"label": "Độ dài đường sinh l của khối nón bằng: (cm)", "answer": "5"},
+                    {"label": "Diện tích xung quanh của khối nón bằng: (cm²)", "answer": "15\\pi"},
+                    {"label": "Bán kính r của mặt cầu nội tiếp khối nón bằng: (cm)", "answer": "1.5"},
+                    {"label": "Thể tích của khối cầu nội tiếp bằng: (cm³)", "answer": "4.5\\pi"}
                 ],
                 "points": 1,
-                "explanation": "\\( S_{đáy}=\\dfrac{4^2\\sqrt3}{4}=4\\sqrt3 \\). \\( V_{lăng trụ}=4\\sqrt3\\cdot3=12\\sqrt3 \\). \\( V_{A.A'B'C'}=\\dfrac{1}{3}V_{lăng trụ}=4\\sqrt3 \\Rightarrow V_{A.BCC'B'}=12\\sqrt3-4\\sqrt3=8\\sqrt3 \\).",
+                "explanation": """Đường sinh: \\( l = \\sqrt{R^2+h^2} = \\sqrt{3^2+4^2} = 5 \\).
+
+Diện tích xung quanh nón: \\( S_{xq} = \\pi R l = \\pi\\cdot 3\\cdot 5 = 15\\pi \\).
+
+Bán kính mặt cầu nội tiếp nón chính là bán kính đường tròn nội tiếp tam giác cân có đáy \\( 2R=6 \\) và cạnh bên \\( l=5 \\).
+
+Nửa chu vi: \\( p = \\dfrac{5+5+6}{2} = 8 \\).
+
+Diện tích tam giác cắt ngang: \\( S = \\dfrac{1}{2}\\cdot 2R\\cdot h = \\dfrac{1}{2}\\cdot 6\\cdot 4 = 12 \\).
+
+Bán kính cầu: \\( r = \\dfrac{S}{p} = \\dfrac{12}{8} = 1.5 \\) (hoặc dùng công thức \\( r=\\dfrac{R\\cdot h}{R+l} \\)).
+
+Thể tích khối cầu nội tiếp: \\( V = \\dfrac{4}{3}\\pi r^3 = \\dfrac{4}{3}\\pi(1.5)^3 = 4.5\\pi \\).""",
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de2_tf_03",
+                "type": "truefalse",
+                "content": "Một hộp chứa 10 quả cầu màu Đỏ, 8 quả cầu màu Xanh và 6 quả cầu màu Vàng. Các quả cầu chỉ khác nhau về màu sắc. Lấy ngẫu nhiên đồng thời 4 quả cầu từ hộp. Các nhận định sau đây là Đúng hay Sai?",
+                "statements": [
+                    {"text": "Không gian mẫu của phép thử có số phần tử là \\( C_{24}^4 = 10626 \\).", "correct": True},
+                    {"text": "Số cách lấy được 4 quả cầu không có màu Vàng là 3060.", "correct": True},
+                    {"text": "Xác suất để 4 quả cầu lấy ra có đúng 2 màu là \\( \\dfrac{5291}{10626} \\).", "correct": True},
+                    {"text": "Xác suất để lấy được ít nhất 1 quả cầu Đỏ là \\( \\dfrac{9625}{10626} \\).", "correct": True}
+                ],
+                "points": 1,
+                "explanation": """a) Tổng số quả cầu là \\( 10+8+6=24 \\). Lấy ngẫu nhiên 4 quả, số phần tử không gian mẫu \\( n(\\Omega) = C_{24}^4 = 10626 \\) \\( \\Rightarrow \\) Đúng.
+
+b) Lấy 4 quả không có màu Vàng tức là chỉ lấy từ 18 quả Đỏ và Xanh. Số cách là \\( C_{18}^4 = 3060 \\) \\( \\Rightarrow \\) Đúng.
+
+c) Dùng phần bù: \\( n(\\text{2 màu}) = n(\\Omega) - n(\\text{1 màu}) - n(\\text{3 màu}) \\).
+
+Số cách lấy 4 quả cùng 1 màu: \\( C_{10}^4+C_8^4+C_6^4 = 210+70+15=295 \\).
+
+Số cách lấy 4 quả có đủ 3 màu (dạng 2-1-1):
+\\( C_{10}^2C_8^1C_6^1 + C_{10}^1C_8^2C_6^1 + C_{10}^1C_8^1C_6^2 = 45\\cdot48 + 10\\cdot28\\cdot6 + 10\\cdot8\\cdot15 = 5040 \\).
+
+Số cách lấy 4 quả có đúng 2 màu: \\( 10626-295-5040=5291 \\). Xác suất \\( P=\\dfrac{5291}{10626} \\) \\( \\Rightarrow \\) Đúng.
+
+d) Dùng biến cố đối "không lấy được quả Đỏ nào" (chỉ lấy trong 14 quả Xanh và Vàng). Số cách: \\( C_{14}^4 = 1001 \\). Số cách lấy ít nhất 1 Đỏ: \\( 10626-1001=9625 \\). \\( P=\\dfrac{9625}{10626} \\) \\( \\Rightarrow \\) Đúng.""",
+            },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de2_mc_04',
+                "type": 'mc4',
+                "content": 'Trong vật lý, mức cường độ âm L (đơn vị: dB) được tính bởi công thức \\( L = 10\\log\\left(\\dfrac{I}{I_0}\\right) \\), với I là cường độ âm và \\( I_0 \\) là cường độ âm chuẩn. Một người đứng cách một chiếc loa 10 m thì đo được mức cường độ âm là 80 dB. Giả sử sóng âm truyền đẳng hướng trong không gian và bỏ qua sự hấp thụ âm của môi trường (khi đó cường độ âm I tỉ lệ nghịch với bình phương khoảng cách từ nguồn tới điểm đo). Hỏi người đó phải di chuyển ra xa chiếc loa thêm bao nhiêu mét nữa để mức cường độ âm giảm xuống còn 60 dB?',
+                "options": {
+                    'A': '20 m',
+                    'B': '90 m',
+                    'C': '100 m',
+                    'D': '50 m',
+                },
+                "correct": 'B',
+                "points": 1,
+                "explanation": """Hiệu hai mức cường độ âm:
+\\( L_1 - L_2 = 10\\log\\left(\\dfrac{I_1}{I_0}\\right) - 10\\log\\left(\\dfrac{I_2}{I_0}\\right) = 10\\log\\left(\\dfrac{I_1}{I_2}\\right) \\)
+
+Thay số: \\( 80-60=10\\log\\left(\\dfrac{I_1}{I_2}\\right) \\Leftrightarrow 20=10\\log\\left(\\dfrac{I_1}{I_2}\\right) \\Leftrightarrow \\log\\left(\\dfrac{I_1}{I_2}\\right)=2 \\Leftrightarrow \\dfrac{I_1}{I_2}=100 \\).
+
+Do cường độ âm tỉ lệ nghịch với bình phương khoảng cách:
+\\( \\dfrac{I_1}{I_2} = \\left(\\dfrac{d_2}{d_1}\\right)^2 \\Leftrightarrow 100=\\left(\\dfrac{d_2}{10}\\right)^2 \\Rightarrow \\dfrac{d_2}{10}=10 \\Rightarrow d_2=100 \\) (m)
+
+Khoảng cách mới là 100 m. Vậy người đó cần di chuyển ra xa thêm: \\( 100-10=90 \\) m. Đáp án B.""",
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de2_sh_05',
+                "type": 'short',
+                "content": 'Trong hệ trục tọa độ Oxyz, cho mặt cầu \\( (S) \\) có tâm \\( I(1;-2;3) \\), bán kính \\( R=5 \\) và đường thẳng d có phương trình: \\( d: \\dfrac{x-1}{2} = \\dfrac{y+1}{1} = \\dfrac{z-2}{-2} \\). Biết đường thẳng d cắt mặt cầu (S) tại hai điểm phân biệt A và B. Tính diện tích tam giác IAB.',
+                "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau05-de2.PNG",
+                "blanks": [
+                    {"label": 'S_IAB =', "answers": ['2√6', '2\\sqrt{6}']},
+                ],
+                "points": 1,
+                "explanation": """Mặt cầu có tâm \\( I(1;-2;3) \\) và bán kính \\( R=5 \\). Đường thẳng d đi qua \\( M(1;-1;2) \\) và có VTCP \\( \\vec{u}=(2;1;-2) \\).
+
+Tính vector \\( \\vec{IM} = (0;1;-1) \\).
+
+Tích có hướng \\( [\\vec{IM},\\vec{u}] = (-1;-2;-2) \\).
+
+Khoảng cách từ I đến d (đường cao IH của tam giác IAB):
+\\( IH = \\dfrac{|[\\vec{IM},\\vec{u}]|}{|\\vec{u}|} = \\dfrac{\\sqrt{(-1)^2+(-2)^2+(-2)^2}}{\\sqrt{2^2+1^2+(-2)^2}} = \\dfrac{\\sqrt9}{\\sqrt9} = 1 \\)
+
+Áp dụng định lý Pytago trong tam giác vuông IHA:
+\\( HA = \\sqrt{IA^2-IH^2} = \\sqrt{R^2-IH^2} = \\sqrt{25-1} = \\sqrt{24} = 2\\sqrt6 \\)
+
+Suy ra độ dài dây cung \\( AB = 2HA = 4\\sqrt6 \\).
+
+Diện tích tam giác IAB:
+\\( S_{IAB} = \\dfrac12\\cdot IH\\cdot AB = \\dfrac12\\cdot 1\\cdot 4\\sqrt6 = 2\\sqrt6 \\).""",
             },
         ],
     },
