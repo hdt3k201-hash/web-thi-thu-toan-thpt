@@ -3660,6 +3660,7 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
         "points": 1,
         "explanation": "Theo tính chất cấp số cộng, ta có:\n\\( u_4 + u_{17} = (u_1 + 3d) + (u_1 + 16d) = 2u_1 + 19d = 16 \\).\nMặt khác, tổng 20 số hạng đầu tiên là:\n\\( S_{20} = \\dfrac{20(2u_1 + (20-1)d)}{2} = 10(2u_1 + 19d) = 10 \\cdot 16 = 160 \\)."
     }
+          
 
     
 
