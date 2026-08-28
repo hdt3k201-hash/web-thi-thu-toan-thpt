@@ -217,8 +217,89 @@ EXAMS = [
                 "points": 1,
                 "explanation": "Độ dài các đoạn lập thành cấp số nhân \\( L_n = 12\\cdot(2/3)^{n-1} \\). Tổng quãng đường: \\( \\sum L_n = \\dfrac{12}{1-2/3} = 36 \\) cm. Hướng di chuyển lặp chu kỳ 4 (Đông, Bắc, Tây, Nam) do mỗi bước quay trái 90°. Hoành độ: \\( X = L_1 - L_3 + L_5 - \\cdots = 12\\left[1-(2/3)^2+(2/3)^4-\\cdots\\right] = 12\\cdot\\dfrac{1}{1+4/9} = 12\\cdot\\dfrac{9}{13} = \\dfrac{108}{13} \\). Tung độ: \\( Y = L_2 - L_4 + L_6 - \\cdots = 12\\cdot\\dfrac23\\cdot\\dfrac{9}{13} = \\dfrac{72}{13} \\).",
             },
-        ],
-    },
+
+                      # ================== TRẮC NGHIỆM 4 LỰA CHỌN (mc4) - tiếp ==================
+            {
+                "id": 'de_tsa11_mc_02',
+                "type": 'mc4',
+                "content": ' Một bài thi trắc nghiệm Toán học có 10 câu hỏi khó, mỗi câu có 4 đáp án và chỉ có 1 đáp án đúng. Trả lời đúng được 1 điểm, trả lời sai bị trừ 0.25 điểm. Học sinh C tự tin làm chắc chắn đúng 6 câu đầu tiên. Trong 4 câu còn lại, có 2 câu C loại bỏ được 2 phương án chắc chắn sai (rồi chọn ngẫu nhiên trong 2 phương án còn lại); 2 câu C không biết gì nên khoanh bừa cả 4 phương án. Tính xác suất để C đạt từ 8 điểm trở lên.',
+                "options": {
+                    'A': '3/32',
+                    'B': '9/64',
+                    'C': '11/64',
+                    'D': '5/32',
+                },
+                "correct": 'B',
+                "points": 1,
+                "explanation": 'Điểm chắc chắn từ 6 câu đầu = 6. Cần điểm của 4 câu còn lại \\( \\ge 2 \\). Gọi \\(c_A\\) = số câu đúng trong 2 câu "loại 2 phương án" (mỗi câu đúng với xác suất 1/2), \\(c_B\\) = số câu đúng trong 2 câu "khoanh bừa 4 phương án" (mỗi câu đúng với xác suất 1/4). Điểm 4 câu này \\( = 1{,}25(c_A+c_B) - 1 \\ge 2 \\Leftrightarrow c_A+c_B \\ge 2{,}4 \\Leftrightarrow c_A+c_B \\ge 3\\). Với \\(c_A\\sim B(2;1/2)\\): \\(P(0)=1/4, P(1)=1/2, P(2)=1/4\\). Với \\(c_B\\sim B(2;1/4)\\): \\(P(0)=9/16, P(1)=3/8, P(2)=1/16\\). \\(P(c_A+c_B=4) = P(2,2)=\\frac14\\cdot\\frac1{16}=\\frac1{64}\\). \\(P(c_A+c_B=3)=P(1,2)+P(2,1)=\\frac12\\cdot\\frac1{16}+\\frac14\\cdot\\frac38=\\frac1{32}+\\frac3{32}=\\frac4{32}=\\frac{8}{64}\\). Tổng \\( = \\frac1{64}+\\frac8{64}=\\frac9{64}\\). Đáp án B.',
+            },
+
+            # ================== ĐÚNG / SAI (truefalse) - tiếp ==================
+            {
+                "id": 'de_tsa11_tf_02',
+                "type": 'truefalse',
+                "content": ' Một bệnh nhân được tiêm một liều thuốc 100 mg vào lúc 8h00 sáng. Biết rằng cứ sau mỗi giờ, lượng thuốc trong cơ thể bị đào thải 20% so với giờ trước đó. Để duy trì nồng độ thuốc, bắt đầu từ 9h00 sáng, cứ mỗi giờ bệnh nhân lại được tiêm bổ sung thêm 10 mg thuốc. Gọi \\( u_n \\) là lượng thuốc trong cơ thể bệnh nhân ngay sau lần tiêm thứ \\( n \\) (với \\( n=1 \\) tương ứng lúc 8h00 sáng). Xét tính Đúng/Sai của các mệnh đề sau:',
+                "statements": [
+                    {"text": 'Lượng thuốc trong cơ thể ngay sau lần tiêm thứ 3 (lúc 10h00 sáng) là 82 mg', "correct": True},
+                    {"text": 'Công thức tổng quát của lượng thuốc sau lần tiêm thứ n là \\( u_n = 50\\cdot(0.8)^{n-1}+50 \\)', "correct": True},
+                    {"text": 'Kể từ sau 24 giờ, lượng thuốc trong cơ thể sẽ tụt xuống dưới mức 50 mg', "correct": False},
+                    {"text": 'Nếu quá trình tiêm này kéo dài vô hạn, lượng thuốc trong cơ thể bệnh nhân sẽ tiến dần về mức 0 mg', "correct": False},
+                ],
+                "points": 1,
+                "explanation": 'Đệ quy: \\( u_{n+1}=0.8u_n+10,\\ u_1=100 \\). Điểm cân bằng \\( L=0.8L+10\\Rightarrow L=50 \\). Đặt \\( v_n=u_n-50\\Rightarrow v_n=v_1\\cdot0.8^{n-1}=50\\cdot0.8^{n-1}\\Rightarrow u_n=50\\cdot0.8^{n-1}+50\\). (a) \\( u_1=100,u_2=0.8\\cdot100+10=90,u_3=0.8\\cdot90+10=82\\) mg \\(\\Rightarrow\\) Đúng. (b) Đúng công thức vừa suy ra \\(\\Rightarrow\\) Đúng. (c) Vì \\(50\\cdot0.8^{n-1}>0\\) với mọi \\(n\\), nên \\(u_n>50\\) luôn đúng, không bao giờ tụt dưới 50 mg \\(\\Rightarrow\\) Sai. (d) Giới hạn \\( \\lim u_n = 50 \\ne 0 \\Rightarrow\\) Sai.',
+            },
+
+            # ================== TRẢ LỜI NGẮN (short) - tiếp ==================
+            {
+                "id": 'de_tsa11_sh_02',
+                "type": 'short',
+                "content": ' Cho hàm số \\( f(x) = x^3 - 3x^2 + 2 \\) có đồ thị (C). Qua điểm \\( M(m; 2) \\) có thể kẻ được đúng 3 tiếp tuyến đến đồ thị (C), trong đó có đúng 2 tiếp tuyến vuông góc với nhau. Giá trị của tham số m bằng bao nhiêu? (Điền đáp án dưới dạng phân số tối giản).',
+                "blanks": [
+                    {"label": 'm =', "answers": ['-1/27']},
+                ],
+                "points": 1,
+                "explanation": 'Tiếp tuyến tại \\(t\\): \\(y=f(t)+f\'(t)(x-t)\\), với \\(f\'(t)=3t^2-6t\\). Qua M(m;2): \\(2=f(t)+f\'(t)(m-t)\\), rút gọn được \\(t\\big[2t^2-3(1+m)t+6m\\big]=0\\). Vậy \\(t=0\\) (tiếp tuyến ngang \\(y=2\\)) và 2 nghiệm \\(t_1,t_2\\) của \\(2t^2-3(1+m)t+6m=0\\) (tổng \\(s=t_1+t_2=\\frac{3(1+m)}{2}\\), tích \\(p=t_1t_2=3m\\)) cho đủ 3 tiếp tuyến phân biệt. Vì tiếp tuyến tại \\(t=0\\) có hệ số góc 0 nên không thể vuông góc với tiếp tuyến nào khác (cần hệ số góc kia là vô cực) \\(\\Rightarrow\\) cặp vuông góc duy nhất phải là \\((t_1,t_2)\\): \\(f\'(t_1)f\'(t_2)=-1\\). Có \\(f\'(t)=3t(t-2)\\Rightarrow f\'(t_1)f\'(t_2)=9p(p-2s+4)\\). Thay \\(p=3m,\\ s=\\frac{3(1+m)}2\\) được \\(p-2s+4=3m-3(1+m)+4=1\\) (hằng số!) \\(\\Rightarrow f\'(t_1)f\'(t_2)=9p=27m=-1\\Rightarrow m=-\\dfrac1{27}\\). Kiểm tra \\(\\Delta=9(1+m)^2-48m=\\dfrac{820}{81}>0\\) (2 nghiệm phân biệt, khác 0) \\(\\Rightarrow\\) thỏa mãn.',
+            },
+            {
+                "id": 'de_tsa11_sh_03',
+                "type": 'short',
+                "content": ' Lấy ngẫu nhiên một ước số nguyên dương của số \\( M = 2^{10}\\cdot 3^{15}\\cdot 5^{20} \\). Xác suất để ước số được chọn là lập phương của một số tự nhiên (tức là có dạng \\( k^3 \\) với \\( k \\in \\mathbb{N} \\)) có thể viết dưới dạng phân số tối giản là \\( \\dfrac{a}{b} \\). Tính giá trị của biểu thức \\( S = a + b \\).',
+                "blanks": [
+                    {"label": 'S = a + b =', "answers": ['23']},
+                ],
+                "points": 1,
+                "explanation": 'Tổng số ước của M: \\((10+1)(15+1)(20+1)=11\\cdot16\\cdot21=3696\\). Ước dạng \\(2^a3^b5^c\\) là lập phương \\(\\Leftrightarrow a,b,c\\) đều chia hết cho 3: \\(a\\in\\{0,3,6,9\\}\\) (4 giá trị, do \\(a\\le10\\)); \\(b\\in\\{0,3,...,15\\}\\) (6 giá trị); \\(c\\in\\{0,3,...,18\\}\\) (7 giá trị, do \\(c\\le20\\)). Số ước lập phương \\(=4\\cdot6\\cdot7=168\\). Xác suất \\(=\\dfrac{168}{3696}=\\dfrac{1}{22}\\Rightarrow a=1,b=22\\Rightarrow S=23\\).',
+            },
+            {
+                "id": 'de_tsa11_sh_04',
+                "type": 'short',
+                "content": ' Cho phương trình lượng giác: \\( \\sqrt{1-\\sin 2x} + \\sqrt{1+\\sin 2x} = 2\\sqrt{2}\\cos x \\). Hỏi trên đoạn \\( [-100\\pi; 100\\pi] \\), phương trình đã cho có tất cả bao nhiêu nghiệm phân biệt?',
+                "blanks": [
+                    {"label": 'Số nghiệm =', "answers": ['200']},
+                ],
+                "points": 1,
+                "explanation": 'Do \\(1\\mp\\sin2x=(\\sin x\\mp\\cos x)^2\\) nên VT \\(=|\\sin x-\\cos x|+|\\sin x+\\cos x|=2\\max(|\\sin x|,|\\cos x|)\\) (đẳng thức \\(|a-b|+|a+b|=2\\max(|a|,|b|)\\)). PT trở thành \\(\\max(|\\sin x|,|\\cos x|)=\\sqrt2\\cos x\\), suy ra cần \\(\\cos x\\ge0\\). Nếu \\(|\\cos x|\\ge|\\sin x|\\): \\(\\cos x=\\sqrt2\\cos x\\Rightarrow\\cos x=0\\), vô lý (mâu thuẫn giả thiết). Nếu \\(|\\sin x|\\ge|\\cos x|\\): \\(|\\sin x|=\\sqrt2\\cos x\\), kết hợp \\(\\sin^2x+\\cos^2x=1\\Rightarrow3\\cos^2x=1\\Rightarrow\\cos x=\\dfrac1{\\sqrt3}\\) (nhận vì \\(\\ge0\\)), \\(|\\sin x|=\\dfrac{\\sqrt6}{3}\\) (thỏa điều kiện \\(|\\sin x|\\ge|\\cos x|\\)). Vậy nghiệm: \\(x=\\pm\\alpha+2k\\pi\\) với \\(\\alpha=\\arccos\\dfrac1{\\sqrt3}\\in(0;\\frac\\pi2)\\) — đúng 2 nghiệm mỗi chu kỳ \\(2\\pi\\). Đoạn \\([-100\\pi;100\\pi]\\) có độ dài \\(200\\pi=100\\) chu kỳ trọn vẹn \\(\\Rightarrow\\) tổng số nghiệm \\(=100\\times2=200\\).',
+            },
+
+            # ================== KÉO THẢ (dragdrop) - tiếp ==================
+            {
+                "id": 'de_tsa11_dd_02',
+                "type": 'dragdrop',
+                "content": " Cho hình chóp S.ABC có đáy ABC là tam giác vuông cân tại B, với cạnh AB = a. Cạnh bên SA vuông góc với mặt phẳng đáy (ABC) và SA = a√2. Kéo và thả các kết quả sau vào các ô tương ứng:",
+                "options_pool": ['a√6/3', '60°', 'a√3/3', '1/3', 'arccos(√3/3)'],
+                "blanks": [
+                    {"label": 'Số đo góc tạo bởi hai mặt phẳng (SBC) và (SAC) là:', "answer": 'arccos(√3/3)'},
+                    {"label": 'Khoảng cách từ đỉnh A đến mặt phẳng (SBC) bằng:', "answer": 'a√6/3'},
+                    {"label": 'Số đo góc tạo bởi hai đường thẳng chéo nhau SC và AB là:', "answer": '60°'},
+                ],
+                "points": 1,
+                "explanation": "Chọn hệ trục: B(0,0,0), A(a,0,0), C(0,a,0) (vuông cân tại B), S(a,0,a√2) (do SA⊥đáy). \\(\\bullet\\) Góc 2 mp (SAC),(SBC): pháp tuyến \\((SAC)\\): \\(\\vec{n_1}=\\vec{AS}\\times\\vec{AC}=(0,0,a\\sqrt2)\\times(-a,a,0) \\propto(1,1,0)\\); pháp tuyến \\((SBC)\\): \\(\\vec{n_2}=\\vec{BS}\\times\\vec{BC}=(a,0,a\\sqrt2)\\times(0,a,0)\\propto(-\\sqrt2,0,1)\\). \\(\\cos\\varphi=\\dfrac{|\\vec{n_1}\\cdot\\vec{n_2}|}{|\\vec{n_1}||\\vec{n_2}|}=\\dfrac{\\sqrt2}{\\sqrt2\\cdot\\sqrt3}=\\dfrac1{\\sqrt3}=\\dfrac{\\sqrt3}{3}\\Rightarrow\\varphi=\\arccos\\dfrac{\\sqrt3}{3}\\). \\(\\bullet\\) Mặt (SBC) qua B với pháp tuyến \\((-\\sqrt2,0,1)\\): \\(-\\sqrt2x+z=0\\). \\(d(A,(SBC))=\\dfrac{|-\\sqrt2\\cdot a|}{\\sqrt3}=\\dfrac{a\\sqrt2}{\\sqrt3}=\\dfrac{a\\sqrt6}{3}\\). \\(\\bullet\\) \\(\\vec{SC}=(-a,a,-a\\sqrt2)\\), \\(\\vec{AB}=(-a,0,0)\\): \\(\\cos\\theta=\\dfrac{|\\vec{SC}\\cdot\\vec{AB}|}{|\\vec{SC}||\\vec{AB}|}=\\dfrac{a^2}{2a\\cdot a}=\\dfrac12\\Rightarrow\\theta=60^\\circ\\).",
+            },
+
+
+          
+        ],   # kết thúc hết 1 đề
+    },      # kết thúc hết 1 đề
     {
         "id": 'de2',
         "name": 'Đề số 2 - Hình học & Xác suất',
