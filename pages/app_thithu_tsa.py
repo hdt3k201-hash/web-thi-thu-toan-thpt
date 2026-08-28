@@ -2909,232 +2909,129 @@ $|\\vec{OI}| = \\sqrt{4^2 + (-4)^2 + 2^2} = \\sqrt{16+16+4} = \\sqrt{36} = 6$.""
     },
      ], # kết thúc đề 3
     },  # kết thúc đề 3
-    {
-        "id": 'de3',
-        "name": 'Đề số 4 - ĐỀ CHÍNH THỨC TSA ĐỢT 2 - 2026.',
-        "description": ' câu hỏi.',
+   {
+        "id": "de4",
+        "name": "Đề số 4 - ĐỀ CHÍNH THỨC TSA ĐỢT 2 - 2026.",
+        "description": "Câu hỏi.",
         "questions": [
+            # ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+                "id": "de4_dd_01",
+                "type": "dragdrop",
+                "content": "Cho tập hợp \\( A=\\{1;2;3;4;5;6;7;8\\} \\). Chọn ngẫu nhiên một tập con của tập A. Biết xác suất để tập con được chọn có chứa đồng thời cả hai phần tử 1 và 2 là phân số tối giản \\( \\dfrac{a}{b} \\).\nKéo và thả phương án thích hợp vào ô trống:",
+                "options_pool": [
+                    "-1",
+                    "1",
+                    "-4",
+                    "-3"
+                ],
+                "blanks": [
+                    {"label": "Giá trị của biểu thức \\( T=a-b \\) bằng", "answer": "-3"}
+                ],
+                "points": 1,
+                "explanation": "Tập hợp A có 8 phần tử.\nSố tập con của A là: \\( 2^8 = 256 \\).\nGọi X là biến cố \"tập con được chọn chứa đồng thời cả hai phần tử 1 và 2\".\nSố tập con chứa 1 và 2 được tạo thành bằng cách kết hợp tập \\( \\{1; 2\\} \\) với các tập con của tập 6 phần tử còn lại.\nDo đó, số tập con chứa 1 và 2 là: \\( 2^6 = 64 \\).\nXác suất của biến cố X là: \\( P(X) = \\dfrac{64}{256} = \\dfrac{1}{4} \\).\nVì phân số này tối giản nên \\( a = 1, b = 4 \\).\nGiá trị của biểu thức \\( T = a - b = 1 - 4 = -3 \\)."
+            },
+            
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de4_tf_02",
+                "type": "truefalse",
+                "content": "Cho một khối đa diện (H) có tất cả các mặt đều là hình tam giác. Xét tính Đúng/Sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "Số mặt của đa diện (H) là một số không chia hết cho 3.", "correct": False},
+                    {"text": "Số cạnh của đa diện (H) luôn luôn là một số chẵn.", "correct": False},
+                    {"text": "Số mặt của khối đa diện này luôn nhiều hơn số cạnh.", "correct": False}
+                ],
+                "points": 1,
+                "explanation": "Gọi M, C lần lượt là số mặt và số cạnh của khối đa diện.\nVì mỗi mặt là một tam giác nên tổng số các cạnh của tất cả các mặt là \\( 3M \\).\nMỗi cạnh của đa diện là cạnh chung của đúng hai mặt, nên ta có phương trình: \\( 3M = 2C \\).\n\na) Từ \\( 3M = 2C \\), suy ra M phải là số chẵn. M hoàn toàn có thể bằng 6 (ví dụ: khối chóp tam giác kép), khi đó 6 chia hết cho 3. Vậy mệnh đề a Sai.\n\nb) Từ \\( 3M = 2C \\) ta có \\( C = \\dfrac{3M}{2} \\). Với \\( M = 6 \\), ta có \\( C = 9 \\) là số lẻ. Vậy mệnh đề b Sai.\n\nc) Theo công thức Euler đối với đa diện lồi \\( Đ - C + M = 2 \\) và từ \\( C = 1.5M \\), ta luôn có \\( C > M \\). Vậy số mặt luôn ít hơn số cạnh. Mệnh đề c Sai."
+            },
 
-          # ---------------- KÉO THẢ (dragdrop) ----------------
-    {
-        "id": "de4_dd_01",
-        "type": "dragdrop",
-        "content": "Cho tập hợp \\(A=\\{1;2;3;4;5;6;7;8\\} \\). Chọn ngẫu nhiên một tập con của tập A. Biết xác suất để tập con được chọn có chứa đồng thời cả hai phần tử 1 và 2 là phân số tối giản \\(\\dfrac{a}{b} \\).\nKéo và thả phương án thích hợp vào ô trống:",
-        "options_pool": [
-            "-1",
-            "1",
-            "-4",
-            "-3"
-        ],
-        "blanks": [
-            {"label": "Giá trị của biểu thức \\( T=a-b \\) bằng", "answer": "-3"}
-        ],
-        "points": 1,
-        "explanation": """Tập hợp A có 8 phần tử.\nSố tập con của A là: \\( 2^8 = 256 \\).\nGọi X là biến cố "tập con được chọn chứa đồng thời cả hai phần tử 1 và 2".\nSố tập con chứa 1 và 2 được tạo thành bằng cách kết hợp tập \\(\\{1; 2\\} \\) với các tập con của tập 6 phần tử còn lại.\nDo đó, số tập con chứa 1 và 2 là: \\( 2^6 = 64 \\).\nXác suất của biến cố X là: \\(P(X) = \\dfrac{64}{256} = \\dfrac{1}{4} \\).\nVì phân số này tối giản nên \\( a = 1, b = 4 \\).\nGiá trị của biểu thức \\( T = a - b = 1 - 4 = -3 \\)."""
-    },
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": "de4_mc_03",
+                "type": "mc4",
+                "content": "Có 12 cây bút có chiều dài lập thành một cấp số cộng. Biết rằng cây bút thứ nhất dài 48 cm và cây thứ ba dài 42 cm. Cây bút cuối cùng trong bộ sưu tập này có chiều dài bằng bao nhiêu?",
+                "options": {
+                    "A": "12",
+                    "B": "15",
+                    "C": "16",
+                    "D": "18"
+                },
+                "correct": "B",
+                "points": 1,
+                "explanation": "Gọi cấp số cộng có số hạng đầu là \\( u_1 \\) và công sai là \\( d \\).\nTheo đề bài: \\( u_1 = 48 \\) và \\( u_3 = 42 \\).\nTa có: \\( u_3 = u_1 + 2d \\Rightarrow 48 + 2d = 42 \\Rightarrow 2d = -6 \\Rightarrow d = -3 \\).\nCây bút cuối cùng là cây thứ 12 nên có chiều dài là:\n\\( u_{12} = u_1 + 11d = 48 + 11(-3) = 15 \\) (cm).\nVậy đáp án là B."
+            },
 
-    # ---------------- ĐÚNG / SAI (truefalse) ----------------
-    {
-        "id": "de4_tf_02",
-        "type": "truefalse",
-        "content": "Cho một khối đa diện (H) có tất cả các mặt đều là hình tam giác. Xét tính Đúng/Sai của các mệnh đề sau:",
-        "statements": [
-            {"text": "Số mặt của đa diện (H) là một số không chia hết cho 3.", "correct": False},
-            {"text": "Số cạnh của đa diện (H) luôn luôn là một số chẵn.", "correct": False},
-            {"text": "Số mặt của khối đa diện này luôn nhiều hơn số cạnh.", "correct": False}
-        ],
-        "points": 1,
-        "explanation": """Gọi M, C lần lượt là số mặt và số cạnh của khối đa diện.\nVì mỗi mặt là một tam giác nên tổng số các cạnh của tất cả các mặt là \\( 3M \\).\nMỗi cạnh của đa diện là cạnh chung của đúng hai mặt, nên ta có phương trình: \\( 3M = 2C \\).\n\na) Từ \\( 3M = 2C \\), suy ra M phải là số chẵn. M hoàn toàn có thể bằng 6 (ví dụ: khối chóp tam giác kép), khi đó 6 chia hết cho 3. Vậy mệnh đề a Sai.\n\nb) Từ \\( 3M = 2C \\) ta có \\(C = \\dfrac{3M}{2} \\). Với \\( M = 6 \\), ta có \\( C = 9 \\) là số lẻ. Vậy mệnh đề b Sai.\n\nc) Theo công thức Euler đối với đa diện lồi \\( Đ - C + M = 2 \\) và từ \\( C = 1.5M \\), ta luôn có \\( C > M \\). Vậy số mặt luôn ít hơn số cạnh. Mệnh đề c Sai."""
-    },
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": "de4_sh_04",
+                "type": "short",
+                "content": "Một cửa hàng văn phòng phẩm bán loại bút A với giá nhập là 15.000 VNĐ và giá bán ra ban đầu là 20.000 VND. Trung bình mỗi tháng bán được 200 chiếc. Qua khảo sát, cứ mỗi lần giảm giá bán 500 VND thì số lượng bán ra tăng thêm 50 chiếc mỗi tháng. Để lợi nhuận đạt giá trị lớn nhất thì: Giá bán khi đó là [blank] nghìn đồng, ứng với [blank] lần giảm giá.",
+                "blanks": [
+                    {"label": "Giá bán khi đó là (nghìn đồng):", "answers": ["18.5", "18,5"]},
+                    {"label": "Số lần giảm giá:", "answers": ["3"]}
+                ],
+                "points": 1,
+                "explanation": "Gọi x là số lần giảm giá (\\( x > 0 \\)).\nGiá bán mới là \\( 20000 - 500x \\) (VND).\nLợi nhuận thu được cho 1 chiếc bút là: \\( 20000 - 500x - 15000 = 5000 - 500x \\) (VND).\nSố lượng bút bán ra là: \\( 200 + 50x \\) (chiếc).\nTổng lợi nhuận mỗi tháng là:\n\\( P(x) = (5000 - 500x)(200 + 50x) = 25000(10 - x)(4 + x) \\).\nÁp dụng tính chất của parabol, hàm số \\( f(x) = (10-x)(4+x) \\) đạt GTLN tại đỉnh \\( x = \\dfrac{10 + (-4)}{2} = 3 \\).\nVậy cần giảm giá 3 lần.\nGiá bán khi đó là: \\( 20000 - 3 \\times 500 = 18500 \\) VND = 18,5 nghìn đồng."
+            },
 
-    # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
-    {
-        "id": "de4_mc_03",
-        "type": "mc4",
-        "content": "Có 12 cây bút có chiều dài lập thành một cấp số cộng. Biết rằng cây bút thứ nhất dài 48 cm và cây thứ ba dài 42 cm. Cây bút cuối cùng trong bộ sưu tập này có chiều dài bằng bao nhiêu?",
-        "options": {
-            "A": "12",
-            "B": "15",
-            "C": "16",
-            "D": "18"
-        },
-        "correct": "B",
-        "points": 1,
-        "explanation": """Gọi cấp số cộng có số hạng đầu là \\( u_1 \\) và công sai là \\( d \\).\nTheo đề bài: \\( u_1 = 48 \\) và \\( u_3 = 42 \\).\nTa có: \\( u_3 = u_1 + 2d \\Rightarrow 48 + 2d = 42 \\Rightarrow 2d = -6 \\Rightarrow d = -3 \\).\nCây bút cuối cùng là cây thứ 12 nên có chiều dài là:\n\\( u_{12} = u_1 + 11d = 48 + 11(-3) = 15 \\) (cm).\nVậy đáp án là B."""
-    },
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": "de4_sh_05",
+                "type": "short",
+                "content": "Cho tập hợp \\( S=\\{1,2,3,...,1000\\} \\).\n- Số các số thuộc S chia hết cho 3 bằng [blank].\n- Số các số thuộc S chia hết cho 3 nhưng không chia hết cho 5 bằng [blank].",
+                "blanks": [
+                    {"label": "Số các số chia hết cho 3:", "answers": ["333"]},
+                    {"label": "Số các số chia hết cho 3 nhưng không chia hết cho 5:", "answers": ["267"]}
+                ],
+                "points": 1,
+                "explanation": "Số các số thuộc S chia hết cho 3 là số lượng các bội của 3 từ 1 đến 1000:\nTa có \\( \\lfloor 1000 : 3 \\rfloor = 333 \\). Vậy có 333 số chia hết cho 3.\n\nSố các số thuộc S chia hết cho cả 3 và 5 (tức là chia hết cho 15) là:\nTa có \\( \\lfloor 1000 : 15 \\rfloor = 66 \\). Vậy có 66 số chia hết cho 15.\n\nSố các số chia hết cho 3 nhưng không chia hết cho 5 là:\n\\( 333 - 66 = 267 \\) số."
+            },
 
-    # ---------------- TRẢ LỜI NGẮN (short) ----------------
-    {
-        "id": "de4_sh_04",
-        "type": "short",
-        "content": "Một cửa hàng văn phòng phẩm bán loại bút A với giá nhập là 15.000 VNĐ và giá bán ra ban đầu là 20.000 VND. Trung bình mỗi tháng bán được 200 chiếc. Qua khảo sát, cứ mỗi lần giảm giá bán 500 VND thì số lượng bán ra tăng thêm 50 chiếc mỗi tháng. Để lợi nhuận đạt giá trị lớn nhất thì: Giá bán khi đó là [blank] nghìn đồng, ứng với [blank] lần giảm giá.",
-        "blanks": [
-            {"label": "Giá bán khi đó là (nghìn đồng):", "answers": ["18.5", "18,5"]},
-            {"label": "Số lần giảm giá:", "answers": ["3"]}
-        ],
-        "points": 1,
-        "explanation": """Gọi x là số lần giảm giá (\\( x > 0 \\)).\nGiá bán mới là \\( 20000 - 500x \\) (VND).\nLợi nhuận thu được cho 1 chiếc bút là: \\( 20000 - 500x - 15000 = 5000 - 500x \\) (VND).\nSố lượng bút bán ra là: \\( 200 + 50x \\) (chiếc).\nTổng lợi nhuận mỗi tháng là:\n\\(P(x) = (5000 - 500x)(200 + 50x) = 25000(10 - x)(4 + x) \\).\nÁp dụng tính chất của parabol, hàm số \\(f(x) = (10-x)(4+x) \\) đạt GTLN tại đỉnh \\( x = \\dfrac{10 + (-4)}{2} = 3 \\).\nVậy cần giảm giá 3 lần.\nGiá bán khi đó là: \\( 20000 - 3 \\times 500 = 18500 \\) VND = 18,5 nghìn đồng."""
-    },
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de4_tf_06",
+                "type": "truefalse",
+                "content": "Cho cấp số nhân \\( (u_n) \\) thỏa mãn \\( u_2=6 \\) và \\( u_5=\\dfrac{3}{4} \\). Xét tính đúng/sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "\\( u_{2023} \\cdot u_{2025} = (u_{2024})^2 \\)", "correct": True},
+                    {"text": "Biểu thức \\( u_{2023} \\cdot q = \\dfrac{1}{2} \\) là đúng (q là công bội).", "correct": False},
+                    {"text": "Dãy số \\( (u_n) \\) có đúng 4 số hạng mang giá trị nguyên dương.", "correct": False}
+                ],
+                "points": 1,
+                "explanation": "Gọi công bội của cấp số nhân là q.\nTa có: \\( u_5 = u_2 \\cdot q^3 \\Rightarrow \\dfrac{3}{4} = 6 \\cdot q^3 \\Rightarrow q^3 = \\dfrac{1}{8} \\Rightarrow q = \\dfrac{1}{2} \\).\nSố hạng đầu \\( u_1 = \\dfrac{u_2}{q} = \\dfrac{6}{1/2} = 12 \\).\nCông thức tổng quát: \\( u_n = 12 \\cdot \\left(\\dfrac{1}{2}\\right)^{n-1} \\).\n\na) Theo tính chất của cấp số nhân, tích 2 số hạng cách đều luôn bằng bình phương số hạng ở giữa, nên \\( u_{2023} \\cdot u_{2025} = (u_{2024})^2 \\). Mệnh đề a Đúng.\n\nb) Ta có \\( u_{2023} \\cdot q = u_{2024} = 12 \\cdot \\left(\\dfrac{1}{2}\\right)^{2023} \\neq \\dfrac{1}{2} \\). Mệnh đề b Sai.\n\nc) Các số hạng nguyên dương của dãy là: \\( u_1 = 12; u_2 = 6; u_3 = 3 \\). Từ \\( u_4 = \\dfrac{3}{2} \\) trở đi, các số hạng không còn là số nguyên. Vậy dãy có đúng 3 số hạng nguyên dương. Mệnh đề c Sai."
+            },
 
-    # ---------------- TRẢ LỜI NGẮN (short) ----------------
-    {
-        "id": "de4_sh_05",
-        "type": "short",
-        "content": "Cho tập hợp \\(S=\\{1,2,3,...,1000\\} \\).\n- Số các số thuộc S chia hết cho 3 bằng [blank].\n- Số các số thuộc S chia hết cho 3 nhưng không chia hết cho 5 bằng [blank].",
-        "blanks": [
-            {"label": "Số các số chia hết cho 3:", "answers": ["333"]},
-            {"label": "Số các số chia hết cho 3 nhưng không chia hết cho 5:", "answers": ["267"]}
-        ],
-        "points": 1,
-        "explanation": """Số các số thuộc S chia hết cho 3 là số lượng các bội của 3 từ 1 đến 1000:\nTa có \\( \\lfloor 1000 : 3 \\rfloor = 333 \\). Vậy có 333 số chia hết cho 3.\n\nSố các số thuộc S chia hết cho cả 3 và 5 (tức là chia hết cho 15) là:\nTa có \\( \\lfloor 1000 : 15 \\rfloor = 66 \\). Vậy có 66 số chia hết cho 15.\n\nSố các số chia hết cho 3 nhưng không chia hết cho 5 là:\n\\( 333 - 66 = 267 \\) số."""
-    },
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": "de4_mc_07",
+                "type": "mc4",
+                "content": "Trong một tiết học về số học, bạn Linh viết một dãy số thuộc một cấp số cộng lên trên vở và nói với bạn Bình rằng \"Cấp số cộng của tớ đặc biệt lắm đấy, nếu cậu lấy số hạng đầu cộng với số hạng thứ 2 thì sẽ thu được số hạng thứ 3, còn nếu cậu cộng bình phương của số hạng đầu với bình phương công sai thì sẽ thu được số hạng thứ tư\". Bình nghe vậy liền đáp \"Ah! Tớ biết số hạng thứ năm của cấp số cộng là gì rồi!\" Số hạng thứ năm của cấp số cộng trên bằng?",
+                "options": {
+                    "A": "10",
+                    "B": "11",
+                    "C": "12",
+                    "D": "13"
+                },
+                "correct": "A",
+                "points": 1,
+                "explanation": "Gọi cấp số cộng có số hạng đầu là \\( u_1 \\) và công sai là d.\nTheo giả thiết thứ nhất: \\( u_1 + u_2 = u_3 \\Rightarrow u_1 + (u_1 + d) = u_1 + 2d \\Rightarrow u_1 = d \\).\nTheo giả thiết thứ hai: \\( u_1^2 + d^2 = u_4 \\Rightarrow d^2 + d^2 = u_1 + 3d \\Rightarrow 2d^2 = d + 3d = 4d \\).\nGiải phương trình: \\( 2d^2 - 4d = 0 \\Rightarrow d = 0 \\) hoặc \\( d = 2 \\).\n- Nếu \\( d = 0 \\Rightarrow u_1 = 0 \\), khi đó \\( u_5 = 0 \\) (không có trong đáp án).\n- Nếu \\( d = 2 \\Rightarrow u_1 = 2 \\), khi đó số hạng thứ năm là: \\( u_5 = u_1 + 4d = 2 + 4 \\times 2 = 10 \\).\nVậy đáp án là A."
+            },
 
-    # ---------------- ĐÚNG / SAI (truefalse) ----------------
-    {
-        "id": "de4_tf_06",
-        "type": "truefalse",
-        "content": "Cho cấp số nhân \\((u_n) \\) thỏa mãn \\( u_2=6 \\) và \\(u_5=\\dfrac{3}{4} \\). Xét tính đúng/sai của các mệnh đề sau:",
-        "statements": [
-            {"text": "\\( u_{2023} \\cdot u_{2025} = (u_{2024})^2 \\)", "correct": True},
-            {"text": "Biểu thức \\(u_{2023} \\cdot q = \\dfrac{1}{2} \\) là đúng (q là công bội).", "correct": False},
-            {"text": "Dãy số \\((u_n) \\) có đúng 4 số hạng mang giá trị nguyên dương.", "correct": False}
-        ],
-        "points": 1,
-        "explanation": """Gọi công bội của cấp số nhân là q.\nTa có: \\(u_5 = u_2 \\cdot q^3 \\Rightarrow \\dfrac{3}{4} = 6 \\cdot q^3 \\Rightarrow q^3 = \\dfrac{1}{8} \\Rightarrow q = \\dfrac{1}{2} \\).\nSố hạng đầu \\( u_1 = \\dfrac{u_2}{q} = \\dfrac{6}{1/2} = 12 \\).\nCông thức tổng quát: \\(u_n = 12 \\cdot \\left(\\dfrac{1}{2}\\right)^{n-1} \\).\n\na) Theo tính chất của cấp số nhân, tích 2 số hạng cách đều luôn bằng bình phương số hạng ở giữa, nên \\( u_{2023} \\cdot u_{2025} = (u_{2024})^2 \\). Mệnh đề a Đúng.\n\nb) Ta có \\(u_{2023} \\cdot q = u_{2024} = 12 \\cdot \\left(\\dfrac{1}{2}\\right)^{2023} \\neq \\dfrac{1}{2} \\). Mệnh đề b Sai.\n\nc) Các số hạng nguyên dương của dãy là: \\( u_1 = 12; u_2 = 6; u_3 = 3 \\). Từ \\(u_4 = \\dfrac{3}{2} \\) trở đi, các số hạng không còn là số nguyên. Vậy dãy có đúng 3 số hạng nguyên dương. Mệnh đề c Sai."""
-    },
-
-    # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
-    {
-        "id": "de4_mc_07",
-        "type": "mc4",
-        "content": "Trong một tiết học về số học, bạn Linh viết một dãy số thuộc một cấp số cộng lên trên vở và nói với bạn Bình rằng \"Cấp số cộng của tớ đặc biệt lắm đấy, nếu cậu lấy số hạng đầu cộng với số hạng thứ 2 thì sẽ thu được số hạng thứ 3, còn nếu cậu cộng bình phương của số hạng đầu với bình phương công sai thì sẽ thu được số hạng thứ tư\". Bình nghe vậy liền đáp \"Ah! Tớ biết số hạng thứ năm của cấp số cộng là gì rồi!\" Số hạng thứ năm của cấp số cộng trên bằng?",
-        "options": {
-            "A": "10",
-            "B": "11",
-            "C": "12",
-            "D": "13"
-        },
-        "correct": "A",
-        "points": 1,
-        "explanation": """Gọi cấp số cộng có số hạng đầu là \\( u_1 \\) và công sai là d.\nTheo giả thiết thứ nhất: \\( u_1 + u_2 = u_3 \\Rightarrow u_1 + (u_1 + d) = u_1 + 2d \\Rightarrow u_1 = d \\).\nTheo giả thiết thứ hai: \\( u_1^2 + d^2 = u_4 \\Rightarrow d^2 + d^2 = u_1 + 3d \\Rightarrow 2d^2 = d + 3d = 4d \\).\nGiải phương trình: \\( 2d^2 - 4d = 0 \\Rightarrow d = 0 \\) hoặc \\( d = 2 \\).\n- Nếu \\( d = 0 \\Rightarrow u_1 = 0 \\), khi đó \\( u_5 = 0 \\) (không có trong đáp án).\n- Nếu \\( d = 2 \\Rightarrow u_1 = 2 \\), khi đó số hạng thứ năm là: \\( u_5 = u_1 + 4d = 2 + 4 \\times 2 = 10 \\).\nVậy đáp án là A."""
-    },
-
-    # ---------------- ĐÚNG / SAI (truefalse) ----------------
-    {
-        "id": "de4_tf_08",
-        "type": "truefalse",
-        "content": "Cho dãy số \\((u_n) \\) xác định bởi công thức truy hồi \\( u_1=4 \\) và \\( u_{n+1}=3u_n-4 \\) với mọi \\( n \\ge 1 \\). Xét tính đúng/sai của các mệnh đề:",
-        "statements": [
-            {"text": "Dãy số \\((u_n) \\) là một cấp số cộng.", "correct": False},
-            {"text": "Dãy số \\((v_n) \\) xác định bởi \\( v_n=u_n-2 \\) là một cấp số nhân.", "correct": True},
-            {"text": "Số dư khi chia số hạng \\(u_{2025} \\) cho 9 là bằng 2.", "correct": True}
-        ],
-        "points": 1,
-        "explanation": """a) Tính thử vài số hạng đầu: \\( u_1 = 4 \\), \\( u_2 = 3(4) - 4 = 8 \\), \\( u_3 = 3(8) - 4 = 20 \\).\nTa thấy khoảng cách \\( u_2 - u_1 = 4 \\neq u_3 - u_2 = 12 \\), nên dãy số này không phải là cấp số cộng. Mệnh đề a Sai.\n\nb) Xét \\( v_{n+1} = u_{n+1} - 2 = (3u_n - 4) - 2 = 3u_n - 6 = 3(u_n - 2) = 3v_n \\).\nVậy \\((v_n) \\) là một cấp số nhân với công bội \\( q = 3 \\) và số hạng đầu \\( v_1 = u_1 - 2 = 2 \\). Mệnh đề b Đúng.\n\nc) Theo phần b, ta có \\( v_n = 2 \\cdot 3^{n-1} \\Rightarrow u_n = 2 \\cdot 3^{n-1} + 2 \\).\nKhi \\( n = 2025 \\), ta có \\( u_{2025} = 2 \\cdot 3^{202Dưới đây là phần mã code các câu hỏi từ trang 1 đến trang 2 (từ câu 1 đến câu 8, đã bỏ câu 4 và câu 9 theo yêu cầu) được chuyển đổi thành cấu trúc dữ liệu chính xác, kèm theo lời giải chi tiết và thay thế lệnh phân số thành `\dfrac`. 
-
-```python
-# ---------------- KÉO THẢ (dragdrop) ----------------
-    {
-        "id": "de4_dd_01",
-        "type": "dragdrop",
-        "content": "Cho tập hợp \\( A=\\{1;2;3;4;5;6;7;8\\} \\). Chọn ngẫu nhiên một tập con của tập A. Biết xác suất để tập con được chọn có chứa đồng thời cả hai phần tử 1 và 2 là phân số tối giản \\( \\dfrac{a}{b} \\). Kéo và thả các phương án lựa chọn thích hợp vào ô trống:[cite: 1]",
-        "options_pool": [
-            "-1",
-            "1",
-            "-4",
-            "-3"
-        ],
-        "blanks": [
-            {"label": "Giá trị của biểu thức \\( T=a-b \\) bằng", "answer": "-3"}
-        ],
-        "points": 1,
-        "explanation": "Số phần tử của tập A là 8, nên tổng số tập con của A là \\( 2^8 = 256 \\) tập con.\nĐể một tập con chứa đồng thời cả hai phần tử 1 và 2, ta chỉ cần chọn thêm các phần tử từ 6 phần tử còn lại của tập A. Số cách chọn là số tập con của tập 6 phần tử, tức là \\( 2^6 = 64 \\) tập.\nXác suất để tập con được chọn chứa cả 1 và 2 là: \\( P = \\dfrac{64}{256} = \\dfrac{1}{4} \\).\nVì \\( \\dfrac{a}{b} \\) là phân số tối giản nên \\( a=1 \\), \\( b=4 \\).\nGiá trị biểu thức \\( T = a - b = 1 - 4 = -3 \\)."
-    },
-
-# ---------------- ĐÚNG / SAI (truefalse) ----------------
-    {
-        "id": "de4_tf_02",
-        "type": "truefalse",
-        "content": "Cho một khối đa diện (H) có tất cả các mặt đều là hình tam giác. Xét tính đúng sai của các mệnh đề sau:[cite: 1]",
-        "statements": [
-            {"text": "Số mặt của đa diện (H) là một số không chia hết cho 3.", "correct": False},
-            {"text": "Số cạnh của đa diện (H) luôn luôn là một số chẵn.", "correct": False},
-            {"text": "Số mặt của khối đa diện này luôn nhiều hơn số cạnh.", "correct": False}
-        ],
-        "points": 1,
-        "explanation": "Gọi M là số mặt và C là số cạnh của đa diện (H).\nVì tất cả các mặt đều là tam giác nên mỗi mặt có 3 cạnh. Tuy nhiên, mỗi cạnh lại là cạnh chung của đúng 2 mặt. Ta có hệ thức: \\( 3M = 2C \\) hay \\( M = \\dfrac{2}{3}C \\).\na) Sai. Lấy ví dụ hình lưỡng tháp tam giác (ghép từ 2 khối tứ diện), khối này có 6 mặt, chia hết cho 3.\nb) Sai. Cũng với hình lưỡng tháp tam giác có M=6, ta suy ra số cạnh \\( C = \\dfrac{3 \\cdot 6}{2} = 9 \\). Số 9 là số lẻ.\nc) Sai. Từ hệ thức \\( M = \\dfrac{2}{3}C \\), ta luôn có \\( M < C \\) (số mặt luôn nhỏ hơn số cạnh)."
-    },
-
-# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
-    {
-        "id": "de4_mc_03",
-        "type": "mc4",
-        "content": "Có 12 cây bút có chiều dài lập thành một cấp số cộng. Biết rằng cây bút thứ nhất dài 48 cm và cây thứ ba dài 42 cm. Cây bút cuối cùng trong bộ sưu tập này có chiều dài bằng bao nhiêu?[cite: 1]",
-        "options": {
-            "A": "12",
-            "B": "15",
-            "C": "16",
-            "D": "18"
-        },
-        "correct": "B",
-        "points": 1,
-        "explanation": "Gọi chiều dài các cây bút tạo thành cấp số cộng \\( (u_n) \\) với công sai \\( d \\).\nTheo đề bài ta có: \\( u_1 = 48 \\) và \\( u_3 = 42 \\).\nÁp dụng công thức số hạng tổng quát: \\( u_3 = u_1 + 2d \\Leftrightarrow 42 = 48 + 2d \\Leftrightarrow 2d = -6 \\Leftrightarrow d = -3 \\).\nCây bút cuối cùng là cây thứ 12, có chiều dài là: \\( u_{12} = u_1 + 11d = 48 + 11(-3) = 48 - 33 = 15 \\) (cm).\nVậy đáp án đúng là B."
-    },
-
-# ---------------- TRẢ LỜI NGẮN (short) ----------------
-    {
-        "id": "de4_sh_05",
-        "type": "short",
-        "content": "Một cửa hàng văn phòng phẩm bán loại bút A với giá nhập là 15.000 VNĐ và giá bán ra ban đầu là 20.000 VND. Trung bình mỗi tháng bán được 200 chiếc. Qua khảo sát, cứ mỗi lần giảm giá bán 500 VND thì số lượng bán ra tăng thêm 50 chiếc mỗi tháng. Điền số thích hợp vào chỗ trống để lợi nhuận đạt giá trị lớn nhất:[cite: 1]",
-        "blanks": [
-            {"label": "Giá bán khi đó là (nghìn đồng)", "answers": ["18.5", "18,5"]},
-            {"label": "ứng với số lần giảm giá", "answers": ["3"]}
-        ],
-        "points": 1,
-        "explanation": "Gọi \\( x \\) là số lần giảm giá 500 VNĐ (\\( x > 0 \\)).\nGiá bán mới của bút là: \\( 20000 - 500x \\) (VNĐ).\nLợi nhuận thu được trên mỗi cây bút là: \\( 20000 - 500x - 15000 = 5000 - 500x \\) (VNĐ).\nSố lượng bút bán ra mỗi tháng sau khi giảm giá là: \\( 200 + 50x \\) (chiếc).\nTổng lợi nhuận mỗi tháng: \\( f(x) = (5000 - 500x)(200 + 50x) = 25000(10 - x)(4 + x) \\).\nĐây là một hàm số bậc 2, đồ thị là một parabol có hệ số \\( a < 0 \\). Hàm số đạt giá trị lớn nhất tại đỉnh parabol: \\( x = \\dfrac{10 + (-4)}{2} = 3 \\).\nVậy cửa hàng cần thực hiện 3 lần giảm giá.\nGiá bán khi đó là: \\( 20000 - 3 \\cdot 500 = 18500 \\) VNĐ, tức là 18.5 nghìn đồng."
-    },
-
-# ---------------- TRẢ LỜI NGẮN (short) ----------------
-    {
-        "id": "de4_sh_06",
-        "type": "short",
-        "content": "Cho tập hợp \\( S=\\{1,2,3,...,1000\\} \\).[cite: 1]",
-        "blanks": [
-            {"label": "Số các số thuộc S chia hết cho 3 bằng", "answers": ["333"]},
-            {"label": "Số các số thuộc S chia hết cho 3 nhưng không chia hết cho 5 bằng", "answers": ["267"]}
-        ],
-        "points": 1,
-        "explanation": "Số lượng các số thuộc S chia hết cho 3 là: \\( \\lfloor\\dfrac{1000}{3}\\rfloor = 333 \\) (số).\nCác số chia hết cho 3 và đồng thời chia hết cho 5 chính là các số chia hết cho 15. Số lượng các số chia hết cho 15 thuộc S là: \\( \\lfloor\\dfrac{1000}{15}\\rfloor = 66 \\) (số).\nVậy, số lượng các số chia hết cho 3 nhưng không chia hết cho 5 là: \\( 333 - 66 = 267 \\) (số)."
-    },
-
-# ---------------- ĐÚNG / SAI (truefalse) ----------------
-    {
-        "id": "de4_tf_07",
-        "type": "truefalse",
-        "content": "Cho cấp số nhân \\( (u_n) \\) thỏa mãn \\( u_2=6 \\) và \\( u_5=\\dfrac{3}{4} \\). Xét tính đúng sai của các mệnh đề:[cite: 1]",
-        "statements": [
-            {"text": "\\( u_{2023} \\cdot u_{2025} = (u_{2024})^2 \\)", "correct": True},
-            {"text": "Biểu thức \\( u_{2023} \\cdot q = \\dfrac{1}{2} \\) là đúng (\\( q \\) là công bội).", "correct": False},
-            {"text": "Dãy số \\( (u_n) \\) có đúng 4 số hạng mang giá trị nguyên dương.", "correct": False}
-        ],
-        "points": 1,
-        "explanation": "Gọi số hạng đầu là \\( u_1 \\) và công bội là \\( q \\).\nTheo đề bài ta có: \\( u_2 = u_1 \\cdot q = 6 \\) và \\( u_5 = u_1 \\cdot q^4 = \\dfrac{3}{4} \\).\nXét tỉ số: \\( \\dfrac{u_5}{u_2} = \\dfrac{q^4}{q} = q^3 = \\dfrac{3/4}{6} = \\dfrac{1}{8} \\Rightarrow q = \\dfrac{1}{2} \\).\nSuy ra số hạng đầu \\( u_1 = \\dfrac{6}{1/2} = 12 \\).\na) Đúng. Theo tính chất cơ bản của cấp số nhân, bình phương số hạng ở giữa bằng tích hai số hạng liền kề: \\( (u_{2024})^2 = u_{2023} \\cdot u_{2025} \\).\nb) Sai. Ta có \\( u_{2023} \\cdot q = u_{2024} = u_1 \\cdot q^{2023} = 12 \\cdot \\left(\\dfrac{1}{2}\\right)^{2023} \\). Giá trị này không bằng \\( \\dfrac{1}{2} \\).\nc) Sai. Công thức số hạng tổng quát là \\( u_n = 12 \\cdot \\left(\\dfrac{1}{2}\\right)^{n-1} \\). Dãy số bắt đầu bằng các giá trị: 12, 6, 3, 1.5, 0.75, ... Chỉ có đúng 3 số hạng mang giá trị nguyên dương (là 12, 6, 3)."
-    },
-
-# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
-    {
-        "id": "de4_mc_08",
-        "type": "mc4",
-        "content": "Trong một tiết học về số học, bạn Linh viết một dãy số thuộc một cấp số cộng lên trên vở và nói với bạn Bình rằng \"Cấp số cộng của tớ đặc biệt lắm đấy, nếu cậu lấy số hạng đầu cộng với số hạng thứ 2 thì sẽ thu được số hạng thứ 3, còn nếu cậu cộng bình phương của số hạng đầu với bình phương công sai thì sẽ thu được số hạng thứ tư\". Bình nghe vậy liền đáp \"Ah! Tớ biết số hạng thứ năm của cấp số cộng là gì rồi!\" Số hạng thứ năm của cấp số cộng trên bằng?[cite: 1]",
-        "options": {
-            "A": "10",
-            "B": "11",
-            "C": "12",
-            "D": "13"
-        },
-        "correct": "A",
-        "points": 1,
-        "explanation": "Gọi cấp số cộng có số hạng đầu \\( u_1 \\) và công sai \\( d \\).\nTừ giả thiết 1: \\( u_1 + u_2 = u_3 \\Leftrightarrow u_1 + (u_1 + d) = (u_1 + 2d) \\Leftrightarrow u_1 = d \\).\nTừ giả thiết 2: \\( (u_1)^2 + d^2 = u_4 \\Leftrightarrow d^2 + d^2 = u_1 + 3d \\).\nThế \\( u_1 = d \\) vào ta được: \\( 2d^2 = d + 3d \\Leftrightarrow 2d^2 - 4d = 0 \\).\nPhương trình có 2 nghiệm \\( d = 0 \\) hoặc \\( d = 2 \\).\n- Trường hợp \\( d = 0 \\Rightarrow u_1 = 0 \\Rightarrow u_5 = 0 \\) (không khớp với bất kỳ đáp án nào).\n- Trường hợp \\( d = 2 \\Rightarrow u_1 = 2 \\Rightarrow \\) Số hạng thứ năm là \\( u_5 = u_1 + 4d = 2 + 4(2) = 10 \\).\nVậy đáp án đúng là A."
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de4_tf_08",
+                "type": "truefalse",
+                "content": "Cho dãy số \\( (u_n) \\) xác định bởi công thức truy hồi \\( u_1=4 \\) và \\( u_{n+1}=3u_n-4 \\) với mọi \\( n \\ge 1 \\). Xét tính đúng/sai của các mệnh đề:",
+                "statements": [
+                    {"text": "Dãy số \\( (u_n) \\) là một cấp số cộng.", "correct": False},
+                    {"text": "Dãy số \\( (v_n) \\) xác định bởi \\( v_n=u_n-2 \\) là một cấp số nhân.", "correct": True},
+                    {"text": "Số dư khi chia số hạng \\( u_{2025} \\) cho 9 là bằng 2.", "correct": True}
+                ],
+                "points": 1,
+                "explanation": "a) Tính thử vài số hạng đầu: \\( u_1 = 4 \\), \\( u_2 = 3(4) - 4 = 8 \\), \\( u_3 = 3(8) - 4 = 20 \\).\nTa thấy khoảng cách \\( u_2 - u_1 = 4 \\neq u_3 - u_2 = 12 \\), nên dãy số này không phải là cấp số cộng. Mệnh đề a Sai.\n\nb) Xét \\( v_{n+1} = u_{n+1} - 2 = (3u_n - 4) - 2 = 3u_n - 6 = 3(u_n - 2) = 3v_n \\).\nVậy \\( (v_n) \\) là một cấp số nhân với công bội \\( q = 3 \\) và số hạng đầu \\( v_1 = u_1 - 2 = 2 \\). Mệnh đề b Đúng.\n\nc) Theo phần b, ta có \\( v_n = 2 \\cdot 3^{n-1} \\Rightarrow u_n = 2 \\cdot 3^{n-1} + 2 \\).\nKhi \\( n = 2025 \\), ta có \\( u_{2025} = 2 \\cdot 3^{2024} + 2 \\). Vì \\( 3^{2024} = 9 \\cdot 3^{2022} \\) chia hết cho 9, nên \\( 2 \\cdot 3^{2024} \\) chia hết cho 9. Vậy \\( u_{2025} \\) chia 9 dư 2. Mệnh đề c Đúng."
+            }
+        ]
     }
           
         ] # dấu kết thúc toàn bộ đề
