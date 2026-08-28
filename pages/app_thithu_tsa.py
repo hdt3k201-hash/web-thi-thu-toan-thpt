@@ -296,6 +296,29 @@ EXAMS = [
                 "explanation": "Chọn hệ trục: B(0,0,0), A(a,0,0), C(0,a,0) (vuông cân tại B), S(a,0,a√2) (do SA⊥đáy). \\(\\bullet\\) Góc 2 mp (SAC),(SBC): pháp tuyến \\((SAC)\\): \\(\\vec{n_1}=\\vec{AS}\\times\\vec{AC}=(0,0,a\\sqrt2)\\times(-a,a,0) \\propto(1,1,0)\\); pháp tuyến \\((SBC)\\): \\(\\vec{n_2}=\\vec{BS}\\times\\vec{BC}=(a,0,a\\sqrt2)\\times(0,a,0)\\propto(-\\sqrt2,0,1)\\). \\(\\cos\\varphi=\\dfrac{|\\vec{n_1}\\cdot\\vec{n_2}|}{|\\vec{n_1}||\\vec{n_2}|}=\\dfrac{\\sqrt2}{\\sqrt2\\cdot\\sqrt3}=\\dfrac1{\\sqrt3}=\\dfrac{\\sqrt3}{3}\\Rightarrow\\varphi=\\arccos\\dfrac{\\sqrt3}{3}\\). \\(\\bullet\\) Mặt (SBC) qua B với pháp tuyến \\((-\\sqrt2,0,1)\\): \\(-\\sqrt2x+z=0\\). \\(d(A,(SBC))=\\dfrac{|-\\sqrt2\\cdot a|}{\\sqrt3}=\\dfrac{a\\sqrt2}{\\sqrt3}=\\dfrac{a\\sqrt6}{3}\\). \\(\\bullet\\) \\(\\vec{SC}=(-a,a,-a\\sqrt2)\\), \\(\\vec{AB}=(-a,0,0)\\): \\(\\cos\\theta=\\dfrac{|\\vec{SC}\\cdot\\vec{AB}|}{|\\vec{SC}||\\vec{AB}|}=\\dfrac{a^2}{2a\\cdot a}=\\dfrac12\\Rightarrow\\theta=60^\\circ\\).",
             },
 
+                      # ================== TRẢ LỜI NGẮN (short) - tiếp ==================
+            {
+                "id": 'de_tsa11_sh_05',
+                "type": 'short',
+                "content": ' Một chiếc xe chạy trong sa mạc có quỹ đạo là một đường cong bậc ba với phương trình \\( y = \\dfrac{1}{3}x^3 - 2x^2 + 5x \\) (trên hệ trục tọa độ với đơn vị là km). Tại mọi thời điểm, đèn pha của xe luôn chiếu sáng theo một tia sáng thẳng trùng với phương của tiếp tuyến quỹ đạo xe chạy tại điểm đó. Tại thời điểm xe đi ngang qua vị trí có hoành độ \\( x = 4 \\) thì đèn pha chiếu sáng trúng một cột mốc M nằm trên trục tung Oy. Hãy xác định tung độ của cột mốc M. (Điền đáp án dưới dạng phân số tối giản).',
+                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau11-de1.PNG',
+                "blanks": [
+                    {"label": 'Tung độ của M =', "answers": ['-32/3']},
+                ],
+                "points": 1,
+                "explanation": 'Tại \\(x=4\\): \\(y(4)=\\dfrac13(4)^3-2(4)^2+5(4)=\\dfrac{64}{3}-32+20=\\dfrac{64}{3}-12=\\dfrac{28}{3}\\). Đạo hàm \\(y\'=x^2-4x+5\\Rightarrow y\'(4)=16-16+5=5\\) (hệ số góc tiếp tuyến). Phương trình tiếp tuyến tại \\(x=4\\): \\(y=5(x-4)+\\dfrac{28}{3}=5x-20+\\dfrac{28}{3}=5x-\\dfrac{32}{3}\\). Cột mốc M nằm trên Oy \\(\\Rightarrow x=0\\Rightarrow y_M=-\\dfrac{32}{3}\\).',
+            },
+            {
+                "id": 'de_tsa11_sh_06',
+                "type": 'short',
+                "content": " Một số tự nhiên X có 2026 chữ số, trong đó có đúng 2025 chữ số 9 và chữ số tận cùng là 8 (nghĩa là X = \\(\\underbrace{99\\ldots9}_{2025\\text{ chữ số}}8\\)). Đặt \\( Y = X^2 \\). Hỏi tổng tất cả các chữ số của số Y bằng bao nhiêu?",
+                "blanks": [
+                    {"label": 'Tổng các chữ số của Y =', "answers": ['18235']},
+                ],
+                "points": 1,
+                "explanation": 'Viết \\(X=10^n-2\\) với \\(n=2026\\) (kiểm tra: \\(n=1\\Rightarrow10-2=8\\); \\(n=2\\Rightarrow100-2=98\\); tổng quát \\(10^n-2\\) có dạng \\((n-1)\\) chữ số 9 rồi đến 8 — đúng với X có 2025 chữ số 9 rồi đến 8, \\(n=2026\\)). Khi đó \\(Y=X^2=10^{2n}-4\\cdot10^n+4=10^n(10^n-4)+4\\). Vì \\(10^n-4\\) có dạng \\((n-1)\\) chữ số 9 rồi đến 6 (thử \\(n=1{:}\\,6\\); \\(n=2{:}\\,96\\); \\(n=3{:}\\,996\\)), nên \\(10^n(10^n-4)\\) là số đó theo sau bởi \\(n\\) chữ số 0. Cộng thêm 4 vào chữ số cuối (đang là 0) được: \\(Y=\\underbrace{9\\ldots9}_{n-1}6\\underbrace{0\\ldots0}_{n-1}4\\) (tổng cộng \\(2n\\) chữ số). Tổng chữ số của Y \\(=9(n-1)+6+4=9n+1\\). Với \\(n=2026\\): tổng \\(=9\\times2026+1=18234+1=18235\\).\n\nKiểm tra với n nhỏ: \\(n=3\\): X=998, \\(X^2=996004\\), tổng chữ số \\(=9+9+6+0+0+4=28=9\\times3+1\\) ✓ khớp công thức.',
+            },
+
 
           
         ],   # kết thúc hết 1 đề
