@@ -2228,9 +2228,9 @@ Dấu "=" xảy ra khi \\( x=y=z=\\sqrt{3} \\). Vậy giá trị nhỏ nhất c�
         "type": "truefalse",
         "content": "Cho hàm số \\( y = f(x) = \\sqrt{1+\\cos x} \\). Khi ta xét \\( x \\in (0,\\pi) \\), các nhận định dưới đây là đúng hay sai?",
         "statements": [
-            {"text": "Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\left(\\dfrac{x}{2}\\right) \\) có nghiệm.", "correct": false},
-            {"text": "Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\left(\\dfrac{x}{4}\\right) \\) có nghiệm.", "correct": true},
-            {"text": "Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\left(\\dfrac{\\pi}{8}\\right) \\) có đúng 01 nghiệm.", "correct": true}
+            {"text": "Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\left(\\dfrac{x}{2}\\right) \\) có nghiệm.", "correct": False},
+            {"text": "Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\left(\\dfrac{x}{4}\\right) \\) có nghiệm.", "correct": True},
+            {"text": "Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\left(\\dfrac{\\pi}{8}\\right) \\) có đúng 01 nghiệm.", "correct": True}
         ],
         "points": 1,
         "explanation": "Ta có công thức hạ bậc: \\( 1+\\cos x = 2\\cos^2\\left(\\dfrac{x}{2}\\right) \\).\nSuy ra \\( \\sqrt{1+\\cos x} = \\sqrt{2} \\left| \\cos\\left(\\dfrac{x}{2}\\right) \\right| \\).\nVì \\( x \\in (0,\\pi) \\Rightarrow \\dfrac{x}{2} \\in \\left(0,\\dfrac{\\pi}{2}\\right) \\Rightarrow \\cos\\left(\\dfrac{x}{2}\\right) > 0 \\).\nDo đó: \\( \\sqrt{1+\\cos x} = \\sqrt{2}\\cos\\left(\\dfrac{x}{2}\\right) \\).\n\n1. Mệnh đề 1: Sai.\nPhương trình tương đương: \\( \\sqrt{2}\\cos\\left(\\dfrac{x}{2}\\right) = \\cos\\left(\\dfrac{x}{2}\\right) \\Leftrightarrow (\\sqrt{2}-1)\\cos\\left(\\dfrac{x}{2}\\right) = 0 \\Leftrightarrow \\cos\\left(\\dfrac{x}{2}\\right) = 0 \\).\nTuy nhiên với \\( x \\in (0,\\pi) \\) thì \\( \\cos\\left(\\dfrac{x}{2}\\right) > 0 \\).\nPhương trình vô nghiệm.\n\n2. Mệnh đề 2: Đúng.\nPhương trình tương đương: \\( \\sqrt{2}\\cos\\left(\\dfrac{x}{2}\\right) = \\cos\\left(\\dfrac{x}{4}\\right) \\Leftrightarrow \\sqrt{2}\\left[2\\cos^2\\left(\\dfrac{x}{4}\\right)-1\\right] = \\cos\\left(\\dfrac{x}{4}\\right) \\).\nĐặt \\( t = \\cos\\left(\\dfrac{x}{4}\\right) \\).\nVới \\( x \\in (0,\\pi) \\Rightarrow \\dfrac{x}{4} \\in \\left(0,\\dfrac{\\pi}{4}\\right) \\Rightarrow t \\in \\left(\\dfrac{\\sqrt{2}}{2}, 1\\right) \\).\nPhương trình trở thành \\( 2\\sqrt{2}t^2 - t - \\sqrt{2} = 0 \\).\nBấm máy ta được \\( t_1 = \\dfrac{1+\\sqrt{17}}{4\\sqrt{2}} \\approx 0.905 \\) (thỏa mãn) và \\( t_2 < 0 \\) (loại).\nVậy phương trình có nghiệm.\n\n3. Mệnh đề 3: Đúng.\nPhương trình tương đương: \\( \\sqrt{2}\\cos\\left(\\dfrac{x}{2}\\right) = \\cos\\left(\\dfrac{\\pi}{8}\\right) \\Leftrightarrow \\cos\\left(\\dfrac{x}{2}\\right) = \\dfrac{\\cos\\left(\\dfrac{\\pi}{8}\\right)}{\\sqrt{2}} \\approx 0.653 \\).\nHàm số \\( y = \\cos\\left(\\dfrac{x}{2}\\right) \\) nghịch biến trên \\( (0, \\pi) \\) và nhận giá trị từ 1 đến 0.\nVì \\( 0.653 \\in (0, 1) \\) nên phương trình có duy nhất 1 nghiệm."
@@ -2307,8 +2307,8 @@ Dấu "=" xảy ra khi \\( x=y=z=\\sqrt{3} \\). Vậy giá trị nhỏ nhất c�
         "content": "Cho hình lăng trụ đứng \\( ABC.A'B'C' \\) có tam giác \\( ABC \\) vuông cân tại \\( A \\). Biết \\( BC=3\\sqrt{2}a \\), \\( AA'=4a \\). Các nhận định sau đây đúng hay sai?",
         "image": "CHÈN_LINK_ẢNH_CÂU_8_VÀO_ĐÂY", 
         "statements": [
-            {"text": "\\( AB'=3a \\).", "correct": false},
-            {"text": "Thể tích hình lăng trụ: \\( V=6a^3 \\).", "correct": false}
+            {"text": "\\( AB'=3a \\).", "correct": False},
+            {"text": "Thể tích hình lăng trụ: \\( V=6a^3 \\).", "correct": False}
         ],
         "points": 1,
         "explanation": "Vì tam giác \\( ABC \\) vuông cân tại \\( A \\), áp dụng định lý Pytago ta có:\n\n\\( AB^2+AC^2=BC^2 \\Leftrightarrow 2AB^2=(3\\sqrt{2}a)^2=18a^2 \\Rightarrow AB=AC=3a \\).\n\n1. Xét mệnh đề 1: Do hình lăng trụ đứng nên \\( BB' \\perp (ABC) \\Rightarrow BB' \\perp AB \\). Tam giác \\( ABB' \\) vuông tại \\( B \\), ta có:\n\n\\( AB'=\\sqrt{AB^2+BB'^2}=\\sqrt{(3a)^2+(4a)^2}=\\sqrt{9a^2+16a^2}=5a \\neq 3a \\). \\( \\Rightarrow \\) Sai.\n\n2. Xét mệnh đề 2: Thể tích lăng trụ được tính theo công thức \\( V=B\\cdot h \\):\n\n\\( V = S_{\\triangle ABC} \\cdot AA' = \\left( \\dfrac{1}{2}AB \\cdot AC \\right) \\cdot AA' = \\left( \\dfrac{1}{2} \\cdot 3a \\cdot 3a \\right) \\cdot 4a = 18a^3 \\neq 6a^3 \\). \\( \\Rightarrow \\) Sai."
