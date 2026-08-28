@@ -207,7 +207,7 @@ EXAMS = [
                 "id": 'de_tsa11_dd_01',
                 "type": 'dragdrop',
                 "content": ' Một con robot xuất phát từ gốc tọa độ O(0, 0) trên mặt phẳng Oxy, hướng theo chiều dương của trục Ox. Lập trình di chuyển của robot được thiết lập như sau: Bước 1: Tiến thẳng về phía trước 12 cm đến điểm A₁. Bước n (với n ≥ 2): Quay trái một góc 90°, sau đó tiến thẳng một đoạn bằng \\( \\dfrac{2}{3} \\) độ dài của đoạn đường di chuyển ngay trước đó để tới điểm Aₙ. Quá trình này lặp lại vô hạn lần và robot tiến dần đến một điểm tới hạn M(X; Y). Kéo và thả các kết quả sau vào ô tương ứng:',
-                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/de_tsa11_cau4_robot.PNG',
+                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/images/de_tsa11_cau4_robot.PNG',
                 "options_pool": ['36', '108/13', '72/13', '24', '36/13'],
                 "blanks": [
                     {"label": 'Tổng quãng đường robot di chuyển được sau vô hạn bước là (cm):', "answer": '36'},
