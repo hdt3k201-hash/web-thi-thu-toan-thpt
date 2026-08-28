@@ -354,7 +354,13 @@ Tỉ lệ xe vi phạm là: \\( \\dfrac{15}{50} = 30\\% < 35\\% \\) \\( \\Righta
         "id": "de1_dd_14",
         "type": "dragdrop",
         "content": "Anh A mua trả góp một căn hộ và cần vay ngân hàng đúng 1 tỷ VNĐ (tức là \\( 10^9 \\) đồng). Ngân hàng áp dụng mức lãi suất cố định là 0.8%/tháng. Thỏa thuận thanh toán như sau: đúng một tháng sau khi nhận tiền vay, anh A bắt đầu trả nợ; mỗi tháng anh A trả một số tiền cố định là X (đồng) và liên tục trong n tháng cho đến khi hết nợ (tháng cuối cùng có thể làm tròn). Kéo và thả các biểu thức phù hợp vào ô trống:",
-        "options_pool": ["8\\cdot 10^6", "X\\dfrac{1.008^n-1}{0.008}", "10^9(1.008)^n - X\\dfrac{1.008^n-1}{0.008}", "\\dfrac{8\\cdot 10^6\\cdot 1.008^{60}}{1.008^{60}-1}", "8\\cdot 10^7"],
+        "options_pool": [
+            "\\( 8\\cdot 10^6 \\)", 
+            "\\( X\\dfrac{1.008^n-1}{0.008} \\)", 
+            "\\( 10^9(1.008)^n - X\\dfrac{1.008^n-1}{0.008} \\)", 
+            "\\( \\dfrac{8\\cdot 10^6\\cdot 1.008^{60}}{1.008^{60}-1} \\)", 
+            "\\( 8\\cdot 10^7 \\)"
+        ],
         "blanks": [
             {"label": "Riêng trong tháng đầu tiên, số tiền lãi phát sinh từ khoản vay mà anh A phải chịu là (đồng):", "answer": "8\\cdot 10^6"},
             {"label": "Công thức tính số tiền anh A còn nợ ngân hàng ngay sau khi đóng tiền ở tháng thứ n là:", "answer": "10^9(1.008)^n - X\\dfrac{1.008^n-1}{0.008}"},
