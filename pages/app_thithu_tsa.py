@@ -154,167 +154,72 @@ def verify_wp_token(token):
 # =======================================================================
 EXAMS = [
     {
-        "id": 'de1',
-        "name": 'Đề số 1 - Tổng ôn TSA lớp 11',
-        "description": '40 câu hỏi, đủ 4 dạng: trắc nghiệm, đúng/sai, trả lời ngắn, kéo thả.',
+        "id": 'de_tsa11_tungthay',
+        "name": 'Đề ôn tập TSA Toán 11 - Toán Thầy Tùng (Câu 1-4)',
+        "description": '4 câu hỏi đầu của đề, đủ 4 dạng: trắc nghiệm, đúng/sai, trả lời ngắn, kéo thả.',
         "questions": [
 
             # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
             {
-                "id": 'de1_mc_01',
+                "id": 'de_tsa11_mc_01',
                 "type": 'mc4',
-                "content": 'Cho hàm số \\( y = \\dfrac{1+x}{1-x} \\). Nhận xét nào sau đây đúng?',
+                "content": 'Câu 1. Cho hàm số \\( y = \\dfrac{\\sin x + 2\\cos x + m}{\\cos x - 2\\sin x + 3} \\). Có bao nhiêu giá trị nguyên của tham số \\( m \\) để tập giá trị của hàm số này chứa đoạn \\( [-1; 1] \\)?',
                 "options": {
-                    'A': 'Đồ thị hàm có TCN \\( y = 1 \\), TCĐ \\( x = 1 \\)',
-                    'B': 'Đồ thị hàm có TCN \\( y = -1 \\), TCĐ \\( x = 1 \\)',
-                    'C': 'Đồ thị hàm có TCN \\( y = 1 \\), TCĐ \\( x = -1 \\)',
-                    'D': 'Đồ thị hàm có TCN \\( y = -1 \\), TCĐ \\( x = -1 \\)',
+                    'A': '0',
+                    'B': '1',
+                    'C': '2',
+                    'D': '3',
                 },
                 "correct": 'B',
                 "points": 1,
-                "explanation": 'Viết lại \\( y = \\dfrac{x+1}{-x+1} \\). TCN: \\( \\lim_{x\\to\\pm\\infty} y = \\dfrac{1}{-1} = -1 \\) \\( \\Rightarrow \\) TCN: \\( y = -1 \\). TCĐ: mẫu \\( = 0 \\Leftrightarrow x = 1 \\) (tử tại \\( x=1 \\) khác 0) \\( \\Rightarrow \\) TCĐ: \\( x = 1 \\). Đáp án B.',
-            },
-            {
-                "id": 'de1_mc_02',
-                "type": 'mc4',
-                "content": 'Trong không gian Oxyz, có điểm \\( A(a,b,c) \\) và điểm \\( B(m,n,p) \\) di chuyển nhưng luôn thoả mãn: \\( a^2+b^2+c^2 = 9 \\) và \\( m^2+n^2+p^2 = 36 \\). Nhận định nào sau đây là SAI?',
-                "options": {
-                    'A': 'Điểm A thuộc một mặt cầu cố định.',
-                    'B': 'Độ dài ngắn nhất của AB là 3.',
-                    'C': 'Độ dài AB đạt cực tiểu \\( \\Leftrightarrow \\overrightarrow{OA} \\cdot \\overrightarrow{OB} = 36 \\).',
-                    'D': 'Độ dài AB đạt cực tiểu \\( \\Leftrightarrow \\) A là trung điểm OB.',
-                },
-                "correct": 'C',
-                "points": 1,
-                "explanation": 'A thuộc mặt cầu tâm O bán kính \\( R_1=3 \\); B thuộc mặt cầu tâm O bán kính \\( R_2=6 \\). AB nhỏ nhất khi O, A, B thẳng hàng cùng chiều: \\( AB_{min} = R_2-R_1 = 3 \\) (B đúng), khi đó A là trung điểm OB (D đúng), A thuộc mặt cầu cố định (A đúng). \\( \\overrightarrow{OA} \\cdot \\overrightarrow{OB} = |OA||OB|\\cos 0^\\circ = 3\\cdot6 = 18 \\ne 36 \\) nên C sai.',
-            },
-            {
-                "id": 'de1_mc_03',
-                "type": 'mc4',
-                "content": 'Cho mẫu A có phần tử lớn nhất là 378, nhỏ nhất là 310, trung bình 344, độ lệch chuẩn 12. Nếu mẫu B được tạo từ mẫu A bỏ đi 2 phần tử 378 và 310 thì nhận định nào sau đây đúng?',
-                "options": {
-                    'A': 'Mẫu B có trung bình lớn hơn A, độ lệch chuẩn lớn hơn A.',
-                    'B': 'Mẫu B có trung bình bé hơn A, độ lệch chuẩn lớn hơn A.',
-                    'C': 'Mẫu B có trung bình lớn hơn A, độ lệch chuẩn bé hơn A.',
-                    'D': 'Mẫu B có trung bình bằng A, độ lệch chuẩn bé hơn A.',
-                },
-                "correct": 'D',
-                "points": 1,
-                "explanation": '\\( 378+310=688=2\\cdot344 \\) nên trung bình mẫu B vẫn bằng 344. Hai giá trị bị loại cách xa trung bình (34 đơn vị, lớn hơn nhiều so với độ lệch chuẩn gốc 12) nên loại chúng làm giảm độ phân tán \\( \\Rightarrow \\) độ lệch chuẩn mẫu B bé hơn. Đáp án D.',
+                "explanation": 'Biến đổi: \\( y(\\cos x - 2\\sin x + 3) = \\sin x + 2\\cos x + m \\Leftrightarrow (y-2)\\cos x - (2y+1)\\sin x = m - 3y \\). Phương trình này có nghiệm \\( x \\) khi và chỉ khi \\( (m-3y)^2 \\le (y-2)^2+(2y+1)^2 = 5y^2+5 \\). Để \\( [-1;1] \\subset \\) tập giá trị, cần bất đẳng thức trên đúng với mọi \\( y\\in[-1,1] \\), tức \\( f(y)=4y^2-6my+m^2-5\\le0,\\ \\forall y\\in[-1,1] \\). Do \\( f(y) \\) là parabol quay bề lõm lên trên nên chỉ cần xét 2 đầu mút: \\( f(1)=m^2-6m-1\\le0 \\Rightarrow m\\in[3-\\sqrt{10};\\,3+\\sqrt{10}] \\) và \\( f(-1)=m^2+6m-1\\le0 \\Rightarrow m\\in[-3-\\sqrt{10};\\,-3+\\sqrt{10}] \\). Giao 2 khoảng: \\( m\\in[\\sqrt{10}-3;\\,3-\\sqrt{10}] \\approx [-0.162;\\,0.162] \\). Chỉ có \\( m=0 \\) nguyên thoả mãn \\( \\Rightarrow \\) có đúng 1 giá trị. Đáp án B.',
             },
 
             # ---------------- ĐÚNG / SAI (truefalse) ----------------
             {
-                "id": 'de1_tf_01',
+                "id": 'de_tsa11_tf_01',
                 "type": 'truefalse',
-                "content": 'Cho hàm số \\( y = f(x) = \\sqrt{1 + \\cos x} \\). Khi xét \\( x \\in (0, \\pi) \\), các mệnh đề dưới đây đúng hay sai?',
+                "content": "Câu 2. Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh \\( a \\). Tam giác SAB đều và nằm trong mặt phẳng vuông góc với đáy. Gọi M, N lần lượt là trung điểm của SC và SD. Xét tính Đúng/Sai của các mệnh đề sau:",
                 "statements": [
-                    {"text": 'Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\dfrac{x}{2} \\) có nghiệm', "correct": False},
-                    {"text": 'Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\dfrac{x}{4} \\) có nghiệm', "correct": True},
-                    {"text": 'Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\dfrac{\\pi}{8} \\) có đúng 1 nghiệm', "correct": True},
+                    {"text": 'Góc tạo bởi mặt phẳng (SCD) và mặt đáy bằng \\( 60^\\circ \\)', "correct": False},
+                    {"text": 'Khoảng cách giữa hai đường thẳng AM và SB bằng \\( \\dfrac{a\\sqrt3}{4} \\)', "correct": True},
+                    {"text": 'Thể tích khối tứ diện S.AMN bằng \\( \\dfrac{a^3\\sqrt3}{48} \\)', "correct": True},
+                    {"text": 'Bán kính mặt cầu ngoại tiếp hình chóp S.ABCD bằng \\( \\dfrac{a\\sqrt{21}}{6} \\)', "correct": True},
                 ],
                 "points": 1,
-                "explanation": '\\( 1+\\cos x = 2\\cos^2\\dfrac{x}{2} \\Rightarrow \\sqrt{1+\\cos x} = \\sqrt{2}\\cdot\\cos\\dfrac{x}{2} \\) (do \\( \\dfrac{x}{2}\\in(0,\\dfrac{\\pi}{2}) \\) nên \\( \\cos\\dfrac{x}{2}>0 \\)). (1) \\( \\sqrt{2}\\cos\\dfrac{x}{2}=\\cos\\dfrac{x}{2} \\Leftrightarrow \\cos\\dfrac{x}{2}=0 \\): vô nghiệm trên \\( (0,\\pi) \\Rightarrow \\) Sai. (2) Đặt \\( t=\\cos\\dfrac{x}{4}\\in(\\dfrac{\\sqrt2}{2},1) \\): \\( 2\\sqrt{2}t^2-t-\\sqrt{2}=0 \\) có nghiệm \\( t\\approx0.905 \\) thoả \\( \\Rightarrow \\) Đúng. (3) \\( \\cos\\dfrac{x}{2}=\\dfrac{\\cos(\\pi/8)}{\\sqrt2}\\approx0.653\\in(0,1) \\); \\( \\cos\\dfrac{x}{2} \\) nghịch biến toàn ánh trên \\( (0,\\pi) \\) nên có đúng 1 nghiệm \\( \\Rightarrow \\) Đúng.',
-            },
-            {
-                "id": 'de1_tf_02',
-                "type": 'truefalse',
-                "content": "Cho hình lăng trụ đứng ABC.A'B'C' có tam giác ABC vuông cân tại A. Biết \\( BC = 3\\sqrt{2}\\cdot a \\), \\( AA' = 4a \\). Các nhận định sau đúng hay sai?",
-                "statements": [
-                    {"text": "\\( AB' = 3a \\)", "correct": False},
-                    {"text": 'Thể tích hình lăng trụ \\( V = 6a^3 \\)', "correct": False},
-                ],
-                "points": 1,
-                "explanation": "Tam giác ABC vuông cân tại A: \\( 2AB^2=18a^2 \\Rightarrow AB=AC=3a \\). \\( AB'=\\sqrt{AB^2+BB'^2}=\\sqrt{9a^2+16a^2}=5a\\ne3a \\Rightarrow \\) Sai. \\( V=\\left(\\dfrac{1}{2}\\cdot AB\\cdot AC\\right)\\cdot AA'=\\left(\\dfrac{1}{2}\\cdot3a\\cdot3a\\right)\\cdot4a=18a^3\\ne6a^3 \\Rightarrow \\) Sai.",
+                "explanation": "Chọn hệ trục: A(0,0,0), B(a,0,0), C(a,a,0), D(0,a,0), trung điểm AB là (a/2,0,0), do (SAB) vuông góc đáy nên S(a/2, 0, a√3/2). (a) Gọi H là trung điểm CD(a/2,a,0): S'H (S' là hình chiếu S) = a, SS' = a√3/2 ⇒ tan(góc) = √3/2 ⇒ góc ≈ 40.9° ≠ 60° ⇒ Sai. (b) M = trung điểm SC = (3a/4, a/2, a√3/4). Dùng công thức khoảng cách 2 đường chéo nhau AM, SB (tích có hướng 2 vtcp và vectơ AS) ⇒ d = a√3/4 ⇒ Đúng. (c) Với M,N là trung điểm SC,SD: V(S.AMN) = (SM/SC)(SN/SD)·V(S.ACD) = (1/2)(1/2)·(1/2)V(S.ABCD) = (1/8)V(S.ABCD). Mà V(S.ABCD) = (1/3)·a²·(a√3/2) = a³√3/6 ⇒ V(S.AMN) = a³√3/48 ⇒ Đúng. (d) Tâm mặt cầu ngoại tiếp có dạng O(a/2, a/2, z₀) do cách đều 4 đỉnh đáy; cho OA = OS giải được z₀ = a√3/6, suy ra R² = a²/2 + z₀² = 7a²/12 ⇒ R = a√21/6 ⇒ Đúng.",
             },
 
             # ---------------- TRẢ LỜI NGẮN (short) ----------------
             {
-                "id": 'de1_sh_01',
+                "id": 'de_tsa11_sh_01',
                 "type": 'short',
-                "content": 'Bất phương trình \\( (\\log_2 x)^2 + \\log_3\\dfrac{36}{x} \\le \\left(1 + \\log_3\\dfrac{36}{x}\\right)\\cdot\\log_2 x \\) có tập nghiệm \\( x \\in [a, b] \\). Giá trị của \\( a + \\dfrac{b}{2} \\) = ?',
+                "content": 'Câu 3. Xếp 10 học sinh gồm 5 nam và 5 nữ vào 10 chiếc ghế được xếp thành một vòng tròn. Tính xác suất để không có bất kỳ 2 học sinh cùng giới tính nào ngồi cạnh nhau, đồng thời học sinh nam tên A và học sinh nữ tên B (là 2 lớp trưởng) bắt buộc phải ngồi đối diện nhau. Biết xác suất là phân số tối giản \\( \\dfrac{p}{q} \\). Tính giá trị của biểu thức \\( S = p + q \\).',
                 "blanks": [
-                    {"label": 'a + b/2 =', "answers": ['4']},
+                    {"label": 'S = p + q =', "answers": ['631']},
                 ],
                 "points": 1,
-                "explanation": 'Đặt \\( u=\\log_2 x, v=\\log_3\\dfrac{36}{x} \\). BPT \\( \\Leftrightarrow (u-1)(u-v)\\le0 \\). Giải 2 trường hợp được tập nghiệm \\( [2,4] \\Rightarrow a=2, b=4 \\Rightarrow a+\\dfrac{b}{2} = 2+2 = 4 \\).',
-            },
-            {
-                "id": 'de1_sh_02',
-                "type": 'short',
-                "content": 'Hiếu và Nam đều có số báo danh dạng 3a8b, đều chia hết cho 5 và 9, số báo danh của Hiếu là số chẵn. Số báo danh của Hiếu và Nam lần lượt là:',
-                "blanks": [
-                    {"label": 'Số báo danh của Hiếu', "answers": ['3780']},
-                    {"label": 'Số báo danh của Nam', "answers": ['3285']},
-                ],
-                "points": 1,
-                "explanation": 'b=0: số 3a80, cần 11+a chia hết 9 ⇒ a=7 ⇒ 3780 (chẵn). b=5: số 3a85, cần 16+a chia hết 9 ⇒ a=2 ⇒ 3285 (lẻ). Hiếu: 3780, Nam: 3285.',
-            },
-            {
-                "id": 'de1_sh_03',
-                "type": 'short',
-                "content": 'Cho hàm số \\( y = 4\\sin(x)\\cdot\\sin\\left(x + \\dfrac{\\pi}{2}\\right) \\). Giá trị lớn nhất và nhỏ nhất của y là:',
-                "blanks": [
-                    {"label": 'Giá trị lớn nhất', "answers": ['2']},
-                    {"label": 'Giá trị nhỏ nhất', "answers": ['-2']},
-                ],
-                "points": 1,
-                "explanation": '\\( \\sin\\left(x+\\dfrac{\\pi}{2}\\right)=\\cos x \\) nên \\( y=4\\sin x\\cdot\\cos x=2\\sin 2x \\). Vì \\( -1\\le\\sin 2x\\le1 \\) nên \\( -2\\le y\\le2 \\).',
-            },
-            {
-                "id": 'de1_sh_04',
-                "type": 'short',
-                "content": "Cho hàm số \\( f(x) = (x + 10)^6 \\). Tính \\( f''(2) \\) = ?",
-                "blanks": [
-                    {"label": "f''(2) =", "answers": ['622080']},
-                ],
-                "points": 1,
-                "explanation": "\\( f'(x)=6(x+10)^5 \\); \\( f''(x)=30(x+10)^4 \\). \\( f''(2)=30\\cdot12^4=30\\cdot20736=622080 \\).",
+                "explanation": 'Không gian mẫu: \\( n(\\Omega)=10! \\) (10 ghế phân biệt). Điều kiện không có 2 người cùng giới ngồi cạnh nhau ⇒ ghế phải xếp xen kẽ nam-nữ: 5 ghế lẻ 1 nhóm, 5 ghế chẵn 1 nhóm (2 cách chọn nhóm nào là nam). Với mỗi cách chia, ghế đối diện của 1 ghế lẻ luôn là ghế chẵn, nên điều kiện A-B đối diện tự động phù hợp giới tính. Số cách chọn ghế cho A trong 5 ghế nam: 5 cách, ghế của B (đối diện A) bị xác định duy nhất. Xếp 4 nam còn lại vào 4 ghế nam còn trống: \\(4!\\); xếp 4 nữ còn lại vào 4 ghế nữ còn trống: \\(4!\\). Số cách thuận lợi: \\( 2\\cdot5\\cdot4!\\cdot4! = 5760 \\). Xác suất \\( = \\dfrac{5760}{10!} = \\dfrac{1}{630} \\Rightarrow p=1,\\ q=630 \\Rightarrow S = 631 \\).',
             },
 
             # ---------------- KÉO THẢ (dragdrop) ----------------
             {
-                "id": 'de1_dd_01',
+                "id": 'de_tsa11_dd_01',
                 "type": 'dragdrop',
-                "content": "Cho lăng trụ đều ABC.A'B'C' có \\( AB = 4 \\), \\( AA' = 3 \\). Kéo và thả các phương án lựa chọn thích hợp vào từng ô trống.",
-                "options_pool": ['12√3', '8√3', '4√3'],
+                "content": 'Câu 4. Một con robot xuất phát từ gốc tọa độ O(0, 0) trên mặt phẳng Oxy, hướng theo chiều dương của trục Ox. Lập trình di chuyển của robot được thiết lập như sau: Bước 1: Tiến thẳng về phía trước 12 cm đến điểm A₁. Bước n (với n ≥ 2): Quay trái một góc 90°, sau đó tiến thẳng một đoạn bằng \\( \\dfrac{2}{3} \\) độ dài của đoạn đường di chuyển ngay trước đó để tới điểm Aₙ. Quá trình này lặp lại vô hạn lần và robot tiến dần đến một điểm tới hạn M(X; Y). Kéo và thả các kết quả sau vào ô tương ứng:',
+                "image": 'images/de_tsa11_cau4_robot.png',
+                "options_pool": ['36', '108/13', '72/13', '24', '36/13'],
                 "blanks": [
-                    {"label": "V(ABC.A'B'C') =", "answer": '12√3'},
-                    {"label": "V(A.BCC'B') =", "answer": '8√3'},
+                    {"label": 'Tổng quãng đường robot di chuyển được sau vô hạn bước là (cm):', "answer": '36'},
+                    {"label": 'Hoành độ X của điểm tới hạn M là:', "answer": '108/13'},
+                    {"label": 'Tung độ Y của điểm tới hạn M là:', "answer": '72/13'},
                 ],
                 "points": 1,
-                "explanation": "\\( S_{đáy}=\\dfrac{4^2\\sqrt3}{4}=4\\sqrt3 \\). \\( V_{lăng trụ}=4\\sqrt3\\cdot3=12\\sqrt3 \\). \\( V_{A.A'B'C'}=\\dfrac{1}{3}V_{lăng trụ}=4\\sqrt3 \\Rightarrow V_{A.BCC'B'}=12\\sqrt3-4\\sqrt3=8\\sqrt3 \\).",
-            },
-
-            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
-            {
-                "id": 'de1_mc_04',
-                "type": 'mc4',
-                "content": 'Hệ số của số hạng có số mũ của x bằng số mũ của y trong khai triển \\( \\left(x^2 + \\dfrac{3y}{x}\\right)^{14} \\) là?',
-                "options": {
-                    'A': '\\( 14! \\times C_{14}^{7} \\)',
-                    'B': '\\( 3^7 \\times C_{14}^{7} \\)',
-                    'C': '\\( 3^{14} \\times C_{14}^{7} \\)',
-                    'D': '\\( C_{14}^{7} \\)',
-                },
-                "correct": 'B',
-                "points": 1,
-                "explanation": 'Số hạng tổng quát: \\( T = C_{14}^{k}\\cdot3^k\\cdot x^{28-3k}\\cdot y^k \\). Cần \\( 28-3k=k \\Leftrightarrow k=7 \\). Hệ số cần tìm là \\( C_{14}^{7}\\cdot3^7 \\). Đáp án B.',
-            },
-
-            # ---------------- TRẢ LỜI NGẮN (short) ----------------
-            {
-                "id": 'de1_sh_06',
-                "type": 'short',
-                "content": 'Một hàng học sinh gồm 3 nam và 7 nữ được xếp thành 1 hàng ngang. Xác suất để không có bất kì 2 bạn nam nào đứng cạnh nhau (dạng phân số a/b):',
-                "blanks": [
-                    {"label": 'Xác suất =', "answers": ['7/15', '7 / 15']},
-                ],
-                "points": 1,
-                "explanation": 'Xếp 7 nữ: 7! cách, tạo 8 khoảng trống. Xếp 3 nam vào 8 khoảng: A(8,3) cách. P = 7!·A(8,3)/10! = 7/15.',
+                "explanation": "Độ dài các đoạn lập thành cấp số nhân \\( L_n = 12\\cdot(2/3)^{n-1} \\). Tổng quãng đường: \\( \\sum L_n = \\dfrac{12}{1-2/3} = 36 \\) cm. Hướng di chuyển lặp chu kỳ 4 (Đông, Bắc, Tây, Nam) do mỗi bước quay trái 90°. Hoành độ: \\( X = L_1 - L_3 + L_5 - \\cdots = 12\\left[1-(2/3)^2+(2/3)^4-\\cdots\\right] = 12\\cdot\\dfrac{1}{1+4/9} = 12\\cdot\\dfrac{9}{13} = \\dfrac{108}{13} \\). Tung độ: \\( Y = L_2 - L_4 + L_6 - \\cdots = 12\\cdot\\dfrac23\\cdot\\dfrac{9}{13} = \\dfrac{72}{13} \\).",
             },
         ],
     },
+]
     {
         "id": 'de2',
         "name": 'Đề số 2 - Hình học & Xác suất',
