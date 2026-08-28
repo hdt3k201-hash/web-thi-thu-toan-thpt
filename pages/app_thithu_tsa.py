@@ -2305,7 +2305,7 @@ Dấu "=" xảy ra khi \\( x=y=z=\\sqrt{3} \\). Vậy giá trị nhỏ nhất c�
         "id": "de3_tf_08",
         "type": "truefalse",
         "content": "Cho hình lăng trụ đứng \\( ABC.A'B'C' \\) có tam giác \\( ABC \\) vuông cân tại \\( A \\). Biết \\( BC=3\\sqrt{2}a \\), \\( AA'=4a \\). Các nhận định sau đây đúng hay sai?",
-        "image": "CHÈN_LINK_ẢNH_CÂU_8_VÀO_ĐÂY", 
+        
         "statements": [
             {"text": "\\( AB'=3a \\).", "correct": False},
             {"text": "Thể tích hình lăng trụ: \\( V=6a^3 \\).", "correct": False}
@@ -2332,11 +2332,12 @@ Dấu "=" xảy ra khi \\( x=y=z=\\sqrt{3} \\). Vậy giá trị nhỏ nhất c�
         ],
         "points": 1,
         "explanation": "Số phần tử của không gian mẫu: Xếp 10 học sinh thành một hàng ngang có \\( n(\\Omega)=10! \\) cách.\n\nGọi biến cố \\( A \\): \"Không có bất kì 2 bạn nam nào đứng cạnh nhau\".\n\n- Bước 1: Xếp 7 bạn nữ thành một hàng ngang có \\( 7! \\) cách. Khi đó tạo ra 8 khoảng trống (gồm 6 khoảng giữa các bạn nữ và 2 khoảng ở hai đầu).\n\n- Bước 2: Xếp 3 bạn nam vào 8 khoảng trống đó có \\( A_8^3 \\) cách.\n\nSuy ra số kết quả thuận lợi cho biến cố \\( A \\) là \\( n(A)=7! \\cdot A_8^3 \\).\n\nXác suất cần tìm: \\( P(A) = \\dfrac{n(A)}{n(\\Omega)} = \\dfrac{7! \\cdot A_8^3}{10!} = \\dfrac{7! \\cdot 8 \\cdot 7 \\cdot 6}{10 \\cdot 9 \\cdot 8 \\cdot 7!} = \\dfrac{7 \\cdot 6}{10 \\cdot 9} = \\dfrac{42}{90} = \\dfrac{7}{15} \\)."
-    }
+    },
+        {        "id": "de3_mc_11",        "type": "mc4",        "content": "Trong không gian \\( Oxyz \\), có điểm \\( A(a, b, c) \\) và điểm \\( B(m, n, p) \\) di chuyển nhưng luôn thoả mãn biểu thức: \\( \\begin{cases} a^2+b^2+c^2=9 \\\\ m^2+n^2+p^2=36 \\end{cases} \\). Nhận định nào sau đây là sai:",        "options": {            "A": "Điểm A thuộc một mặt cầu cố định.",            "B": "Độ dài ngắn nhất của AB là 3.",            "C": "Độ dài AB đạt cực tiểu \\( \\Leftrightarrow \\overrightarrow{OA} \\cdot \\overrightarrow{OB} = 36 \\).",            "D": "Độ dài AB đạt cực tiểu \\( \\Leftrightarrow \\) A là trung điểm OB."        },        "correct": "C",        "points": 1,        "explanation": "Từ giả thiết ta có: A thuộc mặt cầu \\( (S_1) \\) tâm \\( O(0;0;0) \\), bán kính \\( R_1=3 \\) \\( \\Rightarrow \\) Phương án A đúng.\n\nB thuộc mặt cầu \\( (S_2) \\) tâm \\( O(0;0;0) \\), bán kính \\( R_2=6 \\).\n\nHai mặt cầu đồng tâm O, có \\( R_1<R_2 \\). Độ dài AB đạt cực tiểu khi và chỉ khi ba điểm O, A, B thẳng hàng theo thứ tự đó.\n\nKhi đó \\( AB_{min}=R_2-R_1=6-3=3 \\) \\( \\Rightarrow \\) Phương án B đúng.\n\nTại vị trí cực tiểu, \\( \\overrightarrow{OA} \\) và \\( \\overrightarrow{OB} \\) cùng hướng, \\( OA=3, OB=6 \\) \\( \\Rightarrow \\overrightarrow{OB}=2\\overrightarrow{OA} \\) \\( \\Rightarrow \\) A là trung điểm OB \\( \\Rightarrow \\) Phương án D đúng.\n\nXét nhận định C: Khi AB đạt cực tiểu, do \\( \\overrightarrow{OA}, \\overrightarrow{OB} \\) cùng hướng nên \\( \\overrightarrow{OA} \\cdot \\overrightarrow{OB} = |\\overrightarrow{OA}| \\cdot |\\overrightarrow{OB}| \\cdot \\cos 0^\\circ = 3 \\cdot 6 \\cdot 1 = 18 \\neq 36 \\). Vậy C sai."    }  
 
-        ]
-    }
-]
+        ] # dấu kết thúc toàn bộ đề
+    }     # dấu kết thúc toàn bộ đề
+]          # dấu kết thúc toàn bộ đề
 
 
 # 1b) CÂU HỎI THÊM QUA TRANG QUẢN TRỊ (/admin)
