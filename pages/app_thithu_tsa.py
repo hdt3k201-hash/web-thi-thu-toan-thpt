@@ -324,8 +324,8 @@ EXAMS = [
     {
         "id": "de1_tf_13",
         "type": "truefalse",
-        "content": """Một trạm ra-đa của cảnh sát giao thông đã ghi lại tốc độ (đơn vị: km/h) của 50 chiếc ô tô đi qua một đoạn đường cao tốc được giới hạn tốc độ. Số liệu được ghép nhóm như sau:
-"image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau13-de1.PNG',
+        "content": """Một trạm ra-đa của cảnh sát giao thông đã ghi lại tốc độ (đơn vị: km/h) của 50 chiếc ô tô đi qua một đoạn đường cao tốc được giới hạn tốc độ. Số liệu được ghép nhóm như sau:,
+        "mage": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau13-de1.PNG',
 
 
 Biết rằng đoạn đường này quy định tốc độ tối đa là 100 km/h. Xét tính Đúng/Sai của các mệnh đề sau:""",
