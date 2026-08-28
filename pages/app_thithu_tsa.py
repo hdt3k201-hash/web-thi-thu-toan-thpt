@@ -3724,7 +3724,137 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                ],
                "points": 1,
                "explanation": 'Để chiếc gàu cách mặt nước 1,5m, ta giải phương trình \\( h = 1.5 \\):\n\\( 1.5 + 2 \\cos[2\\pi(t - 0.25)] = 1.5 \\Leftrightarrow \\cos[2\\pi(t - 0.25)] = 0 \\)\n\n\\( \\Leftrightarrow 2\\pi(t - 0.25) = \\dfrac{\\pi}{2} + k\\pi \\Leftrightarrow t - 0.25 = 0.25 + 0.5k \\Leftrightarrow t = 0.5 + 0.5k \\; (k \\in \\mathbb{Z}) \\).\n\nVì thời gian \\( t > 0 \\), thời điểm đầu tiên tương ứng với giá trị k nhỏ nhất sao cho \\( t > 0 \\).\nChọn \\( k = 0 \\Rightarrow t = 0.5 \\) (phút).\n\nĐổi 0,5 phút sang đơn vị "phút và giây": 0,5 phút = 0 phút 30 giây.\nSuy ra \\( a = 0 \\) và \\( b = 30 \\) (thỏa mãn điều kiện \\( b < 60 \\)).\n\nVậy giá trị của biểu thức \\( a + b = 0 + 30 = 30 \\).'
-           }
+           },
+
+
+           
+    {
+        "id": "de5_sh_06",
+        "type": "short",
+        "content": "Cho một đa giác đều 10 cạnh trong không gian và một điểm nằm ngoài mặt phẳng chứa đa giác. Số mặt phẳng có thể lập được từ 11 điểm trên là bao nhiêu?[cite: 2]",
+        "blanks": [
+            {
+                "label": "Số mặt phẳng =",
+                "answers": ["46"]
+            }
+        ],
+        "points": 1,
+        "explanation": "Ta có tổng cộng 11 điểm: 10 điểm đồng phẳng (tạo thành đa giác đều) và 1 điểm nằm ngoài mặt phẳng đó (gọi là điểm S).[cite: 2]\nTrường hợp 1: Mặt phẳng chứa đa giác đều 10 cạnh. Có đúng 1 mặt phẳng.[cite: 2]\nTrường hợp 2: Mặt phẳng tạo bởi điểm S và 2 điểm bất kỳ trong 10 đỉnh của đa giác. Vì không có 3 đỉnh nào của đa giác đều thẳng hàng, số mặt phẳng loại này là: $C_{10}^2 = 45$ mặt phẳng.[cite: 2]\nTổng số mặt phẳng có thể lập được là: $1 + 45 = 46$ (mặt phẳng).[cite: 2]"
+    },
+    {
+        "id": "de5_dd_07",
+        "type": "dragdrop",
+        "content": "Cho tập hợp các điểm $A_1, A_2, A_3, ..., A_n$ với $n \\in \\mathbb{N}^*$ cùng nằm trên một đường thẳng thỏa mãn biểu thức $A_1A_2 = A_2A_3 = ... = A_{n-1}A_n$.[cite: 2] Tiến hành chọn ra 3 điểm phân biệt từ tập các điểm trên sao cho có một điểm là trung điểm đoạn thẳng nối hai điểm còn lại. Kéo thả các đáp án phù hợp vào ô trống:",
+        "options_pool": [
+            "4",
+            "1023132",
+            "1024144",
+            "1025144",
+            "8"
+        ],
+        "blanks": [
+            {
+                "label": "Với n = 5 số cách chọn thỏa mãn là:",
+                "answer": "4"
+            },
+            {
+                "label": "Với n = 2024 số cách chọn thỏa mãn là:",
+                "answer": "1023132"
+            },
+            {
+                "label": "Với n = 2025 số cách chọn thỏa mãn là:",
+                "answer": "1024144"
+            }
+        ],
+        "points": 1,
+        "explanation": "Các điểm $A_1, A_2, ..., A_n$ cách đều nhau trên một đường thẳng, ta có thể gắn tọa độ cho các điểm này tương ứng với các số nguyên $1, 2, ..., n$.[cite: 2]\nBa điểm $A_i, A_j, A_k$ ($i < j < k$) thỏa mãn $A_j$ là trung điểm của $A_iA_k$ khi và chỉ khi: $i + k = 2j$.[cite: 2]\nĐiều này tương đương với $i$ và $k$ phải có cùng tính chẵn lẻ.[cite: 2]\n- Với n = 5: Tập $\\{1,2,3,4,5\\}$ có 3 số lẻ và 2 số chẵn. Số cách chọn là: $C_3^2 + C_2^2 = 3 + 1 = 4$ (cách).[cite: 2]\n- Với n = 2024: Từ 1 đến 2024 có 1012 số lẻ và 1012 số chẵn. Số cách chọn là: $C_{1012}^2 + C_{1012}^2 = 1023132$ (cách).[cite: 2]\n- Với n = 2025: Từ 1 đến 2025 có 1013 số lẻ và 1012 số chẵn. Số cách chọn là: $C_{1013}^2 + C_{1012}^2 = 512578 + 511566 = 1024144$ (cách).[cite: 2]"
+    },
+    {
+        "id": "de5_tf_08",
+        "type": "truefalse",
+        "content": "Ta có cách biểu diễn số X theo cơ số q được thực hiện như sau: $X = a_n \\cdot q^n + a_{n-1} \\cdot q^{n-1} + ... + a_0$ với $0 \\le a_0, a_1, ..., a_n < q$. Khi đó ta có thể ký hiệu $[a_n a_{n-1} ... a_0]_q = X$.[cite: 2] Đánh giá tính Đúng/Sai của các mệnh đề sau:",
+        "statements": [
+            {
+                "text": "Giá trị của $[1525]_7$ trong hệ thập phân là 607.",
+                "correct": true
+            },
+            {
+                "text": "$[1525]_7 = [4412]_5$",
+                "correct": true
+            }
+        ],
+        "points": 1,
+        "explanation": "Xét giá trị của $[1525]_7$ trong hệ thập phân:\n$[1525]_7 = 1 \\cdot 7^3 + 5 \\cdot 7^2 + 2 \\cdot 7^1 + 5 \\cdot 7^0 = 343 + 245 + 14 + 5 = 607$.[cite: 2]\nVậy $607 = [1525]_7 \\Rightarrow$ Mệnh đề 1 Đúng.[cite: 2]\nXét giá trị của $[4412]_5$ trong hệ thập phân:\n$[4412]_5 = 4 \\cdot 5^3 + 4 \\cdot 5^2 + 1 \\cdot 5^1 + 2 \\cdot 5^0 = 500 + 100 + 5 + 2 = 607$.[cite: 2]\nDo $[1525]_7 = 607$ và $[4412]_5 = 607 \\Rightarrow [1525]_7 = [4412]_5 \\Rightarrow$ Mệnh đề 2 Đúng.[cite: 2]"
+    },
+    {
+        "id": "de5_sh_10",
+        "type": "short",
+        "content": "Cho một vật chịu tác dụng bởi ba lực cân bằng như hình dưới đây. Biết rằng góc giữa $\\vec{F}_1$ và $\\vec{F}_2$ là $90^\\circ$, $|\\vec{F}_2| = 2|\\vec{F}_1|$ và $|\\vec{F}_3| = 2\\sqrt{5}$.[cite: 2] Độ lớn của lực $|\\vec{F}_1|$ là bao nhiêu?",
+        "image": "url_to_image_cau_10.PNG",
+        "blanks": [
+            {
+                "label": "$|\\vec{F}_1| =$",
+                "answers": ["2"]
+            }
+        ],
+        "points": 1,
+        "explanation": "Vật ở trạng thái cân bằng dưới tác dụng của 3 lực nên: $\\vec{F}_1 + \\vec{F}_2 + \\vec{F}_3 = \\vec{0} \\Leftrightarrow \\vec{F}_1 + \\vec{F}_2 = -\\vec{F}_3$.[cite: 2]\nGọi $\\vec{F}_{12} = \\vec{F}_1 + \\vec{F}_2$. Ta có độ lớn: $|\\vec{F}_{12}| = |\\vec{F}_3| = 2\\sqrt{5}$.[cite: 2]\nDo $\\vec{F}_1 \\perp \\vec{F}_2$, theo định lý Pytago ta có: $|\\vec{F}_1|^2 + |\\vec{F}_2|^2 = |\\vec{F}_{12}|^2$.[cite: 2]\nThay $|\\vec{F}_2| = 2|\\vec{F}_1|$ vào: $|\\vec{F}_1|^2 + (2|\\vec{F}_1|)^2 = (2\\sqrt{5})^2 \\Leftrightarrow 5|\\vec{F}_1|^2 = 20 \\Leftrightarrow |\\vec{F}_1|^2 = 4$.[cite: 2]\nVì độ lớn lực luôn dương nên $|\\vec{F}_1| = 2$.[cite: 2]"
+    },
+    {
+        "id": "de5_tf_11",
+        "type": "truefalse",
+        "content": "Cho hình chóp tứ giác S.ABCD có đáy là hình chữ nhật với SA vuông góc với đáy thỏa mãn $AB=3$, $BC=4$, góc giữa đường thẳng SC và mặt phẳng (ABCD) bằng $45^\\circ$.[cite: 2] Đánh giá tính Đúng/Sai của các mệnh đề sau:",
+        "image": "url_to_image_cau_11.PNG",
+        "statements": [
+            {
+                "text": "$SA = 5\\sqrt{2}$",
+                "correct": false
+            },
+            {
+                "text": "Thể tích khối chóp S.BCD là 30.",
+                "correct": false
+            }
+        ],
+        "points": 1,
+        "explanation": "Xét hình chữ nhật ABCD có $AB=3$, $BC=4$. Đường chéo đáy là: $AC = \\sqrt{AB^2 + BC^2} = \\sqrt{3^2 + 4^2} = 5$.[cite: 2]\nVì $SA \\perp (ABCD)$ nên hình chiếu vuông góc của SC lên (ABCD) là AC. Do đó, góc (SC, (ABCD)) = $\\widehat{SCA} = 45^\\circ$.[cite: 2]\nXét tam giác SAC vuông tại A, chiều cao hình chóp là: $SA = AC \\cdot \\tan 45^\\circ = 5 \\cdot 1 = 5 \\ne 5\\sqrt{2} \\Rightarrow$ Mệnh đề 1 Sai.[cite: 2]\nDiện tích tam giác BCD là: $S_{BCD} = \\dfrac{1}{2} S_{ABCD} = \\dfrac{1}{2} \\cdot 3 \\cdot 4 = 6$.[cite: 2]\nThể tích khối chóp S.BCD là: $V = \\dfrac{1}{3} S_{BCD} \\cdot SA = \\dfrac{1}{3} \\cdot 6 \\cdot 5 = 10 \\ne 30 \\Rightarrow$ Mệnh đề 2 Sai.[cite: 2]"
+    },
+    {
+        "id": "de5_tf_16",
+        "type": "truefalse",
+        "content": "Cho đồ thị hai hàm số $f(x)=x^2$ và $g(x)=6-x$ như hình vẽ. Trên miền bị chặn bởi hai đồ thị, ta lấy đoạn MN song song với Oy (M thuộc parabol, N thuộc đường thẳng) sao cho MN nằm hoàn toàn trong miền này.[cite: 2] Đánh giá tính Đúng/Sai của các mệnh đề sau:",
+        "image": "url_to_image_cau_16.PNG",
+        "statements": [
+            {
+                "text": "M và N có cùng hoành độ.",
+                "correct": true
+            },
+            {
+                "text": "$MN = x^2 + x - 6$",
+                "correct": false
+            },
+            {
+                "text": "$MN_{max} = 6$",
+                "correct": false
+            }
+        ],
+        "points": 1,
+        "explanation": "Mệnh đề 1: Do đoạn MN song song với trục Oy nên M và N bắt buộc phải có cùng hoành độ $\\Rightarrow$ Đúng.[cite: 2]\nMệnh đề 2: Độ dài đoạn MN là khoảng cách theo phương thẳng đứng. N nằm trên $y=6-x$ và M nằm trên $y=x^2$ nên: $MN = y_N - y_M = (6-x) - x^2 = -x^2 - x + 6$. Biểu thức trong đề bài bị sai dấu $\\Rightarrow$ Sai.[cite: 2]\nMệnh đề 3: Xét hàm số $h(x) = -x^2 - x + 6$ trên $[-3;2]$. Đỉnh parabol $x_I = -\\dfrac{1}{2}$.[cite: 2]\nGiá trị lớn nhất $MN_{max} = h(-\\dfrac{1}{2}) = -(-\\dfrac{1}{2})^2 - (-\\dfrac{1}{2}) + 6 = 6.25 \\ne 6 \\Rightarrow$ Sai.[cite: 2]"
+    },
+    {
+        "id": "de5_mc_17",
+        "type": "mc4",
+        "content": "Cho hàm số $f(x)$ thỏa mãn $x \\cdot f'(x) - f(x) = 2x^2 + 3x^3$, $\\forall x \\in \\mathbb{R}^*$ và $f(1) = \\dfrac{7}{2}$.[cite: 2] Giá trị của $f'(4)$ là bao nhiêu?",
+        "options": {
+            "A": "512",
+            "B": "32",
+            "C": "88",
+            "D": "128"
+        },
+        "correct": "C",
+        "points": 1,
+        "explanation": "Từ giả thiết: $x \\cdot f'(x) - f(x) = 2x^2 + 3x^3$. Chia cả hai vế cho $x^2$ (với $x \\ne 0$), ta được:\n$\\dfrac{x \\cdot f'(x) - f(x)}{x^2} = 2 + 3x \\Leftrightarrow \\left[ \\dfrac{f(x)}{x} \\right]' = 2 + 3x$.[cite: 2]\nLấy nguyên hàm hai vế: $\\dfrac{f(x)}{x} = \\int (2 + 3x)dx = 2x + \\dfrac{3}{2}x^2 + C \\Rightarrow f(x) = 2x^2 + \\dfrac{3}{2}x^3 + C \\cdot x$.[cite: 2]\nTheo đề, $f(1) = \\dfrac{7}{2} \\Leftrightarrow 2(1)^2 + \\dfrac{3}{2}(1)^3 + C(1) = \\dfrac{7}{2} \\Rightarrow C = 0$.[cite: 2]\nVậy $f(x) = \\dfrac{3}{2}x^3 + 2x^2$. Suy ra đạo hàm $f'(x) = \\dfrac{9}{2}x^2 + 4x$.[cite: 2]\nKhi đó, $f'(4) = \\dfrac{9}{2}(4^2) + 4(4) = 72 + 16 = 88$. Đáp án đúng là C.[cite: 2]"
+    }
+
 
           
           
