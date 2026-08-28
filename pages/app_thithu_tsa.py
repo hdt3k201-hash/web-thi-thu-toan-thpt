@@ -5,7 +5,7 @@
 =======================================================================
 Học sinh chọn đề thi -> làm bài -> nộp bài -> xem điểm & đáp án chi tiết.
 Hỗ trợ đủ 4 dạng câu hỏi:
-  1. mc4       : Trắc nghiệm 4 lựa chọn
+  1. mc4       : Trắc nghiệm 4 lựa chọn 
   2. truefalse : Đúng/Sai (nhiều mệnh đề)
   3. short     : Trả lời ngắn
   4. dragdrop  : Kéo thả
