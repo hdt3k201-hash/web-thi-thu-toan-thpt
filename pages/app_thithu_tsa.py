@@ -857,8 +857,9 @@ Tỉ số: \\( \\dfrac{V_{MNCP}}{V_{ABCD}} = \\dfrac{1/81}{1/6} = \\dfrac{2}{27}
             {
                 "id": 'de1_sh_32',
                 "type": 'short',
-                "content": 'Một đội nghiên cứu lâm nghiệp đo chiều cao của 100 cây bạch đàn trong một khu rừng sinh thái. Số liệu được ghi chép và biểu diễn dưới dạng bảng phân bố tần số ghép nhóm như sau:<br>Chiều cao (cm): [150;160): 10 cây, [160;170): x cây, [170;180): 40 cây, [180;190): y cây, [190;200): 15 cây.<br>Báo cáo cho biết trung vị của mẫu số liệu trên chính xác bằng 176 (cm). Biết x, y là các số nguyên dương. Tính hiệu số \\( S = y - x \\).',
-                "blanks": [
+                "content": 'Một đội nghiên cứu lâm nghiệp đo chiều cao của 100 cây bạch đàn trong một khu rừng sinh thái. Số liệu được ghi chép và biểu diễn dưới dạng bảng phân bố tần số ghép nhóm như sau: Báo cáo cho biết trung vị của mẫu số liệu trên chính xác bằng 176 (cm). Biết x, y là các số nguyên dương. Tính hiệu số \\( S = y - x \\).',
+                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau32-de1.PNG',
+              "blanks": [
                     {"label": 'S =', "answers": ['3']},
                 ],
                 "points": 1,
@@ -967,7 +968,159 @@ Vậy \\( d = 3 \\Rightarrow a = 5-3=2, \\; b=5, \\; c=5+3=8 \\) (thỏa mãn t�
 
 \\( P = a^2+b^2+c^2 = 4+25+64 = 93 \\). Đáp án A.""",
             },
-          
+                      # ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+                "id": "de1_dd_36",
+                "type": "dragdrop",
+                "content": "Trên một mặt phẳng, người ta đánh dấu 12 điểm phân biệt nằm trên một đường tròn. Nối tất cả các cặp điểm lại với nhau bằng các đoạn thẳng để tạo thành các dây cung. Giả sử các điểm được sắp xếp sao cho không có bất kỳ 3 dây cung nào đồng quy tại một điểm bên trong đường tròn. Kéo và thả các số liệu thích hợp vào ô trống:",
+                "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau36-de1.PNG",
+                "options_pool": [
+                    "\\( 220 \\)",
+                    "\\( 562 \\)",
+                    "\\( 495 \\)",
+                    "\\( 792 \\)",
+                    "\\( 66 \\)"
+                ],
+                "blanks": [
+                    {"label": "Tổng số dây cung được tạo ra là:", "answer": "66"},
+                    {"label": "Số giao điểm của các dây cung nằm BÊN TRONG hình tròn là:", "answer": "495"},
+                    {"label": "Số miền đa giác (số phần) mà hình tròn bị phân chia bởi các dây cung này là:", "answer": "562"}
+                ],
+                "points": 1,
+                "explanation": """Tổng số dây cung: mỗi dây cung ứng với một cách chọn 2 điểm trong 12 điểm:
+\\( \\binom{12}{2} = 66 \\) dây cung.
+
+Số giao điểm bên trong: vì không có 3 dây cung nào đồng quy, mỗi giao điểm bên trong tương ứng duy nhất với một cách chọn 4 điểm trong 12 điểm (4 điểm tạo thành 1 tứ giác nội tiếp, hai đường chéo của nó cắt nhau tại đúng 1 điểm):
+\\( \\binom{12}{4} = 495 \\) giao điểm.
+
+Số miền: sử dụng công thức Euler cho bài toán chia hình tròn bởi các dây cung (không có 3 dây cung đồng quy):
+\\( R = 1 + \\binom{n}{2} + \\binom{n}{4} \\)
+\\( R = 1 + 66 + 495 = 562 \\) miền.""",
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de1_tf_37",
+                "type": "truefalse",
+                "content": "Một quả bóng cao su được thả rơi tự do theo phương thẳng đứng từ độ cao 10 m xuống mặt sàn cứng. Mỗi lần nảy lên, do ma sát và biến dạng, quả bóng bị mất đi 20% cơ năng so với trước khi chạm sàn (biết rằng cơ năng tỉ lệ thuận với độ cao tối đa đạt được). Gọi \\( h_n \\) là độ cao cực đại bóng đạt được sau lần chạm sàn thứ n (với \\( h_0=10 \\)). Giả sử gia tốc trọng trường \\( g=10 \\) m/s² và bỏ qua sức cản của không khí. Xét tính Đúng/Sai của các mệnh đề:",
+                "statements": [
+                    {"text": "Độ cao cực đại mà quả bóng đạt được ngay sau lần chạm sàn thứ 3 là 5.12 m.", "correct": True},
+                    {"text": "Tổng quãng đường quả bóng di chuyển (lên và xuống) từ lúc thả đến khi dừng hẳn là 90 m.", "correct": True},
+                    {"text": "Dãy số biểu diễn thời gian của mỗi lần bóng nảy lên rồi rơi xuống chạm sàn \\( (t_1, t_2, \\ldots) \\) là một cấp số nhân với công bội \\( q = 0.8 \\).", "correct": False},
+                    {"text": "Tổng thời gian từ lúc thả bóng đến khi bóng hoàn toàn đứng yên trên mặt sàn nhỏ hơn 25 giây.", "correct": False}
+                ],
+                "points": 1,
+                "explanation": """Vì cơ năng tỉ lệ thuận với độ cao, mất 20% cơ năng nghĩa là độ cao còn lại 80%, nên \\( h_n = 10\\cdot(0.8)^n \\).
+
+a) \\( h_3 = 10\\cdot(0.8)^3 = 10\\cdot 0.512 = 5.12 \\) m \\( \\Rightarrow \\) Đúng.
+
+b) Tổng quãng đường: \\( S = h_0 + 2\\sum_{n=1}^{\\infty}h_n = h_0 + \\dfrac{2h_0\\cdot 0.8}{1-0.8} = 10 + \\dfrac{16}{0.2} = 10+80=90 \\) m \\( \\Rightarrow \\) Đúng.
+
+c) Thời gian rơi/nảy từ độ cao \\( h_n \\): \\( \\tau_n = \\sqrt{\\dfrac{2h_n}{g}} \\). Do đó thời gian mỗi lần nảy lên-rơi xuống là \\( t_n = 2\\sqrt{\\dfrac{2h_n}{g}} \\propto \\sqrt{h_n} \\propto \\sqrt{(0.8)^n} \\).
+Công bội thực tế là \\( \\sqrt{0.8}\\approx 0.894 \\), không phải \\( 0.8 \\) \\( \\Rightarrow \\) Sai.
+
+d) Thời gian rơi ban đầu: \\( t_0=\\sqrt{2\\cdot10/10}=\\sqrt2\\approx1.414 \\)s.
+Tổng thời gian các lần nảy: \\( T_{bounce} = \\sum_{n=1}^\\infty 2\\sqrt{\\dfrac{2h_n}{g}} = 2\\sqrt2\\sum_{n=1}^\\infty(\\sqrt{0.8})^n = 2\\sqrt2\\cdot\\dfrac{\\sqrt{0.8}}{1-\\sqrt{0.8}}\\approx23.96 \\)s.
+Tổng thời gian \\( T \\approx 1.414+23.96\\approx25.38 \\)s \\( > 25 \\)s \\( \\Rightarrow \\) Sai.""",
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de1_sh_38',
+                "type": 'short',
+                "content": 'Một mảnh giấy hình chữ nhật ABCD có kích thước \\( AB=8 \\) (cm) và \\( BC=6 \\) (cm). Người ta gấp mảnh giấy dọc theo đường chéo AC sao cho mặt phẳng (DAC) vuông góc với mặt phẳng (BAC) tạo thành một khối tứ diện. Tính bình phương khoảng cách giữa hai đường thẳng chéo nhau AB và CD trong không gian (đơn vị: cm²). Biết đáp án là một phân số tối giản \\( \\dfrac{a}{b} \\) với \\( a,b\\in\\mathbb{N}^* \\), hãy tính tổng \\( S=a+b \\).',
+                "blanks": [
+                    {"label": 'S =', "answers": ['941']},
+                ],
+                "points": 1,
+                "explanation": """Chọn hệ tọa độ với AC nằm trên trục Ox: \\( A(0,0,0), C(10,0,0) \\) (vì \\( AC=\\sqrt{8^2+6^2}=10 \\)).
+
+Xác định B trong mặt phẳng đáy (z=0): \\( AB=8, CB=6 \\Rightarrow B\\left(\\dfrac{32}{5};\\dfrac{24}{5};0\\right) \\).
+
+Xác định D: trước khi gấp, \\( AD=6, CD=8 \\Rightarrow \\) tọa độ (phẳng) là \\( \\left(\\dfrac{18}{5};-\\dfrac{24}{5}\\right) \\). Khi gấp sao cho (DAC) ⊥ (BAC), điểm D quay quanh trục AC (Ox) đến khi hình chiếu của D lên mặt phẳng đáy nằm trên chính trục AC (do đó thành phần y bằng 0):
+\\( D\\left(\\dfrac{18}{5}; 0; \\dfrac{24}{5}\\right) \\).
+
+Tính \\( \\vec{AB}=\\left(\\dfrac{32}{5};\\dfrac{24}{5};0\\right) \\), \\( \\vec{CD}=\\left(-\\dfrac{32}{5};0;\\dfrac{24}{5}\\right) \\).
+
+\\( \\vec{AB}\\times\\vec{CD} = \\dfrac{1}{25}(576;-768;768) \\)
+
+\\( \\vec{AC}=(10;0;0) \\), \\( \\vec{AC}\\cdot(\\vec{AB}\\times\\vec{CD}) = \\dfrac{5760}{25}=\\dfrac{1152}{5} \\)
+
+Khoảng cách bình phương:
+\\( d^2 = \\dfrac{\\left(\\dfrac{1152}{5}\\right)^2}{|\\vec{AB}\\times\\vec{CD}|^2} = \\dfrac{900}{41} \\) (cm²).
+
+Vậy \\( a=900, b=41 \\Rightarrow S = 900+41 = 941 \\).""",
+            },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de1_mc_39',
+                "type": 'mc4',
+                "content": 'Một công ty sản xuất ly giấy đựng nước giải khát có dạng hình nón. Để tiết kiệm chi phí nguyên vật liệu, kĩ sư thiết kế cần tối ưu hóa tỉ lệ giữa chiều cao h và bán kính đáy R của ly giấy sao cho diện tích mặt xung quanh của ly là nhỏ nhất nhưng vẫn chứa được đúng một thể tích \\( V_0 \\) cố định cho trước. Hỏi tỉ số \\( \\dfrac{h}{R} \\) đạt được khi tối ưu bằng bao nhiêu?',
+                "options": {
+                    'A': '\\( \\sqrt{2} \\)',
+                    'B': '\\( 2\\sqrt{2} \\)',
+                    'C': '\\( \\sqrt{3} \\)',
+                    'D': '\\( \\dfrac{3}{2} \\)',
+                },
+                "correct": 'A',
+                "points": 1,
+                "explanation": """Thể tích: \\( V_0 = \\dfrac13\\pi R^2 h \\Rightarrow h = \\dfrac{3V_0}{\\pi R^2} \\).
+
+Diện tích xung quanh: \\( S = \\pi R l \\) với \\( l=\\sqrt{R^2+h^2} \\).
+
+Xét \\( f(R) = S^2/\\pi^2 = R^2(R^2+h^2) = R^4 + R^2h^2 \\). Thay \\( h^2 = \\dfrac{9V_0^2}{\\pi^2 R^4} \\):
+
+\\( f(R) = R^4 + \\dfrac{9V_0^2}{\\pi^2 R^2} \\)
+
+Đặt \\( x=R^2 \\): \\( g(x) = x^2 + \\dfrac{9V_0^2}{\\pi^2 x} \\)
+
+\\( g'(x) = 2x - \\dfrac{9V_0^2}{\\pi^2 x^2} = 0 \\Rightarrow x^3 = \\dfrac{9V_0^2}{2\\pi^2} \\)
+
+Tính tỉ số \\( \\dfrac{h}{R} = \\dfrac{3V_0}{\\pi R^3} = \\dfrac{3V_0}{\\pi x^{3/2}} \\).
+
+Với \\( x^{3/2} = \\sqrt{x^3} = \\sqrt{\\dfrac{9V_0^2}{2\\pi^2}} = \\dfrac{3V_0}{\\pi\\sqrt2} \\), ta có:
+
+\\( \\dfrac{h}{R} = \\dfrac{3V_0}{\\pi\\cdot\\dfrac{3V_0}{\\pi\\sqrt2}} = \\sqrt2 \\).
+
+Đáp án A.""",
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de1_sh_40',
+                "type": 'short',
+                "content": 'Cho hàm số \\( y = \\dfrac{m\\sin x + n\\cos x + 1}{\\sin x + 2\\cos x + 3} \\) (với m, n là các tham số nguyên). Biết rằng tập giá trị của hàm số này trên tập xác định là đoạn \\( [-1; 3] \\). Tính giá trị của biểu thức \\( T = m^2 + n^3 \\).',
+                "blanks": [
+                    {"label": 'T =', "answers": ['1']},
+                ],
+                "points": 1,
+                "explanation": """Gọi \\( y_0 \\) là một giá trị của hàm số. Ta có:
+\\( y_0(\\sin x+2\\cos x+3) = m\\sin x+n\\cos x+1 \\)
+\\( \\Leftrightarrow (y_0-m)\\sin x + (2y_0-n)\\cos x = 1-3y_0 \\)
+
+Phương trình có nghiệm x khi và chỉ khi:
+\\( (y_0-m)^2+(2y_0-n)^2 \\ge (1-3y_0)^2 \\)
+
+Khai triển và rút gọn, bất phương trình trở thành (theo biến \\( y_0 \\)):
+\\( 4y_0^2 + (2m+4n-6)y_0 - (m^2+n^2-1) \\le 0 \\)
+
+Vì tập giá trị đúng bằng \\( [-1;3] \\), nên -1 và 3 là hai nghiệm của phương trình bậc hai tương ứng (dấu bằng xảy ra ở biên). Theo Viète:
+
+Tổng nghiệm: \\( -1+3=2 = \\dfrac{-(2m+4n-6)}{4} \\Rightarrow m+2n=-1 \\) (i)
+
+Tích nghiệm: \\( -1\\cdot3=-3 = \\dfrac{-(m^2+n^2-1)}{4} \\Rightarrow m^2+n^2=13 \\) (ii)
+
+Từ (i): \\( m=-1-2n \\). Thay vào (ii):
+\\( (-1-2n)^2+n^2=13 \\Rightarrow 5n^2+4n-12=0 \\)
+\\( \\Rightarrow n=1.2 \\) (loại, không nguyên) hoặc \\( n=-2 \\) (nhận).
+
+Với \\( n=-2 \\Rightarrow m=-1-2(-2)=3 \\).
+
+Kiểm tra: \\( m^2+n^2=9+4=13 \\) ✓ (thỏa (ii)).
+
+Vậy \\( T = m^2+n^3 = 9 + (-8) = 1 \\).""",
+            },
         ],   # kết thúc hết 1 đề
     },      # kết thúc hết 1 đề
     {
