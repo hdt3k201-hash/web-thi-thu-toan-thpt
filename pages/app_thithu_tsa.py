@@ -155,7 +155,7 @@ def verify_wp_token(token):
 EXAMS = [
     {
         "id": 'de_tsa11_tungthay',
-        "name": 'Đề ôn tập TSA Toán 11 ',
+        "name": 'Đề ôn tập TSA Toán 11 - Đề 1. ',
         "description": '4 câu hỏi đầu của đề, đủ 4 dạng: trắc nghiệm, đúng/sai, trả lời ngắn, kéo thả.',
         "questions": [
 
@@ -2217,139 +2217,132 @@ Dấu "=" xảy ra khi \\( x=y=z=\\sqrt{3} \\). Vậy giá trị nhỏ nhất c�
     },  # kết thúc đề 2
     {
         "id": 'de3',
-        "name": 'Đề số 3 - Giải tích & Đại số',
-        "description": '10 câu hỏi thiên về hàm số, giới hạn, mũ-logarit.',
+        "name": 'Đề số 3 - ĐỀ CHÍNH THỨC TSA ĐỢT 1 - 2026.',
+        "description": '40 câu hỏi.',
         "questions": [
 
-            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
-            {
-                "id": 'de3_mc_01',
-                "type": 'mc4',
-                "content": 'Cho hàm số \\( y = \\dfrac{1+x}{1-x} \\). Nhận xét nào sau đây đúng?',
-                "options": {
-                    'A': 'Đồ thị hàm có TCN \\( y = 1 \\), TCĐ \\( x = 1 \\)',
-                    'B': 'Đồ thị hàm có TCN \\( y = -1 \\), TCĐ \\( x = 1 \\)',
-                    'C': 'Đồ thị hàm có TCN \\( y = 1 \\), TCĐ \\( x = -1 \\)',
-                    'D': 'Đồ thị hàm có TCN \\( y = -1 \\), TCĐ \\( x = -1 \\)',
-                },
-                "correct": 'B',
-                "points": 1,
-                "explanation": 'Viết lại \\( y = \\dfrac{x+1}{-x+1} \\). TCN: \\( \\lim_{x\\to\\pm\\infty} y = \\dfrac{1}{-1} = -1 \\) \\( \\Rightarrow \\) TCN: \\( y = -1 \\). TCĐ: mẫu \\( = 0 \\Leftrightarrow x = 1 \\) (tử tại \\( x=1 \\) khác 0) \\( \\Rightarrow \\) TCĐ: \\( x = 1 \\). Đáp án B.',
-            },
-            {
-                "id": 'de3_mc_05',
-                "type": 'mc4',
-                "content": 'Tập xác định D của hàm số \\( y = \\dfrac{1}{\\sqrt{\\cos^2 x - \\sin^2 x}} \\) là?',
-                "options": {
-                    'A': '\\( D = \\mathbb{R} \\setminus \\left\\{ \\dfrac{\\pi}{4} + \\dfrac{k\\pi}{2}, k\\in\\mathbb{Z} \\right\\} \\)',
-                    'B': '\\( D = \\mathbb{R} \\setminus \\left\\{ \\dfrac{\\pi}{4} + k\\pi, k\\in\\mathbb{Z} \\right\\} \\)',
-                    'C': '\\( D = \\mathbb{R} \\setminus \\left\\{ \\dfrac{\\pi}{2} + \\dfrac{k\\pi}{2}, k\\in\\mathbb{Z} \\right\\} \\)',
-                    'D': '\\( D = \\mathbb{R} \\setminus \\left\\{ \\dfrac{\\pi}{2} + k\\pi, k\\in\\mathbb{Z} \\right\\} \\)',
-                },
-                "correct": 'A',
-                "points": 1,
-                "explanation": '\\( \\cos^2 x - \\sin^2 x = \\cos 2x \\). Điều kiện: \\( \\cos 2x \\ne 0 \\Leftrightarrow 2x \\ne \\dfrac{\\pi}{2} + k\\pi \\Leftrightarrow x \\ne \\dfrac{\\pi}{4} + \\dfrac{k\\pi}{2} \\). Đáp án A.',
-            },
-            {
-                "id": 'de3_mc_06',
-                "type": 'mc4',
-                "content": 'Với giá trị nào của m thì hàm số \\( y = mx^3 + x^2 + (m^2-6)x + 1 \\) đạt cực tiểu tại \\( x = 1 \\)?',
-                "options": {
-                    'A': '\\( m = -4 \\)',
-                    'B': '\\( m = -2 \\)',
-                    'C': '\\( m = 2 \\)',
-                    'D': '\\( m = 1 \\)',
-                },
-                "correct": 'D',
-                "points": 1,
-                "explanation": "\\( y'=3mx^2+2x+m^2-6 \\); \\( y'(1)=0 \\Leftrightarrow m^2+3m-4=0 \\Leftrightarrow m=1 \\) hoặc \\( m=-4 \\). \\( y''=6mx+2 \\). Với \\( m=1 \\): \\( y''(1)=8>0 \\) (cực tiểu, thoả). Với \\( m=-4 \\): \\( y''(1)=-22<0 \\) (cực đại, loại). Đáp án D.",
-            },
-            {
-                "id": 'de3_mc_04',
-                "type": 'mc4',
-                "content": 'Hệ số của số hạng có số mũ của x bằng số mũ của y trong khai triển \\( \\left(x^2 + \\dfrac{3y}{x}\\right)^{14} \\) là?',
-                "options": {
-                    'A': '\\( 14! \\times C_{14}^{7} \\)',
-                    'B': '\\( 3^7 \\times C_{14}^{7} \\)',
-                    'C': '\\( 3^{14} \\times C_{14}^{7} \\)',
-                    'D': '\\( C_{14}^{7} \\)',
-                },
-                "correct": 'B',
-                "points": 1,
-                "explanation": 'Số hạng tổng quát: \\( T = C_{14}^{k}\\cdot3^k\\cdot x^{28-3k}\\cdot y^k \\). Cần \\( 28-3k=k \\Leftrightarrow k=7 \\). Hệ số cần tìm là \\( C_{14}^{7}\\cdot3^7 \\). Đáp án B.',
-            },
+           # ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de3_tf_01",
+    "type": "truefalse",
+    "content": "Cho hàm số \\( y = f(x) = \\sqrt{1+\\cos x} \\). Khi ta xét \\( x \\in (0,\\pi) \\), các nhận định dưới đây là đúng hay sai?",
+    "statements": [
+        {"text": "Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\left(\\dfrac{x}{2}\\right) \\) có nghiệm.", "correct": False},
+        {"text": "Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\left(\\dfrac{x}{4}\\right) \\) có nghiệm.", "correct": True},
+        {"text": "Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\left(\\dfrac{\\pi}{8}\\right) \\) có đúng 01 nghiệm.", "correct": True}
+    ],
+    "points": 1,
+    "explanation": """Ta có công thức hạ bậc: \\( 1+\\cos x = 2\\cos^2\\left(\\dfrac{x}{2}\\right) \\).[cite: 1]
+Suy ra \\( \\sqrt{1+\\cos x} = \\sqrt{2} \\left| \\cos\\left(\\dfrac{x}{2}\\right) \\right| \\).[cite: 1]
+Vì \\( x \\in (0,\\pi) \\Rightarrow \\dfrac{x}{2} \\in \\left(0,\\dfrac{\\pi}{2}\\right) \\Rightarrow \\cos\\left(\\dfrac{x}{2}\\right) > 0 \\).[cite: 1]
+Do đó: \\( \\sqrt{1+\\cos x} = \\sqrt{2}\\cos\\left(\\dfrac{x}{2}\\right) \\).[cite: 1]
 
-            # ---------------- ĐÚNG / SAI (truefalse) ----------------
-            {
-                "id": 'de3_tf_01',
-                "type": 'truefalse',
-                "content": 'Cho hàm số \\( y = f(x) = \\sqrt{1 + \\cos x} \\). Khi xét \\( x \\in (0, \\pi) \\), các mệnh đề dưới đây đúng hay sai?',
-                "statements": [
-                    {"text": 'Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\dfrac{x}{2} \\) có nghiệm', "correct": False},
-                    {"text": 'Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\dfrac{x}{4} \\) có nghiệm', "correct": True},
-                    {"text": 'Phương trình \\( \\sqrt{1+\\cos x} = \\cos\\dfrac{\\pi}{8} \\) có đúng 1 nghiệm', "correct": True},
-                ],
-                "points": 1,
-                "explanation": '\\( 1+\\cos x = 2\\cos^2\\dfrac{x}{2} \\Rightarrow \\sqrt{1+\\cos x} = \\sqrt{2}\\cdot\\cos\\dfrac{x}{2} \\) (do \\( \\dfrac{x}{2}\\in(0,\\dfrac{\\pi}{2}) \\) nên \\( \\cos\\dfrac{x}{2}>0 \\)). (1) \\( \\sqrt{2}\\cos\\dfrac{x}{2}=\\cos\\dfrac{x}{2} \\Leftrightarrow \\cos\\dfrac{x}{2}=0 \\): vô nghiệm trên \\( (0,\\pi) \\Rightarrow \\) Sai. (2) Đặt \\( t=\\cos\\dfrac{x}{4}\\in(\\dfrac{\\sqrt2}{2},1) \\): \\( 2\\sqrt{2}t^2-t-\\sqrt{2}=0 \\) có nghiệm \\( t\\approx0.905 \\) thoả \\( \\Rightarrow \\) Đúng. (3) \\( \\cos\\dfrac{x}{2}=\\dfrac{\\cos(\\pi/8)}{\\sqrt2}\\approx0.653\\in(0,1) \\); \\( \\cos\\dfrac{x}{2} \\) nghịch biến toàn ánh trên \\( (0,\\pi) \\) nên có đúng 1 nghiệm \\( \\Rightarrow \\) Đúng.',
-            },
+1. Mệnh đề 1: Sai.[cite: 1]
+Phương trình tương đương: \\( \\sqrt{2}\\cos\\left(\\dfrac{x}{2}\\right) = \\cos\\left(\\dfrac{x}{2}\\right) \\Leftrightarrow (\\sqrt{2}-1)\\cos\\left(\\dfrac{x}{2}\\right) = 0 \\Leftrightarrow \\cos\\left(\\dfrac{x}{2}\\right) = 0 \\).[cite: 1]
+Tuy nhiên với \\( x \\in (0,\\pi) \\) thì \\( \\cos\\left(\\dfrac{x}{2}\\right) > 0 \\).[cite: 1]
+Phương trình vô nghiệm.[cite: 1]
 
-            # ---------------- TRẢ LỜI NGẮN (short) ----------------
-            {
-                "id": 'de3_sh_01',
-                "type": 'short',
-                "content": 'Bất phương trình \\( (\\log_2 x)^2 + \\log_3\\dfrac{36}{x} \\le \\left(1 + \\log_3\\dfrac{36}{x}\\right)\\cdot\\log_2 x \\) có tập nghiệm \\( x \\in [a, b] \\). Giá trị của \\( a + \\dfrac{b}{2} \\) = ?',
-                "blanks": [
-                    {"label": 'a + b/2 =', "answers": ['4']},
-                ],
-                "points": 1,
-                "explanation": 'Đặt \\( u=\\log_2 x, v=\\log_3\\dfrac{36}{x} \\). BPT \\( \\Leftrightarrow (u-1)(u-v)\\le0 \\). Giải 2 trường hợp được tập nghiệm \\( [2,4] \\Rightarrow a=2, b=4 \\Rightarrow a+\\dfrac{b}{2} = 2+2 = 4 \\).',
-            },
-            {
-                "id": 'de3_sh_03',
-                "type": 'short',
-                "content": 'Cho hàm số \\( y = 4\\sin(x)\\cdot\\sin\\left(x + \\dfrac{\\pi}{2}\\right) \\). Giá trị lớn nhất và nhỏ nhất của y là:',
-                "blanks": [
-                    {"label": 'Giá trị lớn nhất', "answers": ['2']},
-                    {"label": 'Giá trị nhỏ nhất', "answers": ['-2']},
-                ],
-                "points": 1,
-                "explanation": '\\( \\sin\\left(x+\\dfrac{\\pi}{2}\\right)=\\cos x \\) nên \\( y=4\\sin x\\cdot\\cos x=2\\sin 2x \\). Vì \\( -1\\le\\sin 2x\\le1 \\) nên \\( -2\\le y\\le2 \\).',
-            },
-            {
-                "id": 'de3_sh_04',
-                "type": 'short',
-                "content": "Cho hàm số \\( f(x) = (x + 10)^6 \\). Tính \\( f''(2) \\) = ?",
-                "blanks": [
-                    {"label": "f''(2) =", "answers": ['622080']},
-                ],
-                "points": 1,
-                "explanation": "\\( f'(x)=6(x+10)^5 \\); \\( f''(x)=30(x+10)^4 \\). \\( f''(2)=30\\cdot12^4=30\\cdot20736=622080 \\).",
-            },
-            {
-                "id": 'de3_sh_05',
-                "type": 'short',
-                "content": 'Tính giới hạn: \\( \\displaystyle\\lim_{x\\to0} \\dfrac{1 - \\cos 2x}{x} \\) = ?',
-                "blanks": [
-                    {"label": 'Kết quả', "answers": ['0']},
-                ],
-                "points": 1,
-                "explanation": '\\( 1-\\cos 2x=2\\sin^2 x \\). Giới hạn \\( = \\lim \\dfrac{2\\sin^2 x}{x} = \\lim\\left(2\\sin x\\cdot\\dfrac{\\sin x}{x}\\right) = 2\\cdot0\\cdot1 = 0 \\).',
-            },
+2. Mệnh đề 2: Đúng.[cite: 1]
+Phương trình tương đương: \\( \\sqrt{2}\\cos\\left(\\dfrac{x}{2}\\right) = \\cos\\left(\\dfrac{x}{4}\\right) \\Leftrightarrow \\sqrt{2}\\left[2\\cos^2\\left(\\dfrac{x}{4}\\right)-1\\right] = \\cos\\left(\\dfrac{x}{4}\\right) \\).[cite: 1]
+Đặt \\( t = \\cos\\left(\\dfrac{x}{4}\\right) \\).[cite: 1]
+Với \\( x \\in (0,\\pi) \\Rightarrow \\dfrac{x}{4} \\in \\left(0,\\dfrac{\\pi}{4}\\right) \\Rightarrow t \\in \\left(\\dfrac{\\sqrt{2}}{2}, 1\\right) \\).[cite: 1]
+Phương trình trở thành \\( 2\\sqrt{2}t^2 - t - \\sqrt{2} = 0 \\).[cite: 1]
+Bấm máy ta được \\( t_1 = \\dfrac{1+\\sqrt{17}}{4\\sqrt{2}} \\approx 0.905 \\) (thỏa mãn) và \\( t_2 < 0 \\) (loại).[cite: 1]
+Vậy phương trình có nghiệm.[cite: 1]
 
-            # ---------------- KÉO THẢ (dragdrop) ----------------
-            {
-                "id": 'de3_dd_02',
-                "type": 'dragdrop',
-                "content": 'Cho các số thực \\( x, y, z \\ge 0 \\) thoả \\( 3^x + 9^y + 27^z = 11 \\). Kéo thả để hoàn thành kết luận về khoảng giá trị của z và giá trị nhỏ nhất của \\( x+2y+3z \\).',
-                "options_pool": ['0', '2/3', '2', '9'],
-                "blanks": [
-                    {"label": 'Giá trị z thuộc đoạn [___ ;', "answer": '0'},
-                    {"label": '___ ] (cận trên của z)', "answer": '2/3'},
-                    {"label": 'min(x + 2y + 3z) =', "answer": '2'},
-                ],
-                "points": 1,
-                "explanation": 'Với \\( A=3^x, B=9^y, C=27^z \\ge 1 \\), \\( A+B+C=11 \\): \\( C\\le9 \\Rightarrow z\\le\\dfrac{2}{3} \\), kết hợp \\( z\\ge0 \\Rightarrow z\\in\\left[0;\\dfrac{2}{3}\\right] \\). \\( 3^{x+2y+3z}=A\\cdot B\\cdot C \\), tích nhỏ nhất khi 2 trong 3 biến bằng 1: \\( \\min(ABC)=9 \\Rightarrow \\min P=2 \\).',
-            },
+3. Mệnh đề 3: Đúng.[cite: 1]
+Phương trình tương đương: \\( \\sqrt{2}\\cos\\left(\\dfrac{x}{2}\\right) = \\cos\\left(\\dfrac{\\pi}{8}\\right) \\Leftrightarrow \\cos\\left(\\dfrac{x}{2}\\right) = \\dfrac{\\cos\\left(\\dfrac{\\pi}{8}\\right)}{\\sqrt{2}} \\approx 0.653 \\).[cite: 1]
+Hàm số \\( y = \\cos\\left(\\dfrac{x}{2}\\right) \\) nghịch biến trên \\( (0, \\pi) \\) và nhận giá trị từ 1 đến 0.[cite: 1]
+Vì \\( 0.653 \\in (0, 1) \\) nên phương trình có duy nhất 1 nghiệm.[cite: 1]"""
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de3_sh_02",
+    "type": "short",
+    "content": "Bất phương trình \\( (\\log_2 x)^2 + \\log_3\\dfrac{36}{x} \\le \\left(1 + \\log_3\\dfrac{36}{x}\\right)\\log_2 x \\) có tập nghiệm là \\( x \\in [a, b] \\). Giá trị của \\( a + \\dfrac{b}{2} = \\) ?",
+    "blanks": [
+        {"label": "a + b/2 =", "answers": ["4"]}
+    ],
+    "points": 1,
+    "explanation": """Điều kiện: \\( x > 0 \\).[cite: 1]
+Đặt \\( u = \\log_2 x \\) và \\( v = \\log_3\\dfrac{36}{x} \\).[cite: 1]
+Bất phương trình trở thành: \\( u^2 + v \\le (1+v)u \\Leftrightarrow u^2 - u - uv + v \\le 0 \\Leftrightarrow u(u-1) - v(u-1) \\le 0 \\Leftrightarrow (u-1)(u-v) \\le 0 \\).[cite: 1]
+
+Ta xét 2 trường hợp:
+- TH1: \\( u \\ge 1 \\) và \\( u \\le v \\).[cite: 1]
+\\( \\Leftrightarrow \\log_2 x \\ge 1 \\) và \\( \\log_2 x \\le \\log_3\\dfrac{36}{x} \\).[cite: 1]
+\\( \\Leftrightarrow x \\ge 2 \\) và \\( \\log_2 x + \\log_3 x \\le \\log_3 36 \\).[cite: 1]
+Xét hàm số \\( f(x) = \\log_2 x + \\log_3 x \\) đồng biến trên \\( (0, +\\infty) \\).[cite: 1]
+Ta thấy \\( f(4) = \\log_2 4 + \\log_3 4 = 2 + \\log_3 4 = \\log_3 9 + \\log_3 4 = \\log_3 36 \\).[cite: 1]
+Do đó \\( f(x) \\le f(4) \\Leftrightarrow x \\le 4 \\).[cite: 1]
+Kết hợp điều kiện ta được \\( x \\in [2, 4] \\).[cite: 1]
+
+- TH2: \\( u \\le 1 \\) và \\( u \\ge v \\).[cite: 1]
+\\( \\Leftrightarrow \\log_2 x \\le 1 \\) và \\( \\log_2 x \\ge \\log_3\\dfrac{36}{x} \\).[cite: 1]
+\\( \\Leftrightarrow x \\le 2 \\) và \\( f(x) \\ge f(4) \\Rightarrow x \\ge 4 \\) (Hệ vô nghiệm).[cite: 1]
+
+Vậy tập nghiệm là \\( [2, 4] \\Rightarrow a=2, b=4 \\).[cite: 1]
+Suy ra \\( a + \\dfrac{b}{2} = 2 + \\dfrac{4}{2} = 4 \\).[cite: 1]"""
+},
+
+{
+    "id": "de3_sh_03",
+    "type": "short",
+    "content": "Can chi là hệ thống đánh số thứ tự năm theo chu kỳ, trong đó một năm được xác định bởi hai phần: Thiên Can (Giáp, Ất, Bính, Đinh, Mậu, Kỷ, Canh, Tân, Nhâm, Quý) và Địa Chi (Tý, Sửu, Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu, Tuất, Hợi). Biết năm 1010 là năm Bính Tuất, vậy từ 1011 tính đến năm 2025 thì đã có bao nhiêu năm Bính Tuất?",
+    "blanks": [
+        {"label": "Số năm Bính Tuất đã có là:", "answers": ["16"]}
+    ],
+    "points": 1,
+    "explanation": """Hệ thống Can Chi lặp lại theo chu kỳ là BCNN của 10 (Thiên Can) và 12 (Địa Chi) tức là 60 năm.[cite: 1]
+Số năm từ 1011 đến 2025 là: \\( 2025 - 1010 = 1015 \\) năm.[cite: 1]
+Ta thực hiện phép chia: \\( \\dfrac{1015}{60} \\approx 16.91 \\).[cite: 1]
+Do đó, trong khoảng thời gian này có trọn vẹn 16 chu kỳ 60 năm.[cite: 1]
+Các năm Bính Tuất sẽ có dạng \\( 1010 + 60k \\) với \\( k \\in \\mathbb{N}^* \\).[cite: 1]
+Ta có: \\( 1011 \\le 1010 + 60k \\le 2025 \\Leftrightarrow 1 \\le 60k \\le 1015 \\Leftrightarrow \\dfrac{1}{60} \\le k \\le \\dfrac{1015}{60} \\approx 16.91 \\).[cite: 1]
+Vì \\( k \\in \\mathbb{N} \\) nên \\( k \\in \\{1; 2; ...; 16\\} \\).[cite: 1]
+Vậy có đúng 16 năm Bính Tuất.[cite: 1]"""
+},
+
+{
+    "id": "de3_sh_04",
+    "type": "short",
+    "content": "Hiếu và Nam đều có số báo danh có dạng là \\( \\overline{3a8b} \\). Biết số này đều chia hết cho 5 và 9 và số báo danh của Hiếu là số chẵn. Số báo danh của Hiếu và Nam lần lượt là:",
+    "blanks": [
+        {"label": "Số báo danh của Hiếu:", "answers": ["3780"]},
+        {"label": "Số báo danh của Nam:", "answers": ["3285"]}
+    ],
+    "points": 1,
+    "explanation": """Số \\( \\overline{3a8b} \\) chia hết cho 5 nên chữ số tận cùng \\( b \\in \\{0, 5\\} \\).[cite: 1]
+
+- Trường hợp 1: Nếu \\( b=0 \\), số trở thành \\( \\overline{3a80} \\).[cite: 1]
+Để số này chia hết cho 9 thì tổng các chữ số \\( (3+a+8+0) = 11+a \\) phải chia hết cho 9.[cite: 1]
+Vì \\( a \\) là chữ số \\( (0 \\le a \\le 9) \\) nên \\( 11+a = 18 \\Rightarrow a=7 \\).[cite: 1]
+Ta được số 3780. Đây là số chẵn.[cite: 1]
+
+- Trường hợp 2: Nếu \\( b=5 \\), số trở thành \\( \\overline{3a85} \\).[cite: 1]
+Để số này chia hết cho 9 thì tổng các chữ số \\( (3+a+8+5) = 16+a \\) phải chia hết cho 9.[cite: 1]
+Vì \\( 0 \\le a \\le 9 \\) nên \\( 16+a = 18 \\Rightarrow a=2 \\).[cite: 1]
+Ta được số 3285. Đây là số lẻ.[cite: 1]
+
+Theo giả thiết, số báo danh của Hiếu là số chẵn nên của Hiếu là 3780.[cite: 1]
+Suy ra số báo danh của Nam là 3285.[cite: 1]"""
+},
+
+{
+    "id": "de3_sh_05",
+    "type": "short",
+    "content": "Cho hàm số: \\( y = 4\\sin x\\sin\\left(x+\\dfrac{\\pi}{2}\\right) \\). Giá trị lớn nhất và giá trị nhỏ nhất của y lần lượt là:",
+    "blanks": [
+        {"label": "Giá trị lớn nhất của y là:", "answers": ["2"]},
+        {"label": "Giá trị nhỏ nhất của y là:", "answers": ["-2"]}
+    ],
+    "points": 1,
+    "explanation": """Sử dụng công thức lượng giác phụ chéo: \\( \\sin\\left(x+\\dfrac{\\pi}{2}\\right) = \\cos x \\).[cite: 1]
+Khi đó hàm số được viết lại: \\( y = 4\\sin x\\cos x = 2(2\\sin x\\cos x) = 2\\sin(2x) \\).[cite: 1]
+Vì \\( -1 \\le \\sin(2x) \\le 1 \\) với mọi \\( x \\in \\mathbb{R} \\), ta suy ra \\( -2 \\le y \\le 2 \\).[cite: 1]
+Vậy Giá trị lớn nhất của y là 2, Giá trị nhỏ nhất của y là -2.[cite: 1]"""
+},
         ],
     },
 ]
