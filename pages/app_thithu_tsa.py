@@ -432,7 +432,113 @@ Phương trình có 2 nghiệm phân biệt \\( x_1, x_2 \\) (do \\( \\Delta = 1
 Theo định lí Vi-ét: \\( x_1 + x_2 = 3 \\) và \\( x_1 x_2 = -1 \\).
 Giá trị biểu thức: \\( P = x_1^2 + x_2^2 = (x_1+x_2)^2 - 2x_1 x_2 = 3^2 - 2(-1) = 11 \\).
 Vậy đáp án đúng là C."""
-    }
+    },
+
+    # ---------------- TRẢ LỜI NGẮN (short) - CÂU 17 ----------------
+            {
+                "id": "de1_sh_17",
+                "type": "short",
+                "content": "Cho hình chóp S.ABC có độ dài ba cạnh bên bằng nhau \\( SA=SB=SC=a \\). Các góc ở đỉnh S lần lượt được cho bởi: \\( \\widehat{ASB}=60^\\circ \\), \\( \\widehat{BSC}=90^\\circ \\) và \\( \\widehat{CSA}=120^\\circ \\). Gọi \\( \\alpha \\) là góc tạo bởi hai mặt phẳng (SAB) và (SAC). Tính giá trị của \\( \\cos\\alpha \\). (Điền đáp án dưới dạng phân số tối giản).",
+                "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau17-de1.PNG",
+                "blanks": [
+                    {"label": "\\( \\cos\\alpha = \\)", "answers": ["1/3"]}
+                ],
+                "points": 1,
+                "explanation": """Dựa vào các góc ở đỉnh S, ta tính được các cạnh đáy:
+- Xét \\( \\Delta SAB \\) có \\( SA=SB=a \\) và \\( \\widehat{ASB}=60^\\circ \\) nên là tam giác đều \\( \\Rightarrow AB = a \\).
+- Xét \\( \\Delta SBC \\) vuông cân tại S do \\( \\widehat{BSC}=90^\\circ \\) \\( \\Rightarrow BC = a\\sqrt{2} \\).
+- Xét \\( \\Delta SAC \\) có \\( AC^2 = SA^2 + SC^2 - 2SA\\cdot SC\\cos 120^\\circ = 3a^2 \\Rightarrow AC = a\\sqrt{3} \\).
+
+Ta thấy \\( AB^2 + BC^2 = a^2 + 2a^2 = 3a^2 = AC^2 \\), nên \\( \\Delta ABC \\) là tam giác vuông tại B.
+Gọi H là hình chiếu vuông góc của S xuống mặt phẳng (ABC). Vì \\( SA=SB=SC \\) nên H là tâm đường tròn ngoại tiếp \\( \\Delta ABC \\). Do \\( \\Delta ABC \\) vuông tại B nên H chính là trung điểm của cạnh huyền AC.
+
+Tính thể tích khối chóp S.ABC theo công thức góc ở đỉnh:
+\\( V = \\dfrac{1}{6}SA\\cdot SB\\cdot SC\\sqrt{1+2\\cos 60^\\circ\\cos 90^\\circ\\cos 120^\\circ - \\cos^2 60^\\circ - \\cos^2 90^\\circ - \\cos^2 120^\\circ} = \\dfrac{a^3\\sqrt{2}}{12} \\).
+
+Khoảng cách từ B đến mặt phẳng (SAC) là: 
+\\( d(B, (SAC)) = \\dfrac{3V}{S_{\\Delta SAC}} = \\dfrac{3\\cdot \\frac{a^3\\sqrt{2}}{12}}{\\frac{a^2\\sqrt{3}}{4}} = \\dfrac{a\\sqrt{6}}{3} \\).
+
+Trong \\( \\Delta SAB \\) đều, đường cao kẻ từ B xuống giao tuyến SA là \\( BH = \\dfrac{a\\sqrt{3}}{2} \\).
+Góc \\( \\alpha \\) tạo bởi (SAB) và (SAC) được tính qua hệ thức: 
+\\( \\sin\\alpha = \\dfrac{d(B, (SAC))}{BH} = \\dfrac{\\frac{a\\sqrt{6}}{3}}{\\frac{a\\sqrt{3}}{2}} = \\dfrac{2\\sqrt{2}}{3} \\).
+Suy ra \\( \\cos\\alpha = \\sqrt{1 - \\sin^2\\alpha} = \\sqrt{1 - \\dfrac{8}{9}} = \\dfrac{1}{3} \\)."""
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) - CÂU 18 ----------------
+            {
+                "id": "de1_tf_18",
+                "type": "truefalse",
+                "content": "Trong không gian, xét tính Đúng/Sai của các mệnh đề sau về quan hệ song song:",
+                "statements": [
+                    {"text": "Nếu hai mặt phẳng phân biệt cùng song song với một đường thẳng thì chúng song song với nhau.", "correct": False},
+                    {"text": "Cho hai đường thẳng chéo nhau. Luôn tồn tại duy nhất một mặt phẳng chứa đường thẳng này và song song với đường thẳng kia.", "correct": True},
+                    {"text": "Nếu mặt phẳng \\( (\\alpha) \\) chứa hai đường thẳng phân biệt cùng song song với mặt phẳng \\( (\\beta) \\) thì \\( (\\alpha) \\) song song với \\( (\\beta) \\).", "correct": False},
+                    {"text": "Hình chiếu song song của hai đường thẳng chéo nhau lên một mặt phẳng (theo phương chiếu không song song với hai đường thẳng đó) có thể là hai đường thẳng song song.", "correct": True}
+                ],
+                "points": 1,
+                "explanation": """a) Sai. Hai mặt phẳng đó có thể cắt nhau. Khi đó giao tuyến của chúng sẽ song song với đường thẳng đã cho.
+
+b) Đúng. Đây là tính chất và hệ quả cơ bản trong SGK Hình học 11 về đường thẳng và mặt phẳng song song.
+
+c) Sai. Hai đường thẳng phân biệt đó phải **cắt nhau** thì mới đủ điều kiện kết luận hai mặt phẳng song song. Nếu hai đường thẳng đó song song thì hai mặt phẳng vẫn có thể cắt nhau.
+
+d) Đúng. Nếu mặt phẳng chiếu song song với một mặt phẳng đang chứa cả hai đường thẳng đó thì hình chiếu của chúng sẽ là hai đường thẳng song song."""
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) - CÂU 19 ----------------
+            {
+                "id": "de1_sh_19",
+                "type": "short",
+                "content": "Cho hàm số \\( f(x) = \\sqrt{1+2x}\\sqrt[3]{1+3x}\\dots\\sqrt[2026]{1+2026x} \\). Tính giới hạn \\( L = \\lim_{x\\to 0}\\dfrac{f(x)-1}{x} \\).",
+                "blanks": [
+                    {"label": "L =", "answers": ["2025"]}
+                ],
+                "points": 1,
+                "explanation": """Ta có dạng của giới hạn này chính là đạo hàm của hàm số tại \\( x=0 \\):
+\\( L = \\lim_{x\\to 0}\\dfrac{f(x)-f(0)}{x-0} = f'(0) \\) (do dễ dàng nhận thấy \\( f(0) = 1 \\)).
+
+Lấy logarith tự nhiên (ln) hai vế của hàm số, ta được: 
+\\( \\ln f(x) = \\sum_{k=2}^{2026} \\dfrac{1}{k} \\ln(1+kx) \\).
+
+Đạo hàm hai vế: 
+\\( \\dfrac{f'(x)}{f(x)} = \\sum_{k=2}^{2026} \\dfrac{1}{k} \\cdot \\dfrac{k}{1+kx} = \\sum_{k=2}^{2026} \\dfrac{1}{1+kx} \\).
+
+Thay \\( x = 0 \\) vào hệ thức trên, ta có:
+\\( \\dfrac{f'(0)}{f(0)} = \\sum_{k=2}^{2026} 1 = (2026 - 2) + 1 = 2025 \\).
+Do \\( f(0) = 1 \\) nên \\( f'(0) = 2025 \\). Vậy \\( L = 2025 \\)."""
+            },
+
+            # ---------------- KÉO THẢ (dragdrop) - CÂU 20 ----------------
+            {
+                "id": "de1_dd_20",
+                "type": "dragdrop",
+                "content": "Một chiếc xe đẩy chở một thanh thép cứng dài (đặt nằm ngang) đi qua một góc cua vuông góc nối giữa hai hành lang. Hành lang thứ nhất rộng 2.7 (m), hành lang thứ hai rộng 6.4 (m). Để thanh thép có thể lọt qua góc cua này mà không bị kẹt, chiều dài L của thanh thép phải thỏa mãn một giới hạn tối đa (Bỏ qua bề dày của thanh thép). Giả sử khi thanh thép bị kẹt cứng nhất, nó tạo với vách của hành lang thứ hai một góc là \\( \\theta \\). Kéo thả các kết quả sau vào các ô trống tương ứng:",
+                "options_pool": [
+                    "12.5", 
+                    "\\dfrac{3}{4}", 
+                    "10.0", 
+                    "\\dfrac{4}{3}", 
+                    "8.0"
+                ],
+                "blanks": [
+                    {"label": "Tang của góc \\( \\theta \\) tại vị trí thanh thép bị kẹt hẹp nhất bằng:", "answer": "\\dfrac{4}{3}"},
+                    {"label": "Tại vị trí kẹt, độ dài đoạn thanh thép tính từ mép góc cua đến vách hành lang thứ hai là: (m).", "answer": "8.0"},
+                    {"label": "Chiều dài lớn nhất của thanh thép để có thể lọt qua được góc cua là: (m).", "answer": "12.5"}
+                ],
+                "points": 1,
+                "explanation": """Gọi \\( L \\) là chiều dài thanh thép khi đi qua góc cua và bị vướng sát vào cả mép góc cua bên trong và 2 vách hành lang bên ngoài. Khi đó chiều dài thanh thép được biểu diễn bằng hàm số theo góc \\( \\theta \\) là:
+\\( L(\\theta) = \\dfrac{2.7}{\\cos\\theta} + \\dfrac{6.4}{\\sin\\theta} \\) (với \\( 0 < \\theta < \\dfrac{\\pi}{2} \\)).
+
+Để thanh thép lọt qua được ở mọi góc độ, chiều dài thực của thanh phải nhỏ hơn hoặc bằng giá trị nhỏ nhất của hàm \\( L(\\theta) \\).
+Ta lấy đạo hàm để tìm cực trị: 
+\\( L'(\\theta) = \\dfrac{2.7\\sin\\theta}{\\cos^2\\theta} - \\dfrac{6.4\\cos\\theta}{\\sin^2\\theta} = 0 \\)
+\\( \\Leftrightarrow 2.7\\sin^3\\theta = 6.4\\cos^3\\theta \\Leftrightarrow \\tan^3\\theta = \\dfrac{6.4}{2.7} = \\dfrac{64}{27} \\Leftrightarrow \\tan\\theta = \\dfrac{4}{3} \\).
+
+Từ \\( \\tan\\theta = \\dfrac{4}{3} \\), ta suy ra \\( \\sin\\theta = \\dfrac{4}{5} = 0.8 \\) và \\( \\cos\\theta = \\dfrac{3}{5} = 0.6 \\).
+- Chiều dài đoạn thanh thép tính từ góc cua sang hành lang thứ hai là: \\( \\dfrac{6.4}{\\sin\\theta} = \\dfrac{6.4}{0.8} = 8.0 \\) (m).
+- Chiều dài cực đại của thanh thép (giá trị min của \\( L(\\theta) \\)) là: 
+\\( L_{max} = \\dfrac{2.7}{\\cos\\theta} + \\dfrac{6.4}{\\sin\\theta} = \\dfrac{2.7}{0.6} + \\dfrac{6.4}{0.8} = 4.5 + 8.0 = 12.5 \\) (m)."""
+            },
 
           
         ],   # kết thúc hết 1 đề
