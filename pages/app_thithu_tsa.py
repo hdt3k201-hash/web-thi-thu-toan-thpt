@@ -321,14 +321,13 @@ EXAMS = [
     },
 
     # ---------------- ĐÚNG / SAI (truefalse) ----------------
-    {
+   {
         "id": "de1_tf_13",
         "type": "truefalse",
-        "content": "Một trạm ra-đa của cảnh sát giao thông đã ghi lại tốc độ (đơn vị: km/h) của 50 chiếc ô tô đi qua một đoạn đường cao tốc được giới hạn tốc độ. Số liệu được ghép nhóm như sau:",
-        "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau13-de1.PNG',
-
-
-Biết rằng đoạn đường này quy định tốc độ tối đa là 100 km/h. Xét tính Đúng/Sai của các mệnh đề sau:""",
+        "content": """Một trạm ra-đa của cảnh sát giao thông đã ghi lại tốc độ (đơn vị: km/h) của 50 chiếc ô tô đi qua một đoạn đường cao tốc được giới hạn tốc độ. Số liệu được ghép nhóm như sau:
+        
+       Biết rằng đoạn đường này quy định tốc độ tối đa là 100 km/h. Xét tính Đúng/Sai của các mệnh đề sau:""",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau13-de1.PNG",
         "statements": [
             {"text": "Mốt của mẫu số liệu trên thuộc nhóm [80; 100).", "correct": True},
             {"text": "Tứ phân vị thứ nhất \\( (Q_1) \\) của mẫu số liệu bằng 65 km/h.", "correct": False},
