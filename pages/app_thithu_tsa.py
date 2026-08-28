@@ -301,7 +301,7 @@ EXAMS = [
     {
         "id": "de_tsa11_sh_05",
         "type": "short",
-        "content": "Một chiếc xe chạy trong sa mạc có quỹ đạo là một đường cong bậc ba với phương trình \\( y = \\dfrac{1}{3}x^3 - 2x^2 + 5x \\) (trên hệ trục tọa độ với đơn vị là km). Tại mọi thời điểm, đèn pha của xe luôn chiếu sáng theo một tia sáng thẳng trùng với phương của tiếp tuyến quỹ đạo xe chạy tại điểm đó. Tại thời điểm xe đi ngang qua vị trí có hoành độ \\( x = 4 \\) thì đèn pha chiếu sáng trúng một cột mốc M nằm trên trục tung Oy. Hãy xác định tung độ của cột mốc M. (Điền đáp án dưới dạng phân số tối giản).",
+        "content": ' Một chiếc xe chạy trong sa mạc có quỹ đạo là một đường cong bậc ba với phương trình \\( y = \\dfrac{1}{3}x^3 - 2x^2 + 5x \\) (trên hệ trục tọa độ với đơn vị là km). Tại mọi thời điểm, đèn pha của xe luôn chiếu sáng theo một tia sáng thẳng trùng với phương của tiếp tuyến quỹ đạo xe chạy tại điểm đó. Tại thời điểm xe đi ngang qua vị trí có hoành độ \\( x = 4 \\) thì đèn pha chiếu sáng trúng một cột mốc M nằm trên trục tung Oy. Hãy xác định tung độ của cột mốc M. (Điền đáp án dưới dạng phân số tối giản).',
         "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau11-de1.PNG",
         "blanks": [
             {"label": "Tung độ của M =", "answers": ["-32/3"]}
@@ -324,7 +324,7 @@ EXAMS = [
     {
         "id": "de1_tf_13",
         "type": "truefalse",
-        "content": """Một trạm ra-đa của cảnh sát giao thông đã ghi lại tốc độ (đơn vị: km/h) của 50 chiếc ô tô đi qua một đoạn đường cao tốc được giới hạn tốc độ. Số liệu được ghép nhóm như sau:""",
+        "content": "Một trạm ra-đa của cảnh sát giao thông đã ghi lại tốc độ (đơn vị: km/h) của 50 chiếc ô tô đi qua một đoạn đường cao tốc được giới hạn tốc độ. Số liệu được ghép nhóm như sau:",
         "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau13-de1.PNG',
 
 
