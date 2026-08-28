@@ -2333,8 +2333,45 @@ Dấu "=" xảy ra khi \\( x=y=z=\\sqrt{3} \\). Vậy giá trị nhỏ nhất c�
         "points": 1,
         "explanation": "Số phần tử của không gian mẫu: Xếp 10 học sinh thành một hàng ngang có \\( n(\\Omega)=10! \\) cách.\n\nGọi biến cố \\( A \\): \"Không có bất kì 2 bạn nam nào đứng cạnh nhau\".\n\n- Bước 1: Xếp 7 bạn nữ thành một hàng ngang có \\( 7! \\) cách. Khi đó tạo ra 8 khoảng trống (gồm 6 khoảng giữa các bạn nữ và 2 khoảng ở hai đầu).\n\n- Bước 2: Xếp 3 bạn nam vào 8 khoảng trống đó có \\( A_8^3 \\) cách.\n\nSuy ra số kết quả thuận lợi cho biến cố \\( A \\) là \\( n(A)=7! \\cdot A_8^3 \\).\n\nXác suất cần tìm: \\( P(A) = \\dfrac{n(A)}{n(\\Omega)} = \\dfrac{7! \\cdot A_8^3}{10!} = \\dfrac{7! \\cdot 8 \\cdot 7 \\cdot 6}{10 \\cdot 9 \\cdot 8 \\cdot 7!} = \\dfrac{7 \\cdot 6}{10 \\cdot 9} = \\dfrac{42}{90} = \\dfrac{7}{15} \\)."
     },
-        {        "id": "de3_mc_11",        "type": "mc4",        "content": "Trong không gian \\( Oxyz \\), có điểm \\( A(a, b, c) \\) và điểm \\( B(m, n, p) \\) di chuyển nhưng luôn thoả mãn biểu thức: \\( \\begin{cases} a^2+b^2+c^2=9 \\\\ m^2+n^2+p^2=36 \\end{cases} \\). Nhận định nào sau đây là sai:",        "options": {            "A": "Điểm A thuộc một mặt cầu cố định.",            "B": "Độ dài ngắn nhất của AB là 3.",            "C": "Độ dài AB đạt cực tiểu \\( \\Leftrightarrow \\overrightarrow{OA} \\cdot \\overrightarrow{OB} = 36 \\).",            "D": "Độ dài AB đạt cực tiểu \\( \\Leftrightarrow \\) A là trung điểm OB."        },        "correct": "C",        "points": 1,        "explanation": "Từ giả thiết ta có: A thuộc mặt cầu \\( (S_1) \\) tâm \\( O(0;0;0) \\), bán kính \\( R_1=3 \\) \\( \\Rightarrow \\) Phương án A đúng.\n\nB thuộc mặt cầu \\( (S_2) \\) tâm \\( O(0;0;0) \\), bán kính \\( R_2=6 \\).\n\nHai mặt cầu đồng tâm O, có \\( R_1<R_2 \\). Độ dài AB đạt cực tiểu khi và chỉ khi ba điểm O, A, B thẳng hàng theo thứ tự đó.\n\nKhi đó \\( AB_{min}=R_2-R_1=6-3=3 \\) \\( \\Rightarrow \\) Phương án B đúng.\n\nTại vị trí cực tiểu, \\( \\overrightarrow{OA} \\) và \\( \\overrightarrow{OB} \\) cùng hướng, \\( OA=3, OB=6 \\) \\( \\Rightarrow \\overrightarrow{OB}=2\\overrightarrow{OA} \\) \\( \\Rightarrow \\) A là trung điểm OB \\( \\Rightarrow \\) Phương án D đúng.\n\nXét nhận định C: Khi AB đạt cực tiểu, do \\( \\overrightarrow{OA}, \\overrightarrow{OB} \\) cùng hướng nên \\( \\overrightarrow{OA} \\cdot \\overrightarrow{OB} = |\\overrightarrow{OA}| \\cdot |\\overrightarrow{OB}| \\cdot \\cos 0^\\circ = 3 \\cdot 6 \\cdot 1 = 18 \\neq 36 \\). Vậy C sai."    }  
-
+        {        "id": "de3_mc_11",        "type": "mc4",        "content": "Trong không gian \\( Oxyz \\), có điểm \\( A(a, b, c) \\) và điểm \\( B(m, n, p) \\) di chuyển nhưng luôn thoả mãn biểu thức: \\( \\begin{cases} a^2+b^2+c^2=9 \\\\ m^2+n^2+p^2=36 \\end{cases} \\). Nhận định nào sau đây là sai:",        "options": {            "A": "Điểm A thuộc một mặt cầu cố định.",            "B": "Độ dài ngắn nhất của AB là 3.",            "C": "Độ dài AB đạt cực tiểu \\( \\Leftrightarrow \\overrightarrow{OA} \\cdot \\overrightarrow{OB} = 36 \\).",            "D": "Độ dài AB đạt cực tiểu \\( \\Leftrightarrow \\) A là trung điểm OB."        },        "correct": "C",        "points": 1,        "explanation": "Từ giả thiết ta có: A thuộc mặt cầu \\( (S_1) \\) tâm \\( O(0;0;0) \\), bán kính \\( R_1=3 \\) \\( \\Rightarrow \\) Phương án A đúng.\n\nB thuộc mặt cầu \\( (S_2) \\) tâm \\( O(0;0;0) \\), bán kính \\( R_2=6 \\).\n\nHai mặt cầu đồng tâm O, có \\( R_1<R_2 \\). Độ dài AB đạt cực tiểu khi và chỉ khi ba điểm O, A, B thẳng hàng theo thứ tự đó.\n\nKhi đó \\( AB_{min}=R_2-R_1=6-3=3 \\) \\( \\Rightarrow \\) Phương án B đúng.\n\nTại vị trí cực tiểu, \\( \\overrightarrow{OA} \\) và \\( \\overrightarrow{OB} \\) cùng hướng, \\( OA=3, OB=6 \\) \\( \\Rightarrow \\overrightarrow{OB}=2\\overrightarrow{OA} \\) \\( \\Rightarrow \\) A là trung điểm OB \\( \\Rightarrow \\) Phương án D đúng.\n\nXét nhận định C: Khi AB đạt cực tiểu, do \\( \\overrightarrow{OA}, \\overrightarrow{OB} \\) cùng hướng nên \\( \\overrightarrow{OA} \\cdot \\overrightarrow{OB} = |\\overrightarrow{OA}| \\cdot |\\overrightarrow{OB}| \\cdot \\cos 0^\\circ = 3 \\cdot 6 \\cdot 1 = 18 \\neq 36 \\). Vậy C sai."    },
+         {
+        "id": "de3_mc_12",
+        "type": "mc4",
+        "content": "Cho mẫu A có phần tử lớn nhất là 378, nhỏ nhất là 310, giá trị trung bình là 344, độ lệch chuẩn là 12. Nếu mẫu B được tạo thành từ mẫu A bỏ đi 2 phần tử 378 và 310 thì nhận định nào sau đây là đúng?",
+        "options": {
+            "A": "Mẫu B có giá trị trung bình lớn hơn mẫu A, độ lệch chuẩn lớn hơn mẫu A.",
+            "B": "Mẫu B có giá trị trung bình bé hơn mẫu A, độ lệch chuẩn lớn hơn mẫu A.",
+            "C": "Mẫu B có giá trị trung bình lớn hơn mẫu A, độ lệch chuẩn bé hơn mẫu A.",
+            "D": "Mẫu B có giá trị trung bình bằng mẫu A, độ lệch chuẩn bé hơn mẫu A."
+        },
+        "correct": "D",
+        "points": 1,
+        "explanation": "Gọi n là số lượng phần tử của mẫu A. Tổng các giá trị của mẫu A là \\( S_A=344n \\).\n\nTổng hai phần tử bị bỏ đi là: \\( 378+310=688=2\\cdot 344 \\).\n\nTổng các giá trị của mẫu B (gồm n-2 phần tử) là: \\( S_B=S_A-688=344n-344\\cdot 2=344(n-2) \\).\n\nGiá trị trung bình của mẫu B là: \\( \\overline{x}_B=\\dfrac{344(n-2)}{n-2}=344=\\overline{x}_A \\). Vậy giá trị trung bình bằng nhau.\n\nMặt khác, hai phần tử bị bỏ đi (378 và 310) là các giá trị biên, có khoảng cách tới số trung bình bằng 34, lớn hơn rất nhiều so với độ lệch chuẩn ban đầu (12). Việc loại bỏ các giá trị ngoại lệ (outliers) phân tán rộng này sẽ làm giảm mức độ phân tán của cả tập dữ liệu. Do đó, độ lệch chuẩn của mẫu B bé hơn mẫu A."
+    },
+    {
+        "id": "de3_tf_13",
+        "type": "truefalse",
+        "content": "Cho hình chóp đều \\( S.ABCD \\) có \\( SA=2, AB=1 \\). Các nhận định sau đúng hay sai?",
+        "statements": [
+            {"text": "SA và CD không vuông góc nhau.", "correct": True},
+            {"text": "Góc giữa SA và CD là \\( 30^\\circ \\).", "correct": False},
+            {"text": "Khoảng cách giữa SA và CD bằng 1.", "correct": False}
+        ],
+        "points": 1,
+        "explanation": "Vì ABCD là hình vuông nên \\( CD \\parallel AB \\). Do đó \\( (SA,CD)=(SA,AB)=\\widehat{SAB} \\).\n\nXét \\( \\triangle SAB \\) có \\( SA=SB=2, AB=1 \\). Theo hệ quả định lý hàm cosin:\n\n\\( \\cos\\widehat{SAB}=\\dfrac{SA^2+AB^2-SB^2}{2\\cdot SA\\cdot AB}=\\dfrac{2^2+1^2-2^2}{2\\cdot 2\\cdot 1}=\\dfrac{1}{4} \\).\n\n- Vì \\( \\cos\\widehat{SAB}=\\dfrac{1}{4}>0 \\) nên \\( \\widehat{SAB}\\neq 90^\\circ \\Rightarrow \\) SA không vuông góc với CD. Mệnh đề 1: Đúng.\n\n- Cùng với đó \\( \\cos\\widehat{SAB}=\\dfrac{1}{4}\\Rightarrow \\widehat{SAB}\\approx 75{,}5^\\circ \\neq 30^\\circ \\). Mệnh đề 2: Sai.\n\n- Tính khoảng cách \\( d(SA,CD) \\): Do \\( CD\\parallel AB\\subset (SAB)\\Rightarrow CD\\parallel (SAB) \\).\n\n\\( d(SA,CD)=d(CD,(SAB))=d(C,(SAB))=2d(O,(SAB)) \\) (do O là trung điểm AC).\n\nGọi M là trung điểm AB, ta có \\( OM\\perp AB \\Rightarrow (SOM)\\perp (SAB) \\). Kẻ \\( OH\\perp SM\\Rightarrow OH\\perp (SAB)\\Rightarrow d(O,(SAB))=OH \\).\n\nTa có \\( OM=\\dfrac{1}{2}, SO=\\sqrt{SA^2-OA^2}=\\sqrt{4-\\dfrac{1}{2}}=\\dfrac{\\sqrt{14}}{2} \\).\n\n\\( \\dfrac{1}{OH^2}=\\dfrac{1}{OM^2}+\\dfrac{1}{SO^2}=\\dfrac{1}{1/4}+\\dfrac{1}{14/4}=4+\\dfrac{4}{14}=\\dfrac{30}{7}\\Rightarrow OH=\\sqrt{\\dfrac{7}{30}} \\).\n\nVậy \\( d(SA,CD)=2OH=2\\sqrt{\\dfrac{7}{30}}=\\sqrt{\\dfrac{14}{15}}\\neq 1 \\). Mệnh đề 3: Sai.\n\nKết luận: 1-Đúng ; 2-Sai ; 3-Sai."
+    },
+    {
+        "id": "de3_sh_14",
+        "type": "short",
+        "content": "Cho hàm số \\( y=2x^3-3x^2-1 \\). Hàm số \\( |y| \\) đồng biến trên khoảng nào? Đồ thị hàm số \\( |y| \\) có bao nhiêu điểm cực đại và bao nhiêu điểm cực tiểu?",
+        "blanks": [
+            {"label": "Khoảng đồng biến:", "answers": ["(0;1)"]},
+            {"label": "Số điểm cực đại:", "answers": ["1"]},
+            {"label": "Số điểm cực tiểu:", "answers": ["2"]}
+        ],
+        "points": 1,
+        "explanation": "Xét hàm số \\( f(x)=2x^3-3x^2-1 \\). Ta có \\( f'(x)=6x^2-6x \\); \\( f'(x)=0\\Leftrightarrow x=0 \\) hoặc \\( x=1 \\).\n\nHàm số \\( f(x) \\) đạt cực đại tại \\( A(0;-1) \\) và cực tiểu tại \\( B(1;-2) \\).\n\nĐồ thị hàm số cắt trục hoành tại một điểm duy nhất \\( x_0\\in(1;2) \\) do phương trình \\( 2x^3-3x^2-1=0 \\) chỉ có một nghiệm thực.\n\nTừ đồ thị hàm \\( f(x) \\), ta vẽ đồ thị hàm số \\( |y|=|f(x)| \\) bằng phép biến đổi: Giữ nguyên phần đồ thị nằm trên Ox và lấy đối xứng phần đồ thị nằm dưới Ox qua trục Ox.\n\nTừ sự biến đổi đó, ta thấy đồ thị \\( |y| \\) sẽ đi lên trên khoảng \\( (0;1) \\) và \\( (x_0;+\\infty) \\). Đáp án tường minh không chứa tham số ẩn là khoảng \\( (0;1) \\).\n\nSố cực trị: Hàm \\( |y| \\) có 1 điểm cực đại (tại \\( x=1 \\), giá trị \\( |y|=2 \\)) và 2 điểm cực tiểu (tại \\( x=0 \\), giá trị \\( |y|=1 \\) và tại \\( x=x_0 \\), giá trị \\( |y|=0 \\))."
+    },     
         ] # dấu kết thúc toàn bộ đề
     }     # dấu kết thúc toàn bộ đề
 ]          # dấu kết thúc toàn bộ đề
