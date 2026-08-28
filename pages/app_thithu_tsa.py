@@ -3659,17 +3659,83 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
         ],
         "points": 1,
         "explanation": "Theo tính chất cấp số cộng, ta có:\n\\( u_4 + u_{17} = (u_1 + 3d) + (u_1 + 16d) = 2u_1 + 19d = 16 \\).\nMặt khác, tổng 20 số hạng đầu tiên là:\n\\( S_{20} = \\dfrac{20(2u_1 + (20-1)d)}{2} = 10(2u_1 + 19d) = 10 \\cdot 16 = 160 \\)."
-    }
+    },         
+          
+        ], # Đóng danh sách questions của Đề 4
+    }, # Đóng dictionary của Đề 4
+
+  {
+        "id": "de5",
+        "name": "Đề số 5 - ĐỀ CHÍNH THỨC TSA ĐỢT 3 - 2026.",
+        "description": "Câu hỏi.",
+        "questions": [
+
+          {
+               "id": 'de5_sh_01',
+               "type": 'short',
+               "content": 'Xét một bản đồ đường đi như hình dưới đây. Bạn Duy xuất phát từ điểm A và di chuyển dọc theo các tuyến đường, chọn ngẫu nhiên hướng đi khi tới ngã rẽ.',
+               "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau1-de5.PNG',
+               "blanks": [
+                   {"label": 'Xác suất để bạn Duy đến được điểm F, biết rằng bạn đi theo hướng B ở ngã rẽ đầu tiên là:', "answers": ['1/2']},
+                   {"label": 'Xác suất để bạn Duy di chuyển theo hướng ABF là:', "answers": ['1/6']}
+               ],
+               "points": 1,
+               "explanation": 'Phân tích sơ đồ hình cây:\n\n- Từ điểm A, có 3 nhánh rẽ đi đến B, C, D. Vì chọn ngẫu nhiên, xác suất chọn mỗi nhánh là \\( P(A \\to B) = P(A \\to C) = P(A \\to D) = \\dfrac{1}{3} \\).\n\n- Từ điểm B, có 2 nhánh rẽ đi đến E, F. Xác suất chọn mỗi nhánh là \\( P(B \\to E) = P(B \\to F) = \\dfrac{1}{2} \\).\n\nGiải quyết yêu cầu:\n\n- Ý 1: Xác suất để Duy đến điểm F, biết rằng đã đi theo hướng B ở ngã rẽ đầu tiên chính là xác suất rẽ vào nhánh F từ điểm B. Do từ B có 2 hướng E và F nên xác suất là \\( \\dfrac{1}{2} \\).\n\n- Ý 2: Xác suất để di chuyển theo hướng ABF được tính theo quy tắc nhân xác suất:\n\\( P(ABF) = P(A \\to B) \\times P(B \\to F) = \\dfrac{1}{3} \\times \\dfrac{1}{2} = \\dfrac{1}{6} \\).'
+           },
+           {
+               "id": 'de5_sh_02',
+               "type": 'short',
+               "content": 'Một bảo tàng có dạng hình chóp với cạnh đáy 15m và chiều cao 10m. Do sự xói mòn về thời gian nên 60% diện tích xung quanh của bảo tàng đã bị hỏng và cần được bảo dưỡng.',
+               
+               "blanks": [
+                   {"label": 'Diện tích xung quanh của bảo tàng là (m²):', "answers": ['375']},
+                   {"label": 'Biết rằng chi phí sửa chữa là 1,8 triệu VND/m², số tiền tối thiểu cần bỏ ra để sửa chữa là (triệu VND):', "answers": ['405']}
+               ],
+               "points": 1,
+               "explanation": 'Bảo tàng (mô phỏng bảo tàng Louvre) có dạng hình chóp tứ giác đều S.ABCD. Gọi O là tâm đáy, M là trung điểm cạnh đáy AB.\n\nTa có:\n- Chiều cao \\( SO = 10 \\)m, cạnh đáy \\( AB = 15 \\)m.\n- Khoảng cách từ tâm đến cạnh đáy là \\( OM = \\dfrac{AB}{2} = 7.5 \\)m.\n- Trung đoạn của hình chóp (chiều cao mặt bên) là \\( SM = \\sqrt{SO^2 + OM^2} = \\sqrt{10^2 + 7.5^2} = 12.5 \\)m.\n\n- Diện tích xung quanh: \n\\( S_{xq} = 4 \\times S_{\\Delta SAB} = 4 \\times \\left( \\dfrac{1}{2} \\cdot AB \\cdot SM \\right) = 2 \\times 15 \\times 12.5 = 375 \\text{ m}^2 \\).\n\n- Chi phí sửa chữa: Diện tích cần sửa là \\( 60\\% \\times S_{xq} = 0.6 \\times 375 = 225 \\text{ m}^2 \\).\n- Số tiền tối thiểu \\( = 225 \\times 1.8 = 405 \\) (triệu VNĐ).'
+           },
+           {
+               "id": 'de5_sh_03',
+               "type": 'short',
+               "content": 'Cho hình elip xác định bởi công thức \\( \\dfrac{x^2}{25} + \\dfrac{y^2}{16} = 1 \\) (E) có hai tiêu điểm \\( F_1, F_2 \\). Lấy điểm \\( M \\in (E) \\).',
+               "blanks": [
+                   {"label": 'Giá trị khoảng cách giữa hai tiêu điểm \\( F_1F_2 \\) =', "answers": ['6']},
+                   {"label": 'Với mọi vị trí của \\( M \\in (E) \\), ta có \\( MF_1 + MF_2 \\) =', "answers": ['10']}
+               ],
+               "points": 1,
+               "explanation": 'Từ phương trình chính tắc của Elip (E) \\( \\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1 \\), ta có:\n\\( a^2 = 25 \\Rightarrow a = 5 \\) và \\( b^2 = 16 \\Rightarrow b = 4 \\).\n\nTa có công thức liên hệ: \\( c^2 = a^2 - b^2 = 25 - 16 = 9 \\Rightarrow c = 3 \\).\n\n- Khoảng cách giữa hai tiêu điểm (Tiêu cự):\n\\( F_1F_2 = 2c = 2 \\times 3 = 6 \\).\n\n- Theo định nghĩa của Elip, tổng khoảng cách từ một điểm M bất kỳ trên (E) đến hai tiêu điểm luôn là một hằng số bằng độ dài trục lớn:\n\\( MF_1 + MF_2 = 2a = 2 \\times 5 = 10 \\).'
+           },
+           {
+               "id": 'de5_sh_04',
+               "type": 'short',
+               "content": 'Biết \\( \\lim_{x \\to 0} \\dfrac{x^4 - 2x^3}{x^3} = \\dfrac{a}{b} \\) với \\( \\dfrac{a}{b} \\) là phân số tối giản. Giá trị của biểu thức \\( a + b \\) = ?',
+               "blanks": [
+                   {"label": 'a + b =', "answers": ['-1']}
+               ],
+               "points": 1,
+               "explanation": 'Ta có giới hạn dạng vô định \\( \\dfrac{0}{0} \\):\n\n\\( \\lim_{x \\to 0} \\dfrac{x^4 - 2x^3}{x^3} = \\lim_{x \\to 0} \\dfrac{x^3(x - 2)}{x^3} = \\lim_{x \\to 0} (x - 2) = -2 \\).\n\nTheo đề bài, kết quả được biểu diễn dưới dạng phân số tối giản \\( \\dfrac{a}{b} \\).\nTa có: \\( -2 = \\dfrac{-2}{1} \\), suy ra \\( a = -2 \\) và \\( b = 1 \\) (Quy ước mẫu số luôn dương đối với phân số tối giản).\n\nVậy giá trị của biểu thức \\( a + b = (-2) + 1 = -1 \\).'
+           },
+           {
+               "id": 'de5_sh_05',
+               "type": 'short',
+               "content": 'Một chiếc gàu được gắn vào một guồng nước. Biết rằng cao độ của chiếc gàu so với mặt hồ theo thời gian t (tính bằng phút) được mô tả bởi phương trình: \\( h = 1.5 + 2 \\cos[2\\pi(t - 0.25)] \\) (m).\n\nBiết rằng thời điểm đầu tiên chiếc gàu này cách mặt nước một khoảng đúng bằng 1.5m là a phút b giây (với \\( b < 60 \\)). Giá trị của biểu thức \\( a + b \\) = ?',
+               "blanks": [
+                   {"label": 'a + b =', "answers": ['30']}
+               ],
+               "points": 1,
+               "explanation": 'Để chiếc gàu cách mặt nước 1,5m, ta giải phương trình \\( h = 1.5 \\):\n\\( 1.5 + 2 \\cos[2\\pi(t - 0.25)] = 1.5 \\Leftrightarrow \\cos[2\\pi(t - 0.25)] = 0 \\)\n\n\\( \\Leftrightarrow 2\\pi(t - 0.25) = \\dfrac{\\pi}{2} + k\\pi \\Leftrightarrow t - 0.25 = 0.25 + 0.5k \\Leftrightarrow t = 0.5 + 0.5k \\; (k \\in \\mathbb{Z}) \\).\n\nVì thời gian \\( t > 0 \\), thời điểm đầu tiên tương ứng với giá trị k nhỏ nhất sao cho \\( t > 0 \\).\nChọn \\( k = 0 \\Rightarrow t = 0.5 \\) (phút).\n\nĐổi 0,5 phút sang đơn vị "phút và giây": 0,5 phút = 0 phút 30 giây.\nSuy ra \\( a = 0 \\) và \\( b = 30 \\) (thỏa mãn điều kiện \\( b < 60 \\)).\n\nVậy giá trị của biểu thức \\( a + b = 0 + 30 = 30 \\).'
+           }
+
+          
           
 
-    
 
 
+        
 
-          
-          
-        ] # Đóng danh sách questions của Đề 4
-    } # Đóng dictionary của Đề 4
+
+         ] # Đóng danh sách questions của Đề 5
+    } # Đóng dictionary của Đề 5 
 ] # Dấu kết thúc toàn bộ danh sách đề thi (Nằm sát lề trái, không lùi dấu cách nào)
 
 
