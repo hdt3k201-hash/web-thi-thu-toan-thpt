@@ -3231,7 +3231,212 @@ Bất phương trình: \\( \\log_2(x-1) < \\log_2(2) \\)
 \\( \\Leftrightarrow x - 1 < 2 \\Leftrightarrow x < 3 \\).
 Kết hợp điều kiện, ta có tập nghiệm là \\( (1; 3) \\).
 Suy ra \\( a = 1, b = 3 \\). Giá trị \\( S = a + b = 1 + 3 = 4 \\)."""
+    },
+
+
+    # ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_21",
+        "type": "short",
+        "content": "Cho hàm vận tốc \\( v(t) = \\begin{cases} at & \\text{khi } 0 \\le t \\le 3 \\\\ 16(t^2-4)^2 & \\text{khi } 3 < t \\le 6 \\end{cases} \\) liên tục trên đoạn \\( [0; 6] \\).",
+        "blanks": [
+            {"label": "Giá trị \\( v(3) \\) bằng:", "answers": ["400"]},
+            {"label": "Giá trị của tham số \\( a \\) bằng:", "answers": ["400/3"]}
+        ],
+        "points": 1,
+        "explanation": """Vì hàm vận tốc \\( v(t) \\) liên tục trên \\( [0; 6] \\) nên phải liên tục tại \\( t = 3 \\).
+
+Ta có:
+\\( \\lim_{t \\to 3^+} v(t) = 16(3^2 - 4)^2 = 16 \\cdot 5^2 = 400 \\).
+\\( \\lim_{t \\to 3^-} v(t) = v(3) = 3a \\).
+
+Để hàm số liên tục tại \\( t = 3 \\) thì:
+\\( 3a = 400 \\Rightarrow a = \\dfrac{400}{3} \\).
+Khi đó \\( v(3) = 400 \\)."""
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_22",
+        "type": "short",
+        "content": "Gieo một con xúc xắc cân đối và đồng chất hai lần. Biết lần gieo thứ nhất được mặt 5 chấm, xác suất để tổng số chấm hai lần gieo bằng 7 có thể viết được dưới dạng phân số tối giản \\( \\dfrac{a}{b} \\). Giá trị của \\( a+b \\) bằng",
+        "blanks": [
+            {"label": "Giá trị của a + b bằng:", "answers": ["7"]}
+        ],
+        "points": 1,
+        "explanation": """Không gian mẫu thu hẹp khi biết lần thứ nhất gieo được mặt 5 chấm là: 
+\\( \\Omega = \\{(5; 1), (5; 2), (5; 3), (5; 4), (5; 5), (5; 6)\\} \\Rightarrow n(\\Omega) = 6 \\).
+
+Biến cố tổng số chấm hai lần gieo bằng 7 gồm kết quả duy nhất là \\( (5; 2) \\) \\( \\Rightarrow n(A) = 1 \\).
+
+Xác suất cần tìm là: \\( P = \\dfrac{1}{6} \\).
+Suy ra \\( a = 1, b = 6 \\Rightarrow a + b = 1 + 6 = 7 \\)."""
+    },
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+    {
+        "id": "de4_dd_23",
+        "type": "dragdrop",
+        "content": "Trong không gian \\( Oxyz \\), cho hai điểm \\( A(-1; 2; 3) \\) và \\( B(-1; 1; 3) \\). Điểm \\( M \\) di động trên mặt phẳng \\( (Oxy) \\). Kéo và thả phương án thích hợp vào ô trống:",
+        "options_pool": ["1+\\sqrt{37}", "\\sqrt{37}", "1+2\\sqrt{37}", "-1+\\sqrt{37}"],
+        "blanks": [
+            {"label": "Giá trị nhỏ nhất của tổng độ dài \\( AM + BM \\) là:", "answer": "\\sqrt{37}"}
+        ],
+        "points": 1,
+        "explanation": """Hai điểm \\( A(-1; 2; 3) \\) và \\( B(-1; 1; 3) \\) cùng nằm về một phía đối với mặt phẳng \\( (Oxy): z = 0 \\) vì \\( z_A = 3 > 0 \\) và \\( z_B = 3 > 0 \\).
+
+Gọi \\( A' \\) là điểm đối xứng với \\( A \\) qua mặt phẳng \\( (Oxy) \\) \\( \\Rightarrow A'(-1; 2; -3) \\).
+Khi đó, với mọi điểm \\( M \\in (Oxy) \\), ta có \\( AM = A'M \\).
+
+Do đó: \\( AM + BM = A'M + BM \\ge A'B \\).
+Giá trị nhỏ nhất của \\( AM + BM \\) bằng \\( A'B \\).
+
+Tính độ dài \\( A'B \\):
+\\( A'B = \\sqrt{(-1 - (-1))^2 + (1 - 2)^2 + (3 - (-3))^2} = \\sqrt{0^2 + (-1)^2 + 6^2} = \\sqrt{37} \\)."""
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_24",
+        "type": "short",
+        "content": "Cho hình chóp tứ giác đều \\( S.ABCD \\) có cạnh đáy \\( AB = 6 \\) và cạnh bên \\( SA = 6 \\).",
+        "blanks": [
+            {"label": "Chiều cao khối chóp bằng:", "answers": ["3\\sqrt{2}"]},
+            {"label": "Thể tích khối chóp S.ABC là:", "answers": ["18\\sqrt{2}"]}
+        ],
+        "points": 1,
+        "explanation": """Gọi \\( O \\) là giao điểm của \\( AC \\) và \\( BD \\). Do \\( S.ABCD \\) là hình chóp tứ giác đều nên \\( SO \\perp (ABCD) \\) và \\( ABCD \\) là hình vuông cạnh 6.
+
+Ta có: \\( AC = 6\\sqrt{2} \\Rightarrow OA = \\dfrac{AC}{2} = 3\\sqrt{2} \\).
+
+Chiều cao khối chóp:
+\\( SO = \\sqrt{SA^2 - OA^2} = \\sqrt{6^2 - (3\\sqrt{2})^2} = \\sqrt{36 - 18} = 3\\sqrt{2} \\).
+
+Diện tích tam giác \\( ABC \\):
+\\( S_{ABC} = \\dfrac{1}{2} S_{ABCD} = \\dfrac{1}{2} \\cdot 6^2 = 18 \\).
+
+Thể tích khối chóp \\( S.ABC \\):
+\\( V_{S.ABC} = \\dfrac{1}{3} S_{ABC} \\cdot SO = \\dfrac{1}{3} \\cdot 18 \\cdot 3\\sqrt{2} = 18\\sqrt{2} \\)."""
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_25",
+        "type": "short",
+        "content": "Cho điểm \\( M \\in (P): 2x + y - 2z - 1 = 0 \\) và điểm \\( A(-1; 1; 5) \\). Gọi \\( N \\) là hình chiếu vuông góc của \\( A \\) lên mặt phẳng \\( (P) \\). Khoảng cách \\( d(A; P) \\) bằng",
+        "blanks": [
+            {"label": "d(A; P) =", "answers": ["4"]}
+        ],
+        "points": 1,
+        "explanation": """Khoảng cách từ điểm \\( A(-1; 1; 5) \\) đến mặt phẳng \\( (P): 2x + y - 2z - 1 = 0 \\) được tính theo công thức:
+
+\\( d(A; P) = \\dfrac{|2(-1) + 1 - 2(5) - 1|}{\\sqrt{2^2 + 1^2 + (-2)^2}} = \\dfrac{|-2 + 1 - 10 - 1|}{\\sqrt{9}} = \\dfrac{12}{3} = 4 \\)."""
+    },
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+    {
+        "id": "de4_dd_26",
+        "type": "dragdrop",
+        "content": "Cho tham số \\( a \\). Kéo và thả phương án thích hợp vào ô trống để biểu thức trong căn của giới hạn \\( \\lim_{n \\to +\\infty} n \\left( \\sqrt{2 + \\dfrac{an^2+3}{n^2+1}} - \\dfrac{1}{4^n} \\right) \\) tiến tới 25:",
+        "options_pool": ["25", "24", "23", "22"],
+        "blanks": [
+            {"label": "Giá trị của tham số a bằng:", "answer": "23"}
+        ],
+        "points": 1,
+        "explanation": """Ta có: \\( \\lim_{n \\to +\\infty} \\dfrac{an^2+3}{n^2+1} = a \\).
+
+Khi đó biểu thức trong căn tiến tới \\( 2 + a \\).
+Để biểu thức dưới căn bằng 25, ta có:
+\\( 2 + a = 25 \\Leftrightarrow a = 23 \\)."""
+    },
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+    {
+        "id": "de4_tf_27",
+        "type": "truefalse",
+        "content": "Cho lăng trụ đứng tam giác đều \\( ABC.A'B'C' \\) có cạnh đáy bằng 6. Gọi \\( H \\) là trung điểm của \\( AB \\). Biết \\( AC' \\) tạo với mặt phẳng \\( (ABB'A') \\) một góc \\( 30^\\circ \\). Xét tính đúng/sai của các mệnh đề sau:",
+        "statements": [
+            {"text": "Độ dài đường cao của tam giác đáy là \\( CH = 3\\sqrt{3} \\).", "correct": True},
+            {"text": "Thể tích của khối lăng trụ đã cho có giá trị bằng \\( 27\\sqrt{3} \\).", "correct": False}
+        ],
+        "points": 1,
+        "explanation": """a) Tam giác \\( ABC \\) đều cạnh 6, đường cao \\( CH = \\dfrac{6\\sqrt{3}}{2} = 3\\sqrt{3} \\) \\( \\Rightarrow \\) Đúng.
+
+b) Gọi \\( H' \\) là trung điểm \\( A'B' \\). Do lăng trụ đứng tam giác đều nên \\( C'H' \\perp (ABB'A') \\).
+Góc giữa \\( AC' \\) và \\( (ABB'A') \\) là góc \\( \\widehat{C'AH'} = 30^\\circ \\).
+
+Trong tam giác vuông \\( A C' H' \\) tại \\( H' \\):
+\\( AH' = \\dfrac{C'H'}{\\tan 30^\\circ} = \\dfrac{3\\sqrt{3}}{\\dfrac{1}{\\sqrt{3}}} = 9 \\).
+
+Trong tam giác vuông \\( A A' H' \\) tại \\( A' \\):
+\\( AA' = \\sqrt{AH'^2 - A'H'^2} = \\sqrt{9^2 - 3^2} = \\sqrt{72} = 6\\sqrt{2} \\).
+
+Diện tích đáy: \\( S_{ABC} = \\dfrac{6^2\\sqrt{3}}{4} = 9\\sqrt{3} \\).
+Thể tích lăng trụ: \\( V = S_{ABC} \\cdot AA' = 9\\sqrt{3} \\cdot 6\\sqrt{2} = 54\\sqrt{6} \\neq 27\\sqrt{3} \\) \\( \\Rightarrow \\) Sai."""
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_28",
+        "type": "short",
+        "content": "Cho hình chóp \\( S.ABCD \\) có đáy là hình chữ nhật với \\( AB = 2, AD = 1 \\), cạnh bên \\( SA \\perp (ABCD) \\). Cạnh bên \\( SB \\) tạo với mặt phẳng đáy một góc \\( 45^\\circ \\). Chiều cao \\( SA \\) bằng",
+        "blanks": [
+            {"label": "SA =", "answers": ["2"]}
+        ],
+        "points": 1,
+        "explanation": """Vì \\( SA \\perp (ABCD) \\) nên góc giữa \\( SB \\) và mặt phẳng đáy \\( (ABCD) \\) là góc \\( \\widehat{SBA} = 45^\\circ \\).
+
+Trong tam giác vuông \\( SAB \\) tại \\( A \\):
+\\( SA = AB \\cdot \\tan 45^\\circ = 2 \\cdot 1 = 2 \\)."""
+    },
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+    {
+        "id": "de4_dd_29",
+        "type": "dragdrop",
+        "content": "Cho hàm số \\( g(x) = f'(x) \\) có bảng biến thiên với các điểm cực trị tại \\( x=1 \\) (có \\( g(1)=4 \\)) và \\( x=4 \\) (có \\( g(4)=-1 \\)). Kéo và thả phương án thích hợp vào ô trống:",
+        "options_pool": ["0", "1", "2", "3"],
+        "blanks": [
+            {"label": "Số điểm cực trị của hàm số f(x) là:", "answer": "3"}
+        ],
+        "points": 1,
+        "explanation": """Số điểm cực trị của hàm số \\( f(x) \\) bằng số nghiệm đơn (hoặc nghiệm bội lẻ) của phương trình \\( f'(x) = 0 \\), tức là số giao điểm của đồ thị \\( g(x) \\) với trục hoành:
+
+- Trên khoảng \\( (-\\infty; 1) \\), \\( g(x) \\) tăng từ \\( -\\infty \\) lên 4 \\( \\Rightarrow \\) cắt trục hoành tại 1 điểm.
+- Trên khoảng \\( (1; 4) \\), \\( g(x) \\) giảm từ 4 xuống -1 \\( \\Rightarrow \\) cắt trục hoành tại 1 điểm.
+- Trên khoảng \\( (4; +\\infty) \\), \\( g(x) \\) tăng từ -1 lên \\( +\\infty \\) \\( \\Rightarrow \\) cắt trục hoành tại 1 điểm.
+
+Tổng cộng phương trình \\( g(x) = 0 \\) có 3 nghiệm phân biệt và \\( g(x) \\) đổi dấu qua cả 3 nghiệm này. Vậy \\( f(x) \\) có 3 điểm cực trị."""
+    },
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+    {
+        "id": "de4_tf_30",
+        "type": "truefalse",
+        "content": "Cho dãy số \\( (u_n) \\) thỏa mãn \\( u_1 = \\tan a \\) và \\( u_{n+1} = \\dfrac{1+u_n}{1-u_n} \\) với \\( \\dfrac{\\pi}{4} < a < \\dfrac{\\pi}{2} \\). Xét tính đúng/sai của các mệnh đề sau:",
+        "statements": [
+            {"text": "Tích hai số hạng \\( u_3 \\cdot u_5 = 1 \\).", "correct": False},
+            {"text": "Số hạng thứ bảy \\( u_7 \\) mang giá trị âm.", "correct": True},
+            {"text": "Số hạng \\( u_2 = \\tan\\left(a + \\dfrac{\\pi}{4}\\right) \\).", "correct": True}
+        ],
+        "points": 1,
+        "explanation": """Ta có:
+\\( u_1 = \\tan a \\).
+\\( u_2 = \\dfrac{1+\\tan a}{1-\\tan a} = \\tan\\left(a + \\dfrac{\\pi}{4}\\right) \\).
+\\( u_3 = \\tan\\left(a + \\dfrac{\\pi}{2}\\right) = -\\cot a \\).
+\\( u_4 = \\dfrac{1-\\cot a}{1+\\cot a} = \\dfrac{\\tan a - 1}{\\tan a + 1} = -\\dfrac{1}{u_2} \\).
+\\( u_5 = \\tan\\left(a + \\pi\\right) = \\tan a = u_1 \\).
+Dãy số tuần hoàn với chu kỳ 4.
+
+a) \\( u_3 \\cdot u_5 = (-\\cot a) \\cdot \\tan a = -1 \\neq 1 \\) \\( \\Rightarrow \\) Sai.
+
+b) \\( u_7 = u_3 = -\\cot a \\).
+Vì \\( \\dfrac{\\pi}{4} < a < \\dfrac{\\pi}{2} \\Rightarrow \\cot a > 0 \\Rightarrow u_7 = -\\cot a < 0 \\) \\( \\Rightarrow \\) Đúng.
+
+c) \\( u_2 = \\tan\\left(a + \\dfrac{\\pi}{4}\\right) \\) \\( \\Rightarrow \\) Đúng."""
     }
+
+    
 
 
 
