@@ -3434,7 +3434,163 @@ b) \\( u_7 = u_3 = -\\cot a \\).
 Vì \\( \\dfrac{\\pi}{4} < a < \\dfrac{\\pi}{2} \\Rightarrow \\cot a > 0 \\Rightarrow u_7 = -\\cot a < 0 \\) \\( \\Rightarrow \\) Đúng.
 
 c) \\( u_2 = \\tan\\left(a + \\dfrac{\\pi}{4}\\right) \\) \\( \\Rightarrow \\) Đúng."""
-    }
+    },
+
+    # ---------------- KÉO THẢ (dragdrop) ----------------
+    {
+        "id": "de4_dd_29",
+        "type": "dragdrop",
+        "content": "Cho hàm số \\( g(x)=f'(x) \\) có bảng biến thiên như hình bên. Số điểm cực trị của hàm số \\( f(x) \\) là",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau29-de4.PNG",
+        "options_pool": [
+            "0", 
+            "1", 
+            "2", 
+            "3"
+        ],
+        "blanks": [
+            {"label": "Số điểm cực trị của hàm số là", "answer": "3"}
+        ],
+        "points": 1,
+        "explanation": """Từ bảng biến thiên của \\( g(x)=f'(x) \\), ta thấy:\n
+- Đồ thị \\( g(x) \\) đi từ \\( -\\infty \\) lên 4, cắt trục hoành tại 1 điểm.\n
+- Đồ thị \\( g(x) \\) đi từ 4 xuống -1, cắt trục hoành tại 1 điểm.\n
+- Đồ thị \\( g(x) \\) đi từ -1 lên \\( +\\infty \\), cắt trục hoành tại 1 điểm.\n
+Vậy phương trình \\( f'(x) = 0 \\) có 3 nghiệm phân biệt và đổi dấu qua các nghiệm đó.\n
+Do đó, hàm số \\( f(x) \\) có 3 điểm cực trị."""
+    },
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+    {
+        "id": "de4_tf_30",
+        "type": "truefalse",
+        "content": "Cho dãy số \\( (u_n) \\) thỏa mãn \\( u_1=\\tan a \\) và \\( u_{n+1}=\\dfrac{1+u_n}{1-u_n} \\) với \\( \\dfrac{\\pi}{4}<a<\\dfrac{\\pi}{2} \\). Xét tính Đúng/Sai của các mệnh đề sau:",
+        "statements": [
+            {"text": "Tích hai số hạng liên tiếp \\( u_3\\cdot u_5=1 \\).", "correct": False},
+            {"text": "Số hạng thứ bảy \\( u_7 \\) mang giá trị âm.", "correct": True},
+            {"text": "Số hạng \\( u_2=\\tan\\left(a+\\dfrac{\\pi}{4}\\right) \\)", "correct": True}
+        ],
+        "points": 1,
+        "explanation": """Ta có công thức lượng giác: \\( \\tan\\left(x+\\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan x + \\tan\\dfrac{\\pi}{4}}{1 - \\tan x\\tan\\dfrac{\\pi}{4}} = \\dfrac{\\tan x + 1}{1 - \\tan x} \\).\n
+Do \\( u_1 = \\tan a \\) nên \\( u_2 = \\dfrac{1+\\tan a}{1-\\tan a} = \\tan\\left(a+\\dfrac{\\pi}{4}\\right) \\). (Mệnh đề c đúng)\n
+Bằng quy nạp, ta có \\( u_n = \\tan\\left(a + (n-1)\\dfrac{\\pi}{4}\\right) \\).\n
+- Tính các số hạng:\n
+\\( u_3 = \\tan\\left(a + \\dfrac{2\\pi}{4}\\right) = \\tan\\left(a + \\dfrac{\\pi}{2}\\right) = -\\cot a \\).\n
+\\( u_5 = \\tan\\left(a + \\dfrac{4\\pi}{4}\\right) = \\tan(a + \\pi) = \\tan a \\).\n
+Tích \\( u_3\\cdot u_5 = (-\\cot a)\\cdot(\\tan a) = -1 \\neq 1 \\). (Mệnh đề a sai)\n
+- Xét \\( u_7 \\):\n
+\\( u_7 = \\tan\\left(a + \\dfrac{6\\pi}{4}\\right) = \\tan\\left(a + \\dfrac{3\\pi}{2}\\right) = -\\cot a \\).\n
+Vì \\( \\dfrac{\\pi}{4} < a < \\dfrac{\\pi}{2} \\) nên \\( \\tan a > 1 > 0 \\Rightarrow \\cot a > 0 \\Rightarrow -\\cot a < 0 \\). Vậy \\( u_7 \\) mang giá trị âm. (Mệnh đề b đúng)"""
+    },
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+    {
+        "id": "de4_dd_31",
+        "type": "dragdrop",
+        "content": "Tích tất cả các giá trị nguyên âm của tham số m để \\( \\lim_{x\\rightarrow-\\infty}\\left(\\sqrt{5x^2-12x+7}-mx\\right)=+\\infty \\) có giá trị vô cực bằng",
+        "options_pool": [
+            "2", 
+            "3", 
+            "4", 
+            "-2"
+        ],
+        "blanks": [
+            {"label": "Tích các giá trị nguyên âm của m bằng:", "answer": "2"}
+        ],
+        "points": 1,
+        "explanation": """Ta có: \\( \\lim_{x\\rightarrow-\\infty}\\left(\\sqrt{5x^2-12x+7}-mx\\right) = \\lim_{x\\rightarrow-\\infty}\\left(|x|\\sqrt{5-\\dfrac{12}{x}+\\dfrac{7}{x^2}}-mx\\right) \\)\n
+\\( = \\lim_{x\\rightarrow-\\infty} x\\left(-\\sqrt{5-\\dfrac{12}{x}+\\dfrac{7}{x^2}}-m\\right) \\).\n
+Do \\( x \\rightarrow -\\infty \\) nên để giới hạn bằng \\( +\\infty \\), ta cần phần trong ngoặc phải mang dấu âm:\n
+\\( -\\sqrt{5}-m < 0 \\Leftrightarrow m > -\\sqrt{5} \\approx -2.236 \\).\n
+Vì m là số nguyên âm nên \\( m \\in \\{-2; -1\\} \\).\n
+Tích các giá trị này là \\( (-2)\\cdot(-1) = 2 \\)."""
+    },
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+    {
+        "id": "de4_tf_32",
+        "type": "truefalse",
+        "content": "Xét giới hạn \\( L=\\lim_{x\\rightarrow1}\\dfrac{\\sqrt{ax+1}-bx-1}{x-1} \\) với a, b là tham số. Xét tính Đúng/Sai của các mệnh đề:",
+        "statements": [
+            {"text": "Để tồn tại giới hạn hữu hạn thì cần điều kiện \\( \\sqrt{a+1}=b+1 \\).", "correct": True},
+            {"text": "Ta có L tương đương với giới hạn \\( \\lim_{x\\rightarrow1}\\dfrac{a-2b\\sqrt{ax+1}}{2\\sqrt{ax+1}} \\)", "correct": True},
+            {"text": "Nếu \\( L=\\dfrac{1}{3} \\) thì tỷ số giữa hai tham số \\( \\dfrac{a}{b}=\\dfrac{2}{5} \\)", "correct": False}
+        ],
+        "points": 1,
+        "explanation": """a) Để giới hạn hữu hạn (dạng 0/0), tử thức phải bằng 0 tại \\( x=1 \\):\n
+\\( \\sqrt{a(1)+1} - b(1) - 1 = 0 \\Leftrightarrow \\sqrt{a+1} = b+1 \\). (Đúng)\n
+b) Áp dụng quy tắc L'Hôpital (hoặc nhân liên hợp, hoặc đạo hàm):\n
+Đạo hàm tử: \\( \\dfrac{a}{2\\sqrt{ax+1}} - b = \\dfrac{a-2b\\sqrt{ax+1}}{2\\sqrt{ax+1}} \\).\n
+Đạo hàm mẫu: 1.\n
+Vậy giới hạn tương đương giá trị của \\( \\lim_{x\\rightarrow1}\\dfrac{a-2b\\sqrt{ax+1}}{2\\sqrt{ax+1}} \\). (Đúng)\n
+c) Thay \\( x=1 \\) vào kết quả ở (b): \\( L = \\dfrac{a-2b\\sqrt{a+1}}{2\\sqrt{a+1}} \\).\n
+Thay \\( \\sqrt{a+1} = b+1 \\) và \\( a = (b+1)^2 - 1 = b^2+2b \\) vào \\( L \\):\n
+\\( L = \\dfrac{b^2+2b - 2b(b+1)}{2(b+1)} = \\dfrac{-b^2}{2b+2} \\).\n
+Nếu \\( L = \\dfrac{1}{3} \\) \\( \\Leftrightarrow \\dfrac{-b^2}{2b+2} = \\dfrac{1}{3} \\Leftrightarrow -3b^2 - 2b - 2 = 0 \\) (vô nghiệm).\n
+Do đó không tồn tại a, b thỏa mãn, mệnh đề sai."""
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_33",
+        "type": "short",
+        "content": "Đồ thị hình bên biểu diễn hàm số bậc hai \\( f(x) \\) và hàm số bậc nhất \\( g(x) \\). Giá trị của giới hạn \\( \\lim_{x\\rightarrow3}\\dfrac{f(x)}{g(x)} \\) bằng bao nhiêu?",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau33-de4.PNG",
+        "blanks": [
+            {"label": "Giá trị giới hạn là:", "answers": ["-4.5", "-9/2"]}
+        ],
+        "points": 1,
+        "explanation": """Dựa vào đồ thị:\n
+- Parabol \\( f(x) \\) có đỉnh \\( (0; -9) \\) và đi qua điểm \\( (3; 0) \\) trên trục hoành.\n
+Phương trình có dạng \\( f(x) = ax^2 - 9 \\). Qua \\( (3;0) \\) \\( \\Rightarrow a\\cdot 3^2 - 9 = 0 \\Rightarrow a=1 \\).\n
+Vậy \\( f(x) = x^2 - 9 \\).\n
+- Đường thẳng \\( g(x) \\) đi qua \\( (0; 4) \\) và \\( (3; 0) \\).\n
+Hệ số góc \\( k = \\dfrac{0-4}{3-0} = -\\dfrac{4}{3} \\) \\( \\Rightarrow g(x) = -\\dfrac{4}{3}(x - 3) \\).\n
+- Tính giới hạn:\n
+\\( \\lim_{x\\rightarrow3}\\dfrac{f(x)}{g(x)} = \\lim_{x\\rightarrow3}\\dfrac{(x-3)(x+3)}{-\\dfrac{4}{3}(x-3)} = \\lim_{x\\rightarrow3}\\dfrac{x+3}{-\\dfrac{4}{3}} = \\dfrac{6}{-\\dfrac{4}{3}} = -4.5 \\)."""
+    },
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+    {
+        "id": "de4_tf_34",
+        "type": "truefalse",
+        "content": "Cho sơ đồ cây biểu diễn xác suất như hình bên, biết xác suất \\( P(A)=0,7 \\). Xét tính đúng/sai của các mệnh đề:",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau34-de4.PNG",
+        "statements": [
+            {"text": "Xác suất đồng thời \\( P(A\\cap B)=0,42 \\).", "correct": True},
+            {"text": "Xác suất của biến cố B có giá trị bằng 0.28.", "correct": False},
+            {"text": "Xác suất của biến cố đối \\( P(A\\cap\\overline{B})=0,28 \\).", "correct": True},
+            {"text": "Xác suất có điều kiện \\( P(A|\\overline{B})=\\dfrac{7}{13} \\)", "correct": True}
+        ],
+        "points": 1,
+        "explanation": """Từ dữ kiện sơ đồ cây (dựa vào mô tả):\n
+\\( P(A) = 0.7 \\Rightarrow P(\\overline{A}) = 0.3 \\).\n
+Nhánh từ A: \\( P(B|A) = 0.6 \\) và \\( P(\\overline{B}|A) = 0.4 \\).\n
+Nhánh từ \\( \\overline{A} \\): \\( P(\\overline{B}|\\overline{A}) = 0.8 \\Rightarrow P(B|\\overline{A}) = 0.2 \\).\n
+a) \\( P(A\\cap B) = P(A)\\cdot P(B|A) = 0.7 \\cdot 0.6 = 0.42 \\). (Đúng)\n
+b) \\( P(B) = P(A\\cap B) + P(\\overline{A}\\cap B) = 0.42 + (0.3 \\cdot 0.2) = 0.42 + 0.06 = 0.48 \\neq 0.28 \\). (Sai)\n
+c) \\( P(A\\cap\\overline{B}) = P(A)\\cdot P(\\overline{B}|A) = 0.7 \\cdot 0.4 = 0.28 \\). (Đúng)\n
+d) \\( P(\\overline{B}) = 1 - P(B) = 1 - 0.48 = 0.52 \\).\n
+\\( P(A|\\overline{B}) = \\dfrac{P(A\\cap\\overline{B})}{P(\\overline{B})} = \\dfrac{0.28}{0.52} = \\dfrac{28}{52} = \\dfrac{7}{13} \\). (Đúng)"""
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_35",
+        "type": "short",
+        "content": "Cho elip \\( (E):\\dfrac{x^2}{100}+\\dfrac{y^2}{36}=1 \\). Đường thẳng \\( x=-1 \\) cắt Elip (E) tại hai điểm M và N. Độ dài đoạn thẳng MN bằng",
+        "blanks": [
+            {"label": "Độ dài MN bằng:", "answers": ["\\frac{18\\sqrt{11}}{5}", "18\\sqrt{11}/5", "\\dfrac{18\\sqrt{11}}{5}"]}
+        ],
+        "points": 1,
+        "explanation": """Thay phương trình đường thẳng \\( x = -1 \\) vào phương trình elip (E):\n
+\\( \\dfrac{(-1)^2}{100} + \\dfrac{y^2}{36} = 1 \\)\n
+\\( \\Leftrightarrow \\dfrac{y^2}{36} = 1 - \\dfrac{1}{100} = \\dfrac{99}{100} \\)\n
+\\( \\Leftrightarrow y^2 = \\dfrac{99 \\cdot 36}{100} = \\dfrac{9 \\cdot 11 \\cdot 9 \\cdot 4}{25 \\cdot 4} = \\dfrac{81 \\cdot 11}{25} \\)\n
+\\( \\Rightarrow y = \\pm\\dfrac{9\\sqrt{11}}{5} \\).\n
+Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right) \\) và \\( N\\left(-1; -\\dfrac{9\\sqrt{11}}{5}\\right) \\).\n
+Độ dài đoạn thẳng MN là: \\( MN = |y_M - y_N| = \\dfrac{9\\sqrt{11}}{5} - \\left(-\\dfrac{9\\sqrt{11}}{5}\\right) = \\dfrac{18\\sqrt{11}}{5} \\)."""
+    },
 
     
 
