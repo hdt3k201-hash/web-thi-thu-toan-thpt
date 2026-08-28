@@ -2085,7 +2085,134 @@ Xét tam giác vuông IAM vuông tại M:
 
 Độ dài đoạn AB: \\( AB = 2AM = 4\\sqrt{2} \\).''',
             },
-          
+                      # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de2_mc_36',
+                "type": 'mc4',
+                "content": 'Trong không gian \\( Oxyz \\), cho mặt cầu \\( (S): (x-1)^2+(y-2)^2+(z-3)^2=25 \\) và điểm \\( A(7;2;3) \\). Gọi M là điểm di động trên mặt cầu (S). Giá trị nhỏ nhất của độ dài đoạn thẳng AM bằng:',
+                "options": {
+                    'A': '1',
+                    'B': '2',
+                    'C': '3',
+                    'D': '5',
+                },
+                "correct": 'A',
+                "points": 1,
+                "explanation": '''Mặt cầu (S) có tâm \\( I(1;2;3) \\) và bán kính \\( R=5 \\).
+
+Khoảng cách từ điểm \\( A(7;2;3) \\) đến tâm I:
+\\( IA = \\sqrt{(7-1)^2+(2-2)^2+(3-3)^2} = \\sqrt{6^2} = 6 \\).
+
+Vì \\( IA = 6 > R = 5 \\), điểm A nằm ngoài mặt cầu (S).
+
+Do M di động trên mặt cầu (S), độ dài AM đạt giá trị nhỏ nhất khi M nằm trên đoạn thẳng IA và giao với mặt cầu (S):
+\\( AM_{min} = IA - R = 6 - 5 = 1 \\). Chọn A.''',
+            },
+
+            {
+                "id": 'de2_mc_37',
+                "type": 'mc4',
+                "content": 'Cho hàm số \\( f(x) \\) có đạo hàm \\( f\'(x) = x(x-2) \\) với mọi \\( x \\in \\mathbb{R} \\). Số điểm cực trị của hàm số \\( g(x) = f(x^3-3x) + \\dfrac{3}{4}x^4 - 3x^3 + 3x^2 \\) là:',
+                "options": {
+                    'A': '3',
+                    'B': '5',
+                    'C': '7',
+                    'D': '9',
+                },
+                "correct": 'C',
+                "points": 1,
+                "explanation": '''Tính đạo hàm của \\( g(x) \\):
+\\( g\'(x) = (3x^2-3)f\'(x^3-3x) + 3x^3 - 9x^2 + 6x = 3(x^2-1)f\'(x^3-3x) + 3x(x-1)(x-2) \\).
+
+Theo giả thiết \\( f\'(t) = t(t-2) \\), suy ra:
+\\( f\'(x^3-3x) = (x^3-3x)(x^3-3x-2) = x(x^2-3)(x-2)(x+1)^2 \\).
+
+Do đó:
+\\( g\'(x) = 3(x-1)(x+1)\\cdot x(x^2-3)(x-2)(x+1)^2 + 3x(x-1)(x-2) \\)
+\\( = 3x(x-1)(x-2)\\left[(x+1)^3(x^2-3)+1\\right] \\).
+
+Phương trình \\( g\'(x)=0 \\) có các nghiệm đơn phân biệt: \\( x=0, x=1, x=2 \\), và phương trình \\( (x+1)^3(x^2-3)+1=0 \\) có thêm 4 nghiệm phân biệt khác.
+
+Tổng cộng phương trình \\( g\'(x)=0 \\) có 7 nghiệm đơn phân biệt, do đó hàm số \\( g(x) \\) có 7 điểm cực trị. Chọn C.''',
+            },
+
+            {
+                "id": 'de2_mc_38',
+                "type": 'mc4',
+                "content": 'Gọi S là tập hợp tất cả các số tự nhiên gồm 3 chữ số đôi một khác nhau được chọn từ tập hợp \\( X = \\{0,1,2,3,4,5\\} \\). Chọn ngẫu nhiên một số từ tập S. Xác suất để số được chọn chia hết cho 15 bằng phân số tối giản \\( \\dfrac{a}{b} \\) \\( (a,b \\in \\mathbb{N}^*) \\). Giá trị của \\( a+b \\) bằng:',
+                "options": {
+                    'A': '41',
+                    'B': '47',
+                    'C': '51',
+                    'D': '57',
+                },
+                "correct": 'D',
+                "points": 1,
+                "explanation": '''Số các số tự nhiên gồm 3 chữ số đôi một khác nhau từ X là: \\( n(\\Omega) = 5 \\times A_5^2 = 100 \\).
+
+Một số chia hết cho 15 khi và chỉ khi vừa chia hết cho 3 vừa chia hết cho 5 (tận cùng là 0 hoặc 5).
+
+Trường hợp 1: Chữ số tận cùng là 0.
+Hai chữ số đầu chọn từ \\( \\{1,2,3,4,5\\} \\) sao cho tổng 3 chữ số chia hết cho 3. Các bộ thỏa mãn: \\( \\{1,2\\}, \\{1,5\\}, \\{2,4\\}, \\{3,4\\} \\). Mỗi bộ có 2! = 2 cách xếp \\( \\Rightarrow 4\\times2=8 \\) số.
+
+Trường hợp 2: Chữ số tận cùng là 5.
+Chữ số hàng trăm khác 0 và khác 5. Tổng 3 chữ số chia hết cho 3 \\( \\Leftrightarrow a+b+5 \\vdots 3 \\Leftrightarrow a+b+2 \\vdots 3 \\).
+Các bộ 2 chữ số từ \\( \\{0,1,2,3,4\\} \\) cộng với 5 chia hết cho 3 gồm: \\( \\{0,1\\} \\) (hàng trăm chọn 1: 1 cách), \\( \\{0,4\\} \\) (hàng trăm chọn 4: 1 cách), \\( \\{1,3\\} \\) (hàng trăm có 2 cách chọn), \\( \\{2,4\\} \\) (hàng trăm có 2 cách chọn). Tổng: \\( 1+1+2+2=6 \\) số.
+
+Tổng số số chia hết cho 15: \\( 8+6=14 \\).
+
+Xác suất: \\( P = \\dfrac{14}{100} = \\dfrac{7}{50} \\).
+
+Suy ra \\( a=7, b=50 \\Rightarrow a+b=57 \\). Chọn D.''',
+            },
+
+            {
+                "id": 'de2_mc_39',
+                "type": 'mc4',
+                "content": 'Cho hình lăng trụ đứng \\( ABC.A\'B\'C\' \\) có đáy ABC là tam giác vuông cân tại B, \\( AB = a\\sqrt{2} \\), cạnh bên \\( AA\' = 2a \\). Gọi M là trung điểm của \\( A\'C\' \\). Thể tích của khối tứ diện M.ABC bằng:',
+                "options": {
+                    'A': '\\( \\dfrac{a^3}{3} \\)',
+                    'B': '\\( \\dfrac{2a^3}{3} \\)',
+                    'C': '\\( \\dfrac{a^3\\sqrt{2}}{3} \\)',
+                    'D': '\\( \\dfrac{4a^3}{3} \\)',
+                },
+                "correct": 'B',
+                "points": 1,
+                "explanation": '''Tam giác ABC vuông cân tại B với \\( AB=BC=a\\sqrt{2} \\), diện tích đáy:
+\\( S_{ABC} = \\dfrac{1}{2}AB\\cdot BC = \\dfrac{1}{2}(a\\sqrt{2})(a\\sqrt{2}) = a^2 \\).
+
+Vì lăng trụ đứng nên chiều cao lăng trụ là \\( AA\' = 2a \\). Điểm M là trung điểm của \\( A\'C\' \\) nằm trên mặt phẳng \\( (A\'B\'C\') \\), khoảng cách từ M đến mặt phẳng đáy (ABC) bằng chiều cao lăng trụ: \\( d(M,(ABC)) = AA\' = 2a \\).
+
+Thể tích khối tứ diện M.ABC:
+\\( V_{M.ABC} = \\dfrac{1}{3}\\cdot d(M,(ABC))\\cdot S_{ABC} = \\dfrac{1}{3}\\cdot 2a\\cdot a^2 = \\dfrac{2a^3}{3} \\). Chọn B.''',
+            },
+
+            {
+                "id": 'de2_mc_40',
+                "type": 'mc4',
+                "content": 'Cho các số thực dương \\( x, y, z \\) thỏa mãn \\( \\log_3(x+y+z) + \\log_3(xyz) = 3 \\). Giá trị nhỏ nhất của biểu thức \\( P = x^2+y^2+z^2 \\) bằng:',
+                "options": {
+                    'A': '6',
+                    'B': '9',
+                    'C': '12',
+                    'D': '15',
+                },
+                "correct": 'B',
+                "points": 1,
+                "explanation": '''Phương trình giả thiết tương đương:
+\\( \\log_3\\left((x+y+z)xyz\\right) = 3 \\Leftrightarrow (x+y+z)xyz = 3^3 = 27 \\).
+
+Áp dụng bất đẳng thức Cauchy cho 3 số dương x, y, z:
+\\( xyz \\le \\dfrac{(x+y+z)^3}{27} \\).
+
+Thay vào phương trình trên:
+\\( (x+y+z)\\cdot\\dfrac{(x+y+z)^3}{27} \\ge 27 \\Leftrightarrow (x+y+z)^4 \\ge 729 \\Rightarrow x+y+z \\ge 3\\sqrt{3} \\).
+
+Sử dụng bất đẳng thức \\( x^2+y^2+z^2 \\ge \\dfrac{(x+y+z)^2}{3} \\), ta suy ra:
+\\( P = x^2+y^2+z^2 \\ge \\dfrac{(3\\sqrt{3})^2}{3} = \\dfrac{27}{3} = 9 \\).
+
+Dấu "=" xảy ra khi \\( x=y=z=\\sqrt{3} \\). Vậy giá trị nhỏ nhất của P bằng 9. Chọn B.''',
+            },
         ], # kết thúc đề 2
     },  # kết thúc đề 2
     {
