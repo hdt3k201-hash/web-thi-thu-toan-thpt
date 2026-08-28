@@ -548,7 +548,137 @@ Từ \\( \\tan\\theta = \\dfrac{4}{3} \\), ta suy ra \\( \\sin\\theta = \\dfrac{
 - Chiều dài cực đại của thanh thép (giá trị min của \\( L(\\theta) \\)) là: 
 \\( L_{max} = \\dfrac{2.7}{\\cos\\theta} + \\dfrac{6.4}{\\sin\\theta} = \\dfrac{2.7}{0.6} + \\dfrac{6.4}{0.8} = 4.5 + 8.0 = 12.5 \\) (m)."""
     },
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de1_mc_21',
+                "type": 'mc4',
+                "content": 'Tìm tất cả các giá trị thực của tham số \\( m \\) để đa thức \\( P(x) = x^4 - 4x^3 + 4x^2 + m \\) có thể phân tích thành dạng \\( P(x) = (x - a)^2 \\cdot Q(x) \\), trong đó \\( Q(x) \\) là một đa thức bậc hai và \\( a \\) là một hằng số thực.',
+                "options": {
+                    'A': '\\( m \\in \\{0; -1\\} \\)',
+                    'B': '\\( m \\in \\{0; 1\\} \\)',
+                    'C': '\\( m \\in \\{1; 2\\} \\)',
+                    'D': '\\( m \\in \\{-1; 1\\} \\)',
+                },
+                "correct": 'A',
+                "points": 1,
+                "explanation": """Ta viết lại: \\( P(x) - m = x^4 - 4x^3 + 4x^2 = x^2(x-2)^2 \\), tức là \\( P(x) = x^2(x-2)^2 + m \\).
 
+Để \\( P(x) \\) có nhân tử \\( (x-a)^2 \\) (với \\( Q(x) \\) bậc hai bất kỳ), điều kiện cần và đủ là \\( a \\) phải là nghiệm kép của \\( P(x) \\), nghĩa là:
+\\( P(a) = 0 \\) và \\( P'(a) = 0 \\).
+
+Ta có \\( P'(x) = 4x^3 - 12x^2 + 8x = 4x(x-1)(x-2) \\), suy ra \\( P'(x) = 0 \\Leftrightarrow x \\in \\{0; 1; 2\\} \\).
+
+Xét từng trường hợp:
+- \\( a = 0 \\): \\( P(0) = m = 0 \\Rightarrow m = 0 \\).
+- \\( a = 2 \\): \\( P(2) = m = 0 \\Rightarrow m = 0 \\).
+- \\( a = 1 \\): \\( P(1) = 1 - 4 + 4 + m = 1 + m = 0 \\Rightarrow m = -1 \\).
+
+Kiểm tra lại:
++ Với \\( m = 0 \\): \\( P(x) = x^2(x-2)^2 = (x-0)^2\\cdot(x-2)^2 \\) — thỏa mãn (a = 0, Q(x) = (x-2)^2).
++ Với \\( m = -1 \\): \\( P(x) = [x(x-2)]^2 - 1 = (x^2-2x-1)(x^2-2x+1) = (x-1)^2(x^2-2x-1) \\) — thỏa mãn (a = 1, Q(x) = x^2-2x-1).
+
+Vậy \\( m \\in \\{0; -1\\} \\). Đáp án A.""",
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de1_sh_22',
+                "type": 'short',
+                "content": 'Một khối tháp nghệ thuật được xếp từ các khối lập phương nhỏ bằng nhau. Tầng trên cùng (tầng 1) có \\( 1^2 \\) khối, tầng thứ 2 từ trên xuống có \\( 3^2 \\) khối, tầng thứ 3 có \\( 5^2 \\) khối... Tầng thứ \\( n \\) có \\( (2n-1)^2 \\) khối. Gọi \\( V_n \\) là tổng số khối lập phương cần dùng để xếp được tháp có \\( n \\) tầng. Người ta bao quanh toàn bộ tháp này bằng một khối hộp chữ nhật ngoại tiếp sát nhất, có diện tích đáy là \\( (2n-1)^2 \\) và chiều cao là \\( n \\) (với đơn vị là cạnh của khối lập phương nhỏ). Gọi \\( V_{h\\hat{o}p} \\) là thể tích của khối hộp này. Tính giới hạn \\( L = \\lim_{n\\to+\\infty} \\dfrac{V_n}{V_{h\\hat{o}p}} \\). (Điền đáp án dưới dạng phân số tối giản).',
+                "blanks": [
+                    {"label": 'L =', "answers": ['1/3']},
+                ],
+                "points": 1,
+                "explanation": """Tổng số khối của tháp \\( n \\) tầng là tổng bình phương \\( n \\) số lẻ đầu tiên:
+\\( V_n = 1^2 + 3^2 + 5^2 + \\cdots + (2n-1)^2 = \\dfrac{n(2n-1)(2n+1)}{3} \\).
+
+Thể tích khối hộp ngoại tiếp: \\( V_{h\\hat{o}p} = (2n-1)^2 \\cdot n \\).
+
+Do đó:
+\\( \\dfrac{V_n}{V_{h\\hat{o}p}} = \\dfrac{n(2n-1)(2n+1)/3}{n(2n-1)^2} = \\dfrac{2n+1}{3(2n-1)} \\).
+
+Lấy giới hạn khi \\( n \\to +\\infty \\):
+\\( L = \\lim_{n\\to+\\infty} \\dfrac{2n+1}{6n-3} = \\dfrac{2}{6} = \\dfrac{1}{3} \\).""",
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de1_tf_23",
+                "type": "truefalse",
+                "content": "Một quản giáo có 5 chiếc chìa khóa và 5 ổ khóa tương ứng. Tuy nhiên, các chìa khóa đã bị tháo khỏi chùm và trộn lẫn ngẫu nhiên. Người quản giáo chọn ngẫu nhiên từng chiếc chìa khóa để cắm vào từng ổ khóa (mỗi ổ cắm đúng 1 chìa). Xét tính Đúng/Sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "Số cách ghép 5 chìa khóa vào 5 ổ khóa là 120 cách.", "correct": True},
+                    {"text": "Xác suất để có ĐÚNG 4 ổ khóa được mở thành công là \\( \\dfrac{1}{120} \\).", "correct": False},
+                    {"text": "Xác suất để KHÔNG CÓ bất kỳ ổ khóa nào được mở thành công là \\( \\dfrac{11}{30} \\).", "correct": True},
+                    {"text": "Xác suất để có ÍT NHẤT 1 ổ khóa được mở thành công là \\( \\dfrac{19}{30} \\).", "correct": True}
+                ],
+                "points": 1,
+                "explanation": """a) Mỗi cách ghép chìa vào ổ là một hoán vị của 5 phần tử, nên số cách là \\( 5! = 120 \\) cách \\( \\Rightarrow \\) Đúng.
+
+b) Vì phép ghép là một song ánh (hoán vị), nếu có đúng 4 ổ khóa được mở đúng thì ổ còn lại bắt buộc cũng phải đúng (do chỉ còn duy nhất 1 chìa cho 1 ổ). Vậy KHÔNG THỂ có đúng 4 ổ đúng — xác suất này bằng 0, không phải \\( \\dfrac{1}{120} \\) \\( \\Rightarrow \\) Sai.
+
+c) Xác suất không có ổ khóa nào đúng chính là xác suất của một "mất thứ tự toàn phần" (derangement):
+\\( D_5 = 5!\\left(1 - \\dfrac{1}{1!} + \\dfrac{1}{2!} - \\dfrac{1}{3!} + \\dfrac{1}{4!} - \\dfrac{1}{5!}\\right) = 44 \\).
+Xác suất \\( = \\dfrac{44}{120} = \\dfrac{11}{30} \\) \\( \\Rightarrow \\) Đúng.
+
+d) Xác suất có ít nhất 1 ổ đúng \\( = 1 - \\dfrac{11}{30} = \\dfrac{19}{30} \\) \\( \\Rightarrow \\) Đúng.""",
+            },
+            {
+                "id": "de1_tf_24",
+                "type": "truefalse",
+                "content": "Định luật làm nguội của Newton phát biểu rằng: Tốc độ thay đổi nhiệt độ của một vật tỷ lệ thuận với chênh lệch nhiệt độ giữa vật đó và môi trường xung quanh. Công thức mô hình hóa nhiệt độ \\( T(t) \\) của vật sau thời gian \\( t \\) (phút) là \\( T(t) = T_{env} + (T_0 - T_{env})e^{-kt} \\), trong đó \\( T_{env} \\) là nhiệt độ môi trường, \\( T_0 \\) là nhiệt độ ban đầu của vật, và \\( k \\) là hằng số làm nguội. Một cốc cà phê vừa được pha xong có nhiệt độ 90°C được đặt trong phòng có nhiệt độ không đổi là 20°C. Sau đúng 10 phút, nhiệt độ của cốc cà phê giảm xuống còn 60°C. Xét tính Đúng/Sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "Giá trị của hằng số làm nguội \\( k \\) xấp xỉ bằng 0.056.", "correct": True},
+                    {"text": "Sau 20 phút kể từ lúc pha, nhiệt độ của cốc cà phê là 40°C.", "correct": False},
+                    {"text": "Cần nhiều hơn 30 phút để cốc cà phê nguội xuống mức 30°C.", "correct": True},
+                    {"text": "Tốc độ giảm nhiệt độ của cốc cà phê trong quá trình làm nguội là một hằng số.", "correct": False}
+                ],
+                "points": 1,
+                "explanation": """Ta có \\( T(t) = 20 + 70e^{-kt} \\) (vì \\( T_0 - T_{env} = 90-20=70 \\)).
+
+a) Tại \\( t=10 \\): \\( 60 = 20 + 70e^{-10k} \\Rightarrow e^{-10k} = \\dfrac{4}{7} \\Rightarrow k = \\dfrac{\\ln(7/4)}{10} \\approx 0.0560 \\) \\( \\Rightarrow \\) Đúng.
+
+b) Tại \\( t=20 \\): \\( T(20) = 20 + 70\\left(\\dfrac{4}{7}\\right)^2 = 20 + 70\\cdot\\dfrac{16}{49} \\approx 20+22.86 = 42.86°C \\), không phải 40°C \\( \\Rightarrow \\) Sai.
+
+c) Giải \\( 30 = 20+70e^{-kt} \\Rightarrow e^{-kt} = \\dfrac{1}{7} \\Rightarrow t = \\dfrac{\\ln 7}{k} \\approx \\dfrac{1.9459}{0.0560} \\approx 34.8 \\) phút \\( > 30 \\) phút \\( \\Rightarrow \\) Đúng.
+
+d) Tốc độ giảm nhiệt \\( T'(t) = -70k\\,e^{-kt} \\) phụ thuộc vào \\( t \\) (giảm dần theo thời gian), không phải hằng số \\( \\Rightarrow \\) Sai.""",
+            },
+
+            # ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+                "id": "de1_dd_25",
+                "type": "dragdrop",
+                "content": "Trên màn hình radar trạm kiểm soát không lưu, quỹ đạo bay của một máy bay trực thăng (H) được mô phỏng bởi đường cong \\( (C): y = x^2 - 4x + 5 \\). Cùng lúc đó, một tàu hỏa (T) di chuyển thẳng tắp theo đường ray có phương trình \\( d: y = 2x - 5 \\). Biết đơn vị tọa độ tính bằng kilômét. Để thực hiện nhiệm vụ thả hàng tiếp tế, máy bay (H) cần tiến đến vị trí M trên quỹ đạo sao cho khoảng cách từ máy bay đến tàu hỏa là ngắn nhất. Kéo và thả các phương án sau vào vị trí thích hợp:",
+              
+                "options_pool": [
+                    "\\( 3 \\)",
+                    "\\( 2 \\)",
+                    "\\( \\sqrt{5} \\)",
+                    "\\( \\dfrac{\\sqrt{5}}{5} \\)",
+                    "\\( \\dfrac{1}{5} \\)"
+                ],
+                "blanks": [
+                    {"label": "Hoành độ của vị trí M là:", "answer": "3"},
+                    {"label": "Tung độ của vị trí M là:", "answer": "2"},
+                    {"label": "Khoảng cách ngắn nhất giữa máy bay và tàu hỏa là: (km)", "answer": "\\dfrac{\\sqrt{5}}{5}"}
+                ],
+                "points": 1,
+                "explanation": """Khoảng cách từ một điểm trên (C) đến đường thẳng d ngắn nhất khi tiếp tuyến của (C) tại điểm đó song song với d.
+
+Đường thẳng d có hệ số góc bằng 2. Ta cần tìm điểm M trên (C) sao cho \\( y'(x) = 2 \\).
+
+Ta có \\( y' = 2x - 4 \\). Giải \\( 2x - 4 = 2 \\Rightarrow x = 3 \\).
+
+Khi đó \\( y = 3^2 - 4\\cdot 3 + 5 = 9 - 12 + 5 = 2 \\).
+
+Vậy \\( M(3; 2) \\) — hoành độ \\( X = 3 \\), tung độ \\( Y = 2 \\).
+
+Viết lại d dưới dạng tổng quát: \\( 2x - y - 5 = 0 \\).
+
+Khoảng cách ngắn nhất:
+\\( d(M, d) = \\dfrac{|2\\cdot 3 - 2 - 5|}{\\sqrt{2^2+(-1)^2}} = \\dfrac{|6-2-5|}{\\sqrt{5}} = \\dfrac{1}{\\sqrt{5}} = \\dfrac{\\sqrt{5}}{5} \\) (km).""",
+            },
           
         ],   # kết thúc hết 1 đề
     },      # kết thúc hết 1 đề
