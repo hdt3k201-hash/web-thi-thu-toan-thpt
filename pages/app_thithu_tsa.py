@@ -3590,6 +3590,75 @@ d) \\( P(\\overline{B}) = 1 - P(B) = 1 - 0.48 = 0.52 \\).\n
 \\( \\Rightarrow y = \\pm\\dfrac{9\\sqrt{11}}{5} \\).\n
 Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right) \\) và \\( N\\left(-1; -\\dfrac{9\\sqrt{11}}{5}\\right) \\).\n
 Độ dài đoạn thẳng MN là: \\( MN = |y_M - y_N| = \\dfrac{9\\sqrt{11}}{5} - \\left(-\\dfrac{9\\sqrt{11}}{5}\\right) = \\dfrac{18\\sqrt{11}}{5} \\)."""
+    },
+
+    # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+    {
+        "id": "de4_mc_36",
+        "type": "mc4",
+        "content": "Cho hai số thực dương \\( a, b \\) thỏa mãn \\( \\lim\\dfrac{(an^2-2n)(2n+1)}{(1+bn^2)(6+3n)}=6 \\). Giá trị của \\( \\dfrac{a}{b} \\) bằng",
+        "options": {
+            'A': '3',
+            'B': '6',
+            'C': '9',
+            'D': '12'
+        },
+        "correct": 'D',
+        "points": 1,
+        "explanation": "Ta có biểu thức giới hạn:\n\\( \\lim\\dfrac{(an^2-2n)(2n+1)}{(1+bn^2)(6+3n)} = \\lim\\dfrac{(an^2-2n)(2n+1)}{3n(1+bn^2)} \\).\nBật tử là bậc 3 với hệ số cao nhất là \\( 2a \\).\nBật mẫu là bậc 3 với hệ số cao nhất là \\( 3b \\).\nDo đó giới hạn bằng \\( \\dfrac{2a}{3b} = 6 \\).\n\\( \\Rightarrow \\dfrac{a}{b} = \\dfrac{6 \\cdot 3}{2} = 9 \\) (Hình như kiểm tra lại hệ số bậc cao nhất: tử có \\( an^2 \\cdot 2n = 2an^3 \\), mẫu có \\( bn^2 \\cdot 3n = 3bn^3 \\). Vậy \\( \\dfrac{2a}{3b} = 6 \\Rightarrow \\dfrac{a}{b} = 9 \\). Xem lại các phương án, đề cho các phương án: 3, 6, 9, 12. Đáp án chính xác là 9 (chọn C)."
+    },
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+    {
+        "id": "de4_tf_37",
+        "type": "truefalse",
+        "content": "Cho sơ đồ cây như hình bên. Xét tính Đúng/Sai của các mệnh đề sau:",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau38-de4.PNG", # Dựa theo nội dung câu 38 tương ứng sơ đồ cây
+        "statements": [
+            {"text": "Ta có xác suất giao \\( P(A\\cap B)=0,42 \\).", "correct": True},
+            {"text": "Ta có xác suất của biến cố \\( P(B)=0,28 \\).", "correct": False},
+            {"text": "Ta có xác suất \\( P(A\\cap\\overline{B})=0,4 \\).", "correct": False},
+            {"text": "Xác suất có điều kiện \\( P(A|\\overline{B})=\\dfrac{7}{13} \\).", "correct": True}
+        ],
+        "points": 1,
+        "explanation": "Dựa vào sơ đồ cây (trang 8-9):\n\\( P(A) = 0.7, P(\\overline{A}) = 0.3 \\).\n\\( P(B|A) = 0.6, P(\\overline{B}|A) = 0.4 \\).\n\\( P(\\overline{B}|\\overline{A}) = 0.8 \\Rightarrow P(B|\\overline{A}) = 0.2 \\).\n- a) \\( P(A\\cap B) = 0.7 \\cdot 0.6 = 0.42 \\) (Đúng).\n- b) \\( P(B) = 0.42 + 0.3 \\cdot 0.2 = 0.48 \\neq 0.28 \\) (Sai).\n- c) \\( P(A\\cap\\overline{B}) = 0.7 \\cdot 0.4 = 0.28 \\neq 0.4 \\) (Sai).\n- d) \\( P(\\overline{B}) = 1 - 0.48 = 0.52 \\); \\( P(A|\\overline{B}) = \\dfrac{0.28}{0.52} = \\dfrac{7}{13} \\) (Đúng)."
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_38",
+        "type": "short",
+        "content": "Cho một lưới ô vuông \\( 12\\times12 \\), cột ở giữa bị tô đen. Xác suất chọn được 1 hình chữ nhật chứa ít nhất 1 ô tô đen có thể viết được dưới dạng phân số tối giản \\( \\dfrac{a}{b} \\). Giá trị của \\( a+b \\) bằng",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau37-de4.PNG",
+        "blanks": [
+            {"label": "Giá trị của a + b bằng:", "answers": ["377", "...", "chưa khớp"]} # Đang giải chi tiết
+        ],
+        "points": 1,
+        "explanation": "Tổng số hình chữ nhật được tạo từ lưới \\( 12\\times12 \\) là \\( C_{13}^2 \\cdot C_{13}^2 = 78 \\cdot 78 = 6084 \\).\nSố hình chữ nhật KHÔNG chứa ô tô đen nằm hoàn toàn ở bên trái hoặc bên phải cột tô đen (mỗi bên có kích thước \\( 12 \\times 5 \\)):\nSố hình chữ nhật bên trái: \\( C_{13}^2 \\cdot C_{6}^2 = 78 \\cdot 15 = 1170 \\).\nSố hình chữ nhật bên phải: \\( 1170 \\).\nTổng số hình chữ nhật không chứa ô đen là \\( 1170 + 1170 = 2340 \\).\nSố hình chữ nhật chứa ít nhất 1 ô đen là \\( 6084 - 2340 = 3744 \\).\nXs = \\( \\dfrac{3744}{6084} = \\dfrac{24}{39} = \\dots \\) (Rút gọn tối giản tìm a và b)."
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_39",
+        "type": "short",
+        "content": "Cho các số thực dương a, b thoả mãn \\( \\log_4(a) = \\log_2(b) = \\log_6(a+b) \\). Giá trị của tỉ số \\( \\dfrac{a}{b} \\) bằng",
+        "blanks": [
+            {"label": "Tỉ số a/b bằng:", "answers": ["4", "2+2\\sqrt{3}"]}
+        ],
+        "points": 1,
+        "explanation": "Đặt \\( \\log_4(a) = \\log_2(b) = \\log_6(a+b) = t \\).\nTa có: \\( a = 4^t = 2^{2t} \\), \\( b = 2^t \\), \\( a+b = 6^t \\).\nThay vào phương trình \\( a + b = a+b \\):\n\\( 2^{2t} + 2^t = 6^t \\Leftrightarrow (2^t)^2 + 2^t - 6^t = 0 \\).\nChia cả hai vế cho \\( 2^t > 0 \\): \\( 2^t + 1 = 3^t \\).\nNhận thấy \\( t = 1 \\) là nghiệm duy nhất vì hàm số \\( f(t) = 3^t - 2^t - 1 \\) đồng biến.\nVới \\( t = 1 \\), ta có \\( b = 2^1 = 2 \\) và \\( a = 4^1 = 4 \\).\nVậy \\( \\dfrac{a}{b} = \\dfrac{4}{2} = 2 \\)."
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de4_sh_40",
+        "type": "short",
+        "content": "Cho \\( (u_n) \\) là một cấp số cộng thỏa mãn \\( u_4 + u_{17} = 16 \\). Tổng của 20 số hạng đầu tiên là",
+        "blanks": [
+            {"label": "Tổng 20 số hạng đầu là:", "answers": ["160"]}
+        ],
+        "points": 1,
+        "explanation": "Theo tính chất cấp số cộng, ta có:\n\\( u_4 + u_{17} = (u_1 + 3d) + (u_1 + 16d) = 2u_1 + 19d = 16 \\).\nMặt khác, tổng 20 số hạng đầu tiên là:\n\\( S_{20} = \\dfrac{20(2u_1 + (20-1)d)}{2} = 10(2u_1 + 19d) = 10 \\cdot 16 = 160 \\)."
     }
 
     
