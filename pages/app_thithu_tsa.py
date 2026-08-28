@@ -325,27 +325,8 @@ EXAMS = [
         "id": "de1_tf_13",
         "type": "truefalse",
         "content": """Một trạm ra-đa của cảnh sát giao thông đã ghi lại tốc độ (đơn vị: km/h) của 50 chiếc ô tô đi qua một đoạn đường cao tốc được giới hạn tốc độ. Số liệu được ghép nhóm như sau:
+"image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau13-de1.PNG',
 
-<table class="table-bordered text-center" style="margin: 0 auto;">
-<tbody>
-<tr>
-<td>Tốc độ (km/h)</td>
-<td>[40;60)</td>
-<td>[60;80)</td>
-<td>[80; 100)</td>
-<td>[100;120)</td>
-<td>[120;140)</td>
-</tr>
-<tr>
-<td>Số lượng xe</td>
-<td>5</td>
-<td>12</td>
-<td>18</td>
-<td>10</td>
-<td>5</td>
-</tr>
-</tbody>
-</table>
 
 Biết rằng đoạn đường này quy định tốc độ tối đa là 100 km/h. Xét tính Đúng/Sai của các mệnh đề sau:""",
         "statements": [
