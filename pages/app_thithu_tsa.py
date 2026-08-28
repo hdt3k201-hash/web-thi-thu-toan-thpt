@@ -2218,7 +2218,7 @@ Dấu "=" xảy ra khi \\( x=y=z=\\sqrt{3} \\). Vậy giá trị nhỏ nhất c�
     {
         "id": 'de3',
         "name": 'Đề số 3 - ĐỀ CHÍNH THỨC TSA ĐỢT 1 - 2026.',
-        "description": '40 câu hỏi.',
+        "description": '10 câu hỏi.',
         "questions": [
 
            # ---------------- ĐÚNG / SAI (truefalse) ----------------
