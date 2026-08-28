@@ -2371,7 +2371,160 @@ Dấu "=" xảy ra khi \\( x=y=z=\\sqrt{3} \\). Vậy giá trị nhỏ nhất c�
         ],
         "points": 1,
         "explanation": "Xét hàm số \\( f(x)=2x^3-3x^2-1 \\). Ta có \\( f'(x)=6x^2-6x \\); \\( f'(x)=0\\Leftrightarrow x=0 \\) hoặc \\( x=1 \\).\n\nHàm số \\( f(x) \\) đạt cực đại tại \\( A(0;-1) \\) và cực tiểu tại \\( B(1;-2) \\).\n\nĐồ thị hàm số cắt trục hoành tại một điểm duy nhất \\( x_0\\in(1;2) \\) do phương trình \\( 2x^3-3x^2-1=0 \\) chỉ có một nghiệm thực.\n\nTừ đồ thị hàm \\( f(x) \\), ta vẽ đồ thị hàm số \\( |y|=|f(x)| \\) bằng phép biến đổi: Giữ nguyên phần đồ thị nằm trên Ox và lấy đối xứng phần đồ thị nằm dưới Ox qua trục Ox.\n\nTừ sự biến đổi đó, ta thấy đồ thị \\( |y| \\) sẽ đi lên trên khoảng \\( (0;1) \\) và \\( (x_0;+\\infty) \\). Đáp án tường minh không chứa tham số ẩn là khoảng \\( (0;1) \\).\n\nSố cực trị: Hàm \\( |y| \\) có 1 điểm cực đại (tại \\( x=1 \\), giá trị \\( |y|=2 \\)) và 2 điểm cực tiểu (tại \\( x=0 \\), giá trị \\( |y|=1 \\) và tại \\( x=x_0 \\), giá trị \\( |y|=0 \\))."
-    },     
+    },    
+          # ---------------- DE 3 (Trang 10 - 13) ----------------
+
+    # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+    {
+        "id": 'de3_mc_15',
+        "type": 'mc4',
+        "content": 'Cho 3 điểm của một tam giác \\( A(x_A, y_A, z_A) \\), \\( B(x_B, y_B, z_B) \\), \\( C(x_C, y_C, z_C) \\) và điểm \\( G(x_G, y_G, z_G) \\). Đẳng thức nào sau đây tương đương với điều kiện \\( G \\) là trọng tâm tam giác \\( ABC \\)?',
+        "options": {
+            'A': 'Tọa độ điểm \\( G \\) là trung bình cộng tọa độ các đỉnh: \\( \\begin{cases} x_G = \\dfrac{x_A+x_B+x_C}{3} \\\\ y_G = \\dfrac{y_A+y_B+y_C}{3} \\\\ z_G = \\dfrac{z_A+z_B+z_C}{3} \\end{cases} \\)',
+            'B': 'Đẳng thức vectơ đặc trưng của trọng tâm: \\( \\vec{GA} + \\vec{GB} + \\vec{GC} = \\vec{0} \\)',
+            'C': 'Với điểm \\( M \\) bất kỳ, quan hệ vectơ là: \\( \\vec{MA} + \\vec{MB} + \\vec{MC} = \\vec{MG} \\)',
+            'D': 'Vị trí của \\( G \\) trên đường trung tuyến \\( AM \\) (với \\( M \\) là trung điểm \\( BC \\)): \\( \\vec{AG} = \\dfrac{1}{2}\\vec{AM} \\)',
+        },
+        "correct": 'B',
+        "points": 1,
+        "explanation": """Trong hình học, điểm \\( G \\) là trọng tâm của tam giác \\( ABC \\) khi và chỉ khi thỏa mãn đẳng thức vectơ đặc trưng:
+\\( \\vec{GA} + \\vec{GB} + \\vec{GC} = \\vec{0} \\).
+
+Phân tích các phương án:
+- B: Là định nghĩa đẳng thức vectơ đặc trưng gốc của trọng tâm.
+- A: Từ đẳng thức vectơ suy ra hệ tọa độ \\( \\begin{cases} x_G = \\dfrac{x_A+x_B+x_C}{3} \\\\ y_G = \\dfrac{y_A+y_B+y_C}{3} \\\\ z_G = \\dfrac{z_A+z_B+z_C}{3} \\end{cases} \\).
+- C: Sai vì đẳng thức đúng phải là \\( \\vec{MA} + \\vec{MB} + \\vec{MC} = 3\\vec{MG} \\).
+- D: Sai vì tính chất trọng tâm trên đường trung tuyến là \\( \\vec{AG} = \\dfrac{2}{3}\\vec{AM} \\)."""
+    },
+
+    # ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": 'de3_sh_16',
+        "type": 'short',
+        "content": 'Minh, bà, bố, mẹ và em đi xem phim ngồi cùng nhau trên 1 hàng ghế ngang gồm 5 chỗ. Tính các xác suất sau:',
+        "blanks": [
+            {"label": 'Xác suất bà ngồi ở chính giữa:', "answers": ['1/5', '0.2', '0,2']},
+            {"label": 'Xác suất bố mẹ ngồi ở 2 đầu:', "answers": ['1/10', '0.1', '0,1']},
+            {"label": 'Xác suất bà ngồi cạnh mẹ:', "answers": ['2/5', '0.4', '0,4']}
+        ],
+        "points": 1,
+        "explanation": """Số phần tử của không gian mẫu xếp 5 người vào 5 ghế: \\( n(\\Omega) = 5! = 120 \\) cách.
+
+1. Xác suất bà ngồi ở chính giữa:
+- Xếp bà vào vị trí chính giữa (vị trí số 3): Có 1 cách.
+- Xếp 4 người còn lại vào 4 vị trí trống: Có \\( 4! = 24 \\) cách.
+\\( \\Rightarrow P_1 = \\dfrac{24}{120} = \\dfrac{1}{5} \\).
+
+2. Xác suất bố mẹ ngồi ở 2 đầu:
+- Xếp bố và mẹ vào 2 vị trí ngoài cùng (số 1 và số 5): Có \\( 2! = 2 \\) cách.
+- Xếp 3 người còn lại vào 3 vị trí ở giữa: Có \\( 3! = 6 \\) cách.
+\\( \\Rightarrow P_2 = \\dfrac{2 \\cdot 6}{120} = \\dfrac{12}{120} = \\dfrac{1}{10} \\).
+
+3. Xác suất bà ngồi cạnh mẹ:
+- Ghép bà và mẹ thành 1 nhóm: Có \\( 2! = 2 \\) cách đổi chỗ.
+- Xem nhóm này như 1 phần tử, xếp cùng 3 người còn lại (tổng cộng 4 phần tử): Có \\( 4! = 24 \\) cách.
+\\( \\Rightarrow P_3 = \\dfrac{2 \\cdot 24}{120} = \\dfrac{48}{120} = \\dfrac{2}{5} \\)."""
+    },
+
+    {
+        "id": 'de3_sh_17',
+        "type": 'short',
+        "content": 'Một hộp có 5 viên bi trong đó có 3 bi vàng và 2 bi xanh. Tính xác suất khi lấy ngẫu nhiên 2 viên bi cùng lúc sẽ được 2 viên bi khác màu nhau.',
+        "blanks": [
+            {"label": 'P =', "answers": ['3/5', '0.6', '0,6']}
+        ],
+        "points": 1,
+        "explanation": """Số cách lấy 2 viên bi bất kỳ từ 5 viên bi là: \\( n(\\Omega) = C_5^2 = 10 \\) (cách).
+
+Gọi biến cố A: "Lấy được 2 viên bi khác màu". Khi đó ta chọn 1 bi vàng và 1 bi xanh.
+Số kết quả thuận lợi cho biến cố A là: \\( n(A) = C_3^1 \\cdot C_2^1 = 3 \\cdot 2 = 6 \\) (cách).
+
+Xác suất cần tìm là: \\( P(A) = \\dfrac{n(A)}{n(\\Omega)} = \\dfrac{6}{10} = \\dfrac{3}{5} \\)."""
+    },
+
+    {
+        "id": 'de3_sh_18',
+        "type": 'short',
+        "content": 'Cho hàm số \\( f(x) = x^2 - x \\). Với \\( F(x) \\) là một nguyên hàm của \\( f(x) \\) thỏa mãn \\( F(0) = 1 \\). Tính giá trị \\( F(6) \\).',
+        "blanks": [
+            {"label": 'F(6) =', "answers": ['55']}
+        ],
+        "points": 1,
+        "explanation": """Ta có họ nguyên hàm:
+\\( F(x) = \\int f(x) dx = \\int (x^2 - x) dx = \\dfrac{x^3}{3} - \\dfrac{x^2}{2} + C \\).
+
+Theo giả thiết \\( F(0) = 1 \\Rightarrow \\dfrac{0^3}{3} - \\dfrac{0^2}{2} + C = 1 \\Rightarrow C = 1 \\).
+Vậy hàm số nguyên hàm là: \\( F(x) = \\dfrac{x^3}{3} - \\dfrac{x^2}{2} + 1 \\).
+
+Tính giá trị:
+\\( F(6) = \\dfrac{6^3}{3} - \\dfrac{6^2}{2} + 1 = \\dfrac{216}{3} - \\dfrac{36}{2} + 1 = 72 - 18 + 1 = 55 \\)."""
+    },
+
+    {
+        "id": 'de3_sh_19',
+        "type": 'short',
+        "content": 'Cho đồ thị hàm số là một parabol \\( (P): y = ax^2 + bx + c \\), có đỉnh \\( I(6; -12) \\). Đồ thị cắt trục hoành tại điểm \\( M \\) có hoành độ bằng 8. Tính giá trị biểu thức \\( a + b + c \\).',
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau19-de3.PNG",
+        "blanks": [
+            {"label": 'a + b + c =', "answers": ['63']}
+        ],
+        "points": 1,
+        "explanation": """Parabol \\( (P) \\) có đỉnh \\( I(6; -12) \\), ta suy ra:
+- Trục đối xứng \\( x = -\\dfrac{b}{2a} = 6 \\Rightarrow b = -12a \\) (1).
+- Đỉnh \\( I \\in (P) \\Rightarrow -12 = a \\cdot 6^2 + b \\cdot 6 + c \\Rightarrow 36a + 6b + c = -12 \\) (2).
+- Đồ thị cắt trục hoành tại \\( M(8; 0) \\Rightarrow 0 = a \\cdot 8^2 + b \\cdot 8 + c \\Rightarrow 64a + 8b + c = 0 \\) (3).
+
+Thế (1) vào (3) ta được:
+\\( 64a + 8(-12a) + c = 0 \\Rightarrow -32a + c = 0 \\Rightarrow c = 32a \\).
+
+Thế \\( b = -12a \\) và \\( c = 32a \\) vào (2) ta được:
+\\( 36a + 6(-12a) + 32a = -12 \\Rightarrow -4a = -12 \\Rightarrow a = 3 \\).
+
+Suy ra:
+\\( b = -12 \\cdot 3 = -36 \\)
+\\( c = 32 \\cdot 3 = 96 \\).
+
+Vậy phương trình Parabol là \\( y = 3x^2 - 36x + 96 \\).
+Giá trị biểu thức: \\( a + b + c = 3 - 36 + 96 = 63 \\)."""
+    },
+
+    {
+        "id": 'de3_sh_20',
+        "type": 'short',
+        "content": 'Khảo sát một xe máy đang di chuyển trên đường trong vòng 6s cho biết vận tốc của xe đang di chuyển có biểu thức \\( v(t) = 12 + 4t - t^2 \\) (m/s). Xe có vận tốc lớn hơn 15 m/s trong khoảng thời gian \\( (a; b) \\). Xác định khoảng thời gian đó.',
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau20-de3.PNG",
+        "blanks": [
+            {"label": 'Khoảng thời gian (a; b) là:', "answers": ['(1;3)', '(1; 3)', '1;3']}
+        ],
+        "points": 1,
+        "explanation": """Yêu cầu bài toán tương đương với việc giải bất phương trình \\( v(t) > 15 \\) trong khoảng \\( t \\in [0; 6] \\).
+
+Ta có:
+\\( 12 + 4t - t^2 > 15 \\Leftrightarrow t^2 - 4t + 3 < 0 \\).
+
+Xét phương trình \\( t^2 - 4t + 3 = 0 \\Leftrightarrow \\begin{bmatrix} t = 1 \\\\ t = 3 \\end{bmatrix} \\).
+Bất phương trình \\( t^2 - 4t + 3 < 0 \\) có nghiệm là \\( 1 < t < 3 \\).
+
+Kết hợp với điều kiện khảo sát trong vòng 6s (\\( 0 \\le t \\le 6 \\)), khoảng thời gian thỏa mãn là \\( (1; 3) \\)."""
+    },
+
+    {
+        "id": 'de3_sh_21',
+        "type": 'short',
+        "content": 'Cho hàm số \\( y = \\dfrac{3\\tan x - 5}{1 - \\sin^2 x} \\). Tìm tập xác định \\( D \\) của hàm số.',
+        "blanks": [
+            {"label": 'Tập xác định D =', "answers": ['R\\{\\pi/2 + k\\pi}', 'R\\{\\pi/2+k\\pi}', 'R \\ {\\pi/2 + k\\pi}']}
+        ],
+        "points": 1,
+        "explanation": """Hàm số xác định khi và chỉ khi thỏa mãn đồng thời các điều kiện:
+1) Hàm \\( \\tan x \\) có nghĩa \\( \\Leftrightarrow \\cos x \\neq 0 \\).
+2) Mẫu số khác 0 \\( \\Leftrightarrow 1 - \\sin^2 x \\neq 0 \\Leftrightarrow \\cos^2 x \\neq 0 \\Leftrightarrow \\cos x \\neq 0 \\).
+
+Gộp cả hai điều kiện, ta cần:
+\\( \\cos x \\neq 0 \\Leftrightarrow x \\neq \\dfrac{\\pi}{2} + k\\pi \\quad (k \\in \\mathbb{Z}) \\).
+
+Vậy tập xác định của hàm số là \\( D = \\mathbb{R} \\setminus \\left\\{ \\dfrac{\\pi}{2} + k\\pi \\;\\middle|\\; k \\in \\mathbb{Z} \\right\\} \\)."""
+    }
         ] # dấu kết thúc toàn bộ đề
     }     # dấu kết thúc toàn bộ đề
 ]          # dấu kết thúc toàn bộ đề
