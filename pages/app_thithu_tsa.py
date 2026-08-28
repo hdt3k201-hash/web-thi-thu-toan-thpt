@@ -1827,6 +1827,264 @@ Tính giới hạn bên trái:
 
 Từ điều kiện tồn tại giới hạn: \\( a+2=-1 \\Rightarrow a=-3 \\).""",
             },
+
+                      # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de2_mc_26',
+                "type": 'mc4',
+                "content": '''Một nhà máy cần sản xuất các thùng đựng sơn hình trụ không có nắp đậy với thể tích thiết kế cố định bằng \\( 16\\pi \\, m^3 \\). Chi phí làm mặt đáy là 100.000 VNĐ/m² và chi phí làm mặt xung quanh là 50.000 VNĐ/m². Để chi phí sản xuất chiếc thùng đạt giá trị nhỏ nhất, bán kính đáy \\( r \\) của hình trụ phải bằng:''',
+                "options": {
+                    'A': '\\( r = 2 \\) m',
+                    'B': '\\( r = 4 \\) m',
+                    'C': '\\( r = 3 \\) m',
+                    'D': '\\( r = 1 \\) m',
+                },
+                "correct": 'A',
+                "points": 1,
+                "explanation": '''Gọi \\( r, h \\) lần lượt là bán kính đáy và chiều cao thùng \\( (r>0, h>0) \\).
+
+Thể tích: \\( V = \\pi r^2 h = 16\\pi \\Rightarrow h = \\dfrac{16}{r^2} \\).
+
+Diện tích đáy: \\( S_{đáy} = \\pi r^2 \\) \\( \\Rightarrow \\) Chi phí đáy: \\( T_1 = 100000\\pi r^2 \\) (đồng).
+
+Diện tích xung quanh: \\( S_{xq} = 2\\pi r h \\) \\( \\Rightarrow \\) Chi phí xung quanh: \\( T_2 = 50000 \\cdot 2\\pi r h = 100000\\pi r h \\) (đồng).
+
+Tổng chi phí: \\( T(r) = 100000\\pi\\left(r^2 + rh\\right) = 100000\\pi\\left(r^2 + \\dfrac{16}{r}\\right) \\).
+
+Xét \\( f(r) = r^2 + \\dfrac{16}{r} \\) với \\( r>0 \\):
+\\( f'(r) = 2r - \\dfrac{16}{r^2} = \\dfrac{2r^3-16}{r^2} \\).
+
+Cho \\( f'(r)=0 \\Rightarrow 2r^3=16 \\Rightarrow r^3=8 \\Rightarrow r=2 \\) (m).
+
+Lập bảng biến thiên, hàm số đạt giá trị nhỏ nhất tại \\( r=2 \\). Chọn A.''',
+            },
+
+            {
+                "id": 'de2_mc_30',
+                "type": 'mc4',
+                "content": 'Phương trình \\( 2\\sin^2 x - 5\\sin x\\cos x + 2\\cos^2 x = 0 \\) có tổng tất cả các nghiệm thuộc khoảng \\( (0; \\pi) \\) bằng:',
+                "options": {
+                    'A': '\\( \\dfrac{\\pi}{4} \\)',
+                    'B': '\\( \\dfrac{\\pi}{2} \\)',
+                    'C': '\\( \\dfrac{3\\pi}{4} \\)',
+                    'D': '\\( \\pi \\)',
+                },
+                "correct": 'B',
+                "points": 1,
+                "explanation": '''Kiểm tra \\( \\cos x = 0 \\): khi đó \\( \\sin^2 x = 1 \\), thay vào phương trình được \\( 2(1) - 5(0) + 2(0) = 2 \\ne 0 \\), nên \\( \\cos x = 0 \\) không là nghiệm.
+
+Chia cả hai vế cho \\( \\cos^2 x \\), đặt \\( t = \\tan x \\), phương trình trở thành:
+\\( 2t^2 - 5t + 2 = 0 \\Leftrightarrow (2t-1)(t-2)=0 \\Leftrightarrow t=\\dfrac{1}{2} \\) hoặc \\( t=2 \\).
+
+Với \\( t=\\dfrac{1}{2} \\Rightarrow x_1 = \\arctan\\dfrac{1}{2} \\) (thuộc \\( (0;\\pi) \\)).
+Với \\( t=2 \\Rightarrow x_2 = \\arctan 2 \\) (thuộc \\( (0;\\pi) \\)).
+
+Tổng hai nghiệm: \\( S = \\arctan\\dfrac{1}{2} + \\arctan 2 \\).
+
+Áp dụng \\( \\arctan a + \\arctan\\dfrac{1}{a} = \\dfrac{\\pi}{2} \\) (với \\( a>0 \\)), ta có \\( S = \\dfrac{\\pi}{2} \\). Chọn B.''',
+            },
+
+            # ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+                "id": "de2_dd_29",
+                "type": "dragdrop",
+                "content": "Cho hàm số \\( y = x^3 - 3x^2 + 2 \\). Kéo và thả các phương án lựa chọn thích hợp vào ô trống:",
+                "options_pool": [
+                    "\\( 2 \\)",
+                    "\\( -2 \\)",
+                    "\\( 4 \\)",
+                    "\\( 0 \\)",
+                    "\\( -4 \\)"
+                ],
+                "blanks": [
+                    {"label": "Giá trị cực đại của hàm số bằng:", "answer": "2"},
+                    {"label": "Giá trị cực tiểu của hàm số bằng:", "answer": "-2"},
+                    {"label": "Tung độ giao điểm của đồ thị hàm số với trục tung bằng:", "answer": "2"}
+                ],
+                "points": 1,
+                "explanation": '''Tập xác định: \\( D = \\mathbb{R} \\).
+
+Đạo hàm: \\( y' = 3x^2 - 6x = 3x(x-2) \\).
+
+Cho \\( y' = 0 \\Rightarrow x = 0 \\Rightarrow y = 2 \\), hoặc \\( x = 2 \\Rightarrow y = -2 \\).
+
+Lập bảng biến thiên: hàm số đạt cực đại tại \\( x=0 \\) với \\( y_{CĐ} = 2 \\); đạt cực tiểu tại \\( x=2 \\) với \\( y_{CT} = -2 \\).
+
+Giao điểm với trục tung có hoành độ \\( x=0 \\) \\( \\Rightarrow y(0) = 0^3 - 3(0)^2 + 2 = 2 \\).
+
+Vậy: a) 2; b) −2; c) 2.''',
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de2_sh_27',
+                "type": 'short',
+                "content": 'Có bao nhiêu số nguyên dương \\( n \\) nhỏ hơn hoặc bằng 100 sao cho biểu thức \\( P = n^2 + 3n + 5 \\) chia hết cho 5?',
+                "blanks": [
+                    {"label": 'Số giá trị n =', "answers": ['40']},
+                ],
+                "points": 1,
+                "explanation": '''Ta có \\( P = n^2 + 3n + 5 \\). Vì 5 chia hết cho 5, để \\( P \\) chia hết cho 5 thì \\( n^2+3n \\) chia hết cho 5, tức \\( n(n+3) \\) chia hết cho 5.
+
+Vì 5 là số nguyên tố, \\( n(n+3) \\vdots 5 \\Leftrightarrow n \\vdots 5 \\) hoặc \\( (n+3)\\vdots 5 \\).
+
+Trường hợp 1: \\( n \\vdots 5 \\Rightarrow n=5k \\). Với \\( 1\\le n \\le 100 \\Rightarrow k \\in \\{1,...,20\\} \\): có 20 giá trị.
+
+Trường hợp 2: \\( n+3 \\vdots 5 \\Rightarrow n = 5m-3 \\). Với \\( 1\\le n\\le 100 \\Rightarrow m \\in \\{1,...,20\\} \\): có 20 giá trị.
+
+Hai trường hợp không trùng nhau (một bên n chia hết 5, bên kia n chia 5 dư 2).
+
+Tổng số giá trị: \\( 20+20=40 \\).''',
+            },
+
+            {
+                "id": 'de2_sh_28',
+                "type": 'short',
+                "content": 'Một hộp chứa 5 quả cầu trắng và 4 quả cầu đen. Lấy ngẫu nhiên đồng thời 3 quả cầu từ hộp. Tính xác suất để 3 quả cầu lấy ra có cả hai màu trắng và đen.',
+                "blanks": [
+                    {"label": 'Xác suất =', "answers": ['5/6', '\\dfrac{5}{6}']},
+                ],
+                "points": 1,
+                "explanation": '''Số phần tử không gian mẫu: \\( n(\\Omega) = C_9^3 = 84 \\).
+
+Gọi A là biến cố "3 quả cầu lấy ra có cả hai màu". Biến cố đối \\( \\overline{A} \\) là "3 quả chỉ có đúng một màu" (toàn trắng hoặc toàn đen).
+
+Số cách chọn 3 quả toàn trắng: \\( C_5^3 = 10 \\).
+Số cách chọn 3 quả toàn đen: \\( C_4^3 = 4 \\).
+
+\\( n(\\overline{A}) = 10+4=14 \\).
+
+Xác suất: \\( P(A) = 1 - P(\\overline{A}) = 1 - \\dfrac{14}{84} = 1-\\dfrac{1}{6} = \\dfrac{5}{6} \\).''',
+            },
+
+                      # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de2_sh_31',
+                "type": 'short',
+                "content": 'Xét chuyển động của một vật theo quỹ đạo xác định bởi hàm số vận tốc \\( v(t) = 3t^2 - 12t + 9 \\) (m/s) trong khoảng thời gian từ \\( t = 0 \\) đến \\( t = 4 \\) (giây). Tính tổng quãng đường vật đi được trong khoảng thời gian đó.',
+                "blanks": [
+                    {"label": 'Quãng đường (m) =', "answers": ['12']},
+                ],
+                "points": 1,
+                "explanation": '''Phương trình vận tốc: \\( v(t) = 3t^2 - 12t + 9 \\).
+
+Ta có \\( v(t) = 0 \\Leftrightarrow 3t^2 - 12t + 9 = 0 \\Leftrightarrow t = 1 \\) hoặc \\( t = 3 \\) (cả hai đều thuộc \\( [0;4] \\)).
+
+Quãng đường vật đi được là tổng độ dịch chuyển có trị tuyệt đối:
+\\( S = \\displaystyle\\int_0^4 |3t^2-12t+9|\\,dt \\)
+\\( = \\displaystyle\\int_0^1 (3t^2-12t+9)\\,dt + \\int_1^3 -(3t^2-12t+9)\\,dt + \\int_3^4 (3t^2-12t+9)\\,dt \\)
+
+Tính từng tích phân:
+\\( \\displaystyle\\int_0^1 (3t^2-12t+9)\\,dt = (t^3-6t^2+9t)\\Big|_0^1 = 4 \\).
+
+\\( \\displaystyle\\int_1^3 -(3t^2-12t+9)\\,dt = -(t^3-6t^2+9t)\\Big|_1^3 = -(0-4) = 4 \\).
+
+\\( \\displaystyle\\int_3^4 (3t^2-12t+9)\\,dt = (t^3-6t^2+9t)\\Big|_3^4 = 4-0 = 4 \\).
+
+Tổng quãng đường: \\( S = 4+4+4 = 12 \\) (mét).''',
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de2_tf_32",
+                "type": "truefalse",
+                "content": "Trong không gian \\( Oxyz \\), cho mặt phẳng \\( (P): 2x - 2y + z - 5 = 0 \\) và điểm \\( M(1; -2; 3) \\). Xét tính đúng/sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "Khoảng cách từ điểm M đến mặt phẳng (P) bằng \\( \\dfrac{2}{3} \\).", "correct": False},
+                    {"text": "Hình chiếu vuông góc của M lên (P) có hoành độ âm.", "correct": False},
+                    {"text": "Phương trình mặt cầu tâm M tiếp xúc với mặt phẳng (P) có bán kính bằng \\( \\dfrac{4}{3} \\).", "correct": True}
+                ],
+                "points": 1,
+                "explanation": '''a) Khoảng cách từ \\( M(1;-2;3) \\) đến \\( (P): 2x-2y+z-5=0 \\) là:
+\\( d(M,(P)) = \\dfrac{|2(1)-2(-2)+3-5|}{\\sqrt{2^2+(-2)^2+1^2}} = \\dfrac{|2+4+3-5|}{3} = \\dfrac{4}{3} \\ne \\dfrac{2}{3} \\) \\( \\Rightarrow \\) Sai.
+
+b) Đường thẳng \\( \\Delta \\) qua M vuông góc với (P) có phương trình tham số:
+\\( x = 1+2t,\\ y=-2-2t,\\ z=3+t \\).
+
+Hình chiếu H là giao điểm của \\( \\Delta \\) và (P):
+\\( 2(1+2t) - 2(-2-2t) + (3+t) - 5 = 0 \\Leftrightarrow 9t+4=0 \\Leftrightarrow t = -\\dfrac{4}{9} \\).
+
+Hoành độ điểm H: \\( x_H = 1+2\\left(-\\dfrac{4}{9}\\right) = \\dfrac{1}{9} > 0 \\) \\( \\Rightarrow \\) Sai.
+
+c) Mặt cầu tâm M tiếp xúc với (P) có bán kính \\( R = d(M,(P)) = \\dfrac{4}{3} \\) \\( \\Rightarrow \\) Đúng.''',
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de2_sh_33',
+                "type": 'short',
+                "content": 'Một hộp đựng 6 thẻ được đánh số từ 1 đến 6. Rút ngẫu nhiên đồng thời 3 thẻ từ hộp đó. Tính xác suất để tổng các số trên 3 thẻ được rút ra là một số chia hết cho 3.',
+                "blanks": [
+                    {"label": 'Xác suất =', "answers": ['2/5', '\\dfrac{2}{5}', '0.4', '0,4']},
+                ],
+                "points": 1,
+                "explanation": '''Số phần tử không gian mẫu: \\( n(\\Omega) = C_6^3 = 20 \\).
+
+Chia tập \\( \\{1,2,3,4,5,6\\} \\) thành 3 nhóm theo số dư khi chia cho 3:
+- Nhóm dư 0: \\( \\{3,6\\} \\) (2 phần tử).
+- Nhóm dư 1: \\( \\{1,4\\} \\) (2 phần tử).
+- Nhóm dư 2: \\( \\{2,5\\} \\) (2 phần tử).
+
+Tổng 3 số chia hết cho 3 khi và chỉ khi 3 số được chọn thuộc 3 nhóm khác nhau (mỗi nhóm chọn 1 số):
+\\( n(A) = C_2^1 \\cdot C_2^1 \\cdot C_2^1 = 2\\cdot2\\cdot2 = 8 \\).
+
+Xác suất: \\( P = \\dfrac{8}{20} = \\dfrac{2}{5} = 0.4 \\).''',
+            },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de2_mc_34',
+                "type": 'mc4',
+                "content": 'Cho hàm số \\( f(x) \\) có đạo hàm liên tục trên \\( \\mathbb{R} \\) và \\( f\'(x) = x(x-1)^2(x+2) \\). Số điểm cực trị của hàm số \\( g(x) = f(x^2 - 2x) \\) là:',
+                "options": {
+                    'A': '2',
+                    'B': '3',
+                    'C': '4',
+                    'D': '5',
+                },
+                "correct": 'B',
+                "points": 1,
+                "explanation": '''Ta có \\( g\'(x) = (x^2-2x)\' \\cdot f\'(x^2-2x) = 2(x-1)f\'(x^2-2x) \\).
+
+Cho \\( g\'(x) = 0 \\Leftrightarrow \\begin{cases} x-1=0 \\\\ f\'(x^2-2x)=0 \\end{cases} \\).
+
+Từ \\( f\'(x) = x(x-1)^2(x+2) \\), phương trình \\( f\'(u)=0 \\) có nghiệm \\( u=0, u=-2 \\) (nghiệm đơn) và \\( u=1 \\) (nghiệm kép).
+
+Do đó \\( f\'(x^2-2x)=0 \\) tương đương:
+\\( x^2-2x=0 \\) hoặc \\( x^2-2x=-2 \\) (vô nghiệm) hoặc \\( x^2-2x=1 \\) (nghiệm kép, không đổi dấu).
+
+\\( \\Leftrightarrow x=0 \\) hoặc \\( x=2 \\).
+
+Kết hợp với nghiệm \\( x=1 \\), ta có các nghiệm đơn của \\( g\'(x)=0 \\) là \\( x=0, x=1, x=2 \\).
+
+Vậy hàm số \\( g(x) \\) có đúng 3 điểm cực trị. Chọn B.''',
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de2_sh_35',
+                "type": 'short',
+                "content": 'Trong không gian với hệ tọa độ \\( Oxyz \\), cho mặt cầu \\( (S): x^2+y^2+z^2-2x+4z-4=0 \\) và điểm \\( M(1;0;-1) \\). Qua M vẽ dây cung AB của mặt cầu sao cho M là trung điểm của đoạn thẳng AB. Tính độ dài đoạn thẳng AB.',
+                "blanks": [
+                    {"label": 'AB =', "answers": ['4√2', '4\\sqrt{2}']},
+                ],
+                "points": 1,
+                "explanation": '''Phương trình mặt cầu (S) viết lại dạng chính tắc:
+\\( (x-1)^2 + y^2 + (z+2)^2 = 9 \\).
+
+Mặt cầu có tâm \\( I(1;0;-2) \\), bán kính \\( R=3 \\).
+
+Kiểm tra M(1;0;-1): \\( (1-1)^2+0^2+(-1+2)^2 = 1 < 9 \\Rightarrow M \\) nằm trong mặt cầu.
+
+Vì M là trung điểm dây cung AB nên \\( IM \\perp AB \\).
+
+Khoảng cách từ I đến M: \\( IM = \\sqrt{(1-1)^2+(0-0)^2+(-1-(-2))^2} = 1 \\).
+
+Xét tam giác vuông IAM vuông tại M:
+\\( AM = \\sqrt{R^2 - IM^2} = \\sqrt{9-1} = \\sqrt{8} = 2\\sqrt{2} \\).
+
+Độ dài đoạn AB: \\( AB = 2AM = 4\\sqrt{2} \\).''',
+            },
           
         ], # kết thúc đề 2
     },  # kết thúc đề 2
