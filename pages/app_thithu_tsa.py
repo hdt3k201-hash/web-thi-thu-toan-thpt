@@ -2675,6 +2675,68 @@ Thể tích khối tứ diện:
 
 Vậy hoành độ điểm \\(C\\) có thể là \\(18\\) hoặc \\(-18\\)."""
 },
+
+          # ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de3_sh_28",
+        "type": "short",
+        "content": "Cho hàm số: \\( y = 4 \\sin^2 x + 3 \\). Hàm số đạt giá trị nhỏ nhất khi nào?[cite: 4]",
+        "blanks": [
+            {"label": "x =", "answers": ["k\\pi"]}
+        ],
+        "points": 1,
+        "explanation": """Tập xác định: \\( D = \\mathbb{R} \\).\nTa luôn có bất đẳng thức cơ bản của hàm lượng giác: \\( 0 \\le \\sin^2 x \\le 1 \\), \\( \\forall x \\in \\mathbb{R} \\)[cite: 4].\nNhân cả hai vế với 4 và cộng thêm 3, ta được:\n\\( 4 \\cdot 0 + 3 \\le 4 \\sin^2 x + 3 \\le 4 \\cdot 1 + 3 \\Leftrightarrow 3 \\le y \\le 7, \\forall x \\in \\mathbb{R} \\)[cite: 4].\nVậy giá trị nhỏ nhất của hàm số là \\( y_{\\min} = 3 \\)[cite: 4].\nDấu "=" xảy ra \\( \\Leftrightarrow \\sin^2 x = 0 \\Leftrightarrow \\sin x = 0 \\Leftrightarrow x = k\\pi \\) (\\( k \\in \\mathbb{Z} \\))[cite: 4]."""
+    },
+    {
+        "id": "de3_sh_29",
+        "type": "short",
+        "content": "Phương trình \\( \\sin^2 x = (1 - \\cos x)(1 + \\sin x) \\) có bao nhiêu nghiệm \\( x \\in [0, 2026\\pi] \\)?[cite: 4]",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau29.PNG",
+        "blanks": [
+            {"label": "Số nghiệm =", "answers": ["3040"]}
+        ],
+        "points": 1,
+        "explanation": """Sử dụng hằng đẳng thức lượng giác: \\( \\sin^2 x = 1 - \\cos^2 x = (1 - \\cos x)(1 + \\cos x) \\)[cite: 4].\nPhương trình đã cho trở thành:\n\\( (1 - \\cos x)(1 + \\cos x) = (1 - \\cos x)(1 + \\sin x) \\)\n\\( \\Leftrightarrow (1 - \\cos x)(\\cos x - \\sin x) = 0 \\Leftrightarrow \\left[ \\begin{matrix} \\cos x = 1 \\\\ \\tan x = 1 \\end{matrix} \\right. \\)[cite: 4].\nGiải các phương trình lượng giác cơ bản:\n- Họ nghiệm 1: \\( \\cos x = 1 \\Leftrightarrow x = k2\\pi \\) (\\( k \\in \\mathbb{Z} \\)). Vì \\( x \\in [0, 2026\\pi] \\Rightarrow 0 \\le k2\\pi \\le 2026\\pi \\Rightarrow 0 \\le k \\le 1013 \\). Có \\( 1013 - 0 + 1 = 1014 \\) nghiệm[cite: 4].\n- Họ nghiệm 2: \\( \\tan x = 1 \\Leftrightarrow x = \\frac{\\pi}{4} + m\\pi \\) (\\( m \\in \\mathbb{Z} \\)). Vì \\( x \\in [0, 2026\\pi] \\Rightarrow 0 \\le \\frac{\\pi}{4} + m\\pi \\le 2026\\pi \\Rightarrow -\\frac{1}{4} \\le m \\le 2025\\frac{3}{4} \\). Do \\( m \\in \\mathbb{Z} \\Rightarrow m \\in \\{0; 1; 2; ...; 2025\\} \\). Có 2026 nghiệm[cite: 4].\nBiểu diễn trên đường tròn lượng giác, hai họ nghiệm này có các điểm ngọn không trùng nhau. Vậy tổng số nghiệm là: \\( 1014 + 2026 = 3040 \\) nghiệm[cite: 4]."""
+    },
+    {
+        "id": "de3_sh_30",
+        "type": "short",
+        "content": "Bạn Duy có 1000 viên bi được đánh số từ 1 đến 1000. Gọi P là xác suất bạn Duy chọn ra 2 viên bi sao cho có đúng 1 viên chia hết cho 4 hoặc 6 nhưng không chia hết cho 4 và 5, giá trị của P(A) = ... % (Làm tròn đến 3 chữ số hàng thập phân)[cite: 4].",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau30.PNG",
+        "blanks": [
+            {"label": "P(A) (%) =", "answers": ["40.623"]}
+        ],
+        "points": 1,
+        "explanation": """Phân tích tính chất của viên bi thỏa mãn (gọi là bi "Hợp lệ"): Số ghi trên bi chia hết cho 4 hoặc 6 (tập \\( A_4 \\cup A_6 \\)) nhưng không chia hết cho cả 4 và 5 (tức là không chia hết cho 20, tập \\( A_{20} \\))[cite: 4].\nTập không gian mẫu khi xét 1 bi: \\( S = \\{1, 2, ..., 1000\\} \\)[cite: 4].\nSố lượng bi chia hết cho 4: \\( |A_4| = \\lfloor \\frac{1000}{4} \\rfloor = 250 \\) viên.\nSố lượng bi chia hết cho 6: \\( |A_6| = \\lfloor \\frac{1000}{6} \\rfloor = 166 \\) viên.\nSố lượng bi chia hết cho cả 4 và 6 (chia hết cho 12): \\( |A_{12}| = \\lfloor \\frac{1000}{12} \\rfloor = 83 \\) viên.\nSố bi chia hết cho 4 hoặc 6 là: \\( |A_4 \\cup A_6| = 250 + 166 - 83 = 333 \\) viên[cite: 4].\nTrong tập hợp 333 viên này, ta cần loại đi những viên chia hết cho 20.\nSố lượng bi chia hết cho 20: \\( |A_{20}| = \\lfloor \\frac{1000}{20} \\rfloor = 50 \\) viên. (Do \\( A_{20} \\subset A_4 \\) nên toàn bộ 50 viên này đều đã nằm trong tập hợp 333 viên ở trên)[cite: 4].\nVậy, số bi "Hợp lệ" là: \\( 333 - 50 = 283 \\) viên.\nSố bi "Không hợp lệ" là: \\( 1000 - 283 = 717 \\) viên[cite: 4].\nTrở lại bài toán xác suất chọn 2 bi:\n- Số phần tử của không gian mẫu: \\( n(\\Omega) = C_{1000}^2 = 499500 \\) cách.\n- Biến cố A: "Có đúng 1 viên hợp lệ". Ta chọn 1 bi hợp lệ và 1 bi không hợp lệ.\n\\( n(A) = C_{283}^1 \\cdot C_{717}^1 = 283 \\cdot 717 = 202911 \\) cách[cite: 4].\nXác suất của biến cố A: \\( P(A) = \\frac{n(A)}{n(\\Omega)} = \\frac{202911}{499500} \\approx 0.406228 \\)[cite: 4].\nĐổi sang phần trăm và làm tròn 3 chữ số thập phân, ta được 40.623%[cite: 4]."""
+    },
+    {
+        "id": "de3_sh_31",
+        "type": "short",
+        "content": "Trong không gian Oxyz, cho mặt cầu (S): \\( (x+2)^2 + y^2 + z^2 = 25 \\) tâm I và điểm \\( M(-2; 0; 4) \\). Dây AB cắt mặt cầu (S) và đi qua M sao cho góc tạo bởi AB và IM bằng \\( 60^\\circ \\). Tính:\\na) \\( d(I; AB) \\)\\nb) Độ dài đoạn AB[cite: 4]",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau31.PNG",
+        "blanks": [
+            {"label": "a) d(I; AB) =", "answers": ["2\\sqrt{3}"]},
+            {"label": "b) Độ dài AB =", "answers": ["2\\sqrt{13}"]}
+        ],
+        "points": 2,
+        "explanation": """Mặt cầu (S) có tâm \\( I(-2; 0; 0) \\) và bán kính \\( R = \\sqrt{25} = 5 \\)[cite: 4].\nĐộ dài đoạn \\( IM = \\sqrt{(-2 - (-2))^2 + (0 - 0)^2 + (4 - 0)^2} = 4 \\).\nVì \\( IM = 4 < R = 5 \\) nên điểm M nằm bên trong mặt cầu (S)[cite: 4].\nGọi H là hình chiếu vuông góc của I lên dây cung AB. Khi đó \\( IH = d(I; AB) \\).\nXét tam giác IHM vuông tại H, góc giữa đường thẳng AB và IM chính là \\( \\widehat{IMH} = 60^\\circ \\) (do tam giác vuông nên góc nhọn)[cite: 4].\nTa có: \\( d(I; AB) = IH = IM \\cdot \\sin \\widehat{IMH} = 4 \\cdot \\sin 60^\\circ = 4 \\cdot \\frac{\\sqrt{3}}{2} = 2\\sqrt{3} \\)[cite: 4].\nÁp dụng định lý Pytago trong tam giác vuông IHA, ta có:\n\\( AH = \\sqrt{IA^2 - IH^2} = \\sqrt{R^2 - IH^2} = \\sqrt{5^2 - (2\\sqrt{3})^2} = \\sqrt{25 - 12} = \\sqrt{13} \\)[cite: 4].\nĐộ dài dây cung AB là: \\( AB = 2AH = 2\\sqrt{13} \\)[cite: 4]."""
+    },
+
+    # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+    {
+        "id": "de3_mc_32",
+        "type": "mc4",
+        "content": "Trong không gian Oxyz, cho mặt phẳng (P): \\( x + 2y + 2z - 3 = 0 \\) và đường thẳng \\( d: \\frac{x}{2} = \\frac{y+1}{1} = \\frac{z-1}{-2} \\). Nằm trên (P) là hai đường thẳng a và b, với a, b // d và cách d một khoảng bằng 3. Khoảng cách giữa a và b bằng?[cite: 4]",
+        "options": {
+            "A": "\\( 4 \\)",
+            "B": "\\( 2\\sqrt{2} \\)",
+            "C": "\\( 4\\sqrt{2} \\)",
+            "D": "\\( 2 \\)"
+        },
+        "correct": "C",
+        "points": 1,
+        "explanation": """Ta có \\( \\vec{u}_d \\cdot \\vec{n}_P = 2(1) + 1(2) + (-2)(2) = 0 \\Rightarrow d // (P) \\) hoặc \\( d \\subset (P) \\)[cite: 4].\nĐường thẳng d có VTCP \\( \\vec{u}_d = (2; 1; -2) \\) và đi qua điểm \\( M_0(0; -1; 1) \\).\nMặt phẳng (P) có VTPT \\( \\vec{n}_P = (1; 2; 2) \\).\nThay toạ độ \\( M_0 \\) vào phương trình (P): \\( 0 + 2(-1) + 2(1) - 3 = -3 \\ne 0 \\Rightarrow M_0 \\notin (P) \\).\nVậy \\( d // (P) \\). Khoảng cách từ d đến (P) là:\n\\( h = d(d, (P)) = d(M_0, (P)) = \\frac{|0 + 2(-1) + 2(1) - 3|}{\\sqrt{1^2 + 2^2 + 2^2}} = \\frac{3}{3} = 1 \\)[cite: 4].\nGọi d' là hình chiếu vuông góc của d lên (P). Suy ra \\( d' // d \\) và \\( d' \\subset (P) \\).\nVì \\( a \\subset (P) \\) và a // d nên \\( a // d' \\). Tương tự \\( b // d' \\).\nKhoảng cách từ d đến đường thẳng a được tính theo công thức Pytago:\n\\( d^2(d, a) = h^2 + d^2(a, d') \\Rightarrow 3^2 = 1^2 + d^2(a, d') \\Rightarrow d(a, d') = \\sqrt{8} = 2\\sqrt{2} \\)[cite: 4].\nTương tự, \\( d(b, d') = 2\\sqrt{2} \\).\nDo a và b là hai đường thẳng phân biệt nằm trên (P) cùng song song và cách d' một khoảng bằng nhau, nên chúng nằm về hai phía của d'[cite: 4].\nKhoảng cách giữa a và b là: \\( d(a, b) = d(a, d') + d(b, d') = 2\\sqrt{2} + 2\\sqrt{2} = 4\\sqrt{2} \\)[cite: 4].\nĐáp án C."""
+    }
           
         ] # dấu kết thúc toàn bộ đề
     }     # dấu kết thúc toàn bộ đề
