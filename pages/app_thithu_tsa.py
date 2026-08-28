@@ -2642,7 +2642,7 @@ Giá trị biểu thức: \\( 10a - b = 10(13) - 100 = 30 \\)."""
 {
         "id": "de3_sh_27",
         "type": "short",
-        "content": "Biết công thức tính thể tích tứ diện: \\( V_{OABC} = \\frac{1}{6} |[\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC}| \\). Trong không gian Oxyz, cho điểm \\( A(-1; 2; 3) \\) và \\( B(3; -4; 1) \\). Điểm \\( C \\in Ox \\) thỏa mãn \\( V_{OABC} = 42 \\). Giá trị hoành độ dương của điểm C là:",
+        "content": "Biết công thức tính thể tích tứ diện: \\( V_{OABC} = \\dfrac{1}{6} |[\\vec{OA}, \\vec{OB}] \\cdot \\vec{OC}| \\). Trong không gian Oxyz, cho điểm \\( A(-1; 2; 3) \\) và \\( B(3; -4; 1) \\). Điểm \\( C \\in Ox \\) thỏa mãn \\( V_{OABC} = 42 \\). Giá trị hoành độ dương của điểm C là:",
         "blanks": [
             {"label": "Hoành độ dương điểm C =", "answers": ["18"]}
         ],
@@ -2654,7 +2654,7 @@ Giá trị biểu thức: \\( 10a - b = 10(13) - 100 = 30 \\)."""
     {
         "id": "de3_sh_28",
         "type": "short",
-        "content": "Cho hàm số: \\( y = 4 \\sin^2 x + 3 \\). Hàm số đạt giá trị nhỏ nhất khi nào?[cite: 4]",
+        "content": "Cho hàm số: \\( y = 4 \\sin^2 x + 3 \\). Hàm số đạt giá trị nhỏ nhất khi nào?",
         "blanks": [
             {"label": "x =", "answers": ["k\\pi"]}
         ],
@@ -2664,7 +2664,7 @@ Giá trị biểu thức: \\( 10a - b = 10(13) - 100 = 30 \\)."""
     {
         "id": "de3_sh_29",
         "type": "short",
-        "content": "Phương trình \\( \\sin^2 x = (1 - \\cos x)(1 + \\sin x) \\) có bao nhiêu nghiệm \\( x \\in [0, 2026\\pi] \\)?[cite: 4]",
+        "content": "Phương trình \\( \\sin^2 x = (1 - \\cos x)(1 + \\sin x) \\) có bao nhiêu nghiệm \\( x \\in [0, 2026\\pi] \\)?",
        
         "blanks": [
             {"label": "Số nghiệm =", "answers": ["3040"]}
@@ -2675,32 +2675,32 @@ Giá trị biểu thức: \\( 10a - b = 10(13) - 100 = 30 \\)."""
     {
         "id": "de3_sh_30",
         "type": "short",
-        "content": "Bạn Duy có 1000 viên bi được đánh số từ 1 đến 1000. Gọi P là xác suất bạn Duy chọn ra 2 viên bi sao cho có đúng 1 viên chia hết cho 4 hoặc 6 nhưng không chia hết cho 4 và 5, giá trị của P(A) = ... % (Làm tròn đến 3 chữ số hàng thập phân)[cite: 4].",
+        "content": "Bạn Duy có 1000 viên bi được đánh số từ 1 đến 1000. Gọi P là xác suất bạn Duy chọn ra 2 viên bi sao cho có đúng 1 viên chia hết cho 4 hoặc 6 nhưng không chia hết cho 4 và 5, giá trị của P(A) = ... % (Làm tròn đến 3 chữ số hàng thập phân).",
         
         "blanks": [
             {"label": "P(A) (%) =", "answers": ["40.623"]}
         ],
         "points": 1,
-        "explanation": """Phân tích tính chất của viên bi thỏa mãn (gọi là bi "Hợp lệ"): Số ghi trên bi chia hết cho 4 hoặc 6 (tập \\( A_4 \\cup A_6 \\)) nhưng không chia hết cho cả 4 và 5 (tức là không chia hết cho 20, tập \\( A_{20} \\))[cite: 4].\nTập không gian mẫu khi xét 1 bi: \\( S = \\{1, 2, ..., 1000\\} \\)[cite: 4].\nSố lượng bi chia hết cho 4: \\( |A_4| = \\lfloor \\frac{1000}{4} \\rfloor = 250 \\) viên.\nSố lượng bi chia hết cho 6: \\( |A_6| = \\lfloor \\frac{1000}{6} \\rfloor = 166 \\) viên.\nSố lượng bi chia hết cho cả 4 và 6 (chia hết cho 12): \\( |A_{12}| = \\lfloor \\frac{1000}{12} \\rfloor = 83 \\) viên.\nSố bi chia hết cho 4 hoặc 6 là: \\( |A_4 \\cup A_6| = 250 + 166 - 83 = 333 \\) viên[cite: 4].\nTrong tập hợp 333 viên này, ta cần loại đi những viên chia hết cho 20.\nSố lượng bi chia hết cho 20: \\( |A_{20}| = \\lfloor \\frac{1000}{20} \\rfloor = 50 \\) viên. (Do \\( A_{20} \\subset A_4 \\) nên toàn bộ 50 viên này đều đã nằm trong tập hợp 333 viên ở trên)[cite: 4].\nVậy, số bi "Hợp lệ" là: \\( 333 - 50 = 283 \\) viên.\nSố bi "Không hợp lệ" là: \\( 1000 - 283 = 717 \\) viên[cite: 4].\nTrở lại bài toán xác suất chọn 2 bi:\n- Số phần tử của không gian mẫu: \\( n(\\Omega) = C_{1000}^2 = 499500 \\) cách.\n- Biến cố A: "Có đúng 1 viên hợp lệ". Ta chọn 1 bi hợp lệ và 1 bi không hợp lệ.\n\\( n(A) = C_{283}^1 \\cdot C_{717}^1 = 283 \\cdot 717 = 202911 \\) cách[cite: 4].\nXác suất của biến cố A: \\( P(A) = \\frac{n(A)}{n(\\Omega)} = \\frac{202911}{499500} \\approx 0.406228 \\)[cite: 4].\nĐổi sang phần trăm và làm tròn 3 chữ số thập phân, ta được 40.623%[cite: 4]."""
+        "explanation": """Phân tích tính chất của viên bi thỏa mãn (gọi là bi "Hợp lệ"): Số ghi trên bi chia hết cho 4 hoặc 6 (tập \\( A_4 \\cup A_6 \\)) nhưng không chia hết cho cả 4 và 5 (tức là không chia hết cho 20, tập \\( A_{20} \\)).\nTập không gian mẫu khi xét 1 bi: \\( S = \\{1, 2, ..., 1000\\} \\)[cite: 4].\nSố lượng bi chia hết cho 4: \\( |A_4| = \\lfloor \\frac{1000}{4} \\rfloor = 250 \\) viên.\nSố lượng bi chia hết cho 6: \\( |A_6| = \\lfloor \\frac{1000}{6} \\rfloor = 166 \\) viên.\nSố lượng bi chia hết cho cả 4 và 6 (chia hết cho 12): \\( |A_{12}| = \\lfloor \\frac{1000}{12} \\rfloor = 83 \\) viên.\nSố bi chia hết cho 4 hoặc 6 là: \\( |A_4 \\cup A_6| = 250 + 166 - 83 = 333 \\) viên[cite: 4].\nTrong tập hợp 333 viên này, ta cần loại đi những viên chia hết cho 20.\nSố lượng bi chia hết cho 20: \\( |A_{20}| = \\lfloor \\frac{1000}{20} \\rfloor = 50 \\) viên. (Do \\( A_{20} \\subset A_4 \\) nên toàn bộ 50 viên này đều đã nằm trong tập hợp 333 viên ở trên)[cite: 4].\nVậy, số bi "Hợp lệ" là: \\( 333 - 50 = 283 \\) viên.\nSố bi "Không hợp lệ" là: \\( 1000 - 283 = 717 \\) viên[cite: 4].\nTrở lại bài toán xác suất chọn 2 bi:\n- Số phần tử của không gian mẫu: \\( n(\\Omega) = C_{1000}^2 = 499500 \\) cách.\n- Biến cố A: "Có đúng 1 viên hợp lệ". Ta chọn 1 bi hợp lệ và 1 bi không hợp lệ.\n\\( n(A) = C_{283}^1 \\cdot C_{717}^1 = 283 \\cdot 717 = 202911 \\) cách[cite: 4].\nXác suất của biến cố A: \\( P(A) = \\frac{n(A)}{n(\\Omega)} = \\frac{202911}{499500} \\approx 0.406228 \\)[cite: 4].\nĐổi sang phần trăm và làm tròn 3 chữ số thập phân, ta được 40.623%[cite: 4]."""
     },
     {
         "id": "de3_sh_31",
         "type": "short",
-        "content": "Trong không gian Oxyz, cho mặt cầu (S): \\( (x+2)^2 + y^2 + z^2 = 25 \\) tâm I và điểm \\( M(-2; 0; 4) \\). Dây AB cắt mặt cầu (S) và đi qua M sao cho góc tạo bởi AB và IM bằng \\( 60^\\circ \\). Tính:\\na) \\( d(I; AB) \\)\\nb) Độ dài đoạn AB[cite: 4]",
+        "content": "Trong không gian Oxyz, cho mặt cầu (S): \\( (x+2)^2 + y^2 + z^2 = 25 \\) tâm I và điểm \\( M(-2; 0; 4) \\). Dây AB cắt mặt cầu (S) và đi qua M sao cho góc tạo bởi AB và IM bằng \\( 60^\\circ \\). Tính: a)  d(I; AB)  . b) Độ dài đoạn AB",
        
         "blanks": [
             {"label": "a) d(I; AB) =", "answers": ["2\\sqrt{3}"]},
             {"label": "b) Độ dài AB =", "answers": ["2\\sqrt{13}"]}
         ],
         "points": 2,
-        "explanation": """Mặt cầu (S) có tâm \\( I(-2; 0; 0) \\) và bán kính \\( R = \\sqrt{25} = 5 \\)[cite: 4].\nĐộ dài đoạn \\( IM = \\sqrt{(-2 - (-2))^2 + (0 - 0)^2 + (4 - 0)^2} = 4 \\).\nVì \\( IM = 4 < R = 5 \\) nên điểm M nằm bên trong mặt cầu (S)[cite: 4].\nGọi H là hình chiếu vuông góc của I lên dây cung AB. Khi đó \\( IH = d(I; AB) \\).\nXét tam giác IHM vuông tại H, góc giữa đường thẳng AB và IM chính là \\( \\widehat{IMH} = 60^\\circ \\) (do tam giác vuông nên góc nhọn)[cite: 4].\nTa có: \\( d(I; AB) = IH = IM \\cdot \\sin \\widehat{IMH} = 4 \\cdot \\sin 60^\\circ = 4 \\cdot \\frac{\\sqrt{3}}{2} = 2\\sqrt{3} \\)[cite: 4].\nÁp dụng định lý Pytago trong tam giác vuông IHA, ta có:\n\\( AH = \\sqrt{IA^2 - IH^2} = \\sqrt{R^2 - IH^2} = \\sqrt{5^2 - (2\\sqrt{3})^2} = \\sqrt{25 - 12} = \\sqrt{13} \\)[cite: 4].\nĐộ dài dây cung AB là: \\( AB = 2AH = 2\\sqrt{13} \\)[cite: 4]."""
+        "explanation": """Mặt cầu (S) có tâm \\( I(-2; 0; 0) \\) và bán kính \\( R = \\sqrt{25} = 5 \\)[cite: 4].\nĐộ dài đoạn \\( IM = \\sqrt{(-2 - (-2))^2 + (0 - 0)^2 + (4 - 0)^2} = 4 \\).\nVì \\( IM = 4 < R = 5 \\) nên điểm M nằm bên trong mặt cầu (S).\nGọi H là hình chiếu vuông góc của I lên dây cung AB. Khi đó \\( IH = d(I; AB) \\).\nXét tam giác IHM vuông tại H, góc giữa đường thẳng AB và IM chính là \\( \\widehat{IMH} = 60^\\circ \\) (do tam giác vuông nên góc nhọn)[cite: 4].\nTa có: \\( d(I; AB) = IH = IM \\cdot \\sin \\widehat{IMH} = 4 \\cdot \\sin 60^\\circ = 4 \\cdot \\frac{\\sqrt{3}}{2} = 2\\sqrt{3} \\)[cite: 4].\nÁp dụng định lý Pytago trong tam giác vuông IHA, ta có:\n\\( AH = \\sqrt{IA^2 - IH^2} = \\sqrt{R^2 - IH^2} = \\sqrt{5^2 - (2\\sqrt{3})^2} = \\sqrt{25 - 12} = \\sqrt{13} \\)[cite: 4].\nĐộ dài dây cung AB là: \\( AB = 2AH = 2\\sqrt{13} \\)[cite: 4]."""
     },
 
     # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
     {
         "id": "de3_mc_32",
         "type": "mc4",
-        "content": "Trong không gian Oxyz, cho mặt phẳng (P): \\( x + 2y + 2z - 3 = 0 \\) và đường thẳng \\( d: \\frac{x}{2} = \\frac{y+1}{1} = \\frac{z-1}{-2} \\). Nằm trên (P) là hai đường thẳng a và b, với a, b // d và cách d một khoảng bằng 3. Khoảng cách giữa a và b bằng?[cite: 4]",
+        "content": "Trong không gian Oxyz, cho mặt phẳng (P): \\( x + 2y + 2z - 3 = 0 \\) và đường thẳng \\( d: \\dfrac{x}{2} = \\dfrac{y+1}{1} = \\dfrac{z-1}{-2} \\). Nằm trên (P) là hai đường thẳng a và b, với a, b // d và cách d một khoảng bằng 3. Khoảng cách giữa a và b bằng?",
         "options": {
             "A": "\\( 4 \\)",
             "B": "\\( 2\\sqrt{2} \\)",
@@ -2710,7 +2710,128 @@ Giá trị biểu thức: \\( 10a - b = 10(13) - 100 = 30 \\)."""
         "correct": "C",
         "points": 1,
         "explanation": """Ta có \\( \\vec{u}_d \\cdot \\vec{n}_P = 2(1) + 1(2) + (-2)(2) = 0 \\Rightarrow d // (P) \\) hoặc \\( d \\subset (P) \\)[cite: 4].\nĐường thẳng d có VTCP \\( \\vec{u}_d = (2; 1; -2) \\) và đi qua điểm \\( M_0(0; -1; 1) \\).\nMặt phẳng (P) có VTPT \\( \\vec{n}_P = (1; 2; 2) \\).\nThay toạ độ \\( M_0 \\) vào phương trình (P): \\( 0 + 2(-1) + 2(1) - 3 = -3 \\ne 0 \\Rightarrow M_0 \\notin (P) \\).\nVậy \\( d // (P) \\). Khoảng cách từ d đến (P) là:\n\\( h = d(d, (P)) = d(M_0, (P)) = \\frac{|0 + 2(-1) + 2(1) - 3|}{\\sqrt{1^2 + 2^2 + 2^2}} = \\frac{3}{3} = 1 \\)[cite: 4].\nGọi d' là hình chiếu vuông góc của d lên (P). Suy ra \\( d' // d \\) và \\( d' \\subset (P) \\).\nVì \\( a \\subset (P) \\) và a // d nên \\( a // d' \\). Tương tự \\( b // d' \\).\nKhoảng cách từ d đến đường thẳng a được tính theo công thức Pytago:\n\\( d^2(d, a) = h^2 + d^2(a, d') \\Rightarrow 3^2 = 1^2 + d^2(a, d') \\Rightarrow d(a, d') = \\sqrt{8} = 2\\sqrt{2} \\)[cite: 4].\nTương tự, \\( d(b, d') = 2\\sqrt{2} \\).\nDo a và b là hai đường thẳng phân biệt nằm trên (P) cùng song song và cách d' một khoảng bằng nhau, nên chúng nằm về hai phía của d'[cite: 4].\nKhoảng cách giữa a và b là: \\( d(a, b) = d(a, d') + d(b, d') = 2\\sqrt{2} + 2\\sqrt{2} = 4\\sqrt{2} \\)[cite: 4].\nĐáp án C."""
-    }
+    },
+          # ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de3_sh_33",
+        "type": "short",
+        "content": "Cho hàm số $f(x)=\\max\\{1-x; \\dfrac{x}{2}\\}$.\na) $f(2)-f(\\dfrac{1}{2})=\\_$\nb) $\\int_{0}^{2}f(x)dx=\\_$",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau33-de3.PNG",
+        "blanks": [
+            {"label": "a) $f(2)-f(\\dfrac{1}{2})$ = ", "answers": ["1/2"]},
+            {"label": "b) $\\int_{0}^{2}f(x)dx$ = ", "answers": ["4/3"]}
+        ],
+        "points": 1,
+        "explanation": """Ta xét phương trình hoành độ giao điểm của hai biểu thức bên trong hàm max:
+$1-x=\\dfrac{x}{2} \\Leftrightarrow 1=\\dfrac{3x}{2} \\Leftrightarrow x=\\dfrac{2}{3}$.
+
+Từ đó, ta có thể phá bỏ dấu max như sau:
+$f(x) = 1-x$ khi $x < \\dfrac{2}{3}$
+$f(x) = \\dfrac{x}{2}$ khi $x \\ge \\dfrac{2}{3}$
+
+Ý a) Tính giá trị hàm số:
+Ta có $2 > \\dfrac{2}{3} \\Rightarrow f(2) = \\dfrac{2}{2} = 1$.
+Và $\\dfrac{1}{2} < \\dfrac{2}{3} \\Rightarrow f(\\dfrac{1}{2}) = 1 - \\dfrac{1}{2} = \\dfrac{1}{2}$.
+Vậy $f(2) - f(\\dfrac{1}{2}) = 1 - \\frac{1}{2} = \\dfrac{1}{2}$.
+
+Ý b) Tính tích phân:
+Tách cận tích phân tại điểm $x=\\frac{2}{3}$:
+$I = \\int_{0}^{2}f(x)dx = \\int_{0}^{\\dfrac{2}{3}}(1-x)dx + \\int_{\\dfrac{2}{3}}^{2}\\dfrac{x}{2}dx$
+$= [x - \\frac{x^2}{2}]_{0}^{\\frac{2}{3}} + [\\frac{x^2}{4}]_{\\frac{2}{3}}^{2} = (\\frac{2}{3} - \\frac{2}{9}) + (1 - \\frac{1}{9}) = \\frac{4}{9} + \\frac{8}{9} = \\frac{12}{9} = \\frac{4}{3}$.[cite: 5]"""
+    },
+    {
+        "id": "de3_sh_34",
+        "type": "short",
+        "content": "Cho hình tứ diện ABCD có AB, AD, AC đôi một vuông góc với nhau. Biết $BD=BC=5$, $AC=4$ và gọi M, N, P lần lượt là trung điểm của BC, CD, BD. Thể tích của tứ diện A.MNP bằng:",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau34-de3.PNG",
+        "blanks": [
+            {"label": "Thể tích =", "answers": ["2"]}
+        ],
+        "points": 1,
+        "explanation": """Đặt $AB=c$, $AC=b=4$, $AD=a$. Do AB, AC, AD đôi một vuông góc, ta áp dụng định lý Pytago cho các tam giác vuông $\\triangle ABC$ và $\\triangle ABD$:
+- $BC^2 = AB^2 + AC^2 \\Rightarrow 5^2 = c^2 + 4^2 \\Rightarrow c^2 = 25 - 16 = 9 \\Rightarrow AB=c=3$.
+- $BD^2 = AB^2 + AD^2 \\Rightarrow 5^2 = 3^2 + a^2 \\Rightarrow a^2 = 25 - 9 = 16 \\Rightarrow AD=a=4$.
+
+Thể tích tứ diện vuông ABCD là: 
+$V_{ABCD} = \\frac{1}{6} \\cdot AB \\cdot AC \\cdot AD = \\frac{1}{6} \\cdot 3 \\cdot 4 \\cdot 4 = 8$.
+
+Ta xét tứ diện A.MNP có đỉnh A và đáy là tam giác MNP.
+Vì M, N, P lần lượt là trung điểm của BC, CD, BD nên mặt phẳng (MNP) trùng với mặt phẳng (BCD). Do đó, chiều cao hạ từ đỉnh A xuống mặt phẳng (MNP) chính là chiều cao hạ từ A xuống mặt phẳng (BCD).
+
+Mặt khác, tam giác MNP đồng dạng với tam giác BCD theo tỉ số $k = \\frac{1}{2}$, nên diện tích đáy $S_{MNP} = (\\frac{1}{2})^2 S_{BCD} = \\frac{1}{4}S_{BCD}$.
+
+Vậy thể tích tứ diện A.MNP được tính theo tỉ lệ:
+$V_{A.MNP} = \\frac{1}{3} \\cdot d(A,(MNP)) \\cdot S_{MNP} = \\frac{1}{3} \\cdot d(A,(BCD)) \\cdot \\frac{1}{4}S_{BCD} = \\frac{1}{4}V_{ABCD}$.
+$V_{A.MNP} = \\frac{1}{4} \\cdot 8 = 2$.[cite: 5]"""
+    },
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+    {
+        "id": "de3_mc_35",
+        "type": "mc4",
+        "content": "Trong không gian Oxyz, cho điểm $M(3;4;12)$. Gọi A, B, C lần lượt là hình chiếu vuông góc của M lên các trục Ox, Oy, Oz và E, F, G lần lượt là hình chiếu vuông góc của M lên các mặt phẳng (Oxy), (Oxz), (Oyz). Những phát biểu nào sau đây là đúng?",
+        "options": {
+            "A": "$MC=12$",
+            "B": "(ABC) || (EFG)",
+            "C": "$V_{MEFG}=48$",
+            "D": "$V_{MABC}=48$"
+        },
+        "correct": "D",
+        "points": 1,
+        "explanation": """Từ giả thiết, ta xác định toạ độ các điểm là hình chiếu của $M(3;4;12)$:
+- Lên các trục toạ độ: $A(3;0;0)$, $B(0;4;0)$, $C(0;0;12)$.
+- Lên các mặt phẳng toạ độ: $E(3;4;0)$, $F(3;0;12)$, $G(0;4;12)$.
+
+Lần lượt kiểm tra các phương án:
+- Kiểm tra độ dài MC: $MC = \\sqrt{(3-0)^2 + (4-0)^2 + (12-12)^2} = 5 \\ne 12 \\Rightarrow$ Phương án A sai.
+
+- Kiểm tra sự song song (ABC) || (EFG):
+Phương trình mặt phẳng (ABC) theo đoạn chắn: $\\frac{x}{3} + \\frac{y}{4} + \\frac{z}{12} = 1 \\Leftrightarrow 4x + 3y + z - 12 = 0$.
+Mặt phẳng (ABC) có VTPT $\\vec{n} = (4;3;1)$.
+Ta có $\\vec{EF} = (0;-4;12)$ và $\\vec{EG} = (-3;0;12)$. Tích có hướng $[\\vec{EF}, \\vec{EG}] = (-48;-36;-12) = -12(4;3;1)$.
+Vậy (EFG) cũng có VTPT là $(4;3;1)$. Mặt phẳng (EFG) đi qua $E(3;4;0)$ có phương trình: $4(x-3) + 3(y-4) + 1(z-0) = 0 \\Leftrightarrow 4x + 3y + z - 24 = 0$.
+Rõ ràng (ABC) || (EFG) $\\Rightarrow$ Phương án B đúng.
+
+- Kiểm tra thể tích $V_{MEFG}$:
+Ba vectơ $\\vec{ME}=(0;0;-12)$, $\\vec{MF}=(0;-4;0)$, $\\vec{MG}=(-3;0;0)$ đôi một vuông góc (nằm trên các cạnh của hình hộp chữ nhật có đỉnh M).
+Thể tích tứ diện vuông tại M là: $V_{MEFG} = \\frac{1}{6}ME \\cdot MF \\cdot MG = \\frac{1}{6} \\cdot 12 \\cdot 4 \\cdot 3 = 24 \\ne 48 \\Rightarrow$ Phương án C sai.
+
+- Kiểm tra thể tích $V_{MABC}$:
+Ta có $\\vec{MA}=(-3;-4;-12)$, $\\vec{MB}=(-3;0;-12)$, $\\vec{MC}=(-3;-4;0)$.
+Áp dụng công thức $V_{MABC} = \\frac{1}{6}|[\\vec{MA},\\vec{MB}] \\cdot \\vec{MC}| = \\frac{1}{6}|(-288)| = 48 \\Rightarrow$ Phương án D đúng. 
+(Ghi chú: Lời giải bài toán cho thấy cả 2 đáp án B và D đều mang tính chất đúng).[cite: 5]"""
+    },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de3_sh_36",
+        "type": "short",
+        "content": "Bạn Dương có 7 quyển truyện cổ tích, 5 quyển truyện Ehon và 3 quyển sách khoa học (mỗi quyển là khác nhau). Dương muốn chọn một quyển để được bố đọc cho trước khi đi ngủ. Số cách chọn của Dương là:",
+        "blanks": [
+            {"label": "Số cách chọn =", "answers": ["15"]}
+        ],
+        "points": 1,
+        "explanation": """Bạn Dương chỉ chọn duy nhất một quyển sách từ tất cả các loại sách trên.
+Các phương án chọn sách là độc lập (hoặc chọn cổ tích, hoặc chọn Ehon, hoặc chọn khoa học).
+
+Áp dụng quy tắc cộng, tổng số cách chọn một quyển sách là:
+$7 + 5 + 3 = 15$ (cách).[cite: 5]"""
+    },
+    {
+        "id": "de3_sh_37",
+        "type": "short",
+        "content": "Nhân dịp sự kiện quan trọng của nhà trường, lớp 10B đã ứng cử 11 học sinh, gồm 5 bạn nam và 6 bạn nữ, để tham gia văn nghệ. Trong 11 bạn này, cô giáo cần chọn ra 1 bạn nam để hát chính, và 4 bạn nữ hát phụ. Số cách chọn của cô giáo là:",
+        "blanks": [
+            {"label": "Số cách chọn =", "answers": ["75"]}
+        ],
+        "points": 1,
+        "explanation": """Việc chọn học sinh tham gia văn nghệ được chia làm 2 công đoạn liên tiếp:
+- Công đoạn 1: Chọn 1 bạn nam từ 5 bạn nam để hát chính. Số cách chọn là: $C_5^1 = 5$ (cách).
+- Công đoạn 2: Chọn 4 bạn nữ từ 6 bạn nữ để hát phụ (không phân biệt thứ tự). Số cách chọn là: $C_6^4 = 15$ (cách).
+
+Áp dụng quy tắc nhân, tổng số cách chọn của cô giáo là:
+$5 \\times 15 = 75$ (cách).[cite: 5]"""
+    },
           
         ] # dấu kết thúc toàn bộ đề
     }     # dấu kết thúc toàn bộ đề
