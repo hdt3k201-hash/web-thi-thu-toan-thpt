@@ -160,7 +160,7 @@ EXAMS = [
         "questions": [
 
             # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
-            {
+{
                 "id": 'de_tsa11_mc_01',
                 "type": 'mc4',
                 "content": ' Cho hàm số \\( y = \\dfrac{\\sin x + 2\\cos x + m}{\\cos x - 2\\sin x + 3} \\). Có bao nhiêu giá trị nguyên của tham số \\( m \\) để tập giá trị của hàm số này chứa đoạn \\( [-1; 1] \\)?',
@@ -218,7 +218,7 @@ EXAMS = [
                 "explanation": "Độ dài các đoạn lập thành cấp số nhân \\( L_n = 12\\cdot(2/3)^{n-1} \\). Tổng quãng đường: \\( \\sum L_n = \\dfrac{12}{1-2/3} = 36 \\) cm. Hướng di chuyển lặp chu kỳ 4 (Đông, Bắc, Tây, Nam) do mỗi bước quay trái 90°. Hoành độ: \\( X = L_1 - L_3 + L_5 - \\cdots = 12\\left[1-(2/3)^2+(2/3)^4-\\cdots\\right] = 12\\cdot\\dfrac{1}{1+4/9} = 12\\cdot\\dfrac{9}{13} = \\dfrac{108}{13} \\). Tung độ: \\( Y = L_2 - L_4 + L_6 - \\cdots = 12\\cdot\\dfrac23\\cdot\\dfrac{9}{13} = \\dfrac{72}{13} \\).",
             },
 
-                      # ================== TRẮC NGHIỆM 4 LỰA CHỌN (mc4) - tiếp ==================
+            # ================== TRẮC NGHIỆM 4 LỰA CHỌN (mc4) - tiếp ==================
             {
                 "id": 'de_tsa11_mc_02',
                 "type": 'mc4',
@@ -296,8 +296,8 @@ EXAMS = [
                 "explanation": "Chọn hệ trục: B(0,0,0), A(a,0,0), C(0,a,0) (vuông cân tại B), S(a,0,a√2) (do SA⊥đáy). \\(\\bullet\\) Góc 2 mp (SAC),(SBC): pháp tuyến \\((SAC)\\): \\(\\vec{n_1}=\\vec{AS}\\times\\vec{AC}=(0,0,a\\sqrt2)\\times(-a,a,0) \\propto(1,1,0)\\); pháp tuyến \\((SBC)\\): \\(\\vec{n_2}=\\vec{BS}\\times\\vec{BC}=(a,0,a\\sqrt2)\\times(0,a,0)\\propto(-\\sqrt2,0,1)\\). \\(\\cos\\varphi=\\dfrac{|\\vec{n_1}\\cdot\\vec{n_2}|}{|\\vec{n_1}||\\vec{n_2}|}=\\dfrac{\\sqrt2}{\\sqrt2\\cdot\\sqrt3}=\\dfrac1{\\sqrt3}=\\dfrac{\\sqrt3}{3}\\Rightarrow\\varphi=\\arccos\\dfrac{\\sqrt3}{3}\\). \\(\\bullet\\) Mặt (SBC) qua B với pháp tuyến \\((-\\sqrt2,0,1)\\): \\(-\\sqrt2x+z=0\\). \\(d(A,(SBC))=\\dfrac{|-\\sqrt2\\cdot a|}{\\sqrt3}=\\dfrac{a\\sqrt2}{\\sqrt3}=\\dfrac{a\\sqrt6}{3}\\). \\(\\bullet\\) \\(\\vec{SC}=(-a,a,-a\\sqrt2)\\), \\(\\vec{AB}=(-a,0,0)\\): \\(\\cos\\theta=\\dfrac{|\\vec{SC}\\cdot\\vec{AB}|}{|\\vec{SC}||\\vec{AB}|}=\\dfrac{a^2}{2a\\cdot a}=\\dfrac12\\Rightarrow\\theta=60^\\circ\\).",
             },
 
-                      # ================== TRẢ LỜI NGẮN (short) - tiếp ==================
-           // ================== TRẢ LỜI NGẮN (short) - tiếp ==================
+            # ================== TRẢ LỜI NGẮN (short) - tiếp ==================
+            # ================== TRẢ LỜI NGẮN (short) - tiếp ==================
     {
         "id": "de_tsa11_sh_05",
         "type": "short",
@@ -320,11 +320,11 @@ EXAMS = [
         "explanation": "Viết \\(X=10^n-2\\) với \\(n=2026\\) (kiểm tra: \\(n=1\\Rightarrow10-2=8\\); \\(n=2\\Rightarrow100-2=98\\); tổng quát \\(10^n-2\\) có dạng \\((n-1)\\) chữ số 9 rồi đến 8 — đúng với X có 2025 chữ số 9 rồi đến 8, \\(n=2026\\)). Khi đó \\(Y=X^2=10^{2n}-4\\cdot10^n+4=10^n(10^n-4)+4\\). Vì \\(10^n-4\\) có dạng \\((n-1)\\) chữ số 9 rồi đến 6 (thử \\(n=1{:}\\,6\\); \\(n=2{:}\\,96\\); \\(n=3{:}\\,996\\)), nên \\(10^n(10^n-4)\\) là số đó theo sau bởi \\(n\\) chữ số 0. Cộng thêm 4 vào chữ số cuối (đang là 0) được: \\(Y=\\underbrace{9\\ldots9}_{n-1}6\\underbrace{0\\ldots0}_{n-1}4\\) (tổng cộng \\(2n\\) chữ số). Tổng chữ số của Y \\(=9(n-1)+6+4=9n+1\\). Với \\(n=2026\\): tổng \\(=9\\times2026+1=18234+1=18235\\).\n\nKiểm tra với n nhỏ: \\(n=3\\): X=998, \\(X^2=996004\\), tổng chữ số \\(=9+9+6+0+0+4=28=9\\times3+1\\) ✓ khớp công thức."
     },
 
-    // ---------------- ĐÚNG / SAI (truefalse) ----------------
+    # ---------------- ĐÚNG / SAI (truefalse) ----------------
     {
         "id": "de1_tf_13",
         "type": "truefalse",
-        "content": `Một trạm ra-đa của cảnh sát giao thông đã ghi lại tốc độ (đơn vị: km/h) của 50 chiếc ô tô đi qua một đoạn đường cao tốc được giới hạn tốc độ. Số liệu được ghép nhóm như sau:
+        "content": """Một trạm ra-đa của cảnh sát giao thông đã ghi lại tốc độ (đơn vị: km/h) của 50 chiếc ô tô đi qua một đoạn đường cao tốc được giới hạn tốc độ. Số liệu được ghép nhóm như sau:
 
 <table class="table-bordered text-center" style="margin: 0 auto;">
 <tbody>
@@ -347,15 +347,15 @@ EXAMS = [
 </tbody>
 </table>
 
-Biết rằng đoạn đường này quy định tốc độ tối đa là 100 km/h. Xét tính Đúng/Sai của các mệnh đề sau:`,
+Biết rằng đoạn đường này quy định tốc độ tối đa là 100 km/h. Xét tính Đúng/Sai của các mệnh đề sau:""",
         "statements": [
-            {"text": "Mốt của mẫu số liệu trên thuộc nhóm [80; 100).", "correct": true},
-            {"text": "Tứ phân vị thứ nhất \\( (Q_1) \\) của mẫu số liệu bằng 65 km/h.", "correct": false},
-            {"text": "Tốc độ trung bình của 50 chiếc xe bị ghi nhận là 91.2 km/h.", "correct": false},
-            {"text": "Số xe vi phạm tốc độ tối đa chiếm hơn 35% tổng số xe bị ghi nhận.", "correct": false}
+            {"text": "Mốt của mẫu số liệu trên thuộc nhóm [80; 100).", "correct": True},
+            {"text": "Tứ phân vị thứ nhất \\( (Q_1) \\) của mẫu số liệu bằng 65 km/h.", "correct": False},
+            {"text": "Tốc độ trung bình của 50 chiếc xe bị ghi nhận là 91.2 km/h.", "correct": False},
+            {"text": "Số xe vi phạm tốc độ tối đa chiếm hơn 35% tổng số xe bị ghi nhận.", "correct": False}
         ],
         "points": 1,
-        "explanation": `a) Nhóm chứa mốt là nhóm có tần số lớn nhất (18 xe), đó là nhóm \\( [80; 100) \\) \\( \\Rightarrow \\) Đúng.
+        "explanation": """a) Nhóm chứa mốt là nhóm có tần số lớn nhất (18 xe), đó là nhóm \\( [80; 100) \\) \\( \\Rightarrow \\) Đúng.
 
 b) Cỡ mẫu \\( N = 50 \\), vị trí tứ phân vị thứ nhất là \\( \\dfrac{N}{4} = 12.5 \\).
 Tần số tích lũy của nhóm 1 là 5; nhóm 2 là \\( 5+12=17 \\). Do đó \\( Q_1 \\) thuộc nhóm \\( [60; 80) \\).
@@ -366,10 +366,10 @@ Tốc độ trung bình: \\( \\bar{x} = \\dfrac{5\\cdot 50 + 12\\cdot 70 + 18\\c
 
 d) Số xe vi phạm tốc độ tối đa (tốc độ \\( \\ge 100 \\) km/h) thuộc nhóm \\( [100; 120) \\) và \\( [120; 140) \\).
 Số lượng là: \\( 10 + 5 = 15 \\) (xe).
-Tỉ lệ xe vi phạm là: \\( \\dfrac{15}{50} = 30\\% < 35\\% \\) \\( \\Rightarrow \\) Sai.`
+Tỉ lệ xe vi phạm là: \\( \\dfrac{15}{50} = 30\\% < 35\\% \\) \\( \\Rightarrow \\) Sai."""
     },
 
-    // ---------------- KÉO THẢ (dragdrop) ----------------
+    # ---------------- KÉO THẢ (dragdrop) ----------------
     {
         "id": "de1_dd_14",
         "type": "dragdrop",
@@ -381,7 +381,7 @@ Tỉ lệ xe vi phạm là: \\( \\dfrac{15}{50} = 30\\% < 35\\% \\) \\( \\Righta
             {"label": "Nếu anh A muốn tất toán (trả hết nợ) trong vòng đúng 5 năm (60 tháng), thì số tiền cố định X phải trả mỗi tháng là:", "answer": "\\dfrac{8\\cdot 10^6\\cdot 1.008^{60}}{1.008^{60}-1}"}
         ],
         "points": 1,
-        "explanation": `Kí hiệu số tiền vay ban đầu là \\( P = 10^9 \\), lãi suất \\( r = 0.008 \\).
+        "explanation": """Kí hiệu số tiền vay ban đầu là \\( P = 10^9 \\), lãi suất \\( r = 0.008 \\).
 
 - Tiền lãi riêng tháng đầu tiên anh A phải chịu là: \\( P \\cdot r = 10^9 \\cdot 0.008 = 8,000,000 = 8\\cdot 10^6 \\) (đồng).
 
@@ -390,10 +390,10 @@ Tỉ lệ xe vi phạm là: \\( \\dfrac{15}{50} = 30\\% < 35\\% \\) \\( \\Righta
 
 - Để tất toán sau 5 năm (60 tháng), thì \\( T_{60} = 0 \\):
 \\( \\Rightarrow 10^9(1.008)^{60} = X\\dfrac{1.008^{60}-1}{0.008} \\)
-\\( \\Rightarrow X = \\dfrac{10^9 \\cdot 0.008 \\cdot 1.008^{60}}{1.008^{60}-1} = \\dfrac{8\\cdot 10^6\\cdot 1.008^{60}}{1.008^{60}-1} \\).`
+\\( \\Rightarrow X = \\dfrac{10^9 \\cdot 0.008 \\cdot 1.008^{60}}{1.008^{60}-1} = \\dfrac{8\\cdot 10^6\\cdot 1.008^{60}}{1.008^{60}-1} \\)."""
     },
 
-    // ---------------- TRẢ LỜI NGẮN (short) ----------------
+    # ---------------- TRẢ LỜI NGẮN (short) ----------------
     {
         "id": "de1_sh_15",
         "type": "short",
@@ -402,7 +402,7 @@ Tỉ lệ xe vi phạm là: \\( \\dfrac{15}{50} = 30\\% < 35\\% \\) \\( \\Righta
             {"label": "T =", "answers": ["6"]}
         ],
         "points": 1,
-        "explanation": `Đặt \\( \\widehat{BAM} = \\alpha, \\widehat{DAN} = \\beta \\). Vì \\( \\widehat{MAN} = 45^\\circ \\) và \\( \\widehat{BAD} = 90^\\circ \\) nên \\( \\alpha + \\beta = 45^\\circ \\).
+        "explanation": """Đặt \\( \\widehat{BAM} = \\alpha, \\widehat{DAN} = \\beta \\). Vì \\( \\widehat{MAN} = 45^\\circ \\) và \\( \\widehat{BAD} = 90^\\circ \\) nên \\( \\alpha + \\beta = 45^\\circ \\).
 Ta có: \\( BM = a\\tan\\alpha, DN = a\\tan\\beta \\).
 Diện tích tam giác AMN:
 \\( S_{AMN} = S_{ABCD} - S_{ABM} - S_{ADN} - S_{MCN} \\)
@@ -418,10 +418,10 @@ Thể tích khối chóp:
 \\( V = \\dfrac{1}{3}SA \\cdot S_{AMN} \\ge \\dfrac{1}{3}a \\cdot a^2(\\sqrt{2}-1) = \\dfrac{a^3(\\sqrt{2}-1)}{3} \\).
 Dấu "=" xảy ra khi \\( \\alpha = \\beta = 22.5^\\circ \\).
 Đồng nhất hệ số với \\( V = \\dfrac{a^3(\\sqrt{p}-q)}{r} \\), ta được \\( p=2, q=1, r=3 \\).
-Vậy \\( T = p + q + r = 2 + 1 + 3 = 6 \\).`
+Vậy \\( T = p + q + r = 2 + 1 + 3 = 6 \\)."""
     },
 
-    // ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+    # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
     {
         "id": "de1_mc_16",
         "type": "mc4",
@@ -434,7 +434,7 @@ Vậy \\( T = p + q + r = 2 + 1 + 3 = 6 \\).`
         },
         "correct": "C",
         "points": 1,
-        "explanation": `Điều kiện: \\( \\dfrac{x^2+2x+3}{2x^2-x+2} > 0 \\) (luôn đúng do tử số và mẫu số đều dương với mọi \\( x \\)).
+        "explanation": """Điều kiện: \\( \\dfrac{x^2+2x+3}{2x^2-x+2} > 0 \\) (luôn đúng do tử số và mẫu số đều dương với mọi \\( x \\)).
 Phương trình tương đương:
 \\( \\log_2(x^2+2x+3) - \\log_2(2x^2-x+2) = (2x^2-x+2) - (x^2+2x+3) \\)
 \\( \\Leftrightarrow \\log_2(x^2+2x+3) + (x^2+2x+3) = \\log_2(2x^2-x+2) + (2x^2-x+2) \\) (*)
@@ -445,8 +445,8 @@ Từ (*) suy ra \\( f(x^2+2x+3) = f(2x^2-x+2) \\)
 Phương trình có 2 nghiệm phân biệt \\( x_1, x_2 \\) (do \\( \\Delta = 13 > 0 \\)).
 Theo định lí Vi-ét: \\( x_1 + x_2 = 3 \\) và \\( x_1 x_2 = -1 \\).
 Giá trị biểu thức: \\( P = x_1^2 + x_2^2 = (x_1+x_2)^2 - 2x_1 x_2 = 3^2 - 2(-1) = 11 \\).
-Vậy đáp án đúng là C.`
-    },
+Vậy đáp án đúng là C."""
+    }
 
           
         ],   # kết thúc hết 1 đề
