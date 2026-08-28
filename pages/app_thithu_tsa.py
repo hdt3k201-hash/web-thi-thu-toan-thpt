@@ -320,64 +320,158 @@ EXAMS = [
             },
 
           
-    // ---------------- ĐÚNG / SAI (truefalse) ----------------
+    [
+    // ================== TRẢ LỜI NGẮN (short) - tiếp ==================
     {
-        "id": 'de1_tf_13',
-        "type": 'truefalse',
-        "content": 'Một trạm ra-đa của cảnh sát giao thông đã ghi lại tốc độ (đơn vị: km/h) của 50 chiếc ô tô đi qua một đoạn đường cao tốc được giới hạn tốc độ. Số liệu được ghép nhóm như sau:\n\n<table class="table-bordered text-center" style="margin: 0 auto;">\n<tbody>\n<tr>\n<td>Tốc độ (km/h)</td>\n<td>[40;60)</td>\n<td>[60;80)</td>\n<td>[80; 100)</td>\n<td>[100;120)</td>\n<td>[120;140)</td>\n</tr>\n<tr>\n<td>Số lượng xe</td>\n<td>5</td>\n<td>12</td>\n<td>18</td>\n<td>10</td>\n<td>5</td>\n</tr>\n</tbody>\n</table>\n\nBiết rằng đoạn đường này quy định tốc độ tối đa là 100 km/h. Xét tính Đúng/Sai của các mệnh đề sau:',
-        "statements": [
-            {"text": 'Mốt của mẫu số liệu trên thuộc nhóm [80; 100).', "correct": true},
-            {"text": 'Tứ phân vị thứ nhất \\( (Q_1) \\) của mẫu số liệu bằng 65 km/h.', "correct": false},
-            {"text": 'Tốc độ trung bình của 50 chiếc xe bị ghi nhận là 91.2 km/h.', "correct": false},
-            {"text": 'Số xe vi phạm tốc độ tối đa chiếm hơn 35% tổng số xe bị ghi nhận.', "correct": false},
+        "id": "de_tsa11_sh_05",
+        "type": "short",
+        "content": "Một chiếc xe chạy trong sa mạc có quỹ đạo là một đường cong bậc ba với phương trình \\( y = \\dfrac{1}{3}x^3 - 2x^2 + 5x \\) (trên hệ trục tọa độ với đơn vị là km). Tại mọi thời điểm, đèn pha của xe luôn chiếu sáng theo một tia sáng thẳng trùng với phương của tiếp tuyến quỹ đạo xe chạy tại điểm đó. Tại thời điểm xe đi ngang qua vị trí có hoành độ \\( x = 4 \\) thì đèn pha chiếu sáng trúng một cột mốc M nằm trên trục tung Oy. Hãy xác định tung độ của cột mốc M. (Điền đáp án dưới dạng phân số tối giản).",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau11-de1.PNG",
+        "blanks": [
+            {"label": "Tung độ của M =", "answers": ["-32/3"]}
         ],
         "points": 1,
-        "explanation": 'a) Nhóm chứa mốt là nhóm có tần số lớn nhất (18 xe), đó là nhóm \\( [80; 100) \\) \\( \\Rightarrow \\) Đúng.\n\nb) Cỡ mẫu \\( N = 50 \\), vị trí tứ phân vị thứ nhất là \\( \\dfrac{N}{4} = 12.5 \\).\nTần số tích lũy của nhóm 1 là 5; nhóm 2 là \\( 5+12=17 \\). Do đó \\( Q_1 \\) thuộc nhóm \\( [60; 80) \\).\n\\( Q_1 = 60 + \\dfrac{12.5 - 5}{12} \\cdot 20 = 72.5 \\) (km/h) \\( \\Rightarrow \\) Sai.\n\nc) Chọn giá trị đại diện cho các nhóm là 50, 70, 90, 110, 130.\nTốc độ trung bình: \\( \\bar{x} = \\dfrac{5\\cdot 50 + 12\\cdot 70 + 18\\cdot 90 + 10\\cdot 110 + 5\\cdot 130}{50} = 89.2 \\) (km/h) \\( \\Rightarrow \\) Sai.\n\nd) Số xe vi phạm tốc độ tối đa (tốc độ \\( \\ge 100 \\) km/h) thuộc nhóm \\( [100; 120) \\) và \\( [120; 140) \\).\nSố lượng là: \\( 10 + 5 = 15 \\) (xe).\nTỉ lệ xe vi phạm là: \\( \\dfrac{15}{50} = 30\\% < 35\\% \\) \\( \\Rightarrow \\) Sai.',
+        "explanation": "Tại \\(x=4\\): \\(y(4)=\\dfrac13(4)^3-2(4)^2+5(4)=\\dfrac{64}{3}-32+20=\\dfrac{64}{3}-12=\\dfrac{28}{3}\\). Đạo hàm \\(y'=x^2-4x+5\\Rightarrow y'(4)=16-16+5=5\\) (hệ số góc tiếp tuyến). Phương trình tiếp tuyến tại \\(x=4\\): \\(y=5(x-4)+\\dfrac{28}{3}=5x-20+\\dfrac{28}{3}=5x-\\dfrac{32}{3}\\). Cột mốc M nằm trên Oy \\(\\Rightarrow x=0\\Rightarrow y_M=-\\dfrac{32}{3}\\)."
+    },
+    {
+        "id": "de_tsa11_sh_06",
+        "type": "short",
+        "content": "Một số tự nhiên X có 2026 chữ số, trong đó có đúng 2025 chữ số 9 và chữ số tận cùng là 8 (nghĩa là X = \\(\\underbrace{99\\ldots9}_{2025\\text{ chữ số}}8\\)). Đặt \\( Y = X^2 \\). Hỏi tổng tất cả các chữ số của số Y bằng bao nhiêu?",
+        "blanks": [
+            {"label": "Tổng các chữ số của Y =", "answers": ["18235"]}
+        ],
+        "points": 1,
+        "explanation": "Viết \\(X=10^n-2\\) với \\(n=2026\\) (kiểm tra: \\(n=1\\Rightarrow10-2=8\\); \\(n=2\\Rightarrow100-2=98\\); tổng quát \\(10^n-2\\) có dạng \\((n-1)\\) chữ số 9 rồi đến 8 — đúng với X có 2025 chữ số 9 rồi đến 8, \\(n=2026\\)). Khi đó \\(Y=X^2=10^{2n}-4\\cdot10^n+4=10^n(10^n-4)+4\\). Vì \\(10^n-4\\) có dạng \\((n-1)\\) chữ số 9 rồi đến 6 (thử \\(n=1{:}\\,6\\); \\(n=2{:}\\,96\\); \\(n=3{:}\\,996\\)), nên \\(10^n(10^n-4)\\) là số đó theo sau bởi \\(n\\) chữ số 0. Cộng thêm 4 vào chữ số cuối (đang là 0) được: \\(Y=\\underbrace{9\\ldots9}_{n-1}6\\underbrace{0\\ldots0}_{n-1}4\\) (tổng cộng \\(2n\\) chữ số). Tổng chữ số của Y \\(=9(n-1)+6+4=9n+1\\). Với \\(n=2026\\): tổng \\(=9\\times2026+1=18234+1=18235\\).\n\nKiểm tra với n nhỏ: \\(n=3\\): X=998, \\(X^2=996004\\), tổng chữ số \\(=9+9+6+0+0+4=28=9\\times3+1\\) ✓ khớp công thức."
+    },
+
+    // ---------------- ĐÚNG / SAI (truefalse) ----------------
+    {
+        "id": "de1_tf_13",
+        "type": "truefalse",
+        "content": `Một trạm ra-đa của cảnh sát giao thông đã ghi lại tốc độ (đơn vị: km/h) của 50 chiếc ô tô đi qua một đoạn đường cao tốc được giới hạn tốc độ. Số liệu được ghép nhóm như sau:
+
+<table class="table-bordered text-center" style="margin: 0 auto;">
+<tbody>
+<tr>
+<td>Tốc độ (km/h)</td>
+<td>[40;60)</td>
+<td>[60;80)</td>
+<td>[80; 100)</td>
+<td>[100;120)</td>
+<td>[120;140)</td>
+</tr>
+<tr>
+<td>Số lượng xe</td>
+<td>5</td>
+<td>12</td>
+<td>18</td>
+<td>10</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+
+Biết rằng đoạn đường này quy định tốc độ tối đa là 100 km/h. Xét tính Đúng/Sai của các mệnh đề sau:`,
+        "statements": [
+            {"text": "Mốt của mẫu số liệu trên thuộc nhóm [80; 100).", "correct": true},
+            {"text": "Tứ phân vị thứ nhất \\( (Q_1) \\) của mẫu số liệu bằng 65 km/h.", "correct": false},
+            {"text": "Tốc độ trung bình của 50 chiếc xe bị ghi nhận là 91.2 km/h.", "correct": false},
+            {"text": "Số xe vi phạm tốc độ tối đa chiếm hơn 35% tổng số xe bị ghi nhận.", "correct": false}
+        ],
+        "points": 1,
+        "explanation": `a) Nhóm chứa mốt là nhóm có tần số lớn nhất (18 xe), đó là nhóm \\([80; 100) \\) \\(\\Rightarrow \\) Đúng.
+
+b) Cỡ mẫu \\( N = 50 \\), vị trí tứ phân vị thứ nhất là \\( \\dfrac{N}{4} = 12.5 \\).
+Tần số tích lũy của nhóm 1 là 5; nhóm 2 là \\( 5+12=17 \\). Do đó \\( Q_1 \\) thuộc nhóm \\([60; 80) \\).
+\\( Q_1 = 60 + \\dfrac{12.5 - 5}{12} \\cdot 20 = 72.5 \\) (km/h) \\(\\Rightarrow \\) Sai.
+
+c) Chọn giá trị đại diện cho các nhóm là 50, 70, 90, 110, 130.
+Tốc độ trung bình: \\( \\bar{x} = \\dfrac{5\\cdot 50 + 12\\cdot 70 + 18\\cdot 90 + 10\\cdot 110 + 5\\cdot 130}{50} = 89.2 \\) (km/h) \\(\\Rightarrow \\) Sai.
+
+d) Số xe vi phạm tốc độ tối đa (tốc độ \\( \\ge 100 \\) km/h) thuộc nhóm \\([100; 120) \\) và \\([120; 140) \\).
+Số lượng là: \\( 10 + 5 = 15 \\) (xe).
+Tỉ lệ xe vi phạm là: \\(\\dfrac{15}{50} = 30\\% < 35\\% \\) \\(\\Rightarrow \\) Sai.`
     },
 
     // ---------------- KÉO THẢ (dragdrop) ----------------
     {
-        "id": 'de1_dd_14',
-        "type": 'dragdrop',
+        "id": "de1_dd_14",
+        "type": "dragdrop",
         "content": "Anh A mua trả góp một căn hộ và cần vay ngân hàng đúng 1 tỷ VNĐ (tức là \\( 10^9 \\) đồng). Ngân hàng áp dụng mức lãi suất cố định là 0.8%/tháng. Thỏa thuận thanh toán như sau: đúng một tháng sau khi nhận tiền vay, anh A bắt đầu trả nợ; mỗi tháng anh A trả một số tiền cố định là X (đồng) và liên tục trong n tháng cho đến khi hết nợ (tháng cuối cùng có thể làm tròn). Kéo và thả các biểu thức phù hợp vào ô trống:",
-        "options_pool": ['8\\cdot 10^6', 'X\\dfrac{1.008^n-1}{0.008}', '10^9(1.008)^n - X\\dfrac{1.008^n-1}{0.008}', '\\dfrac{8\\cdot 10^6\\cdot 1.008^{60}}{1.008^{60}-1}', '8\\cdot 10^7'],
+        "options_pool": ["8\\cdot 10^6", "X\\dfrac{1.008^n-1}{0.008}", "10^9(1.008)^n - X\\dfrac{1.008^n-1}{0.008}", "\\dfrac{8\\cdot 10^6\\cdot 1.008^{60}}{1.008^{60}-1}", "8\\cdot 10^7"],
         "blanks": [
-            {"label": "Riêng trong tháng đầu tiên, số tiền lãi phát sinh từ khoản vay mà anh A phải chịu là (đồng):", "answer": '8\\cdot 10^6'},
-            {"label": "Công thức tính số tiền anh A còn nợ ngân hàng ngay sau khi đóng tiền ở tháng thứ n là:", "answer": '10^9(1.008)^n - X\\dfrac{1.008^n-1}{0.008}'},
-            {"label": "Nếu anh A muốn tất toán (trả hết nợ) trong vòng đúng 5 năm (60 tháng), thì số tiền cố định X phải trả mỗi tháng là:", "answer": '\\dfrac{8\\cdot 10^6\\cdot 1.008^{60}}{1.008^{60}-1}'},
+            {"label": "Riêng trong tháng đầu tiên, số tiền lãi phát sinh từ khoản vay mà anh A phải chịu là (đồng):", "answer": "8\\cdot 10^6"},
+            {"label": "Công thức tính số tiền anh A còn nợ ngân hàng ngay sau khi đóng tiền ở tháng thứ n là:", "answer": "10^9(1.008)^n - X\\dfrac{1.008^n-1}{0.008}"},
+            {"label": "Nếu anh A muốn tất toán (trả hết nợ) trong vòng đúng 5 năm (60 tháng), thì số tiền cố định X phải trả mỗi tháng là:", "answer": "\\dfrac{8\\cdot 10^6\\cdot 1.008^{60}}{1.008^{60}-1}"}
         ],
         "points": 1,
-        "explanation": 'Kí hiệu số tiền vay ban đầu là \\( P = 10^9 \\), lãi suất \\( r = 0.008 \\).\n\n- Tiền lãi riêng tháng đầu tiên anh A phải chịu là: \\( P \\cdot r = 10^9 \\cdot 0.008 = 8,000,000 = 8\\cdot 10^6 \\) (đồng).\n\n- Sau \\( n \\) tháng, số tiền anh A còn nợ là:\n\\( T_n = P(1+r)^n - X\\dfrac{(1+r)^n - 1}{r} = 10^9(1.008)^n - X\\dfrac{1.008^n-1}{0.008} \\).\n\n- Để tất toán sau 5 năm (60 tháng), thì \\( T_{60} = 0 \\):\n\\( \\Rightarrow 10^9(1.008)^{60} = X\\dfrac{1.008^{60}-1}{0.008} \\)\n\\( \\Rightarrow X = \\dfrac{10^9 \\cdot 0.008 \\cdot 1.008^{60}}{1.008^{60}-1} = \\dfrac{8\\cdot 10^6\\cdot 1.008^{60}}{1.008^{60}-1} \\).',
+        "explanation": `Kí hiệu số tiền vay ban đầu là \\( P = 10^9 \\), lãi suất \\( r = 0.008 \\).
+
+- Tiền lãi riêng tháng đầu tiên anh A phải chịu là: \\( P \\cdot r = 10^9 \\cdot 0.008 = 8,000,000 = 8\\cdot 10^6 \\) (đồng).
+
+- Sau \\( n \\) tháng, số tiền anh A còn nợ là:
+\\(T_n = P(1+r)^n - X\\dfrac{(1+r)^n - 1}{r} = 10^9(1.008)^n - X\\dfrac{1.008^n-1}{0.008} \\).
+
+- Để tất toán sau 5 năm (60 tháng), thì \\( T_{60} = 0 \\):
+\\(\\Rightarrow 10^9(1.008)^{60} = X\\dfrac{1.008^{60}-1}{0.008} \\)
+\\(\\Rightarrow X = \\dfrac{10^9 \\cdot 0.008 \\cdot 1.008^{60}}{1.008^{60}-1} = \\dfrac{8\\cdot 10^6\\cdot 1.008^{60}}{1.008^{60}-1} \\).`
     },
 
     // ---------------- TRẢ LỜI NGẮN (short) ----------------
     {
-        "id": 'de1_sh_15',
-        "type": 'short',
-        "content": 'Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a, cạnh bên SA vuông góc với mặt phẳng đáy và \\( SA=a \\). Điểm M di động trên đoạn thẳng BC, điểm N di động trên đoạn thẳng CD sao cho góc \\( \\widehat{MAN}=45^{\\circ} \\). Biết thể tích nhỏ nhất của khối chóp S.AMN có dạng \\( V=\\dfrac{a^3(\\sqrt{p}-q)}{r} \\) với p, q, r là các số nguyên dương phân biệt và phân số tối giản. Tính giá trị biểu thức \\( T=p+q+r \\).',
+        "id": "de1_sh_15",
+        "type": "short",
+        "content": "Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a, cạnh bên SA vuông góc với mặt phẳng đáy và \\( SA=a \\). Điểm M di động trên đoạn thẳng BC, điểm N di động trên đoạn thẳng CD sao cho góc \\( \\widehat{MAN}=45^{\\circ} \\). Biết thể tích nhỏ nhất của khối chóp S.AMN có dạng \\( V=\\dfrac{a^3(\\sqrt{p}-q)}{r} \\) với p, q, r là các số nguyên dương phân biệt và phân số tối giản. Tính giá trị biểu thức \\( T=p+q+r \\).",
         "blanks": [
-            {"label": 'T =', "answers": ['6']},
+            {"label": "T =", "answers": ["6"]}
         ],
         "points": 1,
-        "explanation": 'Đặt \\( \\widehat{BAM} = \\alpha, \\widehat{DAN} = \\beta \\). Vì \\( \\widehat{MAN} = 45^\\circ \\) và \\( \\widehat{BAD} = 90^\\circ \\) nên \\( \\alpha + \\beta = 45^\\circ \\).\nTa có: \\( BM = a\\tan\\alpha, DN = a\\tan\\beta \\).\nDiện tích tam giác AMN:\n\\( S_{AMN} = S_{ABCD} - S_{ABM} - S_{ADN} - S_{MCN} \\)\n\\( = a^2 - \\dfrac{a^2}{2}\\tan\\alpha - \\dfrac{a^2}{2}\\tan\\beta - \\dfrac{a^2}{2}(1-\\tan\\alpha)(1-\\tan\\beta) \\)\n\\( = \\dfrac{a^2}{2}(1 - \\tan\\alpha\\tan\\beta) \\).\nMà \\( \\tan(\\alpha+\\beta) = 1 \\Leftrightarrow \\dfrac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta} = 1 \\Leftrightarrow \\tan\\alpha + \\tan\\beta = 1 - \\tan\\alpha\\tan\\beta \\).\nÁp dụng BĐT Cô-si:\n\\( 1 - \\tan\\alpha\\tan\\beta = \\tan\\alpha + \\tan\\beta \\ge 2\\sqrt{\\tan\\alpha\\tan\\beta} \\)\nĐặt \\( t = \\sqrt{\\tan\\alpha\\tan\\beta} \\ge 0 \\), ta có \\( t^2 + 2t - 1 \\le 0 \\Rightarrow t \\le \\sqrt{2}-1 \\).\nDo đó \\( \\tan\\alpha\\tan\\beta \\le (\\sqrt{2}-1)^2 = 3 - 2\\sqrt{2} \\).\nSuy ra: \\( S_{AMN} = \\dfrac{a^2}{2}(1 - \\tan\\alpha\\tan\\beta) \\ge \\dfrac{a^2}{2}(1 - (3 - 2\\sqrt{2})) = a^2(\\sqrt{2}-1) \\).\nThể tích khối chóp:\n\\( V = \\dfrac{1}{3}SA \\cdot S_{AMN} \\ge \\dfrac{1}{3}a \\cdot a^2(\\sqrt{2}-1) = \\dfrac{a^3(\\sqrt{2}-1)}{3} \\).\nDấu "=" xảy ra khi \\( \\alpha = \\beta = 22.5^\\circ \\).\nĐồng nhất hệ số với \\( V = \\dfrac{a^3(\\sqrt{p}-q)}{r} \\), ta được \\( p=2, q=1, r=3 \\).\nVậy \\( T = p + q + r = 2 + 1 + 3 = 6 \\).',
+        "explanation": `Đặt \\(\\widehat{BAM} = \\alpha, \\widehat{DAN} = \\beta \\). Vì \\(\\widehat{MAN} = 45^\\circ \\) và \\(\\widehat{BAD} = 90^\\circ \\) nên \\(\\alpha + \\beta = 45^\\circ \\).
+Ta có: \\(BM = a\\tan\\alpha, DN = a\\tan\\beta \\).
+Diện tích tam giác AMN:
+\\(S_{AMN} = S_{ABCD} - S_{ABM} - S_{ADN} - S_{MCN} \\)
+\\(= a^2 - \\dfrac{a^2}{2}\\tan\\alpha - \\dfrac{a^2}{2}\\tan\\beta - \\dfrac{a^2}{2}(1-\\tan\\alpha)(1-\\tan\\beta) \\)
+\\(= \\dfrac{a^2}{2}(1 - \\tan\\alpha\\tan\\beta) \\).
+Mà \\(\\tan(\\alpha+\\beta) = 1 \\Leftrightarrow \\dfrac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta} = 1 \\Leftrightarrow \\tan\\alpha + \\tan\\beta = 1 - \\tan\\alpha\\tan\\beta \\).
+Áp dụng BĐT Cô-si:
+\\(1 - \\tan\\alpha\\tan\\beta = \\tan\\alpha + \\tan\\beta \\ge 2\\sqrt{\\tan\\alpha\\tan\\beta} \\)
+Đặt \\( t = \\sqrt{\\tan\\alpha\\tan\\beta} \\ge 0 \\), ta có \\( t^2 + 2t - 1 \\le 0 \\Rightarrow t \\le \\sqrt{2}-1 \\).
+Do đó \\(\\tan\\alpha\\tan\\beta \\le (\\sqrt{2}-1)^2 = 3 - 2\\sqrt{2} \\).
+Suy ra: \\(S_{AMN} = \\dfrac{a^2}{2}(1 - \\tan\\alpha\\tan\\beta) \\ge \\dfrac{a^2}{2}(1 - (3 - 2\\sqrt{2})) = a^2(\\sqrt{2}-1) \\).
+Thể tích khối chóp:
+\\(V = \\dfrac{1}{3}SA \\cdot S_{AMN} \\ge \\dfrac{1}{3}a \\cdot a^2(\\sqrt{2}-1) = \\dfrac{a^3(\\sqrt{2}-1)}{3} \\).
+Dấu "=" xảy ra khi \\(\\alpha = \\beta = 22.5^\\circ \\).
+Đồng nhất hệ số với \\(V = \\dfrac{a^3(\\sqrt{p}-q)}{r} \\), ta được \\( p=2, q=1, r=3 \\).
+Vậy \\( T = p + q + r = 2 + 1 + 3 = 6 \\).`
     },
 
     // ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
     {
-        "id": 'de1_mc_16',
-        "type": 'mc4',
-        "content": 'Gọi \\( x_1, x_2 \\) là các nghiệm thực của phương trình \\( \\log_2\\dfrac{x^2+2x+3}{2x^2-x+2} = x^2-3x-1 \\). Tính giá trị của biểu thức \\( P=x_1^2+x_2^2 \\).',
+        "id": "de1_mc_16",
+        "type": "mc4",
+        "content": "Gọi \\( x_1, x_2 \\) là các nghiệm thực của phương trình \\( \\log_2\\dfrac{x^2+2x+3}{2x^2-x+2} = x^2-3x-1 \\). Tính giá trị của biểu thức \\( P=x_1^2+x_2^2 \\).",
         "options": {
-            'A': 'P = 7',
-            'B': 'P = 9',
-            'C': 'P = 11',
-            'D': 'P = 13',
+            "A": "P = 7",
+            "B": "P = 9",
+            "C": "P = 11",
+            "D": "P = 13"
         },
-        "correct": 'C',
+        "correct": "C",
         "points": 1,
-        "explanation": 'Điều kiện: \\( \\dfrac{x^2+2x+3}{2x^2-x+2} > 0 \\) (luôn đúng do tử số và mẫu số đều dương với mọi \\( x \\)).\nPhương trình tương đương:\n\\( \\log_2(x^2+2x+3) - \\log_2(2x^2-x+2) = (2x^2-x+2) - (x^2+2x+3) \\)\n\\( \\Leftrightarrow \\log_2(x^2+2x+3) + (x^2+2x+3) = \\log_2(2x^2-x+2) + (2x^2-x+2) \\) (*)\nXét hàm số \\( f(t) = \\log_2 t + t \\) trên \\( (0; +\\infty) \\). Ta có \\( f\'(t) = \\dfrac{1}{t\\ln 2} + 1 > 0 \\), nên hàm số đồng biến.\nTừ (*) suy ra \\( f(x^2+2x+3) = f(2x^2-x+2) \\)\n\\( \\Leftrightarrow x^2+2x+3 = 2x^2-x+2 \\)\n\\( \\Leftrightarrow x^2 - 3x - 1 = 0 \\).\nPhương trình có 2 nghiệm phân biệt \\( x_1, x_2 \\) (do \\( \\Delta = 13 > 0 \\)).\nTheo định lí Vi-ét: \\( x_1 + x_2 = 3 \\) và \\( x_1 x_2 = -1 \\).\nGiá trị biểu thức: \\( P = x_1^2 + x_2^2 = (x_1+x_2)^2 - 2x_1 x_2 = 3^2 - 2(-1) = 11 \\).\nVậy đáp án đúng là C.',
-    },
-
+        "explanation": `Điều kiện: \\( \\dfrac{x^2+2x+3}{2x^2-x+2} > 0 \\) (luôn đúng do tử số và mẫu số đều dương với mọi \\( x \\)).
+Phương trình tương đương:
+\\(\\log_2(x^2+2x+3) - \\log_2(2x^2-x+2) = (2x^2-x+2) - (x^2+2x+3) \\)
+\\(\\Leftrightarrow \\log_2(x^2+2x+3) + (x^2+2x+3) = \\log_2(2x^2-x+2) + (2x^2-x+2) \\) (*)
+Xét hàm số \\( f(t) = \\log_2 t + t \\) trên \\((0; +\\infty) \\). Ta có \\( f'(t) = \\dfrac{1}{t\\ln 2} + 1 > 0 \\), nên hàm số đồng biến.
+Từ (*) suy ra \\(f(x^2+2x+3) = f(2x^2-x+2) \\)
+\\( \\Leftrightarrow x^2+2x+3 = 2x^2-x+2 \\)
+\\( \\Leftrightarrow x^2 - 3x - 1 = 0 \\).
+Phương trình có 2 nghiệm phân biệt \\( x_1, x_2 \\) (do \\( \\Delta = 13 > 0 \\)).
+Theo định lí Vi-ét: \\( x_1 + x_2 = 3 \\) và \\( x_1 x_2 = -1 \\).
+Giá trị biểu thức: \\( P = x_1^2 + x_2^2 = (x_1+x_2)^2 - 2x_1 x_2 = 3^2 - 2(-1) = 11 \\).
+Vậy đáp án đúng là C.`
+    }
+]
 
 
           
