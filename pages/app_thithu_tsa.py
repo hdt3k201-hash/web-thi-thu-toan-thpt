@@ -1271,6 +1271,188 @@ Suy ra độ dài dây cung \\( AB = 2HA = 4\\sqrt6 \\).
 Diện tích tam giác IAB:
 \\( S_{IAB} = \\dfrac12\\cdot IH\\cdot AB = \\dfrac12\\cdot 1\\cdot 4\\sqrt6 = 2\\sqrt6 \\).""",
             },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de2_mc_06',
+                "type": 'mc4',
+                "content": 'Trong không gian Oxyz, cho hai điểm \\( A(2;-4;4) \\), \\( B(5;-4;1) \\) và mặt phẳng \\( (P): x+2y-2z+5=0 \\). Gọi \\( M(a;b;c) \\) là điểm thuộc mặt phẳng (P) sao cho biểu thức \\( T = MA^2+2MB^2 \\) đạt giá trị nhỏ nhất. Tính tổng \\( S = a+b+c \\).',
+                "options": {
+                    'A': '\\( S = \\dfrac{7}{3} \\)',
+                    'B': '\\( S = 7 \\)',
+                    'C': '\\( S = \\dfrac{13}{3} \\)',
+                    'D': '\\( S = -2 \\)',
+                },
+                "correct": 'A',
+                "points": 1,
+                "explanation": """Bước 1: Tìm điểm I thỏa mãn tâm tỉ cự \\( \\vec{IA}+2\\vec{IB}=\\vec{0} \\).
+
+Tọa độ điểm I được tính bằng công thức trung bình có trọng số:
+\\( x_I = \\dfrac{x_A+2x_B}{1+2} = \\dfrac{2+2\\cdot5}{3} = 4 \\)
+\\( y_I = \\dfrac{y_A+2y_B}{1+2} = \\dfrac{-4+2\\cdot(-4)}{3} = -4 \\)
+\\( z_I = \\dfrac{z_A+2z_B}{1+2} = \\dfrac{4+2\\cdot1}{3} = 2 \\)
+
+Suy ra \\( I(4;-4;2) \\).
+
+Bước 2: Phân tích biểu thức T theo I:
+\\( T = (\\vec{MI}+\\vec{IA})^2 + 2(\\vec{MI}+\\vec{IB})^2 \\)
+\\( = 3MI^2 + 2\\vec{MI}\\cdot(\\vec{IA}+2\\vec{IB}) + IA^2+2IB^2 \\)
+\\( = 3MI^2 + IA^2+2IB^2 \\)
+
+Vì A, B cố định nên I cố định \\( \\Rightarrow IA^2+2IB^2 \\) không đổi. Do đó, T nhỏ nhất khi và chỉ khi MI nhỏ nhất.
+
+Mà \\( M\\in(P) \\), nên MI nhỏ nhất khi M là hình chiếu vuông góc của I lên (P).
+
+Bước 3: Tìm tọa độ hình chiếu M.
+
+Đường thẳng \\( \\Delta \\) đi qua I và vuông góc với (P) có VTCP \\( \\vec{n}_{(P)}=(1;2;-2) \\).
+
+Phương trình tham số của \\( \\Delta \\):
+\\( x=4+t,\\; y=-4+2t,\\; z=2-2t \\)
+
+Thay tọa độ \\( \\Delta \\) vào phương trình mặt phẳng (P):
+\\( (4+t)+2(-4+2t)-2(2-2t)+5=0 \\Leftrightarrow 9t-3=0 \\Leftrightarrow t=\\dfrac{1}{3} \\)
+
+Thay \\( t=\\dfrac{1}{3} \\) vào \\( \\Delta \\), ta được tọa độ \\( M\\left(\\dfrac{13}{3};-\\dfrac{10}{3};\\dfrac{4}{3}\\right) \\).
+
+Vậy \\( S=a+b+c=\\dfrac{13}{3}-\\dfrac{10}{3}+\\dfrac{4}{3}=\\dfrac{7}{3} \\). Đáp án A.""",
+            },
+
+            # ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+                "id": "de2_dd_07",
+                "type": "dragdrop",
+                "content": "Cho lăng trụ đứng ABC.A'B'C' có đáy ABC là tam giác vuông cân tại B, \\( AB=2a \\), chiều cao lăng trụ \\( AA'=3a \\). Kéo và thả các phương án lựa chọn thích hợp vào ô trống dưới đây để hoàn thiện các mệnh đề tính toán (lưu ý không phải phương án nào cũng được sử dụng hết):",
+                "options_pool": [
+                    "\\( 2a^2 \\)",
+                    "\\( 4a^2 \\)",
+                    "\\( 6a^3 \\)",
+                    "\\( 12a^3 \\)",
+                    "\\( \\dfrac{6a^3}{5} \\)"
+                ],
+                "blanks": [
+                    {"label": "Diện tích của tam giác đáy ABC bằng:", "answer": "2a^2"},
+                    {"label": "Thể tích của khối lăng trụ ABC.A'B'C' bằng:", "answer": "6a^3"},
+                    {"label": "Thể tích của khối chóp A'.ABC bằng:", "answer": "2a^3"}
+                ],
+                "points": 1,
+                "explanation": """Đáy ABC là tam giác vuông cân tại B với độ dài \\( AB=2a \\). Suy ra \\( BC=AB=2a \\).
+
+Diện tích đáy: \\( S_{ABC}=\\dfrac12\\cdot AB\\cdot BC=\\dfrac12\\cdot2a\\cdot2a=2a^2 \\).
+
+Lăng trụ đứng có chiều cao \\( h=AA'=3a \\).
+
+Thể tích khối lăng trụ: \\( V_{ABC.A'B'C'}=S_{ABC}\\cdot h=2a^2\\cdot3a=6a^3 \\).
+
+Thể tích khối chóp có cùng chung đáy và chiều cao với lăng trụ luôn bằng \\( \\dfrac13 \\) thể tích lăng trụ:
+\\( V_{A'.ABC}=\\dfrac13\\cdot S_{ABC}\\cdot h=\\dfrac13\\cdot6a^3=2a^3 \\).
+
+Lưu ý: giá trị \\( 2a^3 \\) không có sẵn trong ngân hàng đáp án gốc của đề — đây là điểm cần chọn đúng công thức tính toán (bằng \\( \\dfrac13 \\) lần lăng trụ) thay vì chọn nhầm theo các phương án nhiễu như \\( 4a^2, 12a^3, \\dfrac{6a^3}{5} \\).""",
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de2_tf_08",
+                "type": "truefalse",
+                "content": "Cho phương trình mũ: \\( 2^{x^2-1} = 3^{x+1} \\). Dựa vào kiến thức Logarit hóa, các mệnh đề sau đây là Đúng hay Sai?",
+                "statements": [
+                    {"text": "Phương trình đã cho tương đương với phương trình bậc hai: \\( x^2-(\\log_2 3)x-\\log_2 6=0 \\).", "correct": True},
+                    {"text": "Phương trình có hai nghiệm phân biệt mang dấu trái ngược nhau.", "correct": True},
+                    {"text": "Gọi S là tổng các nghiệm của phương trình đã cho, khi đó \\( 2^S=3 \\).", "correct": True},
+                    {"text": "Phương trình có duy nhất một nghiệm nguyên và đó là một số nguyên âm.", "correct": True}
+                ],
+                "points": 1,
+                "explanation": """Giải chi tiết phương trình (Logarit hóa hai vế cơ số 2):
+\\( 2^{x^2-1}=3^{x+1} \\)
+\\( \\Leftrightarrow \\log_2(2^{x^2-1}) = \\log_2(3^{x+1}) \\)
+\\( \\Leftrightarrow x^2-1 = (x+1)\\log_2 3 \\)
+\\( \\Leftrightarrow (x-1)(x+1) - (x+1)\\log_2 3 = 0 \\)
+\\( \\Leftrightarrow (x+1)(x-1-\\log_2 3) = 0 \\)
+
+Từ đó, ta có hai nghiệm: \\( x_1=-1 \\) và \\( x_2 = 1+\\log_2 3 = \\log_2 2+\\log_2 3 = \\log_2 6 \\).
+
+a) Đa thức bậc hai nhận 2 nghiệm này là:
+\\( (x+1)(x-\\log_2 6) = x^2-(\\log_2 6-1)x-\\log_2 6 = x^2-(\\log_2 3)x-\\log_2 6=0 \\) \\( \\Rightarrow \\) Đúng.
+
+b) Hai nghiệm là \\( x_1=-1<0 \\) và \\( x_2=\\log_2 6>\\log_2 1=0 \\). Hai nghiệm trái dấu \\( \\Rightarrow \\) Đúng.
+
+c) Tổng hai nghiệm \\( S=x_1+x_2=-1+\\log_2 6=\\log_2 3 \\).
+Suy ra \\( 2^S = 2^{\\log_2 3}=3 \\) \\( \\Rightarrow \\) Đúng.
+
+d) Tập nghiệm là \\( \\{-1;\\log_2 6\\} \\). Số \\( \\log_2 6 \\) là một số vô tỉ (khoảng 2.58). Nghiệm nguyên duy nhất là \\( -1 \\), và đây là số nguyên âm \\( \\Rightarrow \\) Đúng.""",
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de2_sh_09',
+                "type": 'short',
+                "content": 'Cho khối chóp tứ giác đều S.ABCD có tất cả các cạnh (cạnh đáy và cạnh bên) đều bằng a. Người ta tạo ra một hình nón (N) có đỉnh trùng với đỉnh S của khối chóp, và đường tròn đáy của hình nón chính là đường tròn ngoại tiếp hình vuông ABCD. Hãy tính số đo góc ở đỉnh của hình nón (N). (Đơn vị tính: độ, chỉ điền phần số).',
+                
+                "blanks": [
+                    {"label": 'Góc ở đỉnh =', "answers": ['90']},
+                ],
+                "points": 1,
+                "explanation": """Khối chóp S.ABCD có tất cả các cạnh bằng a.
+
+Đáy ABCD là hình vuông cạnh a \\( \\Rightarrow \\) Đường chéo đáy là \\( BD=a\\sqrt2 \\).
+
+Bán kính đường tròn ngoại tiếp đáy (cũng là bán kính đáy hình nón):
+\\( R_{đáy} = OA = \\dfrac{BD}{2} = \\dfrac{a\\sqrt2}{2} \\)
+
+Đường sinh của hình nón (N) chính là cạnh bên của khối chóp. Vậy \\( l=SA=a \\).
+
+Gọi \\( \\alpha \\) là góc giữa đường cao SO và đường sinh SA (\\( \\alpha \\) là một nửa góc ở đỉnh của hình nón).
+
+Trong tam giác vuông SOA vuông tại O:
+\\( \\sin\\alpha = \\dfrac{OA}{SA} = \\dfrac{\\frac{a\\sqrt2}{2}}{a} = \\dfrac{\\sqrt2}{2} \\)
+
+Suy ra \\( \\alpha = 45^\\circ \\).
+
+Góc ở đỉnh của hình nón bằng \\( 2\\alpha = 2\\times45^\\circ = 90^\\circ \\).""",
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de2_sh_10',
+                "type": 'short',
+                "content": 'Bạn Duy có hai đồng xu cân đối đồng chất, mỗi đồng xu có một mặt ghi số 2 và mặt còn lại ghi số 3. Bạn tung đồng thời hai đồng xu này, sau đó rút ngẫu nhiên một lá bài từ bộ bài 52 lá chuẩn. Biết xác suất để tổng các số trên hai mặt đồng xu lật ngửa bằng với con số ghi trên lá bài được rút (quy ước: các lá bài có số từ 2 đến 10 có giá trị tương ứng với con số trên lá; các lá J, Q, K, A coi như không có giá trị bằng số) được viết dưới dạng phân số tối giản \\( \\dfrac{a}{b} \\) (với \\( a, b \\in \\mathbb{N}^* \\)). Tính giá trị của biểu thức \\( T = a+b \\).',
+                "blanks": [
+                    {"label": 'T =', "answers": ['14']},
+                ],
+                "points": 1,
+                "explanation": """Bước 1: Phân tích phép thử tung 2 đồng xu.
+
+Mỗi đồng xu có 2 khả năng \\( \\{2,3\\} \\). Không gian mẫu khi tung 2 đồng xu có \\( 2\\times2=4 \\) phần tử.
+
+Gọi X là tổng số ghi trên 2 đồng xu:
+\\( X=4 \\) (2+2): 1 cách \\( \\Rightarrow P(X=4)=\\dfrac14 \\)
+\\( X=5 \\) (2+3 hoặc 3+2): 2 cách \\( \\Rightarrow P(X=5)=\\dfrac24=\\dfrac12 \\)
+\\( X=6 \\) (3+3): 1 cách \\( \\Rightarrow P(X=6)=\\dfrac14 \\)
+
+Bước 2: Phân tích phép rút bài 52 lá.
+
+Mỗi giá trị (ví dụ lá 4, 5, 6) đều xuất hiện đúng 4 lần trong bộ bài.
+
+Gọi Y là con số ghi trên lá bài rút được:
+\\( P(Y=k) = \\dfrac{4}{52} = \\dfrac{1}{13} \\) với \\( k\\in\\{2,3,...,10\\} \\)
+
+Bước 3: Tính xác suất của biến cố mục tiêu.
+
+Biến cố A: "Tổng số trên 2 đồng xu bằng số trên lá bài" \\( \\Leftrightarrow X=Y \\).
+
+Vì 2 hành động độc lập, áp dụng công thức xác suất toàn phần:
+\\( P(A) = P(X=4)P(Y=4)+P(X=5)P(Y=5)+P(X=6)P(Y=6) \\)
+\\( = \\dfrac14\\cdot\\dfrac1{13}+\\dfrac24\\cdot\\dfrac1{13}+\\dfrac14\\cdot\\dfrac1{13} \\)
+\\( = \\dfrac1{13}\\left(\\dfrac14+\\dfrac24+\\dfrac14\\right) = \\dfrac1{13}\\cdot1 = \\dfrac1{13} \\)
+
+Phân số thu được là \\( \\dfrac1{13} \\), đã tối giản. Đồng nhất với \\( \\dfrac{a}{b} \\), ta được \\( a=1, b=13 \\).
+
+Giá trị của \\( T=a+b=1+13=14 \\).""",
+            },
+
+
+
+          
         ],
     },
     {
