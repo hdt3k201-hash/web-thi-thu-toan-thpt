@@ -3724,11 +3724,8 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                ],
                "points": 1,
                "explanation": 'Để chiếc gàu cách mặt nước 1,5m, ta giải phương trình \\( h = 1.5 \\):\n\\( 1.5 + 2 \\cos[2\\pi(t - 0.25)] = 1.5 \\Leftrightarrow \\cos[2\\pi(t - 0.25)] = 0 \\)\n\n\\( \\Leftrightarrow 2\\pi(t - 0.25) = \\dfrac{\\pi}{2} + k\\pi \\Leftrightarrow t - 0.25 = 0.25 + 0.5k \\Leftrightarrow t = 0.5 + 0.5k \\; (k \\in \\mathbb{Z}) \\).\n\nVì thời gian \\( t > 0 \\), thời điểm đầu tiên tương ứng với giá trị k nhỏ nhất sao cho \\( t > 0 \\).\nChọn \\( k = 0 \\Rightarrow t = 0.5 \\) (phút).\n\nĐổi 0,5 phút sang đơn vị "phút và giây": 0,5 phút = 0 phút 30 giây.\nSuy ra \\( a = 0 \\) và \\( b = 30 \\) (thỏa mãn điều kiện \\( b < 60 \\)).\n\nVậy giá trị của biểu thức \\( a + b = 0 + 30 = 30 \\).'
-           },
-
-
-           
-    {
+           },         
+          {
         "id": "de5_sh_06",
         "type": "short",
         "content": "Cho một đa giác đều 10 cạnh trong không gian và một điểm nằm ngoài mặt phẳng chứa đa giác. Số mặt phẳng có thể lập được từ 11 điểm trên là bao nhiêu?[cite: 2]",
@@ -3776,11 +3773,11 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
         "statements": [
             {
                 "text": "Giá trị của $[1525]_7$ trong hệ thập phân là 607.",
-                "correct": true
+                "correct": True
             },
             {
                 "text": "$[1525]_7 = [4412]_5$",
-                "correct": true
+                "correct": True
             }
         ],
         "points": 1,
@@ -3808,11 +3805,11 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
         "statements": [
             {
                 "text": "$SA = 5\\sqrt{2}$",
-                "correct": false
+                "correct": False
             },
             {
                 "text": "Thể tích khối chóp S.BCD là 30.",
-                "correct": false
+                "correct": False
             }
         ],
         "points": 1,
@@ -3826,15 +3823,15 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
         "statements": [
             {
                 "text": "M và N có cùng hoành độ.",
-                "correct": true
+                "correct": True
             },
             {
                 "text": "$MN = x^2 + x - 6$",
-                "correct": false
+                "correct": False
             },
             {
                 "text": "$MN_{max} = 6$",
-                "correct": false
+                "correct": False
             }
         ],
         "points": 1,
@@ -3855,6 +3852,8 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
         "explanation": "Từ giả thiết: $x \\cdot f'(x) - f(x) = 2x^2 + 3x^3$. Chia cả hai vế cho $x^2$ (với $x \\ne 0$), ta được:\n$\\dfrac{x \\cdot f'(x) - f(x)}{x^2} = 2 + 3x \\Leftrightarrow \\left[ \\dfrac{f(x)}{x} \\right]' = 2 + 3x$.[cite: 2]\nLấy nguyên hàm hai vế: $\\dfrac{f(x)}{x} = \\int (2 + 3x)dx = 2x + \\dfrac{3}{2}x^2 + C \\Rightarrow f(x) = 2x^2 + \\dfrac{3}{2}x^3 + C \\cdot x$.[cite: 2]\nTheo đề, $f(1) = \\dfrac{7}{2} \\Leftrightarrow 2(1)^2 + \\dfrac{3}{2}(1)^3 + C(1) = \\dfrac{7}{2} \\Rightarrow C = 0$.[cite: 2]\nVậy $f(x) = \\dfrac{3}{2}x^3 + 2x^2$. Suy ra đạo hàm $f'(x) = \\dfrac{9}{2}x^2 + 4x$.[cite: 2]\nKhi đó, $f'(4) = \\dfrac{9}{2}(4^2) + 4(4) = 72 + 16 = 88$. Đáp án đúng là C.[cite: 2]"
     }
 
+        
+    
 
           
           
