@@ -820,7 +820,153 @@ Số đường đi hợp lệ (luôn thỏa \\( x \\ge y \\), tức không vư�
 Xác suất để con kiến chọn ngẫu nhiên một đường đi ngắn nhất và đến đích an toàn (không rơi xuống sông):
 \\( P = \\dfrac{132}{924} = \\dfrac{1}{7} \\).""",
             },
-          
+                      # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de1_tf_31",
+                "type": "truefalse",
+                "content": "Cho khối tứ diện ABCD có thể tích bằng \\( V \\). Lấy các điểm M, N, P, Q lần lượt nằm trên các cạnh AB, BC, CD, DA sao cho các tỉ lệ đoạn thẳng thỏa mãn: \\( AM = 2MB \\), \\( BN = 2NC \\), \\( CP = 2PD \\), và \\( DQ = 2QA \\). Xét tính Đúng/Sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "Bốn điểm M, N, P, Q cùng nằm trên một mặt phẳng.", "correct": False},
+                    {"text": "Hai đường thẳng MN và PQ là hai đường thẳng chéo nhau.", "correct": True},
+                    {"text": "Thể tích của khối tứ diện M.BNP bằng \\( \\dfrac{4}{27} \\) thể tích khối tứ diện ABCD.", "correct": True},
+                    {"text": "Tỉ số thể tích giữa khối chóp M.NCP và khối tứ diện ABCD bằng \\( \\dfrac{2}{27} \\).", "correct": True}
+                ],
+                "points": 1,
+                "explanation": """Do tỉ số thể tích và quan hệ đồng phẳng bất biến qua phép biến đổi affine, ta chọn tứ diện chuẩn: \\( A(0,0,0), B(1,0,0), C(0,1,0), D(0,0,1) \\), khi đó \\( V_{ABCD} = \\dfrac{1}{6} \\).
+
+Từ điều kiện tỉ lệ, ta có:
+\\( M = A+\\dfrac{2}{3}(B-A) = \\left(\\dfrac{2}{3};0;0\\right) \\)
+\\( N = B+\\dfrac{2}{3}(C-B) = \\left(\\dfrac{1}{3};\\dfrac{2}{3};0\\right) \\)
+\\( P = C+\\dfrac{2}{3}(D-C) = \\left(0;\\dfrac{1}{3};\\dfrac{2}{3}\\right) \\)
+\\( Q = D+\\dfrac{2}{3}(A-D) = \\left(0;0;\\dfrac{1}{3}\\right) \\)
+
+a) Tính định thức \\( [\\vec{MN}, \\vec{MP}, \\vec{MQ}] \\), ta được kết quả khác 0 \\( \\Rightarrow \\) M, N, P, Q không đồng phẳng \\( \\Rightarrow \\) Sai.
+
+b) Vì 4 điểm không đồng phẳng nên hai đường MN và PQ không thể cắt nhau (nếu cắt nhau thì 4 điểm phải đồng phẳng); đồng thời hai đường không song song (kiểm tra vectơ chỉ phương không cùng phương) \\( \\Rightarrow \\) MN và PQ chéo nhau \\( \\Rightarrow \\) Đúng.
+
+c) Thể tích tứ diện M, B, N, P: 
+\\( V_{MBNP} = \\dfrac{1}{6}\\left|\\det[\\vec{BM}',\\vec{NM}',\\vec{PM}']\\right| = \\dfrac{1}{6}\\cdot\\dfrac{4}{27} = \\dfrac{2}{81} \\)
+Tỉ số: \\( \\dfrac{V_{MBNP}}{V_{ABCD}} = \\dfrac{2/81}{1/6} = \\dfrac{4}{27} \\Rightarrow \\) Đúng.
+
+d) Thể tích tứ diện M, N, C, P:
+\\( V_{MNCP} = \\dfrac{1}{6}\\cdot\\dfrac{2}{27} = \\dfrac{1}{81} \\)
+Tỉ số: \\( \\dfrac{V_{MNCP}}{V_{ABCD}} = \\dfrac{1/81}{1/6} = \\dfrac{2}{27} \\Rightarrow \\) Đúng.""",
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de1_sh_32',
+                "type": 'short',
+                "content": 'Một đội nghiên cứu lâm nghiệp đo chiều cao của 100 cây bạch đàn trong một khu rừng sinh thái. Số liệu được ghi chép và biểu diễn dưới dạng bảng phân bố tần số ghép nhóm như sau:<br>Chiều cao (cm): [150;160): 10 cây, [160;170): x cây, [170;180): 40 cây, [180;190): y cây, [190;200): 15 cây.<br>Báo cáo cho biết trung vị của mẫu số liệu trên chính xác bằng 176 (cm). Biết x, y là các số nguyên dương. Tính hiệu số \\( S = y - x \\).',
+                "blanks": [
+                    {"label": 'S =', "answers": ['3']},
+                ],
+                "points": 1,
+                "explanation": """Tổng số cây: \\( 10+x+40+y+15=100 \\Rightarrow x+y=35 \\).
+
+Vì trung vị \\( =176 \\in [170;180) \\), nên nhóm chứa trung vị là \\( [170;180) \\) với \\( L=170, f=40, h=10 \\), và tần số tích lũy trước nhóm này là \\( CF = 10+x \\).
+
+Công thức trung vị:
+\\( M_e = L + \\dfrac{\\frac{N}{2} - CF}{f}\\cdot h \\)
+\\( 176 = 170 + \\dfrac{50-(10+x)}{40}\\cdot 10 \\)
+\\( 6 = \\dfrac{40-x}{4} \\)
+\\( 24 = 40 - x \\Rightarrow x = 16 \\)
+
+Suy ra \\( y = 35 - 16 = 19 \\).
+
+Kiểm tra: \\( CF=10+16=26 < 50 \\) và \\( CF+f=66\\ge 50 \\) — thỏa mãn nhóm chứa trung vị.
+
+Vậy \\( S = y - x = 19 - 16 = 3 \\).""",
+            },
+            {
+                "id": 'de1_sh_33',
+                "type": 'short',
+                "content": 'Cho dãy số \\( (u_n) \\) được xác định bởi điều kiện ban đầu \\( u_1 = 2026 \\) và hệ thức truy hồi \\( u_{n+1} = u_n^2 - u_n + 1 \\) với mọi số nguyên dương \\( n \\ge 1 \\). Đặt \\( S_n = \\dfrac{1}{u_1} + \\dfrac{1}{u_2} + \\cdots + \\dfrac{1}{u_n} \\) là tổng của n số hạng đầu tiên của dãy nghịch đảo. Tính giới hạn \\( L = \\lim_{n\\to+\\infty} S_n \\). (Điền đáp án dưới dạng phân số tối giản).',
+                "blanks": [
+                    {"label": 'L =', "answers": ['1/2025']},
+                ],
+                "points": 1,
+                "explanation": """Từ hệ thức truy hồi: \\( u_{n+1} - 1 = u_n^2 - u_n = u_n(u_n-1) \\).
+
+Suy ra: \\( \\dfrac{1}{u_{n+1}-1} = \\dfrac{1}{u_n(u_n-1)} = \\dfrac{1}{u_n-1} - \\dfrac{1}{u_n} \\) (phân tích thành phân thức đơn giản).
+
+Do đó: \\( \\dfrac{1}{u_n} = \\dfrac{1}{u_n-1} - \\dfrac{1}{u_{n+1}-1} \\).
+
+Tổng \\( S_n \\) là tổng viễn vọng (telescoping):
+\\( S_n = \\sum_{k=1}^{n}\\left(\\dfrac{1}{u_k-1}-\\dfrac{1}{u_{k+1}-1}\\right) = \\dfrac{1}{u_1-1} - \\dfrac{1}{u_{n+1}-1} \\)
+
+Vì \\( u_1=2026>2 \\), dãy \\( (u_n) \\) tăng rất nhanh và \\( u_n \\to +\\infty \\), nên \\( \\dfrac{1}{u_{n+1}-1}\\to 0 \\).
+
+Vậy \\( L = \\dfrac{1}{u_1-1} = \\dfrac{1}{2025} \\).""",
+            },
+
+            # ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+                "id": "de1_dd_34",
+                "type": "dragdrop",
+                "content": "Một kĩ sư thiết kế cần chế tạo một chiếc bồn chứa nước hình trụ đứng có nắp đậy với thể tích sức chứa bắt buộc là \\( 32\\pi \\) (m³). Khảo sát giá thành vật liệu trên thị trường cho thấy: chi phí tấm kim loại dùng làm mặt đáy và nắp đậy là 200 nghìn đồng cho mỗi mét vuông; chi phí vật liệu làm mặt xung quanh bồn là 100 nghìn đồng cho mỗi mét vuông. Kéo thả các thông số kĩ thuật tối ưu vào ô trống sao cho chi phí chế tạo bồn chứa là thấp nhất có thể.",
+                "options_pool": [
+                    "\\( 4 \\)",
+                    "\\( 4.8\\pi \\)",
+                    "\\( 2 \\)",
+                    "\\( 8 \\)",
+                    "\\( 3.6\\pi \\)"
+                ],
+                "blanks": [
+                    {"label": "Bán kính đáy tối ưu R của bồn chứa là: (m)", "answer": "2"},
+                    {"label": "Chiều cao tối ưu h của bồn chứa là: (m)", "answer": "8"},
+                    {"label": "Tổng chi phí thấp nhất để mua vật liệu là: (triệu đồng)", "answer": "4.8\\pi"}
+                ],
+                "points": 1,
+                "explanation": """Gọi \\( R \\) (m) là bán kính đáy, \\( h \\) (m) là chiều cao bồn trụ.
+
+Thể tích: \\( \\pi R^2 h = 32\\pi \\Rightarrow h = \\dfrac{32}{R^2} \\).
+
+Chi phí (đơn vị nghìn đồng):
+- Đáy và nắp: \\( 200\\cdot 2\\pi R^2 = 400\\pi R^2 \\)
+- Xung quanh: \\( 100\\cdot 2\\pi R h = 200\\pi R h \\)
+
+Tổng chi phí: \\( C(R) = 400\\pi R^2 + 200\\pi R\\cdot\\dfrac{32}{R^2} = 400\\pi R^2 + \\dfrac{6400\\pi}{R} \\).
+
+Đạo hàm: \\( C'(R) = 800\\pi R - \\dfrac{6400\\pi}{R^2} \\).
+
+Giải \\( C'(R)=0 \\Leftrightarrow 800R = \\dfrac{6400}{R^2} \\Leftrightarrow R^3 = 8 \\Leftrightarrow R = 2 \\) (m).
+
+Suy ra \\( h = \\dfrac{32}{4} = 8 \\) (m).
+
+Chi phí thấp nhất: \\( C(2) = 400\\pi\\cdot 4 + \\dfrac{6400\\pi}{2} = 1600\\pi + 3200\\pi = 4800\\pi \\) (nghìn đồng) \\( = 4.8\\pi \\) (triệu đồng).""",
+            },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de1_mc_35',
+                "type": 'mc4',
+                "content": 'Cho ba số thực a, b, c lập thành một cấp số cộng theo thứ tự đó và có tổng bằng 15. Biết rằng dãy số đang xét là một dãy số tăng. Nếu người ta cộng thêm 1 vào số a, cộng thêm 1 vào số b và cộng thêm 4 vào số c, thì ba số mới nhận được sẽ lập thành một cấp số nhân. Tính giá trị biểu thức \\( P = a^2 + b^2 + c^2 \\).',
+                "options": {
+                    'A': '\\( P = 93 \\)',
+                    'B': '\\( P = 147 \\)',
+                    'C': '\\( P = 75 \\)',
+                    'D': '\\( P = 83 \\)',
+                },
+                "correct": 'A',
+                "points": 1,
+                "explanation": """Vì a, b, c là cấp số cộng có tổng 15, nên \\( b \\) là số hạng giữa: \\( 3b = 15 \\Rightarrow b = 5 \\).
+
+Đặt công sai \\( d > 0 \\) (do dãy tăng): \\( a = 5-d, \\; c = 5+d \\).
+
+Ba số mới \\( a+1, b+1, c+4 \\) tức là \\( 6-d, \\; 6, \\; 9+d \\) lập thành cấp số nhân:
+\\( 6^2 = (6-d)(9+d) \\)
+\\( 36 = 54 + 6d - 9d - d^2 \\)
+\\( 36 = 54 - 3d - d^2 \\)
+\\( d^2 + 3d - 18 = 0 \\)
+
+Giải: \\( \\Delta = 9+72=81, \\sqrt{\\Delta}=9 \\)
+\\( d = \\dfrac{-3+9}{2} = 3 \\) hoặc \\( d = \\dfrac{-3-9}{2} = -6 \\) (loại vì \\( d>0 \\)).
+
+Vậy \\( d = 3 \\Rightarrow a = 5-3=2, \\; b=5, \\; c=5+3=8 \\) (thỏa mãn tăng dần: 2 < 5 < 8).
+
+\\( P = a^2+b^2+c^2 = 4+25+64 = 93 \\). Đáp án A.""",
+            },
           
         ],   # kết thúc hết 1 đề
     },      # kết thúc hết 1 đề
