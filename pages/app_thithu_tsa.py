@@ -3590,7 +3590,7 @@ d) \\( P(\\overline{B}) = 1 - P(B) = 1 - 0.48 = 0.52 \\).\n
 \\( \\Rightarrow y = \\pm\\dfrac{9\\sqrt{11}}{5} \\).\n
 Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right) \\) và \\( N\\left(-1; -\\dfrac{9\\sqrt{11}}{5}\\right) \\).\n
 Độ dài đoạn thẳng MN là: \\( MN = |y_M - y_N| = \\dfrac{9\\sqrt{11}}{5} - \\left(-\\dfrac{9\\sqrt{11}}{5}\\right) = \\dfrac{18\\sqrt{11}}{5} \\)."""
-    },
+    }
 
     
 
