@@ -679,6 +679,148 @@ Viết lại d dưới dạng tổng quát: \\( 2x - y - 5 = 0 \\).
 Khoảng cách ngắn nhất:
 \\( d(M, d) = \\dfrac{|2\\cdot 3 - 2 - 5|}{\\sqrt{2^2+(-1)^2}} = \\dfrac{|6-2-5|}{\\sqrt{5}} = \\dfrac{1}{\\sqrt{5}} = \\dfrac{\\sqrt{5}}{5} \\) (km).""",
             },
+
+
+                      # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de1_sh_26',
+                "type": 'short',
+                "content": 'Một trường mầm non có 20 phần quà giống hệt nhau cần chia cho 4 lớp học: lớp Gấu, lớp Thỏ, lớp Mèo và lớp Cún. Cô giáo có quy định chia quà như sau: Lớp Gấu (lớp lớn tuổi nhất) nhận được ít nhất 2 phần quà; ba lớp còn lại (Thỏ, Mèo, Cún) yêu cầu số phần quà nhận được của mỗi lớp bắt buộc phải là một số lẻ (có thể nhận 1, 3, 5, . . . phần quà). Hỏi cô giáo có tất cả bao nhiêu cách chia quà thỏa mãn yêu cầu trên?',
+                "blanks": [
+                    {"label": 'Số cách chia =', "answers": ['120']},
+                ],
+                "points": 1,
+                "explanation": """Gọi số quà của lớp Gấu, Thỏ, Mèo, Cún lần lượt là \\( g, t, m, c \\), với \\( g \\ge 2 \\) và \\( t, m, c \\) là các số lẻ dương.
+
+Đặt \\( t = 2a+1, m = 2b+1, c = 2c'+1 \\) với \\( a, b, c' \\ge 0 \\).
+
+Phương trình: \\( g + t + m + c = 20 \\Leftrightarrow g + 2(a+b+c') + 3 = 20 \\Leftrightarrow g = 17 - 2(a+b+c') \\).
+
+Vì \\( 2(a+b+c') \\) luôn chẵn nên \\( g \\) phải lẻ. Kết hợp \\( g \\ge 2 \\), ta có \\( g \\in \\{3, 5, 7, 9, 11, 13, 15, 17\\} \\).
+
+Với mỗi \\( g \\), đặt \\( s = \\dfrac{17-g}{2} = a+b+c' \\), số nghiệm nguyên không âm của \\( a+b+c'=s \\) là \\( \\binom{s+2}{2} \\).
+
+\\( g=3 \\Rightarrow s=7 \\Rightarrow \\binom{9}{2}=36 \\)
+\\( g=5 \\Rightarrow s=6 \\Rightarrow \\binom{8}{2}=28 \\)
+\\( g=7 \\Rightarrow s=5 \\Rightarrow \\binom{7}{2}=21 \\)
+\\( g=9 \\Rightarrow s=4 \\Rightarrow \\binom{6}{2}=15 \\)
+\\( g=11 \\Rightarrow s=3 \\Rightarrow \\binom{5}{2}=10 \\)
+\\( g=13 \\Rightarrow s=2 \\Rightarrow \\binom{4}{2}=6 \\)
+\\( g=15 \\Rightarrow s=1 \\Rightarrow \\binom{3}{2}=3 \\)
+\\( g=17 \\Rightarrow s=0 \\Rightarrow \\binom{2}{2}=1 \\)
+
+Tổng số cách: \\( 36+28+21+15+10+6+3+1 = 120 \\) cách.""",
+            },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de1_mc_27',
+                "type": 'mc4',
+                "content": 'Với mỗi số nguyên \\( n \\ge 2 \\), xét phương trình \\( x^n + nx - 1 = 0 \\). Phương trình này luôn có một nghiệm dương duy nhất, kí hiệu là \\( x_n \\). Tính giới hạn \\( L = \\lim_{n\\to+\\infty}(n \\cdot x_n) \\).',
+                "options": {
+                    'A': '\\( L = 0 \\)',
+                    'B': '\\( L = \\dfrac{1}{2} \\)',
+                    'C': '\\( L = 1 \\)',
+                    'D': '\\( L = e \\)',
+                },
+                "correct": 'C',
+                "points": 1,
+                "explanation": """Xét hàm \\( f(x) = x^n + nx - 1 \\) trên \\( (0; +\\infty) \\). Ta có \\( f(0) = -1 < 0 \\) và \\( f(1) = n > 0 \\), nên \\( x_n \\in (0; 1) \\) và duy nhất do \\( f \\) đồng biến trên \\( (0;+\\infty) \\).
+
+Ta chứng minh \\( x_n \\to 0 \\) khi \\( n \\to \\infty \\): giả sử \\( x_n \\to c \\in [0;1] \\). Nếu \\( c > 0 \\) và \\( c < 1 \\) thì \\( x_n^n \\to 0 \\), khi đó từ phương trình \\( x_n^n + nx_n = 1 \\), ta cần \\( nx_n \\to 1 \\), suy ra \\( x_n \\to 0 \\) (mâu thuẫn với \\( c>0 \\) trừ khi ta xét đúng tốc độ hội tụ). Điều này cho thấy \\( x_n \\sim \\dfrac{1}{n} \\).
+
+Cụ thể: vì \\( x_n \\to 0 \\), ta có \\( x_n^n \\to 0 \\) rất nhanh (do \\( x_n \\) nhỏ hơn 1 và giảm về 0 khi \\( n\\to\\infty \\)) — thực tế \\( x_n^n = \\left(\\dfrac{1+o(1)}{n}\\right)^n \\to 0 \\).
+
+Từ phương trình gốc: \\( n x_n = 1 - x_n^n \\to 1 - 0 = 1 \\).
+
+Vậy \\( L = \\lim_{n\\to+\\infty} n x_n = 1 \\). Đáp án C.""",
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de1_sh_28',
+                "type": 'short',
+                "content": 'Từ một tấm bìa hình tròn bán kính \\( R \\), người ta cắt bỏ đi một hình quạt tròn và cuộn phần còn lại thành một chiếc phễu hình nón (khi cuộn, hai bán kính của hình quạt chập lại vào nhau). Để chiếc phễu hình nón chứa được thể tích lớn nhất, tỉ số giữa độ dài cung tròn bị cắt bỏ so với chu vi ban đầu của tấm bìa tròn phải có dạng \\( \\dfrac{p - \\sqrt{q}}{r} \\), trong đó \\( p, q, r \\) là các số nguyên dương phân biệt và phân số đã tối giản. Tính tổng \\( S = p + q + r \\).',
+                "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau28-de1.PNG",
+                "blanks": [
+                    {"label": 'S =', "answers": ['12']},
+                ],
+                "points": 1,
+                "explanation": """Sau khi cắt bỏ hình quạt, phần còn lại có bán kính (đường sinh của nón) \\( l = R \\) (không đổi khi cuộn).
+
+Gọi \\( r \\) là bán kính đáy nón tạo thành, \\( h \\) là chiều cao: \\( h = \\sqrt{R^2 - r^2} \\).
+
+Thể tích: \\( V = \\dfrac{1}{3}\\pi r^2 h = \\dfrac{1}{3}\\pi r^2\\sqrt{R^2-r^2} \\).
+
+Xét \\( f(r) = r^4(R^2 - r^2) \\) (tỉ lệ với \\( V^2 \\)). Đạo hàm:
+\\( f'(r) = 4r^3(R^2-r^2) - 2r^5 = 2r^3(2R^2 - 3r^2) = 0 \\Rightarrow r^2 = \\dfrac{2R^2}{3} \\Rightarrow r = R\\sqrt{\\dfrac{2}{3}} = \\dfrac{R\\sqrt6}{3} \\).
+
+Vì cung tròn của phần giữ lại (chu vi đáy nón) bằng \\( 2\\pi r \\), trong khi chu vi ban đầu tấm bìa là \\( 2\\pi R \\), nên tỉ lệ phần GIỮ LẠI so với chu vi ban đầu là:
+\\( \\dfrac{2\\pi r}{2\\pi R} = \\dfrac{r}{R} = \\dfrac{\\sqrt6}{3} \\).
+
+Suy ra tỉ lệ phần BỊ CẮT BỎ so với chu vi ban đầu:
+\\( 1 - \\dfrac{\\sqrt6}{3} = \\dfrac{3-\\sqrt6}{3} \\).
+
+Vậy \\( p=3, q=6, r=3 \\Rightarrow S = 3+6+3 = 12 \\).""",
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de1_tf_29",
+                "type": "truefalse",
+                "content": "Trong một gian hàng hội chợ, người chơi gieo một con xúc xắc cân đối và đồng chất. Luật chơi như sau: - Nếu gieo ra mặt 6 chấm: Người chơi được thưởng ngay 100 nghìn đồng và được quyền gieo tiếp. - Nếu gieo ra mặt 4 hoặc 5 chấm: Người chơi được thưởng 50 nghìn đồng và trò chơi kết thúc. - Nếu gieo ra mặt 1, 2, 3 chấm: Người chơi bị phạt mất 20 nghìn đồng và trò chơi kết thúc. Trò chơi chỉ kết thúc khi người chơi gieo vào mặt yêu cầu dừng. Xét tính Đúng/Sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "Xác suất để trò chơi kết thúc ngay sau lần gieo đầu tiên là \\( \\dfrac{5}{6} \\).", "correct": True},
+                    {"text": "Xác suất để một người chơi kiếm được chính xác 150 nghìn đồng từ trò chơi này là \\( \\dfrac{1}{36} \\).", "correct": False},
+                    {"text": "Xác suất để một lượt chơi kéo dài từ 3 lần gieo trở lên là \\( \\dfrac{1}{36} \\).", "correct": True},
+                    {"text": "Trung bình (kỳ vọng), mỗi lượt tham gia trò chơi này người chơi sẽ lãi 28 nghìn đồng.", "correct": True}
+                ],
+                "points": 1,
+                "explanation": """a) Trò chơi kết thúc ngay sau lần gieo đầu \\( \\Leftrightarrow \\) không ra mặt 6 (mặt 6 mới được gieo tiếp). \\( P = \\dfrac{5}{6} \\Rightarrow \\) Đúng.
+
+b) Vì trò chơi chỉ kết thúc bằng đúng 1 lần thắng (+50) hoặc 1 lần thua (−20) sau một chuỗi các lần ra mặt 6 (+100 mỗi lần), tổng tiền kiếm được sau \\( k \\) lần ra mặt 6 rồi kết thúc là \\( 100k + 50 \\) (nếu kết thúc bằng thắng) hoặc \\( 100k - 20 \\) (nếu kết thúc bằng thua).
+Để tổng \\( =150 \\): \\( 100k+50=150 \\Rightarrow k=1 \\) (kết thúc bằng thắng, hợp lệ); \\( 100k-20=150 \\) không cho \\( k \\) nguyên.
+Vậy chỉ có trường hợp: gieo 6 (1 lần) rồi gieo 4 hoặc 5.
+\\( P = \\dfrac{1}{6}\\cdot\\dfrac{2}{6} = \\dfrac{1}{18} \\), không phải \\( \\dfrac{1}{36} \\Rightarrow \\) Sai.
+
+c) Lượt chơi kéo dài từ 3 lần gieo trở lên \\( \\Leftrightarrow \\) hai lần gieo đầu đều ra mặt 6.
+\\( P = \\left(\\dfrac{1}{6}\\right)^2 = \\dfrac{1}{36} \\Rightarrow \\) Đúng.
+
+d) Gọi \\( E \\) là kỳ vọng tiền lãi mỗi lượt chơi. Ta có phương trình đệ quy:
+\\( E = \\dfrac{1}{6}(100+E) + \\dfrac{1}{3}(50) + \\dfrac{1}{2}(-20) \\)
+Nhân 6 vế: \\( 6E = (100+E) + 100 - 60 = 140 + E \\)
+\\( \\Rightarrow 5E = 140 \\Rightarrow E = 28 \\) (nghìn đồng) \\( \\Rightarrow \\) Đúng.""",
+            },
+
+            # ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+                "id": "de1_dd_30",
+                "type": "dragdrop",
+                "content": "Trên một lưới tọa độ phẳng Oxy, một con kiến bắt đầu di chuyển từ gốc tọa độ O(0, 0) để tìm mồi tại điểm A(6, 6). Con kiến được lập trình sao cho ở mỗi bước, nó chỉ có thể đi sang phải 1 đơn vị hoặc đi lên trên 1 đơn vị. Đặc biệt, đường thẳng y = x là một bờ sông. Con kiến có thể bò sát mép bờ sông nhưng tuyệt đối không được vượt qua sông, nghĩa là tọa độ (x; y) của kiến tại mọi thời điểm phải luôn thỏa mãn x ≥ y. Kéo và thả các kết quả sau vào ô trống tương ứng:",
+                "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau30-de1.PNG",
+                "options_pool": [
+                    "\\( 132 \\)",
+                    "\\( \\dfrac{1}{14} \\)",
+                    "\\( 924 \\)",
+                    "\\( \\dfrac{1}{7} \\)",
+                    "\\( 462 \\)"
+                ],
+                "blanks": [
+                    {"label": "Tổng số đường đi ngắn nhất bất kì từ gốc O đến điểm A (không quan tâm bờ sông) là:", "answer": "924"},
+                    {"label": "Số đường đi hợp lệ từ gốc O đến A mà con kiến không bị rơi xuống sông là:", "answer": "132"},
+                    {"label": "Giả sử con kiến chọn ngẫu nhiên một con đường ngắn nhất từ O đến A, xác suất để nó đi đến đích an toàn là:", "answer": "\\dfrac{1}{7}"}
+                ],
+                "points": 1,
+                "explanation": """Tổng số đường đi ngắn nhất từ O(0,0) đến A(6,6) (mỗi bước sang phải hoặc lên trên, tổng cộng 12 bước gồm 6 bước phải và 6 bước lên):
+\\( \\binom{12}{6} = 924 \\) đường.
+
+Số đường đi hợp lệ (luôn thỏa \\( x \\ge y \\), tức không vượt qua đường chéo \\( y=x \\)) chính là số đường đi Dyck, được tính bằng số Catalan:
+\\( C_6 = \\dfrac{1}{7}\\binom{12}{6} = \\dfrac{924}{7} = 132 \\) đường.
+
+Xác suất để con kiến chọn ngẫu nhiên một đường đi ngắn nhất và đến đích an toàn (không rơi xuống sông):
+\\( P = \\dfrac{132}{924} = \\dfrac{1}{7} \\).""",
+            },
+          
           
         ],   # kết thúc hết 1 đề
     },      # kết thúc hết 1 đề
