@@ -156,7 +156,7 @@ EXAMS = [
     {
         "id": 'de_tsa11_tungthay',
         "name": 'Đề ôn tập TSA Toán 11 - Đề 1. ',
-        "description": '4 câu hỏi đầu của đề, đủ 4 dạng: trắc nghiệm, đúng/sai, trả lời ngắn, kéo thả.',
+        "description": '40 câu hỏi  của đề, đủ 4 dạng: trắc nghiệm, đúng/sai, trả lời ngắn, kéo thả.',
         "questions": [
 
             # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
@@ -1126,7 +1126,7 @@ Vậy \\( T = m^2+n^3 = 9 + (-8) = 1 \\).""",
     {
         "id": 'de2',
         "name": 'Đề số 2 - ÔN TẬP TSA ĐỢT 1 - 2027',
-        "description": '40 câu hỏi ôn tập đợt 1.',
+        "description": ' câu hỏi ôn tập đợt 1.',
         "questions": [
 
             # ---------------- ĐÚNG / SAI (truefalse) ----------------
@@ -2218,7 +2218,7 @@ Dấu "=" xảy ra khi \\( x=y=z=\\sqrt{3} \\). Vậy giá trị nhỏ nhất c�
     {
         "id": 'de3',
         "name": 'Đề số 3 - ĐỀ CHÍNH THỨC TSA ĐỢT 1 - 2026.',
-        "description": '10 câu hỏi.',
+        "description": ' câu hỏi.',
         "questions": [
 
            # ---------------- ĐÚNG / SAI (truefalse) ----------------
@@ -2832,6 +2832,81 @@ $7 + 5 + 3 = 15$ (cách).[cite: 5]"""
 Áp dụng quy tắc nhân, tổng số cách chọn của cô giáo là:
 $5 \\times 15 = 75$ (cách).[cite: 5]"""
     },
+
+          # ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de3_sh_38",
+        "type": "short",
+        "content": "Gọi S là tập hợp các số tự nhiên có 3 chữ số. Chọn ngẫu nhiên một phần tử thuộc tập S, gọi A là biến cố 'Chọn được số có chữ số hàng đơn vị bằng với chữ số hàng chục'. Biết xác suất của biến cố A là một phân số tối giản $m/n$ ($m, n \\in \\mathbb{N}^*$), $m+n$ bằng:",
+        "blanks": [
+            {"label": "$m+n=$", "answers": ["11"]}
+        ],
+        "points": 1,
+        "explanation": """Tập S gồm các số tự nhiên có 3 chữ số (chạy từ 100 đến 999).
+Suy ra số phần tử của không gian mẫu (chọn ngẫu nhiên 1 số) là: $n(\\Omega)=999-100+1=900$.
+
+Biến cố A yêu cầu số được chọn có dạng $\\overline{abb}$ (trong đó $a \\ne 0$). Phân tích các sự lựa chọn:
+- Chữ số $a$ đứng ở hàng trăm không được bằng 0, nên $a \\in \\{1,2,...,9\\} \\Rightarrow$ Có 9 cách chọn.
+- Cặp chữ số hàng chục và hàng đơn vị là $bb$, vì chúng phải giống nhau nên ta chỉ cần chọn giá trị cho $b$. Chữ số $b \\in \\{0,1,2,...,9\\} \\Rightarrow$ Có 10 cách chọn.
+
+Theo quy tắc nhân, số phần tử của biến cố A là: $n(A)=9 \\times 10=90$ (số).
+Xác suất của biến cố A là: $P(A)=\\frac{n(A)}{n(\\Omega)}=\\frac{90}{900}=\\frac{1}{10}$.
+
+Theo giả thiết $P(A)=\\frac{m}{n}$ và đây đã là phân số tối giản nên ta đồng nhất $m=1$ và $n=10$.
+Tổng cần tìm là $m+n=1+10=11$."""
+    },
+
+    # ---------------- ĐÚNG / SAI (truefalse) ----------------
+    {
+        "id": "de3_tf_39",
+        "type": "truefalse",
+        "content": "Cho tứ diện S.ABC có đáy vuông tại A. $SB=AB$ và $SB \\perp (ABC)$. Gọi H, I, K lần lượt là trung điểm của các cạnh SA, BC và AB. Xét tính đúng/sai của các mệnh đề sau:",
+        
+        "statements": [
+            {"text": "$KI \\perp (BH)$", "correct": True},
+            {"text": "$BH \\perp SC$", "correct": True},
+            {"text": "$KI \\perp SC$", "correct": False}
+        ],
+        "points": 1,
+        "explanation": """Vì $SB \\perp (ABC)$ nên $SB \\perp AB$ và $SB \\perp AC$. Đồng thời, $\\Delta ABC$ vuông tại A nên $AC \\perp AB$.
+
+a) Xét $\\Delta ABC$, vì K, I là trung điểm của AB, BC nên KI là đường trung bình $\\Rightarrow KI \\parallel AC$.
+Ta có $AC \\perp AB$ (giả thiết) và $AC \\perp SB$ (do $SB \\perp (ABC)$) $\\Rightarrow AC \\perp (SAB) \\Rightarrow KI \\perp (SAB)$.
+Mặt khác, đường thẳng $BH \\subset (SAB)$, nên kéo theo $KI \\perp BH$. $\\Rightarrow$ Đúng.
+
+b) Theo giả thiết $SB=AB$ suy ra $\\Delta SAB$ vuông cân tại B. Mà H là trung điểm của SA nên đường trung tuyến BH đồng thời là đường cao $\\Rightarrow BH \\perp SA$.
+Theo phân tích ở câu a, ta có $AC \\perp (SAB)$ và $BH \\subset (SAB)$ nên $BH \\perp AC$.
+Từ hai điều trên ta có $BH \\perp SA$ và $BH \\perp AC \\Rightarrow BH \\perp (SAC) \\Rightarrow BH \\perp SC$. $\\Rightarrow$ Đúng.
+
+c) Giả sử $KI \\perp SC$. Vì $KI \\parallel AC$ (chứng minh ở a) nên kéo theo $AC \\perp SC$.
+Điều này dẫn đến $\\Delta SAC$ vuông tại C. Tuy nhiên, xét $\\Delta SAC$ vuông tại A (do $SA \\perp AC$ suy ra từ $AC \\perp (SAB)$), cạnh huyền SC là lớn nhất, không thể có thêm góc vuông tại C. Phép giả sử bị mâu thuẫn. Do đó KI không vuông góc với SC. $\\Rightarrow$ Sai."""
+    },
+
+    # ---------------- TRẢ LỜI NGẮN (short) ----------------
+    {
+        "id": "de3_sh_40",
+        "type": "short",
+        "content": "Trong không gian Oxyz, cho các điểm $A(2;-4;4)$, $B(5;-4;1)$ và điểm I thoả mãn $\\vec{MA}+2\\vec{MB}=3\\vec{MI} \\forall M$. Cho p, q là hai hằng số thoả mãn $\\vec{OI}=p\\vec{OA}+q\\vec{OB}$, với O là gốc toạ độ.",
+        "blanks": [
+            {"label": "a) p =", "answers": ["1/3"]},
+            {"label": "b) q =", "answers": ["2/3"]},
+            {"label": "c) $|\\vec{OI}| =$ ", "answers": ["6"]}
+        ],
+        "points": 1,
+        "explanation": """Từ hệ thức $\\vec{MA}+2\\vec{MB}=3\\vec{MI}$ đúng với mọi M, ta chọn M trùng với O (gốc toạ độ), ta được:
+$\\vec{OA} + 2\\vec{OB} = 3\\vec{OI} \\Rightarrow \\vec{OI} = \\frac{1}{3}\\vec{OA} + \\frac{2}{3}\\vec{OB}$.
+
+Đối chiếu với biểu thức $\\vec{OI} = p\\vec{OA} + q\\vec{OB}$, ta suy ra $p = \\frac{1}{3}$ và $q = \\frac{2}{3}$.
+
+Sử dụng công thức toạ độ, ta tìm được toạ độ điểm I:
+- $x_I = \\frac{1}{3}x_A + \\frac{2}{3}x_B = \\frac{1}{3}(2) + \\frac{2}{3}(5) = 4$
+- $y_I = \\frac{1}{3}y_A + \\frac{2}{3}y_B = \\frac{1}{3}(-4) + \\frac{2}{3}(-4) = -4$
+- $z_I = \\frac{1}{3}z_A + \\frac{2}{3}z_B = \\frac{1}{3}(4) + \\frac{2}{3}(1) = 2$
+$\\Rightarrow I(4;-4;2)$.
+
+Độ dài đoạn thẳng OI là:
+$|\\vec{OI}| = \\sqrt{4^2 + (-4)^2 + 2^2} = \\sqrt{16+16+4} = \\sqrt{36} = 6$."""
+    }
           
         ] # dấu kết thúc toàn bộ đề
     }     # dấu kết thúc toàn bộ đề
