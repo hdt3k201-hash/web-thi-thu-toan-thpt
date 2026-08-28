@@ -3029,14 +3029,11 @@ $|\\vec{OI}| = \\sqrt{4^2 + (-4)^2 + 2^2} = \\sqrt{16+16+4} = \\sqrt{36} = 6$.""
                     {"text": "Số dư khi chia số hạng \\( u_{2025} \\) cho 9 là bằng 2.", "correct": True}
                 ],
                 "points": 1,
-                "explanation": "a) Tính thử vài số hạng đầu: \\( u_1 = 4 \\), \\( u_2 = 3(4) - 4 = 8 \\), \\( u_3 = 3(8) - 4 = 20 \\).\nTa thấy khoảng cách \\( u_2 - u_1 = 4 \\neq u_3 - u_2 = 12 \\), nên dãy số này không phải là cấp số cộng. Mệnh đề a Sai.\n\nb) Xét \\( v_{n+1} = u_{n+1} - 2 = (3u_n - 4) - 2 = 3u_n - 6 = 3(u_n - 2) = 3v_n \\).\nVậy \\( (v_n) \\) là một cấp số nhân với công bội \\( q = 3 \\) và số hạng đầu \\( v_1 = u_1 - 2 = 2 \\). Mệnh đề b Đúng.\n\nc) Theo phần b, ta có \\( v_n = 2 \\cdot 3^{n-1} \\Rightarrow u_n = 2 \\cdot 3^{n-1} + 2 \\).\nKhi \\( n = 2025 \\), ta có \\( u_{2025} = 2 \\cdot 3^{2024} + 2 \\). Vì \\( 3^{2024} = 9 \\cdot 3^{2022} \\) chia hết cho 9, nên \\( 2 \\cdot 3^{2024} \\) chia hết cho 9. Vậy \\( u_{2025} \\) chia 9 dư 2. Mệnh đề c Đúng."
+              "explanation": "a) Tính thử vài số hạng đầu: \\( u_1 = 4 \\), \\( u_2 = 3(4) - 4 = 8 \\), \\( u_3 = 3(8) - 4 = 20 \\).\n..."
             }
-        ]
-    }
-          
-        ] # dấu kết thúc toàn bộ đề
-    }     # dấu kết thúc toàn bộ đề
-]          # dấu kết thúc toàn bộ đề
+        ] # Đóng danh sách questions của Đề 4
+    } # Đóng dictionary của Đề 4
+] # Dấu kết thúc toàn bộ danh sách đề thi (Nằm sát lề trái, không lùi dấu cách nào)
 
 
 # 1b) CÂU HỎI THÊM QUA TRANG QUẢN TRỊ (/admin)
