@@ -509,24 +509,33 @@ Do \\( f(0) = 1 \\) nên \\( f'(0) = 2025 \\). Vậy \\( L = 2025 \\)."""
             },
 
             # ---------------- KÉO THẢ (dragdrop) - CÂU 20 ----------------
+           {
+        "id": "de1_dd_20",
+        "type": "dragdrop",
+        "content": "Một chiếc xe đẩy chở một thanh thép cứng dài (đặt nằm ngang) đi qua một góc cua vuông góc nối giữa hai hành lang. Hành lang thứ nhất rộng 2.7 (m), hành lang thứ hai rộng 6.4 (m). Để thanh thép có thể lọt qua góc cua này mà không bị kẹt, chiều dài L của thanh thép phải thỏa mãn một giới hạn tối đa (Bỏ qua bề dày của thanh thép). Giả sử khi thanh thép bị kẹt cứng nhất, nó tạo với vách của hành lang thứ hai một góc là \\( \\theta \\). Kéo thả các kết quả sau vào các ô trống tương ứng:",
+        "options_pool": [
+            "\\( 12.5 \\)", 
+            "\\( \\dfrac{3}{4} \\)", 
+            "\\( 10.0 \\)", 
+            "\\( \\dfrac{4}{3} \\)", 
+            "\\( 8.0 \\)"
+        ],
+        "blanks": [
             {
-                "id": "de1_dd_20",
-                "type": "dragdrop",
-                "content": "Một chiếc xe đẩy chở một thanh thép cứng dài (đặt nằm ngang) đi qua một góc cua vuông góc nối giữa hai hành lang. Hành lang thứ nhất rộng 2.7 (m), hành lang thứ hai rộng 6.4 (m). Để thanh thép có thể lọt qua góc cua này mà không bị kẹt, chiều dài L của thanh thép phải thỏa mãn một giới hạn tối đa (Bỏ qua bề dày của thanh thép). Giả sử khi thanh thép bị kẹt cứng nhất, nó tạo với vách của hành lang thứ hai một góc là \\( \\theta \\). Kéo thả các kết quả sau vào các ô trống tương ứng:",
-                "options_pool": [
-                    "12.5", 
-                    "\\dfrac{3}{4}", 
-                    "10.0", 
-                    "\\dfrac{4}{3}", 
-                    "8.0"
-                ],
-                "blanks": [
-                    {"label": "Tang của góc \\( \\theta \\) tại vị trí thanh thép bị kẹt hẹp nhất bằng:", "answer": "\\dfrac{4}{3}"},
-                    {"label": "Tại vị trí kẹt, độ dài đoạn thanh thép tính từ mép góc cua đến vách hành lang thứ hai là: (m).", "answer": "8.0"},
-                    {"label": "Chiều dài lớn nhất của thanh thép để có thể lọt qua được góc cua là: (m).", "answer": "12.5"}
-                ],
-                "points": 1,
-                "explanation": """Gọi \\( L \\) là chiều dài thanh thép khi đi qua góc cua và bị vướng sát vào cả mép góc cua bên trong và 2 vách hành lang bên ngoài. Khi đó chiều dài thanh thép được biểu diễn bằng hàm số theo góc \\( \\theta \\) là:
+                "label": "Tang của góc \\( \\theta \\) tại vị trí thanh thép bị kẹt hẹp nhất bằng:", 
+                "answer": "\\( \\dfrac{4}{3} \\)"
+            },
+            {
+                "label": "Tại vị trí kẹt, độ dài đoạn thanh thép tính từ mép góc cua đến vách hành lang thứ hai là: (m).", 
+                "answer": "\\( 8.0 \\)"
+            },
+            {
+                "label": "Chiều dài lớn nhất của thanh thép để có thể lọt qua được góc cua là: (m).", 
+                "answer": "\\( 12.5 \\)"
+            }
+        ],
+        "points": 1,
+        "explanation": """Gọi \\( L \\) là chiều dài thanh thép khi đi qua góc cua và bị vướng sát vào cả mép góc cua bên trong và 2 vách hành lang bên ngoài. Khi đó chiều dài thanh thép được biểu diễn bằng hàm số theo góc \\( \\theta \\) là:
 \\( L(\\theta) = \\dfrac{2.7}{\\cos\\theta} + \\dfrac{6.4}{\\sin\\theta} \\) (với \\( 0 < \\theta < \\dfrac{\\pi}{2} \\)).
 
 Để thanh thép lọt qua được ở mọi góc độ, chiều dài thực của thanh phải nhỏ hơn hoặc bằng giá trị nhỏ nhất của hàm \\( L(\\theta) \\).
@@ -538,7 +547,7 @@ Từ \\( \\tan\\theta = \\dfrac{4}{3} \\), ta suy ra \\( \\sin\\theta = \\dfrac{
 - Chiều dài đoạn thanh thép tính từ góc cua sang hành lang thứ hai là: \\( \\dfrac{6.4}{\\sin\\theta} = \\dfrac{6.4}{0.8} = 8.0 \\) (m).
 - Chiều dài cực đại của thanh thép (giá trị min của \\( L(\\theta) \\)) là: 
 \\( L_{max} = \\dfrac{2.7}{\\cos\\theta} + \\dfrac{6.4}{\\sin\\theta} = \\dfrac{2.7}{0.6} + \\dfrac{6.4}{0.8} = 4.5 + 8.0 = 12.5 \\) (m)."""
-            },
+    },
 
           
         ],   # kết thúc hết 1 đề
