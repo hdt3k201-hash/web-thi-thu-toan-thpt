@@ -219,7 +219,6 @@ EXAMS = [
             },
         ],
     },
-]
     {
         "id": 'de2',
         "name": 'Đề số 2 - Hình học & Xác suất',
