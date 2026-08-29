@@ -4065,6 +4065,43 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                 ],
                 "points": 1,
                 "explanation": 'Dựa vào hình vẽ, ta đếm được số lượng hình vuông trong mỗi hình tạo thành dãy số:\n\\( H_1 = 1 \\)\n\\( H_2 = 1+2 = 3 \\)\n\\( H_3 = 1+2+3 = 6 \\)\n\nQuy luật tổng quát: Hình thứ \\( n \\) được tạo thành bằng cách cộng thêm một hàng chứa \\( n \\) khối vuông vào hình \\( n-1 \\). Do đó, \\( H_n = 1+2+3+\\cdots+n = \\dfrac{n(n+1)}{2} \\).\n\nXét với \\( n = 2025 \\):\n\\( H_{2025} = 1+2+3+\\cdots+2025 = \\dfrac{2025\\times 2026}{2} = 2025\\times 1013 = 2051325 \\)\n\nĐánh giá các mệnh đề:\n\nMệnh đề 1: Tích của 2 số lẻ (2025 và 1013) là một số lẻ. Do đó \\( H_{2025} \\) không phải là số chẵn. \\( \\Rightarrow \\) Sai.\n\nMệnh đề 2: Ta phân tích ra thừa số nguyên tố: \\( H_{2025} = 2025\\times 1013 = 45^2\\times 1013 \\). Vì 1013 là số nguyên tố và bậc của nó là 1 (lẻ), nên \\( H_{2025} \\) không thể là số chính phương. \\( \\Rightarrow \\) Sai.\n\nMệnh đề 3: Theo đúng quy luật đã thiết lập, \\( H_{2025} \\) chính là tổng của dãy số tự nhiên liên tiếp từ 1 đến 2025. \\( \\Rightarrow \\) Đúng.\n\nMệnh đề 4: Tổng các số tự nhiên lẻ đầu tiên từ 1 đến \\( 2k-1 \\) luôn bằng \\( k^2 \\). Ở đây, từ 1 đến 4049 có \\( (4049-1):2+1 = 2025 \\) số lẻ. Tổng của chúng bằng \\( 2025^2 = 4100625 \\), giá trị này khác với \\( H_{2025} = 2051325 \\). \\( \\Rightarrow \\) Sai.',
+            },
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de5_sh_28',
+                "type": 'short',
+                "content": 'Cho một đa giác đều 24 đỉnh. Chọn ngẫu nhiên ba đỉnh trên đa giác trên.\n\nXác suất chọn được tam giác vuông mà không có cạnh nào trùng cạnh của đa giác là ___.\n\nXác suất chọn được tam giác đều là ___.',
+                "blanks": [
+                    {"label": 'Xác suất tam giác vuông không có cạnh trùng cạnh đa giác =', "answers": ['27/253']},
+                    {"label": 'Xác suất tam giác đều =', "answers": ['1/253']},
+                ],
+                "points": 1,
+                "explanation": 'Số phần tử của không gian mẫu (chọn 3 đỉnh bất kỳ từ 24 đỉnh) là: \\( n(\\Omega) = C_{24}^3 = 2024 \\).\n\nÝ 1: Tam giác vuông không có cạnh nào trùng cạnh đa giác\n- Đa giác đều 24 đỉnh có \\( \\dfrac{24}{2} = 12 \\) đường chéo đi qua tâm (đường kính của đường tròn ngoại tiếp).\n- Cứ mỗi đường kính kết hợp với 1 trong 22 đỉnh còn lại sẽ tạo thành một tam giác vuông (theo định lý Thales). Tổng số tam giác vuông là: \\( 12\\times 22 = 264 \\) (tam giác).\n- Để tam giác vuông có cạnh trùng với cạnh đa giác, đỉnh góc vuông phải kề sát với 1 trong 2 đầu mút của đường kính. Có 4 đỉnh như vậy cho mỗi đường kính. Suy ra số tam giác vuông có chứa cạnh đa giác là: \\( 12\\times 4 = 48 \\).\n- Số tam giác vuông thỏa mãn không chứa cạnh đa giác là: \\( 264 - 48 = 216 \\).\n- Xác suất cần tìm: \\( P = \\dfrac{216}{2024} = \\dfrac{27}{253} \\).\n\nÝ 2: Tam giác đều\n- Tam giác đều nội tiếp đường tròn chia đường tròn thành 3 cung bằng nhau.\n- Do đa giác có 24 đỉnh, khoảng cách giữa các đỉnh của tam giác đều là \\( \\dfrac{24}{3} = 8 \\) đỉnh.\n- Ta có thể lập được \\( \\dfrac{24}{3} = 8 \\) tam giác đều rời nhau.\n- Xác suất cần tìm: \\( P = \\dfrac{8}{2024} = \\dfrac{1}{253} \\).',
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de5_sh_29',
+                "type": 'short',
+                "content": 'Cho sơ đồ cây như hình dưới đây. Xác suất biến cố \\( B \\) xảy ra là ___.',
+                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau29-de5.PNG',
+                "blanks": [
+                    {"label": 'P(B) =', "answers": ['0.78']},
+                ],
+                "points": 1,
+                "explanation": 'Sơ đồ cây biểu diễn xác suất toàn phần của biến cố \\( B \\). Để tìm xác suất \\( P(B) \\), ta tổng hợp các đường đi từ gốc đến các nhánh chứa biến cố \\( B \\).\n\nTheo công thức xác suất toàn phần:\n\\( P(B) = P(A)\\cdot P(B|A) + P(\\bar{A})\\cdot P(B|\\bar{A}) \\)\n\\( = 0.8\\cdot 0.9 + 0.2\\cdot 0.3 \\)\n\\( = 0.72 + 0.06 = 0.78 \\)\n\nVậy xác suất để biến cố \\( B \\) xảy ra là 0.78.',
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de5_sh_30',
+                "type": 'short',
+                "content": 'Cho hàm số \\( f(x) \\) có \\( \\displaystyle\\lim_{x\\to-\\infty} f(x) = -m \\) và \\( \\displaystyle\\lim_{x\\to+\\infty} f(x) = m^3 - 3m^2 + 4m - 2 \\). Tổng các giá trị của \\( m \\) để đồ thị hàm số \\( f(x) \\) chỉ có đúng một đường tiệm cận ngang là ___.',
+                "blanks": [
+                    {"label": 'Tổng các giá trị của m =', "answers": ['2']},
+                ],
+                "points": 1,
+                "explanation": 'Để đồ thị hàm số \\( f(x) \\) có đúng một đường tiệm cận ngang, thì giới hạn của hàm số tại \\( -\\infty \\) và \\( +\\infty \\) phải tồn tại hữu hạn và bằng nhau, đồng thời hai giới hạn này phải cùng xác định một mức ngang duy nhất. Xét điều kiện tương đương của bài toán, ta cần:\n\\( m = m^3 - 3m^2 + 4m - 2 \\)\n\\( \\Leftrightarrow m^3 - 3m^2 + 3m - 2 = 0 \\)\n\\( \\Leftrightarrow (m-2)(m^2-m+1) = 0 \\)\n\nXét \\( m^2 - m + 1 \\): có \\( \\Delta = 1 - 4 = -3 < 0 \\) nên vô nghiệm. Do đó phương trình chỉ có nghiệm duy nhất \\( m = 2 \\).\n\nVậy có duy nhất 1 giá trị của \\( m \\) thỏa mãn, tổng các giá trị của \\( m \\) bằng \\( \\mathbf{2} \\).',
             }
             
           
