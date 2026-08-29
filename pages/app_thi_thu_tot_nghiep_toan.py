@@ -219,15 +219,15 @@ EXAMS = [
              ],
              "explanation": "Điều kiện \\( x^2-1>0 \\Leftrightarrow x<-1 \\) hoặc \\( x>1 \\) \\( \\Rightarrow \\) a) Đúng. b) Áp dụng công thức đạo hàm \\( \\log \\) \\( \\Rightarrow \\) Đúng. c) Tại \\( x=0 \\): \\( x^2-1=-1<0 \\), không xác định \\( \\Rightarrow \\) Sai. d) Tại \\( x=2 \\): \\( y=\\log_3(3)=1 \\) \\( \\Rightarrow \\) Đúng."},
 
-            {"id": "de1_tf_04", "part": 2, "type": "truefalse",
-             "content": "Trong không gian \\( Oxyz \\), cho ba điểm \\( A(1;0;0) \\), \\( B(0;2;0) \\), \\( C(0;0;3) \\). Xét tính Đúng/Sai của các mệnh đề sau:",
-             "statements": [
-                 {"text": "\\( \\overrightarrow{AB} = (-1;2;0) \\)", "correct": True},
-                 {"text": "Độ dài đoạn \\( AB \\) bằng \\( \\sqrt5 \\)", "correct": True},
-                 {"text": "Mặt phẳng \\( (ABC) \\) có phương trình \\( \\dfrac{x}{1}+\\dfrac{y}{2}+\\dfrac{z}{3}=1 \\)", "correct": True},
-                 {"text": "Trọng tâm tam giác \\( ABC \\) có tọa độ \\( (1;2;3) \\)", "correct": False},
-             ],
-             "explanation": "a) \\( \\overrightarrow{AB}=B-A=(-1;2;0) \\) \\( \\Rightarrow \\) Đúng. b) \\( AB=\\sqrt{1+4}=\\sqrt5 \\) \\( \\Rightarrow \\) Đúng. c) Đúng theo phương trình mặt phẳng đoạn chắn. d) Trọng tâm \\( G=\\left(\\dfrac13;\\dfrac23;1\\right) \\), không phải \\( (1;2;3) \\) \\( \\Rightarrow \\) Sai."},
+            {"id": "de1_tf_02", "part": 2, "type": "truefalse",
+ "content": "Bác Lâm muốn gò một cái thùng bằng tôn dạng hình hộp chữ nhật không nắp có đáy là hình vuông và đựng đầy được 32 lít nước. Gọi độ dài cạnh đáy của thùng là \\( x\\ (dm) \\), chiều cao của thùng là \\( h\\ (dm) \\). Xét tính Đúng/Sai của các mệnh đề sau:",
+ "statements": [
+     {"text": "Tổng diện tích xung quanh và diện tích đáy của thùng là: \\( S = 4xh + x^2\\ (dm^2) \\)", "correct": True},
+     {"text": "Đạo hàm của hàm số \\( S(x) = \\dfrac{128}{x} + x^2 \\) là \\( S'(x) = \\dfrac{128}{x^2} + 2x \\)", "correct": False},
+     {"text": "Thể tích của thùng là \\( V = x^2.h\\ (dm^3) \\)", "correct": True},
+     {"text": "Để làm được cái thùng mà tốn ít nguyên liệu nhất thì độ dài cạnh đáy của thùng là \\( 4dm \\)", "correct": True},
+ ],
+ "explanation": "Thể tích hình hộp chữ nhật là \\( V = x^2.h \\). Suy ra a) <b>đúng</b>.<br><br>Tổng diện tích xung quanh và diện tích đáy của hình hộp là: \\( S = 4xh + x^2\\ (dm^2) \\). Suy ra c) <b>đúng</b>.<br><br>Vì \\( V = 32l = 32\\,dm^3 \\) nên \\( x^2h = 32 \\Leftrightarrow h = \\dfrac{32}{x^2} \\).<br><br>Do đó: \\( S = 4x.\\dfrac{32}{x^2} + x^2 = \\dfrac{128}{x} + x^2 \\).<br><br>Suy ra \\( S'(x) = -\\dfrac{128}{x^2} + 2x \\). Do đó b) <b>sai</b> (vì đề bài ghi dấu cộng trước \\( \\dfrac{128}{x^2} \\), không phải dấu trừ).<br><br>Ta có: \\( S'(x) = -\\dfrac{128}{x^2} + 2x = 0 \\Leftrightarrow \\dfrac{2x^3 - 128}{x^2} = 0 \\Leftrightarrow x = 4 \\).<br><br>Ta có bảng biến thiên:<br><br><div style='text-align:center; margin:10px 0;'><img src='https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de1_cau16.PNG' alt='Bảng biến thiên câu 16' style='max-width:100%; height:auto; border:1px solid #ddd; border-radius:6px;'></div><br>Dựa vào bảng biến thiên ta thấy độ dài đáy thùng bằng \\( 4dm \\) thì chi phí là thấp nhất.<br><br>Suy ra d) <b>đúng</b>."},
 
             # ---------------- PHẦN III: TRẢ LỜI NGẮN ----------------
             {"id": "de1_sh_01", "part": 3, "type": "short",
