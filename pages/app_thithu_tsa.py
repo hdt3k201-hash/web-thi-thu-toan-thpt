@@ -821,37 +821,33 @@ Xác suất để con kiến chọn ngẫu nhiên một đường đi ngắn nh�
 \\( P = \\dfrac{132}{924} = \\dfrac{1}{7} \\).""",
             },
                       # ---------------- ĐÚNG / SAI (truefalse) ----------------
-            {
-                "id": "de1_tf_31",
-                "type": "truefalse",
-                "content": "Cho khối tứ diện ABCD có thể tích bằng \\( V \\). Lấy các điểm M, N, P, Q lần lượt nằm trên các cạnh AB, BC, CD, DA sao cho các tỉ lệ đoạn thẳng thỏa mãn: \\( AM = 2MB \\), \\( BN = 2NC \\), \\( CP = 2PD \\), và \\( DQ = 2QA \\). Xét tính Đúng/Sai của các mệnh đề sau:",
-                "statements": [
-                    {"text": "Bốn điểm M, N, P, Q cùng nằm trên một mặt phẳng.", "correct": False},
-                    {"text": "Hai đường thẳng MN và PQ là hai đường thẳng chéo nhau.", "correct": True},
-                    {"text": "Thể tích của khối tứ diện M.BNP bằng \\( \\dfrac{4}{27} \\) thể tích khối tứ diện ABCD.", "correct": True},
-                    {"text": "Tỉ số thể tích giữa khối chóp M.NCP và khối tứ diện ABCD bằng \\( \\dfrac{2}{27} \\).", "correct": True}
-                ],
-                "points": 1,
-                "explanation": """Do tỉ số thể tích và quan hệ đồng phẳng bất biến qua phép biến đổi affine, ta chọn tứ diện chuẩn: \\( A(0,0,0), B(1,0,0), C(0,1,0), D(0,0,1) \\), khi đó \\( V_{ABCD} = \\dfrac{1}{6} \\).
-
-Từ điều kiện tỉ lệ, ta có:
-\\( M = A+\\dfrac{2}{3}(B-A) = \\left(\\dfrac{2}{3};0;0\\right) \\)
-\\( N = B+\\dfrac{2}{3}(C-B) = \\left(\\dfrac{1}{3};\\dfrac{2}{3};0\\right) \\)
-\\( P = C+\\dfrac{2}{3}(D-C) = \\left(0;\\dfrac{1}{3};\\dfrac{2}{3}\\right) \\)
-\\( Q = D+\\dfrac{2}{3}(A-D) = \\left(0;0;\\dfrac{1}{3}\\right) \\)
-
-a) Tính định thức \\( [\\vec{MN}, \\vec{MP}, \\vec{MQ}] \\), ta được kết quả khác 0 \\( \\Rightarrow \\) M, N, P, Q không đồng phẳng \\( \\Rightarrow \\) Sai.
-
-b) Vì 4 điểm không đồng phẳng nên hai đường MN và PQ không thể cắt nhau (nếu cắt nhau thì 4 điểm phải đồng phẳng); đồng thời hai đường không song song (kiểm tra vectơ chỉ phương không cùng phương) \\( \\Rightarrow \\) MN và PQ chéo nhau \\( \\Rightarrow \\) Đúng.
-
-c) Thể tích tứ diện M, B, N, P: 
-\\( V_{MBNP} = \\dfrac{1}{6}\\left|\\det[\\vec{BM}',\\vec{NM}',\\vec{PM}']\\right| = \\dfrac{1}{6}\\cdot\\dfrac{4}{27} = \\dfrac{2}{81} \\)
-Tỉ số: \\( \\dfrac{V_{MBNP}}{V_{ABCD}} = \\dfrac{2/81}{1/6} = \\dfrac{4}{27} \\Rightarrow \\) Đúng.
-
-d) Thể tích tứ diện M, N, C, P:
-\\( V_{MNCP} = \\dfrac{1}{6}\\cdot\\dfrac{2}{27} = \\dfrac{1}{81} \\)
-Tỉ số: \\( \\dfrac{V_{MNCP}}{V_{ABCD}} = \\dfrac{1/81}{1/6} = \\dfrac{2}{27} \\Rightarrow \\) Đúng.""",
-            },
+           {
+    "id": "de1_tf_31",
+    "type": "truefalse",
+    "content": "Cho khối tứ diện ABCD có thể tích bằng \\( V \\). Lấy các điểm M, N, P, Q lần lượt nằm trên các cạnh AB, BC, CD, DA sao cho các tỉ lệ đoạn thẳng thỏa mãn: \\( AM = 2MB \\), \\( BN = 2NC \\), \\( CP = 2PD \\), và \\( DQ = 2QA \\). Xét tính Đúng/Sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Bốn điểm M, N, P, Q cùng nằm trên một mặt phẳng.", "correct": False},
+        {"text": "Hai đường thẳng MN và PQ là hai đường thẳng chéo nhau.", "correct": True},
+        {"text": "Thể tích của khối tứ diện M.BNP bằng \\( \\dfrac{4}{27} \\) thể tích khối tứ diện ABCD.", "correct": True},
+        {"text": "Tỉ số thể tích giữa khối chóp M.NCP và khối tứ diện ABCD bằng \\( \\dfrac{2}{27} \\).", "correct": True}
+    ],
+    "points": 1,
+    "explanation": """Chọn ba vectơ không đồng phẳng \\( \\vec{AB}, \\vec{BC}, \\vec{CD} \\) làm hệ vectơ gốc (dựa vào tính chất tứ diện ABCD). Từ hệ thức khép kín \\( \\vec{AB}+\\vec{BC}+\\vec{CD}+\\vec{DA}=\\vec{0} \\), suy ra \\( \\vec{DA}=-(\\vec{AB}+\\vec{BC}+\\vec{CD}) \\).
+Từ giả thiết tỉ lệ, tính được:
+\\( \\vec{MN}=\\dfrac{1}{3}\\vec{AB}+\\dfrac{2}{3}\\vec{BC} \\)
+\\( \\vec{MP}=\\dfrac{1}{3}\\vec{AB}+\\vec{BC}+\\dfrac{2}{3}\\vec{CD} \\)
+\\( \\vec{MQ}=-\\dfrac{1}{3}\\vec{AB}+\\dfrac{1}{3}\\vec{BC}+\\dfrac{1}{3}\\vec{CD} \\)
+a) Giả sử M, N, P, Q đồng phẳng thì tồn tại m, n sao cho \\( \\vec{MQ}=m\\vec{MN}+n\\vec{MP} \\). Đồng nhất hệ số theo ba vectơ gốc dẫn đến hệ phương trình vô nghiệm \\( \\Rightarrow \\) M, N, P, Q không đồng phẳng \\( \\Rightarrow \\) Sai.
+b) Nếu MN và PQ cắt nhau thì bốn điểm M, N, P, Q phải đồng phẳng — trái với câu a) \\( \\Rightarrow \\) hai đường không cắt nhau. Mặt khác so sánh \\( \\vec{PQ}=-\\dfrac{2}{3}\\vec{AB}-\\dfrac{2}{3}\\vec{BC}-\\dfrac{1}{3}\\vec{CD} \\) với \\( \\vec{MN} \\) thấy chúng không cùng phương \\( \\Rightarrow \\) hai đường không song song. Vậy MN và PQ chéo nhau \\( \\Rightarrow \\) Đúng.
+c) So sánh thể tích qua hai bước dùng tỉ số diện tích tam giác chung đỉnh và tỉ số thể tích khối chóp chung đáy/chung đỉnh:
+\\( \\dfrac{S_{MBN}}{S_{ABC}}=\\dfrac{BM}{BA}\\cdot\\dfrac{BN}{BC}=\\dfrac{1}{3}\\cdot\\dfrac{2}{3}=\\dfrac{2}{9} \\) (hai tam giác chung đỉnh B)
+\\( \\dfrac{V_{P.ABC}}{V_{D.ABC}}=\\dfrac{CP}{CD}=\\dfrac{2}{3} \\) (chung đáy ABC, chiều cao tỉ lệ khoảng cách từ P và D tới (ABC))
+\\( \\Rightarrow V_{M.BNP}=\\dfrac{2}{9}\\cdot\\dfrac{2}{3}V=\\dfrac{4}{27}V \\Rightarrow \\) Đúng.
+d) Tương tự, dùng hai bước so sánh thể tích:
+\\( \\dfrac{V_{M.NCP}}{V_{A.NCP}}=\\dfrac{MB}{AB}=\\dfrac{1}{3} \\) (chung đáy NCP, chiều cao tỉ lệ khoảng cách từ M và A tới (BCD))
+\\( \\dfrac{S_{NCP}}{S_{BCD}}=\\dfrac{CN}{CB}\\cdot\\dfrac{CP}{CD}=\\dfrac{1}{3}\\cdot\\dfrac{2}{3}=\\dfrac{2}{9} \\) (hai tam giác chung đỉnh C) \\( \\Rightarrow V_{A.NCP}=\\dfrac{2}{9}V \\)
+\\( \\Rightarrow V_{M.NCP}=\\dfrac{1}{3}\\cdot\\dfrac{2}{9}V=\\dfrac{2}{27}V \\Rightarrow \\) Đúng.""",
+},
 
             # ---------------- TRẢ LỜI NGẮN (short) ----------------
             {
