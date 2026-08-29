@@ -4424,6 +4424,152 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                 "correct": 'C',
                 "points": 1,
                 "explanation": 'Mô hình khối cầu có đường kính 4 cm nên bán kính là \\( r = 2 \\text{ cm} \\).\nThể tích khối cầu là: \\( V = \\dfrac{4}{3}\\pi r^3 = \\dfrac{4}{3}\\pi (2)^3 = \\dfrac{32\\pi}{3} \\approx 33,5 \\text{ cm}^3 \\).\nĐáp án C[cite: 2].',
+            },
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+               "id": 'de6_sh_14',
+               "type": 'short',
+               "content": 'Điền vào chỗ trống kết quả chính xác hoặc kết quả làm tròn xấp xỉ đến chữ số thập phân thứ nhất:\nCho hình nón tròn xoay có chiều cao $h = 4\text{m}$, bán kính đáy $r = 3\text{m}$.\nDiện tích xung quanh của hình nón đã cho bằng bao nhiêu $\text{m}^2$?\n(Kết quả làm tròn đến chữ số thập phân thứ nhất, biết $\pi \approx 3,14$)',
+               "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau14-de6.PNG',
+               "blanks": [
+                   {"label": 'Diện tích xung quanh =', "answers": ['47.1']},
+                ],
+               "points": 1,
+               "explanation": 'Độ dài đường sinh của hình nón là:\n$l = \sqrt{h^2 + r^2} = \sqrt{4^2 + 3^2} = 5$ ($\text{m}$).\nDiện tích xung quanh của hình nón là:\n$S_{xq} = \pi rl = \pi \cdot 3 \cdot 5 = 15\pi$.\nKết quả xấp xỉ: $15 \cdot 3,14 = 47,1$ ($\text{m}^2$).',
+            },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+               "id": 'de6_sh_15',
+               "type": 'short',
+               "content": 'Điền số thích hợp vào chỗ trống.\nCho hình phẳng $(H)$ giới hạn bởi các đường $y = \sqrt{x}$, $y = 0$, $x = 2$ và $x = 6$. Thể tích khối tròn xoay thu được khi quay $(H)$ quanh trục $Ox$ là bao nhiêu (đơn vị thể tích)?\n(Lấy $\pi \approx 3,14$)',
+               "blanks": [
+                   {"label": 'Thể tích =', "answers": ['50.24']},
+                ],
+               "points": 1,
+               "explanation": 'Thể tích khối tròn xoay được tính theo công thức:\n$V = \pi \int_{2}^{6} (\sqrt{x})^2 dx = \pi \int_{2}^{6} x dx$.\n$V = \pi \left[ \dfrac{x^2}{2} \right]_{2}^{6} = \pi (18 - 2) = 16\pi$.\nÁp dụng $\pi \approx 3,14$, ta có thể tích xấp xỉ là:\n$V \approx 16 \cdot 3,14 = 50,24$.',
+            },
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+               "id": "de6_tf_16",
+               "type": "truefalse",
+               "content": "Cho một hình nón có thiết diện qua trục là tam giác đều có diện tích bằng $2\sqrt{3}$. Xét tính đúng/sai của các phát biểu sau:",
+               "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau16-de6.PNG",
+               "statements": [
+                   {"text": "Bán kính đáy của hình nón đã cho bằng $\sqrt{2}$.", "correct": True},
+                   {"text": "Thể tích của khối nón được giới hạn bởi hình nón đã cho bằng $\dfrac{\pi\sqrt{6}}{3}$.", "correct": False}
+                ],
+               "points": 1,
+               "explanation": "a) Gọi bán kính đáy là $r$, độ dài đường sinh là $l$. Thiết diện qua trục là tam giác đều nên $l = 2r$. Diện tích tam giác đều là $S = \dfrac{(2r)^2\sqrt{3}}{4} = r^2\sqrt{3}$.\nTheo giả thiết, $r^2\sqrt{3} = 2\sqrt{3} \Rightarrow r^2 = 2 \Rightarrow r = \sqrt{2}$. Phát biểu (a) Đúng.\n\nb) Chiều cao của khối nón là $h = \sqrt{l^2 - r^2} = \sqrt{(2\sqrt{2})^2 - (\sqrt{2})^2} = \sqrt{6}$.\nThể tích khối nón là $V = \dfrac{1}{3}\pi r^2 h = \dfrac{1}{3}\pi (\sqrt{2})^2 \cdot \sqrt{6} = \dfrac{2\pi\sqrt{6}}{3}$.\nKết quả này khác $\dfrac{\pi\sqrt{6}}{3}$. Phát biểu (b) Sai."
+            },
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+               "id": "de6_dd_17",
+               "type": "dragdrop",
+               "content": "Kéo số ở các ô vuông thả vào vị trí thích hợp trong các câu sau:",
+               "options_pool": [
+                     "$\dfrac{\pi}{12}$", 
+                     "$2\pi$", 
+                     "$\dfrac{\pi}{6}$", 
+                     "$\pi$"
+                ],
+               "blanks": [
+                   {"label": "a) Phương trình $\sin 2x=\dfrac{1}{2}$ có một nghiệm là: $x=$", "answer": "\dfrac{\pi}{12}"},
+                   {"label": "b) Phương trình $\sin x+2\cos x=2$ có một nghiệm là: $x=$", "answer": "2\pi"}
+                ],
+               "points": 1,
+               "explanation": "a) Ta có $\sin 2x = \dfrac{1}{2} = \sin\left(\dfrac{\pi}{6}\right) \Rightarrow 2x = \dfrac{\pi}{6} + k2\pi$ hoặc $2x = \pi - \dfrac{\pi}{6} + k2\pi$. \n$\Rightarrow x = \dfrac{\pi}{12} + k\pi$ hoặc $x = \dfrac{5\pi}{12} + k\pi$. Với $k=0$ ta có một nghiệm là $x = \dfrac{\pi}{12}$.\n\nb) Thay các đáp án vào phương trình $\sin x + 2\cos x = 2$. \nThay $x = 2\pi$, ta được $\sin(2\pi) + 2\cos(2\pi) = 0 + 2(1) = 2$ (thỏa mãn)."
+            },
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+               "id": "de6_dd_18",
+               "type": "dragdrop",
+               "content": "Kéo số ở các ô vuông thả vào vị trí thích hợp trong các câu sau:\nCho khai triển của biểu thức $\left(x - \dfrac{1}{2}\right)^9$.",
+               "options_pool": [
+                     "36", 
+                     "256", 
+                     "$\dfrac{1}{512}$", 
+                     "$-\dfrac{9}{256}$", 
+                     "$\dfrac{9}{256}$", 
+                     "$-\dfrac{1}{512}$"
+                ],
+               "blanks": [
+                   {"label": "a) Số hạng không chứa $x$ trong khai triển là:", "answer": "-\dfrac{1}{512}"},
+                   {"label": "b) Hệ số của $x$ trong khai triển là:", "answer": "\dfrac{9}{256}"},
+                   {"label": "c) Tổng các hệ số của khai triển là:", "answer": "\dfrac{1}{512}"}
+                ],
+               "points": 1,
+               "explanation": "Số hạng tổng quát trong khai triển là: $T_{k+1} = C_{9}^{k} x^{9-k} \left(-\dfrac{1}{2}\right)^k$.\n\na) Số hạng không chứa $x$ ứng với $9-k = 0 \Rightarrow k=9$. Số hạng đó là: $C_{9}^{9} \left(-\dfrac{1}{2}\right)^9 = -\dfrac{1}{512}$.\n\nb) Hệ số của $x$ (tương ứng với $x^1$) ứng với $9-k = 1 \Rightarrow k=8$. Hệ số đó là: $C_{9}^{8} \left(-\dfrac{1}{2}\right)^8 = 9 \cdot \dfrac{1}{256} = \dfrac{9}{256}$.\n\nc) Tổng các hệ số của khai triển đạt được khi ta thay $x=1$ vào biểu thức: $\left(1 - \dfrac{1}{2}\right)^9 = \left(\dfrac{1}{2}\right)^9 = \dfrac{1}{512} $."
+            },
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+               "id": "de6_dd_19",
+               "type": "dragdrop",
+               "content": "Kéo và thả các phương án lựa chọn thích hợp vào ô trống:\nHàng năm, Bảo tàng dân tộc học Việt Nam thường tổ chức các hoạt động vui xuân - khám phá những giá trị văn hóa tinh thần, vật chất thông qua các hoạt động trình diễn, làm đồ chơi và chơi trò chơi dân gian của một số dân tộc. Năm nay, bạn Dương được ông bà nội cùng bố mẹ cho đi chơi, khám phá Tết Việt tại bảo tàng. Cả gia đình đã mua vé để vào xem chương trình múa rối nước và được sắp xếp ngồi vào một chiếc ghế dài vừa đủ cho 5 người ngồi.\nKéo số thích hợp vào các ô trống dưới đây:",
+               "options_pool": [
+                     "12", 
+                     "24", 
+                     "64", 
+                     "48", 
+                     "36"
+                ],
+               "blanks": [
+                   {"label": "a) Số cách sắp xếp để bạn Dương ngồi chính giữa là:", "answer": "24"},
+                   {"label": "b) Số cách sắp xếp để ông nội và bố ngồi ở hai đầu ghế là:", "answer": "12"},
+                   {"label": "c) Số cách sắp xếp để Dương ngồi cạnh bố là:", "answer": "48"}
+                ],
+               "points": 1,
+               "explanation": "Gia đình gồm 5 người: Dương, ông nội, bà nội, bố, mẹ.\na) Dương ngồi chính giữa (vị trí số 3): Có 1 cách. 4 người còn lại xếp vào 4 vị trí: $4!$ cách. Số cách xếp: $1 \cdot 4! = 24$ (cách).\n\nb) Ông nội và bố ngồi ở 2 đầu ghế: Có $2! = 2$ cách xếp ông nội và bố. 3 người còn lại xếp vào 3 vị trí ở giữa: $3! = 6$ cách. Số cách xếp: $2 \cdot 6 = 12$ (cách).\n\nc) Buộc Dương và bố thành một nhóm: Có $2! = 2$ cách đổi chỗ. Coi nhóm này như 1 người, cùng với 3 người còn lại tạo thành 4 đối tượng. Xếp 4 đối tượng này có $4! = 24$ cách. Số cách xếp: $2 \cdot 24 = 48$ (cách)."
+            },
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+               "id": "de6_tf_20",
+               "type": "truefalse",
+               "content": "Cho phương trình $\log_2\sqrt{|x|} - 4\sqrt{\log_4|x|} - 5 = 0$. Các khẳng định sau là đúng hay sai?",
+               "statements": [
+                   {"text": "Điều kiện xác định của phương trình là $-1 \le x \le 1$.", "correct": False},
+                   {"text": "Đặt $t = \sqrt{\dfrac{1}{2}\log_2|x|}$, $t \ge 0$ thì phương trình trở thành $2t^2 - t - 5 = 0$.", "correct": False},
+                   {"text": "Phương trình có 2 nghiệm phân biệt.", "correct": True}
+                ],
+               "points": 1,
+               "explanation": "a) Điều kiện: \n$\begin{cases} |x| > 0 \\ \log_4|x| \ge 0 \end{cases} \Leftrightarrow \begin{cases} x \neq 0 \\ |x| \ge 1 \end{cases} \Leftrightarrow \left[ \begin{matrix} x \ge 1 \\ x \le -1 \end{matrix} \right.$\nVậy phát biểu a) Sai.\n\nb) Phương trình $\Leftrightarrow \dfrac{1}{2}\log_2|x| - 4\sqrt{\dfrac{1}{2}\log_2|x|} - 5 = 0$.\nĐặt $t = \sqrt{\dfrac{1}{2}\log_2|x|}$ ($t \ge 0$), phương trình trở thành: $t^2 - 4t - 5 = 0$.\nVậy phát biểu b) Sai.\n\nc) Giải phương trình $t^2 - 4t - 5 = 0 \Leftrightarrow \left[ \begin{matrix} t = -1 \text{ (loại)} \\ t = 5 \text{ (thỏa mãn)} \end{matrix} \right.$\nVới $t=5 \Rightarrow \sqrt{\dfrac{1}{2}\log_2|x|} = 5 \Leftrightarrow \dfrac{1}{2}\log_2|x| = 25 \Leftrightarrow \log_2|x| = 50 \Leftrightarrow |x| = 2^{50} \Leftrightarrow x = \pm 2^{50}$.\nPhương trình có 2 nghiệm phân biệt. Phát biểu c) Đúng."
+            },
+
+
+           
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+               "id": "de6_tf_21_fixed",
+               "type": "truefalse",
+               "content": "Phương trình $25^x + 15^x = 6 \cdot 9^x$ có một nghiệm duy nhất được viết dưới dạng $\dfrac{a}{\log_b c - \log_b d}$ với $a$ là số nguyên dương và $b, c, d$ là các số nguyên tố.\nMỗi phát biểu sau là đúng hay sai?",
+               "statements": [
+                   {"text": "$a$ là số nguyên tố.", "correct": False},
+                   {"text": "$b$ là số chẵn.", "correct": True},
+                   {"text": "Tổng $S = a^2 + b + c + d = 10$.", "correct": False}
+                ],
+               "points": 1,
+               "explanation": "Chia 2 vế cho $9^x > 0$, ta có: $\left(\dfrac{5}{3}\right)^{2x} + \left(\dfrac{5}{3}\right)^x - 6 = 0$.\n$\Leftrightarrow \left[ \begin{matrix} \left(\dfrac{5}{3}\right)^x = 2 \\ \left(\dfrac{5}{3}\right)^x = -3 \text{ (loại)} \end{matrix} \right. \Leftrightarrow x = \log_{\frac{5}{3}} 2 = \dfrac{1}{\log_2 \dfrac{5}{3}} = \dfrac{1}{\log_2 5 - \log_2 3}$.\nSuy ra $a=1; b=2; c=5; d=3$ (hoặc $c=3, d=5$ nhưng để mẫu dương giống đề thì $c=5, d=3$).\na) $a=1$ không phải số nguyên tố $\Rightarrow$ Sai.\nb) $b=2$ là số chẵn $\Rightarrow$ Đúng.\nc) $S = 1^2 + 2 + 5 + 3 = 11 \neq 10 \Rightarrow$ Sai."
+            },
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de6_mc_22',
+               "type": 'mc4',
+               "content": 'Một sơ đồ các lối đi một chiều theo chiều mũi tên để đi từ địa điểm A tới địa điểm H được minh hoạ bởi hình sau. Chẳng hạn, có 2 đường để đi từ A tới B, có 3 đường để đi từ C tới D.\nTheo sơ đồ đã cho, số cách để đi từ A tới H là:',
+               "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau22-de6.PNG',
+               "options": {
+                   'A': '17',
+                   'B': '40',
+                   'C': '13',
+                   'D': '20',
+                },
+               "correct": 'B',
+               "points": 1,
+               "explanation": 'Để đi từ A đến H, ta qua trạm trung chuyển D. Quá trình gồm 2 giai đoạn:\n- Giai đoạn 1: Từ A đến D. \n  + Đi qua B: Có $2 \times 1 = 2$ cách.\n  + Đi qua C: Có $1 \times 3 = 3$ cách.\n  Vậy có $2 + 3 = 5$ cách đi từ A đến D.\n- Giai đoạn 2: Từ D đến H.\n  + Đi qua E: Có $3 \times 2 = 6$ cách.\n  + Đi qua G: Có $1 \times 2 = 2$ cách.\n  + Đi qua F: Có $1 \times 1 = 1$ cách.\n  (Lưu ý: Nếu hình vẽ có đường nối trực tiếp D đến H thì cộng thêm, nhưng theo hình có vẻ không có đường trực tiếp D-H. D-F có 1 đường, F-H có 1 đường $\Rightarrow 1 \times 1 = 1$ cách).\n  Dựa trên hình, các đường đi từ D:\n  + D $\to$ E (3 đường), E $\to$ H (1 đường) $\Rightarrow 3 \times 1 = 3$? Nhìn kĩ hình: E $\to$ H có 2 đường. $\Rightarrow 3 \times 2 = 6$ cách.\n  + D $\to$ G (1 đường), G $\to$ H (2 đường) $\Rightarrow 1 \times 2 = 2$ cách.\n  + D $\to$ F (1 đường?? D-F có 1 đường, F-H có 1 đường, D $\to$ F $\to$ H có $1 \times 1 = 1$ đường. Khoan, đếm lại số mũi tên trên hình).\nNhìn kĩ lại hình `image_dd022c.png`:\nTừ A $\to$ B: 2 đường.\nB $\to$ D: 1 đường.\n$\Rightarrow$ A $\to$ B $\to$ D: 2 cách.\nTừ A $\to$ C: 1 đường.\nC $\to$ D: 3 đường.\n$\Rightarrow$ A $\to$ C $\to$ D: 3 cách.\nTổng số cách đi A $\to$ D = 5 cách.\n\nTừ D $\to$ E: 2 đường. E $\to$ H: 2 đường $\Rightarrow$ D $\to$ E $\to$ H có 4 cách.\nTừ D $\to$ G: 1 đường. G $\to$ H: 2 đường $\Rightarrow$ D $\to$ G $\to$ H có 2 cách.\nTừ D $\to$ F: 2 đường. F $\to$ H: 1 đường $\Rightarrow$ D $\to$ F $\to$ H có 2 cách.\nTổng số cách đi D $\to$ H = $4 + 2 + 2 = 8$ cách.\n\nTheo quy tắc nhân, số cách đi từ A $\to$ H là: $5 \times 8 = 40$ cách. \n$\Rightarrow$ Chọn đáp án B.',
             }
             
 
