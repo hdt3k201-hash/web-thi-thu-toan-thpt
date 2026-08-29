@@ -471,25 +471,51 @@ EXAMS = [
  "answers": ["40"],
  "explanation": "Kí hiệu \\(\\overline{C}(x)\\) là chi phí trung bình tính trên mỗi đơn vị sản phẩm.<br><br>Ta có \\( \\overline{C}(x) = \\dfrac{C(x)}{x} = \\dfrac{x}{4} + 3 + \\dfrac{400}{x} \\).<br><br>Đạo hàm: \\( \\overline{C}'(x) = \\dfrac{x^2 - 1600}{4x^2} = 0 \\Leftrightarrow x = 40 \\) (vì \\(0 \\le x \\le 50\\)).<br><br>Bảng biến thiên:<br>Với \\(0 < x < 40\\): \\(\\overline{C}'(x) < 0\\) (hàm nghịch biến).<br>Với \\(40 < x < 50\\): \\(\\overline{C}'(x) > 0\\) (hàm đồng biến).<br><br>Do đó \\(\\overline{C}(x)\\) đạt cực tiểu tại \\(x = 40\\), khi đó \\(\\overline{C}(40) = 23\\) (nghìn đồng).<br><br>Vậy mức sản lượng cần tìm là \\( x = 40 \\)."},
            
+                {"id": "de2_sh_05", "part": 3, "type": "short",
+ "content": "Cho hai vectơ \\( \\vec{a}, \\vec{b} \\) sao cho \\( |\\vec{a}| = \\sqrt{2} \\), \\( |\\vec{b}| = 2 \\) và hai vectơ \\( \\vec{x} = \\vec{a} + \\vec{b} \\), \\( \\vec{y} = 2\\vec{a} - \\vec{b} \\) vuông góc với nhau. Tính góc giữa hai vectơ \\( \\vec{a} \\) và \\( \\vec{b} \\) (đơn vị độ).",
+ "answers": ["90"],
+ "explanation": """Vì \\( \\vec{x} \\perp \\vec{y} \\) nên \\( \\vec{x}\\cdot\\vec{y} = 0 \\), tức là:
+\\( (\\vec{a}+\\vec{b})\\cdot(2\\vec{a}-\\vec{b}) = 0 \\)
 
-            {"id": "de2_sh_04", "part": 3, "type": "short",
-             "content": "Một hộp có 12 viên bi đánh số từ 1 đến 12. Chọn ngẫu nhiên 3 viên. Tính xác suất để tổng 3 số ghi trên 3 viên là số chẵn (kết quả dạng phân số tối giản).",
-             "answers": ["1/2"],
-             "explanation": "Từ 1-12 có 6 số lẻ, 6 số chẵn. Tổng chẵn khi số lượng số lẻ được chọn là 0 hoặc 2. \\( C_6^3+C_6^2\\cdot C_6^1=20+90=110 \\). \\( n(\\Omega)=C_{12}^3=220 \\). Xác suất \\( =\\dfrac{110}{220}=\\dfrac12 \\)."},
+Khai triển:
+\\( 2|\\vec{a}|^2 - \\vec{a}\\cdot\\vec{b} + 2\\vec{a}\\cdot\\vec{b} - |\\vec{b}|^2 = 0 \\)
 
-            {"id": "de2_sh_05", "part": 3, "type": "short",
-             "content": "Cho cấp số nhân \\( (u_n) \\) có \\( u_1=3 \\), công bội \\( q=2 \\). Tính tổng 6 số hạng đầu \\( S_6 \\).",
-             "answers": ["189"],
-             "explanation": "\\( S_6=u_1\\cdot\\dfrac{q^6-1}{q-1}=3\\cdot\\dfrac{64-1}{1}=3\\cdot63=189 \\)."},
+\\( 2|\\vec{a}|^2 + \\vec{a}\\cdot\\vec{b} - |\\vec{b}|^2 = 0 \\)
 
-            {"id": "de2_sh_06", "part": 3, "type": "short",
-             "content": "Trong không gian \\( Oxyz \\), cho mặt cầu \\( (S): x^2+y^2+z^2+4x-2y+6z-2=0 \\). Tính bán kính \\( R \\) của mặt cầu.",
-             "answers": ["4"],
-             "explanation": "Tâm \\( I(-2;1;-3) \\), \\( R=\\sqrt{(-2)^2+1^2+(-3)^2+2}=\\sqrt{16}=4 \\)."},
+Thay \\( |\\vec{a}|^2 = 2 \\), \\( |\\vec{b}|^2 = 4 \\):
+
+\\( 2\\cdot 2 + \\vec{a}\\cdot\\vec{b} - 4 = 0 \\Leftrightarrow \\vec{a}\\cdot\\vec{b} = 0 \\)
+
+Vậy \\( \\cos(\\vec{a},\\vec{b}) = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}|\\cdot|\\vec{b}|} = 0 \\), suy ra góc giữa hai vectơ \\( \\vec{a} \\) và \\( \\vec{b} \\) bằng \\( 90^\\circ \\)."""},
+            
+{"id": "de2_sh_06", "part": 3, "type": "short",
+ "content": "Trong không gian \\( Oxyz \\), cho các điểm \\( A(1;0;3) \\), \\( B(2;3;-4) \\), \\( C(-3;1;2) \\). Biết điểm \\( D(a;b;c) \\) sao cho \\( ABCD \\) là hình bình hành. Tính \\( a+b+c \\).",
+ "answers": ["3"],
+ "explanation": """Vì \\( ABCD \\) là hình bình hành nên \\( \\vec{AB} = \\vec{DC} \\).
+
+Ta có \\( \\vec{AB} = (2-1;3-0;-4-3) = (1;3;-7) \\)
+
+Và \\( \\vec{DC} = (-3-a;1-b;2-c) \\)
+
+Từ \\( \\vec{AB} = \\vec{DC} \\), ta có hệ:
+\\( \\begin{cases} 1 = -3-a \\\\ 3 = 1-b \\\\ -7 = 2-c \\end{cases} \\Leftrightarrow \\begin{cases} a=-4 \\\\ b=-2 \\\\ c=9 \\end{cases} \\)
+
+Vậy \\( a+b+c = -4+(-2)+9 = 3 \\)."""},
+            {"id": "de2_sh_07", "part": 3, "type": "short",
+ "content": "Trong hệ trục tọa độ \\( (Oxyz) \\), một thiết bị âm thanh được phát từ vị trí \\( A(1;5;8) \\). Người ta dự định đặt một máy thu tín hiệu trên mặt phẳng \\( (Oxy) \\). Biết máy thu đặt ở vị trí \\( M(a;b;c) \\) sẽ nhận được tín hiệu sớm nhất. Khi đó \\( a+2b+3c \\) bằng bao nhiêu.",
+ "answers": ["11"],
+ "explanation": """Máy thu nhận được tín hiệu sớm nhất khi khoảng cách từ điểm phát \\( A \\) đến máy thu \\( M \\) là ngắn nhất, tức là \\( M \\) chính là hình chiếu vuông góc của \\( A \\) lên mặt phẳng \\( (Oxy) \\) (vì trong tất cả các điểm thuộc mặt phẳng, hình chiếu vuông góc luôn cho khoảng cách nhỏ nhất).
+
+Mặt phẳng \\( (Oxy) \\) có phương trình \\( z = 0 \\), nên hình chiếu vuông góc của điểm \\( A(1;5;8) \\) lên mặt phẳng này chỉ đơn giản là giữ nguyên hoành độ, tung độ và cho cao độ bằng 0:
+
+\\( M(1;5;0) \\)
+
+Vậy \\( a=1 \\), \\( b=5 \\), \\( c=0 \\).
+
+Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
         ],
     },
 ]
-
 
 def get_exam_by_id(exam_id):
     for e in EXAMS:
