@@ -4021,6 +4021,50 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                 ],
                 "points": 1,
                 "explanation": 'Điều kiện: \\( \\cos 2x \\ne 0 \\) và \\( \\sin 2x \\ne 0 \\). Từ phương trình \\( \\dfrac{\\cos 6x}{\\cos 2x} = -1 \\Rightarrow \\cos 6x = -\\cos 2x \\).\n\nÁp dụng công thức nhân ba \\( \\cos 3a = 4\\cos^3 a - 3\\cos a \\) cho \\( a = 2x \\):\n\\( 4\\cos^3 2x - 3\\cos 2x = -\\cos 2x \\)\n\\( \\Leftrightarrow 4\\cos^3 2x - 2\\cos 2x = 0 \\)\n\\( \\Leftrightarrow 2\\cos 2x(2\\cos^2 2x - 1) = 0 \\)\n\nDo điều kiện \\( \\cos 2x \\ne 0 \\), ta phải có: \\( 2\\cos^2 2x - 1 = 0 \\Rightarrow \\cos^2 2x = \\dfrac{1}{2} \\). Khi đó, \\( \\sin^2 2x = 1-\\cos^2 2x = 1-\\dfrac{1}{2} = \\dfrac{1}{2} \\) (thỏa mãn \\( \\sin 2x \\ne 0 \\)).\n\nBiến đổi biểu thức \\( E \\) (sử dụng công thức nhân ba của Sin: \\( \\sin 3a = 3\\sin a - 4\\sin^3 a \\)):\n\\( E = \\dfrac{\\sin 6x}{\\sin 2x} = \\dfrac{3\\sin 2x - 4\\sin^3 2x}{\\sin 2x} = 3 - 4\\sin^2 2x \\)\n\nThay \\( \\sin^2 2x = \\dfrac{1}{2} \\) vào biểu thức \\( E \\):\n\\( E = 3 - 4\\cdot\\dfrac{1}{2} = 3 - 2 = 1 \\)',
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de5_tf_25",
+                "type": "truefalse",
+                "content": "Từ xa xưa, các nhà triết học cho rằng vật chất được tạo thành từ 5 nguyên tố cơ bản là đất, nước, lửa, khí và ether (nguyên tố tạo nên khoảng không gian của vũ trụ). Các nguyên tố này tương ứng với các khối đa diện lồi đều trong hình học (Khối Plato). Xét tính Đúng/Sai của các khẳng định sau:",
+                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau25-de5.PNG',
+                "statements": [
+                    {"text": "Khối bát diện đều có số đỉnh là 8.", "correct": False},
+                    {"text": "Khối lập phương có số mặt là 6.", "correct": True},
+                    {"text": "Khối hai mươi mặt đều có số cạnh là 20.", "correct": False},
+                ],
+                "points": 1,
+                "explanation": 'Các khối đa diện đều được phân loại dựa trên ký hiệu Schläfli \\( \\{p,q\\} \\), trong đó \\( p \\) là số cạnh của một mặt, \\( q \\) là số mặt gặp nhau ở một đỉnh.\n\nMệnh đề 1: Khối bát diện đều thuộc loại \\( \\{3,4\\} \\). Nó có 8 mặt là các tam giác đều, 12 cạnh và 6 đỉnh. Do đó, phát biểu số đỉnh là 8 là sai. \\( \\Rightarrow \\) Sai.\n\nMệnh đề 2: Khối lập phương thuộc loại \\( \\{4,3\\} \\). Nó có 6 mặt là các hình vuông, 12 cạnh và 8 đỉnh. \\( \\Rightarrow \\) Đúng.\n\nMệnh đề 3: Khối hai mươi mặt đều thuộc loại \\( \\{3,5\\} \\). Nó có 20 mặt (mỗi mặt là 1 tam giác đều). Tổng số cạnh được tính bằng công thức: \\( C = \\dfrac{20\\times 3}{2} = 30 \\) (cạnh). Phát biểu số cạnh là 20 là sai. \\( \\Rightarrow \\) Sai.',
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de5_sh_26',
+                "type": 'short',
+                "content": 'Cho một dãy các hình biểu diễn lưới ô vuông như sau: \\( f(1), f(2), f(3), f(4) \\). Cứ vẽ thêm các hình vuông như quy luật trên thì hình \\( f(100) \\) có tổng cộng bao nhiêu hình vuông (tính tất cả các kích thước)?',
+                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau26-de5.PNG',
+                "blanks": [
+                    {"label": 'f(100) =', "answers": ['338350']},
+                ],
+                "points": 1,
+                "explanation": 'Quy luật của bài toán là tìm tổng số hình vuông (bao gồm cả hình vuông nhỏ và các hình vuông lớn được ghép từ các hình vuông nhỏ) trong một lưới ô vuông kích thước \\( n \\times n \\).\n\nTa đếm số hình vuông ở các hình đầu tiên để tìm quy luật:\nHình \\( f(1) \\) (Lưới \\( 1\\times 1 \\)): Có 1 hình vuông \\( 1\\times 1 \\Rightarrow f(1) = 1^2 = 1 \\).\nHình \\( f(2) \\) (Lưới \\( 2\\times 2 \\)): Có 4 hình vuông \\( 1\\times 1 \\) và 1 hình vuông \\( 2\\times 2 \\Rightarrow f(2) = 1^2+2^2 = 5 \\).\nHình \\( f(3) \\) (Lưới \\( 3\\times 3 \\)): Có 9 hình vuông \\( 1\\times 1 \\), 4 hình vuông \\( 2\\times 2 \\), và 1 hình vuông \\( 3\\times 3 \\Rightarrow f(3) = 1^2+2^2+3^2 = 14 \\).\n\nTổng quát hóa, số hình vuông trong lưới \\( n\\times n \\) là tổng bình phương của \\( n \\) số tự nhiên đầu tiên:\n\\( f(n) = 1^2+2^2+3^2+...+n^2 = \\dfrac{n(n+1)(2n+1)}{6} \\)\n\nÁp dụng công thức trên để tính cho hình \\( f(100) \\) (với \\( n=100 \\)):\n\\( f(100) = \\dfrac{100\\times(100+1)\\times(2\\times 100+1)}{6} = \\dfrac{100\\times 101\\times 201}{6} \\)\n\\( f(100) = \\dfrac{2030100}{6} = 338350 \\)\n\nVậy hình \\( f(100) \\) có 338350 hình vuông.',
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de5_tf_27",
+                "type": "truefalse",
+                "content": "Cho hình vẽ biểu diễn một quy luật xếp các khối vuông như sau: \\( H_1, H_2, H_3, ... \\). Các phát biểu sau là Đúng hay Sai?",
+                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau27-de5.PNG',
+                "statements": [
+                    {"text": "\\( H_{2025} \\) là một số chẵn.", "correct": False},
+                    {"text": "\\( H_{2025} \\) là một số chính phương.", "correct": False},
+                    {"text": "\\( H_{2025} \\) bằng tổng các số tự nhiên từ 1 đến 2025.", "correct": True},
+                    {"text": "\\( H_{2025} \\) bằng tổng các số tự nhiên lẻ từ 1 đến 4049.", "correct": False},
+                ],
+                "points": 1,
+                "explanation": 'Dựa vào hình vẽ, ta đếm được số lượng hình vuông trong mỗi hình tạo thành dãy số:\n\\( H_1 = 1 \\)\n\\( H_2 = 1+2 = 3 \\)\n\\( H_3 = 1+2+3 = 6 \\)\n\nQuy luật tổng quát: Hình thứ \\( n \\) được tạo thành bằng cách cộng thêm một hàng chứa \\( n \\) khối vuông vào hình \\( n-1 \\). Do đó, \\( H_n = 1+2+3+\\cdots+n = \\dfrac{n(n+1)}{2} \\).\n\nXét với \\( n = 2025 \\):\n\\( H_{2025} = 1+2+3+\\cdots+2025 = \\dfrac{2025\\times 2026}{2} = 2025\\times 1013 = 2051325 \\)\n\nĐánh giá các mệnh đề:\n\nMệnh đề 1: Tích của 2 số lẻ (2025 và 1013) là một số lẻ. Do đó \\( H_{2025} \\) không phải là số chẵn. \\( \\Rightarrow \\) Sai.\n\nMệnh đề 2: Ta phân tích ra thừa số nguyên tố: \\( H_{2025} = 2025\\times 1013 = 45^2\\times 1013 \\). Vì 1013 là số nguyên tố và bậc của nó là 1 (lẻ), nên \\( H_{2025} \\) không thể là số chính phương. \\( \\Rightarrow \\) Sai.\n\nMệnh đề 3: Theo đúng quy luật đã thiết lập, \\( H_{2025} \\) chính là tổng của dãy số tự nhiên liên tiếp từ 1 đến 2025. \\( \\Rightarrow \\) Đúng.\n\nMệnh đề 4: Tổng các số tự nhiên lẻ đầu tiên từ 1 đến \\( 2k-1 \\) luôn bằng \\( k^2 \\). Ở đây, từ 1 đến 4049 có \\( (4049-1):2+1 = 2025 \\) số lẻ. Tổng của chúng bằng \\( 2025^2 = 4100625 \\), giá trị này khác với \\( H_{2025} = 2051325 \\). \\( \\Rightarrow \\) Sai.',
             }
             
           
