@@ -4426,29 +4426,31 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                 "explanation": 'Mô hình khối cầu có đường kính 4 cm nên bán kính là \\( r = 2 \\text{ cm} \\).\nThể tích khối cầu là: \\( V = \\dfrac{4}{3}\\pi r^3 = \\dfrac{4}{3}\\pi (2)^3 = \\dfrac{32\\pi}{3} \\approx 33,5 \\text{ cm}^3 \\).\nĐáp án C[cite: 2].',
             },
             # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
             {
-               "id": 'de6_sh_14',
-               "type": 'short',
-               "content": 'Điền vào chỗ trống kết quả chính xác hoặc kết quả làm tròn xấp xỉ đến chữ số thập phân thứ nhất:\nCho hình nón tròn xoay có chiều cao $h = 4\text{m}$, bán kính đáy $r = 3\text{m}$.\nDiện tích xung quanh của hình nón đã cho bằng bao nhiêu $\text{m}^2$?\n(Kết quả làm tròn đến chữ số thập phân thứ nhất, biết $\pi \approx 3,14$)',
-               "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau14-de6.PNG',
+               "id": "de6_sh_14",
+               "type": "short",
+               "content": "Điền vào chỗ trống kết quả chính xác hoặc kết quả làm tròn xấp xỉ đến chữ số thập phân thứ nhất:\nCho hình nón tròn xoay có chiều cao $h = 4\\text{m}$, bán kính đáy $r = 3\\text{m}$.\nDiện tích xung quanh của hình nón đã cho bằng bao nhiêu $\\text{m}^2$?\n(Kết quả làm tròn đến chữ số thập phân thứ nhất, biết $\\pi \\approx 3,14$)",
+               "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau14-de6.PNG",
                "blanks": [
-                   {"label": 'Diện tích xung quanh =', "answers": ['47.1']},
+                   {"label": "Diện tích xung quanh =", "answers": ["47.1"]},
                 ],
                "points": 1,
-               "explanation": 'Độ dài đường sinh của hình nón là:\n$l = \sqrt{h^2 + r^2} = \sqrt{4^2 + 3^2} = 5$ ($\text{m}$).\nDiện tích xung quanh của hình nón là:\n$S_{xq} = \pi rl = \pi \cdot 3 \cdot 5 = 15\pi$.\nKết quả xấp xỉ: $15 \cdot 3,14 = 47,1$ ($\text{m}^2$).',
+               "explanation": "Độ dài đường sinh của hình nón là:\n$l = \\sqrt{h^2 + r^2} = \\sqrt{4^2 + 3^2} = 5$ ($\\text{m}$).\nDiện tích xung quanh của hình nón là:\n$S_{xq} = \\pi rl = \\pi \\cdot 3 \\cdot 5 = 15\\pi$.\nKết quả xấp xỉ: $15 \\cdot 3,14 = 47,1$ ($\\text{m}^2$).",
             },
-
-# ---------------- TRẢ LỜI NGẮN (short) ----------------
             {
                "id": 'de6_sh_15',
                "type": 'short',
-               "content": 'Điền số thích hợp vào chỗ trống.\nCho hình phẳng $(H)$ giới hạn bởi các đường $y = \sqrt{x}$, $y = 0$, $x = 2$ và $x = 6$. Thể tích khối tròn xoay thu được khi quay $(H)$ quanh trục $Ox$ là bao nhiêu (đơn vị thể tích)?\n(Lấy $\pi \approx 3,14$)',
+               "content": 'Điền số thích hợp vào chỗ trống.\nCho hình phẳng $(H)$ giới hạn bởi các đường $y = \\sqrt{x}$, $y = 0$, $x = 2$ và $x = 6$. Thể tích khối tròn xoay thu được khi quay $(H)$ quanh trục $Ox$ là bao nhiêu (đơn vị thể tích)?\n(Lấy $\\pi \\approx 3,14$)',
                "blanks": [
                    {"label": 'Thể tích =', "answers": ['50.24']},
                 ],
                "points": 1,
-               "explanation": 'Thể tích khối tròn xoay được tính theo công thức:\n$V = \pi \int_{2}^{6} (\sqrt{x})^2 dx = \pi \int_{2}^{6} x dx$.\n$V = \pi \left[ \dfrac{x^2}{2} \right]_{2}^{6} = \pi (18 - 2) = 16\pi$.\nÁp dụng $\pi \approx 3,14$, ta có thể tích xấp xỉ là:\n$V \approx 16 \cdot 3,14 = 50,24$.',
+               "explanation": 'Thể tích khối tròn xoay được tính theo công thức:\n$V = \\pi \\int_{2}^{6} (\\sqrt{x})^2 dx = \\pi \\int_{2}^{6} x dx$.\n$V = \\pi \\left[ \\dfrac{x^2}{2} \\right]_{2}^{6} = \\pi (18 - 2) = 16\\pi$.\nÁp dụng $\\pi \\approx 3,14$, ta có thể tích xấp xỉ là:\n$V \\approx 16 \\cdot 3,14 = 50,24$.',
             },
+
+
+           
             # ---------------- ĐÚNG / SAI (truefalse) ----------------
             {
                "id": "de6_tf_16",
@@ -4486,22 +4488,22 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
             {
                "id": "de6_dd_18",
                "type": "dragdrop",
-               "content": "Kéo số ở các ô vuông thả vào vị trí thích hợp trong các câu sau:\nCho khai triển của biểu thức $\left(x - \dfrac{1}{2}\right)^9$.",
+               "content": "Kéo số ở các ô vuông thả vào vị trí thích hợp trong các câu sau:\nCho khai triển của biểu thức $\\left(x - \\dfrac{1}{2}\\right)^9$.",
                "options_pool": [
                      "36", 
                      "256", 
-                     "$\dfrac{1}{512}$", 
-                     "$-\dfrac{9}{256}$", 
-                     "$\dfrac{9}{256}$", 
-                     "$-\dfrac{1}{512}$"
+                     "$\\dfrac{1}{512}$", 
+                     "$-\\dfrac{9}{256}$", 
+                     "$\\dfrac{9}{256}$", 
+                     "$-\\dfrac{1}{512}$"
                 ],
                "blanks": [
-                   {"label": "a) Số hạng không chứa $x$ trong khai triển là:", "answer": "-\dfrac{1}{512}"},
-                   {"label": "b) Hệ số của $x$ trong khai triển là:", "answer": "\dfrac{9}{256}"},
-                   {"label": "c) Tổng các hệ số của khai triển là:", "answer": "\dfrac{1}{512}"}
+                   {"label": "a) Số hạng không chứa $x$ trong khai triển là:", "answer": "-\\dfrac{1}{512}"},
+                   {"label": "b) Hệ số của $x$ trong khai triển là:", "answer": "\\dfrac{9}{256}"},
+                   {"label": "c) Tổng các hệ số của khai triển là:", "answer": "\\dfrac{1}{512}"}
                 ],
                "points": 1,
-               "explanation": "Số hạng tổng quát trong khai triển là: $T_{k+1} = C_{9}^{k} x^{9-k} \left(-\dfrac{1}{2}\right)^k$.\n\na) Số hạng không chứa $x$ ứng với $9-k = 0 \Rightarrow k=9$. Số hạng đó là: $C_{9}^{9} \left(-\dfrac{1}{2}\right)^9 = -\dfrac{1}{512}$.\n\nb) Hệ số của $x$ (tương ứng với $x^1$) ứng với $9-k = 1 \Rightarrow k=8$. Hệ số đó là: $C_{9}^{8} \left(-\dfrac{1}{2}\right)^8 = 9 \cdot \dfrac{1}{256} = \dfrac{9}{256}$.\n\nc) Tổng các hệ số của khai triển đạt được khi ta thay $x=1$ vào biểu thức: $\left(1 - \dfrac{1}{2}\right)^9 = \left(\dfrac{1}{2}\right)^9 = \dfrac{1}{512} $."
+               "explanation": "Số hạng tổng quát trong khai triển là: $T_{k+1} = C_{9}^{k} x^{9-k} \\left(-\\dfrac{1}{2}\\right)^k$.\n\na) Số hạng không chứa $x$ ứng với $9-k = 0 \\Rightarrow k=9$. Số hạng đó là: $C_{9}^{9} \\left(-\\dfrac{1}{2}\\right)^9 = -\\dfrac{1}{512}$.\n\nb) Hệ số của $x$ (tương ứng với $x^1$) ứng với $9-k = 1 \\Rightarrow k=8$. Hệ số đó là: $C_{9}^{8} \\left(-\\dfrac{1}{2}\\right)^8 = 9 \\cdot \\dfrac{1}{256} = \\dfrac{9}{256}$.\n\nc) Tổng các hệ số của khai triển đạt được khi ta thay $x=1$ vào biểu thức: $\\left(1 - \\dfrac{1}{2}\\right)^9 = \\left(\\dfrac{1}{2}\\right)^9 = \\dfrac{1}{512}$."
             },
 
 # ---------------- KÉO THẢ (dragdrop) ----------------
