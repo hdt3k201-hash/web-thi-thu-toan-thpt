@@ -4223,24 +4223,76 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                 ],
                 "points": 1,
                 "explanation": 'Lấy đạo hàm hai vế của đẳng thức đã cho theo \\( x \\):\n\\( (x-1)\\cdot f(x) = \\left(x^3+ax^2+3x+C\\right)\' = 3x^2 + 2ax + 3 \\)\n\nVì vế trái có nhân tử \\( (x-1) \\), nên vế phải \\( 3x^2+2ax+3 \\) phải chia hết cho \\( (x-1) \\), tức là nhận \\( x=1 \\) làm nghiệm. Thay \\( x=1 \\) vào vế phải:\n\\( 3(1)^2 + 2a(1) + 3 = 0 \\Leftrightarrow 3 + 2a + 3 = 0 \\Leftrightarrow a = -3 \\)\n\nVới \\( a=-3 \\), vế phải trở thành:\n\\( 3x^2 - 6x + 3 = 3(x^2-2x+1) = 3(x-1)^2 \\)\n\nDo đó: \\( (x-1)\\cdot f(x) = 3(x-1)^2 \\Rightarrow f(x) = 3(x-1) = 3x-3 \\) (với \\( x\\ne 1 \\), và vì \\( f(x) \\) là đa thức nên đẳng thức này đúng với mọi \\( x \\)).\n\nSuy ra \\( f(2) = 3(2)-3 = 6-3 = 3 \\).\n\nVậy giá trị của \\( a \\) bằng \\( -3 \\), giá trị của \\( f(2) \\) bằng \\( 3 \\).',
+            },
+               ], # Đóng danh sách questions của Đề 5
+            }, # Đóng dictionary của Đề 5 
+  
+            {
+              "id": "de5",
+              "name": "Đề số 5 - ĐỀ CHÍNH THỨC TSA ĐỢT 3 - 2026.",
+              "description": "Câu hỏi.",
+              "questions": [
+                # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de6_mc_01',
+                "type": 'mc4',
+                "content": 'Biết rằng \\( F(x) = \\ln|2x+1| \\) là một nguyên hàm của hàm số \\( f(x) = \\dfrac{2}{2x+1} \\). Cho \\( \\displaystyle\\int_0^4 \\dfrac{dx}{2x+1} = \\ln S \\). Khi đó giá trị của \\( S \\) là:',
+                "options": {
+                    'A': '3',
+                    'B': '9',
+                    'C': '81',
+                    'D': '8',
+                },
+                "correct": 'A',
+                "points": 1,
+                "explanation": 'Ta có \\( f(x) = \\dfrac{2}{2x+1} \\) có nguyên hàm là \\( \\ln|2x+1| \\), suy ra \\( \\dfrac{1}{2x+1} \\) có nguyên hàm là \\( \\dfrac{1}{2}\\ln|2x+1| \\).\n\nTính tích phân:\n\\( \\displaystyle\\int_0^4 \\dfrac{dx}{2x+1} = \\left.\\dfrac{1}{2}\\ln|2x+1|\\right|_0^4 = \\dfrac{1}{2}\\left(\\ln 9 - \\ln 1\\right) = \\dfrac{1}{2}\\ln 9 = \\ln 9^{1/2} = \\ln 3 \\)\n\nSo sánh với \\( \\ln S \\), ta được \\( S = 3 \\).\n\nĐáp án đúng là A.',
+            },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de6_mc_02',
+                "type": 'mc4',
+                "content": 'Cho hàm số \\( y = f(x) \\) xác định trên đoạn \\( [-3;2] \\) và có đồ thị như hình vẽ sau. Gọi \\( M \\) và \\( m \\) lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của hàm số \\( y = f(x) \\) trên đoạn \\( [-3;2] \\). Khi đó, giá trị \\( M - 2m \\) bằng',
+                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau02-de6.PNG',
+                "options": {
+                    'A': '5',
+                    'B': '4',
+                    'C': '7',
+                    'D': '6',
+                },
+                "correct": 'D',
+                "points": 1,
+                "explanation": 'Quan sát đồ thị trên đoạn \\( [-3;2] \\):\n\n- Hàm số đạt giá trị lớn nhất tại \\( x=-1 \\) với \\( y=2 \\), suy ra \\( M = 2 \\).\n- Hàm số đạt giá trị nhỏ nhất tại đầu mút \\( x=2 \\) với \\( y=-2 \\), suy ra \\( m = -2 \\).\n\nKhi đó:\n\\( M - 2m = 2 - 2\\times(-2) = 2 + 4 = 6 \\)\n\nĐáp án đúng là D.',
+            },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de6_mc_03',
+                "type": 'mc4',
+                "content": 'Mùa hè năm 2023, một công ty thời trang sản xuất ba dáng áo phông mới, mỗi dáng áo đều được sản xuất với các màu: cam, đỏ, trắng, vàng, và xanh và với các cỡ: S, M, L, XL, XXL, XXXL. Có tất cả bao nhiêu loại áo phông khác nhau mà công ty sản xuất cho dịp hè năm 2023?',
+                "options": {
+                    'A': '90',
+                    'B': '14',
+                    'C': '72',
+                    'D': '30',
+                },
+                "correct": 'A',
+                "points": 1,
+                "explanation": 'Theo quy tắc nhân, số loại áo phông khác nhau bằng tích số cách chọn dáng áo, màu sắc và cỡ áo:\n\n- Số dáng áo: 3\n- Số màu: 5 (cam, đỏ, trắng, vàng, xanh)\n- Số cỡ: 6 (S, M, L, XL, XXL, XXXL)\n\nSố loại áo phông khác nhau là:\n\\( 3\\times 5\\times 6 = 90 \\)\n\nĐáp án đúng là A.',
             }
-          
+
+
+
+
+            
+
             
           
-
-        
-    
-
-          
-          
+      
 
 
-
-        
-
-
-         ] # Đóng danh sách questions của Đề 5
-    } # Đóng dictionary của Đề 5 
+         ] # Đóng danh sách questions của Đề 6
+    } # Đóng dictionary của Đề 6
 ] # Dấu kết thúc toàn bộ danh sách đề thi (Nằm sát lề trái, không lùi dấu cách nào)
 
 
