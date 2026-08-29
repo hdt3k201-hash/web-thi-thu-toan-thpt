@@ -44,7 +44,7 @@ EXAM_DURATION_MINUTES = 90  # thời gian làm bài môn Toán (giống đề th
 EXAMS = [
     {
         "id": "de1",
-        "name": "Đề số 1 - Ôn tập Toán THPT",
+        "name": "Đề số 1 - ÔN THI GK1 - 2026 - 2027.",
         "description": "22 câu hỏi: 12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn.",
         "questions": [
             # ---------------- PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN ---------------
