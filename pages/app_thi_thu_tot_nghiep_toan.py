@@ -339,40 +339,75 @@ EXAMS = [
  "explanation": "Ta có \\( \\displaystyle\\lim_{x\\to-\\infty} y = 2;\\ \\displaystyle\\lim_{x\\to+\\infty} y = 2 \\Rightarrow \\) Tiệm cận ngang là \\( y=2 \\).<br><br>\\( \\displaystyle\\lim_{x\\to-1^-} y = -\\infty;\\ \\displaystyle\\lim_{x\\to-1^+} y = +\\infty \\Rightarrow \\) Tiệm cận đứng là \\( x=-1 \\).<br><br>Vậy đồ thị hàm số có hai tiệm cận. Đáp án D."},
 
             {"id": "de2_mc_07", "part": 1, "type": "mc4",
-             "content": "Họ nguyên hàm của hàm số \\( f(x) = 4x^3 - 6x^2 + 2 \\) là:",
-             "options": {"A": "\\( x^4 - 2x^3 + 2x + C \\)", "B": "\\( 4x^4 - 2x^3 + 2x + C \\)", "C": "\\( x^4 - 2x^3 + C \\)", "D": "\\( x^4 - 6x^3 + 2x + C \\)"},
-             "correct": "A",
-             "explanation": "\\( \\int(4x^3-6x^2+2)dx = x^4-2x^3+2x+C \\). Đáp án A."},
+ "content": "Cho hàm số \\( y = f(x) \\) có bảng biến thiên như sau:",
+ "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau7.PNG",
+ "content_after_image": "Giá trị cực tiểu của hàm số \\( y = f(x) \\) là",
+ "options": {
+   "A": "\\( 4 \\).",
+   "B": "\\( \\dfrac{8}{3} \\).",
+   "C": "\\( 2 \\).",
+   "D": "\\( 0 \\)."
+ },
+ "correct": "B",
+ "explanation": "Dựa vào bảng biến thiên hàm số \\( y = f(x) \\), ta thấy giá trị cực tiểu của hàm \\( y = f(x) \\) là \\( \\dfrac{8}{3} \\). Đáp án B."},
 
-            {"id": "de2_mc_08", "part": 1, "type": "mc4",
-             "content": "Cho hình chóp \\( S.ABC \\) có đáy \\( ABC \\) vuông tại \\( B \\), \\( AB=3 \\), \\( BC=4 \\), \\( SA \\) vuông góc với đáy và \\( SA=6 \\). Thể tích khối chóp bằng:",
-             "options": {"A": "12", "B": "24", "C": "6", "D": "36"},
-             "correct": "A",
-             "explanation": "\\( S_{ABC}=\\dfrac12\\cdot3\\cdot4=6 \\). \\( V=\\dfrac13\\cdot6\\cdot6=12 \\). Đáp án A."},
+{"id": "de2_mc_08", "part": 1, "type": "mc4",
+ "content": "Tích vô hướng của hai vectơ \\( \\vec{a}(-2;2;5) \\), \\( \\vec{b}(0;1;2) \\) trong không gian bằng",
+ "options": {
+   "A": "\\( 12 \\).",
+   "B": "\\( 13 \\).",
+   "C": "\\( 10 \\).",
+   "D": "\\( 14 \\)."
+ },
+ "correct": "A",
+ "explanation": "Ta có \\( \\vec{a}.\\vec{b} = -2.0 + 2.1 + 5.2 = 12 \\). Đáp án A."},
 
-            {"id": "de2_mc_09", "part": 1, "type": "mc4",
-             "content": "Nghiệm của phương trình \\( 3^{2x-1} = 27 \\) là:",
-             "options": {"A": "2", "B": "1", "C": "4", "D": "\\( \\tfrac52 \\)"},
-             "correct": "A",
-             "explanation": "\\( 3^{2x-1}=3^3\\Leftrightarrow2x-1=3\\Leftrightarrow x=2 \\). Đáp án A."},
+{"id": "de2_mc_09", "part": 1, "type": "mc4",
+ "content": "Cho hàm số \\( y = f(x) \\) có đồ thị như hình vẽ. Tìm khoảng đồng biến của hàm số đã cho.",
+ "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau9.PNG",
+ "options": {
+   "A": "\\( (0;4) \\).",
+   "B": "\\( (-2;3) \\).",
+   "C": "\\( (0;3) \\).",
+   "D": "\\( (-2;0) \\)."
+ },
+ "correct": "D",
+ "explanation": "Từ đồ thị ta có hàm số đồng biến trên khoảng \\( (-2;0) \\). Đáp án D."},
 
-            {"id": "de2_mc_10", "part": 1, "type": "mc4",
-             "content": "Giá trị của \\( \\displaystyle\\lim_{x\\to3}\\dfrac{x^2-9}{x-3} \\) bằng:",
-             "options": {"A": "6", "B": "0", "C": "3", "D": "9"},
-             "correct": "A",
-             "explanation": "\\( \\dfrac{x^2-9}{x-3}=x+3\\Rightarrow\\lim_{x\\to3}(x+3)=6 \\). Đáp án A."},
+{"id": "de2_mc_10", "part": 1, "type": "mc4",
+ "content": "Hàm số \\( y = x^4 + x^2 - 4 \\) có bao nhiêu điểm cực trị?",
+ "options": {
+   "A": "\\( 3 \\).",
+   "B": "\\( 0 \\).",
+   "C": "\\( 1 \\).",
+   "D": "\\( 2 \\)."
+ },
+ "correct": "C",
+ "explanation": "Ta có: \\( y' = 4x^3 + 2x \\).<br><br>\\( y' = 0 \\Leftrightarrow x = 0 \\) là nghiệm duy nhất.<br><br>Vậy hàm số có 1 điểm cực trị. Đáp án C."},
 
-            {"id": "de2_mc_11", "part": 1, "type": "mc4",
-             "content": "Đồ thị hàm số \\( y = \\dfrac{3x+2}{x-2} \\) có tiệm cận ngang là đường thẳng:",
-             "options": {"A": "\\( y=3 \\)", "B": "\\( x=2 \\)", "C": "\\( y=2 \\)", "D": "\\( x=3 \\)"},
-             "correct": "A",
-             "explanation": "\\( \\lim_{x\\to\\pm\\infty} y = 3 \\) nên tiệm cận ngang là \\( y=3 \\). Đáp án A."},
+{"id": "de2_mc_11", "part": 1, "type": "mc4",
+ "content": "Đồ thị của hàm số nào dưới đây có dạng như đường cong hình vẽ bên?",
+ "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau11.PNG",
+ "options": {
+   "A": "\\( y = -x^3 + 3x^2 + 3 \\).",
+   "B": "\\( y = x^3 - 3x^2 + 3 \\).",
+   "C": "\\( y = x^4 - 2x^2 + 3 \\).",
+   "D": "\\( y = -x^4 + 2x^2 + 3 \\)."
+ },
+ "correct": "B",
+ "explanation": "Đồ thị hàm số có hai điểm cực trị nên loại C và D (hàm bậc bốn không phù hợp với dạng đường cong hình chữ N như hình vẽ).<br><br>Khi \\( x \\to -\\infty \\) thì \\( y \\to -\\infty \\) nên hệ số \\( a > 0 \\).<br><br>Vậy chọn B. Đáp án B."},
 
-            {"id": "de2_mc_12", "part": 1, "type": "mc4",
-             "content": "Cho vectơ \\( \\vec{a}=(1;2;2) \\). Độ dài vectơ \\( \\vec{a} \\) bằng:",
-             "options": {"A": "3", "B": "9", "C": "5", "D": "\\( \\sqrt5 \\)"},
-             "correct": "A",
-             "explanation": "\\( |\\vec a|=\\sqrt{1+4+4}=\\sqrt9=3 \\). Đáp án A."},
+{"id": "de2_mc_12", "part": 1, "type": "mc4",
+ "content": "Cho hàm số \\( y = f(x) \\) có đồ thị như hình bên. Mệnh đề nào dưới đây đúng?",
+ "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau12.PNG",
+ "options": {
+   "A": "Hàm số có ba điểm cực trị.",
+   "B": "Hàm số có giá trị cực tiểu bằng \\( 2 \\).",
+   "C": "Hàm số có giá trị lớn nhất bằng \\( 2 \\) và giá trị nhỏ nhất bằng \\( -2 \\).",
+   "D": "Hàm số đạt cực đại tại \\( x=0 \\) và cực tiểu tại \\( x=2 \\)."
+ },
+ "correct": "D",
+ "explanation": "Nhìn vào đồ thị hàm số \\( y = f(x) \\) ta thấy hàm số đạt cực đại tại \\( x=0 \\) (với giá trị cực đại bằng \\( 2 \\)) và đạt cực tiểu tại \\( x=2 \\) (với giá trị cực tiểu bằng \\( -2 \\)).<br><br>Vậy hàm số đạt cực đại tại \\( x=0 \\) và cực tiểu tại \\( x=2 \\). Đáp án D."},
 
             # ---------------- PHẦN II: ĐÚNG / SAI ----------------
             {"id": "de2_tf_01", "part": 2, "type": "truefalse",
