@@ -410,25 +410,26 @@ EXAMS = [
  "explanation": "Nhìn vào đồ thị hàm số \\( y = f(x) \\) ta thấy hàm số đạt cực đại tại \\( x=0 \\) (với giá trị cực đại bằng \\( 2 \\)) và đạt cực tiểu tại \\( x=2 \\) (với giá trị cực tiểu bằng \\( -2 \\)).<br><br>Vậy hàm số đạt cực đại tại \\( x=0 \\) và cực tiểu tại \\( x=2 \\). Đáp án D."},
 
             # ---------------- PHẦN II: ĐÚNG / SAI ----------------
+           
             {"id": "de2_tf_01", "part": 2, "type": "truefalse",
-             "content": "Cho hàm số \\( y = x^3 - 6x^2 + 9x \\). Xét tính Đúng/Sai của các mệnh đề sau:",
-             "statements": [
-                 {"text": "\\( y' = 3x^2 - 12x + 9 \\)", "correct": True},
-                 {"text": "Hàm số đạt cực đại tại \\( x=1 \\)", "correct": True},
-                 {"text": "Giá trị cực tiểu của hàm số bằng \\( 0 \\)", "correct": True},
-                 {"text": "Hàm số đồng biến trên khoảng \\( (1;3) \\)", "correct": False},
-             ],
-             "explanation": "\\( y'=3x^2-12x+9=3(x-1)(x-3) \\) \\( \\Rightarrow \\) a) Đúng. \\( y''=6x-12,\\ y''(1)=-6<0 \\) nên cực đại tại \\( x=1 \\) \\( \\Rightarrow \\) b) Đúng. Cực tiểu tại \\( x=3 \\): \\( y(3)=27-54+27=0 \\) \\( \\Rightarrow \\) c) Đúng. Trên \\( (1;3) \\), \\( y'<0 \\) (nghịch biến, không đồng biến) \\( \\Rightarrow \\) d) Sai."},
+ "content": "Xét hàm số \\( y = \\dfrac{x}{2} - \\sin^2x \\) trên khoảng \\( (0;\\pi) \\). Xét tính đúng sai của các mệnh đề sau:",
+ "statements": [
+     {"text": "Đồ thị hàm số \\( y = f'(x) \\) cắt đồ thị hàm số \\( y = \\dfrac{-\\sin^22x}{2} \\) tại 2 nghiệm trên khoảng \\( (0;\\pi) \\)", "correct": False},
+     {"text": "Hàm số nghịch biến trên khoảng \\( \\left(\\dfrac{5\\pi}{12};\\pi\\right) \\)", "correct": False},
+     {"text": "Hàm số có 2 điểm cực trị", "correct": True},
+     {"text": "Giá trị cực tiểu của hàm số là \\( \\dfrac{5\\pi}{24} - \\dfrac{2+\\sqrt3}{4} \\)", "correct": True},
+ ],
+ "explanation": "<b>b) Sai.</b> Hàm số nghịch biến trên khoảng \\( \\left(\\dfrac{5\\pi}{12};\\pi\\right) \\)?<br><br>Ta có \\( y' = \\dfrac12 - 2\\sin x\\cdot\\cos x = 0 \\Rightarrow \\sin2x = \\dfrac12 \\).<br><br>\\( \\Rightarrow \\begin{bmatrix} 2x = \\dfrac{\\pi}{6}+k2\\pi \\Rightarrow x = \\dfrac{\\pi}{12}+k\\pi\\ (k\\in\\mathbb{Z}) \\\\ 2x = \\dfrac{5\\pi}{6}+k2\\pi \\Rightarrow x = \\dfrac{5\\pi}{6}+k\\pi\\ (k\\in\\mathbb{Z}) \\end{bmatrix} \\)<br><br>Vì \\( 0<x<\\pi \\) nên \\( \\begin{bmatrix} 0<\\dfrac{\\pi}{12}+k\\pi<\\pi \\Rightarrow x=\\dfrac{\\pi}{12} \\\\ 0<\\dfrac{5\\pi}{12}+k\\pi<\\pi \\Rightarrow x=\\dfrac{5\\pi}{12} \\end{bmatrix} \\)<br><br>Bảng biến thiên:<br><br><div style='text-align:center; margin:10px 0;'><img src='https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_tf1_bbt.PNG' alt='Bảng biến thiên câu đúng sai 1' style='max-width:100%; height:auto; border:1px solid #ddd; border-radius:6px;'></div><br>Dựa vào bảng biến thiên, suy ra \\( \\begin{cases} y_{CĐ} = \\dfrac{\\pi}{24} - \\dfrac{2-\\sqrt3}{4} \\\\ y_{CT} = \\dfrac{5\\pi}{24} - \\dfrac{2+\\sqrt3}{4} \\end{cases} \\).<br><br>Vậy hàm số <b>đồng biến</b> trên \\( \\left(\\dfrac{5\\pi}{12};\\pi\\right) \\) (không nghịch biến), nên mệnh đề b) <b>sai</b>.<br><br><b>c) Đúng.</b> Hàm số có 2 điểm cực trị. Dựa vào bảng biến thiên, ta thấy hàm số có 2 điểm cực trị.<br><br><b>d) Đúng.</b> Giá trị cực tiểu của hàm số là \\( \\dfrac{5\\pi}{24} - \\dfrac{2+\\sqrt3}{4} \\). Dựa vào bảng biến thiên, ta thấy giá trị cực tiểu của hàm số là \\( \\dfrac{5\\pi}{24} - \\dfrac{2+\\sqrt3}{4} \\).<br><br><b>a) Sai.</b> Đồ thị hàm số \\( y=f'(x) \\) cắt đồ thị hàm số \\( y=\\dfrac{-\\sin^22x}{2} \\) tại 2 nghiệm trên khoảng \\( (0;\\pi) \\)?<br><br>Ta có phương trình hoành độ giao điểm \\( f'(x) = \\dfrac{-\\sin^22x}{2} \\)<br><br>\\( \\Leftrightarrow \\dfrac12 - \\sin2x = -\\dfrac{\\sin^22x}{2} \\Leftrightarrow \\dfrac{\\sin^22x}{2} - \\sin2x + \\dfrac12 = 0 \\).<br><br>\\( \\Leftrightarrow \\sin2x = 1 \\Leftrightarrow 2x = \\dfrac{\\pi}{2}+k2\\pi \\Leftrightarrow x = \\dfrac{\\pi}{4}+k\\pi\\ (k\\in\\mathbb{Z}) \\).<br><br>Do \\( 0<x<\\pi \\Rightarrow 0<\\dfrac{\\pi}{4}+k\\pi<\\pi \\Rightarrow -\\dfrac14<k<1 \\).<br><br>Vì \\( k\\in\\mathbb{Z} \\) nên \\( k=0 \\) hay \\( x=\\dfrac{\\pi}{4}\\in(0;\\pi) \\).<br><br>Do đó có <b>1 nghiệm</b> (không phải 2 nghiệm) trên khoảng \\( (0;\\pi) \\), nên mệnh đề a) <b>sai</b>."},
 
-            {"id": "de2_tf_02", "part": 2, "type": "truefalse",
-             "content": "Cho hình lăng trụ đứng \\( ABC.A'B'C' \\) có đáy \\( ABC \\) vuông tại \\( A \\), \\( AB=3 \\), \\( AC=4 \\), chiều cao \\( AA'=5 \\). Xét tính Đúng/Sai của các mệnh đề sau:",
-             "statements": [
-                 {"text": "Diện tích tam giác đáy \\( ABC \\) bằng \\( 6 \\)", "correct": True},
-                 {"text": "Thể tích khối lăng trụ bằng \\( 30 \\)", "correct": True},
-                 {"text": "Độ dài cạnh \\( BC \\) bằng \\( 7 \\)", "correct": False},
-                 {"text": "Diện tích xung quanh của lăng trụ bằng \\( 60 \\)", "correct": True},
-             ],
-             "explanation": "a) \\( S_{ABC}=\\dfrac12\\cdot3\\cdot4=6 \\) \\( \\Rightarrow \\) Đúng. b) \\( V=6\\cdot5=30 \\) \\( \\Rightarrow \\) Đúng. c) \\( BC=\\sqrt{3^2+4^2}=5\\ne7 \\) \\( \\Rightarrow \\) Sai. d) \\( S_{xq}=(3+4+5)\\cdot5=60 \\) \\( \\Rightarrow \\) Đúng."},
+{"id": "de2_tf_02", "part": 2, "type": "truefalse",
+ "content": "Trong không gian \\( Oxyz \\), cho ba điểm \\( A(1;2;3),\\ B(0;1;1),\\ C(1;0;-2) \\). Xét tính đúng sai của các mệnh đề sau:",
+ "statements": [
+     {"text": "Trung điểm \\( I \\) của đoạn \\( AC \\) có tọa độ \\( I(1;1;1) \\)", "correct": False},
+     {"text": "Có 2 điểm trong 3 điểm đã cho nằm trong mặt phẳng \\( (Oxz) \\)", "correct": False},
+     {"text": "Với \\( M\\left(\\dfrac23;0;-\\dfrac16\\right) \\) nằm trên mặt phẳng \\( (Oxz) \\) thì tổng \\( MA^2+2MB^2+3MC^2 \\) đạt giá trị nhỏ nhất", "correct": True},
+     {"text": "Mặt phẳng \\( (ABC) \\) có phương trình tổng quát \\( x-5y+2z+3=0 \\)", "correct": True},
+ ],
+ "explanation": "<b>a) Sai.</b> Áp dụng công thức tính tọa độ trung điểm của đoạn thẳng ta có \\( I\\left(1;1;\\dfrac12\\right) \\) (không phải \\( I(1;1;1) \\)).<br><br><b>b) Sai.</b> Vì các điểm thuộc mặt phẳng \\( (Oxz) \\) thì có tung độ bằng 0 nên chỉ có điểm \\( C(1;0;-2)\\in(Oxz) \\), không phải 2 điểm.<br><br><b>c) Đúng.</b> Giả sử \\( I(x;y;z) \\) sao cho:<br><br>\\( \\overrightarrow{IA}+2\\overrightarrow{IB}+3\\overrightarrow{IC} = \\vec0 \\Leftrightarrow \\begin{cases} (1-x)+2(0-x)+3(1-x)=0 \\\\ (2-y)+2(1-y)+3(0-y)=0 \\\\ (3-z)+2(1-z)+3(-2-z)=0 \\end{cases} \\Leftrightarrow \\begin{cases} x=\\dfrac23 \\\\ y=\\dfrac23 \\\\ z=-\\dfrac16 \\end{cases} \\)<br><br>\\( \\Rightarrow I\\left(\\dfrac23;\\dfrac23;-\\dfrac16\\right) \\).<br><br>Ta có:<br><br>\\( MA^2+2MB^2+3MC^2 \\)<br><br>\\( = (\\overrightarrow{MI}+\\overrightarrow{IA})^2 + 2(\\overrightarrow{MI}+\\overrightarrow{IB})^2 + 3(\\overrightarrow{MI}+\\overrightarrow{IC})^2 \\)<br><br>\\( = 6MI^2 + 2\\overrightarrow{MI}(\\overrightarrow{IA}+2\\overrightarrow{IB}+3\\overrightarrow{IC}) + (IA^2+2IB^2+3IC^2) \\)<br><br>\\( = 6MI^2 + 0 + (IA^2+2IB^2+3IC^2) \\)<br><br>\\( = 6MI^2 + (IA^2+2IB^2+3IC^2) \\)<br><br>Do đó \\( MA^2+2MB^2+3MC^2 \\) đạt giá trị nhỏ nhất khi \\( M \\) là hình chiếu của \\( I \\) trên mặt phẳng \\( (Oxz) \\) hay \\( M\\left(\\dfrac23;0;-\\dfrac16\\right) \\).<br><br><b>d) Đúng.</b> Ta có:<br><br>\\( \\overrightarrow{AB} = (-1;-1;-2) \\)<br><br>\\( \\overrightarrow{AC} = (0;-2;-5) \\)<br><br>\\( \\Rightarrow [\\overrightarrow{AB},\\overrightarrow{AC}] = (1;-5;2) \\)<br><br>Chọn một VTPT của \\( (ABC) \\) là \\( \\vec{n} = (1;-5;2) \\). Phương trình mặt phẳng \\( (ABC) \\) là:<br><br>\\( 1(x-0) - 5(y-1) + 2(z-1) = 0 \\Leftrightarrow x - 5y + 2z + 3 = 0\\ (PTTQ) \\)."},
 
             {"id": "de2_tf_03", "part": 2, "type": "truefalse",
              "content": "Cho hàm số \\( y = \\log_2(4-x^2) \\). Xét tính Đúng/Sai của các mệnh đề sau:",
