@@ -155,7 +155,7 @@ EXAMS = [
              "correct": "A",
              "explanation": "\\( |\\vec{a}| = \\sqrt{3^2+(-4)^2} = \\sqrt{25} = 5 \\). Đáp án A."},
 
-            # ---------------- PHẦN II: ĐÚNG / SAI ----------------
+            # ---------------- PHẦN II: ĐÚNG / SAI ---------------
             {"id": "de1_tf_01", "part": 2, "type": "truefalse",
              "content": "Cho hàm số \\( y = x^3 - 3x^2 + 2 \\). Xét tính Đúng/Sai của các mệnh đề sau:",
              "statements": [
