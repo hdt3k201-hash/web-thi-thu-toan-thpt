@@ -47,7 +47,7 @@ EXAMS = [
         "name": "Đề số 1 - Ôn tập Toán THPT",
         "description": "22 câu hỏi: 12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn.",
         "questions": [
-            # ---------------- PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN ----------------
+            # ---------------- PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN ---------------
 
             {"id": "de1_mc_01", "part": 1, "type": "mc4",
  "content": "Cho hàm số \\( y = \\dfrac{x-1}{x} \\). Mệnh đề nào sau đây là đúng?",
