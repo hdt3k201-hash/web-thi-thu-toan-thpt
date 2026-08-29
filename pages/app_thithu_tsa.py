@@ -3964,6 +3964,65 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                 "points": 1,
                 "explanation": 'Mệnh đề 1: Số các số có 4 chữ số đôi một khác nhau lấy từ 7 chữ số là một chỉnh hợp chập 4 của 7.\n\\( n(A) = A_7^4 = 7\\times 6\\times 5\\times 4 = 840 \\) (số).\n\\( \\Rightarrow \\) Đúng.\n\nMệnh đề 2: Lấy ngẫu nhiên 1 số từ \\( A \\Rightarrow n(\\Omega) = 840 \\). Gọi biến cố \\( X \\): "Số được chọn có mặt đồng thời chữ số 1 và 6".\n\n- Bước 1: Lấy chữ số 1 và 6 (có 1 cách).\n- Bước 2: Chọn 2 chữ số còn lại từ 5 chữ số \\( (2,3,4,5,7) \\) có \\( C_5^2 = 10 \\) (cách).\n- Bước 3: Hoán vị 4 chữ số vừa chọn để xếp vào 4 vị trí có \\( 4! = 24 \\) (cách).\n\nSố kết quả thuận lợi cho \\( X \\) là: \\( n(X) = 1\\times 10\\times 24 = 240 \\). Xác suất cần tìm là:\n\\( P(X) = \\dfrac{n(X)}{n(\\Omega)} = \\dfrac{240}{840} = \\dfrac{2}{7} \\ne \\dfrac{1}{7} \\).\n\\( \\Rightarrow \\) Sai.',
             },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de5_mc_21',
+                "type": 'mc4',
+                "content": 'Cho biểu thức \\( P = \\left(1 + \\dfrac{1}{\\cos 2x}\\right)\\left(1 + \\dfrac{1}{\\cos 4x}\\right)...\\left(1 + \\dfrac{1}{\\cos 2^n x}\\right) \\). Biểu thức \\( P \\) tương đương với hàm nào sau đây?',
+                "options": {
+                    'A': '\\( P = \\tan 2^n x \\cdot \\cot x \\)',
+                    'B': '\\( P = \\tan 2^n x \\cdot \\tan x \\)',
+                    'C': '\\( P = \\tan 2^{n+1} x \\cdot \\cot x \\)',
+                    'D': '\\( P = \\tan 2^{n+1} x \\cdot \\tan x \\)',
+                },
+                "correct": 'A',
+                "points": 1,
+                "explanation": 'Ta có phép biến đổi cho một số hạng tổng quát:\n\\( 1 + \\dfrac{1}{\\cos 2a} = \\dfrac{\\cos 2a + 1}{\\cos 2a} = \\dfrac{2\\cos^2 a}{\\cos 2a} \\)\n\nNhân thêm \\( \\tan a \\) vào hai vế, ta được:\n\\( \\tan a\\left(1 + \\dfrac{1}{\\cos 2a}\\right) = \\dfrac{\\sin a}{\\cos a}\\cdot\\dfrac{2\\cos^2 a}{\\cos 2a} = \\dfrac{2\\sin a\\cos a}{\\cos 2a} = \\dfrac{\\sin 2a}{\\cos 2a} = \\tan 2a \\)\n\nNhân cả 2 vế của biểu thức \\( P \\) với \\( \\tan x \\):\n\\( P\\cdot\\tan x = \\underbrace{\\tan x\\left(1+\\dfrac{1}{\\cos 2x}\\right)}_{\\tan 2x}\\left(1+\\dfrac{1}{\\cos 4x}\\right)...\\left(1+\\dfrac{1}{\\cos 2^n x}\\right) \\)\n\\( = \\underbrace{\\tan 2x\\left(1+\\dfrac{1}{\\cos 4x}\\right)}_{\\tan 4x}...\\left(1+\\dfrac{1}{\\cos 2^n x}\\right) = ... = \\tan(2^n x) \\)\n\nSuy ra \\( P = \\dfrac{\\tan 2^n x}{\\tan x} = \\tan 2^n x \\cdot \\cot x \\).\n\nĐáp án đúng là A.',
+            },
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de5_mc_22',
+                "type": 'mc4',
+                "content": 'Cho \\( A = \\cos^2 a - \\cos^2 b \\). Biểu thức \\( A \\) tương đương với biểu thức nào sau đây?',
+                "options": {
+                    'A': '\\( A = \\sin(b-a)\\sin(a+b) \\)',
+                    'B': '\\( A = \\sin(a-b)\\sin(a+b) \\)',
+                    'C': '\\( A = \\cos(b-a)\\cos(a+b) \\)',
+                    'D': '\\( A = -\\sin(b-a)\\sin(a+b) \\)',
+                },
+                "correct": 'A',
+                "points": 1,
+                "explanation": 'Sử dụng công thức hạ bậc, ta có:\n\\( A = \\dfrac{1+\\cos 2a}{2} - \\dfrac{1+\\cos 2b}{2} = \\dfrac{\\cos 2a - \\cos 2b}{2} \\)\n\nÁp dụng công thức biến đổi tổng thành tích \\( \\cos x - \\cos y = -2\\sin\\left(\\dfrac{x+y}{2}\\right)\\sin\\left(\\dfrac{x-y}{2}\\right) \\):\n\\( A = \\dfrac{-2\\sin(a+b)\\sin(a-b)}{2} = -\\sin(a+b)\\sin(a-b) \\)\n\nVì \\( \\sin(a-b) = -\\sin(b-a) \\), ta thay vào biểu thức trên:\n\\( A = \\sin(a+b)\\sin(b-a) = \\sin(b-a)\\sin(a+b) \\)\n\nĐáp án đúng là A.',
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de5_tf_23",
+                "type": "truefalse",
+                "content": "Cho tam giác có ba cạnh \\( 1, x, y \\) có số đo góc ở đỉnh đối diện cạnh \\( y \\) bằng \\( 110^\\circ \\).",
+                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau23-de5.PNG',
+                "statements": [
+                    {"text": "\\( y = \\sqrt{1+x^2+2x\\cos(110^\\circ)} \\)", "correct": False},
+                    {"text": "Nếu \\( x = 3 \\) thì \\( y \\approx 3.47 \\) (Làm tròn đến hàng phần trăm)", "correct": True},
+                    {"text": "\\( \\displaystyle\\lim_{x\\to+\\infty} (y-x) = 0 \\)", "correct": False},
+                ],
+                "points": 1,
+                "explanation": 'Theo định lý Côsin trong tam giác, ta có:\n\\( y^2 = 1^2 + x^2 - 2\\cdot 1\\cdot x\\cdot\\cos(110^\\circ) = 1+x^2-2x\\cos(110^\\circ) \\)\n\nVì \\( y > 0 \\) nên \\( y = \\sqrt{x^2 - 2x\\cos(110^\\circ)+1} \\).\n\nMệnh đề 1: Biểu thức trong đề bài là \\( y = \\sqrt{1+x^2+2x\\cos(110^\\circ)} \\), sai về dấu của lượng \\( -2x\\cos(110^\\circ) \\). \\( \\Rightarrow \\) Sai.\n\nMệnh đề 2: Thay \\( x=3 \\) vào biểu thức đúng của định lý Côsin:\n\\( y = \\sqrt{3^2 - 2\\cdot 3\\cdot\\cos(110^\\circ)+1} = \\sqrt{10-6\\cos(110^\\circ)} \\)\nVì \\( \\cos(110^\\circ) \\approx -0.342 \\Rightarrow y \\approx \\sqrt{10-6(-0.342)} = \\sqrt{12.052} \\approx 3.47 \\). \\( \\Rightarrow \\) Đúng.\n\nMệnh đề 3: Xét giới hạn:\n\\( \\displaystyle\\lim_{x\\to+\\infty}(y-x) = \\lim_{x\\to+\\infty}\\left(\\sqrt{x^2-2x\\cos 110^\\circ+1}-x\\right) \\)\n\\( = \\lim_{x\\to+\\infty} \\dfrac{x^2-2x\\cos 110^\\circ+1-x^2}{\\sqrt{x^2-2x\\cos 110^\\circ+1}+x} = \\lim_{x\\to+\\infty} \\dfrac{-2x\\cos 110^\\circ+1}{x\\sqrt{1-\\frac{2\\cos 110^\\circ}{x}+\\frac{1}{x^2}}+x} \\)\n\\( = \\dfrac{-2\\cos 110^\\circ}{1+1} = -\\cos 110^\\circ \\ne 0 \\)\n\\( \\Rightarrow \\) Sai.',
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de5_sh_24',
+                "type": 'short',
+                "content": 'Cho \\( \\dfrac{\\cos 6x}{\\cos 2x} = -1 \\). Tính giá trị của biểu thức \\( E = \\dfrac{\\sin 6x}{\\sin 2x} \\).',
+                "blanks": [
+                    {"label": 'E =', "answers": ['1']},
+                ],
+                "points": 1,
+                "explanation": 'Điều kiện: \\( \\cos 2x \\ne 0 \\) và \\( \\sin 2x \\ne 0 \\). Từ phương trình \\( \\dfrac{\\cos 6x}{\\cos 2x} = -1 \\Rightarrow \\cos 6x = -\\cos 2x \\).\n\nÁp dụng công thức nhân ba \\( \\cos 3a = 4\\cos^3 a - 3\\cos a \\) cho \\( a = 2x \\):\n\\( 4\\cos^3 2x - 3\\cos 2x = -\\cos 2x \\)\n\\( \\Leftrightarrow 4\\cos^3 2x - 2\\cos 2x = 0 \\)\n\\( \\Leftrightarrow 2\\cos 2x(2\\cos^2 2x - 1) = 0 \\)\n\nDo điều kiện \\( \\cos 2x \\ne 0 \\), ta phải có: \\( 2\\cos^2 2x - 1 = 0 \\Rightarrow \\cos^2 2x = \\dfrac{1}{2} \\). Khi đó, \\( \\sin^2 2x = 1-\\cos^2 2x = 1-\\dfrac{1}{2} = \\dfrac{1}{2} \\) (thỏa mãn \\( \\sin 2x \\ne 0 \\)).\n\nBiến đổi biểu thức \\( E \\) (sử dụng công thức nhân ba của Sin: \\( \\sin 3a = 3\\sin a - 4\\sin^3 a \\)):\n\\( E = \\dfrac{\\sin 6x}{\\sin 2x} = \\dfrac{3\\sin 2x - 4\\sin^3 2x}{\\sin 2x} = 3 - 4\\sin^2 2x \\)\n\nThay \\( \\sin^2 2x = \\dfrac{1}{2} \\) vào biểu thức \\( E \\):\n\\( E = 3 - 4\\cdot\\dfrac{1}{2} = 3 - 2 = 1 \\)',
+            }
+            
           
 
         
