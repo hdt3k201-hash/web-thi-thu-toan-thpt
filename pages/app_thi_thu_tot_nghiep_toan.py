@@ -120,40 +120,73 @@ EXAMS = [
  "explanation": "Nhìn bảng biến thiên ta thấy:<br><br>\\( \\displaystyle\\lim_{x\\to+\\infty} f(x) = 5 \\)<br><br>\\( \\displaystyle\\lim_{x\\to-\\infty} f(x) = 3 \\)<br><br>\\( \\displaystyle\\lim_{x\\to 1^+} f(x) = +\\infty \\)<br><br>\\( \\displaystyle\\lim_{x\\to 1^-} f(x) = -\\infty \\)<br><br>Vì vậy đồ thị hàm số có ba đường tiệm cận: một tiệm cận đứng \\( x = 1 \\) và hai tiệm cận ngang \\( y = 3 \\) và \\( y = 5 \\). Đáp án B."},
 
             {"id": "de1_mc_07", "part": 1, "type": "mc4",
-             "content": "Họ nguyên hàm của hàm số \\( f(x) = 3x^2 - 2x + 1 \\) là:",
-             "options": {"A": "\\( x^3 - x^2 + x + C \\)", "B": "\\( 3x^3 - x^2 + x + C \\)", "C": "\\( x^3 - 2x^2 + x + C \\)", "D": "\\( x^3 - x^2 + C \\)"},
-             "correct": "A",
-             "explanation": "\\( \\int (3x^2-2x+1)\\,dx = x^3 - x^2 + x + C \\). Đáp án A."},
+ "content": "Giá trị lớn nhất của hàm số \\( f(x) = x^4 - 4x^2 + 5 \\) trên đoạn \\( [-2;3] \\) bằng",
+ "options": {
+   "A": "\\( 1 \\).",
+   "B": "\\( 50 \\).",
+   "C": "\\( 5 \\).",
+   "D": "\\( 122 \\)."
+ },
+ "correct": "B",
+ "explanation": "Ta có \\( f(x) = x^4 - 4x^2 + 5 \\) liên tục trên \\( [-2;3] \\) và \\( f'(x) = 4x^3 - 8x \\).<br><br>\\( f'(x) = 0 \\Leftrightarrow 4x^3 - 8x = 0 \\Leftrightarrow \\begin{bmatrix} x = 0 \\in [-2;3] \\\\ x = \\sqrt{2} \\in [-2;3] \\\\ x = -\\sqrt{2} \\in [-2;3] \\end{bmatrix} \\).<br><br>Ta có \\( f(0) = 5,\\ f(\\sqrt{2}) = f(-\\sqrt{2}) = 1,\\ f(-2) = 5,\\ f(3) = 50 \\).<br><br>Vậy giá trị lớn nhất của hàm số \\( f(x) = x^4 - 4x^2 + 5 \\) trên đoạn \\( [-2;3] \\) bằng \\( 50 \\), đạt được khi \\( x = 3 \\). Đáp án B."},
 
-            {"id": "de1_mc_08", "part": 1, "type": "mc4",
-             "content": "Cho hình chóp \\( S.ABCD \\) có đáy \\( ABCD \\) là hình vuông cạnh \\( a \\), \\( SA \\) vuông góc với đáy và \\( SA = a \\). Thể tích khối chóp \\( S.ABCD \\) bằng:",
-             "options": {"A": "\\( \\dfrac{a^3}{3} \\)", "B": "\\( a^3 \\)", "C": "\\( \\dfrac{a^3}{6} \\)", "D": "\\( \\dfrac{a^3}{2} \\)"},
-             "correct": "A",
-             "explanation": "\\( V = \\dfrac{1}{3}\\cdot S_{ABCD}\\cdot SA = \\dfrac{1}{3}\\cdot a^2\\cdot a = \\dfrac{a^3}{3} \\). Đáp án A."},
+{"id": "de1_mc_08", "part": 1, "type": "mc4",
+ "content": "Cho hàm số \\( y = f(x) \\) có đồ thị như hình vẽ. Khẳng định nào sau đây đúng?",
+ "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de1_cau8.PNG",
+ "options": {
+   "A": "Hàm số đồng biến trên khoảng \\( (-\\infty;-1) \\) và \\( (1;+\\infty) \\).",
+   "B": "Hàm số nghịch biến trên khoảng \\( (-1;1) \\).",
+   "C": "Hàm số đồng biến trên khoảng \\( (-1;3) \\).",
+   "D": "Hàm số đồng biến trên khoảng \\( (-1;1) \\)."
+ },
+ "correct": "D",
+ "explanation": "Nhìn vào đồ thị hàm số \\( y = f(x) \\) ta thấy hàm số đồng biến trên khoảng \\( (-1;1) \\). Đáp án D."},
 
-            {"id": "de1_mc_09", "part": 1, "type": "mc4",
-             "content": "Nghiệm của phương trình \\( 2^{x+1} = 32 \\) là:",
-             "options": {"A": "4", "B": "3", "C": "5", "D": "16"},
-             "correct": "A",
-             "explanation": "\\( 2^{x+1}=2^5 \\Leftrightarrow x+1=5 \\Leftrightarrow x=4 \\). Đáp án A."},
+{"id": "de1_mc_09", "part": 1, "type": "mc4",
+ "content": "Cho hàm số \\( y = f(x) \\) xác định, liên tục trên \\( \\mathbb{R} \\) và có bảng biến thiên như hình vẽ. Mệnh đề nào dưới đây đúng?",
+ "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de1_cau9.PNG",
+ "options": {
+   "A": "Hàm số chỉ có giá trị nhỏ nhất, không có giá trị lớn nhất.",
+   "B": "Hàm số có hai điểm cực trị.",
+   "C": "Hàm số có giá trị lớn nhất bằng \\( 2 \\) và giá trị nhỏ nhất bằng \\( -3 \\).",
+   "D": "Hàm số có một điểm cực trị."
+ },
+ "correct": "B",
+ "explanation": "Tại \\( x = 0 \\) và \\( x = 1 \\) ta có \\( y' \\) đổi dấu và \\( y \\) tồn tại nên hàm số đã cho có hai điểm cực trị. Đáp án B."},
 
-            {"id": "de1_mc_10", "part": 1, "type": "mc4",
-             "content": "Giá trị của \\( \\displaystyle\\lim_{x\\to 2}\\dfrac{x^2-4}{x-2} \\) bằng:",
-             "options": {"A": "4", "B": "0", "C": "2", "D": "\\( +\\infty \\)"},
-             "correct": "A",
-             "explanation": "\\( \\dfrac{x^2-4}{x-2} = x+2 \\) (với \\( x\\ne2 \\)) \\( \\Rightarrow \\lim_{x\\to2}(x+2)=4 \\). Đáp án A."},
+{"id": "de1_mc_10", "part": 1, "type": "mc4",
+ "content": "Trong không gian với hệ tọa độ \\( Oxyz \\), cho vectơ \\( \\overrightarrow{AO} = 3(\\vec{i}+4\\vec{j}) - 2\\vec{k} + 5\\vec{j} \\). Tọa độ của điểm \\( A \\) là:",
+ "options": {
+   "A": "\\( A(3;5;-2) \\).",
+   "B": "\\( A(3;17;2) \\).",
+   "C": "\\( A(3;-2;5) \\).",
+   "D": "\\( A(-3;-17;2) \\)."
+ },
+ "correct": "D",
+ "explanation": "Ta có \\( \\overrightarrow{AO} = 3(\\vec{i}+4\\vec{j}) - 2\\vec{k} + 5\\vec{j} = 3\\vec{i} + 17\\vec{j} - 2\\vec{k} \\)<br><br>\\( \\Leftrightarrow \\overrightarrow{OA} = -3\\vec{i} - 17\\vec{j} + 2\\vec{k} \\)<br><br>\\( \\Leftrightarrow A(-3;-17;2) \\). Đáp án D."},
 
-            {"id": "de1_mc_11", "part": 1, "type": "mc4",
-             "content": "Đồ thị hàm số \\( y = \\dfrac{2x-1}{x+1} \\) có tiệm cận đứng là đường thẳng:",
-             "options": {"A": "\\( x=-1 \\)", "B": "\\( x=1 \\)", "C": "\\( y=2 \\)", "D": "\\( y=-1 \\)"},
-             "correct": "A",
-             "explanation": "Mẫu số bằng 0 khi \\( x=-1 \\) (và tử số khác 0 tại đó) nên tiệm cận đứng là \\( x=-1 \\). Đáp án A."},
+{"id": "de1_mc_11", "part": 1, "type": "mc4",
+ "content": "Cho hàm số \\( y = f(x) \\) có đồ thị như hình vẽ. Hàm số \\( y = f(x) \\) đồng biến trên khoảng nào dưới đây?",
+ "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de1_cau11.PNG",
+ "options": {
+   "A": "\\( (-2;2) \\).",
+   "B": "\\( (-\\infty;0) \\).",
+   "C": "\\( (2;+\\infty) \\).",
+   "D": "\\( (0;2) \\)."
+ },
+ "correct": "D",
+ "explanation": "Nhìn vào đồ thị ta thấy hàm số \\( y = f(x) \\) đồng biến trên khoảng \\( (0;2) \\). Đáp án D."},
 
-            {"id": "de1_mc_12", "part": 1, "type": "mc4",
-             "content": "Trong mặt phẳng \\( Oxy \\), cho vectơ \\( \\vec{a} = (3;-4) \\). Độ dài vectơ \\( \\vec{a} \\) bằng:",
-             "options": {"A": "5", "B": "7", "C": "25", "D": "1"},
-             "correct": "A",
-             "explanation": "\\( |\\vec{a}| = \\sqrt{3^2+(-4)^2} = \\sqrt{25} = 5 \\). Đáp án A."},
+{"id": "de1_mc_12", "part": 1, "type": "mc4",
+ "content": "Trong không gian với hệ trục tọa độ \\( Oxyz \\), cho \\( \\vec{u} = (-1;1;0),\\ \\vec{v} = (0;-1;0) \\). Góc giữa hai véc-tơ \\( \\vec{u} \\) và \\( \\vec{v} \\) là",
+ "options": {
+   "A": "\\( 135^\\circ \\).",
+   "B": "\\( 120^\\circ \\).",
+   "C": "\\( 60^\\circ \\).",
+   "D": "\\( 45^\\circ \\)."
+ },
+ "correct": "A",
+ "explanation": "Ta có \\( \\cos(\\vec{u},\\vec{v}) = \\dfrac{\\vec{u}.\\vec{v}}{|\\vec{u}|.|\\vec{v}|} = \\dfrac{-1.0 + 1.(-1) + 0.0}{\\sqrt{2}.1} = -\\dfrac{\\sqrt{2}}{2} \\Rightarrow (\\vec{u},\\vec{v}) = 135^\\circ \\).<br><br>Vậy góc giữa hai véc-tơ \\( \\vec{u} \\) và \\( \\vec{v} \\) là \\( 135^\\circ \\). Đáp án A."},
 
             # ---------------- PHẦN II: ĐÚNG / SAI ---------------
             {"id": "de1_tf_01", "part": 2, "type": "truefalse",
