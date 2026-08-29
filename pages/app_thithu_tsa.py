@@ -4721,7 +4721,7 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                  "type": "truefalse",
                  "content": "Cho hàm số \\( y = f(x) \\) xác định và liên tục trên các khoảng \\( (-\\infty; 1) \\) và \\( (1; +\\infty) \\), có bảng biến thiên như sau:\n\nXét tính đúng, sai của các câu sau:",
                  "statements": [
-                   {"text": "Số tiệm cận đứng của đồ thị hàm số \\( y = h(x) = \\dfrac{5}{f^2(x) - 4f(x) + 3} \\) là 2.", "correct": false},
+                   {"text": "Số tiệm cận đứng của đồ thị hàm số \\( y = h(x) = \\dfrac{5}{f^2(x) - 4f(x) + 3} \\) là 2.", "correct": False},
                    {"text": "Số tiệm cận ngang của đồ thị hàm số \\( y = h(x) \\) là 1.", "correct": True},
                    {"text": "Tổng số tiệm cận đứng và tiệm cận ngang của đồ thị hàm số \\( y = h(x) \\) là 3.", "correct": False}
                  ],
