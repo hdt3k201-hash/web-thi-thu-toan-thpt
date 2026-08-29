@@ -3850,7 +3850,107 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
         "correct": "C",
         "points": 1,
         "explanation": "Từ giả thiết: $x \\cdot f'(x) - f(x) = 2x^2 + 3x^3$. Chia cả hai vế cho $x^2$ (với $x \\ne 0$), ta được:\n$\\dfrac{x \\cdot f'(x) - f(x)}{x^2} = 2 + 3x \\Leftrightarrow \\left[ \\dfrac{f(x)}{x} \\right]' = 2 + 3x$.[cite: 2]\nLấy nguyên hàm hai vế: $\\dfrac{f(x)}{x} = \\int (2 + 3x)dx = 2x + \\dfrac{3}{2}x^2 + C \\Rightarrow f(x) = 2x^2 + \\dfrac{3}{2}x^3 + C \\cdot x$.[cite: 2]\nTheo đề, $f(1) = \\dfrac{7}{2} \\Leftrightarrow 2(1)^2 + \\dfrac{3}{2}(1)^3 + C(1) = \\dfrac{7}{2} \\Rightarrow C = 0$.[cite: 2]\nVậy $f(x) = \\dfrac{3}{2}x^3 + 2x^2$. Suy ra đạo hàm $f'(x) = \\dfrac{9}{2}x^2 + 4x$.[cite: 2]\nKhi đó, $f'(4) = \\dfrac{9}{2}(4^2) + 4(4) = 72 + 16 = 88$. Đáp án đúng là C.[cite: 2]"
-    }
+    },
+
+    # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de5_mc_13',
+                "type": 'mc4',
+                "content": 'Cho hàm số \\( f(x) \\) thỏa mãn \\( x \\cdot f\'(x) - f(x) = 2x^2 + 3x^3 \\), \\( \\forall x \\in TXĐ \\) và \\( f(1) = \\dfrac{7}{2} \\). Giá trị của \\( f\'(4) \\) là bao nhiêu?',
+                "options": {
+                    'A': '512',
+                    'B': '32',
+                    'C': '88',
+                    'D': '128',
+                },
+                "correct": 'C',
+                "points": 1,
+                "explanation": 'Từ giả thiết: \\( x \\cdot f\'(x) - f(x) = 2x^2 + 3x^3 \\).\n\nChia cả hai vế cho \\( x^2 \\) (với \\( x \\ne 0 \\)), ta được:\n\\( \\dfrac{x \\cdot f\'(x) - f(x)}{x^2} = 2 + 3x \\Leftrightarrow \\left[\\dfrac{f(x)}{x}\\right]\' = 2 + 3x \\)\n\nLấy nguyên hàm hai vế, ta có:\n\\( \\dfrac{f(x)}{x} = \\displaystyle\\int (2+3x)\\,dx = 2x + \\dfrac{3}{2}x^2 + C \\Rightarrow f(x) = 2x^2 + \\dfrac{3}{2}x^3 + C\\cdot x \\)\n\nTheo đề, \\( f(1) = \\dfrac{7}{2} \\Leftrightarrow 2(1)^2 + \\dfrac{3}{2}(1)^3 + C(1) = \\dfrac{7}{2} \\Leftrightarrow \\dfrac{7}{2} + C = \\dfrac{7}{2} \\Rightarrow C = 0 \\).\n\nVậy \\( f(x) = \\dfrac{3}{2}x^3 + 2x^2 \\). Suy ra đạo hàm \\( f\'(x) = \\dfrac{9}{2}x^2 + 4x \\).\n\nKhi đó, \\( f\'(4) = \\dfrac{9}{2}(4^2) + 4(4) = \\dfrac{9}{2}\\cdot 16 + 16 = 72 + 16 = 88 \\).\n\nĐáp án đúng là C.',
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de5_sh_14',
+                "type": 'short',
+                "content": 'Cho phương trình \\( x^2 + 3 = 2\\left[x + \\cos^2(ax+b)\\right] \\) với \\( a, b \\in \\left(0, \\dfrac{\\pi}{2}\\right) \\). Để phương trình này có nghiệm thì giá trị của biểu thức \\( \\dfrac{a+b}{\\pi} \\) bằng bao nhiêu?',
+                "blanks": [
+                    {"label": 'a + b/π =', "answers": ['1']},
+                ],
+                "points": 1,
+                "explanation": 'Biến đổi phương trình đã cho:\n\\( x^2 + 3 = 2x + 2\\cos^2(ax+b) \\Leftrightarrow x^2 - 2x + 3 = 2\\cos^2(ax+b) \\)\n\\( \\Leftrightarrow (x-1)^2 + 2 = 2\\cos^2(ax+b) \\)\n\nTa luôn có đánh giá hai vế:\nVế trái: \\( VT = (x-1)^2 + 2 \\ge 2 \\ \\forall x \\in \\mathbb{R} \\).\nVế phải: \\( VP = 2\\cos^2(ax+b) \\le 2 \\ \\forall x \\in \\mathbb{R} \\).\n\nĐể phương trình có nghiệm, dấu bằng phải đồng thời xảy ra ở hai vế, tức là:\n\\( \\begin{cases} (x-1)^2 = 0 \\\\ \\cos^2(ax+b) = 1 \\end{cases} \\Leftrightarrow \\begin{cases} x = 1 \\\\ \\sin(ax+b) = 0 \\end{cases} \\)\n\nThế \\( x = 1 \\) vào phương trình dưới, ta có: \\( \\sin(a+b) = 0 \\Rightarrow a + b = k\\pi \\ (k \\in \\mathbb{Z}) \\).\n\nTheo đề \\( a, b > 0 \\), với \\( a+b \\) nhận giá trị bằng \\( \\pi \\) (ứng với \\( k=1 \\)), ta suy ra tỉ số: \\( \\dfrac{a+b}{\\pi} = 1 \\).',
+            },
+
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de5_mc_15',
+                "type": 'mc4',
+                "content": 'Cho đồ thị hai hàm số \\( f(x) = 2 - x \\) và \\( g(x) = -\\sqrt{x} \\) được biểu diễn ở hình dưới. Ta gọi \\( (H) \\) là miền phẳng xác định bởi \\( f(x), g(x), x = 4 \\) và trục \\( Oy \\). Những biểu thức nào dưới đây là đúng khi tính diện tích miền \\( (H) \\) nói trên?',
+                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau15-de5.PNG',
+                "options": {
+                    'A': '\\( \\displaystyle\\int_0^2 \\sqrt{x}\\,dx + \\int_2^4 (2-x)\\,dx \\)',
+                    'B': '\\( \\displaystyle\\int_0^2 \\sqrt{x}\\,dx - \\int_2^4 (2-x)\\,dx \\)',
+                    'C': '\\( \\displaystyle\\int_0^4 (2-x+\\sqrt{x})\\,dx \\)',
+                    'D': '\\( \\displaystyle\\int_0^1 \\sqrt{x}\\,dx \\)',
+                },
+                "correct": 'C',
+                "points": 1,
+                "explanation": 'Miền \\( (H) \\) được giới hạn bởi đồ thị \\( y = f(x) = 2-x \\), \\( y = g(x) = -\\sqrt{x} \\), trục tung \\( Oy \\ (x=0) \\) và đường thẳng \\( x = 4 \\).\n\nDiện tích hình phẳng được tính bằng công thức:\n\\( S = \\displaystyle\\int_a^b |f(x)-g(x)|\\,dx = \\int_0^4 |(2-x)-(-\\sqrt{x})|\\,dx \\)\n\nTrên đoạn \\( [0;4] \\), dựa vào đồ thị ta thấy đường \\( y = 2-x \\) luôn nằm phía trên đường \\( y = -\\sqrt{x} \\), do đó \\( 2-x > -\\sqrt{x} \\). Suy ra:\n\\( S = \\displaystyle\\int_0^4 (2-x+\\sqrt{x})\\,dx \\)\n\nĐáp án đúng là C.',
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de5_tf_16",
+                "type": "truefalse",
+                "content": "Cho biểu thức \\( A = \\dfrac{1+2+3+...+n}{2024n^2+2025} \\). Đánh giá tính Đúng/Sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "Dãy \\( 1, 2, 3, ..., n \\) là một cấp số cộng.", "correct": True},
+                    {"text": "\\( 1+2+3+...+n = \\dfrac{n(n+1)}{3} \\).", "correct": False},
+                    {"text": "\\( \\displaystyle\\lim_{n\\to\\infty} A = 0 \\).", "correct": False},
+                ],
+                "points": 1,
+                "explanation": 'Mệnh đề 1: Dãy \\( 1, 2, 3, ..., n \\) có số hạng đầu \\( u_1 = 1 \\), các số hạng liên tiếp cách nhau một lượng không đổi \\( d = 1 \\). Đây chính xác là một cấp số cộng. \\( \\Rightarrow \\) Đúng.\n\nMệnh đề 2: Tổng của \\( n \\) số hạng đầu tiên của cấp số cộng trên là \\( S_n = \\dfrac{n(u_1+u_n)}{2} = \\dfrac{n(n+1)}{2} \\). Biểu thức trong đề bài là \\( \\dfrac{n(n+1)}{3} \\). \\( \\Rightarrow \\) Sai.\n\nMệnh đề 3: Thay tổng \\( S_n \\) vào biểu thức \\( A \\), ta có:\n\\( A = \\dfrac{\\frac{n(n+1)}{2}}{2024n^2+2025} = \\dfrac{n^2+n}{4048n^2+4050} \\)\n\nGiới hạn của dãy số khi \\( n \\to \\infty \\) là:\n\\( \\displaystyle\\lim_{n\\to\\infty} A = \\lim_{n\\to\\infty} \\dfrac{n^2+n}{4048n^2+4050} = \\dfrac{1}{4048} \\ne 0 \\)\n\\( \\Rightarrow \\) Sai.',
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de5_tf_17",
+                "type": "truefalse",
+                "content": "Cho hình chóp \\( S.ABCD \\), \\( SA \\) vuông góc với \\( (ABCD) \\), \\( ABCD \\) là hình chữ nhật. \\( M \\) là trung điểm \\( AD \\), \\( G \\) là trọng tâm tam giác \\( SBC \\). Biết mặt phẳng \\( (ADG) \\) vuông góc với mặt phẳng \\( (SBC) \\). Đánh giá tính Đúng/Sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "\\( (SBC) \\) vuông góc với \\( (SAB) \\).", "correct": True},
+                    {"text": "\\( MG \\) vuông góc với \\( (SBC) \\).", "correct": False},
+                    {"text": "\\( SA = 2SB \\).", "correct": False},
+                ],
+                "points": 1,
+                "explanation": 'Mệnh đề 1: Ta có \\( BC \\perp AB \\) (do \\( ABCD \\) là hcn) và \\( BC \\perp SA \\) (do \\( SA \\perp (ABCD) \\)). Suy ra \\( BC \\perp (SAB) \\). Vì \\( BC \\subset (SBC) \\) nên \\( (SBC) \\perp (SAB) \\). \\( \\Rightarrow \\) Đúng.\n\nMệnh đề 2: Gọi tọa độ hóa với \\( A(0,0,0), B(a,0,0), D(0,b,0), S(0,0,h) \\). Suy ra \\( C(a,b,0) \\). Điểm \\( M \\) là trung điểm \\( AD \\Rightarrow M\\left(0,\\dfrac{b}{2},0\\right) \\). Trọng tâm \\( G \\) của tam giác \\( SBC \\): \\( x_G = \\dfrac{a+a+0}{3} = \\dfrac{2a}{3}, y_G = \\dfrac{0+b+0}{3} = \\dfrac{b}{3}, z_G = \\dfrac{0+0+h}{3} = \\dfrac{h}{3} \\). Vectơ \\( \\vec{MG} = \\left(\\dfrac{2a}{3}, -\\dfrac{b}{6}, \\dfrac{h}{3}\\right) \\).\n\nDo \\( (SAB) \\perp (SBC) \\) và \\( AB \\subset (SAB) \\), nên pháp tuyến của \\( (SBC) \\) nằm trong \\( (SAB) \\), tức là có thành phần theo trục \\( Oy \\) bằng 0 (cụ thể \\( \\vec{n}_{(SBC)} = (h,0,a) \\)). Nhận thấy \\( \\vec{MG} \\) có thành phần \\( y = -\\dfrac{b}{6} \\ne 0 \\) nên \\( \\vec{MG} \\) không thể cùng phương với pháp tuyến của \\( (SBC) \\). Do đó \\( MG \\) không vuông góc với \\( (SBC) \\). \\( \\Rightarrow \\) Sai.\n\nMệnh đề 3: Cũng theo tọa độ, \\( \\vec{n}_{(ADG)} = \\left(\\dfrac{bh}{3}, 0, -\\dfrac{2ab}{3}\\right) \\). Do \\( (ADG) \\perp (SBC) \\) nên \\( \\vec{n}_{(ADG)} \\cdot \\vec{n}_{(SBC)} = 0 \\Leftrightarrow \\dfrac{bh^2}{3} - \\dfrac{2a^2b}{3} = 0 \\Leftrightarrow h^2 = 2a^2 \\Leftrightarrow SA = AB\\sqrt{2} \\).\n\nMặt khác, \\( SB = \\sqrt{SA^2+AB^2} = \\sqrt{2a^2+a^2} = a\\sqrt{3} \\). Do đó \\( SA = a\\sqrt{2} \\ne 2a\\sqrt{3} = 2SB \\). \\( \\Rightarrow \\) Sai.',
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de5_tf_18",
+                "type": "truefalse",
+                "content": "Cho dãy số \\( u_n \\) xác định bởi hệ thức: \\( \\begin{cases} u_1 = 3 \\\\ u_{n+1} = 2u_n \\end{cases} (\\forall n \\ge 1) \\). Đánh giá tính Đúng/Sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "Dãy \\( u_n \\) là một cấp số nhân.", "correct": True},
+                    {"text": "\\( \\displaystyle\\lim_{n\\to\\infty} \\dfrac{u_n}{2^n-1} = \\dfrac{3}{2} \\).", "correct": True},
+                    {"text": "Giá trị \\( n \\) nhỏ nhất để \\( u_n > 5^{100} \\) là 232.", "correct": True},
+                ],
+                "points": 1,
+                "explanation": 'Mệnh đề 1: Dãy \\( u_n \\) có \\( u_{n+1} = 2u_n \\), nghĩa là tỉ số giữa hai số hạng liên tiếp luôn bằng hằng số \\( q = 2 \\). Đây là định nghĩa của một cấp số nhân. \\( \\Rightarrow \\) Đúng.\n\nMệnh đề 2: Công thức số hạng tổng quát của cấp số nhân là \\( u_n = u_1 \\cdot q^{n-1} = 3\\cdot 2^{n-1} \\). Ta có giới hạn:\n\\( \\displaystyle\\lim_{n\\to\\infty} \\dfrac{u_n}{2^n-1} = \\lim_{n\\to\\infty} \\dfrac{3\\cdot 2^{n-1}}{2^n-1} = \\lim_{n\\to\\infty} \\dfrac{\\frac{3}{2}\\cdot 2^n}{2^n-1} = \\lim_{n\\to\\infty} \\dfrac{\\frac{3}{2}}{1-\\frac{1}{2^n}} = \\dfrac{3}{2} \\)\n\\( \\Rightarrow \\) Đúng.\n\nMệnh đề 3: Bất phương trình \\( u_n > 5^{100} \\) trở thành:\n\\( 3\\cdot 2^{n-1} > 5^{100} \\Leftrightarrow 2^{n-1} > \\dfrac{5^{100}}{3} \\Leftrightarrow n-1 > \\log_2\\left(\\dfrac{5^{100}}{3}\\right) \\)\n\\( \\Leftrightarrow n > 1 + 100\\log_2(5) - \\log_2(3) \\)\n\nBiết rằng \\( \\log_2(5) \\approx 2.3219 \\) và \\( \\log_2(3) \\approx 1.5850 \\), ta được:\n\\( n > 1 + 100 \\times 2.3219 - 1.5850 = 1 + 232.19 - 1.5850 = 231.605 \\)\n\nVì \\( n \\in \\mathbb{N}^* \\), giá trị nguyên nhỏ nhất của \\( n \\) thỏa mãn là \\( n = 232 \\). \\( \\Rightarrow \\) Đúng.',
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de5_tf_19",
+                "type": "truefalse",
+                "content": "Cho \\( a, b > 1 \\). Ta đặt \\( \\log_b a = m \\). Đánh giá tính Đúng/Sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "\\( \\log_{\\sqrt{a}} b = \\dfrac{2}{m} \\)", "correct": True},
+                    {"text": "\\( \\log_{\\sqrt[3]{a}}(ab^2) = \\dfrac{3m+6}{m} \\)", "correct": True},
+                ],
+                "points": 1,
+                "explanation": 'Từ giả thiết \\( \\log_b a = m \\), suy ra \\( \\log_a b = \\dfrac{1}{m} \\) (do \\( a, b > 1 \\) nên \\( m \\ne 0 \\)).\n\nMệnh đề 1: Áp dụng công thức đổi cơ số và biến đổi số mũ:\n\\( \\log_{\\sqrt{a}} b = \\log_{a^{1/2}} b = \\dfrac{1}{\\frac{1}{2}}\\log_a b = 2\\log_a b = 2\\cdot\\dfrac{1}{m} = \\dfrac{2}{m} \\)\n\\( \\Rightarrow \\) Đúng.\n\nMệnh đề 2: Tương tự, ta phân tích biểu thức logarit:\n\\( \\log_{\\sqrt[3]{a}}(ab^2) = \\log_{a^{1/3}}(ab^2) = 3\\log_a(ab^2) \\)\n\\( = 3(\\log_a a + \\log_a b^2) = 3(1 + 2\\log_a b) \\)\n\\( = 3\\left(1 + 2\\cdot\\dfrac{1}{m}\\right) = 3\\left(\\dfrac{m+2}{m}\\right) = \\dfrac{3m+6}{m} \\)\n\\( \\Rightarrow \\) Đúng.',
+            }
 
         
     
