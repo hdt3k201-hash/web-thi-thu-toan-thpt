@@ -48,41 +48,76 @@ EXAMS = [
         "description": "22 câu hỏi: 12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn.",
         "questions": [
             # ---------------- PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN ----------------
+
             {"id": "de1_mc_01", "part": 1, "type": "mc4",
-             "content": "Hàm số \\( y = x^3 - 3x + 2 \\) đồng biến trên khoảng nào sau đây?",
-             "options": {"A": "\\( (-1;1) \\)", "B": "\\( (1;+\\infty) \\)", "C": "\\( (-\\infty;0) \\)", "D": "\\( (0;1) \\)"},
-             "correct": "B",
-             "explanation": "\\( y' = 3x^2-3 = 0 \\Leftrightarrow x=\\pm1 \\). Vì hệ số bậc cao dương nên \\( y'>0 \\) khi \\( x<-1 \\) hoặc \\( x>1 \\). Vậy hàm số đồng biến trên \\( (1;+\\infty) \\) (và \\( (-\\infty;-1) \\)). Đáp án B."},
+ "content": "Cho hàm số \\( y = \\dfrac{x-1}{x} \\). Mệnh đề nào sau đây là đúng?",
+ "options": {
+   "A": "Hàm số đã cho đồng biến trên \\( \\mathbb{R}\\setminus\\{0\\} \\).",
+   "B": "Hàm số đã cho chỉ đồng biến trên khoảng \\( (-\\infty;0) \\).",
+   "C": "Hàm số đã cho đồng biến trên mỗi khoảng xác định.",
+   "D": "Hàm số đã cho chỉ đồng biến trên khoảng \\( (0;+\\infty) \\)."
+ },
+ "correct": "C",
+ "explanation": "Tập xác định \\( D = \\mathbb{R}\\setminus\\{0\\} \\).<br><br>Ta có \\( y' = \\dfrac{1}{x^2} > 0,\\ \\forall x \\neq 0 \\) nên hàm số đồng biến trên các khoảng \\( (-\\infty;0) \\) và \\( (0;+\\infty) \\).<br><br>Vậy hàm số đồng biến trên mỗi khoảng xác định. Đáp án C."},
 
-            {"id": "de1_mc_02", "part": 1, "type": "mc4",
-             "content": "Đạo hàm của hàm số \\( y = e^{2x+1} \\) là:",
-             "options": {"A": "\\( e^{2x+1} \\)", "B": "\\( 2e^{2x+1} \\)", "C": "\\( (2x+1)e^{2x} \\)", "D": "\\( 2xe^{2x+1} \\)"},
-             "correct": "B",
-             "explanation": "Áp dụng công thức \\( (e^{u})' = u'\\cdot e^{u} \\) với \\( u=2x+1,\\ u'=2 \\), ta được \\( y' = 2e^{2x+1} \\). Đáp án B."},
+{"id": "de1_mc_02", "part": 1, "type": "mc4",
+ "content": "Tiệm cận ngang của đồ thị hàm số \\( y = \\dfrac{1-2x}{x+1} \\) là",
+ "options": {
+   "A": "\\( y = 1 \\).",
+   "B": "\\( y = 2 \\).",
+   "C": "\\( y = -2 \\).",
+   "D": "\\( x = -1 \\)."
+ },
+ "correct": "C",
+ "explanation": "Ta có:<br><br>\\( \\displaystyle\\lim_{x\\to+\\infty} y = \\lim_{x\\to+\\infty}\\dfrac{1-2x}{x+1} = -2 \\)<br><br>\\( \\displaystyle\\lim_{x\\to-\\infty} y = \\lim_{x\\to-\\infty}\\dfrac{1-2x}{x+1} = -2 \\)<br><br>Suy ra đồ thị hàm số có tiệm cận ngang \\( y = -2 \\). Đáp án C."},
 
-            {"id": "de1_mc_03", "part": 1, "type": "mc4",
-             "content": "Tập nghiệm của bất phương trình \\( \\log_2(x-1) < 3 \\) là:",
-             "options": {"A": "\\( (1;9) \\)", "B": "\\( (-\\infty;9) \\)", "C": "\\( (1;8) \\)", "D": "\\( (0;9) \\)"},
-             "correct": "A",
-             "explanation": "Điều kiện \\( x>1 \\). Bất phương trình \\( \\Leftrightarrow x-1<2^3=8 \\Leftrightarrow x<9 \\). Kết hợp điều kiện: \\( x\\in(1;9) \\). Đáp án A."},
+{"id": "de1_mc_03", "part": 1, "type": "mc4",
+ "content": "Hàm số \\( y = 2x^3 - x^2 + 5 \\) có điểm cực đại là",
+ "options": {
+   "A": "\\( y = 5 \\).",
+   "B": "\\( x = 0 \\).",
+   "C": "\\( M(0;5) \\).",
+   "D": "\\( x = \\dfrac{1}{3} \\)."
+ },
+ "correct": "B",
+ "explanation": "Ta có \\( y' = 6x^2 - 2x,\\ y'' = 12x - 2 \\).<br><br>\\( y' = 0 \\Leftrightarrow \\begin{bmatrix} x = 0 \\\\ x = \\dfrac{1}{3} \\end{bmatrix} \\)<br><br>\\( y''(0) = -2 < 0 \\Rightarrow x = 0 \\) là điểm cực đại của hàm số \\( y = 2x^3 - x^2 + 5 \\).<br><br><i>Chú ý: Phân biệt điểm cực đại của hàm số là \\( x_{cđ} \\), còn điểm cực đại của đồ thị hàm số là \\( (x_{cđ}; y_{cđ}) \\).</i> Đáp án B."},
 
-            {"id": "de1_mc_04", "part": 1, "type": "mc4",
-             "content": "Trong không gian \\( Oxyz \\), cho \\( A(1;2;3) \\), \\( B(3;0;1) \\). Trung điểm \\( I \\) của đoạn \\( AB \\) có tọa độ là:",
-             "options": {"A": "\\( (2;1;2) \\)", "B": "\\( (4;2;4) \\)", "C": "\\( (1;1;1) \\)", "D": "\\( (2;2;1) \\)"},
-             "correct": "A",
-             "explanation": "\\( I = \\left(\\dfrac{1+3}{2};\\dfrac{2+0}{2};\\dfrac{3+1}{2}\\right) = (2;1;2) \\). Đáp án A."},
+{"id": "de1_mc_04", "part": 1, "type": "mc4",
+ "content": "Đường cong trong hình dưới là đồ thị của một hàm số được liệt kê ở bốn phương án A, B, C, D dưới đây. Hỏi hàm số đó là hàm số nào?",
+ "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de1_cau4.PNG",
+ "options": {
+   "A": "\\( y = x^4 - x^2 + 1 \\).",
+   "B": "\\( y = -x^3 + 3x + 1 \\).",
+   "C": "\\( y = -x^2 + x - 1 \\).",
+   "D": "\\( y = x^3 - 3x + 1 \\)."
+ },
+ "correct": "D",
+ "explanation": "Dựa vào hình dạng đồ thị: đây là đường cong bậc ba, có hệ số của \\( x^3 \\) dương (nhánh cuối đi lên), có hai điểm cực trị (một cực đại, một cực tiểu).<br><br>Loại phương án A vì đây là hàm bậc bốn (đồ thị dạng chữ W hoặc M, có trục đối xứng).<br><br>Loại phương án C vì đây là hàm bậc hai (đồ thị là parabol).<br><br>Loại phương án B vì hệ số của \\( x^3 \\) âm nên nhánh cuối của đồ thị phải đi xuống, không phù hợp với hình vẽ.<br><br>Vậy hàm số cần tìm là \\( y = x^3 - 3x + 1 \\). Đáp án D."},
 
-            {"id": "de1_mc_05", "part": 1, "type": "mc4",
-             "content": "Cho cấp số cộng \\( (u_n) \\) có \\( u_1 = 3 \\), công sai \\( d = 4 \\). Số hạng \\( u_{10} \\) bằng:",
-             "options": {"A": "39", "B": "43", "C": "35", "D": "42"},
-             "correct": "A",
-             "explanation": "\\( u_{10} = u_1 + 9d = 3 + 9\\cdot4 = 39 \\). Đáp án A."},
+{"id": "de1_mc_05", "part": 1, "type": "mc4",
+ "content": "Cho hàm số \\( y = f(x) \\) xác định trên nửa khoảng \\( [-1;3) \\) có bảng biến thiên như hình vẽ.",
+ "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de1_cau5.PNG",
+ "content_after_image": "Khẳng định nào sau đây đúng?",
+ "options": {
+   "A": "\\( \\displaystyle\\min_{x\\in[-1;3)} f(x) = -2 \\).",
+   "B": "\\( \\displaystyle\\max_{x\\in[-1;3)} f(x) = 2 \\).",
+   "C": "\\( \\displaystyle\\min_{x\\in[-1;3)} f(x) = -1 \\).",
+   "D": "\\( \\displaystyle\\max_{x\\in[-1;3)} f(x) = 1 \\)."
+ },
+ "correct": "A",
+ "explanation": "Dựa vào bảng biến thiên ta thấy \\( f(x) \\geq -2\\ \\ \\forall x \\in [-1;3) \\) và \\( f(-1) = -2 \\).<br><br>Nên \\( \\displaystyle\\min_{x\\in[-1;3)} f(x) = -2 \\). Đáp án A."},
 
-            {"id": "de1_mc_06", "part": 1, "type": "mc4",
-             "content": "Một hộp có 5 viên bi đỏ và 3 viên bi xanh. Lấy ngẫu nhiên 2 viên. Xác suất để lấy được 2 viên cùng màu là:",
-             "options": {"A": "\\( \\dfrac{13}{28} \\)", "B": "\\( \\dfrac{15}{28} \\)", "C": "\\( \\dfrac{5}{28} \\)", "D": "\\( \\dfrac{3}{28} \\)"},
-             "correct": "A",
-             "explanation": "\\( n(\\Omega) = C_8^2 = 28 \\). Số cách chọn 2 bi cùng màu: \\( C_5^2 + C_3^2 = 10+3=13 \\). Xác suất \\( = \\dfrac{13}{28} \\). Đáp án A."},
+{"id": "de1_mc_06", "part": 1, "type": "mc4",
+ "content": "Cho hàm số \\( y = f(x) \\) xác định trên \\( \\mathbb{R}\\setminus\\{1\\} \\), liên tục trên mỗi khoảng xác định và có bảng biến thiên như hình bên. Hỏi đồ thị hàm số đã cho có bao nhiêu đường tiệm cận?",
+ "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de1_cau6.PNG",
+ "options": {
+   "A": "\\( 2 \\).",
+   "B": "\\( 3 \\).",
+   "C": "\\( 4 \\).",
+   "D": "\\( 1 \\)."
+ },
+ "correct": "B",
+ "explanation": "Nhìn bảng biến thiên ta thấy:<br><br>\\( \\displaystyle\\lim_{x\\to+\\infty} f(x) = 5 \\)<br><br>\\( \\displaystyle\\lim_{x\\to-\\infty} f(x) = 3 \\)<br><br>\\( \\displaystyle\\lim_{x\\to 1^+} f(x) = +\\infty \\)<br><br>\\( \\displaystyle\\lim_{x\\to 1^-} f(x) = -\\infty \\)<br><br>Vì vậy đồ thị hàm số có ba đường tiệm cận: một tiệm cận đứng \\( x = 1 \\) và hai tiệm cận ngang \\( y = 3 \\) và \\( y = 5 \\). Đáp án B."},
 
             {"id": "de1_mc_07", "part": 1, "type": "mc4",
              "content": "Họ nguyên hàm của hàm số \\( f(x) = 3x^2 - 2x + 1 \\) là:",
