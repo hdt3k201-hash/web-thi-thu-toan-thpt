@@ -4102,7 +4102,116 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                 ],
                 "points": 1,
                 "explanation": 'Để đồ thị hàm số \\( f(x) \\) có đúng một đường tiệm cận ngang, thì giới hạn của hàm số tại \\( -\\infty \\) và \\( +\\infty \\) phải tồn tại hữu hạn và bằng nhau, đồng thời hai giới hạn này phải cùng xác định một mức ngang duy nhất. Xét điều kiện tương đương của bài toán, ta cần:\n\\( m = m^3 - 3m^2 + 4m - 2 \\)\n\\( \\Leftrightarrow m^3 - 3m^2 + 3m - 2 = 0 \\)\n\\( \\Leftrightarrow (m-2)(m^2-m+1) = 0 \\)\n\nXét \\( m^2 - m + 1 \\): có \\( \\Delta = 1 - 4 = -3 < 0 \\) nên vô nghiệm. Do đó phương trình chỉ có nghiệm duy nhất \\( m = 2 \\).\n\nVậy có duy nhất 1 giá trị của \\( m \\) thỏa mãn, tổng các giá trị của \\( m \\) bằng \\( \\mathbf{2} \\).',
+            },
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de5_sh_31',
+                "type": 'short',
+                "content": 'Chọn một số nguyên dương \\( k \\le 100 \\). Xác suất để \\( k \\) chia hết cho 4 hoặc 6 có thể viết được dưới dạng phân số tối giản \\( \\dfrac{a}{b} \\). Giá trị của \\( a+b \\) bằng ___.',
+                "blanks": [
+                    {"label": 'a + b =', "answers": ['133']},
+                ],
+                "points": 1,
+                "explanation": 'Gọi \\( A \\) là biến cố "\\( k \\) chia hết cho 4", \\( B \\) là biến cố "\\( k \\) chia hết cho 6".\n\nSố các số nguyên dương \\( k \\le 100 \\) chia hết cho 4 là: \\( \\left\\lfloor \\dfrac{100}{4} \\right\\rfloor = 25 \\).\n\nSố các số nguyên dương \\( k \\le 100 \\) chia hết cho 6 là: \\( \\left\\lfloor \\dfrac{100}{6} \\right\\rfloor = 16 \\).\n\nSố các số nguyên dương \\( k \\le 100 \\) chia hết cho cả 4 và 6, tức chia hết cho \\( \\text{BCNN}(4,6) = 12 \\), là: \\( \\left\\lfloor \\dfrac{100}{12} \\right\\rfloor = 8 \\).\n\nTheo nguyên lý bù trừ, số các số chia hết cho 4 hoặc 6 là:\n\\( n(A\\cup B) = 25 + 16 - 8 = 33 \\)\n\nXác suất cần tìm: \\( P = \\dfrac{33}{100} \\). Vì \\( \\gcd(33,100)=1 \\) nên đây đã là phân số tối giản, do đó \\( a=33, b=100 \\).\n\nVậy \\( a+b = 33+100 = 133 \\).',
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de5_sh_32',
+                "type": 'short',
+                "content": 'Một con ốc sên leo lên một cái cột cao 50 cm. Chú bắt đầu leo từ lúc 6h sáng ngày 10/12. Từ 6h sáng hôm nay đến 18h hôm nay (tức là sau 12 tiếng), chú leo được 15 cm. Tuy nhiên, cứ mỗi đêm từ 18h đến 6h sáng ngày mai, chú lại bị tụt xuống 10 cm.\n\nMỗi ngày con ốc bò được một khoảng là ___ cm.\n\nCon ốc sên sẽ leo lên đến đỉnh cột vào ngày ___.',
+                "blanks": [
+                    {"label": 'Mỗi ngày ốc bò được (cm) =', "answers": ['5']},
+                    {"label": 'Ngày ốc lên đến đỉnh cột =', "answers": ['17/12']},
+                ],
+                "points": 1,
+                "explanation": 'Trong một chu kỳ 24 giờ (1 ngày đêm), ốc sên leo lên được 15 cm vào ban ngày rồi bị tụt xuống 10 cm vào ban đêm. Do đó, sau mỗi ngày đêm trọn vẹn, độ cao tịnh tiến thêm được là:\n\\( 15 - 10 = 5 \\) (cm).\n\nGọi vị trí của ốc lúc 6h sáng mỗi ngày (trước khi leo) là \\( h_n \\) (với \\( n \\) là số thứ tự ngày, \\( h_1 = 0 \\) ứng với 6h sáng 10/12). Ta có \\( h_n = 5(n-1) \\).\n\nTrong ngày thứ \\( n \\), ốc leo từ \\( h_n \\) lên \\( h_n + 15 \\) vào lúc 18h. Ốc chạm đỉnh cột (50 cm) ngay khi \\( h_n + 15 \\ge 50 \\Leftrightarrow 5(n-1) \\ge 35 \\Leftrightarrow n \\ge 8 \\).\n\nVới \\( n = 8 \\): vị trí đầu ngày là \\( h_8 = 5\\times 7 = 35 \\) cm, leo thêm 15 cm vào lúc 18h ngày thứ 8 thì đạt đúng \\( 35+15 = 50 \\) cm — chạm đỉnh cột (không bị tụt xuống nữa vì đã lên đến đỉnh).\n\nNgày thứ 8 tính từ 10/12 là: \\( 10/12 + 7 \\) ngày \\( = 17/12 \\).\n\nVậy con ốc sên leo lên đến đỉnh cột vào ngày 17/12 (lúc 18h).',
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de5_sh_33',
+                "type": 'short',
+                "content": 'Cho 2 người lớn, 4 trẻ em và 6 chiếc ghế. Số cách để sắp xếp sao cho 2 người lớn ngồi ngoài cùng bằng ___.',
+                "blanks": [
+                    {"label": 'Số cách sắp xếp =', "answers": ['48']},
+                ],
+                "points": 1,
+                "explanation": '6 chiếc ghế được xếp thành một hàng, tổng cộng có \\( 2+4=6 \\) người vừa đủ ngồi hết 6 ghế. Yêu cầu 2 người lớn ngồi ở hai vị trí ngoài cùng (đầu và cuối hàng ghế).\n\n- Bước 1: Xếp 2 người lớn vào 2 vị trí ngoài cùng: có \\( 2! = 2 \\) cách.\n- Bước 2: Xếp 4 trẻ em vào 4 vị trí còn lại ở giữa: có \\( 4! = 24 \\) cách.\n\nTheo quy tắc nhân, số cách sắp xếp thỏa mãn là:\n\\( 2! \\times 4! = 2\\times 24 = 48 \\) (cách).',
+            },
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de5_sh_34',
+                "type": 'short',
+                "content": 'Số các số nguyên \\( x \\in [-100;100] \\) thỏa mãn \\( \\left(\\dfrac{3}{\\sqrt{10}}\\right)^{\\frac{1}{x}} \\ge \\left(\\dfrac{3}{\\sqrt{10}}\\right)^{\\frac{1}{30}} \\) là ___.',
+                "blanks": [
+                    {"label": 'Số các số nguyên x thỏa mãn =', "answers": ['171']},
+                ],
+                "points": 1,
+                "explanation": 'Điều kiện: \\( x \\ne 0 \\) (để \\( \\frac{1}{x} \\) xác định), \\( x \\in [-100;100] \\).\n\nCơ số \\( \\dfrac{3}{\\sqrt{10}} \\approx \\dfrac{3}{3.162} \\approx 0.9487 \\), thỏa \\( 0 < \\dfrac{3}{\\sqrt{10}} < 1 \\). Với cơ số nhỏ hơn 1, hàm số mũ \\( b^u \\) là hàm nghịch biến theo \\( u \\), do đó:\n\\( \\left(\\dfrac{3}{\\sqrt{10}}\\right)^{\\frac{1}{x}} \\ge \\left(\\dfrac{3}{\\sqrt{10}}\\right)^{\\frac{1}{30}} \\Leftrightarrow \\dfrac{1}{x} \\le \\dfrac{1}{30} \\)\n\n**Trường hợp \\( x > 0 \\):** Hàm \\( \\dfrac{1}{x} \\) nghịch biến trên \\( (0;+\\infty) \\), nên \\( \\dfrac{1}{x} \\le \\dfrac{1}{30} \\Leftrightarrow x \\ge 30 \\).\nKết hợp \\( x \\in [-100;100] \\) và \\( x \\) nguyên dương: \\( x \\in \\{30, 31, ..., 100\\} \\), có \\( 100-30+1 = 71 \\) giá trị.\n\n**Trường hợp \\( x < 0 \\):** Khi đó \\( \\dfrac{1}{x} < 0 < \\dfrac{1}{30} \\), bất phương trình luôn đúng với mọi \\( x \\) nguyên âm.\nKết hợp \\( x \\in [-100;100] \\): \\( x \\in \\{-100, -99, ..., -1\\} \\), có 100 giá trị.\n\nVậy tổng số các số nguyên \\( x \\) thỏa mãn là: \\( 71 + 100 = 171 \\).',
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de5_tf_35",
+                "type": "truefalse",
+                "content": "Cho \\( A \\) là một số tự nhiên có 2 chữ số. Biết khi nhân \\( A \\) với 3, sau đó trừ đi 7 thì ta được một số tròn chục. Xét tính Đúng/Sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "Số dư của \\( A \\) khi chia cho 10 là 9.", "correct": True},
+                    {"text": "Lấy \\( A \\) nhân 7 trừ 3 thì được số chia hết cho 10.", "correct": True},
+                ],
+                "points": 1,
+                "explanation": 'Theo giả thiết, \\( 3A - 7 \\) là số tròn chục, tức là \\( 3A - 7 \\equiv 0 \\pmod{10} \\Leftrightarrow 3A \\equiv 7 \\pmod{10} \\).\n\nVì \\( 3\\times 7 = 21 \\equiv 1 \\pmod{10} \\), nên 7 là nghịch đảo của 3 theo modulo 10. Nhân hai vế của \\( 3A \\equiv 7 \\pmod{10} \\) với 7, ta được:\n\\( A \\equiv 7\\times 7 = 49 \\equiv 9 \\pmod{10} \\)\n\n**Mệnh đề a):** Số dư của \\( A \\) khi chia cho 10 chính là \\( 9 \\). \\( \\Rightarrow \\) Đúng.\n\n**Mệnh đề b):** Xét \\( 7A - 3 \\pmod{10} \\). Vì \\( A \\equiv 9 \\pmod{10} \\):\n\\( 7A - 3 \\equiv 7\\times 9 - 3 = 63 - 3 = 60 \\equiv 0 \\pmod{10} \\)\nVậy \\( 7A - 3 \\) chia hết cho 10. \\( \\Rightarrow \\) Đúng.',
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de5_sh_36',
+                "type": 'short',
+                "content": 'Bốc năm số ngẫu nhiên từ bé đến lớn biết tổng 5 số chia 5 bằng 140; tổng 3 số đầu chia 3 bằng 120; tổng 3 số sau chia 3 bằng 150. Khi đó số thứ 3 là ___.',
+                "blanks": [
+                    {"label": 'Số thứ 3 =', "answers": ['110']},
+                ],
+                "points": 1,
+                "explanation": 'Gọi 5 số theo thứ tự từ bé đến lớn là \\( a_1 \\le a_2 \\le a_3 \\le a_4 \\le a_5 \\).\n\nTừ giả thiết:\n\\( \\dfrac{a_1+a_2+a_3+a_4+a_5}{5} = 140 \\Rightarrow a_1+a_2+a_3+a_4+a_5 = 700 \\)\n\\( \\dfrac{a_1+a_2+a_3}{3} = 120 \\Rightarrow a_1+a_2+a_3 = 360 \\)\n\\( \\dfrac{a_3+a_4+a_5}{3} = 150 \\Rightarrow a_3+a_4+a_5 = 450 \\)\n\nCộng hai đẳng thức thứ 2 và thứ 3:\n\\( (a_1+a_2+a_3) + (a_3+a_4+a_5) = 360+450 = 810 \\)\n\\( \\Leftrightarrow (a_1+a_2+a_3+a_4+a_5) + a_3 = 810 \\)\n\\( \\Leftrightarrow 700 + a_3 = 810 \\)\n\\( \\Leftrightarrow a_3 = 110 \\)\n\nVậy số thứ 3 là \\( 110 \\).',
+            },
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de5_sh_37',
+                "type": 'short',
+                "content": 'Chia 160 quyển vở cho 10 người. Nhóm 1 gồm 3 người, mỗi người ít nhất 10 quyển. Nhóm 2 gồm 4 người, mỗi người ít nhất 15 quyển. Nhóm 3 gồm 3 người, mỗi người ít nhất 20 quyển. Số cách chia thoả mãn là ___.',
+                "blanks": [
+                    {"label": 'Số cách chia =', "answers": ['92378']},
+                ],
+                "points": 1,
+                "explanation": 'Trước tiên, phát cho mỗi người số quyển vở tối thiểu theo yêu cầu:\nNhóm 1 (3 người, mỗi người ít nhất 10 quyển): tổng tối thiểu \\( = 3\\times 10 = 30 \\) quyển.\nNhóm 2 (4 người, mỗi người ít nhất 15 quyển): tổng tối thiểu \\( = 4\\times 15 = 60 \\) quyển.\nNhóm 3 (3 người, mỗi người ít nhất 20 quyển): tổng tối thiểu \\( = 3\\times 20 = 60 \\) quyển.\n\nTổng số quyển vở tối thiểu đã phát: \\( 30+60+60 = 150 \\) quyển.\n\nSố quyển vở còn lại cần chia tiếp (không ràng buộc gì thêm, có thể nhận 0 quyển): \\( 160-150 = 10 \\) quyển, chia cho 10 người bất kỳ.\n\nĐây là bài toán chia 10 phần vở giống nhau cho 10 người (không phân biệt điều kiện thêm), số cách chia bằng số nghiệm nguyên không âm của phương trình \\( x_1+x_2+\\cdots+x_{10} = 10 \\), theo công thức tổ hợp lặp:\n\\( C_{10+10-1}^{10-1} = C_{19}^{9} = 92378 \\)\n\nVậy số cách chia thoả mãn là \\( 92378 \\).',
+            },
+
+            # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de5_sh_38',
+                "type": 'short',
+                "content": 'Trong mặt phẳng \\( Oxy \\) cho điểm \\( M(2;0) \\) và đường thẳng \\( (\\Delta): x = -2 \\). Khi đó tập hợp tất cả các điểm cách đều \\( M \\) và \\( \\Delta \\) là một parabol có phương trình \\( y^2 = 2px \\). Giá trị của \\( p \\) bằng ___.',
+                "blanks": [
+                    {"label": 'p =', "answers": ['4']},
+                ],
+                "points": 1,
+                "explanation": 'Tập hợp các điểm cách đều một điểm cố định \\( M \\) (tiêu điểm) và một đường thẳng cố định \\( \\Delta \\) (đường chuẩn) là một parabol.\n\nVới parabol chính tắc \\( y^2 = 4ax \\), tiêu điểm là \\( F(a;0) \\) và đường chuẩn là \\( x = -a \\).\n\nSo sánh với giả thiết: tiêu điểm \\( M(2;0) \\Rightarrow a = 2 \\); đường chuẩn \\( x=-2 \\) khớp với \\( x=-a=-2 \\). Vậy phương trình parabol là:\n\\( y^2 = 4ax = 4\\times 2\\times x = 8x \\)\n\nSo sánh với dạng đề cho \\( y^2 = 2px \\): \\( 2p = 8 \\Rightarrow p = 4 \\).\n\nVậy \\( p = 4 \\).',
+            },
+
+            # ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+                "id": "de5_dd_39",
+                "type": "dragdrop",
+                "content": "Cho phương trình \\( 9^x + m\\cdot 3^{x+1} + 3m^2 - 12 = 0 \\). Khi đó tập hợp tất cả các giá trị của \\( m \\) để phương trình có 2 nghiệm phân biệt là \\( m \\in (a;b) \\). Kéo và thả phương án thích hợp vào ô trống: Giá trị biểu thức \\( a+b \\) bằng ___.",
+                "options_pool": ["-6", "-4", "6", "2"],
+                "blanks": [
+                    {"label": "Giá trị biểu thức a + b bằng", "answer": "-6"},
+                ],
+                "points": 1,
+                "explanation": 'Đặt \\( t = 3^x \\ (t>0) \\). Vì \\( 9^x = (3^x)^2 = t^2 \\) và \\( 3^{x+1} = 3\\cdot 3^x = 3t \\), phương trình trở thành:\n\\( t^2 + 3mt + 3m^2 - 12 = 0 \\)\n\nPhương trình ban đầu có 2 nghiệm \\( x \\) phân biệt khi và chỉ khi phương trình theo \\( t \\) có 2 nghiệm dương phân biệt (do \\( t=3^x \\) là song ánh từ \\( \\mathbb{R} \\) đến \\( (0;+\\infty) \\)). Điều kiện:\n\n1) \\( \\Delta > 0 \\): \\( (3m)^2 - 4(3m^2-12) > 0 \\Leftrightarrow 9m^2 - 12m^2 + 48 > 0 \\Leftrightarrow -3m^2+48>0 \\Leftrightarrow m^2 < 16 \\Leftrightarrow -4 < m < 4 \\)\n\n2) Tổng hai nghiệm dương: \\( t_1+t_2 = -3m > 0 \\Leftrightarrow m < 0 \\)\n\n3) Tích hai nghiệm dương: \\( t_1 t_2 = 3m^2 - 12 > 0 \\Leftrightarrow m^2 > 4 \\Leftrightarrow m > 2 \\text{ hoặc } m < -2 \\)\n\nKết hợp cả ba điều kiện: từ \\( m<0 \\) và \\( (m>2 \\text{ hoặc } m<-2) \\), suy ra \\( m < -2 \\). Kết hợp thêm \\( -4<m<4 \\), ta được:\n\\( -4 < m < -2 \\)\n\nVậy \\( m \\in (-4;-2) \\), tức \\( a=-4, b=-2 \\).\n\nGiá trị biểu thức \\( a+b = -4 + (-2) = -6 \\).',
             }
+          
             
           
 
