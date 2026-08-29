@@ -266,45 +266,77 @@ EXAMS = [
     },  #kết thúc hết 1 đề
     {
         "id": "de2",
-        "name": "Đề số 2 - Ôn tập Toán THPT",
+        "name": "Đề số 2 - ÔN THI GK1 2026 - 2027.",
         "description": "22 câu hỏi: 12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn.",
         "questions": [
             # ---------------- PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN ----------------
             {"id": "de2_mc_01", "part": 1, "type": "mc4",
-             "content": "Hàm số \\( y = -x^3 + 3x - 2 \\) nghịch biến trên khoảng nào sau đây?",
-             "options": {"A": "\\( (-1;1) \\)", "B": "\\( (1;+\\infty) \\)", "C": "\\( (-2;0) \\)", "D": "\\( (0;2) \\)"},
-             "correct": "B",
-             "explanation": "\\( y'=-3x^2+3=-3(x-1)(x+1) \\). \\( y'<0 \\) khi \\( x<-1 \\) hoặc \\( x>1 \\), tức hàm số nghịch biến trên \\( (1;+\\infty) \\) (và \\( (-\\infty;-1) \\)). Đáp án B."},
+ "content": "Trong không gian với hệ trục tọa độ \\( Oxyz \\), cho hai vectơ \\( \\vec{a}(1;-2;0) \\) và \\( \\vec{b}(-2;3;1) \\). Khẳng định nào sau đây là <b>sai</b>?",
+ "options": {
+   "A": "\\( 2\\vec{a} = (2;-4;0) \\).",
+   "B": "\\( \\vec{a}+\\vec{b} = (-1;1;-1) \\).",
+   "C": "\\( |\\vec{b}| = \\sqrt{14} \\).",
+   "D": "\\( \\vec{a}.\\vec{b} = -8 \\)."
+ },
+ "correct": "B",
+ "explanation": "Ta có \\( \\vec{a}+\\vec{b} = (1+(-2);\\ -2+3;\\ 0+1) = (-1;1;1) \\).<br><br>Vậy khẳng định B sai (đề cho \\( (-1;1;-1) \\), sai ở tọa độ thứ ba). Đáp án B."},
 
-            {"id": "de2_mc_02", "part": 1, "type": "mc4",
-             "content": "Đạo hàm của hàm số \\( y = \\ln(3x+2) \\) là:",
-             "options": {"A": "\\( \\dfrac{3}{3x+2} \\)", "B": "\\( \\dfrac{1}{3x+2} \\)", "C": "\\( \\dfrac{3}{x+2} \\)", "D": "\\( \\dfrac{\\ln3}{3x+2} \\)"},
-             "correct": "A",
-             "explanation": "\\( y'=\\dfrac{(3x+2)'}{3x+2}=\\dfrac{3}{3x+2} \\). Đáp án A."},
+{"id": "de2_mc_02", "part": 1, "type": "mc4",
+ "content": "Cho hàm số \\( y = f(x) \\) xác định trên \\( \\mathbb{R} \\), có đồ thị như hình vẽ. Mệnh đề nào sau đây đúng?",
+ "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau2.PNG",
+ "options": {
+   "A": "Hàm số nghịch biến trên khoảng \\( (0;1) \\).",
+   "B": "Hàm số nghịch biến trên khoảng \\( \\mathbb{R} \\).",
+   "C": "Hàm số đồng biến trên \\( \\mathbb{R} \\).",
+   "D": "Hàm số nghịch biến trên khoảng \\( (-\\infty;0) \\)."
+ },
+ "correct": "C",
+ "explanation": "Nhìn vào đồ thị ta thấy đường cong đi lên liên tục trên toàn trục số, không có đoạn nào đi xuống.<br><br>Vậy hàm số đồng biến trên \\( \\mathbb{R} \\). Đáp án C."},
 
-            {"id": "de2_mc_03", "part": 1, "type": "mc4",
-             "content": "Tập nghiệm của bất phương trình \\( \\log_3(2x+1) > 2 \\) là:",
-             "options": {"A": "\\( (4;+\\infty) \\)", "B": "\\( (-\\tfrac12;4) \\)", "C": "\\( (-\\infty;4) \\)", "D": "\\( (0;4) \\)"},
-             "correct": "A",
-             "explanation": "Điều kiện \\( x>-\\tfrac12 \\). \\( 2x+1>3^2=9 \\Leftrightarrow x>4 \\). Kết hợp điều kiện: \\( x\\in(4;+\\infty) \\). Đáp án A."},
+{"id": "de2_mc_03", "part": 1, "type": "mc4",
+ "content": "Giá trị nhỏ nhất của hàm số \\( y = x^3 - 3x + 5 \\) trên đoạn \\( [2;4] \\) bằng",
+ "options": {
+   "A": "\\( \\min\\limits_{[2;4]} y = 7 \\).",
+   "B": "\\( \\min\\limits_{[2;4]} y = 0 \\).",
+   "C": "\\( \\min\\limits_{[2;4]} y = 5 \\).",
+   "D": "\\( \\min\\limits_{[2;4]} y = 3 \\)."
+ },
+ "correct": "A",
+ "explanation": "<b>Cách 1:</b> Ta có \\( y' = 3x^2 - 3 \\), \\( y' = 0 \\Leftrightarrow \\begin{bmatrix} x=1 \\notin [2;4] \\\\ x=-1 \\notin [2;4] \\end{bmatrix} \\).<br><br>Khi đó \\( y(2) = 7,\\ y(4) = 57 \\Rightarrow \\min\\limits_{[2;4]} y = 7 \\).<br><br>(Có thể nhận xét \\( y' > 0,\\ \\forall x\\in[2;4] \\Rightarrow \\min\\limits_{[2;4]} y = y(2) = 7 \\).)<br><br><b>Cách 2:</b> Sử dụng casio (MODE 7)."},
 
-            {"id": "de2_mc_04", "part": 1, "type": "mc4",
-             "content": "Trong không gian \\( Oxyz \\), cho \\( A(2;-1;3) \\), \\( B(0;3;-1) \\). Vectơ \\( \\overrightarrow{AB} \\) có tọa độ là:",
-             "options": {"A": "\\( (-2;4;-4) \\)", "B": "\\( (2;4;-4) \\)", "C": "\\( (-2;-4;-4) \\)", "D": "\\( (-2;4;4) \\)"},
-             "correct": "A",
-             "explanation": "\\( \\overrightarrow{AB}=B-A=(0-2;3-(-1);-1-3)=(-2;4;-4) \\). Đáp án A."},
+{"id": "de2_mc_04", "part": 1, "type": "mc4",
+ "content": "Cho hàm số có bảng biến thiên dưới đây. Phát biểu nào sau đây là đúng?",
+ "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau4.PNG",
+ "options": {
+   "A": "Đồ thị hàm số có hai đường tiệm cận ngang là \\( y=-1;\\ y=2 \\).",
+   "B": "Đồ thị hàm số không có tiệm cận ngang.",
+   "C": "Đồ thị hàm số có đường tiệm cận đứng \\( x=-1 \\), tiệm cận ngang \\( y=2 \\).",
+   "D": "Đồ thị hàm số có hai đường tiệm cận đứng."
+ },
+ "correct": "A",
+ "explanation": "Dựa vào bảng biến thiên, ta có: \\( \\displaystyle\\lim_{x\\to-\\infty} y = -1 \\) nên \\( y=-1 \\) là đường tiệm cận ngang.<br><br>\\( \\displaystyle\\lim_{x\\to+\\infty} y = 2 \\) nên \\( y=2 \\) là đường tiệm cận ngang.<br><br>Vậy đồ thị hàm số có hai đường tiệm cận ngang là \\( y=-1 \\) và \\( y=2 \\). Đáp án A."},
 
-            {"id": "de2_mc_05", "part": 1, "type": "mc4",
-             "content": "Cho cấp số cộng \\( (u_n) \\) có \\( u_1=5 \\), công sai \\( d=-2 \\). Tổng 10 số hạng đầu \\( S_{10} \\) bằng:",
-             "options": {"A": "-40", "B": "40", "C": "-30", "D": "-50"},
-             "correct": "A",
-             "explanation": "\\( S_{10}=\\dfrac{10}{2}\\left[2u_1+9d\\right]=5(10-18)=-40 \\). Đáp án A."},
+{"id": "de2_mc_05", "part": 1, "type": "mc4",
+ "content": "Cho hàm số \\( y = \\dfrac{2x+1}{x-1} \\). Khẳng định nào sau đây là ĐÚNG?",
+ "options": {
+   "A": "Hàm số nghịch biến trên \\( \\mathbb{R}\\setminus\\{1\\} \\).",
+   "B": "Hàm số nghịch biến trên các khoảng \\( (-\\infty;1) \\) và \\( (1;+\\infty) \\).",
+   "C": "Hàm số đồng biến trên các khoảng \\( (-\\infty;1) \\) và \\( (1;+\\infty) \\).",
+   "D": "Hàm số nghịch biến trên \\( (-1;+\\infty)\\cup(1;+\\infty) \\)."
+ },
+ "correct": "B",
+ "explanation": "Ta có TXĐ: \\( D = \\mathbb{R}\\setminus\\{1\\} \\).<br><br>\\( y' = \\left(\\dfrac{2x+1}{x-1}\\right)' = \\dfrac{-3}{(x-1)^2} < 0,\\ \\forall x\\in D \\).<br><br>Do đó hàm số nghịch biến trên các khoảng \\( (-\\infty;1) \\) và \\( (1;+\\infty) \\). Đáp án B."},
 
-            {"id": "de2_mc_06", "part": 1, "type": "mc4",
-             "content": "Một túi có 4 viên bi đỏ, 6 viên bi xanh. Lấy ngẫu nhiên 2 viên. Xác suất để lấy được 2 viên khác màu là:",
-             "options": {"A": "\\( \\dfrac{8}{15} \\)", "B": "\\( \\dfrac{2}{5} \\)", "C": "\\( \\dfrac{4}{15} \\)", "D": "\\( \\dfrac13 \\)"},
-             "correct": "A",
-             "explanation": "\\( n(\\Omega)=C_{10}^2=45 \\). Số cách chọn khác màu \\( =4\\times6=24 \\). Xác suất \\( =\\dfrac{24}{45}=\\dfrac{8}{15} \\). Đáp án A."},
+{"id": "de2_mc_06", "part": 1, "type": "mc4",
+ "content": "Tìm số tiệm cận của đồ thị hàm số \\( y = \\dfrac{2x+2019}{x+1} \\).",
+ "options": {
+   "A": "\\( 0 \\).",
+   "B": "\\( 1 \\).",
+   "C": "\\( 3 \\).",
+   "D": "\\( 2 \\)."
+ },
+ "correct": "D",
+ "explanation": "Ta có \\( \\displaystyle\\lim_{x\\to-\\infty} y = 2;\\ \\displaystyle\\lim_{x\\to+\\infty} y = 2 \\Rightarrow \\) Tiệm cận ngang là \\( y=2 \\).<br><br>\\( \\displaystyle\\lim_{x\\to-1^-} y = -\\infty;\\ \\displaystyle\\lim_{x\\to-1^+} y = +\\infty \\Rightarrow \\) Tiệm cận đứng là \\( x=-1 \\).<br><br>Vậy đồ thị hàm số có hai tiệm cận. Đáp án D."},
 
             {"id": "de2_mc_07", "part": 1, "type": "mc4",
              "content": "Họ nguyên hàm của hàm số \\( f(x) = 4x^3 - 6x^2 + 2 \\) là:",
