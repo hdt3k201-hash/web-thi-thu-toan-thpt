@@ -787,6 +787,15 @@ TPL_TAKE_EXAM = BASE_HEAD + """
           <div class="q-block" id="q-{{ q.id }}">
             <div class="q-content"><span class="q-num">{{ loop.index }}</span>{{ q.content|safe }}</div>
 
+            {% if q.image %}
+            <div style="text-align:center; margin:10px 0;">
+              <img src="{{ q.image }}" alt="Hình minh họa câu {{ loop.index }}" style="max-width:100%; height:auto; border:1px solid #ddd; border-radius:6px;">
+            </div>
+            {% endif %}
+            {% if q.content_after_image %}
+            <div class="q-content">{{ q.content_after_image|safe }}</div>
+            {% endif %}
+
             {% if q.type == 'mc4' %}
               {% for k in ['A','B','C','D'] %}
               <label class="opt-row">
@@ -933,6 +942,15 @@ TPL_ANSWER_DETAIL = BASE_HEAD + """
       <div class="q-content"><span class="q-num">{{ loop.index }}</span>{{ q.content|safe }}
         <span style="float:right; font-weight:700;">{{ d.points }} điểm</span>
       </div>
+
+      {% if q.image %}
+      <div style="text-align:center; margin:10px 0;">
+        <img src="{{ q.image }}" alt="Hình minh họa câu {{ loop.index }}" style="max-width:100%; height:auto; border:1px solid #ddd; border-radius:6px;">
+      </div>
+      {% endif %}
+      {% if q.content_after_image %}
+      <div class="q-content">{{ q.content_after_image|safe }}</div>
+      {% endif %}
 
       {% if q.type == 'mc4' %}
         {% for k in ['A','B','C','D'] %}
