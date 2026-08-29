@@ -727,7 +727,7 @@ Tổng số cách: \\( 36+28+21+15+10+6+3+1 = 120 \\) cách.""",
                 "points": 1,
                 "explanation": """Xét hàm \\( f(x) = x^n + nx - 1 \\) trên \\( (0; +\\infty) \\). Ta có \\( f(0) = -1 < 0 \\) và \\( f(1) = n > 0 \\), nên \\( x_n \\in (0; 1) \\) và duy nhất do \\( f \\) đồng biến trên \\( (0;+\\infty) \\).
 
-Ta chứng minh \\( x_n \\to 0 \\) khi \\( n \\to \\infty \\): giả sử \\( x_n \\to c \\in [0;1] \\). Nếu \\( c > 0 \\) và \\( c < 1 \\) thì \\( x_n^n \\to 0 \\), khi đó từ phương trình \\( x_n^n + nx_n = 1 \\), ta cần \\( nx_n \\to 1 \\), suy ra \\( x_n \\to 0 \\) (mâu thuẫn với \\( c>0 \\) trừ khi ta xét đúng tốc độ hội tụ). Điều này cho thấy \\( x_n \\sim \\dfrac{1}{n} \\).
+Ta chứng minh \\( x_n \\to 0 \\) khi \\( n \\to \\infty \\): giả sử \\( x_n \\to c \\in [0;1] \\). Nếu \\( c > 0 \\) và \\( c < 1 \\) thì \\( x_n^n \\to 0 \\), khi đó từ phương trình \\( x_n^n + nx_n = 1 \\), ta cần \\( nx_n \\to 1 \\), suy ra \\( x_n \\to 0 \\) (mâu thuẫn với \\( c>0 \\) ). Điều này cho thấy \\( x_n \\sim \\dfrac{1}{n} \\).
 
 Cụ thể: vì \\( x_n \\to 0 \\), ta có \\( x_n^n \\to 0 \\) rất nhanh (do \\( x_n \\) nhỏ hơn 1 và giảm về 0 khi \\( n\\to\\infty \\)) — thực tế \\( x_n^n = \\left(\\dfrac{1+o(1)}{n}\\right)^n \\to 0 \\).
 
@@ -889,7 +889,7 @@ Suy ra: \\( \\dfrac{1}{u_{n+1}-1} = \\dfrac{1}{u_n(u_n-1)} = \\dfrac{1}{u_n-1} -
 
 Do đó: \\( \\dfrac{1}{u_n} = \\dfrac{1}{u_n-1} - \\dfrac{1}{u_{n+1}-1} \\).
 
-Tổng \\( S_n \\) là tổng viễn vọng (telescoping):
+Tổng \\( S_n \\) là :
 \\( S_n = \\sum_{k=1}^{n}\\left(\\dfrac{1}{u_k-1}-\\dfrac{1}{u_{k+1}-1}\\right) = \\dfrac{1}{u_1-1} - \\dfrac{1}{u_{n+1}-1} \\)
 
 Vì \\( u_1=2026>2 \\), dãy \\( (u_n) \\) tăng rất nhanh và \\( u_n \\to +\\infty \\), nên \\( \\dfrac{1}{u_{n+1}-1}\\to 0 \\).
