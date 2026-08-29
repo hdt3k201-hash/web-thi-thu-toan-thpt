@@ -4210,6 +4210,19 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                 ],
                 "points": 1,
                 "explanation": 'Đặt \\( t = 3^x \\ (t>0) \\). Vì \\( 9^x = (3^x)^2 = t^2 \\) và \\( 3^{x+1} = 3\\cdot 3^x = 3t \\), phương trình trở thành:\n\\( t^2 + 3mt + 3m^2 - 12 = 0 \\)\n\nPhương trình ban đầu có 2 nghiệm \\( x \\) phân biệt khi và chỉ khi phương trình theo \\( t \\) có 2 nghiệm dương phân biệt (do \\( t=3^x \\) là song ánh từ \\( \\mathbb{R} \\) đến \\( (0;+\\infty) \\)). Điều kiện:\n\n1) \\( \\Delta > 0 \\): \\( (3m)^2 - 4(3m^2-12) > 0 \\Leftrightarrow 9m^2 - 12m^2 + 48 > 0 \\Leftrightarrow -3m^2+48>0 \\Leftrightarrow m^2 < 16 \\Leftrightarrow -4 < m < 4 \\)\n\n2) Tổng hai nghiệm dương: \\( t_1+t_2 = -3m > 0 \\Leftrightarrow m < 0 \\)\n\n3) Tích hai nghiệm dương: \\( t_1 t_2 = 3m^2 - 12 > 0 \\Leftrightarrow m^2 > 4 \\Leftrightarrow m > 2 \\text{ hoặc } m < -2 \\)\n\nKết hợp cả ba điều kiện: từ \\( m<0 \\) và \\( (m>2 \\text{ hoặc } m<-2) \\), suy ra \\( m < -2 \\). Kết hợp thêm \\( -4<m<4 \\), ta được:\n\\( -4 < m < -2 \\)\n\nVậy \\( m \\in (-4;-2) \\), tức \\( a=-4, b=-2 \\).\n\nGiá trị biểu thức \\( a+b = -4 + (-2) = -6 \\).',
+            },
+            # ---------------- KÉO THẢ (dragdrop) ----------------
+            {
+                "id": "de5_dd_40",
+                "type": "dragdrop",
+                "content": "Cho \\( f(x) \\) là hàm đa thức thỏa mãn\n\\( \\displaystyle\\int (x-1)\\cdot f(x)\\,dx = x^3 + ax^2 + 3x + C \\)\nvới \\( C \\) là hằng số. Kéo và thả các phương án lựa chọn thích hợp vào ô trống. Khi đó:",
+                "options_pool": ["2", "3", "-3", "7"],
+                "blanks": [
+                    {"label": "Giá trị của a bằng", "answer": "-3"},
+                    {"label": "Giá trị của f(2) bằng", "answer": "3"},
+                ],
+                "points": 1,
+                "explanation": 'Lấy đạo hàm hai vế của đẳng thức đã cho theo \\( x \\):\n\\( (x-1)\\cdot f(x) = \\left(x^3+ax^2+3x+C\\right)\' = 3x^2 + 2ax + 3 \\)\n\nVì vế trái có nhân tử \\( (x-1) \\), nên vế phải \\( 3x^2+2ax+3 \\) phải chia hết cho \\( (x-1) \\), tức là nhận \\( x=1 \\) làm nghiệm. Thay \\( x=1 \\) vào vế phải:\n\\( 3(1)^2 + 2a(1) + 3 = 0 \\Leftrightarrow 3 + 2a + 3 = 0 \\Leftrightarrow a = -3 \\)\n\nVới \\( a=-3 \\), vế phải trở thành:\n\\( 3x^2 - 6x + 3 = 3(x^2-2x+1) = 3(x-1)^2 \\)\n\nDo đó: \\( (x-1)\\cdot f(x) = 3(x-1)^2 \\Rightarrow f(x) = 3(x-1) = 3x-3 \\) (với \\( x\\ne 1 \\), và vì \\( f(x) \\) là đa thức nên đẳng thức này đúng với mọi \\( x \\)).\n\nSuy ra \\( f(2) = 3(2)-3 = 6-3 = 3 \\).\n\nVậy giá trị của \\( a \\) bằng \\( -3 \\), giá trị của \\( f(2) \\) bằng \\( 3 \\).',
             }
           
             
