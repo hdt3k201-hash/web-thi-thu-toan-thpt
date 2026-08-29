@@ -615,7 +615,7 @@ Lấy giới hạn khi \\( n \\to +\\infty \\):
                 "points": 1,
                 "explanation": """a) Mỗi cách ghép chìa vào ổ là một hoán vị của 5 phần tử, nên số cách là \\( 5! = 120 \\) cách \\( \\Rightarrow \\) Đúng.
 
-b) Vì phép ghép là một song ánh (hoán vị), nếu có đúng 4 ổ khóa được mở đúng thì ổ còn lại bắt buộc cũng phải đúng (do chỉ còn duy nhất 1 chìa cho 1 ổ). Vậy KHÔNG THỂ có đúng 4 ổ đúng — xác suất này bằng 0, không phải \\( \\dfrac{1}{120} \\) \\( \\Rightarrow \\) Sai.
+b) Vì phép ghép là một  (hoán vị), nếu có đúng 4 ổ khóa được mở đúng thì ổ còn lại bắt buộc cũng phải đúng (do chỉ còn duy nhất 1 chìa cho 1 ổ). Vậy KHÔNG THỂ có đúng 4 ổ đúng — xác suất này bằng 0, không phải \\( \\dfrac{1}{120} \\) \\( \\Rightarrow \\) Sai.
 
 c) Xác suất không có ổ khóa nào đúng chính là xác suất của một "mất thứ tự toàn phần" (derangement):
 \\( D_5 = 5!\\left(1 - \\dfrac{1}{1!} + \\dfrac{1}{2!} - \\dfrac{1}{3!} + \\dfrac{1}{4!} - \\dfrac{1}{5!}\\right) = 44 \\).
