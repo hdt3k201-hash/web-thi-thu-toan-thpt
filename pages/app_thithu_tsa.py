@@ -3950,7 +3950,21 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                 ],
                 "points": 1,
                 "explanation": 'Từ giả thiết \\( \\log_b a = m \\), suy ra \\( \\log_a b = \\dfrac{1}{m} \\) (do \\( a, b > 1 \\) nên \\( m \\ne 0 \\)).\n\nMệnh đề 1: Áp dụng công thức đổi cơ số và biến đổi số mũ:\n\\( \\log_{\\sqrt{a}} b = \\log_{a^{1/2}} b = \\dfrac{1}{\\frac{1}{2}}\\log_a b = 2\\log_a b = 2\\cdot\\dfrac{1}{m} = \\dfrac{2}{m} \\)\n\\( \\Rightarrow \\) Đúng.\n\nMệnh đề 2: Tương tự, ta phân tích biểu thức logarit:\n\\( \\log_{\\sqrt[3]{a}}(ab^2) = \\log_{a^{1/3}}(ab^2) = 3\\log_a(ab^2) \\)\n\\( = 3(\\log_a a + \\log_a b^2) = 3(1 + 2\\log_a b) \\)\n\\( = 3\\left(1 + 2\\cdot\\dfrac{1}{m}\\right) = 3\\left(\\dfrac{m+2}{m}\\right) = \\dfrac{3m+6}{m} \\)\n\\( \\Rightarrow \\) Đúng.',
-            }
+            },
+
+            # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de5_tf_20",
+                "type": "truefalse",
+                "content": "Gọi \\( A \\) là tập hợp các số có 4 chữ số đôi một khác nhau lấy từ tập các số \\( \\{1, 2, 3, 4, 5, 6, 7\\} \\). Đánh giá tính Đúng/Sai của các mệnh đề sau:",
+                "statements": [
+                    {"text": "Có thể lập được 840 số thỏa mãn điều kiện trên.", "correct": True},
+                    {"text": "Lấy ngẫu nhiên một số trong \\( A \\). Xác suất chữ số 1 và 6 đồng thời có mặt trong số được chọn là \\( \\dfrac{1}{7} \\).", "correct": False},
+                ],
+                "points": 1,
+                "explanation": 'Mệnh đề 1: Số các số có 4 chữ số đôi một khác nhau lấy từ 7 chữ số là một chỉnh hợp chập 4 của 7.\n\\( n(A) = A_7^4 = 7\\times 6\\times 5\\times 4 = 840 \\) (số).\n\\( \\Rightarrow \\) Đúng.\n\nMệnh đề 2: Lấy ngẫu nhiên 1 số từ \\( A \\Rightarrow n(\\Omega) = 840 \\). Gọi biến cố \\( X \\): "Số được chọn có mặt đồng thời chữ số 1 và 6".\n\n- Bước 1: Lấy chữ số 1 và 6 (có 1 cách).\n- Bước 2: Chọn 2 chữ số còn lại từ 5 chữ số \\( (2,3,4,5,7) \\) có \\( C_5^2 = 10 \\) (cách).\n- Bước 3: Hoán vị 4 chữ số vừa chọn để xếp vào 4 vị trí có \\( 4! = 24 \\) (cách).\n\nSố kết quả thuận lợi cho \\( X \\) là: \\( n(X) = 1\\times 10\\times 24 = 240 \\). Xác suất cần tìm là:\n\\( P(X) = \\dfrac{n(X)}{n(\\Omega)} = \\dfrac{240}{840} = \\dfrac{2}{7} \\ne \\dfrac{1}{7} \\).\n\\( \\Rightarrow \\) Sai.',
+            },
+          
 
         
     
