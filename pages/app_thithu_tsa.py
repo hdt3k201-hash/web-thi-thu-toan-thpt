@@ -4279,7 +4279,91 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                 "correct": 'A',
                 "points": 1,
                 "explanation": 'Theo quy tắc nhân, số loại áo phông khác nhau bằng tích số cách chọn dáng áo, màu sắc và cỡ áo:\n\n- Số dáng áo: 3\n- Số màu: 5 (cam, đỏ, trắng, vàng, xanh)\n- Số cỡ: 6 (S, M, L, XL, XXL, XXXL)\n\nSố loại áo phông khác nhau là:\n\\( 3\\times 5\\times 6 = 90 \\)\n\nĐáp án đúng là A.',
+            },
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de6_mc_04',
+                "type": 'mc4',
+                "content": 'Cho hai biến cố A, B thỏa mãn \\( P(A)=0,4 \\); \\( P(B)=0,3 \\) và \\( P(A\\cup B)=0,625 \\). Khi đó, \\( P(A|B) \\) bằng',
+                "options": {
+                    'A': '0,1875',
+                    'B': '0,075',
+                    'C': '0,4',
+                    'D': '0,25',
+                },
+                "correct": 'D',
+                "points": 1,
+                "explanation": 'Ta có: \\( P(A\\cup B) = P(A) + P(B) - P(A\\cap B) \\)\n\\( \\Rightarrow 0,625 = 0,4 + 0,3 - P(A\\cap B) \\)\n\\( \\Rightarrow P(A\\cap B) = 0,075 \\).\nKhi đó: \\( P(A|B) = \\dfrac{P(A\\cap B)}{P(B)} = \\dfrac{0,075}{0,3} = 0,25 \\).\nĐáp án D.',
+            },
+
+ # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de6_sh_05',
+                "type": 'short',
+                "content": 'Trong không gian Oxyz, cho mặt cầu \\( (S): x^2+y^2+z^2-2x+4y-2mz+m^2-m=0 \\), đó \\( m \\) là một tham số thực nhận giá trị dương. Biết mặt cầu \\( (S) \\) có diện tích bằng \\( 100\\pi \\), giá trị của \\( m \\) bằng [......].',
+                "blanks": [
+                    {"label": 'm =', "answers": ['20']},
+                ],
+                "points": 1,
+                "explanation": 'Mặt cầu \\( (S) \\) có tâm \\( I(1; -2; m) \\), bán kính \\( R = \\sqrt{1^2 + (-2)^2 + m^2 - (m^2 - m)} = \\sqrt{m + 5} \\).\nDiện tích mặt cầu \\( S = 4\\pi R^2 = 4\\pi(m + 5) \\).\nTheo giả thiết, diện tích bằng \\( 100\\pi \\) nên ta có:\n\\( 4\\pi(m + 5) = 100\\pi \\Leftrightarrow m + 5 = 25 \\Leftrightarrow m = 20 \\).\nVì \\( m > 0 \\) nên \\( m = 20 \\) thỏa mãn.',
+            },
+
+ # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de6_tf_06",
+                "type": "truefalse",
+                "content": "Cho \\( a<b \\) và hàm số \\( f(x) \\) liên tục trên đoạn \\( [a, b] \\). Hãy xác định tính đúng, sai của mỗi phát biểu sau:",
+                "statements": [
+                    {"text": "\\( \\int_{a}^{b}kf(x)dx=k\\int_{a}^{b}f(x)dx \\) (với k là hằng số).", "correct": true},
+                    {"text": "\\( \\int_{a}^{b}f(x)dx=\\int_{b}^{a}f(x)dx. \\)", "correct": false}
+                ],
+                "points": 1,
+                "explanation": "a) Đúng theo tính chất của tích phân: hằng số \\( k \\) có thể đưa ra ngoài dấu tích phân.\n\nb) Sai. Theo tính chất của tích phân, khi đổi cận thì phải đổi dấu: \\( \\int_{a}^{b}f(x)dx = -\\int_{b}^{a}f(x)dx \\)."
+            },
+
+ # ---------------- TRẢ LỜI NGẮN (short) ----------------
+            {
+                "id": 'de6_sh_07',
+                "type": 'short',
+                "content": 'Cho hình chóp S.ABC. Gọi M, N lần lượt là các điểm trên các cạnh SA, SB sao cho \\( SA=2SM \\), \\( 2NS=3NB \\). Giá trị của biểu thức \\( t=\\dfrac{V_{S.MNC}}{V_{S.ABC}} \\) bằng bao nhiêu?',
+                "blanks": [
+                    {"label": 't =', "answers": ['3/10', '0.3', '0,3']},
+                ],
+                "points": 1,
+                "explanation": 'Ta có: \\( SA = 2SM \\Rightarrow \\dfrac{SM}{SA} = \\dfrac{1}{2} \\).\nLại có: \\( 2NS = 3NB \\Leftrightarrow 2NS = 3(SB - NS) \\Leftrightarrow 5NS = 3SB \\Leftrightarrow \\dfrac{SN}{SB} = \\dfrac{3}{5} \\).\nÁp dụng công thức tỉ số thể tích đối với hình chóp tam giác, ta có:\n\\( t = \\dfrac{V_{S.MNC}}{V_{S.ABC}} = \\dfrac{SM}{SA} \\cdot \\dfrac{SN}{SB} \\cdot \\dfrac{SC}{SC} = \\dfrac{1}{2} \\cdot \\dfrac{3}{5} \\cdot 1 = \\dfrac{3}{10} \\).',
+            },
+
+ # ---------------- ĐÚNG / SAI (truefalse) ----------------
+            {
+                "id": "de6_tf_08",
+                "type": "truefalse",
+                "content": "Mỗi phát biểu sau về vị trí tương đối của hai đường thẳng trong không gian là đúng hay sai?",
+                "statements": [
+                    {"text": "Hai đường thẳng song song thì đồng phẳng.", "correct": true},
+                    {"text": "Hai đường thẳng chéo nhau thì không có điểm chung.", "correct": true},
+                    {"text": "Hai đường thẳng không có điểm chung thì chéo nhau.", "correct": false},
+                    {"text": "Hai đường thẳng chéo nhau thì không đồng phẳng.", "correct": true}
+                ],
+                "points": 1,
+                "explanation": "a) Đúng. Theo định nghĩa, hai đường thẳng song song là hai đường thẳng đồng phẳng và không có điểm chung.\n\nb) Đúng. Hai đường thẳng chéo nhau là hai đường thẳng không đồng phẳng, do đó chắc chắn không thể có điểm chung.\n\nc) Sai. Hai đường thẳng không có điểm chung có thể song song (nếu chúng đồng phẳng) hoặc chéo nhau (nếu chúng không đồng phẳng).\n\nd) Đúng. Theo định nghĩa, hai đường thẳng chéo nhau là hai đường thẳng không cùng thuộc bất kì mặt phẳng nào."
+            },
+
+ # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de6_mc_09',
+                "type": 'mc4',
+                "content": 'Cho các dãy số với công thức của số hạng tổng quát, dãy số nào là một cấp số cộng?',
+                "options": {
+                    'A': '\\( u_n=\\sin n \\)',
+                    'B': '\\( u_n=\\dfrac{3n-1}{2} \\)',
+                    'C': '\\( u_n=\\dfrac{1}{n} \\)',
+                    'D': '\\( u_n=n^2+n+1 \\)',
+                },
+                "correct": 'B',
+                "points": 1,
+                "explanation": 'Dãy số \\( (u_n) \\) là cấp số cộng nếu hiệu số \\( u_{n+1} - u_n \\) là một hằng số không phụ thuộc vào \\( n \\).\nXét đáp án B: \\( u_{n+1} - u_n = \\dfrac{3(n+1)-1}{2} - \\dfrac{3n-1}{2} = \\dfrac{3n+2-3n+1}{2} = \\dfrac{3}{2} \\).\nVì hiệu số là hằng số nên dãy số \\( u_n=\\dfrac{3n-1}{2} \\) là một cấp số cộng.\nĐáp án B.',
             }
+            
 
 
 
