@@ -4314,8 +4314,8 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                 "type": "truefalse",
                 "content": "Cho \\( a<b \\) và hàm số \\( f(x) \\) liên tục trên đoạn \\( [a, b] \\). Hãy xác định tính đúng, sai của mỗi phát biểu sau:",
                 "statements": [
-                    {"text": "\\( \\int_{a}^{b}kf(x)dx=k\\int_{a}^{b}f(x)dx \\) (với k là hằng số).", "correct": true},
-                    {"text": "\\( \\int_{a}^{b}f(x)dx=\\int_{b}^{a}f(x)dx. \\)", "correct": false}
+                    {"text": "\\( \\int_{a}^{b}kf(x)dx=k\\int_{a}^{b}f(x)dx \\) (với k là hằng số).", "correct": True},
+                    {"text": "\\( \\int_{a}^{b}f(x)dx=\\int_{b}^{a}f(x)dx. \\)", "correct": False}
                 ],
                 "points": 1,
                 "explanation": "a) Đúng theo tính chất của tích phân: hằng số \\( k \\) có thể đưa ra ngoài dấu tích phân.\n\nb) Sai. Theo tính chất của tích phân, khi đổi cận thì phải đổi dấu: \\( \\int_{a}^{b}f(x)dx = -\\int_{b}^{a}f(x)dx \\)."
@@ -4339,10 +4339,10 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                 "type": "truefalse",
                 "content": "Mỗi phát biểu sau về vị trí tương đối của hai đường thẳng trong không gian là đúng hay sai?",
                 "statements": [
-                    {"text": "Hai đường thẳng song song thì đồng phẳng.", "correct": true},
-                    {"text": "Hai đường thẳng chéo nhau thì không có điểm chung.", "correct": true},
-                    {"text": "Hai đường thẳng không có điểm chung thì chéo nhau.", "correct": false},
-                    {"text": "Hai đường thẳng chéo nhau thì không đồng phẳng.", "correct": true}
+                    {"text": "Hai đường thẳng song song thì đồng phẳng.", "correct": True},
+                    {"text": "Hai đường thẳng chéo nhau thì không có điểm chung.", "correct": True},
+                    {"text": "Hai đường thẳng không có điểm chung thì chéo nhau.", "correct": False},
+                    {"text": "Hai đường thẳng chéo nhau thì không đồng phẳng.", "correct": True}
                 ],
                 "points": 1,
                 "explanation": "a) Đúng. Theo định nghĩa, hai đường thẳng song song là hai đường thẳng đồng phẳng và không có điểm chung.\n\nb) Đúng. Hai đường thẳng chéo nhau là hai đường thẳng không đồng phẳng, do đó chắc chắn không thể có điểm chung.\n\nc) Sai. Hai đường thẳng không có điểm chung có thể song song (nếu chúng đồng phẳng) hoặc chéo nhau (nếu chúng không đồng phẳng).\n\nd) Đúng. Theo định nghĩa, hai đường thẳng chéo nhau là hai đường thẳng không cùng thuộc bất kì mặt phẳng nào."
@@ -4362,6 +4362,68 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                 "correct": 'B',
                 "points": 1,
                 "explanation": 'Dãy số \\( (u_n) \\) là cấp số cộng nếu hiệu số \\( u_{n+1} - u_n \\) là một hằng số không phụ thuộc vào \\( n \\).\nXét đáp án B: \\( u_{n+1} - u_n = \\dfrac{3(n+1)-1}{2} - \\dfrac{3n-1}{2} = \\dfrac{3n+2-3n+1}{2} = \\dfrac{3}{2} \\).\nVì hiệu số là hằng số nên dãy số \\( u_n=\\dfrac{3n-1}{2} \\) là một cấp số cộng.\nĐáp án B.',
+            },
+            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de6_mc_10',
+                "type": 'mc4',
+                "content": 'Bạn An phát biểu: "Tích các số liên tiếp từ 1 đến 30 không chia hết cho \\( 1000000 \\)". Phát biểu của An đúng hay sai?',
+                "options": {
+                    'A': 'Đúng',
+                    'B': 'Sai',
+                },
+                "correct": 'B',
+                "points": 1,
+                "explanation": 'Tích các số liên tiếp từ 1 đến 30 là \\( 30! \\).\nSố các thừa số 5 trong phân tích ra thừa số nguyên tố của \\( 30! \\) là: \\( \\lfloor \\dfrac{30}{5} \\rfloor + \\lfloor \\dfrac{30}{25} \\rfloor = 6 + 1 = 7 \\).\nDo số thừa số 2 trong phân tích ra thừa số nguyên tố lớn hơn số thừa số 5, nên \\( 30! \\) tận cùng bằng 7 chữ số 0, tức là chia hết cho \\( 10^7 \\).\nDo đó, \\( 30! \\) chắc chắn chia hết cho \\( 10^6 = 1000000 \\).\nVậy phát biểu của An là Sai. Đáp án B[cite: 2].',
+            },
+
+ # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de6_mc_11',
+                "type": 'mc4',
+                "content": 'Tập nghiệm của bất phương trình \\( \\log_{\\frac{1}{2}}(2x-1) > \\log_{\\frac{1}{2}}(x+1) \\) là:',
+                "options": {
+                    'A': '\\( S=(-1;2) \\)',
+                    'B': '\\( S=(2;+\\infty) \\)',
+                    'C': '\\( S=(\\dfrac{1}{2};2) \\)',
+                    'D': '\\( S=(-\\infty;2) \\)',
+                },
+                "correct": 'C',
+                "points": 1,
+                "explanation": 'Điều kiện xác định: \\( \\begin{cases} 2x-1 > 0 \\\\ x+1 > 0 \\end{cases} \\Leftrightarrow x > \\dfrac{1}{2} \\).\nVì cơ số \\( \\dfrac{1}{2} < 1 \\) nên bất phương trình đã cho tương đương với:\n\\( 2x-1 < x+1 \\Leftrightarrow x < 2 \\).\nKết hợp với điều kiện xác định, ta được tập nghiệm \\( S=\\left(\\dfrac{1}{2}; 2\\right) \\).\nĐáp án C[cite: 2].',
+            },
+
+ # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de6_mc_12',
+                "type": 'mc4',
+                "content": 'Cho hàm số \\( f(x) \\) xác định, có đạo hàm trên \\( \\mathbb{R} \\) và \\( f(0)=2 \\). Khi đó, đạo hàm của hàm số \\( g(x)=f(x)\\cdot \\sin x \\) tại \\( x=0 \\) bằng',
+                "options": {
+                    'A': '1',
+                    'B': '2',
+                    'C': '0',
+                    'D': '3',
+                },
+                "correct": 'B',
+                "points": 1,
+                "explanation": 'Đạo hàm của hàm số \\( g(x) \\) là: \\( g\'(x) = f\'(x)\\sin x + f(x)\\cos x \\).\nThay \\( x = 0 \\), ta có: \\( g\'(0) = f\'(0)\\sin 0 + f(0)\\cos 0 = f\'(0) \\cdot 0 + 2 \\cdot 1 = 2 \\).\nĐáp án B[cite: 2].',
+            },
+
+ # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+            {
+                "id": 'de6_mc_13',
+                "type": 'mc4',
+                "content": 'Bạn Nam có một mô hình khối cầu có đường kính bằng 4 cm. Thể tích khối cầu của bạn Nam (làm tròn đến chữ số thập phân thứ nhất) bằng:',
+                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de6_cau13.PNG',
+                "options": {
+                    'A': '\\( 8,4 \\text{ cm}^3 \\)',
+                    'B': '\\( 18,8 \\text{ cm}^3 \\)',
+                    'C': '\\( 33,5 \\text{ cm}^3 \\)',
+                    'D': '\\( 8,0 \\text{ cm}^3 \\)',
+                },
+                "correct": 'C',
+                "points": 1,
+                "explanation": 'Mô hình khối cầu có đường kính 4 cm nên bán kính là \\( r = 2 \\text{ cm} \\).\nThể tích khối cầu là: \\( V = \\dfrac{4}{3}\\pi r^3 = \\dfrac{4}{3}\\pi (2)^3 = \\dfrac{32\\pi}{3} \\approx 33,5 \\text{ cm}^3 \\).\nĐáp án C[cite: 2].',
             }
             
 
