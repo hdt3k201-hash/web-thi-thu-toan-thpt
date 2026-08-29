@@ -4727,7 +4727,34 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                  ],
                  "points": 1,
                  "explanation": "Ta có hàm số \\( h(x) = \\dfrac{5}{f^2(x) - 4f(x) + 3} = \\dfrac{5}{(f(x)-1)(f(x)-3)} \\).\n\n**1. Xét số lượng tiệm cận đứng:**\nSố tiệm cận đứng của đồ thị hàm số là số nghiệm thực phân biệt của phương trình mẫu số bằng 0.\nTa có: \\( f^2(x) - 4f(x) + 3 = 0 \\Leftrightarrow \\left[ \\begin{array}{l} f(x) = 1 \\\\ f(x) = 3 \\end{array} \\right. \\)\nDựa vào bảng biến thiên:\n- Phương trình \\( f(x) = 1 \\): Do \\( \\lim\\limits_{x \\to -\\infty} f(x) = 1 \\) và hàm đồng biến trên \\( (-\\infty; 0) \\) nên không cắt \\( y = 1 \\) tại nhánh này. Phương trình có đúng 1 nghiệm thuộc khoảng \\( (0; 1) \\).\n- Phương trình \\( f(x) = 3 \\): Cắt tại 1 điểm là cực đại \\( x = 0 \\) (nghiệm kép) và cắt thêm 1 điểm thuộc khoảng \\( (1; +\\infty) \\).\nTổng cộng mẫu số có 3 nghiệm phân biệt, đồng nghĩa với đồ thị có 3 tiệm cận đứng. \n\\( \\Rightarrow \\) **Phát biểu a) Sai.**\n\n**2. Xét số lượng tiệm cận ngang:**\n- Khi \\( x \\to -\\infty \\): \\( \\lim\\limits_{x \\to -\\infty} f(x) = 1 \\Rightarrow \\lim\\limits_{x \\to -\\infty} h(x) = \\infty \\) (không có tiệm cận ngang).\n- Khi \\( x \\to +\\infty \\): \\( \\lim\\limits_{x \\to +\\infty} f(x) = 2 \\Rightarrow \\lim\\limits_{x \\to +\\infty} h(x) = \\dfrac{5}{2^2 - 4(2) + 3} = \\dfrac{5}{-1} = -5 \\).\nVậy đồ thị hàm số có đúng 1 tiệm cận ngang là đường thẳng \\( y = -5 \\). \n\\( \\Rightarrow \\) **Phát biểu b) Đúng.**\n\n**3. Tổng số tiệm cận:**\nTổng số tiệm cận đứng và tiệm cận ngang là \\( 3 + 1 = 4 \\). \n\\( \\Rightarrow \\) **Phát biểu c) Sai.**"
-               }
+               },
+               {
+                  "id": "de6_sh_34",
+                  "type": "short",
+                  "content": "Trong không gian \\( Oxyz \\), cho ba điểm \\( A(1; 3; 4) \\), \\( B(-1; 1; 2) \\), \\( C(3; 2; -12) \\). Cho \\( M \\) là điểm thuộc mặt phẳng \\( (Oxy) \\) thoả mãn \\( AM^2 + BM^2 + CM^2 = 174 \\). Hoành độ của điểm \\( M \\) là [......], tung độ của điểm \\( M \\) là [......].",
+                  "blanks": [
+                  {"label": "Hoành độ của điểm M là", "answers": ["1"]},
+                  {"label": "tung độ của điểm M là", "answers": ["2"]}
+                 ],
+                  "points": 1,
+                  "explanation": "Vì điểm \\( M \\) thuộc mặt phẳng \\( (Oxy) \\) nên tọa độ của \\( M \\) có dạng \\( M(x; y; 0) \\).\nTa có:\n\\( AM^2 = (x-1)^2 + (y-3)^2 + (0-4)^2 = (x-1)^2 + (y-3)^2 + 16 \\)\n\\( BM^2 = (x+1)^2 + (y-1)^2 + (0-2)^2 = (x+1)^2 + (y-1)^2 + 4 \\)\n\\( CM^2 = (x-3)^2 + (y-2)^2 + (0+12)^2 = (x-3)^2 + (y-2)^2 + 144 \\)\n\nTheo giả thiết, \\( AM^2 + BM^2 + CM^2 = 174 \\)\n\\( \\Leftrightarrow [(x-1)^2 + (y-3)^2 + 16] + [(x+1)^2 + (y-1)^2 + 4] + [(x-3)^2 + (y-2)^2 + 144] = 174 \\)\n\\( \\Leftrightarrow (x^2 - 2x + 1 + y^2 - 6y + 9 + 16) + (x^2 + 2x + 1 + y^2 - 2y + 1 + 4) + (x^2 - 6x + 9 + y^2 - 4y + 4 + 144) = 174 \\)\n\\( \\Leftrightarrow 3x^2 - 6x + 3y^2 - 12y + 189 = 174 \\)\n\\( \\Leftrightarrow 3x^2 - 6x + 3y^2 - 12y + 15 = 0 \\)\n\\( \\Leftrightarrow x^2 - 2x + y^2 - 4y + 5 = 0 \\)\n\\( \\Leftrightarrow (x^2 - 2x + 1) + (y^2 - 4y + 4) = 0 \\)\n\\( \\Leftrightarrow (x-1)^2 + (y-2)^2 = 0 \\)\n\nVì \\( (x-1)^2 \\ge 0 \\) và \\( (y-2)^2 \\ge 0 \\) với mọi \\( x, y \\), nên đẳng thức xảy ra khi và chỉ khi:\n\\( \\left\\{ \\begin{array}{l} x - 1 = 0 \\\\ y - 2 = 0 \\end{array} \\right. \\Leftrightarrow \\left\\{ \\begin{array}{l} x = 1 \\\\ y = 2 \\end{array} \\right. \\).\n\nVậy hoành độ của điểm \\( M \\) là 1, tung độ của điểm \\( M \\) là 2."
+               },
+
+    # ---------------- ĐÚNG / SAI (truefalse) ----------------
+                {
+                  "id": "de6_tf_35",
+                  "type": "truefalse",
+                  "content": "Cho dãy số \\( (u_n) \\) xác định bởi \\( \\left\\{ \\begin{array}{l} u_1 = 5; \\\\ u_{n+1} = 3u_n - 7, \\forall n \\ge 1. \\end{array} \\right. \\) Các phát biểu sau là đúng hay sai:",
+                  "statements": [
+                  {"text": "Dãy số \\( (u_n) \\) là một cấp số cộng.", "correct": False},
+                  {"text": "Dãy số \\( (u_n) \\) là một cấp số nhân.", "correct": False},
+                  {"text": "Đặt \\( v_n = u_n + \\alpha \\). Dãy số \\( (v_n) \\) là một cấp số nhân khi và chỉ khi \\( \\alpha = \\dfrac{7}{3} \\).", "correct": False},
+                  {"text": "Công thức số hạng tổng quát \\( u_n = \\dfrac{3^n + 7}{2} \\).", "correct": True}
+                  ],
+                  "points": 1,
+                  "explanation": "a) Tính các số hạng đầu của dãy:\n\\( u_1 = 5 \\)\n\\( u_2 = 3u_1 - 7 = 3(5) - 7 = 8 \\)\n\\( u_3 = 3u_2 - 7 = 3(8) - 7 = 17 \\)\nTa có: \\( u_2 - u_1 = 8 - 5 = 3 \\) và \\( u_3 - u_2 = 17 - 8 = 9 \\).\nVì \\( u_2 - u_1 \\neq u_3 - u_2 \\) nên dãy số \\( (u_n) \\) không phải là một cấp số cộng. \\( \\Rightarrow \\) **Phát biểu a) Sai.**\n\nb) Ta có tỉ số: \\( \\dfrac{u_2}{u_1} = \\dfrac{8}{5} \\) và \\( \\dfrac{u_3}{u_2} = \\dfrac{17}{8} \\).\nVì \\( \\dfrac{u_2}{u_1} \\neq \\dfrac{u_3}{u_2} \\) nên dãy số \\( (u_n) \\) không phải là một cấp số nhân. \\( \\Rightarrow \\) **Phát biểu b) Sai.**\n\nc) Đặt \\( v_n = u_n + \\alpha \\Rightarrow u_n = v_n - \\alpha \\).\nThay vào hệ thức truy hồi của đề bài, ta được:\n\\( v_{n+1} - \\alpha = 3(v_n - \\alpha) - 7 \\)\n\\( \\Leftrightarrow v_{n+1} = 3v_n - 2\\alpha - 7 \\).\nĐể dãy \\( (v_n) \\) là một cấp số nhân thì hệ số tự do phải bằng 0, tức là:\n\\( -2\\alpha - 7 = 0 \\Leftrightarrow \\alpha = -\\dfrac{7}{2} \\).\nGiá trị này khác với \\( \\dfrac{7}{3} \\) được đưa ra trong phát biểu. \\( \\Rightarrow \\) **Phát biểu c) Sai.**\n\nd) Từ kết quả câu c, với \\( \\alpha = -\\dfrac{7}{2} \\), ta có dãy \\( (v_n) \\) với \\( v_n = u_n - \\dfrac{7}{2} \\) là cấp số nhân có công bội \\( q = 3 \\).\nSố hạng đầu tiên của dãy \\( (v_n) \\) là: \\( v_1 = u_1 - \\dfrac{7}{2} = 5 - \\dfrac{7}{2} = \\dfrac{3}{2} \\).\nCông thức số hạng tổng quát của cấp số nhân \\( (v_n) \\) là:\n\\( v_n = v_1 \\cdot q^{n-1} = \\dfrac{3}{2} \\cdot 3^{n-1} = \\dfrac{3^n}{2} \\).\nSuy ra số hạng tổng quát của \\( (u_n) \\) là:\n\\( u_n = v_n + \\dfrac{7}{2} = \\dfrac{3^n}{2} + \\dfrac{7}{2} = \\dfrac{3^n + 7}{2} \\). \\( \\Rightarrow \\) **Phát biểu d) Đúng.**"
+                }
+
               
 
 
