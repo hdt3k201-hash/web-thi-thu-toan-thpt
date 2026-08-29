@@ -4704,43 +4704,12 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                  ],
                 "points": 1,
                 "explanation": "Từ giả thiết, ta có phương trình: \\( \\log_a b + \\dfrac{6}{\\log_a b} = 5 \\).\n\nĐặt \\( t = \\log_a b \\), phương trình trở thành: \n\\( t^2 - 5t + 6 = 0 \\Leftrightarrow \\left[ \\begin{array}{l} t = 2 \\\\ t = 3 \\end{array} \\right. \\)\n\n**Trường hợp 1:** \\( \\log_a b = 2 \\Leftrightarrow b = a^2 \\).\nVì \\( 2 \\le b \\le 2020 \\Rightarrow 2 \\le a^2 \\le 2020 \\Rightarrow \\sqrt{2} \\le a \\le \\sqrt{2020} \\approx 44.9 \\).\nDo \\( a \\) nguyên nên \\( a \\in \\{2; 3; ...; 44\\} \\). Có 43 giá trị của \\( a \\), tương ứng có 43 cặp \\( (a, b) \\).\n\n**Trường hợp 2:** \\( \\log_a b = 3 \\Leftrightarrow b = a^3 \\).\nVì \\( 2 \\le b \\le 2020 \\Rightarrow 2 \\le a^3 \\le 2020 \\Rightarrow \\sqrt[3]{2} \\le a \\le \\sqrt[3]{2020} \\approx 12.6 \\).\nDo \\( a \\) nguyên nên \\( a \\in \\{2; 3; ...; 12\\} \\). Có 11 giá trị của \\( a \\), tương ứng có 11 cặp \\( (a, b) \\).\n\nVậy tổng số cặp \\( (a, b) \\) thỏa mãn là: \\( 43 + 11 = 54 \\) cặp."
-             },
-                # ---------------- ĐÚNG / SAI (truefalse) ----------------
-    {
-        "id": "de6_tf_32",
-        "type": "truefalse",
-        "content": "Cho hàm số \\( f(x) \\) xác định và có đạo hàm đến cấp hai trên \\( \\mathbb{R} \\), thỏa mãn phương trình \\( (f'(x))^2 + f(x) \\cdot f''(x) = 20x^4 + 12x^2 + 9, \\forall x \\in \\mathbb{R} \\) và \\( f(0) = 0 \\). Biết rằng vế trái của phương trình có thể biểu diễn dưới dạng đạo hàm của một hàm số.\nMỗi phát biểu sau là đúng hay sai?",
-        "statements": [
-            {"text": "\\( f(x) \\cdot f'(x) = 4x^5 + 4x^3 + 9x \\).", "correct": true},
-            {"text": "\\( f^2(x) = \\dfrac{2}{3}x^6 + x^4 + \\dfrac{9}{2}x^2 \\).", "correct": false}
-        ],
-        "points": 1,
-        "explanation": "Ta có: \\( (f'(x))^2 + f(x) \\cdot f''(x) = (f(x) \\cdot f'(x))' \\).\n\nPhương trình đã cho trở thành: \\( (f(x) \\cdot f'(x))' = 20x^4 + 12x^2 + 9 \\).\nLấy nguyên hàm hai vế, ta được: \\( f(x) \\cdot f'(x) = 4x^5 + 4x^3 + 9x + C_1 \\).\nDo \\( f(0) = 0 \\) nên thế \\( x = 0 \\) vào hai vế ta được \\( 0 = C_1 \\).\nVậy \\( f(x) \\cdot f'(x) = 4x^5 + 4x^3 + 9x \\) \\( \\Rightarrow \\) **Phát biểu a) Đúng.**\n\nMặt khác, ta lại có: \\( f(x) \\cdot f'(x) = \\dfrac{1}{2} (f^2(x))' \\).\nSuy ra: \\( \\dfrac{1}{2} (f^2(x))' = 4x^5 + 4x^3 + 9x \\Leftrightarrow (f^2(x))' = 8x^5 + 8x^3 + 18x \\).\nLấy nguyên hàm hai vế, ta được: \\( f^2(x) = \\dfrac{4}{3}x^6 + 2x^4 + 9x^2 + C_2 \\).\n\nDo \\( f(0) = 0 \\) nên \\( f^2(0) = 0 \\Rightarrow C_2 = 0 \\).\nVậy biểu thức chuẩn xác là \\( f^2(x) = \\dfrac{4}{3}x^6 + 2x^4 + 9x^2 \\) \\( \\Rightarrow \\) **Phát biểu b) Sai** (do các hệ số trong đáp án b) chỉ bằng một nửa so với kết quả đúng)."
-    },
-
-    # ---------------- ĐÚNG / SAI (truefalse) ----------------
-    {
-        "id": "de6_tf_33",
-        "type": "truefalse",
-        "content": "Cho hàm số \\( y = f(x) \\) xác định và liên tục trên các khoảng \\( (-\\infty; 1) \\) và \\( (1; +\\infty) \\), có bảng biến thiên như sau:\n\nXét tính đúng, sai của các câu sau:",
-        
-        "statements": [
-            {"text": "Số tiệm cận đứng của đồ thị hàm số \\( y = h(x) = \\dfrac{5}{f^2(x) - 4f(x) + 3} \\) là 2.", "correct": false},
-            {"text": "Số tiệm cận ngang của đồ thị hàm số \\( y = h(x) \\) là 1.", "correct": true},
-            {"text": "Tổng số tiệm cận đứng và tiệm cận ngang của đồ thị hàm số \\( y = h(x) \\) là 3.", "correct": false}
-        ],
-        "points": 1,
-        "explanation": "Ta có hàm số \\( h(x) = \\dfrac{5}{f^2(x) - 4f(x) + 3} = \\dfrac{5}{(f(x)-1)(f(x)-3)} \\).\n\n**1. Xét số lượng tiệm cận đứng:**\nSố tiệm cận đứng của đồ thị hàm số là số nghiệm thực phân biệt của phương trình mẫu số bằng 0.\nTa có: \\( f^2(x) - 4f(x) + 3 = 0 \\Leftrightarrow \\left[ \\begin{array}{l} f(x) = 1 \\\\ f(x) = 3 \\end{array} \\right. \\)\nDựa vào bảng biến thiên:\n- Phương trình \\( f(x) = 1 \\): Do \\( \\lim\\limits_{x \\to -\\infty} f(x) = 1 \\) và hàm đồng biến trên \\( (-\\infty; 0) \\) nên không cắt \\( y = 1 \\) tại nhánh này. Phương trình có đúng 1 nghiệm thuộc khoảng \\( (0; 1) \\).\n- Phương trình \\( f(x) = 3 \\): Cắt tại 1 điểm là cực đại \\( x = 0 \\) (nghiệm kép) và cắt thêm 1 điểm thuộc khoảng \\( (1; +\\infty) \\).\nTổng cộng mẫu số có 3 nghiệm phân biệt, đồng nghĩa với đồ thị có 3 tiệm cận đứng. \n\\( \\Rightarrow \\) **Phát biểu a) Sai.**\n\n**2. Xét số lượng tiệm cận ngang:**\n- Khi \\( x \\to -\\infty \\): \\( \\lim\\limits_{x \\to -\\infty} f(x) = 1 \\Rightarrow \\lim\\limits_{x \\to -\\infty} h(x) = \\infty \\) (không có tiệm cận ngang).\n- Khi \\( x \\to +\\infty \\): \\( \\lim\\limits_{x \\to +\\infty} f(x) = 2 \\Rightarrow \\lim\\limits_{x \\to +\\infty} h(x) = \\dfrac{5}{2^2 - 4(2) + 3} = \\dfrac{5}{-1} = -5 \\).\nVậy đồ thị hàm số có đúng 1 tiệm cận ngang là đường thẳng \\( y = -5 \\). \n\\( \\Rightarrow \\) **Phát biểu b) Đúng.**\n\n**3. Tổng số tiệm cận:**\nTổng số tiệm cận đứng và tiệm cận ngang là \\( 3 + 1 = 4 \\). \n\\( \\Rightarrow \\) **Phát biểu c) Sai.**"
-    }
+             }
+              
 
 
-    
-
-            
+       
   
-            
-
-
 
 
             
