@@ -4228,8 +4228,8 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
             }, # Đóng dictionary của Đề 5 
   
             {
-              "id": "de5",
-              "name": "Đề số 5 - ĐỀ CHÍNH THỨC TSA ĐỢT 3 - 2026.",
+              "id": "de6",
+              "name": "Đề số 6 - ĐỀ MINH HỌA SỐ 1 SÁCH CẨM NANG - 2026.",
               "description": "Câu hỏi.",
               "questions": [
                 # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
