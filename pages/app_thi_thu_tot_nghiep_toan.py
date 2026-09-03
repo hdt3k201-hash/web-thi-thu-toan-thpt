@@ -744,8 +744,8 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
       ],
       "explanation": "<b>a) Sai.</b> \\( n(\\Omega) = 89 \\)?<br><br>Số tự nhiên có hai chữ số chạy từ 10 đến 99, nên số phần tử của không gian mẫu là:\n\\[ n(\\Omega) = 99-10+1 = 90. \\]<br><br>Vậy \\( n(\\Omega)=90 \\), không phải 89. Mệnh đề a) sai.<br><br><b>b) Đúng.</b> \\( P(A) = \\dfrac{11}{90} \\)?<br><br>Các số có hai chữ số chia hết cho 8 là các số dạng \\( 8k \\) với \\( 10 \\le 8k \\le 99 \\), tức \\( 2 \\le k \\le 12 \\) (vì \\( 8\\times2=16 \\) và \\( 8\\times12=96 \\)). Số các giá trị \\( k \\) từ 2 đến 12 là \\( 12-2+1=11 \\) số (là 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96).<br><br>Vậy \\( n(A)=11 \\), suy ra \\( P(A) = \\dfrac{11}{90} \\). Mệnh đề b) đúng.<br><br><b>c) Đúng.</b> \\( P(B) = \\dfrac{1}{10} \\)?<br><br>Các số có hai chữ số giống nhau là: 11, 22, 33, 44, 55, 66, 77, 88, 99 — tổng cộng 9 số. Vậy \\( n(B)=9 \\), suy ra\n\\[ P(B) = \\dfrac{9}{90} = \\dfrac{1}{10}. \\]<br><br>Mệnh đề c) đúng.<br><br><b>d) Sai.</b> \\( P(A\\cup B) = \\dfrac{2}{9} \\)?<br><br>Áp dụng công thức: \\( P(A\\cup B) = P(A)+P(B)-P(A\\cap B) \\).<br><br>Biến cố \\( A\\cap B \\) gồm các số vừa chia hết cho 8, vừa có hai chữ số giống nhau: kiểm tra trong các số 11, 22, ..., 99, chỉ có 88 chia hết cho 8 (\\( 88 = 8\\times11 \\)). Vậy \\( n(A\\cap B)=1 \\), suy ra \\( P(A\\cap B) = \\dfrac{1}{90} \\).<br><br>Do đó:\n\\[ P(A\\cup B) = \\dfrac{11}{90}+\\dfrac{9}{90}-\\dfrac{1}{90} = \\dfrac{19}{90}. \\]<br><br>Trong khi đó \\( \\dfrac{2}{9} = \\dfrac{20}{90} \\), khác với \\( \\dfrac{19}{90} \\) vừa tính được. Mệnh đề d) sai."
     }
-  ]
-}
+  ],
+},
        
   
 ]
