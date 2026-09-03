@@ -518,7 +518,7 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
 
  {
   "id": "de3",
-  "name": "Đề số 3 - ĐÁNH GIÁ ĐỊNH KỲ THÁNG 8 - TRƯỜNG NK - LÊ THÁNH TÔNG HCM- 2026 - 2027.",
+  "name": "Đề số 3 - ĐÁNH GIÁ ĐỊNH KỲ THÁNG 8 - TRƯỜNG NGUYỄN KHUYẾN HCM- 2026 - 2027.",
   "description": "22 câu hỏi: 12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn.",
   "questions": [
     {
@@ -804,13 +804,108 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     "103"
   ],
   "explanation": "**Bước 1: Tính số phần tử của không gian mẫu $n(\\Omega)$**<br>Chọn ngẫu nhiên 4 số phân biệt từ tập $X = \\{1; 2; \\dots; 12\\}$, số cách chọn là $C_{12}^4 = 495$ cách.<br>Trong 4 số vừa chọn, ta chọn 1 số đặt vào vòng tròn lớn chính giữa ($C_4^1 = 4$ cách). 3 số còn lại được đặt vào 3 vòng tròn nhỏ không phân biệt vị trí (chỉ có $1$ cách sắp xếp cho bộ 3 số).<br>Do đó, số phần tử của không gian mẫu là:<br>$$n(\\Omega) = C_{12}^4 \\cdot 4 = 495 \\cdot 4 = 1980$$<br>**Bước 2: Tính số trường hợp thuận lợi $n(A)$**<br>Gọi $x_1, x_2, x_3$ lần lượt là 3 số xếp ở ba vòng tròn nhỏ theo thứ tự tăng dần ($x_1 < x_2 < x_3$) và $y$ là số ở vòng tròn lớn chính giữa ($x_1, x_2, x_3, y \\in X$).<br><br>Do $x_1, x_2, x_3$ tạo thành một cấp số cộng tăng nên ta có:<br>$$x_1 + x_3 = 2x_2$$<br>Số ở vòng tròn lớn bằng tổng ba số ở các vòng tròn nhỏ:<br>$$y = x_1 + x_2 + x_3 = (x_1 + x_3) + x_2 = 2x_2 + x_2 = 3x_2$$<br>Vì $y \\in X = \\{1; 2; \\dots; 12\\}$ nên $3x_2 \\le 12 \\implies x_2 \\le 4$.<br>Mặt khác, do $x_1 \\in X$ và $x_1 < x_2$ nên $x_1 \\ge 1 \\implies x_2 \\ge 2$.<br>Như vậy, $x_2$ chỉ có thể nhận các giá trị $2, 3, 4$. Ta xét từng trường hợp:<br><br>• **Trường hợp 1:** $x_2 = 2 \\implies y = 3 \\cdot 2 = 6$.<br>Vì $x_1 < x_2 = 2 \\implies x_1 = 1$.<br>Công sai $d = x_2 - x_1 = 2 - 1 = 1 \\implies x_3 = x_2 + d = 3$.<br>Ta được bộ số $\\{1; 2; 3\\}$ ở vòng nhỏ và $6$ ở vòng lớn (các số $1, 2, 3, 6$ đôi một khác nhau và đều thuộc $X$).<br>$\\implies$ Có $1$ cách chọn.<br><br>• **Trường hợp 2:** $x_2 = 3 \\implies y = 3 \\cdot 3 = 9$.<br>Vì $x_1 < x_2 = 3 \\implies x_1 \\in \\{1; 2\\}$.<br>+ Với $x_1 = 2 \\implies d = 1 \\implies x_3 = 4$. Ta có bộ số $\\{2; 3; 4\\}$ và $y = 9$.<br>+ Với $x_1 = 1 \\implies d = 2 \\implies x_3 = 5$. Ta có bộ số $\\{1; 3; 5\\}$ và $y = 9$.<br>$\\implies$ Có $2$ cách chọn.<br><br>• **Trường hợp 3:** $x_2 = 4 \\implies y = 3 \\cdot 4 = 12$.<br>Vì $x_1 < x_2 = 4 \\implies x_1 \\in \\{1; 2; 3\\}$.<br>+ Với $x_1 = 3 \\implies d = 1 \\implies x_3 = 5$. Ta có bộ số $\\{3; 4; 5\\}$ và $y = 12$.<br>+ Với $x_1 = 2 \\implies d = 2 \\implies x_3 = 6$. Ta có bộ số $\\{2; 4; 6\\}$ và $y = 12$.<br>+ Với $x_1 = 1 \\implies d = 3 \\implies x_3 = 7$. Ta có bộ số $\\{1; 4; 7\\}$ và $y = 12$.<br>$\\implies$ Có $3$ cách chọn.<br><br>Tổng số trường hợp thuận lợi là:<br>$$n(A) = 1 + 2 + 3 = 6$$<br>**Bước 3: Tính xác suất $P$ và giá trị của biểu thức**<br>Xác suất $P$ để thỏa mãn yêu cầu đề bài là:<br>$$P = \\dfrac{n(A)}{n(\\Omega)} = \\dfrac{6}{1980} = \\dfrac{1}{330}$$<br>Vậy giá trị của biểu thức $33990P$ là:<br>$$33990P = 33990 \\cdot \\dfrac{1}{330} = 103$$"
-}
+},
        
+  ],  #hết đề 3
+},    #hết đề 3
+   {
+  "id": "de4",
+  "name": "Đề số 4 - ĐÁNH GIÁ ĐỊNH KỲ THÁNG 8 - TRƯỜNG LÊ THÁNH TÔNG HCM- 2026 - 2027.",
+  "description": "22 câu hỏi: 12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn.",
+  "questions": [
+       
+  {
+    "id": "de4_mc_01",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho hai biến cố xung khắc $A$ và $B$ có xác suất thỏa mãn $P(A) = 0,3$ và $P(B) = 0,7$[cite: 1]. Giá trị của $P(A \\cup B)$ bằng",
+    "options": {
+      "A": "$0,21$.",
+      "B": "$0,4$.",
+      "C": "$0$.",
+      "D": "$1$."
+    },
+    "correct": "D",
+    "explanation": "Vì $A$ và $B$ là hai biến cố xung khắc nên theo quy tắc cộng xác suất[cite: 1]:<br><br>$$P(A \\cup B) = P(A) + P(B) = 0,3 + 0,7 = 1.$$<br><br>Chọn đáp án D."
+  },
+  {
+    "id": "de4_mc_02",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho cấp số cộng $(u_n)$ có $u_1 = -2$ và $u_2 = 1$[cite: 1]. Giá trị công sai $d$ bằng",
+    "options": {
+      "A": "$3$.",
+      "B": "$-3$.",
+      "C": "$-2$.",
+      "D": "$1$."
+    },
+    "correct": "A",
+    "explanation": "Công sai của cấp số cộng là[cite: 1]:<br><br>$$d = u_2 - u_1 = 1 - (-2) = 3.$$<br><br>Chọn đáp án A."
+  },
+  {
+    "id": "de4_mc_03",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho hình lập phương $ABCD.A'B'C'D'$ (xem hình bên)[cite: 1]. Đường thẳng $A'D$ song song với mặt phẳng",
+    "image": "[Chèn link ảnh hình lập phương vào đây]",
+    "options": {
+      "A": "$(AA'D'D)$.",
+      "B": "$(A'B'CD)$.",
+      "C": "$(BB'C'C)$.",
+      "D": "$(AA'C'C)$."
+    },
+    "correct": "C",
+    "explanation": "Hai đoạn $A'B'$ và $DC$ cùng song song và bằng $AB$, nên tứ giác $A'B'CD$ là hình bình hành[cite: 1]. Từ đó suy ra $A'D \\parallel B'C$[cite: 1].<br><br>Mà $B'C \\subset (BB'C'C)$ còn $A'D$ không nằm trong mặt phẳng ấy, do đó $A'D \\parallel (BB'C'C)$[cite: 1].<br><br>Ba mặt phẳng còn lại đều bị loại: $A'D$ nằm hẳn trong $(AA'D'D)$ và trong $(A'B'CD)$, còn với $(AA'C'C)$ thì $A'D$ cắt mặt phẳng này tại $A'$[cite: 1].<br><br>Chọn đáp án C."
+  },
+  {
+    "id": "de4_mc_04",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho hàm số bậc ba $y = f(x)$ có bảng biến thiên trên đoạn $[-1; 2]$ như sau[cite: 1]. Hàm số đồng biến trên khoảng",
+    "image": "[Chèn link ảnh bảng biến thiên vào đây]",
+    "options": {
+      "A": "$(-1; 0) \\cup (1; 2)$.",
+      "B": "$(0; 5)$.",
+      "C": "$(-1; 1)$.",
+      "D": "$(1; \\dfrac{3}{2})$."
+    },
+    "correct": "D",
+    "explanation": "Đọc bảng biến thiên ta thấy: Trên đoạn $[-1; 2]$, $f'(x) > 0$ với $x \\in (-1; 0)$ và $x \\in (1; 2)$, còn $f'(x) < 0$ với $x \\in (0; 1)$[cite: 1]. Vậy hàm số đồng biến trên mỗi khoảng $(-1; 0), (1; 2)$ và nghịch biến trên khoảng $(0; 1)$[cite: 1].<br><br>Vì khoảng $(1; \\dfrac{3}{2})$ nằm trong khoảng $(1; 2)$, nên hàm số đồng biến trên $(1; \\dfrac{3}{2})$[cite: 1].<br><br>Các phương án khác bị loại: Tập $(-1; 0) \\cup (1; 2)$ không phải là một khoảng[cite: 1]. Các khoảng $(0; 5)$ và $(-1; 1)$ đều chứa khoảng $(0; 1)$ - nơi hàm số nghịch biến[cite: 1].<br><br>Chọn đáp án D."
+  },
+  {
+    "id": "de4_mc_05",
+    "part": 1,
+    "type": "mc4",
+    "content": "Trong không gian với hệ trục tọa độ $Oxyz$, cho tam giác $ABC$ có $A(1; 0; 1), B(0; -3; 1)$ và $C(4; -1; 4)$[cite: 1]. Số đo góc $\\widehat{BAC}$ bằng",
+    "options": {
+      "A": "$30^\\circ$.",
+      "B": "$120^\\circ$.",
+      "C": "$60^\\circ$.",
+      "D": "$90^\\circ$."
+    },
+    "correct": "D",
+    "explanation": "Ta có $\\overrightarrow{AB} = (-1; -3; 0)$ và $\\overrightarrow{AC} = (3; -1; 3)$[cite: 1].<br><br>Tính tích vô hướng: $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = (-1) \\cdot 3 + (-3) \\cdot (-1) + 0 \\cdot 3 = 0$[cite: 1].<br><br>Suy ra $\\overrightarrow{AB} \\perp \\overrightarrow{AC}$, tức là $\\widehat{BAC} = 90^\\circ$[cite: 1].<br><br>Chọn đáp án D."
+  },
+  {
+    "id": "de4_mc_06",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho hình lăng trụ $ABC.A'B'C'$ (xem hình bên)[cite: 1]. Phát biểu nào sau đây là đúng?",
+    "image": "[Chèn link ảnh hình lăng trụ vào đây]",
+    "options": {
+      "A": "$\\overrightarrow{BA} + \\overrightarrow{BB'} = \\overrightarrow{AB}$.",
+      "B": "$\\overrightarrow{BA} - \\overrightarrow{BC} = \\overrightarrow{AC}$.",
+      "C": "$\\overrightarrow{BA} + \\overrightarrow{AC} = \\overrightarrow{BC}$.",
+      "D": "$\\overrightarrow{BA} + \\overrightarrow{BA'} = \\overrightarrow{BC'}$."
+    },
+    "correct": "C",
+    "explanation": "Kiểm tra từng phát biểu:<br><br>Theo quy tắc hình bình hành trong hình bình hành $ABB'A'$, ta có $\\overrightarrow{BA} + \\overrightarrow{BB'} = \\overrightarrow{BA'} \\neq \\overrightarrow{AB}$, nên phương án A sai[cite: 1].<br><br>Theo quy tắc hiệu hai vectơ, $\\overrightarrow{BA} - \\overrightarrow{BC} = \\overrightarrow{CA}$, đây là vectơ đối của $\\overrightarrow{AC}$, nên phương án B sai[cite: 1].<br><br>Ta có $\\overrightarrow{BA} + \\overrightarrow{BA'} = \\overrightarrow{BA} + (\\overrightarrow{BA} + \\overrightarrow{AA'}) = 2\\overrightarrow{BA} + \\overrightarrow{AA'}$ và $\\overrightarrow{BC'} = \\overrightarrow{BC} + \\overrightarrow{AA'}$[cite: 1]. Nếu hai vectơ này bằng nhau thì $\\overrightarrow{BC} = 2\\overrightarrow{BA}$, trái với giả thiết $A, B, C$ không thẳng hàng, vậy phương án D sai[cite: 1].<br><br>Còn theo quy tắc ba điểm thì $\\overrightarrow{BA} + \\overrightarrow{AC} = \\overrightarrow{BC}$[cite: 1]. (Lưu ý: Đáp án C trong đề gốc có lỗi đánh máy nhỏ $\\overrightarrow{A'C}$ nhưng theo diễn giải logic chuẩn xác của lời giải, đây phải là $\\overrightarrow{AC}$).<br><br>Chọn đáp án C."
+  }
 
-  ]  #hết đề 3
-}    #hết đề 3
-       
-  
+
+
+    ],  #hết đề 4
+},    #hết đề 4
 ]
 
 def get_exam_by_id(exam_id):
