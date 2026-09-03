@@ -513,8 +513,102 @@ Mặt phẳng \\( (Oxy) \\) có phương trình \\( z = 0 \\), nên hình chiế
 Vậy \\( a=1 \\), \\( b=5 \\), \\( c=0 \\).
 
 Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
-        ],
-    },
+        ], #hết đề 2
+    }, #hết đề 2
+
+ {
+        "id": "de3",
+        "name": "Đề số 3 - ĐÁNH GIÁ ĐỊNH KỲ THÁNG 8 - TRƯỜNG NK - LÊ THÁNH TÔNG HCM- 2026 - 2027.",
+        "description": "22 câu hỏi: 12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn.",
+        "questions": [
+            # ---------------- PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN ---------------- 
+
+{
+  "id": "de308_mc_01",
+  "part": 1,
+  "type": "mc4",
+  "content": "Trong không gian \\( Oxyz \\), cho điểm \\( M(2; -3; 5) \\). Hình chiếu vuông góc của điểm \\( M \\) trên mặt phẳng \\( (Oxy) \\) có tọa độ là",
+  "options": {
+    "A": "\\( (2; 0; 5) \\).",
+    "B": "\\( (0; -3; 5) \\).",
+    "C": "\\( (2; -3; 0) \\).",
+    "D": "\\( (0; 0; 5) \\)."
+  },
+  "correct": "C",
+  "explanation": "Mặt phẳng \\( (Oxy) \\) là mặt phẳng có phương trình \\( z = 0 \\), tức là mọi điểm nằm trên mặt phẳng này đều có cao độ bằng 0.<br><br>Khi chiếu vuông góc một điểm \\( M(x_0; y_0; z_0) \\) bất kỳ xuống mặt phẳng \\( (Oxy) \\), ta chỉ việc giữ nguyên hoành độ \\( x_0 \\) và tung độ \\( y_0 \\), còn cao độ được đưa về 0. Về mặt hình học, đây chính là việc \"hạ\" điểm \\( M \\) thẳng xuống theo phương của trục \\( Oz \\) cho tới khi chạm mặt phẳng \\( (Oxy) \\).<br><br>Áp dụng cho điểm \\( M(2; -3; 5) \\): giữ nguyên \\( x = 2 \\), \\( y = -3 \\) và cho \\( z = 0 \\), ta được hình chiếu là \\( (2; -3; 0) \\).<br><br>Vậy đáp án đúng là C."
+},
+{
+  "id": "de308_mc_02",
+  "part": 1,
+  "type": "mc4",
+  "content": "Phương trình đường thẳng đi qua hai điểm cực trị của đồ thị hàm số \\( y = \\dfrac{x^2 - 3x + 6}{x - 2} \\) là",
+  "options": {
+    "A": "\\( y = 2x + 3 \\).",
+    "B": "\\( y = x - 1 \\).",
+    "C": "\\( y = 2x - 3 \\).",
+    "D": "\\( y = -2x + 3 \\)."
+  },
+  "correct": "C",
+  "explanation": "Trước hết ta thực hiện phép chia đa thức để tách phần nguyên: \\( x^2 - 3x + 6 = (x-2)(x-1) + 4 \\), do đó\n\\[ y = x - 1 + \\dfrac{4}{x-2}. \\]<br><br>Đạo hàm: \\( y' = 1 - \\dfrac{4}{(x-2)^2} \\). Cho \\( y' = 0 \\) ta được \\( (x-2)^2 = 4 \\), suy ra \\( x = 4 \\) hoặc \\( x = 0 \\). Đây chính là hoành độ của hai điểm cực trị.<br><br>Tại \\( x = 4 \\): \\( y = 4 - 1 + \\dfrac{4}{2} = 3 + 2 = 5 \\), ta được điểm \\( (4; 5) \\).<br>Tại \\( x = 0 \\): \\( y = 0 - 1 + \\dfrac{4}{-2} = -1 - 2 = -3 \\), ta được điểm \\( (0; -3) \\).<br><br>Đường thẳng đi qua hai điểm \\( (4; 5) \\) và \\( (0; -3) \\) có hệ số góc:\n\\[ k = \\dfrac{5 - (-3)}{4 - 0} = \\dfrac{8}{4} = 2. \\]<br><br>Phương trình đường thẳng: \\( y = 2x + b \\). Thay điểm \\( (0; -3) \\) vào ta được \\( b = -3 \\).<br><br>Vậy đường thẳng cần tìm là \\( y = 2x - 3 \\). Đáp án C."
+},
+{
+  "id": "de308_mc_03",
+  "part": 1,
+  "type": "mc4",
+  "content": "Nếu một khối lăng trụ có diện tích đáy bằng \\( a^2\\sqrt{3} \\) và có thể tích bằng \\( 3a^3 \\) thì chiều cao của khối lăng trụ đó bằng",
+  "options": {
+    "A": "\\( a \\).",
+    "B": "\\( \\dfrac{a}{\\sqrt{3}} \\).",
+    "C": "\\( 3a\\sqrt{3} \\).",
+    "D": "\\( a\\sqrt{3} \\)."
+  },
+  "correct": "D",
+  "explanation": "Công thức thể tích khối lăng trụ là \\( V = S_{\\text{đáy}} \\cdot h \\), trong đó \\( S_{\\text{đáy}} \\) là diện tích đáy và \\( h \\) là chiều cao.<br><br>Từ đó suy ra chiều cao:\n\\[ h = \\dfrac{V}{S_{\\text{đáy}}} = \\dfrac{3a^3}{a^2\\sqrt{3}} = \\dfrac{3a}{\\sqrt{3}} = a\\sqrt{3}. \\]<br><br>Vậy chiều cao của khối lăng trụ là \\( a\\sqrt{3} \\). Đáp án D."
+},
+{
+  "id": "de308_mc_04",
+  "part": 1,
+  "type": "mc4",
+  "content": "Số đường tiệm cận của đồ thị hàm số \\( y = \\dfrac{2x - 1}{x + 1} \\) là",
+  "options": {
+    "A": "1.",
+    "B": "4.",
+    "C": "3.",
+    "D": "2."
+  },
+  "correct": "D",
+  "explanation": "Hàm số \\( y = \\dfrac{2x-1}{x+1} \\) xác định khi \\( x \\neq -1 \\).<br><br><b>Tiệm cận đứng:</b> Tại \\( x = -1 \\), mẫu số triệt tiêu còn tử số \\( 2(-1) - 1 = -3 \\neq 0 \\), nên\n\\[ \\lim_{x \\to -1} \\dfrac{2x-1}{x+1} = \\infty. \\]\nDo đó \\( x = -1 \\) là tiệm cận đứng.<br><br><b>Tiệm cận ngang:</b> Ta có\n\\[ \\lim_{x \\to \\pm\\infty} \\dfrac{2x-1}{x+1} = \\lim_{x \\to \\pm\\infty} \\dfrac{2 - \\frac{1}{x}}{1 + \\frac{1}{x}} = 2. \\]\nDo đó \\( y = 2 \\) là tiệm cận ngang.<br><br>Đây là hàm phân thức bậc nhất trên bậc nhất, nên không có tiệm cận xiên. Vậy đồ thị có tổng cộng 2 đường tiệm cận (1 đứng, 1 ngang). Đáp án D."
+},
+{
+  "id": "de308_mc_05",
+  "part": 1,
+  "type": "mc4",
+  "content": "Cho hình lập phương \\( ABCD.A'B'C'D' \\). Góc giữa hai véc-tơ \\( \\overrightarrow{AB} \\) và \\( \\overrightarrow{DC'} \\) bằng",
+  "options": {
+    "A": "\\( 30^{\\circ} \\).",
+    "B": "\\( 45^{\\circ} \\).",
+    "C": "\\( 60^{\\circ} \\).",
+    "D": "\\( 90^{\\circ} \\)."
+  },
+  "correct": "B",
+  "explanation": "Gắn hệ trục tọa độ với cạnh hình lập phương bằng 1: \\( A(0;0;0) \\), \\( B(1;0;0) \\), \\( C(1;1;0) \\), \\( D(0;1;0) \\), \\( A'(0;0;1) \\), \\( B'(1;0;1) \\), \\( C'(1;1;1) \\), \\( D'(0;1;1) \\).<br><br>Ta có \\( \\overrightarrow{AB} = (1; 0; 0) \\) và \\( \\overrightarrow{DC'} = C' - D = (1; 1; 1) - (0; 1; 0) = (1; 0; 1) \\).<br><br>Chú ý rằng \\( DC' \\) chính là đường chéo của mặt bên \\( DCC'D' \\), có độ dài \\( \\sqrt{1^2 + 0^2 + 1^2} = \\sqrt{2} \\) (đơn vị cạnh), còn \\( |\\overrightarrow{AB}| = 1 \\).<br><br>Áp dụng công thức tích vô hướng:\n\\[ \\cos\\left(\\overrightarrow{AB}, \\overrightarrow{DC'}\\right) = \\dfrac{\\overrightarrow{AB} \\cdot \\overrightarrow{DC'}}{|\\overrightarrow{AB}| \\cdot |\\overrightarrow{DC'}|} = \\dfrac{1 \\cdot 1 + 0 \\cdot 0 + 0 \\cdot 1}{1 \\cdot \\sqrt{2}} = \\dfrac{1}{\\sqrt{2}}. \\]<br><br>Suy ra góc giữa hai véc-tơ bằng \\( 45^{\\circ} \\). Đáp án B."
+},
+{
+  "id": "de308_mc_06",
+  "part": 1,
+  "type": "mc4",
+  "content": "Cho hàm số \\( y = f(x) \\) liên tục trên \\( \\mathbb{R} \\) và có bảng xét dấu của đạo hàm \\( f'(x) \\) như sau:<br><br><table border='1' cellpadding='6' style='border-collapse:collapse;text-align:center'><tr><td>\\(x\\)</td><td>\\(-\\infty\\)</td><td></td><td>\\(-2\\)</td><td></td><td>\\(0\\)</td><td></td><td>\\(1\\)</td><td></td><td>\\(3\\)</td><td></td><td>\\(+\\infty\\)</td></tr><tr><td>\\(f'(x)\\)</td><td></td><td>\\(-\\)</td><td>0</td><td>\\(+\\)</td><td>0</td><td>\\(-\\)</td><td>0</td><td>\\(+\\)</td><td>0</td><td>\\(+\\)</td><td></td></tr></table><br>Hàm số \\( g(x) = f(|x|) \\) có bao nhiêu điểm cực trị?",
+  "options": {
+    "A": "3.",
+    "B": "5.",
+    "C": "4.",
+    "D": "2."
+  },
+  "correct": "A",
+  "explanation": "Từ bảng xét dấu, ta xác định chiều biến thiên của \\( f \\) trên từng khoảng: \\( f \\) giảm trên \\( (-\\infty; -2) \\), tăng trên \\( (-2; 0) \\), giảm trên \\( (0; 1) \\), tăng trên \\( (1; 3) \\) và tiếp tục tăng trên \\( (3; +\\infty) \\). Chú ý tại \\( x = 3 \\), đạo hàm bằng 0 nhưng không đổi dấu (trước và sau đều dương) nên đây không phải là điểm cực trị của \\( f \\), chỉ là điểm dừng.<br><br>Hàm \\( g(x) = f(|x|) \\) là hàm chẵn, và với \\( x \\ge 0 \\) ta có \\( g(x) = f(x) \\). Do đó trên nửa trục dương, \\( g \\) giảm trên \\( (0;1) \\), tăng trên \\( (1; +\\infty) \\) (điểm \\( x=3 \\) chỉ là điểm dừng, không làm đổi chiều biến thiên). Vậy \\( x = 1 \\) là điểm cực tiểu của \\( g \\).<br><br>Vì \\( g \\) là hàm chẵn, đồ thị của \\( g \\) trên nửa trục âm là ảnh đối xứng qua trục tung của phần đồ thị trên nửa trục dương. Do đó tại \\( x = -1 \\), \\( g \\) cũng đạt cực tiểu (đối xứng với \\( x = 1 \\)).<br><br>Xét lân cận \\( x = 0 \\): khi \\( x \\) tiến tới 0 từ bên trái (ứng với nửa đối xứng của khoảng \\( (0;1) \\)), \\( g \\) đang tăng; khi \\( x \\) tiến từ 0 sang phải, \\( g \\) đang giảm (vì \\( f \\) giảm trên \\( (0;1) \\)). Vậy \\( g \\) đổi chiều từ tăng sang giảm tại \\( x = 0 \\), suy ra \\( x = 0 \\) là điểm cực đại.<br><br>Ngoài ba điểm \\( x = -1, 0, 1 \\), không còn điểm nào khác làm \\( g \\) đổi chiều biến thiên (điểm \\( x = \\pm 3 \\) chỉ là điểm dừng, không phải cực trị).<br><br>Vậy hàm số \\( g(x) = f(|x|) \\) có đúng 3 điểm cực trị. Đáp án A."
+}
+       
+  
 ]
 
 def get_exam_by_id(exam_id):
