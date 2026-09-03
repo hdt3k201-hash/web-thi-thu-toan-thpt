@@ -788,6 +788,7 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
   "part": 3,
   "type": "short",
   "content": "Trong một dự án nghiên cứu công nghệ vật liệu mới, các kỹ sư thiết kế một tấm pin năng lượng mặt trời dạng hình vuông có cạnh 1 m. Để tối ưu hóa khả năng hấp thụ ánh sáng và tản nhiệt, mặt tấm pin được phủ các lớp vi mạch cảm biến dạng phân mảnh (fractal). Ban đầu, tấm pin hình vuông được chia thành 9 ô vuông nhỏ bằng nhau, ô vuông ở chính giữa được phủ một lớp vật liệu cảm biến sẫm màu (màu đen). Ở giai đoạn tiếp theo, mỗi ô vuông màu sáng còn lại tiếp tục được chia thành 9 ô vuông nhỏ hơn và ô chính giữa của nó lại được phủ vật liệu cảm biến sẫm màu. Quá trình chia nhỏ và phủ vi mạch sẫm màu này được thực hiện liên tiếp đúng 5 lần. Tính tổng diện tích mặt tấm pin đã được phủ vật liệu cảm biến sẫm màu sau 5 lần thực hiện theo đơn vị mét vuông (làm tròn kết quả đến hàng phần trăm).",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_sh5_hinh.PNG",
   "answers": [
     "0,45"
   ],
