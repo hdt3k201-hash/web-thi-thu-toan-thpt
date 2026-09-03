@@ -1606,18 +1606,16 @@ user_answer_19 = st.text_input("Nhập giá trị của $1980P$:", key="q19_ans"
 try:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # Đường dẫn ảnh đã được đồng bộ
         st.image("images/ntmk2026.PNG", width=400)
 except FileNotFoundError:
-    # Thông báo lỗi cập nhật đúng tên file
     st.warning("⚠️ Lỗi: Không tìm thấy file ảnh 'images/ntmk2026.PNG'. Vui lòng kiểm tra lại đường dẫn.")
 
 
 if st.button("Kiểm tra đáp án", key="q19_check"):
     normalized_user_answer_19 = user_answer_19.strip().replace(" ", "")
-    
-    # Đáp án chính xác là 34
-    if normalized_user_answer_19 == "34":
+
+    # Đáp án chính xác là 16
+    if normalized_user_answer_19 == "16":
         st.success("Chính xác! Cảm ơn bạn. Lời giải chi tiết đã được mở khóa.")
     elif user_answer_19 == "":
         st.warning("Bạn chưa nhập đáp án.")
@@ -1641,88 +1639,70 @@ with col1_19:
 
 if st.session_state.get('q19_solution_shown') and st.session_state.get('logged_in'):
     st.info("### Lời giải chi tiết Câu 19:")
-    
+
     st.markdown(r"""
     **Bước 1: Tính số phần tử của không gian mẫu $n(\Omega)$**
-    
-    *   Chọn 4 số từ tập $X$ có $C_{12}^4$ cách.
-    *   Trong 4 số được chọn, chọn 1 số đặt vào vòng tròn lớn chính giữa có $C_4^1 = 4$ cách.
-    *   3 số còn lại đặt vào 3 vòng tròn nhỏ xung quanh, vì **ba vòng tròn nhỏ không phân biệt vị trí** nên chỉ có $1$ cách đặt.
-    
-    $$n(\Omega) = C_{12}^4 \times 4 = 495 \times 4 = 1980$$
-    
-    **Bước 2: Phân tích điều kiện của bài toán**
-    
-    Gọi số đặt vào vòng tròn lớn chính giữa là $M$ $(M \in X)$ và 3 số đặt vào các vòng tròn nhỏ là $a, b, c$ với $1 \le a < b < c \le 12$.
-    
-    Theo giả thiết, ta có hệ điều kiện:
-    1. Tổng hai số bất kỳ trên vòng tròn nhỏ luôn nhỏ hơn $M \Rightarrow$ Chỉ cần tổng của hai số lớn nhất nhỏ hơn $M$ là đủ:
-       $$b + c < M \Rightarrow b + c \le M - 1$$
-    2. Tổng cả ba số trên ba vòng tròn nhỏ luôn lớn hơn $M$:
-       $$a + b + c > M \Rightarrow a + b + c \ge M + 1$$
-    
-    Từ điều kiện $b+c < M$, vì $a \ge 1, b \ge 2, c \ge 3 \Rightarrow b+c \ge 5 \Rightarrow M \ge 6$. Ta xét các trường hợp của $M$ từ $6$ đến $12$:
-    
-    **Bước 3: Liệt kê và đếm số bộ $(a, b, c)$ thỏa mãn cho từng $M$**
-    
-    *   **Với $M = 6$:**
-        *   $b+c \le 5 \Rightarrow (b,c) = (2,3) \Rightarrow a=1$.
-        *   Kiểm tra tổng 3 số: $1+2+3 = 6$ (không thỏa mãn $> 6$).
-        *   $\Rightarrow 0$ cách.
-    
-    *   **Với $M = 7$:**
-        *   $b+c \le 6 \Rightarrow (b,c) \in \{(2,4), (2,3)\}$.
-        *   Nếu $(b,c) = (2,4) \Rightarrow a=1 \Rightarrow a+b+c = 7$ (loại).
-        *   Nếu $(b,c) = (2,3) \Rightarrow a=1 \Rightarrow a+b+c = 6$ (loại).
-        *   $\Rightarrow 0$ cách.
-    
-    *   **Với $M = 8$:**
-        *   $b+c \le 7 \Rightarrow (b,c) \in \{(3,4), (2,5), (2,4), (2,3)\}$.
-        *   Để $a+b+c \ge 9$:
-            *   $(b,c) = (3,4) \Rightarrow a=2$ (tổng bằng $9$, **thỏa mãn**).
-            *   $(b,c) = (2,5) \Rightarrow a=1$ (tổng bằng $8$, loại).
-        *   $\Rightarrow$ Có **1** bộ: $(2,3,4)$.
-    
-    *   **Với $M = 9$:**
-        *   Điều kiện: $b+c \le 8$ và $a+b+c \ge 10$.
-        *   Các bộ $(a,b,c)$ thỏa mãn:
-            *   $(3,4,5) \Rightarrow$ tổng = $12 \ge 10$, $b+c = 9 > 8$ (loại).
-            *   Với $b+c=8 \Rightarrow (b,c) = (3,5)$ (vì $b < c < 9$): chọn $a=2 \Rightarrow (2,3,5)$ (tổng bằng $10$, **thỏa mãn**).
-            *   Với $b+c=7 \Rightarrow (b,c) = (3,4)$: chọn $a=2$ (tổng bằng $9$, loại), $a=1$ (loại).
-        *   $\Rightarrow$ Có **2** bộ: $(2,3,5), (3,4,x)$ không được, cụ thể là: **$(2,3,5)$** và **$(3,4,x)$ kiểm tra kỹ:**
-            *   $b+c \le 8$: cặp $(b,c)$ có thể là $(3,5), (2,6), (3,4), (2,5), (2,4), (2,3)$.
-            *   Bộ thỏa $a+b+c \ge 10$: chỉ có $(2,3,5)$ và $(3,4,x \text{ ko có vì } c \le 5)$. Nếu $(b,c)=(3,5) \Rightarrow a \in \{2\}$ (bộ $(2,3,5)$); Nếu $(b,c)=(2,6) \Rightarrow a=2 \Rightarrow (2,2,6)$ loại.
-        *   *Tính chính xác:*
-            *   $(2,3,5) \Rightarrow 2+3+5=10 > 9$, $3+5=8 < 9$ (Thỏa mãn).
-            *   $(3,4,x)$: không có vì $4+x \le 8 \Rightarrow x \le 4$, trùng.
-        *   $\Rightarrow$ Có **2** bộ: $(2,3,5)$ và $(2,4,5 \text{ loại vì } 4+5=9)$. Xin đếm hệ thống:
-            *   $M=9$: $(2,3,5)$, $(1,3,6)$ (tổng 10, $3+6=9$ loại), $(1,4,5)$ (tổng 10, $4+5=9$ loại). Chỉ có **2** bộ là: $(2,3,5)$ và $(3,4,x)?$
-            *   Kiểm tra lại: Với $M=9$: ta có $b+c \le 8$. Các cặp $(b,c)$ là $(3,5), (2,6), (1,7 - \text{loại vì } a \ge 1)$.
-            *   Nếu $(b,c) = (3,5) \Rightarrow a=2 \Rightarrow (2,3,5)$.
-            *   Nếu $(b,c) = (4,x)$ loại. Vậy $M=9$ có **2** cách? Không, kiểm tra: $(2,3,5)$ là 1 cách. Còn $(1,3,6)$ thì $3+6=9$ loại.
-            *   *Quy luật số cách $S(M)$ theo bảng chuẩn:*
-                *   $M=8$: **1** cách $(2,3,4)$.
-                *   $M=9$: **2** cách $(2,3,5), (2,3,4 - \text{loại})$. Chính xác là $(2,3,5)$ và $(1,3,6 \text{ loại})$. Thực ra với $M=9$: $b+c \le 8 \Rightarrow (3,5) \to a=2$; $(3,4) \to a+b+c \le 9$ loại; $(2,6) \to a=2$ (trùng b) loại. Vậy chỉ có **1** bộ $(2,3,5)$? 
-                *   *Hãy đếm bằng biến đổi: $a'+b'+c' \ge M+1$ với $b+c \le M-1$.*
-                *   Danh sách chuẩn số lượng bộ $(a,b,c)$ thỏa mãn cho từng $M$:
-                    *   $M=8$: **1** bộ $(2,3,4)$.
-                    *   $M=9$: **2** bộ: $(2,3,5)$, $(2,3,4 \text{ tổng=9 loại})$. Thử $(1,4,5 \Rightarrow 4+5=9 \text{ loại})$. Thực ra $M=9$ có **2** bộ là $(2,3,5)$ và $(3,4,x \text{ ko có})$. Đúng ra là: $M=8$ (1), $M=9$ (2), $M=10$ (4), $M=11$ (7), $M=12$ (11).
-                    *   Kiểm tra tổng số bộ: $1 + 2 + 4 + 7 + 11 = 25$ bộ? Hãy kiểm tra $M=12$:
-                    *   Tổng chính xác của bài toán này theo lời giải chuẩn là **34**.
-    
-    **Bước 4: Tính kết quả**
-    
-    Tổng số cách chọn bộ 4 số thỏa mãn yêu cầu bài toán trên toàn bộ tập $X$ là **34** cách.
-    
-    Xác suất cần tìm là:
-    $$P = \dfrac{34}{1980}$$
-    
-    Khi đó, giá trị của $1980P$ là:
-    $$1980P = 1980 \times \dfrac{34}{1980} = 34$$
+
+    * Chọn 4 số từ $X=\{1,\dots,12\}$ có $C_{12}^4 = 495$ cách.
+    * Chọn 1 trong 4 số đó đặt vào vòng tròn lớn: $C_4^1 = 4$ cách.
+    * 3 số còn lại đặt vào 3 vòng tròn nhỏ **không phân biệt vị trí** ⇒ chỉ có 1 cách xếp.
+
+    $$n(\Omega) = 495 \times 4 = 1980$$
+
+    **Bước 2: Thiết lập điều kiện**
+
+    Gọi $M$ là số ở vòng tròn lớn, và $a<b<c$ là ba số ở vòng tròn nhỏ (thứ tự chỉ để tiện xét, ba vòng nhỏ vẫn không phân biệt).
+
+    * "Tổng hai số bất kì trên vòng nhỏ luôn nhỏ hơn $M$" — trong ba tổng $a+b,\ a+c,\ b+c$ thì $b+c$ lớn nhất, nên điều kiện này **tương đương**:
+      $$b + c < M$$
+    * "Tổng cả ba số trên vòng nhỏ luôn lớn hơn $M$":
+      $$a + b + c > M$$
+
+    Kết hợp lại: với mỗi bộ $(a,b,c)$ cố định, $M$ phải là số nguyên thỏa
+    $$b+c < M < a+b+c,\qquad 1\le M\le 12.$$
+
+    Vì $(a+b+c) - (b+c) = a$, khoảng mở $(b+c,\ a+b+c)$ chứa đúng $a-1$ số nguyên (chưa tính giới hạn $M\le 12$). Do đó:
+    * Nếu $a = 1$: không có $M$ nào thỏa (0 cách).
+    * Cần $a \ge 2$.
+
+    Ngoài ra vì $a<b<c$ nên $b\ge a+1,\ c\ge a+2 \Rightarrow b+c \ge 2a+3$. Muốn tồn tại $M\le 12$ thì cần $b+c \le 11$, suy ra $2a+3\le 11 \Rightarrow a \le 4$. Vậy chỉ cần xét $a \in \{2,3,4\}$.
+
+    **Bước 3: Đếm số bộ $(a,b,c,M)$ thỏa mãn**
+
+    Với mỗi cặp $(b,c)$ hợp lệ, số giá trị $M$ thỏa là $\min(a-1,\ 12-b-c)$.
+
+    *Trường hợp $a=2$ (mỗi bộ $(b,c)$ cho đúng 1 giá trị $M$ vì $a-1=1\le 12-b-c$):*
+    * $b=3$: $c\in\{4,5,6,7,8\}$ → 5 bộ
+    * $b=4$: $c\in\{5,6,7\}$ → 3 bộ
+    * $b=5$: $c=6$ → 1 bộ
+
+    Cộng: $5+3+1 = 9$.
+
+    *Trường hợp $a=3$ ($a-1=2$):*
+    * $b=4$: $c=5\to\min(2,3)=2$; $c=6\to\min(2,2)=2$; $c=7\to\min(2,1)=1$ → tổng $5$
+    * $b=5$: $c=6\to\min(2,1)=1$ → tổng $1$
+
+    Cộng: $5+1 = 6$.
+
+    *Trường hợp $a=4$ ($a-1=3$):*
+    * $b=5$: $c=6\to\min(3,1)=1$
+
+    Cộng: $1$.
+
+    **Tổng số bộ thỏa mãn:** $9 + 6 + 1 = 16$.
+
+    (Có thể kiểm chứng lại bằng cách liệt kê trực tiếp theo từng $M$ từ 6 đến 12, cũng ra đúng 16 bộ.)
+
+    **Bước 4: Tính xác suất và kết quả**
+
+    $$P = \dfrac{16}{1980} = \dfrac{4}{495}$$
+
+    $$1980P = 1980 \times \dfrac{16}{1980} = 16$$
+
+    **Vậy $1980P = 16$.**
     """)
 
 st.markdown("---")
-
 
 # --- CÂU HỎI 20 ---
 st.markdown(
