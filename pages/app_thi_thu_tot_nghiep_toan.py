@@ -694,6 +694,62 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
   "correct": "C",
   "explanation": "Gọi \\( A \\) là biến cố \"cảm biến A phát tín hiệu cảnh báo\", \\( B \\) là biến cố \"cảm biến B phát tín hiệu cảnh báo\". Theo giả thiết, \\( A \\) và \\( B \\) độc lập, với \\( P(A) = 0{,}9 \\) và \\( P(B) = 0{,}85 \\).<br><br>Biến cố \"nhận được tín hiệu cảnh báo từ ít nhất một trong hai cảm biến\" chính là biến cố \\( A \\cup B \\). Ta sẽ tính thông qua biến cố đối: \"cả hai cảm biến đều không phát tín hiệu\", tức là \\( \\overline{A} \\cap \\overline{B} \\).<br><br>Xác suất cảm biến A không phát tín hiệu: \\( P(\\overline{A}) = 1 - 0{,}9 = 0{,}1 \\).<br>Xác suất cảm biến B không phát tín hiệu: \\( P(\\overline{B}) = 1 - 0{,}85 = 0{,}15 \\).<br><br>Vì \\( A \\), \\( B \\) độc lập nên \\( \\overline{A} \\), \\( \\overline{B} \\) cũng độc lập với nhau, do đó:\n\\[ P(\\overline{A} \\cap \\overline{B}) = P(\\overline{A}) \\cdot P(\\overline{B}) = 0{,}1 \\times 0{,}15 = 0{,}015. \\]<br><br>Vậy xác suất nhận được tín hiệu cảnh báo từ ít nhất một cảm biến là:\n\\[ P(A \\cup B) = 1 - P(\\overline{A} \\cap \\overline{B}) = 1 - 0{,}015 = 0{,}985. \\]<br><br>Đáp án C."
 }
+          
+{
+  "id": "de3_tf_01",
+  "part": 2,
+  "type": "truefalse",
+  "content": "Một công ty khởi nghiệp mô hình hóa tốc độ tăng trưởng doanh thu hàng năm \\( y = f(t) \\) (đơn vị: tỷ đồng/năm) theo thời gian \\( t \\) (đơn vị: năm, với \\( t \\ge 0 \\)) bằng một hàm số đa thức bậc ba \\( y = at^3 + bt^2 + ct + d \\) (\\( a \\ne 0 \\)) có đồ thị như hình vẽ bên. Xét tính đúng sai của các mệnh đề sau:",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_tf1_dothi.PNG",
+  "statements": [
+    {"text": "Công thức xác định tốc độ tăng trưởng doanh thu của công ty là \\( f(t) = -2t^3 + 3t^2 + 1 \\).", "correct": true},
+    {"text": "Doanh thu của công ty đạt tốc độ tăng trưởng cực đại tại thời điểm \\( t = 2 \\) năm.", "correct": false},
+    {"text": "Trong năm đầu tiên (\\( 0 \\le t \\le 1 \\)), tốc độ tăng trưởng doanh thu của công ty luôn có xu hướng tăng.", "correct": true},
+    {"text": "Tại thời điểm \\( t = 1{,}5 \\) năm, tốc độ tăng trưởng doanh thu của công ty đạt giá trị bằng 2 tỷ đồng/năm.", "correct": false}
+  ],
+  "explanation": "<b>a) Đúng.</b> Công thức xác định là \\( f(t) = -2t^3+3t^2+1 \\)?<br><br>Quan sát đồ thị, ta thấy hàm số đạt cực tiểu tại điểm \\( (0;1) \\) và đạt cực đại tại điểm \\( (1;2) \\). Vì đây là hai điểm cực trị nên đạo hàm \\( f'(t) = 3at^2+2bt+c \\) phải triệt tiêu tại \\( t=0 \\) và \\( t=1 \\), đồng thời giá trị hàm tại hai điểm đó lần lượt bằng 1 và 2.<br><br>Từ \\( f'(0)=0 \\), ta có ngay \\( c = 0 \\).<br>Từ \\( f(0)=1 \\), ta có \\( d = 1 \\).<br>Từ \\( f'(1)=0 \\): \\( 3a+2b+c=0 \\Rightarrow 3a+2b=0 \\).<br>Từ \\( f(1)=2 \\): \\( a+b+c+d=2 \\Rightarrow a+b+1=2 \\Rightarrow a+b=1 \\).<br><br>Giải hệ \\( \\begin{cases} 3a+2b=0 \\\\ a+b=1 \\end{cases} \\), thay \\( b = 1-a \\) vào phương trình đầu:\n\\[ 3a+2(1-a)=0 \\Rightarrow a+2=0 \\Rightarrow a=-2 \\Rightarrow b=3. \\]<br><br>Vậy \\( f(t) = -2t^3+3t^2+1 \\). Mệnh đề a) đúng.<br><br><b>b) Sai.</b> Doanh thu đạt tốc độ tăng trưởng cực đại tại \\( t=2 \\)?<br><br>Ta có \\( f'(t) = -6t^2+6t = 6t(1-t) \\). Xét dấu trên \\( [0;+\\infty) \\): với \\( 0<t<1 \\) thì \\( f'(t)>0 \\) (tăng); với \\( t>1 \\) thì \\( f'(t)<0 \\) (giảm). Vậy \\( f(t) \\) đạt cực đại tại \\( t=1 \\) (không phải \\( t=2 \\)), với giá trị \\( f(1) = -2+3+1=2 \\). Mệnh đề b) sai.<br><br><b>c) Đúng.</b> Trong năm đầu tiên, tốc độ tăng trưởng luôn có xu hướng tăng?<br><br>Như đã xét ở câu b), với mọi \\( t\\in(0;1) \\) ta có \\( f'(t) = 6t(1-t) > 0 \\) (vì cả \\( t \\) và \\( 1-t \\) đều dương). Do đó hàm số \\( f(t) \\) đồng biến trên \\( (0;1) \\), nghĩa là tốc độ tăng trưởng doanh thu luôn có xu hướng tăng trong năm đầu tiên. Mệnh đề c) đúng.<br><br><b>d) Sai.</b> Tại \\( t=1{,}5 \\), tốc độ tăng trưởng bằng 2?<br><br>Ta tính \\( f(1{,}5) = -2(1{,}5)^3+3(1{,}5)^2+1 = -2(3{,}375)+3(2{,}25)+1 = -6{,}75+6{,}75+1 = 1 \\).<br><br>Vậy tại \\( t=1{,}5 \\), tốc độ tăng trưởng doanh thu bằng 1 tỷ đồng/năm, không phải 2. Mệnh đề d) sai."
+},
+{
+  "id": "de3_tf_02",
+  "part": 2,
+  "type": "truefalse",
+  "content": "Trong một ca trực tại Trạm kiểm soát không lưu sân bay Tân Sơn Nhất, các kỹ sư ra-đa thiết lập hệ trục tọa độ \\( Oxyz \\) (đơn vị trên các trục tính bằng ki-lô-mét) với gốc \\( O(0;0;0) \\) là vị trí đặt tháp điều hành không lưu. Lúc 8 giờ sáng, hệ thống theo dõi một máy bay thương mại đang ở vị trí \\( M_0(50;120;4) \\). Máy bay đang bay ổn định với véc-tơ vận tốc không đổi là \\( \\vec{v} = (300;400;3) \\) (đơn vị: km/h). Xét tính đúng sai của các mệnh đề sau:",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_tf2_hetruc.PNG",
+  "statements": [
+    {"text": "Tại thời điểm 8 giờ sáng, khoảng cách từ máy bay đến tháp điều hành không lưu xấp xỉ 130 km (sai số không quá 1 km).", "correct": true},
+    {"text": "Tại thời điểm 9 giờ sáng, độ cao của máy bay so với mặt đất là 8 km.", "correct": false},
+    {"text": "Tại thời điểm 10 giờ sáng, khoảng cách từ máy bay đến tháp truyền hình \\( F(1\\,250;1\\,020;0) \\) xấp xỉ 700 km (sai số không quá 10 km).", "correct": false},
+    {"text": "Khi đạt độ cao 10 km, máy bay nhận lệnh hạ cánh và đổi sang vận tốc mới là \\( \\vec{v}_2 = (400;300;-5) \\) km/h để hướng về đường băng B. Tọa độ của máy bay ngay khi chạm đất tại đường băng B là \\( (1\\,450;1\\,520;0) \\).", "correct": true}
+  ],
+  "explanation": "Vị trí máy bay tại thời điểm \\( t \\) giờ sau 8 giờ sáng: \\( M(t) = M_0 + t\\vec{v} = (50+300t;\\ 120+400t;\\ 4+3t) \\).<br><br><b>a) Đúng.</b> Khoảng cách lúc 8 giờ sáng chính là \\( |OM_0| \\):\n\\[ OM_0 = \\sqrt{50^2+120^2+4^2} = \\sqrt{2500+14400+16} = \\sqrt{16916} \\approx 130{,}06 \\text{ km}. \\]<br><br>Giá trị này xấp xỉ 130 km với sai số nhỏ hơn 1 km. Mệnh đề a) đúng.<br><br><b>b) Sai.</b> Độ cao lúc 9 giờ sáng ứng với \\( t=1 \\):\n\\[ z(1) = 4+3(1) = 7 \\text{ km}. \\]<br><br>Độ cao thực tế là 7 km chứ không phải 8 km. Mệnh đề b) sai.<br><br><b>c) Sai.</b> Lúc 10 giờ sáng ứng với \\( t=2 \\), vị trí máy bay là:\n\\[ M(2) = (50+600;\\ 120+800;\\ 4+6) = (650;\\ 920;\\ 10). \\]<br><br>Khoảng cách đến \\( F(1\\,250;1\\,020;0) \\):\n\\[ MF = \\sqrt{(1250-650)^2+(1020-920)^2+(0-10)^2} = \\sqrt{600^2+100^2+10^2} = \\sqrt{370100} \\approx 608{,}4 \\text{ km}. \\]<br><br>Giá trị này lệch khá xa so với 700 km (sai số hơn 10 km), nên mệnh đề c) sai.<br><br><b>d) Đúng.</b> Tại \\( t=2 \\) (đúng 10 giờ sáng), máy bay đang ở độ cao \\( z=10 \\) km, khớp với thời điểm \"đạt độ cao 10 km\" nêu trong đề, tại vị trí \\( (650;920;10) \\).<br><br>Từ lúc này, máy bay bay với vận tốc mới \\( \\vec{v}_2=(400;300;-5) \\). Gọi \\( t' \\) là thời gian bay thêm kể từ lúc đổi vận tốc, độ cao lúc này là \\( z = 10 - 5t' \\). Máy bay chạm đất khi \\( z=0 \\):\n\\[ 10-5t' = 0 \\Rightarrow t'=2 \\text{ giờ}. \\]<br><br>Tọa độ khi chạm đất:\n\\[ x = 650+400(2) = 1450,\\quad y = 920+300(2)=1520,\\quad z=0. \\]<br><br>Vậy tọa độ điểm chạm đất là \\( (1450;1520;0) \\), khớp với mệnh đề. Mệnh đề d) đúng."
+},
+{
+  "id": "de3_tf_03",
+  "part": 2,
+  "type": "truefalse",
+  "content": "Một công ty công nghệ phân tích hiệu quả của chiến dịch tiếp thị ứng dụng mới. Tổng thời gian người dùng tương tác tích lũy trên hệ thống theo thời gian \\( t \\) (\\( t \\ge 0 \\), tính bằng tuần) được mô hình hóa bởi hàm số \\( x(t) = 2t - 2\\ln(t+1) \\) (đơn vị: triệu giờ). Hàm số \\( v(t) = x'(t) \\) biểu thị tốc độ tương tác của người dùng tại thời điểm \\( t \\) (đơn vị: triệu giờ/tuần). Xét tính đúng sai của các mệnh đề sau:",
+  "statements": [
+    {"text": "\\( v(t) = 2 - \\dfrac{3}{t+1} \\).", "correct": false},
+    {"text": "Tốc độ tương tác tại thời điểm ban đầu (\\( t=0 \\)) là 2 triệu giờ/tuần.", "correct": false},
+    {"text": "Tốc độ tương tác tại thời điểm \\( t=1 \\) tuần bằng 1 triệu giờ/tuần.", "correct": true},
+    {"text": "Gia tốc tương tác của người dùng tại thời điểm \\( t=1 \\) tuần bằng 0,5 triệu giờ/tuần\\(^2\\).", "correct": true}
+  ],
+  "explanation": "<b>a) Sai.</b> \\( v(t) = 2-\\dfrac{3}{t+1} \\)?<br><br>Ta có \\( x(t) = 2t - 2\\ln(t+1) \\). Đạo hàm:\n\\[ v(t) = x'(t) = 2 - 2\\cdot\\dfrac{1}{t+1} = 2 - \\dfrac{2}{t+1}. \\]<br><br>Vậy hệ số đúng ở phân số là 2, không phải 3. Mệnh đề a) sai.<br><br><b>b) Sai.</b> Tốc độ tương tác tại \\( t=0 \\) là 2?<br><br>Thay \\( t=0 \\) vào \\( v(t) = 2-\\dfrac{2}{t+1} \\):\n\\[ v(0) = 2 - \\dfrac{2}{0+1} = 2-2 = 0. \\]<br><br>Vậy tốc độ tương tác ban đầu bằng 0, không phải 2 triệu giờ/tuần. Mệnh đề b) sai.<br><br><b>c) Đúng.</b> Tốc độ tương tác tại \\( t=1 \\) bằng 1?<br><br>\\[ v(1) = 2-\\dfrac{2}{1+1} = 2-1 = 1. \\]<br><br>Vậy tại \\( t=1 \\), tốc độ tương tác đúng bằng 1 triệu giờ/tuần. Mệnh đề c) đúng.<br><br><b>d) Đúng.</b> Gia tốc tại \\( t=1 \\) bằng 0,5?<br><br>Gia tốc tương tác là đạo hàm của \\( v(t) \\), tức là \\( a(t) = v'(t) \\). Viết lại \\( v(t) = 2-2(t+1)^{-1} \\), ta có:\n\\[ a(t) = v'(t) = 2(t+1)^{-2} = \\dfrac{2}{(t+1)^2}. \\]<br><br>Tại \\( t=1 \\):\n\\[ a(1) = \\dfrac{2}{(1+1)^2} = \\dfrac{2}{4} = 0{,}5. \\]<br><br>Vậy gia tốc tương tác tại \\( t=1 \\) đúng bằng 0,5 triệu giờ/tuần\\(^2\\). Mệnh đề d) đúng."
+},
+{
+  "id": "de3_tf_04",
+  "part": 2,
+  "type": "truefalse",
+  "content": "Xét phép thử chọn ngẫu nhiên một số tự nhiên có hai chữ số. Xét biến cố \\( A \\): \"Số được chọn là số chia hết cho 8\" và biến cố \\( B \\): \"Số được chọn là số có hai chữ số giống nhau\". Xét tính đúng sai của các mệnh đề sau:",
+  "statements": [
+    {"text": "Số phần tử của không gian mẫu là \\( n(\\Omega) = 89 \\).", "correct": false},
+    {"text": "Xác suất của biến cố \\( A \\) là \\( P(A) = \\dfrac{11}{90} \\).", "correct": true},
+    {"text": "Xác suất của biến cố \\( B \\) là \\( P(B) = \\dfrac{1}{10} \\).", "correct": true},
+    {"text": "Xác suất của biến cố hợp \\( A \\cup B \\) là \\( P(A \\cup B) = \\dfrac{2}{9} \\).", "correct": false}
+  ],
+  "explanation": "<b>a) Sai.</b> \\( n(\\Omega) = 89 \\)?<br><br>Số tự nhiên có hai chữ số chạy từ 10 đến 99, nên số phần tử của không gian mẫu là:\n\\[ n(\\Omega) = 99-10+1 = 90. \\]<br><br>Vậy \\( n(\\Omega)=90 \\), không phải 89. Mệnh đề a) sai.<br><br><b>b) Đúng.</b> \\( P(A) = \\dfrac{11}{90} \\)?<br><br>Các số có hai chữ số chia hết cho 8 là các số dạng \\( 8k \\) với \\( 10 \\le 8k \\le 99 \\), tức \\( 2 \\le k \\le 12 \\) (vì \\( 8\\times2=16 \\) và \\( 8\\times12=96 \\)). Số các giá trị \\( k \\) từ 2 đến 12 là \\( 12-2+1=11 \\) số (là 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96).<br><br>Vậy \\( n(A)=11 \\), suy ra \\( P(A) = \\dfrac{11}{90} \\). Mệnh đề b) đúng.<br><br><b>c) Đúng.</b> \\( P(B) = \\dfrac{1}{10} \\)?<br><br>Các số có hai chữ số giống nhau là: 11, 22, 33, 44, 55, 66, 77, 88, 99 — tổng cộng 9 số. Vậy \\( n(B)=9 \\), suy ra\n\\[ P(B) = \\dfrac{9}{90} = \\dfrac{1}{10}. \\]<br><br>Mệnh đề c) đúng.<br><br><b>d) Sai.</b> \\( P(A\\cup B) = \\dfrac{2}{9} \\)?<br><br>Áp dụng công thức: \\( P(A\\cup B) = P(A)+P(B)-P(A\\cap B) \\).<br><br>Biến cố \\( A\\cap B \\) gồm các số vừa chia hết cho 8, vừa có hai chữ số giống nhau: kiểm tra trong các số 11, 22, ..., 99, chỉ có 88 chia hết cho 8 (\\( 88 = 8\\times11 \\)). Vậy \\( n(A\\cap B)=1 \\), suy ra \\( P(A\\cap B) = \\dfrac{1}{90} \\).<br><br>Do đó:\n\\[ P(A\\cup B) = \\dfrac{11}{90}+\\dfrac{9}{90}-\\dfrac{1}{90} = \\dfrac{19}{90}. \\]<br><br>Trong khi đó \\( \\dfrac{2}{9} = \\dfrac{20}{90} \\), khác với \\( \\dfrac{19}{90} \\) vừa tính được. Mệnh đề d) sai."
+}
+
 
 
           ], #hết đề 3
