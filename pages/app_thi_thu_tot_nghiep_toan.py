@@ -597,7 +597,9 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
   "id": "de308_mc_06",
   "part": 1,
   "type": "mc4",
-  "content": "Cho hàm số \\( y = f(x) \\) liên tục trên \\( \\mathbb{R} \\) và có bảng xét dấu của đạo hàm \\( f'(x) \\) như sau:<br><br><table border='1' cellpadding='6' style='border-collapse:collapse;text-align:center'><tr><td>\\(x\\)</td><td>\\(-\\infty\\)</td><td></td><td>\\(-2\\)</td><td></td><td>\\(0\\)</td><td></td><td>\\(1\\)</td><td></td><td>\\(3\\)</td><td></td><td>\\(+\\infty\\)</td></tr><tr><td>\\(f'(x)\\)</td><td></td><td>\\(-\\)</td><td>0</td><td>\\(+\\)</td><td>0</td><td>\\(-\\)</td><td>0</td><td>\\(+\\)</td><td>0</td><td>\\(+\\)</td><td></td></tr></table><br>Hàm số \\( g(x) = f(|x|) \\) có bao nhiêu điểm cực trị?",
+  "content": "Cho hàm số \\( y = f(x) \\) liên tục trên \\( \\mathbb{R} \\) và có bảng xét dấu của đạo hàm \\( f'(x) \\) như sau.Hàm số \\( g(x) = f(|x|) \\) có bao nhiêu điểm cực trị?",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau6nk.PNG",
+  
   "options": {
     "A": "3.",
     "B": "5.",
@@ -606,7 +608,93 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
   },
   "correct": "A",
   "explanation": "Từ bảng xét dấu, ta xác định chiều biến thiên của \\( f \\) trên từng khoảng: \\( f \\) giảm trên \\( (-\\infty; -2) \\), tăng trên \\( (-2; 0) \\), giảm trên \\( (0; 1) \\), tăng trên \\( (1; 3) \\) và tiếp tục tăng trên \\( (3; +\\infty) \\). Chú ý tại \\( x = 3 \\), đạo hàm bằng 0 nhưng không đổi dấu (trước và sau đều dương) nên đây không phải là điểm cực trị của \\( f \\), chỉ là điểm dừng.<br><br>Hàm \\( g(x) = f(|x|) \\) là hàm chẵn, và với \\( x \\ge 0 \\) ta có \\( g(x) = f(x) \\). Do đó trên nửa trục dương, \\( g \\) giảm trên \\( (0;1) \\), tăng trên \\( (1; +\\infty) \\) (điểm \\( x=3 \\) chỉ là điểm dừng, không làm đổi chiều biến thiên). Vậy \\( x = 1 \\) là điểm cực tiểu của \\( g \\).<br><br>Vì \\( g \\) là hàm chẵn, đồ thị của \\( g \\) trên nửa trục âm là ảnh đối xứng qua trục tung của phần đồ thị trên nửa trục dương. Do đó tại \\( x = -1 \\), \\( g \\) cũng đạt cực tiểu (đối xứng với \\( x = 1 \\)).<br><br>Xét lân cận \\( x = 0 \\): khi \\( x \\) tiến tới 0 từ bên trái (ứng với nửa đối xứng của khoảng \\( (0;1) \\)), \\( g \\) đang tăng; khi \\( x \\) tiến từ 0 sang phải, \\( g \\) đang giảm (vì \\( f \\) giảm trên \\( (0;1) \\)). Vậy \\( g \\) đổi chiều từ tăng sang giảm tại \\( x = 0 \\), suy ra \\( x = 0 \\) là điểm cực đại.<br><br>Ngoài ba điểm \\( x = -1, 0, 1 \\), không còn điểm nào khác làm \\( g \\) đổi chiều biến thiên (điểm \\( x = \\pm 3 \\) chỉ là điểm dừng, không phải cực trị).<br><br>Vậy hàm số \\( g(x) = f(|x|) \\) có đúng 3 điểm cực trị. Đáp án A."
+},
+          
+{
+  "id": "de308_mc_07",
+  "part": 1,
+  "type": "mc4",
+  "content": "Cho tứ diện \\( OABC \\) có các cạnh \\( OA, OB, OC \\) đôi một vuông góc với nhau. Số đo của góc nhị diện \\( [B, OA, C] \\) bằng",
+  "options": {
+    "A": "\\( 90^{\\circ} \\).",
+    "B": "\\( 30^{\\circ} \\).",
+    "C": "\\( 45^{\\circ} \\).",
+    "D": "\\( 60^{\\circ} \\)."
+  },
+  "correct": "A",
+  "explanation": "Góc nhị diện \\( [B, OA, C] \\) là góc nhị diện có cạnh \\( OA \\), tạo bởi hai nửa mặt phẳng lần lượt chứa \\( B \\) và chứa \\( C \\).<br><br>Vì \\( OA \\perp OB \\) (giả thiết) nên \\( OB \\) vuông góc với cạnh \\( OA \\) tại \\( O \\). Tương tự, \\( OA \\perp OC \\) nên \\( OC \\) cũng vuông góc với cạnh \\( OA \\) tại \\( O \\).<br><br>Như vậy, tại đúng điểm \\( O \\) trên cạnh \\( OA \\), ta có hai tia \\( OB \\) và \\( OC \\) cùng vuông góc với \\( OA \\). Theo định nghĩa, góc nhị diện \\( [B, OA, C] \\) chính bằng góc giữa hai tia này, tức là góc \\( \\widehat{BOC} \\).<br><br>Mà theo giả thiết, \\( OB \\perp OC \\), nên \\( \\widehat{BOC} = 90^{\\circ} \\).<br><br>Vậy góc nhị diện \\( [B, OA, C] \\) bằng \\( 90^{\\circ} \\). Đáp án A."
+},
+{
+  "id": "de308_mc_08",
+  "part": 1,
+  "type": "mc4",
+  "content": "Cho hàm số \\( y = f(x) \\) xác định và liên tục trên \\( \\mathbb{R} \\) có bảng biến thiên như hình bên dưới. Gọi \\( M(x_1; y_1) \\) và \\( N(x_2; y_2) \\) lần lượt là điểm cực đại và điểm cực tiểu của đồ thị hàm số \\( y = f(x) \\). Giá trị của biểu thức \\( T = 2x_1 + x_2 - y_1 \\cdot y_2 \\) bằng<br><br><table border='1' cellpadding='6' style='border-collapse:collapse;text-align:center'><tr><td>\\(x\\)</td><td>\\(-\\infty\\)</td><td></td><td>\\(-1\\)</td><td></td><td>\\(2\\)</td><td></td><td>\\(+\\infty\\)</td></tr><tr><td>\\(f'(x)\\)</td><td></td><td>\\(+\\)</td><td>0</td><td>\\(-\\)</td><td>0</td><td>\\(+\\)</td><td></td></tr><tr><td>\\(f(x)\\)</td><td>\\(-\\infty\\)</td><td>\\(\\nearrow\\)</td><td>4</td><td>\\(\\searrow\\)</td><td>\\(-1\\)</td><td>\\(\\nearrow\\)</td><td>\\(+\\infty\\)</td></tr></table>",
+  "options": {
+    "A": "2.",
+    "B": "4.",
+    "C": "0.",
+    "D": "\\( -4 \\)."
+  },
+  "correct": "B",
+  "explanation": "Từ bảng biến thiên: hàm số tăng trên \\( (-\\infty; -1) \\), giảm trên \\( (-1; 2) \\), tăng trên \\( (2; +\\infty) \\).<br><br>Tại \\( x = -1 \\), \\( f'(x) \\) đổi dấu từ dương sang âm nên đây là điểm cực đại, với giá trị cực đại \\( f(-1) = 4 \\). Vậy \\( M(x_1; y_1) = M(-1; 4) \\), tức \\( x_1 = -1 \\), \\( y_1 = 4 \\).<br><br>Tại \\( x = 2 \\), \\( f'(x) \\) đổi dấu từ âm sang dương nên đây là điểm cực tiểu, với giá trị cực tiểu \\( f(2) = -1 \\). Vậy \\( N(x_2; y_2) = N(2; -1) \\), tức \\( x_2 = 2 \\), \\( y_2 = -1 \\).<br><br>Thay vào biểu thức:\n\\[ T = 2x_1 + x_2 - y_1 \\cdot y_2 = 2(-1) + 2 - (4)(-1) = -2 + 2 + 4 = 4. \\]<br><br>Vậy \\( T = 4 \\). Đáp án B."
+},
+{
+  "id": "de308_mc_09",
+  "part": 1,
+  "type": "mc4",
+  "content": "Trong không gian \\( Oxyz \\), cho hình hộp chữ nhật \\( ABCD.A'B'C'D' \\) có đỉnh \\( A \\) trùng với gốc tọa độ \\( O \\), các véc-tơ \\( \\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AA'} \\) theo thứ tự cùng hướng với các véc-tơ \\( \\vec{i}, \\vec{j}, \\vec{k} \\) và có \\( AB = 4 \\), \\( AD = 3 \\), \\( AA' = 6 \\). Khi đó, véc-tơ \\( \\overrightarrow{AC'} \\) có tọa độ là",
+  "options": {
+    "A": "\\( (4; 3; 6) \\).",
+    "B": "\\( (3; 6; 4) \\).",
+    "C": "\\( (3; 4; 6) \\).",
+    "D": "\\( (6; 3; 4) \\)."
+  },
+  "correct": "A",
+  "explanation": "Vì \\( \\overrightarrow{AB} \\) cùng hướng với \\( \\vec{i} \\) và \\( AB = 4 \\), ta có \\( \\overrightarrow{AB} = (4; 0; 0) \\).<br>Vì \\( \\overrightarrow{AD} \\) cùng hướng với \\( \\vec{j} \\) và \\( AD = 3 \\), ta có \\( \\overrightarrow{AD} = (0; 3; 0) \\).<br>Vì \\( \\overrightarrow{AA'} \\) cùng hướng với \\( \\vec{k} \\) và \\( AA' = 6 \\), ta có \\( \\overrightarrow{AA'} = (0; 0; 6) \\).<br><br>Trong hình hộp chữ nhật \\( ABCD.A'B'C'D' \\), điểm \\( C' \\) là đỉnh đối diện với \\( A \\) qua tâm hình hộp, nên đường chéo \\( \\overrightarrow{AC'} \\) chính là tổng của ba véc-tơ cạnh xuất phát từ \\( A \\):\n\\[ \\overrightarrow{AC'} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = (4; 0; 0) + (0; 3; 0) + (0; 0; 6) = (4; 3; 6). \\]<br><br>Vậy \\( \\overrightarrow{AC'} = (4; 3; 6) \\). Đáp án A."
+},
+{
+  "id": "de308_mc_10",
+  "part": 1,
+  "type": "mc4",
+  "content": "Cho hàm số \\( y = x^3 - 6x^2 + 15x - 2 \\) có đồ thị là \\( (C) \\). Hệ số góc nhỏ nhất của tiếp tuyến tại một điểm \\( M \\) thuộc đồ thị \\( (C) \\) là",
+  "options": {
+    "A": "1.",
+    "B": "3.",
+    "C": "5.",
+    "D": "0."
+  },
+  "correct": "B",
+  "explanation": "Hệ số góc của tiếp tuyến tại điểm \\( M(x_0; y_0) \\) thuộc đồ thị chính là giá trị đạo hàm tại \\( x_0 \\):\n\\[ k(x) = y' = 3x^2 - 12x + 15. \\]<br><br>Đây là một tam thức bậc hai theo \\( x \\) với hệ số \\( a = 3 > 0 \\), do đó \\( k(x) \\) đạt giá trị nhỏ nhất tại đỉnh parabol, ứng với\n\\[ x_0 = -\\dfrac{b}{2a} = -\\dfrac{-12}{2 \\cdot 3} = 2. \\]<br><br>Giá trị nhỏ nhất của hệ số góc:\n\\[ k(2) = 3(2)^2 - 12(2) + 15 = 12 - 24 + 15 = 3. \\]<br><br>Vậy hệ số góc nhỏ nhất của tiếp tuyến với đồ thị \\( (C) \\) bằng 3. Đáp án B."
+},
+{
+  "id": "de308_mc_11",
+  "part": 1,
+  "type": "mc4",
+  "content": "Trong không gian \\( Oxyz \\), cho ba điểm \\( A(1; -1; 2) \\), \\( B(5; 2; 1) \\) và \\( C(2; 0; 3) \\). Tìm điểm \\( M \\) trên trục \\( Ox \\) sao cho \\( AM \\) vuông góc với \\( BC \\).",
+  "options": {
+    "A": "\\( M(-5; 0; 0) \\).",
+    "B": "\\( M(1; 0; 0) \\).",
+    "C": "\\( M(2; 0; 0) \\).",
+    "D": "\\( M(-1; 0; 0) \\)."
+  },
+  "correct": "D",
+  "explanation": "Vì \\( M \\) thuộc trục \\( Ox \\) nên \\( M(m; 0; 0) \\) với \\( m \\) là tham số cần tìm.<br><br>Ta có \\( \\overrightarrow{AM} = M - A = (m - 1; 0 - (-1); 0 - 2) = (m - 1; 1; -2) \\).<br><br>Và \\( \\overrightarrow{BC} = C - B = (2 - 5; 0 - 2; 3 - 1) = (-3; -2; 2) \\).<br><br>Điều kiện \\( AM \\perp BC \\) tương đương với \\( \\overrightarrow{AM} \\cdot \\overrightarrow{BC} = 0 \\):\n\\[ (m-1)(-3) + (1)(-2) + (-2)(2) = 0 \\]\n\\[ -3m + 3 - 2 - 4 = 0 \\]\n\\[ -3m - 3 = 0 \\]\n\\[ m = -1. \\]<br><br>Vậy \\( M(-1; 0; 0) \\). Đáp án D."
+},
+{
+  "id": "de308_mc_12",
+  "part": 1,
+  "type": "mc4",
+  "content": "Một hệ thống cảnh báo cháy tự động của một tòa nhà được lắp đặt hai cảm biến \\( A \\) và \\( B \\) hoạt động độc lập với nhau. Khi xảy ra sự cố cháy, xác suất để cảm biến \\( A \\) và cảm biến \\( B \\) phát tín hiệu cảnh báo tương ứng là \\( 0{,}9 \\) và \\( 0{,}85 \\). Tính xác suất để khi xảy ra sự cố cháy, tòa nhà nhận được tín hiệu cảnh báo từ ít nhất một trong hai cảm biến.",
+  "options": {
+    "A": "0,765.",
+    "B": "0,975.",
+    "C": "0,985.",
+    "D": "0,925."
+  },
+  "correct": "C",
+  "explanation": "Gọi \\( A \\) là biến cố \"cảm biến A phát tín hiệu cảnh báo\", \\( B \\) là biến cố \"cảm biến B phát tín hiệu cảnh báo\". Theo giả thiết, \\( A \\) và \\( B \\) độc lập, với \\( P(A) = 0{,}9 \\) và \\( P(B) = 0{,}85 \\).<br><br>Biến cố \"nhận được tín hiệu cảnh báo từ ít nhất một trong hai cảm biến\" chính là biến cố \\( A \\cup B \\). Ta sẽ tính thông qua biến cố đối: \"cả hai cảm biến đều không phát tín hiệu\", tức là \\( \\overline{A} \\cap \\overline{B} \\).<br><br>Xác suất cảm biến A không phát tín hiệu: \\( P(\\overline{A}) = 1 - 0{,}9 = 0{,}1 \\).<br>Xác suất cảm biến B không phát tín hiệu: \\( P(\\overline{B}) = 1 - 0{,}85 = 0{,}15 \\).<br><br>Vì \\( A \\), \\( B \\) độc lập nên \\( \\overline{A} \\), \\( \\overline{B} \\) cũng độc lập với nhau, do đó:\n\\[ P(\\overline{A} \\cap \\overline{B}) = P(\\overline{A}) \\cdot P(\\overline{B}) = 0{,}1 \\times 0{,}15 = 0{,}015. \\]<br><br>Vậy xác suất nhận được tín hiệu cảnh báo từ ít nhất một cảm biến là:\n\\[ P(A \\cup B) = 1 - P(\\overline{A} \\cap \\overline{B}) = 1 - 0{,}015 = 0{,}985. \\]<br><br>Đáp án C."
 }
+
 
           ], #hết đề 3
     }, #hết đề 3
