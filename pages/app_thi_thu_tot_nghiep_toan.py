@@ -818,7 +818,7 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     "id": "de4_mc_01",
     "part": 1,
     "type": "mc4",
-    "content": "Cho hai biến cố xung khắc $A$ và $B$ có xác suất thỏa mãn $P(A) = 0,3$ và $P(B) = 0,7$[cite: 1]. Giá trị của $P(A \\cup B)$ bằng",
+    "content": "Cho hai biến cố xung khắc $A$ và $B$ có xác suất thỏa mãn $P(A) = 0,3$ và $P(B) = 0,7$. Giá trị của $P(A \\cup B)$ bằng",
     "options": {
       "A": "$0,21$.",
       "B": "$0,4$.",
@@ -826,13 +826,13 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
       "D": "$1$."
     },
     "correct": "D",
-    "explanation": "Vì $A$ và $B$ là hai biến cố xung khắc nên theo quy tắc cộng xác suất[cite: 1]:<br><br>$$P(A \\cup B) = P(A) + P(B) = 0,3 + 0,7 = 1.$$<br><br>Chọn đáp án D."
+    "explanation": "Vì $A$ và $B$ là hai biến cố xung khắc nên theo quy tắc cộng xác suất:<br><br>$$P(A \\cup B) = P(A) + P(B) = 0,3 + 0,7 = 1.$$<br><br>Chọn đáp án D."
   },
   {
     "id": "de4_mc_02",
     "part": 1,
     "type": "mc4",
-    "content": "Cho cấp số cộng $(u_n)$ có $u_1 = -2$ và $u_2 = 1$[cite: 1]. Giá trị công sai $d$ bằng",
+    "content": "Cho cấp số cộng $(u_n)$ có $u_1 = -2$ và $u_2 = 1$. Giá trị công sai $d$ bằng",
     "options": {
       "A": "$3$.",
       "B": "$-3$.",
@@ -840,13 +840,13 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
       "D": "$1$."
     },
     "correct": "A",
-    "explanation": "Công sai của cấp số cộng là[cite: 1]:<br><br>$$d = u_2 - u_1 = 1 - (-2) = 3.$$<br><br>Chọn đáp án A."
+    "explanation": "Công sai của cấp số cộng là:<br><br>$$d = u_2 - u_1 = 1 - (-2) = 3.$$<br><br>Chọn đáp án A."
   },
   {
     "id": "de4_mc_03",
     "part": 1,
     "type": "mc4",
-    "content": "Cho hình lập phương $ABCD.A'B'C'D'$ (xem hình bên)[cite: 1]. Đường thẳng $A'D$ song song với mặt phẳng",
+    "content": "Cho hình lập phương $ABCD.A'B'C'D'$ (xem hình bên). Đường thẳng $A'D$ song song với mặt phẳng",
     "image": "[Chèn link ảnh hình lập phương vào đây]",
     "options": {
       "A": "$(AA'D'D)$.",
@@ -855,13 +855,13 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
       "D": "$(AA'C'C)$."
     },
     "correct": "C",
-    "explanation": "Hai đoạn $A'B'$ và $DC$ cùng song song và bằng $AB$, nên tứ giác $A'B'CD$ là hình bình hành[cite: 1]. Từ đó suy ra $A'D \\parallel B'C$[cite: 1].<br><br>Mà $B'C \\subset (BB'C'C)$ còn $A'D$ không nằm trong mặt phẳng ấy, do đó $A'D \\parallel (BB'C'C)$[cite: 1].<br><br>Ba mặt phẳng còn lại đều bị loại: $A'D$ nằm hẳn trong $(AA'D'D)$ và trong $(A'B'CD)$, còn với $(AA'C'C)$ thì $A'D$ cắt mặt phẳng này tại $A'$[cite: 1].<br><br>Chọn đáp án C."
+    "explanation": "Hai đoạn $A'B'$ và $DC$ cùng song song và bằng $AB$, nên tứ giác $A'B'CD$ là hình bình hành. Từ đó suy ra $A'D \\parallel B'C$[cite: 1].<br><br>Mà $B'C \\subset (BB'C'C)$ còn $A'D$ không nằm trong mặt phẳng ấy, do đó $A'D \\parallel (BB'C'C)$.<br><br>Ba mặt phẳng còn lại đều bị loại: $A'D$ nằm hẳn trong $(AA'D'D)$ và trong $(A'B'CD)$, còn với $(AA'C'C)$ thì $A'D$ cắt mặt phẳng này tại $A'$.<br><br>Chọn đáp án C."
   },
   {
     "id": "de4_mc_04",
     "part": 1,
     "type": "mc4",
-    "content": "Cho hàm số bậc ba $y = f(x)$ có bảng biến thiên trên đoạn $[-1; 2]$ như sau[cite: 1]. Hàm số đồng biến trên khoảng",
+    "content": "Cho hàm số bậc ba $y = f(x)$ có bảng biến thiên trên đoạn $[-1; 2]$ như sau. Hàm số đồng biến trên khoảng",
     "image": "[Chèn link ảnh bảng biến thiên vào đây]",
     "options": {
       "A": "$(-1; 0) \\cup (1; 2)$.",
@@ -870,13 +870,13 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
       "D": "$(1; \\dfrac{3}{2})$."
     },
     "correct": "D",
-    "explanation": "Đọc bảng biến thiên ta thấy: Trên đoạn $[-1; 2]$, $f'(x) > 0$ với $x \\in (-1; 0)$ và $x \\in (1; 2)$, còn $f'(x) < 0$ với $x \\in (0; 1)$[cite: 1]. Vậy hàm số đồng biến trên mỗi khoảng $(-1; 0), (1; 2)$ và nghịch biến trên khoảng $(0; 1)$[cite: 1].<br><br>Vì khoảng $(1; \\dfrac{3}{2})$ nằm trong khoảng $(1; 2)$, nên hàm số đồng biến trên $(1; \\dfrac{3}{2})$[cite: 1].<br><br>Các phương án khác bị loại: Tập $(-1; 0) \\cup (1; 2)$ không phải là một khoảng[cite: 1]. Các khoảng $(0; 5)$ và $(-1; 1)$ đều chứa khoảng $(0; 1)$ - nơi hàm số nghịch biến[cite: 1].<br><br>Chọn đáp án D."
+    "explanation": "Đọc bảng biến thiên ta thấy: Trên đoạn $[-1; 2]$, $f'(x) > 0$ với $x \\in (-1; 0)$ và $x \\in (1; 2)$, còn $f'(x) < 0$ với $x \\in (0; 1)$[cite: 1]. Vậy hàm số đồng biến trên mỗi khoảng $(-1; 0), (1; 2)$ và nghịch biến trên khoảng $(0; 1)$.<br><br>Vì khoảng $(1; \\dfrac{3}{2})$ nằm trong khoảng $(1; 2)$, nên hàm số đồng biến trên $(1; \\dfrac{3}{2})$.<br><br>Các phương án khác bị loại: Tập $(-1; 0) \\cup (1; 2)$ không phải là một khoảng. Các khoảng $(0; 5)$ và $(-1; 1)$ đều chứa khoảng $(0; 1)$ - nơi hàm số nghịch biến.<br><br>Chọn đáp án D."
   },
   {
     "id": "de4_mc_05",
     "part": 1,
     "type": "mc4",
-    "content": "Trong không gian với hệ trục tọa độ $Oxyz$, cho tam giác $ABC$ có $A(1; 0; 1), B(0; -3; 1)$ và $C(4; -1; 4)$[cite: 1]. Số đo góc $\\widehat{BAC}$ bằng",
+    "content": "Trong không gian với hệ trục tọa độ $Oxyz$, cho tam giác $ABC$ có $A(1; 0; 1), B(0; -3; 1)$ và $C(4; -1; 4)$. Số đo góc $\\widehat{BAC}$ bằng",
     "options": {
       "A": "$30^\\circ$.",
       "B": "$120^\\circ$.",
@@ -884,13 +884,13 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
       "D": "$90^\\circ$."
     },
     "correct": "D",
-    "explanation": "Ta có $\\overrightarrow{AB} = (-1; -3; 0)$ và $\\overrightarrow{AC} = (3; -1; 3)$[cite: 1].<br><br>Tính tích vô hướng: $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = (-1) \\cdot 3 + (-3) \\cdot (-1) + 0 \\cdot 3 = 0$[cite: 1].<br><br>Suy ra $\\overrightarrow{AB} \\perp \\overrightarrow{AC}$, tức là $\\widehat{BAC} = 90^\\circ$[cite: 1].<br><br>Chọn đáp án D."
+    "explanation": "Ta có $\\overrightarrow{AB} = (-1; -3; 0)$ và $\\overrightarrow{AC} = (3; -1; 3)$.<br><br>Tính tích vô hướng: $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = (-1) \\cdot 3 + (-3) \\cdot (-1) + 0 \\cdot 3 = 0$.<br><br>Suy ra $\\overrightarrow{AB} \\perp \\overrightarrow{AC}$, tức là $\\widehat{BAC} = 90^\\circ$.<br><br>Chọn đáp án D."
   },
   {
     "id": "de4_mc_06",
     "part": 1,
     "type": "mc4",
-    "content": "Cho hình lăng trụ $ABC.A'B'C'$ (xem hình bên)[cite: 1]. Phát biểu nào sau đây là đúng?",
+    "content": "Cho hình lăng trụ $ABC.A'B'C'$ (xem hình bên). Phát biểu nào sau đây là đúng?",
     "image": "[Chèn link ảnh hình lăng trụ vào đây]",
     "options": {
       "A": "$\\overrightarrow{BA} + \\overrightarrow{BB'} = \\overrightarrow{AB}$.",
@@ -899,8 +899,97 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
       "D": "$\\overrightarrow{BA} + \\overrightarrow{BA'} = \\overrightarrow{BC'}$."
     },
     "correct": "C",
-    "explanation": "Kiểm tra từng phát biểu:<br><br>Theo quy tắc hình bình hành trong hình bình hành $ABB'A'$, ta có $\\overrightarrow{BA} + \\overrightarrow{BB'} = \\overrightarrow{BA'} \\neq \\overrightarrow{AB}$, nên phương án A sai[cite: 1].<br><br>Theo quy tắc hiệu hai vectơ, $\\overrightarrow{BA} - \\overrightarrow{BC} = \\overrightarrow{CA}$, đây là vectơ đối của $\\overrightarrow{AC}$, nên phương án B sai[cite: 1].<br><br>Ta có $\\overrightarrow{BA} + \\overrightarrow{BA'} = \\overrightarrow{BA} + (\\overrightarrow{BA} + \\overrightarrow{AA'}) = 2\\overrightarrow{BA} + \\overrightarrow{AA'}$ và $\\overrightarrow{BC'} = \\overrightarrow{BC} + \\overrightarrow{AA'}$[cite: 1]. Nếu hai vectơ này bằng nhau thì $\\overrightarrow{BC} = 2\\overrightarrow{BA}$, trái với giả thiết $A, B, C$ không thẳng hàng, vậy phương án D sai[cite: 1].<br><br>Còn theo quy tắc ba điểm thì $\\overrightarrow{BA} + \\overrightarrow{AC} = \\overrightarrow{BC}$[cite: 1]. (Lưu ý: Đáp án C trong đề gốc có lỗi đánh máy nhỏ $\\overrightarrow{A'C}$ nhưng theo diễn giải logic chuẩn xác của lời giải, đây phải là $\\overrightarrow{AC}$).<br><br>Chọn đáp án C."
+    "explanation": "Kiểm tra từng phát biểu:<br><br>Theo quy tắc hình bình hành trong hình bình hành $ABB'A'$, ta có $\\overrightarrow{BA} + \\overrightarrow{BB'} = \\overrightarrow{BA'} \\neq \\overrightarrow{AB}$, nên phương án A sai.<br><br>Theo quy tắc hiệu hai vectơ, $\\overrightarrow{BA} - \\overrightarrow{BC} = \\overrightarrow{CA}$, đây là vectơ đối của $\\overrightarrow{AC}$, nên phương án B sai[cite: 1].<br><br>Ta có $\\overrightarrow{BA} + \\overrightarrow{BA'} = \\overrightarrow{BA} + (\\overrightarrow{BA} + \\overrightarrow{AA'}) = 2\\overrightarrow{BA} + \\overrightarrow{AA'}$ và $\\overrightarrow{BC'} = \\overrightarrow{BC} + \\overrightarrow{AA'}$. Nếu hai vectơ này bằng nhau thì $\\overrightarrow{BC} = 2\\overrightarrow{BA}$, trái với giả thiết $A, B, C$ không thẳng hàng, vậy phương án D sai[cite: 1].<br><br>Còn theo quy tắc ba điểm thì $\\overrightarrow{BA} + \\overrightarrow{AC} = \\overrightarrow{BC}$. (Chọn đáp án C.)"
+  },
+    
+  {
+    "id": "de4_mc_07",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho hàm số $y = \\dfrac{ax + b}{cx + d} (c \\neq 0, ad - cb \\neq 0)$ có đồ thị $(C)$. Có bảng biến thiên như hình vẽ dưới đây. Tâm đối xứng của đồ thị hàm số là $I(a; b)$. Giá trị $2a + b$ bằng",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de4_cau7.PNG",
+    "options": {
+      "A": "$0$.",
+      "B": "$1$.",
+      "C": "$-2$.",
+      "D": "$-1$."
+    },
+    "correct": "A",
+    "explanation": "Đọc bảng biến thiên: Khi $x \\to 1^-$ thì $f(x) \\to +\\infty$ và khi $x \\to 1^+$ thì $f(x) \\to -\\infty$, nên đường thẳng $x = 1$ là tiệm cận đứng.<br><br>Khi $x \\to \\pm\\infty$ thì $f(x) \\to -2$, nên đường thẳng $y = -2$ là tiệm cận ngang.<br><br>Đồ thị hàm số nhận giao điểm của hai đường tiệm cận làm tâm đối xứng, do đó $I(1; -2)$. Suy ra $a = 1$, $b = -2$.<br><br>Giá trị của biểu thức là: $2a + b = 2(1) + (-2) = 0$.<br><br>Chọn đáp án A."
+  },
+  {
+    "id": "de4_mc_08",
+    "part": 1,
+    "type": "mc4",
+    "content": "Giả sử chi phí $C(x)$ (nghìn đồng) để sản xuất $x$ đơn vị của một loại hàng hóa nào đó được cho bởi hàm số $C(x) = \\dfrac{1}{8}x^3 - \\dfrac{5}{2}x^2 + 300x + 30000$. Chi phí để sản xuất thêm đơn vị hàng hóa thứ 301 xấp xỉ bằng (kết quả làm tròn đến hàng phần chục của triệu đồng).",
+    "options": {
+      "A": "$3302,7$.",
+      "B": "$3270,0$.",
+      "C": "$32,5$.",
+      "D": "$32,7$."
+    },
+    "correct": "D",
+    "explanation": "Chi phí để sản xuất thêm đơn vị hàng hóa thứ 301 chính là hiệu chi phí giữa 301 đơn vị và 300 đơn vị: $C(301) - C(300)$<br><br>Ta tính được:<br>$C(300) = \\dfrac{1}{8} \\cdot 300^3 - \\dfrac{5}{2} \\cdot 300^2 + 300 \\cdot 300 + 30000 = 3270000$ (nghìn đồng).<br><br>$C(301) = \\dfrac{1}{8} \\cdot 301^3 - \\dfrac{5}{2} \\cdot 301^2 + 300 \\cdot 301 + 30000 = 3302660,125$ (nghìn đồng).<br><br>Do đó, chi phí sản xuất thêm là:<br>$$C(301) - C(300) = 3302660,125 - 3270000 = 32660,125 \\text{ (nghìn đồng)} \\approx 32,7 \\text{ (triệu đồng).}$$<br><br>Chọn đáp án D."
+  },
+  {
+    "id": "de4_mc_09",
+    "part": 1,
+    "type": "mc4",
+    "content": "Mùa giải $2026 - 2027$, giải vô địch quốc gia Tây Ban Nha (La Liga) có 20 đội bóng tham gia. Các đội bóng đấu vòng tròn hai lượt đi và về. Toàn bộ mùa giải có bao nhiêu trận đấu?",
+    "options": {
+      "A": "$400$.",
+      "B": "$190$.",
+      "C": "$380$.",
+      "D": "$200$."
+    },
+    "correct": "C",
+    "explanation": "Mỗi trận đấu lượt đi ứng với một tập hợp gồm hai đội bóng bất kì trong 20 đội, nên số trận lượt đi là số tổ hợp chập 2 của 20 phần tử:<br><br>$$C_{20}^2 = 190 \\text{ (trận).}$$<br><br>Vì các đội đấu vòng tròn hai lượt đi và về nên tổng số trận đấu trong toàn bộ mùa giải là:<br><br>$$2 \\times 190 = 380 \\text{ (trận).}$$<br><br>Chọn đáp án C."
+  },
+  {
+    "id": "de4_mc_10",
+    "part": 1,
+    "type": "mc4",
+    "content": "Trên hệ trục tọa độ $Oxy$, cho hypebol $(H)$ có dạng như hình vẽ bên và độ dài trục thực bằng $16$. Điểm $N(-10; y_N) \\in (H)$, giá trị $F_1N - F_2N$ bằng",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de4_cau10.PNG",
+    "options": {
+      "A": "$-10$.",
+      "B": "$-16$.",
+      "C": "$16$.",
+      "D": "$10$."
+    },
+    "correct": "B",
+    "explanation": "Hypebol có phương trình chính tắc dạng $\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1$ với độ dài trục thực là $2a = 16$, suy ra $a = 8$. Hai tiêu điểm là $F_1(-c; 0)$ và $F_2(c; 0)$ với $c > 0$.<br><br>Với điểm $N(-10; y_N)$ thuộc hypebol, ta xét hiệu bình phương khoảng cách tới hai tiêu điểm:<br>$$F_1N^2 - F_2N^2 = [(-10 + c)^2 + y_N^2] - [(-10 - c)^2 + y_N^2] = -40c < 0,$$<br>điều này cho thấy $F_1N < F_2N$.<br><br>Theo định nghĩa của hypebol, ta có giá trị tuyệt đối của hiệu khoảng cách là $|F_1N - F_2N| = 2a = 16$. Kết hợp với $F_1N < F_2N$, ta suy ra:<br>$$F_1N - F_2N = -16.$$<br><br>Chọn đáp án B."
+  },
+  {
+    "id": "de4_mc_11",
+    "part": 1,
+    "type": "mc4",
+    "content": "Khảo sát thời gian (đơn vị: phút) học trực tuyến trong một ngày của 42 học sinh, người ta thu được mẫu số liệu ghép nhóm như sau:<br>Thời gian học trực tuyến: $[10; 20)$ (4 học sinh), $[20; 30)$ (8 học sinh), $[30; 40)$ (14 học sinh), $[40; 50)$ (7 học sinh), $[50; 60)$ (4 học sinh), $[60; 70)$ (5 học sinh).<br>Tứ phân vị thứ ba của mẫu số liệu trên thuộc nhóm nào sau đây?",
+    "options": {
+      "A": "$[30; 40)$.",
+      "B": "$[40; 50)$.",
+      "C": "$[50; 60)$.",
+      "D": "$[60; 70)$."
+    },
+    "correct": "B",
+    "explanation": "Cỡ mẫu là $n = 42$.<br><br>Tần số tích lũy của các nhóm lần lượt là: $4; 12; 26; 33; 37; 42$.<br><br>Tứ phân vị thứ ba $Q_3$ ứng với vị trí học sinh thứ:<br>$$\\dfrac{3n}{4} = \\dfrac{3 \\times 42}{4} = 31,5.$$<br><br>Vì tần số tích lũy đến nhóm $[30; 40)$ là $26$ và đến nhóm $[40; 50)$ là $33$, mà $26 < 31,5 \\le 33$, nên tứ phân vị thứ ba $Q_3$ thuộc nhóm $[40; 50)$.<br><br>Chọn đáp án B."
+  },
+  {
+    "id": "de4_mc_12",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho đồ thị hàm số $y = 2 \\sin x$ như hình vẽ bên. Tính diện tích tam giác $ABC$?",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de4_cau12.PNG",
+    "options": {
+      "A": "$2\\pi$.",
+      "B": "$3\\pi$.",
+      "C": "$4\\pi$.",
+      "D": "$5\\pi$."
+    },
+    "correct": "C",
+    "explanation": "Hàm số $y = 2\\sin x$ đạt giá trị lớn nhất bằng $2$ tại các điểm $x = \\dfrac{\\pi}{2} + k2\\pi$ ($k \\in \\mathbb{Z}$).<br><br>Quan sát hình vẽ, $B$ và $C$ là hai điểm cực đại liên tiếp của đồ thị, còn $A$ nằm trên trục tung ở mức $y = -2$. Ta xác định được tọa độ các đỉnh:<br>$$A(0; -2), \\quad B\\left(\\dfrac{\\pi}{2}; 2\\right), \\quad C\\left(\\dfrac{5\\pi}{2}; 2\\right).$$<br><br>Cạnh $BC$ nằm trên đường thẳng ngang $y = 2$, có độ dài là:<br>$$BC = \\dfrac{5\\pi}{2} - \\dfrac{\\pi}{2} = 2\\pi.$$<br><br>Khoảng cách từ điểm $A$ đến đường thẳng $BC$ chính là chiều cao của tam giác, bằng khoảng cách từ tung độ $y = 2$ xuống $y = -2$, tức là $h = 2 - (-2) = 4$.<br><br>Diện tích tam giác $ABC$ là:<br>$$S_{ABC} = \\dfrac{1}{2} \\cdot BC \\cdot h = \\dfrac{1}{2} \\cdot 2\\pi \\cdot 4 = 4\\pi.$$<br><br>Chọn đáp án C."
   }
+
 
 
 
