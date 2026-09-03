@@ -517,243 +517,235 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     }, #hết đề 2
 
  {
-        "id": "de3",
-        "name": "Đề số 3 - ĐÁNH GIÁ ĐỊNH KỲ THÁNG 8 - TRƯỜNG NK - LÊ THÁNH TÔNG HCM- 2026 - 2027.",
-        "description": "22 câu hỏi: 12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn.",
-        "questions": [
-            # ---------------- PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN ---------------- 
-
-{
-  "id": "de308_mc_01",
-  "part": 1,
-  "type": "mc4",
-  "content": "Trong không gian \\( Oxyz \\), cho điểm \\( M(2; -3; 5) \\). Hình chiếu vuông góc của điểm \\( M \\) trên mặt phẳng \\( (Oxy) \\) có tọa độ là",
-  "options": {
-    "A": "\\( (2; 0; 5) \\).",
-    "B": "\\( (0; -3; 5) \\).",
-    "C": "\\( (2; -3; 0) \\).",
-    "D": "\\( (0; 0; 5) \\)."
-  },
-  "correct": "C",
-  "explanation": "Mặt phẳng \\( (Oxy) \\) là mặt phẳng có phương trình \\( z = 0 \\), tức là mọi điểm nằm trên mặt phẳng này đều có cao độ bằng 0.<br><br>Khi chiếu vuông góc một điểm \\( M(x_0; y_0; z_0) \\) bất kỳ xuống mặt phẳng \\( (Oxy) \\), ta chỉ việc giữ nguyên hoành độ \\( x_0 \\) và tung độ \\( y_0 \\), còn cao độ được đưa về 0. Về mặt hình học, đây chính là việc \"hạ\" điểm \\( M \\) thẳng xuống theo phương của trục \\( Oz \\) cho tới khi chạm mặt phẳng \\( (Oxy) \\).<br><br>Áp dụng cho điểm \\( M(2; -3; 5) \\): giữ nguyên \\( x = 2 \\), \\( y = -3 \\) và cho \\( z = 0 \\), ta được hình chiếu là \\( (2; -3; 0) \\).<br><br>Vậy đáp án đúng là C."
-},
-{
-  "id": "de308_mc_02",
-  "part": 1,
-  "type": "mc4",
-  "content": "Phương trình đường thẳng đi qua hai điểm cực trị của đồ thị hàm số \\( y = \\dfrac{x^2 - 3x + 6}{x - 2} \\) là",
-  "options": {
-    "A": "\\( y = 2x + 3 \\).",
-    "B": "\\( y = x - 1 \\).",
-    "C": "\\( y = 2x - 3 \\).",
-    "D": "\\( y = -2x + 3 \\)."
-  },
-  "correct": "C",
-  "explanation": "Trước hết ta thực hiện phép chia đa thức để tách phần nguyên: \\( x^2 - 3x + 6 = (x-2)(x-1) + 4 \\), do đó\n\\[ y = x - 1 + \\dfrac{4}{x-2}. \\]<br><br>Đạo hàm: \\( y' = 1 - \\dfrac{4}{(x-2)^2} \\). Cho \\( y' = 0 \\) ta được \\( (x-2)^2 = 4 \\), suy ra \\( x = 4 \\) hoặc \\( x = 0 \\). Đây chính là hoành độ của hai điểm cực trị.<br><br>Tại \\( x = 4 \\): \\( y = 4 - 1 + \\dfrac{4}{2} = 3 + 2 = 5 \\), ta được điểm \\( (4; 5) \\).<br>Tại \\( x = 0 \\): \\( y = 0 - 1 + \\dfrac{4}{-2} = -1 - 2 = -3 \\), ta được điểm \\( (0; -3) \\).<br><br>Đường thẳng đi qua hai điểm \\( (4; 5) \\) và \\( (0; -3) \\) có hệ số góc:\n\\[ k = \\dfrac{5 - (-3)}{4 - 0} = \\dfrac{8}{4} = 2. \\]<br><br>Phương trình đường thẳng: \\( y = 2x + b \\). Thay điểm \\( (0; -3) \\) vào ta được \\( b = -3 \\).<br><br>Vậy đường thẳng cần tìm là \\( y = 2x - 3 \\). Đáp án C."
-},
-{
-  "id": "de308_mc_03",
-  "part": 1,
-  "type": "mc4",
-  "content": "Nếu một khối lăng trụ có diện tích đáy bằng \\( a^2\\sqrt{3} \\) và có thể tích bằng \\( 3a^3 \\) thì chiều cao của khối lăng trụ đó bằng",
-  "options": {
-    "A": "\\( a \\).",
-    "B": "\\( \\dfrac{a}{\\sqrt{3}} \\).",
-    "C": "\\( 3a\\sqrt{3} \\).",
-    "D": "\\( a\\sqrt{3} \\)."
-  },
-  "correct": "D",
-  "explanation": "Công thức thể tích khối lăng trụ là \\( V = S_{\\text{đáy}} \\cdot h \\), trong đó \\( S_{\\text{đáy}} \\) là diện tích đáy và \\( h \\) là chiều cao.<br><br>Từ đó suy ra chiều cao:\n\\[ h = \\dfrac{V}{S_{\\text{đáy}}} = \\dfrac{3a^3}{a^2\\sqrt{3}} = \\dfrac{3a}{\\sqrt{3}} = a\\sqrt{3}. \\]<br><br>Vậy chiều cao của khối lăng trụ là \\( a\\sqrt{3} \\). Đáp án D."
-},
-{
-  "id": "de308_mc_04",
-  "part": 1,
-  "type": "mc4",
-  "content": "Số đường tiệm cận của đồ thị hàm số \\( y = \\dfrac{2x - 1}{x + 1} \\) là",
-  "options": {
-    "A": "1.",
-    "B": "4.",
-    "C": "3.",
-    "D": "2."
-  },
-  "correct": "D",
-  "explanation": "Hàm số \\( y = \\dfrac{2x-1}{x+1} \\) xác định khi \\( x \\neq -1 \\).<br><br><b>Tiệm cận đứng:</b> Tại \\( x = -1 \\), mẫu số triệt tiêu còn tử số \\( 2(-1) - 1 = -3 \\neq 0 \\), nên\n\\[ \\lim_{x \\to -1} \\dfrac{2x-1}{x+1} = \\infty. \\]\nDo đó \\( x = -1 \\) là tiệm cận đứng.<br><br><b>Tiệm cận ngang:</b> Ta có\n\\[ \\lim_{x \\to \\pm\\infty} \\dfrac{2x-1}{x+1} = \\lim_{x \\to \\pm\\infty} \\dfrac{2 - \\frac{1}{x}}{1 + \\frac{1}{x}} = 2. \\]\nDo đó \\( y = 2 \\) là tiệm cận ngang.<br><br>Đây là hàm phân thức bậc nhất trên bậc nhất, nên không có tiệm cận xiên. Vậy đồ thị có tổng cộng 2 đường tiệm cận (1 đứng, 1 ngang). Đáp án D."
-},
-{
-  "id": "de308_mc_05",
-  "part": 1,
-  "type": "mc4",
-  "content": "Cho hình lập phương \\( ABCD.A'B'C'D' \\). Góc giữa hai véc-tơ \\( \\overrightarrow{AB} \\) và \\( \\overrightarrow{DC'} \\) bằng",
-  "options": {
-    "A": "\\( 30^{\\circ} \\).",
-    "B": "\\( 45^{\\circ} \\).",
-    "C": "\\( 60^{\\circ} \\).",
-    "D": "\\( 90^{\\circ} \\)."
-  },
-  "correct": "B",
-  "explanation": "Gắn hệ trục tọa độ với cạnh hình lập phương bằng 1: \\( A(0;0;0) \\), \\( B(1;0;0) \\), \\( C(1;1;0) \\), \\( D(0;1;0) \\), \\( A'(0;0;1) \\), \\( B'(1;0;1) \\), \\( C'(1;1;1) \\), \\( D'(0;1;1) \\).<br><br>Ta có \\( \\overrightarrow{AB} = (1; 0; 0) \\) và \\( \\overrightarrow{DC'} = C' - D = (1; 1; 1) - (0; 1; 0) = (1; 0; 1) \\).<br><br>Chú ý rằng \\( DC' \\) chính là đường chéo của mặt bên \\( DCC'D' \\), có độ dài \\( \\sqrt{1^2 + 0^2 + 1^2} = \\sqrt{2} \\) (đơn vị cạnh), còn \\( |\\overrightarrow{AB}| = 1 \\).<br><br>Áp dụng công thức tích vô hướng:\n\\[ \\cos\\left(\\overrightarrow{AB}, \\overrightarrow{DC'}\\right) = \\dfrac{\\overrightarrow{AB} \\cdot \\overrightarrow{DC'}}{|\\overrightarrow{AB}| \\cdot |\\overrightarrow{DC'}|} = \\dfrac{1 \\cdot 1 + 0 \\cdot 0 + 0 \\cdot 1}{1 \\cdot \\sqrt{2}} = \\dfrac{1}{\\sqrt{2}}. \\]<br><br>Suy ra góc giữa hai véc-tơ bằng \\( 45^{\\circ} \\). Đáp án B."
-},
-{
-  "id": "de308_mc_06",
-  "part": 1,
-  "type": "mc4",
-  "content": "Cho hàm số \\( y = f(x) \\) liên tục trên \\( \\mathbb{R} \\) và có bảng xét dấu của đạo hàm \\( f'(x) \\) như sau.Hàm số \\( g(x) = f(|x|) \\) có bao nhiêu điểm cực trị?",
-  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau6nk.PNG",
-  
-  "options": {
-    "A": "3.",
-    "B": "5.",
-    "C": "4.",
-    "D": "2."
-  },
-  "correct": "A",
-  "explanation": "Từ bảng xét dấu, ta xác định chiều biến thiên của \\( f \\) trên từng khoảng: \\( f \\) giảm trên \\( (-\\infty; -2) \\), tăng trên \\( (-2; 0) \\), giảm trên \\( (0; 1) \\), tăng trên \\( (1; 3) \\) và tiếp tục tăng trên \\( (3; +\\infty) \\). Chú ý tại \\( x = 3 \\), đạo hàm bằng 0 nhưng không đổi dấu (trước và sau đều dương) nên đây không phải là điểm cực trị của \\( f \\), chỉ là điểm dừng.<br><br>Hàm \\( g(x) = f(|x|) \\) là hàm chẵn, và với \\( x \\ge 0 \\) ta có \\( g(x) = f(x) \\). Do đó trên nửa trục dương, \\( g \\) giảm trên \\( (0;1) \\), tăng trên \\( (1; +\\infty) \\) (điểm \\( x=3 \\) chỉ là điểm dừng, không làm đổi chiều biến thiên). Vậy \\( x = 1 \\) là điểm cực tiểu của \\( g \\).<br><br>Vì \\( g \\) là hàm chẵn, đồ thị của \\( g \\) trên nửa trục âm là ảnh đối xứng qua trục tung của phần đồ thị trên nửa trục dương. Do đó tại \\( x = -1 \\), \\( g \\) cũng đạt cực tiểu (đối xứng với \\( x = 1 \\)).<br><br>Xét lân cận \\( x = 0 \\): khi \\( x \\) tiến tới 0 từ bên trái (ứng với nửa đối xứng của khoảng \\( (0;1) \\)), \\( g \\) đang tăng; khi \\( x \\) tiến từ 0 sang phải, \\( g \\) đang giảm (vì \\( f \\) giảm trên \\( (0;1) \\)). Vậy \\( g \\) đổi chiều từ tăng sang giảm tại \\( x = 0 \\), suy ra \\( x = 0 \\) là điểm cực đại.<br><br>Ngoài ba điểm \\( x = -1, 0, 1 \\), không còn điểm nào khác làm \\( g \\) đổi chiều biến thiên (điểm \\( x = \\pm 3 \\) chỉ là điểm dừng, không phải cực trị).<br><br>Vậy hàm số \\( g(x) = f(|x|) \\) có đúng 3 điểm cực trị. Đáp án A."
-},
-          
-{
-  "id": "de308_mc_07",
-  "part": 1,
-  "type": "mc4",
-  "content": "Cho tứ diện \\( OABC \\) có các cạnh \\( OA, OB, OC \\) đôi một vuông góc với nhau. Số đo của góc nhị diện \\( [B, OA, C] \\) bằng",
-  "options": {
-    "A": "\\( 90^{\\circ} \\).",
-    "B": "\\( 30^{\\circ} \\).",
-    "C": "\\( 45^{\\circ} \\).",
-    "D": "\\( 60^{\\circ} \\)."
-  },
-  "correct": "A",
-  "explanation": "Góc nhị diện \\( [B, OA, C] \\) là góc nhị diện có cạnh \\( OA \\), tạo bởi hai nửa mặt phẳng lần lượt chứa \\( B \\) và chứa \\( C \\).<br><br>Vì \\( OA \\perp OB \\) (giả thiết) nên \\( OB \\) vuông góc với cạnh \\( OA \\) tại \\( O \\). Tương tự, \\( OA \\perp OC \\) nên \\( OC \\) cũng vuông góc với cạnh \\( OA \\) tại \\( O \\).<br><br>Như vậy, tại đúng điểm \\( O \\) trên cạnh \\( OA \\), ta có hai tia \\( OB \\) và \\( OC \\) cùng vuông góc với \\( OA \\). Theo định nghĩa, góc nhị diện \\( [B, OA, C] \\) chính bằng góc giữa hai tia này, tức là góc \\( \\widehat{BOC} \\).<br><br>Mà theo giả thiết, \\( OB \\perp OC \\), nên \\( \\widehat{BOC} = 90^{\\circ} \\).<br><br>Vậy góc nhị diện \\( [B, OA, C] \\) bằng \\( 90^{\\circ} \\). Đáp án A."
-},
-{
-  "id": "de308_mc_08",
-  "part": 1,
-  "type": "mc4",
-  "content": "Cho hàm số \\( y = f(x) \\) xác định và liên tục trên \\( \\mathbb{R} \\) có bảng biến thiên như hình bên dưới. Gọi \\( M(x_1; y_1) \\) và \\( N(x_2; y_2) \\) lần lượt là điểm cực đại và điểm cực tiểu của đồ thị hàm số \\( y = f(x) \\). Giá trị của biểu thức \\( T = 2x_1 + x_2 - y_1 \\cdot y_2 \\) bằng<br><br><table border='1' cellpadding='6' style='border-collapse:collapse;text-align:center'><tr><td>\\(x\\)</td><td>\\(-\\infty\\)</td><td></td><td>\\(-1\\)</td><td></td><td>\\(2\\)</td><td></td><td>\\(+\\infty\\)</td></tr><tr><td>\\(f'(x)\\)</td><td></td><td>\\(+\\)</td><td>0</td><td>\\(-\\)</td><td>0</td><td>\\(+\\)</td><td></td></tr><tr><td>\\(f(x)\\)</td><td>\\(-\\infty\\)</td><td>\\(\\nearrow\\)</td><td>4</td><td>\\(\\searrow\\)</td><td>\\(-1\\)</td><td>\\(\\nearrow\\)</td><td>\\(+\\infty\\)</td></tr></table>",
-  "options": {
-    "A": "2.",
-    "B": "4.",
-    "C": "0.",
-    "D": "\\( -4 \\)."
-  },
-  "correct": "B",
-  "explanation": "Từ bảng biến thiên: hàm số tăng trên \\( (-\\infty; -1) \\), giảm trên \\( (-1; 2) \\), tăng trên \\( (2; +\\infty) \\).<br><br>Tại \\( x = -1 \\), \\( f'(x) \\) đổi dấu từ dương sang âm nên đây là điểm cực đại, với giá trị cực đại \\( f(-1) = 4 \\). Vậy \\( M(x_1; y_1) = M(-1; 4) \\), tức \\( x_1 = -1 \\), \\( y_1 = 4 \\).<br><br>Tại \\( x = 2 \\), \\( f'(x) \\) đổi dấu từ âm sang dương nên đây là điểm cực tiểu, với giá trị cực tiểu \\( f(2) = -1 \\). Vậy \\( N(x_2; y_2) = N(2; -1) \\), tức \\( x_2 = 2 \\), \\( y_2 = -1 \\).<br><br>Thay vào biểu thức:\n\\[ T = 2x_1 + x_2 - y_1 \\cdot y_2 = 2(-1) + 2 - (4)(-1) = -2 + 2 + 4 = 4. \\]<br><br>Vậy \\( T = 4 \\). Đáp án B."
-},
-{
-  "id": "de308_mc_09",
-  "part": 1,
-  "type": "mc4",
-  "content": "Trong không gian \\( Oxyz \\), cho hình hộp chữ nhật \\( ABCD.A'B'C'D' \\) có đỉnh \\( A \\) trùng với gốc tọa độ \\( O \\), các véc-tơ \\( \\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AA'} \\) theo thứ tự cùng hướng với các véc-tơ \\( \\vec{i}, \\vec{j}, \\vec{k} \\) và có \\( AB = 4 \\), \\( AD = 3 \\), \\( AA' = 6 \\). Khi đó, véc-tơ \\( \\overrightarrow{AC'} \\) có tọa độ là",
-  "options": {
-    "A": "\\( (4; 3; 6) \\).",
-    "B": "\\( (3; 6; 4) \\).",
-    "C": "\\( (3; 4; 6) \\).",
-    "D": "\\( (6; 3; 4) \\)."
-  },
-  "correct": "A",
-  "explanation": "Vì \\( \\overrightarrow{AB} \\) cùng hướng với \\( \\vec{i} \\) và \\( AB = 4 \\), ta có \\( \\overrightarrow{AB} = (4; 0; 0) \\).<br>Vì \\( \\overrightarrow{AD} \\) cùng hướng với \\( \\vec{j} \\) và \\( AD = 3 \\), ta có \\( \\overrightarrow{AD} = (0; 3; 0) \\).<br>Vì \\( \\overrightarrow{AA'} \\) cùng hướng với \\( \\vec{k} \\) và \\( AA' = 6 \\), ta có \\( \\overrightarrow{AA'} = (0; 0; 6) \\).<br><br>Trong hình hộp chữ nhật \\( ABCD.A'B'C'D' \\), điểm \\( C' \\) là đỉnh đối diện với \\( A \\) qua tâm hình hộp, nên đường chéo \\( \\overrightarrow{AC'} \\) chính là tổng của ba véc-tơ cạnh xuất phát từ \\( A \\):\n\\[ \\overrightarrow{AC'} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = (4; 0; 0) + (0; 3; 0) + (0; 0; 6) = (4; 3; 6). \\]<br><br>Vậy \\( \\overrightarrow{AC'} = (4; 3; 6) \\). Đáp án A."
-},
-{
-  "id": "de308_mc_10",
-  "part": 1,
-  "type": "mc4",
-  "content": "Cho hàm số \\( y = x^3 - 6x^2 + 15x - 2 \\) có đồ thị là \\( (C) \\). Hệ số góc nhỏ nhất của tiếp tuyến tại một điểm \\( M \\) thuộc đồ thị \\( (C) \\) là",
-  "options": {
-    "A": "1.",
-    "B": "3.",
-    "C": "5.",
-    "D": "0."
-  },
-  "correct": "B",
-  "explanation": "Hệ số góc của tiếp tuyến tại điểm \\( M(x_0; y_0) \\) thuộc đồ thị chính là giá trị đạo hàm tại \\( x_0 \\):\n\\[ k(x) = y' = 3x^2 - 12x + 15. \\]<br><br>Đây là một tam thức bậc hai theo \\( x \\) với hệ số \\( a = 3 > 0 \\), do đó \\( k(x) \\) đạt giá trị nhỏ nhất tại đỉnh parabol, ứng với\n\\[ x_0 = -\\dfrac{b}{2a} = -\\dfrac{-12}{2 \\cdot 3} = 2. \\]<br><br>Giá trị nhỏ nhất của hệ số góc:\n\\[ k(2) = 3(2)^2 - 12(2) + 15 = 12 - 24 + 15 = 3. \\]<br><br>Vậy hệ số góc nhỏ nhất của tiếp tuyến với đồ thị \\( (C) \\) bằng 3. Đáp án B."
-},
-{
-  "id": "de308_mc_11",
-  "part": 1,
-  "type": "mc4",
-  "content": "Trong không gian \\( Oxyz \\), cho ba điểm \\( A(1; -1; 2) \\), \\( B(5; 2; 1) \\) và \\( C(2; 0; 3) \\). Tìm điểm \\( M \\) trên trục \\( Ox \\) sao cho \\( AM \\) vuông góc với \\( BC \\).",
-  "options": {
-    "A": "\\( M(-5; 0; 0) \\).",
-    "B": "\\( M(1; 0; 0) \\).",
-    "C": "\\( M(2; 0; 0) \\).",
-    "D": "\\( M(-1; 0; 0) \\)."
-  },
-  "correct": "D",
-  "explanation": "Vì \\( M \\) thuộc trục \\( Ox \\) nên \\( M(m; 0; 0) \\) với \\( m \\) là tham số cần tìm.<br><br>Ta có \\( \\overrightarrow{AM} = M - A = (m - 1; 0 - (-1); 0 - 2) = (m - 1; 1; -2) \\).<br><br>Và \\( \\overrightarrow{BC} = C - B = (2 - 5; 0 - 2; 3 - 1) = (-3; -2; 2) \\).<br><br>Điều kiện \\( AM \\perp BC \\) tương đương với \\( \\overrightarrow{AM} \\cdot \\overrightarrow{BC} = 0 \\):\n\\[ (m-1)(-3) + (1)(-2) + (-2)(2) = 0 \\]\n\\[ -3m + 3 - 2 - 4 = 0 \\]\n\\[ -3m - 3 = 0 \\]\n\\[ m = -1. \\]<br><br>Vậy \\( M(-1; 0; 0) \\). Đáp án D."
-},
-{
-  "id": "de308_mc_12",
-  "part": 1,
-  "type": "mc4",
-  "content": "Một hệ thống cảnh báo cháy tự động của một tòa nhà được lắp đặt hai cảm biến \\( A \\) và \\( B \\) hoạt động độc lập với nhau. Khi xảy ra sự cố cháy, xác suất để cảm biến \\( A \\) và cảm biến \\( B \\) phát tín hiệu cảnh báo tương ứng là \\( 0{,}9 \\) và \\( 0{,}85 \\). Tính xác suất để khi xảy ra sự cố cháy, tòa nhà nhận được tín hiệu cảnh báo từ ít nhất một trong hai cảm biến.",
-  "options": {
-    "A": "0,765.",
-    "B": "0,975.",
-    "C": "0,985.",
-    "D": "0,925."
-  },
-  "correct": "C",
-  "explanation": "Gọi \\( A \\) là biến cố \"cảm biến A phát tín hiệu cảnh báo\", \\( B \\) là biến cố \"cảm biến B phát tín hiệu cảnh báo\". Theo giả thiết, \\( A \\) và \\( B \\) độc lập, với \\( P(A) = 0{,}9 \\) và \\( P(B) = 0{,}85 \\).<br><br>Biến cố \"nhận được tín hiệu cảnh báo từ ít nhất một trong hai cảm biến\" chính là biến cố \\( A \\cup B \\). Ta sẽ tính thông qua biến cố đối: \"cả hai cảm biến đều không phát tín hiệu\", tức là \\( \\overline{A} \\cap \\overline{B} \\).<br><br>Xác suất cảm biến A không phát tín hiệu: \\( P(\\overline{A}) = 1 - 0{,}9 = 0{,}1 \\).<br>Xác suất cảm biến B không phát tín hiệu: \\( P(\\overline{B}) = 1 - 0{,}85 = 0{,}15 \\).<br><br>Vì \\( A \\), \\( B \\) độc lập nên \\( \\overline{A} \\), \\( \\overline{B} \\) cũng độc lập với nhau, do đó:\n\\[ P(\\overline{A} \\cap \\overline{B}) = P(\\overline{A}) \\cdot P(\\overline{B}) = 0{,}1 \\times 0{,}15 = 0{,}015. \\]<br><br>Vậy xác suất nhận được tín hiệu cảnh báo từ ít nhất một cảm biến là:\n\\[ P(A \\cup B) = 1 - P(\\overline{A} \\cap \\overline{B}) = 1 - 0{,}015 = 0{,}985. \\]<br><br>Đáp án C."
-},
-          
-{
-  "id": "de3_tf_01",
-  "part": 2,
-  "type": "truefalse",
-  "content": "Một công ty khởi nghiệp mô hình hóa tốc độ tăng trưởng doanh thu hàng năm \\( y = f(t) \\) (đơn vị: tỷ đồng/năm) theo thời gian \\( t \\) (đơn vị: năm, với \\( t \\ge 0 \\)) bằng một hàm số đa thức bậc ba \\( y = at^3 + bt^2 + ct + d \\) (\\( a \\ne 0 \\)) có đồ thị như hình vẽ bên. Xét tính đúng sai của các mệnh đề sau:",
-  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_tf1_dothi.PNG",
-  "statements": [
-    {"text": "Công thức xác định tốc độ tăng trưởng doanh thu của công ty là \\( f(t) = -2t^3 + 3t^2 + 1 \\).", "correct": true},
-    {"text": "Doanh thu của công ty đạt tốc độ tăng trưởng cực đại tại thời điểm \\( t = 2 \\) năm.", "correct": false},
-    {"text": "Trong năm đầu tiên (\\( 0 \\le t \\le 1 \\)), tốc độ tăng trưởng doanh thu của công ty luôn có xu hướng tăng.", "correct": true},
-    {"text": "Tại thời điểm \\( t = 1{,}5 \\) năm, tốc độ tăng trưởng doanh thu của công ty đạt giá trị bằng 2 tỷ đồng/năm.", "correct": false}
-  ],
-  "explanation": "<b>a) Đúng.</b> Công thức xác định là \\( f(t) = -2t^3+3t^2+1 \\)?<br><br>Quan sát đồ thị, ta thấy hàm số đạt cực tiểu tại điểm \\( (0;1) \\) và đạt cực đại tại điểm \\( (1;2) \\). Vì đây là hai điểm cực trị nên đạo hàm \\( f'(t) = 3at^2+2bt+c \\) phải triệt tiêu tại \\( t=0 \\) và \\( t=1 \\), đồng thời giá trị hàm tại hai điểm đó lần lượt bằng 1 và 2.<br><br>Từ \\( f'(0)=0 \\), ta có ngay \\( c = 0 \\).<br>Từ \\( f(0)=1 \\), ta có \\( d = 1 \\).<br>Từ \\( f'(1)=0 \\): \\( 3a+2b+c=0 \\Rightarrow 3a+2b=0 \\).<br>Từ \\( f(1)=2 \\): \\( a+b+c+d=2 \\Rightarrow a+b+1=2 \\Rightarrow a+b=1 \\).<br><br>Giải hệ \\( \\begin{cases} 3a+2b=0 \\\\ a+b=1 \\end{cases} \\), thay \\( b = 1-a \\) vào phương trình đầu:\n\\[ 3a+2(1-a)=0 \\Rightarrow a+2=0 \\Rightarrow a=-2 \\Rightarrow b=3. \\]<br><br>Vậy \\( f(t) = -2t^3+3t^2+1 \\). Mệnh đề a) đúng.<br><br><b>b) Sai.</b> Doanh thu đạt tốc độ tăng trưởng cực đại tại \\( t=2 \\)?<br><br>Ta có \\( f'(t) = -6t^2+6t = 6t(1-t) \\). Xét dấu trên \\( [0;+\\infty) \\): với \\( 0<t<1 \\) thì \\( f'(t)>0 \\) (tăng); với \\( t>1 \\) thì \\( f'(t)<0 \\) (giảm). Vậy \\( f(t) \\) đạt cực đại tại \\( t=1 \\) (không phải \\( t=2 \\)), với giá trị \\( f(1) = -2+3+1=2 \\). Mệnh đề b) sai.<br><br><b>c) Đúng.</b> Trong năm đầu tiên, tốc độ tăng trưởng luôn có xu hướng tăng?<br><br>Như đã xét ở câu b), với mọi \\( t\\in(0;1) \\) ta có \\( f'(t) = 6t(1-t) > 0 \\) (vì cả \\( t \\) và \\( 1-t \\) đều dương). Do đó hàm số \\( f(t) \\) đồng biến trên \\( (0;1) \\), nghĩa là tốc độ tăng trưởng doanh thu luôn có xu hướng tăng trong năm đầu tiên. Mệnh đề c) đúng.<br><br><b>d) Sai.</b> Tại \\( t=1{,}5 \\), tốc độ tăng trưởng bằng 2?<br><br>Ta tính \\( f(1{,}5) = -2(1{,}5)^3+3(1{,}5)^2+1 = -2(3{,}375)+3(2{,}25)+1 = -6{,}75+6{,}75+1 = 1 \\).<br><br>Vậy tại \\( t=1{,}5 \\), tốc độ tăng trưởng doanh thu bằng 1 tỷ đồng/năm, không phải 2. Mệnh đề d) sai."
-},
-{
-  "id": "de3_tf_02",
-  "part": 2,
-  "type": "truefalse",
-  "content": "Trong một ca trực tại Trạm kiểm soát không lưu sân bay Tân Sơn Nhất, các kỹ sư ra-đa thiết lập hệ trục tọa độ \\( Oxyz \\) (đơn vị trên các trục tính bằng ki-lô-mét) với gốc \\( O(0;0;0) \\) là vị trí đặt tháp điều hành không lưu. Lúc 8 giờ sáng, hệ thống theo dõi một máy bay thương mại đang ở vị trí \\( M_0(50;120;4) \\). Máy bay đang bay ổn định với véc-tơ vận tốc không đổi là \\( \\vec{v} = (300;400;3) \\) (đơn vị: km/h). Xét tính đúng sai của các mệnh đề sau:",
-  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_tf2_hetruc.PNG",
-  "statements": [
-    {"text": "Tại thời điểm 8 giờ sáng, khoảng cách từ máy bay đến tháp điều hành không lưu xấp xỉ 130 km (sai số không quá 1 km).", "correct": true},
-    {"text": "Tại thời điểm 9 giờ sáng, độ cao của máy bay so với mặt đất là 8 km.", "correct": false},
-    {"text": "Tại thời điểm 10 giờ sáng, khoảng cách từ máy bay đến tháp truyền hình \\( F(1\\,250;1\\,020;0) \\) xấp xỉ 700 km (sai số không quá 10 km).", "correct": false},
-    {"text": "Khi đạt độ cao 10 km, máy bay nhận lệnh hạ cánh và đổi sang vận tốc mới là \\( \\vec{v}_2 = (400;300;-5) \\) km/h để hướng về đường băng B. Tọa độ của máy bay ngay khi chạm đất tại đường băng B là \\( (1\\,450;1\\,520;0) \\).", "correct": true}
-  ],
-  "explanation": "Vị trí máy bay tại thời điểm \\( t \\) giờ sau 8 giờ sáng: \\( M(t) = M_0 + t\\vec{v} = (50+300t;\\ 120+400t;\\ 4+3t) \\).<br><br><b>a) Đúng.</b> Khoảng cách lúc 8 giờ sáng chính là \\( |OM_0| \\):\n\\[ OM_0 = \\sqrt{50^2+120^2+4^2} = \\sqrt{2500+14400+16} = \\sqrt{16916} \\approx 130{,}06 \\text{ km}. \\]<br><br>Giá trị này xấp xỉ 130 km với sai số nhỏ hơn 1 km. Mệnh đề a) đúng.<br><br><b>b) Sai.</b> Độ cao lúc 9 giờ sáng ứng với \\( t=1 \\):\n\\[ z(1) = 4+3(1) = 7 \\text{ km}. \\]<br><br>Độ cao thực tế là 7 km chứ không phải 8 km. Mệnh đề b) sai.<br><br><b>c) Sai.</b> Lúc 10 giờ sáng ứng với \\( t=2 \\), vị trí máy bay là:\n\\[ M(2) = (50+600;\\ 120+800;\\ 4+6) = (650;\\ 920;\\ 10). \\]<br><br>Khoảng cách đến \\( F(1\\,250;1\\,020;0) \\):\n\\[ MF = \\sqrt{(1250-650)^2+(1020-920)^2+(0-10)^2} = \\sqrt{600^2+100^2+10^2} = \\sqrt{370100} \\approx 608{,}4 \\text{ km}. \\]<br><br>Giá trị này lệch khá xa so với 700 km (sai số hơn 10 km), nên mệnh đề c) sai.<br><br><b>d) Đúng.</b> Tại \\( t=2 \\) (đúng 10 giờ sáng), máy bay đang ở độ cao \\( z=10 \\) km, khớp với thời điểm \"đạt độ cao 10 km\" nêu trong đề, tại vị trí \\( (650;920;10) \\).<br><br>Từ lúc này, máy bay bay với vận tốc mới \\( \\vec{v}_2=(400;300;-5) \\). Gọi \\( t' \\) là thời gian bay thêm kể từ lúc đổi vận tốc, độ cao lúc này là \\( z = 10 - 5t' \\). Máy bay chạm đất khi \\( z=0 \\):\n\\[ 10-5t' = 0 \\Rightarrow t'=2 \\text{ giờ}. \\]<br><br>Tọa độ khi chạm đất:\n\\[ x = 650+400(2) = 1450,\\quad y = 920+300(2)=1520,\\quad z=0. \\]<br><br>Vậy tọa độ điểm chạm đất là \\( (1450;1520;0) \\), khớp với mệnh đề. Mệnh đề d) đúng."
-},
-{
-  "id": "de3_tf_03",
-  "part": 2,
-  "type": "truefalse",
-  "content": "Một công ty công nghệ phân tích hiệu quả của chiến dịch tiếp thị ứng dụng mới. Tổng thời gian người dùng tương tác tích lũy trên hệ thống theo thời gian \\( t \\) (\\( t \\ge 0 \\), tính bằng tuần) được mô hình hóa bởi hàm số \\( x(t) = 2t - 2\\ln(t+1) \\) (đơn vị: triệu giờ). Hàm số \\( v(t) = x'(t) \\) biểu thị tốc độ tương tác của người dùng tại thời điểm \\( t \\) (đơn vị: triệu giờ/tuần). Xét tính đúng sai của các mệnh đề sau:",
-  "statements": [
-    {"text": "\\( v(t) = 2 - \\dfrac{3}{t+1} \\).", "correct": false},
-    {"text": "Tốc độ tương tác tại thời điểm ban đầu (\\( t=0 \\)) là 2 triệu giờ/tuần.", "correct": false},
-    {"text": "Tốc độ tương tác tại thời điểm \\( t=1 \\) tuần bằng 1 triệu giờ/tuần.", "correct": true},
-    {"text": "Gia tốc tương tác của người dùng tại thời điểm \\( t=1 \\) tuần bằng 0,5 triệu giờ/tuần\\(^2\\).", "correct": true}
-  ],
-  "explanation": "<b>a) Sai.</b> \\( v(t) = 2-\\dfrac{3}{t+1} \\)?<br><br>Ta có \\( x(t) = 2t - 2\\ln(t+1) \\). Đạo hàm:\n\\[ v(t) = x'(t) = 2 - 2\\cdot\\dfrac{1}{t+1} = 2 - \\dfrac{2}{t+1}. \\]<br><br>Vậy hệ số đúng ở phân số là 2, không phải 3. Mệnh đề a) sai.<br><br><b>b) Sai.</b> Tốc độ tương tác tại \\( t=0 \\) là 2?<br><br>Thay \\( t=0 \\) vào \\( v(t) = 2-\\dfrac{2}{t+1} \\):\n\\[ v(0) = 2 - \\dfrac{2}{0+1} = 2-2 = 0. \\]<br><br>Vậy tốc độ tương tác ban đầu bằng 0, không phải 2 triệu giờ/tuần. Mệnh đề b) sai.<br><br><b>c) Đúng.</b> Tốc độ tương tác tại \\( t=1 \\) bằng 1?<br><br>\\[ v(1) = 2-\\dfrac{2}{1+1} = 2-1 = 1. \\]<br><br>Vậy tại \\( t=1 \\), tốc độ tương tác đúng bằng 1 triệu giờ/tuần. Mệnh đề c) đúng.<br><br><b>d) Đúng.</b> Gia tốc tại \\( t=1 \\) bằng 0,5?<br><br>Gia tốc tương tác là đạo hàm của \\( v(t) \\), tức là \\( a(t) = v'(t) \\). Viết lại \\( v(t) = 2-2(t+1)^{-1} \\), ta có:\n\\[ a(t) = v'(t) = 2(t+1)^{-2} = \\dfrac{2}{(t+1)^2}. \\]<br><br>Tại \\( t=1 \\):\n\\[ a(1) = \\dfrac{2}{(1+1)^2} = \\dfrac{2}{4} = 0{,}5. \\]<br><br>Vậy gia tốc tương tác tại \\( t=1 \\) đúng bằng 0,5 triệu giờ/tuần\\(^2\\). Mệnh đề d) đúng."
-},
-{
-  "id": "de3_tf_04",
-  "part": 2,
-  "type": "truefalse",
-  "content": "Xét phép thử chọn ngẫu nhiên một số tự nhiên có hai chữ số. Xét biến cố \\( A \\): \"Số được chọn là số chia hết cho 8\" và biến cố \\( B \\): \"Số được chọn là số có hai chữ số giống nhau\". Xét tính đúng sai của các mệnh đề sau:",
-  "statements": [
-    {"text": "Số phần tử của không gian mẫu là \\( n(\\Omega) = 89 \\).", "correct": false},
-    {"text": "Xác suất của biến cố \\( A \\) là \\( P(A) = \\dfrac{11}{90} \\).", "correct": true},
-    {"text": "Xác suất của biến cố \\( B \\) là \\( P(B) = \\dfrac{1}{10} \\).", "correct": true},
-    {"text": "Xác suất của biến cố hợp \\( A \\cup B \\) là \\( P(A \\cup B) = \\dfrac{2}{9} \\).", "correct": false}
-  ],
-  "explanation": "<b>a) Sai.</b> \\( n(\\Omega) = 89 \\)?<br><br>Số tự nhiên có hai chữ số chạy từ 10 đến 99, nên số phần tử của không gian mẫu là:\n\\[ n(\\Omega) = 99-10+1 = 90. \\]<br><br>Vậy \\( n(\\Omega)=90 \\), không phải 89. Mệnh đề a) sai.<br><br><b>b) Đúng.</b> \\( P(A) = \\dfrac{11}{90} \\)?<br><br>Các số có hai chữ số chia hết cho 8 là các số dạng \\( 8k \\) với \\( 10 \\le 8k \\le 99 \\), tức \\( 2 \\le k \\le 12 \\) (vì \\( 8\\times2=16 \\) và \\( 8\\times12=96 \\)). Số các giá trị \\( k \\) từ 2 đến 12 là \\( 12-2+1=11 \\) số (là 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96).<br><br>Vậy \\( n(A)=11 \\), suy ra \\( P(A) = \\dfrac{11}{90} \\). Mệnh đề b) đúng.<br><br><b>c) Đúng.</b> \\( P(B) = \\dfrac{1}{10} \\)?<br><br>Các số có hai chữ số giống nhau là: 11, 22, 33, 44, 55, 66, 77, 88, 99 — tổng cộng 9 số. Vậy \\( n(B)=9 \\), suy ra\n\\[ P(B) = \\dfrac{9}{90} = \\dfrac{1}{10}. \\]<br><br>Mệnh đề c) đúng.<br><br><b>d) Sai.</b> \\( P(A\\cup B) = \\dfrac{2}{9} \\)?<br><br>Áp dụng công thức: \\( P(A\\cup B) = P(A)+P(B)-P(A\\cap B) \\).<br><br>Biến cố \\( A\\cap B \\) gồm các số vừa chia hết cho 8, vừa có hai chữ số giống nhau: kiểm tra trong các số 11, 22, ..., 99, chỉ có 88 chia hết cho 8 (\\( 88 = 8\\times11 \\)). Vậy \\( n(A\\cap B)=1 \\), suy ra \\( P(A\\cap B) = \\dfrac{1}{90} \\).<br><br>Do đó:\n\\[ P(A\\cup B) = \\dfrac{11}{90}+\\dfrac{9}{90}-\\dfrac{1}{90} = \\dfrac{19}{90}. \\]<br><br>Trong khi đó \\( \\dfrac{2}{9} = \\dfrac{20}{90} \\), khác với \\( \\dfrac{19}{90} \\) vừa tính được. Mệnh đề d) sai."
-},
-
-
-
-          ], #hết đề 3
-    }, #hết đề 3
+  "id": "de3",
+  "name": "Đề số 3 - ĐÁNH GIÁ ĐỊNH KỲ THÁNG 8 - TRƯỜNG NK - LÊ THÁNH TÔNG HCM- 2026 - 2027.",
+  "description": "22 câu hỏi: 12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn.",
+  "questions": [
+    {
+      "id": "de308_mc_01",
+      "part": 1,
+      "type": "mc4",
+      "content": "Trong không gian \\( Oxyz \\), cho điểm \\( M(2; -3; 5) \\). Hình chiếu vuông góc của điểm \\( M \\) trên mặt phẳng \\( (Oxy) \\) có tọa độ là",
+      "options": {
+        "A": "\\( (2; 0; 5) \\).",
+        "B": "\\( (0; -3; 5) \\).",
+        "C": "\\( (2; -3; 0) \\).",
+        "D": "\\( (0; 0; 5) \\)."
+      },
+      "correct": "C",
+      "explanation": "Mặt phẳng \\( (Oxy) \\) là mặt phẳng có phương trình \\( z = 0 \\), tức là mọi điểm nằm trên mặt phẳng này đều có cao độ bằng 0.<br><br>Khi chiếu vuông góc một điểm \\( M(x_0; y_0; z_0) \\) bất kỳ xuống mặt phẳng \\( (Oxy) \\), ta chỉ việc giữ nguyên hoành độ \\( x_0 \\) và tung độ \\( y_0 \\), còn cao độ được đưa về 0. Về mặt hình học, đây chính là việc \"hạ\" điểm \\( M \\) thẳng xuống theo phương của trục \\( Oz \\) cho tới khi chạm mặt phẳng \\( (Oxy) \\).<br><br>Áp dụng cho điểm \\( M(2; -3; 5) \\): giữ nguyên \\( x = 2 \\), \\( y = -3 \\) và cho \\( z = 0 \\), ta được hình chiếu là \\( (2; -3; 0) \\).<br><br>Vậy đáp án đúng là C."
+    },
+    {
+      "id": "de308_mc_02",
+      "part": 1,
+      "type": "mc4",
+      "content": "Phương trình đường thẳng đi qua hai điểm cực trị của đồ thị hàm số \\( y = \\dfrac{x^2 - 3x + 6}{x - 2} \\) là",
+      "options": {
+        "A": "\\( y = 2x + 3 \\).",
+        "B": "\\( y = x - 1 \\).",
+        "C": "\\( y = 2x - 3 \\).",
+        "D": "\\( y = -2x + 3 \\)."
+      },
+      "correct": "C",
+      "explanation": "Trước hết ta thực hiện phép chia đa thức để tách phần nguyên: \\( x^2 - 3x + 6 = (x-2)(x-1) + 4 \\), do đó\n\\[ y = x - 1 + \\dfrac{4}{x-2}. \\]<br><br>Đạo hàm: \\( y' = 1 - \\dfrac{4}{(x-2)^2} \\). Cho \\( y' = 0 \\) ta được \\( (x-2)^2 = 4 \\), suy ra \\( x = 4 \\) hoặc \\( x = 0 \\). Đây chính là hoành độ của hai điểm cực trị.<br><br>Tại \\( x = 4 \\): \\( y = 4 - 1 + \\dfrac{4}{2} = 3 + 2 = 5 \\), ta được điểm \\( (4; 5) \\).<br>Tại \\( x = 0 \\): \\( y = 0 - 1 + \\dfrac{4}{-2} = -1 - 2 = -3 \\), ta được điểm \\( (0; -3) \\).<br><br>Đường thẳng đi qua hai điểm \\( (4; 5) \\) và \\( (0; -3) \\) có hệ số góc:\n\\[ k = \\dfrac{5 - (-3)}{4 - 0} = \\dfrac{8}{4} = 2. \\]<br><br>Phương trình đường thẳng: \\( y = 2x + b \\). Thay điểm \\( (0; -3) \\) vào ta được \\( b = -3 \\).<br><br>Vậy đường thẳng cần tìm là \\( y = 2x - 3 \\). Đáp án C."
+    },
+    {
+      "id": "de308_mc_03",
+      "part": 1,
+      "type": "mc4",
+      "content": "Nếu một khối lăng trụ có diện tích đáy bằng \\( a^2\\sqrt{3} \\) và có thể tích bằng \\( 3a^3 \\) thì chiều cao của khối lăng trụ đó bằng",
+      "options": {
+        "A": "\\( a \\).",
+        "B": "\\( \\dfrac{a}{\\sqrt{3}} \\).",
+        "C": "\\( 3a\\sqrt{3} \\).",
+        "D": "\\( a\\sqrt{3} \\)."
+      },
+      "correct": "D",
+      "explanation": "Công thức thể tích khối lăng trụ là \\( V = S_{\\text{đáy}} \\cdot h \\), trong đó \\( S_{\\text{đáy}} \\) là diện tích đáy và \\( h \\) là chiều cao.<br><br>Từ đó suy ra chiều cao:\n\\[ h = \\dfrac{V}{S_{\\text{đáy}}} = \\dfrac{3a^3}{a^2\\sqrt{3}} = \\dfrac{3a}{\\sqrt{3}} = a\\sqrt{3}. \\]<br><br>Vậy chiều cao của khối lăng trụ là \\( a\\sqrt{3} \\). Đáp án D."
+    },
+    {
+      "id": "de308_mc_04",
+      "part": 1,
+      "type": "mc4",
+      "content": "Số đường tiệm cận của đồ thị hàm số \\( y = \\dfrac{2x - 1}{x + 1} \\) là",
+      "options": {
+        "A": "1.",
+        "B": "4.",
+        "C": "3.",
+        "D": "2."
+      },
+      "correct": "D",
+      "explanation": "Hàm số \\( y = \\dfrac{2x-1}{x+1} \\) xác định khi \\( x \\neq -1 \\).<br><br><b>Tiệm cận đứng:</b> Tại \\( x = -1 \\), mẫu số triệt tiêu còn tử số \\( 2(-1) - 1 = -3 \\neq 0 \\), nên\n\\[ \\lim_{x \\to -1} \\dfrac{2x-1}{x+1} = \\infty. \\]\nDo đó \\( x = -1 \\) là tiệm cận đứng.<br><br><b>Tiệm cận ngang:</b> Ta có\n\\[ \\lim_{x \\to \\pm\\infty} \\dfrac{2x-1}{x+1} = \\lim_{x \\to \\pm\\infty} \\dfrac{2 - \\frac{1}{x}}{1 + \\frac{1}{x}} = 2. \\]\nDo đó \\( y = 2 \\) là tiệm cận ngang.<br><br>Đây là hàm phân thức bậc nhất trên bậc nhất, nên không có tiệm cận xiên. Vậy đồ thị có tổng cộng 2 đường tiệm cận (1 đứng, 1 ngang). Đáp án D."
+    },
+    {
+      "id": "de308_mc_05",
+      "part": 1,
+      "type": "mc4",
+      "content": "Cho hình lập phương \\( ABCD.A'B'C'D' \\). Góc giữa hai véc-tơ \\( \\overrightarrow{AB} \\) và \\( \\overrightarrow{DC'} \\) bằng",
+      "options": {
+        "A": "\\( 30^{\\circ} \\).",
+        "B": "\\( 45^{\\circ} \\).",
+        "C": "\\( 60^{\\circ} \\).",
+        "D": "\\( 90^{\\circ} \\)."
+      },
+      "correct": "B",
+      "explanation": "Gắn hệ trục tọa độ với cạnh hình lập phương bằng 1: \\( A(0;0;0) \\), \\( B(1;0;0) \\), \\( C(1;1;0) \\), \\( D(0;1;0) \\), \\( A'(0;0;1) \\), \\( B'(1;0;1) \\), \\( C'(1;1;1) \\), \\( D'(0;1;1) \\).<br><br>Ta có \\( \\overrightarrow{AB} = (1; 0; 0) \\) và \\( \\overrightarrow{DC'} = C' - D = (1; 1; 1) - (0; 1; 0) = (1; 0; 1) \\).<br><br>Chú ý rằng \\( DC' \\) chính là đường chéo của mặt bên \\( DCC'D' \\), có độ dài \\( \\sqrt{1^2 + 0^2 + 1^2} = \\sqrt{2} \\) (đơn vị cạnh), còn \\( |\\overrightarrow{AB}| = 1 \\).<br><br>Áp dụng công thức tích vô hướng:\n\\[ \\cos\\left(\\overrightarrow{AB}, \\overrightarrow{DC'}\\right) = \\dfrac{\\overrightarrow{AB} \\cdot \\overrightarrow{DC'}}{|\\overrightarrow{AB}| \\cdot |\\overrightarrow{DC'}|} = \\dfrac{1 \\cdot 1 + 0 \\cdot 0 + 0 \\cdot 1}{1 \\cdot \\sqrt{2}} = \\dfrac{1}{\\sqrt{2}}. \\]<br><br>Suy ra góc giữa hai véc-tơ bằng \\( 45^{\\circ} \\). Đáp án B."
+    },
+    {
+      "id": "de308_mc_06",
+      "part": 1,
+      "type": "mc4",
+      "content": "Cho hàm số \\( y = f(x) \\) liên tục trên \\( \\mathbb{R} \\) và có bảng xét dấu của đạo hàm \\( f'(x) \\) như sau. Hàm số \\( g(x) = f(|x|) \\) có bao nhiêu điểm cực trị?",
+      "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau6nk.PNG",
+      "options": {
+        "A": "3.",
+        "B": "5.",
+        "C": "4.",
+        "D": "2."
+      },
+      "correct": "A",
+      "explanation": "Từ bảng xét dấu, ta xác định chiều biến thiên của \\( f \\) trên từng khoảng: \\( f \\) giảm trên \\( (-\\infty; -2) \\), tăng trên \\( (-2; 0) \\), giảm trên \\( (0; 1) \\), tăng trên \\( (1; 3) \\) và tiếp tục tăng trên \\( (3; +\\infty) \\). Chú ý tại \\( x = 3 \\), đạo hàm bằng 0 nhưng không đổi dấu (trước và sau đều dương) nên đây không phải là điểm cực trị của \\( f \\), chỉ là điểm dừng.<br><br>Hàm \\( g(x) = f(|x|) \\) là hàm chẵn, và với \\( x \\ge 0 \\) ta có \\( g(x) = f(x) \\). Do đó trên nửa trục dương, \\( g \\) giảm trên \\( (0;1) \\), tăng trên \\( (1; +\\infty) \\) (điểm \\( x=3 \\) chỉ là điểm dừng, không làm đổi chiều biến thiên). Vậy \\( x = 1 \\) là điểm cực tiểu của \\( g \\).<br><br>Vì \\( g \\) là hàm chẵn, đồ thị của \\( g \\) trên nửa trục âm là ảnh đối xứng qua trục tung của phần đồ thị trên nửa trục dương. Do đó tại \\( x = -1 \\), \\( g \\) cũng đạt cực tiểu (đối xứng với \\( x = 1 \\)).<br><br>Xét lân cận \\( x = 0 \\): khi \\( x \\) tiến tới 0 từ bên trái (ứng với nửa đối xứng của khoảng \\( (0;1) \\)), \\( g \\) đang tăng; khi \\( x \\) tiến từ 0 sang phải, \\( g \\) đang giảm (vì \\( f \\) giảm trên \\( (0;1) \\)). Vậy \\( g \\) đổi chiều từ tăng sang giảm tại \\( x = 0 \\), suy ra \\( x = 0 \\) là điểm cực đại.<br><br>Ngoài ba điểm \\( x = -1, 0, 1 \\), không còn điểm nào khác làm \\( g \\) đổi chiều biến thiên (điểm \\( x = \\pm 3 \\) chỉ là điểm dừng, không phải cực trị).<br><br>Vậy hàm số \\( g(x) = f(|x|) \\) có đúng 3 điểm cực trị. Đáp án A."
+    },
+    {
+      "id": "de308_mc_07",
+      "part": 1,
+      "type": "mc4",
+      "content": "Cho tứ diện \\( OABC \\) có các cạnh \\( OA, OB, OC \\) đôi một vuông góc với nhau. Số đo của góc nhị diện \\( [B, OA, C] \\) bằng",
+      "options": {
+        "A": "\\( 90^{\\circ} \\).",
+        "B": "\\( 30^{\\circ} \\).",
+        "C": "\\( 45^{\\circ} \\).",
+        "D": "\\( 60^{\\circ} \\)."
+      },
+      "correct": "A",
+      "explanation": "Góc nhị diện \\( [B, OA, C] \\) là góc nhị diện có cạnh \\( OA \\), tạo bởi hai nửa mặt phẳng lần lượt chứa \\( B \\) và chứa \\( C \\).<br><br>Vì \\( OA \\perp OB \\) (giả thiết) nên \\( OB \\) vuông góc với cạnh \\( OA \\) tại \\( O \\). Tương tự, \\( OA \\perp OC \\) nên \\( OC \\) cũng vuông góc với cạnh \\( OA \\) tại \\( O \\).<br><br>Như vậy, tại đúng điểm \\( O \\) trên cạnh \\( OA \\), ta có hai tia \\( OB \\) và \\( OC \\) cùng vuông góc với \\( OA \\). Theo định nghĩa, góc nhị diện \\( [B, OA, C] \\) chính bằng góc giữa hai tia này, tức là góc \\( \\widehat{BOC} \\).<br><br>Mà theo giả thiết, \\( OB \\perp OC \\), nên \\( \\widehat{BOC} = 90^{\\circ} \\).<br><br>Vậy góc nhị diện \\( [B, OA, C] \\) bằng \\( 90^{\\circ} \\). Đáp án A."
+    },
+    {
+      "id": "de308_mc_08",
+      "part": 1,
+      "type": "mc4",
+      "content": "Cho hàm số \\( y = f(x) \\) xác định và liên tục trên \\( \\mathbb{R} \\) có bảng biến thiên như hình bên dưới. Gọi \\( M(x_1; y_1) \\) và \\( N(x_2; y_2) \\) lần lượt là điểm cực đại và điểm cực tiểu của đồ thị hàm số \\( y = f(x) \\). Giá trị của biểu thức \\( T = 2x_1 + x_2 - y_1 \\cdot y_2 \\) bằng<br><br><table border='1' cellpadding='6' style='border-collapse:collapse;text-align:center'><tr><td>\\(x\\)</td><td>\\(-\\infty\\)</td><td></td><td>\\(-1\\)</td><td></td><td>\\(2\\)</td><td></td><td>\\(+\\infty\\)</td></tr><tr><td>\\(f'(x)\\)</td><td></td><td>\\(+\\)</td><td>0</td><td>\\(-\\)</td><td>0</td><td>\\(+\\)</td><td></td></tr><tr><td>\\(f(x)\\)</td><td>\\(-\\infty\\)</td><td>\\(\\nearrow\\)</td><td>4</td><td>\\(\\searrow\\)</td><td>\\(-1\\)</td><td>\\(\\nearrow\\)</td><td>\\(+\\infty\\)</td></tr></table>",
+      "options": {
+        "A": "2.",
+        "B": "4.",
+        "C": "0.",
+        "D": "\\( -4 \\)."
+      },
+      "correct": "B",
+      "explanation": "Từ bảng biến thiên: hàm số tăng trên \\( (-\\infty; -1) \\), giảm trên \\( (-1; 2) \\), tăng trên \\( (2; +\\infty) \\).<br><br>Tại \\( x = -1 \\), \\( f'(x) \\) đổi dấu từ dương sang âm nên đây là điểm cực đại, với giá trị cực đại \\( f(-1) = 4 \\). Vậy \\( M(x_1; y_1) = M(-1; 4) \\), tức \\( x_1 = -1 \\), \\( y_1 = 4 \\).<br><br>Tại \\( x = 2 \\), \\( f'(x) \\) đổi dấu từ âm sang dương nên đây là điểm cực tiểu, với giá trị cực tiểu \\( f(2) = -1 \\). Vậy \\( N(x_2; y_2) = N(2; -1) \\), tức \\( x_2 = 2 \\), \\( y_2 = -1 \\).<br><br>Thay vào biểu thức:\n\\[ T = 2x_1 + x_2 - y_1 \\cdot y_2 = 2(-1) + 2 - (4)(-1) = -2 + 2 + 4 = 4. \\]<br><br>Vậy \\( T = 4 \\). Đáp án B."
+    },
+    {
+      "id": "de308_mc_09",
+      "part": 1,
+      "type": "mc4",
+      "content": "Trong không gian \\( Oxyz \\), cho hình hộp chữ nhật \\( ABCD.A'B'C'D' \\) có đỉnh \\( A \\) trùng với gốc tọa độ \\( O \\), các véc-tơ \\( \\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AA'} \\) theo thứ tự cùng hướng với các véc-tơ \\( \\vec{i}, \\vec{j}, \\vec{k} \\) và có \\( AB = 4 \\), \\( AD = 3 \\), \\( AA' = 6 \\). Khi đó, véc-tơ \\( \\overrightarrow{AC'} \\) có tọa độ là",
+      "options": {
+        "A": "\\( (4; 3; 6) \\).",
+        "B": "\\( (3; 6; 4) \\).",
+        "C": "\\( (3; 4; 6) \\).",
+        "D": "\\( (6; 3; 4) \\)."
+      },
+      "correct": "A",
+      "explanation": "Vì \\( \\overrightarrow{AB} \\) cùng hướng với \\( \\vec{i} \\) và \\( AB = 4 \\), ta có \\( \\overrightarrow{AB} = (4; 0; 0) \\).<br>Vì \\( \\overrightarrow{AD} \\) cùng hướng với \\( \\vec{j} \\) và \\( AD = 3 \\), ta có \\( \\overrightarrow{AD} = (0; 3; 0) \\).<br>Vì \\( \\overrightarrow{AA'} \\) cùng hướng với \\( \\vec{k} \\) và \\( AA' = 6 \\), ta có \\( \\overrightarrow{AA'} = (0; 0; 6) \\).<br><br>Trong hình hộp chữ nhật \\( ABCD.A'B'C'D' \\), điểm \\( C' \\) là đỉnh đối diện với \\( A \\) qua tâm hình hộp, nên đường chéo \\( \\overrightarrow{AC'} \\) chính là tổng của ba véc-tơ cạnh xuất phát từ \\( A \\):\n\\[ \\overrightarrow{AC'} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = (4; 0; 0) + (0; 3; 0) + (0; 0; 6) = (4; 3; 6). \\]<br><br>Vậy \\( \\overrightarrow{AC'} = (4; 3; 6) \\). Đáp án A."
+    },
+    {
+      "id": "de308_mc_10",
+      "part": 1,
+      "type": "mc4",
+      "content": "Cho hàm số \\( y = x^3 - 6x^2 + 15x - 2 \\) có đồ thị là \\( (C) \\). Hệ số góc nhỏ nhất của tiếp tuyến tại một điểm \\( M \\) thuộc đồ thị \\( (C) \\) là",
+      "options": {
+        "A": "1.",
+        "B": "3.",
+        "C": "5.",
+        "D": "0."
+      },
+      "correct": "B",
+      "explanation": "Hệ số góc của tiếp tuyến tại điểm \\( M(x_0; y_0) \\) thuộc đồ thị chính là giá trị đạo hàm tại \\( x_0 \\):\n\\[ k(x) = y' = 3x^2 - 12x + 15. \\]<br><br>Đây là một tam thức bậc hai theo \\( x \\) với hệ số \\( a = 3 > 0 \\), do đó \\( k(x) \\) đạt giá trị nhỏ nhất tại đỉnh parabol, ứng với\n\\[ x_0 = -\\dfrac{b}{2a} = -\\dfrac{-12}{2 \\cdot 3} = 2. \\]<br><br>Giá trị nhỏ nhất của hệ số góc:\n\\[ k(2) = 3(2)^2 - 12(2) + 15 = 12 - 24 + 15 = 3. \\]<br><br>Vậy hệ số góc nhỏ nhất của tiếp tuyến với đồ thị \\( (C) \\) bằng 3. Đáp án B."
+    },
+    {
+      "id": "de308_mc_11",
+      "part": 1,
+      "type": "mc4",
+      "content": "Trong không gian \\( Oxyz \\), cho ba điểm \\( A(1; -1; 2) \\), \\( B(5; 2; 1) \\) và \\( C(2; 0; 3) \\). Tìm điểm \\( M \\) trên trục \\( Ox \\) sao cho \\( AM \\) vuông góc với \\( BC \\).",
+      "options": {
+        "A": "\\( M(-5; 0; 0) \\).",
+        "B": "\\( M(1; 0; 0) \\).",
+        "C": "\\( M(2; 0; 0) \\).",
+        "D": "\\( M(-1; 0; 0) \\)."
+      },
+      "correct": "D",
+      "explanation": "Vì \\( M \\) thuộc trục \\( Ox \\) nên \\( M(m; 0; 0) \\) với \\( m \\) là tham số cần tìm.<br><br>Ta có \\( \\overrightarrow{AM} = M - A = (m - 1; 0 - (-1); 0 - 2) = (m - 1; 1; -2) \\).<br><br>Và \\( \\overrightarrow{BC} = C - B = (2 - 5; 0 - 2; 3 - 1) = (-3; -2; 2) \\).<br><br>Điều kiện \\( AM \\perp BC \\) tương đương với \\( \\overrightarrow{AM} \\cdot \\overrightarrow{BC} = 0 \\):\n\\[ (m-1)(-3) + (1)(-2) + (-2)(2) = 0 \\]\n\\[ -3m + 3 - 2 - 4 = 0 \\]\n\\[ -3m - 3 = 0 \\]\n\\[ m = -1. \\]<br><br>Vậy \\( M(-1; 0; 0) \\). Đáp án D."
+    },
+    {
+      "id": "de308_mc_12",
+      "part": 1,
+      "type": "mc4",
+      "content": "Một hệ thống cảnh báo cháy tự động của một tòa nhà được lắp đặt hai cảm biến \\( A \\) và \\( B \\) hoạt động độc lập với nhau. Khi xảy ra sự cố cháy, xác suất để cảm biến \\( A \\) và cảm biến \\( B \\) phát tín hiệu cảnh báo tương ứng là \\( 0{,}9 \\) và \\( 0{,}85 \\). Tính xác suất để khi xảy ra sự cố cháy, tòa nhà nhận được tín hiệu cảnh báo từ ít nhất một trong hai cảm biến.",
+      "options": {
+        "A": "0,765.",
+        "B": "0,975.",
+        "C": "0,985.",
+        "D": "0,925."
+      },
+      "correct": "C",
+      "explanation": "Gọi \\( A \\) là biến cố \"cảm biến A phát tín hiệu cảnh báo\", \\( B \\) là biến cố \"cảm biến B phát tín hiệu cảnh báo\". Theo giả thiết, \\( A \\) và \\( B \\) độc lập, với \\( P(A) = 0{,}9 \\) và \\( P(B) = 0{,}85 \\).<br><br>Biến cố \"nhận được tín hiệu cảnh báo từ ít nhất một trong hai cảm biến\" chính là biến cố \\( A \\cup B \\). Ta sẽ tính thông qua biến cố đối: \"cả hai cảm biến đều không phát tín hiệu\", tức là \\( \\overline{A} \\cap \\overline{B} \\).<br><br>Xác suất cảm biến A không phát tín hiệu: \\( P(\\overline{A}) = 1 - 0{,}9 = 0{,}1 \\).<br>Xác suất cảm biến B không phát tín hiệu: \\( P(\\overline{B}) = 1 - 0{,}85 = 0{,}15 \\).<br><br>Vì \\( A \\), \\( B \\) độc lập nên \\( \\overline{A} \\), \\( \\overline{B} \\) cũng độc lập với nhau, do đó:\n\\[ P(\\overline{A} \\cap \\overline{B}) = P(\\overline{A}) \\cdot P(\\overline{B}) = 0{,}1 \\times 0{,}15 = 0{,}015. \\]<br><br>Vậy xác suất nhận được tín hiệu cảnh báo từ ít nhất một cảm biến là:\n\\[ P(A \\cup B) = 1 - P(\\overline{A} \\cap \\overline{B}) = 1 - 0{,}015 = 0{,}985. \\]<br><br>Đáp án C."
+    },
+    {
+      "id": "de3_tf_01",
+      "part": 2,
+      "type": "truefalse",
+      "content": "Một công ty khởi nghiệp mô hình hóa tốc độ tăng trưởng doanh thu hàng năm \\( y = f(t) \\) (đơn vị: tỷ đồng/năm) theo thời gian \\( t \\) (đơn vị: năm, với \\( t \\ge 0 \\)) bằng một hàm số đa thức bậc ba \\( y = at^3 + bt^2 + ct + d \\) (\\( a \\ne 0 \\)) có đồ thị như hình vẽ bên. Xét tính đúng sai của các mệnh đề sau:",
+      "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_tf1_dothi.PNG",
+      "statements": [
+        {"text": "Công thức xác định tốc độ tăng trưởng doanh thu của công ty là \\( f(t) = -2t^3 + 3t^2 + 1 \\).", "correct": true},
+        {"text": "Doanh thu của công ty đạt tốc độ tăng trưởng cực đại tại thời điểm \\( t = 2 \\) năm.", "correct": false},
+        {"text": "Trong năm đầu tiên (\\( 0 \\le t \\le 1 \\)), tốc độ tăng trưởng doanh thu của công ty luôn có xu hướng tăng.", "correct": true},
+        {"text": "Tại thời điểm \\( t = 1{,}5 \\) năm, tốc độ tăng trưởng doanh thu của công ty đạt giá trị bằng 2 tỷ đồng/năm.", "correct": false}
+      ],
+      "explanation": "<b>a) Đúng.</b> Công thức xác định là \\( f(t) = -2t^3+3t^2+1 \\)?<br><br>Quan sát đồ thị, ta thấy hàm số đạt cực tiểu tại điểm \\( (0;1) \\) và đạt cực đại tại điểm \\( (1;2) \\). Vì đây là hai điểm cực trị nên đạo hàm \\( f'(t) = 3at^2+2bt+c \\) phải triệt tiêu tại \\( t=0 \\) và \\( t=1 \\), đồng thời giá trị hàm tại hai điểm đó lần lượt bằng 1 và 2.<br><br>Từ \\( f'(0)=0 \\), ta có ngay \\( c = 0 \\).<br>Từ \\( f(0)=1 \\), ta có \\( d = 1 \\).<br>Từ \\( f'(1)=0 \\): \\( 3a+2b+c=0 \\Rightarrow 3a+2b=0 \\).<br>Từ \\( f(1)=2 \\): \\( a+b+c+d=2 \\Rightarrow a+b+1=2 \\Rightarrow a+b=1 \\).<br><br>Giải hệ \\( \\begin{cases} 3a+2b=0 \\\\ a+b=1 \\end{cases} \\), thay \\( b = 1-a \\) vào phương trình đầu:\n\\[ 3a+2(1-a)=0 \\Rightarrow a+2=0 \\Rightarrow a=-2 \\Rightarrow b=3. \\]<br><br>Vậy \\( f(t) = -2t^3+3t^2+1 \\). Mệnh đề a) đúng.<br><br><b>b) Sai.</b> Doanh thu đạt tốc độ tăng trưởng cực đại tại \\( t=2 \\)?<br><br>Ta có \\( f'(t) = -6t^2+6t = 6t(1-t) \\). Xét dấu trên \\( [0;+\\infty) \\): với \\( 0<t<1 \\) thì \\( f'(t)>0 \\) (tăng); với \\( t>1 \\) thì \\( f'(t)<0 \\) (giảm). Vậy \\( f(t) \\) đạt cực đại tại \\( t=1 \\) (không phải \\( t=2 \\)), với giá trị \\( f(1) = -2+3+1=2 \\). Mệnh đề b) sai.<br><br><b>c) Đúng.</b> Trong năm đầu tiên, tốc độ tăng trưởng luôn có xu hướng tăng?<br><br>Như đã xét ở câu b), với mọi \\( t\\in(0;1) \\) ta có \\( f'(t) = 6t(1-t) > 0 \\) (vì cả \\( t \\) và \\( 1-t \\) đều dương). Do đó hàm số \\( f(t) \\) đồng biến trên \\( (0;1) \\), nghĩa là tốc độ tăng trưởng doanh thu luôn có xu hướng tăng trong năm đầu tiên. Mệnh đề c) đúng.<br><br><b>d) Sai.</b> Tại \\( t=1{,}5 \\), tốc độ tăng trưởng bằng 2?<br><br>Ta tính \\( f(1{,}5) = -2(1{,}5)^3+3(1{,}5)^2+1 = -2(3{,}375)+3(2{,}25)+1 = -6{,}75+6{,}75+1 = 1 \\).<br><br>Vậy tại \\( t=1{,}5 \\), tốc độ tăng trưởng doanh thu bằng 1 tỷ đồng/năm, không phải 2. Mệnh đề d) sai."
+    },
+    {
+      "id": "de3_tf_02",
+      "part": 2,
+      "type": "truefalse",
+      "content": "Trong một ca trực tại Trạm kiểm soát không lưu sân bay Tân Sơn Nhất, các kỹ sư ra-đa thiết lập hệ trục tọa độ \\( Oxyz \\) (đơn vị trên các trục tính bằng ki-lô-mét) với gốc \\( O(0;0;0) \\) là vị trí đặt tháp điều hành không lưu. Lúc 8 giờ sáng, hệ thống theo dõi một máy bay thương mại đang ở vị trí \\( M_0(50;120;4) \\). Máy bay đang bay ổn định với véc-tơ vận tốc không đổi là \\( \\vec{v} = (300;400;3) \\) (đơn vị: km/h). Xét tính đúng sai của các mệnh đề sau:",
+      "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_tf2_hetruc.PNG",
+      "statements": [
+        {"text": "Tại thời điểm 8 giờ sáng, khoảng cách từ máy bay đến tháp điều hành không lưu xấp xỉ 130 km (sai số không quá 1 km).", "correct": true},
+        {"text": "Tại thời điểm 9 giờ sáng, độ cao của máy bay so với mặt đất là 8 km.", "correct": false},
+        {"text": "Tại thời điểm 10 giờ sáng, khoảng cách từ máy bay đến tháp truyền hình \\( F(1\\,250;1\\,020;0) \\) xấp xỉ 700 km (sai số không quá 10 km).", "correct": false},
+        {"text": "Khi đạt độ cao 10 km, máy bay nhận lệnh hạ cánh và đổi sang vận tốc mới là \\( \\vec{v}_2 = (400;300;-5) \\) km/h để hướng về đường băng B. Tọa độ của máy bay ngay khi chạm đất tại đường băng B là \\( (1\\,450;1\\,520;0) \\).", "correct": true}
+      ],
+      "explanation": "Vị trí máy bay tại thời điểm \\( t \\) giờ sau 8 giờ sáng: \\( M(t) = M_0 + t\\vec{v} = (50+300t;\\ 120+400t;\\ 4+3t) \\).<br><br><b>a) Đúng.</b> Khoảng cách lúc 8 giờ sáng chính là \\( |OM_0| \\):\n\\[ OM_0 = \\sqrt{50^2+120^2+4^2} = \\sqrt{2500+14400+16} = \\sqrt{16916} \\approx 130{,}06 \\text{ km}. \\]<br><br>Giá trị này xấp xỉ 130 km với sai số nhỏ hơn 1 km. Mệnh đề a) đúng.<br><br><b>b) Sai.</b> Độ cao lúc 9 giờ sáng ứng với \\( t=1 \\):\n\\[ z(1) = 4+3(1) = 7 \\text{ km}. \\]<br><br>Độ cao thực tế là 7 km chứ không phải 8 km. Mệnh đề b) sai.<br><br><b>c) Sai.</b> Lúc 10 giờ sáng ứng với \\( t=2 \\), vị trí máy bay là:\n\\[ M(2) = (50+600;\\ 120+800;\\ 4+6) = (650;\\ 920;\\ 10). \\]<br><br>Khoảng cách đến \\( F(1\\,250;1\\,020;0) \\):\n\\[ MF = \\sqrt{(1250-650)^2+(1020-920)^2+(0-10)^2} = \\sqrt{600^2+100^2+10^2} = \\sqrt{370100} \\approx 608{,}4 \\text{ km}. \\]<br><br>Giá trị này lệch khá xa so với 700 km (sai số hơn 10 km), nên mệnh đề c) sai.<br><br><b>d) Đúng.</b> Tại \\( t=2 \\) (đúng 10 giờ sáng), máy bay đang ở độ cao \\( z=10 \\) km, khớp với thời điểm \"đạt độ cao 10 km\" nêu trong đề, tại vị trí \\( (650;920;10) \\).<br><br>Từ lúc này, máy bay bay với vận tốc mới \\( \\vec{v}_2=(400;300;-5) \\). Gọi \\( t' \\) là thời gian bay thêm kể từ lúc đổi vận tốc, độ cao lúc này là \\( z = 10 - 5t' \\). Máy bay chạm đất khi \\( z=0 \\):\n\\[ 10-5t' = 0 \\Rightarrow t'=2 \\text{ giờ}. \\]<br><br>Tọa độ khi chạm đất:\n\\[ x = 650+400(2) = 1450,\\quad y = 920+300(2)=1520,\\quad z=0. \\]<br><br>Vậy tọa độ điểm chạm đất là \\( (1450;1520;0) \\), khớp với mệnh đề. Mệnh đề d) đúng."
+    },
+    {
+      "id": "de3_tf_03",
+      "part": 2,
+      "type": "truefalse",
+      "content": "Một công ty công nghệ phân tích hiệu quả của chiến dịch tiếp thị ứng dụng mới. Tổng thời gian người dùng tương tác tích lũy trên hệ thống theo thời gian \\( t \\) (\\( t \\ge 0 \\), tính bằng tuần) được mô hình hóa bởi hàm số \\( x(t) = 2t - 2\\ln(t+1) \\) (đơn vị: triệu giờ). Hàm số \\( v(t) = x'(t) \\) biểu thị tốc độ tương tác của người dùng tại thời điểm \\( t \\) (đơn vị: triệu giờ/tuần). Xét tính đúng sai của các mệnh đề sau:",
+      "statements": [
+        {"text": "\\( v(t) = 2 - \\dfrac{3}{t+1} \\).", "correct": false},
+        {"text": "Tốc độ tương tác tại thời điểm ban đầu (\\( t=0 \\)) là 2 triệu giờ/tuần.", "correct": false},
+        {"text": "Tốc độ tương tác tại thời điểm \\( t=1 \\) tuần bằng 1 triệu giờ/tuần.", "correct": true},
+        {"text": "Gia tốc tương tác của người dùng tại thời điểm \\( t=1 \\) tuần bằng 0,5 triệu giờ/tuần\\(^2\\).", "correct": true}
+      ],
+      "explanation": "<b>a) Sai.</b> \\( v(t) = 2-\\dfrac{3}{t+1} \\)?<br><br>Ta có \\( x(t) = 2t - 2\\ln(t+1) \\). Đạo hàm:\n\\[ v(t) = x'(t) = 2 - 2\\cdot\\dfrac{1}{t+1} = 2 - \\dfrac{2}{t+1}. \\]<br><br>Vậy hệ số đúng ở phân số là 2, không phải 3. Mệnh đề a) sai.<br><br><b>b) Sai.</b> Tốc độ tương tác tại \\( t=0 \\) là 2?<br><br>Thay \\( t=0 \\) vào \\( v(t) = 2-\\dfrac{2}{t+1} \\):\n\\[ v(0) = 2 - \\dfrac{2}{0+1} = 2-2 = 0. \\]<br><br>Vậy tốc độ tương tác ban đầu bằng 0, không phải 2 triệu giờ/tuần. Mệnh đề b) sai.<br><br><b>c) Đúng.</b> Tốc độ tương tác tại \\( t=1 \\) bằng 1?<br><br>\\[ v(1) = 2-\\dfrac{2}{1+1} = 2-1 = 1. \\]<br><br>Vậy tại \\( t=1 \\), tốc độ tương tác đúng bằng 1 triệu giờ/tuần. Mệnh đề c) đúng.<br><br><b>d) Đúng.</b> Gia tốc tại \\( t=1 \\) bằng 0,5?<br><br>Gia tốc tương tác là đạo hàm của \\( v(t) \\), tức là \\( a(t) = v'(t) \\). Viết lại \\( v(t) = 2-2(t+1)^{-1} \\), ta có:\n\\[ a(t) = v'(t) = 2(t+1)^{-2} = \\dfrac{2}{(t+1)^2}. \\]<br><br>Tại \\( t=1 \\):\n\\[ a(1) = \\dfrac{2}{(1+1)^2} = \\dfrac{2}{4} = 0{,}5. \\]<br><br>Vậy gia tốc tương tác tại \\( t=1 \\) đúng bằng 0,5 triệu giờ/tuần\\(^2\\). Mệnh đề d) đúng."
+    },
+    {
+      "id": "de3_tf_04",
+      "part": 2,
+      "type": "truefalse",
+      "content": "Xét phép thử chọn ngẫu nhiên một số tự nhiên có hai chữ số. Xét biến cố \\( A \\): \"Số được chọn là số chia hết cho 8\" và biến cố \\( B \\): \"Số được chọn là số có hai chữ số giống nhau\". Xét tính đúng sai của các mệnh đề sau:",
+      "statements": [
+        {"text": "Số phần tử của không gian mẫu là \\( n(\\Omega) = 89 \\).", "correct": false},
+        {"text": "Xác suất của biến cố \\( A \\) là \\( P(A) = \\dfrac{11}{90} \\).", "correct": true},
+        {"text": "Xác suất của biến cố \\( B \\) là \\( P(B) = \\dfrac{1}{10} \\).", "correct": true},
+        {"text": "Xác suất của biến cố hợp \\( A \\cup B \\) là \\( P(A \\cup B) = \\dfrac{2}{9} \\).", "correct": false}
+      ],
+      "explanation": "<b>a) Sai.</b> \\( n(\\Omega) = 89 \\)?<br><br>Số tự nhiên có hai chữ số chạy từ 10 đến 99, nên số phần tử của không gian mẫu là:\n\\[ n(\\Omega) = 99-10+1 = 90. \\]<br><br>Vậy \\( n(\\Omega)=90 \\), không phải 89. Mệnh đề a) sai.<br><br><b>b) Đúng.</b> \\( P(A) = \\dfrac{11}{90} \\)?<br><br>Các số có hai chữ số chia hết cho 8 là các số dạng \\( 8k \\) với \\( 10 \\le 8k \\le 99 \\), tức \\( 2 \\le k \\le 12 \\) (vì \\( 8\\times2=16 \\) và \\( 8\\times12=96 \\)). Số các giá trị \\( k \\) từ 2 đến 12 là \\( 12-2+1=11 \\) số (là 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96).<br><br>Vậy \\( n(A)=11 \\), suy ra \\( P(A) = \\dfrac{11}{90} \\). Mệnh đề b) đúng.<br><br><b>c) Đúng.</b> \\( P(B) = \\dfrac{1}{10} \\)?<br><br>Các số có hai chữ số giống nhau là: 11, 22, 33, 44, 55, 66, 77, 88, 99 — tổng cộng 9 số. Vậy \\( n(B)=9 \\), suy ra\n\\[ P(B) = \\dfrac{9}{90} = \\dfrac{1}{10}. \\]<br><br>Mệnh đề c) đúng.<br><br><b>d) Sai.</b> \\( P(A\\cup B) = \\dfrac{2}{9} \\)?<br><br>Áp dụng công thức: \\( P(A\\cup B) = P(A)+P(B)-P(A\\cap B) \\).<br><br>Biến cố \\( A\\cap B \\) gồm các số vừa chia hết cho 8, vừa có hai chữ số giống nhau: kiểm tra trong các số 11, 22, ..., 99, chỉ có 88 chia hết cho 8 (\\( 88 = 8\\times11 \\)). Vậy \\( n(A\\cap B)=1 \\), suy ra \\( P(A\\cap B) = \\dfrac{1}{90} \\).<br><br>Do đó:\n\\[ P(A\\cup B) = \\dfrac{11}{90}+\\dfrac{9}{90}-\\dfrac{1}{90} = \\dfrac{19}{90}. \\]<br><br>Trong khi đó \\( \\dfrac{2}{9} = \\dfrac{20}{90} \\), khác với \\( \\dfrac{19}{90} \\) vừa tính được. Mệnh đề d) sai."
+    }
+  ]
+}
        
   
 ]
