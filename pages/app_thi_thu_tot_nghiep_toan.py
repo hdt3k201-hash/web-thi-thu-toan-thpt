@@ -607,6 +607,9 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
   "correct": "A",
   "explanation": "Từ bảng xét dấu, ta xác định chiều biến thiên của \\( f \\) trên từng khoảng: \\( f \\) giảm trên \\( (-\\infty; -2) \\), tăng trên \\( (-2; 0) \\), giảm trên \\( (0; 1) \\), tăng trên \\( (1; 3) \\) và tiếp tục tăng trên \\( (3; +\\infty) \\). Chú ý tại \\( x = 3 \\), đạo hàm bằng 0 nhưng không đổi dấu (trước và sau đều dương) nên đây không phải là điểm cực trị của \\( f \\), chỉ là điểm dừng.<br><br>Hàm \\( g(x) = f(|x|) \\) là hàm chẵn, và với \\( x \\ge 0 \\) ta có \\( g(x) = f(x) \\). Do đó trên nửa trục dương, \\( g \\) giảm trên \\( (0;1) \\), tăng trên \\( (1; +\\infty) \\) (điểm \\( x=3 \\) chỉ là điểm dừng, không làm đổi chiều biến thiên). Vậy \\( x = 1 \\) là điểm cực tiểu của \\( g \\).<br><br>Vì \\( g \\) là hàm chẵn, đồ thị của \\( g \\) trên nửa trục âm là ảnh đối xứng qua trục tung của phần đồ thị trên nửa trục dương. Do đó tại \\( x = -1 \\), \\( g \\) cũng đạt cực tiểu (đối xứng với \\( x = 1 \\)).<br><br>Xét lân cận \\( x = 0 \\): khi \\( x \\) tiến tới 0 từ bên trái (ứng với nửa đối xứng của khoảng \\( (0;1) \\)), \\( g \\) đang tăng; khi \\( x \\) tiến từ 0 sang phải, \\( g \\) đang giảm (vì \\( f \\) giảm trên \\( (0;1) \\)). Vậy \\( g \\) đổi chiều từ tăng sang giảm tại \\( x = 0 \\), suy ra \\( x = 0 \\) là điểm cực đại.<br><br>Ngoài ba điểm \\( x = -1, 0, 1 \\), không còn điểm nào khác làm \\( g \\) đổi chiều biến thiên (điểm \\( x = \\pm 3 \\) chỉ là điểm dừng, không phải cực trị).<br><br>Vậy hàm số \\( g(x) = f(|x|) \\) có đúng 3 điểm cực trị. Đáp án A."
 }
+
+          ], #hết đề 3
+    }, #hết đề 3
        
   
 ]
