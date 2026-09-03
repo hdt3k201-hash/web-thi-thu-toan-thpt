@@ -693,7 +693,7 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
   },
   "correct": "C",
   "explanation": "Gọi \\( A \\) là biến cố \"cảm biến A phát tín hiệu cảnh báo\", \\( B \\) là biến cố \"cảm biến B phát tín hiệu cảnh báo\". Theo giả thiết, \\( A \\) và \\( B \\) độc lập, với \\( P(A) = 0{,}9 \\) và \\( P(B) = 0{,}85 \\).<br><br>Biến cố \"nhận được tín hiệu cảnh báo từ ít nhất một trong hai cảm biến\" chính là biến cố \\( A \\cup B \\). Ta sẽ tính thông qua biến cố đối: \"cả hai cảm biến đều không phát tín hiệu\", tức là \\( \\overline{A} \\cap \\overline{B} \\).<br><br>Xác suất cảm biến A không phát tín hiệu: \\( P(\\overline{A}) = 1 - 0{,}9 = 0{,}1 \\).<br>Xác suất cảm biến B không phát tín hiệu: \\( P(\\overline{B}) = 1 - 0{,}85 = 0{,}15 \\).<br><br>Vì \\( A \\), \\( B \\) độc lập nên \\( \\overline{A} \\), \\( \\overline{B} \\) cũng độc lập với nhau, do đó:\n\\[ P(\\overline{A} \\cap \\overline{B}) = P(\\overline{A}) \\cdot P(\\overline{B}) = 0{,}1 \\times 0{,}15 = 0{,}015. \\]<br><br>Vậy xác suất nhận được tín hiệu cảnh báo từ ít nhất một cảm biến là:\n\\[ P(A \\cup B) = 1 - P(\\overline{A} \\cap \\overline{B}) = 1 - 0{,}015 = 0{,}985. \\]<br><br>Đáp án C."
-}
+},
           
 {
   "id": "de3_tf_01",
