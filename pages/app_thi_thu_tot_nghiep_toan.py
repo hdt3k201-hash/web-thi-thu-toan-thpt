@@ -770,10 +770,40 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
   "content": "Gọi \\( n, d \\) lần lượt là số đường tiệm cận ngang và số tiệm cận đứng của đồ thị hàm số \\( y = \\dfrac{\\sqrt{1-x}}{(x-1)\\cdot\\sqrt{x}} \\). Tính giá trị của biểu thức \\( T = 26n - 27d \\).",
   "answers": ["-54"],
   "explanation": "Trước hết ta tìm tập xác định của hàm số. Biểu thức \\( \\sqrt{1-x} \\) đòi hỏi \\( 1-x \\ge 0 \\Leftrightarrow x \\le 1 \\); biểu thức \\( \\sqrt{x} \\) ở mẫu đòi hỏi \\( x > 0 \\) (vì \\( x \\) nằm ở mẫu nên phải khác 0, đồng thời phải không âm để căn có nghĩa); ngoài ra cần \\( x - 1 \\ne 0 \\Leftrightarrow x \\ne 1 \\).<br><br>Kết hợp các điều kiện trên, ta được tập xác định là khoảng \\( D = (0; 1) \\) — một khoảng bị chặn cả hai phía.<br><br><b>Xét tiệm cận ngang (n):</b> Tiệm cận ngang chỉ tồn tại khi ta xét giới hạn của hàm số lúc \\( x \\to +\\infty \\) hoặc \\( x \\to -\\infty \\). Nhưng vì tập xác định của hàm số chỉ là khoảng hữu hạn \\( (0;1) \\), hàm số không được xác định khi \\( x \\) tiến ra vô cực, nên đồ thị hàm số <b>không có tiệm cận ngang</b>. Vậy \\( n = 0 \\).<br><br><b>Xét tiệm cận đứng (d):</b> Ta xét hai đầu mút của tập xác định là \\( x=0 \\) và \\( x=1 \\), vì đây là những điểm mà hàm số có khả năng \"bùng nổ\" ra vô cực.<br><br>Viết lại biểu thức: vì \\( x-1 = -(1-x) \\), ta có\n\\[ y = \\dfrac{\\sqrt{1-x}}{-(1-x)\\sqrt{x}} = \\dfrac{-1}{\\sqrt{1-x}\\cdot\\sqrt{x}}. \\]<br><br><u>Tại \\( x \\to 1^{-} \\):</u> \\( \\sqrt{1-x} \\to 0^{+} \\) và \\( \\sqrt{x} \\to 1 \\), nên mẫu số \\( \\sqrt{1-x}\\cdot\\sqrt{x} \\to 0^{+} \\), do đó\n\\[ \\lim_{x\\to 1^{-}} y = \\lim_{x\\to1^{-}} \\dfrac{-1}{\\sqrt{1-x}\\sqrt{x}} = -\\infty. \\]<br><br>Vậy \\( x = 1 \\) là một tiệm cận đứng.<br><br><u>Tại \\( x \\to 0^{+} \\):</u> \\( \\sqrt{1-x} \\to 1 \\) và \\( \\sqrt{x} \\to 0^{+} \\), nên mẫu số \\( \\sqrt{1-x}\\cdot\\sqrt{x} \\to 0^{+} \\), do đó\n\\[ \\lim_{x\\to 0^{+}} y = \\lim_{x\\to0^{+}} \\dfrac{-1}{\\sqrt{1-x}\\sqrt{x}} = -\\infty. \\]<br><br>Vậy \\( x = 0 \\) cũng là một tiệm cận đứng.<br><br>Như vậy đồ thị hàm số có đúng 2 đường tiệm cận đứng là \\( x=0 \\) và \\( x=1 \\), tức là \\( d = 2 \\).<br><br>Thay vào biểu thức cần tính:\n\\[ T = 26n - 27d = 26(0) - 27(2) = 0 - 54 = -54. \\]<br><br>Vậy \\( T = -54 \\)."
-}
+},
 
-  ]
+    {
+  "id": "de3_sh_04",
+  "part": 3,
+  "type": "short",
+  "content": "Để chuẩn bị cho hội chợ “Ý tưởng xanh”, bạn Nam dự định làm một chiếc khay trồng rau mầm thủy canh dạng hình chóp cụt đều không có nắp. Từ một tấm vật liệu tái chế hình vuông có cạnh 8 dm, Nam cắt bỏ bốn phần giống nhau ở bốn góc, sau đó gấp tạo hình rồi hàn các mép lại để được chiếc khay như hình vẽ bên dưới. Biết đáy khay là hình vuông có cạnh bằng 3 dm. Hỏi chiều cao của chiếc khay trồng rau này bằng bao nhiêu đề-xi-mét?",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_sh4_hinh.PNG",
+  "answers": [
+    "2"
+  ],
+  "explanation": "Dựa vào các thông số từ giả thiết và hình vẽ (có các kích thước chỉ định ở các góc là 1 dm), ta có thể xác định các kích thước của chiếc khay dạng hình chóp cụt đều như sau:<br><br>**1. Xác định kích thước hai đáy của hình chóp cụt:**<br>Đáy nhỏ của khay (phần mặt phẳng ở chính giữa tấm vật liệu) là hình vuông có cạnh $b = 3$ dm.<br>Đáy lớn (miệng khay) được tạo thành từ các mép của tấm vật liệu. Mỗi cạnh của tấm vật liệu dài $8$ dm bị cắt đi ở hai đầu mỗi đoạn $1$ dm. Do đó, cạnh của mặt đáy lớn là:<br>$$a = 8 - 1 - 1 = 6 \\text{ (dm)}.$$<br><br>**2. Xác định chiều cao mặt bên (trung đoạn):**<br>Mặt bên của chiếc khay (khi đã gấp lên) là các hình thang cân. Chiều cao của hình thang này trên bản vẽ phẳng (chính là trung đoạn $l$ của hình chóp cụt) bằng khoảng cách từ tâm hình vuông lớn đến mép ngoài, trừ đi khoảng cách từ tâm đến mép hình vuông nhỏ.<br>Khoảng cách từ tâm đến mép tấm vật liệu là $\\dfrac{8}{2} = 4$ dm.<br>Khoảng cách từ tâm đến mép đáy nhỏ là $\\dfrac{3}{2} = 1,5$ dm.<br>Suy ra, trung đoạn của hình chóp cụt là:<br>$$l = 4 - 1,5 = 2,5 \\text{ (dm)}.$$<br><br>**3. Tính chiều cao của khay:**<br>Gọi $h$ là chiều cao của khay (hình chóp cụt). Khi dựng hình chiếu vuông góc từ đáy nhỏ xuống đáy lớn, trung đoạn $l$, chiều cao $h$ và đoạn thẳng nối hình chiếu với mép đáy lớn tạo thành một tam giác vuông.<br>Độ dài cạnh góc vuông nằm ngang (bằng nửa hiệu độ dài hai cạnh đáy) là:<br>$$x = \\dfrac{a - b}{2} = \\dfrac{6 - 3}{2} = 1,5 \\text{ (dm)}.$$<br>Áp dụng định lý Pythagore cho tam giác vuông này, ta có:<br>$$h^2 + x^2 = l^2$$<br>$$h^2 + (1,5)^2 = (2,5)^2$$<br>$$h^2 + 2,25 = 6,25$$<br>$$h^2 = 4 \\implies h = 2 \\text{ (dm)}.$$<br><br>Vậy chiều cao của chiếc khay trồng rau là $2$ dm."
+},
+    {
+  "id": "de3_sh_05",
+  "part": 3,
+  "type": "short",
+  "content": "Trong một dự án nghiên cứu công nghệ vật liệu mới, các kỹ sư thiết kế một tấm pin năng lượng mặt trời dạng hình vuông có cạnh 1 m. Để tối ưu hóa khả năng hấp thụ ánh sáng và tản nhiệt, mặt tấm pin được phủ các lớp vi mạch cảm biến dạng phân mảnh (fractal). Ban đầu, tấm pin hình vuông được chia thành 9 ô vuông nhỏ bằng nhau, ô vuông ở chính giữa được phủ một lớp vật liệu cảm biến sẫm màu (màu đen). Ở giai đoạn tiếp theo, mỗi ô vuông màu sáng còn lại tiếp tục được chia thành 9 ô vuông nhỏ hơn và ô chính giữa của nó lại được phủ vật liệu cảm biến sẫm màu. Quá trình chia nhỏ và phủ vi mạch sẫm màu này được thực hiện liên tiếp đúng 5 lần. Tính tổng diện tích mặt tấm pin đã được phủ vật liệu cảm biến sẫm màu sau 5 lần thực hiện theo đơn vị mét vuông (làm tròn kết quả đến hàng phần trăm).",
+  "answers": [
+    "0,45"
+  ],
+  "explanation": "Gọi $S$ là diện tích ban đầu của tấm pin hình vuông. Ta có $S = 1$ mét vuông.<br><br>**Bước 1:** Tấm pin được chia thành 9 ô, có 1 ô được phủ màu sẫm. Diện tích phần được phủ sẫm màu lần 1 là:<br>$$u_1 = \\dfrac{1}{9} \\cdot S = \\dfrac{1}{9}$$<br>Diện tích phần còn lại chưa được phủ là $1 - \\dfrac{1}{9} = \\dfrac{8}{9}$.<br><br>**Bước 2:** Phần diện tích còn lại tiếp tục được chia nhỏ, và $\\dfrac{1}{9}$ diện tích đó được phủ màu sẫm. Diện tích phần được phủ sẫm màu lần 2 là:<br>$$u_2 = \\dfrac{1}{9} \\cdot \\dfrac{8}{9} = \\dfrac{1}{9} \\cdot \\left(\\dfrac{8}{9}\\right)^1$$<br>Diện tích phần còn lại chưa được phủ là $\\dfrac{8}{9} - \\dfrac{8}{9} \\cdot \\dfrac{1}{9} = \\left(\\dfrac{8}{9}\\right)^2$.<br><br>**Bước n:** Tương tự, diện tích được phủ sẫm màu tăng thêm ở lần thứ $n$ là:<br>$$u_n = \\dfrac{1}{9} \\cdot \\left(\\dfrac{8}{9}\\right)^{n-1}$$<br><br>Nhận thấy các phần diện tích được phủ thêm sau mỗi lần tạo thành một cấp số nhân với số hạng đầu $u_1 = \\dfrac{1}{9}$ và công bội $q = \\dfrac{8}{9}$.<br><br>Tổng diện tích mặt tấm pin đã được phủ sẫm màu sau 5 lần thực hiện chính là tổng của 5 số hạng đầu tiên trong cấp số nhân này:<br>$$S_5 = u_1 \\cdot \\dfrac{1 - q^5}{1 - q} = \\dfrac{1}{9} \\cdot \\dfrac{1 - \\left(\\dfrac{8}{9}\\right)^5}{1 - \\dfrac{8}{9}}$$<br>$$S_5 = \\dfrac{1}{9} \\cdot \\dfrac{1 - \\left(\\dfrac{8}{9}\\right)^5}{\\dfrac{1}{9}} = 1 - \\left(\\dfrac{8}{9}\\right)^5$$<br><br>Thực hiện phép tính:<br>$$1 - \\left(\\dfrac{8}{9}\\right)^5 = 1 - \\dfrac{32768}{59049} \\approx 0,44507...$$<br><br>Làm tròn kết quả đến hàng phần trăm, ta được $0,45$."
 }
+    
+
+
+
+
+  
+    
+    
+
+  ]  #hết đề 3
+}    #hết đề 3
        
   
 ]
