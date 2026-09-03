@@ -792,15 +792,19 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     "0,45"
   ],
   "explanation": "Gọi $S$ là diện tích ban đầu của tấm pin hình vuông. Ta có $S = 1$ mét vuông.<br><br>**Bước 1:** Tấm pin được chia thành 9 ô, có 1 ô được phủ màu sẫm. Diện tích phần được phủ sẫm màu lần 1 là:<br>$$u_1 = \\dfrac{1}{9} \\cdot S = \\dfrac{1}{9}$$<br>Diện tích phần còn lại chưa được phủ là $1 - \\dfrac{1}{9} = \\dfrac{8}{9}$.<br><br>**Bước 2:** Phần diện tích còn lại tiếp tục được chia nhỏ, và $\\dfrac{1}{9}$ diện tích đó được phủ màu sẫm. Diện tích phần được phủ sẫm màu lần 2 là:<br>$$u_2 = \\dfrac{1}{9} \\cdot \\dfrac{8}{9} = \\dfrac{1}{9} \\cdot \\left(\\dfrac{8}{9}\\right)^1$$<br>Diện tích phần còn lại chưa được phủ là $\\dfrac{8}{9} - \\dfrac{8}{9} \\cdot \\dfrac{1}{9} = \\left(\\dfrac{8}{9}\\right)^2$.<br><br>**Bước n:** Tương tự, diện tích được phủ sẫm màu tăng thêm ở lần thứ $n$ là:<br>$$u_n = \\dfrac{1}{9} \\cdot \\left(\\dfrac{8}{9}\\right)^{n-1}$$<br><br>Nhận thấy các phần diện tích được phủ thêm sau mỗi lần tạo thành một cấp số nhân với số hạng đầu $u_1 = \\dfrac{1}{9}$ và công bội $q = \\dfrac{8}{9}$.<br><br>Tổng diện tích mặt tấm pin đã được phủ sẫm màu sau 5 lần thực hiện chính là tổng của 5 số hạng đầu tiên trong cấp số nhân này:<br>$$S_5 = u_1 \\cdot \\dfrac{1 - q^5}{1 - q} = \\dfrac{1}{9} \\cdot \\dfrac{1 - \\left(\\dfrac{8}{9}\\right)^5}{1 - \\dfrac{8}{9}}$$<br>$$S_5 = \\dfrac{1}{9} \\cdot \\dfrac{1 - \\left(\\dfrac{8}{9}\\right)^5}{\\dfrac{1}{9}} = 1 - \\left(\\dfrac{8}{9}\\right)^5$$<br><br>Thực hiện phép tính:<br>$$1 - \\left(\\dfrac{8}{9}\\right)^5 = 1 - \\dfrac{32768}{59049} \\approx 0,44507...$$<br><br>Làm tròn kết quả đến hàng phần trăm, ta được $0,45$."
+},
+    {
+  "id": "de3_sh_06",
+  "part": 3,
+  "type": "short",
+  "content": "Cho tập hợp X = {1; 2; 3; . . . ; 12}. Chọn ngẫu nhiên 4 số phân biệt từ tập X. Trong 4 số được chọn, ta đặt 1 số vào vòng tròn lớn ở chính giữa, 3 số còn lại được đặt vào ba vòng tròn nhỏ xung quanh (biết rằng ba vòng tròn nhỏ này không phân biệt vị trí).\nGọi P là xác suất để các số được đặt thỏa mãn đồng thời hai điều kiện sau:\n• Ba số ở ba vòng tròn nhỏ có thể sắp xếp thành một cấp số cộng tăng.\n• Số ở vòng tròn lớn chính giữa bằng tổng của cả ba số ở ba vòng tròn nhỏ.\nTính giá trị của biểu thức 33 990P.",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_sh6_hinh.PNG",
+  "answers": [
+    "103"
+  ],
+  "explanation": "**Bước 1: Tính số phần tử của không gian mẫu $n(\\Omega)$**<br>Chọn ngẫu nhiên 4 số phân biệt từ tập $X = \\{1; 2; \\dots; 12\\}$, số cách chọn là $C_{12}^4 = 495$ cách.<br>Trong 4 số vừa chọn, ta chọn 1 số đặt vào vòng tròn lớn chính giữa ($C_4^1 = 4$ cách). 3 số còn lại được đặt vào 3 vòng tròn nhỏ không phân biệt vị trí (chỉ có $1$ cách sắp xếp cho bộ 3 số).<br>Do đó, số phần tử của không gian mẫu là:<br>$$n(\\Omega) = C_{12}^4 \\cdot 4 = 495 \\cdot 4 = 1980$$<br>**Bước 2: Tính số trường hợp thuận lợi $n(A)$**<br>Gọi $x_1, x_2, x_3$ lần lượt là 3 số xếp ở ba vòng tròn nhỏ theo thứ tự tăng dần ($x_1 < x_2 < x_3$) và $y$ là số ở vòng tròn lớn chính giữa ($x_1, x_2, x_3, y \\in X$).<br><br>Do $x_1, x_2, x_3$ tạo thành một cấp số cộng tăng nên ta có:<br>$$x_1 + x_3 = 2x_2$$<br>Số ở vòng tròn lớn bằng tổng ba số ở các vòng tròn nhỏ:<br>$$y = x_1 + x_2 + x_3 = (x_1 + x_3) + x_2 = 2x_2 + x_2 = 3x_2$$<br>Vì $y \\in X = \\{1; 2; \\dots; 12\\}$ nên $3x_2 \\le 12 \\implies x_2 \\le 4$.<br>Mặt khác, do $x_1 \\in X$ và $x_1 < x_2$ nên $x_1 \\ge 1 \\implies x_2 \\ge 2$.<br>Như vậy, $x_2$ chỉ có thể nhận các giá trị $2, 3, 4$. Ta xét từng trường hợp:<br><br>• **Trường hợp 1:** $x_2 = 2 \\implies y = 3 \\cdot 2 = 6$.<br>Vì $x_1 < x_2 = 2 \\implies x_1 = 1$.<br>Công sai $d = x_2 - x_1 = 2 - 1 = 1 \\implies x_3 = x_2 + d = 3$.<br>Ta được bộ số $\\{1; 2; 3\\}$ ở vòng nhỏ và $6$ ở vòng lớn (các số $1, 2, 3, 6$ đôi một khác nhau và đều thuộc $X$).<br>$\\implies$ Có $1$ cách chọn.<br><br>• **Trường hợp 2:** $x_2 = 3 \\implies y = 3 \\cdot 3 = 9$.<br>Vì $x_1 < x_2 = 3 \\implies x_1 \\in \\{1; 2\\}$.<br>+ Với $x_1 = 2 \\implies d = 1 \\implies x_3 = 4$. Ta có bộ số $\\{2; 3; 4\\}$ và $y = 9$.<br>+ Với $x_1 = 1 \\implies d = 2 \\implies x_3 = 5$. Ta có bộ số $\\{1; 3; 5\\}$ và $y = 9$.<br>$\\implies$ Có $2$ cách chọn.<br><br>• **Trường hợp 3:** $x_2 = 4 \\implies y = 3 \\cdot 4 = 12$.<br>Vì $x_1 < x_2 = 4 \\implies x_1 \\in \\{1; 2; 3\\}$.<br>+ Với $x_1 = 3 \\implies d = 1 \\implies x_3 = 5$. Ta có bộ số $\\{3; 4; 5\\}$ và $y = 12$.<br>+ Với $x_1 = 2 \\implies d = 2 \\implies x_3 = 6$. Ta có bộ số $\\{2; 4; 6\\}$ và $y = 12$.<br>+ Với $x_1 = 1 \\implies d = 3 \\implies x_3 = 7$. Ta có bộ số $\\{1; 4; 7\\}$ và $y = 12$.<br>$\\implies$ Có $3$ cách chọn.<br><br>Tổng số trường hợp thuận lợi là:<br>$$n(A) = 1 + 2 + 3 = 6$$<br>**Bước 3: Tính xác suất $P$ và giá trị của biểu thức**<br>Xác suất $P$ để thỏa mãn yêu cầu đề bài là:<br>$$P = \\dfrac{n(A)}{n(\\Omega)} = \\dfrac{6}{1980} = \\dfrac{1}{330}$$<br>Vậy giá trị của biểu thức $33990P$ là:<br>$$33990P = 33990 \\cdot \\dfrac{1}{330} = 103$$"
 }
-    
-
-
-
-
-  
-    
-    
+       
 
   ]  #hết đề 3
 }    #hết đề 3
