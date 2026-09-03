@@ -988,7 +988,59 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     },
     "correct": "C",
     "explanation": "Hàm số $y = 2\\sin x$ đạt giá trị lớn nhất bằng $2$ tại các điểm $x = \\dfrac{\\pi}{2} + k2\\pi$ ($k \\in \\mathbb{Z}$).<br><br>Quan sát hình vẽ, $B$ và $C$ là hai điểm cực đại liên tiếp của đồ thị, còn $A$ nằm trên trục tung ở mức $y = -2$. Ta xác định được tọa độ các đỉnh:<br>$$A(0; -2), \\quad B\\left(\\dfrac{\\pi}{2}; 2\\right), \\quad C\\left(\\dfrac{5\\pi}{2}; 2\\right).$$<br><br>Cạnh $BC$ nằm trên đường thẳng ngang $y = 2$, có độ dài là:<br>$$BC = \\dfrac{5\\pi}{2} - \\dfrac{\\pi}{2} = 2\\pi.$$<br><br>Khoảng cách từ điểm $A$ đến đường thẳng $BC$ chính là chiều cao của tam giác, bằng khoảng cách từ tung độ $y = 2$ xuống $y = -2$, tức là $h = 2 - (-2) = 4$.<br><br>Diện tích tam giác $ABC$ là:<br>$$S_{ABC} = \\dfrac{1}{2} \\cdot BC \\cdot h = \\dfrac{1}{2} \\cdot 2\\pi \\cdot 4 = 4\\pi.$$<br><br>Chọn đáp án C."
+  },
+    
+  {
+    "id": "de4_tf_01",
+    "part": 2,
+    "type": "truefalse",
+    "content": "Một hộp đựng 30 thẻ được đánh số từ 1 đến 30. Hai tấm thẻ khác nhau đánh hai số khác nhau. Rút ngẫu nhiên một tấm thẻ từ hộp, gọi \\( A \\) là biến cố: “Rút được thẻ đánh số chia hết cho 2” và \\( B \\) là biến cố: “Rút được thẻ đánh số chia hết cho 3”. Xét tính đúng sai của các mệnh đề sau:",
+    "statements": [
+      {
+        "text": "\\( P(A) = 0{,}5 \\).",
+        "correct": True
+      },
+      {
+        "text": "Xác suất để tấm thẻ được rút ra chia hết cho 6 bằng \\( \\dfrac{1}{6} \\).",
+        "correct": True
+      },
+      {
+        "text": "\\( P(A \\cup B) = \\dfrac{2}{3} \\).",
+        "correct": True
+      },
+      {
+        "text": "Xác suất để tấm thẻ được rút ra không chia hết cho 2 và cho 3 bằng \\( \\dfrac{1}{3} \\).",
+        "correct": True
+      }
+    ],
+    "explanation": "<b>a) Đúng.</b> Xác suất của biến cố \\( A \\):<br><br>Không gian mẫu khi rút 1 tấm thẻ từ 30 tấm thẻ có \\( n(\\Omega) = 30 \\) kết quả đồng khả năng.<br>Từ 1 đến 30 có tất cả 15 số chia hết cho 2 (gồm \\( 2, 4, 6, \\dots, 30 \\)).<br>Do đó, xác suất của biến cố \\( A \\) là:<br>\\[ P(A) = \\dfrac{15}{30} = 0{,}5. \\]<br>Vậy mệnh đề a) đúng.<br><br><b>b) Đúng.</b> Xác suất rút được thẻ chia hết cho 6:<br><br>Một thẻ chia hết cho 6 khi và chỉ khi nó vừa chia hết cho 2 vừa chia hết cho 3, tức là biến cố \\( AB \\).<br>Các số chia hết cho 6 trong đoạn từ 1 đến 30 gồm: \\( \\{6; 12; 18; 24; 30\\} \\), có tổng cộng 5 số.<br>Xác suất cần tìm là:<br>\\[ P(AB) = \\dfrac{5}{30} = \\dfrac{1}{6}. \\]<br>Vậy mệnh đề b) đúng.<br><br><b>c) Đúng.</b> Tính \\( P(A \\cup B) \\):<br><br>Các số chia hết cho 3 từ 1 đến 30 gồm: \\( \\{3; 6; 9; 12; 15; 18; 21; 24; 27; 30\\} \\), tổng cộng có 10 số.<br>Suy ra xác suất biến cố \\( B \\) là \\( P(B) = \\dfrac{10}{30} = \\dfrac{1}{3} \\).<br>Áp dụng công thức cộng xác suất cho hai biến cố bất kỳ, ta có:<br>\\[ P(A \\cup B) = P(A) + P(B) - P(AB) = \\dfrac{1}{2} + \\dfrac{1}{3} - \\dfrac{1}{6} = \\dfrac{2}{3}. \\]<br>Vậy mệnh đề c) đúng.<br><br><b>d) Đúng.</b> Xác suất không chia hết cho 2 và không chia hết cho 3:<br><br>Biến cố “tấm thẻ được rút ra không chia hết cho 2 và không chia hết cho 3” chính là biến cố đối của biến cố \\( A \\cup B \\) (rút được thẻ chia hết cho 2 hoặc chia hết cho 3).<br>Do đó, xác suất của biến cố này là:<br>\\[ P = 1 - P(A \\cup B) = 1 - \\dfrac{2}{3} = \\dfrac{1}{3}. \\]<br>Vậy mệnh đề d) đúng."
+  },
+  {
+    "id": "de4_tf_02",
+    "part": 2,
+    "type": "truefalse",
+    "content": "Trong không gian với hệ trục tọa độ \\( Oxyz \\), cho hai điểm \\( A(3; -1; 4) \\), \\( B(-2; 2; 3) \\) và hai điểm \\( M, N \\) thay đổi sao cho \\( M \\) luôn thuộc mặt phẳng \\( (Oxy) \\) và \\( \\vec{MN} = (-2; -2; 1) \\). Xét tính đúng sai của các mệnh đề sau:",
+    "statements": [
+      {
+        "text": "Hình chiếu vuông góc của \\( A \\) xuống mặt phẳng \\( (Oxy) \\) có tọa độ \\( (0; 1; 4) \\).",
+        "correct": False
+      },
+      {
+        "text": "Điểm \\( D(a; b; c) \\) là điểm thỏa mãn \\( \\vec{BD} = \\vec{NM} \\), khi đó \\( a + b + c = 1 \\).",
+        "correct": False
+      },
+      {
+        "text": "Điểm \\( C \\) thuộc mặt phẳng \\( (Oxy) \\) thỏa mãn \\( A, B, C \\) thẳng hàng, khi đó \\( 3\\vec{CA} = 4\\vec{CB} \\).",
+        "correct": True
+      },
+      {
+        "text": "Giá trị nhỏ nhất của \\( AM + MN + NB \\) bằng 12.",
+        "correct": False
+      }
+    ],
+    "explanation": "<b>a) Sai.</b> Hình chiếu vuông góc của điểm \\( A \\) lên mặt phẳng \\( (Oxy) \\):<br><br>Hình chiếu vuông góc của điểm \\( A(3; -1; 4) \\) lên mặt phẳng \\( (Oxy) \\) thu được bằng cách giữ nguyên hoành độ, tung độ và cho cao độ bằng 0.<br>Do đó, tọa độ hình chiếu là \\( H(3; -1; 0) \\), khác với tọa độ \\( (0; 1; 4) \\). Mệnh đề a) sai.<br><br><b>b) Sai.</b> Tọa độ điểm \\( D \\) và tổng \\( a + b + c \\):<br><br>Ta có \\( \\vec{NM} = -\\vec{MN} = (2; 2; -1) \\).<br>Vì \\( \\vec{BD} = \\vec{NM} \\) nên:<br>\\[ D = B + \\vec{NM} = (-2 + 2; 2 + 2; 3 - 1) = (0; 4; 2). \\]<br>Do đó \\( a = 0, b = 4, c = 2 \\). Suy ra \\( a + b + c = 0 + 4 + 2 = 6 \\ne 1 \\). Mệnh đề b) sai.<br><br><b>c) Đúng.</b> Kiểm tra đẳng thức \\( 3\\vec{CA} = 4\\vec{CB} \\):<br><br>Điểm \\( C \\) thuộc mặt phẳng \\( (Oxy) \\) nên \\( C(x; y; 0) \\).<br>Ta có \\( \\vec{AB} = (-5; 3; -1) \\) và \\( \\vec{AC} = (x - 3; y + 1; -4) \\).<br>Ba điểm \\( A, B, C \\) thẳng hàng khi và chỉ khi \\( \\vec{AC} = k\\vec{AB} \\):<br>\\[ \\begin{cases} x - 3 = -5k \\\\ y + 1 = 3k \\\\ -4 = -k \\end{cases} \\Rightarrow k = 4 \\Rightarrow \\begin{cases} x = -17 \\\\ y = 11 \\end{cases} \\]<br>Do đó, tọa độ điểm \\( C \\) là \\( C(-17; 11; 0) \\).<br>Tính các vectơ:<br>\\( \\vec{CA} = (3 - (-17); -1 - 11; 4 - 0) = (20; -12; 4) \\),<br>\\( \\vec{CB} = (-2 - (-17); 2 - 11; 3 - 0) = (15; -9; 3) \\).<br>Khi đó: \\( 3\\vec{CA} = (60; -36; 12) \\) và \\( 4\\vec{CB} = (60; -36; 12) \\).<br>Suy ra \\( 3\\vec{CA} = 4\\vec{CB} \\). Mệnh đề c) đúng.<br><br><b>d) Sai.</b> Giá trị nhỏ nhất của \\( AM + MN + NB \\):<br><br>Độ dài đoạn \\( MN = |\\vec{MN}| = \\sqrt{(-2)^2 + (-2)^2 + 1^2} = 3 \\) không đổi.<br>Lấy điểm \\( D(0; 4; 2) \\) thỏa mãn \\( \\vec{BD} = \\vec{NM} \\), ta được tứ giác \\( MNDB \\) là hình bình hành, suy ra \\( \\vec{NB} = \\vec{MD} \\) và \\( NB = MD \\).<br>Khi đó: \\( AM + MN + NB = AM + MD + 3 \\).<br>Nhận thấy hai điểm \\( A(3; -1; 4) \\) và \\( D(0; 4; 2) \\) có cao độ đều dương (\\( z_A = 4 > 0 \\) và \\( z_D = 2 > 0 \\)) nên nằm cùng phía đối với mặt phẳng \\( (Oxy) \\).<br>Gọi \\( A'(3; -1; -4) \\) là điểm đối xứng của \\( A \\) qua mặt phẳng \\( (Oxy) \\), khi đó \\( AM = A'M \\) với mọi điểm \\( M \\in (Oxy) \\).<br>Theo bất đẳng thức tam giác, ta có:<br>\\[ AM + MD = A'M + MD \\ge A'D = \\sqrt{(0 - 3)^2 + (4 - (-1))^2 + (2 - (-4))^2} = \\sqrt{9 + 25 + 36} = \\sqrt{70}. \\]<br>Dấu bằng xảy ra khi \\( M \\) là giao điểm của đoạn thẳng \\( A'D \\) với mặt phẳng \\( (Oxy) \\).<br>Do đó, giá trị nhỏ nhất của tổng \\( AM + MN + NB \\) bằng \\( \\sqrt{70} + 3 \\approx 11{,}37 \\ne 12 \\). Mệnh đề d) sai."
   }
+
 
 
 
