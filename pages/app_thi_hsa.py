@@ -38,7 +38,75 @@ from flask import (
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "doi-key-nay-khi-deploy-that")
+# =======================================================================
+# SSO VỚI WORDPRESS (giống hệt cơ chế bên app TSA)
+# =======================================================================
+import hmac
+import hashlib
+import base64
+from functools import wraps
 
+WP_SSO_SECRET = os.environ.get("WP_SSO_SECRET", "doi-secret-nay-khi-deploy-that")
+WP_TOKEN_MAX_AGE = 900  # token chỉ có hiệu lực 15 phút kể từ lúc WordPress tạo ra
+
+
+def verify_wp_token(token):
+    """Giải mã & kiểm tra chữ ký token do WordPress tạo. Trả về tên học sinh
+    nếu hợp lệ và chưa hết hạn, trả về None nếu token sai/giả/hết hạn."""
+    if not token:
+        return None
+    try:
+        padded_token = token + "=" * (-len(token) % 4)
+        raw = base64.urlsafe_b64decode(padded_token.encode("utf-8")).decode("utf-8")
+        name, ts_str, sig = raw.rsplit("|", 2)
+    except Exception:
+        return None
+
+    expected_sig = hmac.new(
+        WP_SSO_SECRET.encode("utf-8"), f"{name}|{ts_str}".encode("utf-8"), hashlib.sha256
+    ).hexdigest()
+    if not hmac.compare_digest(sig, expected_sig):
+        return None
+
+    try:
+        if time.time() - int(ts_str) > WP_TOKEN_MAX_AGE:
+            return None
+    except Exception:
+        return None
+
+    return name
+
+
+def student_required(view_func):
+    """Decorator: chặn truy cập nếu học sinh chưa đăng nhập qua SSO."""
+    @wraps(view_func)
+    def wrapper(*args, **kwargs):
+        if not session.get("student"):
+            return redirect(url_for("student_login"))
+        return view_func(*args, **kwargs)
+    return wrapper
+
+
+@app.route("/login", methods=["GET"])
+def student_login():
+    if session.get("student"):
+        return redirect(url_for("exam_list"))
+    wp_token = request.args.get("wp_token")
+    name = verify_wp_token(wp_token)
+    if name:
+        session["student"] = {"full_name": name, "sbd": ""}
+        return redirect(url_for("exam_list"))
+    return """
+    <div style="text-align:center; padding:60px 20px; font-family:sans-serif;">
+        <p>Bạn cần đăng nhập trên trang chính để làm bài thi thử HSA.</p>
+    </div>
+    """
+
+
+@app.route("/logout")
+def student_logout():
+    session.pop("student", None)
+    return redirect(url_for("student_login"))
 EXAM_DURATION_MINUTES = 75   # thời gian làm bài (giống đề tham khảo HSA thật)
 WAIT_SECONDS = 120           # thời gian màn hình chờ trước khi vào thi
 MC4_COUNT_TARGET = 35         # số câu trắc nghiệm 4 lựa chọn MONG MUỐN cho 1 đề đầy đủ
