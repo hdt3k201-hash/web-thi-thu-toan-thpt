@@ -177,10 +177,11 @@ EXAMS = [
             },
 
             # ---------------- ĐÚNG / SAI (truefalse) ----------------
+           # ---------------- ĐÚNG / SAI (truefalse) ----------------
             {
                 "id": 'de_tsa11_tf_01',
                 "type": 'truefalse',
-                "content": " Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh \\( a \\). Tam giác SAB đều và nằm trong mặt phẳng vuông góc với đáy. Gọi M, N lần lượt là trung điểm của SC và SD. Xét tính Đúng/Sai của các mệnh đề sau:",
+                "content": "Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh \\( a \\). Tam giác SAB đều và nằm trong mặt phẳng vuông góc với đáy. Gọi M, N lần lượt là trung điểm của SC và SD. Xét tính Đúng/Sai của các mệnh đề sau:",
                 "statements": [
                     {"text": 'Góc tạo bởi mặt phẳng (SCD) và mặt đáy bằng \\( 60^\\circ \\)', "correct": False},
                     {"text": 'Khoảng cách giữa hai đường thẳng AM và SB bằng \\( \\dfrac{a\\sqrt3}{4} \\)', "correct": True},
@@ -188,26 +189,70 @@ EXAMS = [
                     {"text": 'Bán kính mặt cầu ngoại tiếp hình chóp S.ABCD bằng \\( \\dfrac{a\\sqrt{21}}{6} \\)', "correct": True},
                 ],
                 "points": 1,
-                "explanation": "Chọn hệ trục: A(0,0,0), B(a,0,0), C(a,a,0), D(0,a,0), trung điểm AB là (a/2,0,0), do (SAB) vuông góc đáy nên S(a/2, 0, a√3/2). (a) Gọi H là trung điểm CD(a/2,a,0): S'H (S' là hình chiếu S) = a, SS' = a√3/2 ⇒ tan(góc) = √3/2 ⇒ góc ≈ 40.9° ≠ 60° ⇒ Sai. (b) M = trung điểm SC = (3a/4, a/2, a√3/4). Dùng công thức khoảng cách 2 đường chéo nhau AM, SB (tích có hướng 2 vtcp và vectơ AS) ⇒ d = a√3/4 ⇒ Đúng. (c) Với M,N là trung điểm SC,SD: V(S.AMN) = (SM/SC)(SN/SD)·V(S.ACD) = (1/2)(1/2)·(1/2)V(S.ABCD) = (1/8)V(S.ABCD). Mà V(S.ABCD) = (1/3)·a²·(a√3/2) = a³√3/6 ⇒ V(S.AMN) = a³√3/48 ⇒ Đúng. (d) Tâm mặt cầu ngoại tiếp có dạng O(a/2, a/2, z₀) do cách đều 4 đỉnh đáy; cho OA = OS giải được z₀ = a√3/6, suy ra R² = a²/2 + z₀² = 7a²/12 ⇒ R = a√21/6 ⇒ Đúng.",
+                "explanation": """Chọn hệ trục tọa độ: \\( A(0,0,0) \\), \\( B(a,0,0) \\), \\( C(a,a,0) \\), \\( D(0,a,0) \\). Gọi H là trung điểm AB thì \\( H\\left(\\dfrac{a}{2},0,0\\right) \\). Vì \\( (SAB) \\) vuông góc với đáy và tam giác SAB đều nên \\( S\\left(\\dfrac{a}{2}, 0, \\dfrac{a\\sqrt3}{2}\\right) \\).
+
+a) SAI: Gọi H' là trung điểm CD, \\( H'\\left(\\dfrac{a}{2},a,0\\right) \\) là hình chiếu của S lên mặt đáy theo phương vuông góc với CD. Ta có \\( H'H = a \\) (khoảng cách từ H' tới CD theo phương đáy) và \\( SH' = \\dfrac{a\\sqrt3}{2} \\).
+Góc giữa (SCD) và đáy chính là góc \\( \\widehat{SH'H} \\), có \\( \\tan(\\widehat{SH'H}) = \\dfrac{SH}{H'H} \\).
+Tính toán cụ thể cho ra góc xấp xỉ \\( 40{,}9^\\circ \\), khác \\( 60^\\circ \\). Vậy mệnh đề này SAI.
+
+b) ĐÚNG: M là trung điểm SC nên \\( M\\left(\\dfrac{3a}{4}, \\dfrac{a}{2}, \\dfrac{a\\sqrt3}{4}\\right) \\).
+Dùng công thức tính khoảng cách giữa hai đường thẳng chéo nhau AM và SB (dựa trên tích có hướng của hai vectơ chỉ phương và vectơ nối hai đường thẳng), ta tính được:
+\\( d(AM, SB) = \\dfrac{a\\sqrt3}{4} \\)
+Vậy mệnh đề này ĐÚNG.
+
+c) ĐÚNG: Vì M, N lần lượt là trung điểm SC, SD nên:
+\\( V_{S.AMN} = \\dfrac{SM}{SC}\\cdot\\dfrac{SN}{SD}\\cdot V_{S.ACD} = \\dfrac{1}{2}\\cdot\\dfrac{1}{2}\\cdot\\dfrac{1}{2}V_{S.ABCD} = \\dfrac{1}{8}V_{S.ABCD} \\)
+Mà \\( V_{S.ABCD} = \\dfrac{1}{3}\\cdot a^2\\cdot\\dfrac{a\\sqrt3}{2} = \\dfrac{a^3\\sqrt3}{6} \\)
+Suy ra \\( V_{S.AMN} = \\dfrac{a^3\\sqrt3}{48} \\). Vậy mệnh đề này ĐÚNG.
+
+d) ĐÚNG: Tâm mặt cầu ngoại tiếp có dạng \\( O\\left(\\dfrac{a}{2}, \\dfrac{a}{2}, z_0\\right) \\) vì điểm này cách đều 4 đỉnh của đáy hình vuông ABCD.
+Từ điều kiện \\( OA = OS \\), ta giải được \\( z_0 = \\dfrac{a\\sqrt3}{6} \\).
+Suy ra bán kính: \\( R^2 = \\dfrac{a^2}{2} + z_0^2 = \\dfrac{7a^2}{12} \\Rightarrow R = \\dfrac{a\\sqrt{21}}{6} \\)
+Vậy mệnh đề này ĐÚNG.""",
             },
 
             # ---------------- TRẢ LỜI NGẮN (short) ----------------
             {
                 "id": 'de_tsa11_sh_01',
                 "type": 'short',
-                "content": ' Xếp 10 học sinh gồm 5 nam và 5 nữ vào 10 chiếc ghế được xếp thành một vòng tròn. Tính xác suất để không có bất kỳ 2 học sinh cùng giới tính nào ngồi cạnh nhau, đồng thời học sinh nam tên A và học sinh nữ tên B (là 2 lớp trưởng) bắt buộc phải ngồi đối diện nhau. Biết xác suất là phân số tối giản \\( \\dfrac{p}{q} \\). Tính giá trị của biểu thức \\( S = p + q \\).',
+                "content": 'Xếp 10 học sinh gồm 5 nam và 5 nữ vào 10 chiếc ghế được xếp thành một vòng tròn. Tính xác suất để không có bất kỳ 2 học sinh cùng giới tính nào ngồi cạnh nhau, đồng thời học sinh nam tên A và học sinh nữ tên B (là 2 lớp trưởng) bắt buộc phải ngồi đối diện nhau. Biết xác suất là phân số tối giản \\( \\dfrac{p}{q} \\). Tính giá trị của biểu thức \\( S = p + q \\).',
                 "blanks": [
                     {"label": 'S = p + q =', "answers": ['631']},
                 ],
                 "points": 1,
-                "explanation": 'Không gian mẫu: \\( n(\\Omega)=10! \\) (10 ghế phân biệt). Điều kiện không có 2 người cùng giới ngồi cạnh nhau ⇒ ghế phải xếp xen kẽ nam-nữ: 5 ghế lẻ 1 nhóm, 5 ghế chẵn 1 nhóm (2 cách chọn nhóm nào là nam). Với mỗi cách chia, ghế đối diện của 1 ghế lẻ luôn là ghế chẵn, nên điều kiện A-B đối diện tự động phù hợp giới tính. Số cách chọn ghế cho A trong 5 ghế nam: 5 cách, ghế của B (đối diện A) bị xác định duy nhất. Xếp 4 nam còn lại vào 4 ghế nam còn trống: \\(4!\\); xếp 4 nữ còn lại vào 4 ghế nữ còn trống: \\(4!\\). Số cách thuận lợi: \\( 2\\cdot5\\cdot4!\\cdot4! = 5760 \\). Xác suất \\( = \\dfrac{5760}{10!} = \\dfrac{1}{630} \\Rightarrow p=1,\\ q=630 \\Rightarrow S = 631 \\).',
+                "explanation": """Không gian mẫu: \\( n(\\Omega)=10! \\) (coi 10 ghế trên vòng tròn là 10 vị trí phân biệt).
+
+Điều kiện không có 2 người cùng giới ngồi cạnh nhau bắt buộc các ghế phải được xếp xen kẽ nam - nữ: 5 ghế ở các vị trí lẻ thuộc về một nhóm giới tính, 5 ghế ở vị trí chẵn thuộc về nhóm còn lại (có 2 cách chọn nhóm nào là nam).
+
+Vì đây là vòng tròn 10 ghế nên mỗi ghế lẻ đều có ghế đối diện là một ghế chẵn, do đó điều kiện "A và B ngồi đối diện" luôn tự động phù hợp với yêu cầu khác giới tính.
+
+Số cách chọn ghế cho A trong 5 ghế dành cho nam: có 5 cách. Ghế của B (ở vị trí đối diện A) khi đó đã được xác định duy nhất.
+
+Xếp 4 bạn nam còn lại vào 4 ghế nam còn trống: \\( 4! \\) cách.
+Xếp 4 bạn nữ còn lại vào 4 ghế nữ còn trống: \\( 4! \\) cách.
+
+Số cách xếp thuận lợi:
+\\( 2\\cdot5\\cdot4!\\cdot4! = 5760 \\)
+
+Xác suất cần tìm:
+\\( P = \\dfrac{5760}{10!} = \\dfrac{1}{630} \\)
+
+Suy ra \\( p=1,\\ q=630 \\Rightarrow S = p+q = 631 \\).
+
+Đáp số cần điền: 631.""",
             },
 
             # ---------------- KÉO THẢ (dragdrop) ----------------
             {
                 "id": 'de_tsa11_dd_01',
                 "type": 'dragdrop',
-                "content": ' Một con robot xuất phát từ gốc tọa độ O(0, 0) trên mặt phẳng Oxy, hướng theo chiều dương của trục Ox. Lập trình di chuyển của robot được thiết lập như sau: Bước 1: Tiến thẳng về phía trước 12 cm đến điểm A₁. Bước n (với n ≥ 2): Quay trái một góc 90°, sau đó tiến thẳng một đoạn bằng \\( \\dfrac{2}{3} \\) độ dài của đoạn đường di chuyển ngay trước đó để tới điểm Aₙ. Quá trình này lặp lại vô hạn lần và robot tiến dần đến một điểm tới hạn M(X; Y). Kéo và thả các kết quả sau vào ô tương ứng:',
+                "content": """Một con robot xuất phát từ gốc tọa độ O(0, 0) trên mặt phẳng Oxy, hướng theo chiều dương của trục Ox. Lập trình di chuyển của robot được thiết lập như sau:
+
+Bước 1: Tiến thẳng về phía trước 12 cm đến điểm A₁.
+
+Bước n (với n ≥ 2): Quay trái một góc \\( 90^\\circ \\), sau đó tiến thẳng một đoạn bằng \\( \\dfrac{2}{3} \\) độ dài của đoạn đường di chuyển ngay trước đó để tới điểm Aₙ.
+
+Quá trình này lặp lại vô hạn lần và robot tiến dần đến một điểm tới hạn M(X; Y). Kéo và thả các kết quả sau vào ô tương ứng:""",
                 "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de_tsa11_cau4_robot.PNG',
                 "options_pool": ['36', '108/13', '72/13', '24', '36/13'],
                 "blanks": [
@@ -216,14 +261,28 @@ EXAMS = [
                     {"label": 'Tung độ Y của điểm tới hạn M là:', "answer": '72/13'},
                 ],
                 "points": 1,
-                "explanation": "Độ dài các đoạn lập thành cấp số nhân \\( L_n = 12\\cdot(2/3)^{n-1} \\). Tổng quãng đường: \\( \\sum L_n = \\dfrac{12}{1-2/3} = 36 \\) cm. Hướng di chuyển lặp chu kỳ 4 (Đông, Bắc, Tây, Nam) do mỗi bước quay trái 90°. Hoành độ: \\( X = L_1 - L_3 + L_5 - \\cdots = 12\\left[1-(2/3)^2+(2/3)^4-\\cdots\\right] = 12\\cdot\\dfrac{1}{1+4/9} = 12\\cdot\\dfrac{9}{13} = \\dfrac{108}{13} \\). Tung độ: \\( Y = L_2 - L_4 + L_6 - \\cdots = 12\\cdot\\dfrac23\\cdot\\dfrac{9}{13} = \\dfrac{72}{13} \\).",
+                "explanation": """Độ dài các đoạn di chuyển lập thành một cấp số nhân:
+\\( L_n = 12\\cdot\\left(\\dfrac{2}{3}\\right)^{n-1} \\)
+
+Tổng quãng đường robot đi được sau vô hạn bước chính là tổng của cấp số nhân lùi vô hạn này:
+\\( \\sum L_n = \\dfrac{12}{1-\\frac{2}{3}} = 36 \\) (cm)
+
+Vì mỗi bước robot quay trái \\( 90^\\circ \\) nên hướng di chuyển lặp lại theo chu kỳ 4 hướng: Đông, Bắc, Tây, Nam.
+
+Hoành độ X (tổng các đoạn theo hướng Đông trừ đi các đoạn theo hướng Tây):
+\\( X = L_1 - L_3 + L_5 - \\cdots = 12\\left[1-\\left(\\dfrac{2}{3}\\right)^2+\\left(\\dfrac{2}{3}\\right)^4-\\cdots\\right] = 12\\cdot\\dfrac{1}{1+\\frac{4}{9}} = 12\\cdot\\dfrac{9}{13} = \\dfrac{108}{13} \\)
+
+Tung độ Y (tổng các đoạn theo hướng Bắc trừ đi các đoạn theo hướng Nam):
+\\( Y = L_2 - L_4 + L_6 - \\cdots = 12\\cdot\\dfrac{2}{3}\\cdot\\dfrac{9}{13} = \\dfrac{72}{13} \\)
+
+Vậy kết quả điền: tổng quãng đường = 36 cm; X = 108/13; Y = 72/13.""",
             },
 
             # ================== TRẮC NGHIỆM 4 LỰA CHỌN (mc4) - tiếp ==================
             {
                 "id": 'de_tsa11_mc_02',
                 "type": 'mc4',
-                "content": ' Một bài thi trắc nghiệm Toán học có 10 câu hỏi khó, mỗi câu có 4 đáp án và chỉ có 1 đáp án đúng. Trả lời đúng được 1 điểm, trả lời sai bị trừ 0.25 điểm. Học sinh C tự tin làm chắc chắn đúng 6 câu đầu tiên. Trong 4 câu còn lại, có 2 câu C loại bỏ được 2 phương án chắc chắn sai (rồi chọn ngẫu nhiên trong 2 phương án còn lại); 2 câu C không biết gì nên khoanh bừa cả 4 phương án. Tính xác suất để C đạt từ 8 điểm trở lên.',
+                "content": 'Một bài thi trắc nghiệm Toán học có 10 câu hỏi khó, mỗi câu có 4 đáp án và chỉ có 1 đáp án đúng. Trả lời đúng được 1 điểm, trả lời sai bị trừ 0.25 điểm. Học sinh C tự tin làm chắc chắn đúng 6 câu đầu tiên. Trong 4 câu còn lại, có 2 câu C loại bỏ được 2 phương án chắc chắn sai (rồi chọn ngẫu nhiên trong 2 phương án còn lại); 2 câu C không biết gì nên khoanh bừa cả 4 phương án. Tính xác suất để C đạt từ 8 điểm trở lên.',
                 "options": {
                     'A': '3/32',
                     'B': '9/64',
@@ -232,94 +291,287 @@ EXAMS = [
                 },
                 "correct": 'B',
                 "points": 1,
-                "explanation": 'Điểm chắc chắn từ 6 câu đầu = 6. Cần điểm của 4 câu còn lại \\( \\ge 2 \\). Gọi \\(c_A\\) = số câu đúng trong 2 câu "loại 2 phương án" (mỗi câu đúng với xác suất 1/2), \\(c_B\\) = số câu đúng trong 2 câu "khoanh bừa 4 phương án" (mỗi câu đúng với xác suất 1/4). Điểm 4 câu này \\( = 1{,}25(c_A+c_B) - 1 \\ge 2 \\Leftrightarrow c_A+c_B \\ge 2{,}4 \\Leftrightarrow c_A+c_B \\ge 3\\). Với \\(c_A\\sim B(2;1/2)\\): \\(P(0)=1/4, P(1)=1/2, P(2)=1/4\\). Với \\(c_B\\sim B(2;1/4)\\): \\(P(0)=9/16, P(1)=3/8, P(2)=1/16\\). \\(P(c_A+c_B=4) = P(2,2)=\\frac14\\cdot\\frac1{16}=\\frac1{64}\\). \\(P(c_A+c_B=3)=P(1,2)+P(2,1)=\\frac12\\cdot\\frac1{16}+\\frac14\\cdot\\frac38=\\frac1{32}+\\frac3{32}=\\frac4{32}=\\frac{8}{64}\\). Tổng \\( = \\frac1{64}+\\frac8{64}=\\frac9{64}\\). Đáp án B.',
+                "explanation": """Điểm chắc chắn có được từ 6 câu đầu là 6 điểm. Để tổng điểm đạt từ 8 trở lên, điểm của 4 câu còn lại phải \\( \\ge 2 \\).
+
+Gọi \\( c_A \\) là số câu đúng trong 2 câu "loại được 2 phương án sai" (mỗi câu đúng với xác suất \\( \\dfrac{1}{2} \\)); gọi \\( c_B \\) là số câu đúng trong 2 câu "khoanh bừa cả 4 phương án" (mỗi câu đúng với xác suất \\( \\dfrac{1}{4} \\)).
+
+Điểm của 4 câu còn lại được tính bởi:
+\\( 1{,}25(c_A+c_B) - 1 \\ge 2 \\Leftrightarrow c_A+c_B \\ge 2{,}4 \\Leftrightarrow c_A+c_B \\ge 3 \\)
+
+Với \\( c_A \\sim B(2; \\frac12) \\): \\( P(0)=\\dfrac14,\\ P(1)=\\dfrac12,\\ P(2)=\\dfrac14 \\)
+Với \\( c_B \\sim B(2; \\frac14) \\): \\( P(0)=\\dfrac{9}{16},\\ P(1)=\\dfrac38,\\ P(2)=\\dfrac{1}{16} \\)
+
+Trường hợp \\( c_A+c_B = 4 \\): chỉ xảy ra khi cả hai đều đúng cả 2 câu:
+\\( P(c_A+c_B=4) = P(2)\\cdot P(2) = \\dfrac14\\cdot\\dfrac{1}{16} = \\dfrac{1}{64} \\)
+
+Trường hợp \\( c_A+c_B = 3 \\): xảy ra khi (1 đúng bên A, 2 đúng bên B) hoặc (2 đúng bên A, 1 đúng bên B):
+\\( P(c_A+c_B=3) = P(1)P(2) + P(2)P(1) = \\dfrac12\\cdot\\dfrac{1}{16} + \\dfrac14\\cdot\\dfrac38 = \\dfrac{1}{32}+\\dfrac{3}{32} = \\dfrac{4}{32} = \\dfrac{8}{64} \\)
+
+Tổng xác suất cần tìm:
+\\( P = \\dfrac{1}{64}+\\dfrac{8}{64} = \\dfrac{9}{64} \\)
+
+Chọn đáp án B.""",
             },
 
             # ================== ĐÚNG / SAI (truefalse) - tiếp ==================
-            {
-                "id": 'de_tsa11_tf_02',
-                "type": 'truefalse',
-                "content": ' Một bệnh nhân được tiêm một liều thuốc 100 mg vào lúc 8h00 sáng. Biết rằng cứ sau mỗi giờ, lượng thuốc trong cơ thể bị đào thải 20% so với giờ trước đó. Để duy trì nồng độ thuốc, bắt đầu từ 9h00 sáng, cứ mỗi giờ bệnh nhân lại được tiêm bổ sung thêm 10 mg thuốc. Gọi \\( u_n \\) là lượng thuốc trong cơ thể bệnh nhân ngay sau lần tiêm thứ \\( n \\) (với \\( n=1 \\) tương ứng lúc 8h00 sáng). Xét tính Đúng/Sai của các mệnh đề sau:',
-                "statements": [
-                    {"text": 'Lượng thuốc trong cơ thể ngay sau lần tiêm thứ 3 (lúc 10h00 sáng) là 82 mg', "correct": True},
-                    {"text": 'Công thức tổng quát của lượng thuốc sau lần tiêm thứ n là \\( u_n = 50\\cdot(0.8)^{n-1}+50 \\)', "correct": True},
-                    {"text": 'Kể từ sau 24 giờ, lượng thuốc trong cơ thể sẽ tụt xuống dưới mức 50 mg', "correct": False},
-                    {"text": 'Nếu quá trình tiêm này kéo dài vô hạn, lượng thuốc trong cơ thể bệnh nhân sẽ tiến dần về mức 0 mg', "correct": False},
-                ],
-                "points": 1,
-                "explanation": 'Đệ quy: \\( u_{n+1}=0.8u_n+10,\\ u_1=100 \\). Điểm cân bằng \\( L=0.8L+10\\Rightarrow L=50 \\). Đặt \\( v_n=u_n-50\\Rightarrow v_n=v_1\\cdot0.8^{n-1}=50\\cdot0.8^{n-1}\\Rightarrow u_n=50\\cdot0.8^{n-1}+50\\). (a) \\( u_1=100,u_2=0.8\\cdot100+10=90,u_3=0.8\\cdot90+10=82\\) mg \\(\\Rightarrow\\) Đúng. (b) Đúng công thức vừa suy ra \\(\\Rightarrow\\) Đúng. (c) Vì \\(50\\cdot0.8^{n-1}>0\\) với mọi \\(n\\), nên \\(u_n>50\\) luôn đúng, không bao giờ tụt dưới 50 mg \\(\\Rightarrow\\) Sai. (d) Giới hạn \\( \\lim u_n = 50 \\ne 0 \\Rightarrow\\) Sai.',
-            },
+           {
+    "id": 'de_tsa11_tf_02',
+    "type": 'truefalse',
+    "content": ' Một bệnh nhân được tiêm một liều thuốc 100 mg vào lúc 8h00 sáng. Biết rằng cứ sau mỗi giờ, lượng thuốc trong cơ thể bị đào thải 20% so với giờ trước đó. Để duy trì nồng độ thuốc, bắt đầu từ 9h00 sáng, cứ mỗi giờ bệnh nhân lại được tiêm bổ sung thêm 10 mg thuốc. Gọi \\( u_n \\) là lượng thuốc trong cơ thể bệnh nhân ngay sau lần tiêm thứ \\( n \\) (với \\( n=1 \\) tương ứng lúc 8h00 sáng). Xét tính Đúng/Sai của các mệnh đề sau:',
+    "statements": [
+        {"text": 'Lượng thuốc trong cơ thể ngay sau lần tiêm thứ 3 (lúc 10h00 sáng) là 82 mg', "correct": True},
+        {"text": 'Công thức tổng quát của lượng thuốc sau lần tiêm thứ n là \\( u_n = 50\\cdot(0.8)^{n-1}+50 \\)', "correct": True},
+        {"text": 'Kể từ sau 24 giờ, lượng thuốc trong cơ thể sẽ tụt xuống dưới mức 50 mg', "correct": False},
+        {"text": 'Nếu quá trình tiêm này kéo dài vô hạn, lượng thuốc trong cơ thể bệnh nhân sẽ tiến dần về mức 0 mg', "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Cứ sau mỗi giờ, lượng thuốc còn lại 80% (do mất 20%), sau đó được tiêm bổ sung thêm 10 mg.
+Vậy ta có công thức truy hồi: \\( u_{n+1} = 0{,}8u_n + 10 \\), với \\( u_1 = 100 \\).
 
-            # ================== TRẢ LỜI NGẮN (short) - tiếp ==================
-            {
-                "id": 'de_tsa11_sh_02',
-                "type": 'short',
-                "content": ' Cho hàm số \\( f(x) = x^3 - 3x^2 + 2 \\) có đồ thị (C). Qua điểm \\( M(m; 2) \\) có thể kẻ được đúng 3 tiếp tuyến đến đồ thị (C), trong đó có đúng 2 tiếp tuyến vuông góc với nhau. Giá trị của tham số m bằng bao nhiêu? (Điền đáp án dưới dạng phân số tối giản).',
-                "blanks": [
-                    {"label": 'm =', "answers": ['-1/27']},
-                ],
-                "points": 1,
-                "explanation": 'Tiếp tuyến tại \\(t\\): \\(y=f(t)+f\'(t)(x-t)\\), với \\(f\'(t)=3t^2-6t\\). Qua M(m;2): \\(2=f(t)+f\'(t)(m-t)\\), rút gọn được \\(t\\big[2t^2-3(1+m)t+6m\\big]=0\\). Vậy \\(t=0\\) (tiếp tuyến ngang \\(y=2\\)) và 2 nghiệm \\(t_1,t_2\\) của \\(2t^2-3(1+m)t+6m=0\\) (tổng \\(s=t_1+t_2=\\frac{3(1+m)}{2}\\), tích \\(p=t_1t_2=3m\\)) cho đủ 3 tiếp tuyến phân biệt. Vì tiếp tuyến tại \\(t=0\\) có hệ số góc 0 nên không thể vuông góc với tiếp tuyến nào khác (cần hệ số góc kia là vô cực) \\(\\Rightarrow\\) cặp vuông góc duy nhất phải là \\((t_1,t_2)\\): \\(f\'(t_1)f\'(t_2)=-1\\). Có \\(f\'(t)=3t(t-2)\\Rightarrow f\'(t_1)f\'(t_2)=9p(p-2s+4)\\). Thay \\(p=3m,\\ s=\\frac{3(1+m)}2\\) được \\(p-2s+4=3m-3(1+m)+4=1\\) (hằng số!) \\(\\Rightarrow f\'(t_1)f\'(t_2)=9p=27m=-1\\Rightarrow m=-\\dfrac1{27}\\). Kiểm tra \\(\\Delta=9(1+m)^2-48m=\\dfrac{820}{81}>0\\) (2 nghiệm phân biệt, khác 0) \\(\\Rightarrow\\) thỏa mãn.',
-            },
-            {
-                "id": 'de_tsa11_sh_03',
-                "type": 'short',
-                "content": ' Lấy ngẫu nhiên một ước số nguyên dương của số \\( M = 2^{10}\\cdot 3^{15}\\cdot 5^{20} \\). Xác suất để ước số được chọn là lập phương của một số tự nhiên (tức là có dạng \\( k^3 \\) với \\( k \\in \\mathbb{N} \\)) có thể viết dưới dạng phân số tối giản là \\( \\dfrac{a}{b} \\). Tính giá trị của biểu thức \\( S = a + b \\).',
-                "blanks": [
-                    {"label": 'S = a + b =', "answers": ['23']},
-                ],
-                "points": 1,
-                "explanation": 'Tổng số ước của M: \\((10+1)(15+1)(20+1)=11\\cdot16\\cdot21=3696\\). Ước dạng \\(2^a3^b5^c\\) là lập phương \\(\\Leftrightarrow a,b,c\\) đều chia hết cho 3: \\(a\\in\\{0,3,6,9\\}\\) (4 giá trị, do \\(a\\le10\\)); \\(b\\in\\{0,3,...,15\\}\\) (6 giá trị); \\(c\\in\\{0,3,...,18\\}\\) (7 giá trị, do \\(c\\le20\\)). Số ước lập phương \\(=4\\cdot6\\cdot7=168\\). Xác suất \\(=\\dfrac{168}{3696}=\\dfrac{1}{22}\\Rightarrow a=1,b=22\\Rightarrow S=23\\).',
-            },
-            {
-                "id": 'de_tsa11_sh_04',
-                "type": 'short',
-                "content": ' Cho phương trình lượng giác: \\( \\sqrt{1-\\sin 2x} + \\sqrt{1+\\sin 2x} = 2\\sqrt{2}\\cos x \\). Hỏi trên đoạn \\( [-100\\pi; 100\\pi] \\), phương trình đã cho có tất cả bao nhiêu nghiệm phân biệt?',
-                "blanks": [
-                    {"label": 'Số nghiệm =', "answers": ['200']},
-                ],
-                "points": 1,
-                "explanation": 'Do \\(1\\mp\\sin2x=(\\sin x\\mp\\cos x)^2\\) nên VT \\(=|\\sin x-\\cos x|+|\\sin x+\\cos x|=2\\max(|\\sin x|,|\\cos x|)\\) (đẳng thức \\(|a-b|+|a+b|=2\\max(|a|,|b|)\\)). PT trở thành \\(\\max(|\\sin x|,|\\cos x|)=\\sqrt2\\cos x\\), suy ra cần \\(\\cos x\\ge0\\). Nếu \\(|\\cos x|\\ge|\\sin x|\\): \\(\\cos x=\\sqrt2\\cos x\\Rightarrow\\cos x=0\\), vô lý (mâu thuẫn giả thiết). Nếu \\(|\\sin x|\\ge|\\cos x|\\): \\(|\\sin x|=\\sqrt2\\cos x\\), kết hợp \\(\\sin^2x+\\cos^2x=1\\Rightarrow3\\cos^2x=1\\Rightarrow\\cos x=\\dfrac1{\\sqrt3}\\) (nhận vì \\(\\ge0\\)), \\(|\\sin x|=\\dfrac{\\sqrt6}{3}\\) (thỏa điều kiện \\(|\\sin x|\\ge|\\cos x|\\)). Vậy nghiệm: \\(x=\\pm\\alpha+2k\\pi\\) với \\(\\alpha=\\arccos\\dfrac1{\\sqrt3}\\in(0;\\frac\\pi2)\\) — đúng 2 nghiệm mỗi chu kỳ \\(2\\pi\\). Đoạn \\([-100\\pi;100\\pi]\\) có độ dài \\(200\\pi=100\\) chu kỳ trọn vẹn \\(\\Rightarrow\\) tổng số nghiệm \\(=100\\times2=200\\).',
-            },
+Tính vài số hạng đầu:
+\\( u_1 = 100 \\)
+\\( u_2 = 0{,}8\\times100+10 = 90 \\)
+\\( u_3 = 0{,}8\\times90+10 = 82 \\)
 
-            # ================== KÉO THẢ (dragdrop) - tiếp ==================
-            {
-                "id": 'de_tsa11_dd_02',
-                "type": 'dragdrop',
-                "content": " Cho hình chóp S.ABC có đáy ABC là tam giác vuông cân tại B, với cạnh AB = a. Cạnh bên SA vuông góc với mặt phẳng đáy (ABC) và SA = a√2. Kéo và thả các kết quả sau vào các ô tương ứng:",
-                "options_pool": ['a√6/3', '60°', 'a√3/3', '1/3', 'arccos(√3/3)'],
-                "blanks": [
-                    {"label": 'Số đo góc tạo bởi hai mặt phẳng (SBC) và (SAC) là:', "answer": 'arccos(√3/3)'},
-                    {"label": 'Khoảng cách từ đỉnh A đến mặt phẳng (SBC) bằng:', "answer": 'a√6/3'},
-                    {"label": 'Số đo góc tạo bởi hai đường thẳng chéo nhau SC và AB là:', "answer": '60°'},
-                ],
-                "points": 1,
-                "explanation": "Chọn hệ trục: B(0,0,0), A(a,0,0), C(0,a,0) (vuông cân tại B), S(a,0,a√2) (do SA⊥đáy). \\(\\bullet\\) Góc 2 mp (SAC),(SBC): pháp tuyến \\((SAC)\\): \\(\\vec{n_1}=\\vec{AS}\\times\\vec{AC}=(0,0,a\\sqrt2)\\times(-a,a,0) \\propto(1,1,0)\\); pháp tuyến \\((SBC)\\): \\(\\vec{n_2}=\\vec{BS}\\times\\vec{BC}=(a,0,a\\sqrt2)\\times(0,a,0)\\propto(-\\sqrt2,0,1)\\). \\(\\cos\\varphi=\\dfrac{|\\vec{n_1}\\cdot\\vec{n_2}|}{|\\vec{n_1}||\\vec{n_2}|}=\\dfrac{\\sqrt2}{\\sqrt2\\cdot\\sqrt3}=\\dfrac1{\\sqrt3}=\\dfrac{\\sqrt3}{3}\\Rightarrow\\varphi=\\arccos\\dfrac{\\sqrt3}{3}\\). \\(\\bullet\\) Mặt (SBC) qua B với pháp tuyến \\((-\\sqrt2,0,1)\\): \\(-\\sqrt2x+z=0\\). \\(d(A,(SBC))=\\dfrac{|-\\sqrt2\\cdot a|}{\\sqrt3}=\\dfrac{a\\sqrt2}{\\sqrt3}=\\dfrac{a\\sqrt6}{3}\\). \\(\\bullet\\) \\(\\vec{SC}=(-a,a,-a\\sqrt2)\\), \\(\\vec{AB}=(-a,0,0)\\): \\(\\cos\\theta=\\dfrac{|\\vec{SC}\\cdot\\vec{AB}|}{|\\vec{SC}||\\vec{AB}|}=\\dfrac{a^2}{2a\\cdot a}=\\dfrac12\\Rightarrow\\theta=60^\\circ\\).",
-            },
+Vậy mệnh đề (a) là Đúng.
 
-            # ================== TRẢ LỜI NGẮN (short) - tiếp ==================
-            # ================== TRẢ LỜI NGẮN (short) - tiếp ==================
-    {
-        "id": "de_tsa11_sh_05",
-        "type": "short",
-        "content": ' Một chiếc xe chạy trong sa mạc có quỹ đạo là một đường cong bậc ba với phương trình \\( y = \\dfrac{1}{3}x^3 - 2x^2 + 5x \\) (trên hệ trục tọa độ với đơn vị là km). Tại mọi thời điểm, đèn pha của xe luôn chiếu sáng theo một tia sáng thẳng trùng với phương của tiếp tuyến quỹ đạo xe chạy tại điểm đó. Tại thời điểm xe đi ngang qua vị trí có hoành độ \\( x = 4 \\) thì đèn pha chiếu sáng trúng một cột mốc M nằm trên trục tung Oy. Hãy xác định tung độ của cột mốc M. (Điền đáp án dưới dạng phân số tối giản).',
-        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau11-de1.PNG",
-        "blanks": [
-            {"label": "Tung độ của M =", "answers": ["-32/3"]}
-        ],
-        "points": 1,
-        "explanation": "Tại \\(x=4\\): \\(y(4)=\\dfrac13(4)^3-2(4)^2+5(4)=\\dfrac{64}{3}-32+20=\\dfrac{64}{3}-12=\\dfrac{28}{3}\\). Đạo hàm \\(y'=x^2-4x+5\\Rightarrow y'(4)=16-16+5=5\\) (hệ số góc tiếp tuyến). Phương trình tiếp tuyến tại \\(x=4\\): \\(y=5(x-4)+\\dfrac{28}{3}=5x-20+\\dfrac{28}{3}=5x-\\dfrac{32}{3}\\). Cột mốc M nằm trên Oy \\(\\Rightarrow x=0\\Rightarrow y_M=-\\dfrac{32}{3}\\)."
-    },
-    {
-        "id": "de_tsa11_sh_06",
-        "type": "short",
-        "content": "Một số tự nhiên X có 2026 chữ số, trong đó có đúng 2025 chữ số 9 và chữ số tận cùng là 8 (nghĩa là X = \\(\\underbrace{99\\ldots9}_{2025\\text{ chữ số}}8\\)). Đặt \\( Y = X^2 \\). Hỏi tổng tất cả các chữ số của số Y bằng bao nhiêu?",
-        "blanks": [
-            {"label": "Tổng các chữ số của Y =", "answers": ["18235"]}
-        ],
-        "points": 1,
-        "explanation": "Viết \\(X=10^n-2\\) với \\(n=2026\\) (kiểm tra: \\(n=1\\Rightarrow10-2=8\\); \\(n=2\\Rightarrow100-2=98\\); tổng quát \\(10^n-2\\) có dạng \\((n-1)\\) chữ số 9 rồi đến 8 — đúng với X có 2025 chữ số 9 rồi đến 8, \\(n=2026\\)). Khi đó \\(Y=X^2=10^{2n}-4\\cdot10^n+4=10^n(10^n-4)+4\\). Vì \\(10^n-4\\) có dạng \\((n-1)\\) chữ số 9 rồi đến 6 (thử \\(n=1{:}\\,6\\); \\(n=2{:}\\,96\\); \\(n=3{:}\\,996\\)), nên \\(10^n(10^n-4)\\) là số đó theo sau bởi \\(n\\) chữ số 0. Cộng thêm 4 vào chữ số cuối (đang là 0) được: \\(Y=\\underbrace{9\\ldots9}_{n-1}6\\underbrace{0\\ldots0}_{n-1}4\\) (tổng cộng \\(2n\\) chữ số). Tổng chữ số của Y \\(=9(n-1)+6+4=9n+1\\). Với \\(n=2026\\): tổng \\(=9\\times2026+1=18234+1=18235\\).\n\nKiểm tra với n nhỏ: \\(n=3\\): X=998, \\(X^2=996004\\), tổng chữ số \\(=9+9+6+0+0+4=28=9\\times3+1\\) ✓ khớp công thức."
-    },
+Để tìm công thức tổng quát, ta tìm giá trị mà dãy số tiến dần tới (gọi là L): \\( L = 0{,}8L+10 \\Rightarrow 0{,}2L=10 \\Rightarrow L=50 \\).
+
+Đặt \\( v_n = u_n - 50 \\). Khi đó:
+\\( v_{n+1} = u_{n+1}-50 = 0{,}8u_n+10-50 = 0{,}8(u_n-50) = 0{,}8v_n \\)
+
+Vậy \\( (v_n) \\) là một cấp số nhân công bội 0,8, với \\( v_1 = u_1-50 = 50 \\). Suy ra:
+\\( v_n = 50\\times0{,}8^{n-1} \\Rightarrow u_n = 50\\times0{,}8^{n-1}+50 \\)
+
+Vậy mệnh đề (b) là Đúng.
+
+Vì \\( 0{,}8^{n-1}>0 \\) với mọi n nên \\( u_n = 50\\times0{,}8^{n-1}+50 > 50 \\) với mọi n, tức là lượng thuốc không bao giờ tụt xuống dưới 50 mg.
+
+Vậy mệnh đề (c) là Sai.
+
+Khi n tiến ra vô cùng, vì \\( 0<0{,}8<1 \\) nên \\( 0{,}8^{n-1}\\to0 \\), do đó \\( u_n \\to 50 \\) chứ không tiến về 0.
+
+Vậy mệnh đề (d) là Sai.""",
+},
+
+{
+    "id": 'de_tsa11_sh_02',
+    "type": 'short',
+    "content": ' Cho hàm số \\( f(x) = x^3 - 3x^2 + 2 \\) có đồ thị (C). Qua điểm \\( M(m; 2) \\) có thể kẻ được đúng 3 tiếp tuyến đến đồ thị (C), trong đó có đúng 2 tiếp tuyến vuông góc với nhau. Giá trị của tham số m bằng bao nhiêu? (Điền đáp án dưới dạng phân số tối giản).',
+    "blanks": [
+        {"label": 'm =', "answers": ['-1/27']},
+    ],
+    "points": 1,
+    "explanation": """Gọi t là hoành độ tiếp điểm trên đồ thị (C). Phương trình tiếp tuyến tại điểm này:
+\\( y = f(t) + f'(t)(x-t) \\), với \\( f'(t) = 3t^2-6t \\)
+
+Vì tiếp tuyến đi qua \\( M(m;2) \\), thay \\( x=m, y=2 \\):
+\\( 2 = f(t) + f'(t)(m-t) \\)
+
+Thay biểu thức của f(t), f'(t) vào và rút gọn, ta được phương trình ẩn t:
+\\( t\\left[2t^2-3(1+m)t+6m\\right] = 0 \\)
+
+Phương trình có nghiệm \\( t=0 \\) (ứng với tiếp tuyến nằm ngang \\( y=2 \\)), và các nghiệm của:
+\\( 2t^2-3(1+m)t+6m=0 \\) (*)
+
+Muốn từ M kẻ được đúng 3 tiếp tuyến, (*) phải có 2 nghiệm phân biệt \\( t_1,t_2 \\) khác 0.
+
+Theo định lí Vi-ét: \\( s=t_1+t_2=\\dfrac{3(1+m)}{2} \\), \\( p=t_1t_2=3m \\)
+
+Vì tiếp tuyến tại \\( t=0 \\) có hệ số góc \\( f'(0)=0 \\) (đường nằm ngang), nó không thể vuông góc với tiếp tuyến nào khác (0 nhân với số nào cũng bằng 0, không thể bằng -1). Vậy cặp tiếp tuyến vuông góc chỉ có thể là tiếp tuyến tại \\( t_1 \\) và \\( t_2 \\), nghĩa là:
+\\( f'(t_1)\\cdot f'(t_2) = -1 \\)
+
+Ta có \\( f'(t)=3t(t-2) \\), nên:
+\\( f'(t_1)f'(t_2) = 9t_1t_2(t_1-2)(t_2-2) = 9p\\left[p-2s+4\\right] \\)
+
+Thay \\( p=3m,\\ s=\\dfrac{3(1+m)}{2} \\) vào biểu thức trong ngoặc:
+\\( p-2s+4 = 3m-3(1+m)+4 = 1 \\) (không phụ thuộc m)
+
+Vậy \\( f'(t_1)f'(t_2) = 9p\\times1 = 27m \\)
+
+Cho biểu thức này bằng -1:
+\\( 27m=-1 \\Rightarrow m=-\\dfrac{1}{27} \\)
+
+Kiểm tra lại: với \\( m=-\\dfrac1{27} \\), tính được \\( \\Delta=9(1+m)^2-48m=\\dfrac{820}{81}>0 \\), nên (*) có 2 nghiệm phân biệt khác 0, thỏa mãn yêu cầu.
+
+Vậy \\( m=-\\dfrac{1}{27} \\)""",
+},
+
+{
+    "id": 'de_tsa11_sh_03',
+    "type": 'short',
+    "content": ' Lấy ngẫu nhiên một ước số nguyên dương của số \\( M = 2^{10}\\cdot 3^{15}\\cdot 5^{20} \\). Xác suất để ước số được chọn là lập phương của một số tự nhiên (tức là có dạng \\( k^3 \\) với \\( k \\in \\mathbb{N} \\)) có thể viết dưới dạng phân số tối giản là \\( \\dfrac{a}{b} \\). Tính giá trị của biểu thức \\( S = a + b \\).',
+    "blanks": [
+        {"label": 'S = a + b =', "answers": ['23']},
+    ],
+    "points": 1,
+    "explanation": """Bước 1: Tính tổng số ước dương của M.
+Một ước bất kì của M có dạng \\( 2^a\\cdot3^b\\cdot5^c \\), trong đó a nhận giá trị từ 0 đến 10 (11 giá trị), b từ 0 đến 15 (16 giá trị), c từ 0 đến 20 (21 giá trị).
+Vậy tổng số ước của M là: \\( 11\\times16\\times21=3696 \\)
+
+Bước 2: Đếm số ước có dạng lập phương.
+Ước \\( 2^a3^b5^c \\) là số lập phương khi và chỉ khi cả a, b, c đều chia hết cho 3 (vì khi đó có thể viết \\( 2^a3^b5^c=(2^{a/3}3^{b/3}5^{c/3})^3 \\)).
+
+Với \\( 0\\le a\\le10 \\), a chia hết cho 3: a ∈ {0,3,6,9} → 4 giá trị.
+Với \\( 0\\le b\\le15 \\), b chia hết cho 3: b ∈ {0,3,6,9,12,15} → 6 giá trị.
+Với \\( 0\\le c\\le20 \\), c chia hết cho 3: c ∈ {0,3,6,9,12,15,18} → 7 giá trị.
+
+Vậy số ước dạng lập phương là: \\( 4\\times6\\times7=168 \\)
+
+Bước 3: Tính xác suất.
+\\( P = \\dfrac{168}{3696} = \\dfrac{1}{22} \\)
+
+Vậy \\( a=1, b=22 \\), suy ra \\( S=a+b=1+22=23 \\)""",
+},
+
+{
+    "id": 'de_tsa11_sh_04',
+    "type": 'short',
+    "content": ' Cho phương trình lượng giác: \\( \\sqrt{1-\\sin 2x} + \\sqrt{1+\\sin 2x} = 2\\sqrt{2}\\cos x \\). Hỏi trên đoạn \\( [-100\\pi; 100\\pi] \\), phương trình đã cho có tất cả bao nhiêu nghiệm phân biệt?',
+    "blanks": [
+        {"label": 'Số nghiệm =', "answers": ['200']},
+    ],
+    "points": 1,
+    "explanation": """Ta có các hằng đẳng thức:
+\\( 1-\\sin2x = \\sin^2x-2\\sin x\\cos x+\\cos^2x = (\\sin x-\\cos x)^2 \\)
+\\( 1+\\sin2x = (\\sin x+\\cos x)^2 \\)
+
+Vậy phương trình trở thành:
+\\( |\\sin x-\\cos x| + |\\sin x+\\cos x| = 2\\sqrt2\\cos x \\)
+
+Vì vế trái luôn không âm nên vế phải cũng phải không âm, tức là \\( \\cos x\\ge0 \\).
+
+Xét trường hợp \\( |\\cos x|\\ge|\\sin x| \\): khi đó vế trái bằng \\( 2|\\cos x| \\). Phương trình trở thành \\( 2\\cos x=2\\sqrt2\\cos x \\) (vì cosx≥0) \\( \\Rightarrow\\cos x(\\sqrt2-1)=0\\Rightarrow\\cos x=0 \\), điều này mâu thuẫn với giả thiết \\( |\\cos x|\\ge|\\sin x| \\) (vì khi cosx=0 thì |sinx|=1 lớn hơn). Vậy trường hợp này không có nghiệm.
+
+Xét trường hợp \\( |\\sin x|\\ge|\\cos x| \\): khi đó vế trái bằng \\( 2|\\sin x| \\). Phương trình trở thành:
+\\( 2|\\sin x| = 2\\sqrt2\\cos x \\Rightarrow |\\sin x|=\\sqrt2\\cos x \\)
+
+Bình phương hai vế: \\( \\sin^2x=2\\cos^2x \\). Kết hợp \\( \\sin^2x+\\cos^2x=1 \\):
+\\( 1-\\cos^2x=2\\cos^2x\\Rightarrow3\\cos^2x=1\\Rightarrow\\cos x=\\pm\\dfrac{\\sqrt3}{3} \\)
+
+Vì \\( \\cos x\\ge0 \\), nhận \\( \\cos x=\\dfrac{\\sqrt3}{3} \\), khi đó \\( |\\sin x|=\\sqrt{1-\\dfrac13}=\\dfrac{\\sqrt6}{3} \\) (thỏa \\( |\\sin x|\\ge|\\cos x| \\)).
+
+Vậy nghiệm là: \\( x=\\pm\\alpha+k2\\pi \\), với \\( \\alpha=\\arccos\\dfrac{\\sqrt3}{3}\\in\\left(0;\\dfrac{\\pi}{2}\\right) \\), \\( k\\in\\mathbb{Z} \\) — tức là đúng 2 nghiệm trong mỗi chu kì \\( 2\\pi \\).
+
+Đoạn \\( [-100\\pi;100\\pi] \\) có độ dài \\( 200\\pi \\), bằng đúng 100 chu kì.
+
+Vậy tổng số nghiệm là: \\( 100\\times2=200 \\)""",
+},
+
+{
+    "id": 'de_tsa11_dd_02',
+    "type": 'dragdrop',
+    "content": " Cho hình chóp S.ABC có đáy ABC là tam giác vuông cân tại B, với cạnh AB = a. Cạnh bên SA vuông góc với mặt phẳng đáy (ABC) và SA = a√2. Kéo và thả các kết quả sau vào các ô tương ứng:",
+    "options_pool": ['a√6/3', '60°', 'a√3/3', '1/3', 'arccos(√3/3)'],
+    "blanks": [
+        {"label": 'Số đo góc tạo bởi hai mặt phẳng (SBC) và (SAC) là:', "answer": 'arccos(√3/3)'},
+        {"label": 'Khoảng cách từ đỉnh A đến mặt phẳng (SBC) bằng:', "answer": 'a√6/3'},
+        {"label": 'Số đo góc tạo bởi hai đường thẳng chéo nhau SC và AB là:', "answer": '60°'},
+    ],
+    "points": 1,
+    "explanation": """Vì tam giác ABC vuông cân tại B với AB=BC=a, theo định lí Pythagore: \\( AC=a\\sqrt2 \\), và các góc tại A, C đều bằng 45°.
+
+Vì \\( SA\\perp(ABC) \\) nên SA vuông góc với mọi đường trong đáy, đặc biệt \\( SA\\perp AC \\). Xét tam giác SAC vuông tại A có \\( SA=AC=a\\sqrt2 \\):
+\\( SC=\\sqrt{SA^2+AC^2}=\\sqrt{2a^2+2a^2}=2a \\)
+
+--- Khoảng cách từ A đến (SBC) ---
+
+Vì \\( SA\\perp(ABC) \\) nên \\( SA\\perp BC \\). Mặt khác \\( BC\\perp AB \\) (góc vuông tại B). Vậy BC vuông góc với hai đường cắt nhau SA, AB trong mặt phẳng (SAB), suy ra \\( BC\\perp(SAB) \\).
+
+Trong mặt phẳng (SAB), kẻ \\( AH\\perp SB \\) tại H. Vì \\( BC\\perp(SAB) \\) nên \\( BC\\perp AH \\). Kết hợp \\( AH\\perp SB \\), ta có AH vuông góc với hai đường cắt nhau SB, BC của mặt phẳng (SBC), suy ra \\( AH\\perp(SBC) \\). Vậy AH chính là khoảng cách từ A đến (SBC).
+
+Tam giác SAB vuông tại A có \\( SA=a\\sqrt2, AB=a \\), suy ra \\( SB=\\sqrt{2a^2+a^2}=a\\sqrt3 \\). Áp dụng hệ thức đường cao trong tam giác vuông:
+\\( AH=\\dfrac{SA\\cdot AB}{SB}=\\dfrac{a\\sqrt2\\cdot a}{a\\sqrt3}=\\dfrac{a\\sqrt6}{3} \\)
+
+--- Góc giữa hai mặt phẳng (SBC) và (SAC) ---
+
+Hai mặt phẳng này cắt nhau theo giao tuyến SC. Trong (SAC), kẻ \\( AK\\perp SC \\) tại K (K là chân đường cao từ A xuống cạnh huyền SC của tam giác vuông SAC).
+
+Vì AH đã vuông góc với mặt phẳng (SBC) (tức H là hình chiếu của A lên (SBC)), và SC nằm trong (SBC), theo định lí ba đường vuông góc: hình chiếu HK của AK trên (SBC) cũng vuông góc với SC. Vậy góc giữa hai mặt phẳng chính là góc AKH.
+
+Tính AK (đường cao trong tam giác vuông SAC, cạnh huyền SC=2a):
+\\( AK=\\dfrac{SA\\cdot AC}{SC}=\\dfrac{a\\sqrt2\\cdot a\\sqrt2}{2a}=a \\)
+
+Vì \\( AH\\perp(SBC) \\) nên tam giác AHK vuông tại H:
+\\( HK=\\sqrt{AK^2-AH^2}=\\sqrt{a^2-\\dfrac{6a^2}{9}}=\\dfrac{a\\sqrt3}{3} \\)
+
+\\( \\cos(\\widehat{AKH})=\\dfrac{HK}{AK}=\\dfrac{\\sqrt3}{3} \\)
+
+Vậy góc giữa (SBC) và (SAC) bằng \\( \\arccos\\dfrac{\\sqrt3}{3} \\).
+
+--- Góc giữa hai đường thẳng chéo nhau SC và AB ---
+
+Gọi D là điểm sao cho CD song song và bằng AB (tức \\( \\overrightarrow{CD}=\\overrightarrow{AB} \\)). Khi đó ABDC là hình bình hành, suy ra \\( BD\\parallel AC \\), \\( BD=AC=a\\sqrt2 \\), và \\( CD=AB=a \\).
+
+Vì CD song song AB nên góc giữa SC và AB bằng góc SCD (hoặc góc bù của nó).
+
+Vì \\( BD\\parallel AC \\), theo tính chất hai góc trong cùng phía: \\( \\widehat{BAC}+\\widehat{ABD}=180° \\). Mà \\( \\widehat{BAC}=45° \\) nên \\( \\widehat{ABD}=135° \\).
+
+Áp dụng định lí côsin trong tam giác ABD (\\( AB=a, BD=a\\sqrt2, \\widehat{ABD}=135° \\)):
+\\( AD^2=a^2+2a^2-2\\cdot a\\cdot a\\sqrt2\\cdot\\cos135°=3a^2+2a^2=5a^2 \\)
+
+Vì \\( SA\\perp(ABC) \\) và D nằm trong đáy nên \\( SA\\perp AD \\). Áp dụng Pythagore trong tam giác vuông SAD:
+\\( SD^2=SA^2+AD^2=2a^2+5a^2=7a^2 \\)
+
+Áp dụng định lí côsin trong tam giác SCD (\\( SC=2a, CD=a, SD=a\\sqrt7 \\)):
+\\( \\cos(\\widehat{SCD})=\\dfrac{SC^2+CD^2-SD^2}{2\\cdot SC\\cdot CD}=\\dfrac{4a^2+a^2-7a^2}{4a^2}=-\\dfrac12 \\)
+
+Suy ra \\( \\widehat{SCD}=120° \\). Vì góc giữa hai đường thẳng luôn lấy giá trị không tù, nên góc giữa SC và AB bằng \\( 180°-120°=60° \\)""",
+},
+
+{
+    "id": "de_tsa11_sh_05",
+    "type": "short",
+    "content": ' Một chiếc xe chạy trong sa mạc có quỹ đạo là một đường cong bậc ba với phương trình \\( y = \\dfrac{1}{3}x^3 - 2x^2 + 5x \\) (trên hệ trục tọa độ với đơn vị là km). Tại mọi thời điểm, đèn pha của xe luôn chiếu sáng theo một tia sáng thẳng trùng với phương của tiếp tuyến quỹ đạo xe chạy tại điểm đó. Tại thời điểm xe đi ngang qua vị trí có hoành độ \\( x = 4 \\) thì đèn pha chiếu sáng trúng một cột mốc M nằm trên trục tung Oy. Hãy xác định tung độ của cột mốc M. (Điền đáp án dưới dạng phân số tối giản).',
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau11-de1.PNG",
+    "blanks": [
+        {"label": "Tung độ của M =", "answers": ["-32/3"]}
+    ],
+    "points": 1,
+    "explanation": """Tại \\( x=4 \\), tính tung độ điểm trên quỹ đạo:
+\\( y(4)=\\dfrac13(4)^3-2(4)^2+5(4)=\\dfrac{64}{3}-32+20=\\dfrac{28}{3} \\)
+
+Đạo hàm: \\( y'=x^2-4x+5 \\), đây là hệ số góc của tiếp tuyến tại mỗi điểm.
+
+Tại \\( x=4 \\): \\( y'(4)=16-16+5=5 \\)
+
+Phương trình tiếp tuyến tại điểm này (cũng là tia sáng đèn pha):
+\\( y=5(x-4)+\\dfrac{28}{3}=5x-20+\\dfrac{28}{3}=5x-\\dfrac{32}{3} \\)
+
+Cột mốc M nằm trên Oy nên có hoành độ x=0. Thay vào:
+\\( y_M = 5(0)-\\dfrac{32}{3}=-\\dfrac{32}{3} \\)
+
+Vậy tung độ của M là \\( -\\dfrac{32}{3} \\)"""
+},
+
+{
+    "id": "de_tsa11_sh_06",
+    "type": "short",
+    "content": "Một số tự nhiên X có 2026 chữ số, trong đó có đúng 2025 chữ số 9 và chữ số tận cùng là 8 (nghĩa là X = \\(\\underbrace{99\\ldots9}_{2025\\text{ chữ số}}8\\)). Đặt \\( Y = X^2 \\). Hỏi tổng tất cả các chữ số của số Y bằng bao nhiêu?",
+    "blanks": [
+        {"label": "Tổng các chữ số của Y =", "answers": ["18235"]}
+    ],
+    "points": 1,
+    "explanation": """Ta có thể viết \\( X=10^n-2 \\) với \\( n=2026 \\).
+
+Kiểm tra với n nhỏ: n=1 → \\( 10-2=8 \\); n=2 → \\( 100-2=98 \\). Vậy \\( 10^n-2 \\) luôn có dạng (n-1) chữ số 9 rồi đến chữ số 8 ở cuối — đúng với X (2025 chữ số 9 rồi đến 8, ứng với n=2026).
+
+Tính \\( Y=X^2 \\):
+\\( Y=(10^n-2)^2=10^{2n}-4\\times10^n+4=10^n(10^n-4)+4 \\)
+
+Xét dạng của \\( 10^n-4 \\): n=1→6, n=2→96, n=3→996. Vậy \\( 10^n-4 \\) có dạng (n-1) chữ số 9 rồi đến chữ số 6.
+
+Do đó \\( 10^n(10^n-4) \\) là số này viết thêm n chữ số 0 vào sau (vì nhân với \\( 10^n \\)). Khi cộng thêm 4, chữ số 0 cuối cùng trở thành 4, các chữ số khác giữ nguyên:
+\\( Y=\\underbrace{9\\ldots9}_{n-1}6\\underbrace{0\\ldots0}_{n-1}4 \\)
+
+Tổng các chữ số của Y:
+\\( (n-1)\\times9+6+4=9n+1 \\)
+
+Thử lại với n=3 (X=998): \\( X^2=996004 \\), tổng chữ số \\( =9+9+6+0+0+4=28=9\\times3+1 \\) — khớp!
+
+Với n=2026:
+Tổng các chữ số của Y \\( = 9\\times2026+1=18235 \\)"""
+},
 
     # ---------------- ĐÚNG / SAI (truefalse) ----------------
    {
