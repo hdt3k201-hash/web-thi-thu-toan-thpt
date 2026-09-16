@@ -666,20 +666,52 @@ EXAM_DEFS = [
         ],
         "short": [
             {
-                "content": "Giải phương trình \\( 6x + 4 = 34 \\). Tìm nghiệm x (điền số nguyên).",
-                "answers": ["5"],
-                "explanation": "\\( 6x + 4 = 34 \\Leftrightarrow 6x = 30 \\Leftrightarrow x = 5 \\).",
-            },
-            {
-                "content": "Phương trình \\( x^2 - x - 12 = 0 \\) có nghiệm dương bằng bao nhiêu?",
-                "answers": ["4"],
-                "explanation": "\\( x^2 - x - 12 = (x-4)(x+3) = 0 \\Rightarrow x = 4 \\) hoặc \\( x = -3 \\). Nghiệm dương là 4.",
-            },
-            {
-                "content": "Một cửa hàng có 250 sản phẩm, trong đó 20% là hàng lỗi. Hỏi có bao nhiêu sản phẩm lỗi? (chỉ điền số)",
-                "answers": ["50"],
-                "explanation": "Số sản phẩm lỗi \\( = 250 \\times 20\\% = 50 \\).",
-            },
+  "content": "Đường thẳng \\( y = \\dfrac{1}{2} \\) cắt đồ thị hàm số \\( y = 2\\sin^2 x \\) tại 4 điểm A, B, C, D như hình vẽ. Giá trị của \\( x_B + x_D \\) là \\( \\dfrac{a}{b}\\pi \\). Biết \\( \\dfrac{a}{b} \\) là phân số tối giản. Tính giá trị của \\( 2a+b \\) (điền số nguyên).",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau18_de.PNG",
+  "answers": ["19"],
+  "explanation": "Tương giao đồ thị, giải phương trình lượng giác tìm \\( x_B; x_D \\). Từ đó tính giá trị \\( x_B+x_D \\).\n\nPhương trình hoành độ giao điểm là:\n\n\\( 2\\sin^2 x = \\dfrac{1}{2} \\Leftrightarrow 1-\\cos 2x = \\dfrac{1}{2} \\Leftrightarrow \\cos 2x = \\dfrac{1}{2} \\)\n\n\\( \\Leftrightarrow 2x = \\pm\\dfrac{\\pi}{3}+k2\\pi \\Leftrightarrow x = \\pm\\dfrac{\\pi}{6}+k\\pi \\)\n\nTa thấy \\( x_A, x_B, x_C, x_D \\) là bốn nghiệm dương nhỏ nhất của phương trình trên.\n\nDo đó: \\( x_A=\\dfrac{\\pi}{6}; x_B=\\dfrac{5\\pi}{6}; x_C=\\dfrac{7\\pi}{6}; x_D=\\dfrac{11\\pi}{6} \\Rightarrow x_B+x_D=\\dfrac{8}{3}\\pi \\).\n\nVậy \\( 2a+b = 8.2+3 = 19 \\)."
+},
+{
+  "content": "Cho hình hộp chữ nhật \\( ABCD.A'B'C'D' \\) có các kích thước \\( AB=4, AD=3, AA'=5 \\). Khoảng cách giữa hai đường thẳng \\( AC' \\) và \\( B'C \\) bằng bao nhiêu? (điền dạng phân số a/b, ví dụ 30/19).",
+  "answers": ["30/19"],
+  "explanation": "Trong \\( (BB'C'C) \\) kẻ \\( C'M // B'C \\; (M \\in BC) \\).\n\n\\( \\Rightarrow B'C // (AC'M) \\Rightarrow d(AC';B'C) = d(B'C;(AC'M)) = d(C;(AC'M)) \\).",
+  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau20_loigiai.PNG",
+  "explanation_2": "Kẻ \\( CH \\perp AM; CK \\perp C'H \\).\n\nDo \\( \\begin{cases} CH \\perp AM \\\\ CC' \\perp AM \\end{cases} \\Rightarrow AM \\perp (CC'H) \\Rightarrow AM \\perp CK \\)\n\nMà \\( CK \\perp C'H \\Rightarrow CK \\perp (AC'M) \\Rightarrow d(C;(AC'M)) = CK \\).\n\nTa có: \\( B'C'MC \\) là hình bình hành nên \\( CM = B'C' = 3 \\).\n\n\\( \\dfrac{1}{d^2(B;AM)} = \\dfrac{1}{AB^2}+\\dfrac{1}{BM^2} \\Rightarrow d(B;AM) = \\dfrac{12}{\\sqrt{13}} \\)\n\n\\( \\Rightarrow CH = \\dfrac{1}{2}d(B;AM) = \\dfrac{6}{\\sqrt{13}} \\).\n\nÁp dụng hệ thức lượng trong tam giác vuông \\( C'CH \\) ta có:\n\n\\( \\dfrac{1}{CK^2} = \\dfrac{1}{CH^2}+\\dfrac{1}{CC'^2} \\Rightarrow CK = \\dfrac{30}{19} \\)."
+},
+{
+  "content": "Một vật chuyển động theo quy luật \\( s = -\\dfrac{2}{3}t^3+7t^2+3 \\) với \\( t \\) giây \\( (0 \\le t \\le 7) \\) là khoảng thời gian tính từ lúc vật bắt đầu chuyển động đến khi dừng lại và \\( s \\) (mét) là quãng đường vật đi được trong khoảng thời gian đó. Hỏi khi vật đạt vận tốc là 12 m/s lần thứ 2 thì vật đã chuyển động được bao nhiêu mét? (điền số nguyên).",
+  "answers": ["111"],
+  "explanation": "Vận tốc của vật: \\( v = s' \\). Giải phương trình \\( v=12 \\) tìm \\( t \\), từ đó tính quãng đường vật đã chuyển động.\n\nVận tốc của vật là: \\( v = s' = -2t^2+14t \\).\n\nVận tốc của vật đạt \\( 12 \\, m/s \\) thì \\( -2t^2+14t=12 \\Leftrightarrow 2t^2-14t+12=0 \\Leftrightarrow \\left[\\begin{array}{l} t=1 \\\\ t=6 \\end{array}\\right. \\)\n\n\\( \\Rightarrow \\) Vật đạt vận tốc là \\( 12 \\, m/s \\) lần thứ 2 khi \\( t=6 \\).\n\nLúc đó quãng đường vật đi được là:\n\n\\( s(6) = -\\dfrac{2}{3}.6^3+7.6^2+3 = 111 \\) (mét)."
+},
+{
+  "content": "Cho hàm số \\( y = \\sqrt{2x-x^2} \\). Biết hàm số nghịch biến trên đoạn \\( (a;b) \\). Tính \\( a+2b \\) (điền số nguyên).",
+  "answers": ["5"],
+  "explanation": "Tìm tập xác định, khảo sát hàm số, kết luận khoảng nghịch biến.\n\nTập xác định: \\( D=[0;2] \\).\n\nTa có: \\( y' = \\dfrac{1-x}{\\sqrt{2x-x^2}} = 0 \\Leftrightarrow x=1 \\).\n\nBảng xét dấu:",
+  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau27_loigiai.PNG",
+  "explanation_2": "Từ bảng xét dấu, ta thấy hàm số nghịch biến trên \\( (1;2) \\).\n\nKhi đó: \\( a=1; b=2 \\Rightarrow a+2b = 1+2.2 = 5 \\)."
+},
+          {
+  "content": "Cho phương trình \\( e^x = \\ln(x+a)+a \\), với \\( a \\) là tham số. Có bao nhiêu giá trị nguyên của \\( a \\) thuộc khoảng \\( (0;19) \\) để phương trình có nghiệm dương? (điền số nguyên).",
+  "answers": ["17"],
+  "explanation": "Biến đổi đưa phương trình về dạng hàm đặc trưng đưa phương trình về dạng \\( a = g(x) \\). Khảo sát hàm số \\( g(x) \\) để tìm điều kiện của \\( a \\).\n\nTa có:\n\n\\( e^x = \\ln(x+a)+a \\Leftrightarrow e^x+x = \\ln(x+a)+x+a \\Leftrightarrow e^x+x = e^{\\ln(x+a)}+\\ln(x+a) \\) (1)\n\nXét hàm số \\( f(t) = e^t+t \\) có \\( f'(t) = e^t+1>0, \\forall t \\). Suy ra hàm số \\( f(t) \\) đồng biến trên \\( \\mathbb{R} \\).\n\nDo đó: (1) \\( \\Leftrightarrow f(x) = f[\\ln(x+a)] \\Leftrightarrow x = \\ln(x+a) \\Leftrightarrow a = e^x-x \\).\n\nĐặt \\( g(x) = e^x-x \\Rightarrow g'(x) = e^x-1=0 \\Leftrightarrow x=0 \\).\n\nBảng biến thiên của hàm số \\( g(x) \\):",
+  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau34_loigiai.PNG",
+  "explanation_2": "Để phương trình có nghiệm dương thì \\( a>1 \\).\n\nDo \\( a\\in(0;19) \\) và \\( a\\in\\mathbb{Z} \\) nên \\( a\\in\\{2;3;\\ldots;18\\} \\)\n\nVậy có 17 giá trị nguyên của \\( a \\) để phương trình có nghiệm dương."
+},
+{
+  "content": "Gọi S là tập hợp các ước nguyên dương của 1605632. Chọn ngẫu nhiên một số từ S. Tính xác suất để số được chọn chia hết cho 7 (điền dạng phân số a/b, ví dụ 2/3).",
+  "answers": ["2/3"],
+  "explanation": "Số ước nguyên dương của số A có phân tích thành thừa số nguyên tố \\( A = x_1^{n_1}.x_2^{n_2}\\ldots x_k^{n_k} \\) là \\( (n_1+1)(n_2+1)\\ldots(n_k+1) \\).\n\nTa có: \\( 1605632 = 2^{15}.7^2 \\)\n\nSuy ra số các ước nguyên dương của 1605632 là \\( (15+1)(2+1) = 48 \\).\n\nSố phần tử của không gian mẫu: \\( n(\\Omega) = 48 \\).\n\nTrong đó, số các số chia hết cho 7 là: \\( (15+1).2 = 32 \\).\n\nXác suất cần tìm là: \\( P = \\dfrac{32}{48} = \\dfrac{2}{3} \\)."
+},
+{
+  "content": "Hai cạnh của hình chữ nhật nằm trên hai đường thẳng \\( d_1: 4x-3y+5=0 \\) và \\( d_2: 3x+4y-5=0 \\). Hình chữ nhật có đỉnh \\( A(2;1) \\). Tính diện tích của hình chữ nhật (điền số nguyên).",
+  "answers": ["2"],
+  "explanation": "Tính độ dài hai cạnh kề của hình chữ nhật.\n\nTa có: \\( \\vec{n_{d_1}} = (4;-3); \\vec{n_{d_2}} = (3;4) \\).\n\nDo \\( A \\) không thuộc hai đường thẳng \\( d_1; d_2 \\) và \\( d_1 \\perp d_2 \\) nên độ dài hai cạnh kề nhau của hình chữ nhật bằng khoảng cách từ \\( A \\) đến hai đường thẳng \\( d_1; d_2 \\).\n\nTa có:\n\n\\( d(A;d_1) = \\dfrac{|4.2-3.1+5|}{\\sqrt{4^2+3^2}} = 2 \\).\n\n\\( d(A;d_2) = \\dfrac{|3.2+4.1-5|}{\\sqrt{3^2+4^2}} = 1 \\).\n\n\\( \\Rightarrow S = d(A;d_1).d(A;d_2) = 2.1 = 2 \\)."
+},
+{
+  "content": "Cho phương trình \\( x^2 - 2m|x| + 9 - m = 0 \\). Tìm \\( m \\) để phương trình có 3 nghiệm phân biệt (điền số nguyên).",
+  "answers": ["9"],
+  "explanation": "Đặt \\( |x| = t \\; (t \\ge 0) \\). Biện luận số nghiệm của \\( t \\).\n\nĐặt \\( |x| = t \\; (t \\ge 0) \\) thì phương trình (*) trở thành: \\( t^2-2mt+9-m=0 \\) (1)\n\nĐể phương trình (*) có 3 nghiệm phân biệt thì phương trình (1) phải có nghiệm \\( t=0 \\) và một nghiệm \\( t>0 \\).\n\nKhi \\( t=0 \\Rightarrow m=9 \\) thì (1) \\( \\Leftrightarrow t^2-18t=0 \\Rightarrow \\left[\\begin{array}{l} t=18>0 \\; (TM) \\\\ t=0 \\end{array}\\right. \\)\n\nVậy \\( m=9 \\)."
+},
             {
                 "content": "Tìm bội chung nhỏ nhất (BCNN) của 18 và 24. (chỉ điền số)",
                 "answers": ["72"],
