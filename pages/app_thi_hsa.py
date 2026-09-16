@@ -352,6 +352,35 @@ EXAM_DEFS = [
         "correct": "A",
         "explanation": "Trước tiên biến đổi phương trình về dạng \\(f(x)=a\\) để so sánh với đồ thị hàm số đã cho.\n\nTa có:\n\\[2f(x)-11=0 \\Leftrightarrow f(x)=\\dfrac{11}{2}\\]\n\nSố nghiệm của phương trình \\(f(x)=\\dfrac{11}{2}\\) chính là số giao điểm của đồ thị hàm số \\(y=f(x)\\) với đường thẳng nằm ngang \\(y=\\dfrac{11}{2}=5{,}5\\).\n\nDựa vào bảng biến thiên, ta thấy hàm số có các khoảng biến thiên như sau: đi từ \\(+\\infty\\) giảm xuống 1 (tại \\(x=-1\\)), tăng lên 2 (tại \\(x=0\\)), giảm xuống 1 (tại \\(x=1\\)), rồi tăng ra \\(+\\infty\\).\n\nGiá trị \\(y=5{,}5\\) lớn hơn giá trị cực đại địa phương là 2 (đạt tại \\(x=0\\)), nên đường thẳng \\(y=5{,}5\\) chỉ có thể cắt đồ thị ở hai nhánh ngoài cùng — nhánh bên trái (đi từ \\(+\\infty\\) xuống 1, đoạn \\(x<-1\\)) và nhánh bên phải (đi từ 1 lên \\(+\\infty\\), đoạn \\(x>1\\)).\n\nMỗi nhánh này là một đường liên tục, đơn điệu trải dài từ một giá trị nhỏ hơn 5,5 đến \\(+\\infty\\) (hoặc ngược lại), nên mỗi nhánh cắt đường thẳng \\(y=5{,}5\\) đúng 1 lần. Hai nhánh ở giữa (từ 1 lên 2, và từ 2 xuống 1) không vượt quá giá trị 2, nên không cắt đường thẳng \\(y=5{,}5\\).\n\nVậy tổng cộng có 2 giao điểm, tức phương trình có 2 nghiệm phân biệt. Chọn đáp án A.",
     },
+          {
+  "content": "Cho hình chóp S.ABC có diện tích đáy bằng 9. Mặt phẳng \\( (P) \\) song song với \\( (ABC) \\) cắt đoạn SA tại \\( M \\) sao cho \\( SM = 2MA \\). Diện tích thiết diện của hình chóp S.ABC tạo bởi \\( (P) \\) bằng",
+  "options": {"A": "1", "B": "16/9", "C": "4/81", "D": "4"},
+  "correct": "D",
+  "explanation": "Gọi N, P lần lượt là giao điểm của mặt phẳng \\( (P) \\) và các cạnh SB, SC.\n\nVì \\( (P) // (ABC) \\) nên theo định lí Talet, ta có:\n\\( \\dfrac{SM}{SA} = \\dfrac{SN}{SB} = \\dfrac{SP}{SC} = \\dfrac{2}{3} \\).\n\nKhi đó \\( (P) \\) cắt hình chóp S.ABC theo thiết diện là tam giác MNP đồng dạng với tam giác ABC theo tỉ số \\( k = \\dfrac{2}{3} \\).\n\nVậy \\( S_{\\triangle MNP} = k^2 . S_{\\triangle ABC} = \\left(\\dfrac{2}{3}\\right)^2 . 9 = 4 \\).\n\nĐáp án D.",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de1_cau24.PNG"
+},
+{
+  "content": "Nguyên hàm của hàm số \\( f(x) = 2^x + x \\) là",
+  "options": {
+    "A": "\\( 2^x + x^2 + C \\)",
+    "B": "\\( \\dfrac{2^x}{\\ln 2} + x^2 + C \\)",
+    "C": "\\( 2^x + \\dfrac{x^2}{2} + C \\)",
+    "D": "\\( \\dfrac{2^x}{\\ln 2} + \\dfrac{x^2}{2} + C \\)"
+  },
+  "correct": "D",
+  "explanation": "Sử dụng các công thức nguyên hàm cơ bản:\n\\( \\int a^x dx = \\dfrac{a^x}{\\ln a} + C \\); \\( \\int x^n dx = \\dfrac{x^{n+1}}{n+1} + C \\).\n\nTa có:\n\\( \\int f(x)dx = \\int (2^x + x)dx = \\dfrac{2^x}{\\ln 2} + \\dfrac{x^2}{2} + C \\).\n\nĐáp án D."
+},
+{
+  "content": "Tìm \\( m \\) để góc giữa hai vectơ \\( \\vec{u} = (1;\\log_3 5;\\log_m 2) \\), \\( \\vec{v} = (3;\\log_5 3;4) \\) là góc nhọn.",
+  "options": {
+    "A": "\\( m > \\dfrac{1}{2}, m \\ne 1 \\)",
+    "B": "\\( m > 1 \\)",
+    "C": "\\( 0 < m < \\dfrac{1}{2} \\)",
+    "D": "\\( m > 1 \\) hoặc \\( 0 < m < \\dfrac{1}{2} \\)"
+  },
+  "correct": "D",
+  "explanation": "Để \\( (\\vec{u},\\vec{v}) < 90^\\circ \\Rightarrow \\cos(\\vec{u},\\vec{v}) > 0 \\).\n\n\\( \\Rightarrow \\vec{u}.\\vec{v} > 0 \\)\n\\( \\Leftrightarrow 3 + \\log_3 5.\\log_5 3 + 4\\log_m 2 > 0 \\)\n\n\\( \\Leftrightarrow 4 + 4\\log_m 2 > 0 \\)\n\\( \\Leftrightarrow \\log_m 2 > -1 \\)\n\n\\( \\Leftrightarrow \\left[\\begin{array}{l} m > 1 \\\\ m < \\dfrac{1}{2} \\end{array}\\right. \\)\n\nKết hợp điều kiện \\( m > 0 \\Rightarrow \\left[\\begin{array}{l} m > 1 \\\\ 0 < m < \\dfrac{1}{2} \\end{array}\\right. \\)\n\nĐáp án D."
+},
             {
                 # CÂU VÍ DỤ minh họa cách chèn ẢNH và văn bản SAU ẢNH.
                 # Hãy thay link "image" bằng ảnh thật của bạn (upload lên
