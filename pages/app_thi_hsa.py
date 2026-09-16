@@ -990,10 +990,10 @@ EXAM_DEFS = [
 
 def build_exam(exam_def):
     """Ghép câu trắc nghiệm + điền đáp án của 1 đề (viết tay ở EXAM_DEFS),
-    gán id/số thứ tự, rồi TRỘN XEN KẼ ngẫu nhiên (nhưng cố định theo seed
-    riêng của từng đề) để thứ tự câu 1..N không tách khối như file gốc."""
+    gán id/số thứ tự theo ĐÚNG thứ tự khai báo trong EXAM_DEFS.
+    KHÔNG xáo trộn ở đây nữa — việc xáo trộn được làm riêng cho mỗi lượt
+    làm bài (xem get_shuffled_exam) để mỗi lần vào lại có thứ tự khác."""
     exam_id = exam_def["id"]
-    rng = random.Random(exam_def["seed"])
 
     questions = []
     for q in exam_def["mc4"]:
@@ -1004,11 +1004,6 @@ def build_exam(exam_def):
         q2 = dict(q)
         q2["type"] = "short"
         questions.append(q2)
-
-    rng.shuffle(questions)
-    for idx, q in enumerate(questions, start=1):
-        q["id"] = f"{exam_id}_q{idx:02d}"
-        q["number"] = idx
 
     n_mc4 = len(exam_def["mc4"])
     n_short = len(exam_def["short"])
@@ -1028,6 +1023,26 @@ def get_exam_by_id(exam_id):
         if e["id"] == exam_id:
             return e
     return None
+
+
+def get_shuffled_exam(exam_id, order):
+    """Trả về đề thi với các câu hỏi được sắp lại đúng theo `order`
+    (danh sách chỉ số câu hỏi gốc, đã xáo ngẫu nhiên lúc bắt đầu làm bài),
+    gán lại id/number theo vị trí hiển thị thực tế."""
+    base = get_exam_by_id(exam_id)
+    if not base:
+        return None
+    base_questions = base["questions"]
+    questions = []
+    for pos, orig_idx in enumerate(order, start=1):
+        q = dict(base_questions[orig_idx])
+        q["id"] = f"{exam_id}_q{pos:02d}"
+        q["number"] = pos
+        questions.append(q)
+    return {
+        "id": base["id"], "name": base["name"],
+        "description": base["description"], "questions": questions,
+    }
 
 
 
@@ -1564,9 +1579,14 @@ def start_exam(exam_id):
     exam = get_exam_by_id(exam_id)
     if not exam:
         return redirect(url_for("exam_list"))
+
+    order = list(range(len(exam["questions"])))
+    random.shuffle(order)   # xáo NGẪU NHIÊN THẬT, mỗi lần bắt đầu đều khác
+
     session["attempt"] = {
         "attempt_id": uuid.uuid4().hex[:10],
         "exam_id": exam_id,
+        "question_order": order,
         "start_ts": time.time(),
         "submitted": False,
     }
@@ -1581,7 +1601,7 @@ def take_exam():
         return redirect(url_for("info"))
     if attempt.get("submitted"):
         return redirect(url_for("result"))
-    exam = get_exam_by_id(attempt["exam_id"])
+    exam = get_shuffled_exam(attempt["exam_id"], attempt["question_order"])
     if not exam:
         return redirect(url_for("exam_list"))
     elapsed = time.time() - attempt["start_ts"]
@@ -1599,7 +1619,7 @@ def submit_exam():
     attempt = session.get("attempt")
     if not student or not attempt:
         return redirect(url_for("info"))
-    exam = get_exam_by_id(attempt["exam_id"])
+    exam = get_shuffled_exam(attempt["exam_id"], attempt["question_order"])
     if not exam:
         return redirect(url_for("exam_list"))
 
@@ -1628,7 +1648,7 @@ def result():
     attempt = session.get("attempt")
     if not student or not attempt or not attempt.get("submitted"):
         return redirect(url_for("info"))
-    exam = get_exam_by_id(attempt["exam_id"])
+    exam = get_shuffled_exam(attempt["exam_id"], attempt["question_order"])
     return render_template_string(
         TPL_RESULT, title="Kết quả thi",
         student=student, score=attempt["score"],
@@ -1643,7 +1663,7 @@ def answer_detail():
     attempt = session.get("attempt")
     if not student or not attempt or not attempt.get("submitted"):
         return redirect(url_for("info"))
-    exam = get_exam_by_id(attempt["exam_id"])
+    exam = get_shuffled_exam(attempt["exam_id"], attempt["question_order"])
     _, _, details = score_exam(exam, attempt["answers"])
     return render_template_string(
         TPL_ANSWER_DETAIL, title="Đáp án chi tiết",
