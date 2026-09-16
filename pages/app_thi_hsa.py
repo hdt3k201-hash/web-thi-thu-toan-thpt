@@ -959,8 +959,8 @@ EXAM_DEFS = [
   "content": "Cho hình hộp \\( ABCD.A'B'C'D' \\), trên cạnh \\( AA', BB', CC' \\) lần lượt lấy ba điểm M, N, P sao cho \\( \\dfrac{AM}{AA'}=\\dfrac{3}{4}, \\dfrac{BN}{BB'}=\\dfrac{1}{2}, \\dfrac{CP}{CC'}=\\dfrac{1}{3} \\). Biết rằng (MNP) cắt DD' tại Q. Tính tỷ số \\( \\dfrac{D'Q}{D'D} \\).",
   "options": {"A": "\\( \\dfrac{5}{6} \\)", "B": "\\( \\dfrac{1}{6} \\)", "C": "\\( \\dfrac{7}{12} \\)", "D": "\\( \\dfrac{5}{12} \\)"},
   "correct": "C",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau50_loigiai.PNG",
   "explanation": "Tìm thiết diện.\n\nTa có:\n\n\\( (BB'C'C)//(AA'DD') \\)\n\n\\( (MNP)\\cap(BB'C'C)=NP \\Rightarrow NP//MQ \\)  (1)\n\nVà:\n\n\\( (AABB)//(CCDD) \\)\n\n\\( (MNP)\\cap(AABB)=MN \\Rightarrow MN//PQ \\)  (2)\n\nTừ (1) và (2) suy ra mặt phẳng (MNP) cắt hình hộp \\( ABCD.A'B'C'D' \\) theo thiết diện là hình bình hành MNPQ.",
-  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau50_loigiai.PNG",
   "explanation_2": "Gọi \\( I=AC\\cap BD, K=MP\\cap NQ \\).\n\nDễ dàng có IK là đường trung bình của hai hình thang ACPM và BDQN nên:\n\n\\( IK=\\dfrac{AM+CP}{2}=\\dfrac{BN+DQ}{2} \\)  (3)\n\nSuy ra:\n\n\\( AM=\\dfrac{1}{4}AA' \\)\n\n\\( BN=\\dfrac{1}{2}BB'=\\dfrac{1}{2}AA' \\)\n\n\\( CP=\\dfrac{2}{3}CC'=\\dfrac{2}{3}AA' \\)\n\nDo đó (3) \\( \\Rightarrow DQ=\\dfrac{5}{12}DD' \\).\n\nVậy \\( \\dfrac{D'Q}{D'D}=\\dfrac{7}{12} \\).\n\nĐáp án C."
 },
   {
