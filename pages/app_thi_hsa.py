@@ -645,12 +645,7 @@ EXAM_DEFS = [
                 "correct": "A",
                 "explanation": "\\( f(3) = -2 \\times 3 + 7 = 1 \\). Đáp án A.",
             },
-            {
-                "content": "Một hình chữ nhật có chiều dài 15 cm và chiều rộng 8 cm. Diện tích hình chữ nhật đó bằng",
-                "options": {"A": "23 cm²", "B": "130 cm²", "C": "110 cm²", "D": "120 cm²"},
-                "correct": "D",
-                "explanation": "Diện tích \\( S = 15 \\times 8 = 120 \\) cm². Đáp án D.",
-            },
+           
             {
                 "content": "Cho dãy số liệu: 4, 6, 8, 10, 12. Số trung bình cộng của dãy số liệu trên bằng",
                 "options": {"A": "9", "B": "7", "C": "8", "D": "10"},
@@ -698,6 +693,18 @@ EXAM_DEFS = [
   "options": {"A": "61", "B": "32", "C": "16", "D": "13"},
   "correct": "B",
   "explanation": "Để đồ thị hàm số có ít nhất một tiệm cận đứng nằm bên phải trục tung thì phương trình \\( x^3+(m-4)x+2m=0 \\) có ít nhất 1 nghiệm dương.\n\nTa có:\n\n\\( x^3+(m-4)x+2m=0 \\)\n\n\\( \\Leftrightarrow x^3-4x+mx+2m=0 \\)\n\n\\( \\Leftrightarrow x(x-2)(x+2)+m(x+2)=0 \\)\n\n\\( \\Leftrightarrow (x+2)(x^2-2x+m)=0 \\)\n\n\\( \\Leftrightarrow \\left[\\begin{array}{l} x=-2 \\\\ x^2-2x+m=0 \\; (*) \\end{array}\\right. \\)\n\nĐể (*) có ít nhất 1 nghiệm dương thì:\n\nTH1: (*) có 2 nghiệm trái dấu \\( \\Leftrightarrow m<0 \\)\n\nMà \\( m\\in[-30;30]; m\\in\\mathbb{Z} \\) nên \\( m\\in\\{-30;-29;\\ldots;-1\\} \\).\n\nTH2: (*) có 2 nghiệm phân biệt \\( 0\\le x_1<x_2 \\)\n\n\\( \\Leftrightarrow \\begin{cases} \\Delta'=1-m>0 \\\\ x_1x_2=m\\ge 0 \\\\ x_1+x_2=2>0 \\end{cases} \\Leftrightarrow 0\\le m<1 \\).\n\nMà \\( m\\in[-30;30]; m\\in\\mathbb{Z} \\) nên \\( m=0 \\).\n\nTH3: (*) có nghiệm kép lớn hơn 0.\n\n\\( \\Leftrightarrow \\begin{cases} \\Delta'=1-m=0 \\\\ x_1x_2=m>0 \\end{cases} \\Leftrightarrow 0<m\\le 1 \\).\n\nMà \\( m\\in[-30;30]; m\\in\\mathbb{Z} \\) nên \\( m=1 \\).\n\nVậy \\( m\\in\\{-30;-29;\\ldots;1\\} \\Rightarrow \\) có 32 giá trị nguyên của \\( m \\) thỏa mãn yêu cầu bài toán.\n\nĐáp án B."
+},
+          {
+  "content": "Hàm số \\( y = 3\\cos\\left(\\dfrac{\\pi}{4}-mx\\right) \\) tuần hoàn có chu kì \\( T=3\\pi \\) khi",
+  "options": {"A": "\\( m=\\pm\\dfrac{3}{2} \\)", "B": "\\( m=\\pm 1 \\)", "C": "\\( m=\\pm\\dfrac{2}{3} \\)", "D": "\\( m=\\pm 2 \\)"},
+  "correct": "C",
+  "explanation": "Tìm chu kì của hàm số lượng giác.\n\nHàm số \\( y=3\\cos\\left(\\dfrac{\\pi}{4}-mx\\right) \\) có nghĩa \\( \\forall x\\in\\mathbb{R} \\Leftrightarrow D=\\mathbb{R} \\).\n\nChu kì của hàm số \\( T=\\dfrac{2\\pi}{|-m|}=3\\pi \\Leftrightarrow m=\\pm\\dfrac{2}{3} \\).\n\nĐáp án C."
+},
+{
+  "content": "Giả sử \\( x_1, x_2 \\) là nghiệm của phương trình \\( x^2-(m+2)x+m^2+1=0 \\). Khi đó giá trị lớn nhất của biểu thức \\( P=4(x_1+x_2)-x_1x_2 \\) bằng:",
+  "options": {"A": "\\( \\dfrac{95}{9} \\)", "B": "11", "C": "7", "D": "\\( -\\dfrac{1}{9} \\)"},
+  "correct": "A",
+  "explanation": "Tìm điều kiện để phương trình bậc hai có hai nghiệm \\( \\Leftrightarrow \\Delta \\ge 0 \\).\n\nÁp dụng định lý Viet để tìm \\( x_1+x_2 \\) và \\( x_1x_2 \\) theo \\( m \\). Từ đó tính giá trị lớn nhất của \\( P \\).\n\nĐể phương trình có hai nghiệm \\( x_1; x_2 \\) thì\n\n\\( \\Delta = (m+2)^2-4(m^2+1) \\ge 0 \\Leftrightarrow -3m^2+4m \\ge 0 \\Leftrightarrow 0 \\le m \\le \\dfrac{4}{3} \\).\n\nÁp dụng hệ thức Viet ta có: \\( \\begin{cases} x_1+x_2=m+2 \\\\ x_1.x_2=m^2+1 \\end{cases} \\)\n\nKhi đó: \\( P = 4(m+2)-(m^2+1) = -m^2+4m+7 \\).\n\nXét hàm số \\( P(m)=-m^2+4m+7, \\forall m\\in\\left[0;\\dfrac{4}{3}\\right] \\) có hệ số \\( a<0 \\), hoành độ đỉnh \\( x=2 \\) nên \\( P(m) \\) đồng biến trên \\( \\left[0;\\dfrac{4}{3}\\right] \\Rightarrow \\displaystyle\\max_{\\left[0;\\frac{4}{3}\\right]} P = P\\left(\\dfrac{4}{3}\\right) = \\dfrac{95}{9} \\).\n\nĐáp án A."
 },
             {
                 "content": "Một nhóm có 9 học sinh. Hỏi có bao nhiêu cách chọn ra 4 học sinh từ nhóm đó (không phân biệt thứ tự)?",
@@ -764,6 +771,11 @@ EXAM_DEFS = [
   "content": "Biết \\( \\displaystyle\\lim_{x\\to 3}\\dfrac{x^2+bx+c}{x-3}=8 \\; (b,c\\in\\mathbb{R}) \\). Giá trị \\( P=b+c \\) bằng bao nhiêu? (điền số nguyên).",
   "answers": ["-13"],
   "explanation": "Nhận dạng giới hạn vô định \\( \\dfrac{0}{0} \\).\n\nVì \\( \\displaystyle\\lim_{x\\to 3}\\dfrac{x^2+bx+c}{x-3}=8 \\) là hữu hạn nên phương trình \\( x^2+bx+c=0 \\) có nghiệm \\( x=3 \\)\n\n\\( \\Leftrightarrow 3b+c+9=0 \\Leftrightarrow c=-9-3b \\)\n\nKhi đó\n\n\\( \\displaystyle\\lim_{x\\to 3}\\dfrac{x^2+bx+c}{x-3} = \\lim_{x\\to 3}\\dfrac{x^2+bx-9-3b}{x-3} = \\lim_{x\\to 3}\\dfrac{(x-3)(x+3+b)}{x-3} \\)\n\n\\( = \\lim_{x\\to 3}(x+3+b) = 8 \\Leftrightarrow 6+b=8 \\Leftrightarrow b=2 \\Rightarrow c=-15 \\)\n\nVậy \\( P=b+c=-13 \\)."
+},
+          {
+  "content": "Một đề kiểm tra trắc nghiệm 45 phút môn Tiếng Anh của lớp 10 là một đề gồm 25 câu hỏi độc lập, mỗi câu hỏi có 4 đáp án trả lời trong đó chỉ có một đáp án đúng. Mỗi câu trả lời đúng được 0,4 điểm, câu trả lời sai không được điểm. Bạn Bình vì học rất kém môn Tiếng Anh nên làm bài bằng cách chọn ngẫu nhiên câu trả lời cho tất cả 25 câu. Gọi A là biến cố \"Bình làm đúng k câu\", biết xác suất của biến cố A đạt giá trị lớn nhất. Tính k (điền số nguyên).",
+  "answers": ["6"],
+  "explanation": "Vì đề thi có 25 câu và mỗi câu có 4 phương án trả lời nên xác suất để Bình làm đúng \\( k \\) câu là\n\n\\( P = C_{25}^k.\\left(\\dfrac{1}{4}\\right)^k.\\left(\\dfrac{3}{4}\\right)^{25-k} = \\dfrac{C_{25}^k.3^{25-k}}{4^{25}} \\)\n\nvới \\( 0 \\le k \\le 25 \\).\n\nXét hàm \\( f(k) = C_{25}^k.3^{25-k} \\) với \\( k\\in\\mathbb{N} \\) và \\( k\\le 25 \\).\n\nTa có \\( f(k) \\) lớn nhất \\( \\Leftrightarrow \\begin{cases} f(k)\\ge f(k-1) \\\\ f(k)\\ge f(k+1) \\end{cases} \\Leftrightarrow 6,5\\ge k\\ge 5,5 \\Rightarrow k=6 \\).\n\nSuy ra \\( \\displaystyle\\max_{0\\le k\\le 25} f(k) = f(6) \\).\n\nVậy \\( k=6 \\)."
 },
 {
   "content": "Một đề kiểm tra trắc nghiệm 45 phút môn Tiếng Anh của lớp 10 là một đề gồm 25 câu hỏi độc lập, mỗi câu hỏi có 4 đáp án trả lời trong đó chỉ có một đáp án đúng. Mỗi câu trả lời đúng được 0,4 điểm, câu trả lời sai không được điểm. Bạn Bình vì học rất kém môn Tiếng Anh nên làm bài bằng cách chọn ngẫu nhiên câu trả lời cho tất cả 25 câu. Gọi A là biến cố \"Bình làm đúng k câu\", biết xác suất của biến cố A đạt giá trị lớn nhất. Tính k (điền số nguyên).",
