@@ -4836,57 +4836,117 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
            # ==================== ĐỀ 7 - CÂU 1 ĐẾN CÂU 4 ====================
 
             # ---------------- KÉO THẢ (dragdrop) ----------------
+            # ==================== ĐỀ 7 - CÂU 1 ĐẾN CÂU 4 ====================
+
+            # ---------------- KÉO THẢ (dragdrop) ----------------
             {
-                "id": "de7_dd_01", 
-                "type": "dragdrop",
-                "content": "Một vòng quay Mặt Trời (Ferris wheel) có bán kính 50m, tâm vòng quay nằm ở độ cao 60m so với mặt đất. Vòng quay quay đều và mất 15 phút để hoàn thành một vòng.<br>Giả sử tại thời điểm $t = 0$ (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất của vòng quay. Độ cao của cabin so với mặt đất (tính bằng mét) theo thời gian $t$ được mô hình hóa bởi hàm số:<br>$h(t) = A\\cos(\\omega t) + B$ (với $A < 0$)<br>Kéo và thả các giá trị thích hợp vào chỗ trống để hoàn thiện mô hình và trả lời câu hỏi:",
+                "id": 'de7_dd_01',
+                "type": 'dragdrop',
+                "content": """Một vòng quay Mặt Trời (Ferris wheel) có bán kính 50m, tâm vòng quay nằm ở độ cao 60m so với mặt đất. Vòng quay quay đều và mất 15 phút để hoàn thành một vòng.
+
+Giả sử tại thời điểm \\( t = 0 \\) (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất của vòng quay. Độ cao của cabin so với mặt đất (tính bằng mét) theo thời gian \\( t \\) được mô hình hóa bởi hàm số:
+\\( h(t) = A\\cos(\\omega t) + B \\) (với \\( A < 0 \\))
+
+Kéo và thả các giá trị thích hợp vào chỗ trống để hoàn thiện mô hình và trả lời câu hỏi:""",
                 "options_pool": [
-                    "50",
-                    "-50",
-                    "$\\dfrac{2\\pi}{15}$",
-                    "$\\dfrac{15}{2\\pi}$",
-                    "60",
-                    "85",
-                    "5",
-                    "10"
+                    '50',
+                    '-50',
+                    '\\dfrac{2\\pi}{15}',
+                    '\\dfrac{15}{2\\pi}',
+                    '60',
+                    '85',
+                    '5',
+                    '10'
                 ],
                 "blanks": [
                     {"label": "1) Hàm số có: A =", "answer": "-50"},
-                    {"label": "ω =", "answer": "$\\dfrac{2\\pi}{15}$"},
+                    {"label": "ω =", "answer": "\\dfrac{2\\pi}{15}"},
                     {"label": "B =", "answer": "60"},
                     {"label": "2) Thời điểm đầu tiên cabin đạt độ cao 85m là vào phút thứ", "answer": "5"}
                 ],
                 "points": 1,
-                "explanation": "Độ cao tâm vòng quay chính là vị trí cân bằng của dao động, nên $B = 60$.<br><br>Bán kính vòng quay chính là biên độ, nên $|A| = 50$.<br><br>Tại $t = 0$, cabin ở vị trí thấp nhất nên $h(0) = 60 - 50 = 10$.<br><br>Thay vào hàm số:<br>$A\\cos(0) + 60 = 10$<br>$\\Rightarrow A = -50$ (thỏa mãn điều kiện $A < 0$).<br><br>Chu kì quay là $T = 15$ phút nên:<br>$\\omega = \\dfrac{2\\pi}{T} = \\dfrac{2\\pi}{15}$<br><br>Vậy hàm số mô phỏng độ cao là:<br>$h(t) = -50\\cos\\left(\\dfrac{2\\pi}{15}t\\right) + 60$<br><br>Để tìm thời điểm cabin đạt độ cao 85m, ta giải:<br>$-50\\cos\\left(\\dfrac{2\\pi}{15}t\\right) + 60 = 85$<br>$\\Leftrightarrow \\cos\\left(\\dfrac{2\\pi}{15}t\\right) = -\\dfrac{1}{2}$<br><br>Nghiệm dương nhỏ nhất ứng với:<br>$\\dfrac{2\\pi}{15}t = \\dfrac{2\\pi}{3} \\Leftrightarrow t = 5$ (phút)<br><br>Vậy kết quả điền: A = -50; ω = $\\dfrac{2\\pi}{15}$; B = 60; thời điểm đạt 85m là phút thứ 5."
+                "explanation": """Độ cao tâm vòng quay chính là vị trí cân bằng của dao động, nên \\( B = 60 \\).
+
+Bán kính vòng quay chính là biên độ, nên \\( |A| = 50 \\).
+
+Tại \\( t = 0 \\), cabin ở vị trí thấp nhất nên \\( h(0) = 60 - 50 = 10 \\).
+
+Thay vào hàm số:
+\\( A\\cos(0) + 60 = 10 \\Rightarrow A = -50 \\) (thỏa mãn điều kiện \\( A < 0 \\)).
+
+Chu kì quay là \\( T = 15 \\) phút nên:
+\\( \\omega = \\dfrac{2\\pi}{T} = \\dfrac{2\\pi}{15} \\)
+
+Vậy hàm số mô phỏng độ cao là:
+\\( h(t) = -50\\cos\\left(\\dfrac{2\\pi}{15}t\\right) + 60 \\)
+
+Để tìm thời điểm cabin đạt độ cao 85m, ta giải:
+\\( -50\\cos\\left(\\dfrac{2\\pi}{15}t\\right) + 60 = 85 \\Leftrightarrow \\cos\\left(\\dfrac{2\\pi}{15}t\\right) = -\\dfrac{1}{2} \\)
+
+Nghiệm dương nhỏ nhất ứng với:
+\\( \\dfrac{2\\pi}{15}t = \\dfrac{2\\pi}{3} \\Leftrightarrow t = 5 \\) (phút)
+
+Vậy kết quả điền: A = -50; ω = \\( \\dfrac{2\\pi}{15} \\); B = 60; thời điểm đạt 85m là phút thứ 5.""",
             },
 
             # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
             {
-                "id": "de7_mc_02",
-                "type": "mc4",
-                "content": "Cho hàm số lượng giác $y = a\\sin(bx+c)+d$ có đồ thị như hình vẽ bên dưới. Biết $a > 0$, $b > 0$ và $c \\in (-\\pi, 0)$. Tính giá trị của biểu thức $P = a + b + c + d$.",
-                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau2-de7.PNG',
+                "id": 'de7_mc_02',
+                "type": 'mc4',
+                "content": 'Cho hàm số lượng giác \\( y = a\\sin(bx+c)+d \\) có đồ thị như hình vẽ bên dưới. Biết \\( a > 0 \\), \\( b > 0 \\) và \\( c \\in (-\\pi, 0) \\). Tính giá trị của biểu thức \\( P = a + b + c + d \\).',
+                "image": 'images/cau2-de7.PNG',
                 "options": {
-                    "A": "$P = 6 - \\dfrac{\\pi}{3}$",
-                    "B": "$P = 4 + \\dfrac{\\pi}{3}$",
-                    "C": "$P = 5 - \\dfrac{\\pi}{6}$",
-                    "D": "$P = 3 + \\dfrac{\\pi}{2}$"
+                    'A': '\\( P = 6 - \\dfrac{\\pi}{3} \\)',
+                    'B': '\\( P = 4 + \\dfrac{\\pi}{3} \\)',
+                    'C': '\\( P = 5 - \\dfrac{\\pi}{6} \\)',
+                    'D': '\\( P = 3 + \\dfrac{\\pi}{2} \\)',
                 },
-                "correct": "A",
+                "correct": 'A',
                 "points": 1,
-                "explanation": "Quan sát đồ thị ta thấy giá trị lớn nhất là $y_{max} = 4$ và giá trị nhỏ nhất là $y_{min} = -2$.<br><br>Từ đó suy ra đường trung bình và biên độ:<br>$d = \\dfrac{y_{max}+y_{min}}{2} = \\dfrac{4+(-2)}{2} = 1$<br>$a = \\dfrac{y_{max}-y_{min}}{2} = \\dfrac{4-(-2)}{2} = 3$<br><br>Trên trục hoành, khoảng cách từ điểm cực tiểu $x = \\dfrac{2\\pi}{3}$ đến điểm cực đại liền sau đó $x = \\dfrac{7\\pi}{6}$ đúng bằng nửa chu kì:<br>$\\dfrac{T}{2} = \\dfrac{7\\pi}{6} - \\dfrac{2\\pi}{3} = \\dfrac{\\pi}{2}$<br>$\\Rightarrow T = \\pi \\Rightarrow b = \\dfrac{2\\pi}{T} = 2$<br><br>Hàm số lúc này có dạng $y = 3\\sin(2x+c) + 1$.<br><br>Đồ thị đi qua điểm $\\left(\\dfrac{\\pi}{6}; 1\\right)$ theo chiều đi lên (vì đây là đoạn đồ thị đang tăng để tới điểm cực đại), nên:<br>$3\\sin\\left(2\\cdot\\dfrac{\\pi}{6}+c\\right)+1 = 1$<br>$\\Leftrightarrow \\sin\\left(\\dfrac{\\pi}{3}+c\\right) = 0$<br>$\\Leftrightarrow \\dfrac{\\pi}{3}+c = k\\pi$<br><br>Với $k = 0$: $c = -\\dfrac{\\pi}{3}$, giá trị này thỏa mãn điều kiện $c \\in (-\\pi, 0)$ (các giá trị $k$ khác cho $c$ nằm ngoài khoảng này).<br><br>Vậy:<br>$P = a+b+c+d = 3+2-\\dfrac{\\pi}{3}+1 = 6-\\dfrac{\\pi}{3}$<br><br>Chọn đáp án A."
+                "explanation": """Quan sát đồ thị ta thấy giá trị lớn nhất là \\( y_{max} = 4 \\) và giá trị nhỏ nhất là \\( y_{min} = -2 \\).
+
+Từ đó suy ra đường trung bình và biên độ:
+\\( d = \\dfrac{y_{max}+y_{min}}{2} = \\dfrac{4+(-2)}{2} = 1 \\)
+\\( a = \\dfrac{y_{max}-y_{min}}{2} = \\dfrac{4-(-2)}{2} = 3 \\)
+
+Trên trục hoành, khoảng cách từ điểm cực tiểu \\( x = \\dfrac{2\\pi}{3} \\) đến điểm cực đại liền sau đó \\( x = \\dfrac{7\\pi}{6} \\) đúng bằng nửa chu kì:
+\\( \\dfrac{T}{2} = \\dfrac{7\\pi}{6} - \\dfrac{2\\pi}{3} = \\dfrac{\\pi}{2} \\Rightarrow T = \\pi \\Rightarrow b = \\dfrac{2\\pi}{T} = 2 \\)
+
+Hàm số lúc này có dạng \\( y = 3\\sin(2x+c) + 1 \\).
+
+Đồ thị đi qua điểm \\( \\left(\\dfrac{\\pi}{6}; 1\\right) \\) theo chiều đi lên (vì đây là đoạn đồ thị đang tăng để tới điểm cực đại), nên:
+\\( 3\\sin\\left(2\\cdot\\dfrac{\\pi}{6}+c\\right)+1 = 1 \\Leftrightarrow \\sin\\left(\\dfrac{\\pi}{3}+c\\right) = 0 \\Leftrightarrow \\dfrac{\\pi}{3}+c = k\\pi \\)
+
+Với \\( k = 0 \\): \\( c = -\\dfrac{\\pi}{3} \\), giá trị này thỏa mãn điều kiện \\( c \\in (-\\pi, 0) \\) (các giá trị \\( k \\) khác cho \\( c \\) nằm ngoài khoảng này).
+
+Vậy:
+\\( P = a+b+c+d = 3+2-\\dfrac{\\pi}{3}+1 = 6-\\dfrac{\\pi}{3} \\)
+
+Chọn đáp án A.""",
             },
 
             # ---------------- TRẢ LỜI NGẮN (short) ----------------
             {
-                "id": "de7_sh_03",
-                "type": "short",
-                "content": "Tính tổng tất cả các nghiệm của phương trình \\( \\sin^2 x - \\cos x = 1 \\) trên đoạn \\( [0; 2\\pi] \\).",
+                "id": 'de7_sh_03',
+                "type": 'short',
+                "content": 'Tính tổng tất cả các nghiệm của phương trình \\( \\sin^2 x - \\cos x = 1 \\) trên đoạn \\( [0; 2\\pi] \\).',
                 "blanks": [
-                    {"label": "Tổng các nghiệm =", "answers": ["3\\pi", "3\\pi", "3pi"]}
+                    {"label": 'Tổng các nghiệm =', "answers": ['3\\pi', '3pi']},
                 ],
                 "points": 1,
-                "explanation": "Thay \\( \\sin^2 x = 1 - \\cos^2 x \\), phương trình trở thành:<br>\\( (1-\\cos^2 x) - \\cos x = 1 \\)<br>\\( \\Leftrightarrow \\cos^2 x + \\cos x = 0 \\)<br>\\( \\Leftrightarrow \\cos x(\\cos x + 1) = 0 \\)<br><br>Ta xét hai trường hợp trên đoạn \\( [0; 2\\pi] \\):<br><br>- \\( \\cos x = 0 \\): cho hai nghiệm \\( x = \\dfrac{\\pi}{2} \\) và \\( x = \\dfrac{3\\pi}{2} \\).<br><br>- \\( \\cos x = -1 \\): cho một nghiệm duy nhất \\( x = \\pi \\).<br><br>Vậy tổng tất cả các nghiệm là:<br>\\( S = \\dfrac{\\pi}{2} + \\dfrac{3\\pi}{2} + \\pi = 3\\pi \\)<br><br>Đáp số cần điền: \\( 3\\pi \\)."
+                "explanation": """Thay \\( \\sin^2 x = 1 - \\cos^2 x \\), phương trình trở thành:
+\\( (1-\\cos^2 x) - \\cos x = 1 \\Leftrightarrow \\cos^2 x + \\cos x = 0 \\Leftrightarrow \\cos x(\\cos x + 1) = 0 \\)
+
+Ta xét hai trường hợp trên đoạn \\( [0; 2\\pi] \\):
+
+- \\( \\cos x = 0 \\): cho hai nghiệm \\( x = \\dfrac{\\pi}{2} \\) và \\( x = \\dfrac{3\\pi}{2} \\).
+
+- \\( \\cos x = -1 \\): cho một nghiệm duy nhất \\( x = \\pi \\).
+
+Vậy tổng tất cả các nghiệm là:
+\\( S = \\dfrac{\\pi}{2} + \\dfrac{3\\pi}{2} + \\pi = 3\\pi \\)
+
+Đáp số cần điền: \\( 3\\pi \\).""",
             },
 
             # ---------------- ĐÚNG / SAI (truefalse) ----------------
@@ -4898,10 +4958,20 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                     {"text": "Phương trình (1) có thể phân tích thành nhân tử dạng \\( (\\cos x - m)(2\\cos x - 1) = 0 \\).", "correct": True},
                     {"text": "Khi \\( m = 1 \\), phương trình có đúng 2 nghiệm phân biệt trên đoạn \\( [0; 2\\pi] \\).", "correct": False},
                     {"text": "Để phương trình có đúng 3 nghiệm phân biệt trên đoạn \\( [0; 2\\pi] \\) thì \\( m = -1 \\).", "correct": True},
-                    {"text": "Có tồn tại giá trị thực của \\( m \\) để phương trình đã cho hoàn toàn vô nghiệm.", "correct": False}
+                    {"text": "Có tồn tại giá trị thực của \\( m \\) để phương trình đã cho hoàn toàn vô nghiệm.", "correct": False},
                 ],
                 "points": 1,
-                "explanation": "Phương trình đã cho là phương trình bậc hai theo ẩn \\( \\cos x \\). Bằng cách nhẩm nghiệm, ta phân tích được:<br><br>\\( (2\\cos x - 1)(\\cos x - m) = 0 \\)<br>\\( \\Leftrightarrow \\cos x = \\dfrac{1}{2} \\text{ hoặc } \\cos x = m \\)<br><br>a) ĐÚNG:<br>Phép tách nhân tử ở trên là chính xác (chỉ khác thứ tự viết so với đề bài).<br><br>b) SAI:<br>Khi \\( m = 1 \\), nhánh \\( \\cos x = 1 \\) cho 2 nghiệm là \\( x = 0 \\) và \\( x = 2\\pi \\).<br>Nhánh \\( \\cos x = \\dfrac{1}{2} \\) luôn cho 2 nghiệm \\( x = \\dfrac{\\pi}{3} \\) và \\( x = \\dfrac{5\\pi}{3} \\).<br>Vậy tổng cộng có 4 nghiệm phân biệt, không phải 2.<br><br>c) ĐÚNG:<br>Nhánh \\( \\cos x = \\dfrac{1}{2} \\) luôn cho cố định 2 nghiệm trên \\( [0; 2\\pi] \\). Để phương trình có đúng 3 nghiệm, nhánh \\( \\cos x = m \\) phải sinh thêm đúng 1 nghiệm mới (không trùng 2 nghiệm trên).<br>Điều này chỉ xảy ra khi \\( m \\) rơi vào giá trị biên \\( m = 1 \\) hoặc \\( m = -1 \\). Nhưng \\( m = 1 \\) lại cho 2 nghiệm (như câu b), nên chỉ \\( m = -1 \\) (cho nghiệm duy nhất \\( x = \\pi \\)) là thỏa mãn.<br><br>d) SAI:<br>Vì phương trình luôn chứa nhân tử \\( \\left(\\cos x - \\dfrac{1}{2}\\right) \\), nên nó luôn có ít nhất 2 nghiệm \\( x = \\dfrac{\\pi}{3} \\) và \\( x = \\dfrac{5\\pi}{3} \\), bất kể \\( m \\) nhận giá trị nào.<br>Do đó không tồn tại \\( m \\) làm phương trình vô nghiệm."
+                "explanation": """Phương trình đã cho là phương trình bậc hai theo ẩn \\( \\cos x \\). Bằng cách nhẩm nghiệm, ta phân tích được:
+
+\\( (2\\cos x - 1)(\\cos x - m) = 0 \\Leftrightarrow \\cos x = \\dfrac{1}{2} \\text{ hoặc } \\cos x = m \\)
+
+a) ĐÚNG: Phép tách nhân tử ở trên là chính xác (chỉ khác thứ tự viết so với đề bài).
+
+b) SAI: Khi \\( m = 1 \\), nhánh \\( \\cos x = 1 \\) cho 2 nghiệm là \\( x = 0 \\) và \\( x = 2\\pi \\). Nhánh \\( \\cos x = \\dfrac{1}{2} \\) luôn cho 2 nghiệm \\( x = \\dfrac{\\pi}{3} \\) và \\( x = \\dfrac{5\\pi}{3} \\). Vậy tổng cộng có 4 nghiệm phân biệt, không phải 2.
+
+c) ĐÚNG: Nhánh \\( \\cos x = \\dfrac{1}{2} \\) luôn cho cố định 2 nghiệm trên \\( [0; 2\\pi] \\). Để phương trình có đúng 3 nghiệm, nhánh \\( \\cos x = m \\) phải sinh thêm đúng 1 nghiệm mới (không trùng 2 nghiệm trên). Điều này chỉ xảy ra khi \\( m \\) rơi vào giá trị biên \\( m = 1 \\) hoặc \\( m = -1 \\). Nhưng \\( m = 1 \\) lại cho 2 nghiệm (như câu b), nên chỉ \\( m = -1 \\) (cho nghiệm duy nhất \\( x = \\pi \\)) là thỏa mãn.
+
+d) SAI: Vì phương trình luôn chứa nhân tử \\( \\left(\\cos x - \\dfrac{1}{2}\\right) \\), nên nó luôn có ít nhất 2 nghiệm \\( x = \\dfrac{\\pi}{3} \\) và \\( x = \\dfrac{5\\pi}{3} \\), bất kể \\( m \\) nhận giá trị nào. Do đó không tồn tại \\( m \\) làm phương trình vô nghiệm.""",
             },
    
          ], # Đóng danh sách questions của Đề 7
