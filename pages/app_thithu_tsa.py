@@ -4839,6 +4839,9 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
             # ==================== ĐỀ 7 - CÂU 1 ĐẾN CÂU 4 ====================
 
             # ---------------- KÉO THẢ (dragdrop) ----------------
+           # ==================== ĐỀ 7 - CÂU 1 ĐẾN CÂU 4 ====================
+
+            # ---------------- KÉO THẢ (dragdrop) ----------------
             {
                 "id": 'de7_dd_01',
                 "type": 'dragdrop',
@@ -4851,8 +4854,8 @@ Kéo và thả các giá trị thích hợp vào chỗ trống để hoàn thi�
                 "options_pool": [
                     '50',
                     '-50',
-                    '\\dfrac{2\\pi}{15}',
-                    '\\dfrac{15}{2\\pi}',
+                    '$\\dfrac{2\\pi}{15}$',
+                    '$\\dfrac{15}{2\\pi}$',
                     '60',
                     '85',
                     '5',
@@ -4860,7 +4863,7 @@ Kéo và thả các giá trị thích hợp vào chỗ trống để hoàn thi�
                 ],
                 "blanks": [
                     {"label": "1) Hàm số có: A =", "answer": "-50"},
-                    {"label": "ω =", "answer": "\\dfrac{2\\pi}{15}"},
+                    {"label": "ω =", "answer": "$\\dfrac{2\\pi}{15}$"},
                     {"label": "B =", "answer": "60"},
                     {"label": "2) Thời điểm đầu tiên cabin đạt độ cao 85m là vào phút thứ", "answer": "5"}
                 ],
@@ -4894,7 +4897,7 @@ Vậy kết quả điền: A = -50; ω = \\( \\dfrac{2\\pi}{15} \\); B = 60; th�
                 "id": 'de7_mc_02',
                 "type": 'mc4',
                 "content": 'Cho hàm số lượng giác \\( y = a\\sin(bx+c)+d \\) có đồ thị như hình vẽ bên dưới. Biết \\( a > 0 \\), \\( b > 0 \\) và \\( c \\in (-\\pi, 0) \\). Tính giá trị của biểu thức \\( P = a + b + c + d \\).',
-               "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau2-de7.PNG',
+                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau2-de7.PNG',
                 "options": {
                     'A': '\\( P = 6 - \\dfrac{\\pi}{3} \\)',
                     'B': '\\( P = 4 + \\dfrac{\\pi}{3} \\)',
