@@ -154,12 +154,47 @@ EXAM_DEFS = [
         "name": "Đề thi tham khảo số 1 - Đánh giá năng lực học sinh THPT 2025",
         "seed": 2025101,   # để trộn thứ tự xen kẽ trắc nghiệm/điền đáp án cố định
         "mc4": [
-            {
-                "content": "Giải phương trình \\( 3x - 5 = 16 \\). Nghiệm của phương trình là",
-                "options": {"A": "7", "B": "6", "C": "8", "D": "5"},
-                "correct": "A",
-                "explanation": "\\( 3x - 5 = 16 \\Leftrightarrow 3x = 21 \\Leftrightarrow x = 7 \\). Đáp án A.",
-            },
+                {
+        "content": "Cho hàm số \\(y=\\begin{cases}x, \\text{ khi } x\\ge 0\\\\-x, \\text{ khi } x<0\\end{cases}\\). Khẳng định nào dưới đây đúng?",
+        "options": {
+            "A": "Hàm số không có đạo hàm tại \\(x=0\\)",
+            "B": "\\(y'_{(0)}=1\\)",
+            "C": "\\(y'_{(0)}=0\\)",
+            "D": "\\(y'_{(0)}=-1\\)",
+        },
+        "correct": "A",
+        "explanation": "Đây chính là hàm số \\(y=|x|\\), viết dưới dạng từng khoảng. Ta xét đạo hàm bên trái và bên phải tại \\(x=0\\).\n\nĐạo hàm của hàm số trên từng khoảng là:\n\\[y'=\\begin{cases}1, & x\\ge 0\\\\-1, & x<0\\end{cases}\\]\n\nDo đó:\n\\[y'_{(0^+)}=1 \\quad \\text{và} \\quad y'_{(0^-)}=-1\\]\n\nHai đạo hàm một bên này khác nhau (\\(1\\ne -1\\)), nghĩa là đạo hàm tại \\(x=0\\) không tồn tại (không có một giá trị đạo hàm duy nhất tại đó).\n\nVậy hàm số không có đạo hàm tại \\(x=0\\). Chọn đáp án A.",
+    },
+    {
+        "content": "Thời gian chạy 50m của 20 học sinh được ghi lại trong bảng dưới đây:\n\n| Thời gian (giây) | 8,3 | 8,4 | 8,5 | 8,7 | 8,8 |\n|---|---|---|---|---|---|\n| Tần số | 2 | 3 | 9 | 5 | 1 |\n\nSố trung bình cộng thời gian chạy của học sinh là:",
+        "options": {"A": "8,54", "B": "4", "C": "8,50", "D": "8,53"},
+        "correct": "D",
+        "explanation": "Với mẫu số liệu không ghép nhóm, số trung bình cộng được tính bằng cách lấy tổng của (giá trị × tần số tương ứng) rồi chia cho tổng số học sinh (tổng tần số).\n\nTổng số học sinh: \\(2+3+9+5+1=20\\) (khớp với đề bài).\n\nÁp dụng công thức:\n\\[\\bar{x}=\\dfrac{8{,}3\\times 2+8{,}4\\times 3+8{,}5\\times 9+8{,}7\\times 5+8{,}8\\times 1}{20}\\]\n\nTính tử số:\n\\[8{,}3\\times2=16{,}6;\\quad 8{,}4\\times3=25{,}2;\\quad 8{,}5\\times9=76{,}5;\\quad 8{,}7\\times5=43{,}5;\\quad 8{,}8\\times1=8{,}8\\]\n\\[16{,}6+25{,}2+76{,}5+43{,}5+8{,}8=170{,}6\\]\n\nVậy:\n\\[\\bar{x}=\\dfrac{170{,}6}{20}=8{,}53\\]\n\nChọn đáp án D.",
+    },
+    {
+        "content": "Chu kì của hàm số \\(y=\\sin\\left(\\dfrac{2}{5}x\\right).\\cos\\left(\\dfrac{2}{5}x\\right)\\) là \\(k\\pi\\). Giá trị của \\(k\\) là",
+        "options": {"A": "5/2", "B": "5", "C": "5/4", "D": "10"},
+        "correct": "A",
+        "explanation": "Trước tiên, ta rút gọn biểu thức bằng công thức nhân đôi \\(\\sin\\alpha\\cos\\alpha=\\dfrac{1}{2}\\sin(2\\alpha)\\):\n\\[y=\\sin\\left(\\dfrac{2}{5}x\\right).\\cos\\left(\\dfrac{2}{5}x\\right)=\\dfrac{1}{2}\\sin\\left(\\dfrac{4}{5}x\\right)\\]\n\nHàm số dạng \\(A\\sin(ax+b)\\) (với \\(A, a\\ne 0\\)) là hàm tuần hoàn với chu kì:\n\\[T=\\dfrac{2\\pi}{|a|}\\]\n\nỞ đây \\(a=\\dfrac{4}{5}\\), nên:\n\\[T=\\dfrac{2\\pi}{\\frac{4}{5}}=2\\pi\\times\\dfrac{5}{4}=\\dfrac{5\\pi}{2}\\]\n\nSo với dạng \\(T=k\\pi\\), ta có \\(k=\\dfrac{5}{2}\\).\n\nChọn đáp án A.",
+    },
+    {
+        "content": "Cho hàm số \\(y=f(x)\\) có bảng biến thiên như hình dưới. Tổng số đường tiệm cận ngang và tiệm cận đứng của đồ thị hàm số đã cho là",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/hsa_de1_cau4_bbt.png",
+        "options": {"A": "0", "B": "1", "C": "2", "D": "3"},
+        "correct": "C",
+        "explanation": "Dựa vào bảng biến thiên, ta quan sát hành vi của hàm số khi \\(x\\) tiến ra vô cực và tại các điểm gián đoạn.\n\nKhi \\(x\\to -\\infty\\), \\(y\\to -2\\); và khi \\(x\\to 0^-\\), \\(y\\to -\\infty\\). Khi \\(x\\to +\\infty\\), \\(y\\to +\\infty\\).\n\nTa thấy \\(y\\to -2\\) khi \\(x\\to-\\infty\\), là một giá trị hữu hạn, nên đồ thị hàm số có 1 đường tiệm cận ngang là \\(y=-2\\).\n\nMặt khác, tại \\(x=0\\), hàm số có giới hạn tiến ra vô cực (từ bên trái là \\(-\\infty\\), từ bên phải là 8 — nghĩa là hàm không xác định liên tục qua \\(x=0\\) và có một nhánh tiến ra vô cực), nên đồ thị có 1 đường tiệm cận đứng là \\(x=0\\).\n\nVậy:\n- Số đường tiệm cận ngang: 1\n- Số đường tiệm cận đứng: 1\n\nTổng số đường tiệm cận ngang và tiệm cận đứng là \\(1+1=2\\). Chọn đáp án C.",
+    },
+    {
+        "content": "Tìm nguyên hàm \\(F(t)=\\displaystyle\\int tx\\,dt\\).",
+        "options": {
+            "A": "\\(F(t)=x+t+C\\)",
+            "B": "\\(F(t)=\\dfrac{x^2t}{2}+C\\)",
+            "C": "\\(F(t)=\\dfrac{xt^2}{2}+C\\)",
+            "D": "\\(F(t)=\\dfrac{(tx)^2}{2}+C\\)",
+        },
+        "correct": "C",
+        "explanation": "Chú ý biểu thức lấy nguyên hàm là theo biến \\(t\\) (ký hiệu \\(dt\\)), nên ta coi \\(x\\) là một hằng số (tham số), không phải biến số cần tích phân.\n\nVì \\(x\\) là hằng số, ta đưa nó ra ngoài dấu tích phân:\n\\[F(t)=\\int tx\\,dt=x\\int t\\,dt=x\\cdot\\dfrac{t^2}{2}+C=\\dfrac{xt^2}{2}+C\\]\n\nVậy \\(F(t)=\\dfrac{xt^2}{2}+C\\). Chọn đáp án C.\n\n(Lưu ý: nếu nhầm lẫn coi \\(t\\) là hằng số và lấy nguyên hàm theo \\(x\\) thì sẽ ra kết quả sai ở đáp án B — đây là bẫy phổ biến của bài toán này.)",
+    },
             {
                 "content": "Phương trình \\( x^2 - 5x + 6 = 0 \\) có hai nghiệm \\( x_1, x_2 \\). Tổng \\( x_1 + x_2 \\) bằng",
                 "options": {"A": "6", "B": "-5", "C": "5", "D": "-6"},
