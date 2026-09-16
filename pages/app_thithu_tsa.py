@@ -4894,7 +4894,7 @@ Vậy kết quả điền: A = -50; ω = \\( \\dfrac{2\\pi}{15} \\); B = 60; th�
                 "id": 'de7_mc_02',
                 "type": 'mc4',
                 "content": 'Cho hàm số lượng giác \\( y = a\\sin(bx+c)+d \\) có đồ thị như hình vẽ bên dưới. Biết \\( a > 0 \\), \\( b > 0 \\) và \\( c \\in (-\\pi, 0) \\). Tính giá trị của biểu thức \\( P = a + b + c + d \\).',
-                "image": 'images/cau2-de7.PNG',
+               "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau2-de7.PNG',
                 "options": {
                     'A': '\\( P = 6 - \\dfrac{\\pi}{3} \\)',
                     'B': '\\( P = 4 + \\dfrac{\\pi}{3} \\)',
