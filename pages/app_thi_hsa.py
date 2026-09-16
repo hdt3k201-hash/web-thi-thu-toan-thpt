@@ -750,7 +750,7 @@ EXAM_DEFS = [
   "options": {"A": "4", "B": "6", "C": "3", "D": "8"},
   "correct": "B",
   "explanation": "Xét phương trình hoành độ giao điểm, dựa vào hình dáng đồ thị nhận xét.\n\nXét phương trình hoành độ giao điểm:\n\n\\( x^3 = 3mx-m^2 \\Leftrightarrow x^3-3mx+m^2=0 \\) (1)\n\nYêu cầu bài toán tương đương với phương trình (1) có ba nghiệm phân biệt.\n\nXét hàm số: \\( f(x)=x^3-3mx+m^2 \\) có đồ thị \\( (C) \\). Để phương trình (1) có 3 nghiệm phân biệt thì đồ thị hàm số \\( (C) \\) phải có 2 cực trị nằm về hai phía của trục hoành.\n\nTa có: \\( f'(x)=3x^2-3m, f'(x)=0 \\Leftrightarrow x^2=m \\)\n\nĐể đồ thị hàm số có 2 cực trị nằm về 2 phía so với trục hoành thì \\( x^2=m \\Leftrightarrow x=\\pm\\sqrt{m} \\)\n\n\\( x=\\sqrt{m} \\Rightarrow y=-2m\\sqrt{m}+m^2 \\)\n\n\\( x=-\\sqrt{m} \\Rightarrow y=2m\\sqrt{m}+m^2 \\)\n\nKết hợp các điều kiện ta được: \\( m\\in(4;10] \\) mà \\( m\\in\\mathbb{Z} \\Rightarrow m\\in\\{5;6;7;8;9;10\\} \\)\n\nĐáp án B."
-}
+},
             {
                 "content": "Một nhóm có 9 học sinh. Hỏi có bao nhiêu cách chọn ra 4 học sinh từ nhóm đó (không phân biệt thứ tự)?",
                 "options": {"A": "36", "B": "126", "C": "3024", "D": "84"},
