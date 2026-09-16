@@ -269,6 +269,52 @@ EXAM_DEFS = [
                 "correct": "D",
                 "explanation": "Số cách chọn là tổ hợp \\( C_8^3 = 56 \\) (cách). Đáp án D.",
             },
+              {
+        "content": "Trong hệ trục tọa độ Oxy, cho đường thẳng \\(d:\\begin{cases}x=-4t+1\\\\y=-2+3t\\end{cases}\\). Một vectơ chỉ phương của \\(d\\) là:",
+        "options": {"A": "(1;3)", "B": "(-4;2)", "C": "(4;-3)", "D": "(-1;3)"},
+        "correct": "C",
+        "explanation": "Với đường thẳng cho dưới dạng phương trình tham số \\(d:\\begin{cases}x=x_0+at\\\\y=y_0+bt\\end{cases}\\), vectơ \\(\\vec{u}=(a;b)\\) (hệ số đứng trước t ở mỗi phương trình) chính là một vectơ chỉ phương của đường thẳng.\n\nĐối chiếu với đề bài:\n\\[\\begin{cases}x=-4t+1\\\\y=-2+3t\\end{cases}\\]\n\nHệ số của \\(t\\) trong phương trình \\(x\\) là \\(-4\\), trong phương trình \\(y\\) là \\(3\\).\n\nVậy một vectơ chỉ phương của \\(d\\) là \\((-4;3)\\).\n\nLưu ý rằng một đường thẳng có vô số vectơ chỉ phương, chúng đều cùng phương (tỉ lệ) với nhau. Nhân vectơ \\((-4;3)\\) với \\(-1\\) ta được \\((4;-3)\\) — đây cũng là một vectơ chỉ phương hợp lệ của \\(d\\), và nó khớp với đáp án C.\n\nChọn đáp án C.",
+    },
+    {
+        "content": "Tìm tất cả các giá trị của tham số \\(m\\) để bất phương trình \\(x^2-(m+2)x+8m+1\\le 0\\) vô nghiệm.",
+        "options": {
+            "A": "\\(m\\in[0;28]\\)",
+            "B": "\\(m\\in(0;28)\\)",
+            "C": "\\(m\\in(-\\infty;0)\\cup(28;+\\infty)\\)",
+            "D": "\\(m\\in(-\\infty;0]\\cup[28;+\\infty)\\)",
+        },
+        "correct": "B",
+        "explanation": "Đặt \\(f(x)=x^2-(m+2)x+8m+1\\). Bất phương trình \\(f(x)\\le 0\\) vô nghiệm nghĩa là không tồn tại giá trị \\(x\\) nào làm cho \\(f(x)\\le 0\\), tức là \\(f(x)>0\\) đúng với mọi \\(x\\in\\mathbb{R}\\).\n\nVới tam thức bậc hai có hệ số \\(a>0\\), điều kiện để \\(f(x)>0,\\,\\forall x\\) là \\(\\Delta<0\\) (parabol nằm hoàn toàn phía trên trục hoành, không cắt và không tiếp xúc với trục hoành).\n\nỞ đây \\(a=1>0\\) (thỏa mãn). Ta tính \\(\\Delta\\):\n\\[\\Delta=(m+2)^2-4(8m+1)\\]\n\nYêu cầu \\(\\Delta<0\\):\n\\[(m+2)^2-4(8m+1)<0\\]\n\\[\\Leftrightarrow m^2+4m+4-32m-4<0\\]\n\\[\\Leftrightarrow m^2-28m<0\\]\n\\[\\Leftrightarrow m(m-28)<0\\]\n\\[\\Leftrightarrow 0<m<28\\]\n\nVậy \\(m\\in(0;28)\\). Chọn đáp án B.",
+    },
+    {
+        "content": "Số cách xếp 5 học sinh ngồi vào một dãy gồm 5 chiếc ghế sao cho mỗi ghế có đúng một học sinh ngồi là",
+        "options": {"A": "600", "B": "120", "C": "3125", "D": "720"},
+        "correct": "B",
+        "explanation": "Đây là bài toán sắp xếp 5 học sinh vào 5 vị trí ghế khác nhau, mỗi ghế đúng một học sinh — tức là ta cần đếm số hoán vị của 5 phần tử.\n\nSố cách xếp 5 học sinh vào 5 chiếc ghế (mỗi cách xếp là một hoán vị của 5 phần tử) là:\n\\[5! = 5\\times4\\times3\\times2\\times1=120 \\text{ (cách)}\\]\n\nVậy có 120 cách xếp. Chọn đáp án B.",
+    },
+    {
+        "content": "Cho dãy số \\((u_n)\\) xác định bởi \\(u_1=1\\) và \\(u_{n+1}=\\sqrt{3u_n^2+2}\\). Đặt \\(S=u_1^2+u_2^2+\\cdots+u_{2023}^2+2023\\). Hỏi \\(S\\) có bao nhiêu chữ số?",
+        "options": {"A": "966", "B": "965", "C": "964", "D": "963"},
+        "correct": "A",
+        "explanation": "Từ công thức truy hồi \\(u_{n+1}=\\sqrt{3u_n^2+2}\\), bình phương hai vế ta được:\n\\[u_{n+1}^2=3u_n^2+2 \\Leftrightarrow u_{n+1}^2+1=3(u_n^2+1)\\]\n\nĐặt \\(v_n=u_n^2+1\\), ta có \\(v_{n+1}=3v_n\\), nghĩa là \\((v_n)\\) là một cấp số nhân với công bội \\(q=3\\).\n\nSố hạng đầu: \\(v_1=u_1^2+1=1+1=2\\).\n\nSuy ra công thức tổng quát: \\(v_n=2\\cdot3^{n-1}\\), tức là:\n\\[u_n^2=2\\cdot3^{n-1}-1\\]\n\nBây giờ ta tính tổng \\(S\\). Ta có:\n\\[\\sum_{n=1}^{2023}u_n^2=\\sum_{n=1}^{2023}\\left(2\\cdot3^{n-1}-1\\right)=2\\left(1+3+3^2+\\cdots+3^{2022}\\right)-2023\\]\n\nCộng thêm 2023 theo đề bài (\\(S\\) đã bao gồm \\(+2023\\)), phần \\(-2023\\) và \\(+2023\\) triệt tiêu nhau:\n\\[S=2\\left(1+3+3^2+\\cdots+3^{2022}\\right)=2\\cdot\\dfrac{3^{2023}-1}{3-1}=3^{2023}-1\\]\n\nBây giờ ta tìm số chữ số của \\(S=3^{2023}-1\\). Vì \\(S+1=3^{2023}\\), số chữ số của \\(3^{2023}\\) là:\n\\[\\lfloor 2023\\log 3\\rfloor+1=966 \\text{ (chữ số)}\\]\n\nVì \\(3^{2023}\\) là một số lẻ, việc trừ đi 1 (để ra \\(S\\)) không thể làm giảm số chữ số xuống 965 (điều đó chỉ xảy ra nếu \\(3^{2023}\\) có dạng \\(10^{965}\\), là một số chẵn — vô lý). Do đó \\(S\\) cũng có đúng 966 chữ số.\n\nVậy \\(S\\) có 966 chữ số. Chọn đáp án A.",
+    },
+    {
+        "content": "Giới hạn \\(L=\\displaystyle\\lim \\dfrac{3n-1}{n+2}\\) bằng",
+        "options": {"A": "\\(+\\infty\\)", "B": "0", "C": "1", "D": "3"},
+        "correct": "D",
+        "explanation": "Đây là giới hạn của một phân thức có bậc tử và bậc mẫu bằng nhau (đều là bậc 1 theo \\(n\\)), nên ta chia cả tử và mẫu cho \\(n\\) (lũy thừa bậc cao nhất) để tính giới hạn.\n\nChia cả tử và mẫu cho \\(n\\):\n\\[L=\\lim\\dfrac{3n-1}{n+2}=\\lim\\dfrac{3-\\dfrac{1}{n}}{1+\\dfrac{2}{n}}\\]\n\nKhi \\(n\\to+\\infty\\), các số hạng \\(\\dfrac{1}{n}\\) và \\(\\dfrac{2}{n}\\) đều tiến về 0, nên:\n\\[L=\\dfrac{3-0}{1+0}=3\\]\n\nVậy \\(L=3\\). Chọn đáp án D.",
+    },
+    {
+        "content": "Biết bất phương trình \\(\\log_2(3^x-3)\\cdot\\log_8\\left(\\dfrac{3^x}{4}-\\dfrac{3}{4}\\right)\\le 1\\) có tập nghiệm là đoạn \\([a;b]\\). Giá trị biểu thức \\(a+b\\) bằng",
+        "options": {
+            "A": "\\(1+\\log_3 77\\)",
+            "B": "\\(\\log_3\\dfrac{77}{2}\\)",
+            "C": "\\(-2+\\log_2\\dfrac{77}{2}\\)",
+            "D": "\\(-1+\\log_2 77\\)",
+        },
+        "correct": "B",
+        "explanation": "Trước tiên tìm điều kiện xác định:\n\\[\\begin{cases}3^x-3>0\\\\\\dfrac{3^x}{4}-\\dfrac{3}{4}>0\\end{cases}\\Leftrightarrow x>1\\]\n\n(Hai điều kiện này thực chất tương đương nhau, vì \\(\\dfrac{3^x}{4}-\\dfrac{3}{4}=\\dfrac{3^x-3}{4}\\), cùng dấu với \\(3^x-3\\).)\n\nNhận xét rằng \\(\\dfrac{3^x}{4}-\\dfrac{3}{4}=\\dfrac{3^x-3}{4}\\), nên ta có thể viết lại log thứ hai theo cùng biểu thức với log thứ nhất:\n\\[\\log_8\\left(\\dfrac{3^x-3}{4}\\right)=\\log_8(3^x-3)-\\log_8 4=\\dfrac{1}{3}\\log_2(3^x-3)-\\dfrac{2}{3}\\]\n\n(vì \\(\\log_8 t=\\dfrac{1}{3}\\log_2 t\\) và \\(\\log_2 4=2\\))\n\nĐặt \\(t=\\log_2(3^x-3)\\). Bất phương trình trở thành:\n\\[t\\cdot\\dfrac{1}{3}(t-2)\\le 1\\]\n\\[\\Leftrightarrow t(t-2)\\le 3\\]\n\\[\\Leftrightarrow t^2-2t-3\\le 0\\]\n\\[\\Leftrightarrow (t-3)(t+1)\\le 0\\]\n\\[\\Leftrightarrow -1\\le t\\le 3\\]\n\nTrở lại biến \\(x\\):\n\\[-1\\le \\log_2(3^x-3)\\le 3\\]\n\\[\\Leftrightarrow 2^{-1}\\le 3^x-3\\le 2^3\\]\n\\[\\Leftrightarrow \\dfrac{1}{2}\\le 3^x-3\\le 8\\]\n\\[\\Leftrightarrow \\dfrac{7}{2}\\le 3^x\\le 11\\]\n\nLấy \\(\\log_3\\) hai vế:\n\\[\\log_3\\dfrac{7}{2}\\le x\\le \\log_3 11\\]\n\nVậy \\(a=\\log_3\\dfrac{7}{2}\\), \\(b=\\log_3 11\\). Tính tổng:\n\\[a+b=\\log_3\\dfrac{7}{2}+\\log_3 11=\\log_3\\left(\\dfrac{7}{2}\\times 11\\right)=\\log_3\\dfrac{77}{2}\\]\n\nChọn đáp án B.",
+    },
             {
                 # CÂU VÍ DỤ minh họa cách chèn ẢNH và văn bản SAU ẢNH.
                 # Hãy thay link "image" bằng ảnh thật của bạn (upload lên
