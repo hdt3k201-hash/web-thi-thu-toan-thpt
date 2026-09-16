@@ -4837,7 +4837,7 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
 
             # ---------------- KÉO THẢ (dragdrop) ----------------
             {
-                "id": "de7_dd_01",
+                "id": "de7_dd_01", 
                 "type": "dragdrop",
                 "content": "Một vòng quay Mặt Trời (Ferris wheel) có bán kính 50m, tâm vòng quay nằm ở độ cao 60m so với mặt đất. Vòng quay quay đều và mất 15 phút để hoàn thành một vòng.<br>Giả sử tại thời điểm $t = 0$ (phút), một cabin bắt đầu chuyển động từ vị trí thấp nhất của vòng quay. Độ cao của cabin so với mặt đất (tính bằng mét) theo thời gian $t$ được mô hình hóa bởi hàm số:<br>$h(t) = A\\cos(\\omega t) + B$ (với $A < 0$)<br>Kéo và thả các giá trị thích hợp vào chỗ trống để hoàn thiện mô hình và trả lời câu hỏi:",
                 "options_pool": [
