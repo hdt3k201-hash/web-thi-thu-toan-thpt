@@ -706,6 +706,51 @@ EXAM_DEFS = [
   "correct": "A",
   "explanation": "Tìm điều kiện để phương trình bậc hai có hai nghiệm \\( \\Leftrightarrow \\Delta \\ge 0 \\).\n\nÁp dụng định lý Viet để tìm \\( x_1+x_2 \\) và \\( x_1x_2 \\) theo \\( m \\). Từ đó tính giá trị lớn nhất của \\( P \\).\n\nĐể phương trình có hai nghiệm \\( x_1; x_2 \\) thì\n\n\\( \\Delta = (m+2)^2-4(m^2+1) \\ge 0 \\Leftrightarrow -3m^2+4m \\ge 0 \\Leftrightarrow 0 \\le m \\le \\dfrac{4}{3} \\).\n\nÁp dụng hệ thức Viet ta có: \\( \\begin{cases} x_1+x_2=m+2 \\\\ x_1.x_2=m^2+1 \\end{cases} \\)\n\nKhi đó: \\( P = 4(m+2)-(m^2+1) = -m^2+4m+7 \\).\n\nXét hàm số \\( P(m)=-m^2+4m+7, \\forall m\\in\\left[0;\\dfrac{4}{3}\\right] \\) có hệ số \\( a<0 \\), hoành độ đỉnh \\( x=2 \\) nên \\( P(m) \\) đồng biến trên \\( \\left[0;\\dfrac{4}{3}\\right] \\Rightarrow \\displaystyle\\max_{\\left[0;\\frac{4}{3}\\right]} P = P\\left(\\dfrac{4}{3}\\right) = \\dfrac{95}{9} \\).\n\nĐáp án A."
 },
+          {
+  "content": "Cho hàm số \\( y = \\dfrac{2x+1}{x-2} \\) có đồ thị \\( (C) \\). Hỏi có tất cả bao nhiêu điểm thuộc đồ thị \\( (C) \\) mà tiếp tuyến của \\( (C) \\) tại điểm đó tạo với hai trục tọa độ một tam giác có diện tích bằng \\( \\dfrac{2}{5} \\)?",
+  "options": {"A": "4", "B": "5", "C": "2", "D": "3"},
+  "correct": "C",
+  "explanation": "Xác định phương trình tiếp tuyến tại 1 điểm.\n\nPhương trình tiếp tuyến của \\( (C) \\) tại điểm có hoành độ \\( x_0 \\) là:\n\n\\( y = \\dfrac{-5}{(x_0-2)^2}(x-x_0)+\\dfrac{2x_0+1}{x_0-2} \\)\n\nTọa độ giao điểm của tiếp tuyến với các trục tọa độ là\n\n\\( A\\left(\\dfrac{2x_0^2+2x_0-2}{5};0\\right), B\\left(0;\\dfrac{2x_0^2+2x_0-2}{(x_0-2)^2}\\right) \\)\n\nDo đó diện tích tam giác \\( S_{OAB} = \\dfrac{1}{2}.OA.OB = \\dfrac{\\left(2x_0^2+2x_0-2\\right)^2}{10(x_0-2)^2} = \\dfrac{2}{5} \\Leftrightarrow \\left[\\begin{array}{l} x_0=-3 \\\\ x_0=1 \\end{array}\\right. \\)\n\nVậy có 2 điểm thỏa mãn.\n\nĐáp án C."
+},
+{
+  "content": "Có bao nhiêu cặp số nguyên \\( (x,y) \\) thỏa mãn điều kiện \\( 0\\le y\\le 100 \\) và \\( x^6+6x^4y+12x^2y^2-19y^3+3x^2-3y=0 \\)?",
+  "options": {"A": "10", "B": "100", "C": "20", "D": "21"},
+  "correct": "D",
+  "explanation": "Sử dụng hàm đặc trưng.\n\n\\( x^6+6x^4y+12x^2y^2-19y^3+3x^2-3y=0 \\)\n\n\\( \\Leftrightarrow x^6+6x^4y+12x^2y^2+8y^3-27y^3+3x^2-3y=0 \\)\n\n\\( \\Leftrightarrow x^6+6x^4y+12x^2y^2+8y^3+3x^2+6y = 27y^3+9y \\)\n\n\\( \\Leftrightarrow \\left(x^2+2y\\right)^3+3\\left(x^2+2y\\right) = (3y)^3+3.3y \\) (*)\n\nXét hàm số: \\( f(t) = t^3+3t \\)\n\nTa có: \\( f'(t) = 3t^2+3>0 \\; \\forall t\\in\\mathbb{R} \\Rightarrow f(t) \\) là hàm đồng biến trên \\( \\mathbb{R} \\)\n\nVì vậy (*) \\( \\Leftrightarrow f(x^2+2y) = f(3y) \\Leftrightarrow x^2+2y=3y \\Leftrightarrow x^2=y \\)\n\nTheo giả thiết ta có: \\( 0\\le y\\le 100 \\Leftrightarrow 0\\le x^2\\le 100 \\Leftrightarrow -10\\le x\\le 10 \\)\n\nVì x nguyên nên \\( x\\in\\{-10;-9;-8;\\ldots;8;9;10\\} \\), với mỗi \\( x \\) xác định duy nhất giá trị \\( y=x^2 \\).\n\nVậy có 21 cặp \\( (x;y) \\) thỏa mãn bài toán.\n\nĐáp án D."
+},
+{
+  "content": "Trong phòng giáo viên, giờ ra chơi có bốn cô giáo: An, Bình, Giang và Nhàn ngồi nói chuyện với nhau quanh 1 chiếc bàn hình tròn. Cô mặc áo dài xanh (không phải là cô An và cô Bình) thì ngồi giữa cô mặc áo dài tím và cô Nhàn. Cô mặc áo dài trắng thì ngồi giữa cô mặc áo dài hồng và cô Bình. Vậy cô An mặc áo màu gì?",
+  "options": {"A": "Hồng", "B": "Tím", "C": "Trắng", "D": "Xanh"},
+  "correct": "C",
+  "explanation": "Cô mặc áo dài xanh không phải cô An và cô Bình lại ngồi giữa cô mặc áo dài tím và cô Nhàn ⇒ loại phương án D.\n\n⇒ Cô mặc áo dài xanh là cô Giang.\n\nCô mặc áo dài trắng thì ngồi giữa cô mặc áo dài hồng và cô Nhàn\n\n⇒ Cô mặc áo tím là cô Bình, áo hồng là cô Nhàn và cô An mặc áo trắng.\n\nĐáp án C."
+},
+{
+  "content": "Cho hình chóp S.ABCD đáy là hình vuông cạnh \\( a \\). Mặt bên SAD là tam giác đều và nằm trong mặt phẳng vuông góc với đáy. Gọi M, N, P lần lượt là trung điểm của các cạnh SB, BC, CD. Tính thể tích khối tứ diện CMNP.",
+  "options": {"A": "\\( 3a^3\\sqrt{3} \\)", "B": "\\( \\dfrac{a^3\\sqrt{3}}{96} \\)", "C": "\\( \\dfrac{a^3\\sqrt{2}}{96} \\)", "D": "\\( \\dfrac{a^3}{96} \\)"},
+  "correct": "B",
+  "explanation": "Sử dụng tỉ số thể tích.",
+  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau7_loigiai.PNG",
+  "explanation_2": "\\( \\dfrac{V_{CMNP}}{V_{CMBD}} = \\dfrac{CN}{CB}.\\dfrac{CP}{CD} = \\dfrac{1}{4} \\) (*),\n\n\\( \\dfrac{V_{CMBD}}{V_{S.CBD}} = \\dfrac{V_{M.CBD}}{V_{S.CBD}} = \\dfrac{BM}{BS} = \\dfrac{1}{2} \\) (**)\n\nLấy (*).(**) ta được: \\( \\dfrac{V_{CMNP}}{V_{S.BCD}} = \\dfrac{1}{8} \\Rightarrow V_{CMNP} = \\dfrac{1}{8}V_{S.BCD} \\)\n\nGọi H là trung điểm AD \\( \\Rightarrow SH \\perp AD \\) và \\( (SAD) \\perp (ABCD) \\) nên \\( SH \\perp (ABCD) \\)\n\n\\( V_{S.BCD} = \\dfrac{1}{3}SH.S_{BCD} = \\dfrac{a^3\\sqrt{3}}{12} \\Rightarrow V_{CMNP} = \\dfrac{a^3\\sqrt{3}}{96} \\)\n\nĐáp án B."
+},
+{
+  "content": "Cho hình chóp S.ABCD có đáy ABCD là hình thoi và \\( AB=BD=a, SA=a\\sqrt{3}, SA\\perp(ABCD) \\). Gọi M là điểm trên cạnh SB sao cho \\( BM=\\dfrac{2}{3}SB \\). Giả sử N là điểm di động trên cạnh AD. Tìm vị trí điểm N để \\( BN\\perp DM \\)?",
+  "options": {
+    "A": "N nằm trên cạnh AD sao cho \\( AN=\\dfrac{3}{5}AD \\)",
+    "B": "N nằm trên cạnh AD sao cho \\( AN=\\dfrac{2}{5}AD \\)",
+    "C": "N nằm trên cạnh AD sao cho \\( AN=\\dfrac{4}{5}AD \\)",
+    "D": "N nằm trên cạnh AD sao cho \\( AN=\\dfrac{3}{4}AD \\)"
+  },
+  "correct": "B",
+  "explanation": "Phân tích vectơ.",
+  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau8_loigiai.PNG",
+  "explanation_2": "Vẽ \\( ME \\parallel SA \\Rightarrow ME \\perp (ABCD) \\), do đó \\( DM \\perp BN \\Leftrightarrow DE \\perp BN \\). Đặt \\( AN = x\\vec{AD} \\)\n\nTa có: \\( \\vec{DE} = \\vec{DA}+\\vec{AE} = -\\vec{AD}+\\dfrac{1}{3}\\vec{AB} \\)\n\n\\( \\vec{BN} = -\\vec{AB}+\\vec{AN} = -\\vec{AB}+x\\vec{AD} \\)\n\nVì \\( BN\\perp DE \\Leftrightarrow (3\\vec{AD}-\\vec{AB})(\\vec{AB}-x\\vec{AD}) = 0 \\)\n\n\\( \\Leftrightarrow -3x\\vec{AD}^2-\\vec{AB}^2+(3+x)\\vec{AB}.\\vec{AD} = 0 \\)\n\nVì tam giác ABD đều nên: \\( \\vec{AB}.\\vec{AD} = AB.AD.\\cos\\widehat{BAD} = a.a.\\cos 60^\\circ = \\dfrac{a^2}{2} \\)\n\n\\( \\Leftrightarrow -3ax^2-a^2+\\dfrac{a^2(3+x)}{2} = 0 \\Leftrightarrow x=\\dfrac{2}{5} \\Rightarrow AN = \\dfrac{2}{5}AD \\)\n\nĐáp án B."
+},
+{
+  "content": "Có bao nhiêu giá trị nguyên của tham số \\( m \\) trong đoạn \\( [-10;10] \\) sao cho đồ thị hàm số \\( y=x^3 \\) cắt đường thẳng \\( y=3mx-m^2 \\) tại ba điểm phân biệt?",
+  "options": {"A": "4", "B": "6", "C": "3", "D": "8"},
+  "correct": "B",
+  "explanation": "Xét phương trình hoành độ giao điểm, dựa vào hình dáng đồ thị nhận xét.\n\nXét phương trình hoành độ giao điểm:\n\n\\( x^3 = 3mx-m^2 \\Leftrightarrow x^3-3mx+m^2=0 \\) (1)\n\nYêu cầu bài toán tương đương với phương trình (1) có ba nghiệm phân biệt.\n\nXét hàm số: \\( f(x)=x^3-3mx+m^2 \\) có đồ thị \\( (C) \\). Để phương trình (1) có 3 nghiệm phân biệt thì đồ thị hàm số \\( (C) \\) phải có 2 cực trị nằm về hai phía của trục hoành.\n\nTa có: \\( f'(x)=3x^2-3m, f'(x)=0 \\Leftrightarrow x^2=m \\)\n\nĐể đồ thị hàm số có 2 cực trị nằm về 2 phía so với trục hoành thì \\( x^2=m \\Leftrightarrow x=\\pm\\sqrt{m} \\)\n\n\\( x=\\sqrt{m} \\Rightarrow y=-2m\\sqrt{m}+m^2 \\)\n\n\\( x=-\\sqrt{m} \\Rightarrow y=2m\\sqrt{m}+m^2 \\)\n\nKết hợp các điều kiện ta được: \\( m\\in(4;10] \\) mà \\( m\\in\\mathbb{Z} \\Rightarrow m\\in\\{5;6;7;8;9;10\\} \\)\n\nĐáp án B."
+}
             {
                 "content": "Một nhóm có 9 học sinh. Hỏi có bao nhiêu cách chọn ra 4 học sinh từ nhóm đó (không phân biệt thứ tự)?",
                 "options": {"A": "36", "B": "126", "C": "3024", "D": "84"},
@@ -776,6 +821,23 @@ EXAM_DEFS = [
   "content": "Một đề kiểm tra trắc nghiệm 45 phút môn Tiếng Anh của lớp 10 là một đề gồm 25 câu hỏi độc lập, mỗi câu hỏi có 4 đáp án trả lời trong đó chỉ có một đáp án đúng. Mỗi câu trả lời đúng được 0,4 điểm, câu trả lời sai không được điểm. Bạn Bình vì học rất kém môn Tiếng Anh nên làm bài bằng cách chọn ngẫu nhiên câu trả lời cho tất cả 25 câu. Gọi A là biến cố \"Bình làm đúng k câu\", biết xác suất của biến cố A đạt giá trị lớn nhất. Tính k (điền số nguyên).",
   "answers": ["6"],
   "explanation": "Vì đề thi có 25 câu và mỗi câu có 4 phương án trả lời nên xác suất để Bình làm đúng \\( k \\) câu là\n\n\\( P = C_{25}^k.\\left(\\dfrac{1}{4}\\right)^k.\\left(\\dfrac{3}{4}\\right)^{25-k} = \\dfrac{C_{25}^k.3^{25-k}}{4^{25}} \\)\n\nvới \\( 0 \\le k \\le 25 \\).\n\nXét hàm \\( f(k) = C_{25}^k.3^{25-k} \\) với \\( k\\in\\mathbb{N} \\) và \\( k\\le 25 \\).\n\nTa có \\( f(k) \\) lớn nhất \\( \\Leftrightarrow \\begin{cases} f(k)\\ge f(k-1) \\\\ f(k)\\ge f(k+1) \\end{cases} \\Leftrightarrow 6,5\\ge k\\ge 5,5 \\Rightarrow k=6 \\).\n\nSuy ra \\( \\displaystyle\\max_{0\\le k\\le 25} f(k) = f(6) \\).\n\nVậy \\( k=6 \\)."
+},
+          {
+  "content": "Giả sử chiều cao (tính bằng cm) của một giống cây trồng (trong vòng một số tháng nhất định) tuân theo quy luật logistic được mô hình hóa bằng hàm số: \\( f(t) = \\dfrac{200}{1+4e^{-t}}, t\\ge 0 \\). Trong đó, thời gian \\( t \\) được tính bằng tháng kể từ khi hạt bắt đầu nảy mầm. Khi đó đạo hàm \\( f'(t) \\) sẽ biểu thị tốc độ tăng chiều cao của giống cây đó. Hỏi sau khi hạt giống bắt đầu nảy mầm thì sau bao nhiêu tháng tốc độ tăng chiều cao của cây là lớn nhất? Kết quả lấy phần nguyên (điền số nguyên).",
+  "answers": ["1"],
+  "explanation": "Khảo sát hàm số đạo hàm.\n\nTa có:\n\n\\( f(t) = \\dfrac{200}{1+4e^{-t}} \\Rightarrow f'(t) = 200.\\dfrac{4e^{-t}}{(1+4e^{-t})^2} \\)\n\n\\( f''(t) = 200.\\dfrac{-4e^{-t}(1+4e^{-t})^2-2(1+4e^{-t})(-4e^{-t}).4e^{-t}}{(1+4e^{-t})^4} \\)\n\n\\( = 200.\\dfrac{-4e^{-t}(1+4e^{-t})(1+4e^{-t}-8e^{-t})}{(1+4e^{-t})^4} \\)\n\n\\( = 200.\\dfrac{-4e^{-t}(1+4e^{-t})(1-4e^{-t})}{(1+4e^{-t})^4} \\)\n\n\\( f''(t) = 0 \\Leftrightarrow e^{-t}=\\dfrac{1}{4} \\Leftrightarrow t=-\\ln\\dfrac{1}{4}=\\ln 4 \\)\n\nBảng biến thiên:",
+  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau22_loigiai.PNG",
+  "explanation_2": "Vậy sau khi hạt nảy mầm khoảng \\( \\ln 4 \\approx 1,38 \\) tháng thì cây có tốc độ tăng chiều cao lớn nhất.\n\nLấy phần nguyên ta được đáp số là 1."
+},
+{
+  "content": "Vào năm 2020, dân số của một quốc gia là khoảng 97 triệu người và tốc độ tăng trưởng dân số là 0,91%. Nếu tốc độ tăng trưởng dân số này được giữ nguyên hàng năm, hãy ước tính dân số quốc gia đó vào năm 2030 (lấy phần nguyên, điền số nguyên, đơn vị triệu người).",
+  "answers": ["106"],
+  "explanation": "Sử dụng số hạng tổng quát cấp số nhân.\n\nDân số hằng năm lập thành cấp số nhân với số hạng đầu là 97 và công bội \\( q=1,0091 \\).\n\nDân số của quốc gia đó năm 2030 tức \\( n=11 \\) là:\n\n\\( u_{11} = 97.1,0091^{10} \\approx 106,197 \\) triệu người.\n\nLấy phần nguyên ta được đáp số là 106."
+},
+{
+  "content": "Cho hai số thực \\( x\\ge 0; 1\\le y\\le 3 \\) thỏa mãn \\( 2^{x-2y}.(2^x+1) = 4^y+2^x+4 \\). Tìm giá trị nhỏ nhất của biểu thức \\( P = 2^{x-y-2}-x-y^2+2037 \\) (nhập đáp án vào ô trống).",
+  "answers": ["2025"],
+  "explanation": "Giải bất phương trình hàm mũ.\n\nGiả thiết cho \\( 2^{x-2y}.(2^x+1) = 4^y+2^x+4 \\)\n\n\\( \\Leftrightarrow 2^x.(2^x+1) = 2(2^y+x+2).2^{2y} \\Leftrightarrow 2^x.(2^x+1) = 2^{2y+1}(2^y+x+2) \\)\n\n\\( \\Leftrightarrow 2^{2x}.(2^x+1) \\cdot 2^{-x} = 2^{2y+x+1}(2^y+x+1+1) \\)\n\nXét hàm số \\( f(t) = 2^t.(t+1) \\) trên \\( (0;+\\infty) \\); suy ra\n\n\\( f'(t) = 2^t.(t+1)\\ln 2+2^t > 0, \\forall t\\in(0;+\\infty) \\)\n\nVậy hàm số \\( f(t) \\) luôn đồng biến trên \\( (0;+\\infty) \\) nên ta có:\n\n\\( 2^{2x}.(2x+1) = 2^{2y+x+1}(2y+x+1+1) \\Leftrightarrow 2x = 2y+x+1 \\Leftrightarrow x = 2y+1 \\)\n\nSuy ra:\n\n\\( P = 2^{x-y-2}-x-y^2+2037 = 2^{y-1}-\\left(y^2+2y+1\\right)+2037 = \\dfrac{1}{4}.2^{y+1}-(y+1)^2+2037 \\)\n\nXét hàm số \\( g(a) = \\dfrac{1}{4}.2^a-a^2; a\\in[2;4] \\)\n\n\\( g'(a) = \\dfrac{2^a.\\ln 2}{4}-2a \\Rightarrow g''(a) = \\dfrac{2^a.\\ln^2 2}{4}-2 < 0, a\\in[2;4] \\)\n\n\\( \\Rightarrow g'(a) \\) luôn nghịch biến trên \\( [2;4] \\)\n\n\\( \\Rightarrow \\displaystyle\\max_{[2;4]} g'(a) = g'(2) = \\ln 2-4 < 0 \\)\n\n\\( \\Rightarrow g(a) \\) luôn nghịch biến trên \\( [2;4] \\)\n\n\\( \\Rightarrow \\displaystyle\\min_{[2;4]} g(a) = g(4) = -12 \\)\n\nVậy \\( \\min P = -12+2037 = 2025 \\) khi \\( y+1=4 \\Leftrightarrow y=3; x=7 \\).\n\nĐáp án: 2025."
 },
 {
   "content": "Một đề kiểm tra trắc nghiệm 45 phút môn Tiếng Anh của lớp 10 là một đề gồm 25 câu hỏi độc lập, mỗi câu hỏi có 4 đáp án trả lời trong đó chỉ có một đáp án đúng. Mỗi câu trả lời đúng được 0,4 điểm, câu trả lời sai không được điểm. Bạn Bình vì học rất kém môn Tiếng Anh nên làm bài bằng cách chọn ngẫu nhiên câu trả lời cho tất cả 25 câu. Gọi A là biến cố \"Bình làm đúng k câu\", biết xác suất của biến cố A đạt giá trị lớn nhất. Tính k (điền số nguyên).",
