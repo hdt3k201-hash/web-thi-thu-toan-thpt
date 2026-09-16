@@ -381,6 +381,29 @@ EXAM_DEFS = [
   "correct": "D",
   "explanation": "Để \\( (\\vec{u},\\vec{v}) < 90^\\circ \\Rightarrow \\cos(\\vec{u},\\vec{v}) > 0 \\).\n\n\\( \\Rightarrow \\vec{u}.\\vec{v} > 0 \\)\n\\( \\Leftrightarrow 3 + \\log_3 5.\\log_5 3 + 4\\log_m 2 > 0 \\)\n\n\\( \\Leftrightarrow 4 + 4\\log_m 2 > 0 \\)\n\\( \\Leftrightarrow \\log_m 2 > -1 \\)\n\n\\( \\Leftrightarrow \\left[\\begin{array}{l} m > 1 \\\\ m < \\dfrac{1}{2} \\end{array}\\right. \\)\n\nKết hợp điều kiện \\( m > 0 \\Rightarrow \\left[\\begin{array}{l} m > 1 \\\\ 0 < m < \\dfrac{1}{2} \\end{array}\\right. \\)\n\nĐáp án D."
 },
+          {
+  "content": "Cho tứ diện ABCD có độ dài các cạnh \\( AB = AC = AD = BC = BD = a \\) và \\( CD = a\\sqrt{2} \\). Tính góc giữa hai đường thẳng AD và BC.",
+  "options": {"A": "90°", "B": "45°", "C": "30°", "D": "60°"},
+  "correct": "D",
+  "explanation": "Gọi I, K, H lần lượt là trung điểm các cạnh DC, DB, AB.\n\nKhi đó: \\( KH // AD, KI // BC \\Rightarrow (AD,BC) = (KH,KI) \\).\n\nXét \\( \\triangle BIC \\), \\( BI = \\sqrt{BC^2 - AC^2} = \\sqrt{a^2 - \\dfrac{a^2}{2}} = \\dfrac{a}{\\sqrt{2}} \\).\n\nTa có \\( \\begin{cases} AB \\perp DH \\\\ AB \\perp HC \\end{cases} \\Rightarrow AB \\perp (DHC) \\Rightarrow AB \\perp HI \\).\n\nXét \\( \\triangle BIH \\), \\( HI = \\sqrt{IB^2 - HB^2} = \\sqrt{\\dfrac{a^2}{2} - \\dfrac{a^2}{4}} = \\dfrac{a}{2} \\). (1)\n\nXét \\( \\triangle IHK \\), ta có:\n\\( IK = \\dfrac{BC}{2} = \\dfrac{a}{2} \\), \\( HK = \\dfrac{AD}{2} = \\dfrac{a}{2} \\)\n\n\\( \\Rightarrow IK = HK = \\dfrac{a}{2} \\). (2)\n\nTừ (1), (2) \\( \\Rightarrow HI = IK = HK \\Rightarrow \\triangle IHK \\) là tam giác đều\n\n\\( \\Rightarrow \\widehat{IKH} = 60^\\circ \\Rightarrow (KH,KI) = 60^\\circ \\).\n\nĐáp án D.",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de1_cau41.PNG"
+},
+{
+  "content": "Cho hàm số \\( y = f(x) \\) là một hàm đa thức có bảng xét dấu \\( f'(x) \\) như sau:",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de1_cau44_de.PNG",
+  "options": {"A": "5", "B": "3", "C": "1", "D": "7"},
+  "correct": "A",
+  "content_2": "Số điểm cực trị của hàm số \\( g(x) = f(-2x^2 + |x|) \\) là",
+  "explanation": "Ta có \\( g(x) = f(-2x^2 + |x|) = f(-2|x|^2 + |x|) \\).\n\nSố điểm cực trị của hàm số \\( h(|x|) \\) bằng hai lần số điểm cực trị dương của hàm số \\( h(x) \\) cộng thêm 1.\n\nXét hàm số:\n\\( h(x) = f(-2x^2 + x) \\)\n\n\\( \\Rightarrow h'(x) = (-4x+1)f'(-2x^2+x) = 0 \\)\n\n\\( \\Leftrightarrow \\left[\\begin{array}{l} x = \\dfrac{1}{4} \\\\ -2x^2+x = -1 \\\\ -2x^2+x = 1 \\end{array}\\right. \\Leftrightarrow \\left[\\begin{array}{l} x = \\dfrac{1}{4} \\\\ x = 1 \\\\ x = \\dfrac{-1}{2} \\end{array}\\right. \\)\n\nBảng xét dấu hàm số \\( h(x) = f(-2x^2+x) \\):",
+  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de1_cau44_loigiai.PNG",
+  "explanation_2": "Hàm số \\( h(x) = f(-2x^2+x) \\) có 2 điểm cực trị dương.\n\nVậy hàm số \\( g(x) = f(-2x^2+|x|) = f(-2|x|^2+|x|) \\) có 5 điểm cực trị.\n\nĐáp án A."
+},
+{
+  "content": "Một ô tô đang chạy với vận tốc 10 m/s thì người lái xe đạp phanh. Từ thời điểm đó, ô tô chuyển động chậm dần đều với vận tốc \\( v(t) = -2t + 10 \\; (m/s) \\), trong đó \\( t \\) là khoảng thời gian tính bằng giây, kể từ lúc bắt đầu đạp phanh. Tính quãng đường ô tô di chuyển được trong 8 giây cuối cùng.",
+  "options": {"A": "55 m", "B": "50 m", "C": "25 m", "D": "16 m"},
+  "correct": "A",
+  "explanation": "Ta sử dụng quãng đường đi được trong khoảng thời gian từ \\( t_1 \\) đến \\( t_2 \\) là \\( S = \\displaystyle\\int_{t_1}^{t_2} v(t)dt \\).\n\nVới \\( v(t) \\) là hàm vận tốc.\n\nChú ý rằng khi xe dừng hẳn thì vận tốc bằng 0.\n\nNên thời gian kể từ lúc đạp phanh đến lúc ô tô dừng hẳn là:\n\\( -2t + 10 = 0 \\Leftrightarrow t = 5 \\) (s)\n\nQuãng đường ô tô đi được từ lúc đạp phanh đến lúc ô tô dừng hẳn là:\n\\( S_2 = \\displaystyle\\int_0^5 (-2t+10)dt = \\left(-t^2+10t\\right)\\Big|_0^5 = 25 \\; m \\)\n\nNhư vậy trong 8 giây cuối thì có 3 giây ô tô đi với vận tốc 10 m/s và 5 giây ô tô chuyển động chậm dần đều.\n\nQuãng đường ô tô đi được trong 3 giây trước khi đạp phanh là:\n\\( S_1 = 3.10 = 30 \\; m \\)\n\nVậy trong 8 giây cuối ô tô đi được quãng đường:\n\\( S = S_1 + S_2 = 30 + 25 = 55 \\; m \\)\n\nĐáp án A."
+},
             {
                 # CÂU VÍ DỤ minh họa cách chèn ẢNH và văn bản SAU ẢNH.
                 # Hãy thay link "image" bằng ảnh thật của bạn (upload lên
