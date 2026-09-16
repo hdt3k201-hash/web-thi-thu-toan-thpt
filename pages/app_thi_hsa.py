@@ -240,6 +240,17 @@ EXAM_DEFS = [
         "answers": ["89"],
         "explanation": "Ta chia dãy số thành từng nhóm, mỗi nhóm gồm các số hạng bằng nhau:\n- Nhóm 1: số 1, xuất hiện 1 lần.\n- Nhóm 2: số 3, xuất hiện 3 lần.\n- Nhóm 3: số 5, xuất hiện 5 lần.\n- ...\n- Nhóm thứ n: số \\((2n-1)\\), xuất hiện \\((2n-1)\\) lần.\n\nTổng số phần tử tính đến hết nhóm thứ n là:\n\\[S_n = 1+3+5+\\cdots+(2n-1)=n^2\\]\n\nTa cần tìm xem vị trí 2025 rơi vào nhóm thứ mấy, tức tìm n sao cho \\((n-1)^2 < 2025 \\le n^2\\).\n\nVì \\(45^2 = 2025\\), nên \\(S_{45}=2025\\) — nghĩa là số hạng thứ 2025 chính là phần tử cuối cùng của nhóm thứ 45.\n\nGiá trị của các phần tử trong nhóm thứ 45 chính là số lẻ thứ 45:\n\\[2\\times 45 - 1 = 89\\]\n\nVậy số hạng thứ 2025 của dãy là 89.",
     },
+          
+    {
+        "content": "Tích tất cả các giá trị của \\(a\\) để góc tạo bởi đường thẳng \\(\\begin{cases}x=4+at\\\\y=7-2t\\end{cases}\\ (t\\in\\mathbb{R})\\) và đường thẳng \\(3x+4y-2=0\\) bằng \\(45^\\circ\\) là bao nhiêu?",
+        "answers": ["-4"],
+        "explanation": "Gọi \\(\\varphi\\) là góc giữa hai đường thẳng đã cho.\n\nĐường thẳng thứ nhất có vectơ chỉ phương \\(\\vec{u}=(a;-2)\\) (lấy từ hệ số của t).\n\nĐường thẳng thứ hai \\(3x+4y-2=0\\) có vectơ chỉ phương \\(\\vec{v}=(4;-3)\\) (đổi vai trò hệ số a, b của phương trình tổng quát, đảo dấu một hệ số).\n\nGóc giữa hai đường thẳng được tính qua công thức:\n\\[\\cos\\varphi=|\\cos(\\vec{u},\\vec{v})|=\\dfrac{|\\vec{u}.\\vec{v}|}{|\\vec{u}|.|\\vec{v}|}\\]\n\nThay số:\n\\[\\cos 45^\\circ=\\dfrac{|4a+6|}{\\sqrt{a^2+4}.\\sqrt{16+9}} \\Leftrightarrow \\dfrac{1}{\\sqrt2}=\\dfrac{|4a+6|}{5\\sqrt{a^2+4}}\\]\n\nNhân chéo rồi bình phương hai vế để khử căn và dấu giá trị tuyệt đối:\n\\[5\\sqrt{a^2+4}=\\sqrt2\\,|4a+6| \\Rightarrow 25(a^2+4)=2(4a+6)^2\\]\n\\[\\Leftrightarrow 25a^2+100=32a^2+96a+72\\]\n\\[\\Leftrightarrow 7a^2+96a-28=0\\]\n\nGiải phương trình bậc hai này ta được hai nghiệm:\n\\[a=\\dfrac{2}{7} \\quad \\text{hoặc} \\quad a=-14\\]\n\nĐề bài yêu cầu tích tất cả các giá trị của a thỏa mãn, nên:\n\\[\\dfrac{2}{7}\\times(-14)=-4\\]\n\nVậy tích các giá trị của a là \\(-4\\).",
+    },
+    {
+        "content": "Một viên đạn được bắn lên với tốc độ ban đầu \\(v_0=196\\) m/s từ mặt đất theo phương thẳng đứng. Phương trình chuyển động của viên đạn là \\(y=v_0t-4{,}9t^2\\) (m), trong đó \\(t\\) là thời gian tính bằng giây kể từ lúc bắn, trục Oy hướng lên và gốc O là vị trí bắn. Bỏ qua sức cản không khí. Hỏi tại thời điểm tốc độ của viên đạn bằng 0, viên đạn cách mặt đất bao nhiêu mét?",
+        "answers": ["1960"],
+        "explanation": "Vận tốc chính là đạo hàm của quãng đường theo thời gian, tức \\(v(t) = y'(t)\\).\n\nLấy đạo hàm phương trình chuyển động:\n\\[v(t)=y'(t)=v_0-9{,}8t=196-9{,}8t\\]\n\nTốc độ của viên đạn bằng 0 khi:\n\\[196-9{,}8t=0 \\Leftrightarrow t=20 \\text{ (giây)}\\]\n\nĐây chính là thời điểm viên đạn ở vị trí cao nhất (vì trước đó nó đang bay lên, tốc độ giảm dần đến 0 rồi bắt đầu rơi xuống).\n\nThay \\(t=20\\) vào phương trình chuyển động để tìm độ cao lúc đó:\n\\[y(20)=196\\times 20-4{,}9\\times 20^2=3920-1960=1960 \\text{ (m)}\\]\n\nVậy tại thời điểm tốc độ bằng 0, viên đạn cách mặt đất 1960 mét.",
+    },
         ],
     },
 
