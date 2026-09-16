@@ -955,7 +955,7 @@ EXAM_DEFS = [
     "correct": "D",
     "explanation": "Trung bình cộng \\( = (10+12+14+16+18):5 = 70:5 = 14 \\). Đáp án D."
   },
- {
+{
   "content": "Cho hình hộp \\( ABCD.A'B'C'D' \\), trên cạnh \\( AA', BB', CC' \\) lần lượt lấy ba điểm M, N, P sao cho \\( \\dfrac{AM}{AA'}=\\dfrac{3}{4}, \\dfrac{BN}{BB'}=\\dfrac{1}{2}, \\dfrac{CP}{CC'}=\\dfrac{1}{3} \\). Biết rằng (MNP) cắt DD' tại Q. Tính tỷ số \\( \\dfrac{D'Q}{D'D} \\).",
   "options": {"A": "\\( \\dfrac{5}{6} \\)", "B": "\\( \\dfrac{1}{6} \\)", "C": "\\( \\dfrac{7}{12} \\)", "D": "\\( \\dfrac{5}{12} \\)"},
   "correct": "C",
