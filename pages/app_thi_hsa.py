@@ -180,7 +180,7 @@ EXAM_DEFS = [
     },
     {
         "content": "Cho hàm số \\(y=f(x)\\) có bảng biến thiên như hình dưới. Tổng số đường tiệm cận ngang và tiệm cận đứng của đồ thị hàm số đã cho là",
-        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/hsa_de1_cau4_bbt.png",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/hsa_de1_cau4_bbt.PNG",
         "options": {"A": "0", "B": "1", "C": "2", "D": "3"},
         "correct": "C",
         "explanation": "Dựa vào bảng biến thiên, ta quan sát hành vi của hàm số khi \\(x\\) tiến ra vô cực và tại các điểm gián đoạn.\n\nKhi \\(x\\to -\\infty\\), \\(y\\to -2\\); và khi \\(x\\to 0^-\\), \\(y\\to -\\infty\\). Khi \\(x\\to +\\infty\\), \\(y\\to +\\infty\\).\n\nTa thấy \\(y\\to -2\\) khi \\(x\\to-\\infty\\), là một giá trị hữu hạn, nên đồ thị hàm số có 1 đường tiệm cận ngang là \\(y=-2\\).\n\nMặt khác, tại \\(x=0\\), hàm số có giới hạn tiến ra vô cực (từ bên trái là \\(-\\infty\\), từ bên phải là 8 — nghĩa là hàm không xác định liên tục qua \\(x=0\\) và có một nhánh tiến ra vô cực), nên đồ thị có 1 đường tiệm cận đứng là \\(x=0\\).\n\nVậy:\n- Số đường tiệm cận ngang: 1\n- Số đường tiệm cận đứng: 1\n\nTổng số đường tiệm cận ngang và tiệm cận đứng là \\(1+1=2\\). Chọn đáp án C.",
