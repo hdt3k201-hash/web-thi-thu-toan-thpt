@@ -151,7 +151,7 @@ EXAM_DEFS = [
     # ------------------------------------------------------------------
     {
         "id": "de1",
-        "name": "Đề thi tham khảo số 1 - Đánh giá năng lực học sinh THPT 2025",
+        "name": "Đề thi tham khảo số 1 - Đánh giá năng lực học sinh THPT 2026",
         "seed": 2025101,   # để trộn thứ tự xen kẽ trắc nghiệm/điền đáp án cố định
         "mc4": [
                 {
@@ -507,7 +507,7 @@ EXAM_DEFS = [
     # ------------------------------------------------------------------
     {
         "id": "de2",
-        "name": "Đề thi tham khảo số 2 - Đánh giá năng lực học sinh THPT 2025",
+        "name": "Đề thi tham khảo số 2 - Đánh giá năng lực học sinh THPT 2026",
         "seed": 2025202,
         "mc4": [
             {
@@ -588,7 +588,7 @@ EXAM_DEFS = [
     # ------------------------------------------------------------------
     {
         "id": "de3",
-        "name": "Đề thi tham khảo số 3 - Đánh giá năng lực học sinh THPT 2025",
+        "name": "Đề thi tham khảo số 3 - Đánh giá năng lực học sinh THPT 2026",
         "seed": 2025303,
         "mc4": [
             {
