@@ -56,6 +56,7 @@ Muốn thêm nhanh câu hỏi vào cuối 1 đề đang chạy trên VPS: dùng 
 """
 import json
 import os
+import random
 import sqlite3
 import uuid
 from datetime import datetime
@@ -4912,6 +4913,21 @@ def get_exam_questions(exam_id):
     return [get_question_by_id(qid) for qid in all_ids if get_question_by_id(qid)]
 
 
+def get_shuffled_questions(exam_id, order=None):
+    """Trả về câu hỏi của đề theo đúng thứ tự `order` (danh sách id câu hỏi
+    đã xáo ngẫu nhiên lúc học sinh bắt đầu làm bài). Nếu order=None (hoặc
+    thiếu id nào đó, ví dụ câu hỏi mới thêm sau khi order đã lưu), những
+    câu không nằm trong order sẽ được nối thêm vào cuối theo thứ tự gốc."""
+    questions = get_exam_questions(exam_id)
+    if not order:
+        return questions
+    by_id = {q["id"]: q for q in questions}
+    ordered = [by_id[qid] for qid in order if qid in by_id]
+    ordered_ids = set(order)
+    extra = [q for q in questions if q["id"] not in ordered_ids]
+    return ordered + extra
+
+
 # 2) DATABASE (SQLite) - lưu kết quả bài làm
 # =======================================================================
 def get_db():
@@ -4943,6 +4959,13 @@ def init_db():
         )
         """
     )
+    # Cột lưu thứ tự câu hỏi (đã xáo ngẫu nhiên) của lượt làm bài này, để
+    # trang xem lại kết quả hiển thị đúng thứ tự học sinh đã thấy lúc làm bài.
+    # Dùng try/except vì SQLite không có "ADD COLUMN IF NOT EXISTS".
+    try:
+        conn.execute("ALTER TABLE submissions ADD COLUMN question_order TEXT")
+    except sqlite3.OperationalError:
+        pass
     conn.commit()
     conn.close()
 
@@ -5905,7 +5928,13 @@ def exam_page(exam_id):
     if not exam:
         abort(404)
     student_name = session.get("student_name", "Học sinh")
-    questions = get_exam_questions(exam_id)
+
+    base_questions = get_exam_questions(exam_id)
+    order = [q["id"] for q in base_questions]
+    random.shuffle(order)  # xáo ngẫu nhiên THẬT mỗi lần bấm "Bắt đầu làm bài"
+    session[f"order_{exam_id}"] = order  # giữ nguyên xuyên suốt lượt làm bài này
+
+    questions = get_shuffled_questions(exam_id, order)
     return render_template_string(
         TPL_EXAM, title=exam["name"], exam=exam, questions=questions, student_name=student_name
     )
@@ -5921,17 +5950,21 @@ def submit_exam(exam_id):
     student_name = session.get("student_name", "Học sinh")
     total_earned, total_max, details, answers = grade_exam(exam_id, request.form)
 
+    # Thứ tự câu hỏi đã xáo lúc hiển thị đề (được lưu lúc vào exam_page)
+    order = session.get(f"order_{exam_id}")
+
     submission_id = str(uuid.uuid4())
     db = get_db()
     db.execute(
         """
-        INSERT INTO submissions (id, exam_id, student_name, answers_json, score, max_score, created_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO submissions (id, exam_id, student_name, answers_json, score, max_score, created_at, question_order)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """,
         (
             submission_id, exam_id, student_name,
             json.dumps(answers, ensure_ascii=False),
             total_earned, total_max, datetime.utcnow().isoformat(),
+            json.dumps(order, ensure_ascii=False) if order else None,
         ),
     )
     db.commit()
@@ -5950,7 +5983,14 @@ def result_page(submission_id):
     exam = get_exam_by_id(row["exam_id"])
     stored_answers = json.loads(row["answers_json"])
 
-    questions = get_exam_questions(row["exam_id"])
+    stored_order = None
+    if row["question_order"]:
+        try:
+            stored_order = json.loads(row["question_order"])
+        except (TypeError, json.JSONDecodeError):
+            stored_order = None
+
+    questions = get_shuffled_questions(row["exam_id"], stored_order)
     details = []
     for q in questions:
         submitted = stored_answers.get(q["id"], {})
