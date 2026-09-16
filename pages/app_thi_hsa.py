@@ -657,6 +657,48 @@ EXAM_DEFS = [
                 "correct": "C",
                 "explanation": "Trung bình cộng \\( = (4+6+8+10+12):5 = 40:5 = 8 \\). Đáp án C.",
             },
+          {
+  "content": "Nghiệm của phương trình \\( 2^{2x-1} = 8 \\) là:",
+  "options": {"A": "\\( x=2 \\)", "B": "\\( x=1 \\)", "C": "\\( x=4 \\)", "D": "\\( x=\\dfrac{5}{2} \\)"},
+  "correct": "A",
+  "explanation": "Dùng máy tính bỏ túi tìm nghiệm hoặc dùng tính chất cơ bản của số mũ, lũy thừa để giải nhanh.\n\nTa có: \\( 2^{2x-1}=8 \\Leftrightarrow 2x-1=3 \\Leftrightarrow x=2 \\).\n\nĐáp án A."
+},
+{
+  "content": "Một vật chuyển động theo quy luật \\( s = -\\dfrac{1}{2}t^3+9t^2 \\) với \\( t \\) (giây) là khoảng thời gian tính từ lúc bắt đầu chuyển động và \\( s \\) (mét) là quãng đường vật đi được trong khoảng thời gian đó. Hỏi trong khoảng thời gian 10 giây, kể từ lúc bắt đầu chuyển động, vận tốc lớn nhất của vật đạt được bằng bao nhiêu?",
+  "options": {"A": "216 (m/s)", "B": "30 (m/s)", "C": "400 (m/s)", "D": "54 (m/s)"},
+  "correct": "D",
+  "explanation": "Vận tốc của vật là \\( v(t)=s'(t) \\). Tìm giá trị lớn nhất của \\( v(t) \\).\n\nVận tốc tại thời điểm \\( t \\) là \\( v(t)=s'(t)=-\\dfrac{3}{2}t^2+18t \\) với \\( t\\in[0;10] \\).\n\nTa có: \\( v'(t)=-3t+18=0 \\Leftrightarrow t=6 \\).\n\nSuy ra: \\( v(0)=0; v(10)=30; v(6)=54 \\).\n\nVậy vận tốc lớn nhất của vật đạt được bằng 54 (m/s).\n\nĐáp án D."
+},
+{
+  "content": "Trong mặt phẳng với hệ tọa độ Oxy, cho đường thẳng \\( d: \\begin{cases} x=2+t \\\\ y=1-3t \\end{cases} \\) và hai điểm \\( A(1;2), B(-2;m) \\). Tìm tất cả các giá trị của tham số \\( m \\) để \\( A \\) và \\( B \\) nằm cùng phía đối với \\( d \\).",
+  "options": {"A": "\\( m>13 \\)", "B": "\\( m\\ge 13 \\)", "C": "\\( m<13 \\)", "D": "\\( m=13 \\)"},
+  "correct": "C",
+  "explanation": "Đưa phương trình đường thẳng \\( d \\) về dạng tổng quát \\( ax+by+c=0 \\).\n\nĐiều kiện để hai điểm \\( A(x_A;y_A), B(x_B;y_B) \\) nằm cùng phía đối với \\( d \\) là:\n\n\\( (a.x_A+b.y_A+c)(a.x_B+b.y_B+c)>0 \\).\n\nTa có: \\( d: \\begin{cases} x=2+t \\\\ y=1-3t \\end{cases} \\Rightarrow d: 3x+y-7=0 \\).\n\nĐể \\( A, B \\) nằm cùng phía đối với \\( d \\) thì:\n\n\\( (3x_A+y_A-7)(3x_B+y_B-7)>0 \\Leftrightarrow -2(m-13)>0 \\Leftrightarrow m-13<0 \\Leftrightarrow m<13 \\).\n\nĐáp án C."
+},
+{
+  "content": "Cho cấp số cộng \\( (u_n) \\) có \\( u_1=4 \\). Giá trị nhỏ nhất của \\( u_1u_2+u_2u_3+u_3u_1 \\) bằng:",
+  "options": {"A": "-8", "B": "-24", "C": "-20", "D": "-6"},
+  "correct": "B",
+  "explanation": "Sử dụng công thức số hạng tổng quát của CSC: \\( u_n=u_1+(n-1)d \\).\n\nTính biểu thức \\( u_1u_2+u_2u_3+u_3u_1 \\) theo \\( d \\) rồi tìm giá trị nhỏ nhất.\n\nTa gọi \\( d \\) là công sai của cấp số cộng.\n\nKhi đó:\n\n\\( u_1u_2+u_2u_3+u_3u_1 = 4(4+d)+(4+d)(4+2d)+4(4+2d) \\)\n\n\\( = 2d^2+24d+48 = 2(d+6)^2-24 \\ge -24 \\)\n\nVậy giá trị nhỏ nhất của \\( u_1u_2+u_2u_3+u_3u_1 \\) là -24 đạt được khi \\( d=-6 \\).\n\nĐáp án B."
+},
+{
+  "content": "Cho cấp số nhân \\( (u_n) \\) có \\( u_2=-6, u_5=48 \\). Tính \\( S_5 \\).",
+  "options": {"A": "33", "B": "-31", "C": "93", "D": "11"},
+  "correct": "A",
+  "explanation": "Tính tổng n số hạng đầu tiên của dãy.\n\nTa có \\( \\begin{cases} u_1.q=-6 \\\\ u_1.q^4=48 \\end{cases} \\Rightarrow \\begin{cases} u_1.q=-6 \\\\ q^3=-8 \\end{cases} \\Rightarrow \\begin{cases} u_1=3 \\\\ q=-2 \\end{cases} \\).\n\nVậy \\( S_5 = \\dfrac{3\\left(1-(-2)^5\\right)}{1-(-2)} = 33 \\).\n\nĐáp án A."
+},
+{
+  "content": "Năng lượng giải tỏa \\( E \\) của một trận động đất tại tâm địa chấn \\( M \\) độ Richter được xác định bởi công thức \\( \\log E = 11,4+1,5M \\). Vào năm 1995, thành phố \\( X \\) xảy ra một trận động đất 8 độ Richter và năng lượng giải tỏa tại tâm địa chấn của nó gấp 14 lần trận động đất ra tại thành phố \\( Y \\) vào năm 1997. Hỏi khi đó độ lớn của trận động đất tại thành phố \\( Y \\) là bao nhiêu? (kết quả làm tròn đến hàng phần chục)",
+  "options": {"A": "7,2 độ Richter", "B": "7,8 độ Richter", "C": "8,3 độ Richter", "D": "6,8 độ Richter"},
+  "correct": "A",
+  "explanation": "Từ tỉ lệ năng lượng tỏa ra của 2 trận động đất suy ra độ lớn của trận động đất tại thành phố \\( Y \\).\n\nTheo đề bài ta có: \\( \\dfrac{E_X}{E_Y}=14 \\).\n\n\\( \\Rightarrow \\log\\left(\\dfrac{E_X}{E_Y}\\right) = \\log E_X - \\log E_Y = 1,5(M_X-M_Y) = \\log 14 \\)\n\n\\( \\Leftrightarrow M_X-M_Y = \\dfrac{\\log 14}{1,5} \\Rightarrow M_Y = 8-\\dfrac{\\log 14}{1,5} \\approx 7,2 \\)\n\nVậy độ lớn của trận động đất tại thành phố \\( Y \\) là 7,2 độ Richter.\n\nĐáp án A."
+},
+{
+  "content": "Tồn tại bao nhiêu giá trị nguyên của tham số \\( m\\in[-30;30] \\) sao cho đồ thị hàm số \\( y=\\dfrac{2x^2+5}{x^3+(m-4)x+2m} \\) có ít nhất một tiệm cận đứng nằm bên phải trục tung?",
+  "options": {"A": "61", "B": "32", "C": "16", "D": "13"},
+  "correct": "B",
+  "explanation": "Để đồ thị hàm số có ít nhất một tiệm cận đứng nằm bên phải trục tung thì phương trình \\( x^3+(m-4)x+2m=0 \\) có ít nhất 1 nghiệm dương.\n\nTa có:\n\n\\( x^3+(m-4)x+2m=0 \\)\n\n\\( \\Leftrightarrow x^3-4x+mx+2m=0 \\)\n\n\\( \\Leftrightarrow x(x-2)(x+2)+m(x+2)=0 \\)\n\n\\( \\Leftrightarrow (x+2)(x^2-2x+m)=0 \\)\n\n\\( \\Leftrightarrow \\left[\\begin{array}{l} x=-2 \\\\ x^2-2x+m=0 \\; (*) \\end{array}\\right. \\)\n\nĐể (*) có ít nhất 1 nghiệm dương thì:\n\nTH1: (*) có 2 nghiệm trái dấu \\( \\Leftrightarrow m<0 \\)\n\nMà \\( m\\in[-30;30]; m\\in\\mathbb{Z} \\) nên \\( m\\in\\{-30;-29;\\ldots;-1\\} \\).\n\nTH2: (*) có 2 nghiệm phân biệt \\( 0\\le x_1<x_2 \\)\n\n\\( \\Leftrightarrow \\begin{cases} \\Delta'=1-m>0 \\\\ x_1x_2=m\\ge 0 \\\\ x_1+x_2=2>0 \\end{cases} \\Leftrightarrow 0\\le m<1 \\).\n\nMà \\( m\\in[-30;30]; m\\in\\mathbb{Z} \\) nên \\( m=0 \\).\n\nTH3: (*) có nghiệm kép lớn hơn 0.\n\n\\( \\Leftrightarrow \\begin{cases} \\Delta'=1-m=0 \\\\ x_1x_2=m>0 \\end{cases} \\Leftrightarrow 0<m\\le 1 \\).\n\nMà \\( m\\in[-30;30]; m\\in\\mathbb{Z} \\) nên \\( m=1 \\).\n\nVậy \\( m\\in\\{-30;-29;\\ldots;1\\} \\Rightarrow \\) có 32 giá trị nguyên của \\( m \\) thỏa mãn yêu cầu bài toán.\n\nĐáp án B."
+},
             {
                 "content": "Một nhóm có 9 học sinh. Hỏi có bao nhiêu cách chọn ra 4 học sinh từ nhóm đó (không phân biệt thứ tự)?",
                 "options": {"A": "36", "B": "126", "C": "3024", "D": "84"},
@@ -713,10 +755,21 @@ EXAM_DEFS = [
   "explanation": "Đặt \\( |x| = t \\; (t \\ge 0) \\). Biện luận số nghiệm của \\( t \\).\n\nĐặt \\( |x| = t \\; (t \\ge 0) \\) thì phương trình (*) trở thành: \\( t^2-2mt+9-m=0 \\) (1)\n\nĐể phương trình (*) có 3 nghiệm phân biệt thì phương trình (1) phải có nghiệm \\( t=0 \\) và một nghiệm \\( t>0 \\).\n\nKhi \\( t=0 \\Rightarrow m=9 \\) thì (1) \\( \\Leftrightarrow t^2-18t=0 \\Rightarrow \\left[\\begin{array}{l} t=18>0 \\; (TM) \\\\ t=0 \\end{array}\\right. \\)\n\nVậy \\( m=9 \\)."
 },
             {
-                "content": "Tìm bội chung nhỏ nhất (BCNN) của 18 và 24. (chỉ điền số)",
-                "answers": ["72"],
-                "explanation": "\\( 18 = 2 \\times 3^2,\\ 24 = 2^3 \\times 3 \\Rightarrow \\text{BCNN} = 2^3 \\times 3^2 = 72 \\).",
-            },
+  "content": "Cho hàm số \\( f(x) \\) có bảng biến thiên của hàm số \\( y=f'(x) \\) như hình vẽ bên. Có bao nhiêu giá trị nguyên của tham số \\( m\\in(-10;10) \\) để hàm số \\( y=f(3x-1)+x^3-3mx \\) đồng biến trên khoảng \\( (-2;1) \\)? (điền số nguyên).",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau42_de.PNG",
+  "answers": ["6"],
+  "explanation": "Để hàm số \\( y=f(3x-1)+x^3-3mx \\) đồng biến trên khoảng \\( (-2;1) \\)\n\n\\( \\Leftrightarrow y' \\ge 0, \\forall x\\in(-2;1) \\)\n\n\\( \\Leftrightarrow 3f'(3x-1)+3x^2-3m \\ge 0, \\forall x\\in(-2;1) \\)\n\n\\( \\Leftrightarrow m \\le f'(3x-1)+x^2, \\forall x\\in(-2;1) \\) (*)\n\nĐặt \\( k(x)=f'(3x-1), h(x)=x^2 \\) và \\( g(x)=f'(3x-1)+x^2=k(x)+h(x) \\).\n\nTa có: \\( \\displaystyle\\min_{(-2;1)}k(x) = k(0)=-4 \\).\n\nDo đó, ta có: \\( \\displaystyle\\min_{(-2;1)}f'(3x-1) = f'(-1)=-4 \\) khi \\( 3x-1=-1 \\Leftrightarrow x=0 \\).\n\n\\( \\Rightarrow \\displaystyle\\min_{(-2;1)}k(x)=k(0)=-4 \\).\n\nDo đó, \\( \\displaystyle\\min_{(-2;1)}g(x)=g(0)=k(0)+h(0)=0-4=-4 \\).\n\nTừ (*) ta có \\( m \\le f'(3x-1)+x^2, \\forall x\\in(-2;1) \\Leftrightarrow m \\le \\displaystyle\\min_{(-2;1)}g(x) \\Leftrightarrow m \\le -4 \\).\n\nMà \\( m\\in(-10;10) \\Rightarrow m\\in\\{-9;\\ldots;-4\\} \\).\n\nVậy có tất cả 6 số nguyên thỏa mãn."
+},
+{
+  "content": "Biết \\( \\displaystyle\\lim_{x\\to 3}\\dfrac{x^2+bx+c}{x-3}=8 \\; (b,c\\in\\mathbb{R}) \\). Giá trị \\( P=b+c \\) bằng bao nhiêu? (điền số nguyên).",
+  "answers": ["-13"],
+  "explanation": "Nhận dạng giới hạn vô định \\( \\dfrac{0}{0} \\).\n\nVì \\( \\displaystyle\\lim_{x\\to 3}\\dfrac{x^2+bx+c}{x-3}=8 \\) là hữu hạn nên phương trình \\( x^2+bx+c=0 \\) có nghiệm \\( x=3 \\)\n\n\\( \\Leftrightarrow 3b+c+9=0 \\Leftrightarrow c=-9-3b \\)\n\nKhi đó\n\n\\( \\displaystyle\\lim_{x\\to 3}\\dfrac{x^2+bx+c}{x-3} = \\lim_{x\\to 3}\\dfrac{x^2+bx-9-3b}{x-3} = \\lim_{x\\to 3}\\dfrac{(x-3)(x+3+b)}{x-3} \\)\n\n\\( = \\lim_{x\\to 3}(x+3+b) = 8 \\Leftrightarrow 6+b=8 \\Leftrightarrow b=2 \\Rightarrow c=-15 \\)\n\nVậy \\( P=b+c=-13 \\)."
+},
+{
+  "content": "Một đề kiểm tra trắc nghiệm 45 phút môn Tiếng Anh của lớp 10 là một đề gồm 25 câu hỏi độc lập, mỗi câu hỏi có 4 đáp án trả lời trong đó chỉ có một đáp án đúng. Mỗi câu trả lời đúng được 0,4 điểm, câu trả lời sai không được điểm. Bạn Bình vì học rất kém môn Tiếng Anh nên làm bài bằng cách chọn ngẫu nhiên câu trả lời cho tất cả 25 câu. Gọi A là biến cố \"Bình làm đúng k câu\", biết xác suất của biến cố A đạt giá trị lớn nhất. Tính k (điền số nguyên).",
+  "answers": ["6"],
+  "explanation": "Vì đề thi có 25 câu và mỗi câu có 4 phương án trả lời nên xác suất để Bình làm đúng \\( k \\) câu là\n\n\\( P = C_{25}^k.\\left(\\dfrac{1}{4}\\right)^k.\\left(\\dfrac{3}{4}\\right)^{25-k} = \\dfrac{C_{25}^k.3^{25-k}}{4^{25}} \\)\n\nVới \\( 0 \\le k \\le 25 \\).\n\nXét hàm \\( f(k) = C_{25}^k.3^{25-k} \\) với \\( k\\in\\mathbb{N} \\) và \\( k\\le 25 \\).\n\nTa có \\( f(k) \\) lớn nhất \\( \\Leftrightarrow \\begin{cases} f(k) \\ge f(k-1) \\\\ f(k) \\ge f(k+1) \\end{cases} \\Leftrightarrow 6,5 \\ge k \\ge 5,5 \\Rightarrow k=6 \\).\n\nSuy ra \\( \\displaystyle\\max_{0\\le k\\le 25} f(k) = f(6) \\).\n\nVậy \\( k=6 \\)."
+},
         ],
     },
 
