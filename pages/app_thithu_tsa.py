@@ -5228,7 +5228,7 @@ body { background-color:#fdf5f5; font-family:"Segoe UI",Roboto,Arial,sans-serif;
 .score-card { border-radius:18px; border:none; background:linear-gradient(135deg,var(--tsa-red-darker),var(--tsa-red)); color:#fff; }
 .score-big { font-size:3.5rem; font-weight:800; }
 .explanation-box { background:#fffbeb; border-left:4px solid #f59e0b; padding:12px 16px;
-                    border-radius:8px; font-size:.95rem; }
+                    border-radius:8px; font-size:.95rem; white-space: pre-line; }
 .admin-box { border-radius:14px; border-top:4px solid var(--tsa-red); }
 .badge-tsa { background-color: var(--tsa-red) !important; }
 .timer-warning { background-color: var(--tsa-red-darker) !important; animation: tsa-blink 1s infinite; }
