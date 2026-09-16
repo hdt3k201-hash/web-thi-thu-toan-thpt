@@ -632,339 +632,468 @@ Tỉ lệ xe vi phạm là: \\( \\dfrac{15}{50} = 30\\% < 35\\% \\) \\( \\Righta
 \\( \\Rightarrow X = \\dfrac{10^9 \\cdot 0.008 \\cdot 1.008^{60}}{1.008^{60}-1} = \\dfrac{8\\cdot 10^6\\cdot 1.008^{60}}{1.008^{60}-1} \\)."""
     },
 
-    # ---------------- TRẢ LỜI NGẮN (short) ----------------
-    {
-        "id": "de1_sh_15",
-        "type": "short",
-        "content": "Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a, cạnh bên SA vuông góc với mặt phẳng đáy và \\( SA=a \\). Điểm M di động trên đoạn thẳng BC, điểm N di động trên đoạn thẳng CD sao cho góc \\( \\widehat{MAN}=45^{\\circ} \\). Biết thể tích nhỏ nhất của khối chóp S.AMN có dạng \\( V=\\dfrac{a^3(\\sqrt{p}-q)}{r} \\) với p, q, r là các số nguyên dương phân biệt và phân số tối giản. Tính giá trị biểu thức \\( T=p+q+r \\).",
-        "blanks": [
-            {"label": "T =", "answers": ["6"]}
-        ],
-        "points": 1,
-        "explanation": """Đặt \\( \\widehat{BAM} = \\alpha, \\widehat{DAN} = \\beta \\). Vì \\( \\widehat{MAN} = 45^\\circ \\) và \\( \\widehat{BAD} = 90^\\circ \\) nên \\( \\alpha + \\beta = 45^\\circ \\).
-Ta có: \\( BM = a\\tan\\alpha, DN = a\\tan\\beta \\).
-Diện tích tam giác AMN:
-\\( S_{AMN} = S_{ABCD} - S_{ABM} - S_{ADN} - S_{MCN} \\)
-\\( = a^2 - \\dfrac{a^2}{2}\\tan\\alpha - \\dfrac{a^2}{2}\\tan\\beta - \\dfrac{a^2}{2}(1-\\tan\\alpha)(1-\\tan\\beta) \\)
-\\( = \\dfrac{a^2}{2}(1 - \\tan\\alpha\\tan\\beta) \\).
-Mà \\( \\tan(\\alpha+\\beta) = 1 \\Leftrightarrow \\dfrac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta} = 1 \\Leftrightarrow \\tan\\alpha + \\tan\\beta = 1 - \\tan\\alpha\\tan\\beta \\).
-Áp dụng BĐT Cô-si:
-\\( 1 - \\tan\\alpha\\tan\\beta = \\tan\\alpha + \\tan\\beta \\ge 2\\sqrt{\\tan\\alpha\\tan\\beta} \\)
-Đặt \\( t = \\sqrt{\\tan\\alpha\\tan\\beta} \\ge 0 \\), ta có \\( t^2 + 2t - 1 \\le 0 \\Rightarrow t \\le \\sqrt{2}-1 \\).
-Do đó \\( \\tan\\alpha\\tan\\beta \\le (\\sqrt{2}-1)^2 = 3 - 2\\sqrt{2} \\).
-Suy ra: \\( S_{AMN} = \\dfrac{a^2}{2}(1 - \\tan\\alpha\\tan\\beta) \\ge \\dfrac{a^2}{2}(1 - (3 - 2\\sqrt{2})) = a^2(\\sqrt{2}-1) \\).
-Thể tích khối chóp:
-\\( V = \\dfrac{1}{3}SA \\cdot S_{AMN} \\ge \\dfrac{1}{3}a \\cdot a^2(\\sqrt{2}-1) = \\dfrac{a^3(\\sqrt{2}-1)}{3} \\).
-Dấu "=" xảy ra khi \\( \\alpha = \\beta = 22.5^\\circ \\).
-Đồng nhất hệ số với \\( V = \\dfrac{a^3(\\sqrt{p}-q)}{r} \\), ta được \\( p=2, q=1, r=3 \\).
-Vậy \\( T = p + q + r = 2 + 1 + 3 = 6 \\)."""
+    # ---------------- TRẢ LỜI NGẮN (short) - CÂU 15 ----------------
+{
+    "id": 'de1_sh_15',
+    "type": 'short',
+    "content": 'Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a, cạnh bên SA vuông góc với mặt phẳng đáy và \( SA = a \). Điểm M di động trên đoạn thẳng BC, điểm N di động trên đoạn thẳng CD sao cho góc \( \widehat{MAN} = 45^\circ \). Biết thể tích nhỏ nhất của khối chóp S.AMN có dạng \( V = \dfrac{a^3(\sqrt{p}-q)}{r} \) với p, q, r là các số nguyên dương phân biệt và phân số tối giản. Tính giá trị biểu thức \( T = p+q+r \).',
+    "blanks": [
+        {"label": 'T =', "answers": ['6']},
+    ],
+    "points": 1,
+    "explanation": """Đặt \( \widehat{BAM} = \alpha \) và \( \widehat{DAN} = \beta \).
+Vì \( \widehat{BAD} = 90^\circ \) và \( \widehat{MAN} = 45^\circ \) nên:
+\( \alpha + \beta = 90^\circ - 45^\circ = 45^\circ \)
+
+Trong hai tam giác vuông ABM và ADN ta có:
+\( BM = a\tan\alpha \), \( DN = a\tan\beta \)
+Suy ra \( MC = a - a\tan\alpha \) và \( NC = a - a\tan\beta \).
+
+Diện tích tam giác AMN bằng diện tích hình vuông trừ đi ba tam giác vuông ở ba góc:
+\( S_{AMN} = S_{ABCD} - S_{ABM} - S_{ADN} - S_{MCN} \)
+\( = a^2 - \dfrac{a^2}{2}\tan\alpha - \dfrac{a^2}{2}\tan\beta - \dfrac{a^2}{2}(1-\tan\alpha)(1-\tan\beta) \)
+\( = \dfrac{a^2}{2}\left(1 - \tan\alpha\tan\beta\right) \)
+
+Mặt khác, từ \( \alpha + \beta = 45^\circ \) ta có \( \tan(\alpha+\beta) = 1 \), tức là:
+\( \dfrac{\tan\alpha + \tan\beta}{1 - \tan\alpha\tan\beta} = 1 \Leftrightarrow \tan\alpha + \tan\beta = 1 - \tan\alpha\tan\beta \)
+
+Áp dụng bất đẳng thức Cô-si cho hai số không âm \( \tan\alpha, \tan\beta \):
+\( 1 - \tan\alpha\tan\beta = \tan\alpha + \tan\beta \ge 2\sqrt{\tan\alpha\tan\beta} \)
+
+Đặt \( t = \sqrt{\tan\alpha\tan\beta} \ge 0 \), bất đẳng thức trên trở thành:
+\( 1 - t^2 \ge 2t \Leftrightarrow t^2 + 2t - 1 \le 0 \Leftrightarrow 0 \le t \le \sqrt{2}-1 \)
+Do đó: \( \tan\alpha\tan\beta = t^2 \le (\sqrt{2}-1)^2 = 3 - 2\sqrt{2} \)
+
+Thay vào công thức diện tích:
+\( S_{AMN} = \dfrac{a^2}{2}(1 - \tan\alpha\tan\beta) \ge \dfrac{a^2}{2}\left[1 - (3-2\sqrt{2})\right] = a^2(\sqrt{2}-1) \)
+
+Vì \( SA \perp (ABCD) \) nên SA là đường cao của khối chóp S.AMN:
+\( V = \dfrac{1}{3}\cdot SA\cdot S_{AMN} \ge \dfrac{1}{3}\cdot a\cdot a^2(\sqrt{2}-1) = \dfrac{a^3(\sqrt{2}-1)}{3} \)
+
+Dấu "=" xảy ra khi \( \tan\alpha = \tan\beta \), tức là \( \alpha = \beta = 22,5^\circ \).
+Đồng nhất với \( V = \dfrac{a^3(\sqrt{p}-q)}{r} \) ta được \( p = 2 \), \( q = 1 \), \( r = 3 \).
+
+Vậy \( T = p+q+r = 2+1+3 = 6 \).""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) - CÂU 16 ----------------
+{
+    "id": 'de1_mc_16',
+    "type": 'mc4',
+    "content": 'Gọi \( x_1, x_2 \) là các nghiệm thực của phương trình \( \log_2\dfrac{x^2+2x+3}{2x^2-x+2} = x^2-3x-1 \). Tính giá trị của biểu thức \( P = x_1^2 + x_2^2 \).',
+    "options": {
+        'A': '\( P = 7 \)',
+        'B': '\( P = 9 \)',
+        'C': '\( P = 11 \)',
+        'D': '\( P = 13 \)',
     },
+    "correct": 'C',
+    "points": 1,
+    "explanation": """Xét hai biểu thức dưới dấu logarit:
+\( x^2+2x+3 = (x+1)^2 + 2 > 0 \) với mọi x
+\( 2x^2-x+2 = 2\left(x-\dfrac{1}{4}\right)^2 + \dfrac{15}{8} > 0 \) với mọi x
+Vậy phương trình xác định với mọi số thực x.
 
-    # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
-    {
-        "id": "de1_mc_16",
-        "type": "mc4",
-        "content": "Gọi \\( x_1, x_2 \\) là các nghiệm thực của phương trình \\( \\log_2\\dfrac{x^2+2x+3}{2x^2-x+2} = x^2-3x-1 \\). Tính giá trị của biểu thức \\( P=x_1^2+x_2^2 \\).",
-        "options": {
-            "A": "P = 7",
-            "B": "P = 9",
-            "C": "P = 11",
-            "D": "P = 13"
-        },
-        "correct": "C",
-        "points": 1,
-        "explanation": """Điều kiện: \\( \\dfrac{x^2+2x+3}{2x^2-x+2} > 0 \\) (luôn đúng do tử số và mẫu số đều dương với mọi \\( x \\)).
-Phương trình tương đương:
-\\( \\log_2(x^2+2x+3) - \\log_2(2x^2-x+2) = (2x^2-x+2) - (x^2+2x+3) \\)
-\\( \\Leftrightarrow \\log_2(x^2+2x+3) + (x^2+2x+3) = \\log_2(2x^2-x+2) + (2x^2-x+2) \\) (*)
-Xét hàm số \\( f(t) = \\log_2 t + t \\) trên \\( (0; +\\infty) \\). Ta có \\( f'(t) = \\dfrac{1}{t\\ln 2} + 1 > 0 \\), nên hàm số đồng biến.
-Từ (*) suy ra \\( f(x^2+2x+3) = f(2x^2-x+2) \\)
-\\( \\Leftrightarrow x^2+2x+3 = 2x^2-x+2 \\)
-\\( \\Leftrightarrow x^2 - 3x - 1 = 0 \\).
-Phương trình có 2 nghiệm phân biệt \\( x_1, x_2 \\) (do \\( \\Delta = 13 > 0 \\)).
-Theo định lí Vi-ét: \\( x_1 + x_2 = 3 \\) và \\( x_1 x_2 = -1 \\).
-Giá trị biểu thức: \\( P = x_1^2 + x_2^2 = (x_1+x_2)^2 - 2x_1 x_2 = 3^2 - 2(-1) = 11 \\).
-Vậy đáp án đúng là C."""
+Nhận xét ở vế phải:
+\( x^2-3x-1 = (2x^2-x+2) - (x^2+2x+3) \)
+
+Do đó phương trình đã cho được viết lại thành:
+\( \log_2(x^2+2x+3) - \log_2(2x^2-x+2) = (2x^2-x+2) - (x^2+2x+3) \)
+\( \Leftrightarrow \log_2(x^2+2x+3) + (x^2+2x+3) = \log_2(2x^2-x+2) + (2x^2-x+2) \)  (*)
+
+Xét hàm số \( f(t) = \log_2 t + t \) trên khoảng \( (0;+\infty) \):
+\( f'(t) = \dfrac{1}{t\ln 2} + 1 > 0 \) với mọi \( t > 0 \)
+Suy ra f(t) đồng biến trên \( (0;+\infty) \), nên f(t) là hàm một đối một.
+
+Đặt \( u = x^2+2x+3 > 0 \) và \( v = 2x^2-x+2 > 0 \), hệ thức (*) có dạng \( f(u) = f(v) \), suy ra:
+\( u = v \Leftrightarrow x^2+2x+3 = 2x^2-x+2 \Leftrightarrow x^2-3x-1 = 0 \)
+
+Phương trình này có \( \Delta = 9+4 = 13 > 0 \) nên có hai nghiệm phân biệt \( x_1, x_2 \).
+Theo định lí Vi-ét: \( x_1+x_2 = 3 \) và \( x_1x_2 = -1 \).
+
+Vậy:
+\( P = x_1^2+x_2^2 = (x_1+x_2)^2 - 2x_1x_2 = 3^2 - 2\cdot(-1) = 11 \)
+Chọn đáp án C.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) - CÂU 17 ----------------
+{
+    "id": 'de1_sh_17',
+    "type": 'short',
+    "content": 'Cho hình chóp S.ABC có độ dài ba cạnh bên bằng nhau \( SA = SB = SC = a \). Các góc ở đỉnh S lần lượt được cho bởi: \( \widehat{ASB} = 60^\circ \), \( \widehat{BSC} = 90^\circ \) và \( \widehat{CSA} = 120^\circ \). Gọi \( \alpha \) là góc tạo bởi hai mặt phẳng (SAB) và (SAC). Tính giá trị của \( \cos\alpha \). (Điền đáp án dưới dạng phân số tối giản).',
+    "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau17-de1.PNG',
+    "blanks": [
+        {"label": '\( \cos\alpha = \)', "answers": ['1/3']},
+    ],
+    "points": 1,
+    "explanation": """Bước 1: Tính ba cạnh đáy.
+Tam giác SAB có \( SA = SB = a \) và \( \widehat{ASB} = 60^\circ \) nên là tam giác đều, suy ra \( AB = a \).
+Tam giác SBC vuông cân tại S nên \( BC = a\sqrt{2} \).
+Tam giác SAC có \( AC^2 = SA^2+SC^2-2\cdot SA\cdot SC\cos 120^\circ = a^2+a^2+a^2 = 3a^2 \), suy ra \( AC = a\sqrt{3} \).
+
+Bước 2: Xác định chân đường cao và tính thể tích.
+Ta thấy \( AB^2 + BC^2 = a^2 + 2a^2 = 3a^2 = AC^2 \) nên tam giác ABC vuông tại B.
+Gọi H là hình chiếu vuông góc của S lên mặt phẳng (ABC). Vì \( SA = SB = SC \) nên \( HA = HB = HC \), tức H là tâm đường tròn ngoại tiếp tam giác ABC. Tam giác ABC vuông tại B nên H là trung điểm của cạnh huyền AC.
+
+Khi đó \( AH = \dfrac{AC}{2} = \dfrac{a\sqrt{3}}{2} \), suy ra đường cao:
+\( SH = \sqrt{SA^2 - AH^2} = \sqrt{a^2 - \dfrac{3a^2}{4}} = \dfrac{a}{2} \)
+
+Diện tích đáy: \( S_{ABC} = \dfrac{1}{2}\cdot AB\cdot BC = \dfrac{1}{2}\cdot a\cdot a\sqrt{2} = \dfrac{a^2\sqrt{2}}{2} \)
+Thể tích: \( V = \dfrac{1}{3}\cdot S_{ABC}\cdot SH = \dfrac{1}{3}\cdot\dfrac{a^2\sqrt{2}}{2}\cdot\dfrac{a}{2} = \dfrac{a^3\sqrt{2}}{12} \)
+
+Bước 3: Tính khoảng cách từ B đến mặt phẳng (SAC).
+\( S_{SAC} = \dfrac{1}{2}\cdot SA\cdot SC\cdot\sin 120^\circ = \dfrac{1}{2}\cdot a\cdot a\cdot\dfrac{\sqrt{3}}{2} = \dfrac{a^2\sqrt{3}}{4} \)
+Dùng thể tích khối chóp B.SAC (cũng chính là khối chóp S.ABC):
+\( d(B,(SAC)) = \dfrac{3V}{S_{SAC}} = \dfrac{3\cdot\frac{a^3\sqrt{2}}{12}}{\frac{a^2\sqrt{3}}{4}} = \dfrac{a\sqrt{2}}{\sqrt{3}} = \dfrac{a\sqrt{6}}{3} \)
+
+Bước 4: Tính góc giữa hai mặt phẳng.
+Hai mặt phẳng (SAB) và (SAC) cắt nhau theo giao tuyến SA.
+Gọi K là trung điểm SA. Tam giác SAB đều nên \( BK \perp SA \) và \( BK = \dfrac{a\sqrt{3}}{2} \), tức là \( d(B, SA) = \dfrac{a\sqrt{3}}{2} \).
+
+Vì BK nằm trong (SAB) và vuông góc với giao tuyến SA nên góc giữa hai mặt phẳng thỏa mãn:
+\( \sin\alpha = \dfrac{d(B,(SAC))}{d(B,SA)} = \dfrac{\frac{a\sqrt{6}}{3}}{\frac{a\sqrt{3}}{2}} = \dfrac{2\sqrt{2}}{3} \)
+
+Góc giữa hai mặt phẳng luôn thuộc \( [0^\circ; 90^\circ] \) nên \( \cos\alpha \ge 0 \):
+\( \cos\alpha = \sqrt{1-\sin^2\alpha} = \sqrt{1-\dfrac{8}{9}} = \dfrac{1}{3} \)
+
+Vậy \( \cos\alpha = \dfrac{1}{3} \).""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) - CÂU 18 ----------------
+{
+    "id": 'de1_tf_18',
+    "type": 'truefalse',
+    "content": 'Trong không gian, xét tính Đúng/Sai của các mệnh đề sau về quan hệ song song:',
+    "statements": [
+        {"text": 'Nếu hai mặt phẳng phân biệt cùng song song với một đường thẳng thì chúng song song với nhau.', "correct": False},
+        {"text": 'Cho hai đường thẳng chéo nhau. Luôn tồn tại duy nhất một mặt phẳng chứa đường thẳng này và song song với đường thẳng kia.', "correct": True},
+        {"text": 'Nếu mặt phẳng \( (\alpha) \) chứa hai đường thẳng phân biệt cùng song song với mặt phẳng \( (\beta) \) thì \( (\alpha) \) song song với \( (\beta) \).', "correct": False},
+        {"text": 'Hình chiếu song song của hai đường thẳng chéo nhau lên một mặt phẳng (theo phương chiếu không song song với hai đường thẳng đó) có thể là hai đường thẳng song song.', "correct": True},
+    ],
+    "points": 1,
+    "explanation": """a) SAI.
+Hai mặt phẳng đó vẫn có thể cắt nhau; khi đó giao tuyến của chúng song song với đường thẳng đã cho.
+Ví dụ: hai mặt bên kề nhau của một hình hộp cùng song song với một cạnh đứng nhưng lại cắt nhau.
+
+b) ĐÚNG.
+Đây là tính chất cơ bản trong SGK Hình học 11: với hai đường thẳng chéo nhau a và b, mặt phẳng chứa a và song song với b là duy nhất (dựng bằng cách qua một điểm của a kẻ đường thẳng song song với b).
+
+c) SAI.
+Muốn kết luận \( (\alpha) \parallel (\beta) \) thì hai đường thẳng đó phải CẮT NHAU.
+Nếu hai đường thẳng đó song song với nhau thì hai mặt phẳng vẫn có thể cắt nhau.
+
+d) ĐÚNG.
+Nếu chọn phương chiếu song song với một mặt phẳng chứa đồng thời hai đường thẳng song song với hai đường thẳng chéo nhau đã cho, thì hình chiếu của chúng là hai đường thẳng song song.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) - CÂU 19 ----------------
+{
+    "id": 'de1_sh_19',
+    "type": 'short',
+    "content": 'Cho hàm số \( f(x) = \sqrt{1+2x}\cdot\sqrt[3]{1+3x}\cdots\sqrt[2026]{1+2026x} \). Tính giới hạn \( L = \lim_{x\to 0}\dfrac{f(x)-1}{x} \).',
+    "blanks": [
+        {"label": 'L =', "answers": ['2025']},
+    ],
+    "points": 1,
+    "explanation": """Đặt \( u_k = \sqrt[k]{1+kx} \) với \( k = 2,3,\dots,2026 \).
+Khi đó \( f(x) = u_2\cdot u_3\cdots u_{2026} \), và khi \( x\to 0 \) thì mỗi \( u_k \to 1 \), do đó \( f(0) = 1 \).
+
+Bước 1: Tính \( \lim_{x\to 0}\dfrac{u_k-1}{x} \).
+Từ \( u_k^k = 1+kx \) suy ra \( u_k^k - 1 = kx \).
+Dùng hằng đẳng thức:
+\( u_k^k - 1 = (u_k-1)\left(u_k^{k-1}+u_k^{k-2}+\dots+u_k+1\right) \)
+Suy ra:
+\( \dfrac{u_k-1}{x} = \dfrac{k}{u_k^{k-1}+u_k^{k-2}+\dots+u_k+1} \)
+Khi \( x\to 0 \) thì \( u_k\to 1 \) nên mẫu số tiến tới k (tổng của k số 1), do đó:
+\( \lim_{x\to 0}\dfrac{u_k-1}{x} = \dfrac{k}{k} = 1 \)
+
+Bước 2: Tách \( f(x)-1 \) bằng cách thêm bớt liên tiếp:
+\( f(x)-1 = (u_2-1)u_3u_4\cdots u_{2026} + (u_3-1)u_4\cdots u_{2026} + \dots + (u_{2025}-1)u_{2026} + (u_{2026}-1) \)
+
+Chia hai vế cho x rồi cho \( x\to 0 \): mỗi số hạng có giới hạn bằng \( 1\cdot 1 = 1 \) (vì các thừa số \( u_i \) còn lại đều tiến tới 1).
+
+Bước 3: Đếm số số hạng.
+Số các số hạng ứng với \( k = 2,3,\dots,2026 \) là \( 2026-2+1 = 2025 \).
+
+Vậy \( L = \underbrace{1+1+\dots+1}_{2025\ \text{số}} = 2025 \).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) - CÂU 20 ----------------
+{
+    "id": 'de1_dd_20',
+    "type": 'dragdrop',
+    "content": 'Một chiếc xe đẩy chở một thanh thép cứng dài (đặt nằm ngang) đi qua một góc cua vuông góc nối giữa hai hành lang. Hành lang thứ nhất rộng 2,7 (m), hành lang thứ hai rộng 6,4 (m). Để thanh thép có thể lọt qua góc cua này mà không bị kẹt, chiều dài L của thanh thép phải thỏa mãn một giới hạn tối đa (bỏ qua bề dày của thanh thép). Giả sử khi thanh thép bị kẹt cứng nhất, nó tạo với vách của hành lang thứ hai một góc là \( \theta \). Kéo thả các kết quả sau vào các ô trống tương ứng:',
+    "options_pool": [
+        '\( 12.5 \)',
+        '\( \dfrac{3}{4} \)',
+        '\( 10.0 \)',
+        '\( \dfrac{4}{3} \)',
+        '\( 8.0 \)',
+    ],
+    "blanks": [
+        {"label": 'Tang của góc \( \theta \) tại vị trí thanh thép bị kẹt hẹp nhất bằng:', "answer": '\( \dfrac{4}{3} \)'},
+        {"label": 'Tại vị trí kẹt, độ dài đoạn thanh thép tính từ mép góc cua đến vách hành lang thứ hai là: (m).', "answer": '\( 8.0 \)'},
+        {"label": 'Chiều dài lớn nhất của thanh thép để có thể lọt qua được góc cua là: (m).', "answer": '\( 12.5 \)'},
+    ],
+    "points": 1,
+    "explanation": """Xét vị trí thanh thép tì sát vào mép trong của góc cua và chạm vào hai vách ngoài của hai hành lang, tạo với vách hành lang thứ hai góc \( \theta \).
+Mép góc cua chia thanh thành hai đoạn, mỗi đoạn là cạnh huyền của một tam giác vuông:
+\( L(\theta) = \dfrac{2,7}{\cos\theta} + \dfrac{6,4}{\sin\theta} \), với \( 0 < \theta < \dfrac{\pi}{2} \)
+
+Thanh thép qua được góc cua ở mọi vị trí khi và chỉ khi chiều dài của nó không vượt quá giá trị nhỏ nhất của hàm \( L(\theta) \).
+
+Tính đạo hàm:
+\( L'(\theta) = \dfrac{2,7\sin\theta}{\cos^2\theta} - \dfrac{6,4\cos\theta}{\sin^2\theta} \)
+
+Cho \( L'(\theta) = 0 \):
+\( 2,7\sin^3\theta = 6,4\cos^3\theta \Leftrightarrow \tan^3\theta = \dfrac{6,4}{2,7} = \dfrac{64}{27} \Leftrightarrow \tan\theta = \dfrac{4}{3} \)
+
+Lập bảng biến thiên thấy \( L'(\theta) \) đổi dấu từ âm sang dương tại giá trị này, nên đó là điểm cực tiểu của \( L(\theta) \).
+
+Từ \( \tan\theta = \dfrac{4}{3} \) (với \( \theta \) nhọn) suy ra:
+\( \sin\theta = \dfrac{4}{5} = 0,8 \) và \( \cos\theta = \dfrac{3}{5} = 0,6 \)
+
+Độ dài đoạn thanh thép từ mép góc cua đến vách hành lang thứ hai:
+\( \dfrac{6,4}{\sin\theta} = \dfrac{6,4}{0,8} = 8,0 \) (m)
+
+Chiều dài lớn nhất của thanh thép:
+\( L_{max} = \min L(\theta) = \dfrac{2,7}{0,6} + \dfrac{6,4}{0,8} = 4,5 + 8,0 = 12,5 \) (m)""",
+},
+         # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) - CÂU 21 ----------------
+{
+    "id": 'de1_mc_21',
+    "type": 'mc4',
+    "content": 'Tìm tất cả các giá trị thực của tham số \( m \) để đa thức \( P(x) = x^4 - 4x^3 + 4x^2 + m \) có thể phân tích thành dạng \( P(x) = (x-a)^2\cdot Q(x) \), trong đó \( Q(x) \) là một đa thức bậc hai và \( a \) là một hằng số thực.',
+    "options": {
+        'A': '\( m \in \{0; -1\} \)',
+        'B': '\( m \in \{0; 1\} \)',
+        'C': '\( m \in \{1; 2\} \)',
+        'D': '\( m \in \{-1; 1\} \)',
     },
+    "correct": 'A',
+    "points": 1,
+    "explanation": """Nhận xét phần không chứa m:
+\( x^4-4x^3+4x^2 = x^2(x^2-4x+4) = x^2(x-2)^2 = \left[x(x-2)\right]^2 \)
+Do đó: \( P(x) = \left[x(x-2)\right]^2 + m \)
 
-    # ---------------- TRẢ LỜI NGẮN (short) - CÂU 17 ----------------
-            {
-                "id": "de1_sh_17",
-                "type": "short",
-                "content": "Cho hình chóp S.ABC có độ dài ba cạnh bên bằng nhau \\( SA=SB=SC=a \\). Các góc ở đỉnh S lần lượt được cho bởi: \\( \\widehat{ASB}=60^\\circ \\), \\( \\widehat{BSC}=90^\\circ \\) và \\( \\widehat{CSA}=120^\\circ \\). Gọi \\( \\alpha \\) là góc tạo bởi hai mặt phẳng (SAB) và (SAC). Tính giá trị của \\( \\cos\\alpha \\). (Điền đáp án dưới dạng phân số tối giản).",
-                "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau17-de1.PNG",
-                "blanks": [
-                    {"label": "\\( \\cos\\alpha = \\)", "answers": ["1/3"]}
-                ],
-                "points": 1,
-                "explanation": """Dựa vào các góc ở đỉnh S, ta tính được các cạnh đáy:
-- Xét \\( \\Delta SAB \\) có \\( SA=SB=a \\) và \\( \\widehat{ASB}=60^\\circ \\) nên là tam giác đều \\( \\Rightarrow AB = a \\).
-- Xét \\( \\Delta SBC \\) vuông cân tại S do \\( \\widehat{BSC}=90^\\circ \\) \\( \\Rightarrow BC = a\\sqrt{2} \\).
-- Xét \\( \\Delta SAC \\) có \\( AC^2 = SA^2 + SC^2 - 2SA\\cdot SC\\cos 120^\\circ = 3a^2 \\Rightarrow AC = a\\sqrt{3} \\).
+Đặt \( u = x(x-2) = x^2-2x \), khi đó \( P(x) = u^2 + m \).
 
-Ta thấy \\( AB^2 + BC^2 = a^2 + 2a^2 = 3a^2 = AC^2 \\), nên \\( \\Delta ABC \\) là tam giác vuông tại B.
-Gọi H là hình chiếu vuông góc của S xuống mặt phẳng (ABC). Vì \\( SA=SB=SC \\) nên H là tâm đường tròn ngoại tiếp \\( \\Delta ABC \\). Do \\( \\Delta ABC \\) vuông tại B nên H chính là trung điểm của cạnh huyền AC.
+Điều kiện để P(x) có nhân tử \( (x-a)^2 \) là P(x) phải có nghiệm kép \( x = a \).
 
-Tính thể tích khối chóp S.ABC theo công thức góc ở đỉnh:
-\\( V = \\dfrac{1}{6}SA\\cdot SB\\cdot SC\\sqrt{1+2\\cos 60^\\circ\\cos 90^\\circ\\cos 120^\\circ - \\cos^2 60^\\circ - \\cos^2 90^\\circ - \\cos^2 120^\\circ} = \\dfrac{a^3\\sqrt{2}}{12} \\).
+Trường hợp 1: \( m = 0 \)
+\( P(x) = \left[x(x-2)\right]^2 = x^2(x-2)^2 \)
+Ta lấy \( a = 0 \) và \( Q(x) = (x-2)^2 \) (bậc hai) — thỏa mãn.
 
-Khoảng cách từ B đến mặt phẳng (SAC) là: 
-\\( d(B, (SAC)) = \\dfrac{3V}{S_{\\Delta SAC}} = \\dfrac{3\\cdot \\frac{a^3\\sqrt{2}}{12}}{\\frac{a^2\\sqrt{3}}{4}} = \\dfrac{a\\sqrt{6}}{3} \\).
+Trường hợp 2: \( m < 0 \), đặt \( m = -k^2 \) với \( k > 0 \)
+\( P(x) = u^2 - k^2 = (u-k)(u+k) = (x^2-2x-k)(x^2-2x+k) \)
+Để có nghiệm kép, một trong hai tam thức bậc hai này phải là bình phương đúng, tức có biệt thức bằng 0:
+\( x^2-2x+k \) có \( \Delta' = 1-k = 0 \Leftrightarrow k = 1 \)
+(còn \( x^2-2x-k \) có \( \Delta' = 1+k > 0 \) nên luôn có hai nghiệm phân biệt).
 
-Trong \\( \\Delta SAB \\) đều, đường cao kẻ từ B xuống giao tuyến SA là \\( BH = \\dfrac{a\\sqrt{3}}{2} \\).
-Góc \\( \\alpha \\) tạo bởi (SAB) và (SAC) được tính qua hệ thức: 
-\\( \\sin\\alpha = \\dfrac{d(B, (SAC))}{BH} = \\dfrac{\\frac{a\\sqrt{6}}{3}}{\\frac{a\\sqrt{3}}{2}} = \\dfrac{2\\sqrt{2}}{3} \\).
-Suy ra \\( \\cos\\alpha = \\sqrt{1 - \\sin^2\\alpha} = \\sqrt{1 - \\dfrac{8}{9}} = \\dfrac{1}{3} \\)."""
-            },
+Với \( k = 1 \), tức \( m = -1 \):
+\( P(x) = (x^2-2x-1)(x^2-2x+1) = (x-1)^2(x^2-2x-1) \)
+Ta lấy \( a = 1 \) và \( Q(x) = x^2-2x-1 \) (bậc hai) — thỏa mãn.
 
-            # ---------------- ĐÚNG / SAI (truefalse) - CÂU 18 ----------------
-            {
-                "id": "de1_tf_18",
-                "type": "truefalse",
-                "content": "Trong không gian, xét tính Đúng/Sai của các mệnh đề sau về quan hệ song song:",
-                "statements": [
-                    {"text": "Nếu hai mặt phẳng phân biệt cùng song song với một đường thẳng thì chúng song song với nhau.", "correct": False},
-                    {"text": "Cho hai đường thẳng chéo nhau. Luôn tồn tại duy nhất một mặt phẳng chứa đường thẳng này và song song với đường thẳng kia.", "correct": True},
-                    {"text": "Nếu mặt phẳng \\( (\\alpha) \\) chứa hai đường thẳng phân biệt cùng song song với mặt phẳng \\( (\\beta) \\) thì \\( (\\alpha) \\) song song với \\( (\\beta) \\).", "correct": False},
-                    {"text": "Hình chiếu song song của hai đường thẳng chéo nhau lên một mặt phẳng (theo phương chiếu không song song với hai đường thẳng đó) có thể là hai đường thẳng song song.", "correct": True}
-                ],
-                "points": 1,
-                "explanation": """a) Sai. Hai mặt phẳng đó có thể cắt nhau. Khi đó giao tuyến của chúng sẽ song song với đường thẳng đã cho.
+Trường hợp 3: \( m > 0 \)
+Khi đó \( P(x) = u^2 + m \ge m > 0 \) với mọi x, nên P(x) vô nghiệm, không thể có nhân tử \( (x-a)^2 \) — loại.
 
-b) Đúng. Đây là tính chất và hệ quả cơ bản trong SGK Hình học 11 về đường thẳng và mặt phẳng song song.
+Vậy \( m \in \{0; -1\} \).
+Chọn đáp án A.""",
+},
 
-c) Sai. Hai đường thẳng phân biệt đó phải **cắt nhau** thì mới đủ điều kiện kết luận hai mặt phẳng song song. Nếu hai đường thẳng đó song song thì hai mặt phẳng vẫn có thể cắt nhau.
+# ---------------- TRẢ LỜI NGẮN (short) - CÂU 22 ----------------
+{
+    "id": 'de1_sh_22',
+    "type": 'short',
+    "content": 'Một khối tháp nghệ thuật được xếp từ các khối lập phương nhỏ bằng nhau. Tầng trên cùng (tầng 1) có \( 1^2 \) khối, tầng thứ 2 từ trên xuống có \( 3^2 \) khối, tầng thứ 3 có \( 5^2 \) khối... Tầng thứ \( n \) có \( (2n-1)^2 \) khối. Gọi \( V_n \) là tổng số khối lập phương cần dùng để xếp được tháp có \( n \) tầng. Người ta bao quanh toàn bộ tháp này bằng một khối hộp chữ nhật ngoại tiếp sát nhất, có diện tích đáy là \( (2n-1)^2 \) và chiều cao là \( n \) (với đơn vị là cạnh của khối lập phương nhỏ). Gọi \( V_{hop} \) là thể tích của khối hộp này. Tính giới hạn \( L = \lim_{n\to+\infty}\dfrac{V_n}{V_{hop}} \). (Điền đáp án dưới dạng phân số tối giản).',
+    "blanks": [
+        {"label": 'L =', "answers": ['1/3']},
+    ],
+    "points": 1,
+    "explanation": """Bước 1: Tính tổng số khối của tháp n tầng.
+\( V_n = 1^2+3^2+5^2+\cdots+(2n-1)^2 \)
 
-d) Đúng. Nếu mặt phẳng chiếu song song với một mặt phẳng đang chứa cả hai đường thẳng đó thì hình chiếu của chúng sẽ là hai đường thẳng song song."""
-            },
+Ta tính bằng cách lấy tổng bình phương của 2n số tự nhiên đầu tiên trừ đi tổng bình phương các số chẵn:
+\( 1^2+2^2+\cdots+(2n)^2 = \dfrac{2n(2n+1)(4n+1)}{6} \)
+\( 2^2+4^2+\cdots+(2n)^2 = 4\left(1^2+2^2+\cdots+n^2\right) = 4\cdot\dfrac{n(n+1)(2n+1)}{6} \)
 
-            # ---------------- TRẢ LỜI NGẮN (short) - CÂU 19 ----------------
-            {
-                "id": "de1_sh_19",
-                "type": "short",
-                "content": "Cho hàm số \\( f(x) = \\sqrt{1+2x}\\sqrt[3]{1+3x}\\dots\\sqrt[2026]{1+2026x} \\). Tính giới hạn \\( L = \\lim_{x\\to 0}\\dfrac{f(x)-1}{x} \\).",
-                "blanks": [
-                    {"label": "L =", "answers": ["2025"]}
-                ],
-                "points": 1,
-                "explanation": """Ta có dạng của giới hạn này chính là đạo hàm của hàm số tại \\( x=0 \\):
-\\( L = \\lim_{x\\to 0}\\dfrac{f(x)-f(0)}{x-0} = f'(0) \\) (do dễ dàng nhận thấy \\( f(0) = 1 \\)).
+Trừ hai vế và rút gọn ta được công thức tổng bình phương n số lẻ đầu tiên:
+\( V_n = \dfrac{n(2n-1)(2n+1)}{3} \)
 
-Lấy logarith tự nhiên (ln) hai vế của hàm số, ta được: 
-\\( \\ln f(x) = \\sum_{k=2}^{2026} \\dfrac{1}{k} \\ln(1+kx) \\).
+Kiểm tra nhanh với \( n = 2 \): \( 1^2+3^2 = 10 \) và \( \dfrac{2\cdot 3\cdot 5}{3} = 10 \) — đúng.
 
-Đạo hàm hai vế: 
-\\( \\dfrac{f'(x)}{f(x)} = \\sum_{k=2}^{2026} \\dfrac{1}{k} \\cdot \\dfrac{k}{1+kx} = \\sum_{k=2}^{2026} \\dfrac{1}{1+kx} \\).
+Bước 2: Thể tích khối hộp ngoại tiếp.
+\( V_{hop} = (2n-1)^2\cdot n \)
 
-Thay \\( x = 0 \\) vào hệ thức trên, ta có:
-\\( \\dfrac{f'(0)}{f(0)} = \\sum_{k=2}^{2026} 1 = (2026 - 2) + 1 = 2025 \\).
-Do \\( f(0) = 1 \\) nên \\( f'(0) = 2025 \\). Vậy \\( L = 2025 \\)."""
-            },
+Bước 3: Lập tỉ số và tính giới hạn.
+\( \dfrac{V_n}{V_{hop}} = \dfrac{\dfrac{n(2n-1)(2n+1)}{3}}{n(2n-1)^2} = \dfrac{2n+1}{3(2n-1)} = \dfrac{2n+1}{6n-3} \)
 
-            # ---------------- KÉO THẢ (dragdrop) - CÂU 20 ----------------
-           {
-        "id": "de1_dd_20",
-        "type": "dragdrop",
-        "content": "Một chiếc xe đẩy chở một thanh thép cứng dài (đặt nằm ngang) đi qua một góc cua vuông góc nối giữa hai hành lang. Hành lang thứ nhất rộng 2.7 (m), hành lang thứ hai rộng 6.4 (m). Để thanh thép có thể lọt qua góc cua này mà không bị kẹt, chiều dài L của thanh thép phải thỏa mãn một giới hạn tối đa (Bỏ qua bề dày của thanh thép). Giả sử khi thanh thép bị kẹt cứng nhất, nó tạo với vách của hành lang thứ hai một góc là \\( \\theta \\). Kéo thả các kết quả sau vào các ô trống tương ứng:",
-        "options_pool": [
-            "\\( 12.5 \\)", 
-            "\\( \\dfrac{3}{4} \\)", 
-            "\\( 10.0 \\)", 
-            "\\( \\dfrac{4}{3} \\)", 
-            "\\( 8.0 \\)"
-        ],
-        "blanks": [
-            {
-                "label": "Tang của góc \\( \\theta \\) tại vị trí thanh thép bị kẹt hẹp nhất bằng:", 
-                "answer": "\\( \\dfrac{4}{3} \\)"
-            },
-            {
-                "label": "Tại vị trí kẹt, độ dài đoạn thanh thép tính từ mép góc cua đến vách hành lang thứ hai là: (m).", 
-                "answer": "\\( 8.0 \\)"
-            },
-            {
-                "label": "Chiều dài lớn nhất của thanh thép để có thể lọt qua được góc cua là: (m).", 
-                "answer": "\\( 12.5 \\)"
-            }
-        ],
-        "points": 1,
-        "explanation": """Gọi \\( L \\) là chiều dài thanh thép khi đi qua góc cua và bị vướng sát vào cả mép góc cua bên trong và 2 vách hành lang bên ngoài. Khi đó chiều dài thanh thép được biểu diễn bằng hàm số theo góc \\( \\theta \\) là:
-\\( L(\\theta) = \\dfrac{2.7}{\\cos\\theta} + \\dfrac{6.4}{\\sin\\theta} \\) (với \\( 0 < \\theta < \\dfrac{\\pi}{2} \\)).
+Chia cả tử và mẫu cho n:
+\( L = \lim_{n\to+\infty}\dfrac{2+\dfrac{1}{n}}{6-\dfrac{3}{n}} = \dfrac{2}{6} = \dfrac{1}{3} \)
 
-Để thanh thép lọt qua được ở mọi góc độ, chiều dài thực của thanh phải nhỏ hơn hoặc bằng giá trị nhỏ nhất của hàm \\( L(\\theta) \\).
-Ta lấy đạo hàm để tìm cực trị: 
-\\( L'(\\theta) = \\dfrac{2.7\\sin\\theta}{\\cos^2\\theta} - \\dfrac{6.4\\cos\\theta}{\\sin^2\\theta} = 0 \\)
-\\( \\Leftrightarrow 2.7\\sin^3\\theta = 6.4\\cos^3\\theta \\Leftrightarrow \\tan^3\\theta = \\dfrac{6.4}{2.7} = \\dfrac{64}{27} \\Leftrightarrow \\tan\\theta = \\dfrac{4}{3} \\).
+Vậy \( L = \dfrac{1}{3} \) (tháp chiếm khoảng một phần ba thể tích khối hộp bao ngoài).""",
+},
 
-Từ \\( \\tan\\theta = \\dfrac{4}{3} \\), ta suy ra \\( \\sin\\theta = \\dfrac{4}{5} = 0.8 \\) và \\( \\cos\\theta = \\dfrac{3}{5} = 0.6 \\).
-- Chiều dài đoạn thanh thép tính từ góc cua sang hành lang thứ hai là: \\( \\dfrac{6.4}{\\sin\\theta} = \\dfrac{6.4}{0.8} = 8.0 \\) (m).
-- Chiều dài cực đại của thanh thép (giá trị min của \\( L(\\theta) \\)) là: 
-\\( L_{max} = \\dfrac{2.7}{\\cos\\theta} + \\dfrac{6.4}{\\sin\\theta} = \\dfrac{2.7}{0.6} + \\dfrac{6.4}{0.8} = 4.5 + 8.0 = 12.5 \\) (m)."""
-    },
-            # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
-            {
-                "id": 'de1_mc_21',
-                "type": 'mc4',
-                "content": 'Tìm tất cả các giá trị thực của tham số \\( m \\) để đa thức \\( P(x) = x^4 - 4x^3 + 4x^2 + m \\) có thể phân tích thành dạng \\( P(x) = (x - a)^2 \\cdot Q(x) \\), trong đó \\( Q(x) \\) là một đa thức bậc hai và \\( a \\) là một hằng số thực.',
-                "options": {
-                    'A': '\\( m \\in \\{0; -1\\} \\)',
-                    'B': '\\( m \\in \\{0; 1\\} \\)',
-                    'C': '\\( m \\in \\{1; 2\\} \\)',
-                    'D': '\\( m \\in \\{-1; 1\\} \\)',
-                },
-                "correct": 'A',
-                "points": 1,
-                "explanation": """Ta viết lại: \\( P(x) - m = x^4 - 4x^3 + 4x^2 = x^2(x-2)^2 \\), tức là \\( P(x) = x^2(x-2)^2 + m \\).
+# ---------------- ĐÚNG / SAI (truefalse) - CÂU 23 ----------------
+{
+    "id": 'de1_tf_23',
+    "type": 'truefalse',
+    "content": 'Một quản giáo có 5 chiếc chìa khóa và 5 ổ khóa tương ứng. Tuy nhiên, các chìa khóa đã bị tháo khỏi chùm và trộn lẫn ngẫu nhiên. Người quản giáo lấy ngẫu nhiên từng chiếc chìa khóa để cắm vào từng ổ khóa (mỗi ổ cắm đúng 1 chìa). Xét tính Đúng/Sai của các mệnh đề sau:',
+    "statements": [
+        {"text": 'Số cách ghép 5 chìa khóa vào 5 ổ khóa là 120 cách.', "correct": True},
+        {"text": 'Xác suất để có ĐÚNG 4 ổ khóa được mở thành công là \( \dfrac{1}{120} \).', "correct": False},
+        {"text": 'Xác suất để KHÔNG CÓ bất kỳ ổ khóa nào được mở thành công là \( \dfrac{11}{30} \).', "correct": True},
+        {"text": 'Xác suất để có ÍT NHẤT 1 ổ khóa được mở thành công là \( \dfrac{19}{30} \).', "correct": True},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG.
+Mỗi cách ghép 5 chìa vào 5 ổ là một hoán vị của 5 phần tử.
+Số phần tử của không gian mẫu: \( n(\Omega) = 5! = 120 \) cách.
 
-Để \\( P(x) \\) có nhân tử \\( (x-a)^2 \\) (với \\( Q(x) \\) bậc hai bất kỳ), điều kiện cần và đủ là \\( a \\) phải là nghiệm kép của \\( P(x) \\), nghĩa là:
-\\( P(a) = 0 \\) và \\( P'(a) = 0 \\).
+b) SAI.
+Giả sử đã có 4 ổ được mở đúng. Khi đó 4 chìa tương ứng đã dùng hết, chỉ còn lại duy nhất 1 chìa và 1 ổ, nên chìa đó bắt buộc cũng phải khớp với ổ còn lại.
+Nghĩa là không thể xảy ra trường hợp "đúng 4 ổ", xác suất bằng 0 chứ không phải \( \dfrac{1}{120} \).
 
-Ta có \\( P'(x) = 4x^3 - 12x^2 + 8x = 4x(x-1)(x-2) \\), suy ra \\( P'(x) = 0 \\Leftrightarrow x \\in \\{0; 1; 2\\} \\).
+c) ĐÚNG.
+Gọi \( A_i \) là biến cố "ổ thứ i được mở đúng" (i = 1, 2, 3, 4, 5).
+Ta đếm số cách có ít nhất một ổ đúng bằng quy tắc bù trừ:
+- Cố định 1 ổ đúng, 4 ổ còn lại tùy ý: \( C_5^1\cdot 4! = 5\cdot 24 = 120 \)
+- Cố định 2 ổ đúng: \( C_5^2\cdot 3! = 10\cdot 6 = 60 \)
+- Cố định 3 ổ đúng: \( C_5^3\cdot 2! = 10\cdot 2 = 20 \)
+- Cố định 4 ổ đúng: \( C_5^4\cdot 1! = 5\cdot 1 = 5 \)
+- Cả 5 ổ đúng: \( C_5^5\cdot 0! = 1 \)
 
-Xét từng trường hợp:
-- \\( a = 0 \\): \\( P(0) = m = 0 \\Rightarrow m = 0 \\).
-- \\( a = 2 \\): \\( P(2) = m = 0 \\Rightarrow m = 0 \\).
-- \\( a = 1 \\): \\( P(1) = 1 - 4 + 4 + m = 1 + m = 0 \\Rightarrow m = -1 \\).
+Số cách có ít nhất 1 ổ đúng:
+\( 120 - 60 + 20 - 5 + 1 = 76 \)
 
-Kiểm tra lại:
-+ Với \\( m = 0 \\): \\( P(x) = x^2(x-2)^2 = (x-0)^2\\cdot(x-2)^2 \\) — thỏa mãn (a = 0, Q(x) = (x-2)^2).
-+ Với \\( m = -1 \\): \\( P(x) = [x(x-2)]^2 - 1 = (x^2-2x-1)(x^2-2x+1) = (x-1)^2(x^2-2x-1) \\) — thỏa mãn (a = 1, Q(x) = x^2-2x-1).
+Số cách không ổ nào đúng: \( 120 - 76 = 44 \)
+Xác suất: \( \dfrac{44}{120} = \dfrac{11}{30} \)
 
-Vậy \\( m \\in \\{0; -1\\} \\). Đáp án A.""",
-            },
+d) ĐÚNG.
+Biến cố "ít nhất 1 ổ đúng" là biến cố đối của biến cố ở câu c):
+\( P = 1 - \dfrac{11}{30} = \dfrac{19}{30} \)""",
+},
 
-            # ---------------- TRẢ LỜI NGẮN (short) ----------------
-            {
-                "id": 'de1_sh_22',
-                "type": 'short',
-                "content": 'Một khối tháp nghệ thuật được xếp từ các khối lập phương nhỏ bằng nhau. Tầng trên cùng (tầng 1) có \\( 1^2 \\) khối, tầng thứ 2 từ trên xuống có \\( 3^2 \\) khối, tầng thứ 3 có \\( 5^2 \\) khối... Tầng thứ \\( n \\) có \\( (2n-1)^2 \\) khối. Gọi \\( V_n \\) là tổng số khối lập phương cần dùng để xếp được tháp có \\( n \\) tầng. Người ta bao quanh toàn bộ tháp này bằng một khối hộp chữ nhật ngoại tiếp sát nhất, có diện tích đáy là \\( (2n-1)^2 \\) và chiều cao là \\( n \\) (với đơn vị là cạnh của khối lập phương nhỏ). Gọi \\( V_{h\\hat{o}p} \\) là thể tích của khối hộp này. Tính giới hạn \\( L = \\lim_{n\\to+\\infty} \\dfrac{V_n}{V_{h\\hat{o}p}} \\). (Điền đáp án dưới dạng phân số tối giản).',
-                "blanks": [
-                    {"label": 'L =', "answers": ['1/3']},
-                ],
-                "points": 1,
-                "explanation": """Tổng số khối của tháp \\( n \\) tầng là tổng bình phương \\( n \\) số lẻ đầu tiên:
-\\( V_n = 1^2 + 3^2 + 5^2 + \\cdots + (2n-1)^2 = \\dfrac{n(2n-1)(2n+1)}{3} \\).
+# ---------------- ĐÚNG / SAI (truefalse) - CÂU 24 ----------------
+{
+    "id": 'de1_tf_24',
+    "type": 'truefalse',
+    "content": 'Định luật làm nguội của Newton phát biểu rằng: tốc độ thay đổi nhiệt độ của một vật tỉ lệ thuận với chênh lệch nhiệt độ giữa vật đó và môi trường xung quanh. Công thức mô hình hóa nhiệt độ \( T(t) \) của vật sau thời gian \( t \) (phút) là \( T(t) = T_{mt} + (T_0-T_{mt})e^{-kt} \), trong đó \( T_{mt} \) là nhiệt độ môi trường, \( T_0 \) là nhiệt độ ban đầu của vật và \( k \) là hằng số làm nguội. Một cốc cà phê vừa pha xong có nhiệt độ 90°C được đặt trong phòng có nhiệt độ không đổi là 20°C. Sau đúng 10 phút, nhiệt độ của cốc cà phê giảm xuống còn 60°C. Xét tính Đúng/Sai của các mệnh đề sau:',
+    "statements": [
+        {"text": 'Giá trị của hằng số làm nguội \( k \) xấp xỉ bằng 0,056.', "correct": True},
+        {"text": 'Sau 20 phút kể từ lúc pha, nhiệt độ của cốc cà phê là 40°C.', "correct": False},
+        {"text": 'Cần nhiều hơn 30 phút để cốc cà phê nguội xuống mức 30°C.', "correct": True},
+        {"text": 'Tốc độ giảm nhiệt độ của cốc cà phê trong quá trình làm nguội là một hằng số.', "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Thay \( T_{mt} = 20 \) và \( T_0 = 90 \) vào công thức:
+\( T(t) = 20 + (90-20)e^{-kt} = 20 + 70e^{-kt} \)
 
-Thể tích khối hộp ngoại tiếp: \\( V_{h\\hat{o}p} = (2n-1)^2 \\cdot n \\).
+a) ĐÚNG.
+Sau 10 phút nhiệt độ còn 60°C:
+\( 60 = 20 + 70e^{-10k} \Rightarrow e^{-10k} = \dfrac{40}{70} = \dfrac{4}{7} \)
+Lấy logarit tự nhiên hai vế:
+\( -10k = \ln\dfrac{4}{7} \Rightarrow k = \dfrac{1}{10}\ln\dfrac{7}{4} \approx 0,0560 \)
 
-Do đó:
-\\( \\dfrac{V_n}{V_{h\\hat{o}p}} = \\dfrac{n(2n-1)(2n+1)/3}{n(2n-1)^2} = \\dfrac{2n+1}{3(2n-1)} \\).
+b) SAI.
+Vì \( e^{-20k} = \left(e^{-10k}\right)^2 = \left(\dfrac{4}{7}\right)^2 = \dfrac{16}{49} \) nên:
+\( T(20) = 20 + 70\cdot\dfrac{16}{49} = 20 + \dfrac{160}{7} \approx 42,86 \)°C
+Giá trị này khác 40°C (cà phê nguội chậm dần chứ không giảm đều 30°C mỗi 10 phút).
 
-Lấy giới hạn khi \\( n \\to +\\infty \\):
-\\( L = \\lim_{n\\to+\\infty} \\dfrac{2n+1}{6n-3} = \\dfrac{2}{6} = \\dfrac{1}{3} \\).""",
-            },
+c) ĐÚNG.
+Giải phương trình \( 30 = 20 + 70e^{-kt} \):
+\( e^{-kt} = \dfrac{10}{70} = \dfrac{1}{7} \Rightarrow kt = \ln 7 \Rightarrow t = \dfrac{\ln 7}{k} \)
+\( t \approx \dfrac{1,9459}{0,0560} \approx 34,8 \) phút \( > 30 \) phút.
 
-            # ---------------- ĐÚNG / SAI (truefalse) ----------------
-            {
-                "id": "de1_tf_23",
-                "type": "truefalse",
-                "content": "Một quản giáo có 5 chiếc chìa khóa và 5 ổ khóa tương ứng. Tuy nhiên, các chìa khóa đã bị tháo khỏi chùm và trộn lẫn ngẫu nhiên. Người quản giáo chọn ngẫu nhiên từng chiếc chìa khóa để cắm vào từng ổ khóa (mỗi ổ cắm đúng 1 chìa). Xét tính Đúng/Sai của các mệnh đề sau:",
-                "statements": [
-                    {"text": "Số cách ghép 5 chìa khóa vào 5 ổ khóa là 120 cách.", "correct": True},
-                    {"text": "Xác suất để có ĐÚNG 4 ổ khóa được mở thành công là \\( \\dfrac{1}{120} \\).", "correct": False},
-                    {"text": "Xác suất để KHÔNG CÓ bất kỳ ổ khóa nào được mở thành công là \\( \\dfrac{11}{30} \\).", "correct": True},
-                    {"text": "Xác suất để có ÍT NHẤT 1 ổ khóa được mở thành công là \\( \\dfrac{19}{30} \\).", "correct": True}
-                ],
-                "points": 1,
-                "explanation": """a) Mỗi cách ghép chìa vào ổ là một hoán vị của 5 phần tử, nên số cách là \\( 5! = 120 \\) cách \\( \\Rightarrow \\) Đúng.
+d) SAI.
+Tốc độ giảm nhiệt chính là đạo hàm:
+\( T'(t) = -70k\,e^{-kt} \)
+Biểu thức này phụ thuộc vào t: khi t tăng thì \( \left|T'(t)\right| \) giảm dần, nghĩa là cà phê nguội nhanh lúc đầu rồi chậm dần, không phải hằng số.""",
+},
 
-b) Vì phép ghép là một  (hoán vị), nếu có đúng 4 ổ khóa được mở đúng thì ổ còn lại bắt buộc cũng phải đúng (do chỉ còn duy nhất 1 chìa cho 1 ổ). Vậy KHÔNG THỂ có đúng 4 ổ đúng — xác suất này bằng 0, không phải \\( \\dfrac{1}{120} \\) \\( \\Rightarrow \\) Sai.
+# ---------------- KÉO THẢ (dragdrop) - CÂU 25 ----------------
+{
+    "id": 'de1_dd_25',
+    "type": 'dragdrop',
+    "content": 'Trên màn hình radar của trạm kiểm soát không lưu, quỹ đạo bay của một máy bay trực thăng (H) được mô phỏng bởi đường cong \( (C): y = x^2-4x+5 \). Cùng lúc đó, một tàu hỏa (T) di chuyển thẳng theo đường ray có phương trình \( d: y = 2x-5 \). Biết đơn vị tọa độ tính bằng kilômét. Để thực hiện nhiệm vụ thả hàng tiếp tế, máy bay (H) cần tiến đến vị trí M trên quỹ đạo sao cho khoảng cách từ máy bay đến tàu hỏa là ngắn nhất. Kéo và thả các phương án sau vào vị trí thích hợp:',
+    "options_pool": [
+        '\( 3 \)',
+        '\( 2 \)',
+        '\( \sqrt{5} \)',
+        '\( \dfrac{\sqrt{5}}{5} \)',
+        '\( \dfrac{1}{5} \)',
+    ],
+    "blanks": [
+        {"label": 'Hoành độ của vị trí M là:', "answer": '\( 3 \)'},
+        {"label": 'Tung độ của vị trí M là:', "answer": '\( 2 \)'},
+        {"label": 'Khoảng cách ngắn nhất giữa máy bay và tàu hỏa là: (km)', "answer": '\( \dfrac{\sqrt{5}}{5} \)'},
+    ],
+    "points": 1,
+    "explanation": """Trước hết kiểm tra (C) và d không cắt nhau:
+\( x^2-4x+5 = 2x-5 \Leftrightarrow x^2-6x+10 = 0 \) có \( \Delta' = 9-10 = -1 < 0 \) nên vô nghiệm.
+Vậy parabol nằm hoàn toàn phía trên đường thẳng d.
 
-c) Xác suất không có ổ khóa nào đúng chính là xác suất của một "mất thứ tự toàn phần" (derangement):
-\\( D_5 = 5!\\left(1 - \\dfrac{1}{1!} + \\dfrac{1}{2!} - \\dfrac{1}{3!} + \\dfrac{1}{4!} - \\dfrac{1}{5!}\\right) = 44 \\).
-Xác suất \\( = \\dfrac{44}{120} = \\dfrac{11}{30} \\) \\( \\Rightarrow \\) Đúng.
+Khoảng cách từ một điểm của (C) đến d nhỏ nhất khi tiếp tuyến của (C) tại điểm đó song song với d.
 
-d) Xác suất có ít nhất 1 ổ đúng \\( = 1 - \\dfrac{11}{30} = \\dfrac{19}{30} \\) \\( \\Rightarrow \\) Đúng.""",
-            },
-            {
-                "id": "de1_tf_24",
-                "type": "truefalse",
-                "content": "Định luật làm nguội của Newton phát biểu rằng: Tốc độ thay đổi nhiệt độ của một vật tỷ lệ thuận với chênh lệch nhiệt độ giữa vật đó và môi trường xung quanh. Công thức mô hình hóa nhiệt độ \\( T(t) \\) của vật sau thời gian \\( t \\) (phút) là \\( T(t) = T_{env} + (T_0 - T_{env})e^{-kt} \\), trong đó \\( T_{env} \\) là nhiệt độ môi trường, \\( T_0 \\) là nhiệt độ ban đầu của vật, và \\( k \\) là hằng số làm nguội. Một cốc cà phê vừa được pha xong có nhiệt độ 90°C được đặt trong phòng có nhiệt độ không đổi là 20°C. Sau đúng 10 phút, nhiệt độ của cốc cà phê giảm xuống còn 60°C. Xét tính Đúng/Sai của các mệnh đề sau:",
-                "statements": [
-                    {"text": "Giá trị của hằng số làm nguội \\( k \\) xấp xỉ bằng 0.056.", "correct": True},
-                    {"text": "Sau 20 phút kể từ lúc pha, nhiệt độ của cốc cà phê là 40°C.", "correct": False},
-                    {"text": "Cần nhiều hơn 30 phút để cốc cà phê nguội xuống mức 30°C.", "correct": True},
-                    {"text": "Tốc độ giảm nhiệt độ của cốc cà phê trong quá trình làm nguội là một hằng số.", "correct": False}
-                ],
-                "points": 1,
-                "explanation": """Ta có \\( T(t) = 20 + 70e^{-kt} \\) (vì \\( T_0 - T_{env} = 90-20=70 \\)).
+Đường thẳng d có hệ số góc bằng 2, nên ta cần tìm M sao cho \( y'(x) = 2 \):
+\( y' = 2x-4 \)
+\( 2x-4 = 2 \Leftrightarrow x = 3 \)
 
-a) Tại \\( t=10 \\): \\( 60 = 20 + 70e^{-10k} \\Rightarrow e^{-10k} = \\dfrac{4}{7} \\Rightarrow k = \\dfrac{\\ln(7/4)}{10} \\approx 0.0560 \\) \\( \\Rightarrow \\) Đúng.
+Tung độ tương ứng:
+\( y = 3^2-4\cdot 3+5 = 9-12+5 = 2 \)
 
-b) Tại \\( t=20 \\): \\( T(20) = 20 + 70\\left(\\dfrac{4}{7}\\right)^2 = 20 + 70\\cdot\\dfrac{16}{49} \\approx 20+22.86 = 42.86°C \\), không phải 40°C \\( \\Rightarrow \\) Sai.
+Vậy \( M(3; 2) \), tức hoành độ bằng 3 và tung độ bằng 2.
 
-c) Giải \\( 30 = 20+70e^{-kt} \\Rightarrow e^{-kt} = \\dfrac{1}{7} \\Rightarrow t = \\dfrac{\\ln 7}{k} \\approx \\dfrac{1.9459}{0.0560} \\approx 34.8 \\) phút \\( > 30 \\) phút \\( \\Rightarrow \\) Đúng.
-
-d) Tốc độ giảm nhiệt \\( T'(t) = -70k\\,e^{-kt} \\) phụ thuộc vào \\( t \\) (giảm dần theo thời gian), không phải hằng số \\( \\Rightarrow \\) Sai.""",
-            },
-
-            # ---------------- KÉO THẢ (dragdrop) ----------------
-            {
-                "id": "de1_dd_25",
-                "type": "dragdrop",
-                "content": "Trên màn hình radar trạm kiểm soát không lưu, quỹ đạo bay của một máy bay trực thăng (H) được mô phỏng bởi đường cong \\( (C): y = x^2 - 4x + 5 \\). Cùng lúc đó, một tàu hỏa (T) di chuyển thẳng tắp theo đường ray có phương trình \\( d: y = 2x - 5 \\). Biết đơn vị tọa độ tính bằng kilômét. Để thực hiện nhiệm vụ thả hàng tiếp tế, máy bay (H) cần tiến đến vị trí M trên quỹ đạo sao cho khoảng cách từ máy bay đến tàu hỏa là ngắn nhất. Kéo và thả các phương án sau vào vị trí thích hợp:",
-              
-                "options_pool": [
-                    "\\( 3 \\)",
-                    "\\( 2 \\)",
-                    "\\( \\sqrt{5} \\)",
-                    "\\( \\dfrac{\\sqrt{5}}{5} \\)",
-                    "\\( \\dfrac{1}{5} \\)"
-                ],
-                "blanks": [
-                    {"label": "Hoành độ của vị trí M là:", "answer": "3"},
-                    {"label": "Tung độ của vị trí M là:", "answer": "2"},
-                    {"label": "Khoảng cách ngắn nhất giữa máy bay và tàu hỏa là: (km)", "answer": "\\dfrac{\\sqrt{5}}{5}"}
-                ],
-                "points": 1,
-                "explanation": """Khoảng cách từ một điểm trên (C) đến đường thẳng d ngắn nhất khi tiếp tuyến của (C) tại điểm đó song song với d.
-
-Đường thẳng d có hệ số góc bằng 2. Ta cần tìm điểm M trên (C) sao cho \\( y'(x) = 2 \\).
-
-Ta có \\( y' = 2x - 4 \\). Giải \\( 2x - 4 = 2 \\Rightarrow x = 3 \\).
-
-Khi đó \\( y = 3^2 - 4\\cdot 3 + 5 = 9 - 12 + 5 = 2 \\).
-
-Vậy \\( M(3; 2) \\) — hoành độ \\( X = 3 \\), tung độ \\( Y = 2 \\).
-
-Viết lại d dưới dạng tổng quát: \\( 2x - y - 5 = 0 \\).
-
+Viết d dưới dạng tổng quát: \( 2x-y-5 = 0 \).
 Khoảng cách ngắn nhất:
-\\( d(M, d) = \\dfrac{|2\\cdot 3 - 2 - 5|}{\\sqrt{2^2+(-1)^2}} = \\dfrac{|6-2-5|}{\\sqrt{5}} = \\dfrac{1}{\\sqrt{5}} = \\dfrac{\\sqrt{5}}{5} \\) (km).""",
-            },
+\( d(M,d) = \dfrac{\left|2\cdot 3-2-5\right|}{\sqrt{2^2+(-1)^2}} = \dfrac{1}{\sqrt{5}} = \dfrac{\sqrt{5}}{5} \) (km)
 
+(Có thể kiểm chứng bằng cách khác: khoảng cách từ điểm \( (x; x^2-4x+5) \) đến d bằng \( \dfrac{\left|x^2-6x+10\right|}{\sqrt{5}} = \dfrac{(x-3)^2+1}{\sqrt{5}} \ge \dfrac{1}{\sqrt{5}} \), dấu bằng khi \( x = 3 \).)""",
+},
 
-                      # ---------------- TRẢ LỜI NGẮN (short) ----------------
-            {
-                "id": 'de1_sh_26',
-                "type": 'short',
-                "content": 'Một trường mầm non có 20 phần quà giống hệt nhau cần chia cho 4 lớp học: lớp Gấu, lớp Thỏ, lớp Mèo và lớp Cún. Cô giáo có quy định chia quà như sau: Lớp Gấu (lớp lớn tuổi nhất) nhận được ít nhất 2 phần quà; ba lớp còn lại (Thỏ, Mèo, Cún) yêu cầu số phần quà nhận được của mỗi lớp bắt buộc phải là một số lẻ (có thể nhận 1, 3, 5, . . . phần quà). Hỏi cô giáo có tất cả bao nhiêu cách chia quà thỏa mãn yêu cầu trên?',
-                "blanks": [
-                    {"label": 'Số cách chia =', "answers": ['120']},
-                ],
-                "points": 1,
-                "explanation": """Gọi số quà của lớp Gấu, Thỏ, Mèo, Cún lần lượt là \\( g, t, m, c \\), với \\( g \\ge 2 \\) và \\( t, m, c \\) là các số lẻ dương.
+# ---------------- TRẢ LỜI NGẮN (short) - CÂU 26 ----------------
+{
+    "id": 'de1_sh_26',
+    "type": 'short',
+    "content": 'Một trường mầm non có 20 phần quà giống hệt nhau cần chia cho 4 lớp học: lớp Gấu, lớp Thỏ, lớp Mèo và lớp Cún. Cô giáo có quy định chia quà như sau: lớp Gấu (lớp lớn tuổi nhất) nhận được ít nhất 2 phần quà; ba lớp còn lại (Thỏ, Mèo, Cún) có số phần quà nhận được của mỗi lớp bắt buộc phải là một số lẻ (có thể nhận 1, 3, 5, ... phần quà). Hỏi cô giáo có tất cả bao nhiêu cách chia quà thỏa mãn yêu cầu trên?',
+    "blanks": [
+        {"label": 'Số cách chia =', "answers": ['120']},
+    ],
+    "points": 1,
+    "explanation": """Gọi số quà của lớp Gấu, Thỏ, Mèo, Cún lần lượt là \( g, t, m, c \).
+Điều kiện: \( g+t+m+c = 20 \), với \( g \ge 2 \) và \( t, m, c \) là các số nguyên dương lẻ.
 
-Đặt \\( t = 2a+1, m = 2b+1, c = 2c'+1 \\) với \\( a, b, c' \\ge 0 \\).
+Bước 1: Đổi biến để bỏ điều kiện "số lẻ".
+Đặt \( t = 2x+1 \), \( m = 2y+1 \), \( c = 2z+1 \) với \( x, y, z \) là các số nguyên không âm.
+Thay vào phương trình:
+\( g + (2x+1) + (2y+1) + (2z+1) = 20 \)
+\( \Leftrightarrow g + 2(x+y+z) = 17 \)
+\( \Leftrightarrow g = 17 - 2(x+y+z) \)
 
-Phương trình: \\( g + t + m + c = 20 \\Leftrightarrow g + 2(a+b+c') + 3 = 20 \\Leftrightarrow g = 17 - 2(a+b+c') \\).
+Bước 2: Xác định các giá trị có thể của g.
+Vì \( 2(x+y+z) \) là số chẵn nên g luôn lẻ. Kết hợp \( g \ge 2 \) ta được:
+\( g \in \{3; 5; 7; 9; 11; 13; 15; 17\} \)
 
-Vì \\( 2(a+b+c') \\) luôn chẵn nên \\( g \\) phải lẻ. Kết hợp \\( g \\ge 2 \\), ta có \\( g \\in \\{3, 5, 7, 9, 11, 13, 15, 17\\} \\).
+Bước 3: Với mỗi g, đếm số cách chọn \( x, y, z \).
+Đặt \( s = x+y+z = \dfrac{17-g}{2} \).
+Số nghiệm nguyên không âm của phương trình \( x+y+z = s \) được đếm bằng bài toán chia kẹo (xếp s viên kẹo và 2 vách ngăn):
+Số nghiệm \( = C_{s+2}^{2} \)
 
-Với mỗi \\( g \\), đặt \\( s = \\dfrac{17-g}{2} = a+b+c' \\), số nghiệm nguyên không âm của \\( a+b+c'=s \\) là \\( \\binom{s+2}{2} \\).
+Lập bảng:
+\( g = 3 \Rightarrow s = 7 \Rightarrow C_9^2 = 36 \)
+\( g = 5 \Rightarrow s = 6 \Rightarrow C_8^2 = 28 \)
+\( g = 7 \Rightarrow s = 5 \Rightarrow C_7^2 = 21 \)
+\( g = 9 \Rightarrow s = 4 \Rightarrow C_6^2 = 15 \)
+\( g = 11 \Rightarrow s = 3 \Rightarrow C_5^2 = 10 \)
+\( g = 13 \Rightarrow s = 2 \Rightarrow C_4^2 = 6 \)
+\( g = 15 \Rightarrow s = 1 \Rightarrow C_3^2 = 3 \)
+\( g = 17 \Rightarrow s = 0 \Rightarrow C_2^2 = 1 \)
 
-\\( g=3 \\Rightarrow s=7 \\Rightarrow \\binom{9}{2}=36 \\)
-\\( g=5 \\Rightarrow s=6 \\Rightarrow \\binom{8}{2}=28 \\)
-\\( g=7 \\Rightarrow s=5 \\Rightarrow \\binom{7}{2}=21 \\)
-\\( g=9 \\Rightarrow s=4 \\Rightarrow \\binom{6}{2}=15 \\)
-\\( g=11 \\Rightarrow s=3 \\Rightarrow \\binom{5}{2}=10 \\)
-\\( g=13 \\Rightarrow s=2 \\Rightarrow \\binom{4}{2}=6 \\)
-\\( g=15 \\Rightarrow s=1 \\Rightarrow \\binom{3}{2}=3 \\)
-\\( g=17 \\Rightarrow s=0 \\Rightarrow \\binom{2}{2}=1 \\)
+Bước 4: Cộng tất cả các trường hợp (quy tắc cộng):
+\( 36+28+21+15+10+6+3+1 = 120 \)
 
-Tổng số cách: \\( 36+28+21+15+10+6+3+1 = 120 \\) cách.""",
-            },
-
+Vậy có 120 cách chia quà thỏa mãn yêu cầu.""",
+},
             # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
             {
                 "id": 'de1_mc_27',
