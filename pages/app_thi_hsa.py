@@ -196,13 +196,7 @@ EXAM_DEFS = [
         "correct": "C",
         "explanation": "Chú ý biểu thức lấy nguyên hàm là theo biến \\(t\\) (ký hiệu \\(dt\\)), nên ta coi \\(x\\) là một hằng số (tham số), không phải biến số cần tích phân.\n\nVì \\(x\\) là hằng số, ta đưa nó ra ngoài dấu tích phân:\n\\[F(t)=\\int tx\\,dt=x\\int t\\,dt=x\\cdot\\dfrac{t^2}{2}+C=\\dfrac{xt^2}{2}+C\\]\n\nVậy \\(F(t)=\\dfrac{xt^2}{2}+C\\). Chọn đáp án C.\n\n(Lưu ý: nếu nhầm lẫn coi \\(t\\) là hằng số và lấy nguyên hàm theo \\(x\\) thì sẽ ra kết quả sai ở đáp án B — đây là bẫy phổ biến của bài toán này.)",
     },
-            {
-                "content": "Phương trình \\( x^2 - 5x + 6 = 0 \\) có hai nghiệm \\( x_1, x_2 \\). Tổng \\( x_1 + x_2 \\) bằng",
-                "options": {"A": "6", "B": "-5", "C": "5", "D": "-6"},
-                "correct": "C",
-                "explanation": "Theo định lí Vi-ét: \\( x_1 + x_2 = -b = 5 \\). Đáp án C.",
-            },
-            {
+             {
                 "content": "Một lớp học có 40 học sinh, trong đó số học sinh nữ chiếm 40% tổng số học sinh của lớp. Hỏi lớp đó có bao nhiêu học sinh nam?",
                 "options": {"A": "16", "B": "20", "C": "26", "D": "24"},
                 "correct": "D",
@@ -214,18 +208,55 @@ EXAM_DEFS = [
                 "correct": "C",
                 "explanation": "\\( u_{10} = u_1 + 9d = 3 + 9 \\times 4 = 39 \\). Đáp án C.",
             },
-            {
-                "content": "Cho hàm số \\( f(x) = 3x - 2 \\). Giá trị \\( f(4) \\) bằng",
-                "options": {"A": "10", "B": "12", "C": "9", "D": "8"},
-                "correct": "A",
-                "explanation": "\\( f(4) = 3 \\times 4 - 2 = 10 \\). Đáp án A.",
-            },
-            {
-                "content": "Một hình chữ nhật có chiều dài 12 cm và chiều rộng 5 cm. Diện tích hình chữ nhật đó bằng",
-                "options": {"A": "17 cm²", "B": "70 cm²", "C": "60 cm²", "D": "50 cm²"},
-                "correct": "C",
-                "explanation": "Diện tích \\( S = 12 \\times 5 = 60 \\) cm². Đáp án C.",
-            },
+         {
+        "content": "Tích tất cả giá trị của \\(a\\) để góc tạo bởi đường thẳng \\(\\begin{cases}x=4+at\\\\y=7-2t\\end{cases}\\ (t\\in\\mathbb{R})\\) và đường thẳng \\(3x+4y-2=0\\) bằng \\(45^\\circ\\) là bao nhiêu?",
+        "options": {"A": "-4", "B": "4", "C": "-14", "D": "2/7"},
+        "correct": "A",
+        "explanation": "Gọi \\(\\varphi\\) là góc giữa hai đường thẳng đã cho.\n\nĐường thẳng thứ nhất có vectơ chỉ phương \\(\\vec{u}=(a;-2)\\).\n\nĐường thẳng \\(3x+4y-2=0\\) có vectơ chỉ phương \\(\\vec{v}=(4;-3)\\).\n\nÁp dụng công thức góc giữa hai đường thẳng:\n\\[\\cos\\varphi=|\\cos(\\vec{u},\\vec{v})|=\\dfrac{|\\vec{u}.\\vec{v}|}{|\\vec{u}|.|\\vec{v}|}\\]\n\nThay số:\n\\[\\cos 45^\\circ=\\dfrac{|4a+6|}{\\sqrt{a^2+4}.\\sqrt{16+9}} \\Leftrightarrow \\dfrac{1}{\\sqrt2}=\\dfrac{|4a+6|}{5\\sqrt{a^2+4}}\\]\n\nKhử căn và giá trị tuyệt đối bằng cách bình phương hai vế:\n\\[5\\sqrt{a^2+4}=\\sqrt2\\,|4a+6| \\Rightarrow 25(a^2+4)=2(4a+6)^2\\]\n\\[\\Leftrightarrow 25a^2+100=32a^2+96a+72\\]\n\\[\\Leftrightarrow 7a^2+96a-28=0\\]\n\nGiải phương trình bậc hai, ta được hai nghiệm:\n\\[a=\\dfrac{2}{7} \\quad \\text{hoặc} \\quad a=-14\\]\n\nĐề bài hỏi tích tất cả các giá trị của a, nên:\n\\[\\dfrac{2}{7}\\times(-14)=-4\\]\n\nChọn đáp án A.",
+    },
+    {
+        "content": "Một công ty xây dựng khảo sát khách hàng xem họ có nhu cầu mua nhà ở mức giá nào. Kết quả khảo sát được ghi lại ở bảng sau:",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/hsa_de1_cau7_bang.png",
+        "options": {"A": "20,4", "B": "19,4", "C": "21,4", "D": "18,4"},
+        "correct": "B",
+        "explanation": "Đây là mẫu số liệu ghép nhóm nên ta cần tìm mốt bằng công thức riêng cho dữ liệu ghép nhóm, không phải chỉ tìm nhóm có tần số lớn nhất.\n\nQuan sát bảng, nhóm có số khách hàng lớn nhất (tần số lớn nhất) là nhóm \\([18;22)\\) với 120 khách hàng — đây là nhóm chứa mốt.\n\nĐặt các giá trị cần dùng:\n- \\(u_m=18\\) (đầu mút trái của nhóm chứa mốt)\n- \\(n_m=120\\) (tần số nhóm chứa mốt)\n- \\(n_{m-1}=78\\) (tần số nhóm liền trước)\n- \\(n_{m+1}=45\\) (tần số nhóm liền sau)\n- Độ dài mỗi nhóm là \\(22-18=4\\)\n\nÁp dụng công thức tính mốt của mẫu số liệu ghép nhóm:\n\\[M_0=u_m+\\dfrac{n_m-n_{m-1}}{(n_m-n_{m-1})+(n_m-n_{m+1})}\\times (22-18)\\]\n\nThay số:\n\\[M_0=18+\\dfrac{120-78}{(120-78)+(120-45)}\\times 4=18+\\dfrac{42}{42+75}\\times4\\]\n\\[=18+\\dfrac{42}{117}\\times4\\approx 18+1{,}4=19{,}4\\]\n\nVậy mốt của mẫu số liệu xấp xỉ 19,4. Chọn đáp án B.",
+    },
+    {
+        "content": "Trong mặt phẳng Oxy, điểm \\(M\\) nằm trên đường tròn \\((x+3)^2+(y-4)^2=4\\) sao cho độ dài đoạn thẳng OM là ngắn nhất. Hoành độ điểm \\(M\\) là:",
+        "options": {"A": "-9/5", "B": "12/5", "C": "-21/5", "D": "9/5"},
+        "correct": "A",
+        "explanation": "Trước tiên tìm tâm và bán kính của đường tròn.\n\nĐường tròn \\((x+3)^2+(y-4)^2=4\\) có tâm \\(I(-3;4)\\) và bán kính \\(R=2\\).\n\nVì O nằm ngoài đường tròn (do \\(OI=\\sqrt{9+16}=5>R=2\\)), điểm M trên đường tròn gần O nhất chính là giao điểm của đoạn thẳng OI với đường tròn, nằm giữa O và I.\n\nViết phương trình đường thẳng OI: đi qua \\(O(0;0)\\), nhận \\(\\overrightarrow{OI}=(-3;4)\\) làm vectơ chỉ phương:\n\\[\\begin{cases}x=-3t\\\\y=4t\\end{cases}\\ (t\\in\\mathbb{R})\\]\n\nTa có \\(OM\\le |OI-R|=5-2=3\\), và OM ngắn nhất khi \\(OM=3\\), tức M là điểm trên đoạn OI cách O một khoảng bằng 3 (nằm giữa O và I).\n\nVì \\(OI=5\\) và \\(OM=3\\), ta có tỉ lệ \\(\\overrightarrow{OM}=\\dfrac{3}{5}\\overrightarrow{OI}\\), suy ra:\n\\[M=\\left(\\dfrac{3}{5}\\times(-3);\\dfrac{3}{5}\\times4\\right)=\\left(-\\dfrac{9}{5};\\dfrac{12}{5}\\right)\\]\n\nVậy hoành độ điểm M là \\(-\\dfrac{9}{5}\\). Chọn đáp án A.",
+    },
+    {
+        "content": "Một học sinh dùng giác kế, đứng cách chân cột cờ 10m rồi chỉnh mặt trước cao bằng mắt của mình để xác định góc nâng (góc tạo bởi tia sáng đi thẳng từ đỉnh cột cờ với mắt) so với phương nằm ngang. Khi đó góc nâng đo được \\(31^\\circ\\). Biết khoảng cách từ mặt sân đến mắt học sinh đó bằng 1,5m. Chiều cao cột cờ gần nhất với giá trị nào?",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/hsa_de1_cau9_giacke.png",
+        "options": {"A": "6m", "B": "16,6m", "C": "7,5m", "D": "5,0m"},
+        "correct": "C",
+        "explanation": "Gọi AB là khoảng cách từ chân đến tầm mắt của học sinh, nên \\(AB=1{,}5\\)m.\n\nAC là khoảng cách từ chân học sinh đến chân cột cờ, nên \\(AC=10\\)m.\n\nCD là chiều cao cột cờ cần tìm, BE là đường ngang tầm mắt (song song với AC).\n\nGóc nâng chính là góc \\(\\widehat{DBE}=31^\\circ\\).\n\nVì tứ giác ABEC là hình chữ nhật (AB vuông góc AC, BE song song AC) nên:\n\\[BE=AC=10\\text{m}, \\qquad CE=AB=1{,}5\\text{m}\\]\n\nXét tam giác vuông BED (vuông tại E), ta có:\n\\[\\tan(\\widehat{DBE})=\\dfrac{DE}{BE} \\Rightarrow DE=BE\\times\\tan31^\\circ=10\\times\\tan31^\\circ\\approx 6\\text{m}\\]\n\nChiều cao cột cờ chính là tổng đoạn CE (đã tính ở dưới, tức phần từ chân cột đến ngang tầm mắt) và DE (phần từ tầm mắt lên đến đỉnh cột):\n\\[CD=CE+DE=1{,}5+6=7{,}5\\text{m}\\]\n\nVậy chiều cao cột cờ gần nhất với 7,5m. Chọn đáp án C.",
+    },
+    {
+        "content": "Tập nghiệm của bất phương trình \\(x^2-x-12\\le 0\\) là?",
+        "options": {
+            "A": "[-3;4]",
+            "B": "(-3;4)",
+            "C": "\\((-\\infty;-3)\\cup(4;+\\infty)\\)",
+            "D": "\\((-\\infty;-3]\\cup[4;+\\infty)\\)",
+        },
+        "correct": "A",
+        "explanation": "Trước tiên giải phương trình \\(x^2-x-12=0\\) để tìm các nghiệm, làm mốc lập bảng xét dấu.\n\nÁp dụng công thức nghiệm hoặc phân tích nhân tử:\n\\[x^2-x-12=0 \\Leftrightarrow (x-4)(x+3)=0 \\Leftrightarrow \\begin{bmatrix}x=4\\\\x=-3\\end{bmatrix}\\]\n\nLập bảng xét dấu cho tam thức \\(f(x)=x^2-x-12\\) (có hệ số \\(a=1>0\\), nên f(x) dương ở ngoài khoảng hai nghiệm và âm ở trong khoảng hai nghiệm):\n\n\\(x\\): \\(-\\infty\\) ... \\(-3\\) ... \\(4\\) ... \\(+\\infty\\)\n\n\\(f(x)\\): \\(+\\) ... \\(0\\) ... \\(-\\) ... \\(0\\) ... \\(+\\)\n\nBất phương trình yêu cầu \\(f(x)\\le 0\\), tức là ta lấy khoảng mà f(x) âm hoặc bằng 0, đó là đoạn giữa hai nghiệm (bao gồm cả hai đầu mút vì có dấu bằng):\n\\[f(x)\\le 0 \\Leftrightarrow -3\\le x\\le 4\\]\n\nVậy tập nghiệm là \\([-3;4]\\). Chọn đáp án A.",
+    },
+    {
+        "content": "Một tổ chăm sóc khách hàng của một trung tâm điện tử gồm 12 nhân viên. Số cách phân công 3 nhân viên đi đến ba địa điểm khác nhau để chăm sóc khách hàng là",
+        "options": {"A": "1320", "B": "1230", "C": "220", "D": "1728"},
+        "correct": "A",
+        "explanation": "Vì 3 nhân viên được phân công đến 3 địa điểm khác nhau, nên đây là bài toán sắp xếp có phân biệt vị trí (mỗi địa điểm là một vai trò riêng biệt), không phải chỉ chọn ra một nhóm 3 người.\n\nDo có sự phân biệt thứ tự (ai đến địa điểm nào cũng quan trọng), ta sử dụng công thức chỉnh hợp chập 3 của 12 phần tử:\n\\[A_{12}^3=\\dfrac{12!}{(12-3)!}=12\\times11\\times10=1320\\]\n\nVậy có 1320 cách phân công. Chọn đáp án A.",
+    },
+    {
+        "content": "Một hộp chứa 9 chiếc thẻ được đánh số từ 1 đến 9. Lấy ngẫu nhiên 3 chiếc thẻ từ hộp. Tính xác suất để tổng các số ghi trên 3 chiếc thẻ được lấy ra là một số lẻ.",
+        "options": {"A": "10/21", "B": "11/21", "C": "5/21", "D": "4/21"},
+        "correct": "A",
+        "explanation": "Số phần tử của không gian mẫu (số cách chọn ngẫu nhiên 3 thẻ trong 9 thẻ, không phân biệt thứ tự):\n\\[n(\\Omega)=C_9^3=84\\]\n\nGọi A là biến cố \"tổng các số ghi trên 3 chiếc thẻ được lấy ra là một số lẻ\".\n\nĐể tổng 3 số là số lẻ, cần có một số lẻ chữ số lẻ trong 3 số được chọn (1 hoặc 3 số lẻ). Trong tập từ 1 đến 9 có 5 số lẻ (1,3,5,7,9) và 4 số chẵn (2,4,6,8).\n\nTa xét 2 trường hợp cho biến cố A:\n- Cả 3 số đều là số lẻ: có \\(C_5^3\\) cách chọn.\n- Có 2 số chẵn và 1 số lẻ: có \\(C_4^2\\times C_5^1\\) cách chọn.\n\nTính số cách thỏa mãn:\n\\[n(A)=C_5^3+C_4^2.C_5^1=10+6\\times5=10+30=40\\]\n\nXác suất cần tìm:\n\\[P(A)=\\dfrac{n(A)}{n(\\Omega)}=\\dfrac{40}{84}=\\dfrac{10}{21}\\]\n\nVậy xác suất là \\(\\dfrac{10}{21}\\). Chọn đáp án A.",
+    },
             {
                 "content": "Cho dãy số liệu: 5, 7, 9, 11, 13. Số trung bình cộng của dãy số liệu trên bằng",
                 "options": {"A": "8", "B": "10", "C": "7", "D": "9"},
