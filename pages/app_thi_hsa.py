@@ -250,6 +250,31 @@ EXAM_DEFS = [
         "answers": ["1960"],
         "explanation": "Vận tốc chính là đạo hàm của quãng đường theo thời gian, tức \\(v(t) = y'(t)\\).\n\nLấy đạo hàm phương trình chuyển động:\n\\[v(t)=y'(t)=v_0-9{,}8t=196-9{,}8t\\]\n\nTốc độ của viên đạn bằng 0 khi:\n\\[196-9{,}8t=0 \\Leftrightarrow t=20 \\text{ (giây)}\\]\n\nĐây chính là thời điểm viên đạn ở vị trí cao nhất (vì trước đó nó đang bay lên, tốc độ giảm dần đến 0 rồi bắt đầu rơi xuống).\n\nThay \\(t=20\\) vào phương trình chuyển động để tìm độ cao lúc đó:\n\\[y(20)=196\\times 20-4{,}9\\times 20^2=3920-1960=1960 \\text{ (m)}\\]\n\nVậy tại thời điểm tốc độ bằng 0, viên đạn cách mặt đất 1960 mét.",
     },
+    {
+        "content": "Trong không gian với hệ tọa độ Oxyz, cho \\(\\vec{i}, \\vec{j}, \\vec{k}\\) lần lượt là các vectơ đơn vị nằm trên các trục tọa độ Ox, Oy, Oz và \\(\\vec{u}\\) là một vectơ tùy ý khác \\(\\vec{0}\\). Tính \\(T=\\cos^2(\\vec{u},\\vec{i})+\\cos^2(\\vec{u},\\vec{j})+\\cos^2(\\vec{u},\\vec{k})\\).",
+        "answers": ["1"],
+        "explanation": "Giả sử \\(\\vec{u}=(x;y;z)\\). Ta có \\(\\vec{i}=(1;0;0)\\), \\(\\vec{j}=(0;1;0)\\), \\(\\vec{k}=(0;0;1)\\).\n\nÁp dụng công thức tính góc giữa hai vectơ, ta được:\n\\[\\cos(\\vec{u},\\vec{i})=\\dfrac{x}{\\sqrt{x^2+y^2+z^2}},\\quad \\cos(\\vec{u},\\vec{j})=\\dfrac{y}{\\sqrt{x^2+y^2+z^2}},\\quad \\cos(\\vec{u},\\vec{k})=\\dfrac{z}{\\sqrt{x^2+y^2+z^2}}\\]\n\nBình phương từng cái rồi cộng lại:\n\\[T=\\left(\\dfrac{x}{\\sqrt{x^2+y^2+z^2}}\\right)^2+\\left(\\dfrac{y}{\\sqrt{x^2+y^2+z^2}}\\right)^2+\\left(\\dfrac{z}{\\sqrt{x^2+y^2+z^2}}\\right)^2\\]\n\\[=\\dfrac{x^2+y^2+z^2}{x^2+y^2+z^2}=1\\]\n\nVậy \\(T=1\\) với mọi vectơ \\(\\vec{u}\\) khác \\(\\vec{0}\\) — kết quả này không phụ thuộc vào tọa độ cụ thể của \\(\\vec{u}\\).",
+    },
+    {
+        "content": "Có bao nhiêu giá trị nguyên của tham số \\(m\\in[-25;25]\\) để hàm số \\(y=x^3-3x^2+mx+2\\) có cực đại và cực tiểu?",
+        "answers": ["28"],
+        "explanation": "Hàm số bậc ba \\(y=ax^3+bx^2+cx+d\\) (với \\(a\\ne 0\\)) có cả cực đại và cực tiểu khi và chỉ khi phương trình \\(y'=0\\) có hai nghiệm phân biệt.\n\nTa có:\n\\[y'=3x^2-6x+m\\]\n\nXét phương trình \\(y'=0 \\Leftrightarrow 3x^2-6x+m=0\\;(*)\\).\n\nĐể hàm số có cực đại và cực tiểu thì (*) phải có hai nghiệm phân biệt, tức là:\n\\[\\Delta' > 0 \\Leftrightarrow 9-3m>0 \\Leftrightarrow m<3\\]\n\nKết hợp với điều kiện \\(m\\) nguyên và \\(m\\in[-25;25]\\), ta có:\n\\[m\\in\\{-25;-24;\\ldots;2\\}\\]\n\nĐếm số phần tử: từ \\(-25\\) đến \\(2\\) có \\(2-(-25)+1=28\\) giá trị.\n\nVậy có 28 giá trị nguyên của \\(m\\) thỏa mãn yêu cầu bài toán.",
+    },
+    {
+        "content": "Một kiến trúc sư thiết kế một hội trường với 15 ghế ngồi ở hàng thứ nhất, 18 ghế ngồi ở hàng thứ hai, 21 ghế ngồi ở hàng thứ ba, và cứ như vậy (số ghế ở hàng sau nhiều hơn 3 ghế so với hàng liền trước). Nếu muốn hội trường có sức chứa ít nhất 870 ghế ngồi thì kiến trúc sư phải thiết kế tối thiểu bao nhiêu hàng ghế?",
+        "answers": ["20"],
+        "explanation": "Số ghế ở các hàng tạo thành một cấp số cộng với số hạng đầu \\(u_1=15\\) và công sai \\(d=3\\).\n\nGọi \\(n\\) là số hàng ghế của hội trường (\\(n\\in\\mathbb{N}^*\\)). Tổng số ghế trong hội trường là tổng \\(n\\) số hạng đầu của cấp số cộng:\n\\[S_n=\\dfrac{[2u_1+(n-1)d]\\cdot n}{2}=\\dfrac{[2\\cdot15+(n-1)\\cdot3]\\,n}{2}=\\dfrac{3n^2+27n}{2}\\]\n\nĐể hội trường có sức chứa ít nhất 870 ghế thì \\(S_n\\ge 870\\):\n\\[\\dfrac{3n^2+27n}{2}\\ge 870 \\Leftrightarrow n^2+9n-580\\ge 0\\]\n\nGiải bất phương trình bậc hai này, ta được:\n\\[n\\ge 20 \\quad \\text{hoặc} \\quad n\\le -29\\]\n\nVì \\(n\\) là số hàng ghế nên phải dương, do đó \\(n\\ge 20\\).\n\nVậy kiến trúc sư phải thiết kế tối thiểu 20 hàng ghế.",
+    },
+    {
+        "content": "Cho phương trình \\(\\log_{\\frac{1}{2}}(2x-m)+\\log_2(3-x)=0\\), với \\(m\\) là tham số. Hỏi có bao nhiêu giá trị nguyên dương của \\(m\\) để phương trình có nghiệm?",
+        "answers": ["5"],
+        "explanation": "Trước tiên tìm điều kiện xác định:\n\\[\\begin{cases}2x-m>0\\\\3-x>0\\end{cases}\\Leftrightarrow \\begin{cases}2x-m>0\\\\x<3\\end{cases}\\]\n\nBiến đổi phương trình về cùng cơ số 2. Vì \\(\\log_{\\frac{1}{2}}t=-\\log_2 t\\), ta có:\n\\[\\log_{\\frac{1}{2}}(2x-m)+\\log_2(3-x)=0\\]\n\\[\\Leftrightarrow -\\log_2(2x-m)+\\log_2(3-x)=0\\]\n\\[\\Leftrightarrow \\log_2(2x-m)=\\log_2(3-x)\\]\n\nGiải phương trình logarit (hai vế cùng cơ số nên biểu thức trong log bằng nhau):\n\\[2x-m=3-x \\Leftrightarrow 3x=m+3\\]\n\nĐể phương trình có nghiệm \\(x\\) thỏa mãn điều kiện \\(x<3\\), ta cần:\n\\[\\dfrac{m+3}{3}<3 \\Leftrightarrow m+3<9 \\Leftrightarrow m<6\\]\n\n(Về mặt điều kiện \\(2x-m>0\\), khi thay \\(x=\\frac{m+3}{3}\\) vào ta được \\(2x-m=3-x>0\\) luôn đúng do \\(x<3\\), nên không cần xét thêm.)\n\nKết hợp với điều kiện \\(m\\) là số nguyên dương, ta có:\n\\[m\\in\\{1;2;3;4;5\\}\\]\n\nVậy có 5 giá trị nguyên dương của \\(m\\) thỏa mãn yêu cầu bài toán.",
+    },
+    {
+        "content": "Cho hai mặt phẳng \\((P):2x-y+2z-3=0\\) và \\((Q):x+my+z-1=0\\). Tìm tham số \\(m\\) để hai mặt phẳng \\((P)\\) và \\((Q)\\) vuông góc với nhau.",
+        "answers": ["4"],
+        "explanation": "Xác định vectơ pháp tuyến của từng mặt phẳng, dựa vào hệ số của \\(x, y, z\\) trong phương trình:\n\\[\\vec{n_P}=(2;-1;2), \\qquad \\vec{n_Q}=(1;m;1)\\]\n\nHai mặt phẳng vuông góc với nhau khi và chỉ khi hai vectơ pháp tuyến của chúng vuông góc, tức là tích vô hướng của chúng bằng 0:\n\\[\\vec{n_P}\\cdot\\vec{n_Q}=0\\]\n\\[\\Leftrightarrow 2\\cdot1+(-1)\\cdot m+2\\cdot1=0\\]\n\\[\\Leftrightarrow 2-m+2=0 \\Leftrightarrow m=4\\]\n\nVậy \\(m=4\\) thì hai mặt phẳng \\((P)\\) và \\((Q)\\) vuông góc với nhau.",
+    },
         ],
     },
 
