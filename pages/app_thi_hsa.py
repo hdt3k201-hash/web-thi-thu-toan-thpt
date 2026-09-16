@@ -208,7 +208,7 @@ EXAM_DEFS = [
                 # GitHub/Imgur... rồi dán link raw vào đây) và sửa lại nội
                 # dung/đáp án cho đúng với hình vẽ thật.
                 "content": "Cho đồ thị hàm số \\( y = f(x) \\) như hình vẽ bên.",
-                "image": "https://via.placeholder.com/480x260.png?text=Anh+minh+hoa+do+thi",
+                "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de1_cau4.PNG",
                 "content_after_image": "Hàm số đã cho đồng biến trên khoảng nào sau đây?",
                 "options": {"A": "\\( (-\\infty;0) \\)", "B": "\\( (0;+\\infty) \\)",
                             "C": "\\( (-1;1) \\)", "D": "\\( (-2;2) \\)"},
@@ -218,26 +218,28 @@ EXAM_DEFS = [
             },
         ],
         "short": [
-            {
-                "content": "Giải phương trình \\( 5x + 7 = 32 \\). Tìm nghiệm x (điền số nguyên).",
-                "answers": ["5"],
-                "explanation": "\\( 5x + 7 = 32 \\Leftrightarrow 5x = 25 \\Leftrightarrow x = 5 \\).",
-            },
-            {
-                "content": "Phương trình \\( x^2 - 2x - 15 = 0 \\) có nghiệm dương bằng bao nhiêu?",
-                "answers": ["5"],
-                "explanation": "\\( x^2 - 2x - 15 = (x-5)(x+3) = 0 \\Rightarrow x = 5 \\) hoặc \\( x = -3 \\). Nghiệm dương là 5.",
-            },
-            {
-                "content": "Một cửa hàng có 300 sản phẩm, trong đó 15% là hàng lỗi. Hỏi có bao nhiêu sản phẩm lỗi? (chỉ điền số)",
-                "answers": ["45"],
-                "explanation": "Số sản phẩm lỗi \\( = 300 \\times 15\\% = 45 \\).",
-            },
-            {
-                "content": "Tìm ước chung lớn nhất (ƯCLN) của 36 và 48. (chỉ điền số)",
-                "answers": ["12"],
-                "explanation": "\\( 36 = 2^2 \\times 3^2,\\ 48 = 2^4 \\times 3 \\Rightarrow \\text{ƯCLN} = 2^2 \\times 3 = 12 \\).",
-            },
+                {
+        "content": "Cho 51 đồng xu, trong đó có 1 đồng xu nặng hơn về khối lượng, các đồng còn lại có khối lượng bằng nhau. Có 1 cái cân 2 đĩa. Hỏi cần ít nhất bao nhiêu lần cân để chắc chắn xác định được đồng xu khác loại đó?",
+        "answers": ["4"],
+        "explanation": "Với bài toán cân để tìm 1 đồng xu khác biệt (nặng hơn) trong N đồng xu bằng cân 2 đĩa, mỗi lần cân cho ta 3 khả năng xảy ra (lệch trái, lệch phải, hoặc thăng bằng).\n\nDo đó với k lần cân, ta phân biệt được tối đa \\(3^k\\) trường hợp, nên điều kiện cần là \\(3^k \\ge N\\).\n\nVới \\(N = 51\\): ta thử \\(3^3 = 27 < 51\\) (chưa đủ), còn \\(3^4 = 81 \\ge 51\\) (đủ). Vậy \\(k = 4\\).\n\nCó thể hình dung cách cân cụ thể như sau:\n- Lần 1: Chia 51 xu thành 3 nhóm 17 - 17 - 17, cân 2 nhóm bất kỳ. Nếu cân bằng thì xu lạ nằm trong nhóm còn lại; nếu lệch thì nó nằm ở đĩa nặng hơn. Dù thế nào ta cũng khoanh vùng còn 17 xu.\n- Lần 2: Chia 17 xu thành 6 - 6 - 5, cân 2 nhóm 6. Trường hợp xấu nhất còn lại 6 xu nghi vấn.\n- Lần 3: Chia 6 xu thành 2 - 2 - 2, cân 2 nhóm 2. Còn lại 2 xu nghi vấn.\n- Lần 4: Cân 2 xu cuối cùng, bên nào nặng hơn chính là đồng xu cần tìm.\n\nVậy cần ít nhất 4 lần cân.",
+    },
+    {
+        "content": "Cho các số lẻ từ 5 đến 21 xếp vào ô vuông \\(3 \\times 3\\) như hình vẽ. Biết tổng các đường ngang, đường dọc và đường chéo đều bằng nhau. Hãy tìm giá trị của x.",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/logic_cau2.png",
+        "answers": ["11"],
+        "explanation": "Trước tiên tìm hằng số ma thuật (tổng mỗi hàng/cột/đường chéo).\n\nDãy số lẻ từ 5 đến 21 gồm 9 số: 5, 7, 9, 11, 13, 15, 17, 19, 21, có tổng là \\(S = \\dfrac{9(5+21)}{2} = 117\\).\n\nVì bảng có 3 hàng, mỗi hàng có cùng một tổng và cộng lại đúng bằng tổng cả 9 số, nên hằng số ma thuật là \\(M = \\dfrac{117}{3} = 39\\).\n\nTrong ô vuông ma phương \\(3\\times 3\\) chuẩn, ô chính giữa luôn bằng \\(M/3\\), tức là ô trung tâm \\(= \\dfrac{39}{3} = 13\\).\n\nBây giờ ta điền dần các ô còn thiếu, dựa vào tổng mỗi hàng/cột/chéo đều bằng 39:\n- Hàng giữa có 9, tâm 13, và 17: kiểm tra \\(9+13+17=39\\) (đúng).\n- Cột giữa có 5 ở trên, tâm 13, nên ô dưới cùng cột giữa là \\(39-5-13=21\\).\n- Đường chéo phụ (từ x ở góc dưới trái, qua tâm 13, đến góc trên phải): góc trên phải \\(=39-13-x=26-x\\).\n- Hàng trên cùng có góc trên trái, số 5, và góc trên phải \\((26-x)\\): góc trên trái \\(=39-5-(26-x)=8+x\\).\n- Cột đầu tiên có góc trên trái \\((8+x)\\), số 9, và x ở dưới cùng, tổng bằng 39:\n\\[(8+x)+9+x=39 \\Leftrightarrow 2x+17=39 \\Leftrightarrow x=11\\]\n\nThử lại: điền đủ bảng ta được hàng dưới cùng là 11, 21, 7 và đường chéo chính \\(19+13+7=39\\) — hoàn toàn khớp.\n\nVậy \\(x = 11\\).",
+    },
+    {
+        "content": "Hãy sắp xếp 5 chữ cái A, B, C, D, E vào bảng \\(5 \\times 5\\) sao cho mỗi hàng và mỗi cột đều đủ cả 5 chữ cái (không chữ nào lặp lại trên cùng hàng hoặc cột). Hãy tìm chữ cái ở ô có dấu ★ trong hình.",
+        "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/logic_cau3.png",
+        "answers": ["A"],
+        "explanation": "Yêu cầu bài toán — mỗi hàng, mỗi cột không được lặp chữ cái — chính là dạng bài toán về Hình vuông Latinh (Latin Square), giống hệt cách suy luận khi giải Sudoku.\n\nQuan sát các cột đã biết vài chữ cái:\n- Cột cuối cùng (cột 5) đã có E (hàng 1) và B (hàng 2), nên 3 ô còn lại của cột này (hàng 3, 4, 5) chỉ có thể là A, C, D theo một thứ tự nào đó.\n- Cột đầu tiên (cột 1) đã có A (hàng 1) và C (hàng 5), nên 3 ô còn lại (hàng 2, 3, 4) chỉ có thể là B, D, E.\n\nDựa vào các ràng buộc này và tiếp tục loại trừ tương tự cho từng hàng, từng cột, ta dò ra được duy nhất một cách điền thỏa mãn toàn bộ điều kiện đề bài:\n\nA C B D E\nD E A C B\nE B D A C\nB A C E D\nC D E B A\n\nSo với bảng trên, ô có dấu ★ (hàng 4, cột 2) chính là chữ A.\n\nVậy chữ cái cần tìm là A.",
+    },
+    {
+        "content": "Cho dãy số: 1, 3, 3, 3, 5, 5, 5, 5, 5, 7, 7, 7, 7, 7, 7, 7, ... (số 1 xuất hiện 1 lần, số 3 xuất hiện 3 lần, số 5 xuất hiện 5 lần, số 7 xuất hiện 7 lần, cứ thế tiếp tục với các số lẻ). Hỏi số hạng thứ 2025 của dãy là số nào?",
+        "answers": ["89"],
+        "explanation": "Ta chia dãy số thành từng nhóm, mỗi nhóm gồm các số hạng bằng nhau:\n- Nhóm 1: số 1, xuất hiện 1 lần.\n- Nhóm 2: số 3, xuất hiện 3 lần.\n- Nhóm 3: số 5, xuất hiện 5 lần.\n- ...\n- Nhóm thứ n: số \\((2n-1)\\), xuất hiện \\((2n-1)\\) lần.\n\nTổng số phần tử tính đến hết nhóm thứ n là:\n\\[S_n = 1+3+5+\\cdots+(2n-1)=n^2\\]\n\nTa cần tìm xem vị trí 2025 rơi vào nhóm thứ mấy, tức tìm n sao cho \\((n-1)^2 < 2025 \\le n^2\\).\n\nVì \\(45^2 = 2025\\), nên \\(S_{45}=2025\\) — nghĩa là số hạng thứ 2025 chính là phần tử cuối cùng của nhóm thứ 45.\n\nGiá trị của các phần tử trong nhóm thứ 45 chính là số lẻ thứ 45:\n\\[2\\times 45 - 1 = 89\\]\n\nVậy số hạng thứ 2025 của dãy là 89.",
+    },
         ],
     },
 
