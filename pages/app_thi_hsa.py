@@ -239,8 +239,7 @@ EXAM_DEFS = [
         "content": "Cho dãy số: 1, 3, 3, 3, 5, 5, 5, 5, 5, 7, 7, 7, 7, 7, 7, 7, ... (số 1 xuất hiện 1 lần, số 3 xuất hiện 3 lần, số 5 xuất hiện 5 lần, số 7 xuất hiện 7 lần, cứ thế tiếp tục với các số lẻ). Hỏi số hạng thứ 2025 của dãy là số nào?",
         "answers": ["89"],
         "explanation": "Ta chia dãy số thành từng nhóm, mỗi nhóm gồm các số hạng bằng nhau:\n- Nhóm 1: số 1, xuất hiện 1 lần.\n- Nhóm 2: số 3, xuất hiện 3 lần.\n- Nhóm 3: số 5, xuất hiện 5 lần.\n- ...\n- Nhóm thứ n: số \\((2n-1)\\), xuất hiện \\((2n-1)\\) lần.\n\nTổng số phần tử tính đến hết nhóm thứ n là:\n\\[S_n = 1+3+5+\\cdots+(2n-1)=n^2\\]\n\nTa cần tìm xem vị trí 2025 rơi vào nhóm thứ mấy, tức tìm n sao cho \\((n-1)^2 < 2025 \\le n^2\\).\n\nVì \\(45^2 = 2025\\), nên \\(S_{45}=2025\\) — nghĩa là số hạng thứ 2025 chính là phần tử cuối cùng của nhóm thứ 45.\n\nGiá trị của các phần tử trong nhóm thứ 45 chính là số lẻ thứ 45:\n\\[2\\times 45 - 1 = 89\\]\n\nVậy số hạng thứ 2025 của dãy là 89.",
-    },
-          
+    },      
     {
         "content": "Tích tất cả các giá trị của \\(a\\) để góc tạo bởi đường thẳng \\(\\begin{cases}x=4+at\\\\y=7-2t\\end{cases}\\ (t\\in\\mathbb{R})\\) và đường thẳng \\(3x+4y-2=0\\) bằng \\(45^\\circ\\) là bao nhiêu?",
         "answers": ["-4"],
