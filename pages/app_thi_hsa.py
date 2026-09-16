@@ -166,11 +166,12 @@ EXAM_DEFS = [
         "explanation": "Đây chính là hàm số \\(y=|x|\\), viết dưới dạng từng khoảng. Ta xét đạo hàm bên trái và bên phải tại \\(x=0\\).\n\nĐạo hàm của hàm số trên từng khoảng là:\n\\[y'=\\begin{cases}1, & x\\ge 0\\\\-1, & x<0\\end{cases}\\]\n\nDo đó:\n\\[y'_{(0^+)}=1 \\quad \\text{và} \\quad y'_{(0^-)}=-1\\]\n\nHai đạo hàm một bên này khác nhau (\\(1\\ne -1\\)), nghĩa là đạo hàm tại \\(x=0\\) không tồn tại (không có một giá trị đạo hàm duy nhất tại đó).\n\nVậy hàm số không có đạo hàm tại \\(x=0\\). Chọn đáp án A.",
     },
     {
-        "content": "Thời gian chạy 50m của 20 học sinh được ghi lại trong bảng dưới đây:\n\n| Thời gian (giây) | 8,3 | 8,4 | 8,5 | 8,7 | 8,8 |\n|---|---|---|---|---|---|\n| Tần số | 2 | 3 | 9 | 5 | 1 |\n\nSố trung bình cộng thời gian chạy của học sinh là:",
-        "options": {"A": "8,54", "B": "4", "C": "8,50", "D": "8,53"},
-        "correct": "D",
-        "explanation": "Với mẫu số liệu không ghép nhóm, số trung bình cộng được tính bằng cách lấy tổng của (giá trị × tần số tương ứng) rồi chia cho tổng số học sinh (tổng tần số).\n\nTổng số học sinh: \\(2+3+9+5+1=20\\) (khớp với đề bài).\n\nÁp dụng công thức:\n\\[\\bar{x}=\\dfrac{8{,}3\\times 2+8{,}4\\times 3+8{,}5\\times 9+8{,}7\\times 5+8{,}8\\times 1}{20}\\]\n\nTính tử số:\n\\[8{,}3\\times2=16{,}6;\\quad 8{,}4\\times3=25{,}2;\\quad 8{,}5\\times9=76{,}5;\\quad 8{,}7\\times5=43{,}5;\\quad 8{,}8\\times1=8{,}8\\]\n\\[16{,}6+25{,}2+76{,}5+43{,}5+8{,}8=170{,}6\\]\n\nVậy:\n\\[\\bar{x}=\\dfrac{170{,}6}{20}=8{,}53\\]\n\nChọn đáp án D.",
-    },
+    "content": "Thời gian chạy 50m của 20 học sinh được ghi lại trong bảng dưới đây:",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/hsa_de1_cau2_bang.PNG",
+    "options": {"A": "8,54", "B": "4", "C": "8,50", "D": "8,53"},
+    "correct": "D",
+    "explanation": "Với mẫu số liệu không ghép nhóm, số trung bình cộng được tính bằng cách lấy tổng của (giá trị × tần số tương ứng) rồi chia cho tổng số học sinh (tổng tần số).\n\nTổng số học sinh: \\(2+3+9+5+1=20\\) (khớp với đề bài).\n\nÁp dụng công thức:\n\\[\\bar{x}=\\dfrac{8{,}3\\times 2+8{,}4\\times 3+8{,}5\\times 9+8{,}7\\times 5+8{,}8\\times 1}{20}\\]\n\nTính tử số:\n\\[8{,}3\\times2=16{,}6;\\quad 8{,}4\\times3=25{,}2;\\quad 8{,}5\\times9=76{,}5;\\quad 8{,}7\\times5=43{,}5;\\quad 8{,}8\\times1=8{,}8\\]\n\\[16{,}6+25{,}2+76{,}5+43{,}5+8{,}8=170{,}6\\]\n\nVậy:\n\\[\\bar{x}=\\dfrac{170{,}6}{20}=8{,}53\\]\n\nChọn đáp án D.",
+},
     {
         "content": "Chu kì của hàm số \\(y=\\sin\\left(\\dfrac{2}{5}x\\right).\\cos\\left(\\dfrac{2}{5}x\\right)\\) là \\(k\\pi\\). Giá trị của \\(k\\) là",
         "options": {"A": "5/2", "B": "5", "C": "5/4", "D": "10"},
