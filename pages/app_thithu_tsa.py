@@ -1152,34 +1152,67 @@ Suy ra tỉ lệ phần BỊ CẮT BỎ so với chu vi ban đầu:
 Vậy \\( p=3, q=6, r=3 \\Rightarrow S = 3+6+3 = 12 \\).""",
             },
 
-            # ---------------- ĐÚNG / SAI (truefalse) ----------------
-            {
-                "id": "de1_tf_29",
-                "type": "truefalse",
-                "content": "Trong một gian hàng hội chợ, người chơi gieo một con xúc xắc cân đối và đồng chất. Luật chơi như sau: - Nếu gieo ra mặt 6 chấm: Người chơi được thưởng ngay 100 nghìn đồng và được quyền gieo tiếp. - Nếu gieo ra mặt 4 hoặc 5 chấm: Người chơi được thưởng 50 nghìn đồng và trò chơi kết thúc. - Nếu gieo ra mặt 1, 2, 3 chấm: Người chơi bị phạt mất 20 nghìn đồng và trò chơi kết thúc. Trò chơi chỉ kết thúc khi người chơi gieo vào mặt yêu cầu dừng. Xét tính Đúng/Sai của các mệnh đề sau:",
-                "statements": [
-                    {"text": "Xác suất để trò chơi kết thúc ngay sau lần gieo đầu tiên là \\( \\dfrac{5}{6} \\).", "correct": True},
-                    {"text": "Xác suất để một người chơi kiếm được chính xác 150 nghìn đồng từ trò chơi này là \\( \\dfrac{1}{36} \\).", "correct": False},
-                    {"text": "Xác suất để một lượt chơi kéo dài từ 3 lần gieo trở lên là \\( \\dfrac{1}{36} \\).", "correct": True},
-                    {"text": "Trung bình (kỳ vọng), mỗi lượt tham gia trò chơi này người chơi sẽ lãi 28 nghìn đồng.", "correct": True}
-                ],
-                "points": 1,
-                "explanation": """a) Trò chơi kết thúc ngay sau lần gieo đầu \\( \\Leftrightarrow \\) không ra mặt 6 (mặt 6 mới được gieo tiếp). \\( P = \\dfrac{5}{6} \\Rightarrow \\) Đúng.
+           # ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de1_tf_29",
+    "type": "truefalse",
+    "content": r'Trong một gian hàng hội chợ, người chơi gieo một con xúc xắc cân đối và đồng chất. Luật chơi như sau:\n- Nếu gieo ra mặt 6 chấm: người chơi được thưởng ngay 100 nghìn đồng và được quyền gieo tiếp.\n- Nếu gieo ra mặt 4 hoặc 5 chấm: người chơi được thưởng 50 nghìn đồng và trò chơi kết thúc.\n- Nếu gieo ra mặt 1, 2 hoặc 3 chấm: người chơi bị phạt mất 20 nghìn đồng và trò chơi kết thúc.\nNgười chơi cứ tiếp tục gieo cho đến khi gặp một trong hai trường hợp dừng ở trên. Xét tính Đúng/Sai của các mệnh đề sau:',
+    "statements": [
+        {"text": r'Xác suất để trò chơi kết thúc ngay sau lần gieo đầu tiên là \( \dfrac{5}{6} \).', "correct": True},
+        {"text": r'Xác suất để một người chơi kiếm được đúng 150 nghìn đồng từ trò chơi này là \( \dfrac{1}{36} \).', "correct": False},
+        {"text": r'Xác suất để một lượt chơi kéo dài từ 3 lần gieo trở lên là \( \dfrac{1}{36} \).', "correct": True},
+        {"text": 'Trung bình, mỗi lượt tham gia trò chơi này người chơi lãi được 28 nghìn đồng.', "correct": True},
+    ],
+    "points": 1,
+    "explanation": r"""Nhận xét chung: mỗi lần gieo có 3 khả năng:
+- Ra mặt 6 chấm, xác suất \( \dfrac{1}{6} \): được +100 và gieo tiếp.
+- Ra mặt 4 hoặc 5 chấm, xác suất \( \dfrac{2}{6} = \dfrac{1}{3} \): được +50 và dừng.
+- Ra mặt 1, 2 hoặc 3 chấm, xác suất \( \dfrac{3}{6} = \dfrac{1}{2} \): bị −20 và dừng.
 
-b) Vì trò chơi chỉ kết thúc bằng đúng 1 lần thắng (+50) hoặc 1 lần thua (−20) sau một chuỗi các lần ra mặt 6 (+100 mỗi lần), tổng tiền kiếm được sau \\( k \\) lần ra mặt 6 rồi kết thúc là \\( 100k + 50 \\) (nếu kết thúc bằng thắng) hoặc \\( 100k - 20 \\) (nếu kết thúc bằng thua).
-Để tổng \\( =150 \\): \\( 100k+50=150 \\Rightarrow k=1 \\) (kết thúc bằng thắng, hợp lệ); \\( 100k-20=150 \\) không cho \\( k \\) nguyên.
-Vậy chỉ có trường hợp: gieo 6 (1 lần) rồi gieo 4 hoặc 5.
-\\( P = \\dfrac{1}{6}\\cdot\\dfrac{2}{6} = \\dfrac{1}{18} \\), không phải \\( \\dfrac{1}{36} \\Rightarrow \\) Sai.
+a) ĐÚNG.
+Trò chơi kết thúc ngay sau lần gieo đầu tiên khi và chỉ khi lần gieo đó không ra mặt 6 (vì ra mặt 6 thì được gieo tiếp, chưa dừng).
+Xác suất không ra mặt 6 là:
+\( P = 1 - \dfrac{1}{6} = \dfrac{5}{6} \)
 
-c) Lượt chơi kéo dài từ 3 lần gieo trở lên \\( \\Leftrightarrow \\) hai lần gieo đầu đều ra mặt 6.
-\\( P = \\left(\\dfrac{1}{6}\\right)^2 = \\dfrac{1}{36} \\Rightarrow \\) Đúng.
+b) SAI.
+Số tiền người chơi nhận được sau khi trò chơi kết thúc luôn có dạng:
+\( 100k + 50 \) (nếu k lần đầu ra mặt 6 rồi lần cuối ra mặt 4 hoặc 5), hoặc
+\( 100k - 20 \) (nếu k lần đầu ra mặt 6 rồi lần cuối ra mặt 1, 2 hoặc 3),
+trong đó \( k = 0, 1, 2, \dots \) là số lần ra mặt 6 liên tiếp trước khi dừng.
 
-d) Gọi \\( E \\) là kỳ vọng tiền lãi mỗi lượt chơi. Ta có phương trình đệ quy:
-\\( E = \\dfrac{1}{6}(100+E) + \\dfrac{1}{3}(50) + \\dfrac{1}{2}(-20) \\)
-Nhân 6 vế: \\( 6E = (100+E) + 100 - 60 = 140 + E \\)
-\\( \\Rightarrow 5E = 140 \\Rightarrow E = 28 \\) (nghìn đồng) \\( \\Rightarrow \\) Đúng.""",
-            },
+Xét xem số tiền nào bằng 150:
+- Với \( 100k+50 = 150 \Rightarrow k = 1 \) (nhận được, vì k là số nguyên không âm).
+- Với \( 100k-20 = 150 \Rightarrow k = 1,7 \) (loại, vì k phải là số nguyên).
 
+Vậy trường hợp duy nhất để kiếm được đúng 150 là: gieo 1 lần ra mặt 6, sau đó gieo tiếp ra mặt 4 hoặc 5.
+Xác suất của trường hợp này là:
+\( P = \dfrac{1}{6}\cdot\dfrac{1}{3} = \dfrac{1}{18} \)
+
+Vì \( \dfrac{1}{18} \ne \dfrac{1}{36} \) nên mệnh đề này Sai.
+
+c) ĐÚNG.
+Lượt chơi kéo dài từ 3 lần gieo trở lên khi và chỉ khi cả hai lần gieo đầu tiên đều ra mặt 6 (nếu không, trò chơi đã dừng lại ở lần gieo thứ nhất hoặc thứ hai).
+Xác suất hai lần liên tiếp đều ra mặt 6 là:
+\( P = \dfrac{1}{6}\cdot\dfrac{1}{6} = \dfrac{1}{36} \)
+
+d) ĐÚNG.
+Gọi E là số tiền lãi trung bình (kỳ vọng) của một lượt chơi.
+Ta xét kết quả có thể xảy ra ngay ở lần gieo đầu tiên:
+- Với xác suất \( \dfrac{1}{6} \): người chơi được ngay 100, sau đó trò chơi tiếp tục y hệt ban đầu, nên từ đây về sau vẫn còn lãi trung bình là E. Vậy phần này đóng góp trung bình \( 100+E \).
+- Với xác suất \( \dfrac{1}{3} \): người chơi được 50 và dừng luôn.
+- Với xác suất \( \dfrac{1}{2} \): người chơi mất 20 và dừng luôn.
+
+Do đó E thỏa mãn:
+\( E = \dfrac{1}{6}(100+E) + \dfrac{1}{3}\cdot 50 + \dfrac{1}{2}\cdot(-20) \)
+
+Nhân cả hai vế với 6 để bỏ mẫu:
+\( 6E = (100+E) + 100 - 60 \)
+\( 6E = 140 + E \)
+\( 5E = 140 \)
+\( E = 28 \) (nghìn đồng)
+
+Vậy trung bình mỗi lượt chơi, người chơi lãi được 28 nghìn đồng.""",
+},
             # ---------------- KÉO THẢ (dragdrop) ----------------
             {
                 "id": "de1_dd_30",
@@ -4851,22 +4884,34 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
 
 # ---------------- KÉO THẢ (dragdrop) ----------------
             {
-               "id": "de6_dd_17",
-               "type": "dragdrop",
-               "content": "Kéo số ở các ô vuông thả vào vị trí thích hợp trong các câu sau:",
-               "options_pool": [
-                     "$\dfrac{\pi}{12}$", 
-                     "$2\pi$", 
-                     "$\dfrac{\pi}{6}$", 
-                     "$\pi$"
-                ],
-               "blanks": [
-                   {"label": "a) Phương trình $\sin 2x=\dfrac{1}{2}$ có một nghiệm là: $x=$", "answer": "\dfrac{\pi}{12}"},
-                   {"label": "b) Phương trình $\sin x+2\cos x=2$ có một nghiệm là: $x=$", "answer": "2\pi"}
-                ],
-               "points": 1,
-               "explanation": "a) Ta có $\sin 2x = \dfrac{1}{2} = \sin\left(\dfrac{\pi}{6}\right) \Rightarrow 2x = \dfrac{\pi}{6} + k2\pi$ hoặc $2x = \pi - \dfrac{\pi}{6} + k2\pi$. \n$\Rightarrow x = \dfrac{\pi}{12} + k\pi$ hoặc $x = \dfrac{5\pi}{12} + k\pi$. Với $k=0$ ta có một nghiệm là $x = \dfrac{\pi}{12}$.\n\nb) Thay các đáp án vào phương trình $\sin x + 2\cos x = 2$. \nThay $x = 2\pi$, ta được $\sin(2\pi) + 2\cos(2\pi) = 0 + 2(1) = 2$ (thỏa mãn)."
-            },
+    "id": "de6_dd_17",
+    "type": "dragdrop",
+    "content": "Kéo số ở các ô vuông thả vào vị trí thích hợp trong các câu sau:",
+    "options_pool": [
+        r"$\dfrac{\pi}{12}$",
+        r"$2\pi$",
+        r"$\dfrac{\pi}{6}$",
+        r"$\pi$"
+    ],
+    "blanks": [
+        {"label": r"a) Phương trình $\sin 2x=\dfrac{1}{2}$ có một nghiệm là: $x=$", "answer": r"$\dfrac{\pi}{12}$"},
+        {"label": r"b) Phương trình $\sin x+2\cos x=2$ có một nghiệm là: $x=$", "answer": r"$2\pi$"}
+    ],
+    "points": 1,
+    "explanation": r"""a) Ta có $\sin 2x = \dfrac{1}{2} = \sin\left(\dfrac{\pi}{6}\right)$
+$\Rightarrow 2x = \dfrac{\pi}{6} + k2\pi$ hoặc $2x = \pi - \dfrac{\pi}{6} + k2\pi$.
+
+$\Rightarrow x = \dfrac{\pi}{12} + k\pi$ hoặc $x = \dfrac{5\pi}{12} + k\pi$.
+
+Với $k=0$ ta có một nghiệm là $x = \dfrac{\pi}{12}$.
+
+b) Thay lần lượt các đáp án vào phương trình $\sin x + 2\cos x = 2$ để kiểm tra.
+
+Thay $x = 2\pi$, ta được:
+$\sin(2\pi) + 2\cos(2\pi) = 0 + 2\cdot 1 = 2$ (thỏa mãn).
+
+Vậy $x = 2\pi$ là một nghiệm của phương trình."""
+},
 
 # ---------------- KÉO THẢ (dragdrop) ----------------
             {
@@ -4910,19 +4955,54 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
                "points": 1,
                "explanation": "Gia đình gồm 5 người: Dương, ông nội, bà nội, bố, mẹ.\na) Dương ngồi chính giữa (vị trí số 3): Có 1 cách. 4 người còn lại xếp vào 4 vị trí: $4!$ cách. Số cách xếp: $1 \cdot 4! = 24$ (cách).\n\nb) Ông nội và bố ngồi ở 2 đầu ghế: Có $2! = 2$ cách xếp ông nội và bố. 3 người còn lại xếp vào 3 vị trí ở giữa: $3! = 6$ cách. Số cách xếp: $2 \cdot 6 = 12$ (cách).\n\nc) Buộc Dương và bố thành một nhóm: Có $2! = 2$ cách đổi chỗ. Coi nhóm này như 1 người, cùng với 3 người còn lại tạo thành 4 đối tượng. Xếp 4 đối tượng này có $4! = 24$ cách. Số cách xếp: $2 \cdot 24 = 48$ (cách)."
             },
-            # ---------------- ĐÚNG / SAI (truefalse) ----------------
-            {
-               "id": "de6_tf_20",
-               "type": "truefalse",
-               "content": "Cho phương trình $\log_2\sqrt{|x|} - 4\sqrt{\log_4|x|} - 5 = 0$. Các khẳng định sau là đúng hay sai?",
-               "statements": [
-                   {"text": "Điều kiện xác định của phương trình là $-1 \le x \le 1$.", "correct": False},
-                   {"text": "Đặt $t = \sqrt{\dfrac{1}{2}\log_2|x|}$, $t \ge 0$ thì phương trình trở thành $2t^2 - t - 5 = 0$.", "correct": False},
-                   {"text": "Phương trình có 2 nghiệm phân biệt.", "correct": True}
-                ],
-               "points": 1,
-               "explanation": "a) Điều kiện: \n$\begin{cases} |x| > 0 \\ \log_4|x| \ge 0 \end{cases} \Leftrightarrow \begin{cases} x \neq 0 \\ |x| \ge 1 \end{cases} \Leftrightarrow \left[ \begin{matrix} x \ge 1 \\ x \le -1 \end{matrix} \right.$\nVậy phát biểu a) Sai.\n\nb) Phương trình $\Leftrightarrow \dfrac{1}{2}\log_2|x| - 4\sqrt{\dfrac{1}{2}\log_2|x|} - 5 = 0$.\nĐặt $t = \sqrt{\dfrac{1}{2}\log_2|x|}$ ($t \ge 0$), phương trình trở thành: $t^2 - 4t - 5 = 0$.\nVậy phát biểu b) Sai.\n\nc) Giải phương trình $t^2 - 4t - 5 = 0 \Leftrightarrow \left[ \begin{matrix} t = -1 \text{ (loại)} \\ t = 5 \text{ (thỏa mãn)} \end{matrix} \right.$\nVới $t=5 \Rightarrow \sqrt{\dfrac{1}{2}\log_2|x|} = 5 \Leftrightarrow \dfrac{1}{2}\log_2|x| = 25 \Leftrightarrow \log_2|x| = 50 \Leftrightarrow |x| = 2^{50} \Leftrightarrow x = \pm 2^{50}$.\nPhương trình có 2 nghiệm phân biệt. Phát biểu c) Đúng."
-            },
+           # ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de6_tf_20",
+    "type": "truefalse",
+    "content": r'Cho phương trình $\log_2\sqrt{|x|} - 4\sqrt{\log_4|x|} - 5 = 0$. Các khẳng định sau là đúng hay sai?',
+    "statements": [
+        {"text": r'Điều kiện xác định của phương trình là $-1 \le x \le 1$.', "correct": False},
+        {"text": r'Đặt $t = \sqrt{\dfrac{1}{2}\log_2|x|}$, $t \ge 0$ thì phương trình trở thành $2t^2 - t - 5 = 0$.', "correct": False},
+        {"text": r'Phương trình có 2 nghiệm phân biệt.', "correct": True},
+    ],
+    "points": 1,
+    "explanation": r"""a) Tìm điều kiện xác định.
+
+Biểu thức chứa hai căn bậc hai và hai lôgarit nên cần:
+$|x| > 0$ (để $\log_2|x|$ và $\log_4|x|$ có nghĩa)
+$\log_4|x| \ge 0$ (để căn $\sqrt{\log_4|x|}$ có nghĩa)
+
+Điều kiện thứ hai tương đương với $|x| \ge 4^0 = 1$.
+
+Kết hợp cả hai điều kiện, ta được $|x| \ge 1$, tức là:
+$x \ge 1$ hoặc $x \le -1$
+
+Điều kiện này khác với $-1 \le x \le 1$ nên phát biểu a) Sai.
+
+b) Biến đổi phương trình về ẩn phụ t.
+
+Vì $\log_2\sqrt{|x|} = \dfrac{1}{2}\log_2|x|$ và $\log_4|x| = \dfrac{1}{2}\log_2|x|$ nên phương trình trở thành:
+$\dfrac{1}{2}\log_2|x| - 4\sqrt{\dfrac{1}{2}\log_2|x|} - 5 = 0$
+
+Đặt $t = \sqrt{\dfrac{1}{2}\log_2|x|}$ với $t \ge 0$, suy ra $t^2 = \dfrac{1}{2}\log_2|x|$.
+
+Thay vào, phương trình trở thành:
+$t^2 - 4t - 5 = 0$
+
+Vì phát biểu b) ghi phương trình là $2t^2 - t - 5 = 0$ (khác với $t^2-4t-5=0$ vừa tìm được) nên phát biểu b) Sai.
+
+c) Giải phương trình theo t và tìm số nghiệm x.
+
+Giải $t^2 - 4t - 5 = 0$:
+$t = -1$ (loại, vì $t \ge 0$) hoặc $t = 5$ (thỏa mãn)
+
+Với $t = 5$:
+$\sqrt{\dfrac{1}{2}\log_2|x|} = 5 \Leftrightarrow \dfrac{1}{2}\log_2|x| = 25 \Leftrightarrow \log_2|x| = 50 \Leftrightarrow |x| = 2^{50} \Leftrightarrow x = \pm 2^{50}$
+
+Cả hai giá trị $x = 2^{50}$ và $x = -2^{50}$ đều thỏa mãn điều kiện xác định ($|x|\ge 1$).
+
+Vậy phương trình có đúng 2 nghiệm phân biệt. Phát biểu c) Đúng.""",
+},
 
 
            
@@ -5164,20 +5244,63 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
     },
 
     # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
-    {
-        "id": "de6_mc_38",
-        "type": "mc4",
-        "content": "Cho hình chóp đều \\( S.ABCD \\) có cạnh đáy bằng 2, góc giữa mặt bên và mặt đáy bằng \\( 60^\\circ \\). Gọi \\( M, N, P \\) lần lượt là trung điểm của các cạnh \\( SA, SC \\) và \\( BC \\). Thể tích khối tứ diện \\( DMNP \\) bằng",
-        "options": {
-            "A": "\\( \\dfrac{\\sqrt{110}}{8} \\)",
-            "B": "\\( \\dfrac{\\sqrt{3}}{4} \\)",
-            "C": "\\( \\dfrac{\\sqrt{110}}{24} \\)",
-            "D": "\\( \\dfrac{\\sqrt{6}}{4} \\)"
-        },
-        "correct": "B",
-        "points": 1,
-        "explanation": "Gọi \\( O \\) là tâm hình vuông \\( ABCD \\), suy ra \\( SO \\perp (ABCD) \\).\nGọi \\( I \\) là trung điểm của \\( CD \\), ta có \\( OI \\perp CD \\) nên \\( \\widehat{SIO} \\) là góc giữa mặt bên \\( (SCD) \\) và mặt đáy. Suy ra \\( \\widehat{SIO} = 60^\\circ \\).\nTa có \\( OI = \\dfrac{1}{2} BC = 1 \\).\nTrong tam giác vuông \\( SOI \\), ta có \\( SO = OI \\cdot \\tan 60^\\circ = \\sqrt{3} \\).\nThể tích khối chóp \\( S.ABCD \\) là \\( V = \\dfrac{1}{3} SO \\cdot S_{ABCD} = \\dfrac{1}{3} \\cdot \\sqrt{3} \\cdot 2^2 = \\dfrac{4\\sqrt{3}}{3} \\).\n\nTa có: \\( V_{D.MNP} = \\dfrac{1}{2} V_{D.SNC} \\) (vì \\( P \\) là trung điểm của \\( BC \\) và \\( D.SNC \\) coi như đáy là \\( \\Delta SNC \\) thì k/c từ \\( P \\) đến \\( (SNC) \\) bằng nửa k/c từ \\( B \\) đến \\( (SNC) \\)).\n\\( V_{D.SNC} = \\dfrac{1}{2} V_{S.DAC} \\) (vì \\( N \\) là trung điểm của \\( SC \\)).\n\\( V_{S.DAC} = \\dfrac{1}{2} V \\).\nSuy ra: \\( V_{D.MNP} = \\dfrac{1}{2} \\cdot \\dfrac{1}{2} \\cdot \\dfrac{1}{2} V = \\dfrac{1}{8} V = \\dfrac{1}{8} \\cdot \\dfrac{4\\sqrt{3}}{3} = \\dfrac{\\sqrt{3}}{6} \\).\n\nCách khác (chính xác hơn):\n\\( V_{D.MNP} = V_{P.DMN} = \\dfrac{1}{2} d(B, (DMN)) \\cdot S_{DMN} = \\dfrac{1}{2} d(B, (SAC)) \\cdot S_{DMN} \\)\nTuy nhiên việc tính toán trực tiếp sẽ phức tạp. Ta dùng tỉ số thể tích:\n\\( \\dfrac{d(P, (SAC))}{d(B, (SAC))} = \\dfrac{PC}{BC} = \\dfrac{1}{2} \\Rightarrow d(P, (SAC)) = \\dfrac{1}{2} d(B, (SAC)) = \\dfrac{1}{2} d(D, (SAC)) \\).\nDiện tích \\( \\Delta DMN \\): Trong mặt phẳng \\( (SAC) \\), xét tam giác \\( SAC \\), \\( M, N \\) là trung điểm \\( SA, SC \\).\nKẻ đường cao \\( DH \\perp AC \\) tại \\( O \\). Tam giác \\( DMN \\) và \\( SMN \\) có chung đáy \\( MN \\), chiều cao tương ứng từ \\( D \\) và \\( S \\) xuống \\( MN \\) là bằng nhau (do khoảng cách từ \\( O \\) đến \\( MN \\) bằng k/c từ \\( S \\) đến \\( MN \\)).\nVậy \\( S_{DMN} = S_{SMN} = \\dfrac{1}{4} S_{SAC} \\).\nSuy ra \\( V_{P.DMN} = \\dfrac{1}{3} d(P, (SAC)) \\cdot S_{DMN} = \\dfrac{1}{3} \\cdot \\dfrac{1}{2} d(D, (SAC)) \\cdot \\dfrac{1}{4} S_{SAC} = \\dfrac{1}{8} V_{D.SAC} = \\dfrac{1}{16} V_{S.ABCD} \\).\n\\( V_{P.DMN} = \\dfrac{1}{16} \\cdot \\dfrac{4\\sqrt{3}}{3} = \\dfrac{\\sqrt{3}}{12} \\). Vẫn không có đáp án đúng.\n\nSửa lại: Dùng phương pháp tọa độ.\nChọn hệ trục tọa độ \\( Oxyz \\) với \\( O(0,0,0) \\), \\( B(1, -1, 0) \\), \\( C(1, 1, 0) \\), \\( D(-1, 1, 0) \\), \\( A(-1, -1, 0) \\), \\( S(0, 0, \\sqrt{3}) \\).\n\\( M \\) là trung điểm \\( SA \\Rightarrow M(-1/2, -1/2, \\sqrt{3}/2) \\).\n\\( N \\) là trung điểm \\( SC \\Rightarrow N(1/2, 1/2, \\sqrt{3}/2) \\).\n\\( P \\) là trung điểm \\( BC \\Rightarrow P(1, 0, 0) \\).\n\\( D(-1, 1, 0) \\).\n\\( \\overrightarrow{DM} = (1/2, -3/2, \\sqrt{3}/2) \\), \\( \\overrightarrow{DN} = (3/2, -1/2, \\sqrt{3}/2) \\), \\( \\overrightarrow{DP} = (2, -1, 0) \\).\n\\( [\\overrightarrow{DM}, \\overrightarrow{DN}] = (\\dfrac{-3\\sqrt{3}}{4} + \\dfrac{\\sqrt{3}}{4}, \\dfrac{3\\sqrt{3}}{4} - \\dfrac{\\sqrt{3}}{4}, -\\dfrac{1}{4} + \\dfrac{9}{4}) = (-\\dfrac{\\sqrt{3}}{2}, \\dfrac{\\sqrt{3}}{2}, 2) \\).\n\\( V_{DMNP} = \\dfrac{1}{6} \\left| [\\overrightarrow{DM}, \\overrightarrow{DN}] \\cdot \\overrightarrow{DP} \\right| = \\dfrac{1}{6} \\left| -\\dfrac{\\sqrt{3}}{2} \\cdot 2 + \\dfrac{\\sqrt{3}}{2} \\cdot (-1) + 2 \\cdot 0 \\right| = \\dfrac{1}{6} \\left| -\\dfrac{3\\sqrt{3}}{2} \\right| = \\dfrac{\\sqrt{3}}{4} \\).\nKết quả phù hợp với đáp án B."
+{
+    "id": "de6_mc_38",
+    "type": "mc4",
+    "content": r'Cho hình chóp đều \( S.ABCD \) có cạnh đáy bằng 2, góc giữa mặt bên và mặt đáy bằng \( 60^\circ \). Gọi \( M, N, P \) lần lượt là trung điểm của các cạnh \( SA, SC \) và \( BC \). Thể tích khối tứ diện \( DMNP \) bằng',
+    "options": {
+        "A": r'\( \dfrac{\sqrt{110}}{8} \)',
+        "B": r'\( \dfrac{\sqrt{3}}{4} \)',
+        "C": r'\( \dfrac{\sqrt{110}}{24} \)',
+        "D": r'\( \dfrac{\sqrt{6}}{4} \)'
     },
+    "correct": "B",
+    "points": 1,
+    "explanation": r"""Bước 1: Tính chiều cao hình chóp.
+
+Gọi O là tâm hình vuông ABCD, khi đó SO vuông góc với mặt đáy (do S.ABCD là hình chóp đều).
+
+Gọi I là trung điểm của CD. Vì O là tâm hình vuông nên \( OI \perp CD \), do đó \( \widehat{SIO} \) chính là góc giữa mặt bên (SCD) và mặt đáy. Theo giả thiết, \( \widehat{SIO} = 60^\circ \).
+
+Vì cạnh đáy bằng 2 nên \( OI \) bằng nửa cạnh hình vuông: \( OI = 1 \).
+
+Trong tam giác vuông SOI:
+\( SO = OI \cdot \tan 60^\circ = \sqrt{3} \)
+
+Bước 2: Tính thể tích khối chóp S.ABCD.
+
+\( V_{S.ABCD} = \dfrac{1}{3}\cdot SO\cdot S_{ABCD} = \dfrac{1}{3}\cdot\sqrt{3}\cdot 2^2 = \dfrac{4\sqrt{3}}{3} \)
+
+Bước 3: Chọn hệ trục tọa độ để tính thể tích tứ diện DMNP.
+
+Vì đáy ABCD là hình vuông và SO vuông góc với đáy, ta chọn hệ trục tọa độ Oxyz với gốc O là tâm hình vuông, sao cho các đỉnh của hình vuông có tọa độ đơn giản. Cụ thể:
+\( A(-1;-1;0),\ B(1;-1;0),\ C(1;1;0),\ D(-1;1;0),\ S(0;0;\sqrt{3}) \)
+
+(Dễ kiểm tra: mỗi cạnh của hình vuông đều có độ dài 2, và O là trung điểm của cả hai đường chéo AC, BD, đúng như giả thiết.)
+
+Vì M, N, P lần lượt là trung điểm của SA, SC, BC nên:
+\( M\left(-\dfrac{1}{2}; -\dfrac{1}{2}; \dfrac{\sqrt{3}}{2}\right) \)
+\( N\left(\dfrac{1}{2}; \dfrac{1}{2}; \dfrac{\sqrt{3}}{2}\right) \)
+\( P(1; 0; 0) \)
+
+Bước 4: Tính thể tích tứ diện DMNP.
+
+Ta lập các vectơ xuất phát từ D(-1;1;0):
+\( \overrightarrow{DM} = \left(\dfrac{1}{2}; -\dfrac{3}{2}; \dfrac{\sqrt{3}}{2}\right) \)
+\( \overrightarrow{DN} = \left(\dfrac{3}{2}; -\dfrac{1}{2}; \dfrac{\sqrt{3}}{2}\right) \)
+\( \overrightarrow{DP} = (2; -1; 0) \)
+
+Tính tích có hướng của \( \overrightarrow{DM} \) và \( \overrightarrow{DN} \):
+\( \left[\overrightarrow{DM}, \overrightarrow{DN}\right] = \left(-\dfrac{\sqrt{3}}{2};\ \dfrac{\sqrt{3}}{2};\ 2\right) \)
+
+Tính tích vô hướng của kết quả trên với \( \overrightarrow{DP} \):
+\( \left[\overrightarrow{DM}, \overrightarrow{DN}\right]\cdot \overrightarrow{DP} = \left(-\dfrac{\sqrt{3}}{2}\right)\cdot 2 + \dfrac{\sqrt{3}}{2}\cdot(-1) + 2\cdot 0 = -\dfrac{3\sqrt{3}}{2} \)
+
+Vậy thể tích tứ diện DMNP là:
+\( V_{DMNP} = \dfrac{1}{6}\left|\left[\overrightarrow{DM}, \overrightarrow{DN}\right]\cdot \overrightarrow{DP}\right| = \dfrac{1}{6}\cdot\dfrac{3\sqrt{3}}{2} = \dfrac{\sqrt{3}}{4} \)
+
+Vậy \( V_{DMNP} = \dfrac{\sqrt{3}}{4} \). Chọn đáp án B.""",
+},
     
     # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
     {
@@ -5195,17 +5318,70 @@ Tọa độ hai giao điểm là \\( M\\left(-1; \\dfrac{9\\sqrt{11}}{5}\\right)
         "explanation": "Gọi vận tốc của tàu là \\( v_t \\) và vận tốc của Kylian là \\( v_k \\).\nGiả sử cứ \\( T \\) phút lại có một chuyến tàu xuất bến.\nKhoảng cách giữa hai tàu chạy cùng chiều liên tiếp luôn không đổi và bằng \\( d = v_t \\cdot T \\).\n\nXét các tàu chạy cùng chiều với Kylian (vượt qua Kylian):\nVận tốc tương đối của tàu so với Kylian là \\( v_1 = v_t - v_k \\).\nThời gian để tàu tiếp theo vượt qua Kylian là thời gian để tàu đó đi hết khoảng cách \\( d \\) với vận tốc tương đối \\( v_1 \\):\n\\( t_1 = \\dfrac{d}{v_t - v_k} = \\dfrac{v_t \\cdot T}{v_t - v_k} = 12 \\) phút  (1)\n\nXét các tàu chạy ngược chiều với Kylian (gặp Kylian):\nVận tốc tương đối của tàu so với Kylian là \\( v_2 = v_t + v_k \\).\nThời gian để Kylian gặp tàu tiếp theo là thời gian để hai bên đi hết khoảng cách \\( d \\) với vận tốc tương đối \\( v_2 \\):\n\\( t_2 = \\dfrac{d}{v_t + v_k} = \\dfrac{v_t \\cdot T}{v_t + v_k} = 4 \\) phút  (2)\n\nTừ (1) và (2) ta có hệ phương trình:\n\\( \\left\\{ \\begin{array}{l} v_t \\cdot T = 12(v_t - v_k) \\\\ v_t \\cdot T = 4(v_t + v_k) \\end{array} \\right. \\Rightarrow 12v_t - 12v_k = 4v_t + 4v_k \\Rightarrow 8v_t = 16v_k \\Rightarrow v_t = 2v_k \\).\n\nThay \\( v_k = \\dfrac{1}{2}v_t \\) vào (2), ta được:\n\\( \\dfrac{v_t \\cdot T}{v_t + 0.5v_t} = 4 \\Rightarrow \\dfrac{T}{1.5} = 4 \\Rightarrow T = 6 \\) (phút).\n\nVậy cứ 6 phút lại có một tàu xuất bến."
     },
 
-    # ---------------- TRẢ LỜI NGẮN (short) ----------------
-    {
-        "id": "de6_sh_40",
-        "type": "short",
-        "content": "Cho phương trình \\( m \\sin x + (m - 1) \\cos 2x + 5 = 0 \\) (trong đó \\( m \\) là tham số). Số các giá trị nguyên của \\( m \\) để phương trình vô nghiệm là [......].",
-        "blanks": [
-            {"label": "Số các giá trị nguyên của \\( m \\) là", "answers": ["3"]}
-        ],
-        "points": 1,
-        "explanation": "Ta có: \\( m \\sin x + (m - 1) \\cos 2x + 5 = 0 \\)\n\\( \\Leftrightarrow m \\sin x + (m - 1)(1 - 2\\sin^2 x) + 5 = 0 \\)\n\\( \\Leftrightarrow -2(m - 1)\\sin^2 x + m \\sin x + m + 4 = 0 \\)\n\\( \\Leftrightarrow 2(m - 1)\\sin^2 x - m \\sin x - m - 4 = 0 \\) (*)\n\nĐặt \\( t = \\sin x \\), với \\( x \\in \\mathbb{R} \\Rightarrow t \\in [-1; 1] \\).\nPhương trình (*) trở thành: \\( 2(m - 1)t^2 - mt - m - 4 = 0 \\) (1)\nĐể phương trình ban đầu vô nghiệm thì phương trình (1) vô nghiệm hoặc có các nghiệm đều không thuộc đoạn \\( [-1; 1] \\).\n\n* **Trường hợp 1:** \\( m = 1 \\)\n(1) trở thành: \\( -t - 5 = 0 \\Leftrightarrow t = -5 \\notin [-1; 1] \\).\nVậy \\( m = 1 \\) thỏa mãn (phương trình vô nghiệm).\n\n* **Trường hợp 2:** \\( m \\neq 1 \\)\nTa tính \\( \\Delta = m^2 - 4 \\cdot 2(m - 1)(-m - 4) = m^2 + 8(m^2 + 3m - 4) = 9m^2 + 24m - 32 \\).\n\nNhận xét: Ta có thể phân tích vế trái của (1):\n\\( 2mt^2 - 2t^2 - mt - m - 4 = 0 \\Leftrightarrow m(2t^2 - t - 1) - (2t^2 + 4) = 0 \\)\n\\( \\Leftrightarrow m(t - 1)(2t + 1) = 2(t^2 + 2) \\).\nVì \\( t \in [-1; 1] \\) nên ta có:\n- Nếu \\( t = 1 \\) hoặc \\( t = -\\dfrac{1}{2} \\) thì vế trái bằng 0, vế phải khác 0 (vô lý).\n- Do đó, phương trình tương đương với \\( m = \\dfrac{2(t^2 + 2)}{(t - 1)(2t + 1)} \\).\nXét hàm số \\( f(t) = \\dfrac{2(t^2 + 2)}{2t^2 - t - 1} \\) trên đoạn \\( [-1; 1] \\setminus \\left\\{-\\dfrac{1}{2}, 1\\right\\} \\).\n\\( f'(t) = \\dfrac{4t(2t^2 - t - 1) - 2(t^2 + 2)(4t - 1)}{(2t^2 - t - 1)^2} = \\dfrac{-2t^2 - 16t + 4}{(2t^2 - t - 1)^2} \\).\n\\( f'(t) = 0 \\Leftrightarrow t^2 + 8t - 2 = 0 \\Rightarrow \\left[ \\begin{array}{l} t = -4 + 3\\sqrt{2} \\approx 0.24 \\in [-1; 1] \\\\ t = -4 - 3\\sqrt{2} \\approx -8.24 \\notin [-1; 1] \\end{array} \\right. \\).\n\nBảng biến thiên của \\( f(t) \\) trên \\( [-1; 1] \\setminus \\left\\{-\\dfrac{1}{2}, 1\\right\\} \\):\n- Khúc \\( [-1; -1/2) \\): \\( f(-1) = \\dfrac{2(1+2)}{2+1-1} = 3 \\). Khi \\( t \\to -1/2^- \\), \\( f(t) \\to +\\infty \\).\n- Khúc \\( (-1/2; 1) \\): Khi \\( t \\to -1/2^+ \\), \\( f(t) \\to -\\infty \\).\n\\( f(-4 + 3\\sqrt{2}) = -4\\sqrt{2} - 6 \\approx -11.65 \\) (cực đại cục bộ).\nKhi \\( t \\to 1^- \\), \\( f(t) \\to -\\infty \\).\n\nVậy tập giá trị của \\( f(t) \\) trên \\( [-1; 1] \\setminus \\left\\{-\\dfrac{1}{2}, 1\\right\\} \\) là \\( (-\\infty; -4\\sqrt{2} - 6] \\cup [3; +\\infty) \\).\nĐể phương trình vô nghiệm, \\( m \\) không thuộc tập giá trị này, tức là:\n\\( -4\\sqrt{2} - 6 < m < 3 \\Leftrightarrow -11.65 < m < 3 \\).\nVì \\( m \\) là số nguyên nên \\( m \\in \\{-11; -10; ...; 2\\} \\).\n\n**Cách giải khác đơn giản hơn:**\nQuay lại phương trình (1): \\( 2(m - 1)t^2 - mt - m - 4 = 0 \\)\nTa thấy (1) luôn có nghiệm \\( t = -1 \\):\nThay \\( t = -1 \\) vào VT: \\( 2(m - 1)(-1)^2 - m(-1) - m - 4 = 2m - 2 + m - m - 4 = 2m - 6 \\).\nỒ, vậy \\( t = -1 \\) không phải là nghiệm với mọi \\( m \\).\nTa tính lại \\( \\Delta = 9m^2 + 24m - 32 \\).\nPhương trình (1) có nghiệm là \\( t_1, t_2 \\).\n\nThực ra, ta có thể dùng tính chất hàm số bậc 2.\nĐể PT (1) có nghiệm \\( t \\in [-1; 1] \\) thì min \\( f(t) \\le 0 \\le \\max f(t) \\) với \\( f(t) = 2(m-1)t^2 - mt - m - 4 \\) (nếu dùng đồ thị).\nThay vì vậy, giải lại ý trước:\nTa có \\( m(2t^2 - t - 1) = 2t^2 + 4 \\)\n\\( \\Leftrightarrow m = \\dfrac{2t^2 + 4}{2t^2 - t - 1} \\) (với \\( t \\neq 1 \\) và \\( t \\neq -\\dfrac{1}{2} \\))\nTa vẽ BBT cho \\( y = \\dfrac{2t^2 + 4}{2t^2 - t - 1} \\) trên \\( [-1; 1] \\).\n\\( y' = \\dfrac{-2t^2 - 16t + 4}{(2t^2 - t - 1)^2} = 0 \\Leftrightarrow t = -4 + 3\\sqrt{2} \\).\nTa có \\( y(-1) = 3 \\);\n\\( y(-4+3\\sqrt{2}) = -6 - 4\\sqrt{2} \\approx -11.65 \\);\n\\lim_{t \\to -1/2^-} y = +\\infty \\);\n\\lim_{t \\to -1/2^+} y = -\\infty \\);\n\\lim_{t \\to 1^-} y = -\\infty \\).\nTập giá trị của \\( y \\) trên \\( [-1; 1] \\) là \\( (-\\infty; -6 - 4\\sqrt{2}] \\cup [3; +\\infty) \\).\nĐể phương trình ban đầu có nghiệm, \\( m \\) phải thuộc tập giá trị này.\nVậy để phương trình vô nghiệm thì \\( -6 - 4\\sqrt{2} < m < 3 \\) hay \\( -11.65 < m < 3 \\).\nSố giá trị nguyên là \\( 3 - (-11) = 14 \\) giá trị. (Có vẻ sai sót ở đâu đó).\n\nHãy kiểm tra lại điều kiện của câu hỏi: \"Số các giá trị nguyên của m để phương trình vô nghiệm\".\nKiểm tra lại pt: \\( m\\sin x + (m-1)\\cos 2x + 5 = 0 \\)\n\\( m\\sin x + (m-1)(1 - 2\\sin^2 x) + 5 = 0 \\)\n\\( m\\sin x + m - 1 - 2m\\sin^2 x + 2\\sin^2 x + 5 = 0 \\)\n\\( -2m\\sin^2 x + 2\\sin^2 x + m\\sin x + m + 4 = 0 \\)\n\\( 2(1-m)\\sin^2 x + m\\sin x + m + 4 = 0 \\)\n\\( 2(m-1)\\sin^2 x - m\\sin x - m - 4 = 0 \\)\nGiả sử có nghiệm \\( t=-1 \\):\n\\( 2(m-1) + m - m - 4 = 2m - 6 \\). Nghiệm này bằng 0 khi \\( m=3 \\).\nGiả sử có nghiệm \\( t=2 \\) (loại).\n\nCó thể phương trình (1) phân tích được thành nhân tử:\n\\( 2(m-1)t^2 - mt - m - 4 = 0 \\)\n\\( \\Delta = m^2 - 8(m-1)(-m-4) = m^2 + 8(m^2 + 3m - 4) = 9m^2 + 24m - 32 \\).\nKhông phải số chính phương.\n\nSử dụng lại hàm số: \\( m(2t^2 - t - 1) = 2t^2 + 4 \\)\nĐể PT vô nghiệm thì đường thẳng \\( y = m \\) không cắt đồ thị hàm số trên đoạn \\( [-1; 1] \\).\nKhoảng trống của tập giá trị là \\( (-6 - 4\\sqrt{2}; 3) \\).\n\\( m \\) nguyên \\( \\Rightarrow m \\in \\{-11; -10; ...; 0; 1; 2\\} \\). Có 14 giá trị.\n\nĐể tôi xem lại phương trình: \\( m\\sin x + (m-1)\\cos 2x + 5 = 0 \\).\nCó thể nhầm dấu? \\( (m-1)\\cos 2x = (m-1)(1-2\\sin^2x) = m - 2m\\sin^2x - 1 + 2\\sin^2x \\).\nĐúng rồi.\nVậy pt: \\( 2(m-1)t^2 - mt - m - 4 = 0 \\).\nNếu \\( m=1 \\): \\( -t - 5 = 0 \\Rightarrow t = -5 \\) (loại) \\( \\Rightarrow \\) vô nghiệm (chọn \\( m=1 \\)).\nNếu \\( m \\neq 1 \\):\nTa cần tìm \\( m \\) để pt KHÔNG có nghiệm thuộc \\( [-1; 1] \\).\nTức là \\( m \\in (-11.65; 3) \\).\nGiá trị nguyên: -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2.\nCó 14 giá trị.\n\nCó thể đề bài khác đi một chút?\nVí dụ: \\( m\\sin^2 x \\) thay vì \\( m\\sin x \\)? Không, là \\( m\\sin x \\).\nHay là \\( m \\) nguyên dương?\n\"Số các giá trị nguyên của m để phương trình vô nghiệm\"\nNếu đáp án là 3, thì các giá trị đó là gì? 0, 1, 2?\nVậy có thể đoạn \\( -11 \\le m \\le -1 \\) bị loại bởi lý do nào đó?\nÀ, \\( \\Delta < 0 \\Leftrightarrow 9m^2 + 24m - 32 < 0 \\)\nNghiệm của tam thức bậc hai này:\n\\( m = \\dfrac{-12 \\pm \\sqrt{144 - 9(-32)}}{9} = \\dfrac{-12 \\pm \\sqrt{432}}{9} = \\dfrac{-12 \\pm 12\\sqrt{3}}{9} = \\dfrac{-4 \\pm 4\\sqrt{3}}{3} \\).\n\\( \\dfrac{-4 - 4\\sqrt{3}}{3} \\approx -3.64 \\)\n\\( \\dfrac{-4 + 4\\sqrt{3}}{3} \\approx 0.97 \\)\nVới \\( m \\in (-3.64; 0.97) \\), phương trình vô nghiệm thực (không có \\( t \\)). Các giá trị nguyên là \\(-3, -2, -1, 0\\) (4 giá trị).\nVới \\( m \\le -3.64 \\) hoặc \\( m \\ge 0.97 \\), pt có 2 nghiệm thực \\( t_1, t_2 \\).\nTa cần kiểm tra xem 2 nghiệm thực này có rơi vào \\( [-1; 1] \\) hay không.\nPT: \\( f(t) = 2(m-1)t^2 - mt - m - 4 = 0 \\).\nTa cần TẤT CẢ các nghiệm đều KHÔNG thuộc \\( [-1; 1] \\).\nTức là \\( m \\) phải thuộc khoảng trống của tập giá trị của hàm \\( y = g(t) \\).\nTheo phân tích trên, tập giá trị của \\( g(t) \\) trên \\( [-1; 1] \\) là \\( (-\\infty; -6 - 4\\sqrt{2}] \\cup [3; +\\infty) \\).\nVậy PT CÓ NGHIỆM \\( t \\in [-1; 1] \\) khi \\( m \\le -6 - 4\\sqrt{2} \\) hoặc \\( m \\ge 3 \\).\nDo đó PT VÔ NGHIỆM khi \\( -6 - 4\\sqrt{2} < m < 3 \\).\nSố các giá trị nguyên của \\( m \\) là các số từ -11 đến 2. Có 14 giá trị.\nNếu bài toán hỏi \"giá trị nguyên dương\" thì có {1, 2} (2 giá trị).\n\nCó thể tôi đã đạo hàm sai?\n\\( g(t) = \\dfrac{2t^2 + 4}{2t^2 - t - 1} \\)\n\\( g'(t) = \\dfrac{4t(2t^2 - t - 1) - (2t^2 + 4)(4t - 1)}{(2t^2 - t - 1)^2} = \\dfrac{8t^3 - 4t^2 - 4t - (8t^3 - 2t^2 + 16t - 4)}{(2t^2 - t - 1)^2} \\)\n\\( g'(t) = \\dfrac{-2t^2 - 20t + 4}{(2t^2 - t - 1)^2} \\). (Đã sửa lại)\nCho \\( g'(t) = 0 \\Leftrightarrow t^2 + 10t - 2 = 0 \\Rightarrow t = -5 \\pm \\sqrt{27} = -5 \\pm 3\\sqrt{3} \\).\n\\( t_1 = -5 + 3\\sqrt{3} \\approx 0.196 \\in [-1; 1] \\).\n\\( t_2 = -5 - 3\\sqrt{3} \\approx -10.19 \\notin [-1; 1] \\).\nTính lại \\( y(t_1) \\):\n\\( t^2 = 2 - 10t \\)\n\\( 2t^2 + 4 = 2(2 - 10t) + 4 = 8 - 20t \\)\n\\( 2t^2 - t - 1 = 2(2 - 10t) - t - 1 = 3 - 21t \\)\n\\( y(t_1) = \\dfrac{8 - 20(-5 + 3\\sqrt{3})}{3 - 21(-5 + 3\\sqrt{3})} = \\dfrac{108 - 60\\sqrt{3}}{108 - 63\\sqrt{3}} = \\dfrac{36 - 20\\sqrt{3}}{36 - 21\\sqrt{3}} = \\dfrac{(36 - 20\\sqrt{3})(36 + 21\\sqrt{3})}{36^2 - (21\\sqrt{3})^2} = \\dfrac{1296 + 756\\sqrt{3} - 720\\sqrt{3} - 1260}{1296 - 1323} = \\dfrac{36 + 36\\sqrt{3}}{-27} = -\\dfrac{4 + 4\\sqrt{3}}{3} \\approx -3.64 \\).\nĐỉnh nhánh parabol: \\( \\approx -3.64 \\).\nKhoảng trống của tập giá trị trên \\( [-1; 1] \\) là khoảng giữa cực đại của nhánh dưới và giá trị nhánh trên?\nXét nhánh \\( [-1; -1/2) \\): \\( y(-1) = 3 \\), \\( y(-1/2) \\to +\\infty \\) \\( \\Rightarrow \\) tập giá trị là \\( [3; +\\infty) \\).\nXét nhánh \\( (-1/2; 1) \\): Cực đại tại \\( t_1 \\), giá trị cực đại là \\( y(t_1) = -\\dfrac{4 + 4\\sqrt{3}}{3} \\approx -3.64 \\).\nKhi \\( t \\to -1/2^+ \\), \\( y \\to -\\infty \\).\nKhi \\( t \\to 1^- \\), \\( y \\to -\\infty \\).\nVậy tập giá trị trên \\( (-1/2; 1) \\) là \\( (-\\infty; -\\dfrac{4 + 4\\sqrt{3}}{3}] \\).\nTập giá trị trên toàn bộ \\( [-1; 1] \\) là \\( (-\\infty; -\\dfrac{4 + 4\\sqrt{3}}{3}] \\cup [3; +\\infty) \\).\nĐể phương trình vô nghiệm, \\( m \\) phải rơi vào khoảng trống:\n\\( -\\dfrac{4 + 4\\sqrt{3}}{3} < m < 3 \\Leftrightarrow -3.64 < m < 3 \\).\nVì \\( m \\) nguyên nên \\( m \\in \\{-3, -2, -1, 0, 1, 2\\} \\). Có 6 giá trị.\n\nVẫn không ra 3 (nếu giả định đáp án là 3).\nHãy kiểm tra lại phương trình gốc: \\( m \\sin x + (m - 1) \\cos 2x + 5 = 0 \\).\nCó thể tôi tính nhầm dấu khi phân tích (1)?\n\\( 2(m - 1)t^2 - mt - m - 4 = 0 \\)\n\\( 2mt^2 - 2t^2 - mt - m - 4 = 0 \\)\n\\( m(2t^2 - t - 1) = 2t^2 + 4 \\)\nĐúng mà.\nNếu \\( m = 2 \\): \\( y = 2 \\), \\( 2(2t^2 - t - 1) = 2t^2 + 4 \\Leftrightarrow 4t^2 - 2t - 2 = 2t^2 + 4 \\Leftrightarrow 2t^2 - 2t - 6 = 0 \\Leftrightarrow t^2 - t - 3 = 0 \\).\nNghiệm \\( t = \\dfrac{1 \\pm \\sqrt{13}}{2} \\).\n\\( \\dfrac{1 + \\sqrt{13}}{2} \\approx 2.3 > 1 \\).\n\\( \\dfrac{1 - \\sqrt{13}}{2} \\approx -1.3 < -1 \\).\nCả hai nghiệm đều không thuộc \\( [-1; 1] \\). Vậy \\( m = 2 \\) thỏa mãn PT VÔ NGHIỆM.\nNếu \\( m = 1 \\): \\( 2t^2 - t - 1 = 2t^2 + 4 \\Leftrightarrow -t - 1 = 4 \\Leftrightarrow t = -5 \\notin [-1; 1] \\). Thỏa mãn.\nNếu \\( m = 0 \\): \\( 0 = 2t^2 + 4 \\) (vô nghiệm). Thỏa mãn.\nNếu \\( m = -1 \\): \\( -(2t^2 - t - 1) = 2t^2 + 4 \\Leftrightarrow -2t^2 + t + 1 = 2t^2 + 4 \\Leftrightarrow 4t^2 - t + 3 = 0 \\) (vô nghiệm). Thỏa mãn.\nNếu \\( m = -2 \\): \\( -2(2t^2 - t - 1) = 2t^2 + 4 \\Leftrightarrow -4t^2 + 2t + 2 = 2t^2 + 4 \\Leftrightarrow 6t^2 - 2t + 2 = 0 \\) (vô nghiệm). Thỏa mãn.\nNếu \\( m = -3 \\): \\( -3(2t^2 - t - 1) = 2t^2 + 4 \\Leftrightarrow -6t^2 + 3t + 3 = 2t^2 + 4 \\Leftrightarrow 8t^2 - 3t + 1 = 0 \\) (vô nghiệm). Thỏa mãn.\nNếu \\( m = -4 \\): \\( -4(2t^2 - t - 1) = 2t^2 + 4 \\Leftrightarrow -8t^2 + 4t + 4 = 2t^2 + 4 \\Leftrightarrow 10t^2 - 4t = 0 \\Leftrightarrow t = 0 \\) hoặc \\( t = 0.4 \\). Cả hai đều thuộc \\( [-1; 1] \\). KHÔNG thỏa mãn.\nVậy các giá trị nguyên của \\( m \\) là \\( \\{-3, -2, -1, 0, 1, 2\\} \\). Có 6 giá trị.\nCó thể đáp án của người ra đề là 6. Tôi sẽ điền 6."
-    },     
+  # ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de6_sh_40",
+    "type": "short",
+    "content": r'Cho phương trình \( m\sin x + (m-1)\cos 2x + 5 = 0 \) (m là tham số). Có bao nhiêu giá trị nguyên của \( m \) để phương trình đã cho vô nghiệm?',
+    "blanks": [
+        {"label": "Số các giá trị nguyên của \\( m \\) là", "answers": ["6"]}
+    ],
+    "points": 1,
+    "explanation": r"""Bước 1: Đưa phương trình về ẩn phụ t.
+
+Thay \( \cos 2x = 1-2\sin^2 x \) vào phương trình:
+\( m\sin x + (m-1)(1-2\sin^2 x) + 5 = 0 \)
+\( \Leftrightarrow -2(m-1)\sin^2 x + m\sin x + m + 4 = 0 \)
+\( \Leftrightarrow 2(m-1)\sin^2 x - m\sin x - m - 4 = 0 \)   (1)
+
+Đặt \( t = \sin x \). Vì \( x \) là số thực nên \( t \in [-1; 1] \).
+Phương trình đã cho vô nghiệm khi và chỉ khi phương trình (1), coi là phương trình ẩn t, không có nghiệm nào thuộc đoạn \( [-1; 1] \).
+
+Bước 2: Tách riêng tham số m.
+
+Viết lại (1):
+\( 2mt^2 - 2t^2 - mt - m - 4 = 0 \)
+\( \Leftrightarrow m(2t^2-t-1) = 2t^2+4 \)
+\( \Leftrightarrow m(2t+1)(t-1) = 2(t^2+2) \)   (2)
+
+Nhận xét: nếu \( t=1 \) thì vế trái của (2) bằng 0 trong khi vế phải bằng \( 2(1+2)=6\ne 0 \); nếu \( t=-\dfrac12 \) thì vế trái bằng 0 còn vế phải bằng \( 2\left(\dfrac14+2\right)=\dfrac92\ne 0 \).
+Vậy hai giá trị \( t=1 \) và \( t=-\dfrac12 \) không bao giờ là nghiệm của (1), dù m bằng bất kỳ giá trị nào. Do đó với mọi \( t\in[-1;1]\setminus\left\{-\dfrac12;1\right\} \), (2) tương đương với:
+\( m = g(t) = \dfrac{2(t^2+2)}{2t^2-t-1} \)
+
+Bước 3: Khảo sát hàm số g(t) trên \( [-1;1] \) (bỏ hai điểm \( t=-\dfrac12 \) và \( t=1 \)).
+
+Tính đạo hàm:
+\( g'(t) = \dfrac{4t(2t^2-t-1) - 2(t^2+2)(4t-1)}{(2t^2-t-1)^2} = \dfrac{-2t^2-20t+4}{(2t^2-t-1)^2} \)
+
+\( g'(t) = 0 \Leftrightarrow t^2+10t-2 = 0 \Leftrightarrow t = -5\pm 3\sqrt{3} \)
+
+Trong đoạn \( [-1;1] \) chỉ có nghiệm \( t_0 = -5+3\sqrt{3} \approx 0,196 \) thỏa mãn.
+
+Lập bảng biến thiên của g(t) trên \( [-1;1] \), chú ý hai điểm gián đoạn \( t=-\dfrac12 \) và \( t=1 \):
+- Trên \( \left[-1; -\dfrac12\right) \): g tăng từ \( g(-1) = \dfrac{2\cdot 3}{2} = 3 \) đến \( +\infty \) (khi \( t\to -\dfrac12^- \)).
+- Trên \( \left(-\dfrac12; 1\right) \): khi \( t\to -\dfrac12^+ \), \( g(t)\to -\infty \); g tăng lên đến giá trị lớn nhất tại \( t_0 \), rồi giảm xuống \( -\infty \) khi \( t\to 1^- \).
+
+Giá trị lớn nhất đó bằng:
+\( g(t_0) = -\dfrac{4+4\sqrt{3}}{3} \approx -3{,}64 \)
+
+Vậy tập hợp tất cả các giá trị mà g(t) đạt được trên \( [-1;1] \) là:
+\( \left(-\infty; -\dfrac{4+4\sqrt{3}}{3}\right] \cup [3; +\infty) \)
+
+Bước 4: Kết luận điều kiện của m.
+
+Phương trình (1) có nghiệm \( t\in[-1;1] \) khi và chỉ khi \( m \) nằm trong tập giá trị vừa tìm được ở trên.
+Do đó phương trình (1) — cũng chính là phương trình ban đầu — vô nghiệm khi và chỉ khi m nằm ngoài tập đó:
+\( -\dfrac{4+4\sqrt{3}}{3} < m < 3 \)
+
+Tính gần đúng: \( -\dfrac{4+4\sqrt{3}}{3} \approx -3{,}64 \), nên điều kiện là \( -3{,}64 < m < 3 \).
+
+Bước 5: Đếm số giá trị nguyên.
+
+Các số nguyên m thỏa mãn \( -3{,}64 < m < 3 \) là:
+\( m \in \{-3; -2; -1; 0; 1; 2\} \)
+
+Vậy có tất cả 6 giá trị nguyên của m thỏa mãn yêu cầu bài toán.""",
+},   
          ], # Đóng danh sách questions của Đề 6
     }, # Đóng dictionary của Đề 6
 
