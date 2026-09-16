@@ -855,18 +855,49 @@ EXAM_DEFS = [
         "name": "Đề thi tham khảo số 3 - Đánh giá năng lực học sinh THPT 2026",
         "seed": 2025303,
         "mc4": [
-            {
-                "content": "Giải phương trình \\( 7x - 3 = 25 \\). Nghiệm của phương trình là",
-                "options": {"A": "3", "B": "5", "C": "4", "D": "6"},
-                "correct": "C",
-                "explanation": "\\( 7x - 3 = 25 \\Leftrightarrow 7x = 28 \\Leftrightarrow x = 4 \\). Đáp án C.",
-            },
-            {
-                "content": "Phương trình \\( x^2 - 9x + 20 = 0 \\) có hai nghiệm \\( x_1, x_2 \\). Tổng \\( x_1 + x_2 \\) bằng",
-                "options": {"A": "-9", "B": "20", "C": "-20", "D": "9"},
-                "correct": "D",
-                "explanation": "Theo định lí Vi-ét: \\( x_1 + x_2 = -b = 9 \\). Đáp án D.",
-            },
+           {
+  "content": "Cho hàm số \\( y=f(x) \\) có đạo hàm trên \\( \\mathbb{R} \\) là \\( f'(x)=(x+3)(x-4) \\). Tính tổng các giá trị nguyên của tham số \\( m\\in[-10;5] \\) để hàm số \\( y=f(x^2-3x+m) \\) có nhiều điểm cực trị nhất.",
+  "options": {"A": "13", "B": "15", "C": "17", "D": "19"},
+  "correct": "B",
+  "explanation": "Sử dụng tương giao đồ thị.\n\nXét hàm số \\( y=f(x^2-3x+m) \\) có\n\n\\( y' = (2x-3).f'(x^2-3x+m) \\)\n\n\\( y'=0 \\Leftrightarrow \\left[\\begin{array}{l} 2x-3=0 \\\\ f'(x^2-3x+m)=0 \\end{array}\\right. \\)\n\nĐể hàm số \\( y=f(x^2-3x+m) \\) có nhiều cực trị nhất thì phương trình \\( f'(x^2-3x+m)=0 \\) có nhiều nghiệm bội lẻ khác \\( \\dfrac{3}{2} \\) nhất.\n\nXét phương trình: \\( f'(x^2-3x+m)=0 \\Leftrightarrow (x^2-3x+m+3)(x^2-3x+m-4)=0 \\)\n\n\\( \\Leftrightarrow \\left[\\begin{array}{l} x^2-3x=-m-3 \\\\ x^2-3x=4-m \\end{array}\\right. \\)\n\nXét hàm số: \\( h(x)=x^2-3x \\)\n\n\\( h'(x)=2x-3, h'=0 \\Leftrightarrow x=\\dfrac{3}{2} \\)\n\nBảng biến thiên hàm số \\( h(x)=x^2-3x \\):",
+  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau9_loigiai.PNG",
+  "explanation_2": "Để \\( f'(x^2-3x+m)=0 \\Leftrightarrow (x^2-3x+m+3)(x^2-3x+m-4)=0 \\) có nhiều nghiệm bội lẻ nhất\n\n\\( \\Leftrightarrow \\left[\\begin{array}{l} x^2-3x=-m-3 \\\\ x^2-3x=4-m \\end{array}\\right. \\) có nhiều nghiệm bội lẻ nhất\n\nSố nghiệm của hai phương trình này là số giao điểm của đồ thị hàm số \\( h(x)=x^2-3x \\) và các đường thẳng \\( y=-m-3 \\) và \\( y=4-m \\)\n\nDựa vào bảng biến thiên của hàm số \\( h(x)=x^2-3x \\):\n\n\\( \\begin{cases} -m-3>-\\dfrac{9}{4} \\\\ 4-m>-\\dfrac{9}{4} \\end{cases} \\Leftrightarrow \\begin{cases} m<-\\dfrac{3}{4} \\\\ m<\\dfrac{25}{4} \\end{cases} \\)\n\nMà \\( m\\in[-10;5] \\), kết hợp các điều kiện \\( m\\notin\\left(-\\dfrac{3}{4};5\\right], m\\in\\mathbb{Z} \\Rightarrow m\\in\\{0;1;2;3;4;5\\} \\)\n\nVậy tổng các giá trị nguyên của m thỏa mãn yêu cầu bài toán là: 15.\n\nĐáp án B."
+},
+{
+  "content": "Cho hàm số \\( y=f(x) \\) có đồ thị như hình vẽ. Hỏi phương trình \\( f[f(x)]=0 \\) có bao nhiêu nghiệm thực phân biệt?",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau11_de.PNG",
+  "options": {"A": "3", "B": "7", "C": "5", "D": "9"},
+  "correct": "D",
+  "explanation": "Xét tương giao đồ thị.\n\nDựa vào đồ thị hàm số \\( y=f(x) \\Rightarrow f[f(x)]=0 \\Leftrightarrow \\left[\\begin{array}{l} f(x)=a \\; (-2<a<-1) \\\\ f(x)=b \\; (0<b<1) \\\\ f(x)=c \\; (1<c<2) \\end{array}\\right. \\)\n\nVẽ các đường thẳng \\( y=a, y=b, y=c \\) và đồ thị hàm số \\( y=f(x) \\)",
+  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau11_loigiai.PNG",
+  "explanation_2": "Dựa vào tương giao giữa các đồ thị mỗi phương trình trên đều có 3 nghiệm.\n\nVậy có tất cả 9 nghiệm.\n\nĐáp án D."
+},
+{
+  "content": "Tìm tất cả các giá trị của tham số \\( m \\) để hàm số \\( y=\\dfrac{x^2+m}{x^2-3x+2} \\) có đúng 1 tiệm cận đứng?",
+  "options": {"A": "\\( m\\in\\{-1;-4\\} \\)", "B": "\\( m=-1 \\)", "C": "\\( m=-4 \\)", "D": "\\( m\\in\\{1;4\\} \\)"},
+  "correct": "A",
+  "explanation": "Dùng điều kiện tiệm cận.\n\nTa có: \\( y=\\dfrac{x^2+m}{x^2-3x+2}=\\dfrac{x^2+m}{(x-1)(x-2)} \\)\n\nĐồ thị hàm số có một tiệm cận đứng \\( \\Leftrightarrow \\left[\\begin{array}{l} 1^2+m=0 \\\\ 2^2+m=0 \\end{array}\\right. \\Leftrightarrow \\left[\\begin{array}{l} m=-1 \\\\ m=-4 \\end{array}\\right. \\)\n\nĐáp án A."
+},
+{
+  "content": "Một tòa nhà cao 50 m, vào những ngày trời nắng, độ dài bóng của tòa nhà được tính theo công thức \\( S(t) = 50\\cot\\left(\\dfrac{\\pi}{12}t\\right) \\). Trong đó S được tính bằng mét, t là số giờ tính từ 6 giờ sáng. Trong một ngày có bao nhiêu thời điểm bóng có độ dài bằng chiều cao của tòa nhà?",
+  "options": {"A": "0", "B": "1", "C": "2", "D": "3"},
+  "correct": "C",
+  "explanation": "Giải phương trình lượng giác.\n\nĐộ dài bóng của tòa nhà bằng chiều cao của tòa nhà khi:\n\n\\( S(t)=50 \\Leftrightarrow 50\\cot\\left(\\dfrac{\\pi}{12}t\\right)=50 \\Leftrightarrow \\cot\\left(\\dfrac{\\pi}{12}t\\right)=1 \\Leftrightarrow \\dfrac{\\pi}{12}t=\\dfrac{\\pi}{4}+k\\pi \\)\n\n\\( \\Leftrightarrow t=3+12k \\; (k\\in\\mathbb{Z}) \\)\n\nVì \\( 0\\le t\\le 12 \\) nên \\( t=3 \\) hoặc \\( t=9 \\). Tức là thời điểm 9 giờ sáng hoặc 3 giờ chiều.\n\nVậy trong ngày có 2 thời điểm mà độ dài bóng của tòa nhà bằng chiều cao của tòa nhà.\n\nĐáp án C."
+},
+{
+  "content": "Cho hai biến cố A và B, với \\( P(A)=\\dfrac{3}{8}, P(B)=\\dfrac{1}{2}, P(\\overline{A}\\overline{B})=\\dfrac{1}{5} \\). Giá trị của \\( P(A\\cup B) \\) là?",
+  "options": {"A": "\\( \\dfrac{3}{40} \\)", "B": "\\( \\dfrac{4}{5} \\)", "C": "\\( \\dfrac{5}{40} \\)", "D": "\\( \\dfrac{3}{5} \\)"},
+  "correct": "A",
+  "explanation": "Công thức xác suất.\n\nTa có \\( P(A\\cup B) = 1-P(\\overline{A}\\overline{B}) = 1-\\dfrac{1}{5} = \\dfrac{4}{5} \\).\n\nKhi đó: \\( P(AB) = P(A)+P(B)-P(A\\cup B) = \\dfrac{3}{40} \\).\n\nĐáp án A."
+},
+{
+  "content": "Trên sườn đồi, với độ dốc 16% (Độ dốc của sườn đồi được tính bằng tan của góc nhọn tạo bởi sườn đồi với phương nằm ngang) có một cây cao thẳng đứng. Ở phía chân đồi, cách gốc cây 30m, người ta nhìn ngọn cây dưới một góc 45° so với phương nằm ngang. Tính chiều cao của cây đó (làm tròn đến hàng đơn vị, theo đơn vị mét).",
+  "options": {"A": "25m", "B": "26m", "C": "27m", "D": "28m"},
+  "correct": "B",
+  "explanation": "Công thức hệ thức lượng.",
+  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau29_loigiai.PNG",
+  "explanation_2": "Do sườn đồi dốc 16%, nên sườn đồi tạo với phương nằm ngang một góc \\( \\widehat{BAD} \\approx 9^\\circ \\).\n\nTừ đó ta có: \\( \\widehat{BAC} = \\widehat{DAC}-\\widehat{DAB} \\approx 36^\\circ \\) và \\( \\widehat{BCA}=45^\\circ \\).\n\nÁp dụng định lý Sin cho tam giác ABC, ta được:\n\n\\( BC = \\dfrac{AB}{\\sin\\widehat{BCA}}.\\sin\\widehat{BAC} \\approx 26 \\; (m) \\).\n\nĐáp án B."
+},
             {
                 "content": "Một lớp học có 60 học sinh, trong đó số học sinh nữ chiếm 25% tổng số học sinh của lớp. Hỏi lớp đó có bao nhiêu học sinh nam?",
                 "options": {"A": "15", "B": "40", "C": "50", "D": "45"},
