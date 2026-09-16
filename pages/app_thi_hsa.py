@@ -955,16 +955,12 @@ EXAM_DEFS = [
     "correct": "D",
     "explanation": "Trung bình cộng \\( = (10+12+14+16+18):5 = 70:5 = 14 \\). Đáp án D."
   },
-  {
+ {
   "content": "Cho hình hộp \\( ABCD.A'B'C'D' \\), trên cạnh \\( AA', BB', CC' \\) lần lượt lấy ba điểm M, N, P sao cho \\( \\dfrac{AM}{AA'}=\\dfrac{3}{4}, \\dfrac{BN}{BB'}=\\dfrac{1}{2}, \\dfrac{CP}{CC'}=\\dfrac{1}{3} \\). Biết rằng (MNP) cắt DD' tại Q. Tính tỷ số \\( \\dfrac{D'Q}{D'D} \\).",
-  "options": {
-    "A": "\\( \\dfrac{5}{6} \\)",
-    "B": "\\( \\dfrac{1}{6} \\)",
-    "C": "\\( \\dfrac{7}{12} \\)",
-    "D": "\\( \\dfrac{5}{12} \\)"
-  },
+  "options": {"A": "\\( \\dfrac{5}{6} \\)", "B": "\\( \\dfrac{1}{6} \\)", "C": "\\( \\dfrac{7}{12} \\)", "D": "\\( \\dfrac{5}{12} \\)"},
   "correct": "C",
-  "explanation": "**Bước 1: Tìm thiết diện.**\n\nTa có \\( (BB'C'C) \\parallel (AA'DD') \\).\n\n\\( (MNP)\\cap(BB'C'C)=NP \\Rightarrow NP \\parallel MQ \\)  (1)\n\nVà \\( (AABB) \\parallel (CCDD) \\).\n\n\\( (MNP)\\cap(AABB)=MN \\Rightarrow MN \\parallel PQ \\)  (2)\n\nTừ (1) và (2) suy ra mặt phẳng (MNP) cắt hình hộp \\( ABCD.A'B'C'D' \\) theo thiết diện là hình bình hành MNPQ.\n\n![Hình minh họa](https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau50_loigiai.PNG)\n\n**Bước 2: Tính tỷ số.**\n\nGọi \\( I=AC\\cap BD \\), \\( K=MP\\cap NQ \\).\n\nDễ dàng có IK là đường trung bình của hai hình thang ACPM và BDQN nên:\n\n\\( IK=\\dfrac{AM+CP}{2}=\\dfrac{BN+DQ}{2} \\)  (3)\n\nMặt khác:\n\n\\( AM=\\dfrac{1}{4}AA' \\)\n\n\\( BN=\\dfrac{1}{2}BB'=\\dfrac{1}{2}AA' \\)\n\n\\( CP=\\dfrac{2}{3}CC'=\\dfrac{2}{3}AA' \\)\n\nThay vào (3) suy ra \\( DQ=\\dfrac{5}{12}DD' \\).\n\nVậy \\( \\dfrac{D'Q}{D'D}=\\dfrac{7}{12} \\).\n\n**Đáp án: C.**"
+  "explanation": "Tìm thiết diện.\n\nTa có \\( (BB'C'C) // (AA'DD') \\).\n\n\\( (MNP)\\cap(BB'C'C)=NP \\Rightarrow NP // MQ \\)  (1)\n\nVà \\( (AABB) // (CCDD) \\).\n\n\\( (MNP)\\cap(AABB)=MN \\Rightarrow MN // PQ \\)  (2)\n\nTừ (1) và (2) suy ra mặt phẳng (MNP) cắt hình hộp \\( ABCD.A'B'C'D' \\) theo thiết diện là hình bình hành MNPQ.\n\nGọi \\( I=AC\\cap BD \\), \\( K=MP\\cap NQ \\).\n\nDễ dàng có IK là đường trung bình của hai hình thang ACPM và BDQN nên:\n\n\\( IK=\\dfrac{AM+CP}{2}=\\dfrac{BN+DQ}{2} \\)  (3)\n\nMặt khác:\n\n\\( AM=\\dfrac{1}{4}AA' \\)\n\n\\( BN=\\dfrac{1}{2}BB'=\\dfrac{1}{2}AA' \\)\n\n\\( CP=\\dfrac{2}{3}CC'=\\dfrac{2}{3}AA' \\)\n\nThay vào (3) suy ra \\( DQ=\\dfrac{5}{12}DD' \\).\n\nVậy \\( \\dfrac{D'Q}{D'D}=\\dfrac{7}{12} \\).\n\nĐáp án C.",
+  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau50_loigiai.PNG"
 },
   {
     "content": "Một nhóm có 10 học sinh. Hỏi có bao nhiêu cách chọn ra 3 học sinh từ nhóm đó (không phân biệt thứ tự)?",
