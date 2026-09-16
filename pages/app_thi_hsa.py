@@ -863,15 +863,44 @@ EXAM_DEFS = [
   "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau9_loigiai.PNG",
   "explanation_2": "Để \\( f'(x^2-3x+m)=0 \\Leftrightarrow (x^2-3x+m+3)(x^2-3x+m-4)=0 \\) có nhiều nghiệm bội lẻ nhất\n\n\\( \\Leftrightarrow \\left[\\begin{array}{l} x^2-3x=-m-3 \\\\ x^2-3x=4-m \\end{array}\\right. \\) có nhiều nghiệm bội lẻ nhất\n\nSố nghiệm của hai phương trình này là số giao điểm của đồ thị hàm số \\( h(x)=x^2-3x \\) và các đường thẳng \\( y=-m-3 \\) và \\( y=4-m \\)\n\nDựa vào bảng biến thiên của hàm số \\( h(x)=x^2-3x \\):\n\n\\( \\begin{cases} -m-3>-\\dfrac{9}{4} \\\\ 4-m>-\\dfrac{9}{4} \\end{cases} \\Leftrightarrow \\begin{cases} m<-\\dfrac{3}{4} \\\\ m<\\dfrac{25}{4} \\end{cases} \\)\n\nMà \\( m\\in[-10;5] \\), kết hợp các điều kiện \\( m\\notin\\left(-\\dfrac{3}{4};5\\right], m\\in\\mathbb{Z} \\Rightarrow m\\in\\{0;1;2;3;4;5\\} \\)\n\nVậy tổng các giá trị nguyên của m thỏa mãn yêu cầu bài toán là: 15.\n\nĐáp án B."
 },
-{
-  "content": "Cho hàm số \\( y=f(x) \\) có đồ thị như hình vẽ. Hỏi phương trình \\( f[f(x)]=0 \\) có bao nhiêu nghiệm thực phân biệt?",
-  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau11_de.PNG",
-  "options": {"A": "3", "B": "7", "C": "5", "D": "9"},
-  "correct": "D",
-  "explanation": "Xét tương giao đồ thị.\n\nDựa vào đồ thị hàm số \\( y=f(x) \\Rightarrow f[f(x)]=0 \\Leftrightarrow \\left[\\begin{array}{l} f(x)=a \\; (-2<a<-1) \\\\ f(x)=b \\; (0<b<1) \\\\ f(x)=c \\; (1<c<2) \\end{array}\\right. \\)\n\nVẽ các đường thẳng \\( y=a, y=b, y=c \\) và đồ thị hàm số \\( y=f(x) \\)",
-  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau11_loigiai.PNG",
-  "explanation_2": "Dựa vào tương giao giữa các đồ thị mỗi phương trình trên đều có 3 nghiệm.\n\nVậy có tất cả 9 nghiệm.\n\nĐáp án D."
-},
+  {
+    "content": "Có bao nhiêu giá trị nguyên dương của tham số \( m \) để phương trình \( m^2 \ln\left(\dfrac{x}{e}\right) = (2-m)\ln x - 4 \) có nghiệm thuộc vào đoạn \( \left[\dfrac{1}{e};1\right] \)?",
+    "options": {"A": "0", "B": "1", "C": "2", "D": "3"},
+    "correct": "B",
+    "explanation": "Ta có:\n\( m^2 \ln\left(\dfrac{x}{e}\right) = (2-m)\ln x - 4 \)\n\( \Leftrightarrow m^2(\ln x - 1) = (2-m)\ln x - 4 \)\n\( \Leftrightarrow (m^2+m-2)\ln x = m^2 - 4 \)  (1)\n\n• Với \( m^2+m-2=0 \Rightarrow m=1 \) (do \( m>0 \)):\n(1) \( \Leftrightarrow 0.\ln x = -3 \) (Vô lý) ⟹ loại \( m=1 \).\n\n• Với \( m \neq 1 \):\n(1) \( \Leftrightarrow \ln x = \dfrac{m-2}{m-1} \)  (2)\n\nHàm số \( y=\ln x \) đồng biến trên \( \left[\dfrac{1}{e};1\right] \), suy ra \( \ln x \in [-1;0] \).\n\nPhương trình (2) có nghiệm thuộc đoạn \( \left[\dfrac{1}{e};1\right] \) khi:\n\( -1 \le \dfrac{m-2}{m-1} \le 0 \Leftrightarrow \begin{cases} \dfrac{m-2}{m-1} \ge -1 \\ \dfrac{m-2}{m-1} \le 0 \end{cases} \Leftrightarrow \begin{cases} m \ge \dfrac{3}{2} \text{ hoặc } m<1 \\ 1<m\le 2 \end{cases} \Leftrightarrow \dfrac{3}{2} \le m \le 2 \)\n\nSuy ra \( m=2 \) (giá trị nguyên dương duy nhất).\n\nVậy có 1 giá trị nguyên dương của tham số \( m \) thỏa mãn yêu cầu bài toán. Đáp án B."
+  },
+  {
+    "content": "Tìm giá trị của tham số \( m \) để hàm số sau liên tục tại \( x=0 \):\n\( f(x) = \begin{cases} \dfrac{\sqrt{1-x}-\sqrt{1+x}}{x}, & x<0 \\ m+\dfrac{1-x}{1+x}, & x\ge 0 \end{cases} \)",
+    "options": {"A": "\( m=1 \)", "B": "\( m=-2 \)", "C": "\( m=3 \)", "D": "\( m=-4 \)"},
+    "correct": "B",
+    "explanation": "Ta có:\n\n\( \lim_{x\to 0^+} f(x) = \lim_{x\to 0^+}\left(m+\dfrac{1-x}{1+x}\right) = m+1 \)\n\n\( \lim_{x\to 0^-} f(x) = \lim_{x\to 0^-}\left(\dfrac{\sqrt{1-x}-\sqrt{1+x}}{x}\right) = \lim_{x\to 0^-}\left(\dfrac{-2x}{x(\sqrt{1-x}+\sqrt{1+x})}\right) = \lim_{x\to 0^-}\left(\dfrac{-2}{\sqrt{1-x}+\sqrt{1+x}}\right) = -1 \)\n\n\( f(0) = m+1 \)\n\n\( f(x) \) liên tục tại \( x=0 \) khi và chỉ khi:\n\( \lim_{x\to 0^+} f(x) = \lim_{x\to 0^-} f(x) = f(0) \Leftrightarrow m+1 = -1 \Leftrightarrow m=-2 \)\n\nVậy \( m=-2 \). Đáp án B."
+  },
+  {
+    "content": "Cho dãy số \( (u_n) \) biết \( \begin{cases} u_1 = 1 \\ u_n = \dfrac{1}{3}u_{n-1} + 2 \end{cases} \). Mệnh đề nào sau đây đúng?",
+    "options": {"A": "\( (u_n) \) là dãy số tăng.", "B": "\( (u_n) \) là dãy số giảm.", "C": "\( (u_n) \) không là dãy tăng, không là dãy giảm.", "D": "\( u_5 = 2 \)"},
+    "correct": "A",
+    "explanation": "Ta có \( u_1 < u_2 < u_3 \), ta dự đoán dãy số đã cho là dãy số tăng.\n\nTa chứng minh quy nạp:\n\nTheo giả thiết ta thấy \( u_n > 0, \forall n \in \mathbb{N}^* \).\n\nGiả sử \( u_k > u_{k-1} \ge 2 \). Ta chứng minh \( u_{k+1} > u_k \).\n\nThật vậy:\n\( u_{k+1} - u_k = \dfrac{1}{3}(u_k - u_{k-1}) > 0 \Leftrightarrow u_{k+1} > u_k \)\n\nVậy dãy đã cho là dãy tăng. Đáp án A."
+  },
+  {
+    "content": "Cho tứ diện ABCD. Trên các cạnh AD và BC lần lượt lấy các điểm M, N sao cho \( \overrightarrow{AM} = 3\overrightarrow{MD}, \overrightarrow{NB} = -3\overrightarrow{NC} \). Gọi P, Q lần lượt là trung điểm của AD, BC. Khẳng định nào sau đây sai?",
+    "options": {"A": "Các vectơ \( \overrightarrow{AB}, \overrightarrow{DC}, \overrightarrow{MN} \) đồng phẳng.", "B": "Các vectơ \( \overrightarrow{AB}, \overrightarrow{PQ}, \overrightarrow{MN} \) đồng phẳng.", "C": "Các vectơ \( \overrightarrow{PQ}, \overrightarrow{DC}, \overrightarrow{MN} \) đồng phẳng.", "D": "Các vectơ \( \overrightarrow{BD}, \overrightarrow{AC}, \overrightarrow{MN} \) đồng phẳng."},
+    "correct": "D",
+    "explanation": "Gọi \( I \) là trung điểm của BD, K là trọng tâm của tam giác ABD.\n\nTa có AB, DC, MN song song với mặt phẳng (PIQ) nên vectơ \( \overrightarrow{AB}, \overrightarrow{DC}, \overrightarrow{MN} \) đồng phẳng.\n\nAB, MN song song với mặt phẳng (PIQ) nên vectơ \( \overrightarrow{AB}, \overrightarrow{PQ}, \overrightarrow{MN} \) đồng phẳng.\n\nDC, MN song song với mặt phẳng (PIQ) nên vectơ \( \overrightarrow{PQ}, \overrightarrow{DC}, \overrightarrow{MN} \) đồng phẳng.\n\nCác vectơ \( \overrightarrow{BD}, \overrightarrow{AC}, \overrightarrow{MN} \) không đồng phẳng.\n\nĐáp án D."
+  },
+  {
+    "content": "Một vườn thú ghi lại tuổi thọ (đơn vị: năm) của 20 con khỉ và ghi lại kết quả như sau:\n\nTuổi thọ: [10;11) — [11;12) — [12;13) — [13;14) — [14;15)\nSố con khỉ: 1 — 3 — 8 — 6 — 2\n\nNhóm chứa tứ phân vị thứ ba là:",
+    "options": {"A": "[10;11)", "B": "[11;12)", "C": "[12;13)", "D": "[14;15)"},
+    "correct": "C",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau38.PNG",
+    "explanation": "Ta có \( n=20 \).\n\nKhi đó \( \dfrac{3}{4}.20 = 15 \) và \( 1+3+8 < 15 < 1+3+8+6 \).\n\nVậy tứ phân vị thứ ba thuộc nhóm [12;13). Đáp án C."
+  },
+  {
+    "content": "Cho tứ diện ABCD có \( AC=AD=BC=BD=a \) và hai mặt phẳng \( (ACD), (BCD) \) vuông góc với nhau. Tính độ dài cạnh CD sao cho hai mặt phẳng \( (ABC), (ABD) \) vuông góc với nhau.",
+    "options": {"A": "\( \dfrac{2}{\sqrt{3}}a \)", "B": "\( \dfrac{1}{\sqrt{3}}a \)", "C": "\( \dfrac{1}{2}a \)", "D": "\( \sqrt{3}a \)"},
+    "correct": "A",
+    "explanation": "Gọi \( H \) là trung điểm của CD, suy ra \( AH \perp CD \).\n\n\"image\": \"https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau39.PNG\"\n\nMà \( \begin{cases} (ACD) \perp (BCD) \\ (ACD) \cap (BCD) = CD \end{cases} \)\n\nSuy ra \( AH \perp (BCD) \).\n\nGọi \( M \) là trung điểm AB nên \( CM \perp AB \).\n\nVà \( \begin{cases} (ABC) \perp (ABD) \\ (ABC) \cap (ABD) = AB \end{cases} \Rightarrow CM \perp DM \).\n\n\( \Delta ABC = \Delta ABD \Rightarrow MC = DM \Rightarrow \Delta MCD \) vuông cân tại \( M \).\n\nĐặt \( CD = x \Rightarrow AH^2 = BH^2 = a^2 - \dfrac{x^2}{4} \Leftrightarrow AB^2 = AH^2+BH^2 = 2a^2 - \dfrac{x^2}{2} \).\n\nTa có:\n\( MH = \dfrac{1}{2}AB = \dfrac{1}{2}\sqrt{2a^2-\dfrac{x^2}{2}} \)\n\nMà \( MH = \dfrac{\sqrt{2}}{2}CD \Leftrightarrow \sqrt{2a^2-\dfrac{x^2}{2}}.\dfrac{1}{2} = \dfrac{\sqrt{2}}{2}x \Leftrightarrow 4a^2=3x^2 \Leftrightarrow x=\dfrac{2}{\sqrt{3}}a \).\n\nĐáp án A."
+  },
+
 {
   "content": "Tìm tất cả các giá trị của tham số \\( m \\) để hàm số \\( y=\\dfrac{x^2+m}{x^2-3x+2} \\) có đúng 1 tiệm cận đứng?",
   "options": {"A": "\\( m\\in\\{-1;-4\\} \\)", "B": "\\( m=-1 \\)", "C": "\\( m=-4 \\)", "D": "\\( m\\in\\{1;4\\} \\)"},
@@ -894,9 +923,8 @@ EXAM_DEFS = [
   "content": "Trên sườn đồi, với độ dốc 16% (Độ dốc của sườn đồi được tính bằng tan của góc nhọn tạo bởi sườn đồi với phương nằm ngang) có một cây cao thẳng đứng. Ở phía chân đồi, cách gốc cây 30m, người ta nhìn ngọn cây dưới một góc 45° so với phương nằm ngang. Tính chiều cao của cây đó (làm tròn đến hàng đơn vị, theo đơn vị mét).",
   "options": {"A": "25m", "B": "26m", "C": "27m", "D": "28m"},
   "correct": "B",
-  "explanation": "Công thức hệ thức lượng.",
-  "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau29_loigiai.PNG",
-  "explanation_2": "Do sườn đồi dốc 16%, nên sườn đồi tạo với phương nằm ngang một góc \\( \\widehat{BAD} \\approx 9^\\circ \\).\n\nTừ đó ta có: \\( \\widehat{BAC} = \\widehat{DAC}-\\widehat{DAB} \\approx 36^\\circ \\) và \\( \\widehat{BCA}=45^\\circ \\).\n\nÁp dụng định lý Sin cho tam giác ABC, ta được:\n\n\\( BC = \\dfrac{AB}{\\sin\\widehat{BCA}}.\\sin\\widehat{BAC} \\approx 26 \\; (m) \\).\n\nĐáp án B."
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau29_loigiai.PNG",
+  "explanation": "Công thức hệ thức lượng.\n\nDo sườn đồi dốc 16%, nên sườn đồi tạo với phương nằm ngang một góc \( \widehat{BAD} \approx 9^\circ \).\n\nTừ đó ta có: \( \widehat{BAC} = \widehat{DAC}-\widehat{DAB} \approx 36^\circ \) và \( \widehat{BCA}=45^\circ \).\n\nÁp dụng định lý Sin cho tam giác ABC, ta được:\n\( BC = \dfrac{AB}{\sin\widehat{BCA}}.\sin\widehat{BAC} \approx 26 \; (m) \).\n\nĐáp án B."
 },
             {
                 "content": "Một lớp học có 60 học sinh, trong đó số học sinh nữ chiếm 25% tổng số học sinh của lớp. Hỏi lớp đó có bao nhiêu học sinh nam?",
