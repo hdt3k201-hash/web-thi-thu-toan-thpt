@@ -5023,7 +5023,7 @@ Vậy phương trình có đúng 2 nghiệm phân biệt. Phát biểu c) Đúng
 
 # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
             {
-                "id": 'de6_mc_22',
+                "id": 'de6_mc_22', 
                "type": 'mc4',
                "content": 'Một sơ đồ các lối đi một chiều theo chiều mũi tên để đi từ địa điểm A tới địa điểm H được minh hoạ bởi hình sau. Chẳng hạn, có 2 đường để đi từ A tới B, có 3 đường để đi từ C tới D.\nTheo sơ đồ đã cho, số cách để đi từ A tới H là:',
                "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau22-de6.PNG',
