@@ -511,29 +511,101 @@ EXAM_DEFS = [
         "seed": 2025202,
         "mc4": [
             {
-                "content": "Giải phương trình \\( 4x - 9 = 15 \\). Nghiệm của phương trình là",
-                "options": {"A": "5", "B": "7", "C": "6", "D": "8"},
-                "correct": "C",
-                "explanation": "\\( 4x - 9 = 15 \\Leftrightarrow 4x = 24 \\Leftrightarrow x = 6 \\). Đáp án C.",
-            },
-            {
-                "content": "Phương trình \\( x^2 - 7x + 10 = 0 \\) có hai nghiệm \\( x_1, x_2 \\). Tổng \\( x_1 + x_2 \\) bằng",
-                "options": {"A": "10", "B": "-7", "C": "-10", "D": "7"},
-                "correct": "D",
-                "explanation": "Theo định lí Vi-ét: \\( x_1 + x_2 = -b = 7 \\). Đáp án D.",
-            },
-            {
-                "content": "Một lớp học có 45 học sinh, trong đó số học sinh nữ chiếm 60% tổng số học sinh của lớp. Hỏi lớp đó có bao nhiêu học sinh nam?",
-                "options": {"A": "27", "B": "20", "C": "18", "D": "22"},
-                "correct": "C",
-                "explanation": "Số học sinh nữ là \\( 45 \\times 60\\% = 27 \\). Số học sinh nam là \\( 45 - 27 = 18 \\). Đáp án C.",
-            },
-            {
-                "content": "Cho cấp số cộng \\( (u_n) \\) có số hạng đầu \\( u_1 = -2 \\) và công sai \\( d = 5 \\). Giá trị của \\( u_{12} \\) bằng",
-                "options": {"A": "53", "B": "58", "C": "48", "D": "50"},
-                "correct": "A",
-                "explanation": "\\( u_{12} = u_1 + 11d = -2 + 11 \\times 5 = 53 \\). Đáp án A.",
-            },
+  "content": "Tập giá trị của hàm số \\( y = \\dfrac{\\sin 3x - 2\\cos 3x + 10}{6\\cos x \\cos 2x - 4\\cos^3 x + 3} \\) có bao nhiêu số nguyên?",
+  "options": {"A": "12", "B": "10", "C": "11", "D": "13"},
+  "correct": "C",
+  "explanation": "Ta có:\n\n\\( y = \\dfrac{\\sin 3x - 2\\cos 3x + 10}{6\\cos x \\cos 2x - 4\\cos^3 x + 3} \\)\n\n\\( = \\dfrac{\\sin 3x - 2\\cos 3x + 10}{3(\\cos 3x + \\cos x) - (\\cos 3x + 3\\cos x) + 3} \\)\n\n\\( = \\dfrac{\\sin 3x - 2\\cos 3x + 10}{2\\cos 3x + 3} \\)\n\n\\( \\Leftrightarrow (2\\cos 3x + 3)y = \\sin 3x - 2\\cos 3x + 10 \\)\n\n\\( \\Leftrightarrow (2y+2)\\cos 3x - \\sin 3x = 10 - 3y \\)\n\nĐiều kiện có nghiệm của phương trình là:\n\n\\( (2y+2)^2 + (-1)^2 \\ge (10-3y)^2 \\)\n\n\\( \\Leftrightarrow 4y^2 + 8y + 4 + 1 \\ge 100 - 60y + 9y^2 \\)\n\n\\( \\Leftrightarrow 5y^2 - 68y + 95 \\le 0 \\)\n\n\\( \\Leftrightarrow \\dfrac{34-\\sqrt{681}}{5} \\le y \\le \\dfrac{34+\\sqrt{681}}{5} \\)\n\nMà \\( y \\in \\mathbb{Z} \\) nên \\( y = \\{2;3;4;\\ldots;12\\} \\).\n\nVậy tập giá trị của \\( y \\) có 11 số nguyên.\n\nĐáp án C."
+},
+{
+  "content": "Biểu đồ dưới đây thể hiện tỉ lệ lạm phát cơ bản bình quân năm trong giai đoạn 2018 – 2022:",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau15_de.PNG",
+  "content_2": "Trong giai đoạn từ 2018 – 2021, năm có tỉ lệ lạm phát cơ bản bình quân năm cao nhất là?",
+  "options": {"A": "Năm 2022", "B": "Năm 2019", "C": "Năm 2021", "D": "Năm 2020"},
+  "correct": "D",
+  "explanation": "Nhìn vào biểu đồ để xác định.\n\nTrong giai đoạn từ 2018 – 2021, năm 2020 có tỉ lệ lạm phát cơ bản bình quân năm cao nhất.\n\nĐáp án D."
+},
+{
+  "content": "Nhiệt độ ngoài trời ở một thành phố vào các thời điểm khác nhau trong ngày có thể được mô phỏng bởi công thức \\( h(t) = 29 + 3\\sin \\dfrac{\\pi}{12}(t-9) \\) với \\( h \\) tính bằng \\( ^\\circ C \\) và \\( t \\) là thời gian trong ngày tính bằng giờ.\n\nThời gian nhiệt độ cao nhất trong ngày là:",
+  "options": {"A": "13 giờ", "B": "15 giờ", "C": "12 giờ", "D": "14 giờ"},
+  "correct": "B",
+  "explanation": "Sử dụng tập giá trị của hàm số sin để tìm nhiệt độ cao nhất trong ngày, sau đó giải điều kiện để tìm thời gian nhiệt độ cao nhất.\n\nDo \\( -1 \\le \\sin \\dfrac{\\pi}{12}(t-9) \\le 1, \\forall t \\) nên\n\n\\( -3 \\le 3\\sin \\dfrac{\\pi}{12}(t-9) \\le 3 \\)\n\n\\( \\Leftrightarrow 26 \\le 29 + 3\\sin \\dfrac{\\pi}{12}(t-9) \\le 32 \\)\n\n\\( \\Leftrightarrow 26 \\le h(t) \\le 32 \\)\n\nDo đó nhiệt độ cao nhất trong ngày là \\( 32^\\circ C \\).\n\nDấu bằng xảy ra\n\n\\( \\Leftrightarrow \\sin \\dfrac{\\pi}{12}(t-9) = 1 \\Leftrightarrow \\dfrac{\\pi}{12}(t-9) = \\dfrac{\\pi}{2} + k2\\pi \\Leftrightarrow t = 15 + 24k \\; (k \\in \\mathbb{Z}) \\)\n\nDo \\( 0 \\le t \\le 24 \\Leftrightarrow 0 \\le 15+24k \\le 24 \\Leftrightarrow -\\dfrac{15}{24} \\le k \\le \\dfrac{9}{24} \\). Mà \\( k \\in \\mathbb{Z} \\) nên \\( k = 0 \\).\n\nKhi đó \\( t = 15 \\).\n\nVậy lúc 15h là thời gian nhiệt độ cao nhất trong ngày.\n\nĐáp án B."
+},
+{
+  "content": "Hai cậu bé cùng bắn bi vào lỗ. Xác suất người thứ nhất bắn trúng vào lỗ là 85%, xác suất người thứ hai bắn trúng vào lỗ là 70%. Hỏi xác suất để cả hai người cùng bắn trúng vào lỗ:",
+  "options": {"A": "59,5%", "B": "15%", "C": "30%", "D": "4,5%"},
+  "correct": "A",
+  "explanation": "Sử dụng quy tắc nhân và cộng trong xác suất.\n\nXác suất người thứ nhất bắn trúng lỗ: 0,85\n\nXác suất người thứ hai bắn trúng bia: 0,7\n\nXác suất để cả hai người cùng bắn trúng bia:\n\n\\( 0,85 . 0,7 = 0,595 = 59,5\\% \\)\n\nĐáp án A."
+},
+{
+  "content": "Cho lăng trụ đứng \\( ABC.A'B'C' \\) có đáy ABC là tam giác đều cạnh \\( a \\). Gọi \\( D \\) là trung điểm cạnh BC. Biết \\( AA' = 2a \\), khoảng cách giữa hai đường thẳng \\( A'B \\) và \\( C'D \\) là:",
+  "options": {
+    "A": "\\( a\\sqrt{17} \\)",
+    "B": "\\( \\dfrac{a}{\\sqrt{17}} \\)",
+    "C": "\\( 2a\\sqrt{17} \\)",
+    "D": "\\( \\dfrac{2a}{\\sqrt{17}} \\)"
+  },
+  "correct": "D",
+  "explanation": "Gọi \\( D' \\) là trung điểm của \\( B'C' \\). Kẻ \\( B'H \\perp BD' \\). Chứng minh \\( d(A'B; C'D) = B'H \\).\n\nGọi \\( D' \\) là trung điểm của \\( B'C' \\), ta có \\( BDC'D' \\) là hình bình hành\n\n\\( \\Rightarrow C'D // BD' \\Rightarrow C'D // (A'BD') \\).\n\nKẻ \\( B'H \\perp BD' \\).\n\nTa có:\n\\( \\begin{cases} A'D' \\perp B'C' \\\\ A'D' \\perp BB' \\end{cases} \\Rightarrow A'D' \\perp (BCC'B') \\Rightarrow A'D' \\perp B'H \\).\n\n\\( \\begin{cases} B'H \\perp BD' \\\\ B'H \\perp A'D' \\end{cases} \\Rightarrow B'H \\perp (A'BD') \\).\n\nSuy ra,\n\\( d(A'B, C'D) = d(C'D; (A'BD')) = d(C'; (A'BD')) = d(B'; (A'BD')) = B'H \\).\n\nTa có: \\( B'D' = \\dfrac{a}{2}; BB' = 2a \\).\n\nXét \\( \\triangle BB'D' \\) vuông tại \\( B' \\) ta có:\n\n\\( \\dfrac{1}{B'H^2} = \\dfrac{1}{BB'^2} + \\dfrac{1}{B'D'^2} = \\dfrac{1}{4a^2} + \\dfrac{4}{a^2} \\Rightarrow BH = \\dfrac{2a}{\\sqrt{17}} \\).\n\nĐáp án D.",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau19_loigiai.PNG"
+},
+{
+  "content": "Cho phương trình \\( (m-1)x^4 + 2(m-3)x^2 + m + 3 = 0 \\) (\\( m \\) là tham số). Tìm \\( m \\) để phương trình vô nghiệm.",
+  "options": {
+    "A": "\\( m \\in (-\\infty; -3) \\cup \\left(\\dfrac{3}{2}; +\\infty\\right) \\)",
+    "B": "\\( m \\le -3 \\)",
+    "C": "\\( m > \\dfrac{3}{2} \\)",
+    "D": "\\( m < -3 \\)"
+  },
+  "correct": "A",
+  "explanation": "Đặt \\( t = x^2, (t \\ge 0) \\).\n\nĐể phương trình ẩn \\( x \\) vô nghiệm thì phương trình ẩn \\( t \\) vô nghiệm hoặc có 2 nghiệm âm.\n\nĐặt \\( t = x^2, (t \\ge 0) \\). Khi đó ta có phương trình:\n\\( (m-1)t^2 + 2(m-3)t + m+3 = 0 \\). (1)\n\nVới \\( m = 1 \\) thì (1) \\( \\Leftrightarrow -4t+4=0 \\Leftrightarrow t=1 \\Leftrightarrow x = \\pm 1 \\) (Loại)\n\nVới \\( m \\ne 1 \\) để phương trình ban đầu vô nghiệm thì:\n\nTH1: (1) vô nghiệm \\( \\Leftrightarrow \\Delta' < 0 \\Leftrightarrow -8m+12 < 0 \\Leftrightarrow m > \\dfrac{3}{2} \\).\n\nTH2: (1) có 2 nghiệm âm\n\n\\( \\Leftrightarrow \\begin{cases} \\Delta' \\ge 0 \\\\ t_1.t_2 > 0 \\\\ t_1+t_2 < 0 \\end{cases} \\Leftrightarrow \\begin{cases} -8m+12 \\ge 0 \\\\ \\dfrac{m+3}{m-1} > 0 \\\\ -\\dfrac{2(m-3)}{m+1} < 0 \\end{cases} \\)\n\n\\( \\Leftrightarrow \\begin{cases} m \\le \\dfrac{3}{2} \\\\ m \\in (-\\infty;-3) \\cup (1;+\\infty) \\\\ m \\in (-\\infty;1) \\cup (3;+\\infty) \\end{cases} \\Leftrightarrow m \\in (-\\infty;-3) \\)\n\nKết hợp 2 trường hợp, ta được \\( m \\in (-\\infty;-3) \\cup \\left(\\dfrac{3}{2};+\\infty\\right) \\).\n\nĐáp án A."
+},
+          {
+  "content": "Cho hàm số \\( f(x) = k\\sqrt[3]{x} + \\sqrt{x} \\). Với giá trị nào của \\( k \\) thì \\( f'(1) = \\dfrac{3}{2} \\)?",
+  "options": {"A": "\\( k = 1 \\)", "B": "\\( k = \\dfrac{9}{2} \\)", "C": "\\( k = -3 \\)", "D": "\\( k = 3 \\)"},
+  "correct": "D",
+  "explanation": "Tính đạo hàm của hàm số. Từ đó tính \\( f'(1) \\Rightarrow k \\).\n\nTa có: \\( f(x) = k.\\sqrt[3]{x} + \\sqrt{x} = k.x^{\\frac{1}{3}} + \\sqrt{x} \\).\n\n\\( f'(x) = \\dfrac{k}{3}x^{-\\frac{2}{3}} + \\dfrac{1}{2\\sqrt{x}} = \\dfrac{k}{3\\sqrt[3]{x^2}} + \\dfrac{1}{2\\sqrt{x}} \\).\n\nĐể \\( f'(1) = \\dfrac{3}{2} \\Leftrightarrow \\dfrac{k}{3} + \\dfrac{1}{2} = \\dfrac{3}{2} \\Leftrightarrow k = 3 \\).\n\nĐáp án D."
+},
+{
+  "content": "Cho hàm số \\( f(x) \\) có đạo hàm trên \\( \\mathbb{R} \\) và \\( f'(x) < 0, \\forall x \\in (0;+\\infty) \\) biết \\( f(0) = 3 \\). Khẳng định nào sau đây có thể xảy ra.",
+  "options": {
+    "A": "\\( f(2024) = 3,5 \\)",
+    "B": "\\( f(2023) + f(2024) = 6 \\)",
+    "C": "\\( f(2023) < f(2024) \\)",
+    "D": "\\( f(-2024) = 3 \\)"
+  },
+  "correct": "D",
+  "explanation": "Xét từng đáp án.\n\nDo \\( f'(x) < 0, \\forall x \\in (0;+\\infty) \\) nên hàm số \\( y = f(x) \\) nghịch biến trên \\( (0;+\\infty) \\).\n\nKhi đó ta có:\n\n\\( f(2024) < f(0) = 3 \\Rightarrow \\) A sai\n\n\\( f(2023) < f(0) = 3 \\Rightarrow f(2023) + f(2024) < 3+3 = 6 \\Rightarrow \\) B sai\n\n\\( f(2023) > f(2024) \\Rightarrow \\) C sai\n\nDo đó, D đúng.\n\nĐáp án D."
+},
+{
+  "content": "Phương trình đường tròn có tâm thuộc đường thẳng \\( \\Delta: x - 2y = 0 \\), tiếp xúc với đường thẳng \\( \\Delta': 2x - y + 2 = 0 \\) đồng thời đường tròn đi qua điểm \\( M(1;3) \\) là:",
+  "options": {
+    "A": "\\( (x+2)^2+(y+1)^2=5 \\) và \\( \\left(x+\\dfrac{23}{4}\\right)^2+\\left(y+\\dfrac{23}{8}\\right)^2=\\dfrac{1445}{64} \\)",
+    "B": "\\( (x-2)^2+(y-1)^2=5 \\) và \\( \\left(x-\\dfrac{23}{4}\\right)^2+\\left(y-\\dfrac{23}{8}\\right)^2=\\dfrac{1445}{64} \\)",
+    "C": "\\( (x+1)^2+(y-1)^2=5 \\) và \\( \\left(x-\\dfrac{23}{4}\\right)^2+\\left(y-\\dfrac{23}{8}\\right)^2=\\dfrac{1445}{64} \\)",
+    "D": "\\( (x-2)^2+(y-1)^2=5 \\) và \\( \\left(x-\\dfrac{23}{4}\\right)^2+\\left(y-\\dfrac{23}{8}\\right)^2=\\dfrac{1885}{16} \\)"
+  },
+  "correct": "B",
+  "explanation": "Gọi tâm của đường tròn cần tìm là \\( I(2t;t) \\in \\Delta: x-2y=0 \\).\n\nTa có: \\( MI = d(I;\\Delta') \\) từ đó tìm được \\( t \\).\n\nTheo giả thiết, ta có:\n\n\\( MI = d(I;\\Delta') \\Leftrightarrow \\sqrt{(2t-1)^2+(t-3)^2} = \\dfrac{|2.2t-t+2|}{\\sqrt{5}} \\)\n\n\\( \\Leftrightarrow \\sqrt{5t^2-10t+10} = \\dfrac{|3t+2|}{\\sqrt{5}} \\Leftrightarrow 8t^2-31t+23=0 \\)\n\n\\( \\Leftrightarrow \\left[\\begin{array}{l} t=1 \\\\ t=\\dfrac{23}{8} \\end{array}\\right. \\)\n\nVới \\( t=1 \\) thì đường tròn cần tìm có tâm \\( I(2;1) \\), bán kính \\( R = IM = \\sqrt{5} \\), và có phương trình là:\n\n\\( (x-2)^2+(y-1)^2=5 \\)\n\nVới \\( t=\\dfrac{23}{8} \\) thì đường tròn cần tìm có tâm \\( I\\left(\\dfrac{23}{4};\\dfrac{23}{8}\\right) \\), bán kính \\( R=IM=\\dfrac{17\\sqrt{5}}{8} \\), và có phương trình là:\n\n\\( \\left(x-\\dfrac{23}{4}\\right)^2+\\left(y-\\dfrac{23}{8}\\right)^2=\\dfrac{1445}{64} \\)\n\nVậy có hai đường tròn thỏa mãn yêu cầu bài toán như trên.\n\nĐáp án B."
+},
+{
+  "content": "Khoảng cách giữa hai điểm cực trị của đồ thị hàm số \\( y = (x-2)^2(x+1) \\) là",
+  "options": {"A": "\\( 2\\sqrt{5} \\)", "B": "\\( 5\\sqrt{2} \\)", "C": "4", "D": "2"},
+  "correct": "A",
+  "explanation": "Tìm hai điểm cực trị. Áp dụng công thức khoảng cách giữa hai điểm.\n\n\\( f'(x) = 2(x-2)(x+1) + (x-2)^2 = 2x^2-2x-4+x^2-4x+4 = 3x^2-6x \\)\n\n\\( f'(x) = 0 \\Leftrightarrow \\left[\\begin{array}{l} x=0 \\Rightarrow y=4 \\\\ x=2 \\Rightarrow y=0 \\end{array}\\right. \\)\n\n\\( \\Rightarrow \\) Khoảng cách giữa hai điểm cực trị là \\( \\sqrt{(0-2)^2+(4-0)^2} = 2\\sqrt{5} \\).\n\n**Có thể sử dụng máy tính casio 580vnx để tìm cực đại và cực tiểu của hàm bậc 3.**\n\nĐáp án A."
+},
+{
+  "content": "Với số nguyên dương \\( n \\), gọi \\( a_{3n-3} \\) là hệ số của \\( x^{3n-3} \\) trong khai triển thành đa thức của \\( (x^2+1)^n(x+2)^n \\). Tìm \\( n \\) để \\( a_{3n-3} = 26n \\).",
+  "options": {"A": "\\( n = 6 \\)", "B": "\\( n = 7 \\)", "C": "\\( n = 5 \\)", "D": "\\( n = 4 \\)"},
+  "correct": "C",
+  "explanation": "Ta có:\n\n\\( (x^2+1)^n = C_n^0 x^{2n} + C_n^1 x^{2n-2} + C_n^2 x^{2n-4} + \\ldots + C_n^n \\)\n\n\\( (x+2)^n = C_n^0 x^n + 2C_n^1 x^{n-1} + 2^2C_n^2 x^{n-2} + \\ldots + 2^nC_n^n \\)\n\nTa thấy \\( n=1, n=2 \\) không thoả mãn điều kiện bài toán.\n\nVới \\( n \\ge 3 \\) ta có: \\( x^{3n-3} = x^{2n}.x^{n-3} = x^{2n-2}.x^{n-1} \\)\n\nDo đó hệ số của \\( x^{3n-3} \\) trong khai triển thành đa thức của \\( (x^2+1)^n(x+2)^n \\) là:\n\n\\( a_{3n-3} = 2^3.C_n^0.C_n^3 + 2.C_n^1.C_n^1 \\)\n\n\\( \\Rightarrow a_{3n-3} = 26n \\Leftrightarrow \\dfrac{2n(2n^2-3n+4)}{3} = 26n \\)\n\n\\( \\Leftrightarrow \\left[\\begin{array}{l} n=0 \\; (L) \\\\ n=-\\dfrac{7}{2} \\; (L) \\\\ n=5 \\; (t/m) \\end{array}\\right. \\)\n\nVậy \\( n=5 \\) là giá trị cần tìm.\n\nĐáp án C."
+},
+{
+  "content": "Chọn ngẫu nhiên lần lượt các số a, b phân biệt thuộc tập hợp \\( \\{3^k \\mid k \\in \\mathbb{N}, 1 \\le k \\le 10\\} \\). Tính xác suất để \\( \\log_a b \\) là một số nguyên dương.",
+  "options": {"A": "\\( \\dfrac{17}{90} \\)", "B": "\\( \\dfrac{17}{45} \\)", "C": "\\( \\dfrac{3}{10} \\)", "D": "\\( \\dfrac{22}{45} \\)"},
+  "correct": "A",
+  "explanation": "Sử dụng công thức tính xác suất xảy ra biến cố \\( A: P(A) = \\dfrac{n_A}{n_\\Omega} \\).\n\nPhép thử: \"Chọn ngẫu nhiên lần lượt các số a, b phân biệt thuộc tập hợp \\( \\{3^k \\mid k \\in \\mathbb{N}, 1 \\le k \\le 10\\} \\)\"\n\nBiến cố \\( A \\): \"\\( \\log_a b \\) là một số nguyên dương\".\n\n\\( \\Rightarrow n_\\Omega = 10.9 = 90 \\)\n\n+ Giả sử \\( a = 3^{k_1}, b = 3^{k_2} \\; (k_1 \\ne k_2) \\Rightarrow \\log_a b = \\log_{3^{k_1}}(3^{k_2}) = \\dfrac{k_2}{k_1} \\) là một số nguyên dương\n\nTa lập bảng các giá trị \\( k_2 \\) tương ứng với \\( k_1 \\) thỏa mãn \\( k_1 | k_2 \\) và \\( k_1 \\ne k_2 \\):\n\n\\( k_2 = 10: k_1 \\in \\{1;2;5\\} \\)\n\n\\( k_2 = 9: k_1 \\in \\{1;3\\} \\)\n\n\\( k_2 = 8: k_1 \\in \\{1;2;4\\} \\)\n\n\\( k_2 = 7: k_1 \\in \\{1\\} \\)\n\n\\( k_2 = 6: k_1 \\in \\{1;2;3\\} \\)\n\n\\( k_2 = 5: k_1 \\in \\{1\\} \\)\n\n\\( k_2 = 4: k_1 \\in \\{1;2\\} \\)\n\n\\( k_2 = 3: k_1 \\in \\{1\\} \\)\n\n\\( k_2 = 2: k_1 \\in \\{1\\} \\)\n\n\\( \\Rightarrow n_A = 17 \\Rightarrow P(A) = \\dfrac{n_A}{n_\\Omega} = \\dfrac{17}{90} \\).\n\nĐáp án A.",
+  "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de2_cau29_loigiai.PNG"
+},
             {
                 "content": "Cho hàm số \\( f(x) = -2x + 7 \\). Giá trị \\( f(3) \\) bằng",
                 "options": {"A": "1", "B": "-1", "C": "13", "D": "4"},
