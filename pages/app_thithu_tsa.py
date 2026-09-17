@@ -7630,6 +7630,318 @@ Với \\( a=2 \\), ta nhân liên hợp:
 Tổng bình phương \\( T=a^2+b^2=2^2+3^2=4+9=13 \\).""",
 },
 
+  # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de8_mc_31',
+    "type": 'mc4',
+    "content": """Một dự án môi trường thiết kế hệ thống "Cây nhân tạo" để lọc không khí. Thân chính của cây (nhánh cấp 1) có chiều dài 15 m. Từ thân chính, người ta gắn thêm 3 nhánh cấp 2, mỗi nhánh có chiều dài bằng \\( \\dfrac{1}{4} \\) thân chính. Tiếp tục như vậy, từ mỗi nhánh cấp \\( n \\), người ta lại gắn thêm 3 nhánh cấp \\( n+1 \\), với mỗi nhánh có chiều dài bằng \\( \\dfrac{1}{4} \\) chiều dài của nhánh cấp \\( n \\) liền trước nó. Nếu quá trình này kéo dài vô hạn, tổng chiều dài của toàn bộ thân và các nhánh cây nhân tạo này bằng bao nhiêu?""",
+    # "image": "URL_ẢNH_CÂU_31",
+    "options": {
+        'A': '$60\\ m$',
+        'B': '$45\\ m$',
+        'C': '$75\\ m$',
+        'D': 'Vô cực (không hội tụ)',
+    },
+    "correct": 'A',
+    "points": 1,
+    "explanation": """Gọi \\( S_n \\) là tổng chiều dài của tất cả các nhánh cấp \\( n \\).
+
+Nhánh cấp 1 (thân chính): \\( S_1=15 \\) m.
+
+Nhánh cấp 2: Có 3 nhánh, mỗi nhánh dài \\( 15\\cdot\\dfrac{1}{4} \\), suy ra \\( S_2=3\\left(15\\cdot\\dfrac{1}{4}\\right)=15\\cdot\\dfrac{3}{4} \\) m.
+
+Nhánh cấp \\( n \\): Số lượng nhánh là \\( 3^{n-1} \\), chiều dài mỗi nhánh là \\( 15\\cdot\\left(\\dfrac{1}{4}\\right)^{n-1} \\). Do đó, tổng chiều dài nhánh cấp \\( n \\) là:
+
+\\( S_n=3^{n-1}\\cdot 15\\cdot\\left(\\dfrac{1}{4}\\right)^{n-1}=15\\cdot\\left(\\dfrac{3}{4}\\right)^{n-1} \\)
+
+Dãy \\( (S_n) \\) là một cấp số nhân với số hạng đầu \\( S_1=15 \\) và công bội \\( q=\\dfrac{3}{4}<1 \\).
+
+Tổng chiều dài của toàn bộ cây (tổng cấp số nhân lùi vô hạn) là:
+
+\\( S=\\dfrac{S_1}{1-q}=\\dfrac{15}{1-\\frac{3}{4}}=\\dfrac{15}{\\frac{1}{4}}=60 \\) m
+
+Chọn đáp án A.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de8_tf_32",
+    "type": "truefalse",
+    "content": """Xét dãy số \\( (u_n) \\) được xác định bởi: \\( u_1=1 \\) và \\( u_{n+1}=\\dfrac{u_n}{1+2026u_n} \\) với mọi \\( n\\in\\mathbb{N}^* \\). Dưới đây là các mệnh đề phân tích tính chất của dãy số này, hãy chọn Đúng/Sai:""",
+    "statements": [
+        {"text": "Dãy số \\( (u_n) \\) là một cấp số nhân với công bội \\( q=\\dfrac{1}{2026} \\).", "correct": False},
+        {"text": "Số hạng thứ \\( n \\) của dãy có công thức tổng quát là \\( u_n=\\dfrac{1}{2026n-2025} \\).", "correct": True},
+        {"text": "Dãy số \\( (u_n) \\) là một dãy giảm và bị chặn dưới bởi 0.", "correct": True},
+        {"text": "Giới hạn của tổng \\( S_n=\\sum_{k=1}^{n}(u_k\\cdot u_{k+1}) \\) khi \\( n\\to+\\infty \\) bằng 2026.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Vì \\( u_1=1>0 \\), dễ thấy \\( u_n>0\\ \\forall n \\). Lấy nghịch đảo hai vế:
+
+\\( \\dfrac{1}{u_{n+1}}=\\dfrac{1+2026u_n}{u_n}=\\dfrac{1}{u_n}+2026 \\)
+
+Đặt \\( v_n=\\dfrac{1}{u_n} \\Rightarrow v_{n+1}=v_n+2026 \\). Dãy \\( (v_n) \\) là cấp số cộng có \\( v_1=1, d=2026 \\).
+
+a) SAI: \\( (u_n) \\) không phải cấp số nhân.
+
+b) ĐÚNG: \\( v_n=1+(n-1)2026=2026n-2025 \\Rightarrow u_n=\\dfrac{1}{2026n-2025} \\).
+
+c) ĐÚNG: Vì tử là hằng số dương, mẫu tăng nên dãy giảm. Các số hạng đều lớn hơn 0 nên bị chặn dưới bởi 0.
+
+d) SAI: Từ \\( \\dfrac{1}{u_{k+1}}-\\dfrac{1}{u_k}=2026 \\Rightarrow \\dfrac{u_k-u_{k+1}}{u_ku_{k+1}}=2026 \\Rightarrow u_ku_{k+1}=\\dfrac{1}{2026}(u_k-u_{k+1}) \\).
+
+Tổng triệt tiêu: \\( S_n=\\dfrac{1}{2026}(u_1-u_2+u_2-u_3+\\cdots+u_n-u_{n+1})=\\dfrac{1}{2026}(1-u_{n+1}) \\).
+
+Khi \\( n\\to+\\infty \\), \\( u_{n+1}\\to 0 \\Rightarrow \\lim S_n=\\dfrac{1}{2026} \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de8_sh_33',
+    "type": 'short',
+    "content": """Trong toán học, tồn tại những cấp số cộng hữu hạn cực kỳ thú vị mà tất cả các số hạng đều là số nguyên tố. Giả sử có một cấp số cộng gồm đúng 5 số hạng phân biệt, tất cả đều là số nguyên tố, và số hạng nhỏ nhất trong dãy là số 5. Hãy tìm giá trị nhỏ nhất có thể của số hạng lớn nhất trong cấp số cộng này.""",
+    "blanks": [
+        {"label": "Giá trị nhỏ nhất =", "answers": ["29"]}
+    ],
+    "points": 1,
+    "explanation": """Gọi cấp số cộng là \\( 5, 5+d, 5+2d, 5+3d, 5+4d \\) với \\( d>0 \\).
+
+Vì tất cả là số nguyên tố nên chúng phải lẻ, suy ra \\( d \\) phải là số chẵn.
+
+Hơn nữa, nếu \\( d \\) không chia hết cho 3, thì các số \\( 5, 5+d, 5+2d \\) khi chia cho 3 sẽ có các số dư đôi một khác nhau (0, 1, 2). Do đó chắc chắn có một số chia hết cho 3. Vì nó là số nguyên tố nên số đó phải bằng 3, nhưng số hạng nhỏ nhất đã là 5 — vô lý.
+
+Vậy \\( d \\) phải chia hết cho 3. Kết hợp với chẵn, \\( d \\) phải là bội của 6.
+
+Thử với \\( d=6 \\): Dãy là 5, 11, 17, 23, 29. Tất cả đều là số nguyên tố. Thỏa mãn! Số hạng lớn nhất là 29.
+
+Thử với \\( d=12 \\): Dãy là 5, 17, 29, 41, 53 (đều là số nguyên tố), lớn nhất là 53.
+
+Do ta cần giá trị nhỏ nhất có thể của số hạng lớn nhất, nên chọn dãy ứng với \\( d=6 \\).
+
+Đáp số cần điền: 29.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de8_dd_34',
+    "type": 'dragdrop',
+    "content": """Vẽ một lục giác đều \\( H_1 \\) có diện tích \\( A_1 \\) và chu vi \\( P_1 \\). Bằng cách nối các trung điểm của \\( H_1 \\), ta thu được lục giác đều \\( H_2 \\). Tiếp tục nối các trung điểm của \\( H_2 \\), ta được lục giác đều \\( H_3 \\), và lặp lại vô hạn. Kéo thả phương án thích hợp:
+
+Tỉ số đồng dạng về độ dài cạnh giữa \\( H_{n+1} \\) và \\( H_n \\) là (1).
+
+Diện tích của các lục giác lập thành một cấp số nhân với công bội \\( q= \\) (2).
+
+Tổng chu vi của tất cả các lục giác \\( S_P=P_1+P_2+\\ldots \\) bằng (3).
+
+Tổng diện tích của tất cả các lục giác \\( S_A=A_1+A_2+\\ldots \\) bằng (4).""",
+    # "image": "URL_ẢNH_CÂU_34",
+    "options_pool": [
+        '$4A_1$',
+        '$\\dfrac{3}{4}$',
+        '$\\dfrac{\\sqrt{3}}{2}$',
+        '$\\dfrac{1}{1-\\frac{\\sqrt{3}}{2}}P_1$',
+        '$\\dfrac{4}{3}A_1$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$\\dfrac{\\sqrt{3}}{2}$"},
+        {"label": "(2) =", "answer": "$\\dfrac{3}{4}$"},
+        {"label": "(3) =", "answer": "$\\dfrac{1}{1-\\frac{\\sqrt{3}}{2}}P_1$"},
+        {"label": "(4) =", "answer": "$4A_1$"},
+    ],
+    "points": 1,
+    "explanation": """Gọi cạnh của \\( H_n \\) là \\( s_n \\). Lục giác đều có góc nội tiếp là \\( 120^\\circ \\). Xét tam giác tạo bởi 1 đỉnh của \\( H_n \\) và 2 trung điểm liền kề. Theo định lý hàm cos:
+
+\\( s_{n+1}^2=\\left(\\dfrac{s_n}{2}\\right)^2+\\left(\\dfrac{s_n}{2}\\right)^2-2\\cdot\\dfrac{s_n}{2}\\cdot\\dfrac{s_n}{2}\\cos 120^\\circ=\\dfrac{3}{4}s_n^2 \\)
+
+Suy ra \\( s_{n+1}=\\dfrac{\\sqrt{3}}{2}s_n \\). Vậy tỉ số đồng dạng cạnh là \\( \\dfrac{\\sqrt{3}}{2} \\).
+
+Tỉ số diện tích là bình phương tỉ số cạnh, suy ra \\( q_A=\\dfrac{3}{4} \\).
+
+Tổng chu vi: \\( S_P=\\dfrac{P_1}{1-q_P}=\\dfrac{1}{1-\\frac{\\sqrt{3}}{2}}P_1 \\)
+
+Tổng diện tích: \\( S_A=\\dfrac{A_1}{1-q_A}=\\dfrac{A_1}{1-\\frac{3}{4}}=4A_1 \\)""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de8_sh_35',
+    "type": 'short',
+    "content": """Cho một tam giác đều có độ dài cạnh \\( L=4\\sqrt{6} \\) cm. Người ta vẽ một hình tròn nội tiếp tam giác. Sau đó, ở ba góc của tam giác, người ta vẽ tiếp 3 hình tròn nhỏ hơn tiếp xúc với hai cạnh tam giác và tiếp xúc với hình tròn lớn ở giữa. Quá trình vẽ thêm các hình tròn ngày càng nhỏ ở các góc được lặp lại vô hạn lần. Tổng diện tích của tất cả các hình tròn được vẽ có dạng \\( k\\cdot\\pi \\) (cm\\(^2\\)), trong đó \\( k \\) là một số nguyên. Tìm \\( k \\).""",
+    # "image": "URL_ẢNH_CÂU_35",
+    "blanks": [
+        {"label": "k =", "answers": ["11"]}
+    ],
+    "points": 1,
+    "explanation": """Bán kính hình tròn lớn nhất nội tiếp tam giác đều: \\( r_1=\\dfrac{L\\sqrt{3}}{6}=\\dfrac{4\\sqrt{6}\\cdot\\sqrt{3}}{6}=2\\sqrt{2} \\) cm.
+
+Diện tích hình tròn tâm: \\( A_1=\\pi r_1^2=\\pi(2\\sqrt{2})^2=8\\pi \\).
+
+Xét tại một góc (ví dụ góc ở đỉnh), khoảng cách từ đỉnh đến tâm hình tròn đầu tiên là \\( 2r_1 \\). Các hình tròn tiếp theo tạo thành các tam giác đồng dạng với tỉ số co rút. Bán kính hình tròn tiếp theo là \\( r_2=\\dfrac{1}{3}r_1 \\).
+
+Tại một góc, chuỗi diện tích các hình tròn nhỏ là một cấp số nhân với \\( S_1'=\\pi r_2^2=\\pi\\left(\\dfrac{r_1}{3}\\right)^2=\\dfrac{1}{9}\\pi r_1^2=\\dfrac{1}{9}A_1 \\). Công bội của diện tích là \\( q=\\left(\\dfrac{1}{3}\\right)^2=\\dfrac{1}{9} \\).
+
+Tổng diện tích vô hạn tại một góc: \\( S_{goc}=\\dfrac{S_1'}{1-q}=\\dfrac{A_1/9}{1-1/9}=\\dfrac{A_1/9}{8/9}=\\dfrac{1}{8}A_1 \\).
+
+Vì có 3 góc, tổng diện tích toàn bộ các hình tròn là:
+
+\\( S_{total}=A_1+3\\cdot S_{goc}=A_1+\\dfrac{3}{8}A_1=\\dfrac{11}{8}A_1 \\)
+
+Thay \\( A_1=8\\pi \\Rightarrow S_{total}=\\dfrac{11}{8}\\times 8\\pi=11\\pi \\) (cm\\(^2\\)) \\( \\Rightarrow k=11 \\).
+
+Đáp số cần điền: 11.""",
+},
+
+ # ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de8_tf_36",
+    "type": "truefalse",
+    "content": "Hai bể hóa chất A và B nối với nhau bằng hệ thống bơm. Ban đầu, bể A chứa 100 L nước tinh khiết, bể B chứa 100 L dung dịch có hòa tan 20 kg muối. Cứ mỗi phút, máy bơm tự động hút 10 L từ bể A sang bể B và đồng thời hút 10 L từ bể B sang bể A (giả sử dung dịch khuấy trộn đều lập tức). Gọi \\( x_n \\) và \\( y_n \\) lần lượt là lượng muối (kg) trong bể A và bể B sau n phút. Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Lượng muối tổng cộng trong hai bể không đổi theo thời gian, tức là \\( x_n+y_n=20 \\).", "correct": True},
+        {"text": "Dãy số phụ \\( z_n=x_n-10 \\) là một cấp số nhân.", "correct": True},
+        {"text": "Lượng muối trong bể A sau đúng 2 phút bơm là 3,6 kg.", "correct": True},
+        {"text": "Cần khoảng thời gian hữu hạn để nồng độ muối ở 2 bể hoàn toàn cân bằng (mỗi bể chính xác 10 kg).", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Mỗi phút, lượng chất lỏng trao đổi chiếm \\( \\dfrac{10}{100}=10\\% \\) thể tích mỗi bể, nên ta lập được công thức truy hồi \\( x_{n+1}=0,9x_n+0,1y_n \\).
+
+a) ĐÚNG: Vì mỗi phút bơm đối lưu đúng 10 L qua lại (không có muối thoát ra ngoài hệ), nên tổng thể tích và tổng khối lượng muối trong toàn hệ luôn được bảo toàn: \\( x_n+y_n=20 \\) với mọi n.
+
+b) ĐÚNG: Thay \\( y_n=20-x_n \\) vào công thức truy hồi:
+
+\\( x_{n+1}=0,9x_n+0,1(20-x_n)=0,8x_n+2 \\)
+
+Biến đổi: \\( x_{n+1}-10=0,8(x_n-10) \\). Đặt \\( z_n=x_n-10 \\Rightarrow z_{n+1}=0,8z_n \\), vậy \\( (z_n) \\) là cấp số nhân với công bội \\( q=0,8 \\).
+
+c) ĐÚNG: Với \\( x_0=0 \\), ta có \\( x_1=0,8(0)+2=2 \\) kg. Đến phút thứ 2: \\( x_2=0,8(2)+2=3,6 \\) kg.
+
+d) SAI: Ta có \\( z_n=z_0\\cdot 0,8^n=-10\\cdot 0,8^n \\Rightarrow x_n=10-10(0,8)^n \\). Để \\( x_n=10 \\) cần \\( 0,8^n=0 \\), điều này chỉ xảy ra khi \\( n\\to+\\infty \\). Vậy trạng thái cân bằng tuyệt đối chỉ đạt được ở tiệm cận vô cực, không xảy ra trong một khoảng thời gian hữu hạn.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de8_mc_37",
+    "type": "mc4",
+    "content": "Cho dãy số \\( (u_n) \\) có tất cả các số hạng đều dương, thỏa mãn điều kiện \\( u_1=1 \\), \\( u_2=2 \\) và \\( u_{n+2}=\\dfrac{u_{n+1}^2}{u_n} \\) với mọi \\( n\\ge 1 \\). Tính tích của 10 số hạng đầu tiên của dãy số này \\( (P_{10}=u_1\\cdot u_2\\cdots u_{10}) \\).",
+    "options": {
+        "A": "$P_{10}=2^{55}$",
+        "B": "$P_{10}=2^{45}$",
+        "C": "$P_{10}=2^{50}$",
+        "D": "$P_{10}=2^{100}$",
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": """Lấy logarit tự nhiên hai vế của hệ thức truy hồi:
+
+\\( \\ln(u_{n+2})=\\ln\\left(\\dfrac{u_{n+1}^2}{u_n}\\right)=2\\ln u_{n+1}-\\ln u_n \\Rightarrow \\ln u_{n+2}-\\ln u_{n+1}=\\ln u_{n+1}-\\ln u_n \\)
+
+Đặt \\( v_n=\\ln u_n \\), ta có \\( v_{n+2}-v_{n+1}=v_{n+1}-v_n \\). Do đó \\( (v_n) \\) là một cấp số cộng.
+
+Số hạng đầu \\( v_1=\\ln 1=0 \\), \\( v_2=\\ln 2 \\Rightarrow \\) công sai \\( d=\\ln 2-0=\\ln 2 \\).
+
+Công thức tổng quát: \\( v_n=v_1+(n-1)d=(n-1)\\ln 2=\\ln(2^{n-1}) \\). Suy ra \\( u_n=e^{v_n}=2^{n-1} \\). Dãy \\( (u_n) \\) chính là một cấp số nhân: \\( 1,2,4,8,\\ldots \\)
+
+Tích 10 số hạng đầu tiên là:
+
+\\( P_{10}=2^0\\cdot 2^1\\cdot 2^2\\cdots 2^9=2^{0+1+2+\\cdots+9}=2^{45} \\)
+
+Chọn B.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de8_sh_38",
+    "type": "short",
+    "content": "Một quả bóng cao su được thả rơi thẳng đứng từ độ cao 120 m so với mặt đất. Nhờ đặc tính đàn hồi, mỗi lần chạm đất, quả bóng nảy lên nhưng bị mất đi 20% động năng so với trước khi va chạm. Biết rằng độ cao nảy lên của quả bóng tỉ lệ thuận với động năng của nó ngay sau khi rời mặt đất. Tính tổng quãng đường quả bóng đã di chuyển theo phương thẳng đứng (kể từ lúc bắt đầu thả rơi cho đến khi dừng hẳn trên mặt đất).",
+    "blanks": [
+        {"label": "Tổng quãng đường (m) =", "answers": ["1080"]}
+    ],
+    "points": 1,
+    "explanation": """Động năng giảm 20% sau mỗi lần va chạm nên năng lượng còn lại là 80%. Vì độ cao tỉ lệ thuận với động năng \\( (mgh=W_d) \\), nên mỗi lần nảy lên, độ cao đạt được bằng 80% độ cao của lần rơi ngay trước đó.
+
+Suy ra dãy các độ cao nảy lên lập thành một cấp số nhân với công bội \\( q=0,8 \\).
+
+Quãng đường di chuyển gồm:
+- Rơi lần đầu tiên: \\( S_0=120 \\) m.
+- Lần nảy thứ nhất (lên và xuống): \\( 2\\cdot(120\\cdot 0,8) \\).
+- Lần nảy thứ hai (lên và xuống): \\( 2\\cdot(120\\cdot 0,8^2) \\), v.v...
+
+Tổng quãng đường di chuyển là:
+
+\\( S=120+2\\cdot 120\\cdot 0,8+2\\cdot 120\\cdot 0,8^2+\\cdots=120+240\\left(0,8+0,8^2+\\cdots\\right) \\)
+
+Phần trong ngoặc là tổng của cấp số nhân lùi vô hạn với \\( u_1=0,8 \\), \\( q=0,8 \\):
+
+\\( S=120+240\\cdot\\dfrac{0,8}{1-0,8}=120+240\\cdot 4=120+960=1080 \\) (m).
+
+Đáp số: 1080.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de8_tf_39",
+    "type": "truefalse",
+    "content": "Cho cấp số cộng \\( (u_n) \\) có công sai \\( d\\neq 0 \\) và tất cả các số hạng đều khác 0. Người ta tạo ra các dãy số mới bằng các phép biến đổi toán học. Xét tính đúng/sai của các mệnh đề sau về các dãy số mới này:",
+    "statements": [
+        {"text": "Dãy số \\( (x_n) \\) với \\( x_n=2^{u_n} \\) là một cấp số nhân.", "correct": True},
+        {"text": "Dãy số \\( (y_n) \\) với \\( y_n=(u_n)^2 \\) là một cấp số cộng.", "correct": False},
+        {"text": "Dãy số \\( (z_n) \\) với \\( z_n=u_n+u_{n+1} \\) là một cấp số cộng.", "correct": True},
+        {"text": "Dãy số \\( (t_n) \\) với \\( t_n=\\dfrac{u_{n+1}}{u_n} \\) là một dãy hằng số.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Vì \\( (u_n) \\) là cấp số cộng nên \\( u_{n+1}=u_n+d \\) với d là hằng số khác 0.
+
+a) ĐÚNG: Lập tỉ số hai số hạng liên tiếp: \\( \\dfrac{x_{n+1}}{x_n}=\\dfrac{2^{u_{n+1}}}{2^{u_n}}=2^{u_{n+1}-u_n}=2^{d} \\). Vì d là hằng số nên \\( 2^{d} \\) cũng là hằng số, do đó \\( (x_n) \\) là cấp số nhân với công bội \\( q=2^{d} \\).
+
+b) SAI: Xét hiệu \\( y_{n+1}-y_n=(u_{n+1})^2-(u_n)^2=(u_n+d)^2-u_n^2=2du_n+d^2 \\). Vì \\( d\\neq 0 \\) và \\( u_n \\) thay đổi theo n nên hiệu này không phải là một hằng số, do đó \\( (y_n) \\) không phải cấp số cộng.
+
+c) ĐÚNG: Xét hiệu \\( z_{n+1}-z_n=(u_{n+1}+u_{n+2})-(u_n+u_{n+1})=u_{n+2}-u_n=2d \\). Hiệu này là một hằng số, vậy \\( (z_n) \\) là cấp số cộng với công sai \\( 2d \\).
+
+d) SAI: \\( \\dfrac{u_{n+1}}{u_n}=\\dfrac{u_n+d}{u_n}=1+\\dfrac{d}{u_n} \\). Vì \\( u_n \\) thay đổi theo n (và \\( d\\neq 0 \\)) nên phân thức \\( \\dfrac{d}{u_n} \\) cũng thay đổi, do đó \\( (t_n) \\) không phải là một dãy hằng số.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de8_dd_40",
+    "type": "dragdrop",
+    "content": """Anh Bình vay ngân hàng 1 tỷ đồng với lãi suất 1%/tháng. Mỗi tháng, anh trả đều đặn một số tiền là m (triệu đồng) (với \\( m>10 \\) để đảm bảo trả được nợ). Số tiền m này được trích một phần để trả lãi, phần còn lại dùng để trừ vào nợ gốc (gọi là phần tiền gốc được trả của tháng đó). Hãy kéo thả các phương án phù hợp để hoàn thành nhận định về giao dịch tài chính này:
+
+- Số tiền phần tiền gốc được trả trong tháng đầu tiên là (1) (triệu đồng).
+
+- Lượng tiền gốc được trả ở các tháng tiếp theo sẽ tạo thành một (2).
+
+- Công bội (hoặc công sai) của dãy số đặc biệt này chính bằng (3).
+
+- Do dư nợ giảm, lượng tiền lãi phải trả hàng tháng là một dãy (4).""",
+    "options_pool": [
+        "Cấp số nhân",
+        "Cấp số cộng",
+        "1,01",
+        "$m-10$",
+        "Giảm dần",
+        "Tăng dần"
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$m-10$"},
+        {"label": "(2) =", "answer": "Cấp số nhân"},
+        {"label": "(3) =", "answer": "1,01"},
+        {"label": "(4) =", "answer": "Giảm dần"},
+    ],
+    "points": 1,
+    "explanation": """Gọi tiền nợ ban đầu \\( D_0=1000 \\) (triệu), lãi suất \\( r=1\\%=0,01 \\), mỗi tháng trả đều đặn m triệu.
+
+Tháng 1: Tiền lãi \\( I_1=1000\\cdot 0,01=10 \\). Phần tiền gốc được trả \\( P_1=m-10 \\). (Điền ô (1)).
+
+Dư nợ sau tháng 1: \\( D_1=D_0-P_1 \\). Ở tháng n, tiền lãi là \\( I_n=0,01\\cdot D_{n-1} \\), phần tiền gốc trả trong tháng n là \\( P_n=m-I_n=m-0,01D_{n-1} \\).
+
+Xét tháng n+1: \\( I_{n+1}=0,01D_n=0,01(D_{n-1}-P_n) \\), nên:
+
+\\( P_{n+1}=m-I_{n+1}=m-0,01(D_{n-1}-P_n)=(m-0,01D_{n-1})+0,01P_n=P_n+0,01P_n=1,01P_n \\)
+
+Vậy dãy số tiền gốc trả hàng tháng \\( (P_n) \\) luôn lập thành một Cấp số nhân (điền ô (2)), với công bội bằng \\( 1+r=1,01 \\) (điền ô (3)).
+
+Vì \\( P_n>0 \\) nên dư nợ \\( D_n \\) giảm dần, do đó tiền lãi \\( I_n=0,01D_{n-1} \\) lập thành một dãy Giảm dần (điền ô (4)).""",
+},               
+
  ], # Đóng danh sách questions của Đề 8
     }, # Đóng dictionary của Đề 8
 
