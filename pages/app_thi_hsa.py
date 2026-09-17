@@ -2062,11 +2062,19 @@ TPL_ANSWER_DETAIL = BASE_HEAD_GREEN + """
 
        <div class="loi-giai-box" style="background:#fff8e6;border-left:4px solid #f0ad4e;padding:10px 14px;border-radius:8px;font-size:.9rem;margin-top:10px;">
        <strong>Lời giải:</strong><br>{{ q.explanation|safe }}
-       {% if q.image_explanation %}
-       <div style="text-align:center;margin:10px 0;">
-       <img src="{{ q.image_explanation }}" alt="Hình minh họa lời giải câu {{ q.number }}" style="max-width:100%;border-radius:8px;">
-       </div>
-       {% endif %}
+      {% if q.image_explanation %}
+  {% if q.image_explanation is string %}
+    <div style="text-align:center;margin:10px 0;">
+      <img src="{{ q.image_explanation }}" alt="Hình minh họa lời giải câu {{ q.number }}" style="max-width:100%;border-radius:8px;">
+    </div>
+  {% else %}
+    {% for img in q.image_explanation %}
+      <div style="text-align:center;margin:10px 0;">
+        <img src="{{ img }}" alt="Hình minh họa lời giải câu {{ q.number }}" style="max-width:100%;border-radius:8px;">
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endif %}
        {% if q.explanation_2 %}<div style="margin-top:8px;">{{ q.explanation_2|safe }}</div>{% endif %}
        </div>
     </div>
