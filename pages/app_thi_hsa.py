@@ -1190,7 +1190,8 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
 },
 
   {
-    "content": "Cho hàm số \\( y = f(x) \\) có bảng biến thiên như sau:\n\n| \\(x\\) | \\(-\\infty\\) | | \\(-1\\) | | \\(1\\) | | \\(3\\) | | \\(+\\infty\\) |\n|---|---|---|---|---|---|---|---|---|---|\n| \\(f'(x)\\) | | \\(+\\) | \\(0\\) | \\(-\\) | \\(0\\) | \\(+\\) | \\(0\\) | \\(-\\) | |\n| \\(f(x)\\) | \\(-\\infty\\) | \\(\\nearrow\\) | \\(2\\) | \\(\\searrow\\) | \\(1\\) | \\(\\nearrow\\) | \\(2\\) | \\(\\searrow\\) | \\(-\\infty\\) |\n\nHỏi hàm số đã cho đồng biến trên khoảng nào dưới đây?",
+    "content": "Cho hàm số \\( y = f(x) \\) có bảng biến thiên như sau:Hỏi hàm số đã cho đồng biến trên khoảng nào dưới đây?",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau6-de3.PNG",
     "options": {
         "A": "\\( (-\\infty;1) \\)",
         "B": "\\( (-3;-2) \\)",
