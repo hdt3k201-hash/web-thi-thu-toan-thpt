@@ -1456,6 +1456,12 @@ label.form-label{font-weight:600;font-size:.92rem;}
 .modal-actions{display:flex;gap:12px;justify-content:center;margin-top:16px;}
 /* Kết quả & đáp án */
 .result-score{font-size:1.6rem;font-weight:900;color:var(--green);margin:14px 0;}
+.loi-giai-box{
+  white-space:pre-line;      /* tôn trọng \n trong text -> xuống dòng đúng chỗ */
+  line-height:1.6;
+}
+.loi-giai-box p{margin:0 0 8px;}
+.q-content{white-space:pre-line;}   /* để content_2 / content nhiều dòng cũng đẹp */
 """
 
 BASE_HEAD_GREEN = """
@@ -1617,6 +1623,7 @@ TPL_TAKE_EXAM = BASE_HEAD_GREEN + """
           </div>
           {% endif %}
           {% if q.content_after_image %}<div style="margin-top:6px;">{{ q.content_after_image|safe }}</div>{% endif %}
+          {% if q.content_2 %}<div style="margin-top:6px;">{{ q.content_2|safe }}</div>{% endif %}
         </div>
         {% if q.type == 'mc4' %}
           {% for k in ['A','B','C','D'] %}
@@ -1752,6 +1759,7 @@ TPL_ANSWER_DETAIL = BASE_HEAD_GREEN + """
         </div>
         {% endif %}
         {% if q.content_after_image %}<div style="margin-top:6px;">{{ q.content_after_image|safe }}</div>{% endif %}
+        {% if q.content_2 %}<div style="margin-top:6px;">{{ q.content_2|safe }}</div>{% endif %}
       </div>
 
       {% if q.type == 'mc4' %}
@@ -1768,9 +1776,15 @@ TPL_ANSWER_DETAIL = BASE_HEAD_GREEN + """
         <div>Bạn đã trả lời: <strong style="{{ 'color:#1a6635;' if d.is_correct else 'color:#c0392b;' }}">{{ d.user_answer or '(bỏ trống)' }}</strong></div>
       {% endif %}
 
-      <div style="background:#fff8e6;border-left:4px solid #f0ad4e;padding:10px 14px;border-radius:8px;font-size:.9rem;margin-top:10px;">
-        <strong>Lời giải:</strong> {{ q.explanation|safe }}
-      </div>
+       <div class="loi-giai-box" style="background:#fff8e6;border-left:4px solid #f0ad4e;padding:10px 14px;border-radius:8px;font-size:.9rem;margin-top:10px;">
+       <strong>Lời giải:</strong><br>{{ q.explanation|safe }}
+       {% if q.image_explanation %}
+       <div style="text-align:center;margin:10px 0;">
+       <img src="{{ q.image_explanation }}" alt="Hình minh họa lời giải câu {{ q.number }}" style="max-width:100%;border-radius:8px;">
+       </div>
+       {% endif %}
+       {% if q.explanation_2 %}<div style="margin-top:8px;">{{ q.explanation_2|safe }}</div>{% endif %}
+       </div>
     </div>
   {% endfor %}
 
