@@ -1501,7 +1501,7 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
     "points": 1,
     "explanation": "Từ đồ thị hàm số \\(y=f'(x)\\) và giả thiết \\(f(-1)=\\dfrac{13}{4}\\), \\(f(2)=6\\), ta lập được bảng biến thiên của hàm số \\(y=f(x)\\) trên \\([-1;2]\\) như sau:\n\nTa có \\(g'(x) = 3f^2(x).f'(x) - 3f'(x) = 3f'(x)\\left[f^2(x)-1\\right]\\).\n\nXét trên \\([-1;2]\\): \\(g'(x)=0 \\Leftrightarrow f'(x)=0 \\Leftrightarrow x=-1\\) hoặc \\(x=2\\).\n\nBảng biến thiên của hàm số \\(g(x)\\):\n\nSuy ra \\(\\min_{[-1;2]} g(x) = g(-1) = f^3(-1) - 3f(-1) = \\left(\\dfrac{13}{4}\\right)^3 - 3\\cdot\\dfrac{13}{4} = \\dfrac{1573}{64}\\).",
     "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau40-de-vip4-hsa-bbt.PNG",
-    "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau40-de-vip4-hsa-bbt1.PNG"
+    "image_explanation2": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau40-de-vip4-hsa-bbt1.PNG"
   },
   {
     "content": "Trong một buổi tọa đàm nhân ngày 8 tháng 3, có 20 đại biểu nữ và 10 đại biểu nam. Ban tổ chức mời 5 đại biểu phát biểu ý kiến. Xác suất để trong 5 phát biểu mời có một hoặc hai phát biểu là của đại biểu nam bằng bao nhiêu?",
