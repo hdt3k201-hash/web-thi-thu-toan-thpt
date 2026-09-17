@@ -1227,7 +1227,54 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
     "explanation": "Theo khai triển nhị thức Newton, ta có:\n\n\\( \\left(x + \\dfrac{1}{x^2}\\right)^{40} = \\sum_{k=0}^{40} C_{40}^{k}.x^{40-k}.\\left(\\dfrac{1}{x^2}\\right)^{k} = \\sum_{k=0}^{40} C_{40}^{k}.x^{40-3k} \\).\n\nHệ số của \\( x^{31} \\) ứng với \\( 40 - 3k = 31 \\Leftrightarrow k = 3 \\) → số hạng cần tìm là \\( C_{40}^{37}x^{31} \\).",
 },
 
-  
+{
+    "content": "Rút ngẫu nhiên một lá bài từ bộ bài tú lơ khơ 52 lá. Tính xác suất để rút được lá bài có chất rô hoặc lá bài 10.",
+    "options": {
+        "A": "\\( \\dfrac{1}{4} \\)",
+        "B": "\\( \\dfrac{4}{13} \\)",
+        "C": "\\( \\dfrac{9}{26} \\)",
+        "D": "\\( \\dfrac{17}{52} \\)"
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": "Số phần tử không gian mẫu \\( n(\\Omega) = 52 \\).\n\nGọi \\( A \\) là biến cố \"rút được lá bài có chất rô\", \\( n(A) = \\dfrac{52}{4} = 13 \\).\n\nGọi \\( B \\) là biến cố \"rút được lá bài 10\", \\( n(B) = 4 \\).\n\nCó duy nhất một lá bài vừa có chất rô và là lá bài 10, do đó \\( n(A \\cap B) = 1 \\).\n\n\\( P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = \\dfrac{13}{52} + \\dfrac{4}{52} - \\dfrac{1}{52} = \\dfrac{4}{13} \\).",
+},
+{
+    "content": "Trong các hệ thức sau, hệ thức nào không đúng?",
+    "options": {
+        "A": "\\( \\cos^4\\alpha - \\sin^4\\alpha = \\cos^2\\alpha - \\sin^2\\alpha \\)",
+        "B": "\\( \\cos^4\\alpha + \\sin^4\\alpha = 1 \\)",
+        "C": "\\( (\\sin\\alpha + \\cos\\alpha)^2 = 1 + 2\\sin\\alpha\\cos\\alpha \\)",
+        "D": "\\( (\\sin\\alpha - \\cos\\alpha)^2 = 1 - 2\\sin\\alpha\\cos\\alpha \\)"
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": "Sử dụng máy tính bỏ túi thử với \\( \\alpha = \\dfrac{\\pi}{6} \\) ta có \\( \\cos^4\\dfrac{\\pi}{6} + \\sin^4\\dfrac{\\pi}{6} = \\dfrac{5}{8} \\neq 1 \\).\n\nVậy hệ thức không đúng là \\( \\cos^4\\alpha + \\sin^4\\alpha = 1 \\).",
+},
+{
+    "content": "Có bao nhiêu giá trị nguyên dương của tham số \\( m \\) để hàm số \\( y = \\dfrac{8}{3}x^3 + 2\\ln x - mx \\) đồng biến trên \\( (0;1) \\)?",
+    "options": {
+        "A": "5",
+        "B": "6",
+        "C": "10",
+        "D": "Vô số"
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": "<img src=\"https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau14-de4.PNG\" alt=\"TXĐ \\( D = \\mathbb{R}^{+} \\).\n\nTa có \\( y' = 8x^2 + \\dfrac{2}{x} - m \\). Yêu cầu bài toán \\( \\Leftrightarrow y' \\geq 0 \\ \\forall x \\in (0;1) \\)\n\n\\( \\Leftrightarrow 8x^2 + \\dfrac{2}{x} - m \\geq 0 \\ \\forall x \\in (0;1) \\Leftrightarrow h(x) = 8x^2 + \\dfrac{2}{x} \\geq m \\ \\forall x \\in (0;1) \\Leftrightarrow m \\leq \\min_{(0;1)} h(x) \\).\n\nXét hàm \\( h(x) = 8x^2 + \\dfrac{2}{x} \\ \\forall x \\in (0;1) \\). Ta có \\( h'(x) = 16x - \\dfrac{2}{x^2} \\Rightarrow h'(x) = 0 \\Rightarrow x = \\dfrac{1}{2} \\).\n\nLập bảng biến thiên ta được \\( h\\left(\\dfrac{1}{2}\\right) = 6 \\) là giá trị nhỏ nhất trên \\( (0;1) \\).\n\nTừ đó suy ra \\( m \\leq 6 \\), kết hợp với \\( m \\) nguyên dương ta được \\( m \\in \\{1;2;3;4;5;6\\} \\).",
+},
+{
+    "content": "Tìm hệ số của \\( x^9 \\) trong khai triển \\( P(x) = x(1-2x^4)^5 + x^3(1+x^2)^5 \\).",
+    "options": {
+        "A": "5",
+        "B": "10",
+        "C": "50",
+        "D": "45"
+    },
+    "correct": "C",
+    "points": 1,
+    "explanation": "Để tìm hệ số của \\( x^9 \\) trong khai triển \\( P(x) \\), ta cần tìm hệ số của \\( x^8 \\) trong khai triển \\( (1-2x^4)^5 \\) và hệ số của \\( x^6 \\) trong khai triển \\( (1+x^2)^5 \\).\n\nTa có:\n\n\\( (1-2x^4)^5 = 1 - 10x^4 + 40x^8 - 80x^{12} + 80x^{16} - 32x^{20} \\).\n\n\\( (1+x^2)^5 = 1 + 5x^2 + 10x^4 + 10x^6 + 5x^8 + x^{10} \\).\n\nSuy ra \\( P(x) = \\ldots + x.40x^8 + \\ldots + x^3.10x^6 = \\ldots + 50x^9 + \\ldots \\).\n\nVậy hệ số của \\( x^9 \\) trong khai triển \\( P(x) \\) là 50.",
+},  
 
   
 ],
