@@ -1189,6 +1189,45 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
     "explanation": "<img src=\"https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau4-de4.PNG\" alt=\"Hình chóp S.ABCD với H\" style=\"max-width:100%;\"/>\n\nCó \\( \\begin{cases} BC \\perp SA \\\\ BC \\perp AB \\end{cases} \\Rightarrow BC \\perp (SAB) \\), mà \\( AH \\subset (SAB) \\) nên \\( BC \\perp AH \\).\n\nCó \\( \\begin{cases} AH \\perp SB \\\\ AH \\perp BC \\end{cases} \\Rightarrow AH \\perp (SBC) \\).",
 },
 
+  {
+    "content": "Cho hàm số \\( y = f(x) \\) có bảng biến thiên như sau:\n\n| \\(x\\) | \\(-\\infty\\) | | \\(-1\\) | | \\(1\\) | | \\(3\\) | | \\(+\\infty\\) |\n|---|---|---|---|---|---|---|---|---|---|\n| \\(f'(x)\\) | | \\(+\\) | \\(0\\) | \\(-\\) | \\(0\\) | \\(+\\) | \\(0\\) | \\(-\\) | |\n| \\(f(x)\\) | \\(-\\infty\\) | \\(\\nearrow\\) | \\(2\\) | \\(\\searrow\\) | \\(1\\) | \\(\\nearrow\\) | \\(2\\) | \\(\\searrow\\) | \\(-\\infty\\) |\n\nHỏi hàm số đã cho đồng biến trên khoảng nào dưới đây?",
+    "options": {
+        "A": "\\( (-\\infty;1) \\)",
+        "B": "\\( (-3;-2) \\)",
+        "C": "\\( (-1;1) \\)",
+        "D": "\\( (-2;0) \\)"
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": "Từ bảng biến thiên ta có hàm số đồng biến trên \\( (-\\infty;-1) \\) và \\( (1;3) \\).\n\nVì \\( (-3;-2) \\subset (-\\infty;-1) \\) nên hàm số đồng biến trên khoảng \\( (-3;-2) \\).",
+},
+{
+    "content": "Cho 2 số thực dương \\( a, b \\) thỏa mãn \\( a+b = 5ab \\). Khẳng định nào sau đây là khẳng định đúng?",
+    "options": {
+        "A": "\\( \\log\\dfrac{a+b}{5} = (\\log a + \\log b) \\)",
+        "B": "\\( \\log(a+b) = (\\log a + \\log b) \\)",
+        "C": "\\( \\log(a+b) = 5(\\log a + \\log b) \\)",
+        "D": "\\( \\log\\dfrac{a+b}{5} = (\\log a - \\log b) \\)"
+    },
+    "correct": "A",
+    "points": 1,
+    "explanation": "Từ \\( a+b = 5ab \\Rightarrow \\log(a+b) = \\log 5 + \\log a + \\log b \\Rightarrow \\log\\dfrac{a+b}{5} = \\log a + \\log b \\).\n\nSuy ra phương án đúng là \\( \\log\\dfrac{a+b}{5} = (\\log a + \\log b) \\).",
+},
+{
+    "content": "Tìm số hạng chứa \\( x^{31} \\) trong khai triển \\( \\left(x + \\dfrac{1}{x^2}\\right)^{40} \\).",
+    "options": {
+        "A": "\\( -C_{40}^{37}x^{31} \\)",
+        "B": "\\( C_{40}^{37}x^{31} \\)",
+        "C": "\\( C_{40}^{2}x^{31} \\)",
+        "D": "\\( C_{40}^{4}x^{31} \\)"
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": "Theo khai triển nhị thức Newton, ta có:\n\n\\( \\left(x + \\dfrac{1}{x^2}\\right)^{40} = \\sum_{k=0}^{40} C_{40}^{k}.x^{40-k}.\\left(\\dfrac{1}{x^2}\\right)^{k} = \\sum_{k=0}^{40} C_{40}^{k}.x^{40-3k} \\).\n\nHệ số của \\( x^{31} \\) ứng với \\( 40 - 3k = 31 \\Leftrightarrow k = 3 \\) → số hạng cần tìm là \\( C_{40}^{37}x^{31} \\).",
+},
+
+  
+
   
 ],
 
