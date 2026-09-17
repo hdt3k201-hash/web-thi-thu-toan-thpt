@@ -6859,6 +6859,362 @@ b) SAI: \\( u_{2023}\\cdot q=u_{2024}=12\\cdot\\left(\\dfrac{1}{2}\\right)^{2023
 c) ĐÚNG: Dãy số là 12; 6; 3; 1,5; 0,75; ... Các số hạng nguyên dương gồm \\( u_1=12 \\), \\( u_2=6 \\), \\( u_3=3 \\). Chỉ có đúng 3 số hạng nguyên dương.""",
 },
 
+  # ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de8_tf_5",
+    "type": "truefalse",
+    "content": "Cho dãy số \\( (u_n) \\) xác định bởi công thức truy hồi: \\( \\begin{cases} u_1=4 \\\\ u_{n+1}=3u_n-4 \\end{cases} \\) với mọi \\( n\\ge1 \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Dãy số \\( (u_n) \\) là một cấp số cộng", "correct": False},
+        {"text": "Dãy số \\( (v_n) \\) xác định bởi \\( v_n=u_n-2 \\) là một cấp số nhân", "correct": True},
+        {"text": "Số dư khi chia số hạng \\( u_{2025} \\) cho 9 bằng 2", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """a) SAI: Ta có \\( u_1=4, u_2=8, u_3=20 \\). Ta thấy \\( u_2-u_1=4\\ne u_3-u_2=12 \\) nên không phải cấp số cộng.
+
+b) ĐÚNG: Ta xét \\( v_{n+1}=u_{n+1}-2=(3u_n-4)-2=3u_n-6=3(u_n-2)=3v_n \\).
+
+Vì \\( v_{n+1}=3v_n \\) nên \\( (v_n) \\) là cấp số nhân với công bội \\( q=3 \\) và \\( v_1=u_1-2=2 \\).
+
+c) ĐÚNG: Ta có \\( v_n=v_1\\cdot q^{n-1}=2\\cdot3^{n-1} \\).
+
+Suy ra \\( u_n=v_n+2=2\\cdot3^{n-1}+2 \\).
+
+Với \\( n=2025 \\), ta có \\( u_{2025}=2\\cdot3^{2024}+2=2\\cdot9^{1012}+2 \\).
+
+Rõ ràng \\( 2\\cdot3^{2024} \\) chia hết cho 9. Do đó \\( u_{2025} \\) chia 9 dư 2.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de8_tf_6",
+    "type": "truefalse",
+    "content": "Bố của Nam gửi số tiền 100 triệu đồng vào ngân hàng với lãi suất 6%/năm theo hình thức lãi kép (tiền lãi sinh ra được cộng dồn vào gốc để tính lãi cho năm tiếp theo). Xét tính đúng/sai của các mệnh đề:",
+    "statements": [
+        {"text": "Dãy số thể hiện tổng số tiền bố Nam có trong ngân hàng sau mỗi năm tạo thành một cấp số cộng", "correct": False},
+        {"text": "Số tiền thu được sau năm đầu tiên là 106 triệu đồng", "correct": True},
+        {"text": "Số tiền lãi phát sinh riêng trong năm thứ 5 lớn hơn tiền lãi phát sinh riêng trong năm thứ 4", "correct": True},
+        {"text": "Cần gửi ít nhất 12 năm để tổng số tiền nhận được vượt quá 200 triệu đồng", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """Mô hình toán học: Gọi \\( T_n \\) là số tiền thu được sau n năm. \\( T_n=100\\cdot(1+0{,}06)^n=100\\cdot1{,}06^n \\).
+
+a) SAI: Dãy \\( (T_n) \\) là cấp số nhân với công bội \\( q=1{,}06 \\), không phải cấp số cộng.
+
+b) ĐÚNG: \\( T_1=100\\cdot1{,}06=106 \\) (triệu đồng).
+
+c) ĐÚNG: Số tiền lãi năm thứ k là \\( L_k=T_k-T_{k-1}=100\\cdot1{,}06^{k-1}\\cdot0{,}06 \\).
+
+Vì \\( 1{,}06^4>1{,}06^3 \\) nên \\( L_5>L_4 \\). Tiền gốc càng lớn, tiền lãi sinh ra càng cao.
+
+d) ĐÚNG: Giải bất phương trình: \\( 100\\cdot1{,}06^n>200 \\Rightarrow 1{,}06^n>2 \\Rightarrow n>\\log_{1{,}06}2\\approx11{,}89 \\).
+
+Do n nguyên dương nên \\( n\\ge12 \\). Cần ít nhất 12 năm.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de8_sh_7',
+    "type": 'short',
+    "content": """Cho \\( (u_n) \\) là một cấp số cộng thỏa mãn \\( u_4+u_{17}=16 \\). Tính tổng của 20 số hạng đầu tiên của cấp số cộng này.""",
+    "blanks": [
+        {"label": "S20 =", "answers": ["160"]}
+    ],
+    "points": 1,
+    "explanation": """Gọi \\( u_1 \\) là số hạng đầu và \\( d \\) là công sai của cấp số cộng.
+
+Theo công thức số hạng tổng quát: \\( u_n=u_1+(n-1)d \\).
+
+Ta có: \\( u_4+u_{17}=(u_1+3d)+(u_1+16d)=2u_1+19d \\).
+
+Theo giả thiết: \\( 2u_1+19d=16 \\).
+
+Tổng của 20 số hạng đầu tiên được tính bằng công thức:
+
+\\( S_{20}=\\dfrac{20\\cdot[2u_1+(20-1)d]}{2}=10(2u_1+19d)=10\\cdot16=160 \\).
+
+Đáp số: 160.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de8_sh_8',
+    "type": 'short',
+    "content": """Một quả bóng cao su được thả rơi thẳng đứng từ độ cao 10 m so với mặt đất. Mỗi lần chạm đất, quả bóng lại nảy lên một độ cao bằng \\( \\dfrac{3}{4} \\) độ cao của lần rơi ngay trước đó. Tính tổng quãng đường quả bóng di chuyển (cả chạm đất và nảy lên) từ lúc bắt đầu thả cho đến khi dừng hẳn.""",
+    "blanks": [
+        {"label": "Tổng quãng đường =", "answers": ["70"]}
+    ],
+    "points": 1,
+    "explanation": """Quãng đường rơi lần đầu là \\( h=10 \\) m.
+
+Sau khi chạm đất lần 1, bóng nảy lên độ cao \\( 10\\cdot\\dfrac{3}{4} \\) m và rơi xuống lại \\( 10\\cdot\\dfrac{3}{4} \\) m.
+
+Sau lần chạm đất 2, bóng nảy lên \\( 10\\cdot\\left(\\dfrac{3}{4}\\right)^2 \\) m và rơi xuống.
+
+Tổng quãng đường đi được là:
+
+\\( S=10+2\\cdot\\left[10\\cdot\\dfrac{3}{4}+10\\cdot\\left(\\dfrac{3}{4}\\right)^2+\\ldots\\right] \\)
+
+Biểu thức trong ngoặc vuông là tổng của cấp số nhân lùi vô hạn có \\( u_1=\\dfrac{30}{4} \\), \\( q=\\dfrac{3}{4} \\).
+
+\\( \\Rightarrow S_{ngoặc}=\\dfrac{30/4}{1-3/4}=30 \\).
+
+Vậy tổng quãng đường là \\( S=10+2\\cdot30=70 \\) (m).
+
+Đáp số: 70.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de8_dd_9',
+    "type": 'dragdrop',
+    "content": """Hãy kéo thả các công thức thích hợp vào chỗ trống cho phù hợp với định nghĩa của dãy số:
+
+- Số hạng tổng quát của cấp số nhân là: (1)
+
+- Tổng n số hạng đầu tiên của cấp số cộng là: (2)
+
+- Số hạng tổng quát của cấp số cộng là: (3)""",
+    "options_pool": [
+        '$u_1\\dfrac{1-q^n}{1-q}$',
+        '$u_1+(n-1)d$',
+        '$u_1\\cdot q^{n-1}$',
+        '$\\dfrac{n(2u_1+(n-1)d)}{2}$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$u_1\\cdot q^{n-1}$"},
+        {"label": "(2) =", "answer": "$\\dfrac{n(2u_1+(n-1)d)}{2}$"},
+        {"label": "(3) =", "answer": "$u_1+(n-1)d$"},
+    ],
+    "points": 1,
+    "explanation": """Dựa vào lý thuyết nền tảng:
+
+Số hạng tổng quát cấp số nhân là \\( u_n=u_1\\cdot q^{n-1} \\).
+
+Tổng n số hạng đầu của cấp số cộng là \\( S_n=\\dfrac{n(2u_1+(n-1)d)}{2} \\).
+
+Số hạng tổng quát cấp số cộng là \\( u_n=u_1+(n-1)d \\).
+
+(Biểu thức còn lại là tổng n số hạng đầu của cấp số nhân, không được dùng).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de8_dd_10',
+    "type": 'dragdrop',
+    "content": """Một khán đài của sân vận động được thiết kế thành 20 hàng ghế ngồi. Biết rằng hàng thứ nhất có 30 ghế, và kể từ hàng thứ hai trở đi, mỗi hàng có nhiều hơn hàng liền trước nó 3 chiếc ghế. Kéo thả các phương án thích hợp để hoàn thành bài toán:
+
+- Công thức tính số ghế ở hàng thứ n là: (1)
+
+- Số ghế ở hàng thứ 10 là: (2) chiếc ghế.
+
+- Sức chứa của toàn bộ khán đài là: (3) chiếc ghế.""",
+    "options_pool": [
+        '$57$',
+        '$1170$',
+        '$30+(n-1)3$',
+        '$60$',
+        '$1200$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$30+(n-1)3$"},
+        {"label": "(2) =", "answer": "$57$"},
+        {"label": "(3) =", "answer": "$1170$"},
+    ],
+    "points": 1,
+    "explanation": """Số ghế trên mỗi hàng tạo thành một cấp số cộng với số hạng đầu \\( u_1=30 \\) và công sai \\( d=3 \\).
+
+- Công thức số hạng tổng quát (số ghế hàng n): \\( u_n=u_1+(n-1)d=30+(n-1)3 \\).
+
+- Số ghế ở hàng thứ 10: \\( u_{10}=30+(10-1)\\cdot3=30+27=57 \\).
+
+- Tổng sức chứa của khán đài (tổng 20 hàng):
+
+\\( S_{20}=\\dfrac{20\\cdot[2\\cdot30+(20-1)\\cdot3]}{2}=10\\cdot(60+57)=10\\cdot117=1170 \\).""",
+},
+                
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de8_sh_11',
+    "type": 'short',
+    "content": """Cho cấp số cộng \\( (u_n) \\) có số hạng đầu \\( u_1=1 \\) và công sai \\( d=3 \\). Gọi L là giới hạn sau:
+\\( L=\\displaystyle\\lim_{n\\to+\\infty}\\dfrac{1}{\\sqrt{n}}\\left(\\dfrac{1}{\\sqrt{u_1}+\\sqrt{u_2}}+\\dfrac{1}{\\sqrt{u_2}+\\sqrt{u_3}}+\\cdots+\\dfrac{1}{\\sqrt{u_n}+\\sqrt{u_{n+1}}}\\right) \\)
+Biết \\( L=\\dfrac{\\sqrt{a}}{b} \\) với a, b là các số nguyên dương và a không có ước số nào là bình phương của một số nguyên tố. Tính giá trị biểu thức \\( T=a+b \\).""",
+    "blanks": [
+        {"label": "T =", "answers": ["6"]}
+    ],
+    "points": 1,
+    "explanation": """Ta xét số hạng tổng quát của chuỗi trong ngoặc. Nhân liên hợp, ta có:
+
+\\( \\dfrac{1}{\\sqrt{u_k}+\\sqrt{u_{k+1}}}=\\dfrac{\\sqrt{u_{k+1}}-\\sqrt{u_k}}{u_{k+1}-u_k}=\\dfrac{\\sqrt{u_{k+1}}-\\sqrt{u_k}}{d}=\\dfrac{\\sqrt{u_{k+1}}-\\sqrt{u_k}}{3} \\)
+
+Tính tổng trong ngoặc (tổng triệt tiêu):
+
+\\( S_n=\\dfrac{\\sqrt{u_2}-\\sqrt{u_1}}{3}+\\dfrac{\\sqrt{u_3}-\\sqrt{u_2}}{3}+\\cdots+\\dfrac{\\sqrt{u_{n+1}}-\\sqrt{u_n}}{3}=\\dfrac{\\sqrt{u_{n+1}}-\\sqrt{u_1}}{3} \\)
+
+Do \\( (u_n) \\) là cấp số cộng có \\( u_1=1, d=3 \\Rightarrow u_{n+1}=u_1+nd=1+3n \\). Thay vào biểu thức giới hạn L:
+
+\\( L=\\displaystyle\\lim_{n\\to+\\infty}\\dfrac{1}{\\sqrt{n}}\\cdot\\dfrac{\\sqrt{3n+1}-1}{3}=\\lim_{n\\to+\\infty}\\dfrac{\\sqrt{3+\\frac{1}{n}}-\\sqrt{\\frac{1}{n}}}{3}=\\dfrac{\\sqrt{3}}{3} \\)
+
+Suy ra \\( a=3, b=3 \\). Vậy \\( T=a+b=3+3=6 \\).
+
+Đáp số: 6.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de8_tf_12",
+    "type": "truefalse",
+    "content": "Một kỹ sư vay ngân hàng 1 tỷ đồng để mua nhà với lãi suất 0,8%/tháng theo hình thức dư nợ giảm dần. Mỗi tháng, người kỹ sư đều đặn trả ngân hàng một số tiền cố định là m (triệu đồng), bắt đầu trả sau tháng thứ nhất. Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Dãy số thể hiện số tiền nợ còn lại sau mỗi tháng lập thành một cấp số cộng.", "correct": False},
+        {"text": "Sau tháng thứ nhất (ngay sau khi trả tiền), số tiền kỹ sư còn nợ là 1008 − m (triệu đồng).", "correct": True},
+        {"text": "Nếu kỹ sư muốn trả hết nợ trong đúng 5 năm (60 tháng) thì số tiền m cần trả mỗi tháng xấp xỉ 21,05 triệu đồng.", "correct": True},
+        {"text": "Nếu kỹ sư trả mỗi tháng 25 triệu đồng thì sau 4 năm (48 tháng) sẽ trả dứt điểm khoản nợ.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Gọi \\( u_n \\) là dư nợ sau tháng thứ n (đơn vị: triệu đồng). Tiền vay ban đầu \\( u_0=1000 \\).
+
+Ta có công thức truy hồi: \\( u_n=u_{n-1}\\cdot(1+0{,}008)-m=u_{n-1}\\cdot1{,}008-m \\).
+
+Khai triển truy hồi: \\( u_n=1000\\cdot1{,}008^n-m\\cdot\\dfrac{1{,}008^n-1}{0{,}008} \\).
+
+a) SAI: Dãy số \\( (u_n) \\) có dạng \\( A\\cdot q^n+B \\), không phải cấp số cộng cũng không phải cấp số nhân.
+
+b) ĐÚNG: \\( u_1=1000\\cdot1{,}008-m=1008-m \\).
+
+c) ĐÚNG: Trả hết sau 60 tháng \\( \\Rightarrow u_{60}=0 \\Rightarrow 1000\\cdot1{,}008^{60}=m\\cdot\\dfrac{1{,}008^{60}-1}{0{,}008} \\).
+
+\\( \\Rightarrow m=\\dfrac{1000\\cdot1{,}008^{60}\\cdot0{,}008}{1{,}008^{60}-1}\\approx21{,}05 \\) (triệu đồng).
+
+d) SAI: Với \\( m=25 \\), sau 48 tháng số dư nợ là:
+
+\\( u_{48}=1000\\cdot1{,}008^{48}-25\\cdot\\dfrac{1{,}008^{48}-1}{0{,}008}\\approx1465{,}58-1455{,}04=10{,}54>0 \\). Vẫn chưa trả hết.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de8_mc_13',
+    "type": 'mc4',
+    "content": 'Biết rằng phương trình \\( x^3-21x^2+126x-m=0 \\) có ba nghiệm phân biệt và ba nghiệm này lập thành một cấp số nhân. Giá trị thực của tham số m bằng bao nhiêu?',
+    "options": {
+        'A': '\\( m=216 \\)',
+        'B': '\\( m=126 \\)',
+        'C': '\\( m=64 \\)',
+        'D': '\\( m=343 \\)',
+    },
+    "correct": 'A',
+    "points": 1,
+    "explanation": """Gọi ba nghiệm của phương trình là \\( x_1, x_2, x_3 \\). Theo định lý Vi-ét cho phương trình bậc 3:
+
+\\( \\begin{cases} x_1+x_2+x_3=21 \\\\ x_1x_2+x_2x_3+x_3x_1=126 \\\\ x_1x_2x_3=m \\end{cases} \\)
+
+Vì ba nghiệm lập thành một cấp số nhân nên ta có \\( x_1\\cdot x_3=x_2^2 \\).
+
+Thế vào phương trình tích: \\( x_1x_2x_3=(x_1x_3)\\cdot x_2=x_2^2\\cdot x_2=x_2^3=m \\).
+
+Xét biểu thức thứ hai của Vi-ét: \\( x_1x_2+x_2x_3+x_3x_1=126 \\Rightarrow x_2(x_1+x_3)+x_1x_3=126 \\).
+
+Kết hợp với \\( x_1+x_3=21-x_2 \\) và \\( x_1x_3=x_2^2 \\), ta có:
+
+\\( x_2(21-x_2)+x_2^2=126 \\Rightarrow 21x_2-x_2^2+x_2^2=126 \\Rightarrow 21x_2=126 \\Rightarrow x_2=6 \\).
+
+Từ đó, \\( m=x_2^3=6^3=216 \\).
+
+Chọn đáp án A.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de8_dd_14',
+    "type": 'dragdrop',
+    "content": """Cho dãy số \\( (u_n) \\) được xác định bởi điều kiện: \\( u_1=1; u_2=3 \\) và \\( u_{n+2}=4u_{n+1}-3u_n \\) với mọi \\( n\\ge1 \\). Hãy kéo thả các phương án thích hợp để hoàn thành các nhận định sau:
+
+Biến đổi hệ thức truy hồi thành \\( u_{n+2}-u_{n+1}=3(u_{n+1}-u_n) \\). Suy ra dãy phụ \\( v_n=u_{n+1}-u_n \\) là một (1).
+
+Công thức số hạng tổng quát của dãy số ban đầu là \\( u_n= \\) (2).
+
+Số hạng thứ 10 của dãy số này có giá trị bằng (3).""",
+    "options_pool": [
+        '$u_{10}=19683$',
+        '$3^{n-1}$',
+        'Cấp số nhân',
+        'Cấp số cộng',
+        '$3^n$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "Cấp số nhân"},
+        {"label": "(2) =", "answer": "$3^{n-1}$"},
+        {"label": "(3) =", "answer": "$u_{10}=19683$"},
+    ],
+    "points": 1,
+    "explanation": """Từ \\( u_{n+2}=4u_{n+1}-3u_n \\Rightarrow u_{n+2}-u_{n+1}=3(u_{n+1}-u_n) \\).
+
+Đặt \\( v_n=u_{n+1}-u_n \\), ta được \\( v_{n+1}=3v_n \\). Vậy dãy \\( (v_n) \\) là một Cấp số nhân với công bội \\( q=3 \\) và \\( v_1=u_2-u_1=2 \\).
+
+Ta có \\( v_n=2\\cdot3^{n-1} \\). Khi đó:
+
+\\( u_n=u_1+(u_2-u_1)+(u_3-u_2)+\\cdots+(u_n-u_{n-1})=u_1+v_1+v_2+\\cdots+v_{n-1} \\)
+
+\\( u_n=1+2\\cdot\\dfrac{3^{n-1}-1}{3-1}=1+(3^{n-1}-1)=3^{n-1} \\).
+
+Vậy công thức tổng quát là \\( u_n=3^{n-1} \\).
+
+Số hạng thứ 10 là \\( u_{10}=3^9=19683 \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de8_sh_15',
+    "type": 'short',
+    "content": """Một đa giác lồi có các góc nội tiếp lập thành một cấp số cộng với công sai \\( d=5^\\circ \\). Biết góc nhỏ nhất của đa giác này bằng \\( 120^\\circ \\). Hỏi đa giác lồi này có bao nhiêu cạnh?""",
+    "blanks": [
+        {"label": "Số cạnh =", "answers": ["9"]}
+    ],
+    "points": 1,
+    "explanation": """Gọi n là số cạnh của đa giác lồi \\( (n\\ge3, n\\in\\mathbb{N}) \\).
+
+Tổng các góc trong của đa giác lồi n cạnh là \\( S=(n-2)\\cdot180^\\circ \\).
+
+Mặt khác, các góc lập thành cấp số cộng với \\( u_1=120^\\circ \\) và \\( d=5^\\circ \\). Tổng n góc này là:
+
+\\( S_n=\\dfrac{n[2u_1+(n-1)d]}{2}=\\dfrac{n[240+(n-1)5]}{2} \\)
+
+Ta có phương trình: \\( 180(n-2)=\\dfrac{n(235+5n)}{2} \\Rightarrow 360n-720=5n^2+235n \\Rightarrow 5n^2-125n+720=0 \\Rightarrow n^2-25n+144=0 \\).
+
+Giải phương trình ta được \\( n=9 \\) hoặc \\( n=16 \\).
+
+Tuy nhiên, với đa giác lồi, mỗi góc nội tiếp phải nghiêm ngặt nhỏ hơn \\( 180^\\circ \\).
+
++ Nếu \\( n=16 \\), góc lớn nhất \\( u_{16}=120+15\\cdot5=195^\\circ>180^\\circ \\) (không thỏa mãn, đa giác bị lõm).
+
++ Nếu \\( n=9 \\), góc lớn nhất \\( u_9=120+8\\cdot5=160^\\circ<180^\\circ \\) (thỏa mãn).
+
+Đáp số: 9.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de8_tf_16",
+    "type": "truefalse",
+    "content": "Xét dãy số \\( (u_n) \\) với số hạng tổng quát \\( u_n=\\dfrac{4n+3}{2n+1} \\) \\( (n\\in\\mathbb{N}^*) \\). Dưới đây là một số khẳng định về tính chất của dãy số này, hãy xét tính Đúng/Sai:",
+    "statements": [
+        {"text": "Dãy số \\( (u_n) \\) là một dãy số tăng.", "correct": False},
+        {"text": "Dãy \\( (u_n) \\) bị chặn trên bởi 2.", "correct": False},
+        {"text": "Dãy \\( (u_n) \\) có đúng 1 số hạng mang giá trị là một số nguyên.", "correct": False},
+        {"text": "Tồn tại vô số số hạng của dãy có giá trị nhỏ hơn 2,01.", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """Ta viết lại số hạng tổng quát: \\( u_n=\\dfrac{4n+2+1}{2n+1}=2+\\dfrac{1}{2n+1} \\).
+
+a) SAI: Xét \\( u_{n+1}-u_n=\\left(2+\\dfrac{1}{2n+3}\\right)-\\left(2+\\dfrac{1}{2n+1}\\right)=\\dfrac{1}{2n+3}-\\dfrac{1}{2n+1}<0 \\). Đây là dãy giảm.
+
+b) SAI: Vì \\( n\\ge1 \\) nên \\( \\dfrac{1}{2n+1}>0 \\Rightarrow u_n>2 \\). Dãy bị chặn dưới bởi 2 và chặn trên bởi \\( u_1=\\dfrac{7}{3} \\). Không bị chặn trên bởi 2.
+
+c) SAI: Để \\( u_n\\in\\mathbb{Z} \\Rightarrow \\dfrac{1}{2n+1}\\in\\mathbb{Z} \\Rightarrow 2n+1 \\) là ước của 1. Do \\( n\\ge1\\Rightarrow2n+1\\ge3 \\), nên không có số tự nhiên nào thỏa mãn. Dãy có 0 số hạng nguyên.
+
+d) ĐÚNG: \\( u_n<2{,}01\\Rightarrow2+\\dfrac{1}{2n+1}<2{,}01\\Rightarrow\\dfrac{1}{2n+1}<\\dfrac{1}{100}\\Rightarrow2n+1>100\\Rightarrow n>49{,}5 \\). Với mọi \\( n\\ge50 \\) thì bất phương trình đúng (có vô số n).""",
+},
 
 
 
