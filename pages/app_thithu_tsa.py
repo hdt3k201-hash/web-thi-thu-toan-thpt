@@ -6024,6 +6024,151 @@ Tổng kết toàn bộ chuỗi:
 
 Đáp số cần điền: 9.""",
 },
+    # ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de7_dd_20',
+    "type": 'dragdrop',
+    "content": """Kéo và thả các tập hợp tương ứng vào ô trống bên dưới để biểu diễn điều kiện cần và đủ của tham số m sao cho các phương trình lượng giác tương ứng có nghiệm.""",
+    "options_pool": [
+        '$[-5;5]$',
+        '$[-3;1]$',
+        '$[-5;3]$',
+        '$[1;3]$',
+        '$(-\\infty;1]$'
+    ],
+    "blanks": [
+        {"label": "1) Phương trình $3\\sin x+4\\cos x=m$ có nghiệm khi $m\\in$", "answer": "$[-5;5]$"},
+        {"label": "2) Phương trình $\\sin^2 x-2\\sin x+m=0$ có nghiệm khi $m\\in$", "answer": "$[-3;1]$"},
+        {"label": "3) Phương trình $\\cos 2x-4\\cos x+m=0$ có nghiệm khi $m\\in$", "answer": "$[-5;3]$"},
+    ],
+    "points": 1,
+    "explanation": """Ta cô lập tham số m và khảo sát tập giá trị của các hàm số lượng giác.
+
+Phương trình 1: Đã ở đúng dạng chuẩn \\( a\\sin x+b\\cos x=c \\). Phương trình có nghiệm khi và chỉ khi:
+
+\\( a^2+b^2 \\ge c^2 \\Leftrightarrow 3^2+4^2 \\ge m^2 \\Leftrightarrow m^2 \\le 25 \\Leftrightarrow m\\in[-5;5] \\)
+
+Phương trình 2: Đẩy m sang một vế, ta được \\( m=-\\sin^2 x+2\\sin x \\). Đặt \\( t=\\sin x \\) với \\( t\\in[-1;1] \\). Khảo sát hàm số bậc hai \\( f(t)=-t^2+2t \\) trên đoạn này. Đỉnh parabol đạt tại \\( t=1 \\), khi đó \\( f(1)=1 \\). Giá trị tại biên còn lại \\( f(-1)=-1-2=-3 \\). Tập giá trị của f(t) quét từ -3 đến 1, nên \\( m\\in[-3;1] \\).
+
+Phương trình 3: Dùng công thức nhân đôi để đưa hết về cos x:
+
+\\( (2\\cos^2 x-1)-4\\cos x+m=0 \\Leftrightarrow m=-2\\cos^2 x+4\\cos x+1 \\)
+
+Đặt \\( u=\\cos x\\in[-1;1] \\). Tìm khoảng biến thiên của \\( g(u)=-2u^2+4u+1 \\). Đỉnh của đồ thị nằm ở \\( u=1 \\), tại đó \\( g(1)=3 \\). Giá trị tại đầu mút kia là \\( g(-1)=-2-4+1=-5 \\). Vậy hàm số trải dài trên đoạn \\( [-5;3] \\), tức \\( m\\in[-5;3] \\).
+
+Kết quả điền ô trống: Vị trí 1 điền \\( [-5;5] \\); Vị trí 2 điền \\( [-3;1] \\); Vị trí 3 điền \\( [-5;3] \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_21',
+    "type": 'short',
+    "content": """Trong cơ khí, cơ cấu tay quay - con trượt (slider-crank mechanism) được sử dụng để biến đổi chuyển động quay thành chuyển động tịnh tiến (ví dụ: piston trong động cơ đốt trong). Xét một cơ cấu với tay quay OA có bán kính \\( r=5 \\) cm quay đều quanh tâm O. Thanh truyền AB có chiều dài \\( l=13 \\) cm nối từ điểm A trên tay quay đến piston B chuyển động dọc theo trục Ox.
+
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau13-de7.PNG",
+
+Gọi \\( \\alpha \\) là góc quay của tay quay so với trục Ox. Khoảng cách từ tâm O đến piston B được cho bởi công thức \\( x(\\alpha) = r\\cos\\alpha+\\sqrt{l^2-r^2\\sin^2\\alpha} \\). Tính "Hành trình của piston" (được định nghĩa là khoảng cách giữa vị trí xa nhất và gần nhất của piston B so với tâm O).""",
+    "blanks": [
+        {"label": "Hành trình =", "answers": ["10"]}
+    ],
+    "points": 1,
+    "explanation": """Để tìm hành trình của piston, ta cần xác định giá trị lớn nhất và nhỏ nhất của hàm vị trí \\( x(\\alpha) \\). Từ công thức \\( x(\\alpha)=5\\cos\\alpha+\\sqrt{169-25\\sin^2\\alpha} \\), ta phân tích bằng tư duy hình học và lượng giác.
+
+Khi tay quay OA duỗi thẳng nằm ngang cùng chiều với thanh truyền AB (\\( \\alpha=0 \\)), lúc này \\( \\sin\\alpha=0 \\) và \\( \\cos\\alpha=1 \\). Thế vào phương trình, ta được khoảng cách xa nhất:
+
+\\( x_{max} = 5(1)+\\sqrt{169-25(0)} = 5+13 = 18 \\) (cm)
+
+Điều này hoàn toàn hợp lý vì khi đó điểm A nằm trên trục Ox dương, tổng chiều dài lúc này đúng bằng \\( r+l \\).
+
+Ngược lại, khi tay quay OA gập hẳn lại, nằm ngang nhưng ngược chiều với trục Ox (\\( \\alpha=\\pi \\)), ta có \\( \\sin\\alpha=0 \\) và \\( \\cos\\alpha=-1 \\). Thế vào phương trình, ta có khoảng cách gần nhất:
+
+\\( x_{min} = 5(-1)+\\sqrt{169-25(0)} = -5+13 = 8 \\) (cm)
+
+Hành trình của piston là hiệu số giữa vị trí xa nhất và gần nhất:
+
+\\( \\Delta x = x_{max}-x_{min} = 18-8 = 10 \\) (cm)
+
+Thực tế, hành trình này luôn bằng chính xác hai lần bán kính tay quay (2r), không phụ thuộc vào chiều dài thanh truyền l.
+
+Đáp số cần điền: 10.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de7_tf_22",
+    "type": "truefalse",
+    "content": "Cho phương trình chứa tham số m: \\( \\cos(\\pi\\sin x)=m \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Nếu phương trình có nghiệm, thì m bắt buộc phải nằm trong đoạn \\( [-1;1] \\).", "correct": True},
+        {"text": "Khi \\( m=-1 \\), phương trình đã cho có đúng 2 nghiệm phân biệt thuộc đoạn \\( [0;2\\pi] \\).", "correct": True},
+        {"text": "Điều kiện cần và đủ để phương trình vô nghiệm là \\( m>1 \\) hoặc \\( m<-1 \\).", "correct": True},
+        {"text": "Tập các giá trị của tham số m để phương trình có đúng 4 nghiệm phân biệt trên đoạn \\( [0;2\\pi] \\) là \\( (-1;1) \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """Đặt \\( t=\\pi\\sin x \\). Vì \\( \\sin x\\in[-1;1] \\) với mọi \\( x\\in\\mathbb{R} \\), nên góc t sẽ quét trên đoạn \\( [-\\pi;\\pi] \\). Phương trình gốc trở thành \\( \\cos t=m \\) với \\( t\\in[-\\pi;\\pi] \\).
+
+a) ĐÚNG: Giá trị của hàm \\( \\cos t \\) luôn bị chặn trong đoạn \\( [-1;1] \\). Do đó, nếu phương trình có nghiệm thì tất yếu \\( -1\\le m\\le 1 \\).
+
+b) ĐÚNG: Thử với \\( m=-1 \\), phương trình trở thành \\( \\cos t=-1 \\). Trên đoạn \\( t\\in[-\\pi;\\pi] \\), phương trình này sinh ra hai nghiệm \\( t=\\pi \\) và \\( t=-\\pi \\).
+
+Với \\( t=\\pi \\Rightarrow \\pi\\sin x=\\pi \\Rightarrow \\sin x=1 \\Rightarrow x=\\dfrac{\\pi}{2} \\).
+
+Với \\( t=-\\pi \\Rightarrow \\pi\\sin x=-\\pi \\Rightarrow \\sin x=-1 \\Rightarrow x=\\dfrac{3\\pi}{2} \\).
+
+Vậy trên đoạn \\( [0;2\\pi] \\), ta có đúng 2 nghiệm phân biệt.
+
+c) ĐÚNG: Vì tập giá trị của \\( \\cos t \\) trên đoạn \\( [-\\pi;\\pi] \\) quét toàn bộ đoạn \\( [-1;1] \\), nên với mọi \\( m\\in[-1;1] \\), ta luôn tìm được nghiệm. Suy ra phương trình chỉ vô nghiệm khi m nằm ngoài đoạn \\( [-1;1] \\), tức \\( m>1 \\) hoặc \\( m<-1 \\).
+
+d) ĐÚNG: Xét với \\( m\\in(-1;1) \\). Phương trình \\( \\cos t=m \\) trên đoạn \\( [-\\pi;\\pi] \\) cho đúng 2 nghiệm \\( t_1,t_2 \\) đối nhau (\\( t_1\\in(0;\\pi) \\) và \\( t_2\\in(-\\pi;0) \\)).
+
+Với \\( t_1\\in(0;\\pi) \\Rightarrow \\sin x=\\dfrac{t_1}{\\pi}\\in(0;1) \\). Trên đoạn \\( [0;2\\pi] \\), phương trình \\( \\sin x=a\\in(0;1) \\) cho đúng 2 nghiệm.
+
+Với \\( t_2\\in(-\\pi;0) \\Rightarrow \\sin x=\\dfrac{t_2}{\\pi}\\in(-1;0) \\). Trên đoạn \\( [0;2\\pi] \\), phương trình \\( \\sin x=b\\in(-1;0) \\) cũng cho đúng 2 nghiệm.
+
+Tổng số nghiệm thu được là 4 nghiệm phân biệt. Nếu \\( m=1 \\), ta có \\( \\cos t=1\\Rightarrow t=0\\Rightarrow\\sin x=0\\Rightarrow x\\in\\{0,\\pi,2\\pi\\} \\) (chỉ 3 nghiệm). Vậy điều kiện để có đúng 4 nghiệm chính xác là \\( m\\in(-1;1) \\).""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de7_mc_23',
+    "type": 'mc4',
+    "content": 'Nghiệm của phương trình \\( \\sin^3 x+\\cos^3 x = 1-\\dfrac{1}{2}\\sin 2x \\) được biểu diễn bởi bao nhiêu điểm trên đường tròn lượng giác?',
+    "options": {
+        'A': '1',
+        'B': '2',
+        'C': '3',
+        'D': '4',
+    },
+    "correct": 'B',
+    "points": 1,
+    "explanation": """Vế trái là hằng đẳng thức tổng hai lập phương. Khai triển:
+
+\\( \\sin^3 x+\\cos^3 x = (\\sin x+\\cos x)(\\sin^2 x-\\sin x\\cos x+\\cos^2 x) \\)
+
+Lợi dụng \\( \\sin^2 x+\\cos^2 x=1 \\), vế trái được thu gọn thành:
+
+\\( (\\sin x+\\cos x)(1-\\sin x\\cos x) \\)
+
+Về vế phải, chú ý \\( \\dfrac{1}{2}\\sin 2x=\\sin x\\cos x \\). Do đó, phương trình được viết lại thành:
+
+\\( (\\sin x+\\cos x)(1-\\sin x\\cos x) = 1-\\sin x\\cos x \\)
+
+Chuyển vế và rút nhân tử chung (không triệt tiêu vội để tránh mất nghiệm):
+
+\\( (1-\\sin x\\cos x)(\\sin x+\\cos x-1) = 0 \\)
+
+Xét hai trường hợp:
+
+- Trường hợp 1: \\( 1-\\sin x\\cos x=0 \\Leftrightarrow \\sin 2x=2 \\) (Vô nghiệm vì sin không thể vượt quá 1).
+
+- Trường hợp 2: \\( \\sin x+\\cos x=1 \\). Dùng công thức quy tụ \\( \\sqrt{2}\\sin\\left(x+\\dfrac{\\pi}{4}\\right)=1 \\Leftrightarrow \\sin\\left(x+\\dfrac{\\pi}{4}\\right)=\\dfrac{1}{\\sqrt{2}} \\).
+
+Giải ra: \\( x+\\dfrac{\\pi}{4}=\\dfrac{\\pi}{4}+k2\\pi \\Rightarrow x=k2\\pi \\), hoặc \\( x+\\dfrac{\\pi}{4}=\\dfrac{3\\pi}{4}+k2\\pi \\Rightarrow x=\\dfrac{\\pi}{2}+k2\\pi \\).
+
+Biểu diễn hai họ nghiệm này lên đường tròn lượng giác, ta thu được đúng 2 điểm phân biệt (một điểm ở 0° và một điểm ở 90°).
+
+Chọn đáp án B.""",
+},
                 
    
          ], # Đóng danh sách questions của Đề 7
@@ -6336,7 +6481,7 @@ body { background-color:#fdf5f5; font-family:"Segoe UI",Roboto,Arial,sans-serif;
 .exam-card:hover { transform: translateY(-4px); box-shadow:0 10px 24px rgba(200,16,46,.18); }
 .question-card { border-radius:14px; border-left:5px solid var(--tsa-red); }
 .question-content { white-space: pre-line; font-size:1.02rem; }
-.question-image { max-width:100%; border-radius:10px; border:1px solid #f1c3c8; margin:12px 0; }
+.question-image { max-width:100%; border-radius:10px; border:1px solid #f1c3c8; margin:12px auto; display:block; }
 .option-row { padding:8px 12px; border-radius:8px; margin-bottom:6px; }
 .option-row:hover { background-color: var(--tsa-red-light); }
 .dragdrop-pool { display:flex; flex-wrap:wrap; gap:8px; padding:10px; background:#fff5f5; border-radius:10px; }
