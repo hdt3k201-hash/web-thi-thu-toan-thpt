@@ -1468,6 +1468,55 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
     "points": 1,
     "explanation": "Để di chuyển từ điểm A đến điểm B cần phải đi ít nhất 13 bước. Vì vậy, để đi từ A đến B bằng 13 bước, ta phải đi 7 bước trên các cạnh nằm ngang và 6 bước trên các cạnh đứng, tức là chỉ được di chuyển lên trên hoặc sang phải.\n\nKí hiệu các bước đi lên là L, mỗi bước sang phải là P. Khi đó, mỗi đường đi từ A đến B là một chuỗi 13 kí tự gồm 6 chữ L và 7 chữ P.\n\nVậy số cách di chuyển là \\( C_{13}^6 = C_{13}^7 = 1716 \\).",
 },
+
+  {
+    "content": "Tổng các giá trị của tham số \\(m\\) để đường thẳng \\(y = -x + 2\\) cắt đồ thị hàm số \\(y = \\dfrac{x^3+m}{x-1}\\) tại hai điểm phân biệt bằng bao nhiêu? Kết quả làm tròn đến chữ số thập phân thứ hai.",
+    "answers": ["-7.15"],
+    "points": 1,
+    "explanation": "Phương trình hoành độ giao điểm: \\(\\dfrac{x^3+m}{x-1} = -x+2\\ (x\\ne 1)\\)\n\n\\(\\Leftrightarrow -x^3 - x^2 + 3x - 2 = m\\ (x \\ne 1)\\) (*)\n\nĐể đồ thị cắt đường thẳng tại hai điểm phân biệt thì (*) có hai nghiệm phân biệt khác 1.\n\nXét \\(f(x) = -x^3 - x^2 + 3x - 2\\) trên \\((-\\infty;1)\\cup(1;+\\infty)\\).\n\n\\(f'(x) = -3x^2 - 2x + 3\\), \\(f'(x)=0 \\Leftrightarrow x_1 = \\dfrac{-1-\\sqrt{10}}{3},\\ x_2 = \\dfrac{-1+\\sqrt{10}}{3}\\)\n\nBảng biến thiên của hàm số \\(f(x)\\):\n\nTừ bảng biến thiên ta có phương trình (*) có hai nghiệm phân biệt khác 1 khi:\n\n\\(m = f(x_1) = \\dfrac{-83-20\\sqrt{10}}{27}\\), \\(m = f(x_2) = \\dfrac{-83+20\\sqrt{10}}{27}\\), \\(m = f(1) = -1\\)\n\nTổng các giá trị: \\(\\sum m = -\\dfrac{193}{27} \\approx -7{,}15\\).\n\nVậy tổng các giá trị của tham số \\(m\\) thỏa mãn là \\(-7{,}15\\).",
+    "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau36-de-vip4-hsa-bbt.PNG"
+  },
+  {
+    "content": "Từ các chữ số \\(1;2;3;4;5;6;7;8;9\\) có thể lập được bao nhiêu số tự nhiên mà mỗi số có 6 chữ số khác nhau và tổng các chữ số hàng chục, hàng trăm, hàng nghìn bằng 8?",
+    "answers": ["1440"],
+    "points": 1,
+    "explanation": "Gọi số cần tìm có dạng \\(\\overline{a_1a_2a_3a_4a_5a_6}\\) với \\(a_3+a_4+a_5=8\\).\n\nTa có: \\(8 = 1+2+5 = 1+3+4\\) (*). Vậy có 2 cách chọn nhóm 3 số để các số hàng chục, hàng trăm, hàng nghìn có tổng bằng 8.\n\nBước 1: Chọn ra 3 trong 8 số thỏa mãn \\(a_3+a_4+a_5=8\\). Theo (*) có 2 cách.\n\nBước 2: Với mỗi bộ ba số chọn ở bước 1 có \\(3! = 6\\) cách lập số \\(\\overline{a_3a_4a_5}\\).\n\nBước 3: Chọn ra số \\(\\overline{a_1a_2a_6}\\) theo thứ tự trên trong 6 chữ số còn lại. Số cách chọn: \\(A_6^3 = 120\\).\n\nTheo quy tắc nhân, số cách chọn theo yêu cầu là: \\(2 \\times 6 \\times 120 = 1440\\) số."
+  },
+  {
+    "content": "Một bình đựng 5 viên bi kích thước và chất liệu giống nhau, chỉ khác nhau về màu sắc. Trong đó có 3 viên bi xanh và 2 viên bi đỏ. Lấy ngẫu nhiên từ bình ra một viên bi ta được viên bi màu xanh, rồi lại lấy ngẫu nhiên ra một viên bi nữa. Xác suất để lấy được viên bi đỏ ở lần thứ hai bằng bao nhiêu?",
+    "answers": ["0.5"],
+    "points": 1,
+    "explanation": "Gọi biến cố \\(A\\): \"lấy viên bi thứ nhất là màu xanh\"; \\(B\\): \"lấy viên bi thứ hai là màu đỏ\".\n\nTa có: \\(P(A) = \\dfrac{3.4}{5.4} = \\dfrac{3}{5}\\); \\(P(A \\cap B) = \\dfrac{3.2}{5.4} = \\dfrac{3}{10}\\).\n\nDo đó: \\(P(B \\mid A) = \\dfrac{P(A\\cap B)}{P(A)} = \\dfrac{\\frac{3}{10}}{\\frac{3}{5}} = \\dfrac{1}{2} = 0{,}5\\)."
+  },
+  {
+    "content": "Cực đại của hàm số \\(y = \\sqrt{8+2x-x^2}\\) bằng bao nhiêu?",
+    "answers": ["3"],
+    "points": 1,
+    "explanation": "TXĐ: \\(D = [-2;4]\\).\n\nTa có: \\(y' = \\dfrac{1-x}{\\sqrt{8+2x-x^2}}\\); \\(y' = 0 \\Leftrightarrow x = 1 \\Rightarrow y(1) = 3\\).\n\nQua \\(x=1\\), \\(y'\\) đổi dấu từ dương sang âm nên cực đại của hàm số là 3."
+  },
+  {
+    "content": "Cho hàm số \\(y=f(x)\\). Hàm số \\(y=f'(x)\\) liên tục trên \\(\\mathbb{R}\\) và có đồ thị như hình vẽ. Biết \\(f(-1)=\\dfrac{13}{4}\\), \\(f(2)=6\\). Giá trị nhỏ nhất của hàm số \\(g(x)=f^3(x)-3f(x)\\) trên đoạn \\([-1;2]\\) bằng bao nhiêu?",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau40-de-vip4-hsa.PNG",
+    "answers": ["1573/64"],
+    "points": 1,
+    "explanation": "Từ đồ thị hàm số \\(y=f'(x)\\) và giả thiết \\(f(-1)=\\dfrac{13}{4}\\), \\(f(2)=6\\), ta lập được bảng biến thiên của hàm số \\(y=f(x)\\) trên \\([-1;2]\\) như sau:\n\nTa có \\(g'(x) = 3f^2(x).f'(x) - 3f'(x) = 3f'(x)\\left[f^2(x)-1\\right]\\).\n\nXét trên \\([-1;2]\\): \\(g'(x)=0 \\Leftrightarrow f'(x)=0 \\Leftrightarrow x=-1\\) hoặc \\(x=2\\).\n\nBảng biến thiên của hàm số \\(g(x)\\):\n\nSuy ra \\(\\min_{[-1;2]} g(x) = g(-1) = f^3(-1) - 3f(-1) = \\left(\\dfrac{13}{4}\\right)^3 - 3\\cdot\\dfrac{13}{4} = \\dfrac{1573}{64}\\).",
+    "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau40-de-vip4-hsa-bbt.PNG",
+    "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau40-de-vip4-hsa-bbt1.PNG"
+  },
+  {
+    "content": "Trong một buổi tọa đàm nhân ngày 8 tháng 3, có 20 đại biểu nữ và 10 đại biểu nam. Ban tổ chức mời 5 đại biểu phát biểu ý kiến. Xác suất để trong 5 phát biểu mời có một hoặc hai phát biểu là của đại biểu nam bằng bao nhiêu?",
+    "answers": ["0.7"],
+    "points": 1,
+    "explanation": "Gọi \\(A\\): \"Trong 5 phát biểu mời có đúng một phát biểu là của đại biểu nam\".\n\nGọi \\(B\\): \"Trong 5 phát biểu mời có đúng hai phát biểu là của đại biểu nam\".\n\nSuy ra \\(A \\cup B\\) là \"Trong 5 phát biểu mời có một hoặc hai phát biểu là của đại biểu nam\".\n\nVì \\(A\\) và \\(B\\) là hai biến cố xung khắc nên \\(P(A\\cup B) = P(A) + P(B)\\).\n\nTa có \\(P(A) = \\dfrac{C_{10}^1 \\cdot C_{20}^4}{C_{30}^5}\\), \\(P(B) = \\dfrac{C_{10}^2 \\cdot C_{20}^3}{C_{30}^5}\\).\n\n\\(\\Rightarrow P(A\\cup B) = P(A) + P(B) \\approx 0{,}7\\)."
+  },
+  {
+    "content": "Cho hàm số \\(y=f(x)\\) liên tục trên \\(\\mathbb{R}\\) và có đồ thị như hình vẽ. Có tất cả bao nhiêu giá trị nguyên của tham số \\(m\\) để phương trình \\(f(\\sin x) = m\\) có nghiệm thuộc khoảng \\((0;\\pi)\\)?",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau42-de-vip4-hsa.PNG",
+    "answers": ["2"],
+    "points": 1,
+    "explanation": "Đặt \\(t = \\sin x\\), \\(\\forall x \\in (0;\\pi) \\Rightarrow t \\in (0;1]\\).\n\nKhi đó, phương trình trở thành \\(f(t) = m\\). Dựa vào đồ thị hàm số ta suy ra \\(m \\in [-1;1)\\).\n\nMà \\(m \\in \\mathbb{Z}\\) nên \\(m \\in \\{-1;0\\}\\).\n\nVậy có 2 giá trị nguyên của tham số \\(m\\) thỏa mãn."
+  }
+
   
     ],
     },
