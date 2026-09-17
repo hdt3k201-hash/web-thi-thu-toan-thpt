@@ -1329,6 +1329,92 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
     "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau20-de4.PNG",
     "explanation_2": "Xét tam giác \\( MND \\), ta có \\( MN = \\dfrac{AB}{2} = a \\); \\( DM = DN = \\dfrac{AD\\sqrt{3}}{2} = a\\sqrt{3} \\).\nDo đó tam giác \\( MND \\) cân tại \\( D \\).\nGọi \\( H \\) là trung điểm \\( MN \\) suy ra \\( DH \\perp MN \\).\nDiện tích tam giác \\( S_{\\triangle MND} = \\dfrac{1}{2}MN.DH = \\dfrac{1}{2}MN.\\sqrt{DM^2 - MH^2} = \\dfrac{a^2\\sqrt{11}}{4} \\).",
 }, 
+
+  {
+    "content": "Một đề thi trắc nghiệm có 5 câu hỏi, mỗi câu hỏi có 5 đáp án trong đó chỉ có duy nhất 1 đáp án đúng. Xác suất để thí sinh làm sai ít nhất 4 câu hỏi là",
+    "options": {
+        "A": "\\( \\dfrac{4}{125} \\)",
+        "B": "\\( \\dfrac{2304}{3125} \\)",
+        "C": "\\( \\dfrac{576}{3125} \\)",
+        "D": "\\( \\dfrac{9}{125} \\)"
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": "Không gian mẫu là số cách chọn ngẫu nhiên đáp án cho 5 câu hỏi.\n+ Chọn câu 1 có: 5 cách.\n...\n+ Chọn câu 5 có: 5 cách.\nVậy số phần tử của không gian mẫu là \\( n(\\Omega) = 5^5 \\).\nGọi biến cố \\( A \\): \"Làm sai ít nhất 4 câu hỏi trong 5 câu\".\nĐể biến cố \\( A \\) xảy ra có 2 trường hợp:\nTH1: Chọn sai 4 câu hỏi:\n+ Chọn sai 1 câu có 4 cách \\( \\Rightarrow \\) chọn sai 4 câu có \\( 4^4 \\) cách.\n+ Chọn vị trí câu duy nhất làm đúng có 5 cách.\nTH2: Chọn sai 5 câu hỏi:\n+ Chọn sai 1 câu có 4 cách \\( \\Rightarrow \\) chọn sai 5 câu có \\( 4^5 \\) cách.\nVậy số kết quả thuận lợi cho \\( A \\) là \\( n(A) = 4^4.5 + 4^5 \\).\nXác suất cần tìm là \\( P(A) = \\dfrac{n(A)}{n(\\Omega)} = \\dfrac{4^4.5 + 4^5}{5^5} = \\dfrac{2304}{3125} \\).",
+},
+{
+    "content": "Nghiệm phương trình \\( 2\\sin x \\sin 2x = 3 - \\sqrt{3}\\sin x \\) có dạng \\( x = \\dfrac{a\\pi}{b} + k2\\pi, k \\in \\mathbb{Z}, \\dfrac{a}{b} \\) là phân số tối giản. Khi đó mệnh đề đúng là?",
+    "options": {
+        "A": "\\( a + b = 4 \\)",
+        "B": "\\( a + 2b = 3 \\)",
+        "C": "\\( 3a - b = 1 \\)",
+        "D": "\\( 2b - a = 6 \\)"
+    },
+    "correct": "A",
+    "points": 1,
+    "explanation": "\\( 2\\sin x \\sin 2x = 3 - \\sqrt{3}\\sin x \\Leftrightarrow \\cos x - \\cos 3x + \\sqrt{3}\\sin x = 3 \\)\n\\( \\Leftrightarrow \\left(\\dfrac{1}{2}\\cos x + \\dfrac{\\sqrt{3}}{2}\\sin x\\right) - \\dfrac{1}{2}\\cos 3x = \\dfrac{3}{2} \\)\n\\( \\Leftrightarrow \\begin{cases} \\dfrac{1}{2}\\cos x + \\dfrac{\\sqrt{3}}{2}\\sin x = 1 \\\\ \\cos 3x = -1 \\end{cases} \\Leftrightarrow \\begin{cases} \\cos\\left(x - \\dfrac{\\pi}{3}\\right) = 1 \\\\ 3x = \\pi + k2\\pi \\end{cases} \\)\n\\( \\Leftrightarrow \\begin{cases} x = \\dfrac{\\pi}{3} + k2\\pi \\\\ x = \\dfrac{\\pi}{3} + \\dfrac{k2\\pi}{3} \\end{cases} \\Leftrightarrow x = \\dfrac{\\pi}{3} + k2\\pi \\)\nVậy \\( a = 1, b = 3 \\Rightarrow a + b = 4 \\).",
+},
+{
+    "content": "Cho 40 tấm thẻ được đánh số từ 1 đến 40, chọn ngẫu nhiên 3 tấm thẻ. Tính xác suất để chọn được 3 tấm thẻ có tổng các số ghi trên các thẻ là một số chẵn.",
+    "options": {
+        "A": "\\( \\dfrac{1}{5} \\)",
+        "B": "\\( \\dfrac{1}{3} \\)",
+        "C": "\\( \\dfrac{1}{4} \\)",
+        "D": "\\( \\dfrac{1}{2} \\)"
+    },
+    "correct": "D",
+    "points": 1,
+    "explanation": "Số phần tử của không gian mẫu là: \\( n(\\Omega) = C_{40}^3 = 9880 \\)\nGọi \\( A \\) là biến cố để chọn được 3 tấm thẻ có tổng các số ghi trên các thẻ là một số chẵn.\nTH1: 2 thẻ ghi số lẻ; 1 thẻ ghi số chẵn: \\( C_{20}^2.C_{20}^1 = 3800 \\)\nTH2: 3 thẻ ghi số chẵn: \\( C_{20}^3 = 1140 \\)\nVậy xác suất để chọn được 3 tấm thẻ có tổng các số ghi trên các thẻ là một số chẵn là: \\( \\dfrac{3800 + 1140}{9880} = \\dfrac{1}{2} \\).",
+},
+{
+    "content": "Cho góc \\( x \\ (0^\\circ \\leq x \\leq 180^\\circ) \\) thỏa mãn \\( \\cos x = \\dfrac{1}{4} \\). Giá trị của \\( P = \\dfrac{\\tan^2 x - \\tan x + 3\\cot x}{\\dfrac{1}{2\\cos x} - 5\\tan x + 30\\cot^2 x} \\) là",
+    "options": {
+        "A": "\\( \\dfrac{1}{\\sqrt{5}} \\)",
+        "B": "\\( \\sqrt{\\dfrac{3}{5}} \\)",
+        "C": "\\( \\dfrac{1}{\\sqrt{15}} \\)",
+        "D": "\\( -\\sqrt{\\dfrac{3}{5}} \\)"
+    },
+    "correct": "D",
+    "points": 1,
+    "explanation": "Ta có: \\( \\cos x = \\dfrac{1}{4} \\)\n\\( \\Rightarrow \\sin x = \\sqrt{1-\\cos^2 x} = \\sqrt{1-\\left(\\dfrac{1}{4}\\right)^2} = \\dfrac{\\sqrt{15}}{4} \\);\n\\( \\tan x = \\dfrac{\\sin x}{\\cos x} = \\dfrac{\\frac{\\sqrt{15}}{4}}{\\frac{1}{4}} = \\sqrt{15} \\);\n\\( \\cot x = \\dfrac{1}{\\tan x} = \\dfrac{1}{\\sqrt{15}} \\).\n\\( \\Rightarrow P = \\dfrac{15 - \\sqrt{15} + \\dfrac{3}{\\sqrt{15}}}{\\dfrac{1}{2.\\frac{1}{4}} - 5\\sqrt{15} + 30.\\dfrac{1}{15}} = -\\sqrt{\\dfrac{3}{5}} \\).",
+},
+{
+    "content": "Một cơ sở khoan giếng đưa ra định mức giá như sau: Giá từ mét khoan đầu tiên là 100000 đồng và kể từ mét khoan thứ hai, giá của mỗi mét sau tăng thêm 30000 đồng so với giá của mét khoan ngay trước đó. Một người muốn kí hợp đồng với cơ sở khoan giếng này để khoan một giếng sâu 20 mét lấy nước dùng cho sinh hoạt của gia đình. Hỏi sau khi hoàn thành việc khoan giếng, gia đình đó phải thanh toán cho cơ sở khoan giếng số tiền bằng bao nhiêu?",
+    "options": {
+        "A": "7700000 đồng.",
+        "B": "15400000 đồng",
+        "C": "8000000 đồng.",
+        "D": "7400000 đồng"
+    },
+    "correct": "A",
+    "points": 1,
+    "explanation": "Gọi \\( u_n \\) là giá của mét khoan thứ \\( n \\), trong đó \\( 1 \\leq n \\leq 20 \\).\nTheo giả thiết, ta có \\( u_1 = 100.000 \\) và \\( u_{n+1} - u_n = 30.000 \\) với \\( 1 \\leq n \\leq 19 \\).\nTa có \\( (u_n) \\) là cấp số cộng có số hạng đầu \\( u_1 = 100000 \\) và công sai \\( d = 30000 \\).\nTổng số tiền gia đình thanh toán cho cơ sở khoan giếng chính là tổng các số hạng của cấp số cộng đó.\nSuy ra số tiền mà gia đình phải thanh toán cho cơ sở khoan giếng là\n\\( S_{20} = u_1 + u_2 + \\ldots + u_{20} = \\dfrac{20[2u_1 + (20-1)d]}{2} = 7700000 \\) (đồng).",
+},
+{
+    "content": "Cho hình thang \\( ABCD \\) vuông tại \\( A \\) và \\( D \\) có \\( AB = 6a, AD = CD = \\dfrac{1}{2}AB \\), \\( M \\) thuộc cạnh \\( AD \\) sao cho \\( AM = \\dfrac{1}{3}AD \\). Tính \\( T = (\\overrightarrow{MB} + 2\\overrightarrow{MC}).(\\overrightarrow{CD} - \\overrightarrow{BD}) \\).",
+    "options": {
+        "A": "\\( T = 27a \\)",
+        "B": "\\( T = \\dfrac{1}{27}a \\)",
+        "C": "\\( T = 27a^2 \\)",
+        "D": "\\( T = \\dfrac{1}{27}a^2 \\)"
+    },
+    "correct": "C",
+    "points": 1,
+    "explanation": "Vì \\( ABCD \\) là hình thang vuông tại \\( A \\) và \\( D \\)\n\\( \\Rightarrow AB \\perp AD \\Rightarrow \\overrightarrow{AB}.\\overrightarrow{AD} = 0 \\)\nTa có: \\( T = (\\overrightarrow{MB} + 2\\overrightarrow{MC})(\\overrightarrow{CD} - \\overrightarrow{BD}) \\)\n\\( = \\left[(\\overrightarrow{MA} + \\overrightarrow{AB}) + 2(\\overrightarrow{MD} + \\overrightarrow{DC})\\right].(\\overrightarrow{CD} + \\overrightarrow{DB}) \\)\n\\( = (\\overrightarrow{MA} + \\overrightarrow{AB} + 2\\overrightarrow{MD} + 2\\overrightarrow{DC}).\\overrightarrow{CB} \\)\n\\( = \\left(\\dfrac{-1}{3}\\overrightarrow{AD} + \\overrightarrow{AB} + 2.\\dfrac{2}{3}\\overrightarrow{AD} + 2.\\dfrac{1}{2}\\overrightarrow{AB}\\right).(\\overrightarrow{AB} - \\overrightarrow{AC}) \\)\n\\( = \\left(\\dfrac{-1}{3}\\overrightarrow{AD} + \\overrightarrow{AB} + \\dfrac{4}{3}\\overrightarrow{AD} + \\overrightarrow{AB}\\right)\\left[\\overrightarrow{AB} - (\\overrightarrow{AD} + \\overrightarrow{DC})\\right] \\)\n\\( = (2\\overrightarrow{AB} + \\overrightarrow{AD}).\\left(\\overrightarrow{AB} - \\overrightarrow{AD} - \\dfrac{1}{2}\\overrightarrow{AB}\\right) \\)\n\\( = (2\\overrightarrow{AB} + \\overrightarrow{AD}).\\left(\\dfrac{1}{2}\\overrightarrow{AB} - \\overrightarrow{AD}\\right) \\)\n\\( = AB^2 - 2\\overrightarrow{AB}.\\overrightarrow{AD} + \\overrightarrow{AD}.\\dfrac{1}{2}\\overrightarrow{AB} - AD^2 \\)\n\\( = AB^2 - AD^2 = AB^2 - \\left(\\dfrac{1}{2}AB\\right)^2 = \\dfrac{3}{4}AB^2 = \\dfrac{3}{4}(6a)^2 = 27a^2 \\).",
+    "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau30-de4.PNG",
+},
+{
+    "content": "Cho ba số thực \\( x, y, z \\geq 0 \\) thỏa mãn \\( 2^x + 4^y + 8^z = 4 \\). Giá trị nhỏ nhất của biểu thức \\( P = \\dfrac{x}{6} + \\dfrac{y}{3} + \\dfrac{z}{2} \\) nằm trong khoảng nào trong các khoảng sau đây?",
+    "options": {
+        "A": "\\( \\left(0; \\dfrac{1}{3}\\right) \\)",
+        "B": "\\( \\left(\\dfrac{2}{3}; 1\\right) \\)",
+        "C": "\\( \\left(\\dfrac{3}{4}; \\dfrac{3}{2}\\right) \\)",
+        "D": "\\( \\left(2; \\dfrac{12}{5}\\right) \\)"
+    },
+    "correct": "A",
+    "points": 1,
+    "explanation": "Với \\( a, b, c \\geq 1 \\Rightarrow (a-1)(b-1) \\geq 0 \\Leftrightarrow ab \\geq a + b - 1 \\)\n\\( \\Leftrightarrow abc \\geq (a+b-1)c = ac + bc - c \\geq (a+c-1) + (b+c-1) - c = a + b + c - 2 \\)\nVì \\( x, y, z \\geq 0 \\) nên \\( 2^x, 4^y, 8^z \\geq 1 \\)\nÁp dụng bất đẳng thức trên ta có \\( 2^x.4^y.8^z \\geq 2^x + 4^y + 8^z - 2 = 2 \\)\n\\( \\Leftrightarrow 2^{x+2y+3z} \\geq 2 \\Leftrightarrow x + 2y + 3z \\geq 1 \\)\n\\( \\Rightarrow P = \\dfrac{x+2y+3z}{6} \\geq \\dfrac{1}{6} \\).",
+},
   
 ],
 
