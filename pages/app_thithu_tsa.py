@@ -7216,9 +7216,419 @@ c) SAI: Để \\( u_n\\in\\mathbb{Z} \\Rightarrow \\dfrac{1}{2n+1}\\in\\mathbb{Z
 d) ĐÚNG: \\( u_n<2{,}01\\Rightarrow2+\\dfrac{1}{2n+1}<2{,}01\\Rightarrow\\dfrac{1}{2n+1}<\\dfrac{1}{100}\\Rightarrow2n+1>100\\Rightarrow n>49{,}5 \\). Với mọi \\( n\\ge50 \\) thì bất phương trình đúng (có vô số n).""",
 },
 
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de8_mc_17',
+    "type": 'mc4',
+    "content": """Cho tam giác đều \\( T_1 \\) có độ dài cạnh bằng \\( a \\). Nối trung điểm các cạnh của \\( T_1 \\) ta thu được tam giác đều \\( T_2 \\). Tiếp tục lặp lại quá trình này, nối trung điểm các cạnh của \\( T_n \\) để tạo thành tam giác đều \\( T_{n+1} \\). Gọi \\( P_n \\) là chu vi của tam giác \\( T_n \\). Đặt \\( S = P_1+P_2+\\cdots+P_n+\\ldots \\) Tính \\( S \\) theo \\( a \\).""",
+    "options": {
+        'A': '$S = 6a$',
+        'B': '$S = 3a$',
+        'C': '$S = 4a$',
+        'D': '$S = 2a$',
+    },
+    "correct": 'A',
+    "points": 1,
+    "explanation": """Chu vi của tam giác đều \\( T_1 \\) là \\( P_1=3a \\).
 
+Tam giác \\( T_2 \\) được tạo bởi các đường trung bình của \\( T_1 \\), nên mỗi cạnh của \\( T_2 \\) bằng \\( \\dfrac{1}{2} \\) cạnh của \\( T_1 \\). Do đó, chu vi \\( P_2=\\dfrac{1}{2}P_1 \\).
 
+Tổng quát, dãy chu vi \\( (P_n) \\) là một cấp số nhân lùi vô hạn có số hạng đầu \\( P_1=3a \\) và công bội \\( q=\\dfrac{1}{2} \\).
 
+Tổng vô hạn của cấp số nhân này là:
+
+\\( S=\\dfrac{P_1}{1-q}=\\dfrac{3a}{1-\\frac{1}{2}}=6a \\)
+
+Chọn đáp án A.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de8_sh_18',
+    "type": 'short',
+    "content": """Có bao nhiêu cấp số cộng gồm đúng 4 số nguyên dương phân biệt, biết rằng số hạng lớn nhất của cấp số cộng đó bằng 20?""",
+    "blanks": [
+        {"label": "Số cấp số cộng =", "answers": ["6"]}
+    ],
+    "points": 1,
+    "explanation": """Gọi cấp số cộng gồm 4 số nguyên dương phân biệt là \\( u_1,u_2,u_3,u_4 \\) với công sai \\( d \\).
+
+Vì các số nguyên dương là phân biệt nên ta có thể giả sử cấp số cộng là dãy tăng, suy ra \\( d\\in\\mathbb{N}^* \\).
+
+Số hạng lớn nhất là \\( u_4=20 \\Rightarrow u_1+3d=20 \\).
+
+Để \\( u_1 \\) là số nguyên dương thì \\( u_1\\ge 1 \\Rightarrow 20-3d\\ge 1 \\Rightarrow 3d\\le 19 \\Rightarrow d\\le 6,33 \\).
+
+Vì \\( d\\in\\mathbb{N}^* \\) nên \\( d\\in\\{1,2,3,4,5,6\\} \\).
+
+Với mỗi giá trị của \\( d \\), ta tìm được duy nhất một giá trị \\( u_1=20-3d \\) tương ứng, từ đó xác định được duy nhất 1 cấp số cộng.
+
+(Ví dụ: \\( d=6 \\Rightarrow u_1=2 \\), cấp số cộng là 2, 8, 14, 20.)
+
+Vậy có tất cả 6 cấp số cộng thỏa mãn yêu cầu bài toán.
+
+Đáp số cần điền: 6.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de8_dd_19',
+    "type": 'dragdrop',
+    "content": """Ba số thực dương \\( x, y, z \\) theo thứ tự lập thành một cấp số cộng. Nếu cộng thêm 2 vào \\( x \\), cộng thêm 3 vào \\( y \\) và cộng thêm 9 vào \\( z \\) thì ba số mới theo thứ tự lập thành một cấp số nhân có công bội \\( q=2 \\). Kéo thả phương án thích hợp vào chỗ trống:
+
+Giá trị của số thực \\( x \\) là (1).
+
+Giá trị của số thực \\( y \\) là (2).
+
+Cấp số cộng ban đầu \\( (x,y,z) \\) có (3).""",
+    "options_pool": [
+        '$x=3$',
+        '$x=5$',
+        '$y=7$',
+        'công sai $d=4$',
+        'công sai $d=2$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$x=3$"},
+        {"label": "(2) =", "answer": "$y=7$"},
+        {"label": "(3) =", "answer": "công sai $d=4$"},
+    ],
+    "points": 1,
+    "explanation": """Ba số \\( x,y,z \\) lập thành cấp số cộng nên \\( x+z=2y \\) (*).
+
+Ba số \\( x+2,\\,y+3,\\,z+9 \\) lập thành cấp số nhân với \\( q=2 \\), suy ra:
+
+\\( \\begin{cases} y+3=2(x+2) \\\\ z+9=2(y+3) \\end{cases} \\Rightarrow \\begin{cases} y-2x=1 \\\\ z-2y=-3 \\end{cases} \\Rightarrow \\begin{cases} 2x=y-1 \\\\ z=2y-3 \\end{cases} \\)
+
+Thay \\( 2x \\) và \\( 2z \\) (nhân 2 vào phương trình (*)) ta có: \\( 2x+2z=4y \\).
+
+\\( (y-1)+2(2y-3)=4y \\Rightarrow y-1+4y-6=4y \\Rightarrow 5y-7=4y \\Rightarrow y=7 \\).
+
+Thay \\( y=7 \\Rightarrow 2x=6 \\Rightarrow x=3 \\).
+
+Và \\( z=2(7)-3=11 \\).
+
+Ba số ban đầu là 3, 7, 11. Cấp số cộng này có công sai \\( d=7-3=4 \\).
+
+Kết quả điền ô trống: (1) \\( x=3 \\); (2) \\( y=7 \\); (3) công sai \\( d=4 \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de8_sh_20',
+    "type": 'short',
+    "content": """Vi khuẩn E. coli trong điều kiện nuôi cấy tối ưu sẽ phân đôi cứ sau chu kỳ 20 phút. Một nhà nghiên cứu bắt đầu thí nghiệm nuôi cấy với một quần thể gồm \\( 10^4 \\) vi khuẩn. Sau thời gian bao nhiêu phút (làm tròn đến phút nguyên gần nhất) thì số lượng vi khuẩn trong mẫu thí nghiệm vượt quá mức 1 tỷ (\\( 10^9 \\)) cá thể?""",
+    "blanks": [
+        {"label": "Thời gian (phút) =", "answers": ["332"]}
+    ],
+    "points": 1,
+    "explanation": """Gọi thời gian tính bằng số chu kỳ 20 phút là \\( n \\).
+
+Số lượng vi khuẩn sau \\( n \\) chu kỳ là một cấp số nhân: \\( u_n=u_0\\cdot 2^n=10^4\\cdot 2^n \\).
+
+Để số vi khuẩn vượt quá 1 tỷ: \\( 10^4\\cdot 2^n>10^9 \\Rightarrow 2^n>10^5 \\).
+
+Lấy logarit cơ số 10 hai vế: \\( n\\log_{10}2>5 \\Rightarrow n>\\dfrac{5}{\\log_{10}2}\\approx 16,6096 \\).
+
+Thời gian thực tế (tính bằng phút) để đạt mức này là \\( t=20\\times n \\).
+
+\\( t>20\\times 16,6096=332,192 \\) phút.
+
+Làm tròn đến số phút nguyên gần nhất, ta cần 332 phút.
+
+(Do sự phân chia thực tế có thể coi xấp xỉ liên tục theo mô hình mũ \\( P(t)=P_0\\cdot 2^{t/20} \\), nên thời gian đạt mốc đúng là xấp xỉ 332 phút.)
+
+Đáp số cần điền: 332.""",
+},
+                
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de8_mc_21',
+    "type": 'mc4',
+    "content": """Cho cấp số nhân \\( (u_n) \\) có tất cả các số hạng đều dương thỏa mãn \\( u_1+u_2+u_3+u_4=15 \\) và \\( u_1^2+u_2^2+u_3^2+u_4^2=85 \\). Xét dãy số \\( (v_n) \\) được xác định bởi \\( v_n=\\log_2 u_n \\). Biết \\( (v_n) \\) là một cấp số cộng, hãy tính tổng 10 số hạng đầu tiên của dãy \\( (v_n) \\).""",
+    "options": {
+        'A': '$S_{10} = 45$',
+        'B': '$S_{10} = 55$',
+        'C': '$S_{10} = 40$',
+        'D': '$S_{10} = 50$',
+    },
+    "correct": 'A',
+    "points": 1,
+    "explanation": """Do \\( v_n=\\log_2 u_n \\) là cấp số cộng nên \\( (u_n) \\) bắt buộc phải là một cấp số nhân. Gọi công bội của \\( (u_n) \\) là \\( q>0 \\) và số hạng đầu là \\( u_1>0 \\).
+
+Ta có: \\( u_1(1+q+q^2+q^3)=15 \\) và \\( u_1^2(1+q^2+q^4+q^6)=85 \\).
+
+Lập tỉ số hai biểu thức trên (sau khi bình phương biểu thức đầu) và giải, ta tìm được \\( q=2 \\) (vì giả sử dãy tăng).
+
+Với \\( q=2 \\): \\( u_1(1+2+4+8)=15 \\Rightarrow 15u_1=15 \\Rightarrow u_1=1 \\).
+
+Dãy \\( (v_n) \\) có \\( v_1=\\log_2 1=0 \\) và công sai \\( d=\\log_2 q=\\log_2 2=1 \\).
+
+Tổng 10 số hạng đầu của \\( (v_n) \\):
+
+\\( S_{10}=\\dfrac{10}{2}(2v_1+9d)=5(0+9\\cdot 1)=45 \\)
+
+Chọn đáp án A.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de8_tf_22",
+    "type": "truefalse",
+    "content": """Một nhà toán học tạo ra một bức tranh nghệ thuật bằng cách vẽ các hình vuông lồng nhau. Hình vuông thứ nhất \\( C_1 \\) có cạnh bằng \\( a \\). Cạnh của hình vuông thứ hai \\( C_2 \\) bằng đường chéo của hình vuông thứ nhất, và cứ tiếp tục như vậy, cạnh của hình vuông \\( C_{n+1} \\) bằng đường chéo của hình vuông \\( C_n \\). Xét tính đúng/sai của các mệnh đề sau:""",
+    "statements": [
+        {"text": "Chu vi của các hình vuông \\( C_1, C_2, \\ldots, C_n \\) lập thành một cấp số nhân với công bội \\( q=\\sqrt{2} \\).", "correct": True},
+        {"text": "Diện tích của hình vuông thứ 10 là \\( 512a^2 \\).", "correct": True},
+        {"text": "Nếu diện tích của hình vuông thứ \\( n \\) lớn hơn \\( 10^6 a^2 \\), thì nhà toán học phải vẽ ít nhất 21 hình vuông.", "correct": True},
+        {"text": "Tổng diện tích của 10 hình vuông đầu tiên bằng \\( 1023a^2 \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """Gọi độ dài cạnh hình vuông thứ \\( n \\) là \\( x_n \\). Ta có \\( x_1=a \\). Theo quy luật, \\( x_{n+1}=x_n\\sqrt{2} \\). Do đó \\( (x_n) \\) là cấp số nhân có công bội \\( q=\\sqrt{2} \\).
+
+a) ĐÚNG: Chu vi \\( P_n=4x_n \\). Suy ra \\( (P_n) \\) là cấp số nhân với công bội \\( \\sqrt{2} \\).
+
+b) ĐÚNG: Diện tích \\( S_n=x_n^2 \\). Dãy \\( (S_n) \\) là cấp số nhân có số hạng đầu \\( S_1=a^2 \\) và công bội \\( Q=(\\sqrt{2})^2=2 \\).
+
+\\( S_{10}=S_1\\cdot Q^9=a^2\\cdot 2^9=512a^2 \\).
+
+c) ĐÚNG: Giải bất phương trình \\( S_n>10^6 a^2 \\Rightarrow a^2\\cdot 2^{n-1}>10^6 a^2 \\Rightarrow 2^{n-1}>10^6 \\).
+
+Ta có \\( 2^{19}=524288 \\) và \\( 2^{20}=1048576 \\). Do đó \\( n-1\\ge 20 \\Rightarrow n\\ge 21 \\). Cần vẽ ít nhất 21 hình vuông.
+
+d) ĐÚNG: Tổng diện tích \\( T_{10}=S_1\\dfrac{Q^{10}-1}{Q-1}=a^2\\dfrac{2^{10}-1}{2-1}=1023a^2 \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de8_sh_23',
+    "type": 'short',
+    "content": """Gọi \\( S \\) là tập hợp tất cả các số tự nhiên có ba chữ số mà khi chia cho 7 dư 2. Tính tổng của tất cả các phần tử thuộc tập \\( S \\).""",
+    "blanks": [
+        {"label": "Tổng =", "answers": ["70692"]}
+    ],
+    "points": 1,
+    "explanation": """Các phần tử của \\( S \\) có dạng \\( u_n=7n+2 \\) và thỏa mãn \\( 100\\le u_n\\le 999 \\).
+
+Ta có: \\( 100\\le 7n+2\\le 999 \\Rightarrow 98\\le 7n\\le 997 \\Rightarrow 14\\le n\\le 142,4 \\).
+
+Vì \\( n\\in\\mathbb{N} \\) nên \\( n\\in\\{14,15,\\ldots,142\\} \\). Số phần tử của tập hợp \\( S \\) là:
+
+\\( N=142-14+1=129 \\) số.
+
+Các phần tử của \\( S \\) lập thành một cấp số cộng với số hạng đầu \\( u_1=7(14)+2=100 \\), công sai \\( d=7 \\). Số hạng cuối cùng là \\( u_{129}=7(142)+2=996 \\).
+
+Tổng các phần tử của tập \\( S \\) là:
+
+\\( \\text{Tổng}=\\dfrac{N(u_1+u_{129})}{2}=\\dfrac{129(100+996)}{2}=\\dfrac{129\\times 1096}{2}=129\\times 548=70692 \\)
+
+Đáp số cần điền: 70692.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de8_sh_24',
+    "type": 'short',
+    "content": """Xét một cấp số cộng \\( (u_n) \\) có công sai \\( d=-2 \\) và số hạng đầu \\( u_1=41 \\). Gọi \\( S_n \\) là tổng của \\( n \\) số hạng đầu tiên của cấp số cộng này. Đặt \\( M \\) là giá trị lớn nhất của \\( S_n \\), tính giá trị của \\( M \\).""",
+    "blanks": [
+        {"label": "M =", "answers": ["441"]}
+    ],
+    "points": 1,
+    "explanation": """Vì công sai \\( d<0 \\) và số hạng đầu \\( u_1>0 \\) nên các số hạng của dãy sẽ giảm dần và sau một lúc nào đó sẽ mang giá trị âm. Tổng \\( S_n \\) đạt giá trị lớn nhất khi ta cộng tất cả các số hạng không âm lại với nhau.
+
+Ta tìm \\( n \\) sao cho \\( u_n\\ge 0 \\Rightarrow u_1+(n-1)d\\ge 0 \\Rightarrow 41-2(n-1)\\ge 0 \\Rightarrow 2n\\le 43 \\Rightarrow n\\le 21,5 \\).
+
+Do đó, các số hạng từ \\( u_1 \\) đến \\( u_{21} \\) là dương (hoặc bằng 0). Số hạng \\( u_{22}=41-2(21)=-1<0 \\).
+
+Vậy \\( S_n \\) đạt giá trị lớn nhất khi \\( n=21 \\).
+
+Giá trị lớn nhất là:
+
+\\( S_{21}=\\dfrac{21}{2}\\left[2(41)+(21-1)(-2)\\right]=\\dfrac{21}{2}[82-40]=\\dfrac{21}{2}\\times 42=21\\times 21=441 \\)
+
+Đáp số cần điền: 441.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de8_dd_25',
+    "type": 'dragdrop',
+    "content": """Cho dãy số \\( (u_n) \\) thỏa mãn \\( u_1=1 \\) và \\( u_{n+1}=\\dfrac{u_n}{1+2u_n} \\) với mọi \\( n\\ge 1 \\). Hãy kéo thả các phương án để hoàn thành nhận xét về dãy số này:
+
+Bằng cách nghịch đảo hai vế, ta có dãy số \\( \\left(\\dfrac{1}{u_n}\\right) \\) là một (1).
+
+Số hạng tổng quát của dãy số ban đầu là \\( u_n= \\) (2).
+
+Dãy số \\( (u_n) \\) có tính chất là một (3).""",
+    "options_pool": [
+        'Dãy tăng',
+        'Dãy giảm',
+        'Dãy bị chặn dưới bởi 0',
+        '$\\dfrac{1}{2n-1}$',
+        'Cấp số cộng'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "Cấp số cộng"},
+        {"label": "(2) =", "answer": "$\\dfrac{1}{2n-1}$"},
+        {"label": "(3) =", "answer": "Dãy giảm"},
+    ],
+    "points": 1,
+    "explanation": """Ta có \\( u_1=1>0 \\), dễ thấy \\( u_n>0\\ \\forall n \\). Nghịch đảo hai vế hệ thức:
+
+\\( \\dfrac{1}{u_{n+1}}=\\dfrac{1+2u_n}{u_n}=\\dfrac{1}{u_n}+2 \\)
+
+Đặt \\( v_n=\\dfrac{1}{u_n} \\), ta có \\( v_{n+1}=v_n+2 \\). Do đó \\( (v_n) \\) là một Cấp số cộng với \\( v_1=1 \\) và \\( d=2 \\).
+
+Số hạng tổng quát của \\( (v_n) \\): \\( v_n=1+(n-1)2=2n-1 \\).
+
+Từ đó, công thức của dãy ban đầu là \\( u_n=\\dfrac{1}{v_n}=\\dfrac{1}{2n-1} \\).
+
+Xét hiệu \\( u_{n+1}-u_n=\\dfrac{1}{2n+1}-\\dfrac{1}{2n-1}=\\dfrac{-2}{4n^2-1}<0 \\).
+
+Suy ra đây là một Dãy giảm (Dãy cũng bị chặn dưới bởi 0 nhưng "dãy giảm" mô tả tốt nhất xu hướng của dãy).""",
+},
+                
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de8_tf_26",
+    "type": "truefalse",
+    "content": """Để chuẩn bị cho việc nghỉ hưu, chú Tư tham gia một quỹ hưu trí tự nguyện. Chú bắt đầu đóng vào quỹ 10 triệu đồng vào tháng thứ nhất. Để bù đắp trượt giá, mỗi tháng sau đó chú đóng nhiều hơn tháng liền trước 100 nghìn đồng. Biết rằng quỹ trả lãi suất 0,5%/tháng theo hình thức lãi kép và tiền lãi được tính vào cuối mỗi tháng (trên tổng số tiền có trong quỹ tính đến thời điểm đó). Xét các mệnh đề sau:""",
+    "statements": [
+        {"text": "Số tiền chú Tư đóng vào quỹ hàng tháng lập thành một cấp số nhân.", "correct": False},
+        {"text": "Số tiền đóng vào tháng thứ 12 là 11,1 triệu đồng.", "correct": True},
+        {"text": "Tổng số tiền gốc (không tính lãi) mà chú Tư đóng vào quỹ sau 5 năm (60 tháng) là 777 triệu đồng.", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """Gọi \\( a_n \\) là số tiền chú Tư đóng vào quỹ ở tháng thứ \\( n \\) (đơn vị: triệu đồng). Ta có \\( a_1=10 \\), và \\( a_{n+1}=a_n+0,1 \\).
+
+a) SAI: Dãy số tiền đóng hàng tháng \\( (a_n) \\) là một cấp số cộng với công sai \\( d=0,1 \\), không phải cấp số nhân.
+
+b) ĐÚNG: Tháng thứ 12, số tiền đóng là \\( a_{12}=a_1+11d=10+11(0,1)=11,1 \\) triệu đồng.
+
+c) ĐÚNG: Tổng số tiền gốc đóng sau 60 tháng là tổng của cấp số cộng 60 số hạng:
+
+\\( S_{60}=\\dfrac{60}{2}[2a_1+59d]=30[2(10)+59(0,1)]=30[20+5,9]=30\\times 25,9=777 \\) triệu đồng.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de8_mc_27',
+    "type": 'mc4',
+    "content": """Tính tổng vô hạn sau: \\( S = 1 + 2\\left(\\dfrac{1}{3}\\right) + 3\\left(\\dfrac{1}{3}\\right)^2 + 4\\left(\\dfrac{1}{3}\\right)^3 + \\cdots + n\\left(\\dfrac{1}{3}\\right)^{n-1} + \\ldots \\)""",
+    "options": {
+        'A': '$S = \\dfrac{9}{4}$',
+        'B': '$S = \\dfrac{3}{2}$',
+        'C': '$S = \\dfrac{9}{2}$',
+        'D': '$S = 3$',
+    },
+    "correct": 'A',
+    "points": 1,
+    "explanation": """Đây là dạng tổng của một chuỗi cấp số nhân - cộng (Arithmetico-geometric sequence).
+
+Ta nhân hai vế của \\( S \\) với \\( \\dfrac{1}{3} \\):
+
+\\( \\dfrac{1}{3}S = 1\\left(\\dfrac{1}{3}\\right) + 2\\left(\\dfrac{1}{3}\\right)^2 + 3\\left(\\dfrac{1}{3}\\right)^3 + \\ldots \\)
+
+Lấy \\( S - \\dfrac{1}{3}S \\), ta được:
+
+\\( \\dfrac{2}{3}S = 1 + \\dfrac{1}{3} + \\left(\\dfrac{1}{3}\\right)^2 + \\left(\\dfrac{1}{3}\\right)^3 + \\ldots \\)
+
+Vế phải là tổng của cấp số nhân lùi vô hạn với \\( u_1=1 \\) và \\( q=\\dfrac{1}{3} \\).
+
+Do đó: \\( \\dfrac{2}{3}S=\\dfrac{1}{1-1/3}=\\dfrac{1}{2/3}=\\dfrac{3}{2} \\).
+
+Từ đó suy ra \\( S=\\dfrac{3}{2}\\times\\dfrac{3}{2}=\\dfrac{9}{4} \\).
+
+Chọn đáp án A.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de8_sh_28',
+    "type": 'short',
+    "content": """Giữa hai số \\( -10 \\) và \\( 20 \\) ta chèn thêm \\( k \\) số nguyên để tạo thành một cấp số cộng có \\( (k+2) \\) số hạng. Biết rằng tổng của tất cả các số hạng trong cấp số cộng này bằng 60, tính giá trị của \\( k \\).""",
+    "blanks": [
+        {"label": "k =", "answers": ["10"]}
+    ],
+    "points": 1,
+    "explanation": """Cấp số cộng có \\( (k+2) \\) số hạng, với số hạng đầu là \\( u_1=-10 \\) và số hạng cuối là \\( u_{k+2}=20 \\).
+
+Tổng của \\( (k+2) \\) số hạng này được tính bởi công thức: \\( S=\\dfrac{(k+2)(u_1+u_{k+2})}{2} \\).
+
+Theo giả thiết, \\( S=60 \\). Thay các giá trị vào ta được:
+
+\\( \\dfrac{(k+2)(-10+20)}{2}=60 \\Rightarrow (k+2)\\times 5 = 60 \\Rightarrow k+2=12 \\Rightarrow k=10 \\)
+
+Đáp số cần điền: 10.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de8_tf_29",
+    "type": "truefalse",
+    "content": """Phương trình lượng giác \\( \\sin 3x+\\cos 2x-\\sin x=0 \\) có các nghiệm lập thành các cấp số cộng trên trục số. Xét tính đúng/sai của các mệnh đề sau:""",
+    "statements": [
+        {"text": "Phương trình trên tương đương với \\( \\cos 2x(2\\sin x+1)=0 \\).", "correct": True},
+        {"text": "Tập nghiệm của phương trình gồm 4 họ nghiệm phân biệt trên đường tròn lượng giác.", "correct": False},
+        {"text": "Các nghiệm thuộc đoạn \\( [0;\\pi] \\) tạo thành một cấp số cộng.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Ta biến đổi phương trình: \\( \\sin 3x-\\sin x+\\cos 2x=0 \\).
+
+Áp dụng công thức biến đổi tổng thành tích: \\( 2\\cos 2x\\sin x+\\cos 2x=0 \\Rightarrow \\cos 2x(2\\sin x+1)=0 \\).
+
+a) ĐÚNG.
+
+b) SAI: Giải phương trình ta được:
+
+1) \\( \\cos 2x=0 \\Rightarrow 2x=\\dfrac{\\pi}{2}+k\\pi \\Rightarrow x=\\dfrac{\\pi}{4}+\\dfrac{k\\pi}{2} \\) (biểu diễn bởi 4 điểm trên đường tròn lượng giác).
+
+2) \\( \\sin x=-\\dfrac{1}{2} \\Rightarrow x=-\\dfrac{\\pi}{6}+k2\\pi \\) hoặc \\( x=\\dfrac{7\\pi}{6}+k2\\pi \\) (biểu diễn bởi 2 điểm).
+
+Cộng lại có 6 họ nghiệm phân biệt trên đường tròn lượng giác (không trùng nhau). Mệnh đề này SAI (có 6 điểm chứ không phải 4).
+
+c) SAI: Xét các nghiệm trên đoạn \\( [0;\\pi] \\): Từ (1): \\( x\\in\\left\\{\\dfrac{\\pi}{4},\\dfrac{3\\pi}{4}\\right\\} \\). Từ (2): không có nghiệm nào thuộc \\( [0;\\pi] \\).
+
+Hai nghiệm \\( \\dfrac{\\pi}{4},\\dfrac{3\\pi}{4} \\) không đủ để tạo thành một cấp số cộng có nghĩa (cần ít nhất 3 số để kiểm tra quy luật).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de8_dd_30',
+    "type": 'dragdrop',
+    "content": """Cho hai hằng số \\( a \\) và \\( b \\) thỏa mãn giới hạn: \\( \\lim_{n\\to+\\infty}\\left(\\sqrt{4n^2+12n+1}-an-b\\right)=0 \\). Hãy kéo thả các phương án phù hợp để hoàn thiện nhận định sau:
+
+Hệ số \\( a \\) của biểu thức có giá trị là (1).
+
+Hằng số \\( b \\) phải thỏa mãn điều kiện triệt tiêu bậc 0 nên nhận giá trị (2).
+
+Tổng bình phương \\( T=a^2+b^2 \\) có giá trị bằng (3).""",
+    "options_pool": [
+        '$a = 2$',
+        '$b = -3$',
+        '$a = \\dfrac{1}{2}$',
+        '$b = 3$',
+        '$T = 13$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$a = 2$"},
+        {"label": "(2) =", "answer": "$b = 3$"},
+        {"label": "(3) =", "answer": "$T = 13$"},
+    ],
+    "points": 1,
+    "explanation": """Để giới hạn hữu hạn (cụ thể là bằng 0) khi \\( n\\to+\\infty \\), ta nhân liên hợp. Nhận xét \\( a>0 \\) thì mới xảy ra dạng \\( \\infty-\\infty \\). Đưa \\( n \\) ra ngoài:
+
+\\( \\lim_{n\\to+\\infty} n\\left(\\sqrt{4+\\dfrac{12}{n}+\\dfrac{1}{n^2}}-a-\\dfrac{b}{n}\\right)=0 \\)
+
+Để giới hạn hữu hạn thì hệ số bậc cao nhất phải triệt tiêu: \\( \\sqrt{4}-a=0 \\Rightarrow a=2 \\).
+
+Với \\( a=2 \\), ta nhân liên hợp:
+
+\\( \\lim_{n\\to+\\infty}\\dfrac{4n^2+12n+1-(2n+b)^2}{\\sqrt{4n^2+12n+1}+2n+b}=\\lim_{n\\to+\\infty}\\dfrac{(12-4b)n+1-b^2}{4n}=0 \\)
+
+Để giới hạn này bằng 0 thì hệ số của \\( n \\) trên tử phải bằng 0: \\( 12-4b=0 \\Rightarrow b=3 \\).
+
+Tổng bình phương \\( T=a^2+b^2=2^2+3^2=4+9=13 \\).""",
+},
 
  ], # Đóng danh sách questions của Đề 8
     }, # Đóng dictionary của Đề 8
