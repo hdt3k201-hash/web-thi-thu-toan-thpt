@@ -1276,6 +1276,59 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
     "explanation": "Để tìm hệ số của \\( x^9 \\) trong khai triển \\( P(x) \\), ta cần tìm hệ số của \\( x^8 \\) trong khai triển \\( (1-2x^4)^5 \\) và hệ số của \\( x^6 \\) trong khai triển \\( (1+x^2)^5 \\).\n\nTa có:\n\n\\( (1-2x^4)^5 = 1 - 10x^4 + 40x^8 - 80x^{12} + 80x^{16} - 32x^{20} \\).\n\n\\( (1+x^2)^5 = 1 + 5x^2 + 10x^4 + 10x^6 + 5x^8 + x^{10} \\).\n\nSuy ra \\( P(x) = \\ldots + x.40x^8 + \\ldots + x^3.10x^6 = \\ldots + 50x^9 + \\ldots \\).\n\nVậy hệ số của \\( x^9 \\) trong khai triển \\( P(x) \\) là 50.",
 },  
 
+ {
+    "content": "Cho tập \\( S = \\{1;2;\\ldots;19;20\\} \\) gồm 20 số tự nhiên từ 1 đến 20. Lấy ngẫu nhiên ba số thuộc \\( S \\). Xác suất để ba số lấy được lập thành cấp số cộng là",
+    "options": {
+        "A": "\\( \\dfrac{5}{38} \\)",
+        "B": "\\( \\dfrac{7}{38} \\)",
+        "C": "\\( \\dfrac{3}{38} \\)",
+        "D": "\\( \\dfrac{1}{114} \\)"
+    },
+    "correct": "C",
+    "points": 1,
+    "explanation": "Ta có: \\( n(\\Omega) = C_{20}^3 \\).\nGọi A là biến cố \"ba số lấy được lập thành cấp số cộng\".\nGiả sử ba số \\( a, b, c \\) theo thứ tự đó lập thành cấp số cộng, khi đó ta có \\( a + c = 2b \\). Hay \\( a + c \\) là một số chẵn và mỗi cách chọn 2 số \\( a \\) và \\( c \\) thỏa mãn \\( a + c \\) là số chẵn sẽ có duy nhất cách chọn \\( b \\). Số cách chọn hai số có tổng chẵn sẽ là số cách chọn ba số tạo thành cấp số cộng.\nTH1. Hai số lấy được đều là số chẵn, có: \\( C_{10}^2 \\) cách lấy.\nTH2. Hai số lấy được đều là số lẻ, có: \\( C_{10}^2 \\) cách lấy.\n\\( \\Rightarrow n(A) = C_{10}^2 + C_{10}^2 \\)\n\\( P(A) = \\dfrac{n(A)}{n(\\Omega)} = \\dfrac{C_{10}^2 + C_{10}^2}{C_{20}^3} = \\dfrac{3}{38} \\).",
+},
+{
+    "content": "Số giá trị nguyên của \\( m \\) để hàm số \\( y = \\sqrt{1 - m^2 + 2m\\sin x} \\) xác định trên đoạn \\( \\left[0; \\dfrac{\\pi}{2}\\right] \\) là",
+    "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": "Hàm số \\( y = \\sqrt{1 - m^2 + 2m\\sin x} \\) xác định\n\\( \\Leftrightarrow 1 - m^2 + 2m\\sin x \\geq 0, \\ \\forall x \\in \\left[0; \\dfrac{\\pi}{2}\\right] \\)\n\\( \\Leftrightarrow 2m\\sin x \\geq m^2 - 1, \\ \\forall x \\in \\left[0; \\dfrac{\\pi}{2}\\right] \\ (*) \\)\n+ Với \\( m > 0 \\Rightarrow (*) \\Leftrightarrow \\sin x \\geq \\dfrac{m^2-1}{2m}, \\ \\forall x \\in \\left[0; \\dfrac{\\pi}{2}\\right] \\)\n\\( \\Leftrightarrow \\dfrac{m^2-1}{2m} \\leq 0 \\Leftrightarrow m^2 - 1 \\leq 0 \\Leftrightarrow 0 < m \\leq 1 \\)\n+ Với \\( m < 0 \\Rightarrow (*) \\Leftrightarrow \\sin x \\leq \\dfrac{m^2-1}{2m}, \\ \\forall x \\in \\left[0; \\dfrac{\\pi}{2}\\right] \\)\n\\( \\Leftrightarrow \\dfrac{m^2-1}{2m} \\geq 1 \\Leftrightarrow \\dfrac{m^2-1-2m}{2m} \\geq 0 \\Leftrightarrow m^2 - 1 - 2m \\leq 0 \\Leftrightarrow 1-\\sqrt{2} \\leq m < 0 \\)\n+ Với \\( m = 0 \\Rightarrow y = 1 \\) luôn xác định trên \\( \\mathbb{R} \\)\nVậy \\( 1-\\sqrt{2} \\leq m \\leq 1 \\Rightarrow m = 0, m = 1 \\) là 2 giá trị nguyên.",
+},
+{
+    "content": "Cho hàm số \\( f(x) \\) liên tục trên \\( \\mathbb{R} \\) và có đồ thị như hình vẽ. Số nghiệm thực của phương trình \\( |f(x) - 1| = 3 \\) bằng",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau19-de4-hinh1.PNG",
+    "options": {
+        "A": "5",
+        "B": "1",
+        "C": "2",
+        "D": "4"
+    },
+    "correct": "D",
+    "points": 1,
+    "explanation": "Ta có \\( |f(x) - 1| = 3 \\Leftrightarrow \\left[\\begin{array}{l} f(x) - 1 = 3 \\\\ f(x) - 1 = -3 \\end{array}\\right. \\Leftrightarrow \\left[\\begin{array}{l} f(x) = 4 \\\\ f(x) = -2 \\end{array}\\right. \\)\nSố nghiệm của phương trình \\( |f(x) - 1| = 3 \\) là số giao điểm của đồ thị hàm số \\( y = f(x) \\) với hai đường thẳng \\( y = 4, y = -2 \\).",
+    "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau19-de4-hinh2.PNG",
+    "explanation_2": "Dựa vào đồ thị hàm số ta có: \\( f(x) = 4 \\) có 1 nghiệm, \\( f(x) = -2 \\) có 3 nghiệm. Vậy số nghiệm thực của phương trình \\( |f(x)-1|=3 \\) là 4.",
+},
+{
+    "content": "Cho tứ diện đều \\( ABCD \\) có độ dài các cạnh bằng \\( 2a \\). Gọi \\( M, N \\) lần lượt là trung điểm các cạnh \\( AC, BC \\); \\( P \\) là trọng tâm tam giác \\( BCD \\). Mặt phẳng \\( (MNP) \\) cắt tứ diện theo một thiết diện có diện tích là",
+    "options": {
+        "A": "\\( \\dfrac{a^2\\sqrt{11}}{2} \\)",
+        "B": "\\( \\dfrac{a^2\\sqrt{2}}{4} \\)",
+        "C": "\\( \\dfrac{a^2\\sqrt{11}}{4} \\)",
+        "D": "\\( \\dfrac{a^2\\sqrt{3}}{4} \\)"
+    },
+    "correct": "C",
+    "points": 1,
+    "explanation": "Trong tam giác \\( BCD \\) có: \\( P \\) là trọng tâm, \\( N \\) là trung điểm \\( BC \\). Suy ra \\( N, P, D \\) thẳng hàng.\nVậy thiết diện là tam giác \\( MND \\).",
+    "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau20-de4.PNG",
+    "explanation_2": "Xét tam giác \\( MND \\), ta có \\( MN = \\dfrac{AB}{2} = a \\); \\( DM = DN = \\dfrac{AD\\sqrt{3}}{2} = a\\sqrt{3} \\).\nDo đó tam giác \\( MND \\) cân tại \\( D \\).\nGọi \\( H \\) là trung điểm \\( MN \\) suy ra \\( DH \\perp MN \\).\nDiện tích tam giác \\( S_{\\triangle MND} = \\dfrac{1}{2}MN.DH = \\dfrac{1}{2}MN.\\sqrt{DM^2 - MH^2} = \\dfrac{a^2\\sqrt{11}}{4} \\).",
+}, 
   
 ],
 
