@@ -1236,6 +1236,46 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
         "points": 1,
         "explanation": "Phân tích ra thừa số nguyên tố:\n\n\\( 60 = 2^2 \\times 3 \\times 5 \\)\n\n\\( 84 = 2^2 \\times 3 \\times 7 \\)\n\nVậy ƯCLN\\( (60, 84) = 2^2 \\times 3 = 12 \\).",
     },
+
+  {
+    "content": "Cho hai số thực \\( x \\geq 0 \\); \\( 1 \\leq y \\leq 3 \\) thỏa mãn \\( 2^{x-2y}(2x+1) = 4y + 2x + 4 \\). Tìm giá trị nhỏ nhất của biểu thức \\( P = 2^{x-y-2} - x - y^2 + 2037 \\) (điền đáp án vào ô trống).",
+    "answers": ["2025"],
+    "points": 1,
+    "explanation": "Từ giả thiết ta có:\n\n\\( 2^x(2x+1) = 2(2y+x+2)2^{2y} \\Leftrightarrow 2^{2x}(2x+1) = 2^{2y+x+1}(2y+x+1+1) \\).\n\nXét hàm số \\( f(t) = 2^t(t+1) \\) trên \\( (0;+\\infty) \\), có \\( f'(t) = 2^t(t+1)\\ln 2 + 2^t > 0 \\) nên \\( f(t) \\) đồng biến.\n\nSuy ra \\( 2x = 2y + x + 1 \\Leftrightarrow x = 2y + 1 \\).\n\nThay vào P:\n\n\\( P = 2^{x-y-2} - x - y^2 + 2037 = 2^{y-1} - (y^2+2y+1) + 2037 = \\dfrac{1}{4}.2^{y+1} - (y+1)^2 + 2037 \\).\n\nXét \\( g(a) = \\dfrac{1}{4}.2^a - a^2 \\) với \\( a = y+1 \\in [2;4] \\).\n\nTa có \\( g'(a) = \\dfrac{2^a\\ln 2}{4} - 2a \\), và \\( g''(a) = \\dfrac{2^a\\ln^2 2}{4} - 2 < 0 \\) trên \\([2;4]\\) nên \\( g'(a) \\) nghịch biến, mà \\( \\max g'(a) = g'(2) = \\ln 2 - 4 < 0 \\Rightarrow g'(a) < 0 \\) trên \\([2;4]\\).\n\nVậy \\( g(a) \\) nghịch biến trên \\([2;4] \\Rightarrow \\min g(a) = g(4) = -12 \\).\n\nVậy \\( \\min P = -12 + 2037 = 2025 \\), đạt được khi \\( y+1 = 4 \\Rightarrow y = 3; x = 7 \\).",
+},
+{
+    "content": "Tìm số nguyên dương \\( n \\) bé nhất sao cho trong khai triển \\( (x+1)^n \\) có hai hệ số liên tiếp nhau có tỷ số là \\( \\dfrac{7}{15} \\) (điền đáp án vào ô trống).",
+    "answers": ["21"],
+    "points": 1,
+    "explanation": "Ta có \\( (1+x)^n = C_n^0 + C_n^1x + C_n^2x^2 + \\ldots + C_n^{n-1}x^{n-1} + C_n^nx^n \\).\n\nSố hạng thứ \\( k \\) và \\( k+1 \\) theo khai triển trên có hệ số là \\( C_n^{k-1}, C_n^k \\) với \\( 1 \\leq k \\leq n \\).\n\nTheo giả thiết:\n\n\\( \\dfrac{C_n^{k-1}}{C_n^k} = \\dfrac{7}{15} \\Leftrightarrow \\dfrac{k}{n-k+1} = \\dfrac{7}{15} \\Leftrightarrow 15k = 7(n-k+1) \\Leftrightarrow 22k = 7(n+1) \\).\n\nDo \\( \\gcd(22,7) = 1 \\) nên \\( n+1 \\) chia hết cho 22. Vậy \\( n = 22m - 1, m \\in \\mathbb{N} \\).\n\nVậy số nguyên dương \\( n \\) bé nhất thỏa mãn đề bài là \\( n = 21 \\).",
+},
+{
+    "content": "Cho 8 bạn học sinh A, B, C, D, E, F, G, H. Hỏi có bao nhiêu cách xếp 8 bạn đó ngồi quanh một bàn tròn có 8 chiếc ghế?",
+    "answers": ["5040"],
+    "points": 1,
+    "explanation": "Ta chọn cố định vị trí của bạn A (để loại bỏ các cách xếp trùng nhau do xoay vòng), sau đó xếp 7 bạn còn lại vào 7 vị trí còn lại, ta có \\( 7! \\) cách.\n\nVậy số cách xếp là \\( 7! = 5040 \\).",
+},
+
+  {
+    "content": "Có bao nhiêu số nguyên \\( x \\) sao cho tồn tại số thực \\( y \\) thỏa mãn \\( \\log_3(x+y) = \\log_4(x^2+y^2) \\) (điền đáp án vào ô trống).",
+    "answers": ["2"],
+    "points": 1,
+    "explanation": "Đặt \\( t = \\log_3(x+y) = \\log_4(x^2+y^2) \\Rightarrow \\begin{cases} x+y = 3^t \\\\ x^2+y^2 = 4^t \\end{cases} \\).\n\nÁp dụng bất đẳng thức Cauchy: \\( 9^t = (x+y)^2 \\leq 2(x^2+y^2) = 2.4^t \\Rightarrow \\left(\\dfrac{9}{4}\\right)^t \\leq 2 \\Rightarrow t \\leq \\log_{9/4}2 \\).\n\nKhi đó \\( x^2+y^2 = 4^t \\leq 4^{\\log_{9/4}2} \\approx 1{,}89 \\Rightarrow x \\in \\{-1;0;1\\} \\).\n\n• Trường hợp \\( x=0 \\): \\( \\begin{cases} y=3^t \\\\ y^2=4^t \\end{cases} \\Rightarrow \\begin{cases} t=0 \\\\ y=1 \\end{cases} \\) (thỏa mãn).\n\n• Trường hợp \\( x=1 \\): \\( \\begin{cases} y=3^t-1 \\\\ y^2=4^t-1 \\end{cases} \\Rightarrow \\begin{cases} t=0 \\\\ y=0 \\end{cases} \\) (thỏa mãn).\n\n• Trường hợp \\( x=-1 \\): \\( \\begin{cases} y=3^t+1 \\\\ y^2+1=4^t \\geq 1 \\end{cases} \\Rightarrow t \\geq 0 \\Rightarrow x^2+y^2 \\geq 5 \\), mâu thuẫn với \\( x^2+y^2 \\leq 4^{\\log_{9/4}2} \\approx 1{,}89 \\) (loại).\n\nVậy có hai giá trị \\( x \\in \\{0;1\\} \\).",
+},
+{
+    "content": "Anh An mua ô tô trả góp trị giá 400 triệu với lãi suất 1,2% một tháng. Hỏi hàng tháng anh An phải trả bao nhiêu triệu để sau 4 năm thì hết nợ (làm tròn đến hàng đơn vị)?",
+    "answers": ["11"],
+    "points": 1,
+    "explanation": "Dùng công thức vay trả góp \\( T = \\dfrac{M.a.(1+a)^n}{(1+a)^n - 1} \\), trong đó \\( T \\) là số tiền trả hàng tháng, \\( M \\) là số tiền vay ban đầu, \\( a \\) là lãi suất mỗi tháng, \\( n \\) là số tháng vay.\n\nTa có \\( n = 4 \\times 12 = 48 \\) tháng, \\( a = 0{,}012 \\), \\( M = 400 \\).\n\n\\( T = \\dfrac{400.0{,}012.1{,}012^{48}}{1{,}012^{48} - 1} \\approx 11 \\).\n\nVậy mỗi tháng anh An phải trả khoảng 11 triệu.",
+},
+{
+    "content": "Trên bàn cờ 6x7 như hình vẽ, người chơi chỉ được di chuyển quân cờ theo các cạnh của hình vuông, mỗi bước đi được một cạnh. Có bao nhiêu cách di chuyển quân cờ từ điểm A đến điểm B bằng 13 bước? (điền đáp án vào ô trống).",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau40-de3.PNG",
+    "answers": ["1716"],
+    "points": 1,
+    "explanation": "Để di chuyển từ điểm A đến điểm B cần phải đi ít nhất 13 bước. Vì vậy, để đi từ A đến B bằng 13 bước, ta phải đi 7 bước trên các cạnh nằm ngang và 6 bước trên các cạnh đứng, tức là chỉ được di chuyển lên trên hoặc sang phải.\n\nKí hiệu các bước đi lên là L, mỗi bước sang phải là P. Khi đó, mỗi đường đi từ A đến B là một chuỗi 13 kí tự gồm 6 chữ L và 7 chữ P.\n\nVậy số cách di chuyển là \\( C_{13}^6 = C_{13}^7 = 1716 \\).",
+},
+  
     ],
     },
   ]
