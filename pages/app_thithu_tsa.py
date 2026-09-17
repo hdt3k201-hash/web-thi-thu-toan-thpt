@@ -8236,6 +8236,765 @@ Vậy \\( L = L_1+L_2 = -\\dfrac{1}{2}+1 = \\dfrac{1}{2} \\).
 Chọn B.""",
 },
     
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de9_sh_11",
+    "type": "short",
+    "content": "Một bệnh nhân uống 50 mg một loại thuốc chữa bệnh vào cùng một thời điểm mỗi ngày. Biết rằng sau 24 giờ (trước khi uống liều tiếp theo), lượng thuốc trong cơ thể chỉ còn lại 20% so với lượng thuốc vừa uống ngày hôm đó. Gọi \\( u_n \\) là lượng thuốc trong cơ thể (tính bằng mg) ngay sau khi uống viên thuốc thứ n. Tính giới hạn của dãy số \\( (u_n) \\) khi \\( n\\to+\\infty \\) (Kết quả làm tròn đến chữ số thập phân thứ nhất).",
+    "blanks": [
+        {"label": "Giới hạn =", "answers": ["62.5", "62,5"]}
+    ],
+    "points": 1,
+    "explanation": """Ngay sau khi uống viên thứ nhất: \\( u_1=50 \\).
+
+Ngay sau khi uống viên thứ hai: \\( u_2=50+50\\cdot 0,2 \\).
+
+Ngay sau khi uống viên thứ ba: \\( u_3=50+50\\cdot 0,2+50\\cdot 0,2^2 \\).
+
+Tương tự, sau khi uống viên thứ n, lượng thuốc là tổng của một cấp số nhân:
+
+\\( u_n = 50\\cdot\\dfrac{1-(0,2)^n}{1-0,2} \\)
+
+Giới hạn của lượng thuốc trong cơ thể khi \\( n\\to+\\infty \\) là:
+
+\\( \\lim u_n = \\lim 50\\cdot\\dfrac{1-(0,2)^n}{0,8} = \\dfrac{50}{0,8} = 62,5 \\) (mg)
+
+Đáp án: 62,5.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de9_mc_12",
+    "type": "mc4",
+    "content": "Cho dãy số \\( (u_n) \\) được xác định bởi \\( u_n = \\dfrac{1\\cdot 2+2\\cdot 3+\\cdots+n(n+1)}{n^3} \\) với mọi \\( n\\ge 1 \\). Tính \\( \\lim u_n \\).",
+    "options": {
+        "A": "$1$",
+        "B": "$\\dfrac{1}{3}$",
+        "C": "$\\dfrac{1}{2}$",
+        "D": "$0$",
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": """Ta sử dụng hằng đẳng thức số học cho tổng các tích hai số tự nhiên liên tiếp:
+
+\\( S_n = 1\\cdot 2+2\\cdot 3+\\cdots+n(n+1) = \\dfrac{n(n+1)(n+2)}{3} \\)
+
+Khi đó, dãy số \\( u_n \\) trở thành:
+
+\\( u_n = \\dfrac{n(n+1)(n+2)}{3n^3} \\)
+
+Giới hạn của dãy số là:
+
+\\( \\lim u_n = \\lim \\dfrac{n^3+3n^2+2n}{3n^3} = \\lim \\dfrac{1+\\dfrac{3}{n}+\\dfrac{2}{n^2}}{3} = \\dfrac{1}{3} \\)
+
+Chọn B.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de9_sh_13",
+    "type": "short",
+    "content": "Biết \\( \\lim\\limits_{x\\to 0} \\dfrac{\\sqrt{1+ax}-\\sqrt[3]{1+bx}}{x^2} = 2 \\) với a, b là các số nguyên dương. Tính giá trị biểu thức \\( S = a^2+b^2 \\).",
+    "blanks": [
+        {"label": "S =", "answers": ["52"]}
+    ],
+    "points": 1,
+    "explanation": """Sử dụng khai triển tiệm cận: \\( \\sqrt{1+ax}\\approx 1+\\dfrac{a}{2}x-\\dfrac{a^2}{8}x^2 \\) và \\( \\sqrt[3]{1+bx}\\approx 1+\\dfrac{b}{3}x-\\dfrac{b^2}{9}x^2 \\).
+
+Tử số xấp xỉ: \\( \\left(\\dfrac{a}{2}-\\dfrac{b}{3}\\right)x + \\left(\\dfrac{b^2}{9}-\\dfrac{a^2}{8}\\right)x^2 \\).
+
+Để giới hạn hữu hạn trên \\( x^2 \\), hệ số của x phải bằng 0:
+
+\\( \\dfrac{a}{2}-\\dfrac{b}{3}=0 \\Leftrightarrow 3a=2b \\)
+
+Đặt \\( a=2k, b=3k \\) (\\( k\\in\\mathbb{N}^* \\)). Giới hạn sẽ bằng hệ số của \\( x^2 \\):
+
+\\( L = \\dfrac{b^2}{9}-\\dfrac{a^2}{8} = \\dfrac{9k^2}{9}-\\dfrac{4k^2}{8} = k^2-\\dfrac{k^2}{2} = \\dfrac{k^2}{2} \\)
+
+Theo giả thiết \\( L=2 \\Rightarrow \\dfrac{k^2}{2}=2 \\Rightarrow k^2=4 \\Rightarrow k=2 \\) (do a, b > 0).
+
+Suy ra \\( a=4 \\) và \\( b=6 \\). Vậy \\( S=4^2+6^2=16+36=52 \\).
+
+Đáp án: 52.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de9_dd_14",
+    "type": "dragdrop",
+    "content": """Kéo và thả các phương án lựa chọn thích hợp vào ô trống. Cho hàm số \\( y=f(x) \\) thỏa mãn \\( \\lim\\limits_{x\\to 1} \\dfrac{f(x)-2}{x-1} = 3 \\). Hãy xác định các giới hạn sau:
+
+a) \\( \\lim\\limits_{x\\to 1} \\dfrac{f^2(x)-4}{x^2-1} = \\) (1)
+
+b) \\( \\lim\\limits_{x\\to 1} \\dfrac{xf(x)-2}{x-1} = \\) (2)
+
+c) \\( \\lim\\limits_{x\\to 1} \\dfrac{\\sqrt{f(x)+2}-2}{x-1} = \\) (3)""",
+    "options_pool": [
+        '$6$',
+        '$5$',
+        '$\\dfrac{3}{4}$',
+        '$\\dfrac{1}{4}$',
+        '$3$',
+        '$2$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$6$"},
+        {"label": "(2) =", "answer": "$5$"},
+        {"label": "(3) =", "answer": "$\\dfrac{3}{4}$"},
+    ],
+    "points": 1,
+    "explanation": """Vì \\( \\lim\\limits_{x\\to 1} \\dfrac{f(x)-2}{x-1}=3 \\) (hữu hạn) nên \\( \\lim\\limits_{x\\to 1} f(x)=2 \\).
+
+a) \\( \\lim_{x\\to 1} \\dfrac{(f(x)-2)(f(x)+2)}{(x-1)(x+1)} = \\lim_{x\\to 1}\\dfrac{f(x)-2}{x-1}\\cdot\\lim_{x\\to 1}\\dfrac{f(x)+2}{x+1} = 3\\cdot\\dfrac{2+2}{2} = 6 \\)
+
+b) \\( \\lim_{x\\to 1} \\dfrac{xf(x)-2x+2x-2}{x-1} = \\lim_{x\\to 1} \\dfrac{x(f(x)-2)+2(x-1)}{x-1} = \\lim_{x\\to 1}\\left[x\\cdot\\dfrac{f(x)-2}{x-1}+2\\right] = 1\\cdot 3+2 = 5 \\)
+
+c) \\( \\lim_{x\\to 1} \\dfrac{f(x)+2-4}{(x-1)(\\sqrt{f(x)+2}+2)} = \\lim_{x\\to 1}\\dfrac{f(x)-2}{x-1}\\cdot\\lim_{x\\to 1}\\dfrac{1}{\\sqrt{f(x)+2}+2} = 3\\cdot\\dfrac{1}{4} = \\dfrac{3}{4} \\)""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de9_tf_15",
+    "type": "truefalse",
+    "content": "Xây dựng tam giác Sierpinski: Bắt đầu từ 1 tam giác đều (bước 0) có diện tích \\( S_0=100 \\). Lần 1: nối trung điểm các cạnh của tam giác đó và khoét bỏ tam giác ở giữa, phần còn lại có diện tích \\( S_1 \\). Lần 2: làm tương tự với 3 tam giác còn lại, phần còn lại có diện tích \\( S_2 \\). Cứ tiếp tục quá trình đó vô hạn lần. Xét tính đúng/sai của các mệnh đề:",
+    "statements": [
+        {"text": "Diện tích còn lại sau bước 1 là \\( S_1=75 \\).", "correct": True},
+        {"text": "Dãy số \\( (S_n) \\) lập thành một cấp số nhân có công bội \\( q=\\dfrac{1}{4} \\).", "correct": False},
+        {"text": "Giới hạn của dãy diện tích phần còn lại \\( \\lim S_n = 0 \\).", "correct": True},
+        {"text": "Tổng diện tích của tất cả các tam giác bị khoét bỏ sau vô hạn bước bằng 100.", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Ở mỗi bước, khi khoét bỏ tam giác ở giữa (diện tích bằng 1/4 tam giác to), ta giữ lại 3/4 diện tích. Do đó \\( S_1=100\\cdot\\dfrac{3}{4}=75 \\).
+
+b) SAI: Dãy số \\( (S_n) \\) là cấp số nhân nhưng có công bội \\( q=\\dfrac{3}{4} \\), không phải \\( \\dfrac{1}{4} \\).
+
+c) ĐÚNG: \\( \\lim S_n = \\lim 100\\cdot\\left(\\dfrac{3}{4}\\right)^n = 0 \\) do \\( \\left|\\dfrac{3}{4}\\right|<1 \\).
+
+d) ĐÚNG: Do diện tích phần còn lại tiến về 0, nên toàn bộ diện tích ban đầu của tam giác đã bị khoét bỏ. Tổng diện tích khoét bỏ chính bằng \\( S_0=100 \\).""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de9_mc_16",
+    "type": "mc4",
+    "content": "Cho đa thức bậc ba \\( P(x) \\) thỏa mãn \\( \\lim\\limits_{x\\to 1} \\dfrac{P(x)}{(x-1)^2} = 2 \\) và \\( \\lim\\limits_{x\\to 2} \\dfrac{P(x)-10}{x-2} = 5 \\). Tính giá trị của \\( P(3) \\).",
+    "options": {
+        "A": "$-20$",
+        "B": "$20$",
+        "C": "$-10$",
+        "D": "$10$",
+    },
+    "correct": "A",
+    "points": 1,
+    "explanation": """Vì \\( \\lim\\limits_{x\\to 1} \\dfrac{P(x)}{(x-1)^2} = 2 \\) (hữu hạn) nên đa thức \\( P(x) \\) chia hết cho \\( (x-1)^2 \\).
+
+Do \\( P(x) \\) là đa thức bậc 3 nên ta có dạng: \\( P(x) = (x-1)^2(ax+b) \\).
+
+Xét điều kiện thứ hai \\( \\lim\\limits_{x\\to 2} \\dfrac{P(x)-10}{x-2}=5 \\): để giới hạn này hữu hạn, cần \\( P(2)=10 \\), và khi đó giá trị của giới hạn chính là \\( P'(2) \\), tức \\( P'(2)=5 \\).
+
+Ta có \\( P(2) = (2-1)^2(2a+b) = 2a+b = 10 \\) (1)
+
+Đạo hàm: \\( P'(x) = 2(x-1)(ax+b) + a(x-1)^2 \\).
+
+\\( P'(2) = 2(1)(2a+b) + a(1) = 2(2a+b) + a = 5a+2b = 5 \\) (2)
+
+Từ (1): \\( b = 10-2a \\). Thay vào (2):
+
+\\( 5a+2(10-2a) = 5 \\Leftrightarrow 5a+20-4a=5 \\Leftrightarrow a=-15 \\)
+
+Suy ra \\( b = 10-2(-15) = 40 \\).
+
+Vậy \\( P(x) = (x-1)^2(-15x+40) \\).
+
+Tính \\( P(3) = (3-1)^2(-15\\cdot 3+40) = 4\\cdot(-45+40) = 4\\cdot(-5) = -20 \\).
+
+Chọn A.""",
+},
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de9_tf_17",
+    "type": "truefalse",
+    "content": "Cho hàm số \\( f(x) = x\\left[\\dfrac{1}{x}\\right] \\) (với kí hiệu \\( [a] \\) là phần nguyên của số a, tức là số nguyên lớn nhất không vượt quá a). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Với \\( x\\in\\left(\\dfrac{1}{2};1\\right) \\), ta có \\( \\left[\\dfrac{1}{x}\\right]=1 \\).", "correct": True},
+        {"text": "\\( \\lim\\limits_{x\\to 0^+} f(x) = 0 \\).", "correct": False},
+        {"text": "\\( \\lim\\limits_{x\\to 0^-} f(x) = 1 \\).", "correct": True},
+        {"text": "Hàm số \\( f(x) \\) có giới hạn \\( \\lim\\limits_{x\\to 0} f(x) = 1 \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Với \\( \\dfrac{1}{2}<x<1 \\Rightarrow 1<\\dfrac{1}{x}<2 \\). Phần nguyên \\( \\left[\\dfrac{1}{x}\\right]=1 \\).
+
+b, c, d) Theo tính chất phần nguyên: \\( \\dfrac{1}{x}-1<\\left[\\dfrac{1}{x}\\right]\\le\\dfrac{1}{x} \\).
+
+- Nếu \\( x>0 \\): Nhân cả 3 vế với \\( x>0 \\) ta có: \\( 1-x<x\\left[\\dfrac{1}{x}\\right]\\le 1 \\).
+
+Khi \\( x\\to 0^+ \\), theo định lý kẹp \\( \\lim\\limits_{x\\to 0^+} f(x) = 1 \\). (Mệnh đề b SAI vì kết quả bằng 1 chứ không phải 0).
+
+- Nếu \\( x<0 \\): Nhân cả 3 vế với \\( x<0 \\) (đảo chiều bất đẳng thức): \\( 1-x>x\\left[\\dfrac{1}{x}\\right]\\ge 1 \\).
+
+Khi \\( x\\to 0^- \\), theo định lý kẹp \\( \\lim\\limits_{x\\to 0^-} f(x) = 1 \\). (Mệnh đề c ĐÚNG).
+
+Do \\( \\lim\\limits_{x\\to 0^+} f(x) = \\lim\\limits_{x\\to 0^-} f(x) = 1 \\), nên \\( \\lim\\limits_{x\\to 0} f(x) = 1 \\). (Mệnh đề d ĐÚNG).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de9_sh_18",
+    "type": "short",
+    "content": "Tính giới hạn \\( L = \\lim\\limits_{n\\to+\\infty} \\left(\\dfrac{1}{\\sqrt{n^2+1}}+\\dfrac{1}{\\sqrt{n^2+2}}+\\cdots+\\dfrac{1}{\\sqrt{n^2+n}}\\right) \\).",
+    "blanks": [
+        {"label": "L =", "answers": ["1"]}
+    ],
+    "points": 1,
+    "explanation": """Đây là dạng giới hạn của tổng có n số hạng, ta sử dụng định lý kẹp (Squeeze Theorem).
+
+Nhận xét: Số hạng lớn nhất trong tổng là \\( \\dfrac{1}{\\sqrt{n^2+1}} \\) và số hạng nhỏ nhất là \\( \\dfrac{1}{\\sqrt{n^2+n}} \\).
+
+Do đó, tổng \\( u_n \\) bị kẹp giữa:
+
+\\( n\\cdot\\dfrac{1}{\\sqrt{n^2+n}} \\le u_n \\le n\\cdot\\dfrac{1}{\\sqrt{n^2+1}} \\)
+
+Ta đi tính giới hạn 2 đầu:
+
+\\( \\lim \\dfrac{n}{\\sqrt{n^2+n}} = \\lim \\dfrac{1}{\\sqrt{1+1/n}} = 1 \\)
+
+\\( \\lim \\dfrac{n}{\\sqrt{n^2+1}} = \\lim \\dfrac{1}{\\sqrt{1+1/n^2}} = 1 \\)
+
+Do giới hạn hai đầu đều bằng 1 nên theo định lý kẹp, \\( L=1 \\).
+
+Đáp án: 1.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de9_tf_19",
+    "type": "truefalse",
+    "content": "Cho giới hạn \\( L = \\lim\\limits_{x\\to 1} \\dfrac{\\sqrt{x+3}-ax-b}{x-1} \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Để L là một số thực (hữu hạn), thì bắt buộc \\( a+b=2 \\).", "correct": True},
+        {"text": "Khi \\( a=\\dfrac{1}{4} \\) và \\( b=\\dfrac{7}{4} \\), tử số có giá trị bằng 0 tại \\( x=1 \\).", "correct": True},
+        {"text": "Nếu \\( a=\\dfrac{1}{4} \\) và \\( b=\\dfrac{7}{4} \\) thì giá trị của giới hạn \\( L=\\dfrac{1}{4} \\).", "correct": False},
+        {"text": "Tồn tại vô số cặp \\( (a,b) \\) để \\( \\lim\\limits_{x\\to 1} \\dfrac{\\sqrt{x+3}-ax-b}{(x-1)^2} \\) là một số thực.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Để giới hạn dạng phân thức 0/0 có giá trị hữu hạn, tử số phải bằng 0 tại \\( x=1 \\). Tức là \\( \\sqrt{1+3}-a(1)-b=0 \\Leftrightarrow 2-a-b=0 \\Leftrightarrow a+b=2 \\).
+
+b) ĐÚNG: Thay vào tử: \\( \\sqrt{4}-\\dfrac{1}{4}(1)-\\dfrac{7}{4} = 2-2=0 \\).
+
+c) SAI: Với \\( a=\\dfrac{1}{4}, b=\\dfrac{7}{4} \\), nhân liên hợp hoặc dùng đạo hàm:
+
+\\( L = \\lim_{x\\to 1}\\left(\\dfrac{1}{2\\sqrt{x+3}}-a\\right) = \\dfrac{1}{4}-\\dfrac{1}{4} = 0 \\)
+
+Do đó \\( L\\neq\\dfrac{1}{4} \\).
+
+d) SAI: Để giới hạn trên \\( (x-1)^2 \\) là số thực, đa thức tử phải có nghiệm kép tại \\( x=1 \\). Nghĩa là \\( f(1)=0 \\) và \\( f'(1)=0 \\). Ta có \\( f'(1)=\\dfrac{1}{4}-a=0\\Rightarrow a=\\dfrac{1}{4} \\), từ đó \\( b=\\dfrac{7}{4} \\). Chỉ tồn tại duy nhất 1 cặp \\( (a,b) \\), không phải vô số.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de9_dd_20",
+    "type": "dragdrop",
+    "content": """Kéo và thả các phương án lựa chọn thích hợp vào ô trống. Tính các giới hạn sau và kéo đáp án tương ứng vào kết quả:
+
+a) \\( \\lim\\limits_{x\\to+\\infty} \\left(\\sqrt{x^2-4x+1}-x\\right) = \\) (1)
+
+b) \\( \\lim\\limits_{x\\to-\\infty} \\dfrac{\\sqrt{x^2+2x}+2x}{x-1} = \\) (2)
+
+c) \\( \\lim\\limits_{x\\to 2} \\dfrac{x^3-8}{x^2-4} = \\) (3)""",
+    "options_pool": [
+        '$0$',
+        '$1$',
+        '$2$',
+        '$3$',
+        '$-2$',
+        '$-1$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$-2$"},
+        {"label": "(2) =", "answer": "$1$"},
+        {"label": "(3) =", "answer": "$3$"},
+    ],
+    "points": 1,
+    "explanation": """a) Nhân liên hợp:
+
+\\( \\lim_{x\\to+\\infty} \\dfrac{x^2-4x+1-x^2}{\\sqrt{x^2-4x+1}+x} = \\lim_{x\\to+\\infty} \\dfrac{-4x+1}{x\\sqrt{1-4/x+1/x^2}+x} = \\dfrac{-4}{1+1} = -2 \\)
+
+b) Khi \\( x\\to-\\infty \\), \\( \\sqrt{x^2}=-x \\). Chia cả tử và mẫu cho x:
+
+\\( \\lim_{x\\to-\\infty} \\dfrac{-\\sqrt{1+2/x}+2}{1-1/x} = \\dfrac{-1+2}{1} = 1 \\)
+
+c) Phân tích nhân tử:
+
+\\( \\lim_{x\\to 2} \\dfrac{(x-2)(x^2+2x+4)}{(x-2)(x+2)} = \\lim_{x\\to 2} \\dfrac{x^2+2x+4}{x+2} = \\dfrac{4+4+4}{4} = 3 \\)""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de9_mc_21",
+    "type": "mc4",
+    "content": "Tính giới hạn \\( L = \\lim\\limits_{n\\to+\\infty} \\left(\\sqrt{n^2+n}-\\sqrt[3]{n^3+3n^2}\\right) \\).",
+    "options": {
+        "A": "$L=-\\dfrac{1}{2}$",
+        "B": "$L=\\dfrac{1}{2}$",
+        "C": "$L=-1$",
+        "D": "$L=1$",
+    },
+    "correct": "A",
+    "points": 1,
+    "explanation": """Ta thêm bớt n để tách thành hai giới hạn và sử dụng nhân lượng liên hợp:
+
+\\( L = \\lim_{n\\to+\\infty} \\left[(\\sqrt{n^2+n}-n)+(n-\\sqrt[3]{n^3+3n^2})\\right] = L_1+L_2 \\)
+
+Tính \\( L_1 \\):
+
+\\( L_1 = \\lim_{n\\to+\\infty} \\dfrac{n^2+n-n^2}{\\sqrt{n^2+n}+n} = \\lim_{n\\to+\\infty} \\dfrac{n}{n\\sqrt{1+1/n}+n} = \\dfrac{1}{2} \\)
+
+Tính \\( L_2 \\):
+
+\\( L_2 = \\lim_{n\\to+\\infty} \\dfrac{n^3-(n^3+3n^2)}{n^2+n\\sqrt[3]{n^3+3n^2}+(\\sqrt[3]{n^3+3n^2})^2} \\)
+
+\\( = \\lim_{n\\to+\\infty} \\dfrac{-3n^2}{n^2\\left(1+\\sqrt[3]{1+3/n}+\\sqrt[3]{(1+3/n)^2}\\right)} = \\dfrac{-3}{3} = -1 \\)
+
+Vậy \\( L = L_1+L_2 = \\dfrac{1}{2}-1 = -\\dfrac{1}{2} \\).
+
+Chọn A.""",
+},
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de9_sh_22",
+    "type": "short",
+    "content": "Biết rằng giới hạn \\( \\lim\\limits_{x\\to 1} \\dfrac{\\sqrt{x+8}-\\sqrt[3]{x+26}}{x-1} \\) có giá trị là một phân số tối giản \\( \\dfrac{a}{b} \\) (với \\( a,b\\in\\mathbb{Z}, b>0 \\)). Tính giá trị biểu thức \\( S=a+b \\).",
+    "blanks": [
+        {"label": "S =", "answers": ["61"]}
+    ],
+    "points": 1,
+    "explanation": """Thay \\( x=1 \\), ta thấy \\( \\sqrt{1+8}=3 \\) và \\( \\sqrt[3]{1+26}=3 \\). Ta thêm bớt số 3 để tách giới hạn:
+
+\\( L = \\lim_{x\\to 1} \\dfrac{(\\sqrt{x+8}-3)-(\\sqrt[3]{x+26}-3)}{x-1} = L_1-L_2 \\)
+
+Tính \\( L_1 \\):
+
+\\( L_1 = \\lim_{x\\to 1} \\dfrac{x+8-9}{(x-1)(\\sqrt{x+8}+3)} = \\lim_{x\\to 1} \\dfrac{1}{\\sqrt{x+8}+3} = \\dfrac{1}{6} \\)
+
+Tính \\( L_2 \\):
+
+\\( L_2 = \\lim_{x\\to 1} \\dfrac{x+26-27}{(x-1)\\left(\\sqrt[3]{(x+26)^2}+\\sqrt[3]{x+26}\\cdot 3+9\\right)} = \\lim_{x\\to 1} \\dfrac{1}{\\sqrt[3]{27^2}+3\\sqrt[3]{27}+9} = \\dfrac{1}{27} \\)
+
+Suy ra \\( L = \\dfrac{1}{6}-\\dfrac{1}{27} = \\dfrac{9-2}{54} = \\dfrac{7}{54} \\).
+
+Do đó \\( a=7, b=54 \\Rightarrow S=7+54=61 \\).
+
+Đáp án: 61.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de9_tf_23",
+    "type": "truefalse",
+    "content": "Cho dãy số \\( (u_n) \\) được xác định bởi: \\( u_1=\\sqrt{2} \\) và \\( u_{n+1}=\\sqrt{2+u_n} \\) với mọi \\( n\\ge 1 \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "\\( u_n>0 \\) với mọi số nguyên dương n.", "correct": True},
+        {"text": "Dãy \\( (u_n) \\) là một dãy số giảm.", "correct": False},
+        {"text": "Dãy \\( (u_n) \\) bị chặn trên bởi 2.", "correct": True},
+        {"text": "Giới hạn của dãy số \\( \\lim u_n = 2 \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Rõ ràng bằng quy nạp, \\( u_n>0 \\forall n\\ge 1 \\).
+
+b) SAI: Ta có \\( u_1=\\sqrt{2}\\approx 1,414 \\); \\( u_2=\\sqrt{2+\\sqrt{2}}\\approx 1,847>u_1 \\). Bằng quy nạp ta dễ dàng chứng minh được \\( (u_n) \\) là dãy tăng, không phải dãy giảm.
+
+c) ĐÚNG: Chứng minh bằng quy nạp: \\( u_1=\\sqrt{2}<2 \\). Giả sử \\( u_k<2 \\), ta có \\( u_{k+1}=\\sqrt{2+u_k}<\\sqrt{2+2}=2 \\). Vậy \\( u_n<2\\,\\forall n \\). Dãy bị chặn trên bởi 2.
+
+d) ĐÚNG: Do dãy tăng và bị chặn trên nên tồn tại giới hạn hữu hạn \\( L=\\lim u_n \\) (với \\( L>0 \\)). Chuyển qua giới hạn:
+
+\\( L=\\sqrt{2+L} \\Leftrightarrow L^2-L-2=0 \\Rightarrow L=2 \\) (nhận) hoặc \\( L=-1 \\) (loại).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de9_dd_24",
+    "type": "dragdrop",
+    "content": """Kéo và thả các phương án lựa chọn thích hợp vào ô trống. Cho hàm số \\( f(x) = \\dfrac{x^2-3x+2}{|x-1|} \\). Xác định các giới hạn sau và kéo đáp án tương ứng vào kết quả:
+
+a) \\( \\lim\\limits_{x\\to 1^+} f(x) = \\) (1)
+
+b) \\( \\lim\\limits_{x\\to 1^-} f(x) = \\) (2)
+
+c) \\( \\lim\\limits_{x\\to 2} f(x) = \\) (3)""",
+    "options_pool": [
+        '$1$',
+        '$0$',
+        '$-1$',
+        '$+\\infty$',
+        '$-\\infty$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$-1$"},
+        {"label": "(2) =", "answer": "$1$"},
+        {"label": "(3) =", "answer": "$0$"},
+    ],
+    "points": 1,
+    "explanation": """Ta có \\( x^2-3x+2=(x-1)(x-2) \\).
+
+a) Khi \\( x\\to 1^+ \\), ta có \\( x>1\\Rightarrow |x-1|=x-1 \\).
+
+\\( \\lim_{x\\to 1^+} \\dfrac{(x-1)(x-2)}{x-1} = \\lim_{x\\to 1^+}(x-2) = -1 \\)
+
+b) Khi \\( x\\to 1^- \\), ta có \\( x<1\\Rightarrow |x-1|=-(x-1) \\).
+
+\\( \\lim_{x\\to 1^-} \\dfrac{(x-1)(x-2)}{-(x-1)} = \\lim_{x\\to 1^-} -(x-2) = 1 \\)
+
+c) Khi \\( x\\to 2 \\), hàm số xác định và liên tục tại lân cận \\( x=2 \\) (do \\( 2>1 \\) nên \\( |x-1|=x-1 \\)).
+
+\\( \\lim_{x\\to 2} \\dfrac{x^2-3x+2}{x-1} = \\dfrac{2^2-3(2)+2}{2-1} = 0 \\)""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de9_sh_25",
+    "type": "short",
+    "content": "Cho một hình vuông \\( C_1 \\) có cạnh bằng 10 cm. Người ta nội tiếp trong hình vuông \\( C_1 \\) một hình tròn, sau đó lại nội tiếp trong hình tròn đó một hình vuông \\( C_2 \\). Tiếp tục quá trình này vô hạn lần, ta được một dãy các hình vuông \\( C_1, C_2, C_3, \\ldots, C_n, \\ldots \\) Tính tổng diện tích của tất cả các hình vuông trong dãy trên (đơn vị: cm²).",
+    "blanks": [
+        {"label": "Tổng diện tích (cm²) =", "answers": ["200"]}
+    ],
+    "points": 1,
+    "explanation": """Diện tích hình vuông ban đầu \\( C_1 \\) là \\( S_1=10^2=100 \\) (cm²).
+
+Đường tròn nội tiếp hình vuông \\( C_1 \\) có đường kính bằng cạnh hình vuông, tức là \\( D_1=10 \\) cm.
+
+Hình vuông \\( C_2 \\) nội tiếp đường tròn này sẽ có đường chéo đúng bằng đường kính \\( D_1=10 \\) cm.
+
+Cạnh của hình vuông \\( C_2 \\) là \\( a_2=\\dfrac{10}{\\sqrt{2}} \\), diện tích của \\( C_2 \\) là \\( S_2=a_2^2=\\dfrac{100}{2}=50 \\) (cm²).
+
+Tương tự, diện tích mỗi hình vuông tiếp theo luôn bằng một nửa diện tích hình vuông ngay trước nó.
+
+Ta có cấp số nhân lùi vô hạn với \\( u_1=100 \\) và \\( q=\\dfrac{1}{2} \\).
+
+Tổng diện tích: \\( S=\\dfrac{u_1}{1-q}=\\dfrac{100}{1-\\dfrac{1}{2}}=200 \\) (cm²).
+
+Đáp án: 200.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de9_mc_26",
+    "type": "mc4",
+    "content": "Tính giới hạn \\( L = \\lim\\limits_{x\\to 0} \\dfrac{1-\\cos 2x}{x\\sin x} \\) (Gợi ý: Áp dụng giới hạn cơ bản \\( \\lim\\limits_{x\\to 0} \\dfrac{\\sin x}{x}=1 \\)).",
+    "options": {
+        "A": "$L=1$",
+        "B": "$L=2$",
+        "C": "$L=0$",
+        "D": "$L=\\dfrac{1}{2}$",
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": """Áp dụng công thức lượng giác nhân đôi: \\( 1-\\cos 2x = 2\\sin^2 x \\).
+
+Thay vào biểu thức giới hạn:
+
+\\( L = \\lim_{x\\to 0} \\dfrac{2\\sin^2 x}{x\\sin x} = \\lim_{x\\to 0} \\dfrac{2\\sin x}{x} \\)
+
+Sử dụng giới hạn cơ bản \\( \\lim\\limits_{x\\to 0} \\dfrac{\\sin x}{x}=1 \\), ta có:
+
+\\( L = 2\\cdot 1 = 2 \\)
+
+Chọn B.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de9_tf_27",
+    "type": "truefalse",
+    "content": "Cho hàm số \\( f(x) = \\begin{cases} \\dfrac{x^3-3x+2}{x^2-1} & \\text{khi } x>1 \\\\ ax+b & \\text{khi } x\\le 1 \\end{cases} \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "\\( \\lim\\limits_{x\\to 1^+} f(x) = 0 \\).", "correct": True},
+        {"text": "Hàm số có giới hạn tại \\( x=1 \\) khi và chỉ khi \\( a+b=0 \\).", "correct": True},
+        {"text": "Đường thẳng \\( x=1 \\) là tiệm cận đứng của đồ thị hàm số \\( y=\\dfrac{x^3-3x+2}{x^2-1} \\).", "correct": False},
+        {"text": "\\( \\lim\\limits_{x\\to+\\infty} \\dfrac{f(x)}{x} = 1 \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Với \\( x>1 \\):
+
+\\( \\dfrac{x^3-3x+2}{x^2-1} = \\dfrac{(x-1)(x^2+x-2)}{(x-1)(x+1)} = \\dfrac{(x-1)^2(x+2)}{(x-1)(x+1)} = \\dfrac{(x-1)(x+2)}{x+1} \\)
+
+\\( \\lim_{x\\to 1^+} f(x) = \\lim_{x\\to 1^+} \\dfrac{(x-1)(x+2)}{x+1} = \\dfrac{0\\cdot 3}{2} = 0 \\)
+
+b) ĐÚNG: Hàm số có giới hạn tại \\( x=1 \\Leftrightarrow \\lim_{x\\to 1^-} f(x)=\\lim_{x\\to 1^+} f(x) \\Leftrightarrow a(1)+b=0 \\Leftrightarrow a+b=0 \\).
+
+c) SAI: Do \\( \\lim_{x\\to 1^+} \\dfrac{x^3-3x+2}{x^2-1}=0 \\) (hữu hạn), nên \\( x=1 \\) không phải là tiệm cận đứng.
+
+d) ĐÚNG: Khi \\( x\\to+\\infty \\), \\( f(x)=\\dfrac{x^3-3x+2}{x^2-1} \\). Ta xét:
+
+\\( \\lim_{x\\to+\\infty} \\dfrac{x^3-3x+2}{x(x^2-1)} = \\lim_{x\\to+\\infty} \\dfrac{x^3}{x^3} = 1 \\)""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de9_sh_28",
+    "type": "short",
+    "content": "Biết rằng giới hạn \\( \\lim \\dfrac{1^2+2^2+3^2+\\cdots+n^2}{n^3+2n^2} = \\dfrac{a}{b} \\) với \\( \\dfrac{a}{b} \\) là phân số tối giản và \\( a,b\\in\\mathbb{N}^* \\). Tính giá trị của biểu thức \\( P=a^2+b^2 \\).",
+    "blanks": [
+        {"label": "P =", "answers": ["10"]}
+    ],
+    "points": 1,
+    "explanation": """Sử dụng công thức tổng các bình phương số tự nhiên đầu tiên:
+
+\\( S_n = 1^2+2^2+\\cdots+n^2 = \\dfrac{n(n+1)(2n+1)}{6} \\)
+
+Khi đó, biểu thức dưới dấu giới hạn trở thành:
+
+\\( u_n = \\dfrac{n(n+1)(2n+1)}{6(n^3+2n^2)} = \\dfrac{2n^3+3n^2+n}{6n^3+12n^2} \\)
+
+Chia cả tử và mẫu cho \\( n^3 \\) để tính giới hạn:
+
+\\( \\lim u_n = \\lim \\dfrac{2+\\dfrac{3}{n}+\\dfrac{1}{n^2}}{6+\\dfrac{12}{n}} = \\dfrac{2}{6} = \\dfrac{1}{3} \\)
+
+Do \\( \\dfrac{a}{b}=\\dfrac{1}{3} \\) tối giản nên \\( a=1, b=3 \\).
+
+Vậy \\( P=a^2+b^2=1^2+3^2=10 \\).
+
+Đáp án: 10.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de9_dd_29",
+    "type": "dragdrop",
+    "content": """Kéo và thả các phương án lựa chọn thích hợp vào ô trống. Biết rằng \\( \\lim\\limits_{x\\to-\\infty} \\left(\\sqrt{9x^2-ax}+bx\\right)=2 \\) với \\( a,b\\in\\mathbb{R} \\).
+
+a) Giá trị của tham số b là (1)
+
+b) Giá trị của tham số a là (2)
+
+c) Giá trị của biểu thức \\( a-b \\) là (3)""",
+    "options_pool": [
+        '$3$',
+        '$12$',
+        '$-3$',
+        '$9$',
+        '$-6$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$3$"},
+        {"label": "(2) =", "answer": "$12$"},
+        {"label": "(3) =", "answer": "$9$"},
+    ],
+    "points": 1,
+    "explanation": """Khi \\( x\\to-\\infty \\), ta có \\( \\sqrt{9x^2-ax}\\approx\\sqrt{9x^2}=3|x|=-3x \\).
+
+Để giới hạn \\( \\left(\\sqrt{9x^2-ax}+bx\\right) \\) là một số hữu hạn thì hệ số của x bậc nhất phải bị triệt tiêu, suy ra \\( -3x+bx=0\\Rightarrow b=3 \\).
+
+Với \\( b=3 \\), ta nhân lượng liên hợp:
+
+\\( \\lim_{x\\to-\\infty} \\dfrac{9x^2-ax-9x^2}{\\sqrt{9x^2-ax}-3x} = \\lim_{x\\to-\\infty} \\dfrac{-ax}{-x\\sqrt{9-a/x}-3x} = \\lim_{x\\to-\\infty} \\dfrac{-a}{-\\sqrt{9-a/x}-3} = \\dfrac{-a}{-3-3} = \\dfrac{a}{6} \\)
+
+Theo giả thiết \\( \\dfrac{a}{6}=2\\Rightarrow a=12 \\).
+
+Vậy \\( a=12, b=3 \\). Biểu thức \\( a-b=12-3=9 \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de9_sh_30",
+    "type": "short",
+    "content": "Một tam giác đều \\( T_1 \\) có cạnh bằng a. Người ta nối trung điểm các cạnh của \\( T_1 \\) để tạo ra tam giác đều \\( T_2 \\). Tiếp tục nối trung điểm các cạnh của \\( T_2 \\) để tạo ra tam giác đều \\( T_3 \\), và cứ tiếp tục quá trình đó mãi. Gọi \\( P_n \\) là chu vi của tam giác \\( T_n \\). Tính tổng \\( S=P_1+P_2+\\cdots+P_n+\\ldots \\) theo a. (Điền hệ số k của a, biết \\( S=k\\cdot a \\)).",
+    "blanks": [
+        {"label": "k =", "answers": ["6"]}
+    ],
+    "points": 1,
+    "explanation": """Chu vi của tam giác ban đầu là \\( P_1=3a \\).
+
+Tam giác \\( T_2 \\) được tạo bởi các đường trung bình của \\( T_1 \\), do đó cạnh của \\( T_2 \\) bằng \\( \\dfrac{a}{2}\\Rightarrow P_2=3\\cdot\\dfrac{a}{2}=\\dfrac{1}{2}P_1 \\).
+
+Tương tự, chu vi tam giác sau luôn bằng một nửa chu vi tam giác trước, \\( P_{n+1}=\\dfrac{1}{2}P_n \\).
+
+Dãy \\( (P_n) \\) là một cấp số nhân lùi vô hạn với số hạng đầu \\( u_1=3a \\) và công bội \\( q=\\dfrac{1}{2} \\).
+
+Tổng của dãy là: \\( S=\\dfrac{P_1}{1-q}=\\dfrac{3a}{1-\\dfrac{1}{2}}=6a \\).
+
+Hệ số cần điền là 6.
+
+Đáp án: 6.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de9_mc_31",
+    "type": "mc4",
+    "content": "Biết rằng \\( \\lim\\limits_{x\\to+\\infty} \\left(\\sqrt{x^2-ax+3}-bx\\right)=2 \\) với \\( a,b\\in\\mathbb{R} \\). Tính giá trị biểu thức \\( P=a+b \\).",
+    "options": {
+        "A": "$P=-3$",
+        "B": "$P=5$",
+        "C": "$P=-5$",
+        "D": "$P=3$",
+    },
+    "correct": "A",
+    "points": 1,
+    "explanation": """Khi \\( x\\to+\\infty \\), để giới hạn của hiệu \\( \\left(\\sqrt{x^2-ax+3}-bx\\right) \\) là một số hữu hạn thì bắt buộc hệ số bậc cao nhất phải triệt tiêu, tức là \\( \\sqrt{x^2}-bx=0\\Rightarrow x-bx=0\\Rightarrow b=1 \\).
+
+Với \\( b=1 \\), ta nhân lượng liên hợp:
+
+\\( \\lim_{x\\to+\\infty} \\dfrac{x^2-ax+3-x^2}{\\sqrt{x^2-ax+3}+x} = \\lim_{x\\to+\\infty} \\dfrac{-ax+3}{x\\sqrt{1-a/x+3/x^2}+x} \\)
+
+Chia cả tử và mẫu cho x ta được giới hạn là \\( \\dfrac{-a}{1+1}=-\\dfrac{a}{2} \\).
+
+Theo bài ra, \\( -\\dfrac{a}{2}=2\\Rightarrow a=-4 \\).
+
+Vậy \\( P=a+b=-4+1=-3 \\).
+
+Chọn A.""",
+},
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de9_sh_32",
+    "type": "short",
+    "content": "Cho hàm số \\( y=f(x) \\) thỏa mãn \\( \\lim\\limits_{x\\to 1} \\dfrac{f(x)-4}{x-1} = 6 \\). Tính giá trị của giới hạn \\( L = \\lim\\limits_{x\\to 1} \\dfrac{x^2f(x)-4}{x-1} \\).",
+    "blanks": [
+        {"label": "L =", "answers": ["14"]}
+    ],
+    "points": 1,
+    "explanation": """Vì \\( \\lim\\limits_{x\\to 1} \\dfrac{f(x)-4}{x-1}=6 \\) là hữu hạn nên bắt buộc \\( f(1)=4 \\).
+
+Ta biến đổi biểu thức cần tính giới hạn bằng cách thêm bớt \\( 4x^2 \\):
+
+\\( L = \\lim_{x\\to 1} \\dfrac{x^2f(x)-4x^2+4x^2-4}{x-1} = \\lim_{x\\to 1} \\dfrac{x^2\\left[f(x)-4\\right]}{x-1} + \\lim_{x\\to 1} \\dfrac{4x^2-4}{x-1} \\)
+
+Tính giới hạn thứ nhất:
+
+\\( \\lim_{x\\to 1} x^2\\cdot\\dfrac{f(x)-4}{x-1} = 1^2\\cdot 6 = 6 \\)
+
+Tính giới hạn thứ hai:
+
+\\( \\lim_{x\\to 1} \\dfrac{4(x-1)(x+1)}{x-1} = \\lim_{x\\to 1} 4(x+1) = 4\\cdot 2 = 8 \\)
+
+Vậy \\( L = 6+8 = 14 \\).
+
+Đáp án: 14.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de9_tf_33",
+    "type": "truefalse",
+    "content": "Cho hàm số \\( f(x) = \\begin{cases} \\dfrac{\\sqrt[3]{x+7}-2}{x-1} & \\text{khi } x\\neq 1 \\\\ m^2-2m+\\dfrac{1}{12} & \\text{khi } x=1 \\end{cases} \\) (với m là tham số thực). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Giới hạn của hàm số khi \\( x\\to 1 \\) bằng \\( \\dfrac{1}{12} \\).", "correct": True},
+        {"text": "Hàm số \\( f(x) \\) liên tục tại \\( x=1 \\) khi và chỉ khi \\( m=1 \\).", "correct": False},
+        {"text": "Có đúng 2 giá trị của m để hàm số liên tục trên \\( \\mathbb{R} \\).", "correct": True},
+        {"text": "Tổng các giá trị của m thỏa mãn để hàm số liên tục trên \\( \\mathbb{R} \\) bằng 2.", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Xét giới hạn khi \\( x\\to 1 \\) (sử dụng liên hợp bậc 3):
+
+\\( \\lim_{x\\to 1} f(x) = \\lim_{x\\to 1} \\dfrac{x+7-8}{(x-1)\\left(\\sqrt[3]{(x+7)^2}+2\\sqrt[3]{x+7}+4\\right)} \\)
+
+\\( = \\lim_{x\\to 1} \\dfrac{1}{\\sqrt[3]{(x+7)^2}+2\\sqrt[3]{x+7}+4} = \\dfrac{1}{4+4+4} = \\dfrac{1}{12} \\)
+
+b, c) Hàm số liên tục tại \\( x=1 \\Leftrightarrow \\lim_{x\\to 1} f(x)=f(1) \\Leftrightarrow m^2-2m+\\dfrac{1}{12}=\\dfrac{1}{12} \\Leftrightarrow m^2-2m=0 \\Leftrightarrow m\\in\\{0;2\\} \\). Vậy mệnh đề b SAI (vì có 2 giá trị chứ không chỉ \\( m=1 \\)), mệnh đề c ĐÚNG (có đúng 2 giá trị).
+
+d) ĐÚNG: Với \\( x\\neq 1 \\), hàm số xác định và liên tục (vì là hàm sơ cấp cơ bản). Do đó hàm số liên tục trên \\( \\mathbb{R} \\) khi nó liên tục tại \\( x=1 \\), tức \\( m\\in\\{0;2\\} \\). Tổng các giá trị của m là \\( 0+2=2 \\).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de9_dd_34",
+    "type": "dragdrop",
+    "content": """Kéo và thả các phương án lựa chọn thích hợp vào ô trống. Bằng cách áp dụng định lý kẹp, hãy tính các giới hạn dãy số sau:
+
+a) \\( \\lim \\dfrac{\\sin n+\\cos 2n}{n^2+1} = \\) (1)
+
+b) \\( \\lim \\dfrac{n+\\sin n}{2n+\\cos n} = \\) (2)
+
+c) \\( \\lim \\dfrac{(-1)^n\\cdot n+2}{3n^2-1} = \\) (3)""",
+    "options_pool": [
+        '$0$',
+        '$\\dfrac{1}{2}$',
+        '$-\\dfrac{1}{2}$',
+        '$1$',
+        '$+\\infty$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$0$"},
+        {"label": "(2) =", "answer": "$\\dfrac{1}{2}$"},
+        {"label": "(3) =", "answer": "$0$"},
+    ],
+    "points": 1,
+    "explanation": """a) Do \\( -2\\le\\sin n+\\cos 2n\\le 2 \\) nên:
+
+\\( \\dfrac{-2}{n^2+1} \\le \\dfrac{\\sin n+\\cos 2n}{n^2+1} \\le \\dfrac{2}{n^2+1} \\)
+
+Mà \\( \\lim \\dfrac{-2}{n^2+1}=\\lim \\dfrac{2}{n^2+1}=0 \\), suy ra giới hạn bằng 0.
+
+b) Chia cả tử và mẫu cho n:
+
+\\( \\lim \\dfrac{1+\\dfrac{\\sin n}{n}}{2+\\dfrac{\\cos n}{n}} \\)
+
+Áp dụng định lý kẹp tương tự, ta có \\( \\lim \\dfrac{\\sin n}{n}=0 \\) và \\( \\lim \\dfrac{\\cos n}{n}=0 \\). Giới hạn bằng \\( \\dfrac{1}{2} \\).
+
+c) Chia tử và mẫu cho \\( n^2 \\):
+
+\\( \\lim \\dfrac{\\dfrac{(-1)^n}{n}+\\dfrac{2}{n^2}}{3-\\dfrac{1}{n^2}} = \\dfrac{0}{3} = 0 \\)""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de9_sh_35",
+    "type": "short",
+    "content": "Biết \\( \\lim\\limits_{x\\to 0} \\dfrac{1-\\cos 2x\\cos 4x}{x^2} = \\dfrac{a}{b} \\) với \\( \\dfrac{a}{b} \\) là phân số tối giản và \\( a,b\\in\\mathbb{N}^* \\). Tính tổng \\( S=a+b \\).",
+    "blanks": [
+        {"label": "S =", "answers": ["11"]}
+    ],
+    "points": 1,
+    "explanation": """Thêm bớt \\( \\cos 2x \\) để tách giới hạn:
+
+\\( L = \\lim_{x\\to 0} \\dfrac{(1-\\cos 2x)+(\\cos 2x-\\cos 2x\\cos 4x)}{x^2} \\)
+
+\\( L = \\lim_{x\\to 0} \\dfrac{1-\\cos 2x}{x^2} + \\lim_{x\\to 0} \\cos 2x\\cdot\\dfrac{1-\\cos 4x}{x^2} \\)
+
+Sử dụng công thức nhân đôi \\( 1-\\cos\\alpha = 2\\sin^2\\dfrac{\\alpha}{2} \\) và giới hạn \\( \\lim\\limits_{x\\to 0} \\dfrac{\\sin kx}{kx}=1 \\):
+
+\\( \\lim_{x\\to 0} \\dfrac{2\\sin^2 x}{x^2} = 2\\cdot 1^2 = 2 \\)
+
+\\( \\lim_{x\\to 0} \\cos 2x\\cdot\\dfrac{2\\sin^2 2x}{x^2} = 1\\cdot 2\\cdot 4\\cdot\\lim_{x\\to 0}\\left(\\dfrac{\\sin 2x}{2x}\\right)^2 = 8 \\)
+
+Vậy \\( L = 2+8 = 10 \\). Tức là \\( \\dfrac{a}{b}=\\dfrac{10}{1}\\Rightarrow a=10, b=1 \\).
+
+Tổng \\( S=10+1=11 \\).
+
+Đáp án: 11.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de9_mc_36",
+    "type": "mc4",
+    "content": "Tính giới hạn \\( L = \\lim\\limits_{x\\to 1} \\dfrac{x^{10}-10x+9}{(x-1)^2} \\).",
+    "options": {
+        "A": "$L=90$",
+        "B": "$L=45$",
+        "C": "$L=10$",
+        "D": "$L=9$",
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": """Đây là dạng vô định \\( \\dfrac{0}{0} \\). Ta phân tích tử số thành nhân tử bằng cách thêm bớt:
+
+\\( x^{10}-10x+9 = (x^{10}-1)-10(x-1) = (x-1)(x^9+x^8+\\cdots+x+1-10) \\)
+
+Rút gọn một nhân tử \\( (x-1) \\):
+
+\\( L = \\lim_{x\\to 1} \\dfrac{x^9+x^8+\\cdots+x+1-10}{x-1} \\)
+
+Tiếp tục là dạng vô định \\( \\dfrac{0}{0} \\). Ta lại thêm bớt:
+
+\\( \\dfrac{(x^9-1)+(x^8-1)+\\cdots+(x-1)}{x-1} = \\dfrac{x^9-1}{x-1}+\\dfrac{x^8-1}{x-1}+\\cdots+1 \\)
+
+Qua giới hạn khi \\( x\\to 1 \\), theo hằng đẳng thức \\( \\lim\\limits_{x\\to 1} \\dfrac{x^n-1}{x-1}=n \\), ta có:
+
+\\( L = 9+8+7+6+5+4+3+2+1 = \\dfrac{9\\times 10}{2} = 45 \\)
+
+Chọn B.""",
+},
 
 
 
