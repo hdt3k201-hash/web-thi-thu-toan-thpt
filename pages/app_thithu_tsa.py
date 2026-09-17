@@ -6168,7 +6168,214 @@ Biểu diễn hai họ nghiệm này lên đường tròn lượng giác, ta thu
 
 Chọn đáp án B.""",
 },
-                
+     # ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de7_dd_24',
+    "type": 'dragdrop',
+    "content": """Cho hàm số \\( y = \\dfrac{\\sin x+2\\cos x+3}{2\\sin x+\\cos x+3} \\). Hãy kéo và thả các giá trị thích hợp vào chỗ trống để xác định tập giá trị của hàm số này.""",
+    "options_pool": [
+        '$-\\dfrac{2}{3}$',
+        '$\\dfrac{1}{3}$',
+        '$\\dfrac{1}{2}$',
+        '$\\dfrac{4}{3}$',
+        '$\\dfrac{3}{2}$',
+        '2'
+    ],
+    "blanks": [
+        {"label": "1) Giá trị lớn nhất của hàm số là: $y_{max}$ =", "answer": "2"},
+        {"label": "2) Giá trị nhỏ nhất của hàm số là: $y_{min}$ =", "answer": "$\\dfrac{1}{2}$"},
+    ],
+    "points": 1,
+    "explanation": """Vì mẫu số \\( 2\\sin x+\\cos x+3 \\) luôn dương (do \\( 2\\sin x+\\cos x \\ge -\\sqrt{5} > -3 \\)), ta nhân chéo:
+
+\\( y(2\\sin x+\\cos x+3) = \\sin x+2\\cos x+3 \\)
+
+Gom các hệ số của sin x và cos x lại với nhau:
+
+\\( (2y-1)\\sin x+(y-2)\\cos x = 3-3y \\)
+
+Dùng điều kiện có nghiệm của phương trình, ta thiết lập bất đẳng thức cho y:
+
+\\( (2y-1)^2+(y-2)^2 \\ge (3-3y)^2 \\)
+
+Khai triển các hằng đẳng thức:
+
+\\( 4y^2-4y+1+y^2-4y+4 \\ge 9-18y+9y^2 \\)
+
+Gom hết về một vế:
+
+\\( -4y^2+10y-4 \\ge 0 \\Leftrightarrow 2y^2-5y+2 \\le 0 \\)
+
+Phân tích nhân tử: \\( (2y-1)(y-2) \\le 0 \\), suy ra tập nghiệm:
+
+\\( \\dfrac{1}{2} \\le y \\le 2 \\)
+
+Vậy giá trị nhỏ nhất của hàm số là \\( \\dfrac{1}{2} \\), giá trị lớn nhất là 2.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_25',
+    "type": 'short',
+    "content": """Một ngọn hải đăng được đặt tại vị trí A cách bờ biển một khoảng \\( AB = 3 \\) km (bờ biển được xem như một đường thẳng). Ngọn hải đăng xoay đều với tốc độ góc \\( \\omega = \\dfrac{\\pi}{2} \\) rad/phút. Gọi M là vệt sáng của ngọn hải đăng trên bờ biển. Bắt đầu từ thời điểm tia sáng vuông góc với bờ biển (tại B), hãy tính khoảng cách từ M đến B sau thời gian \\( t = \\dfrac{1}{2} \\) phút. (Kết quả làm tròn đến chữ số thập phân thứ nhất).""",
+    "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau25_de7.PNG',
+    "blanks": [
+        {"label": "BM =", "answers": ["3"]}
+    ],
+    "points": 1,
+    "explanation": """Bài toán mô hình hóa bằng tam giác vuông \\( \\triangle ABM \\) vuông tại B. Đại lượng thay đổi theo thời gian ở đây chính là góc quay \\( \\theta = \\widehat{BAM} \\).
+
+Với tốc độ góc \\( \\omega=\\dfrac{\\pi}{2} \\) (rad/phút), tại thời điểm t (phút), góc quay quét được một lượng là:
+
+\\( \\theta(t) = \\omega\\cdot t = \\dfrac{\\pi}{2}\\cdot t \\)
+
+Tại thời điểm \\( t=\\dfrac{1}{2} \\) phút, góc mà tia sáng hợp với đường vuông góc AB là:
+
+\\( \\theta = \\dfrac{\\pi}{2}\\cdot\\dfrac{1}{2} = \\dfrac{\\pi}{4} \\) rad (tức 45°)
+
+Dựa vào hệ thức lượng trong tam giác vuông:
+
+\\( \\tan\\theta = \\dfrac{BM}{AB} \\Rightarrow BM = AB\\cdot\\tan\\theta \\)
+
+Thay các giá trị số vào, ta tính được khoảng cách vệt sáng:
+
+\\( BM = 3\\cdot\\tan\\left(\\dfrac{\\pi}{4}\\right) = 3\\cdot 1 = 3 \\) (km)
+
+Đáp số cần điền: 3.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de7_tf_26",
+    "type": "truefalse",
+    "content": "Cho phương trình \\( 2\\sin^2 x-5\\sin x+m=0 \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Nếu \\( m=3 \\), phương trình có nghiệm \\( x=\\dfrac{\\pi}{2}+k2\\pi \\).", "correct": True},
+        {"text": "Điều kiện để phương trình vô nghiệm là \\( m>3 \\) hoặc \\( m<-\\dfrac{25}{8} \\).", "correct": False},
+        {"text": "Khi \\( m=-7 \\), phương trình có đúng 2 nghiệm trên đoạn \\( [0;2\\pi] \\).", "correct": False},
+        {"text": "Có đúng 6 giá trị nguyên của tham số m để phương trình có nghiệm.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Cô lập tham số m: \\( m=-2\\sin^2 x+5\\sin x \\). Đặt \\( t=\\sin x \\) với \\( t\\in[-1;1] \\). Bài toán chuyển về khảo sát hàm số bậc hai \\( f(t)=-2t^2+5t \\) trên đoạn \\( [-1;1] \\).
+
+Đỉnh của parabol (úp) nằm tại \\( t=\\dfrac{5}{4} \\), nằm ngoài đoạn \\( [-1;1] \\), nên hàm số đơn điệu trên đoạn này. Tính giá trị tại các điểm mút:
+
+\\( f(-1) = -2(-1)^2+5(-1) = -7 \\)
+
+\\( f(1) = -2(1)^2+5(1) = 3 \\)
+
+Suy ra tập giá trị của hàm số là \\( m\\in[-7;3] \\).
+
+a) ĐÚNG: Thay \\( m=3 \\), phương trình thành \\( 2\\sin^2 x-5\\sin x+3=0 \\). Giải ra \\( \\sin x=1 \\) (nhận) hoặc \\( \\sin x=1,5 \\) (loại). Với \\( \\sin x=1 \\Rightarrow x=\\dfrac{\\pi}{2}+k2\\pi \\).
+
+b) SAI: Phương trình có nghiệm khi \\( m\\in[-7;3] \\), nên vô nghiệm khi \\( m>3 \\) hoặc \\( m<-7 \\), chứ không phải \\( -\\dfrac{25}{8} \\) (giá trị tung độ đỉnh, nhưng đỉnh này nằm ngoài miền xét).
+
+c) SAI: Khi \\( m=-7 \\), phương trình có nghiệm duy nhất \\( t=\\sin x=-1 \\). Trên đoạn \\( [0;2\\pi] \\), nó chỉ cho đúng 1 nghiệm là \\( x=\\dfrac{3\\pi}{2} \\), không phải 2 nghiệm.
+
+d) SAI: Các giá trị nguyên của m để có nghiệm là từ -7 đến 3, tức có \\( 3-(-7)+1=11 \\) giá trị nguyên, không phải 6.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_27',
+    "type": 'short',
+    "content": """Huyết áp của một bệnh nhân được theo dõi bằng máy đo. Sau khi phân tích dữ liệu, bác sĩ nhận thấy huyết áp P (tính bằng mmHg) của bệnh nhân biến thiên theo thời gian t (tính bằng phút) theo hàm số lượng giác:
+
+\\( P(t) = 115+25\\sin(140\\pi t) \\)
+
+Nhịp tim của con người được định nghĩa là số chu kỳ bơm máu (số dao động hoàn chỉnh của huyết áp) diễn ra trong đúng 1 phút. Dựa vào mô hình trên, hãy tính nhịp tim của bệnh nhân này (đơn vị: nhịp/phút).""",
+    "blanks": [
+        {"label": "Nhịp tim =", "answers": ["70"]}
+    ],
+    "points": 1,
+    "explanation": """Mỗi chu kỳ bơm máu tương ứng với một chu kỳ dao động hoàn chỉnh của hàm số \\( P(t) \\). Từ phương trình \\( P(t)=115+25\\sin(140\\pi t) \\), ta đọc được tần số góc của dao động là:
+
+\\( \\omega = 140\\pi \\) (rad/phút)
+
+Thời gian để hoàn thành một chu kỳ bơm máu (một nhịp đập) là:
+
+\\( T = \\dfrac{2\\pi}{\\omega} = \\dfrac{2\\pi}{140\\pi} = \\dfrac{1}{70} \\) (phút)
+
+Điều này có nghĩa là mỗi nhịp tim diễn ra trong vòng \\( \\dfrac{1}{70} \\) của một phút. Vậy số nhịp tim diễn ra trong 1 phút chính là nghịch đảo của chu kỳ (tần số dao động):
+
+\\( f = \\dfrac{1}{T} = 70 \\) (nhịp/phút)
+
+Đáp số cần điền: 70.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de7_mc_28',
+    "type": 'mc4',
+    "content": 'Gọi \\( x_1, x_2, x_3, x_4 \\) là 4 nghiệm thực phân biệt của phương trình \\( \\cos 2x-3\\cos x+2=0 \\) trên đoạn \\( [0;2\\pi] \\) được sắp xếp theo thứ tự tăng dần. Tính tỉ số \\( q = \\dfrac{x_3}{x_2} \\).',
+    "options": {
+        'A': '2',
+        'B': '3',
+        'C': '4',
+        'D': '5',
+    },
+    "correct": 'D',
+    "points": 1,
+    "explanation": """Đưa phương trình về cùng góc x bằng công thức nhân đôi \\( \\cos 2x=2\\cos^2 x-1 \\):
+
+\\( (2\\cos^2 x-1)-3\\cos x+2=0 \\Leftrightarrow 2\\cos^2 x-3\\cos x+1=0 \\)
+
+Tổng các hệ số bằng 0 (\\( a+b+c=0 \\)), nên nhẩm ngay được hai nghiệm:
+
+\\( \\cos x=1 \\) hoặc \\( \\cos x=\\dfrac{1}{2} \\)
+
+Lần lượt quét các nghiệm này trên đoạn \\( [0;2\\pi] \\):
+
+- Với \\( \\cos x=1 \\): \\( x=0 \\) và \\( x=2\\pi \\).
+
+- Với \\( \\cos x=\\dfrac{1}{2} \\): \\( x=\\dfrac{\\pi}{3} \\) và \\( x=\\dfrac{5\\pi}{3} \\).
+
+Sắp xếp toàn bộ 4 nghiệm theo thứ tự tăng dần:
+
+\\( x_1=0,\\ x_2=\\dfrac{\\pi}{3},\\ x_3=\\dfrac{5\\pi}{3},\\ x_4=2\\pi \\)
+
+Tính tỉ số theo yêu cầu bài toán:
+
+\\( q = \\dfrac{x_3}{x_2} = \\dfrac{\\frac{5\\pi}{3}}{\\frac{\\pi}{3}} = 5 \\)
+
+Chọn đáp án D.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de7_dd_29',
+    "type": 'dragdrop',
+    "content": """Biểu thức rút gọn của \\( P = \\dfrac{\\cos x-\\cos 2x+\\cos 3x}{\\sin x-\\sin 2x+\\sin 3x} \\) có dạng \\( \\cot(kx) \\). Kéo và thả hệ số thích hợp vào chỗ trống để hoàn thiện biểu thức.""",
+    "options_pool": [
+        '$\\dfrac{1}{2}$',
+        '1',
+        '2',
+        '3',
+        '$\\dfrac{3}{2}$',
+        '4'
+    ],
+    "blanks": [
+        {"label": "Giá trị của tham số k là: k =", "answer": "2"},
+    ],
+    "points": 1,
+    "explanation": """Với phân thức chứa chuỗi tổng các hàm lượng giác có cung cấp số cộng, ta ghép phần tử đầu và phần tử cuối lại với nhau để dùng công thức biến đổi tổng thành tích. Xét tử thức:
+
+\\( \\text{Tử} = (\\cos 3x+\\cos x)-\\cos 2x = 2\\cos\\left(\\dfrac{3x+x}{2}\\right)\\cos\\left(\\dfrac{3x-x}{2}\\right)-\\cos 2x \\)
+
+\\( = 2\\cos 2x\\cos x-\\cos 2x = \\cos 2x(2\\cos x-1) \\)
+
+Làm hoàn toàn tương tự cho mẫu thức:
+
+\\( \\text{Mẫu} = (\\sin 3x+\\sin x)-\\sin 2x = 2\\sin 2x\\cos x-\\sin 2x = \\sin 2x(2\\cos x-1) \\)
+
+Lắp ghép lại vào phân thức P và triệt tiêu nhân tử chung (với điều kiện \\( 2\\cos x-1\\ne 0 \\)):
+
+\\( P = \\dfrac{\\cos 2x(2\\cos x-1)}{\\sin 2x(2\\cos x-1)} = \\dfrac{\\cos 2x}{\\sin 2x} = \\cot 2x \\)
+
+So sánh với dạng \\( \\cot(kx) \\), ta suy ra \\( k=2 \\).
+
+Kết quả điền ô trống: 2.""",
+},           
    
          ], # Đóng danh sách questions của Đề 7
     }, # Đóng dictionary của Đề 7
