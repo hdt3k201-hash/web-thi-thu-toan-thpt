@@ -1205,6 +1205,7 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
     "points": 1,
     "explanation": "Ta có:\n\n\\( m^2\\ln\\left(\\dfrac{x}{e}\\right) = (2-m)\\ln x - 4 \\Leftrightarrow m^2(\\ln x - 1) = (2-m)\\ln x - 4 \\)\n\n\\( \\Leftrightarrow (m^2+m-2)\\ln x = m^2 - 4 \\quad (1) \\)\n\nVới \\( m^2+m-2=0 \\Rightarrow m=1 \\) (do \\( m>0 \\)): khi đó (1) trở thành \\( 0.\\ln x = -3 \\) (vô lí) nên loại \\( m=1 \\).\n\nVới \\( m\\ne 1 \\), (1) \\( \\Leftrightarrow \\ln x = \\dfrac{m-2}{m-1} \\quad (2) \\)\n\nHàm số \\( y=\\ln x \\) đồng biến trên \\( \\left[\\dfrac{1}{e};1\\right] \\), suy ra \\( \\ln x \\in [-1;0] \\).\n\nPhương trình (2) có nghiệm thuộc đoạn \\( \\left[\\dfrac{1}{e};1\\right] \\) khi \\( -1 \\le \\dfrac{m-2}{m-1} \\le 0 \\).\n\nGiải điều kiện thứ nhất: \\( \\dfrac{m-2}{m-1} \\ge -1 \\Leftrightarrow m\\ge \\dfrac{3}{2} \\) hoặc \\( m<1 \\).\n\nGiải điều kiện thứ hai: \\( \\dfrac{m-2}{m-1} \\le 0 \\Leftrightarrow 1<m\\le 2 \\).\n\nKết hợp hai điều kiện, ta được \\( \\dfrac{3}{2}\\le m\\le 2 \\).\n\nVì \\( m \\) nguyên dương nên \\( m=2 \\). Vậy có 1 giá trị nguyên dương của \\( m \\) thỏa mãn.\n\nĐáp án B.",
 },
+],
 
 # ---------------- TRẢ LỜI NGẮN (short) ----------------
 "short": [
@@ -1235,9 +1236,9 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
         "points": 1,
         "explanation": "Phân tích ra thừa số nguyên tố:\n\n\\( 60 = 2^2 \\times 3 \\times 5 \\)\n\n\\( 84 = 2^2 \\times 3 \\times 7 \\)\n\nVậy ƯCLN\\( (60, 84) = 2^2 \\times 3 = 12 \\).",
     },
-],
+    ],
     },
-]
+  ]
 
 
 def build_exam(exam_def):
