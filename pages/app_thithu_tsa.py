@@ -6753,9 +6753,121 @@ Kết hợp với điều kiện nguyên \\( m\\in\\mathbb{Z} \\) và \\( m\\in[
          ], # Đóng danh sách questions của Đề 7
     }, # Đóng dictionary của Đề 7
 
+{
+              "id": "de8",
+              "name": "Đề số 8 - ÔN TẬP CHUYÊN ĐỀ DÃY SỐ - 2026.",
+              "description": "Câu hỏi.",
+              "questions": [
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de8_mc_1',
+    "type": 'mc4',
+    "content": 'Có 12 cây bút có chiều dài lập thành một cấp số cộng. Biết rằng cây bút thứ nhất dài 48 cm và cây thứ ba dài 42 cm. Cây bút cuối cùng trong bộ sưu tập này có chiều dài bằng bao nhiêu?',
+    "options": {
+        'A': '12 cm',
+        'B': '15 cm',
+        'C': '16 cm',
+        'D': '18 cm',
+    },
+    "correct": 'B',
+    "points": 1,
+    "explanation": """Gọi chiều dài các cây bút lập thành cấp số cộng \\( (u_n) \\) với \\( u_1=48 \\).
+
+Ta có cây thứ ba \\( u_3=42 \\Rightarrow u_1+2d=42 \\Rightarrow 48+2d=42 \\Rightarrow 2d=-6 \\Rightarrow d=-3 \\).
+
+Chiều dài cây bút cuối cùng (cây thứ 12) là:
+
+\\( u_{12}=u_1+11d=48+11\\cdot(-3)=48-33=15 \\) (cm).
+
+Chọn đáp án B.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de8_mc_2',
+    "type": 'mc4',
+    "content": 'Cho cấp số cộng \\( (u_n) \\) có \\( u_1=5 \\) và \\( u_3=10 \\). Trên mặt phẳng tọa độ Oxy, ta đặt \\( A_n \\) là các điểm có tọa độ \\( A_n(n;u_n) \\). Khi đó, tập hợp các điểm \\( A_1, A_2, \\ldots, A_n \\) nằm trên đường thẳng \\( \\Delta \\) có phương trình là:',
+    "options": {
+        'A': '\\( \\Delta: y=5x+5 \\)',
+        'B': '\\( \\Delta: y=5x+10 \\)',
+        'C': '\\( \\Delta: y=\\dfrac{5}{2}x+\\dfrac{5}{2} \\)',
+        'D': '\\( \\Delta: y=\\dfrac{5}{2}x+5 \\)',
+    },
+    "correct": 'C',
+    "points": 1,
+    "explanation": """Ta có \\( u_1=5 \\) và \\( u_3=10 \\Rightarrow u_1+2d=10 \\Rightarrow 5+2d=10 \\Rightarrow d=\\dfrac{5}{2} \\).
+
+Công thức số hạng tổng quát của cấp số cộng:
+
+\\( u_n=u_1+(n-1)d=5+(n-1)\\cdot\\dfrac{5}{2}=\\dfrac{5}{2}n+\\dfrac{5}{2} \\).
+
+Do \\( A_n(n;u_n) \\) nên hoành độ \\( x=n \\) và tung độ \\( y=u_n \\).
+
+Thay vào ta được phương trình đường thẳng chứa các điểm \\( A_n \\) là \\( y=\\dfrac{5}{2}x+\\dfrac{5}{2} \\).
+
+Chọn đáp án C.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de8_mc_3',
+    "type": 'mc4',
+    "content": 'Trong một tiết học, bạn Linh viết một dãy số thuộc một cấp số cộng lên trên vở và nói với bạn Bình: "Cấp số cộng của tớ đặc biệt lắm, nếu lấy số hạng đầu cộng với số hạng thứ 2 thì thu được số hạng thứ 3, còn nếu cộng bình phương số hạng đầu với bình phương công sai thì thu được số hạng thứ 4". Bình nghe vậy liền tính ngay được số hạng thứ năm của cấp số cộng. Số hạng thứ năm đó bằng:',
+    "options": {
+        'A': '10',
+        'B': '11',
+        'C': '12',
+        'D': '13',
+    },
+    "correct": 'A',
+    "points": 1,
+    "explanation": """Gọi cấp số cộng là \\( (u_n) \\) có công sai \\( d \\). Theo giả thiết, ta có hệ:
+
+\\( \\begin{cases} u_1+u_2=u_3 \\\\ u_1^2+d^2=u_4 \\end{cases} \\Rightarrow \\begin{cases} u_1+(u_1+d)=u_1+2d \\\\ u_1^2+d^2=u_1+3d \\end{cases} \\Rightarrow \\begin{cases} u_1=d \\\\ d^2+d^2=d+3d \\end{cases} \\)
+
+Từ phương trình thứ hai: \\( 2d^2=4d \\Rightarrow 2d(d-2)=0 \\).
+
+Trường hợp \\( d=0 \\Rightarrow u_1=0 \\Rightarrow \\) dãy số 0, 0, 0... (không có đáp án phù hợp).
+
+Trường hợp \\( d=2 \\Rightarrow u_1=2 \\). Cấp số cộng là: 2, 4, 6, 8, 10, ...
+
+Số hạng thứ năm là \\( u_5=u_1+4d=2+4\\cdot2=10 \\).
+
+Chọn đáp án A.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de8_tf_4",
+    "type": "truefalse",
+    "content": "Cho cấp số nhân \\( (u_n) \\) thỏa mãn \\( u_2=6 \\) và \\( u_5=\\dfrac{3}{4} \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "\\( u_{2023}\\cdot u_{2025}=(u_{2024})^2 \\)", "correct": True},
+        {"text": "Biểu thức \\( u_{2023}\\cdot q=\\dfrac{1}{2} \\) (với q là công bội)", "correct": False},
+        {"text": "Dãy số \\( (u_n) \\) có đúng 3 số hạng mang giá trị nguyên dương", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """Ta có \\( u_5=u_2\\cdot q^3 \\Rightarrow \\dfrac{3}{4}=6\\cdot q^3 \\Rightarrow q^3=\\dfrac{1}{8} \\Rightarrow q=\\dfrac{1}{2} \\).
+
+Suy ra \\( u_1=\\dfrac{u_2}{q}=\\dfrac{6}{1/2}=12 \\).
+
+a) ĐÚNG: Đây là tính chất cơ bản của cấp số nhân: \\( u_{k-1}\\cdot u_{k+1}=u_k^2 \\).
+
+b) SAI: \\( u_{2023}\\cdot q=u_{2024}=12\\cdot\\left(\\dfrac{1}{2}\\right)^{2023}\\ne\\dfrac{1}{2} \\).
+
+c) ĐÚNG: Dãy số là 12; 6; 3; 1,5; 0,75; ... Các số hạng nguyên dương gồm \\( u_1=12 \\), \\( u_2=6 \\), \\( u_3=3 \\). Chỉ có đúng 3 số hạng nguyên dương.""",
+},
 
 
-  
+
+
+
+
+ ], # Đóng danh sách questions của Đề 8
+    }, # Đóng dictionary của Đề 8
+
+                
 ] # Dấu kết thúc toàn bộ danh sách đề thi (Nằm sát lề trái, không lùi dấu cách nào)
 
 
