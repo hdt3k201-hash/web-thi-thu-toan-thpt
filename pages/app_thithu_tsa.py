@@ -6376,7 +6376,380 @@ So sánh với dạng \\( \\cot(kx) \\), ta suy ra \\( k=2 \\).
 
 Kết quả điền ô trống: 2.""",
 },           
-   
+ # ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de7_tf_30",
+    "type": "truefalse",
+    "content": "Cho hàm số \\( y = \\cos(\\cos x) \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Hàm số đã cho là một hàm số chẵn.", "correct": True},
+        {"text": "Chu kì tuần hoàn của hàm số này là \\( T = \\pi \\).", "correct": True},
+        {"text": "Giá trị lớn nhất của hàm số là 1, đạt được khi \\( x = 0 \\).", "correct": False},
+        {"text": "Phương trình \\( \\cos(\\cos x) = 0 \\) có vô số nghiệm.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Ta đi sâu vào phân tích tập xác định và tính chất của hàm số hợp này.
+
+a) ĐÚNG: Tập xác định \\( D = \\mathbb{R} \\) là tập đối xứng. Xét \\( f(-x) = \\cos(\\cos(-x)) \\). Vì hàm cos bên trong là hàm chẵn nên \\( \\cos(-x) = \\cos x \\). Do đó \\( f(-x) = \\cos(\\cos x) = f(x) \\). Kết luận hàm số là hàm chẵn.
+
+b) ĐÚNG: Ta thử kiểm tra chu kì π:
+
+\\( f(x+\\pi) = \\cos(\\cos(x+\\pi)) = \\cos(-\\cos x) = \\cos(\\cos x) = f(x) \\)
+
+Bởi vì hàm cos bên ngoài nuốt luôn dấu âm của cos x, nên hàm số lặp lại trạng thái sau mỗi khoảng π. Chu kì cơ sở chính là π.
+
+c) SAI: Cốt lõi nằm ở tập giá trị của lớp cos bên trong. Đặt \\( t=\\cos x \\Rightarrow t\\in[-1;1] \\). Hàm số trở thành \\( y=\\cos t \\) xét trên đoạn \\( [-1;1] \\) radian. Trên đoạn này, đồ thị hàm \\( \\cos t \\) đạt đỉnh cao nhất là 1 khi \\( t=0 \\). Mà \\( t=0 \\Leftrightarrow \\cos x=0 \\Leftrightarrow x=\\dfrac{\\pi}{2}+k\\pi \\). Vậy giá trị lớn nhất đúng là 1, nhưng đạt được tại \\( x=\\dfrac{\\pi}{2} \\) chứ không phải \\( x=0 \\) (tại \\( x=0,\\ y=\\cos(1)\\approx 0,54 \\)).
+
+d) SAI: Để \\( \\cos(\\cos x)=0 \\), biểu thức lõi bên trong phải thỏa \\( \\cos x=\\dfrac{\\pi}{2}+k\\pi \\). Tuy nhiên, giá trị nhỏ nhất của \\( \\left|\\dfrac{\\pi}{2}+k\\pi\\right| \\) là \\( \\dfrac{\\pi}{2}\\approx 1,57 \\). Vì \\( \\cos x \\) chỉ dao động từ -1 đến 1, nó không bao giờ vươn tới được con số 1,57. Suy ra phương trình này vô nghiệm.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_31',
+    "type": 'short',
+    "content": """Một người thợ cơ khí cần làm một máng dẫn nước từ một tấm tôn phẳng bề rộng 30 cm. Người đó bẻ gập hai bên mép tấm tôn, mỗi mép rộng 10 cm, lên một góc \\( \\alpha \\) (với \\( 0^\\circ < \\alpha < 90^\\circ \\) so với phương ngang) để tạo thành tiết diện hình thang cân. Khả năng thoát nước của máng tỉ lệ thuận với diện tích tiết diện ngang. Hỏi người thợ phải bẻ gập một góc \\( \\alpha \\) bằng bao nhiêu độ để máng có thể thoát nước tốt nhất (diện tích tiết diện ngang đạt giá trị lớn nhất)?""",
+    "blanks": [
+        {"label": "$\\alpha$ =", "answers": ["60"]}
+    ],
+    "points": 1,
+    "explanation": """Dựa vào hình thang cân, ta phân tích các kích thước của tiết diện ngang theo góc gập α.
+
+Chiều cao của máng nước chính là cạnh góc vuông đối diện với góc α:
+
+\\( h = 10\\sin\\alpha \\)
+
+Đáy nhỏ của hình thang bằng bề rộng phần tôn giữ nguyên ở giữa, \\( a=10 \\) cm. Đáy lớn bằng đáy nhỏ cộng thêm hai đoạn hình chiếu vuông góc của hai vách:
+
+\\( b = 10+2\\cdot(10\\cos\\alpha) = 10(1+2\\cos\\alpha) \\)
+
+Diện tích tiết diện ngang của máng nước:
+
+\\( S(\\alpha) = \\dfrac{1}{2}\\cdot h\\cdot(a+b) = \\dfrac{1}{2}(10\\sin\\alpha)[10+10(1+2\\cos\\alpha)] \\)
+
+Rút gọn:
+
+\\( S(\\alpha) = 5\\sin\\alpha(20+20\\cos\\alpha) = 100\\sin\\alpha(1+\\cos\\alpha) \\)
+
+Bình phương diện tích lên:
+
+\\( S^2 = 10000\\sin^2\\alpha(1+\\cos\\alpha)^2 = 10000(1-\\cos\\alpha)(1+\\cos\\alpha)^3 \\)
+
+Đặt \\( t=\\cos\\alpha \\) (với \\( 0<t<1 \\)). Cần tìm giá trị lớn nhất của \\( f(t)=(1-t)(1+t)^3 \\). Nhân thêm hằng số để cân bằng trọng số cho bất đẳng thức AM-GM (với 4 số dương):
+
+\\( f(t) = \\dfrac{1}{3}\\cdot[3(1-t)]\\cdot(1+t)\\cdot(1+t)\\cdot(1+t) \\)
+
+Áp dụng AM-GM, tích 4 thừa số này đạt Max khi chúng bằng nhau:
+
+\\( 3(1-t) = 1+t \\Leftrightarrow 3-3t = 1+t \\Leftrightarrow 4t=2 \\Leftrightarrow t=\\dfrac{1}{2} \\)
+
+Trở lại biến cũ, \\( \\cos\\alpha=\\dfrac{1}{2} \\), suy ra góc gập tối ưu là \\( \\alpha=60^\\circ \\).
+
+Đáp số cần điền: 60.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de7_tf_32",
+    "type": "truefalse",
+    "content": "Cho phương trình lượng giác: \\( 2\\sin^2 x-(2m+1)\\sin x+m=0 \\) (1). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Khi \\( m=2 \\), phương trình đã cho có đúng 4 nghiệm phân biệt trên đoạn \\( [0;3\\pi] \\).", "correct": True},
+        {"text": "Khi \\( m=1 \\), phương trình đã cho có đúng 5 nghiệm phân biệt trên đoạn \\( [0;3\\pi] \\).", "correct": False},
+        {"text": "Có duy nhất 1 giá trị thực của m để phương trình (1) có đúng 5 nghiệm phân biệt trên đoạn \\( [0;3\\pi] \\).", "correct": True},
+        {"text": "Khi \\( m=0 \\), tổng của tất cả các nghiệm phân biệt của phương trình (1) trên đoạn \\( [0;3\\pi] \\) bằng \\( 10\\pi \\).", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Xem đây là phương trình bậc 2 ẩn sin x, ta tính \\( \\Delta = (2m+1)^2-8m = (2m-1)^2 \\). Phương trình được phân tích thành:
+
+\\( \\left(\\sin x-\\dfrac{1}{2}\\right)(\\sin x-m) = 0 \\Leftrightarrow \\begin{cases}\\sin x=\\dfrac{1}{2} & (A)\\\\ \\sin x=m & (B)\\end{cases} \\)
+
+Giải nhánh (A) trên đoạn \\( [0;3\\pi] \\) (1,5 vòng tròn lượng giác), ta có: \\( x\\in\\left\\{\\dfrac{\\pi}{6};\\dfrac{5\\pi}{6};\\dfrac{13\\pi}{6};\\dfrac{17\\pi}{6}\\right\\} \\). Nhánh này luôn cung cấp cố định 4 nghiệm phân biệt.
+
+a) ĐÚNG: Khi \\( m=2 \\), phương trình (B) trở thành \\( \\sin x=2 \\) (vô nghiệm). Vậy toàn hệ chỉ có 4 nghiệm sinh ra từ nhánh (A).
+
+b) SAI: Khi \\( m=1 \\), phương trình (B) là \\( \\sin x=1 \\), mang lại các nghiệm \\( x=\\dfrac{\\pi}{2} \\) và \\( x=\\dfrac{5\\pi}{2} \\) trên đoạn đang xét. Tổng số nghiệm là \\( 4+2=6 \\) nghiệm phân biệt, không phải 5.
+
+c) ĐÚNG: Để phương trình có đúng 5 nghiệm, nhánh (B) bắt buộc sinh ra duy nhất 1 nghiệm mới (không trùng nhánh A). Điều này chỉ xảy ra khi đường thẳng \\( y=m \\) tiếp xúc với đáy sóng cuối cùng, tức là \\( m=-1 \\) (khi đó \\( x=\\dfrac{3\\pi}{2} \\)). Vậy \\( m=-1 \\) là giá trị duy nhất thỏa mãn.
+
+d) SAI: Khi \\( m=0 \\), nhánh (B) là \\( \\sin x=0 \\), mang lại 4 nghiệm: \\( 0,\\pi,2\\pi,3\\pi \\). Tổng của chúng là \\( 6\\pi \\). Tổng 4 nghiệm của nhánh (A) là \\( \\dfrac{\\pi}{6}+\\dfrac{5\\pi}{6}+\\dfrac{13\\pi}{6}+\\dfrac{17\\pi}{6}=\\dfrac{36\\pi}{6}=6\\pi \\). Tổng tất cả các nghiệm là \\( 6\\pi+6\\pi=12\\pi \\ne 10\\pi \\).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de7_dd_33',
+    "type": 'dragdrop',
+    "content": """Kéo thả các tập giá trị tương ứng vào đúng các hàm số lượng giác được cho dưới đây:""",
+    "options_pool": [
+        '$[-1;1]$',
+        '$[0;4]$',
+        '$[2;10]$',
+        '$[-1;3]$',
+        '$[0;5]$'
+    ],
+    "blanks": [
+        {"label": "1) Hàm số $y=\\sqrt{3}\\sin x-\\cos x+2$ có tập giá trị là", "answer": "$[0;4]$"},
+        {"label": "2) Hàm số $y=\\sin^2 x-4\\sin x+5$ có tập giá trị là", "answer": "$[2;10]$"},
+        {"label": "3) Hàm số $y=\\dfrac{2\\sin x+1}{\\sin x+2}$ có tập giá trị là", "answer": "$[-1;1]$"},
+    ],
+    "points": 1,
+    "explanation": """Ta đi tìm tập giá trị cho từng hàm số một cách hệ thống:
+
+Hàm số 1: Sử dụng bất đẳng thức Bunhiacôpxki cho biểu thức \\( A\\sin x+B\\cos x \\):
+
+\\( -\\sqrt{(\\sqrt{3})^2+(-1)^2} \\le \\sqrt{3}\\sin x-\\cos x \\le \\sqrt{(\\sqrt{3})^2+(-1)^2} \\Leftrightarrow -2 \\le \\sqrt{3}\\sin x-\\cos x \\le 2 \\)
+
+Cộng thêm 2 vào các vế, ta được \\( 0 \\le y \\le 4 \\). Vậy tập giá trị là \\( [0;4] \\).
+
+Hàm số 2: Đặt \\( t=\\sin x \\) với \\( t\\in[-1;1] \\). Hàm số trở thành parabol \\( y=t^2-4t+5 \\). Đỉnh của parabol tại \\( t=2 \\), nằm ngoài đoạn \\( [-1;1] \\). Do đó hàm số nghịch biến liên tục trên \\( [-1;1] \\). Thay hai đầu mút: tại \\( t=-1 \\Rightarrow y=1-4(-1)+5=10 \\). Tại \\( t=1 \\Rightarrow y=1-4(1)+5=2 \\). Vậy tập giá trị quét từ 2 đến 10, tức là \\( [2;10] \\).
+
+Hàm số 3: Quy đồng mẫu số (vì mẫu \\( \\sin x+2>0 \\)):
+
+\\( y(\\sin x+2) = 2\\sin x+1 \\Leftrightarrow (y-2)\\sin x = 1-2y \\)
+
+Điều kiện để phương trình có nghiệm sin x là \\( |\\sin x| \\le 1 \\):
+
+\\( \\left|\\dfrac{1-2y}{y-2}\\right| \\le 1 \\Leftrightarrow (1-2y)^2 \\le (y-2)^2 \\Leftrightarrow 4y^2-4y+1 \\le y^2-4y+4 \\)
+
+\\( \\Leftrightarrow 3y^2 \\le 3 \\Leftrightarrow y^2 \\le 1 \\Leftrightarrow -1 \\le y \\le 1 \\)
+
+Vậy tập giá trị là \\( [-1;1] \\).
+
+Kết quả điền ô trống: Vị trí 1 điền \\( [0;4] \\); Vị trí 2 điền \\( [2;10] \\); Vị trí 3 điền \\( [-1;1] \\).""",
+},
+    # ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_34',
+    "type": 'short',
+    "content": """Vào một ngày trời nắng, bóng của một cột cờ cao \\( h=10 \\) m in trên mặt sân phẳng. Biết rằng góc tới \\( \\alpha \\) của tia sáng mặt trời so với mặt đất thay đổi theo thời gian t (tính bằng giờ, kể từ lúc mặt trời mọc là \\( t=0 \\)) theo mô hình xấp xỉ \\( \\alpha(t) = \\dfrac{\\pi}{12}t \\) (radian). Giả sử mặt trời mọc lúc 6:00 sáng.
+
+Hãy tính bình phương chiều dài bóng của cột cờ (đơn vị: mét vuông) tại thời điểm 8:00 sáng.""",
+    "blanks": [
+        {"label": "$[S]^2$ =", "answers": ["300"]}
+    ],
+    "points": 1,
+    "explanation": """Đầu tiên, ta xác định tham số thời gian t ứng với thời điểm 8:00 sáng. Vì mặt trời mọc lúc 6:00 sáng ứng với \\( t=0 \\), nên 8:00 sáng sẽ tương ứng với \\( t=2 \\) giờ.
+
+Góc tạo bởi tia sáng mặt trời và mặt đất tại thời điểm này là:
+
+\\( \\alpha(2) = \\dfrac{\\pi}{12}\\cdot 2 = \\dfrac{\\pi}{6} \\) radian (tức 30°)
+
+Dựa vào tam giác vuông được tạo bởi cột cờ, mặt đất và tia sáng, ta có hệ thức liên hệ:
+
+\\( \\tan\\alpha = \\dfrac{\\text{Cạnh đối}}{\\text{Cạnh kề}} = \\dfrac{h}{S(t)} \\Rightarrow S(t) = \\dfrac{h}{\\tan\\alpha} = h\\cdot\\cot\\alpha \\)
+
+Thay các giá trị cụ thể vào công thức:
+
+\\( S(2) = 10\\cdot\\cot\\left(\\dfrac{\\pi}{6}\\right) = 10\\sqrt{3} \\) (mét)
+
+Đề bài yêu cầu tính bình phương chiều dài bóng của cột cờ:
+
+\\( [S(2)]^2 = (10\\sqrt{3})^2 = 300 \\) (m²)
+
+Đáp số cần điền: 300.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de7_mc_35',
+    "type": 'mc4',
+    "content": 'Một kiến trúc sư thiết kế một mái vòm hình sin có mặt cắt ngang được mô phỏng bởi đồ thị hàm số \\( y = 4\\sin\\left(\\dfrac{\\pi x}{6}\\right) \\), với y là chiều cao và x là khoảng cách tính từ chân mái vòm bên trái (đơn vị: mét). Một chiếc xe tải chở một thùng hàng hình hộp chữ nhật có bề rộng 4 mét đi qua chính giữa hầm mái vòm này. Chiều cao lớn nhất của thùng hàng (làm tròn đến mét) để xe có thể đi lọt qua hầm mà không chạm mái là bao nhiêu?',
+    "options": {
+        'A': '1 m',
+        'B': '2 m',
+        'C': '3 m',
+        'D': '4 m',
+    },
+    "correct": 'B',
+    "points": 1,
+    "explanation": """Để hầm tạo thành một mái vòm hoàn chỉnh, ta xét một nhịp dương của hàm sin, tức là từ lúc mái nhô lên khỏi mặt đất đến lúc chạm lại mặt đất:
+
+\\( y=0 \\Leftrightarrow \\sin\\left(\\dfrac{\\pi x}{6}\\right)=0 \\Rightarrow \\dfrac{\\pi x}{6}=0 \\) hoặc \\( \\dfrac{\\pi x}{6}=\\pi \\Rightarrow x=0 \\) hoặc \\( x=6 \\)
+
+Vậy độ rộng toàn bộ của chân mái vòm là 6 mét, tâm đối xứng của hầm nằm ở chính giữa, tức \\( x=3 \\) mét.
+
+Chiếc xe tải có thùng hàng rộng 4 mét đi vào chính giữa hầm. Vì tính đối xứng, thùng hàng sẽ chiếm một khoảng 2 mét về mỗi bên tính từ tâm. Vị trí hai mép của thùng hàng sẽ nằm tại tọa độ:
+
+\\( x_{trái} = 3-2 = 1 \\) (mét) và \\( x_{phải} = 3+2 = 5 \\) (mét)
+
+Tại các mép này, mái vòm sẽ có độ cao thấp nhất so với phần giữa hầm. Để thùng hàng không bị kẹt, chiều cao thùng không được vượt quá độ cao mái vòm tại chính các điểm mút \\( x=1 \\) và \\( x=5 \\). Ta thế tọa độ vào phương trình vòm:
+
+\\( y(1) = 4\\sin\\left(\\dfrac{\\pi\\cdot 1}{6}\\right) = 4\\cdot\\dfrac{1}{2} = 2 \\) (mét)
+
+Bởi tính đối xứng, độ cao tại \\( x=5 \\) cũng hoàn toàn tương đương: \\( y(5) = 4\\sin\\left(\\dfrac{5\\pi}{6}\\right) = 2 \\) (mét).
+
+Vậy chiều cao an toàn tối đa của thùng hàng là 2 mét.
+
+Chọn đáp án B.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de7_tf_36",
+    "type": "truefalse",
+    "content": "Theo giả thuyết Nhịp sinh học, cuộc đời con người trải qua các chu kì biến đổi về Thể chất và Tình cảm. Kể từ ngày sinh (\\( t=0 \\)), chỉ số Thể chất \\( P(t) \\) và Tình cảm \\( E(t) \\) dao động theo các hàm số lượng giác: \\( P(t) = \\sin\\left(\\dfrac{2\\pi}{23}t\\right) \\) và \\( E(t) = \\sin\\left(\\dfrac{2\\pi}{28}t\\right) \\) (với t là số ngày). Xét tính đúng/sai của các nhận định sau:",
+    "statements": [
+        {"text": "Chu kì tuần hoàn của nhịp Tình cảm là 28 ngày.", "correct": True},
+        {"text": "Vào ngày thứ 11.5 kể từ lúc sinh ra, chỉ số Thể chất của người đó đạt mức đỉnh điểm (giá trị tuyệt đối lớn nhất).", "correct": False},
+        {"text": "Không tồn tại bất kỳ ngày nào (với t là số nguyên dương) mà chỉ số Thể chất đạt cực đại tuyệt đối (+1).", "correct": True},
+        {"text": "Phương trình \\( P(t)=0 \\) có nghiệm nguyên dương nhỏ nhất là \\( t=23 \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """Bài toán này kiểm tra nền tảng chu kỳ và đánh giá điều kiện nghiệm nguyên của biến thời gian t.
+
+a) ĐÚNG: Chu kì hàm số Tình cảm được tính bằng \\( T_E = \\dfrac{2\\pi}{\\omega_E} = \\dfrac{2\\pi}{\\frac{2\\pi}{28}} = 28 \\) ngày.
+
+b) SAI: Để chỉ số Thể chất đạt đỉnh cực đại, \\( P(t)=1 \\Leftrightarrow \\sin\\left(\\dfrac{2\\pi}{23}t\\right)=1 \\Rightarrow \\dfrac{2\\pi}{23}t=\\dfrac{\\pi}{2}+k2\\pi \\Rightarrow t=\\dfrac{23}{4}+23k=5,75+23k \\). Vào ngày thứ 11.5 (tương đương nửa chu kỳ), chỉ số Thể chất bằng 0.
+
+c) ĐÚNG: Dựa vào công thức ngày đạt đỉnh \\( t=\\dfrac{23}{4}+23k=\\dfrac{23(1+4k)}{4} \\). Vì 23 là số lẻ và \\( (1+4k) \\) luôn là số lẻ với mọi k nguyên, nên tử số không bao giờ chia hết cho 4. Kết quả là t luôn bị lẻ (dư 0.25 hoặc 0.75), không bao giờ rơi đúng trọn vẹn vào một ngày nguyên dương.
+
+d) ĐÚNG: Để chỉ số Thể chất bằng 0, \\( P(t)=0 \\Leftrightarrow \\dfrac{2\\pi}{23}t=k\\pi \\Rightarrow t=\\dfrac{23}{2}k=11,5k \\). Nghiệm dương đầu tiên ứng với \\( k=1 \\) là \\( t=11,5 \\) (không phải số nguyên). Nghiệm nguyên dương nhỏ nhất đạt được khi \\( k=2 \\), tức là \\( t=23 \\) ngày.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_37',
+    "type": 'short',
+    "content": """Giải phương trình lượng giác sau: \\( \\sin x\\cdot\\cos x\\cdot\\cos 2x = \\dfrac{1}{8} \\). Hãy tính tổng các nghiệm của phương trình trên đoạn \\( [0;2\\pi] \\), sau đó lấy kết quả chia cho \\( \\pi \\).""",
+    "blanks": [
+        {"label": "Kết quả =", "answers": ["7"]}
+    ],
+    "points": 1,
+    "explanation": """Bằng cách áp dụng liên tiếp công thức nhân đôi \\( \\sin 2a=2\\sin a\\cos a \\), ta cuốn dần các số hạng bên vế trái:
+
+\\( (\\sin x\\cos x)\\cdot\\cos 2x = \\dfrac{1}{8} \\Leftrightarrow \\left(\\dfrac{1}{2}\\sin 2x\\right)\\cos 2x = \\dfrac{1}{8} \\)
+
+Nhân 2 hai vế và tiếp tục gộp nhân đôi:
+
+\\( \\sin 2x\\cos 2x = \\dfrac{1}{4} \\Leftrightarrow \\dfrac{1}{2}\\sin 4x = \\dfrac{1}{4} \\Leftrightarrow \\sin 4x = \\dfrac{1}{2} \\)
+
+Giải phương trình cơ bản này, ta thu được hai họ nghiệm:
+
+\\( 4x = \\dfrac{\\pi}{6}+k2\\pi \\Rightarrow x = \\dfrac{\\pi}{24}+k\\dfrac{\\pi}{2} \\)
+
+\\( 4x = \\dfrac{5\\pi}{6}+k2\\pi \\Rightarrow x = \\dfrac{5\\pi}{24}+k\\dfrac{\\pi}{2} \\)
+
+Giới hạn \\( x\\in[0;2\\pi] \\) và tìm các giá trị k tương ứng:
+
+- Với họ thứ nhất, điều kiện \\( 0 \\le \\dfrac{\\pi}{24}+k\\dfrac{\\pi}{2} \\le 2\\pi \\) mang lại 4 nghiệm khi \\( k\\in\\{0,1,2,3\\} \\). Tổng 4 nghiệm này là:
+
+\\( S_1 = 4\\cdot\\dfrac{\\pi}{24}+\\dfrac{\\pi}{2}(0+1+2+3) = \\dfrac{\\pi}{6}+3\\pi = \\dfrac{19\\pi}{6} \\)
+
+- Với họ thứ hai, điều kiện tương tự cũng cho \\( k\\in\\{0,1,2,3\\} \\). Tổng 4 nghiệm nhánh này là:
+
+\\( S_2 = 4\\cdot\\dfrac{5\\pi}{24}+\\dfrac{\\pi}{2}(0+1+2+3) = \\dfrac{5\\pi}{6}+3\\pi = \\dfrac{23\\pi}{6} \\)
+
+Tổng của tất cả 8 nghiệm trên là: \\( S = S_1+S_2 = \\dfrac{19\\pi}{6}+\\dfrac{23\\pi}{6} = \\dfrac{42\\pi}{6} = 7\\pi \\). Tỉ số khi chia cho \\( \\pi \\) là 7.
+
+Đáp số cần điền: 7.""",
+},
+   # ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de7_dd_38',
+    "type": 'dragdrop',
+    "content": """Cho phương trình lượng giác \\( \\sin 2x = \\cos 3x+\\cos x \\). Kéo và thả các biểu thức thích hợp vào chỗ trống để hoàn thiện chuỗi các bước biến đổi giải phương trình:
+
+Bước 1: Áp dụng công thức biến đổi tổng thành tích cho vế phải, phương trình được viết lại thành: \\( \\sin 2x = \\) (1)
+
+Bước 2: Thay \\( \\sin 2x = 2\\sin x\\cos x \\) vào vế trái của (1), chuyển vế và đặt nhân tử chung, ta thu được phương trình dạng tích: (2)""",
+    "options_pool": [
+        '$2\\cos 2x\\cos x$',
+        '$2\\sin 2x\\cos x$',
+        '$\\cos x(\\sin x-\\cos 2x)=0$',
+        '$\\cos x(2\\sin x-2\\cos 2x)=0$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$2\\cos 2x\\cos x$"},
+        {"label": "(2) =", "answer": "$\\cos x(2\\sin x-2\\cos 2x)=0$"},
+    ],
+    "points": 1,
+    "explanation": """Ta bám sát theo các bước hướng dẫn giải:
+
+- Ở Bước 1, vận dụng công thức \\( \\cos a+\\cos b = 2\\cos\\left(\\dfrac{a+b}{2}\\right)\\cos\\left(\\dfrac{a-b}{2}\\right) \\) cho vế phải, ta có:
+
+\\( \\cos 3x+\\cos x = 2\\cos\\left(\\dfrac{3x+x}{2}\\right)\\cos\\left(\\dfrac{3x-x}{2}\\right) = 2\\cos 2x\\cos x \\)
+
+Do đó ô trống (1) cần điền cụm \\( 2\\cos 2x\\cos x \\).
+
+- Ở Bước 2, thế \\( \\sin 2x = 2\\sin x\\cos x \\) vào bên trái, phương trình lúc này trở thành:
+
+\\( 2\\sin x\\cos x = 2\\cos 2x\\cos x \\)
+
+Chuyển hết sang một vế để trừ và kéo nhân tử chung \\( \\cos x \\) ra ngoài, ta thu được:
+
+\\( 2\\sin x\\cos x-2\\cos 2x\\cos x = 0 \\Leftrightarrow \\cos x(2\\sin x-2\\cos 2x) = 0 \\)
+
+Vậy ô trống (2) cần điền cụm \\( \\cos x(2\\sin x-2\\cos 2x)=0 \\).
+
+Kết quả điền ô trống: Vị trí 1 điền \\( 2\\cos 2x\\cos x \\); Vị trí 2 điền \\( \\cos x(2\\sin x-2\\cos 2x)=0 \\).""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de7_mc_39',
+    "type": 'mc4',
+    "content": 'Cho tam giác ABC có ba góc A, B, C (với \\( A<B<C \\)) lập thành một cấp số cộng. Tính giá trị của biểu thức \\( M = \\cos B+\\sin\\left(\\dfrac{A+C}{2}\\right) \\).',
+    "options": {
+        'A': '$M = \\dfrac{1+\\sqrt{3}}{2}$',
+        'B': '$M = 1$',
+        'C': '$M = \\dfrac{\\sqrt{3}}{2}$',
+        'D': '$M = \\dfrac{1-\\sqrt{3}}{2}$',
+    },
+    "correct": 'A',
+    "points": 1,
+    "explanation": """Dữ kiện "ba góc lập thành một cấp số cộng" cho ta một đặc tính vô cùng mạnh mẽ về góc đứng giữa. Theo tính chất cấp số cộng, ta có:
+
+\\( A+C = 2B \\)
+
+Hơn nữa, định lý tổng ba góc trong tam giác luôn khẳng định: \\( A+B+C=180^\\circ \\). Thay \\( A+C=2B \\) vào hệ thức này, ta được:
+
+\\( 2B+B = 180^\\circ \\Leftrightarrow 3B = 180^\\circ \\Leftrightarrow B = 60^\\circ \\)
+
+Từ đây, ta cũng dễ dàng suy ra giá trị của nửa tổng góc A và C:
+
+\\( \\dfrac{A+C}{2} = \\dfrac{2B}{2} = B = 60^\\circ \\)
+
+Bây giờ chỉ việc thế các góc vừa tìm được vào biểu thức M đề yêu cầu:
+
+\\( M = \\cos B+\\sin\\left(\\dfrac{A+C}{2}\\right) = \\cos 60^\\circ+\\sin 60^\\circ = \\dfrac{1}{2}+\\dfrac{\\sqrt{3}}{2} = \\dfrac{1+\\sqrt{3}}{2} \\)
+
+Chọn đáp án A.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_40',
+    "type": 'short',
+    "content": """Có bao nhiêu giá trị nguyên của tham số \\( m \\in [-10;10] \\) để phương trình lượng giác sau có nghiệm:
+
+\\( 2\\cos^2 2x-4\\cos 2x+2 = m \\)""",
+    "blanks": [
+        {"label": "Số giá trị nguyên =", "answers": ["9"]}
+    ],
+    "points": 1,
+    "explanation": """Trước hết, ta thu gọn và nhìn nhận cấu trúc của vế trái. Rất dễ thấy vế trái chính là một hằng đẳng thức mở rộng nếu ta rút nhân tử số 2 ra ngoài:
+
+\\( m = 2(\\cos^2 2x-2\\cos 2x+1) = 2(\\cos 2x-1)^2 \\)
+
+Tiếp theo, ta khảo sát miền giá trị tự nhiên của biểu thức lõi.
+
+Vì hàm cosin luôn bị kẹp trong giới hạn: \\( -1 \\le \\cos 2x \\le 1 \\). Suy ra biểu thức trong ngoặc sẽ dao động trong khoảng:
+
+\\( -2 \\le \\cos 2x-1 \\le 0 \\)
+
+Khi ta bình phương biểu thức này lên, miền giá trị sẽ đảo thành dương và chạy từ:
+
+\\( 0 \\le (\\cos 2x-1)^2 \\le 4 \\)
+
+Cuối cùng, nhân với hệ số 2 ở ngoài, ta chốt được tập giá trị của toàn bộ vế trái:
+
+\\( 0 \\le 2(\\cos 2x-1)^2 \\le 8 \\)
+
+Điều này đồng nghĩa với việc phương trình chỉ có nghiệm khi tham số m bám sát tập giá trị này: \\( m\\in[0;8] \\).
+
+Kết hợp với điều kiện nguyên \\( m\\in\\mathbb{Z} \\) và \\( m\\in[-10;10] \\), các giá trị hợp lệ của m là tập hợp \\( \\{0,1,2,\\ldots,8\\} \\). Tổng cộng ta đếm được 9 giá trị nguyên.
+
+Đáp số cần điền: 9.""",
+},             
          ], # Đóng danh sách questions của Đề 7
     }, # Đóng dictionary của Đề 7
 
