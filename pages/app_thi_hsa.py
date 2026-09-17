@@ -1060,9 +1060,10 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
 },
 
 
+
 # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
 {
-    "content": """Tìm tất cả các giá trị của tham số \\( m \\) để hàm số \\( y=\\dfrac{x^2+m}{x^2-3x+2} \\) có đúng 1 tiệm cận đứng?""",
+    "content": "Tìm tất cả các giá trị của tham số \\( m \\) để hàm số \\( y=\\dfrac{x^2+m}{x^2-3x+2} \\) có đúng 1 tiệm cận đứng?",
     "options": {
         "A": "\\( m\\in\\{-1;-4\\} \\)",
         "B": "\\( m=-1 \\)",
@@ -1071,19 +1072,11 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
     },
     "correct": "A",
     "points": 1,
-    "explanation": """Ta có: \\( y=\\dfrac{x^2+m}{x^2-3x+2}=\\dfrac{x^2+m}{(x-1)(x-2)} \\).
-
-Đồ thị hàm số có đúng một tiệm cận đứng khi tử số triệt tiêu tại đúng một trong hai nghiệm của mẫu, tức là:
-
-\\( \\left[\\begin{array}{l} 1^2+m=0 \\\\ 2^2+m=0 \\end{array}\\right. \\Leftrightarrow \\left[\\begin{array}{l} m=-1 \\\\ m=-4 \\end{array}\\right. \\)
-
-Vậy \\( m\\in\\{-1;-4\\} \\).
-
-Đáp án A.""",
+    "explanation": "Ta có: \\( y=\\dfrac{x^2+m}{x^2-3x+2}=\\dfrac{x^2+m}{(x-1)(x-2)} \\).\n\nĐồ thị hàm số có đúng một tiệm cận đứng khi tử số triệt tiêu tại đúng một trong hai nghiệm của mẫu, tức là:\n\n\\( \\left[\\begin{array}{l} 1^2+m=0 \\\\ 2^2+m=0 \\end{array}\\right. \\Leftrightarrow \\left[\\begin{array}{l} m=-1 \\\\ m=-4 \\end{array}\\right. \\)\n\nVậy \\( m\\in\\{-1;-4\\} \\).\n\nĐáp án A.",
 },
 
 {
-    "content": """Một tòa nhà cao 50 m, vào những ngày trời nắng, độ dài bóng của tòa nhà được tính theo công thức \\( S(t) = 50\\cot\\left(\\dfrac{\\pi}{12}t\\right) \\). Trong đó S được tính bằng mét, t là số giờ tính từ 6 giờ sáng. Trong một ngày có bao nhiêu thời điểm bóng có độ dài bằng chiều cao của tòa nhà?""",
+    "content": "Một tòa nhà cao 50 m, vào những ngày trời nắng, độ dài bóng của tòa nhà được tính theo công thức \\( S(t) = 50\\cot\\left(\\dfrac{\\pi}{12}t\\right) \\). Trong đó S được tính bằng mét, t là số giờ tính từ 6 giờ sáng. Trong một ngày có bao nhiêu thời điểm bóng có độ dài bằng chiều cao của tòa nhà?",
     "options": {
         "A": "0",
         "B": "1",
@@ -1092,21 +1085,11 @@ Vậy \\( m\\in\\{-1;-4\\} \\).
     },
     "correct": "C",
     "points": 1,
-    "explanation": """Độ dài bóng của tòa nhà bằng chiều cao của tòa nhà khi:
-
-\\( S(t)=50 \\Leftrightarrow 50\\cot\\left(\\dfrac{\\pi}{12}t\\right)=50 \\Leftrightarrow \\cot\\left(\\dfrac{\\pi}{12}t\\right)=1 \\)
-
-\\( \\Leftrightarrow \\dfrac{\\pi}{12}t=\\dfrac{\\pi}{4}+k\\pi \\Leftrightarrow t=3+12k \\; (k\\in\\mathbb{Z}) \\)
-
-Vì \\( 0\\le t\\le 12 \\) nên \\( t=3 \\) hoặc \\( t=9 \\), tức là vào lúc 9 giờ sáng hoặc 3 giờ chiều.
-
-Vậy trong ngày có 2 thời điểm bóng của tòa nhà dài bằng chiều cao của nó.
-
-Đáp án C.""",
+    "explanation": "Độ dài bóng của tòa nhà bằng chiều cao của tòa nhà khi:\n\n\\( S(t)=50 \\Leftrightarrow 50\\cot\\left(\\dfrac{\\pi}{12}t\\right)=50 \\Leftrightarrow \\cot\\left(\\dfrac{\\pi}{12}t\\right)=1 \\)\n\n\\( \\Leftrightarrow \\dfrac{\\pi}{12}t=\\dfrac{\\pi}{4}+k\\pi \\Leftrightarrow t=3+12k \\; (k\\in\\mathbb{Z}) \\)\n\nVì \\( 0\\le t\\le 12 \\) nên \\( t=3 \\) hoặc \\( t=9 \\), tức là vào lúc 9 giờ sáng hoặc 3 giờ chiều.\n\nVậy trong ngày có 2 thời điểm bóng của tòa nhà dài bằng chiều cao của nó.\n\nĐáp án C.",
 },
 
 {
-    "content": """Cho hai biến cố A và B, với \\( P(A)=\\dfrac{3}{8}, P(B)=\\dfrac{1}{2}, P(\\overline{A}\\overline{B})=\\dfrac{1}{5} \\). Giá trị của \\( P(A\\cup B) \\) là?""",
+    "content": "Cho hai biến cố A và B, với \\( P(A)=\\dfrac{3}{8}, P(B)=\\dfrac{1}{2}, P(\\overline{A}\\overline{B})=\\dfrac{1}{5} \\). Giá trị của \\( P(A\\cup B) \\) là?",
     "options": {
         "A": "\\( \\dfrac{3}{40} \\)",
         "B": "\\( \\dfrac{4}{5} \\)",
@@ -1115,15 +1098,11 @@ Vậy trong ngày có 2 thời điểm bóng của tòa nhà dài bằng chiều
     },
     "correct": "A",
     "points": 1,
-    "explanation": """Ta có \\( P(A\\cup B) = 1-P(\\overline{A}\\overline{B}) = 1-\\dfrac{1}{5} = \\dfrac{4}{5} \\).
-
-Khi đó: \\( P(AB) = P(A)+P(B)-P(A\\cup B) = \\dfrac{3}{8}+\\dfrac{1}{2}-\\dfrac{4}{5} = \\dfrac{3}{40} \\).
-
-Đáp án A.""",
+    "explanation": "Ta có \\( P(A\\cup B) = 1-P(\\overline{A}\\overline{B}) = 1-\\dfrac{1}{5} = \\dfrac{4}{5} \\).\n\nKhi đó: \\( P(AB) = P(A)+P(B)-P(A\\cup B) = \\dfrac{3}{8}+\\dfrac{1}{2}-\\dfrac{4}{5} = \\dfrac{3}{40} \\).\n\nĐáp án A.",
 },
 
 {
-    "content": """Trên sườn đồi, với độ dốc 16% (Độ dốc của sườn đồi được tính bằng tan của góc nhọn tạo bởi sườn đồi với phương nằm ngang) có một cây cao thẳng đứng. Ở phía chân đồi, cách gốc cây 30m, người ta nhìn ngọn cây dưới một góc 45° so với phương nằm ngang. Tính chiều cao của cây đó (làm tròn đến hàng đơn vị, theo đơn vị mét).""",
+    "content": "Trên sườn đồi, với độ dốc 16% (Độ dốc của sườn đồi được tính bằng tan của góc nhọn tạo bởi sườn đồi với phương nằm ngang) có một cây cao thẳng đứng. Ở phía chân đồi, cách gốc cây 30m, người ta nhìn ngọn cây dưới một góc 45° so với phương nằm ngang. Tính chiều cao của cây đó (làm tròn đến hàng đơn vị, theo đơn vị mét).",
     "options": {
         "A": "25m",
         "B": "26m",
@@ -1133,19 +1112,11 @@ Khi đó: \\( P(AB) = P(A)+P(B)-P(A\\cup B) = \\dfrac{3}{8}+\\dfrac{1}{2}-\\dfra
     "correct": "B",
     "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau29_loigiai.PNG",
     "points": 1,
-    "explanation": """Do sườn đồi dốc 16% nên sườn đồi tạo với phương nằm ngang một góc \\( \\widehat{BAD} \\approx 9^\\circ \\).
-
-Từ đó ta có: \\( \\widehat{BAC} = \\widehat{DAC}-\\widehat{DAB} \\approx 36^\\circ \\) và \\( \\widehat{BCA}=45^\\circ \\).
-
-Áp dụng định lí sin trong tam giác ABC, ta được:
-
-\\( BC = \\dfrac{AB}{\\sin\\widehat{BCA}}.\\sin\\widehat{BAC} \\approx 26 \\; (m) \\).
-
-Đáp án B.""",
+    "explanation": "Do sườn đồi dốc 16% nên sườn đồi tạo với phương nằm ngang một góc \\( \\widehat{BAD} \\approx 9^\\circ \\).\n\nTừ đó ta có: \\( \\widehat{BAC} = \\widehat{DAC}-\\widehat{DAB} \\approx 36^\\circ \\) và \\( \\widehat{BCA}=45^\\circ \\).\n\nÁp dụng định lí sin trong tam giác ABC, ta được:\n\n\\( BC = \\dfrac{AB}{\\sin\\widehat{BCA}}.\\sin\\widehat{BAC} \\approx 26 \\; (m) \\).\n\nĐáp án B.",
 },
 
 {
-    "content": """Một lớp học có 60 học sinh, trong đó số học sinh nữ chiếm 25% tổng số học sinh của lớp. Hỏi lớp đó có bao nhiêu học sinh nam?""",
+    "content": "Một lớp học có 60 học sinh, trong đó số học sinh nữ chiếm 25% tổng số học sinh của lớp. Hỏi lớp đó có bao nhiêu học sinh nam?",
     "options": {
         "A": "15",
         "B": "40",
@@ -1154,15 +1125,11 @@ Từ đó ta có: \\( \\widehat{BAC} = \\widehat{DAC}-\\widehat{DAB} \\approx 36
     },
     "correct": "D",
     "points": 1,
-    "explanation": """Số học sinh nữ là \\( 60 \\times 25\\% = 15 \\) (học sinh).
-
-Số học sinh nam là \\( 60 - 15 = 45 \\) (học sinh).
-
-Đáp án D.""",
+    "explanation": "Số học sinh nữ là \\( 60 \\times 25\\% = 15 \\) (học sinh).\n\nSố học sinh nam là \\( 60 - 15 = 45 \\) (học sinh).\n\nĐáp án D.",
 },
 
 {
-    "content": """Cho cấp số cộng \\( (u_n) \\) có số hạng đầu \\( u_1 = 10 \\) và công sai \\( d = -3 \\). Giá trị của \\( u_8 \\) bằng""",
+    "content": "Cho cấp số cộng \\( (u_n) \\) có số hạng đầu \\( u_1 = 10 \\) và công sai \\( d = -3 \\). Giá trị của \\( u_8 \\) bằng",
     "options": {
         "A": "-11",
         "B": "31",
@@ -1171,13 +1138,11 @@ Số học sinh nam là \\( 60 - 15 = 45 \\) (học sinh).
     },
     "correct": "A",
     "points": 1,
-    "explanation": """Ta có: \\( u_8 = u_1 + 7d = 10 + 7 \\times (-3) = -11 \\).
-
-Đáp án A.""",
+    "explanation": "Ta có: \\( u_8 = u_1 + 7d = 10 + 7 \\times (-3) = -11 \\).\n\nĐáp án A.",
 },
 
 {
-    "content": """Cho hàm số \\( f(x) = 5x - 4 \\). Giá trị \\( f(2) \\) bằng""",
+    "content": "Cho hàm số \\( f(x) = 5x - 4 \\). Giá trị \\( f(2) \\) bằng",
     "options": {
         "A": "10",
         "B": "6",
@@ -1186,13 +1151,11 @@ Số học sinh nam là \\( 60 - 15 = 45 \\) (học sinh).
     },
     "correct": "B",
     "points": 1,
-    "explanation": """Ta có: \\( f(2) = 5 \\times 2 - 4 = 6 \\).
-
-Đáp án B.""",
+    "explanation": "Ta có: \\( f(2) = 5 \\times 2 - 4 = 6 \\).\n\nĐáp án B.",
 },
 
 {
-    "content": """Một hình chữ nhật có chiều dài 20 cm và chiều rộng 9 cm. Diện tích hình chữ nhật đó bằng""",
+    "content": "Một hình chữ nhật có chiều dài 20 cm và chiều rộng 9 cm. Diện tích hình chữ nhật đó bằng",
     "options": {
         "A": "29 cm²",
         "B": "190 cm²",
@@ -1201,16 +1164,11 @@ Số học sinh nam là \\( 60 - 15 = 45 \\) (học sinh).
     },
     "correct": "C",
     "points": 1,
-    "explanation": """Diện tích hình chữ nhật là \\( S = 20 \\times 9 = 180 \\) (cm²).
-
-Đáp án C.""",
+    "explanation": "Diện tích hình chữ nhật là \\( S = 20 \\times 9 = 180 \\) (cm²).\n\nĐáp án C.",
 },
 
-
-  
- 
-  {
-    "content": """Cho dãy số liệu: 10, 12, 14, 16, 18. Số trung bình cộng của dãy số liệu trên bằng""",
+{
+    "content": "Cho dãy số liệu: 10, 12, 14, 16, 18. Số trung bình cộng của dãy số liệu trên bằng",
     "options": {
         "A": "13",
         "B": "15",
@@ -1219,15 +1177,11 @@ Số học sinh nam là \\( 60 - 15 = 45 \\) (học sinh).
     },
     "correct": "D",
     "points": 1,
-    "explanation": """Số trung bình cộng là:
-
-\\( \\overline{x} = (10+12+14+16+18):5 = 70:5 = 14 \\).
-
-Đáp án D.""",
+    "explanation": "Số trung bình cộng là:\n\n\\( \\overline{x} = (10+12+14+16+18):5 = 70:5 = 14 \\).\n\nĐáp án D.",
 },
 
 {
-    "content": """Một nhóm có 10 học sinh. Hỏi có bao nhiêu cách chọn ra 3 học sinh từ nhóm đó (không phân biệt thứ tự)?""",
+    "content": "Một nhóm có 10 học sinh. Hỏi có bao nhiêu cách chọn ra 3 học sinh từ nhóm đó (không phân biệt thứ tự)?",
     "options": {
         "A": "720",
         "B": "30",
@@ -1236,56 +1190,50 @@ Số học sinh nam là \\( 60 - 15 = 45 \\) (học sinh).
     },
     "correct": "C",
     "points": 1,
-    "explanation": """Vì chọn 3 học sinh mà không phân biệt thứ tự nên số cách chọn là một tổ hợp chập 3 của 10:
-
-\\( C_{10}^3 = 120 \\) (cách).
-
-Đáp án C.""",
+    "explanation": "Vì chọn 3 học sinh mà không phân biệt thứ tự nên số cách chọn là một tổ hợp chập 3 của 10:\n\n\\( C_{10}^3 = 120 \\) (cách).\n\nĐáp án C.",
 },
-],
+
+{
+    "content": "Có bao nhiêu giá trị nguyên dương của tham số \\( m \\) để phương trình \\( m^2\\ln\\left(\\dfrac{x}{e}\\right) = (2-m)\\ln x - 4 \\) có nghiệm thuộc vào đoạn \\( \\left[\\dfrac{1}{e};1\\right] \\)?",
+    "options": {
+        "A": "0",
+        "B": "1",
+        "C": "2",
+        "D": "3"
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": "Ta có:\n\n\\( m^2\\ln\\left(\\dfrac{x}{e}\\right) = (2-m)\\ln x - 4 \\Leftrightarrow m^2(\\ln x - 1) = (2-m)\\ln x - 4 \\)\n\n\\( \\Leftrightarrow (m^2+m-2)\\ln x = m^2 - 4 \\quad (1) \\)\n\nVới \\( m^2+m-2=0 \\Rightarrow m=1 \\) (do \\( m>0 \\)): khi đó (1) trở thành \\( 0.\\ln x = -3 \\) (vô lí) nên loại \\( m=1 \\).\n\nVới \\( m\\ne 1 \\), (1) \\( \\Leftrightarrow \\ln x = \\dfrac{m-2}{m-1} \\quad (2) \\)\n\nHàm số \\( y=\\ln x \\) đồng biến trên \\( \\left[\\dfrac{1}{e};1\\right] \\), suy ra \\( \\ln x \\in [-1;0] \\).\n\nPhương trình (2) có nghiệm thuộc đoạn \\( \\left[\\dfrac{1}{e};1\\right] \\) khi \\( -1 \\le \\dfrac{m-2}{m-1} \\le 0 \\).\n\nGiải điều kiện thứ nhất: \\( \\dfrac{m-2}{m-1} \\ge -1 \\Leftrightarrow m\\ge \\dfrac{3}{2} \\) hoặc \\( m<1 \\).\n\nGiải điều kiện thứ hai: \\( \\dfrac{m-2}{m-1} \\le 0 \\Leftrightarrow 1<m\\le 2 \\).\n\nKết hợp hai điều kiện, ta được \\( \\dfrac{3}{2}\\le m\\le 2 \\).\n\nVì \\( m \\) nguyên dương nên \\( m=2 \\). Vậy có 1 giá trị nguyên dương của \\( m \\) thỏa mãn.\n\nĐáp án B.",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
 "short": [
     {
-        "content": """Giải phương trình \\( 9x - 11 = 61 \\). Tìm nghiệm x (điền số nguyên).""",
+        "content": "Giải phương trình \\( 9x - 11 = 61 \\). Tìm nghiệm x (điền số nguyên).",
         "answers": ["8"],
         "points": 1,
-        "explanation": """Ta có:
-
-\\( 9x - 11 = 61 \\Leftrightarrow 9x = 72 \\Leftrightarrow x = 8 \\).
-
-Vậy nghiệm của phương trình là \\( x = 8 \\).""",
+        "explanation": "Ta có:\n\n\\( 9x - 11 = 61 \\Leftrightarrow 9x = 72 \\Leftrightarrow x = 8 \\).\n\nVậy nghiệm của phương trình là \\( x = 8 \\).",
     },
 
     {
-        "content": """Phương trình \\( x^2 - 3x - 18 = 0 \\) có nghiệm dương bằng bao nhiêu?""",
+        "content": "Phương trình \\( x^2 - 3x - 18 = 0 \\) có nghiệm dương bằng bao nhiêu?",
         "answers": ["6"],
         "points": 1,
-        "explanation": """Ta có:
-
-\\( x^2 - 3x - 18 = (x-6)(x+3) = 0 \\Rightarrow \\left[\\begin{array}{l} x = 6 \\\\ x = -3 \\end{array}\\right. \\)
-
-Vậy nghiệm dương của phương trình là \\( x = 6 \\).""",
+        "explanation": "Ta có:\n\n\\( x^2 - 3x - 18 = (x-6)(x+3) = 0 \\Rightarrow \\left[\\begin{array}{l} x = 6 \\\\ x = -3 \\end{array}\\right. \\)\n\nVậy nghiệm dương của phương trình là \\( x = 6 \\).",
     },
 
     {
-        "content": """Một cửa hàng có 400 sản phẩm, trong đó 10% là hàng lỗi. Hỏi có bao nhiêu sản phẩm lỗi? (chỉ điền số)""",
+        "content": "Một cửa hàng có 400 sản phẩm, trong đó 10% là hàng lỗi. Hỏi có bao nhiêu sản phẩm lỗi? (chỉ điền số)",
         "answers": ["40"],
         "points": 1,
-        "explanation": """Số sản phẩm lỗi là:
-
-\\( 400 \\times 10\\% = 40 \\) (sản phẩm).""",
+        "explanation": "Số sản phẩm lỗi là:\n\n\\( 400 \\times 10\\% = 40 \\) (sản phẩm).",
     },
 
     {
-        "content": """Tìm ước chung lớn nhất (ƯCLN) của 60 và 84. (chỉ điền số)""",
+        "content": "Tìm ước chung lớn nhất (ƯCLN) của 60 và 84. (chỉ điền số)",
         "answers": ["12"],
         "points": 1,
-        "explanation": """Phân tích ra thừa số nguyên tố:
-
-\\( 60 = 2^2 \\times 3 \\times 5 \\)
-
-\\( 84 = 2^2 \\times 3 \\times 7 \\)
-
-Vậy ƯCLN\\( (60, 84) = 2^2 \\times 3 = 12 \\).""",
+        "explanation": "Phân tích ra thừa số nguyên tố:\n\n\\( 60 = 2^2 \\times 3 \\times 5 \\)\n\n\\( 84 = 2^2 \\times 3 \\times 7 \\)\n\nVậy ƯCLN\\( (60, 84) = 2^2 \\times 3 = 12 \\).",
     },
 ],
     },
