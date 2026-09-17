@@ -1009,9 +1009,6 @@ Các vectơ \\( \\overrightarrow{BD}, \\overrightarrow{AC}, \\overrightarrow{MN}
 {
     "content": """Một vườn thú ghi lại tuổi thọ (đơn vị: năm) của 20 con khỉ và ghi lại kết quả như sau:
 
-Tuổi thọ: [10;11) — [11;12) — [12;13) — [13;14) — [14;15)
-Số con khỉ: 1 — 3 — 8 — 6 — 2
-
 Nhóm chứa tứ phân vị thứ ba là:""",
     "options": {"A": "[10;11)", "B": "[11;12)", "C": "[12;13)", "D": "[14;15)"},
     "correct": "C",
@@ -1116,19 +1113,6 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
 },
 
 {
-    "content": "Một lớp học có 60 học sinh, trong đó số học sinh nữ chiếm 25% tổng số học sinh của lớp. Hỏi lớp đó có bao nhiêu học sinh nam?",
-    "options": {
-        "A": "15",
-        "B": "40",
-        "C": "50",
-        "D": "45"
-    },
-    "correct": "D",
-    "points": 1,
-    "explanation": "Số học sinh nữ là \\( 60 \\times 25\\% = 15 \\) (học sinh).\n\nSố học sinh nam là \\( 60 - 15 = 45 \\) (học sinh).\n\nĐáp án D.",
-},
-
-{
     "content": "Cho cấp số cộng \\( (u_n) \\) có số hạng đầu \\( u_1 = 10 \\) và công sai \\( d = -3 \\). Giá trị của \\( u_8 \\) bằng",
     "options": {
         "A": "-11",
@@ -1139,32 +1123,6 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
     "correct": "A",
     "points": 1,
     "explanation": "Ta có: \\( u_8 = u_1 + 7d = 10 + 7 \\times (-3) = -11 \\).\n\nĐáp án A.",
-},
-
-{
-    "content": "Cho hàm số \\( f(x) = 5x - 4 \\). Giá trị \\( f(2) \\) bằng",
-    "options": {
-        "A": "10",
-        "B": "6",
-        "C": "-6",
-        "D": "14"
-    },
-    "correct": "B",
-    "points": 1,
-    "explanation": "Ta có: \\( f(2) = 5 \\times 2 - 4 = 6 \\).\n\nĐáp án B.",
-},
-
-{
-    "content": "Một hình chữ nhật có chiều dài 20 cm và chiều rộng 9 cm. Diện tích hình chữ nhật đó bằng",
-    "options": {
-        "A": "29 cm²",
-        "B": "190 cm²",
-        "C": "180 cm²",
-        "D": "200 cm²"
-    },
-    "correct": "C",
-    "points": 1,
-    "explanation": "Diện tích hình chữ nhật là \\( S = 20 \\times 9 = 180 \\) (cm²).\n\nĐáp án C.",
 },
 
 {
@@ -1205,23 +1163,38 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
     "points": 1,
     "explanation": "Ta có:\n\n\\( m^2\\ln\\left(\\dfrac{x}{e}\\right) = (2-m)\\ln x - 4 \\Leftrightarrow m^2(\\ln x - 1) = (2-m)\\ln x - 4 \\)\n\n\\( \\Leftrightarrow (m^2+m-2)\\ln x = m^2 - 4 \\quad (1) \\)\n\nVới \\( m^2+m-2=0 \\Rightarrow m=1 \\) (do \\( m>0 \\)): khi đó (1) trở thành \\( 0.\\ln x = -3 \\) (vô lí) nên loại \\( m=1 \\).\n\nVới \\( m\\ne 1 \\), (1) \\( \\Leftrightarrow \\ln x = \\dfrac{m-2}{m-1} \\quad (2) \\)\n\nHàm số \\( y=\\ln x \\) đồng biến trên \\( \\left[\\dfrac{1}{e};1\\right] \\), suy ra \\( \\ln x \\in [-1;0] \\).\n\nPhương trình (2) có nghiệm thuộc đoạn \\( \\left[\\dfrac{1}{e};1\\right] \\) khi \\( -1 \\le \\dfrac{m-2}{m-1} \\le 0 \\).\n\nGiải điều kiện thứ nhất: \\( \\dfrac{m-2}{m-1} \\ge -1 \\Leftrightarrow m\\ge \\dfrac{3}{2} \\) hoặc \\( m<1 \\).\n\nGiải điều kiện thứ hai: \\( \\dfrac{m-2}{m-1} \\le 0 \\Leftrightarrow 1<m\\le 2 \\).\n\nKết hợp hai điều kiện, ta được \\( \\dfrac{3}{2}\\le m\\le 2 \\).\n\nVì \\( m \\) nguyên dương nên \\( m=2 \\). Vậy có 1 giá trị nguyên dương của \\( m \\) thỏa mãn.\n\nĐáp án B.",
 },
+
+{
+    "content": "Cho hình chóp \\( S.ABCD \\) trong đó \\( ABCD \\) là hình chữ nhật, \\( SA \\perp (ABCD) \\). Trong các tam giác sau tam giác nào không phải là tam giác vuông?",
+    "options": {
+        "A": "\\( \\triangle SBC \\)",
+        "B": "\\( \\triangle SCD \\)",
+        "C": "\\( \\triangle SAB \\)",
+        "D": "\\( \\triangle SBD \\)"
+    },
+    "correct": "D",
+    "points": 1,
+    "explanation": "![Hình chóp S.ABCD](https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau2-de4.PNG)\n\n\\( \\triangle SBC \\) vuông tại \\( B \\) do \\( BC \\perp (SAB) \\Rightarrow BC \\perp SB \\).\n\n\\( \\triangle SCD \\) vuông tại \\( C \\) do \\( CD \\perp (SAD) \\Rightarrow CD \\perp SD \\).\n\n\\( \\triangle SAB \\) vuông tại A do \\( SA \\perp AB \\).\n\nVậy tam giác không phải là tam giác vuông là \\( \\triangle SBD \\).",
+},
+{
+    "content": "Cho hình chóp \\( S.ABCD \\) có \\( SA \\perp (ABCD) \\) và đáy là hình vuông. Từ \\( A \\) kẻ \\( AH \\perp SB \\). Khẳng định nào sau đây đúng?",
+    "options": {
+        "A": "\\( SB \\perp (HAC) \\)",
+        "B": "\\( AH \\perp (SAD) \\)",
+        "C": "\\( AH \\perp (SBD) \\)",
+        "D": "\\( AH \\perp (SBC) \\)"
+    },
+    "correct": "D",
+    "points": 1,
+    "explanation": "![Hình chóp S.ABCD với H](https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau4-de4.PNG)\n\nCó \\( \\begin{cases} BC \\perp SA \\\\ BC \\perp AB \\end{cases} \\Rightarrow BC \\perp (SAB) \\), mà \\( AH \\subset (SAB) \\) nên \\( BC \\perp AH \\).\n\nCó \\( \\begin{cases} AH \\perp SB \\\\ AH \\perp BC \\end{cases} \\Rightarrow AH \\perp (SBC) \\).",
+},
+
+  
 ],
 
 # ---------------- TRẢ LỜI NGẮN (short) ----------------
 "short": [
-    {
-        "content": "Giải phương trình \\( 9x - 11 = 61 \\). Tìm nghiệm x (điền số nguyên).",
-        "answers": ["8"],
-        "points": 1,
-        "explanation": "Ta có:\n\n\\( 9x - 11 = 61 \\Leftrightarrow 9x = 72 \\Leftrightarrow x = 8 \\).\n\nVậy nghiệm của phương trình là \\( x = 8 \\).",
-    },
-
-    {
-        "content": "Phương trình \\( x^2 - 3x - 18 = 0 \\) có nghiệm dương bằng bao nhiêu?",
-        "answers": ["6"],
-        "points": 1,
-        "explanation": "Ta có:\n\n\\( x^2 - 3x - 18 = (x-6)(x+3) = 0 \\Rightarrow \\left[\\begin{array}{l} x = 6 \\\\ x = -3 \\end{array}\\right. \\)\n\nVậy nghiệm dương của phương trình là \\( x = 6 \\).",
-    },
+   
 
     {
         "content": "Một cửa hàng có 400 sản phẩm, trong đó 10% là hàng lỗi. Hỏi có bao nhiêu sản phẩm lỗi? (chỉ điền số)",
@@ -1230,12 +1203,6 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
         "explanation": "Số sản phẩm lỗi là:\n\n\\( 400 \\times 10\\% = 40 \\) (sản phẩm).",
     },
 
-    {
-        "content": "Tìm ước chung lớn nhất (ƯCLN) của 60 và 84. (chỉ điền số)",
-        "answers": ["12"],
-        "points": 1,
-        "explanation": "Phân tích ra thừa số nguyên tố:\n\n\\( 60 = 2^2 \\times 3 \\times 5 \\)\n\n\\( 84 = 2^2 \\times 3 \\times 7 \\)\n\nVậy ƯCLN\\( (60, 84) = 2^2 \\times 3 = 12 \\).",
-    },
 
   {
     "content": "Cho hai số thực \\( x \\geq 0 \\); \\( 1 \\leq y \\leq 3 \\) thỏa mãn \\( 2^{x-2y}(2x+1) = 4y + 2x + 4 \\). Tìm giá trị nhỏ nhất của biểu thức \\( P = 2^{x-y-2} - x - y^2 + 2037 \\) (điền đáp án vào ô trống).",
