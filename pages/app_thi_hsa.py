@@ -1517,7 +1517,13 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
     "answers": ["2"],
     "points": 1,
     "explanation": "Đặt \\(t = \\sin x\\), \\(\\forall x \\in (0;\\pi) \\Rightarrow t \\in (0;1]\\).\n\nKhi đó, phương trình trở thành \\(f(t) = m\\). Dựa vào đồ thị hàm số ta suy ra \\(m \\in [-1;1)\\).\n\nMà \\(m \\in \\mathbb{Z}\\) nên \\(m \\in \\{-1;0\\}\\).\n\nVậy có 2 giá trị nguyên của tham số \\(m\\) thỏa mãn."
-  }
+  },
+  {
+    "content": "Hàm số $f(x)$ xác định, liên tục trên $\\mathbb{R}$ và có đạo hàm là $f'(x) = |x-1|$. Biết rằng $f(0) = 3$. Tổng $f(2) + f(4)$ bằng bao nhiêu?",
+    "answers": ["12"],
+    "points": 1,
+    "explanation": "Ta có $f'(x) = \\begin{cases} x-1 & \\text{khi } x \\ge 1 \\\\ -(x-1) & \\text{khi } x < 1 \\end{cases}$.\n\nKhi $x \\ge 1$ thì $f(x) = \\int (x-1)\\,dx = \\dfrac{x^2}{2} - x + C_1$.\n\nKhi $x < 1$ thì $f(x) = -\\int (x-1)\\,dx = -\\left(\\dfrac{x^2}{2} - x\\right) + C_2$.\n\nTheo đề bài ta có $f(0) = 3$ nên $C_2 = 3 \\Rightarrow f(x) = -\\left(\\dfrac{x^2}{2} - x\\right) + 3$ khi $x < 1$.\n\nMặt khác do hàm số $f(x)$ liên tục tại $x = 1$ nên $\\lim\\limits_{x \\to 1^-} f(x) = \\lim\\limits_{x \\to 1^+} f(x) = f(1)$\n\n$\\Leftrightarrow -\\left(\\dfrac{1}{2} - 1\\right) + 3 = \\dfrac{1}{2} - 1 + C_1 \\Leftrightarrow C_1 = 4$\n\nVậy khi $x \\ge 1$ thì $f(x) = \\dfrac{x^2}{2} - x + 4$.\n\n$\\Rightarrow f(2) + f(4) = 12$."
+},
 
   
     ],
