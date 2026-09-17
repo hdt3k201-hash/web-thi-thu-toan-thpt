@@ -1174,7 +1174,7 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
     },
     "correct": "D",
     "points": 1,
-    "explanation": "![Hình chóp S.ABCD](https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau2-de4.PNG)\n\n\\( \\triangle SBC \\) vuông tại \\( B \\) do \\( BC \\perp (SAB) \\Rightarrow BC \\perp SB \\).\n\n\\( \\triangle SCD \\) vuông tại \\( C \\) do \\( CD \\perp (SAD) \\Rightarrow CD \\perp SD \\).\n\n\\( \\triangle SAB \\) vuông tại A do \\( SA \\perp AB \\).\n\nVậy tam giác không phải là tam giác vuông là \\( \\triangle SBD \\).",
+    "explanation": "<img src=\"https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau2-de4.PNG\" alt=\"Hình chóp S.ABCD\" style=\"max-width:100%;\"/>\n\n\\( \\triangle SBC \\) vuông tại \\( B \\) do \\( BC \\perp (SAB) \\Rightarrow BC \\perp SB \\).\n\n\\( \\triangle SCD \\) vuông tại \\( C \\) do \\( CD \\perp (SAD) \\Rightarrow CD \\perp SD \\).\n\n\\( \\triangle SAB \\) vuông tại A do \\( SA \\perp AB \\).\n\nVậy tam giác không phải là tam giác vuông là \\( \\triangle SBD \\).",
 },
 {
     "content": "Cho hình chóp \\( S.ABCD \\) có \\( SA \\perp (ABCD) \\) và đáy là hình vuông. Từ \\( A \\) kẻ \\( AH \\perp SB \\). Khẳng định nào sau đây đúng?",
@@ -1186,7 +1186,7 @@ Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2
     },
     "correct": "D",
     "points": 1,
-    "explanation": "![Hình chóp S.ABCD với H](https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau4-de4.PNG)\n\nCó \\( \\begin{cases} BC \\perp SA \\\\ BC \\perp AB \\end{cases} \\Rightarrow BC \\perp (SAB) \\), mà \\( AH \\subset (SAB) \\) nên \\( BC \\perp AH \\).\n\nCó \\( \\begin{cases} AH \\perp SB \\\\ AH \\perp BC \\end{cases} \\Rightarrow AH \\perp (SBC) \\).",
+    "explanation": "<img src=\"https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau4-de4.PNG\" alt=\"Hình chóp S.ABCD với H\" style=\"max-width:100%;\"/>\n\nCó \\( \\begin{cases} BC \\perp SA \\\\ BC \\perp AB \\end{cases} \\Rightarrow BC \\perp (SAB) \\), mà \\( AH \\subset (SAB) \\) nên \\( BC \\perp AH \\).\n\nCó \\( \\begin{cases} AH \\perp SB \\\\ AH \\perp BC \\end{cases} \\Rightarrow AH \\perp (SBC) \\).",
 },
 
   
