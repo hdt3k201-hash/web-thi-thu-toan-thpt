@@ -5390,19 +5390,6 @@ Vậy có tất cả 6 giá trị nguyên của m thỏa mãn yêu cầu bài to
               "name": "Đề số 7 - ÔN TẬP CHUYÊN ĐỀ LƯỢNG GIÁC - 2026.",
               "description": "Câu hỏi.",
               "questions": [
-# ==================== ĐỀ 7 - CÂU 1 ĐẾN CÂU 4 ====================
-
-            # ---------------- KÉO THẢ (dragdrop) ----------------
-            # ==================== ĐỀ 7 - CÂU 1 ĐẾN CÂU 4 ====================
-
-            # ---------------- KÉO THẢ (dragdrop) ----------------
-           # ==================== ĐỀ 7 - CÂU 1 ĐẾN CÂU 4 ====================
-
-            # ---------------- KÉO THẢ (dragdrop) ----------------
-            # ==================== ĐỀ 7 - CÂU 1 ĐẾN CÂU 4 ====================
-
-            # ---------------- KÉO THẢ (dragdrop) ----------------
-           # ==================== ĐỀ 7 - CÂU 1 ĐẾN CÂU 4 ====================
 
             # ---------------- KÉO THẢ (dragdrop) ----------------
             {
@@ -5539,6 +5526,505 @@ c) ĐÚNG: Nhánh \\( \\cos x = \\dfrac{1}{2} \\) luôn cho cố định 2 nghi�
 
 d) SAI: Vì phương trình luôn chứa nhân tử \\( \\left(\\cos x - \\dfrac{1}{2}\\right) \\), nên nó luôn có ít nhất 2 nghiệm \\( x = \\dfrac{\\pi}{3} \\) và \\( x = \\dfrac{5\\pi}{3} \\), bất kể \\( m \\) nhận giá trị nào. Do đó không tồn tại \\( m \\) làm phương trình vô nghiệm.""",
             },
+
+
+    # ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_05',
+    "type": 'short',
+    "content": """Mực nước tại một cảng biển được mô hình hóa bởi hàm số \\( h(t) = 3\\cos\\left(\\dfrac{\\pi t}{6}+\\dfrac{\\pi}{3}\\right)+12 \\) (mét), trong đó t là thời gian tính bằng giờ (\\( 0 \\le t \\le 24 \\)). Một tàu hàng yêu cầu mực nước tối thiểu là 13,5m để có thể cập cảng an toàn. Trong một ngày (24 giờ), tổng thời gian tàu có thể cập cảng an toàn là bao nhiêu giờ?""",
+    "blanks": [
+        {"label": "Tổng thời gian =", "answers": ["8"]}
+    ],
+    "points": 1,
+    "explanation": """Để tàu cập cảng an toàn, mực nước phải thỏa mãn:
+
+\\( 3\\cos\\left(\\dfrac{\\pi t}{6}+\\dfrac{\\pi}{3}\\right)+12 \\ge 13,5 \\)
+
+Chuyển vế và rút gọn:
+
+\\( 3\\cos\\left(\\dfrac{\\pi t}{6}+\\dfrac{\\pi}{3}\\right) \\ge 1,5 \\Leftrightarrow \\cos\\left(\\dfrac{\\pi t}{6}+\\dfrac{\\pi}{3}\\right) \\ge \\dfrac{1}{2} \\)
+
+Áp dụng công thức nghiệm của bất phương trình cosin:
+
+\\( -\\dfrac{\\pi}{3}+k2\\pi \\le \\dfrac{\\pi t}{6}+\\dfrac{\\pi}{3} \\le \\dfrac{\\pi}{3}+k2\\pi \\)
+
+Trừ \\( \\dfrac{\\pi}{3} \\) ở cả 3 vế rồi nhân với \\( \\dfrac{6}{\\pi} \\) để rút gọn t:
+
+\\( -\\dfrac{2\\pi}{3}+k2\\pi \\le \\dfrac{\\pi t}{6} \\le k2\\pi \\Leftrightarrow -4+12k \\le t \\le 12k \\)
+
+Xét các nghiệm nằm trong đoạn \\( [0;24] \\):
+
+- Với \\( k=1 \\): \\( 8 \\le t \\le 12 \\) (kéo dài 4 giờ).
+
+- Với \\( k=2 \\): \\( 20 \\le t \\le 24 \\) (kéo dài 4 giờ).
+
+Vậy tổng thời gian tàu có thể cập cảng an toàn trong ngày là: \\( 4+4=8 \\) giờ.
+
+Đáp số cần điền: 8.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_06',
+    "type": 'short',
+    "content": """Tìm giá trị nhỏ nhất của hàm số \\( y = 3\\sin x + 4\\cos x + 5 \\).""",
+    "blanks": [
+        {"label": "GTNN =", "answers": ["0"]}
+    ],
+    "points": 1,
+    "explanation": """Áp dụng bất đẳng thức Bunhiacôpxki cho biểu thức \\( a\\sin x + b\\cos x \\), ta đánh giá được:
+
+\\( |3\\sin x + 4\\cos x| \\le \\sqrt{3^2+4^2} = 5 \\)
+
+Do đó biểu thức \\( 3\\sin x+4\\cos x \\) bị chặn trong đoạn:
+
+\\( -5 \\le 3\\sin x+4\\cos x \\le 5 \\)
+
+Cộng 5 vào cả ba vế để khôi phục lại hàm số y ban đầu:
+
+\\( -5+5 \\le 3\\sin x+4\\cos x+5 \\le 5+5 \\Leftrightarrow 0 \\le y \\le 10 \\)
+
+Từ bất đẳng thức kép trên, ta suy ra ngay giá trị nhỏ nhất của hàm số là 0.
+
+Đáp số cần điền: 0.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de7_tf_07",
+    "type": "truefalse",
+    "content": "Một con lắc lò xo dao động điều hòa với phương trình li độ \\( x(t) = 5\\cos\\left(4\\pi t - \\dfrac{\\pi}{2}\\right) \\) (cm), trong đó t tính bằng giây. Vận tốc của vật là đạo hàm của li độ theo thời gian \\( v(t) = x'(t) \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Chu kì dao động toàn phần của con lắc lò xo là \\( T = 0,5 \\) giây.", "correct": True},
+        {"text": "Tại thời điểm ban đầu \\( t = 0 \\), vật chuyển động đi qua vị trí cân bằng theo chiều âm.", "correct": False},
+        {"text": "Vận tốc đạt giá trị lớn nhất của vật trong suốt quá trình dao động là \\( 20\\pi \\) (cm/s).", "correct": True},
+        {"text": "Thời gian ngắn nhất để vật di chuyển từ vị trí cân bằng ra đến biên dương cực đại là 0,25 giây.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Từ phương trình li độ \\( x(t) = 5\\cos\\left(4\\pi t - \\dfrac{\\pi}{2}\\right) \\), ta phân tích lần lượt các tính chất động học của vật.
+
+a) ĐÚNG: Tần số góc của dao động là \\( \\omega = 4\\pi \\), suy ra chu kì toàn phần:
+
+\\( T = \\dfrac{2\\pi}{\\omega} = \\dfrac{2\\pi}{4\\pi} = 0,5 \\) (giây)
+
+b) SAI: Thay \\( t=0 \\) vào phương trình li độ, ta có \\( x(0) = 5\\cos\\left(-\\dfrac{\\pi}{2}\\right) = 0 \\), tức vật đang ở vị trí cân bằng. Xét phương trình vận tốc \\( v(t) = x'(t) = -20\\pi\\sin\\left(4\\pi t-\\dfrac{\\pi}{2}\\right) \\), tại \\( t=0 \\) thì \\( v(0) = -20\\pi\\sin\\left(-\\dfrac{\\pi}{2}\\right) = 20\\pi \\). Vì vận tốc mang giá trị dương nên vật đang đi qua vị trí cân bằng theo chiều dương, không phải chiều âm.
+
+c) ĐÚNG: Giá trị cực đại của vận tốc chính là tốc độ khi vật quét qua vị trí cân bằng:
+
+\\( v_{max} = \\omega A = 4\\pi \\cdot 5 = 20\\pi \\) (cm/s)
+
+d) SAI: Thời gian ngắn nhất để vật đi từ vị trí cân bằng ra đến vị trí biên tương ứng với một phần tư chu kì dao động:
+
+\\( \\Delta t = \\dfrac{T}{4} = \\dfrac{0,5}{4} = 0,125 \\) (giây), không phải 0,25 giây.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de7_mc_08',
+    "type": 'mc4',
+    "content": 'Có bao nhiêu giá trị nguyên của tham số \\( m \\in [-10;10] \\) để phương trình \\( \\tan x + \\cot x = m \\) có nghiệm thực?',
+    "options": {
+        'A': '18',
+        'B': '21',
+        'C': '17',
+        'D': '19',
+    },
+    "correct": 'A',
+    "points": 1,
+    "explanation": """Đặt điều kiện xác định cho phương trình là \\( \\sin x \\ne 0 \\) và \\( \\cos x \\ne 0 \\), gộp chung lại thành \\( \\sin 2x \\ne 0 \\).
+
+Biến đổi vế trái về cùng mẫu số:
+
+\\( \\tan x + \\cot x = \\dfrac{\\sin x}{\\cos x}+\\dfrac{\\cos x}{\\sin x} = \\dfrac{\\sin^2 x+\\cos^2 x}{\\sin x\\cos x} = \\dfrac{1}{\\frac{1}{2}\\sin 2x} = \\dfrac{2}{\\sin 2x} \\)
+
+Phương trình đã cho trở thành:
+
+\\( \\dfrac{2}{\\sin 2x} = m \\Leftrightarrow \\sin 2x = \\dfrac{2}{m} \\) (điều kiện \\( m \\ne 0 \\))
+
+Để phương trình có nghiệm, giá trị \\( \\sin 2x \\) phải nằm trong đoạn \\( [-1;1] \\). Kết hợp với điều kiện \\( \\sin 2x \\ne 0 \\), ta thiết lập được:
+
+\\( -1 \\le \\dfrac{2}{m} \\le 1 \\) và \\( \\dfrac{2}{m} \\ne 0 \\Leftrightarrow |m| \\ge 2 \\)
+
+Kết hợp với điều kiện m nguyên thuộc đoạn \\( [-10;10] \\), ta liệt kê được các giá trị hợp lệ:
+
+\\( m \\in \\{-10,-9,\\dots,-2\\} \\cup \\{2,3,\\dots,10\\} \\)
+
+Đếm số lượng phần tử, ta có \\( 9+9=18 \\) giá trị thỏa mãn.
+
+Chọn đáp án A.""",
+},
+     # ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_09',
+    "type": 'short',
+    "content": """Nồng độ bụi mịn PM2.5 ngoài trời tại một thành phố trong ngày được mô hình hóa bởi hàm số \\( C(t) = 20\\sin\\left[\\dfrac{\\pi}{12}(t-6)\\right]+40 \\), trong đó C là nồng độ (\\( \\mu g/m^3 \\)) và t là thời gian trong ngày (\\( 0 \\le t \\le 24 \\)). Khuyến cáo sức khỏe quy định không nên ra ngoài khi nồng độ vượt mức \\( 50\\mu g/m^3 \\). Trong một ngày, khoảng thời gian không an toàn kéo dài liên tục bao nhiêu tiếng?""",
+    "blanks": [
+        {"label": "Thời gian không an toàn =", "answers": ["8"]}
+    ],
+    "points": 1,
+    "explanation": """Khoảng thời gian không an toàn tương ứng với lúc nồng độ bụi mịn vượt ngưỡng cho phép. Ta thiết lập bất phương trình:
+
+\\( 20\\sin\\left[\\dfrac{\\pi}{12}(t-6)\\right]+40 \\ge 50 \\Leftrightarrow 20\\sin\\left[\\dfrac{\\pi}{12}(t-6)\\right] \\ge 10 \\)
+
+Rút gọn, ta thu được:
+
+\\( \\sin\\left[\\dfrac{\\pi}{12}(t-6)\\right] \\ge \\dfrac{1}{2} \\)
+
+Giải bất phương trình này trên vòng tròn lượng giác:
+
+\\( \\dfrac{\\pi}{6}+k2\\pi \\le \\dfrac{\\pi}{12}(t-6) \\le \\dfrac{5\\pi}{6}+k2\\pi \\)
+
+Nhân cả ba vế với \\( \\dfrac{12}{\\pi} \\):
+
+\\( 2+24k \\le t-6 \\le 10+24k \\Leftrightarrow 8+24k \\le t \\le 16+24k \\)
+
+Vì thời gian khảo sát nằm trong một chu kì ngày (\\( t \\in [0;24] \\)), ta chỉ chọn \\( k=0 \\), tương ứng với khoảng:
+
+\\( 8 \\le t \\le 16 \\)
+
+Điều này có nghĩa là mức độ ô nhiễm sẽ duy trì ở trạng thái không an toàn từ 8 giờ sáng đến 16 giờ chiều.
+
+Tính thời lượng kéo dài liên tục: \\( 16-8=8 \\) tiếng.
+
+Đáp số cần điền: 8.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de7_dd_10',
+    "type": 'dragdrop',
+    "content": """Cho biểu thức lượng giác \\( P = \\sin\\left(x+\\dfrac{\\pi}{6}\\right)\\cos\\left(x-\\dfrac{\\pi}{6}\\right) \\). Kéo và thả các kết quả đúng vào các vị trí 1 và 2 để hoàn thiện quá trình biến đổi đại số:""",
+    "options_pool": [
+        '$\\dfrac{1}{2}\\sin 2x+\\dfrac{\\sqrt{3}}{4}$',
+        '$\\dfrac{1}{2}\\sin 2x+\\dfrac{\\sqrt{3}}{2}$',
+        '$\\dfrac{1}{2}\\cos 2x+\\dfrac{\\sqrt{3}}{4}$',
+        '$\\dfrac{2+\\sqrt{3}}{4}$',
+        '$\\dfrac{1+\\sqrt{3}}{2}$'
+    ],
+    "blanks": [
+        {"label": "1) Rút gọn hoàn toàn biểu thức P, ta thu được kết quả: P =", "answer": "$\\dfrac{1}{2}\\sin 2x+\\dfrac{\\sqrt{3}}{4}$"},
+        {"label": "2) Giá trị lớn nhất có thể đạt được của biểu thức P là: $P_{max}$ =", "answer": "$\\dfrac{2+\\sqrt{3}}{4}$"},
+    ],
+    "points": 1,
+    "explanation": """Sử dụng công thức biến đổi tích thành tổng \\( \\sin a\\cos b = \\dfrac{1}{2}[\\sin(a+b)+\\sin(a-b)] \\), với \\( a = x+\\dfrac{\\pi}{6} \\) và \\( b = x-\\dfrac{\\pi}{6} \\), ta khai triển P:
+
+\\( P = \\dfrac{1}{2}\\left[\\sin\\left(x+\\dfrac{\\pi}{6}+x-\\dfrac{\\pi}{6}\\right)+\\sin\\left(x+\\dfrac{\\pi}{6}-x+\\dfrac{\\pi}{6}\\right)\\right] \\)
+
+Rút gọn các số hạng đồng dạng:
+
+\\( P = \\dfrac{1}{2}\\left[\\sin 2x+\\sin\\dfrac{\\pi}{3}\\right] = \\dfrac{1}{2}\\sin 2x+\\dfrac{\\sqrt{3}}{4} \\)
+
+Vì \\( \\sin 2x \\le 1 \\) với mọi số thực x, suy ra:
+
+\\( P \\le \\dfrac{1}{2}\\cdot 1+\\dfrac{\\sqrt{3}}{4} = \\dfrac{2+\\sqrt{3}}{4} \\)
+
+Dấu bằng xảy ra khi \\( \\sin 2x=1 \\Leftrightarrow 2x=\\dfrac{\\pi}{2}+k2\\pi \\), tức \\( x=\\dfrac{\\pi}{4}+k\\pi \\).
+
+Kết quả điền ô trống: Vị trí (1) điền \\( \\dfrac{1}{2}\\sin 2x+\\dfrac{\\sqrt{3}}{4} \\); Vị trí (2) điền \\( \\dfrac{2+\\sqrt{3}}{4} \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_11',
+    "type": 'short',
+    "content": """Đếm số lượng các nghiệm nguyên x thuộc đoạn \\( [1;2026] \\) thỏa mãn phương trình lượng giác: \\( \\cos\\left(\\dfrac{\\pi x}{3}\\right) = \\dfrac{1}{2} \\).""",
+    "blanks": [
+        {"label": "Số nghiệm nguyên =", "answers": ["675"]}
+    ],
+    "points": 1,
+    "explanation": """Giải phương trình lượng giác cơ bản theo ẩn x. Phương trình \\( \\cos\\left(\\dfrac{\\pi x}{3}\\right)=\\dfrac{1}{2} \\) cho ta hai họ nghiệm:
+
+\\( \\dfrac{\\pi x}{3} = \\dfrac{\\pi}{3}+k2\\pi \\) hoặc \\( \\dfrac{\\pi x}{3} = -\\dfrac{\\pi}{3}+k2\\pi \\) (\\( k \\in \\mathbb{Z} \\))
+
+Rút gọn \\( \\pi \\) và nhân 3, ta được:
+
+\\( x = 1+6k \\) hoặc \\( x = -1+6k \\)
+
+Với họ \\( x=6k+1 \\), xét điều kiện \\( x \\in [1;2026] \\):
+
+\\( 1 \\le 6k+1 \\le 2026 \\Leftrightarrow 0 \\le 6k \\le 2025 \\Leftrightarrow 0 \\le k \\le 337,5 \\)
+
+Do k nguyên, k nhận các giá trị từ 0 đến 337, tạo ra 338 nghiệm.
+
+Với họ \\( x=6k-1 \\):
+
+\\( 1 \\le 6k-1 \\le 2026 \\Leftrightarrow 2 \\le 6k \\le 2027 \\Leftrightarrow 0,33 \\le k \\le 337,8 \\)
+
+k nhận các giá trị nguyên từ 1 đến 337, sinh ra thêm 337 nghiệm.
+
+Kết hợp hai trường hợp (hai họ nghiệm này rời nhau hoàn toàn), tổng số nghiệm nguyên hợp lệ là:
+
+\\( 338+337=675 \\)
+
+Đáp số cần điền: 675.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de7_tf_12",
+    "type": "truefalse",
+    "content": "Cho phương trình lượng giác: \\( (2\\cos x+1)(\\cos x-m)=0 \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Phương trình luôn có ít nhất 2 nghiệm phân biệt thuộc khoảng \\( (0;2\\pi) \\) với mọi giá trị của tham số \\( m \\in \\mathbb{R} \\).", "correct": True},
+        {"text": "Khi \\( m=1 \\), phương trình có đúng 3 nghiệm phân biệt trên đoạn \\( [0;2\\pi] \\).", "correct": False},
+        {"text": "Điều kiện cần và đủ để phương trình có đúng 4 nghiệm phân biệt trên đoạn \\( [-\\pi;\\pi] \\) là \\( m \\in (-1;1)\\setminus\\left\\{-\\dfrac{1}{2}\\right\\} \\).", "correct": True},
+        {"text": "Giả sử \\( m=-\\dfrac{1}{2} \\), tổng tất cả các nghiệm của phương trình trên đoạn \\( [0;10\\pi] \\) là \\( 25\\pi \\).", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Phân tích cấu trúc phương trình tích đã cho:
+
+\\( (2\\cos x+1)(\\cos x-m)=0 \\Leftrightarrow \\begin{cases}\\cos x=-\\dfrac{1}{2} & (1)\\\\ \\cos x=m & (2)\\end{cases} \\)
+
+a) ĐÚNG: Phương trình (1) luôn cho ra đúng 2 nghiệm \\( x=\\dfrac{2\\pi}{3} \\) và \\( x=\\dfrac{4\\pi}{3} \\) trên khoảng \\( (0;2\\pi) \\), bất chấp giá trị của m.
+
+b) SAI: Khi \\( m=1 \\), phương trình (2) trở thành \\( \\cos x=1 \\), sinh ra 2 nghiệm \\( x=0 \\) và \\( x=2\\pi \\) trên đoạn \\( [0;2\\pi] \\). Kết hợp với 2 nghiệm của (1), tổng cộng có 4 nghiệm phân biệt, không phải 3.
+
+c) ĐÚNG: Trên đoạn \\( [-\\pi;\\pi] \\), phương trình (1) đóng góp 2 nghiệm là \\( \\pm\\dfrac{2\\pi}{3} \\). Để có đúng 4 nghiệm phân biệt, phương trình (2) phải sinh thêm đúng 2 nghiệm mới không trùng với 2 nghiệm cũ. Điều này xảy ra khi \\( -1<m<1 \\), đồng thời \\( m\\ne -\\dfrac{1}{2} \\) để tránh trùng nghiệm.
+
+d) SAI: Khi \\( m=-\\dfrac{1}{2} \\), phương trình trở thành nghiệm kép \\( \\cos x=-\\dfrac{1}{2} \\). Trên đoạn \\( [0;2\\pi] \\), tổng 2 nghiệm là \\( \\dfrac{2\\pi}{3}+\\dfrac{4\\pi}{3}=2\\pi \\). Trên đoạn \\( [0;10\\pi] \\) tương ứng với 5 vòng tuần hoàn, tổng các nghiệm là:
+
+\\( (2\\pi)+(2\\pi+4\\pi)+(2\\pi+8\\pi)+(2\\pi+12\\pi)+(2\\pi+16\\pi)=50\\pi \\), chứ không phải \\( 25\\pi \\).""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de7_mc_13',
+    "type": 'mc4',
+    "content": 'Có bao nhiêu giá trị nguyên của tham số \\( m \\in [-10;10] \\) để phương trình \\( m\\sin x+(m+1)\\cos x=m+2 \\) có nghiệm thực?',
+    "options": {
+        'A': '17',
+        'B': '18',
+        'C': '19',
+        'D': '20',
+    },
+    "correct": 'B',
+    "points": 1,
+    "explanation": """Đây là dạng phương trình lượng giác bậc nhất đối với sin x và cos x: \\( a\\sin x+b\\cos x=c \\). Điều kiện cần và đủ để phương trình này có nghiệm là:
+
+\\( a^2+b^2 \\ge c^2 \\)
+
+Áp dụng vào bài toán, ta thiết lập bất phương trình:
+
+\\( m^2+(m+1)^2 \\ge (m+2)^2 \\)
+
+Bung hằng đẳng thức và rút gọn:
+
+\\( m^2+m^2+2m+1 \\ge m^2+4m+4 \\Leftrightarrow m^2-2m-3 \\ge 0 \\)
+
+Giải bất phương trình bậc hai này, ta thu được:
+
+\\( m \\le -1 \\) hoặc \\( m \\ge 3 \\)
+
+Đối chiếu với điều kiện \\( m \\in [-10;10] \\) và \\( m \\in \\mathbb{Z} \\), ta liệt kê được:
+
+\\( m \\in \\{-10;-9;\\dots;-1\\} \\cup \\{3;4;\\dots;10\\} \\)
+
+Số lượng phần tử trong tập hợp âm là 10 số, tập hợp dương là 8 số. Tổng cộng có \\( 10+8=18 \\) giá trị thỏa mãn.
+
+Chọn đáp án B.""",
+},
+                # ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de7_dd_14',
+    "type": 'dragdrop',
+    "content": """Xét phương trình lượng giác \\( \\sin 2x = 0 \\) trên đoạn \\( [0;10\\pi] \\). Kéo và thả các giá trị số thích hợp để hoàn thiện các kết luận dưới đây liên quan đến tính chất của tập nghiệm.""",
+    "options_pool": [
+        '20',
+        '21',
+        '$100\\pi$',
+        '$105\\pi$',
+        '$210\\pi$'
+    ],
+    "blanks": [
+        {"label": "1) Số lượng các nghiệm phân biệt của phương trình trên đoạn $[0;10\\pi]$ là", "answer": "21"},
+        {"label": "2) Tổng của tất cả các nghiệm đó có giá trị bằng", "answer": "$105\\pi$"},
+    ],
+    "points": 1,
+    "explanation": """Giải nhanh phương trình cơ bản:
+
+\\( \\sin 2x = 0 \\Leftrightarrow 2x = k\\pi \\Leftrightarrow x = k\\dfrac{\\pi}{2} \\) (\\( k \\in \\mathbb{Z} \\))
+
+Để tìm số nghiệm nằm trong đoạn \\( [0;10\\pi] \\), ta áp đặt bất đẳng thức:
+
+\\( 0 \\le k\\dfrac{\\pi}{2} \\le 10\\pi \\Leftrightarrow 0 \\le \\dfrac{k}{2} \\le 10 \\Leftrightarrow 0 \\le k \\le 20 \\)
+
+Với mỗi số nguyên k chạy từ 0 đến 20, ta thu được một nghiệm phân biệt. Vậy có tất cả \\( 20-0+1=21 \\) nghiệm hợp lệ.
+
+Tiếp theo, thiết lập biểu thức tính tổng các nghiệm này:
+
+\\( S = 0+\\dfrac{\\pi}{2}+\\dfrac{2\\pi}{2}+\\cdots+\\dfrac{20\\pi}{2} = \\dfrac{\\pi}{2}\\cdot(0+1+2+\\cdots+20) \\)
+
+Cụm trong ngoặc là tổng của một cấp số cộng gồm 21 số hạng đầu tiên (từ 0 đến 20), áp dụng công thức Gauss:
+
+\\( S = \\dfrac{\\pi}{2}\\cdot\\dfrac{20\\cdot 21}{2} = \\dfrac{\\pi}{2}\\cdot 210 = 105\\pi \\)
+
+Kết quả điền ô trống: Vị trí 1 điền 21; Vị trí 2 điền \\( 105\\pi \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_15',
+    "type": 'short',
+    "content": """Số giờ ánh sáng mặt trời trong ngày tại một thành phố được mô hình hóa xấp xỉ bởi hàm số \\( H(t) = 12+3\\sin\\left[\\dfrac{2\\pi}{365}(t-80)\\right] \\), trong đó H là số giờ chiếu sáng và t là số thứ tự của ngày trong năm (\\( 1 \\le t \\le 365 \\)). Một loại cây công nghiệp đặc biệt chỉ có thể sinh trưởng tốt nếu thời gian chiếu sáng trong ngày lớn hơn 13,5 giờ. Hỏi trong một năm không nhuận, có bao nhiêu ngày cây có thể sinh trưởng tốt?""",
+    "blanks": [
+        {"label": "Số ngày =", "answers": ["122"]}
+    ],
+    "points": 1,
+    "explanation": """Yêu cầu của bài toán tương đương với việc giải bất phương trình:
+
+\\( H(t) > 13,5 \\Leftrightarrow 12+3\\sin\\left[\\dfrac{2\\pi}{365}(t-80)\\right] > 13,5 \\)
+
+Chuyển vế và chia cho 3, ta cô lập được hàm lượng giác:
+
+\\( \\sin\\left[\\dfrac{2\\pi}{365}(t-80)\\right] > 0,5 \\)
+
+Trên chu kỳ đầu tiên, hàm sin nhận giá trị lớn hơn \\( \\dfrac{1}{2} \\) trong khoảng góc từ \\( \\dfrac{\\pi}{6} \\) đến \\( \\dfrac{5\\pi}{6} \\), nên:
+
+\\( \\dfrac{\\pi}{6} < \\dfrac{2\\pi}{365}(t-80) < \\dfrac{5\\pi}{6} \\)
+
+Triệt tiêu \\( \\pi \\) và nhân chéo với \\( \\dfrac{365}{2} \\):
+
+\\( \\dfrac{365}{12} < t-80 < \\dfrac{5\\cdot 365}{12} \\Leftrightarrow 30,41 < t-80 < 152,08 \\)
+
+Cộng thêm 80 vào ba vế:
+
+\\( 110,41 < t < 232,08 \\)
+
+Vì t là số nguyên nên tập hợp các ngày thỏa mãn là \\( 111 \\le t \\le 232 \\).
+
+Tổng số ngày đếm được là \\( 232-111+1=122 \\) ngày.
+
+Đáp số cần điền: 122.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_16',
+    "type": 'short',
+    "content": """Tìm giá trị của tham số thực m để hàm số \\( y = \\dfrac{\\sin x+m\\cos x+1}{\\cos x-\\sin x+2} \\) có giá trị lớn nhất đúng bằng 2.""",
+    "blanks": [
+        {"label": "m =", "answers": ["-2"]}
+    ],
+    "points": 1,
+    "explanation": """Vì \\( \\cos x-\\sin x+2>0 \\) với mọi x, ta nhân chéo mẫu số:
+
+\\( y(\\cos x-\\sin x+2) = \\sin x+m\\cos x+1 \\)
+
+Nhóm các hệ số của sin x và cos x về một vế:
+
+\\( (y+1)\\sin x+(m-y)\\cos x = 2y-1 \\)
+
+Điều kiện có nghiệm x của phương trình:
+
+\\( (y+1)^2+(m-y)^2 \\ge (2y-1)^2 \\)
+
+Khai triển các hằng đẳng thức:
+
+\\( y^2+2y+1+m^2-2my+y^2 \\ge 4y^2-4y+1 \\)
+
+Chuyển hết sang một vế:
+
+\\( 2y^2-(2m+6)y-m^2 \\le 0 \\) (*)
+
+Tập nghiệm của (*) chính là tập giá trị của hàm số, có dạng \\( [y_{min};y_{max}] \\). Đề bài yêu cầu \\( y_{max}=2 \\), tức y=2 phải là nghiệm của tam thức (dấu bằng xảy ra):
+
+\\( 2(2)^2-(2m+6)(2)-m^2 = 0 \\Leftrightarrow 8-4m-12-m^2 = 0 \\Leftrightarrow m^2+4m+4 = 0 \\)
+
+Hằng đẳng thức xuất hiện: \\( (m+2)^2 = 0 \\Rightarrow m=-2 \\).
+
+Đáp số cần điền: -2.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de7_mc_17',
+    "type": 'mc4',
+    "content": 'Giải phương trình lượng giác \\( \\sin x+\\sin 2x+\\sin 3x=0 \\). Hỏi các nghiệm của phương trình này được biểu diễn bởi bao nhiêu điểm phân biệt trên đường tròn lượng giác?',
+    "options": {
+        'A': '4',
+        'B': '5',
+        'C': '6',
+        'D': '8',
+    },
+    "correct": 'C',
+    "points": 1,
+    "explanation": """Ghép cặp số hạng đầu và cuối, dùng công thức tổng thành tích để xuất hiện nhân tử chung:
+
+\\( (\\sin 3x+\\sin x)+\\sin 2x = 0 \\Leftrightarrow 2\\sin 2x\\cos x+\\sin 2x = 0 \\)
+
+Rút nhân tử chung \\( \\sin 2x \\), phương trình hóa thành dạng tích:
+
+\\( \\sin 2x(2\\cos x+1) = 0 \\Leftrightarrow \\begin{cases}\\sin 2x=0\\\\ \\cos x=-\\dfrac{1}{2}\\end{cases} \\)
+
+Xác định vị trí các điểm trên đường tròn lượng giác:
+
+- Với \\( \\sin 2x=0 \\Rightarrow 2x=k\\pi \\Rightarrow x=k\\dfrac{\\pi}{2} \\). Họ nghiệm này cách nhau 90°, tạo ra 4 điểm phân biệt ứng với các góc \\( 0,\\dfrac{\\pi}{2},\\pi,\\dfrac{3\\pi}{2} \\).
+
+- Với \\( \\cos x=-\\dfrac{1}{2} \\Rightarrow x=\\pm\\dfrac{2\\pi}{3}+k2\\pi \\). Họ này bổ sung thêm đúng 2 điểm hoàn toàn mới là 120° và 240° trên đường tròn.
+
+Kiểm tra thấy hai tập hợp điểm này không trùng lặp nhau, nên tổng số điểm biểu diễn phân biệt là \\( 4+2=6 \\) điểm.
+
+Chọn đáp án C.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de7_tf_18",
+    "type": "truefalse",
+    "content": "Cho phương trình chứa tham số m: \\( \\sin^4 x+\\cos^4 x=m \\). Xét tính đúng/sai của các mệnh đề sau đây:",
+    "statements": [
+        {"text": "Khi \\( m=1 \\), phương trình đã cho có đúng 4 nghiệm phân biệt trên đoạn \\( [0;\\pi] \\).", "correct": False},
+        {"text": "Điều kiện cần và đủ để phương trình có nghiệm là \\( m \\in \\left[\\dfrac{1}{2};1\\right] \\).", "correct": True},
+        {"text": "Khi \\( m=\\dfrac{3}{4} \\), các điểm biểu diễn tập nghiệm của phương trình trên đường tròn lượng giác tạo thành đỉnh của một hình bát giác đều.", "correct": True},
+        {"text": "Nếu \\( m=\\dfrac{1}{2} \\), phương trình đã cho tương đương với phương trình \\( \\cos 4x=-1 \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """Dùng hằng đẳng thức mở rộng để hạ bậc nhanh phương trình:
+
+\\( (\\sin^2 x+\\cos^2 x)^2-2\\sin^2 x\\cos^2 x=m \\Leftrightarrow 1-\\dfrac{1}{2}\\sin^2 2x=m \\Leftrightarrow \\sin^2 2x=2(1-m) \\)
+
+a) SAI: Khi \\( m=1 \\), ta có \\( \\sin^2 2x=0 \\Leftrightarrow \\sin 2x=0 \\Rightarrow x=k\\dfrac{\\pi}{2} \\). Giới hạn nghiệm trong đoạn \\( [0;\\pi] \\), ta tìm được \\( x\\in\\left\\{0;\\dfrac{\\pi}{2};\\pi\\right\\} \\). Vậy phương trình chỉ có 3 nghiệm phân biệt, không phải 4.
+
+b) ĐÚNG: Vì \\( \\sin^2 2x \\) luôn bị khống chế trong đoạn \\( [0;1] \\), nên phương trình có nghiệm khi và chỉ khi:
+
+\\( 0 \\le 2(1-m) \\le 1 \\Leftrightarrow 0 \\le 1-m \\le \\dfrac{1}{2} \\Leftrightarrow \\dfrac{1}{2} \\le m \\le 1 \\)
+
+c) ĐÚNG: Thử trực tiếp \\( m=\\dfrac{3}{4} \\), ta được \\( \\sin^2 2x=\\dfrac{1}{2} \\Rightarrow \\cos^2 2x=\\dfrac{1}{2} \\Rightarrow \\cos 4x=0 \\). Nghiệm thu được là \\( 4x=\\dfrac{\\pi}{2}+k\\pi \\Rightarrow x=\\dfrac{\\pi}{8}+k\\dfrac{\\pi}{4} \\). Khoảng cách giữa các nghiệm là góc \\( \\dfrac{\\pi}{4} \\) (45°), chia đường tròn thành 8 phần bằng nhau, tạo thành một bát giác đều.
+
+d) ĐÚNG: Thay \\( m=\\dfrac{1}{2} \\) vào, ta nhận được \\( \\sin^2 2x=1 \\). Dùng công thức hạ bậc: \\( \\dfrac{1-\\cos 4x}{2}=1 \\Leftrightarrow \\cos 4x=-1 \\). Suy luận này hoàn toàn khớp với mệnh đề.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de7_sh_19',
+    "type": 'short',
+    "content": """Tính chính xác giá trị của tổng hữu hạn sau:
+
+\\( S = \\sin^2 10^\\circ+\\sin^2 20^\\circ+\\sin^2 30^\\circ+\\cdots+\\sin^2 170^\\circ+\\sin^2 180^\\circ \\)""",
+    "blanks": [
+        {"label": "S =", "answers": ["9"]}
+    ],
+    "points": 1,
+    "explanation": """Dãy tổng S gồm các số hạng là bình phương hàm sin của các góc tăng dần với bước nhảy 10°, từ 10° đến 180°, tổng cộng 18 số hạng.
+
+Sử dụng tính chất góc phụ nhau: \\( \\sin(90^\\circ-\\alpha)=\\cos\\alpha \\), dẫn đến \\( \\sin^2(90^\\circ-\\alpha)+\\sin^2\\alpha=1 \\).
+
+Tách hai góc đặc biệt ở biên: \\( \\sin^2 90^\\circ=1 \\) và \\( \\sin^2 180^\\circ=0 \\).
+
+Với các góc từ 10° đến 80°, ta gom được thành 4 cặp có tổng bằng 1:
+
+\\( (\\sin^2 10^\\circ+\\sin^2 80^\\circ)+(\\sin^2 20^\\circ+\\sin^2 70^\\circ)+(\\sin^2 30^\\circ+\\sin^2 60^\\circ)+(\\sin^2 40^\\circ+\\sin^2 50^\\circ)=1\\times 4=4 \\)
+
+Đối với các góc tù từ 100° đến 170°, tính chất góc bù cho phép ta đưa chúng về đúng các góc nhọn tương ứng: \\( \\sin 170^\\circ=\\sin 10^\\circ,\\ \\sin 160^\\circ=\\sin 20^\\circ,\\ldots \\) Như vậy chuỗi từ 100° đến 170° phản chiếu lại giá trị của chuỗi từ 10° đến 80°, cũng cho kết quả bằng 4.
+
+Tổng kết toàn bộ chuỗi:
+
+\\( S = 4 \\text{ (nửa đầu)} + 1 \\text{ (góc 90°)} + 4 \\text{ (nửa sau)} + 0 \\text{ (góc 180°)} = 9 \\)
+
+Đáp số cần điền: 9.""",
+},
+                
    
          ], # Đóng danh sách questions của Đề 7
     }, # Đóng dictionary của Đề 7
