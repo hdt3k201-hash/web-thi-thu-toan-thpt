@@ -6063,10 +6063,9 @@ Kết quả điền ô trống: Vị trí 1 điền \\( [-5;5] \\); Vị trí 2 
 {
     "id": 'de7_sh_21',
     "type": 'short',
-    "content": """Trong cơ khí, cơ cấu tay quay - con trượt (slider-crank mechanism) được sử dụng để biến đổi chuyển động quay thành chuyển động tịnh tiến (ví dụ: piston trong động cơ đốt trong). Xét một cơ cấu với tay quay OA có bán kính \\( r=5 \\) cm quay đều quanh tâm O. Thanh truyền AB có chiều dài \\( l=13 \\) cm nối từ điểm A trên tay quay đến piston B chuyển động dọc theo trục Ox.
-
-    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau13-de7.PNG", 
-
+    "content": """Trong cơ khí, cơ cấu tay quay - con trượt (slider-crank mechanism) được sử dụng để biến đổi chuyển động quay thành chuyển động tịnh tiến (ví dụ: piston trong động cơ đốt trong). Xét một cơ cấu với tay quay OA có bán kính \\( r=5 \\) cm quay đều quanh tâm O. Thanh truyền AB có chiều dài \\( l=13 \\) cm nối từ điểm A trên tay quay đến piston B chuyển động dọc theo trục Ox.""",
+    "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau13-de7.PNG',
+  
 Gọi \\( \\alpha \\) là góc quay của tay quay so với trục Ox. Khoảng cách từ tâm O đến piston B được cho bởi công thức \\( x(\\alpha) = r\\cos\\alpha+\\sqrt{l^2-r^2\\sin^2\\alpha} \\). Tính "Hành trình của piston" (được định nghĩa là khoảng cách giữa vị trí xa nhất và gần nhất của piston B so với tâm O).""",
     "blanks": [
         {"label": "Hành trình =", "answers": ["10"]}
