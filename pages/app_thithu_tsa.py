@@ -7944,7 +7944,308 @@ Vì \\( P_n>0 \\) nên dư nợ \\( D_n \\) giảm dần, do đó tiền lãi \\
 
  ], # Đóng danh sách questions của Đề 8
     }, # Đóng dictionary của Đề 8
+{
+              "id": "de9",
+              "name": "Đề số 9 - ÔN TẬP CHUYÊN ĐỀ GIỚI HẠN - 2026.",
+              "description": "Câu hỏi.",
+              "questions": [
 
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de9_mc_1",
+    "type": "mc4",
+    "content": "Một quả bóng cao su được thả rơi từ độ cao 10 m. Mỗi lần chạm đất, quả bóng lại nảy lên một độ cao bằng \\( \\dfrac{3}{4} \\) độ cao lần rơi trước đó. Tính tổng quãng đường quả bóng di chuyển (cả lên và xuống) kể từ lúc thả cho đến khi bóng dừng hẳn.",
+    "options": {
+        "A": "$70$ m",
+        "B": "$80$ m",
+        "C": "$40$ m",
+        "D": "$50$ m",
+    },
+    "correct": "A",
+    "points": 1,
+    "explanation": """Quãng đường bóng rơi xuống lần đầu là 10 m.
+
+Quãng đường bóng nảy lên và rơi xuống ở lần thứ nhất là: \\( 2\\cdot 10\\cdot\\dfrac{3}{4} \\).
+
+Quãng đường bóng nảy lên và rơi xuống ở lần thứ hai là: \\( 2\\cdot 10\\cdot\\left(\\dfrac{3}{4}\\right)^2 \\).
+
+Tổng quãng đường di chuyển là:
+
+\\( S = 10 + 2\\cdot 10\\cdot\\dfrac{3}{4} + 2\\cdot 10\\cdot\\left(\\dfrac{3}{4}\\right)^2 + \\cdots = 10 + 2\\left[10\\cdot\\dfrac{3}{4} + 10\\cdot\\left(\\dfrac{3}{4}\\right)^2 + \\ldots\\right] \\)
+
+Trong ngoặc vuông là tổng của cấp số nhân lùi vô hạn với \\( u_1 = 10\\cdot\\dfrac{3}{4} = \\dfrac{15}{2} \\) và \\( q = \\dfrac{3}{4} \\):
+
+\\( S = 10 + 2\\cdot\\dfrac{15/2}{1-\\dfrac{3}{4}} = 10 + 2\\cdot 30 = 70 \\) (m).
+
+Chọn A.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de9_tf_2",
+    "type": "truefalse",
+    "content": "Nồng độ một loại thuốc trong máu (đơn vị: mg/L) sau t giờ tiêm được cho bởi mô hình \\( C(t) = \\dfrac{30t}{t^2+4} \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Nồng độ thuốc tại thời điểm \\( t=2 \\) giờ là 7,5 mg/L.", "correct": True},
+        {"text": "Khi thời gian trôi qua đủ lâu (\\( t\\to+\\infty \\)), nồng độ thuốc trong máu tiến về 30 mg/L.", "correct": False},
+        {"text": "\\( \\lim\\limits_{t\\to+\\infty} C(t) = 0 \\).", "correct": True},
+        {"text": "Mô hình này dự báo thuốc sẽ bị đào thải hoàn toàn khỏi cơ thể sau thời gian dài.", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Nồng độ sau 2 giờ:
+
+\\( C(2) = \\dfrac{30(2)}{2^2+4} = \\dfrac{60}{8} = 7,5 \\) mg/L.
+
+b) SAI: Ta xét giới hạn khi \\( t\\to+\\infty \\), chia cả tử và mẫu cho \\( t^2 \\):
+
+\\( \\lim_{t\\to+\\infty} C(t) = \\lim_{t\\to+\\infty}\\dfrac{30t}{t^2+4} = \\lim_{t\\to+\\infty}\\dfrac{\\dfrac{30}{t}}{1+\\dfrac{4}{t^2}} = \\dfrac{0}{1} = 0 \\)
+
+Vậy nồng độ không tiến về 30 mg/L mà tiến về 0.
+
+c) ĐÚNG: Theo tính toán ở ý trên, giới hạn bằng 0.
+
+d) ĐÚNG: Dựa vào ý c, giới hạn của nồng độ tiến về 0 khi thời gian đủ lớn, nghĩa là mô hình dự báo thuốc dần bị đào thải hết khỏi cơ thể.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de9_dd_3",
+    "type": "dragdrop",
+    "content": """Kéo và thả các phương án lựa chọn thích hợp vào ô trống. Tính các giới hạn sau và kéo đáp án tương ứng vào kết quả:
+
+a) \\( \\lim \\dfrac{2n^2+1}{n^2-3n+2} = \\) (1)
+
+b) \\( \\lim\\limits_{x\\to 2} \\dfrac{x^2-4}{x-2} = \\) (2)
+
+c) \\( \\lim\\limits_{x\\to-\\infty} \\left(\\sqrt{x^2+2x}+x\\right) = \\) (3)""",
+    "options_pool": [
+        '$4$',
+        '$0$',
+        '$-2$',
+        '$2$',
+        '$+\\infty$',
+        '$-1$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$2$"},
+        {"label": "(2) =", "answer": "$4$"},
+        {"label": "(3) =", "answer": "$-1$"},
+    ],
+    "points": 1,
+    "explanation": """a) Chia cả tử và mẫu cho \\( n^2 \\):
+
+\\( \\lim \\dfrac{2n^2+1}{n^2-3n+2} = \\lim \\dfrac{2+\\dfrac{1}{n^2}}{1-\\dfrac{3}{n}+\\dfrac{2}{n^2}} = 2 \\)
+
+b) Phân tích đa thức thành nhân tử:
+
+\\( \\lim_{x\\to 2} \\dfrac{x^2-4}{x-2} = \\lim_{x\\to 2} \\dfrac{(x-2)(x+2)}{x-2} = \\lim_{x\\to 2}(x+2) = 4 \\)
+
+c) Nhân lượng liên hợp:
+
+\\( \\lim_{x\\to-\\infty} \\left(\\sqrt{x^2+2x}+x\\right) = \\lim_{x\\to-\\infty} \\dfrac{x^2+2x-x^2}{\\sqrt{x^2+2x}-x} = \\lim_{x\\to-\\infty} \\dfrac{2x}{|x|\\sqrt{1+\\dfrac{2}{x}}-x} \\)
+
+Vì \\( x\\to-\\infty \\) nên \\( |x|=-x \\). Thay vào ta được:
+
+\\( \\lim_{x\\to-\\infty} \\dfrac{2x}{-x\\sqrt{1+\\dfrac{2}{x}}-x} = \\lim_{x\\to-\\infty} \\dfrac{2}{-\\sqrt{1+\\dfrac{2}{x}}-1} = \\dfrac{2}{-2} = -1 \\)""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de9_sh_4",
+    "type": "short",
+    "content": "Cho giới hạn \\( L = \\lim\\limits_{x\\to-\\infty} \\dfrac{\\sqrt{4x^2+x+1}-2x}{x+3} \\). Hãy tính giá trị của L.",
+    "blanks": [
+        {"label": "L =", "answers": ["-4"]}
+    ],
+    "points": 1,
+    "explanation": """Khi \\( x\\to-\\infty \\), ta có \\( |x|=-x \\). Chia cả tử và mẫu cho x:
+
+\\( L = \\lim_{x\\to-\\infty} \\dfrac{\\dfrac{\\sqrt{4x^2+x+1}}{x}-2}{1+\\dfrac{3}{x}} \\)
+
+Vì \\( x<0 \\), ta có \\( \\dfrac{\\sqrt{4x^2+x+1}}{x} = \\dfrac{-|x|\\sqrt{4+\\dfrac{1}{x}+\\dfrac{1}{x^2}}}{x} = -\\sqrt{4+\\dfrac{1}{x}+\\dfrac{1}{x^2}} \\)
+
+Do đó:
+
+\\( L = \\lim_{x\\to-\\infty} \\dfrac{-\\sqrt{4+\\dfrac{1}{x}+\\dfrac{1}{x^2}}-2}{1+\\dfrac{3}{x}} = \\dfrac{-\\sqrt{4}-2}{1} = \\dfrac{-2-2}{1} = -4 \\)
+
+Đáp án: -4.""",
+},
+   # ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de9_tf_5",
+    "type": "truefalse",
+    "content": "Cho dãy số \\( (u_n) \\) xác định bởi \\( u_n = \\dfrac{3^n-4^n}{3^n+4^n} \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Dãy số \\( (u_n) \\) là một dãy số giảm.", "correct": True},
+        {"text": "\\( \\lim u_n = 0 \\).", "correct": False},
+        {"text": "Dãy số \\( (u_n) \\) có mọi số hạng đều mang giá trị âm.", "correct": True},
+        {"text": "\\( \\lim(u_n+1) = 0 \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """Chia cả tử và mẫu cho \\( 4^n \\):
+
+\\( u_n = \\dfrac{\\left(\\dfrac{3}{4}\\right)^n-1}{\\left(\\dfrac{3}{4}\\right)^n+1} \\)
+
+b) SAI: Ta có \\( \\lim u_n = \\dfrac{0-1}{0+1} = -1 \\), không phải bằng 0.
+
+d) ĐÚNG: Vì \\( \\lim u_n = -1 \\Rightarrow \\lim(u_n+1) = -1+1 = 0 \\).
+
+c) ĐÚNG: Do \\( 3^n < 4^n \\) với mọi \\( n\\ge 1 \\Rightarrow 3^n-4^n < 0 \\), trong khi mẫu số luôn dương \\( \\Rightarrow u_n < 0 \\) với mọi n.
+
+a) ĐÚNG: Xét hàm số \\( f(x) = \\dfrac{x-1}{x+1} \\) đồng biến trên khoảng chứa \\( (-1,1) \\). Vì \\( \\left(\\dfrac{3}{4}\\right)^n \\) giảm dần khi n tăng, suy ra \\( u_n \\) cũng giảm dần theo n.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de9_mc_6",
+    "type": "mc4",
+    "content": "Biết rằng \\( \\lim\\limits_{x\\to 1} \\dfrac{x^2+ax+b}{x-1} = 5 \\) với \\( a,b\\in\\mathbb{R} \\). Tính giá trị của biểu thức \\( P = a+2b \\).",
+    "options": {
+        "A": "$P = -5$",
+        "B": "$P = 5$",
+        "C": "$P = -6$",
+        "D": "$P = -4$",
+    },
+    "correct": "A",
+    "points": 1,
+    "explanation": """Để giới hạn \\( \\lim\\limits_{x\\to 1} \\dfrac{x^2+ax+b}{x-1} \\) hữu hạn thì \\( x=1 \\) phải là nghiệm của đa thức tử số.
+
+Suy ra: \\( 1^2+a\\cdot 1+b=0 \\Leftrightarrow b=-a-1 \\).
+
+Thay vào giới hạn:
+
+\\( \\lim_{x\\to 1} \\dfrac{x^2+ax-a-1}{x-1} = \\lim_{x\\to 1} \\dfrac{(x-1)(x+a+1)}{x-1} = \\lim_{x\\to 1}(x+a+1) = a+2 \\)
+
+Theo đề bài: \\( a+2=5 \\Leftrightarrow a=3 \\).
+
+Suy ra \\( b=-3-1=-4 \\).
+
+Vậy \\( P=a+2b=3+2(-4)=-5 \\).
+
+Chọn A.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de9_sh_7",
+    "type": "short",
+    "content": "Tính giá trị của giới hạn sau: \\( \\lim\\limits_{x\\to 3^+} \\dfrac{x-\\sqrt{x+6}}{\\sqrt{x^2-9}} \\)",
+    "blanks": [
+        {"label": "Kết quả =", "answers": ["0"]}
+    ],
+    "points": 1,
+    "explanation": """Ta nhân lượng liên hợp cho tử số (xét \\( x\\to 3^+ \\) do điều kiện xác định của mẫu):
+
+\\( L = \\lim_{x\\to 3^+} \\dfrac{x^2-(x+6)}{\\sqrt{x^2-9}\\cdot(x+\\sqrt{x+6})} \\)
+
+\\( = \\lim_{x\\to 3^+} \\dfrac{(x-3)(x+2)}{\\sqrt{x-3}\\sqrt{x+3}\\cdot(x+\\sqrt{x+6})} \\)
+
+\\( = \\lim_{x\\to 3^+} \\dfrac{\\sqrt{x-3}(x+2)}{\\sqrt{x+3}\\cdot(x+\\sqrt{x+6})} \\)
+
+Khi \\( x\\to 3^+ \\), tử số tiến về \\( 0\\cdot 5 = 0 \\), mẫu số tiến về \\( \\sqrt{6}\\cdot(3+3)=6\\sqrt{6}\\neq 0 \\).
+
+Vậy \\( L = 0 \\).
+
+Đáp án: 0.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de9_tf_8",
+    "type": "truefalse",
+    "content": "Cho hàm số \\( f(x) = \\begin{cases} \\dfrac{x^2-3x+2}{x-1} & \\text{khi } x>1 \\\\ mx+m^2 & \\text{khi } x\\le 1 \\end{cases} \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "\\( \\lim\\limits_{x\\to 1^+} f(x) = 1 \\).", "correct": False},
+        {"text": "\\( \\lim\\limits_{x\\to 1^-} f(x) = m^2+m \\).", "correct": True},
+        {"text": "Không tồn tại giá trị của m để hàm số có giới hạn tại \\( x=1 \\).", "correct": True},
+        {"text": "Tổng các giá trị của m để hàm số có giới hạn tại \\( x=1 \\) bằng \\( -1 \\).", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """a) SAI: Với \\( x>1 \\):
+
+\\( \\lim_{x\\to 1^+} f(x) = \\lim_{x\\to 1^+} \\dfrac{(x-1)(x-2)}{x-1} = \\lim_{x\\to 1^+}(x-2) = -1 \\), không phải bằng 1.
+
+b) ĐÚNG: Với \\( x\\le 1 \\):
+
+\\( \\lim_{x\\to 1^-} f(x) = \\lim_{x\\to 1^-}(mx+m^2) = m+m^2 \\).
+
+c, d) Hàm số có giới hạn tại \\( x=1 \\Leftrightarrow \\lim_{x\\to 1^+} f(x) = \\lim_{x\\to 1^-} f(x) \\Leftrightarrow m^2+m = -1 \\Leftrightarrow m^2+m+1=0 \\) (vô nghiệm vì \\( \\Delta = 1-4 = -3 < 0 \\)).
+
+Vậy không tồn tại giá trị nào của m thỏa mãn (Mệnh đề c ĐÚNG, mệnh đề d SAI vì không tồn tại m nên không có tổng nào bằng -1).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de9_dd_9",
+    "type": "dragdrop",
+    "content": """Kéo và thả các phương án lựa chọn thích hợp vào ô trống. Cho hàm số \\( f(x) = \\dfrac{x+1}{x-1} \\). Xác định giới hạn một bên của hàm số:
+
+a) \\( \\lim\\limits_{x\\to 1^+} f(x) = \\) (1)
+
+b) \\( \\lim\\limits_{x\\to 1^-} f(x) = \\) (2)""",
+    "options_pool": [
+        '$+\\infty$',
+        '$-\\infty$',
+        '$0$',
+        '$\\dfrac{1}{2}$',
+        '$1$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$+\\infty$"},
+        {"label": "(2) =", "answer": "$-\\infty$"},
+    ],
+    "points": 1,
+    "explanation": """a) Khi \\( x\\to 1^+ \\), ta có \\( x>1 \\Rightarrow x-1>0 \\). Tử số \\( x+1 \\to 2>0 \\). Do đó:
+
+\\( \\lim_{x\\to 1^+} \\dfrac{x+1}{x-1} = +\\infty \\)
+
+b) Khi \\( x\\to 1^- \\), ta có \\( x<1 \\Rightarrow x-1<0 \\). Tử số \\( x+1\\to 2>0 \\). Do đó:
+
+\\( \\lim_{x\\to 1^-} \\dfrac{x+1}{x-1} = -\\infty \\)""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de9_mc_10",
+    "type": "mc4",
+    "content": "Tính giới hạn \\( \\lim\\limits_{x\\to 0} \\dfrac{\\sqrt{1+2x}-\\sqrt[3]{1+3x}}{x^2} \\).",
+    "options": {
+        "A": "$1$",
+        "B": "$\\dfrac{1}{2}$",
+        "C": "$\\dfrac{1}{6}$",
+        "D": "$0$",
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": """Ta thêm bớt đa thức \\( 1+x \\):
+
+\\( L = \\lim_{x\\to 0} \\dfrac{\\sqrt{1+2x}-(1+x)}{x^2} + \\lim_{x\\to 0} \\dfrac{(1+x)-\\sqrt[3]{1+3x}}{x^2} = L_1+L_2 \\)
+
+Tính \\( L_1 \\):
+
+\\( L_1 = \\lim_{x\\to 0} \\dfrac{1+2x-(1+x)^2}{x^2(\\sqrt{1+2x}+1+x)} = \\lim_{x\\to 0} \\dfrac{-x^2}{x^2(\\sqrt{1+2x}+1+x)} = -\\dfrac{1}{2} \\)
+
+Tính \\( L_2 \\):
+
+\\( L_2 = \\lim_{x\\to 0} \\dfrac{(1+x)^3-(1+3x)}{x^2\\left[(1+x)^2+(1+x)\\sqrt[3]{1+3x}+(\\sqrt[3]{1+3x})^2\\right]} \\)
+
+\\( L_2 = \\lim_{x\\to 0} \\dfrac{3x^2+x^3}{x^2(1+1+1)} = \\lim_{x\\to 0} \\dfrac{3+x}{3} = 1 \\)
+
+Vậy \\( L = L_1+L_2 = -\\dfrac{1}{2}+1 = \\dfrac{1}{2} \\).
+
+Chọn B.""",
+},
+    
+
+
+
+
+
+
+
+
+], # Đóng danh sách questions của Đề 9
+    }, # Đóng dictionary của Đề 9
                 
 ] # Dấu kết thúc toàn bộ danh sách đề thi (Nằm sát lề trái, không lùi dấu cách nào)
 
