@@ -855,134 +855,438 @@ EXAM_DEFS = [
         "name": "Đề thi tham khảo số 3 - Đánh giá năng lực học sinh THPT 2026",
         "seed": 2025303,
 "mc4": [
-  {
-    "content": "Cho hàm số \\( y=f(x) \\) có đạo hàm trên \\( \\mathbb{R} \\) là \\( f'(x)=(x+3)(x-4) \\). Tính tổng các giá trị nguyên của tham số \\( m\\in[-10;5] \\) để hàm số \\( y=f(x^2-3x+m) \\) có nhiều điểm cực trị nhất.",
+  # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "content": """Cho hàm số \\( y=f(x) \\) có đạo hàm trên \\( \\mathbb{R} \\) là \\( f'(x)=(x+3)(x-4) \\). Tính tổng các giá trị nguyên của tham số \\( m\\in[-10;5] \\) để hàm số \\( y=f(x^2-3x+m) \\) có nhiều điểm cực trị nhất.""",
     "options": {"A": "13", "B": "15", "C": "17", "D": "19"},
     "correct": "B",
     "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau9_loigiai.PNG",
-    "explanation": "Sử dụng tương giao đồ thị.\n\nXét hàm số \\( y=f(x^2-3x+m) \\) có\n\n\\( y' = (2x-3).f'(x^2-3x+m) \\)\n\n\\( y'=0 \\Leftrightarrow \\left[\\begin{array}{l} 2x-3=0 \\\\ f'(x^2-3x+m)=0 \\end{array}\\right. \\)\n\nĐể hàm số \\( y=f(x^2-3x+m) \\) có nhiều cực trị nhất thì phương trình \\( f'(x^2-3x+m)=0 \\) có nhiều nghiệm bội lẻ khác \\( \\dfrac{3}{2} \\) nhất.\n\nXét phương trình: \\( f'(x^2-3x+m)=0 \\Leftrightarrow (x^2-3x+m+3)(x^2-3x+m-4)=0 \\)\n\n\\( \\Leftrightarrow \\left[\\begin{array}{l} x^2-3x=-m-3 \\\\ x^2-3x=4-m \\end{array}\\right. \\)\n\nXét hàm số: \\( h(x)=x^2-3x \\)\n\n\\( h'(x)=2x-3, h'=0 \\Leftrightarrow x=\\dfrac{3}{2} \\)\n\nBảng biến thiên hàm số \\( h(x)=x^2-3x \\) như trên.\n\nĐể \\( f'(x^2-3x+m)=0 \\) có nhiều nghiệm bội lẻ nhất thì hệ phương trình trên có nhiều nghiệm bội lẻ nhất.\n\nSố nghiệm của hai phương trình này là số giao điểm của đồ thị hàm số \\( h(x)=x^2-3x \\) và các đường thẳng \\( y=-m-3 \\) và \\( y=4-m \\).\n\nDựa vào bảng biến thiên của hàm số \\( h(x)=x^2-3x \\):\n\n\\( \\left\\{\\begin{array}{l} -m-3>-\\dfrac{9}{4} \\\\ 4-m>-\\dfrac{9}{4} \\end{array}\\right. \\Leftrightarrow \\left\\{\\begin{array}{l} m<-\\dfrac{3}{4} \\\\ m<\\dfrac{25}{4} \\end{array}\\right. \\)\n\nMà \\( m\\in[-10;5] \\), kết hợp các điều kiện \\( m\\in\\left(-\\dfrac{3}{4};5\\right], m\\in\\mathbb{Z} \\Rightarrow m\\in\\{0;1;2;3;4;5\\} \\)\n\nVậy tổng các giá trị nguyên của m thỏa mãn yêu cầu bài toán là: 15.\n\nĐáp án B."
-  },
-  {
-  "content": "Có bao nhiêu giá trị nguyên dương của tham số \\( m \\) để phương trình \\( m^2 \\ln\\left(\\dfrac{x}{e}\\right) = (2-m)\\ln x - 4 \\) có nghiệm thuộc vào đoạn \\( \\left[\\dfrac{1}{e};1\\right] \\)?",
-  "options": {"A": "0", "B": "1", "C": "2", "D": "3"},
-  "correct": "B",
-  "explanation": "Ta có: \\( m^2 \\ln\\left(\\dfrac{x}{e}\\right) = (2-m)\\ln x - 4 \\)\n\n\\( \\Leftrightarrow m^2(\\ln x - 1) = (2-m)\\ln x - 4 \\)\n\n\\( \\Leftrightarrow (m^2+m-2)\\ln x = m^2 - 4 \\)  (1)\n\nVới \\( m^2+m-2=0 \\Rightarrow m=1 \\) (do \\( m>0 \\)):\n\n(1) trở thành \\( 0.\\ln x = -3 \\) (Vô lý) nên loại \\( m=1 \\).\n\nVới \\( m \\neq 1 \\), (1) \\( \\Leftrightarrow \\ln x = \\dfrac{m-2}{m-1} \\)  (2)\n\nHàm số \\( y=\\ln x \\) đồng biến trên \\( \\left[\\dfrac{1}{e};1\\right] \\), suy ra \\( \\ln x \\in [-1;0] \\).\n\nPhương trình (2) có nghiệm thuộc đoạn \\( \\left[\\dfrac{1}{e};1\\right] \\) khi \\( -1 \\le \\dfrac{m-2}{m-1} \\le 0 \\), tức là:\n\n\\( \\dfrac{m-2}{m-1} \\ge -1 \\) và \\( \\dfrac{m-2}{m-1} \\le 0 \\)\n\nGiải điều kiện thứ nhất: \\( \\dfrac{m-2}{m-1} \\ge -1 \\Leftrightarrow m \\ge \\dfrac{3}{2} \\) hoặc \\( m<1 \\)\n\nGiải điều kiện thứ hai: \\( \\dfrac{m-2}{m-1} \\le 0 \\Leftrightarrow 1<m\\le 2 \\)\n\nKết hợp cả hai điều kiện, ta được \\( \\dfrac{3}{2} \\le m \\le 2 \\).\n\nSuy ra \\( m=2 \\) là giá trị nguyên dương duy nhất thỏa mãn.\n\nVậy có 1 giá trị nguyên dương của tham số \\( m \\) thỏa mãn yêu cầu bài toán. Đáp án B."
+    "points": 1,
+    "explanation": """Sử dụng tương giao đồ thị.
+
+Xét hàm số \\( y=f(x^2-3x+m) \\) có
+
+\\( y' = (2x-3).f'(x^2-3x+m) \\)
+
+\\( y'=0 \\Leftrightarrow \\left[\\begin{array}{l} 2x-3=0 \\\\ f'(x^2-3x+m)=0 \\end{array}\\right. \\)
+
+Để hàm số \\( y=f(x^2-3x+m) \\) có nhiều cực trị nhất thì phương trình \\( f'(x^2-3x+m)=0 \\) có nhiều nghiệm bội lẻ khác \\( \\dfrac{3}{2} \\) nhất.
+
+Xét phương trình: \\( f'(x^2-3x+m)=0 \\Leftrightarrow (x^2-3x+m+3)(x^2-3x+m-4)=0 \\)
+
+\\( \\Leftrightarrow \\left[\\begin{array}{l} x^2-3x=-m-3 \\\\ x^2-3x=4-m \\end{array}\\right. \\)
+
+Xét hàm số: \\( h(x)=x^2-3x \\)
+
+\\( h'(x)=2x-3, h'=0 \\Leftrightarrow x=\\dfrac{3}{2} \\)
+
+Bảng biến thiên hàm số \\( h(x)=x^2-3x \\) như trên.
+
+Để \\( f'(x^2-3x+m)=0 \\) có nhiều nghiệm bội lẻ nhất thì hệ phương trình trên có nhiều nghiệm bội lẻ nhất.
+
+Số nghiệm của hai phương trình này là số giao điểm của đồ thị hàm số \\( h(x)=x^2-3x \\) và các đường thẳng \\( y=-m-3 \\) và \\( y=4-m \\).
+
+Dựa vào bảng biến thiên của hàm số \\( h(x)=x^2-3x \\):
+
+\\( \\left\\{\\begin{array}{l} -m-3>-\\dfrac{9}{4} \\\\ 4-m>-\\dfrac{9}{4} \\end{array}\\right. \\Leftrightarrow \\left\\{\\begin{array}{l} m<-\\dfrac{3}{4} \\\\ m<\\dfrac{25}{4} \\end{array}\\right. \\)
+
+Mà \\( m\\in[-10;5] \\), kết hợp các điều kiện \\( m\\in\\left(-\\dfrac{3}{4};5\\right], m\\in\\mathbb{Z} \\Rightarrow m\\in\\{0;1;2;3;4;5\\} \\)
+
+Vậy tổng các giá trị nguyên của m thỏa mãn yêu cầu bài toán là: 15.
+
+Đáp án B.""",
 },
-  {
-    "content": "Tìm giá trị của tham số \\( m \\) để hàm số sau liên tục tại \\( x=0 \\):\n\\( f(x) = \\left\\{\\begin{array}{ll} \\dfrac{\\sqrt{1-x}-\\sqrt{1+x}}{x}, & x<0 \\\\ m+\\dfrac{1-x}{1+x}, & x\\ge 0 \\end{array}\\right. \\)",
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "content": """Có bao nhiêu giá trị nguyên dương của tham số \\( m \\) để phương trình \\( m^2 \\ln\\left(\\dfrac{x}{e}\\right) = (2-m)\\ln x - 4 \\) có nghiệm thuộc vào đoạn \\( \\left[\\dfrac{1}{e};1\\right] \\)?""",
+    "options": {"A": "0", "B": "1", "C": "2", "D": "3"},
+    "correct": "B",
+    "points": 1,
+    "explanation": """Ta có: \\( m^2 \\ln\\left(\\dfrac{x}{e}\\right) = (2-m)\\ln x - 4 \\)
+
+\\( \\Leftrightarrow m^2(\\ln x - 1) = (2-m)\\ln x - 4 \\)
+
+\\( \\Leftrightarrow (m^2+m-2)\\ln x = m^2 - 4 \\)  (1)
+
+Với \\( m^2+m-2=0 \\Rightarrow m=1 \\) (do \\( m>0 \\)):
+
+(1) trở thành \\( 0.\\ln x = -3 \\) (Vô lý) nên loại \\( m=1 \\).
+
+Với \\( m \\neq 1 \\), (1) \\( \\Leftrightarrow \\ln x = \\dfrac{m-2}{m-1} \\)  (2)
+
+Hàm số \\( y=\\ln x \\) đồng biến trên \\( \\left[\\dfrac{1}{e};1\\right] \\), suy ra \\( \\ln x \\in [-1;0] \\).
+
+Phương trình (2) có nghiệm thuộc đoạn \\( \\left[\\dfrac{1}{e};1\\right] \\) khi \\( -1 \\le \\dfrac{m-2}{m-1} \\le 0 \\), tức là:
+
+\\( \\dfrac{m-2}{m-1} \\ge -1 \\) và \\( \\dfrac{m-2}{m-1} \\le 0 \\)
+
+Giải điều kiện thứ nhất: \\( \\dfrac{m-2}{m-1} \\ge -1 \\Leftrightarrow m \\ge \\dfrac{3}{2} \\) hoặc \\( m<1 \\)
+
+Giải điều kiện thứ hai: \\( \\dfrac{m-2}{m-1} \\le 0 \\Leftrightarrow 1<m\\le 2 \\)
+
+Kết hợp cả hai điều kiện, ta được \\( \\dfrac{3}{2} \\le m \\le 2 \\).
+
+Suy ra \\( m=2 \\) là giá trị nguyên dương duy nhất thỏa mãn.
+
+Vậy có 1 giá trị nguyên dương của tham số \\( m \\) thỏa mãn yêu cầu bài toán. Đáp án B.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "content": """Tìm giá trị của tham số \\( m \\) để hàm số sau liên tục tại \\( x=0 \\):
+
+\\( f(x) = \\left\\{\\begin{array}{ll} \\dfrac{\\sqrt{1-x}-\\sqrt{1+x}}{x}, & x<0 \\\\ m+\\dfrac{1-x}{1+x}, & x\\ge 0 \\end{array}\\right. \\)""",
     "options": {"A": "\\( m=1 \\)", "B": "\\( m=-2 \\)", "C": "\\( m=3 \\)", "D": "\\( m=-4 \\)"},
     "correct": "B",
-    "explanation": "Ta có:\n\n\\( \\lim_{x\\to 0^+} f(x) = \\lim_{x\\to 0^+}\\left(m+\\dfrac{1-x}{1+x}\\right) = m+1 \\)\n\n\\( \\lim_{x\\to 0^-} f(x) = \\lim_{x\\to 0^-}\\left(\\dfrac{\\sqrt{1-x}-\\sqrt{1+x}}{x}\\right) = \\lim_{x\\to 0^-}\\left(\\dfrac{-2x}{x(\\sqrt{1-x}+\\sqrt{1+x})}\\right) = \\lim_{x\\to 0^-}\\left(\\dfrac{-2}{\\sqrt{1-x}+\\sqrt{1+x}}\\right) = -1 \\)\n\n\\( f(0) = m+1 \\)\n\n\\( f(x) \\) liên tục tại \\( x=0 \\) khi và chỉ khi:\n\\( \\lim_{x\\to 0^+} f(x) = \\lim_{x\\to 0^-} f(x) = f(0) \\Leftrightarrow m+1 = -1 \\Leftrightarrow m=-2 \\)\n\nVậy \\( m=-2 \\). Đáp án B."
-  },
-  {
-    "content": "Cho dãy số \\( (u_n) \\) biết \\( \\left\\{\\begin{array}{l} u_1 = 1 \\\\ u_n = \\dfrac{1}{3}u_{n-1} + 2 \\end{array}\\right. \\). Mệnh đề nào sau đây đúng?",
-    "options": {"A": "\\( (u_n) \\) là dãy số tăng.", "B": "\\( (u_n) \\) là dãy số giảm.", "C": "\\( (u_n) \\) không là dãy tăng, không là dãy giảm.", "D": "\\( u_5 = 2 \\)"},
+    "points": 1,
+    "explanation": """Ta có:
+
+\\( \\lim_{x\\to 0^+} f(x) = \\lim_{x\\to 0^+}\\left(m+\\dfrac{1-x}{1+x}\\right) = m+1 \\)
+
+\\( \\lim_{x\\to 0^-} f(x) = \\lim_{x\\to 0^-}\\left(\\dfrac{\\sqrt{1-x}-\\sqrt{1+x}}{x}\\right) = \\lim_{x\\to 0^-}\\left(\\dfrac{-2x}{x(\\sqrt{1-x}+\\sqrt{1+x})}\\right) = \\lim_{x\\to 0^-}\\left(\\dfrac{-2}{\\sqrt{1-x}+\\sqrt{1+x}}\\right) = -1 \\)
+
+\\( f(0) = m+1 \\)
+
+\\( f(x) \\) liên tục tại \\( x=0 \\) khi và chỉ khi:
+
+\\( \\lim_{x\\to 0^+} f(x) = \\lim_{x\\to 0^-} f(x) = f(0) \\Leftrightarrow m+1 = -1 \\Leftrightarrow m=-2 \\)
+
+Vậy \\( m=-2 \\). Đáp án B.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "content": """Cho dãy số \\( (u_n) \\) biết \\( \\left\\{\\begin{array}{l} u_1 = 1 \\\\ u_n = \\dfrac{1}{3}u_{n-1} + 2 \\end{array}\\right. \\). Mệnh đề nào sau đây đúng?""",
+    "options": {
+        "A": "\\( (u_n) \\) là dãy số tăng.",
+        "B": "\\( (u_n) \\) là dãy số giảm.",
+        "C": "\\( (u_n) \\) không là dãy tăng, không là dãy giảm.",
+        "D": "\\( u_5 = 2 \\)"
+    },
     "correct": "A",
-    "explanation": "Ta có \\( u_1 < u_2 < u_3 \\), ta dự đoán dãy số đã cho là dãy số tăng.\n\nTa chứng minh quy nạp:\n\nTheo giả thiết ta thấy \\( u_n > 0, \\forall n \\in \\mathbb{N}^* \\).\n\nGiả sử \\( u_k > u_{k-1} \\ge 2 \\). Ta chứng minh \\( u_{k+1} > u_k \\).\n\nThật vậy:\n\\( u_{k+1} - u_k = \\dfrac{1}{3}(u_k - u_{k-1}) > 0 \\Leftrightarrow u_{k+1} > u_k \\)\n\nVậy dãy đã cho là dãy tăng. Đáp án A."
-  },
-  {
-    "content": "Cho tứ diện ABCD. Trên các cạnh AD và BC lần lượt lấy các điểm M, N sao cho \\( \\overrightarrow{AM} = 3\\overrightarrow{MD}, \\overrightarrow{NB} = -3\\overrightarrow{NC} \\). Gọi P, Q lần lượt là trung điểm của AD, BC. Khẳng định nào sau đây sai?",
-    "options": {"A": "Các vectơ \\( \\overrightarrow{AB}, \\overrightarrow{DC}, \\overrightarrow{MN} \\) đồng phẳng.", "B": "Các vectơ \\( \\overrightarrow{AB}, \\overrightarrow{PQ}, \\overrightarrow{MN} \\) đồng phẳng.", "C": "Các vectơ \\( \\overrightarrow{PQ}, \\overrightarrow{DC}, \\overrightarrow{MN} \\) đồng phẳng.", "D": "Các vectơ \\( \\overrightarrow{BD}, \\overrightarrow{AC}, \\overrightarrow{MN} \\) đồng phẳng."},
+    "points": 1,
+    "explanation": """Ta có \\( u_1 < u_2 < u_3 \\), ta dự đoán dãy số đã cho là dãy số tăng.
+
+Ta chứng minh quy nạp:
+
+Theo giả thiết ta thấy \\( u_n > 0, \\forall n \\in \\mathbb{N}^* \\).
+
+Giả sử \\( u_k > u_{k-1} \\ge 2 \\). Ta chứng minh \\( u_{k+1} > u_k \\).
+
+Thật vậy:
+
+\\( u_{k+1} - u_k = \\dfrac{1}{3}(u_k - u_{k-1}) > 0 \\Leftrightarrow u_{k+1} > u_k \\)
+
+Vậy dãy đã cho là dãy tăng. Đáp án A.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "content": """Cho tứ diện ABCD. Trên các cạnh AD và BC lần lượt lấy các điểm M, N sao cho \\( \\overrightarrow{AM} = 3\\overrightarrow{MD}, \\overrightarrow{NB} = -3\\overrightarrow{NC} \\). Gọi P, Q lần lượt là trung điểm của AD, BC. Khẳng định nào sau đây sai?""",
+    "options": {
+        "A": "Các vectơ \\( \\overrightarrow{AB}, \\overrightarrow{DC}, \\overrightarrow{MN} \\) đồng phẳng.",
+        "B": "Các vectơ \\( \\overrightarrow{AB}, \\overrightarrow{PQ}, \\overrightarrow{MN} \\) đồng phẳng.",
+        "C": "Các vectơ \\( \\overrightarrow{PQ}, \\overrightarrow{DC}, \\overrightarrow{MN} \\) đồng phẳng.",
+        "D": "Các vectơ \\( \\overrightarrow{BD}, \\overrightarrow{AC}, \\overrightarrow{MN} \\) đồng phẳng."
+    },
     "correct": "D",
-    "explanation": "Gọi \\( I \\) là trung điểm của BD, K là trọng tâm của tam giác ABD.\n\nTa có AB, DC, MN song song với mặt phẳng (PIQ) nên vectơ \\( \\overrightarrow{AB}, \\overrightarrow{DC}, \\overrightarrow{MN} \\) đồng phẳng.\n\nAB, MN song song với mặt phẳng (PIQ) nên vectơ \\( \\overrightarrow{AB}, \\overrightarrow{PQ}, \\overrightarrow{MN} \\) đồng phẳng.\n\nDC, MN song song với mặt phẳng (PIQ) nên vectơ \\( \\overrightarrow{PQ}, \\overrightarrow{DC}, \\overrightarrow{MN} \\) đồng phẳng.\n\nCác vectơ \\( \\overrightarrow{BD}, \\overrightarrow{AC}, \\overrightarrow{MN} \\) không đồng phẳng.\n\nĐáp án D."
-  },
-  {
-    "content": "Một vườn thú ghi lại tuổi thọ (đơn vị: năm) của 20 con khỉ và ghi lại kết quả như sau:\n\nTuổi thọ: [10;11) — [11;12) — [12;13) — [13;14) — [14;15)\nSố con khỉ: 1 — 3 — 8 — 6 — 2\n\nNhóm chứa tứ phân vị thứ ba là:",
+    "points": 1,
+    "explanation": """Gọi \\( I \\) là trung điểm của BD, K là trọng tâm của tam giác ABD.
+
+Ta có AB, DC, MN song song với mặt phẳng (PIQ) nên vectơ \\( \\overrightarrow{AB}, \\overrightarrow{DC}, \\overrightarrow{MN} \\) đồng phẳng.
+
+AB, MN song song với mặt phẳng (PIQ) nên vectơ \\( \\overrightarrow{AB}, \\overrightarrow{PQ}, \\overrightarrow{MN} \\) đồng phẳng.
+
+DC, MN song song với mặt phẳng (PIQ) nên vectơ \\( \\overrightarrow{PQ}, \\overrightarrow{DC}, \\overrightarrow{MN} \\) đồng phẳng.
+
+Các vectơ \\( \\overrightarrow{BD}, \\overrightarrow{AC}, \\overrightarrow{MN} \\) không đồng phẳng.
+
+Đáp án D.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "content": """Một vườn thú ghi lại tuổi thọ (đơn vị: năm) của 20 con khỉ và ghi lại kết quả như sau:
+
+Tuổi thọ: [10;11) — [11;12) — [12;13) — [13;14) — [14;15)
+Số con khỉ: 1 — 3 — 8 — 6 — 2
+
+Nhóm chứa tứ phân vị thứ ba là:""",
     "options": {"A": "[10;11)", "B": "[11;12)", "C": "[12;13)", "D": "[14;15)"},
     "correct": "C",
     "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau38.PNG",
-    "explanation": "Ta có \\( n=20 \\).\n\nKhi đó \\( \\dfrac{3}{4}.20 = 15 \\) và \\( 1+3+8 < 15 < 1+3+8+6 \\).\n\nVậy tứ phân vị thứ ba thuộc nhóm [12;13). Đáp án C."
-  },
-  {
-    "content": "Cho tứ diện ABCD có \\( AC=AD=BC=BD=a \\) và hai mặt phẳng \\( (ACD), (BCD) \\) vuông góc với nhau. Tính độ dài cạnh CD sao cho hai mặt phẳng \\( (ABC), (ABD) \\) vuông góc với nhau.",
-    "options": {"A": "\\( \\dfrac{2}{\\sqrt{3}}a \\)", "B": "\\( \\dfrac{1}{\\sqrt{3}}a \\)", "C": "\\( \\dfrac{1}{2}a \\)", "D": "\\( \\sqrt{3}a \\)"},
+    "points": 1,
+    "explanation": """Ta có \\( n=20 \\).
+
+Khi đó \\( \\dfrac{3}{4}.20 = 15 \\) và \\( 1+3+8 < 15 < 1+3+8+6 \\).
+
+Vậy tứ phân vị thứ ba thuộc nhóm [12;13). Đáp án C.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "content": """Cho tứ diện ABCD có \\( AC=AD=BC=BD=a \\) và hai mặt phẳng \\( (ACD), (BCD) \\) vuông góc với nhau. Tính độ dài cạnh CD sao cho hai mặt phẳng \\( (ABC), (ABD) \\) vuông góc với nhau.""",
+    "options": {
+        "A": "\\( \\dfrac{2}{\\sqrt{3}}a \\)",
+        "B": "\\( \\dfrac{1}{\\sqrt{3}}a \\)",
+        "C": "\\( \\dfrac{1}{2}a \\)",
+        "D": "\\( \\sqrt{3}a \\)"
+    },
     "correct": "A",
     "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau39.PNG",
-    "explanation": "Gọi \\( H \\) là trung điểm của CD, suy ra \\( AH \\perp CD \\).\n\nMà \\( \\left\\{\\begin{array}{l} (ACD) \\perp (BCD) \\\\ (ACD) \\cap (BCD) = CD \\end{array}\\right. \\)\n\nSuy ra \\( AH \\perp (BCD) \\).\n\nGọi \\( M \\) là trung điểm AB nên \\( CM \\perp AB \\).\n\nVà \\( \\left\\{\\begin{array}{l} (ABC) \\perp (ABD) \\\\ (ABC) \\cap (ABD) = AB \\end{array}\\right. \\Rightarrow CM \\perp DM \\).\n\n\\( \\Delta ABC = \\Delta ABD \\Rightarrow MC = DM \\Rightarrow \\Delta MCD \\) vuông cân tại \\( M \\).\n\nĐặt \\( CD = x \\Rightarrow AH^2 = BH^2 = a^2 - \\dfrac{x^2}{4} \\Leftrightarrow AB^2 = AH^2+BH^2 = 2a^2 - \\dfrac{x^2}{2} \\).\n\nTa có:\n\\( MH = \\dfrac{1}{2}AB = \\dfrac{1}{2}\\sqrt{2a^2-\\dfrac{x^2}{2}} \\)\n\nMà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2}}.\\dfrac{1}{2} = \\dfrac{\\sqrt{2}}{2}x \\Leftrightarrow 4a^2=3x^2 \\Leftrightarrow x=\\dfrac{2}{\\sqrt{3}}a \\).\n\nĐáp án A."
-  },
-  {
-    "content": "Tìm tất cả các giá trị của tham số \\( m \\) để hàm số \\( y=\\dfrac{x^2+m}{x^2-3x+2} \\) có đúng 1 tiệm cận đứng?",
-    "options": {"A": "\\( m\\in\\{-1;-4\\} \\)", "B": "\\( m=-1 \\)", "C": "\\( m=-4 \\)", "D": "\\( m\\in\\{1;4\\} \\)"},
+    "points": 1,
+    "explanation": """Gọi \\( H \\) là trung điểm của CD, suy ra \\( AH \\perp CD \\).
+
+Mà \\( \\left\\{\\begin{array}{l} (ACD) \\perp (BCD) \\\\ (ACD) \\cap (BCD) = CD \\end{array}\\right. \\)
+
+Suy ra \\( AH \\perp (BCD) \\).
+
+Gọi \\( M \\) là trung điểm AB nên \\( CM \\perp AB \\).
+
+Và \\( \\left\\{\\begin{array}{l} (ABC) \\perp (ABD) \\\\ (ABC) \\cap (ABD) = AB \\end{array}\\right. \\Rightarrow CM \\perp DM \\).
+
+\\( \\Delta ABC = \\Delta ABD \\Rightarrow MC = DM \\Rightarrow \\Delta MCD \\) vuông cân tại \\( M \\).
+
+Đặt \\( CD = x \\Rightarrow AH^2 = BH^2 = a^2 - \\dfrac{x^2}{4} \\Leftrightarrow AB^2 = AH^2+BH^2 = 2a^2 - \\dfrac{x^2}{2} \\).
+
+Ta có:
+
+\\( MH = \\dfrac{1}{2}AB = \\dfrac{1}{2}\\sqrt{2a^2-\\dfrac{x^2}{2}} \\)
+
+Mà \\( MH = \\dfrac{\\sqrt{2}}{2}CD \\Leftrightarrow \\sqrt{2a^2-\\dfrac{x^2}{2}}.\\dfrac{1}{2} = \\dfrac{\\sqrt{2}}{2}x \\Leftrightarrow 4a^2=3x^2 \\Leftrightarrow x=\\dfrac{2}{\\sqrt{3}}a \\).
+
+Đáp án A.""",
+},
+
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "content": """Tìm tất cả các giá trị của tham số \\( m \\) để hàm số \\( y=\\dfrac{x^2+m}{x^2-3x+2} \\) có đúng 1 tiệm cận đứng?""",
+    "options": {
+        "A": "\\( m\\in\\{-1;-4\\} \\)",
+        "B": "\\( m=-1 \\)",
+        "C": "\\( m=-4 \\)",
+        "D": "\\( m\\in\\{1;4\\} \\)"
+    },
     "correct": "A",
-    "explanation": "Dùng điều kiện tiệm cận.\n\nTa có: \\( y=\\dfrac{x^2+m}{x^2-3x+2}=\\dfrac{x^2+m}{(x-1)(x-2)} \\)\n\nĐồ thị hàm số có một tiệm cận đứng \\( \\Leftrightarrow \\left[\\begin{array}{l} 1^2+m=0 \\\\ 2^2+m=0 \\end{array}\\right. \\Leftrightarrow \\left[\\begin{array}{l} m=-1 \\\\ m=-4 \\end{array}\\right. \\)\n\nĐáp án A."
-  },
-  {
-    "content": "Một tòa nhà cao 50 m, vào những ngày trời nắng, độ dài bóng của tòa nhà được tính theo công thức \\( S(t) = 50\\cot\\left(\\dfrac{\\pi}{12}t\\right) \\). Trong đó S được tính bằng mét, t là số giờ tính từ 6 giờ sáng. Trong một ngày có bao nhiêu thời điểm bóng có độ dài bằng chiều cao của tòa nhà?",
-    "options": {"A": "0", "B": "1", "C": "2", "D": "3"},
+    "points": 1,
+    "explanation": """Ta có: \\( y=\\dfrac{x^2+m}{x^2-3x+2}=\\dfrac{x^2+m}{(x-1)(x-2)} \\).
+
+Đồ thị hàm số có đúng một tiệm cận đứng khi tử số triệt tiêu tại đúng một trong hai nghiệm của mẫu, tức là:
+
+\\( \\left[\\begin{array}{l} 1^2+m=0 \\\\ 2^2+m=0 \\end{array}\\right. \\Leftrightarrow \\left[\\begin{array}{l} m=-1 \\\\ m=-4 \\end{array}\\right. \\)
+
+Vậy \\( m\\in\\{-1;-4\\} \\).
+
+Đáp án A.""",
+},
+
+{
+    "content": """Một tòa nhà cao 50 m, vào những ngày trời nắng, độ dài bóng của tòa nhà được tính theo công thức \\( S(t) = 50\\cot\\left(\\dfrac{\\pi}{12}t\\right) \\). Trong đó S được tính bằng mét, t là số giờ tính từ 6 giờ sáng. Trong một ngày có bao nhiêu thời điểm bóng có độ dài bằng chiều cao của tòa nhà?""",
+    "options": {
+        "A": "0",
+        "B": "1",
+        "C": "2",
+        "D": "3"
+    },
     "correct": "C",
-    "explanation": "Giải phương trình lượng giác.\n\nĐộ dài bóng của tòa nhà bằng chiều cao của tòa nhà khi:\n\n\\( S(t)=50 \\Leftrightarrow 50\\cot\\left(\\dfrac{\\pi}{12}t\\right)=50 \\Leftrightarrow \\cot\\left(\\dfrac{\\pi}{12}t\\right)=1 \\Leftrightarrow \\dfrac{\\pi}{12}t=\\dfrac{\\pi}{4}+k\\pi \\)\n\n\\( \\Leftrightarrow t=3+12k \\; (k\\in\\mathbb{Z}) \\)\n\nVì \\( 0\\le t\\le 12 \\) nên \\( t=3 \\) hoặc \\( t=9 \\). Tức là thời điểm 9 giờ sáng hoặc 3 giờ chiều.\n\nVậy trong ngày có 2 thời điểm mà độ dài bóng của tòa nhà bằng chiều cao của tòa nhà.\n\nĐáp án C."
-  },
-  {
-    "content": "Cho hai biến cố A và B, với \\( P(A)=\\dfrac{3}{8}, P(B)=\\dfrac{1}{2}, P(\\overline{A}\\overline{B})=\\dfrac{1}{5} \\). Giá trị của \\( P(A\\cup B) \\) là?",
-    "options": {"A": "\\( \\dfrac{3}{40} \\)", "B": "\\( \\dfrac{4}{5} \\)", "C": "\\( \\dfrac{5}{40} \\)", "D": "\\( \\dfrac{3}{5} \\)"},
+    "points": 1,
+    "explanation": """Độ dài bóng của tòa nhà bằng chiều cao của tòa nhà khi:
+
+\\( S(t)=50 \\Leftrightarrow 50\\cot\\left(\\dfrac{\\pi}{12}t\\right)=50 \\Leftrightarrow \\cot\\left(\\dfrac{\\pi}{12}t\\right)=1 \\)
+
+\\( \\Leftrightarrow \\dfrac{\\pi}{12}t=\\dfrac{\\pi}{4}+k\\pi \\Leftrightarrow t=3+12k \\; (k\\in\\mathbb{Z}) \\)
+
+Vì \\( 0\\le t\\le 12 \\) nên \\( t=3 \\) hoặc \\( t=9 \\), tức là vào lúc 9 giờ sáng hoặc 3 giờ chiều.
+
+Vậy trong ngày có 2 thời điểm bóng của tòa nhà dài bằng chiều cao của nó.
+
+Đáp án C.""",
+},
+
+{
+    "content": """Cho hai biến cố A và B, với \\( P(A)=\\dfrac{3}{8}, P(B)=\\dfrac{1}{2}, P(\\overline{A}\\overline{B})=\\dfrac{1}{5} \\). Giá trị của \\( P(A\\cup B) \\) là?""",
+    "options": {
+        "A": "\\( \\dfrac{3}{40} \\)",
+        "B": "\\( \\dfrac{4}{5} \\)",
+        "C": "\\( \\dfrac{5}{40} \\)",
+        "D": "\\( \\dfrac{3}{5} \\)"
+    },
     "correct": "A",
-    "explanation": "Công thức xác suất.\n\nTa có \\( P(A\\cup B) = 1-P(\\overline{A}\\overline{B}) = 1-\\dfrac{1}{5} = \\dfrac{4}{5} \\).\n\nKhi đó: \\( P(AB) = P(A)+P(B)-P(A\\cup B) = \\dfrac{3}{40} \\).\n\nĐáp án A."
-  },
-  {
-    "content": "Trên sườn đồi, với độ dốc 16% (Độ dốc của sườn đồi được tính bằng tan của góc nhọn tạo bởi sườn đồi với phương nằm ngang) có một cây cao thẳng đứng. Ở phía chân đồi, cách gốc cây 30m, người ta nhìn ngọn cây dưới một góc 45° so với phương nằm ngang. Tính chiều cao của cây đó (làm tròn đến hàng đơn vị, theo đơn vị mét).",
-    "options": {"A": "25m", "B": "26m", "C": "27m", "D": "28m"},
+    "points": 1,
+    "explanation": """Ta có \\( P(A\\cup B) = 1-P(\\overline{A}\\overline{B}) = 1-\\dfrac{1}{5} = \\dfrac{4}{5} \\).
+
+Khi đó: \\( P(AB) = P(A)+P(B)-P(A\\cup B) = \\dfrac{3}{8}+\\dfrac{1}{2}-\\dfrac{4}{5} = \\dfrac{3}{40} \\).
+
+Đáp án A.""",
+},
+
+{
+    "content": """Trên sườn đồi, với độ dốc 16% (Độ dốc của sườn đồi được tính bằng tan của góc nhọn tạo bởi sườn đồi với phương nằm ngang) có một cây cao thẳng đứng. Ở phía chân đồi, cách gốc cây 30m, người ta nhìn ngọn cây dưới một góc 45° so với phương nằm ngang. Tính chiều cao của cây đó (làm tròn đến hàng đơn vị, theo đơn vị mét).""",
+    "options": {
+        "A": "25m",
+        "B": "26m",
+        "C": "27m",
+        "D": "28m"
+    },
     "correct": "B",
     "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de3_cau29_loigiai.PNG",
-    "explanation": "Công thức hệ thức lượng.\n\nDo sườn đồi dốc 16%, nên sườn đồi tạo với phương nằm ngang một góc \\( \\widehat{BAD} \\approx 9^\\circ \\).\n\nTừ đó ta có: \\( \\widehat{BAC} = \\widehat{DAC}-\\widehat{DAB} \\approx 36^\\circ \\) và \\( \\widehat{BCA}=45^\\circ \\).\n\nÁp dụng định lý Sin cho tam giác ABC, ta được:\n\\( BC = \\dfrac{AB}{\\sin\\widehat{BCA}}.\\sin\\widehat{BAC} \\approx 26 \\; (m) \\).\n\nĐáp án B."
-  },
-  {
-    "content": "Một lớp học có 60 học sinh, trong đó số học sinh nữ chiếm 25% tổng số học sinh của lớp. Hỏi lớp đó có bao nhiêu học sinh nam?",
-    "options": {"A": "15", "B": "40", "C": "50", "D": "45"},
+    "points": 1,
+    "explanation": """Do sườn đồi dốc 16% nên sườn đồi tạo với phương nằm ngang một góc \\( \\widehat{BAD} \\approx 9^\\circ \\).
+
+Từ đó ta có: \\( \\widehat{BAC} = \\widehat{DAC}-\\widehat{DAB} \\approx 36^\\circ \\) và \\( \\widehat{BCA}=45^\\circ \\).
+
+Áp dụng định lí sin trong tam giác ABC, ta được:
+
+\\( BC = \\dfrac{AB}{\\sin\\widehat{BCA}}.\\sin\\widehat{BAC} \\approx 26 \\; (m) \\).
+
+Đáp án B.""",
+},
+
+{
+    "content": """Một lớp học có 60 học sinh, trong đó số học sinh nữ chiếm 25% tổng số học sinh của lớp. Hỏi lớp đó có bao nhiêu học sinh nam?""",
+    "options": {
+        "A": "15",
+        "B": "40",
+        "C": "50",
+        "D": "45"
+    },
     "correct": "D",
-    "explanation": "Số học sinh nữ là \\( 60 \\times 25\\% = 15 \\). Số học sinh nam là \\( 60 - 15 = 45 \\). Đáp án D."
-  },
-  {
-    "content": "Cho cấp số cộng \\( (u_n) \\) có số hạng đầu \\( u_1 = 10 \\) và công sai \\( d = -3 \\). Giá trị của \\( u_8 \\) bằng",
-    "options": {"A": "-11", "B": "31", "C": "11", "D": "-8"},
+    "points": 1,
+    "explanation": """Số học sinh nữ là \\( 60 \\times 25\\% = 15 \\) (học sinh).
+
+Số học sinh nam là \\( 60 - 15 = 45 \\) (học sinh).
+
+Đáp án D.""",
+},
+
+{
+    "content": """Cho cấp số cộng \\( (u_n) \\) có số hạng đầu \\( u_1 = 10 \\) và công sai \\( d = -3 \\). Giá trị của \\( u_8 \\) bằng""",
+    "options": {
+        "A": "-11",
+        "B": "31",
+        "C": "11",
+        "D": "-8"
+    },
     "correct": "A",
-    "explanation": "\\( u_8 = u_1 + 7d = 10 + 7 \\times (-3) = -11 \\). Đáp án A."
-  },
-  {
-    "content": "Cho hàm số \\( f(x) = 5x - 4 \\). Giá trị \\( f(2) \\) bằng",
-    "options": {"A": "10", "B": "6", "C": "-6", "D": "14"},
+    "points": 1,
+    "explanation": """Ta có: \\( u_8 = u_1 + 7d = 10 + 7 \\times (-3) = -11 \\).
+
+Đáp án A.""",
+},
+
+{
+    "content": """Cho hàm số \\( f(x) = 5x - 4 \\). Giá trị \\( f(2) \\) bằng""",
+    "options": {
+        "A": "10",
+        "B": "6",
+        "C": "-6",
+        "D": "14"
+    },
     "correct": "B",
-    "explanation": "\\( f(2) = 5 \\times 2 - 4 = 6 \\). Đáp án B."
-  },
-  {
-    "content": "Một hình chữ nhật có chiều dài 20 cm và chiều rộng 9 cm. Diện tích hình chữ nhật đó bằng",
-    "options": {"A": "29 cm²", "B": "190 cm²", "C": "180 cm²", "D": "200 cm²"},
+    "points": 1,
+    "explanation": """Ta có: \\( f(2) = 5 \\times 2 - 4 = 6 \\).
+
+Đáp án B.""",
+},
+
+{
+    "content": """Một hình chữ nhật có chiều dài 20 cm và chiều rộng 9 cm. Diện tích hình chữ nhật đó bằng""",
+    "options": {
+        "A": "29 cm²",
+        "B": "190 cm²",
+        "C": "180 cm²",
+        "D": "200 cm²"
+    },
     "correct": "C",
-    "explanation": "Diện tích \\( S = 20 \\times 9 = 180 \\) cm². Đáp án C."
-  },
+    "points": 1,
+    "explanation": """Diện tích hình chữ nhật là \\( S = 20 \\times 9 = 180 \\) (cm²).
+
+Đáp án C.""",
+},
+
+
+  
+ 
   {
-    "content": "Cho dãy số liệu: 10, 12, 14, 16, 18. Số trung bình cộng của dãy số liệu trên bằng",
-    "options": {"A": "13", "B": "15", "C": "16", "D": "14"},
+    "content": """Cho dãy số liệu: 10, 12, 14, 16, 18. Số trung bình cộng của dãy số liệu trên bằng""",
+    "options": {
+        "A": "13",
+        "B": "15",
+        "C": "16",
+        "D": "14"
+    },
     "correct": "D",
-    "explanation": "Trung bình cộng \\( = (10+12+14+16+18):5 = 70:5 = 14 \\). Đáp án D."
-  },
-  {
-    "content": "Một nhóm có 10 học sinh. Hỏi có bao nhiêu cách chọn ra 3 học sinh từ nhóm đó (không phân biệt thứ tự)?",
-    "options": {"A": "720", "B": "30", "C": "120", "D": "45"},
+    "points": 1,
+    "explanation": """Số trung bình cộng là:
+
+\\( \\overline{x} = (10+12+14+16+18):5 = 70:5 = 14 \\).
+
+Đáp án D.""",
+},
+
+{
+    "content": """Một nhóm có 10 học sinh. Hỏi có bao nhiêu cách chọn ra 3 học sinh từ nhóm đó (không phân biệt thứ tự)?""",
+    "options": {
+        "A": "720",
+        "B": "30",
+        "C": "120",
+        "D": "45"
+    },
     "correct": "C",
-    "explanation": "Số cách chọn là tổ hợp \\( C_{10}^3 = 120 \\) (cách). Đáp án C."
-  },
+    "points": 1,
+    "explanation": """Vì chọn 3 học sinh mà không phân biệt thứ tự nên số cách chọn là một tổ hợp chập 3 của 10:
+
+\\( C_{10}^3 = 120 \\) (cách).
+
+Đáp án C.""",
+},
 ],
 "short": [
-  {
-    "content": "Giải phương trình \\( 9x - 11 = 61 \\). Tìm nghiệm x (điền số nguyên).",
-    "answers": ["8"],
-    "explanation": "\\( 9x - 11 = 61 \\Leftrightarrow 9x = 72 \\Leftrightarrow x = 8 \\)."
-  },
-  {
-    "content": "Phương trình \\( x^2 - 3x - 18 = 0 \\) có nghiệm dương bằng bao nhiêu?",
-    "answers": ["6"],
-    "explanation": "\\( x^2 - 3x - 18 = (x-6)(x+3) = 0 \\Rightarrow x = 6 \\) hoặc \\( x = -3 \\). Nghiệm dương là 6."
-  },
-  {
-    "content": "Một cửa hàng có 400 sản phẩm, trong đó 10% là hàng lỗi. Hỏi có bao nhiêu sản phẩm lỗi? (chỉ điền số)",
-    "answers": ["40"],
-    "explanation": "Số sản phẩm lỗi \\( = 400 \\times 10\\% = 40 \\)."
-  },
-  {
-    "content": "Tìm ước chung lớn nhất (ƯCLN) của 60 và 84. (chỉ điền số)",
-    "answers": ["12"],
-    "explanation": "\\( 60 = 2^2 \\times 3 \\times 5,\\ 84 = 2^2 \\times 3 \\times 7 \\Rightarrow \\text{ƯCLN} = 2^2 \\times 3 = 12 \\)."
-  },
+    {
+        "content": """Giải phương trình \\( 9x - 11 = 61 \\). Tìm nghiệm x (điền số nguyên).""",
+        "answers": ["8"],
+        "points": 1,
+        "explanation": """Ta có:
+
+\\( 9x - 11 = 61 \\Leftrightarrow 9x = 72 \\Leftrightarrow x = 8 \\).
+
+Vậy nghiệm của phương trình là \\( x = 8 \\).""",
+    },
+
+    {
+        "content": """Phương trình \\( x^2 - 3x - 18 = 0 \\) có nghiệm dương bằng bao nhiêu?""",
+        "answers": ["6"],
+        "points": 1,
+        "explanation": """Ta có:
+
+\\( x^2 - 3x - 18 = (x-6)(x+3) = 0 \\Rightarrow \\left[\\begin{array}{l} x = 6 \\\\ x = -3 \\end{array}\\right. \\)
+
+Vậy nghiệm dương của phương trình là \\( x = 6 \\).""",
+    },
+
+    {
+        "content": """Một cửa hàng có 400 sản phẩm, trong đó 10% là hàng lỗi. Hỏi có bao nhiêu sản phẩm lỗi? (chỉ điền số)""",
+        "answers": ["40"],
+        "points": 1,
+        "explanation": """Số sản phẩm lỗi là:
+
+\\( 400 \\times 10\\% = 40 \\) (sản phẩm).""",
+    },
+
+    {
+        "content": """Tìm ước chung lớn nhất (ƯCLN) của 60 và 84. (chỉ điền số)""",
+        "answers": ["12"],
+        "points": 1,
+        "explanation": """Phân tích ra thừa số nguyên tố:
+
+\\( 60 = 2^2 \\times 3 \\times 5 \\)
+
+\\( 84 = 2^2 \\times 3 \\times 7 \\)
+
+Vậy ƯCLN\\( (60, 84) = 2^2 \\times 3 = 12 \\).""",
+    },
 ],
     },
 ]
