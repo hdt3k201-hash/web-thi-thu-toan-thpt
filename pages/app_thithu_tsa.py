@@ -11304,7 +11304,137 @@ Suy ra \\( MH=\\dfrac{2a^2\\sqrt{3}}{\\dfrac{4a\\sqrt{3}}{3}}=\\dfrac{3a}{2} \\)
 Vậy \\( d^2=\\dfrac{9a^2}{4} \\). Giá trị biểu thức \\( T=4\\cdot\\dfrac{9a^2/4}{a^2}=9 \\).""",
 },
 
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de11_mc_26',
+    "type": 'mc4',
+    "content": """Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a. Tam giác SAB là tam giác đều và nằm trong mặt phẳng vuông góc với mặt phẳng đáy. Khoảng cách giữa hai đường thẳng chéo nhau SA và BD bằng bao nhiêu?""",
+        "options": {
+        'A': '$\\dfrac{a\\sqrt{21}}{14}$',
+        'B': '$\\dfrac{a\\sqrt{2}}{4}$',
+        'C': '$\\dfrac{a\\sqrt{3}}{4}$',
+        'D': '$\\dfrac{a\\sqrt{21}}{7}$',
+    },
+    "correct": 'A',
+    "points": 1,
+    "explanation_image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau26_de11.PNG",
+    "explanation": """Gọi H là trung điểm của AB. Vì \\( \\triangle SAB \\) đều và nằm trong mặt phẳng vuông góc với đáy nên \\( SH \\perp (ABCD) \\).
 
+Độ dài đường cao \\( SH=\\dfrac{a\\sqrt{3}}{2} \\).
+
+Trong mặt phẳng (ABCD), qua A kẻ đường thẳng \\( Ax \\parallel BD \\).
+
+Vì \\( BD \\parallel Ax \\Rightarrow BD \\parallel (SAx) \\). Do đó \\( d(BD,SA)=d(BD,(SAx))=d(H,(SAx)) \\).
+
+Kẻ \\( HK \\perp Ax \\) tại K, \\( HE \\perp SK \\) tại E. Ta có \\( Ax \\perp (SHK) \\Rightarrow Ax \\perp HE \\Rightarrow HE \\perp (SAx) \\).
+
+Khoảng cách \\( d(H,(SAx))=HE \\).
+
+Ta có HK là khoảng cách từ H đến đường thẳng Ax. Vì H là trung điểm AB và \\( Ax \\parallel BD \\) nên:
+
+\\( HK=\\dfrac{1}{2}d(B,Ax)=\\dfrac{1}{2}d(B,AC)=\\dfrac{1}{2}\\cdot\\dfrac{a\\sqrt{2}}{2}=\\dfrac{a\\sqrt{2}}{4} \\)
+
+Trong tam giác vuông SHK:
+
+\\( \\dfrac{1}{HE^2}=\\dfrac{1}{SH^2}+\\dfrac{1}{HK^2}=\\dfrac{4}{3a^2}+\\dfrac{8}{a^2}=\\dfrac{28}{3a^2} \\)
+
+Suy ra \\( HE^2=\\dfrac{3a^2}{28} \\Rightarrow HE=\\dfrac{a\\sqrt{3}}{2\\sqrt{7}}=\\dfrac{a\\sqrt{21}}{14} \\).
+
+Chọn A.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de11_tf_27",
+    "type": "truefalse",
+    "content": "Cho hình lập phương ABCD.A′B′C′D′ có cạnh bằng a. Gọi M và N lần lượt là trung điểm của các cạnh AA′ và CC′. Xét tính đúng/sai của các mệnh đề sau:",
+        "statements": [
+        {"text": "Thiết diện của hình lập phương cắt bởi mặt phẳng (BMN) là một hình thoi.", "correct": True},
+        {"text": "Diện tích của thiết diện tạo bởi mặt phẳng (BMN) bằng \\( \\dfrac{a^2\\sqrt{5}}{2} \\).", "correct": False},
+        {"text": "Côsin của góc giữa hai mặt phẳng (BMN) và (ABCD) bằng \\( \\dfrac{\\sqrt{6}}{3} \\).", "correct": True},
+        {"text": "Khoảng cách từ điểm A đến mặt phẳng (BMN) bằng \\( \\dfrac{a\\sqrt{6}}{6} \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation_image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau27_de11.PNG",
+    "explanation": """**a) ĐÚNG:** Gọi O và O′ lần lượt là tâm của ABCD và A′B′C′D′. Tâm của hình lập phương là I (trung điểm OO′).
+
+Vì M, N là trung điểm AA′, CC′ nên MN đi qua tâm I. Mặt phẳng (BMN) chứa đường thẳng BI, mà B và D′ đối xứng nhau qua I nên \\( D' \\in (BMN) \\).
+
+Vậy thiết diện là tứ giác BMD′N. Ta tính được 4 cạnh:
+
+\\( BM=BN=D'M=D'N=\\sqrt{a^2+\\dfrac{a^2}{4}}=\\dfrac{a\\sqrt{5}}{2} \\)
+
+Do đó BMD′N là hình thoi.
+
+**b) SAI:** Hình thoi BMD′N có hai đường chéo là \\( BD'=a\\sqrt{3} \\) (đường chéo không gian của hình lập phương) và MN.
+
+Vì \\( AA' \\parallel CC' \\) và \\( AA'=CC' \\) nên AA′C′C là hình chữ nhật, suy ra \\( MN \\parallel AC \\Rightarrow MN=AC=a\\sqrt{2} \\).
+
+Diện tích thiết diện: \\( S_{BMD'N}=\\dfrac{1}{2}\\cdot BD'\\cdot MN=\\dfrac{1}{2}\\cdot a\\sqrt{3}\\cdot a\\sqrt{2}=\\dfrac{a^2\\sqrt{6}}{2} \\)
+
+**c) ĐÚNG:** Gọi α là góc giữa (BMN) và (ABCD). Hình chiếu vuông góc của các điểm B, M, D′, N lên mặt phẳng (ABCD) lần lượt là B, A, D, C.
+
+Do đó, hình chiếu của thiết diện BMD′N lên (ABCD) chính là hình vuông ABCD.
+
+Áp dụng công thức hình chiếu: \\( \\cos\\alpha=\\dfrac{S_{ABCD}}{S_{BMD'N}}=\\dfrac{a^2}{\\dfrac{a^2\\sqrt{6}}{2}}=\\dfrac{2}{\\sqrt{6}}=\\dfrac{\\sqrt{6}}{3} \\)
+
+**d) ĐÚNG:** Vì \\( MN \\parallel AC \\) mà \\( MN \\subset (BMN) \\Rightarrow AC \\parallel (BMN) \\).
+
+Suy ra \\( d(A,(BMN))=d(O,(BMN)) \\) (với \\( O=AC\\cap BD \\)).
+
+Ta có \\( MN \\parallel AC \\), mà \\( AC \\perp BD \\) và \\( AC \\perp BB' \\Rightarrow AC \\perp (BDD'B') \\Rightarrow MN \\perp (BDD'B') \\).
+
+Mặt phẳng (BMN) chứa MN nên (BMN) ⊥ (BDD′B′), giao tuyến của chúng là đường thẳng BD′.
+
+Trong mặt phẳng (BDD′B′), kẻ \\( OH \\perp BD' \\) tại H ⇒ \\( OH \\perp (BMN) \\).
+
+Vậy \\( d(O,(BMN))=OH \\).
+
+Trong \\( \\triangle BDD' \\) vuông tại D, đường cao kẻ từ D xuống BD′ là:
+
+\\( d=\\dfrac{BD\\cdot DD'}{BD'}=\\dfrac{a\\sqrt{2}\\cdot a}{a\\sqrt{3}}=\\dfrac{a\\sqrt{6}}{3} \\)
+
+Vì O là trung điểm BD nên \\( OH=\\dfrac{1}{2}d=\\dfrac{a\\sqrt{6}}{6} \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de11_sh_28',
+    "type": 'short',
+    "content": """Cho hình chóp tứ giác đều S.ABCD có cạnh đáy bằng a, góc giữa mặt bên và mặt đáy bằng \\( 60^\\circ \\). Gọi M là điểm thuộc cạnh bên SA sao cho \\( SM=2MA \\). Gọi d là khoảng cách từ điểm M đến mặt phẳng (SCD). Tính giá trị của biểu thức \\( T=\\dfrac{81\\cdot d^2}{a^2} \\).
+
+Kết quả nhập vào là một số nguyên dương.""",
+        "blanks": [
+        {"label": "T =", "answers": ["27"]}
+    ],
+    "points": 1,
+    "explanation_image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau28_de11.PNG",
+    "explanation": """Gọi O là tâm của hình vuông ABCD ⇒ \\( SO \\perp (ABCD) \\).
+
+Gọi E là trung điểm của CD ⇒ \\( OE \\perp CD \\). Theo định lý ba đường vuông góc, \\( SE \\perp CD \\Rightarrow \\) góc giữa (SCD) và (ABCD) là \\( \\widehat{SEO}=60^\\circ \\).
+
+Xét tam giác vuông SOE, ta có \\( OE=\\dfrac{a}{2} \\).
+
+\\( SO=OE\\cdot\\tan 60^\\circ=\\dfrac{a\\sqrt{3}}{2} \\)
+
+Từ O, kẻ \\( OK \\perp SE \\) tại K. Vì \\( CD \\perp (SOE) \\) nên \\( CD \\perp OK \\). Suy ra \\( OK \\perp (SCD) \\Rightarrow d(O,(SCD))=OK \\).
+
+Trong \\( \\triangle SOE \\): \\( OK=\\dfrac{SO\\cdot OE}{\\sqrt{SO^2+OE^2}}=\\dfrac{a\\sqrt{3}}{4} \\)
+
+Mặt khác, A và O cùng nằm trên trục AC cắt (SCD) tại C, với \\( \\dfrac{AC}{OC}=2 \\).
+
+Khoảng cách \\( d(A,(SCD))=2d(O,(SCD))=2\\cdot\\dfrac{a\\sqrt{3}}{4}=\\dfrac{a\\sqrt{3}}{2} \\)
+
+Điểm M thuộc đoạn SA và \\( SM=2MA \\Rightarrow \\dfrac{SM}{SA}=\\dfrac{2}{3} \\).
+
+Đường thẳng SA cắt mặt phẳng (SCD) tại S, do đó tỉ số khoảng cách:
+
+\\( d=d(M,(SCD))=\\dfrac{SM}{SA}\\cdot d(A,(SCD))=\\dfrac{2}{3}\\cdot\\dfrac{a\\sqrt{3}}{2}=\\dfrac{a\\sqrt{3}}{3} \\)
+
+Bình phương khoảng cách: \\( d^2=\\dfrac{a^2}{3} \\).
+
+Vậy giá trị của biểu thức \\( T=\\dfrac{81}{a^2}\\cdot\\dfrac{a^2}{3}=27 \\).""",
+},
                 
 ], # Đóng danh sách questions của Đề 11
     }, # Đóng dictionary của Đề 11          
