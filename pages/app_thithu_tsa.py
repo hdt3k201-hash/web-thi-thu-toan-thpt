@@ -8299,25 +8299,60 @@ Chọn B.""",
         {"label": "S =", "answers": ["52"]}
     ],
     "points": 1,
-    "explanation": """Sử dụng khai triển tiệm cận: \\( \\sqrt{1+ax}\\approx 1+\\dfrac{a}{2}x-\\dfrac{a^2}{8}x^2 \\) và \\( \\sqrt[3]{1+bx}\\approx 1+\\dfrac{b}{3}x-\\dfrac{b^2}{9}x^2 \\).
+    "explanation": """**Bước 1: Tìm điều kiện liên hệ giữa a và b.**
 
-Tử số xấp xỉ: \\( \\left(\\dfrac{a}{2}-\\dfrac{b}{3}\\right)x + \\left(\\dfrac{b^2}{9}-\\dfrac{a^2}{8}\\right)x^2 \\).
+Trước tiên ta xét giới hạn ở "bậc thấp hơn" (chia cho x thay vì \\( x^2 \\)) để tìm điều kiện cần:
 
-Để giới hạn hữu hạn trên \\( x^2 \\), hệ số của x phải bằng 0:
+\\( \\lim_{x\\to 0} \\dfrac{\\sqrt{1+ax}-\\sqrt[3]{1+bx}}{x} = \\lim_{x\\to 0}\\dfrac{(\\sqrt{1+ax}-1)-(\\sqrt[3]{1+bx}-1)}{x} \\)
 
-\\( \\dfrac{a}{2}-\\dfrac{b}{3}=0 \\Leftrightarrow 3a=2b \\)
+Nhân liên hợp từng phần:
 
-Đặt \\( a=2k, b=3k \\) (\\( k\\in\\mathbb{N}^* \\)). Giới hạn sẽ bằng hệ số của \\( x^2 \\):
+\\( \\sqrt{1+ax}-1 = \\dfrac{ax}{\\sqrt{1+ax}+1} \\Rightarrow \\dfrac{\\sqrt{1+ax}-1}{x} \\to \\dfrac{a}{2} \\) (khi \\( x\\to 0 \\))
 
-\\( L = \\dfrac{b^2}{9}-\\dfrac{a^2}{8} = \\dfrac{9k^2}{9}-\\dfrac{4k^2}{8} = k^2-\\dfrac{k^2}{2} = \\dfrac{k^2}{2} \\)
+\\( \\sqrt[3]{1+bx}-1 = \\dfrac{bx}{\\sqrt[3]{(1+bx)^2}+\\sqrt[3]{1+bx}+1} \\Rightarrow \\dfrac{\\sqrt[3]{1+bx}-1}{x} \\to \\dfrac{b}{3} \\)
 
-Theo giả thiết \\( L=2 \\Rightarrow \\dfrac{k^2}{2}=2 \\Rightarrow k^2=4 \\Rightarrow k=2 \\) (do a, b > 0).
+Vậy giới hạn ở bậc x nói trên bằng \\( \\dfrac{a}{2}-\\dfrac{b}{3} \\).
 
-Suy ra \\( a=4 \\) và \\( b=6 \\). Vậy \\( S=4^2+6^2=16+36=52 \\).
+Nếu \\( \\dfrac{a}{2}-\\dfrac{b}{3}\\neq 0 \\) thì tử số của biểu thức đề bài (khi chia cho \\( x^2 \\)) sẽ có dạng \\( \\dfrac{(\\text{khác }0)\\cdot x}{x^2} \\), tức là tiến ra vô cực khi \\( x\\to 0 \\), mâu thuẫn với giả thiết giới hạn đề bài bằng 2 (một số hữu hạn).
+
+Do đó, bắt buộc: \\( \\dfrac{a}{2}=\\dfrac{b}{3} \\Leftrightarrow 3a=2b \\).
+
+Đặt \\( a=2k,\\ b=3k \\) với \\( k\\in\\mathbb{N}^* \\).
+
+**Bước 2: Tính giới hạn theo k.**
+
+Ta tách biểu thức bằng cách chêm thêm số hạng \\( 1+kx \\) ở giữa (vì đây là "giá trị trung gian" tự nhiên ứng với cả hai căn):
+
+\\( L = \\lim_{x\\to 0} \\dfrac{\\left[\\sqrt{1+2kx}-(1+kx)\\right]-\\left[\\sqrt[3]{1+3kx}-(1+kx)\\right]}{x^2} = L_1-L_2 \\)
+
+*Tính \\( L_1 \\):* Nhân liên hợp bậc hai:
+
+\\( \\sqrt{1+2kx}-(1+kx) = \\dfrac{(1+2kx)-(1+kx)^2}{\\sqrt{1+2kx}+(1+kx)} = \\dfrac{-k^2x^2}{\\sqrt{1+2kx}+(1+kx)} \\)
+
+\\( \\Rightarrow L_1 = \\lim_{x\\to 0} \\dfrac{-k^2}{\\sqrt{1+2kx}+(1+kx)} = \\dfrac{-k^2}{1+1} = -\\dfrac{k^2}{2} \\)
+
+*Tính \\( L_2 \\):* Dùng hằng đẳng thức \\( u^3-v^3=(u-v)(u^2+uv+v^2) \\) với \\( u=\\sqrt[3]{1+3kx},\\ v=1+kx \\):
+
+\\( u^3-v^3 = (1+3kx)-(1+kx)^3 = -3k^2x^2-k^3x^3 \\)
+
+\\( u-v = \\dfrac{u^3-v^3}{u^2+uv+v^2} = \\dfrac{-3k^2x^2-k^3x^3}{u^2+uv+v^2} \\)
+
+Khi \\( x\\to 0 \\) thì \\( u\\to 1,\\ v\\to 1 \\), nên mẫu số \\( u^2+uv+v^2\\to 3 \\). Do đó:
+
+\\( L_2 = \\lim_{x\\to 0} \\dfrac{u-v}{x^2} = \\dfrac{-3k^2}{3} = -k^2 \\)
+
+**Bước 3: Kết luận.**
+
+\\( L = L_1-L_2 = -\\dfrac{k^2}{2}-(-k^2) = \\dfrac{k^2}{2} \\)
+
+Theo giả thiết \\( L=2 \\Rightarrow \\dfrac{k^2}{2}=2 \\Rightarrow k^2=4 \\Rightarrow k=2 \\) (do a, b nguyên dương nên k nguyên dương).
+
+Suy ra \\( a=2k=4 \\) và \\( b=3k=6 \\).
+
+Vậy \\( S=a^2+b^2=4^2+6^2=16+36=52 \\).
 
 Đáp án: 52.""",
 },
-
 # ---------------- KÉO THẢ (dragdrop) ----------------
 {
     "id": "de9_dd_14",
@@ -8996,7 +9031,123 @@ Qua giới hạn khi \\( x\\to 1 \\), theo hằng đẳng thức \\( \\lim\\limi
 Chọn B.""",
 },
 
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de9_tf_37",
+    "type": "truefalse",
+    "content": "Cho phương trình \\( x^5-3x^4+5x-2=0 \\). Xét tính đúng/sai của các mệnh đề sau, dựa trên định lý giá trị trung gian của hàm số liên tục:",
+    "statements": [
+        {"text": "Hàm số \\( f(x)=x^5-3x^4+5x-2 \\) liên tục trên tập số thực \\( \\mathbb{R} \\).", "correct": True},
+        {"text": "Phương trình không có nghiệm trong khoảng \\( (0;1) \\).", "correct": False},
+        {"text": "Phương trình có ít nhất 3 nghiệm thực phân biệt dương.", "correct": True},
+        {"text": "Hàm số \\( f(x) \\) đổi dấu khi qua các điểm \\( x=1 \\) và \\( x=2 \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Hàm đa thức luôn liên tục trên \\( \\mathbb{R} \\).
 
+b, c) Xét các giá trị của f(x) tại một số điểm:
+
+\\( f(0)=-2<0 \\)
+
+\\( f(1)=1-3+5-2=1>0 \\Rightarrow \\) Tồn tại nghiệm \\( x_1\\in(0;1) \\). (Mệnh đề b SAI)
+
+\\( f(2)=32-48+10-2=-8<0 \\Rightarrow \\) Tồn tại nghiệm \\( x_2\\in(1;2) \\).
+
+\\( f(3)=243-243+15-2=13>0 \\Rightarrow \\) Tồn tại nghiệm \\( x_3\\in(2;3) \\).
+
+Như vậy, phương trình có ít nhất 3 nghiệm thực dương phân biệt. (Mệnh đề c ĐÚNG)
+
+d) ĐÚNG: \\( f(1)=1>0 \\) và \\( f(2)=-8<0 \\), hàm số đổi dấu nên chắc chắn cắt trục hoành trong khoảng \\( (1;2) \\). Việc hàm số đổi dấu khi đi qua giữa hai điểm này thể hiện đúng bản chất của định lý giá trị trung gian.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de9_sh_38",
+    "type": "short",
+    "content": "Tính giới hạn của tổng sau: \\( L = \\lim\\limits_{n\\to+\\infty} \\left(\\dfrac{1}{1\\cdot 2\\cdot 3}+\\dfrac{1}{2\\cdot 3\\cdot 4}+\\cdots+\\dfrac{1}{n(n+1)(n+2)}\\right) \\) (Ghi đáp án dưới dạng số thập phân).",
+    "blanks": [
+        {"label": "L =", "answers": ["0.25", "0,25"]}
+    ],
+    "points": 1,
+    "explanation": """Ta để ý một mẹo tách phân số: với mỗi số hạng dạng \\( \\dfrac{1}{k(k+1)(k+2)} \\), ta có thể viết lại thành hiệu của hai phân số đơn giản hơn:
+
+\\( \\dfrac{1}{k(k+1)(k+2)} = \\dfrac{1}{2}\\left(\\dfrac{1}{k(k+1)}-\\dfrac{1}{(k+1)(k+2)}\\right) \\)
+
+(Có thể kiểm tra lại bằng cách quy đồng mẫu số hai phân số ở vế phải, ta sẽ thu được đúng vế trái).
+
+Áp dụng công thức này cho từng số hạng trong tổng \\( S_n \\), ta được:
+
+\\( S_n = \\dfrac{1}{2}\\left[\\left(\\dfrac{1}{1\\cdot 2}-\\dfrac{1}{2\\cdot 3}\\right)+\\left(\\dfrac{1}{2\\cdot 3}-\\dfrac{1}{3\\cdot 4}\\right)+\\cdots+\\left(\\dfrac{1}{n(n+1)}-\\dfrac{1}{(n+1)(n+2)}\\right)\\right] \\)
+
+Quan sát kỹ, ta thấy các số hạng ở giữa lần lượt triệt tiêu cho nhau theo từng cặp: số hạng \\( -\\dfrac{1}{2\\cdot 3} \\) ở ngoặc đầu sẽ bị khử bởi số hạng \\( +\\dfrac{1}{2\\cdot 3} \\) ở ngoặc thứ hai, tương tự như vậy với các cặp tiếp theo. Cuối cùng, chỉ còn lại số hạng đầu tiên và số hạng cuối cùng:
+
+\\( S_n = \\dfrac{1}{2}\\left(\\dfrac{1}{1\\cdot 2}-\\dfrac{1}{(n+1)(n+2)}\\right) = \\dfrac{1}{2}\\left(\\dfrac{1}{2}-\\dfrac{1}{(n+1)(n+2)}\\right) \\)
+
+Khi \\( n\\to+\\infty \\), ta có \\( (n+1)(n+2)\\to+\\infty \\) nên \\( \\dfrac{1}{(n+1)(n+2)}\\to 0 \\). Do đó:
+
+\\( L = \\lim S_n = \\dfrac{1}{2}\\left(\\dfrac{1}{2}-0\\right) = \\dfrac{1}{4} = 0,25 \\)
+
+Đáp số: 0,25.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de9_dd_39",
+    "type": "dragdrop",
+    "content": """Kéo và thả các phương án lựa chọn thích hợp vào ô trống. Xác định các giới hạn sau và kéo đáp án tương ứng vào kết quả:
+
+a) \\( \\lim\\limits_{x\\to 0} \\dfrac{(1+x)^5-1}{x} = \\) (1)
+
+b) \\( \\lim\\limits_{x\\to-\\infty} \\dfrac{\\sqrt{4x^2+1}}{x+1} = \\) (2)
+
+c) \\( \\lim\\limits_{x\\to+\\infty} \\dfrac{x\\sqrt{x+1}}{x^2-2} = \\) (3)""",
+    "options_pool": [
+        '$0$',
+        '$5$',
+        '$-2$',
+        '$2$',
+        '$+\\infty$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$5$"},
+        {"label": "(2) =", "answer": "$-2$"},
+        {"label": "(3) =", "answer": "$0$"},
+    ],
+    "points": 1,
+    "explanation": """a) Khai triển nhị thức Newton: \\( (1+x)^5-1 = 1+5x+10x^2+\\cdots-1 = x(5+10x+\\ldots) \\).
+
+Rút gọn x ta được giới hạn bằng 5. (Có thể dùng công thức đạo hàm tại \\( x=0 \\)).
+
+b) Khi \\( x\\to-\\infty \\), \\( \\sqrt{x^2}=|x|=-x \\). Rút x ra làm nhân tử chung:
+
+\\( \\lim_{x\\to-\\infty} \\dfrac{-x\\sqrt{4+1/x^2}}{x(1+1/x)} = \\lim_{x\\to-\\infty} \\dfrac{-\\sqrt{4}}{1} = -2 \\)
+
+c) Bậc của tử số là \\( x\\cdot x^{1/2}=x^{1,5} \\). Bậc của mẫu số là \\( x^2 \\). Do bậc tử nhỏ hơn bậc mẫu nên khi \\( x\\to+\\infty \\), giới hạn bằng 0.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de9_sh_40",
+    "type": "short",
+    "content": "Một con châu chấu nhảy dọc theo trục Ox. Bước đầu tiên nó nhảy từ gốc tọa độ O đến điểm có tọa độ \\( x_1=1 \\). Bước thứ hai, nó nhảy lùi lại một khoảng bằng \\( \\dfrac{1}{3} \\) chiều dài bước đầu (tức là đến tọa độ \\( x_2=1-\\dfrac{1}{3} \\)). Bước thứ ba, nó lại nhảy tiến một khoảng bằng \\( \\dfrac{1}{3} \\) bước thứ hai. Cứ như vậy, hướng nhảy luôn luân phiên tiến rồi lùi, và độ dài mỗi bước luôn bằng \\( \\dfrac{1}{3} \\) độ dài bước ngay trước đó. Hỏi sau vô hạn bước, châu chấu sẽ dừng lại ở điểm có tọa độ bằng bao nhiêu? (Ghi kết quả dưới dạng số thập phân).",
+    "blanks": [
+        {"label": "Tọa độ =", "answers": ["0.75", "0,75"]}
+    ],
+    "points": 1,
+    "explanation": """Vị trí của con châu chấu sau vô hạn bước chính là tổng của chuỗi vô hạn:
+
+\\( S = 1-\\dfrac{1}{3}+\\dfrac{1}{9}-\\dfrac{1}{27}+\\ldots \\)
+
+Đây là tổng của một cấp số nhân lùi vô hạn với số hạng đầu \\( u_1=1 \\) và công bội \\( q=-\\dfrac{1}{3} \\) (vì \\( |q|=\\dfrac{1}{3}<1 \\)).
+
+Tổng này có giá trị bằng:
+
+\\( S = \\dfrac{u_1}{1-q} = \\dfrac{1}{1-\\left(-\\dfrac{1}{3}\\right)} = \\dfrac{1}{\\dfrac{4}{3}} = \\dfrac{3}{4} = 0,75 \\)
+
+Vậy châu chấu sẽ tiến gần đến điểm có tọa độ 0,75.
+
+Đáp án: 0,75.""",
+},
 
 
 
