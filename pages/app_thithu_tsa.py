@@ -10964,11 +10964,11 @@ def grade_exam(exam_id, form):
         total_earned += earned
         total_max += max_points
         details.append({
-    "id": qid, "type": qtype, "content": q["content"], "explanation": q["explanation"],
-    "image": q.get("image"),
-    "explanation_image": q.get("explanation_image"),
-    "earned": round(earned, 2), "max": max_points, "detail": detail,
-     })
+            "id": qid, "type": qtype, "content": q["content"], "explanation": q["explanation"],
+            "image": q.get("image"),
+            "explanation_image": q.get("explanation_image"),
+            "earned": round(earned, 2), "max": max_points, "detail": detail,
+        })
         answers_to_store[qid] = submitted
 
     return total_earned, total_max, details, answers_to_store
@@ -11882,12 +11882,12 @@ def result_page(submission_id):
     for q in questions:
         submitted = stored_answers.get(q["id"], {})
         earned, max_points, detail = grade_question(q, submitted)
-       details.append({
-    "id": q["id"], "type": q["type"], "content": q["content"], "explanation": q["explanation"],
-    "image": q.get("image"),
-    "explanation_image": q.get("explanation_image"),
-    "earned": round(earned, 2), "max": max_points, "detail": detail,
-    })
+        details.append({
+            "id": q["id"], "type": q["type"], "content": q["content"], "explanation": q["explanation"],
+            "image": q.get("image"),
+            "explanation_image": q.get("explanation_image"),
+            "earned": round(earned, 2), "max": max_points, "detail": detail,
+        })
 
     score_10 = round((row["score"] / row["max_score"]) * 10, 2) if row["max_score"] else 0
 
