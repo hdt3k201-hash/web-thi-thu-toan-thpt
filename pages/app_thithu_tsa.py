@@ -10699,8 +10699,173 @@ Tương tự, ta có \\( CB \\perp (ABB'A') \\) (do \\( CB\\perp AB \\) và \\( 
 Vậy \\( d(C,(ABB'A')) = CB = 4 \\) \\( \\Rightarrow \\) điền \\( 4 \\).""",
 },
 
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de10_mc_11',
+    "type": 'mc4',
+    "content": """Cho hình chóp S.ABC có đáy ABC là tam giác đều cạnh a. Hình chiếu vuông góc của đỉnh S lên mặt phẳng (ABC) là điểm H nằm trên đoạn thẳng BC sao cho HC = 2HB. Biết góc giữa mặt phẳng (SAB) và mặt phẳng (ABC) bằng \\( 60^\\circ \\). Khoảng cách giữa hai đường thẳng chéo nhau SA và BC bằng bao nhiêu?""",
+    "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau11_de10.PNG',
+    "options": {
+        'A': '$\\dfrac{a\\sqrt{3}}{4}$',
+        'B': '$\\dfrac{a\\sqrt{3}}{2}$',
+        'C': '$\\dfrac{a\\sqrt{2}}{4}$',
+        'D': '$\\dfrac{a\\sqrt{2}}{3}$',
+    },
+    "correct": 'A',
+    "points": 1,
+    "explanation": """Kẻ \\( HK \\perp AB \\) tại K trong mặt phẳng (ABC). Vì \\( SH \\perp (ABC) \\) nên góc giữa (SAB) và (ABC) chính là góc \\( \\widehat{SKH} = 60^\\circ \\).
+
+Ta có \\( HB = \\dfrac{a}{3} \\) (do \\( HC = 2HB \\) và \\( HB+HC=a \\)).
+
+Vì \\( HB = \\dfrac{1}{3}BC \\) nên diện tích \\( S_{HAB} = \\dfrac{1}{3}S_{ABC} = \\dfrac{1}{3}\\cdot\\dfrac{a^2\\sqrt{3}}{4} = \\dfrac{a^2\\sqrt{3}}{12} \\).
+
+Mặt khác \\( S_{HAB} = \\dfrac{1}{2}HK\\cdot AB \\Rightarrow \\dfrac{1}{2}HK\\cdot a = \\dfrac{a^2\\sqrt{3}}{12} \\Rightarrow HK = \\dfrac{a\\sqrt{3}}{6} \\).
+
+Suy ra chiều cao \\( SH = HK\\cdot\\tan 60^\\circ = \\dfrac{a\\sqrt{3}}{6}\\cdot\\sqrt{3} = \\dfrac{a}{2} \\).
+
+Qua A kẻ đường thẳng \\( Ax \\parallel BC \\). Khi đó \\( BC \\parallel (SAx) \\), nên:
+
+\\( d(SA,BC) = d(BC,(SAx)) = d(H,(SAx)) \\) (vì H nằm trên BC).
+
+Trong mặt phẳng (ABC), kẻ \\( HE \\perp Ax \\). Vì \\( Ax \\parallel BC \\) nên \\( HE \\) chính là khoảng cách giữa hai đường thẳng song song đó, tức là bằng khoảng cách từ A đến BC:
+
+\\( HE = \\dfrac{a\\sqrt{3}}{2} \\) (đường cao tam giác đều cạnh a).
+
+Trong mặt phẳng (SHE), kẻ \\( HF \\perp SE \\) tại F. Vì \\( SH \\perp (ABC) \\) nên \\( SH \\perp HE \\), do đó tam giác SHE vuông tại H, và:
+
+\\( \\dfrac{1}{HF^2} = \\dfrac{1}{SH^2}+\\dfrac{1}{HE^2} = \\dfrac{1}{(a/2)^2}+\\dfrac{1}{\\left(\\frac{a\\sqrt3}{2}\\right)^2} = \\dfrac{4}{a^2}+\\dfrac{4}{3a^2} = \\dfrac{16}{3a^2} \\)
+
+\\( \\Rightarrow HF = \\dfrac{a\\sqrt{3}}{4} \\).
+
+Vậy \\( d(SA,BC) = \\dfrac{a\\sqrt{3}}{4} \\). Chọn đáp án A.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": 'de10_tf_12',
+    "type": 'truefalse',
+    "content": """Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a. Cạnh bên SA vuông góc với mặt phẳng đáy và \\( SA = 2a \\). Một mặt phẳng \\( (\\alpha) \\) đi qua A và vuông góc với đường thẳng SC, cắt các cạnh SB, SC, SD lần lượt tại các điểm B', C', D'. Xét tính đúng/sai của các mệnh đề sau:""",
+    "statements": [
+        {"text": "Đường thẳng AB' vuông góc với mặt phẳng (SBC).", "correct": True},
+        {"text": "Tứ giác AB'C'D' có hai đường chéo vuông góc với nhau.", "correct": True},
+        {"text": "Góc giữa hai mặt phẳng (AB'C'D') và (ABCD) bằng góc \\( \\widehat{SCA} \\).", "correct": False},
+        {"text": "Diện tích của thiết diện AB'C'D' bằng \\( \\dfrac{4a^2\\sqrt{6}}{15} \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation_image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/loigiai_cau12_de10.PNG',
+    "explanation": """a) ĐÚNG: Ta có \\( BC \\perp AB \\) và \\( BC \\perp SA \\Rightarrow BC \\perp (SAB) \\Rightarrow BC \\perp AB' \\).
+
+Mặt khác \\( SC \\perp (\\alpha) \\Rightarrow SC \\perp AB' \\). Vậy \\( AB' \\perp (SBC) \\) (tương tự \\( AD' \\perp (SCD) \\)).
+
+b) ĐÚNG: Từ ý a) suy ra \\( AB' \\perp SB \\), tức B' là hình chiếu của A trên SB. Tương tự D' là hình chiếu của A trên SD.
+
+Vì \\( SB = SD \\) nên \\( SB' = SD' \\), do đó \\( B'D' \\parallel BD \\). Mà \\( BD \\perp (SAC) \\Rightarrow B'D' \\perp (SAC) \\Rightarrow B'D' \\perp AC' \\) (vì AC' nằm trong mp (SAC)).
+
+Vậy hai đường chéo AC' và B'D' của tứ giác AB'C'D' vuông góc với nhau.
+
+c) SAI: Vì \\( SA \\perp (ABCD) \\) nên SA là đường thẳng vuông góc với mặt phẳng (ABCD). Vì \\( SC \\perp (\\alpha) = (AB'C'D') \\) nên SC là đường thẳng vuông góc với mặt phẳng (AB'C'D').
+
+Do đó góc giữa hai mặt phẳng (AB'C'D') và (ABCD) chính là góc giữa hai đường thẳng SA và SC, tức là góc \\( \\widehat{ASC} \\), không phải góc \\( \\widehat{SCA} \\).
+
+d) ĐÚNG: Vì hai đường chéo AC' và B'D' vuông góc nên diện tích thiết diện là \\( S=\\dfrac{1}{2}B'D'\\cdot AC' \\).
+
+Ta có \\( SB=a\\sqrt5 \\). Theo hệ thức lượng: \\( SB' = \\dfrac{SA^2}{SB} = \\dfrac{4a^2}{a\\sqrt5} = \\dfrac{4a}{\\sqrt5} \\).
+
+Vì \\( B'D' \\parallel BD \\) nên \\( \\dfrac{B'D'}{BD} = \\dfrac{SB'}{SB} = \\dfrac{4}{5} \\Rightarrow B'D' = \\dfrac{4a\\sqrt2}{5} \\).
+
+Ta có \\( SC = a\\sqrt6 \\), \\( AC' = \\dfrac{SA\\cdot AC}{SC} = \\dfrac{2a\\cdot a\\sqrt2}{a\\sqrt6} = \\dfrac{2a\\sqrt3}{3} \\).
+
+Vậy \\( S = \\dfrac{1}{2}\\cdot\\dfrac{4a\\sqrt2}{5}\\cdot\\dfrac{2a\\sqrt3}{3} = \\dfrac{4a^2\\sqrt6}{15} \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de10_sh_13',
+    "type": 'short',
+    "content": """Cho hình lập phương ABCD.A'B'C'D' có cạnh bằng a. Gọi M, N, P lần lượt là trung điểm của các cạnh BC, C'D', DD'. Gọi d là khoảng cách từ điểm A đến mặt phẳng (MNP). Tính giá trị của biểu thức \\( T = \\dfrac{44\\cdot d^2}{a^2} \\).""",
+    "blanks": [
+        {"label": "Kết quả T =", "answers": ["25"]}
+    ],
+    "points": 1,
+    "explanation_image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/loigiai_cau13_de10.PNG',
+    "explanation": """Trong mặt phẳng (CDD'C'), kéo dài PN cắt đường thẳng CD tại E. Vì P, N là trung điểm của DD' và C'D', xét \\( \\triangle D'C'D \\) ta có \\( PN \\parallel C'D \\).
+
+Suy ra \\( \\triangle D'PN \\sim \\triangle DPE \\Rightarrow \\dfrac{DE}{D'N} = \\dfrac{DP}{D'P} = 1 \\Rightarrow DE = D'N = \\dfrac{a}{2} \\).
+
+Vậy E nằm ngoài đoạn CD về phía D và \\( DE = \\dfrac{a}{2} \\Rightarrow CE = a+\\dfrac{a}{2} = \\dfrac{3a}{2} \\).
+
+Trong mặt phẳng đáy (ABCD), nối EM cắt cạnh AD tại Q. Do \\( AD \\parallel BC \\) nên \\( DQ \\parallel CM \\). Áp dụng định lý Thales trong \\( \\triangle ECM \\):
+
+\\( \\dfrac{DQ}{CM} = \\dfrac{ED}{EC} = \\dfrac{a/2}{3a/2} = \\dfrac{1}{3} \\Rightarrow DQ = \\dfrac{1}{3}\\cdot\\dfrac{a}{2} = \\dfrac{a}{6} \\).
+
+Điểm Q thuộc đoạn AD nên \\( AQ = AD-DQ = a-\\dfrac{a}{6} = \\dfrac{5a}{6} \\). Từ đó: \\( \\dfrac{d(A,(MNP))}{d(D,(MNP))} = \\dfrac{AQ}{DQ} = 5 \\).
+
+Mặt phẳng (MNP) mở rộng chính là mặt phẳng (PQE). Tứ diện D.PQE có ba cạnh DP, DQ, DE đôi một vuông góc với nhau (vì \\( DD' \\perp (ABCD) \\) và \\( AD \\perp CD \\)).
+
+Gọi \\( h = d(D,(PQE)) \\), áp dụng hệ thức tứ diện vuông:
+
+\\( \\dfrac{1}{h^2} = \\dfrac{1}{DP^2}+\\dfrac{1}{DQ^2}+\\dfrac{1}{DE^2} = \\dfrac{1}{(a/2)^2}+\\dfrac{1}{(a/6)^2}+\\dfrac{1}{(a/2)^2} = \\dfrac{4}{a^2}+\\dfrac{36}{a^2}+\\dfrac{4}{a^2} = \\dfrac{44}{a^2} \\)
+
+\\( \\Rightarrow h^2 = \\dfrac{a^2}{44} \\Rightarrow h = \\dfrac{a}{2\\sqrt{11}} \\).
+
+Khoảng cách cần tìm: \\( d = d(A,(MNP)) = 5h = \\dfrac{5a}{2\\sqrt{11}} \\Rightarrow d^2 = \\dfrac{25a^2}{44} \\).
+
+Vậy giá trị biểu thức \\( T = \\dfrac{44}{a^2}\\cdot\\dfrac{25a^2}{44} = 25 \\).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de10_dd_14',
+    "type": 'dragdrop',
+    "content": """Cho tứ diện ABCD có cạnh AB = x, các cạnh còn lại đều bằng 2. Thay đổi giá trị của x để thể tích khối tứ diện ABCD đạt giá trị lớn nhất. Hãy kéo thả các giá trị cho sẵn dưới đây vào các mệnh đề tương ứng sao cho thích hợp:
+
+1. Thể tích lớn nhất của tứ diện ABCD bằng (1).
+
+2. Giá trị của x để thể tích tứ diện lớn nhất bằng (2).
+
+3. Khi thể tích tứ diện lớn nhất, khoảng cách giữa hai đường thẳng AB và CD bằng (3).""",
+    "options_pool": [
+        '$\\sqrt{3}$',
+        '$\\dfrac{\\sqrt{6}}{2}$',
+        '$1$',
+        '$\\sqrt{6}$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$1$"},
+        {"label": "(2) =", "answer": "$\\sqrt{6}$"},
+        {"label": "(3) =", "answer": "$\\dfrac{\\sqrt{6}}{2}$"},
+    ],
+    "points": 1,
+    "explanation_image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/loigiai_cau14_de10.PNG',
+    "explanation": """Gọi M, N lần lượt là trung điểm của AB và CD.
+
+Xét tam giác ACD có \\( AC=AD=CD=2 \\Rightarrow \\triangle ACD \\) đều \\( \\Rightarrow AN = \\dfrac{2\\sqrt3}{2} = \\sqrt3 \\). Tương tự \\( \\triangle BCD \\) đều cạnh 2 \\( \\Rightarrow BN=\\sqrt3 \\).
+
+Trong \\( \\triangle ABN \\) cân tại N, đường trung tuyến \\( NM \\perp AB \\):
+
+\\( NM = \\sqrt{AN^2-AM^2} = \\sqrt{3-\\dfrac{x^2}{4}} \\)
+
+Ta có \\( CD \\perp AN \\) và \\( CD \\perp BN \\Rightarrow CD \\perp (ABN) \\).
+
+Thể tích tứ diện ABCD được tính bởi:
+
+\\( V = \\dfrac{1}{3}S_{ABN}\\cdot CD = \\dfrac{1}{3}\\cdot\\dfrac{1}{2}AB\\cdot NM\\cdot CD = \\dfrac{1}{3}\\cdot\\dfrac{1}{2}\\cdot x\\cdot\\sqrt{3-\\dfrac{x^2}{4}}\\cdot 2 = \\dfrac{x\\sqrt{12-x^2}}{6} \\)
+
+Áp dụng bất đẳng thức AM-GM cho hai số dương \\( x^2 \\) và \\( 12-x^2 \\):
+
+\\( V = \\dfrac{1}{6}\\sqrt{x^2(12-x^2)} \\le \\dfrac{1}{6}\\cdot\\dfrac{x^2+12-x^2}{2} = 1 \\)
+
+Ý 1: Thể tích lớn nhất của tứ diện là 1. ⇒ Điền \\( 1 \\).
+
+Ý 2: Dấu "=" xảy ra khi \\( x^2 = 12-x^2 \\Rightarrow 2x^2=12 \\Rightarrow x=\\sqrt6 \\). ⇒ Điền \\( \\sqrt6 \\).
+
+Ý 3: Khoảng cách giữa AB và CD chính là đoạn vuông góc chung NM. Khi \\( x=\\sqrt6 \\), ta có \\( NM = \\sqrt{3-\\dfrac{6}{4}} = \\sqrt{\\dfrac{6}{4}} = \\dfrac{\\sqrt6}{2} \\). ⇒ Điền \\( \\dfrac{\\sqrt6}{2} \\).""",
+},
 
 
+
+
+                
 
 ], # Đóng danh sách questions của Đề 11
     }, # Đóng dictionary của Đề 11          
