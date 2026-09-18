@@ -10701,7 +10701,7 @@ Vậy \\( d(C,(ABB'A')) = CB = 4 \\) \\( \\Rightarrow \\) điền \\( 4 \\).""",
 
 # ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
 {
-    "id": 'de10_mc_11',
+    "id": 'de11_mc_11',
     "type": 'mc4',
     "content": """Cho hình chóp S.ABC có đáy ABC là tam giác đều cạnh a. Hình chiếu vuông góc của đỉnh S lên mặt phẳng (ABC) là điểm H nằm trên đoạn thẳng BC sao cho HC = 2HB. Biết góc giữa mặt phẳng (SAB) và mặt phẳng (ABC) bằng \\( 60^\\circ \\). Khoảng cách giữa hai đường thẳng chéo nhau SA và BC bằng bao nhiêu?""",
     "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau11_de10.PNG',
@@ -10742,7 +10742,7 @@ Vậy \\( d(SA,BC) = \\dfrac{a\\sqrt{3}}{4} \\). Chọn đáp án A.""",
 
 # ---------------- ĐÚNG / SAI (truefalse) ----------------
 {
-    "id": 'de10_tf_12',
+    "id": 'de11_tf_12',
     "type": 'truefalse',
     "content": """Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a. Cạnh bên SA vuông góc với mặt phẳng đáy và \\( SA = 2a \\). Một mặt phẳng \\( (\\alpha) \\) đi qua A và vuông góc với đường thẳng SC, cắt các cạnh SB, SC, SD lần lượt tại các điểm B', C', D'. Xét tính đúng/sai của các mệnh đề sau:""",
     "statements": [
@@ -10780,7 +10780,7 @@ Vậy \\( S = \\dfrac{1}{2}\\cdot\\dfrac{4a\\sqrt2}{5}\\cdot\\dfrac{2a\\sqrt3}{3
 
 # ---------------- TRẢ LỜI NGẮN (short) ----------------
 {
-    "id": 'de10_sh_13',
+    "id": 'de11_sh_13',
     "type": 'short',
     "content": """Cho hình lập phương ABCD.A'B'C'D' có cạnh bằng a. Gọi M, N, P lần lượt là trung điểm của các cạnh BC, C'D', DD'. Gọi d là khoảng cách từ điểm A đến mặt phẳng (MNP). Tính giá trị của biểu thức \\( T = \\dfrac{44\\cdot d^2}{a^2} \\).""",
     "blanks": [
@@ -10815,7 +10815,7 @@ Vậy giá trị biểu thức \\( T = \\dfrac{44}{a^2}\\cdot\\dfrac{25a^2}{44} 
 
 # ---------------- KÉO THẢ (dragdrop) ----------------
 {
-    "id": 'de10_dd_14',
+    "id": 'de11_dd_14',
     "type": 'dragdrop',
     "content": """Cho tứ diện ABCD có cạnh AB = x, các cạnh còn lại đều bằng 2. Thay đổi giá trị của x để thể tích khối tứ diện ABCD đạt giá trị lớn nhất. Hãy kéo thả các giá trị cho sẵn dưới đây vào các mệnh đề tương ứng sao cho thích hợp:
 
