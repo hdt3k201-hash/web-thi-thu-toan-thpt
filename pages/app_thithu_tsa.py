@@ -10374,18 +10374,338 @@ d) SAI: Xét phương trình \\( f(x)=g(x) \\):
 
 Vì \\( e^{-x}>0,\\ \\forall x\\in\\mathbb{R} \\) nên phương trình vô nghiệm — không phải có đúng một nghiệm.""",
 },
-
-
-
-
-
-
-
-
-                
+               
                 
 ], # Đóng danh sách questions của Đề 10
-    }, # Đóng dictionary của Đề 10                
+    }, # Đóng dictionary của Đề 10          
+
+
+
+{
+              "id": "de11",
+              "name": "Đề số 11 - ÔN TẬP QUAN HỆ VUÔNG GÓC - 2026.",
+              "description": "Câu hỏi.",
+              "questions": [
+
+
+
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de11_mc_1",
+    "type": "mc4",
+    "content": "Cho hình chóp \\( S.ABCD \\) có đáy \\( ABCD \\) là hình vuông cạnh \\( a \\), cạnh bên \\( SA \\) vuông góc với mặt phẳng đáy \\( (ABCD) \\) và \\( SA = a\\sqrt{2} \\). Gọi \\( \\alpha \\) là góc giữa đường thẳng \\( SC \\) và mặt phẳng \\( (ABCD) \\). Số đo của góc \\( \\alpha \\) bằng bao nhiêu?",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau1_de11.PNG",
+    "options": {
+        "A": "$30^{\\circ}$",
+        "B": "$45^{\\circ}$",
+        "C": "$60^{\\circ}$",
+        "D": "$90^{\\circ}$",
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": """Vì \\( SA \\perp (ABCD) \\) nên \\( A \\) là hình chiếu vuông góc của \\( S \\) lên mặt phẳng \\( (ABCD) \\).
+
+Do đó, hình chiếu của đường thẳng \\( SC \\) lên mặt phẳng \\( (ABCD) \\) chính là đường thẳng \\( AC \\).
+
+Vậy góc giữa đường thẳng \\( SC \\) và \\( (ABCD) \\) là góc \\( \\widehat{SCA} = \\alpha \\).
+
+Xét hình vuông \\( ABCD \\) cạnh \\( a \\), đường chéo: \\( AC = \\sqrt{AB^{2}+BC^{2}} = a\\sqrt{2} \\).
+
+Xét tam giác vuông \\( SAC \\) (vuông tại \\( A \\)):
+
+\\( \\tan\\alpha = \\tan\\widehat{SCA} = \\dfrac{SA}{AC} = \\dfrac{a\\sqrt{2}}{a\\sqrt{2}} = 1 \\)
+
+Suy ra \\( \\alpha = 45^{\\circ} \\).
+
+Chọn đáp án B.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de11_tf_2",
+    "type": "truefalse",
+    "content": "Cho hình chóp đều \\( S.ABCD \\) có đáy \\( ABCD \\) là hình vuông tâm \\( O \\). Gọi \\( M \\) là trung điểm của \\( BC \\). Xét tính đúng/sai của các nhận định sau:",
+    "statements": [
+        {"text": "Đường thẳng \\( SO \\) vuông góc với mặt phẳng \\( (ABCD) \\).", "correct": True},
+        {"text": "Đường thẳng \\( AC \\) vuông góc với mặt phẳng \\( (SBD) \\).", "correct": True},
+        {"text": "Góc phẳng nhị diện \\( [S, BC, A] \\) là góc \\( \\widehat{SCA} \\).", "correct": False},
+        {"text": "Mặt phẳng \\( (SAC) \\) vuông góc với mặt phẳng \\( (SBD) \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Vì \\( S.ABCD \\) là hình chóp đều nên hình chiếu vuông góc của đỉnh \\( S \\) trùng với tâm \\( O \\) của đáy. Suy ra \\( SO \\perp (ABCD) \\).
+
+b) ĐÚNG: Ta có \\( AC \\perp BD \\) (tính chất hai đường chéo hình vuông) và \\( AC \\perp SO \\) (do \\( SO \\perp (ABCD) \\)). Từ hai quan hệ vuông góc này với hai đường thẳng cắt nhau \\( BD, SO \\) trong \\( (SBD) \\), suy ra \\( AC \\perp (SBD) \\).
+
+c) SAI: Góc phẳng nhị diện \\( [S,BC,A] \\) là góc tạo bởi mặt bên \\( (SBC) \\) và mặt đáy \\( (ABCD) \\), theo cạnh \\( BC \\). Vì \\( OM \\perp BC \\) và \\( SM \\perp BC \\) (định lý ba đường vuông góc, do \\( SO \\perp (ABCD) \\)), nên góc nhị diện này chính là góc \\( \\widehat{SMO} \\), không phải \\( \\widehat{SCA} \\).
+
+d) ĐÚNG: Theo ý b, ta có \\( AC \\perp (SBD) \\). Mà \\( AC \\subset (SAC) \\), suy ra \\( (SAC) \\perp (SBD) \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de11_sh_3",
+    "type": "short",
+    "content": "Cho hình chóp \\( S.ABCD \\) có đáy \\( ABCD \\) là hình chữ nhật với \\( AB=3, AD=6 \\). Cạnh bên \\( SA \\) vuông góc với mặt phẳng đáy và \\( SA=6 \\). Tính bình phương khoảng cách từ điểm \\( A \\) đến mặt phẳng \\( (SBD) \\).",
+    "blanks": [
+        {"label": "Kết quả =", "answers": ["6"]}
+    ],
+    "points": 1,
+    "explanation": """Kẻ \\( AH \\perp BD \\) tại \\( H \\). Vì \\( SA \\perp (ABCD) \\) nên \\( SA \\perp BD \\).
+
+Từ đó suy ra \\( BD \\perp (SAH) \\), kéo theo \\( (SBD) \\perp (SAH) \\) theo giao tuyến \\( SH \\).
+
+Trong mặt phẳng \\( (SAH) \\), kẻ \\( AK \\perp SH \\) tại \\( K \\), suy ra \\( AK \\perp (SBD) \\).
+
+Do đó, khoảng cách từ \\( A \\) đến \\( (SBD) \\) chính là \\( AK \\).
+
+Xét tam giác vuông \\( ABD \\), áp dụng hệ thức lượng:
+
+\\( \\dfrac{1}{AH^{2}} = \\dfrac{1}{AB^{2}}+\\dfrac{1}{AD^{2}} = \\dfrac{1}{9}+\\dfrac{1}{36} = \\dfrac{5}{36} \\Rightarrow AH^{2}=\\dfrac{36}{5} \\)
+
+Xét tam giác vuông \\( SAH \\), áp dụng hệ thức lượng:
+
+\\( \\dfrac{1}{AK^{2}} = \\dfrac{1}{SA^{2}}+\\dfrac{1}{AH^{2}} = \\dfrac{1}{36}+\\dfrac{5}{36} = \\dfrac{6}{36}=\\dfrac{1}{6} \\)
+
+Suy ra \\( AK^{2} = 6 \\).
+
+Vậy bình phương khoảng cách từ \\( A \\) đến \\( (SBD) \\) bằng 6.
+
+Đáp số cần điền: 6.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de11_tf_4",
+    "type": "truefalse",
+    "content": "Cho lăng trụ đứng \\( ABC.A'B'C' \\) có đáy \\( ABC \\) là tam giác vuông tại \\( B \\). Biết \\( AB=3, BC=4 \\) và cạnh bên \\( AA'=5 \\). Xét tính đúng/sai của các nhận định sau:",
+    "statements": [
+        {"text": "Mặt phẳng \\( (ABB'A') \\) vuông góc với mặt phẳng \\( (BCC'B') \\).", "correct": True},
+        {"text": "Khoảng cách từ điểm \\( A \\) đến mặt phẳng \\( (BCC'B') \\) bằng 3.", "correct": True},
+        {"text": "Khoảng cách giữa hai đường thẳng chéo nhau \\( AA' \\) và \\( BC \\) bằng 5.", "correct": False},
+        {"text": "Thể tích của khối lăng trụ \\( ABC.A'B'C' \\) bằng 30.", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Vì lăng trụ đứng nên \\( BB' \\perp (ABC) \\Rightarrow BB' \\perp AB \\). Lại có \\( BC \\perp AB \\) (giả thiết). Từ hai đường vuông góc với \\( AB \\) cắt nhau tại \\( B \\), suy ra \\( AB \\perp (BCC'B') \\). Vì mặt phẳng \\( (ABB'A') \\) chứa đường thẳng \\( AB \\) nên \\( (ABB'A') \\perp (BCC'B') \\).
+
+b) ĐÚNG: Vì \\( AB \\perp (BCC'B') \\) tại \\( B \\), nên khoảng cách từ \\( A \\) đến \\( (BCC'B') \\) chính là đoạn \\( AB = 3 \\).
+
+c) SAI: Ta có \\( AA' \\parallel BB' \\) nên \\( AA' \\parallel (BCC'B') \\). Do đó:
+
+\\( d(AA',BC) = d(AA',(BCC'B')) = d(A,(BCC'B')) = AB = 3 \\) (chứ không phải 5).
+
+d) ĐÚNG: Diện tích đáy \\( S_{ABC} = \\dfrac{1}{2}AB\\cdot BC = \\dfrac{1}{2}\\cdot 3\\cdot 4 = 6 \\). Chiều cao lăng trụ là \\( h = AA' = 5 \\).
+
+Thể tích \\( V = S_{ABC}\\cdot h = 6\\cdot 5 = 30 \\).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de11_dd_5",
+    "type": "dragdrop",
+    "content": """Cho tứ diện \\( OABC \\) có các cạnh \\( OA, OB, OC \\) đôi một vuông góc với nhau tại \\( O \\). Biết \\( OA=OB=OC=a \\). Hãy kéo thả các kết quả cho sẵn dưới đây vào các mệnh đề tương ứng sao cho thích hợp:
+
+1) Côsin của góc tạo bởi mặt phẳng \\( (ABC) \\) và mặt phẳng \\( (OAB) \\) có giá trị bằng (1)
+
+2) Khoảng cách từ đỉnh \\( O \\) đến mặt phẳng \\( (ABC) \\) bằng (2)
+
+3) Diện tích của tam giác \\( ABC \\) bằng (3)""",
+    "options_pool": ["$\\dfrac{a^{2}\\sqrt{3}}{2}$", "$\\dfrac{\\sqrt{3}}{3}$", "$\\dfrac{a\\sqrt{3}}{3}$", "$\\dfrac{\\sqrt{2}}{2}$"],
+    "blanks": [
+        {"label": "(1) =", "answer": "$\\dfrac{\\sqrt{3}}{3}$"},
+        {"label": "(2) =", "answer": "$\\dfrac{a\\sqrt{3}}{3}$"},
+        {"label": "(3) =", "answer": "$\\dfrac{a^{2}\\sqrt{3}}{2}$"},
+    ],
+    "points": 1,
+    "explanation": """Kí hiệu góc giữa hai mặt phẳng \\( (ABC) \\) và \\( (OAB) \\) là \\( \\alpha \\). Khối tứ diện \\( OABC \\) là tứ diện vuông tại \\( O \\).
+
+Do \\( OC \\perp (OAB) \\) nên hình chiếu vuông góc của tam giác \\( ABC \\) lên mặt phẳng \\( (OAB) \\) chính là tam giác \\( OAB \\).
+
+Diện tích tam giác vuông \\( OAB \\) là: \\( S_{OAB} = \\dfrac{1}{2}OA\\cdot OB = \\dfrac{a^{2}}{2} \\).
+
+Các tam giác vuông \\( OAB, OBC, OCA \\) bằng nhau nên \\( AB=BC=CA=a\\sqrt{2} \\). Vậy tam giác \\( ABC \\) đều cạnh \\( a\\sqrt{2} \\).
+
+Diện tích tam giác \\( ABC \\) là: \\( S_{ABC} = \\dfrac{(a\\sqrt{2})^{2}\\sqrt{3}}{4} = \\dfrac{2a^{2}\\sqrt{3}}{4} = \\dfrac{a^{2}\\sqrt{3}}{2} \\) \\( \\Rightarrow \\) điền vào ý 3.
+
+Theo công thức hình chiếu: \\( \\cos\\alpha = \\dfrac{S_{OAB}}{S_{ABC}} = \\dfrac{\\dfrac{a^{2}}{2}}{\\dfrac{a^{2}\\sqrt{3}}{2}} = \\dfrac{1}{\\sqrt{3}} = \\dfrac{\\sqrt{3}}{3} \\) \\( \\Rightarrow \\) điền vào ý 1.
+
+Gọi \\( h \\) là khoảng cách từ \\( O \\) đến mặt phẳng \\( (ABC) \\). Ta có hệ thức:
+
+\\( \\dfrac{1}{h^{2}} = \\dfrac{1}{OA^{2}}+\\dfrac{1}{OB^{2}}+\\dfrac{1}{OC^{2}} = \\dfrac{1}{a^{2}}+\\dfrac{1}{a^{2}}+\\dfrac{1}{a^{2}} = \\dfrac{3}{a^{2}} \\Rightarrow h = \\dfrac{a}{\\sqrt{3}} = \\dfrac{a\\sqrt{3}}{3} \\) \\( \\Rightarrow \\) điền vào ý 2.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de11_sh_6",
+    "type": "short",
+    "content": "Cho hình chóp \\( S.ABCD \\) có đáy \\( ABCD \\) là hình vuông cạnh bằng 2, cạnh bên \\( SA \\) vuông góc với mặt phẳng đáy và \\( SA=4 \\). Gọi \\( d \\) là khoảng cách giữa hai đường thẳng chéo nhau \\( AB \\) và \\( SC \\). Tính giá trị của biểu thức \\( T = 5\\cdot d^{2} \\).",
+    "blanks": [
+        {"label": "T =", "answers": ["16"]}
+    ],
+    "points": 1,
+    "explanation": """Vì \\( ABCD \\) là hình vuông nên \\( AB \\parallel CD \\). Mà \\( CD \\subset (SCD) \\) nên suy ra \\( AB \\parallel (SCD) \\).
+
+Đường thẳng \\( SC \\) nằm trong mặt phẳng \\( (SCD) \\).
+
+Khoảng cách giữa hai đường thẳng chéo nhau \\( AB \\) và \\( SC \\) chính là khoảng cách từ đường thẳng \\( AB \\) đến mặt phẳng \\( (SCD) \\) song song với nó:
+
+\\( d = d(AB,SC) = d(AB,(SCD)) = d(A,(SCD)) \\) (do điểm \\( A \\) nằm trên đường thẳng \\( AB \\)).
+
+Trong mặt phẳng \\( (SAD) \\), kẻ \\( AK \\perp SD \\) tại \\( K \\).
+
+Vì \\( CD \\perp AD \\) và \\( CD \\perp SA \\Rightarrow CD \\perp (SAD) \\Rightarrow CD \\perp AK \\).
+
+Ta có \\( AK \\perp SD \\) và \\( AK \\perp CD \\Rightarrow AK \\perp (SCD) \\). Vậy \\( d(A,(SCD)) = AK \\).
+
+Xét tam giác vuông \\( SAD \\) tại \\( A \\):
+
+\\( d = AK = \\dfrac{SA\\cdot AD}{\\sqrt{SA^{2}+AD^{2}}} = \\dfrac{4\\cdot 2}{\\sqrt{4^{2}+2^{2}}} = \\dfrac{8}{\\sqrt{20}} = \\dfrac{4}{\\sqrt{5}} \\)
+
+Bình phương khoảng cách: \\( d^{2} = \\dfrac{16}{5} \\).
+
+Vậy giá trị biểu thức \\( T = 5\\cdot d^{2} = 5\\cdot \\dfrac{16}{5} = 16 \\).
+
+Đáp số cần điền: 16.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de11_mc_7",
+    "type": "mc4",
+    "content": "Cho hình chóp \\( S.ABC \\) có đáy \\( ABC \\) là tam giác vuông cân tại \\( B \\), cạnh \\( AB=a \\). Cạnh bên \\( SA \\) vuông góc với mặt phẳng đáy và \\( SA=a\\sqrt{2} \\). Góc giữa đường thẳng \\( SC \\) và mặt phẳng \\( (SAB) \\) bằng bao nhiêu?",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau7_de11.PNG",
+    "options": {
+        "A": "$30^{\\circ}$",
+        "B": "$45^{\\circ}$",
+        "C": "$60^{\\circ}$",
+        "D": "$90^{\\circ}$",
+    },
+    "correct": "A",
+    "points": 1,
+    "explanation": """Ta có:
+
+\\( \\begin{cases} BC \\perp AB \\ (\\text{do } \\triangle ABC \\text{ vuông tại } B) \\\\ BC \\perp SA \\ (\\text{do } SA\\perp(ABC)) \\end{cases} \\Rightarrow BC \\perp (SAB) \\)
+
+Do đó, hình chiếu vuông góc của đường thẳng \\( SC \\) lên mặt phẳng \\( (SAB) \\) chính là đường thẳng \\( SB \\).
+
+Vậy góc giữa đường thẳng \\( SC \\) và mặt phẳng \\( (SAB) \\) là góc \\( \\widehat{CSB} \\).
+
+Xét tam giác vuông \\( SAB \\) (vuông tại \\( A \\)):
+
+\\( SB = \\sqrt{SA^{2}+AB^{2}} = \\sqrt{2a^{2}+a^{2}} = a\\sqrt{3} \\)
+
+Xét tam giác vuông \\( SBC \\) (vuông tại \\( B \\), do \\( BC\\perp(SAB) \\Rightarrow BC\\perp SB \\)):
+
+\\( \\tan\\widehat{CSB} = \\dfrac{BC}{SB} = \\dfrac{a}{a\\sqrt{3}} = \\dfrac{1}{\\sqrt{3}} \\Rightarrow \\widehat{CSB} = 30^{\\circ} \\)
+
+Chọn đáp án A.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de11_tf_8",
+    "type": "truefalse",
+    "content": "Cho hình lập phương \\( ABCD.A'B'C'D' \\). Xét tính đúng/sai của các nhận định sau:",
+    "statements": [
+        {"text": "Đường thẳng \\( AC \\) vuông góc với đường thẳng \\( B'D' \\).", "correct": True},
+        {"text": "Đường thẳng \\( AC' \\) vuông góc với mặt phẳng \\( (A'BD) \\).", "correct": True},
+        {"text": "Góc giữa hai đường thẳng \\( AB' \\) và \\( BC' \\) bằng \\( 60^{\\circ} \\).", "correct": True},
+        {"text": "Góc giữa đường thẳng \\( AC' \\) và mặt phẳng \\( (ABCD) \\) bằng \\( 45^{\\circ} \\).", "correct": False},
+    ],
+    "points": 1,
+    "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau8_de11.PNG",
+    "explanation": """a) ĐÚNG: \\( ABCD \\) là hình vuông nên \\( AC \\perp BD \\). Mà \\( BD \\parallel B'D' \\) nên \\( AC \\perp B'D' \\).
+
+b) ĐÚNG: Có thể chứng minh \\( AC' \\perp BD \\) (do \\( BD\\perp AC \\) và \\( BD\\perp AA' \\) nên \\( BD\\perp(ACC'A') \\Rightarrow BD\\perp AC' \\)) và \\( AC' \\perp A'B \\) (chứng minh tương tự qua mặt \\( (ABB'A') \\)). Từ hai đường vuông góc cắt nhau này trong \\( (A'BD) \\), suy ra \\( AC' \\perp (A'BD) \\).
+
+c) ĐÚNG: Ta có \\( AB' \\parallel DC' \\). Góc giữa \\( AB' \\) và \\( BC' \\) chính là góc giữa \\( DC' \\) và \\( BC' \\), là góc \\( \\widehat{BC'D} \\) (hoặc góc bù của nó). Các đoạn \\( BD, DC', BC' \\) đều là đường chéo của các mặt hình lập phương nên bằng nhau \\( \\Rightarrow \\triangle BDC' \\) đều \\( \\Rightarrow \\widehat{BC'D} = 60^{\\circ} \\).
+
+d) SAI: Đặt cạnh hình lập phương là \\( a \\). Hình chiếu của \\( AC' \\) lên \\( (ABCD) \\) là \\( AC \\).
+
+\\( \\tan\\left(AC',(ABCD)\\right) = \\tan\\widehat{C'AC} = \\dfrac{CC'}{AC} = \\dfrac{a}{a\\sqrt{2}} = \\dfrac{1}{\\sqrt{2}} \\)
+
+\\( \\Rightarrow \\) góc xấp xỉ \\( 35{,}26^{\\circ} \\), không phải \\( 45^{\\circ} \\).""",
+},
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de11_sh_9",
+    "type": "short",
+    "content": "Cho hình chóp \\( S.ABCD \\) có đáy \\( ABCD \\) là hình thoi cạnh \\( 2\\sqrt{3}a \\), góc \\( \\widehat{BAD}=60^{\\circ} \\). Cạnh bên \\( SA \\) vuông góc với mặt phẳng đáy và \\( SA=4a \\). Gọi \\( d \\) là khoảng cách từ điểm \\( B \\) đến mặt phẳng \\( (SCD) \\). Tính giá trị của biểu thức \\( T = \\dfrac{25\\cdot d^{2}}{a^{2}} \\).",
+    "blanks": [
+        {"label": "T =", "answers": ["144"]}
+    ],
+    "points": 1,
+    "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau9_de11.PNG",
+    "explanation": """Ta có \\( AB \\parallel CD \\Rightarrow AB \\parallel (SCD) \\). Do \\( B \\in AB \\) nên \\( d(B,(SCD)) = d(A,(SCD)) = d \\).
+
+Trong mặt phẳng đáy \\( (ABCD) \\), kẻ \\( AH \\perp CD \\) tại \\( H \\).
+
+Vì \\( SA \\perp (ABCD) \\) nên \\( SA \\perp CD \\). Suy ra \\( CD \\perp (SAH) \\Rightarrow (SCD)\\perp(SAH) \\) theo giao tuyến \\( SH \\).
+
+Trong mặt phẳng \\( (SAH) \\), kẻ \\( AK \\perp SH \\) tại \\( K \\Rightarrow AK \\perp (SCD) \\). Vậy \\( d(A,(SCD)) = AK \\).
+
+Xét tam giác \\( ACD \\) có \\( AD = 2\\sqrt{3}a \\), \\( \\widehat{ADC} = 180^{\\circ}-60^{\\circ}=120^{\\circ} \\). (Đoạn \\( AH \\) chính là chiều cao của tam giác đều \\( ABD \\) cạnh \\( 2\\sqrt{3}a \\), hạ từ \\( A \\) xuống \\( CD \\)):
+
+\\( AH = AD\\cdot\\sin 60^{\\circ} = 2\\sqrt{3}a\\cdot\\dfrac{\\sqrt{3}}{2} = 3a \\)
+
+Xét tam giác vuông \\( SAH \\):
+
+\\( \\dfrac{1}{AK^{2}} = \\dfrac{1}{SA^{2}}+\\dfrac{1}{AH^{2}} = \\dfrac{1}{16a^{2}}+\\dfrac{1}{9a^{2}} = \\dfrac{25}{144a^{2}} \\Rightarrow d^{2}=AK^{2}=\\dfrac{144a^{2}}{25} \\)
+
+Vậy biểu thức \\( T = \\dfrac{25}{a^{2}}\\cdot \\dfrac{144a^{2}}{25} = 144 \\).
+
+Đáp số cần điền: 144.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de11_dd_10",
+    "type": "dragdrop",
+    "content": """Cho lăng trụ đứng \\( ABC.A'B'C' \\) có đáy \\( ABC \\) là tam giác vuông tại \\( B \\), biết \\( AB=3, BC=4 \\) và cạnh bên \\( AA'=6 \\). Hãy kéo thả các giá trị cho sẵn dưới đây vào các mệnh đề tương ứng sao cho thích hợp:
+
+1) Khoảng cách từ đỉnh \\( A' \\) đến mặt phẳng \\( (ABC) \\) bằng (1)
+
+2) Khoảng cách giữa hai đường thẳng \\( AA' \\) và \\( BC \\) bằng (2)
+
+3) Khoảng cách giữa hai đường thẳng \\( AB' \\) và \\( CC' \\) bằng (3)""",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau10_de11.PNG",
+    "options_pool": ["$3$", "$4$", "$5$", "$6$"],
+    "blanks": [
+        {"label": "(1) =", "answer": "$6$"},
+        {"label": "(2) =", "answer": "$3$"},
+        {"label": "(3) =", "answer": "$4$"},
+    ],
+    "points": 1,
+    "explanation": """Lăng trụ \\( ABC.A'B'C' \\) là lăng trụ đứng nên các cạnh bên vuông góc với mặt phẳng đáy.
+
+Ý 1: Khoảng cách từ \\( A' \\) đến \\( (ABC) \\) chính là độ dài cạnh bên \\( AA' \\):
+
+\\( d(A',(ABC)) = AA' = 6 \\) \\( \\Rightarrow \\) điền \\( 6 \\).
+
+Ý 2: Ta có \\( AA' \\parallel BB' \\) nên \\( AA' \\parallel (BCC'B') \\). Mặt phẳng \\( (BCC'B') \\) chứa \\( BC \\), do đó:
+
+\\( d(AA',BC) = d(AA',(BCC'B')) = d(A,(BCC'B')) \\)
+
+Vì \\( AB \\perp BB' \\) (lăng trụ đứng) và \\( AB \\perp BC \\) (đáy vuông tại \\( B \\)) nên \\( AB \\perp (BCC'B') \\).
+
+Vậy \\( d(A,(BCC'B')) = AB = 3 \\) \\( \\Rightarrow \\) điền \\( 3 \\).
+
+Ý 3: Ta có \\( CC' \\parallel BB' \\) nên \\( CC' \\parallel (ABB'A') \\). Mặt phẳng \\( (ABB'A') \\) chứa \\( AB' \\), do đó:
+
+\\( d(CC',AB') = d(C,(ABB'A')) \\)
+
+Tương tự, ta có \\( CB \\perp (ABB'A') \\) (do \\( CB\\perp AB \\) và \\( CB\\perp BB' \\)).
+
+Vậy \\( d(C,(ABB'A')) = CB = 4 \\) \\( \\Rightarrow \\) điền \\( 4 \\).""",
+},
+
+
+
+
+], # Đóng danh sách questions của Đề 11
+    }, # Đóng dictionary của Đề 11          
+
+  
 ] # Dấu kết thúc toàn bộ danh sách đề thi (Nằm sát lề trái, không lùi dấu cách nào)
 
 
