@@ -10613,7 +10613,7 @@ Chọn đáp án A.""",
         {"text": "Góc giữa đường thẳng \\( AC' \\) và mặt phẳng \\( (ABCD) \\) bằng \\( 45^{\\circ} \\).", "correct": False},
     ],
     "points": 1,
-    "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau8_de11.PNG",
+    "explanation_image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau8_de11.PNG",
     "explanation": """a) ĐÚNG: \\( ABCD \\) là hình vuông nên \\( AC \\perp BD \\). Mà \\( BD \\parallel B'D' \\) nên \\( AC \\perp B'D' \\).
 
 b) ĐÚNG: Có thể chứng minh \\( AC' \\perp BD \\) (do \\( BD\\perp AC \\) và \\( BD\\perp AA' \\) nên \\( BD\\perp(ACC'A') \\Rightarrow BD\\perp AC' \\)) và \\( AC' \\perp A'B \\) (chứng minh tương tự qua mặt \\( (ABB'A') \\)). Từ hai đường vuông góc cắt nhau này trong \\( (A'BD) \\), suy ra \\( AC' \\perp (A'BD) \\).
@@ -10635,7 +10635,7 @@ d) SAI: Đặt cạnh hình lập phương là \\( a \\). Hình chiếu của \\
         {"label": "T =", "answers": ["144"]}
     ],
     "points": 1,
-    "image_explanation": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau9_de11.PNG",
+    "explanation_image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau9_de11.PNG",
     "explanation": """Ta có \\( AB \\parallel CD \\Rightarrow AB \\parallel (SCD) \\). Do \\( B \\in AB \\) nên \\( d(B,(SCD)) = d(A,(SCD)) = d \\).
 
 Trong mặt phẳng đáy \\( (ABCD) \\), kẻ \\( AH \\perp CD \\) tại \\( H \\).
