@@ -9148,15 +9148,613 @@ Vậy châu chấu sẽ tiến gần đến điểm có tọa độ 0,75.
 
 Đáp án: 0,75.""",
 },
-
-
-
-
-
-
+                
 ], # Đóng danh sách questions của Đề 9
     }, # Đóng dictionary của Đề 9
+
+
+{
+              "id": "de10",
+              "name": "Đề số 10 - ÔN TẬP CHUYÊN ĐỀ HÀM SỐ MŨ ; LOGARIT - 2026.",
+              "description": "Câu hỏi.",
+              "questions": [
+
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de10_mc_1",
+    "type": "mc4",
+    "content": "Số lượng vi khuẩn trong một đĩa nuôi cấy sau t giờ được mô hình hóa bởi công thức \\( N(t) = N_0\\cdot 2^{\\frac{t}{3}} \\), trong đó \\( N_0 \\) là số lượng vi khuẩn ban đầu. Biết rằng sau 6 giờ, số lượng vi khuẩn là 20 000 con. Số lượng vi khuẩn ban đầu \\( N_0 \\) là bao nhiêu?",
+    "options": {
+        "A": "$2\\,500$",
+        "B": "$5\\,000$",
+        "C": "$10\\,000$",
+        "D": "$40\\,000$",
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": """Theo giả thiết, tại \\( t=6 \\), ta có \\( N(6)=20\\,000 \\).
+
+Thay vào công thức: \\( N_0\\cdot 2^{\\frac{6}{3}} = 20\\,000 \\Leftrightarrow N_0\\cdot 2^2 = 20\\,000 \\Leftrightarrow 4N_0 = 20\\,000 \\)
+
+Vậy \\( N_0 = 5\\,000 \\).
+
+Chọn B.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de10_mc_2",
+    "type": "mc4",
+    "content": "Nghiệm thực của phương trình \\( 9^x-4\\cdot 3^x+3=0 \\) là:",
+    "options": {
+        "A": "$x=1,\\ x=3$",
+        "B": "$x=0,\\ x=1$",
+        "C": "$x=3$",
+        "D": "$x=-1,\\ x=0$",
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": """Đặt \\( t=3^x\\ (t>0) \\). Phương trình trở thành: \\( t^2-4t+3=0 \\).
+
+Giải phương trình bậc hai, ta được \\( t=1 \\) hoặc \\( t=3 \\) (cả hai đều thỏa mãn \\( t>0 \\)).
+
+Với \\( t=1 \\Rightarrow 3^x=1 \\Leftrightarrow x=0 \\).
+
+Với \\( t=3 \\Rightarrow 3^x=3 \\Leftrightarrow x=1 \\).
+
+Vậy tập nghiệm của phương trình là \\( \\{0;1\\} \\).
+
+Chọn B.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de10_tf_3",
+    "type": "truefalse",
+    "content": "Cho hàm số \\( y=f(x)=\\log_2(x^2-4x+3) \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Tập xác định của hàm số là \\( D=(-\\infty;1)\\cup(3;+\\infty) \\).", "correct": True},
+        {"text": "Đồ thị hàm số đi qua điểm \\( M(0;\\log_2 3) \\).", "correct": True},
+        {"text": "Phương trình \\( f(x)=1 \\) vô nghiệm.", "correct": False},
+        {"text": "Hàm số đồng biến trên toàn bộ tập xác định D.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Hàm số xác định khi \\( x^2-4x+3>0 \\Leftrightarrow x<1 \\) hoặc \\( x>3 \\).
+
+b) ĐÚNG: Thay \\( x=0 \\) vào ta được \\( f(0)=\\log_2(0^2-4\\cdot 0+3)=\\log_2 3 \\).
+
+c) SAI: \\( f(x)=1 \\Leftrightarrow \\log_2(x^2-4x+3)=1 \\Leftrightarrow x^2-4x+3=2 \\Leftrightarrow x^2-4x+1=0 \\). Phương trình này có \\( \\Delta'=4-1=3>0 \\) nên có 2 nghiệm phân biệt, tức phương trình có nghiệm.
+
+d) SAI: Đặt \\( u=x^2-4x+3 \\), đây là một tam thức bậc hai có đồ thị parabol với đỉnh tại \\( x=2 \\) (bề lõm quay lên).
+
+- Trên khoảng \\( (-\\infty;1) \\): vì \\( 1<2 \\) nên đây là phần bên trái đỉnh, do đó u nghịch biến (giảm dần) khi x tăng. Vì \\( \\log_2 \\) là hàm đồng biến, nên hàm hợp \\( f(x)=\\log_2 u \\) sẽ nghịch biến trên \\( (-\\infty;1) \\).
+
+- Trên khoảng \\( (3;+\\infty) \\): vì \\( 3>2 \\) nên đây là phần bên phải đỉnh, do đó u đồng biến khi x tăng, kéo theo \\( f(x) \\) cũng đồng biến trên \\( (3;+\\infty) \\).
+
+Vậy hàm số nghịch biến trên \\( (-\\infty;1) \\) và đồng biến trên \\( (3;+\\infty) \\), không thể đồng biến trên toàn bộ tập xác định D.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de10_tf_4",
+    "type": "truefalse",
+    "content": "Cho bất phương trình \\( 3^{x+1} > 9^{x-1} \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Bất phương trình đã cho tương đương với \\( x+1>2x-2 \\).", "correct": True},
+        {"text": "Tập nghiệm của bất phương trình là khoảng \\( (-\\infty;3) \\).", "correct": True},
+        {"text": "Bất phương trình có đúng 3 nghiệm nguyên dương.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Ta có \\( 3^{x+1}>9^{x-1} \\Leftrightarrow 3^{x+1}>3^{2(x-1)} \\). Do cơ số \\( 3>1 \\) nên bất phương trình tương đương với \\( x+1>2x-2 \\).
+
+b) ĐÚNG: Giải \\( x+1>2x-2 \\Leftrightarrow 3>x \\Leftrightarrow x<3 \\).
+
+c) SAI: Các nghiệm nguyên dương của bất phương trình là các số nguyên dương nhỏ hơn 3, bao gồm \\( \\{1;2\\} \\). Vậy chỉ có 2 nghiệm nguyên dương, không phải 3.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de10_sh_5",
+    "type": "short",
+    "content": "Cho a là số thực dương khác 1 và các số thực dương b, c thỏa mãn \\( \\log_a b = 3 \\) và \\( \\log_a c = -2 \\). Tính giá trị của biểu thức \\( P = \\log_a\\left(\\dfrac{a^2\\cdot b^3}{c}\\right) \\).",
+    "blanks": [
+        {"label": "P =", "answers": ["13"]}
+    ],
+    "points": 1,
+    "explanation": """Sử dụng các tính chất của lôgarit, ta biến đổi biểu thức P:
+
+\\( P = \\log_a(a^2\\cdot b^3) - \\log_a c \\)
+
+\\( P = \\log_a(a^2) + \\log_a(b^3) - \\log_a c \\)
+
+\\( P = 2 + 3\\log_a b - \\log_a c \\)
+
+Thay \\( \\log_a b = 3 \\) và \\( \\log_a c = -2 \\) vào biểu thức:
+
+\\( P = 2 + 3(3) - (-2) = 2 + 9 + 2 = 13 \\)
+
+Đáp án: 13.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de10_sh_6",
+    "type": "short",
+    "content": "Mức cường độ âm L (đơn vị: decibel - dB) được tính bởi công thức \\( L = 10\\log\\left(\\dfrac{I}{I_0}\\right) \\), trong đó I là cường độ âm tính bằng W/m² và \\( I_0=10^{-12} \\) W/m² là cường độ âm chuẩn. Tiếng ồn của một xe máy trên đường là 80 dB, tiếng nói chuyện bình thường là 50 dB. Hỏi cường độ âm của tiếng xe máy gấp bao nhiêu lần cường độ âm của tiếng nói chuyện?",
+    "blanks": [
+        {"label": "Số lần =", "answers": ["1000"]}
+    ],
+    "points": 1,
+    "explanation": """Gọi \\( I_1, I_2 \\) lần lượt là cường độ âm của tiếng xe máy và tiếng nói chuyện.
+
+Ta có: \\( L_1 = 10\\log\\left(\\dfrac{I_1}{I_0}\\right) = 80 \\Rightarrow \\log\\left(\\dfrac{I_1}{I_0}\\right) = 8 \\Rightarrow I_1 = I_0\\cdot 10^8 \\)
+
+Tương tự: \\( L_2 = 10\\log\\left(\\dfrac{I_2}{I_0}\\right) = 50 \\Rightarrow \\log\\left(\\dfrac{I_2}{I_0}\\right) = 5 \\Rightarrow I_2 = I_0\\cdot 10^5 \\)
+
+Lập tỉ số: \\( \\dfrac{I_1}{I_2} = \\dfrac{10^8}{10^5} = 10^3 = 1000 \\)
+
+Vậy cường độ âm tiếng xe máy gấp 1000 lần tiếng nói chuyện.
+
+Đáp án: 1000.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de10_dd_7",
+    "type": "dragdrop",
+    "content": """Kéo thả các kết quả tương ứng từ bảng trên điền vào các ô trống dưới đây để được các đẳng thức đúng:
+
+1) \\( \\log_3 27 = \\) (1)
+
+2) \\( \\ln(e^4) = \\) (2)
+
+3) \\( 2^{\\log_2 5} = \\) (3)
+
+4) \\( 100^{\\log\\sqrt{2}} = \\) (4)""",
+    "options_pool": [
+        '$2$',
+        '$3$',
+        '$4$',
+        '$5$',
+        '$6$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$3$"},
+        {"label": "(2) =", "answer": "$4$"},
+        {"label": "(3) =", "answer": "$5$"},
+        {"label": "(4) =", "answer": "$2$"},
+    ],
+    "points": 1,
+    "explanation": """1) \\( \\log_3 27 = \\log_3(3^3) = 3 \\).
+
+2) \\( \\ln(e^4) = 4\\ln e = 4\\cdot 1 = 4 \\).
+
+3) Theo tính chất \\( a^{\\log_a b}=b \\), ta có \\( 2^{\\log_2 5}=5 \\).
+
+4) \\( 100^{\\log\\sqrt{2}} = (10^2)^{\\log\\sqrt{2}} = 10^{2\\log\\sqrt{2}} = 10^{\\log(\\sqrt{2})^2} = 10^{\\log 2} = 2 \\).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de10_dd_8",
+    "type": "dragdrop",
+    "content": """Giải phương trình lôgarit sau: \\( \\log_2(x)+\\log_2(x-3)=2 \\).
+
+Chọn nghiệm x đúng từ bảng trên để kéo thả vào ô trống: \\( x= \\) (1)""",
+    "options_pool": [
+        '$-1$',
+        '$2$',
+        '$3$',
+        '$4$',
+        '$5$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$4$"},
+    ],
+    "points": 1,
+    "explanation": """Điều kiện xác định: \\( \\begin{cases} x>0 \\\\ x-3>0 \\end{cases} \\Leftrightarrow x>3 \\).
+
+Phương trình tương đương với: \\( \\log_2[x(x-3)]=2 \\)
+
+\\( \\Leftrightarrow x(x-3)=2^2 \\)
+
+\\( \\Leftrightarrow x^2-3x-4=0 \\)
+
+\\( \\Leftrightarrow (x-4)(x+1)=0 \\Leftrightarrow \\begin{cases} x=4 \\\\ x=-1 \\end{cases} \\)
+
+Đối chiếu với điều kiện \\( x>3 \\), chỉ có nghiệm \\( x=4 \\) thỏa mãn.
+
+Học sinh chọn 4 để kéo thả.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de10_mc_9",
+    "type": "mc4",
+    "content": " Một người gửi tiết kiệm 100 triệu đồng vào ngân hàng với lãi suất 6%/năm theo hình thức lãi kép (tiền lãi mỗi năm được nhập vào vốn để tính lãi cho năm sau). Hỏi ít nhất sau bao nhiêu năm, người đó sẽ có tổng số tiền cả vốn lẫn lãi lớn hơn 200 triệu đồng?",
+    "options": {
+        "A": "$11$ năm",
+        "B": "$12$ năm",
+        "C": "$13$ năm",
+        "D": "$14$ năm",
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": """Gọi n là số năm cần tìm (\\( n\\in\\mathbb{N}^* \\)).
+
+Áp dụng công thức lãi kép: \\( A = P(1+r)^n \\), ta có bất phương trình:
+
+\\( 100(1+0,06)^n > 200 \\Leftrightarrow 1,06^n > 2 \\)
+
+Lấy lôgarit cơ số 1,06 hai vế, ta được:
+
+\\( n > \\log_{1,06} 2 \\approx 11,89 \\)
+
+Vì n là số nguyên nên ít nhất sau 12 năm người đó mới có số tiền lớn hơn 200 triệu đồng.
+
+Chọn B.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de10_mc_10",
+    "type": "mc4",
+    "content": "Tìm tất cả các giá trị của tham số m để phương trình \\( 4^x-2^{x+2}+m=0 \\) có hai nghiệm thực phân biệt.",
+    "options": {
+        "A": "$m>4$",
+        "B": "$0<m<4$",
+        "C": "$m<4$",
+        "D": "$m>0$",
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": """Phương trình đã cho tương đương với: \\( (2^x)^2-4\\cdot 2^x+m=0 \\).
+
+Đặt \\( t=2^x \\) (điều kiện \\( t>0 \\)), ta có phương trình: \\( t^2-4t+m=0 \\) (1).
+
+Để phương trình ban đầu có 2 nghiệm thực phân biệt (ứng với mỗi giá trị \\( t>0 \\) cho đúng một giá trị x, do hàm \\( t=2^x \\) là đơn điệu) thì phương trình (1) phải có 2 nghiệm dương phân biệt \\( t_1, t_2 \\).
+
+Điều kiện là:
+
+\\( \\begin{cases} \\Delta' = 4-m>0 \\\\ S = t_1+t_2 = 4>0 \\text{ (luôn đúng)} \\\\ P = t_1 t_2 = m>0 \\end{cases} \\Leftrightarrow 0<m<4 \\)
+
+Chọn B.""",
+},
+
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de10_tf_11",
+    "type": "truefalse",
+    "content": "Cho hàm số \\( y=f(x)=\\log_2(x^2+1) \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Tập xác định của hàm số là \\( \\mathbb{R} \\).", "correct": True},
+        {"text": "Đồ thị hàm số đi qua gốc tọa độ \\( O(0;0) \\).", "correct": True},
+        {"text": "Hàm số đạt giá trị nhỏ nhất bằng 1.", "correct": False},
+        {"text": "Đồ thị hàm số đối xứng qua trục tung Oy.", "correct": True},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Vì \\( x^2+1>0 \\) với mọi \\( x\\in\\mathbb{R} \\) nên tập xác định \\( D=\\mathbb{R} \\).
+
+b) ĐÚNG: Thay \\( x=0 \\), ta có \\( f(0)=\\log_2(1)=0 \\). Đồ thị đi qua điểm \\( (0;0) \\).
+
+c) SAI: Ta có \\( x^2+1\\ge 1 \\Rightarrow \\log_2(x^2+1)\\ge\\log_2 1=0 \\). Giá trị nhỏ nhất của hàm số là 0 (tại \\( x=0 \\)), không phải bằng 1.
+
+d) ĐÚNG: Tập xác định \\( D=\\mathbb{R} \\) là tập đối xứng. \\( f(-x)=\\log_2((-x)^2+1)=\\log_2(x^2+1)=f(x) \\). Đây là hàm số chẵn nên đồ thị đối xứng qua trục tung.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de10_tf_12",
+    "type": "truefalse",
+    "content": " Đồng vị phóng xạ Carbon-14 (\\( C^{14} \\)) có chu kì bán rã khoảng 5730 năm. Hàm lượng \\( C^{14} \\) còn lại trong một mẫu vật liệu hữu cơ sau t năm được tính theo công thức: \\( M(t) = M_0\\cdot\\left(\\dfrac{1}{2}\\right)^{\\frac{t}{5730}} \\), trong đó \\( M_0 \\) là hàm lượng ban đầu. Xét các mệnh đề sau:",
+    "statements": [
+        {"text": "Hàm số biểu thị sự thay đổi khối lượng \\( M(t) \\) là một hàm số nghịch biến.", "correct": True},
+        {"text": "Một mẩu xương cổ có tỉ lệ \\( C^{14} \\) còn lại là 25% so với ban đầu thì mẩu xương đó có tuổi đời 11460 năm.", "correct": True},
+        {"text": "Sau đúng 3 chu kì bán rã, tỉ lệ \\( C^{14} \\) còn lại trong mẫu vật là 12,5%.", "correct": True},
+        {"text": "Công thức tính thời gian t khi biết tỉ lệ phần trăm còn lại \\( p=\\dfrac{M(t)}{M_0} \\) là \\( t = 5730\\cdot\\log_2 p \\).", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Cơ số \\( a=\\dfrac{1}{2}<1 \\), do đó hàm số mũ nghịch biến trên \\( \\mathbb{R} \\), tức là M(t) giảm dần theo thời gian.
+
+b) ĐÚNG: Tỉ lệ \\( 25\\% = \\dfrac{1}{4} = \\left(\\dfrac{1}{2}\\right)^2 \\). Ta có \\( \\dfrac{t}{5730}=2 \\Rightarrow t=11460 \\) năm.
+
+c) ĐÚNG: Sau 3 chu kì (\\( t=3\\times 5730 \\)), tỉ lệ còn lại là \\( \\left(\\dfrac{1}{2}\\right)^3 = \\dfrac{1}{8} = 12,5\\% \\).
+
+d) SAI: Ta có \\( p = \\left(\\dfrac{1}{2}\\right)^{\\frac{t}{5730}} = 2^{-\\frac{t}{5730}} \\Rightarrow \\log_2 p = -\\dfrac{t}{5730} \\Rightarrow t = -5730\\cdot\\log_2 p \\) (có dấu trừ ở trước, chứ không phải \\( t=5730\\log_2 p \\) như mệnh đề nêu).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de10_sh_13",
+    "type": "short",
+    "content": "Tính tích các nghiệm thực của phương trình: \\( \\log_2^2 x - 5\\log_2 x + 4 = 0 \\).",
+    "blanks": [
+        {"label": "Tích các nghiệm =", "answers": ["32"]}
+    ],
+    "points": 1,
+    "explanation": """Điều kiện: \\( x>0 \\).
+
+Đặt \\( t=\\log_2 x \\). Phương trình trở thành: \\( t^2-5t+4=0 \\).
+
+Nhẩm nghiệm, ta được \\( t_1=1 \\) và \\( t_2=4 \\).
+
+Với \\( t=1 \\Rightarrow \\log_2 x=1 \\Leftrightarrow x_1=2 \\).
+
+Với \\( t=4 \\Rightarrow \\log_2 x=4 \\Leftrightarrow x_2=16 \\).
+
+Tích các nghiệm của phương trình là: \\( x_1\\cdot x_2 = 2\\cdot 16 = 32 \\).
+
+(Hoặc dùng Vi-ét: \\( t_1+t_2=5 \\Rightarrow \\log_2 x_1+\\log_2 x_2=5 \\Rightarrow \\log_2(x_1x_2)=5 \\Rightarrow x_1x_2=2^5=32 \\)).
+
+Đáp án: 32.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de10_sh_14",
+    "type": "short",
+    "content": "Tìm tổng tất cả các nghiệm thực của phương trình: \\( 2^{x^2-x} - 2^{2+x-x^2} = 3 \\).",
+    "blanks": [
+        {"label": "Tổng các nghiệm =", "answers": ["1"]}
+    ],
+    "points": 1,
+    "explanation": """Phương trình có thể viết lại: \\( 2^{x^2-x} - \\dfrac{2^2}{2^{x^2-x}} = 3 \\).
+
+Đặt \\( t = 2^{x^2-x} \\) (điều kiện \\( t>0 \\)), phương trình trở thành:
+
+\\( t - \\dfrac{4}{t} = 3 \\Leftrightarrow t^2-3t-4=0 \\)
+
+Giải phương trình bậc hai ta được \\( t=4 \\) (nhận) và \\( t=-1 \\) (loại).
+
+Với \\( t=4 \\Rightarrow 2^{x^2-x}=4=2^2 \\Leftrightarrow x^2-x=2 \\Leftrightarrow x^2-x-2=0 \\).
+
+Phương trình bậc hai này có 2 nghiệm phân biệt (có thể nhẩm được \\( x_1=-1, x_2=2 \\)).
+
+Áp dụng định lí Vi-ét, tổng hai nghiệm là \\( S=-\\dfrac{b}{a}=1 \\).
+
+Đáp án: 1.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de10_dd_15",
+    "type": "dragdrop",
+    "content": """Tính đạo hàm của các hàm số sau. Kéo thả kết quả tương ứng từ bảng trên điền vào các ô trống:
+
+1) \\( y=2^x \\Rightarrow y' = \\) (1)
+
+2) \\( y=\\ln(3x) \\Rightarrow y' = \\) (2)
+
+3) \\( y=e^{2x} \\Rightarrow y' = \\) (3)
+
+4) \\( y=\\log_2 x \\Rightarrow y' = \\) (4)""",
+    "options_pool": [
+        '$2^x\\ln 2$',
+        '$\\dfrac{1}{x}$',
+        '$2e^{2x}$',
+        '$\\dfrac{1}{x\\ln 2}$',
+        '$3^x$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$2^x\\ln 2$"},
+        {"label": "(2) =", "answer": "$\\dfrac{1}{x}$"},
+        {"label": "(3) =", "answer": "$2e^{2x}$"},
+        {"label": "(4) =", "answer": "$\\dfrac{1}{x\\ln 2}$"},
+    ],
+    "points": 1,
+    "explanation": """1) Theo công thức \\( (a^x)'=a^x\\ln a \\), ta có \\( (2^x)'=2^x\\ln 2 \\).
+
+2) Theo công thức \\( (\\ln u)'=\\dfrac{u'}{u} \\), ta có \\( (\\ln(3x))'=\\dfrac{3}{3x}=\\dfrac{1}{x} \\).
+
+3) Theo công thức \\( (e^u)'=u'e^u \\), ta có \\( (e^{2x})'=2e^{2x} \\).
+
+4) Theo công thức \\( (\\log_a x)'=\\dfrac{1}{x\\ln a} \\), ta có \\( (\\log_2 x)'=\\dfrac{1}{x\\ln 2} \\).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de10_dd_16",
+    "type": "dragdrop",
+    "content": """Tìm tập xác định D của các hàm số sau. Kéo thả kết quả tương ứng vào các ô trống:
+
+1) \\( y=(x-1)^{-2} \\Rightarrow D= \\) (1)
+
+2) \\( y=(x-1)^{\\sqrt{2}} \\Rightarrow D= \\) (2)
+
+3) \\( y=\\log_2(1-x) \\Rightarrow D= \\) (3)
+
+4) \\( y=\\sqrt{\\ln x} \\Rightarrow D= \\) (4)""",
+    "options_pool": [
+        '$\\mathbb{R}\\setminus\\{1\\}$',
+        '$(1;+\\infty)$',
+        '$(-\\infty;1)$',
+        '$[1;+\\infty)$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$\\mathbb{R}\\setminus\\{1\\}$"},
+        {"label": "(2) =", "answer": "$(1;+\\infty)$"},
+        {"label": "(3) =", "answer": "$(-\\infty;1)$"},
+        {"label": "(4) =", "answer": "$[1;+\\infty)$"},
+    ],
+    "points": 1,
+    "explanation": """1) Hàm lũy thừa với số mũ nguyên âm, điều kiện là cơ số khác 0 \\( \\Rightarrow x-1\\neq 0 \\Leftrightarrow x\\neq 1 \\). Vậy \\( D=\\mathbb{R}\\setminus\\{1\\} \\).
+
+2) Hàm lũy thừa với số mũ không nguyên (là số vô tỉ \\( \\sqrt{2} \\)), điều kiện cơ số lớn hơn 0 \\( \\Rightarrow x-1>0 \\Leftrightarrow x>1 \\). Vậy \\( D=(1;+\\infty) \\).
+
+3) Biểu thức lôgarit xác định khi \\( 1-x>0 \\Leftrightarrow x<1 \\). Vậy \\( D=(-\\infty;1) \\).
+
+4) Điều kiện xác định gồm 2 phần: \\( x>0 \\) (cho ln x) và \\( \\ln x\\ge 0 \\) (cho căn thức). Ta có \\( \\ln x\\ge\\ln 1\\Leftrightarrow x\\ge 1 \\). Kết hợp lại ta được \\( x\\ge 1 \\). Vậy \\( D=[1;+\\infty) \\).""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de10_mc_17",
+    "type": "mc4",
+    "content": "Gọi S là tập hợp các giá trị thực của tham số m để phương trình \\( 9^x-2(m+1)3^x+m^2-3=0 \\) có hai nghiệm thực phân biệt \\( x_1, x_2 \\) thỏa mãn \\( x_1+x_2=1 \\). Mệnh đề nào dưới đây đúng?",
+    "options": {
+        "A": "$S=\\{\\sqrt{6}\\}$",
+        "B": "$S=\\{-\\sqrt{6};\\sqrt{6}\\}$",
+        "C": "$S=\\{2\\}$",
+        "D": "$S=\\varnothing$",
+    },
+    "correct": "A",
+    "points": 1,
+    "explanation": """Đặt \\( t=3^x\\ (t>0) \\). Phương trình trở thành: \\( t^2-2(m+1)t+m^2-3=0 \\) (1).
+
+Để phương trình ban đầu có 2 nghiệm phân biệt thì (1) phải có 2 nghiệm dương phân biệt \\( t_1, t_2 \\). Điều kiện là:
+
+\\( \\begin{cases} \\Delta' = (m+1)^2-(m^2-3)>0 \\\\ S = 2(m+1)>0 \\\\ P = m^2-3>0 \\end{cases} \\Leftrightarrow \\begin{cases} 2m+4>0 \\\\ m>-1 \\\\ m<-\\sqrt{3} \\text{ hoặc } m>\\sqrt{3} \\end{cases} \\Leftrightarrow m>\\sqrt{3} \\)
+
+Theo định lí Vi-ét, ta có \\( t_1 t_2 = m^2-3 \\).
+
+Mà \\( t_1 t_2 = 3^{x_1}\\cdot 3^{x_2} = 3^{x_1+x_2} = 3^1 = 3 \\).
+
+Suy ra \\( m^2-3=3 \\Leftrightarrow m^2=6 \\Leftrightarrow m=\\pm\\sqrt{6} \\).
+
+Đối chiếu điều kiện \\( m>\\sqrt{3} \\), ta nhận \\( m=\\sqrt{6} \\). Vậy \\( S=\\{\\sqrt{6}\\} \\).
+
+Chọn A.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de10_mc_18",
+    "type": "mc4",
+    "content": "Tìm tất cả các giá trị của tham số m để hàm số \\( y = \\sqrt{\\log_{0,5}(x^2+mx+m+2)} \\) có tập xác định là \\( \\mathbb{R} \\).",
+    "options": {
+        "A": "$m\\in[2-2\\sqrt{2};2+2\\sqrt{2}]$",
+        "B": "$m\\in(2-2\\sqrt{2};2+2\\sqrt{2})$",
+        "C": "$m\\in(2-2\\sqrt{3};2+2\\sqrt{3})$",
+        "D": "$m\\in[2-2\\sqrt{3};2+2\\sqrt{3}]$",
+    },
+    "correct": "A",
+    "points": 1,
+    "explanation": """Hàm số xác định trên \\( \\mathbb{R} \\) khi và chỉ khi:
+
+\\( \\log_{0,5}(x^2+mx+m+2) \\ge 0,\\ \\forall x\\in\\mathbb{R} \\)
+
+\\( \\Leftrightarrow 0 < x^2+mx+m+2 \\le 1,\\ \\forall x\\in\\mathbb{R} \\)
+
+Hệ bất phương trình tương đương:
+
+\\( \\begin{cases} x^2+mx+m+2>0,\\ \\forall x\\in\\mathbb{R} & (1) \\\\ x^2+mx+m+1\\ge 0,\\ \\forall x\\in\\mathbb{R} & (2) \\end{cases} \\)
+
+Xét (1): \\( \\Delta_1 = m^2-4(m+2) < 0 \\Leftrightarrow m^2-4m-8<0 \\Leftrightarrow 2-2\\sqrt{3} < m < 2+2\\sqrt{3} \\)
+
+Xét (2): \\( \\Delta_2 = m^2-4(m+1) \\le 0 \\Leftrightarrow m^2-4m-4\\le 0 \\Leftrightarrow 2-2\\sqrt{2} \\le m \\le 2+2\\sqrt{2} \\)
+
+Giao hai điều kiện, do \\( [2-2\\sqrt{2};2+2\\sqrt{2}] \\subset (2-2\\sqrt{3};2+2\\sqrt{3}) \\), ta được \\( m\\in[2-2\\sqrt{2};2+2\\sqrt{2}] \\).
+
+Chọn A.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de10_tf_19",
+    "type": "truefalse",
+    "content": "Cho phương trình \\( x^{\\log_2 x} = \\dfrac{x^3}{4} \\). Xét tính đúng/sai của các mệnh đề sau:",
+    "statements": [
+        {"text": "Tập xác định của phương trình là \\( (0;+\\infty) \\).", "correct": True},
+        {"text": "Lấy lôgarit cơ số 2 hai vế, ta thu được phương trình \\( \\log_2^2 x - 3\\log_2 x + 2 = 0 \\).", "correct": True},
+        {"text": "Phương trình có hai nghiệm thực phân biệt cùng lớn hơn 1.", "correct": True},
+        {"text": "Tổng các nghiệm của phương trình là một số nguyên tố.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Điều kiện để biểu thức \\( \\log_2 x \\) và \\( x^{\\log_2 x} \\) có nghĩa là \\( x>0 \\).
+
+b) ĐÚNG: Lấy \\( \\log_2 \\) hai vế:
+
+\\( \\log_2\\left(x^{\\log_2 x}\\right) = \\log_2\\left(\\dfrac{x^3}{4}\\right) \\)
+
+\\( \\Leftrightarrow \\log_2 x\\cdot\\log_2 x = \\log_2 x^3 - \\log_2 4 \\)
+
+\\( \\Leftrightarrow \\log_2^2 x = 3\\log_2 x - 2 \\Leftrightarrow \\log_2^2 x - 3\\log_2 x + 2 = 0 \\)
+
+c) ĐÚNG: Đặt \\( t=\\log_2 x \\), ta có \\( t^2-3t+2=0 \\Leftrightarrow t=1 \\) hoặc \\( t=2 \\).
+
+Với \\( t=1 \\Rightarrow x=2>1 \\). Với \\( t=2 \\Rightarrow x=4>1 \\).
+
+d) SAI: Tổng các nghiệm là \\( 2+4=6 \\). Số 6 là hợp số, không phải số nguyên tố.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de10_tf_20",
+    "type": "truefalse",
+    "content": "Xét hàm số \\( f(x) = \\ln\\left(x+\\sqrt{x^2+1}\\right) \\). Đây là một hàm số đặc biệt thường xuyên xuất hiện trong các bài toán tích phân và phương trình hàm. Mệnh đề nào dưới đây đúng hay sai?",
+    "statements": [
+        {"text": "Tập xác định của hàm số là \\( \\mathbb{R} \\).", "correct": True},
+        {"text": "\\( f(x) \\) là hàm số lẻ.", "correct": True},
+        {"text": "Đạo hàm của hàm số là \\( f'(x) = \\dfrac{1}{\\sqrt{x^2+1}} \\).", "correct": True},
+        {"text": "Phương trình \\( f(x)+f(2x-3)=0 \\) có nghiệm duy nhất \\( x=3 \\).", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Vì \\( \\sqrt{x^2+1} > \\sqrt{x^2} = |x| \\ge -x \\) nên \\( x+\\sqrt{x^2+1} > 0,\\ \\forall x\\in\\mathbb{R} \\). Do đó tập xác định là \\( \\mathbb{R} \\).
+
+b) ĐÚNG: Ta có:
+
+\\( f(-x) = \\ln\\left(-x+\\sqrt{x^2+1}\\right) = \\ln\\left(\\dfrac{(-x+\\sqrt{x^2+1})(x+\\sqrt{x^2+1})}{x+\\sqrt{x^2+1}}\\right) \\)
+
+\\( = \\ln\\left(\\dfrac{x^2+1-x^2}{x+\\sqrt{x^2+1}}\\right) = \\ln\\left(\\dfrac{1}{x+\\sqrt{x^2+1}}\\right) = -\\ln(x+\\sqrt{x^2+1}) = -f(x) \\)
+
+c) ĐÚNG:
+
+\\( f'(x) = \\dfrac{\\left(x+\\sqrt{x^2+1}\\right)'}{x+\\sqrt{x^2+1}} = \\dfrac{1+\\dfrac{x}{\\sqrt{x^2+1}}}{x+\\sqrt{x^2+1}} = \\dfrac{\\sqrt{x^2+1}+x}{\\sqrt{x^2+1}\\left(x+\\sqrt{x^2+1}\\right)} = \\dfrac{1}{\\sqrt{x^2+1}} \\)
+
+d) SAI: Do \\( f'(x)>0,\\ \\forall x\\in\\mathbb{R} \\) nên hàm số đồng biến trên \\( \\mathbb{R} \\).
+
+Phương trình \\( f(x)+f(2x-3)=0 \\Leftrightarrow f(2x-3)=-f(x)=f(-x) \\) (vì f là hàm lẻ).
+
+Vì f đồng biến (do đó là hàm đơn ánh) nên: \\( 2x-3=-x \\Leftrightarrow 3x=3 \\Leftrightarrow x=1 \\). Nghiệm là \\( x=1 \\), không phải \\( x=3 \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de10_sh_21",
+    "type": "short",
+    "content": "Cho các số thực dương x, y thỏa mãn \\( \\log_9 x = \\log_{12} y = \\log_{16}(x+y) \\). Biết tỉ số \\( \\dfrac{y}{x} \\) có thể viết dưới dạng \\( \\dfrac{a+\\sqrt{b}}{c} \\) với a, b, c là các số nguyên dương và phân số trên tối giản. Tính giá trị biểu thức \\( S=a+b+c \\).",
+    "blanks": [
+        {"label": "S =", "answers": ["8"]}
+    ],
+    "points": 1,
+    "explanation": """Đặt \\( \\log_9 x = \\log_{12} y = \\log_{16}(x+y) = t \\).
+
+Ta có: \\( \\begin{cases} x=9^t \\\\ y=12^t \\\\ x+y=16^t \\end{cases} \\). Từ đó suy ra \\( 9^t+12^t=16^t \\).
+
+Chia cả hai vế cho \\( 9^t \\), ta được:
+
+\\( 1+\\left(\\dfrac{12}{9}\\right)^t = \\left(\\dfrac{16}{9}\\right)^t \\Leftrightarrow 1+\\left(\\dfrac{4}{3}\\right)^t = \\left(\\dfrac{4}{3}\\right)^{2t} \\)
+
+Đặt \\( u=\\left(\\dfrac{4}{3}\\right)^t > 0 \\), phương trình trở thành \\( u^2-u-1=0 \\Rightarrow u=\\dfrac{1+\\sqrt{5}}{2} \\) (do \\( u>0 \\)).
+
+Ta cần tính tỉ số:
+
+\\( \\dfrac{y}{x} = \\dfrac{12^t}{9^t} = \\left(\\dfrac{12}{9}\\right)^t = \\left(\\dfrac{4}{3}\\right)^t = u = \\dfrac{1+\\sqrt{5}}{2} \\)
+
+Đồng nhất với dạng \\( \\dfrac{a+\\sqrt{b}}{c} \\), ta có \\( a=1, b=5, c=2 \\) (phân số tối giản, các số đều nguyên dương).
+
+Vậy \\( S=a+b+c=1+5+2=8 \\).
+
+Đáp án: 8.""",
+},
+
+
+
+
+
+
+
+
+
+
+
+
                 
+                
+], # Đóng danh sách questions của Đề 10
+    }, # Đóng dictionary của Đề 10                
 ] # Dấu kết thúc toàn bộ danh sách đề thi (Nằm sát lề trái, không lùi dấu cách nào)
 
 
