@@ -9740,9 +9740,640 @@ Vậy \\( S=a+b+c=1+5+2=8 \\).
 Đáp án: 8.""",
 },
 
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de10_sh_22",
+    "type": "short",
+    "content": "(Bài toán Làm nguội Newton) Sự làm nguội của một vật được mô hình hóa bởi định luật làm nguội Newton: \\( T(t) = T_{mt} + (T_0-T_{mt})e^{-kt} \\), trong đó T(t) là nhiệt độ của vật tại thời điểm t (phút), \\( T_{mt} \\) là nhiệt độ môi trường, \\( T_0 \\) là nhiệt độ ban đầu của vật, và k là hằng số làm nguội. Một cốc cà phê có nhiệt độ ban đầu 100°C được đặt trong phòng có nhiệt độ không đổi là 20°C. Sau 10 phút, nhiệt độ cốc cà phê giảm xuống còn 60°C. Hỏi sau bao lâu kể từ lúc đặt trong phòng, nhiệt độ cốc cà phê chỉ còn 30°C? (Đơn vị: phút).",
+    "blanks": [
+        {"label": "Thời gian (phút) =", "answers": ["30"]}
+    ],
+    "points": 1,
+    "explanation": """Theo giả thiết: \\( T_0=100,\\ T_{mt}=20 \\). Hàm nhiệt độ là \\( T(t)=20+80e^{-kt} \\).
 
+Sau 10 phút, nhiệt độ là 60°C, nên ta có:
 
+\\( T(10) = 20+80e^{-10k}=60 \\Leftrightarrow 80e^{-10k}=40 \\Leftrightarrow e^{-10k}=\\dfrac{1}{2} \\)
 
+Ta cần tìm t để \\( T(t)=30 \\):
+
+\\( 20+80e^{-kt}=30 \\Leftrightarrow 80e^{-kt}=10 \\Leftrightarrow e^{-kt}=\\dfrac{1}{8} \\)
+
+Ta có \\( \\dfrac{1}{8}=\\left(\\dfrac{1}{2}\\right)^3 \\). Do đó, \\( e^{-kt} = \\left(e^{-10k}\\right)^3 = e^{-30k} \\).
+
+Suy ra \\( -kt=-30k \\Leftrightarrow t=30 \\) (phút).
+
+Vậy sau 30 phút nhiệt độ cốc cà phê sẽ là 30°C.
+
+Đáp án: 30.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de10_dd_23",
+    "type": "dragdrop",
+    "content": """Cho a, b là các số thực dương và \\( a\\neq 1 \\). Hãy kéo thả biểu thức rút gọn tương ứng từ bảng trên vào các ô trống dưới đây:
+
+1) \\( \\log_{\\sqrt{a}}(ab) = \\) (1)
+
+2) \\( \\log_a(a^3 b^2) = \\) (2)
+
+3) \\( \\log_{a^2}\\left(\\dfrac{a}{b}\\right) = \\) (3)
+
+4) \\( \\log_a\\left(\\dfrac{\\sqrt{b}}{a^2}\\right) = \\) (4)""",
+    "options_pool": [
+        '$3+2\\log_a b$',
+        '$2+2\\log_a b$',
+        '$\\dfrac{1}{2}\\log_a b-2$',
+        '$\\dfrac{1}{2}-\\dfrac{1}{2}\\log_a b$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$2+2\\log_a b$"},
+        {"label": "(2) =", "answer": "$3+2\\log_a b$"},
+        {"label": "(3) =", "answer": "$\\dfrac{1}{2}-\\dfrac{1}{2}\\log_a b$"},
+        {"label": "(4) =", "answer": "$\\dfrac{1}{2}\\log_a b-2$"},
+    ],
+    "points": 1,
+    "explanation": """Áp dụng các tính chất cơ bản của lôgarit:
+
+1) \\( \\log_{\\sqrt{a}}(ab) = \\log_{a^{1/2}}(ab) = 2\\log_a(ab) = 2(\\log_a a+\\log_a b) = 2+2\\log_a b \\)
+
+2) \\( \\log_a(a^3 b^2) = \\log_a(a^3)+\\log_a(b^2) = 3+2\\log_a b \\)
+
+3) \\( \\log_{a^2}\\left(\\dfrac{a}{b}\\right) = \\dfrac{1}{2}\\log_a\\left(\\dfrac{a}{b}\\right) = \\dfrac{1}{2}(\\log_a a-\\log_a b) = \\dfrac{1}{2}-\\dfrac{1}{2}\\log_a b \\)
+
+4) \\( \\log_a\\left(\\dfrac{\\sqrt{b}}{a^2}\\right) = \\log_a(b^{1/2})-\\log_a(a^2) = \\dfrac{1}{2}\\log_a b-2 \\)""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de10_dd_24",
+    "type": "dragdrop",
+    "content": """Dựa vào tính chất đồng biến, nghịch biến của hàm số mũ và hàm số lôgarit với cơ số a, hãy kéo thả tính chất phù hợp từ bảng trên vào ô trống của từng hàm số sau:
+
+1) Hàm số \\( y=\\log_{\\frac{\\pi}{4}} x \\): (1)
+
+2) Hàm số \\( y=\\left(\\dfrac{e}{2}\\right)^x \\): (2)
+
+3) Hàm số \\( y=\\log_{\\frac{5}{2}} x \\): (3)
+
+4) Hàm số \\( y=(\\sqrt{3}-1)^x \\): (4)""",
+    "options_pool": [
+        'Nghịch biến trên $\\mathbb{R}$',
+        'Nghịch biến trên $(0;+\\infty)$',
+        'Đồng biến trên $\\mathbb{R}$',
+        'Đồng biến trên $(0;+\\infty)$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "Nghịch biến trên $(0;+\\infty)$"},
+        {"label": "(2) =", "answer": "Đồng biến trên $\\mathbb{R}$"},
+        {"label": "(3) =", "answer": "Đồng biến trên $(0;+\\infty)$"},
+        {"label": "(4) =", "answer": "Nghịch biến trên $\\mathbb{R}$"},
+    ],
+    "points": 1,
+    "explanation": """Tính đơn điệu của hàm \\( y=a^x \\) và \\( y=\\log_a x \\) phụ thuộc vào cơ số a so với 1.
+
+1) \\( y=\\log_{\\frac{\\pi}{4}} x \\) là hàm số lôgarit. Cơ số \\( a=\\dfrac{\\pi}{4}\\approx 0,785<1 \\Rightarrow \\) nghịch biến trên \\( (0;+\\infty) \\).
+
+2) \\( y=\\left(\\dfrac{e}{2}\\right)^x \\) là hàm số mũ. Cơ số \\( a=\\dfrac{e}{2}\\approx 1,359>1 \\Rightarrow \\) đồng biến trên \\( \\mathbb{R} \\).
+
+3) \\( y=\\log_{\\frac{5}{2}} x \\) là hàm số lôgarit. Cơ số \\( a=\\dfrac{5}{2}=2,5>1 \\Rightarrow \\) đồng biến trên \\( (0;+\\infty) \\).
+
+4) \\( y=(\\sqrt{3}-1)^x \\) là hàm số mũ. Cơ số \\( a=\\sqrt{3}-1\\approx 0,732<1 \\Rightarrow \\) nghịch biến trên \\( \\mathbb{R} \\).""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de10_mc_25",
+    "type": "mc4",
+    "content": "Cho hai số thực dương x, y thỏa mãn phương trình: \\( \\log_2\\left(\\dfrac{2x+2y}{x^2+y^2-xy+1}\\right) = x^2+y^2-xy-2x-2y+1 \\). Biết rằng giá trị lớn nhất của biểu thức \\( P=x+y \\) có dạng \\( a+b\\sqrt{c} \\) (với a, b, c là các số nguyên dương, c là số nguyên tố). Giá trị của biểu thức \\( T=a+b+c \\) bằng bao nhiêu?",
+    "options": {
+        "A": "$9$",
+        "B": "$11$",
+        "C": "$7$",
+        "D": "$10$",
+    },
+    "correct": "A",
+    "points": 1,
+    "explanation": """Điều kiện: \\( x,y>0 \\). Phương trình đã cho tương đương với:
+
+\\( \\log_2(2x+2y)-\\log_2(x^2+y^2-xy+1) = x^2+y^2-xy+1-(2x+2y) \\)
+
+\\( \\Leftrightarrow \\log_2(2x+2y)+2x+2y = \\log_2(x^2+y^2-xy+1)+x^2+y^2-xy+1 \\) (1)
+
+Xét hàm số \\( f(t)=\\log_2 t+t \\) trên khoảng \\( (0;+\\infty) \\), ta có \\( f'(t)=\\dfrac{1}{t\\ln 2}+1>0,\\ \\forall t>0 \\) nên f(t) đồng biến.
+
+Do đó (1) \\( \\Leftrightarrow 2(x+y) = x^2+y^2-xy+1 \\).
+
+Ta có hằng đẳng thức: \\( x^2+y^2-xy = (x+y)^2-3xy \\). Mà \\( xy\\le\\dfrac{(x+y)^2}{4} \\Rightarrow -3xy\\ge -\\dfrac{3}{4}(x+y)^2 \\).
+
+Suy ra \\( x^2+y^2-xy \\ge (x+y)^2-\\dfrac{3}{4}(x+y)^2 = \\dfrac{1}{4}(x+y)^2 \\).
+
+Từ đó: \\( 2(x+y) \\ge \\dfrac{1}{4}(x+y)^2+1 \\Leftrightarrow \\dfrac{1}{4}P^2-2P+1\\le 0 \\Leftrightarrow P^2-8P+4\\le 0 \\).
+
+Giải bất phương trình, ta được \\( 4-2\\sqrt{3} \\le P \\le 4+2\\sqrt{3} \\).
+
+Vậy \\( P_{max}=4+2\\sqrt{3} \\), suy ra \\( a=4, b=2, c=3 \\). Từ đó \\( T=4+2+3=9 \\).
+
+Chọn A.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de10_mc_26",
+    "type": "mc4",
+    "content": "Có bao nhiêu số nguyên \\( m \\in [-10;10] \\) để bất phương trình \\( 9^{x} - 2m\\cdot 3^{x} + m^{2} - 1 > 0 \\) nghiệm đúng với mọi \\( x \\in (0;1) \\)?",
+    "options": {
+        "A": "17",
+        "B": "18",
+        "C": "19",
+        "D": "20",
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": """Đặt \\( t = 3^{x} \\). Vì \\( x \\in (0;1) \\) là khoảng mở nên \\( t \\in (1;3) \\) (cũng là khoảng mở).
+
+Bất phương trình trở thành: \\( t^{2} - 2mt + m^{2} - 1 > 0 \\Leftrightarrow (t-m)^{2} > 1 \\Leftrightarrow t \\notin [m-1;\\,m+1] \\).
+
+Yêu cầu bài toán tương đương với: khoảng \\( (1;3) \\) và đoạn \\( [m-1;\\,m+1] \\) không có điểm chung, tức là:
+
+\\( (1;3) \\cap [m-1;\\,m+1] = \\varnothing \\)
+
+Vì \\( (1;3) \\) là khoảng mở còn \\( [m-1;m+1] \\) là đoạn đóng có độ dài cố định bằng 2, hai tập này rời nhau khi và chỉ khi đoạn nằm hoàn toàn bên trái hoặc hoàn toàn bên phải khoảng, cho phép chạm đúng vào hai đầu mút 1 và 3:
+
+\\( m+1 \\le 1 \\) hoặc \\( m-1 \\ge 3 \\)
+
+\\( \\Leftrightarrow m \\le 0 \\) hoặc \\( m \\ge 4 \\).
+
+Kết hợp điều kiện \\( m \\in [-10;10] \\), \\( m \\in \\mathbb{Z} \\):
+
+- Với \\( m \\le 0 \\): \\( m \\in \\{-10,-9,\\ldots,0\\} \\), có 11 giá trị.
+- Với \\( m \\ge 4 \\): \\( m \\in \\{4,5,\\ldots,10\\} \\), có 7 giá trị.
+
+Tổng cộng có \\( 11+7=18 \\) giá trị nguyên của \\( m \\) thỏa mãn.
+
+Chọn đáp án B.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de10_tf_27",
+    "type": "truefalse",
+    "content": "Cho hàm số \\( f(x) = \\dfrac{\\ln x}{x} \\). Khảo sát tính chất của hàm số này là chìa khóa để giải quyết phương trình dạng \\( x^{y} = y^{x} \\). Xét tính đúng/sai của các nhận định sau:",
+    "statements": [
+        {"text": "Hàm số \\( f(x) \\) đồng biến trên khoảng \\( (0;e) \\) và nghịch biến trên khoảng \\( (e;+\\infty) \\).", "correct": True},
+        {"text": "Giá trị lớn nhất của hàm số trên \\( (0;+\\infty) \\) là \\( \\dfrac{1}{e} \\).", "correct": True},
+        {"text": "Có vô số cặp số nguyên dương \\( (x;y) \\) với \\( x<y \\) thỏa mãn phương trình \\( x^{y}=y^{x} \\).", "correct": False},
+        {"text": "Có đúng hai giá trị nguyên dương của tham số \\( m \\) để phương trình \\( x^{m}=m^{x} \\) có hai nghiệm thực phân biệt.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Ý tưởng cốt lõi: logarit hóa phương trình \\( x^{y}=y^{x} \\) (với \\( x,y>0 \\)) đưa về dạng \\( \\dfrac{\\ln x}{x} = \\dfrac{\\ln y}{y} \\), tức \\( f(x)=f(y) \\).
+
+a) ĐÚNG: Tập xác định \\( D=(0;+\\infty) \\). Ta có \\( f'(x) = \\dfrac{1-\\ln x}{x^{2}} \\), suy ra \\( f'(x)=0 \\Leftrightarrow x=e \\). Với \\( x\\in(0;e) \\) thì \\( f'(x)>0 \\); với \\( x\\in(e;+\\infty) \\) thì \\( f'(x)<0 \\).
+
+b) ĐÚNG: Từ bảng biến thiên, hàm số đạt cực đại (đồng thời là giá trị lớn nhất trên toàn miền xác định) tại \\( x=e \\), với \\( f(e)=\\dfrac{1}{e} \\).
+
+c) SAI: Phương trình \\( x^{y}=y^{x} \\Leftrightarrow f(x)=f(y) \\). Vì \\( f \\) tăng trên \\( (0;e) \\) rồi giảm trên \\( (e;+\\infty) \\), để có \\( x<y \\) thỏa \\( f(x)=f(y) \\) thì bắt buộc \\( 0<x<e<y \\). Do \\( x \\) nguyên dương nên \\( x\\in\\{1;2\\} \\):
+
+- \\( x=1 \\): \\( f(1)=0 \\), cần \\( f(y)=0 \\Rightarrow y=1 \\), loại vì không thỏa \\( x<y \\).
+- \\( x=2 \\): \\( f(2)=\\dfrac{\\ln 2}{2}=\\dfrac{\\ln 4}{4}=f(4) \\Rightarrow y=4 \\) (nghiệm duy nhất trên nhánh giảm do \\( f \\) đơn điệu ở đó).
+
+Vậy chỉ có đúng một cặp \\( (2;4) \\), không phải vô số cặp.
+
+d) SAI: Phương trình \\( x^{m}=m^{x} \\Leftrightarrow f(x)=f(m) \\) (với \\( x>0 \\)). Để có hai nghiệm thực phân biệt \\( x \\), đường thẳng \\( y=f(m) \\) phải cắt đồ thị \\( f \\) tại hai điểm, tức là:
+
+\\( 0 < f(m) < \\dfrac{1}{e} \\)
+
+Bất đẳng thức này đúng với mọi \\( m>1 \\) và \\( m\\ne e \\) (do \\( f \\) đạt giá trị lớn nhất duy nhất tại \\( x=e \\)). Vì \\( m \\) nguyên dương và \\( e \\) là số vô tỉ nên điều kiện chỉ còn là \\( m\\ge 2 \\), tức \\( m\\in\\{2;3;4;\\ldots\\} \\) — có vô số giá trị, không phải chỉ hai giá trị.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de10_tf_28",
+    "type": "truefalse",
+    "content": "Cho phương trình \\( \\log_{3}(x^{2}+2x+2) + x^{2}+2x-1 = m \\), với \\( m \\) là tham số thực. Đặt \\( u = x^{2}+2x+2 \\). Xét tính đúng/sai của các nhận định sau:",
+    "statements": [
+        {"text": "Tập giá trị của hàm số \\( g(x) = \\log_{3}(x^{2}+2x+2)+x^{2}+2x-1 \\) là nửa khoảng \\( [-2;+\\infty) \\).", "correct": True},
+        {"text": "Khi \\( m=0 \\), phương trình đã cho có đúng 2 nghiệm thực phân biệt.", "correct": True},
+        {"text": "Phương trình đã cho vô nghiệm khi và chỉ khi \\( m<-2 \\).", "correct": True},
+        {"text": "Để phương trình đã cho có duy nhất một nghiệm thực thì \\( m=0 \\).", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """Đặt \\( u = x^{2}+2x+2 = (x+1)^{2}+1 \\ge 1 \\). Phương trình trở thành:
+
+\\( \\log_{3}u + u - 3 = m \\)
+
+Xét hàm đặc trưng \\( h(u) = \\log_{3}u + u - 3 \\) trên \\( [1;+\\infty) \\). Ta có \\( h'(u) = \\dfrac{1}{u\\ln 3}+1 > 0,\\ \\forall u\\ge 1 \\), nên \\( h \\) đồng biến. Giá trị nhỏ nhất là \\( h(1) = 0+1-3=-2 \\), và \\( h(u)\\to+\\infty \\) khi \\( u\\to+\\infty \\).
+
+a) ĐÚNG: Vì \\( h \\) liên tục, đồng biến, có \\( h(1)=-2 \\) và tiến ra \\( +\\infty \\), tập giá trị của \\( g \\) là \\( [-2;+\\infty) \\).
+
+b) ĐÚNG: Với \\( m=0 \\), cần giải \\( h(u)=0 \\). Vì \\( h(1)=-2<0 \\) và \\( h(3)=\\log_3 3+3-3=1>0 \\), do \\( h \\) liên tục và đơn điệu tăng nên tồn tại duy nhất \\( u_{0}\\in(1;3) \\) sao cho \\( h(u_{0})=0 \\). Khi đó \\( x^{2}+2x+2=u_{0} \\Leftrightarrow (x+1)^{2}=u_{0}-1>0 \\), phương trình bậc hai này luôn cho đúng 2 nghiệm \\( x \\) phân biệt.
+
+c) ĐÚNG: Vì \\( \\min h(u) = -2 \\) trên miền xác định \\( u\\ge 1 \\), phương trình \\( h(u)=m \\) vô nghiệm khi và chỉ khi \\( m<-2 \\); khi đó phương trình ban đầu theo \\( x \\) cũng vô nghiệm.
+
+d) SAI: Với mỗi \\( u>1 \\) tìm được từ \\( h(u)=m \\), phương trình \\( (x+1)^{2}=u-1 \\) luôn cho 2 nghiệm \\( x \\) phân biệt. Do đó phương trình ban đầu có nghiệm \\( x \\) duy nhất chỉ khi \\( u-1=0 \\), tức \\( u=1 \\). Thay vào: \\( m = h(1) = -2 \\), chứ không phải \\( m=0 \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de10_sh_29",
+    "type": "short",
+    "content": "Có bao nhiêu cặp số nguyên dương \\( (x;y) \\) thỏa mãn bất phương trình: \\( \\log_{2}\\left(\\dfrac{2x+2y}{x^{2}+y^{2}}\\right) \\ge x^{2}+y^{2}-2x-2y \\)?",
+    "blanks": [
+        {"label": "Số cặp =", "answers": ["4"]}
+    ],
+    "points": 1,
+    "explanation": """Điều kiện xác định: \\( x^{2}+y^{2}>0 \\) và \\( 2x+2y>0 \\). Vì \\( x,y \\) nguyên dương nên điều kiện này luôn được thỏa mãn.
+
+Biến đổi bất phương trình đã cho:
+
+\\( \\log_{2}(2x+2y) - \\log_{2}(x^{2}+y^{2}) \\ge x^{2}+y^{2} - (2x+2y) \\)
+
+\\( \\Leftrightarrow \\log_{2}(2x+2y) + (2x+2y) \\ge \\log_{2}(x^{2}+y^{2}) + (x^{2}+y^{2}) \\quad (*) \\)
+
+Xét hàm đặc trưng \\( f(t) = \\log_{2}t + t \\) trên \\( (0;+\\infty) \\). Ta có \\( f'(t) = \\dfrac{1}{t\\ln 2}+1 > 0 \\), nên \\( f \\) đồng biến.
+
+Do đó \\( (*) \\Leftrightarrow f(2x+2y) \\ge f(x^{2}+y^{2}) \\Leftrightarrow 2x+2y \\ge x^{2}+y^{2} \\)
+
+\\( \\Leftrightarrow (x-1)^{2}+(y-1)^{2} \\le 2 \\)
+
+Đây là hình tròn (kể cả biên) tâm \\( I(1;1) \\), bán kính \\( R=\\sqrt{2}\\approx 1{,}414 \\). Vì \\( x,y \\) là số nguyên dương (\\( x,y\\ge 1 \\)):
+
+- \\( x=1 \\): \\( (y-1)^{2}\\le 2 \\Rightarrow -0{,}414 \\le y \\le 2{,}414 \\), với \\( y\\ge 1 \\) nguyên: \\( y\\in\\{1;2\\} \\).
+- \\( x=2 \\): \\( (y-1)^{2}\\le 1 \\Rightarrow 0 \\le y \\le 2 \\), với \\( y\\ge 1 \\) nguyên: \\( y\\in\\{1;2\\} \\).
+- \\( x\\ge 3 \\): \\( (x-1)^{2}\\ge 4>2 \\), không có nghiệm \\( y \\) thỏa mãn.
+
+Vậy có tất cả 4 cặp \\( (x;y) \\) thỏa mãn: \\( (1;1),(1;2),(2;1),(2;2) \\).
+
+Đáp số cần điền: 4.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de10_sh_30",
+    "type": "short",
+    "content": "Tính giá trị của biểu thức \\( P = \\log_{2}(1+\\tan 1^{\\circ}) + \\log_{2}(1+\\tan 2^{\\circ}) + \\cdots + \\log_{2}(1+\\tan 44^{\\circ}) \\).",
+    "blanks": [
+        {"label": "P =", "answers": ["22"]}
+    ],
+    "points": 1,
+    "explanation": """Xét tích \\( A(x) = (1+\\tan x)\\left[1+\\tan(45^{\\circ}-x)\\right] \\).
+
+Áp dụng công thức cộng: \\( \\tan(45^{\\circ}-x) = \\dfrac{1-\\tan x}{1+\\tan x} \\), ta có:
+
+\\( A(x) = (1+\\tan x)\\left(1+\\dfrac{1-\\tan x}{1+\\tan x}\\right) = (1+\\tan x)\\cdot\\dfrac{(1+\\tan x)+(1-\\tan x)}{1+\\tan x} = 2 \\)
+
+Suy ra:
+
+\\( \\log_{2}(1+\\tan x) + \\log_{2}\\left(1+\\tan(45^{\\circ}-x)\\right) = \\log_{2}\\left[A(x)\\right] = \\log_{2}2 = 1 \\)
+
+Tổng \\( P \\) gồm 44 số hạng ứng với \\( x=1^{\\circ},2^{\\circ},\\ldots,44^{\\circ} \\). Ghép thành các cặp có tổng góc bằng \\( 45^{\\circ} \\):
+
+\\( (1^{\\circ},44^{\\circ}), (2^{\\circ},43^{\\circ}), \\ldots, (22^{\\circ},23^{\\circ}) \\)
+
+Có tất cả 22 cặp như vậy (mỗi cặp đóng góp đúng 1 vào tổng, và không có số hạng lẻ ở giữa vì \\( 44 \\) là số chẵn), do đó:
+
+\\( P = 22 \\times 1 = 22 \\)
+
+Đáp số cần điền: 22.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de10_dd_31",
+    "type": "dragdrop",
+    "content": """Cho hàm số \\( f(x) = \\dfrac{9^{x}}{9^{x}+3} \\). Hãy tính các giá trị sau và kéo thả phương án tương ứng vào các ô trống:
+
+1) Biểu thức \\( f(x)+f(1-x) \\) có giá trị không đổi bằng: (1)
+
+2) \\( S = f\\left(\\dfrac{1}{100}\\right)+f\\left(\\dfrac{2}{100}\\right)+\\cdots+f\\left(\\dfrac{99}{100}\\right) = \\) (2)
+
+3) Nếu \\( f(a)+f(b)=1 \\) thì tổng \\( a+b = \\) (3)
+
+4) Tính \\( f(\\log_{3}2) = \\) (4)""",
+    "options_pool": ["$\\dfrac{4}{7}$", "$\\dfrac{99}{2}$", "$1$", "$\\dfrac{1}{2}$", "$100$"],
+    "blanks": [
+        {"label": "(1) =", "answer": "$1$"},
+        {"label": "(2) =", "answer": "$\\dfrac{99}{2}$"},
+        {"label": "(3) =", "answer": "$1$"},
+        {"label": "(4) =", "answer": "$\\dfrac{4}{7}$"},
+    ],
+    "points": 1,
+    "explanation": """Trước hết ta tính \\( f(1-x) \\):
+
+\\( f(1-x) = \\dfrac{9^{1-x}}{9^{1-x}+3} = \\dfrac{\\dfrac{9}{9^{x}}}{\\dfrac{9}{9^{x}}+3} = \\dfrac{9}{9+3\\cdot 9^{x}} = \\dfrac{3}{3+9^{x}} \\)
+
+1) Suy ra \\( f(x)+f(1-x) = \\dfrac{9^{x}}{9^{x}+3}+\\dfrac{3}{9^{x}+3} = \\dfrac{9^{x}+3}{9^{x}+3} = 1 \\). Ô (1) điền \\( 1 \\).
+
+2) Tổng \\( S \\) có 99 số hạng ứng với đối số từ \\( \\dfrac{1}{100} \\) đến \\( \\dfrac{99}{100} \\). Ghép cặp đối xứng qua \\( \\dfrac{1}{2} \\):
+
+\\( \\left[f\\left(\\dfrac{1}{100}\\right)+f\\left(\\dfrac{99}{100}\\right)\\right] + \\left[f\\left(\\dfrac{2}{100}\\right)+f\\left(\\dfrac{98}{100}\\right)\\right] + \\cdots + f\\left(\\dfrac{50}{100}\\right) \\)
+
+Có 49 cặp, mỗi cặp có tổng bằng 1 (do tính chất ở câu 1), cộng với số hạng đứng giữa \\( f\\left(\\dfrac{1}{2}\\right) \\). Áp dụng tính chất với \\( x=\\dfrac{1}{2} \\): \\( f\\left(\\dfrac{1}{2}\\right)+f\\left(\\dfrac{1}{2}\\right)=1 \\Rightarrow f\\left(\\dfrac{1}{2}\\right)=\\dfrac{1}{2} \\).
+
+Vậy \\( S = 49\\cdot 1 + \\dfrac{1}{2} = \\dfrac{99}{2} \\). Ô (2) điền \\( \\dfrac{99}{2} \\).
+
+3) Từ tính chất \\( f(x)+f(1-x)=1 \\) và tính đơn điệu của \\( f \\) (có thể chứng minh \\( f \\) đơn điệu tăng), nếu \\( f(a)+f(b)=1 \\) thì \\( b=1-a \\), suy ra \\( a+b=1 \\). Ô (3) điền \\( 1 \\).
+
+4) \\( f(\\log_{3}2) = \\dfrac{9^{\\log_{3}2}}{9^{\\log_{3}2}+3} = \\dfrac{3^{2\\log_{3}2}}{3^{2\\log_{3}2}+3} = \\dfrac{3^{\\log_{3}4}}{3^{\\log_{3}4}+3} = \\dfrac{4}{4+3} = \\dfrac{4}{7} \\). Ô (4) điền \\( \\dfrac{4}{7} \\).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de10_dd_32",
+    "type": "dragdrop",
+    "content": """Giải các phương trình mũ và lôgarit dưới đây. Kéo thả tổng các nghiệm thực của mỗi phương trình vào ô trống tương ứng:
+
+1) \\( 2^{x^{2}-3x+2}=4 \\) có tổng các nghiệm là (1)
+
+2) \\( \\log_{2}(x^{2}-4x+5)=1 \\) có tổng các nghiệm là (2)
+
+3) \\( 4^{x}-5\\cdot 2^{x}+6=0 \\) có tổng các nghiệm là (3)
+
+4) \\( x^{\\log_{3}x}=9x \\) có tổng các nghiệm là (4)""",
+    "options_pool": ["$3$", "$4$", "$\\log_{2}6$", "$\\dfrac{28}{3}$", "$5$"],
+    "blanks": [
+        {"label": "(1) =", "answer": "$3$"},
+        {"label": "(2) =", "answer": "$4$"},
+        {"label": "(3) =", "answer": "$\\log_{2}6$"},
+        {"label": "(4) =", "answer": "$\\dfrac{28}{3}$"},
+    ],
+    "points": 1,
+    "explanation": """1) \\( 2^{x^{2}-3x+2}=2^{2} \\Leftrightarrow x^{2}-3x+2=2 \\Leftrightarrow x^{2}-3x=0 \\Leftrightarrow x=0 \\) hoặc \\( x=3 \\). Tổng các nghiệm bằng \\( 3 \\).
+
+2) \\( \\log_{2}(x^{2}-4x+5)=1 \\Leftrightarrow x^{2}-4x+5=2^{1} \\Leftrightarrow x^{2}-4x+3=0 \\Leftrightarrow x=1 \\) hoặc \\( x=3 \\). Tổng các nghiệm bằng \\( 4 \\).
+
+3) Đặt \\( t=2^{x}>0 \\). Phương trình trở thành \\( t^{2}-5t+6=0 \\Leftrightarrow t=2 \\) hoặc \\( t=3 \\).
+
+Với \\( t=2 \\Rightarrow 2^{x}=2 \\Rightarrow x=1 \\). Với \\( t=3 \\Rightarrow 2^{x}=3 \\Rightarrow x=\\log_{2}3 \\).
+
+Tổng các nghiệm: \\( 1+\\log_{2}3 = \\log_{2}2+\\log_{2}3 = \\log_{2}6 \\).
+
+4) Điều kiện \\( x>0 \\). Lấy \\( \\log_{3} \\) hai vế:
+
+\\( \\log_{3}\\left(x^{\\log_{3}x}\\right) = \\log_{3}(9x) \\Leftrightarrow \\log_{3}x\\cdot\\log_{3}x = \\log_{3}9+\\log_{3}x \\Leftrightarrow \\log_{3}^{2}x - \\log_{3}x - 2=0 \\)
+
+Đặt \\( t=\\log_{3}x \\), ta có \\( t^{2}-t-2=0 \\Leftrightarrow t=2 \\) hoặc \\( t=-1 \\).
+
+Với \\( t=2 \\Rightarrow x=3^{2}=9 \\). Với \\( t=-1 \\Rightarrow x=3^{-1}=\\dfrac{1}{3} \\).
+
+Tổng các nghiệm: \\( 9+\\dfrac{1}{3} = \\dfrac{28}{3} \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de10_sh_33",
+    "type": "short",
+    "content": "Có bao nhiêu cặp số nguyên dương \\( (x;y) \\) thỏa mãn phương trình: \\( \\log_{3}x + \\log_{3}y = \\log_{3}(x+y) + 2 \\)?",
+    "blanks": [
+        {"label": "Số cặp =", "answers": ["5"]}
+    ],
+    "points": 1,
+    "explanation": """Điều kiện xác định: \\( x>0,\\ y>0 \\).
+
+Biến đổi phương trình: \\( \\log_{3}(xy) = \\log_{3}(x+y) + \\log_{3}9 = \\log_{3}\\left[9(x+y)\\right] \\)
+
+\\( \\Leftrightarrow xy = 9(x+y) \\Leftrightarrow xy - 9x - 9y = 0 \\)
+
+Cộng thêm \\( 81 \\) vào hai vế để tạo nhân tử chung:
+
+\\( xy - 9x - 9y + 81 = 81 \\Leftrightarrow x(y-9) - 9(y-9) = 81 \\Leftrightarrow (x-9)(y-9)=81 \\)
+
+Vì \\( x,y \\) nguyên dương nên \\( x-9 \\) và \\( y-9 \\) là các số nguyên và là ước của \\( 81 \\). Các ước dương của \\( 81 \\) là \\( 1,3,9,27,81 \\).
+
+Do \\( x\\ge 1 \\Rightarrow x-9\\ge -8 \\). Xét thêm các ước âm của 81 thỏa \\( \\ge -8 \\): chỉ có \\( -1,-3 \\).
+
+- \\( x-9=-1\\Rightarrow x=8 \\), khi đó \\( y-9=-81\\Rightarrow y=-72<0 \\) (loại).
+- \\( x-9=-3\\Rightarrow x=6 \\), khi đó \\( y-9=-27\\Rightarrow y=-18<0 \\) (loại).
+
+Vậy \\( (x-9,y-9) \\) chỉ nhận các cặp giá trị dương: \\( (1,81),(3,27),(9,9),(27,3),(81,1) \\).
+
+Tương ứng ta được các cặp \\( (x;y) \\): \\( (10;90),(12;36),(18;18),(36;12),(90;10) \\).
+
+Vậy có tất cả 5 cặp nghiệm thỏa mãn.
+
+Đáp số cần điền: 5.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de10_sh_34",
+    "type": "short",
+    "content": """(Bài toán dây cáp treo) Một sợi dây cáp được treo giữa hai cột điện có cùng chiều cao, khoảng cách giữa hai cột là 200 m. Đường cong của sợi dây cáp võng xuống có hình dạng là một đường xích (catenary) và được mô hình hóa bởi hàm số: \\( y = 50\\left(e^{\\frac{x}{100}}+e^{-\\frac{x}{100}}\\right) \\), trong đó \\( y \\) (mét) là độ cao của sợi dây so với mặt đất tại vị trí có hoành độ \\( x \\) (mét), với gốc tọa độ \\( O \\) được đặt tại hình chiếu vuông góc của điểm thấp nhất của sợi dây xuống mặt đất. Hãy tính độ chênh lệch chiều cao \\( \\Delta h \\) (mét) từ điểm treo cáp trên cột đến điểm thấp nhất của sợi dây (làm tròn kết quả đến chữ số thập phân thứ nhất).""",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau34_de10.PNG",
+    "blanks": [
+        {"label": "Δh ≈", "answers": ["54.3", "54,3"]}
+    ],
+    "points": 1,
+    "explanation": """Sợi dây đối xứng qua trục \\( Oy \\), điểm thấp nhất đạt tại hoành độ \\( x=0 \\):
+
+\\( y_{\\min} = 50\\left(e^{0}+e^{0}\\right) = 50\\times 2 = 100 \\) (m).
+
+Vì khoảng cách giữa hai cột là 200 m và đối xứng qua \\( Oy \\), hoành độ tại vị trí hai cột là \\( x=100 \\) và \\( x=-100 \\).
+
+Độ cao tại điểm treo cáp (tại cột):
+
+\\( h_{\\max} = y(100) = 50\\left(e^{\\frac{100}{100}}+e^{-\\frac{100}{100}}\\right) = 50\\left(e+\\dfrac{1}{e}\\right) \\)
+
+Lấy xấp xỉ \\( e\\approx 2{,}718 \\):
+
+\\( h_{\\max} \\approx 50(2{,}718+0{,}368) = 50\\times 3{,}086 = 154{,}3 \\) (m).
+
+Độ chênh lệch chiều cao:
+
+\\( \\Delta h = h_{\\max} - y_{\\min} = 154{,}3 - 100 = 54{,}3 \\) (m).
+
+Đáp số cần điền: 54,3.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de10_sh_35",
+    "type": "short",
+    "content": "Cho các số thực \\( x, y \\) thỏa mãn bất phương trình \\( \\log_{2}(x^{2}+y^{2}+2) \\le 2+\\log_{2}(x+y-1) \\). Gọi \\( M \\) và \\( m \\) lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của biểu thức \\( P=2x+y \\). Biết rằng \\( M \\) có dạng \\( a+b\\sqrt{c} \\) (với \\( a,b,c \\) là các số nguyên dương, \\( c \\) là số nguyên tố). Tính giá trị của biểu thức \\( T=a-b+c \\).",
+    "blanks": [
+        {"label": "T =", "answers": ["15"]}
+    ],
+    "points": 1,
+    "explanation": """Điều kiện: \\( x+y-1>0 \\).
+
+Bất phương trình đã cho tương đương với:
+
+\\( \\log_{2}(x^{2}+y^{2}+2) \\le \\log_{2}4 + \\log_{2}(x+y-1) = \\log_{2}\\left[4(x+y-1)\\right] \\)
+
+\\( \\Leftrightarrow x^{2}+y^{2}+2 \\le 4x+4y-4 \\Leftrightarrow x^{2}-4x+y^{2}-4y+6 \\le 0 \\Leftrightarrow (x-2)^{2}+(y-2)^{2} \\le 2 \\)
+
+Đây là hình tròn (kể cả biên) tâm \\( I(2;2) \\), bán kính \\( R=\\sqrt{2} \\). (Mọi điểm trong hình tròn này tự động thỏa điều kiện \\( x+y-1>0 \\), vì khoảng cách từ \\( I \\) đến đường thẳng \\( x+y-1=0 \\) là \\( \\dfrac{3}{\\sqrt{2}} > R \\), và tại tâm \\( I \\) đã có \\( x+y-1=3>0 \\)).
+
+Xét đường thẳng \\( d: 2x+y-P=0 \\). Đường thẳng \\( d \\) cắt (hoặc tiếp xúc) hình tròn khi và chỉ khi \\( d(I,d)\\le R \\):
+
+\\( \\dfrac{|2(2)+2-P|}{\\sqrt{2^{2}+1^{2}}} \\le \\sqrt{2} \\Leftrightarrow \\dfrac{|6-P|}{\\sqrt{5}} \\le \\sqrt{2} \\Leftrightarrow |P-6| \\le \\sqrt{10} \\)
+
+\\( \\Leftrightarrow 6-\\sqrt{10} \\le P \\le 6+\\sqrt{10} \\)
+
+Do đó \\( M = 6+\\sqrt{10} \\). Đồng nhất với dạng \\( a+b\\sqrt{c} \\), ta có \\( a=6,\\ b=1,\\ c=10 \\).
+
+Vậy \\( T = a-b+c = 6-1+10 = 15 \\).
+
+Đáp số cần điền: 15.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": "de10_sh_36",
+    "type": "short",
+    "content": "Ký hiệu \\( \\lfloor x \\rfloor \\) là số nguyên lớn nhất không vượt quá \\( x \\). Hỏi có bao nhiêu số nguyên \\( x \\in [1;1000] \\) sao cho \\( \\lfloor \\log_{3}x \\rfloor \\) là một số lẻ?",
+    "blanks": [
+        {"label": "Số giá trị x =", "answers": ["546"]}
+    ],
+    "points": 1,
+    "explanation": """Giả sử \\( \\lfloor \\log_{3}x \\rfloor = 2k+1 \\) với \\( k \\) là số nguyên.
+
+Theo định nghĩa hàm phần nguyên: \\( 2k+1 \\le \\log_{3}x < 2k+2 \\Leftrightarrow 3^{2k+1} \\le x < 3^{2k+2} \\).
+
+Do \\( x \\in [1;1000] \\), ta biện luận các giá trị \\( k \\ge 0 \\):
+
+- Với \\( k=0 \\): \\( 3^{1} \\le x < 3^{2} \\Leftrightarrow 3 \\le x \\le 8 \\). Có \\( 8-3+1=6 \\) số nguyên.
+
+- Với \\( k=1 \\): \\( 3^{3} \\le x < 3^{4} \\Leftrightarrow 27 \\le x \\le 80 \\). Có \\( 80-27+1=54 \\) số nguyên.
+
+- Với \\( k=2 \\): \\( 3^{5} \\le x < 3^{6} \\Leftrightarrow 243 \\le x \\le 728 \\). Có \\( 728-243+1=486 \\) số nguyên.
+
+- Với \\( k=3 \\): \\( 3^{7} \\le x < 3^{8} \\Leftrightarrow 2187 \\le x < 6561 \\). Trường hợp này vượt quá giới hạn \\( x \\le 1000 \\), không có số nào thỏa mãn.
+
+Tổng cộng số lượng các số nguyên \\( x \\) thỏa mãn là: \\( 6+54+486 = 546 \\).
+
+Đáp số cần điền: 546.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de10_tf_37",
+    "type": "truefalse",
+    "content": "Số lượng thành viên của một mạng xã hội mới nổi sau \\( t \\) tháng kể từ khi ra mắt được các chuyên gia mô hình hóa bởi hàm số Logistic: \\( P(t) = \\dfrac{1200}{1+11e^{-0,5t}} \\) (nghìn người). Đồ thị của hàm số này có dạng hình chữ S, biểu diễn sự tăng trưởng bùng nổ ban đầu và chậm dần khi đạt tới ngưỡng bão hòa. Xét tính đúng/sai của các nhận định sau:",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau37_de10.PNG",
+    "statements": [
+        {"text": "Tại thời điểm ra mắt (\\( t=0 \\)), mạng xã hội có 100.000 thành viên.", "correct": True},
+        {"text": "Theo mô hình này, số lượng thành viên tối đa mà mạng xã hội có thể đạt tới (ngưỡng bão hòa) là 1.200.000 người.", "correct": True},
+        {"text": "Tốc độ phát triển số lượng thành viên (đạo hàm \\( P'(t) \\)) đạt giá trị lớn nhất tại tháng thứ \\( 2\\ln 11 \\).", "correct": True},
+        {"text": "Sau đúng 4 tháng, số lượng thành viên vượt mốc 1.000.000 người.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Tại \\( t=0 \\): \\( P(0) = \\dfrac{1200}{1+11e^{0}} = \\dfrac{1200}{12} = 100 \\) (nghìn người) \\( = 100.000 \\) người.
+
+b) ĐÚNG: Khi \\( t\\to+\\infty \\) thì \\( e^{-0,5t}\\to 0 \\), nên \\( \\lim\\limits_{t\\to+\\infty} P(t) = \\dfrac{1200}{1+0} = 1200 \\) (nghìn người) \\( = 1.200.000 \\) người.
+
+c) ĐÚNG: Đối với hàm Logistic, tốc độ tăng trưởng \\( P'(t) \\) đạt giá trị lớn nhất tại điểm uốn của đồ thị, tức là khi số lượng đạt đúng một nửa ngưỡng bão hòa: \\( P(t) = \\dfrac{1200}{2} = 600 \\).
+
+Giải phương trình: \\( \\dfrac{1200}{1+11e^{-0,5t}} = 600 \\Leftrightarrow 1+11e^{-0,5t}=2 \\Leftrightarrow 11e^{-0,5t}=1 \\Leftrightarrow e^{0,5t}=11 \\)
+
+Lấy \\( \\ln \\) hai vế: \\( 0,5t = \\ln 11 \\Leftrightarrow t = 2\\ln 11 \\).
+
+d) SAI: Xét \\( P(4) = \\dfrac{1200}{1+11e^{-2}} \\approx \\dfrac{1200}{1+11(0,1353)} = \\dfrac{1200}{2,488} \\approx 482,3 \\) (nghìn người), tức khoảng 482.300 người — nhỏ hơn nhiều so với mốc 1.000.000 người.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": "de10_mc_38",
+    "type": "mc4",
+    "content": "Cho hệ phương trình sau với \\( x, y \\in \\mathbb{R} \\): \\( \\begin{cases} 3^{x}-3^{y} = y-x \\\\ \\log_{2}(x^{2}+y^{2}-2)=1 \\end{cases} \\). Tổng các bình phương của tất cả các nghiệm \\( x \\) của hệ phương trình trên là bao nhiêu?",
+    "options": {
+        "A": "2",
+        "B": "4",
+        "C": "6",
+        "D": "8",
+    },
+    "correct": "B",
+    "points": 1,
+    "explanation": """Xét phương trình thứ nhất: \\( 3^{x}-3^{y} = y-x \\Leftrightarrow 3^{x}+x = 3^{y}+y \\quad (1) \\)
+
+Xét hàm số đặc trưng \\( f(t) = 3^{t}+t \\) trên \\( \\mathbb{R} \\). Ta có \\( f'(t) = 3^{t}\\ln 3+1 > 0,\\ \\forall t\\in\\mathbb{R} \\), nên \\( f \\) đồng biến trên \\( \\mathbb{R} \\).
+
+Từ (1): \\( f(x) = f(y) \\Leftrightarrow x = y \\).
+
+Thay \\( y=x \\) vào phương trình thứ hai, điều kiện: \\( x^{2}+x^{2}-2>0 \\Leftrightarrow 2x^{2}>2 \\Leftrightarrow x^{2}>1 \\).
+
+Phương trình thứ hai trở thành: \\( \\log_{2}(2x^{2}-2)=1 \\Leftrightarrow 2x^{2}-2=2^{1}=2 \\)
+
+\\( \\Leftrightarrow 2x^{2}=4 \\Leftrightarrow x^{2}=2 \\Leftrightarrow x=\\pm\\sqrt{2} \\)
+
+Cả hai nghiệm này đều thỏa mãn điều kiện \\( x^{2}>1 \\).
+
+Vậy có hai nghiệm \\( x_{1}=\\sqrt{2},\\ x_{2}=-\\sqrt{2} \\). Tổng các bình phương là \\( (\\sqrt{2})^{2}+(-\\sqrt{2})^{2} = 2+2 = 4 \\).
+
+Chọn đáp án B.""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": "de10_dd_39",
+    "type": "dragdrop",
+    "content": """Ghép nối mỗi phương trình lôgarit dưới đây với **tích các nghiệm thực** của nó bằng cách kéo thả phương án tương ứng vào ô trống:
+
+1) \\( \\log_{2}^{2}x - 5\\log_{2}x + 6 = 0 \\) có tích các nghiệm là (1)
+
+2) \\( \\log_{3}^{2}x - 4\\log_{3}x + 3 = 0 \\) có tích các nghiệm là (2)
+
+3) \\( \\log_{2}x \\cdot \\log_{4}x = 2 \\) có tích các nghiệm là (3)
+
+4) \\( \\log_{x}2 + \\log_{2}x = \\dfrac{5}{2} \\) có tích các nghiệm là (4)""",
+    "options_pool": ["$32$", "$81$", "$1$", "$4\\sqrt{2}$", "$64$"],
+    "blanks": [
+        {"label": "(1) =", "answer": "$32$"},
+        {"label": "(2) =", "answer": "$81$"},
+        {"label": "(3) =", "answer": "$1$"},
+        {"label": "(4) =", "answer": "$4\\sqrt{2}$"},
+    ],
+    "points": 1,
+    "explanation": """1) Đặt \\( t=\\log_{2}x \\), phương trình thành \\( t^{2}-5t+6=0 \\). Theo Vi-ét: \\( t_{1}+t_{2}=5 \\Rightarrow \\log_{2}x_{1}+\\log_{2}x_{2}=5 \\Rightarrow \\log_{2}(x_{1}x_{2})=5 \\Rightarrow x_{1}x_{2}=2^{5}=32 \\).
+
+2) Tương tự, \\( t_{1}+t_{2}=4 \\Rightarrow \\log_{3}(x_{1}x_{2})=4 \\Rightarrow x_{1}x_{2}=3^{4}=81 \\).
+
+3) Điều kiện \\( x>0 \\). Vì \\( \\log_{4}x = \\dfrac{1}{2}\\log_{2}x \\), phương trình trở thành: \\( \\dfrac{1}{2}\\log_{2}^{2}x = 2 \\Leftrightarrow \\log_{2}^{2}x = 4 \\).
+
+Đây là phương trình \\( \\log_{2}^{2}x - 4 = 0 \\), theo Vi-ét (coi ẩn là \\( t=\\log_2 x\\), tổng hai nghiệm \\( t_1+t_2=0 \\)) suy ra \\( \\log_{2}(x_{1}x_{2})=0 \\Rightarrow x_{1}x_{2}=1 \\).
+
+4) Điều kiện \\( x>0,\\ x\\ne 1 \\). Đặt \\( t=\\log_{2}x \\), phương trình trở thành: \\( \\dfrac{1}{t}+t=\\dfrac{5}{2} \\Leftrightarrow 2t^{2}-5t+2=0 \\).
+
+Theo Vi-ét: \\( t_{1}+t_{2}=\\dfrac{5}{2} \\Rightarrow \\log_{2}(x_{1}x_{2})=\\dfrac{5}{2} \\Rightarrow x_{1}x_{2}=2^{\\frac{5}{2}}=\\sqrt{2^{5}}=4\\sqrt{2} \\).""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de10_tf_40",
+    "type": "truefalse",
+    "content": "Trong toán học cao cấp, người ta định nghĩa hai hàm số được xây dựng từ hàm số mũ như sau: hàm sin hyperbolic \\( f(x) = \\dfrac{e^{x}-e^{-x}}{2} \\) và hàm cosin hyperbolic \\( g(x) = \\dfrac{e^{x}+e^{-x}}{2} \\). Xét tính đúng/sai của các nhận định sau:",
+    "statements": [
+        {"text": "Tập giá trị của hàm số \\( f(x) \\) là \\( \\mathbb{R} \\), còn tập giá trị của \\( g(x) \\) là \\( [1;+\\infty) \\).", "correct": True},
+        {"text": "Hàm số \\( f(x) \\) là hàm số lẻ, hàm số \\( g(x) \\) là hàm số chẵn.", "correct": True},
+        {"text": "Đẳng thức \\( g^{2}(x) - f^{2}(x) = 1 \\) luôn đúng với mọi \\( x \\in \\mathbb{R} \\).", "correct": True},
+        {"text": "Phương trình \\( f(x) = g(x) \\) có đúng một nghiệm thực duy nhất.", "correct": False},
+    ],
+    "points": 1,
+    "explanation": """a) ĐÚNG: Hàm \\( f \\) liên tục trên \\( \\mathbb{R} \\), có \\( f(x)\\to -\\infty \\) khi \\( x\\to-\\infty \\) và \\( f(x)\\to+\\infty \\) khi \\( x\\to+\\infty \\), nên tập giá trị là \\( \\mathbb{R} \\).
+
+Với \\( g \\), áp dụng bất đẳng thức Cauchy cho hai số dương \\( e^{x} \\) và \\( e^{-x} \\):
+
+\\( g(x) = \\dfrac{e^{x}+e^{-x}}{2} \\ge \\sqrt{e^{x}\\cdot e^{-x}} = 1 \\)
+
+Dấu bằng xảy ra khi \\( x=0 \\). Vậy tập giá trị của \\( g \\) là \\( [1;+\\infty) \\).
+
+b) ĐÚNG: \\( f(-x) = \\dfrac{e^{-x}-e^{x}}{2} = -f(x) \\) (hàm lẻ). \\( g(-x) = \\dfrac{e^{-x}+e^{x}}{2} = g(x) \\) (hàm chẵn).
+
+c) ĐÚNG: Ta tính trực tiếp:
+
+\\( g^{2}(x) - f^{2}(x) = \\left(\\dfrac{e^{x}+e^{-x}}{2}\\right)^{2} - \\left(\\dfrac{e^{x}-e^{-x}}{2}\\right)^{2} \\)
+
+\\( = \\dfrac{e^{2x}+2+e^{-2x}}{4} - \\dfrac{e^{2x}-2+e^{-2x}}{4} = \\dfrac{4}{4} = 1 \\)
+
+(Đây là phiên bản hyperbolic tương tự với hệ thức \\( \\cos^{2}x+\\sin^{2}x=1 \\) trong lượng giác.)
+
+d) SAI: Xét phương trình \\( f(x)=g(x) \\):
+
+\\( \\dfrac{e^{x}-e^{-x}}{2} = \\dfrac{e^{x}+e^{-x}}{2} \\Leftrightarrow e^{x}-e^{-x} = e^{x}+e^{-x} \\Leftrightarrow -2e^{-x}=0 \\)
+
+Vì \\( e^{-x}>0,\\ \\forall x\\in\\mathbb{R} \\) nên phương trình vô nghiệm — không phải có đúng một nghiệm.""",
+},
 
 
 
