@@ -11162,7 +11162,147 @@ Ta có \\( A'B=\\sqrt{AA'^2+AB^2}=2a \\). Xét \\( \\triangle A'BC \\) vuông t�
 Trong \\( \\triangle BKE \\) vuông tại K, tính được \\( \\cos\\widehat{BEK} = \\dfrac{\\sqrt6}{4} \\), không phải \\( \\dfrac{\\sqrt2}{2} \\).""",
 },
 
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de11_dd_23',
+    "type": 'dragdrop',
+    "content": """Cho mảnh giấy hình chữ nhật ABCD có \\( AB=a \\) và \\( AD=a\\sqrt{3} \\). Người ta gấp mảnh giấy theo đường chéo AC sao cho mặt phẳng (ADC) vuông góc với mặt phẳng (ABC). Hãy kéo và thả các giá trị cho sẵn dưới đây vào các mệnh đề tương ứng sao cho thích hợp:
 
+1. Sau khi gấp, khoảng cách từ điểm D đến mặt phẳng (ABC) bằng .
+
+2. Khoảng cách không gian giữa hai đỉnh B và D sau khi gấp bằng .
+
+3. Tang của góc tạo bởi đường thẳng BD và mặt phẳng (ADC) bằng .""",
+        "options_pool": [
+        '$\\dfrac{\\sqrt{21}}{7}$',
+        '$\\dfrac{a\\sqrt{10}}{2}$',
+        '$\\dfrac{a\\sqrt{3}}{2}$',
+        '$\\dfrac{a}{2}$'
+    ],
+    "blanks": [
+        {"label": "1) Khoảng cách từ D đến (ABC) =", "answer": "$\\dfrac{a\\sqrt{3}}{2}$"},
+        {"label": "2) Khoảng cách BD =", "answer": "$\\dfrac{a\\sqrt{10}}{2}$"},
+        {"label": "3) Tang góc (BD, (ADC)) =", "answer": "$\\dfrac{\\sqrt{21}}{7}$"},
+    ],
+    "points": 1,
+    "explanation_image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau23_de11.PNG",
+    "explanation": """Sau khi gấp, bài toán trở thành khối tứ diện D.ABC với (ADC) ⊥ (ABC) theo giao tuyến AC.
+
+Trong mặt phẳng (ADC), kẻ \\( DH \\perp AC \\) tại H. Vì (ADC) ⊥ (ABC) nên \\( DH \\perp (ABC) \\).
+
+**Ý 1:** Khoảng cách từ D đến (ABC) chính là độ dài DH.
+
+Trong tam giác vuông ADC: \\( AC=\\sqrt{a^2+3a^2}=2a \\).
+
+\\( DH=\\dfrac{DA\\cdot DC}{AC}=\\dfrac{a\\sqrt{3}\\cdot a}{2a}=\\dfrac{a\\sqrt{3}}{2} \\)
+
+⇒ Điền \\( \\dfrac{a\\sqrt{3}}{2} \\).
+
+**Ý 2:** Trong mặt phẳng (ABC), kẻ \\( BK \\perp AC \\) tại K. Do \\( \\triangle ABC = \\triangle CDA \\) (trước khi gấp) nên \\( BK=DH=\\dfrac{a\\sqrt{3}}{2} \\).
+
+Ta có \\( AK=\\dfrac{AB^2}{AC}=\\dfrac{a^2}{2a}=\\dfrac{a}{2} \\) và \\( AH=\\dfrac{AD^2}{AC}=\\dfrac{3a^2}{2a}=\\dfrac{3a}{2} \\).
+
+Đoạn \\( HK=|AH-AK|=\\left|\\dfrac{3a}{2}-\\dfrac{a}{2}\\right|=a \\).
+
+Trong tam giác vuông BHK (vuông tại K): \\( BH^2=BK^2+HK^2=\\dfrac{3a^2}{4}+a^2=\\dfrac{7a^2}{4} \\).
+
+Áp dụng Pytago cho \\( \\triangle DHB \\):
+
+\\( BD=\\sqrt{DH^2+BH^2}=\\sqrt{\\dfrac{3a^2}{4}+\\dfrac{7a^2}{4}}=\\dfrac{a\\sqrt{10}}{2} \\)
+
+⇒ Điền \\( \\dfrac{a\\sqrt{10}}{2} \\).
+
+**Ý 3:** Ta có \\( BK \\perp AC \\) và \\( BK \\perp DH \\) ⇒ \\( BK \\perp (ADC) \\).
+
+Hình chiếu của BD lên (ADC) là DK ⇒ góc cần tìm là \\( \\widehat{BDK} \\).
+
+Trong \\( \\triangle DHK \\) vuông tại H: \\( DK=\\sqrt{DH^2+HK^2}=\\sqrt{\\dfrac{3a^2}{4}+a^2}=\\dfrac{a\\sqrt{7}}{2} \\).
+
+\\( \\tan\\widehat{BDK}=\\dfrac{BK}{DK}=\\dfrac{a\\sqrt{3}/2}{a\\sqrt{7}/2}=\\sqrt{\\dfrac{3}{7}}=\\dfrac{\\sqrt{21}}{7} \\)
+
+⇒ Điền \\( \\dfrac{\\sqrt{21}}{7} \\).""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": "de11_tf_24",
+    "type": "truefalse",
+    "content": "Cho hình chóp S.ABC có cạnh bên SA vuông góc với mặt phẳng đáy (ABC). Đáy ABC là tam giác vuông cân tại A với \\( AB=AC=a \\). Đặt \\( SA=x \\) (\\( x>0 \\)). Xét tính đúng/sai của các mệnh đề sau:",
+        "statements": [
+        {"text": "Khi \\( x=a \\), góc giữa mặt phẳng (SBC) và mặt phẳng (ABC) bằng \\( 45^\\circ \\).", "correct": False},
+        {"text": "Khoảng cách giữa hai đường thẳng SA và BC luôn bằng \\( \\dfrac{a\\sqrt{2}}{2} \\) với mọi giá trị \\( x>0 \\).", "correct": True},
+        {"text": "Côsin của góc giữa hai mặt phẳng (SAB) và (SBC) bằng \\( \\dfrac{x}{\\sqrt{a^2+2x^2}} \\).", "correct": True},
+        {"text": "Thể tích của khối chóp S.ABC đạt giá trị lớn nhất khi \\( x=a \\).", "correct": False},
+    ],
+    "points": 1,
+    "explanation_image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau24_de11.PNG",
+    "explanation": """Gọi H là trung điểm của BC ⇒ \\( AH \\perp BC \\) (do \\( \\triangle ABC \\) vuông cân tại A). Vì \\( SA \\perp (ABC) \\) ⇒ \\( SA \\perp BC \\). Từ đó \\( BC \\perp (SAH) \\) ⇒ \\( BC \\perp SH \\).
+
+**a) SAI:** Góc giữa (SBC) và (ABC) là \\( \\widehat{SHA} \\). Khi \\( x=a \\):
+
+\\( \\tan\\widehat{SHA}=\\dfrac{SA}{AH}=\\dfrac{a}{a\\sqrt{2}/2}=\\sqrt{2} \\Rightarrow \\widehat{SHA}\\approx 54{,}7^\\circ \\neq 45^\\circ \\)
+
+**b) ĐÚNG:** Ta có \\( SA \\perp (ABC) \\Rightarrow SA \\perp AH \\). Lại có \\( BC \\perp AH \\) (chứng minh trên). Vậy AH là đoạn vuông góc chung của SA và BC.
+
+\\( d(SA,BC)=AH=\\dfrac{1}{2}BC=\\dfrac{a\\sqrt{2}}{2} \\) (không phụ thuộc vào x).
+
+**c) ĐÚNG:** Giao tuyến của (SAB) và (SBC) là SB. Ta có \\( AC \\perp AB \\) và \\( AC \\perp SA \\Rightarrow AC \\perp (SAB) \\Rightarrow AC \\perp SB \\).
+
+Trong (SAB), kẻ \\( AK \\perp SB \\) tại K. Từ \\( AC \\perp SB \\) và \\( AK \\perp SB \\Rightarrow SB \\perp (ACK) \\Rightarrow SB \\perp CK \\).
+
+Vậy góc giữa (SAB) và (SBC) là \\( \\widehat{AKC} \\), và \\( \\triangle AKC \\) vuông tại A (vì \\( AC \\perp AK \\)).
+
+Trong \\( \\triangle SAB \\) vuông tại A: \\( AK=\\dfrac{SA\\cdot AB}{\\sqrt{SA^2+AB^2}}=\\dfrac{ax}{\\sqrt{x^2+a^2}} \\).
+
+\\( KC=\\sqrt{AK^2+AC^2}=a\\sqrt{\\dfrac{2x^2+a^2}{x^2+a^2}} \\)
+
+\\( \\cos\\widehat{AKC}=\\dfrac{AK}{KC}=\\dfrac{x}{\\sqrt{2x^2+a^2}} \\)
+
+**d) SAI:** Thể tích \\( V=\\dfrac{1}{3}S_{\\triangle ABC}\\cdot SA=\\dfrac{a^2x}{6} \\). Hàm số đồng biến theo x nên không có giá trị lớn nhất.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de11_sh_25',
+    "type": 'short',
+    "content": """Cho hình lăng trụ ABC.A′B′C′ có đáy ABC là tam giác đều cạnh \\( 2a \\). Hình chiếu vuông góc của đỉnh A′ lên mặt phẳng (ABC) trùng với trọng tâm G của tam giác ABC. Biết góc giữa cạnh bên AA′ và mặt phẳng đáy bằng \\( 60^\\circ \\). Gọi d là khoảng cách giữa hai đường thẳng chéo nhau AA′ và BC. Tính giá trị của biểu thức \\( T=4\\cdot\\dfrac{d^2}{a^2} \\).
+
+Kết quả nhập vào là một số nguyên dương.""",
+        "blanks": [
+        {"label": "T =", "answers": ["9"]}
+    ],
+    "points": 1,
+    "explanation_image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau25_de11.PNG",
+    "explanation": """Vì \\( A'G \\perp (ABC) \\) nên hình chiếu của AA′ lên mặt phẳng (ABC) là AG. Góc giữa AA′ và (ABC) là \\( \\widehat{A'AG}=60^\\circ \\).
+
+Gọi M là trung điểm của BC, vì tam giác ABC đều nên \\( AM \\perp BC \\).
+
+Độ dài đường cao \\( AM=\\dfrac{2a\\sqrt{3}}{2}=a\\sqrt{3} \\).
+
+Khoảng cách từ trọng tâm G đến A: \\( AG=\\dfrac{2}{3}AM=\\dfrac{2a\\sqrt{3}}{3} \\).
+
+Trong \\( \\triangle A'AG \\) vuông tại G: \\( A'G=AG\\cdot\\tan 60^\\circ=\\dfrac{2a\\sqrt{3}}{3}\\cdot\\sqrt{3}=2a \\).
+
+**Tính khoảng cách giữa AA′ và BC:**
+
+Ta có \\( BC \\perp AM \\) và \\( BC \\perp A'G \\Rightarrow BC \\perp (A'AM) \\).
+
+Do (A′AM) chứa AA′, kẻ \\( MH \\perp AA' \\) tại H trong mặt phẳng (A′AM). Vì \\( BC \\perp (A'AM) \\Rightarrow BC \\perp MH \\). Do đó MH là đoạn vuông góc chung của BC và AA′.
+
+\\( d(AA',BC)=MH \\)
+
+Bằng cách sử dụng diện tích tam giác \\( \\triangle A'AM \\):
+
+\\( S_{\\triangle A'AM}=\\dfrac{1}{2}A'G\\cdot AM=\\dfrac{1}{2}(2a)(a\\sqrt{3})=a^2\\sqrt{3} \\)
+
+Độ dài cạnh \\( AA'=\\sqrt{AG^2+A'G^2}=\\sqrt{\\dfrac{4a^2}{3}+4a^2}=\\dfrac{4a\\sqrt{3}}{3} \\)
+
+Mặt khác \\( S_{\\triangle A'AM}=\\dfrac{1}{2}MH\\cdot AA' \\Rightarrow a^2\\sqrt{3}=\\dfrac{1}{2}MH\\cdot\\dfrac{4a\\sqrt{3}}{3} \\)
+
+Suy ra \\( MH=\\dfrac{2a^2\\sqrt{3}}{\\dfrac{4a\\sqrt{3}}{3}}=\\dfrac{3a}{2} \\)
+
+Vậy \\( d^2=\\dfrac{9a^2}{4} \\). Giá trị biểu thức \\( T=4\\cdot\\dfrac{9a^2/4}{a^2}=9 \\).""",
+},
 
 
                 
