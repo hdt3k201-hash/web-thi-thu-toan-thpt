@@ -10864,7 +10864,198 @@ Thể tích tứ diện ABCD được tính bởi:
 
 
 
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de11_mc_15',
+    "type": 'mc4',
+    "content": """Cho hình lập phương ABCD.A'B'C'D' có cạnh bằng a. Gọi M và N lần lượt là trung điểm của các cạnh A'B' và BC. Côsin của góc tạo bởi hai mặt phẳng (DMN) và (ABCD) bằng bao nhiêu?""",
+    "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau15_de11.PNG',
+    "options": {
+        'A': '$\\dfrac{3\\sqrt{29}}{29}$',
+        'B': '$\\dfrac{2\\sqrt{29}}{29}$',
+        'C': '$\\dfrac{4\\sqrt{29}}{29}$',
+        'D': '$\\dfrac{\\sqrt{29}}{29}$',
+    },
+    "correct": 'A',
+    "points": 1,
+    "explanation": """Gọi \\( \\alpha \\) là góc giữa mặt phẳng (DMN) và mặt phẳng (ABCD).
 
+Hình chiếu vuông góc của tam giác DMN lên mặt phẳng (ABCD) là tam giác DM'N, với M' là trung điểm của AB (do M' là hình chiếu của M).
+
+Áp dụng công thức hình chiếu: \\( \\cos\\alpha = \\dfrac{S_{DM'N}}{S_{DMN}} \\).
+
+Diện tích tam giác DM'N nằm trong hình vuông đáy ABCD:
+
+\\( S_{DM'N} = S_{ABCD} - S_{\\triangle DAM'} - S_{\\triangle M'BN} - S_{\\triangle NCD} = a^2 - \\dfrac{a^2}{4} - \\dfrac{a^2}{8} - \\dfrac{a^2}{4} = \\dfrac{3a^2}{8} \\)
+
+Tính các cạnh của \\( \\triangle DMN \\):
+
+\\( DM^2 = DM'^2 + MM'^2 = \\left(a^2+\\dfrac{a^2}{4}\\right)+a^2 = \\dfrac{9a^2}{4} \\Rightarrow DM=\\dfrac{3a}{2} \\)
+
+\\( DN^2 = DC^2+CN^2 = a^2+\\dfrac{a^2}{4} = \\dfrac{5a^2}{4} \\Rightarrow DN=\\dfrac{a\\sqrt5}{2} \\)
+
+\\( MN^2 = M'N^2+MM'^2 = \\left(\\dfrac{a^2}{4}+\\dfrac{a^2}{4}\\right)+a^2 = \\dfrac{6a^2}{4} \\)
+
+Trong \\( \\triangle DMN \\), ta có \\( \\cos D = \\dfrac{DM^2+DN^2-MN^2}{2\\cdot DM\\cdot DN} = \\dfrac{\\frac94+\\frac54-\\frac64}{2\\cdot\\frac32\\cdot\\frac{\\sqrt5}{2}} = \\dfrac{4}{3\\sqrt5} \\Rightarrow \\sin D = \\dfrac{\\sqrt{29}}{3\\sqrt5} \\).
+
+Diện tích \\( \\triangle DMN \\): \\( S_{DMN} = \\dfrac12\\cdot DM\\cdot DN\\cdot\\sin D = \\dfrac12\\cdot\\dfrac{3a}{2}\\cdot\\dfrac{a\\sqrt5}{2}\\cdot\\dfrac{\\sqrt{29}}{3\\sqrt5} = \\dfrac{a^2\\sqrt{29}}{8} \\).
+
+Suy ra \\( \\cos\\alpha = \\dfrac{3a^2/8}{a^2\\sqrt{29}/8} = \\dfrac{3}{\\sqrt{29}} = \\dfrac{3\\sqrt{29}}{29} \\).
+
+Chọn đáp án A.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": 'de11_tf_16',
+    "type": 'truefalse',
+    "content": """Cho hình chóp S.ABCD có đáy ABCD là hình thang vuông tại A và D. Biết \\( AD=DC=a \\), \\( AB=2a \\). Cạnh bên SA vuông góc với mặt phẳng đáy và \\( SA=a \\). Xét tính đúng/sai của các mệnh đề sau:""",
+    "statements": [
+        {"text": "Mặt phẳng (SBC) vuông góc với mặt phẳng (SAC).", "correct": True},
+        {"text": "Góc giữa mặt phẳng (SBC) và mặt phẳng (ABCD) bằng 45°.", "correct": False},
+        {"text": "Khoảng cách từ điểm D đến mặt phẳng (SBC) bằng \\( \\dfrac{a\\sqrt{3}}{3} \\).", "correct": False},
+        {"text": "Khoảng cách giữa hai đường thẳng AB và SD bằng \\( \\dfrac{a\\sqrt{2}}{2} \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation_image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/loigiai_cau16_de11.PNG',
+    "explanation": """a) ĐÚNG: Xét đáy ABCD: kẻ \\( CH\\perp AB \\Rightarrow AHCD \\) là hình vuông cạnh a \\( \\Rightarrow CH=a,\\ HB=a \\). Tam giác CHB vuông cân tại H \\( \\Rightarrow CB=a\\sqrt2 \\).
+
+Ta có \\( AC^2=a^2+a^2=2a^2 \\). Nhận thấy \\( AC^2+CB^2 = 2a^2+2a^2=4a^2=AB^2 \\Rightarrow \\triangle ACB \\) vuông tại C \\( \\Rightarrow BC\\perp AC \\).
+
+Mà \\( BC\\perp SA \\Rightarrow BC\\perp(SAC) \\). Vì \\( BC\\subset(SBC) \\) nên \\( (SBC)\\perp(SAC) \\).
+
+b) SAI: Vì \\( BC\\perp(SAC) \\) nên giao tuyến của (SBC) và (ABCD) là BC, và \\( AC\\perp BC \\), \\( SC\\perp BC \\). Góc giữa (SBC) và (ABCD) là góc \\( \\widehat{SCA} \\).
+
+Ta có \\( \\tan\\widehat{SCA} = \\dfrac{SA}{AC} = \\dfrac{a}{a\\sqrt2} = \\dfrac{\\sqrt2}{2} \\Rightarrow \\) góc không bằng 45°.
+
+c) SAI: Kéo dài AD cắt BC tại E. Do \\( DC\\parallel AB \\) và \\( DC=\\dfrac12 AB \\Rightarrow D \\) là trung điểm AE. Vậy \\( d(D,(SBC)) = \\dfrac12 d(A,(SBC)) \\).
+
+Trong (SAC), kẻ \\( AK\\perp SC \\Rightarrow AK\\perp(SBC) \\).
+
+\\( AK = \\dfrac{SA\\cdot AC}{\\sqrt{SA^2+AC^2}} = \\dfrac{a\\cdot a\\sqrt2}{a\\sqrt3} = \\dfrac{a\\sqrt6}{3} \\). Suy ra \\( d(D,(SBC)) = \\dfrac{a\\sqrt6}{6} \\), không phải \\( \\dfrac{a\\sqrt3}{3} \\).
+
+d) ĐÚNG: \\( AB\\parallel CD \\Rightarrow AB\\parallel(SCD) \\Rightarrow d(AB,SD)=d(A,(SCD)) \\). Vì \\( CD\\perp AD,\\ CD\\perp SA \\Rightarrow CD\\perp(SAD) \\Rightarrow (SCD)\\perp(SAD) \\).
+
+Kẻ \\( AM\\perp SD \\Rightarrow AM\\perp(SCD) \\). \\( d(A,(SCD)) = AM = \\dfrac{SA\\cdot AD}{\\sqrt{SA^2+AD^2}} = \\dfrac{a\\cdot a}{a\\sqrt2} = \\dfrac{a\\sqrt2}{2} \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de11_sh_17',
+    "type": 'short',
+    "content": """Cho hình lăng trụ tam giác đều ABC.A'B'C' có cạnh đáy bằng \\( 2\\sqrt3 \\) và cạnh bên bằng 2. Gọi M là trung điểm của cạnh A'B'. Biết bình phương khoảng cách từ điểm A' đến mặt phẳng (MBC') có thể viết dưới dạng phân số tối giản \\( \\dfrac{x}{y} \\) (với \\( x,y\\in\\mathbb{N}^* \\)). Tính tổng \\( x+y \\).""",
+    "blanks": [
+        {"label": "Kết quả x+y =", "answers": ["19"]}
+    ],
+    "points": 1,
+    "explanation_image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/loigiai_cau17_de11.PNG',
+    "explanation": """Lăng trụ tam giác đều nên là lăng trụ đứng và đáy là tam giác đều.
+
+Vì M là trung điểm A'B' nên \\( d(A',(MBC')) = d(B',(MBC')) \\). Gọi \\( h = d(B',(MBC')) \\).
+
+Tứ diện B'.MBC' có đường cao B'B hạ từ B' xuống mặt phẳng (A'B'C'). Ta có \\( B'B\\perp B'M \\) và \\( B'B\\perp B'C' \\).
+
+Trong mặt phẳng (A'B'C'), hạ \\( B'H\\perp MC' \\) tại H. Khi đó \\( MC'\\perp(BB'H) \\).
+
+Trong mặt phẳng (BB'H), kẻ \\( B'K\\perp BH \\) tại K \\( \\Rightarrow B'K\\perp(MBC') \\). Vậy \\( h=B'K \\).
+
+Xét \\( \\triangle MB'C' \\) trong đáy trên: \\( MB' = \\dfrac12 A'B' = \\sqrt3 \\); \\( B'C' = 2\\sqrt3 \\); \\( \\widehat{MB'C'}=60^\\circ \\).
+
+Diện tích \\( \\triangle MB'C' \\) là \\( S=\\dfrac12\\cdot\\sqrt3\\cdot2\\sqrt3\\cdot\\dfrac{\\sqrt3}{2} = \\dfrac{3\\sqrt3}{2} \\).
+
+Độ dài \\( MC' = \\sqrt{MB'^2+B'C'^2-2\\cdot MB'\\cdot B'C'\\cdot\\cos60^\\circ} = \\sqrt{3+12-2\\cdot\\sqrt3\\cdot2\\sqrt3\\cdot\\dfrac12} = 3 \\).
+
+Đường cao \\( B'H = \\dfrac{2S}{MC'} = \\dfrac{3\\sqrt3}{3} = \\sqrt3 \\).
+
+Xét tam giác vuông BB'H: \\( \\dfrac{1}{h^2} = \\dfrac{1}{B'B^2}+\\dfrac{1}{B'H^2} = \\dfrac{1}{2^2}+\\dfrac{1}{(\\sqrt3)^2} = \\dfrac14+\\dfrac13 = \\dfrac{7}{12} \\Rightarrow h^2 = \\dfrac{12}{7} \\).
+
+Theo đề bài \\( h^2=\\dfrac{x}{y} \\) nên \\( x=12,\\ y=7 \\) (hai số nguyên tố cùng nhau). Vậy tổng \\( x+y = 12+7 = 19 \\).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de11_dd_18',
+    "type": 'dragdrop',
+    "content": """Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a, cạnh bên SA vuông góc với mặt phẳng đáy. Đặt \\( SA=x \\) (x > 0). Hãy kéo thả các giá trị của x cho sẵn dưới đây vào các điều kiện tương ứng sao cho thích hợp:
+
+1. Góc giữa mặt phẳng (SBD) và mặt phẳng (ABCD) bằng 60° khi x bằng (1).
+
+2. Khoảng cách từ điểm A đến mặt phẳng (SCD) bằng \\( \\dfrac{a\\sqrt{3}}{2} \\) khi x bằng (2).
+
+3. Góc giữa đường thẳng SC và mặt phẳng (SAB) bằng 30° khi x bằng (3).""",
+    "options_pool": [
+        '$a\\sqrt{3}$',
+        '$\\dfrac{a\\sqrt{3}}{3}$',
+        '$a\\sqrt{2}$',
+        '$\\dfrac{a\\sqrt{6}}{2}$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$\\dfrac{a\\sqrt{6}}{2}$"},
+        {"label": "(2) =", "answer": "$a\\sqrt{3}$"},
+        {"label": "(3) =", "answer": "$a\\sqrt{2}$"},
+    ],
+    "points": 1,
+    "explanation_image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/loigiai_cau18_de11.PNG',
+    "explanation": """Ý 1: Gọi \\( O=AC\\cap BD \\Rightarrow AO\\perp BD \\). Vì \\( SA\\perp BD \\Rightarrow BD\\perp(SAO)\\Rightarrow BD\\perp SO \\).
+
+Góc giữa (SBD) và (ABCD) là \\( \\widehat{SOA}=60^\\circ \\).
+
+\\( SA = AO\\cdot\\tan60^\\circ = \\dfrac{a\\sqrt2}{2}\\cdot\\sqrt3 = \\dfrac{a\\sqrt6}{2} \\). ⇒ Điền \\( \\dfrac{a\\sqrt6}{2} \\).
+
+Ý 2: \\( CD\\perp AD,\\ CD\\perp SA \\Rightarrow CD\\perp(SAD)\\Rightarrow(SCD)\\perp(SAD) \\).
+
+Kẻ \\( AH\\perp SD \\Rightarrow d(A,(SCD))=AH \\).
+
+\\( \\dfrac{1}{AH^2} = \\dfrac{1}{x^2}+\\dfrac{1}{AD^2} \\Rightarrow \\dfrac{1}{\\left(\\frac{a\\sqrt3}{2}\\right)^2} = \\dfrac{1}{x^2}+\\dfrac{1}{a^2} \\Rightarrow \\dfrac{4}{3a^2}-\\dfrac{1}{a^2} = \\dfrac{1}{x^2} \\Rightarrow x=a\\sqrt3 \\). ⇒ Điền \\( a\\sqrt3 \\).
+
+Ý 3: \\( BC\\perp AB,\\ BC\\perp SA \\Rightarrow BC\\perp(SAB) \\). Hình chiếu của SC lên (SAB) là SB \\( \\Rightarrow \\) góc \\( \\widehat{CSB}=30^\\circ \\).
+
+\\( \\triangle SBC \\) vuông tại B \\( \\Rightarrow \\tan30^\\circ = \\dfrac{BC}{SB} \\Rightarrow SB=a\\sqrt3 \\).
+
+Xét \\( \\triangle SAB \\) vuông tại A: \\( SA=\\sqrt{SB^2-AB^2}=\\sqrt{3a^2-a^2}=a\\sqrt2 \\). ⇒ Điền \\( a\\sqrt2 \\).""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de11_sh_19',
+    "type": 'short',
+    "content": """Cho hình lăng trụ đứng ABC.A'B'C' có đáy ABC là tam giác vuông cân tại A và \\( AB=3 \\). Biết khoảng cách giữa hai đường thẳng chéo nhau AB' và BC' bằng 1. Tính thể tích khối lăng trụ ABC.A'B'C'.""",
+    "image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/loigiai_cau19_de11.PNG',
+    "blanks": [
+        {"label": "Thể tích V =", "answers": ["6.75"]}
+    ],
+    "points": 1,
+    
+    "explanation": """Trong mặt phẳng đáy (ABC), dựng điểm D sao cho ABCD là hình bình hành. Khi đó \\( \\vec{AD}=\\vec{BC} \\).
+
+Trong không gian, lấy điểm D' sao cho \\( \\vec{A'D'}=\\vec{B'C'} \\). Khi đó \\( BC'\\parallel AD' \\).
+
+Suy ra \\( BC'\\parallel(AB'D') \\). Do mặt phẳng (AB'D') chứa AB', ta có:
+
+\\( d(BC',AB') = d(BC',(AB'D')) = d(B,(AB'D')) \\)
+
+Tìm giao tuyến của (AB'D') và (ABC): do \\( B'D'\\parallel BD \\), mặt phẳng (AB'D') cắt đáy (ABC) theo giao tuyến là đường thẳng Ax đi qua A và \\( Ax\\parallel BD \\).
+
+Trong mặt phẳng (ABC), kẻ \\( BK\\perp Ax \\) tại K. Trong mặt phẳng (BB'K), kẻ \\( BH\\perp B'K \\) tại H.
+
+Vì lăng trụ đứng nên \\( BB'\\perp(ABC)\\Rightarrow BB'\\perp Ax \\). Kết hợp \\( BK\\perp Ax \\Rightarrow Ax\\perp(BB'K)\\Rightarrow Ax\\perp BH \\).
+
+Ta có \\( BH\\perp Ax \\) và \\( BH\\perp B'K \\Rightarrow BH\\perp(AB'D') \\). Vậy \\( d(B,(AB'D'))=BH=1 \\).
+
+Tính BK: khoảng cách từ B đến Ax chính là khoảng cách từ A đến BD (vì \\( Ax\\parallel BD \\)).
+
+Diện tích \\( \\triangle ABD = S_{\\triangle ABC} = \\dfrac12\\cdot3\\cdot3=4.5 \\).
+
+Trong \\( \\triangle ABC \\) vuông cân tại A, ta có \\( AC\\perp AB \\). Hình bình hành ABCD có \\( \\vec{AD}=\\vec{BC}=\\vec{AC}-\\vec{AB} \\).
+
+\\( BD^2 = |\\vec{AD}-\\vec{AB}|^2 = |\\vec{AC}-2\\vec{AB}|^2 = AC^2+4AB^2 = 3^2+4\\cdot3^2=45 \\Rightarrow BD=3\\sqrt5 \\).
+
+Suy ra \\( BK = d(A,BD) = \\dfrac{2S_{ABD}}{BD} = \\dfrac{9}{3\\sqrt5} = \\dfrac{3}{\\sqrt5} \\).
+
+Xét tam giác vuông BB'K: \\( \\dfrac{1}{BH^2} = \\dfrac{1}{BB'^2}+\\dfrac{1}{BK^2} \\Rightarrow 1 = \\dfrac{1}{h^2}+\\dfrac{5}{9} \\Rightarrow \\dfrac{1}{h^2}=\\dfrac{4}{9} \\Rightarrow h=1.5 \\).
+
+Thể tích lăng trụ: \\( V = S_{ABC}\\cdot h = 4.5\\cdot1.5 = 6.75 \\).""",
+},
                 
 
 ], # Đóng danh sách questions của Đề 11
