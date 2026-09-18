@@ -11057,7 +11057,115 @@ Xét tam giác vuông BB'K: \\( \\dfrac{1}{BH^2} = \\dfrac{1}{BB'^2}+\\dfrac{1}{
 Thể tích lăng trụ: \\( V = S_{ABC}\\cdot h = 4.5\\cdot1.5 = 6.75 \\).""",
 },
                 
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de11_mc_20',
+    "type": 'mc4',
+    "content": """Cho hình chóp S.ABCD có đáy ABCD là hình thang vuông tại A và D, biết \\( AD=CD=a \\), \\( AB=2a \\). Cạnh bên SA vuông góc với mặt phẳng đáy và \\( SA=a \\). Gọi \\( \\alpha \\) là góc giữa hai mặt phẳng (SBC) và (SCD). Giá trị của \\( \\cos\\alpha \\) bằng bao nhiêu?""",
+        "options": {
+        'A': '$\\dfrac{\\sqrt{3}}{2}$',
+        'B': '$\\dfrac{1}{2}$',
+        'C': '$\\dfrac{\\sqrt{2}}{2}$',
+        'D': '$\\dfrac{\\sqrt{6}}{3}$',
+    },
+    "correct": 'A',
+    "points": 1,
+    "explanation_image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/loigiai_cau20_de11.PNG',
+    "explanation": """Góc giữa hai mặt phẳng bằng góc giữa hai đường thẳng lần lượt vuông góc với hai mặt phẳng đó.
 
+Bước 1: Tìm đường thẳng vuông góc với (SCD).
+
+Ta có \\( CD\\perp AD \\) và \\( CD\\perp SA \\Rightarrow CD\\perp(SAD)\\Rightarrow(SCD)\\perp(SAD) \\).
+
+Trong mặt phẳng (SAD), kẻ \\( AK\\perp SD \\Rightarrow AK\\perp(SCD) \\).
+
+Xét \\( \\triangle SAD \\) vuông cân tại A: \\( SA=AD=a\\Rightarrow SD=a\\sqrt2 \\). K là trung điểm SD và \\( AK=\\dfrac{a\\sqrt2}{2} \\).
+
+Bước 2: Tìm đường thẳng vuông góc với (SBC).
+
+Gọi E là hình chiếu của C lên AB \\( \\Rightarrow AECD \\) là hình vuông cạnh a \\( \\Rightarrow CE=a,\\ EB=a \\).
+
+Trong \\( \\triangle CEB \\) vuông tại E \\( \\Rightarrow CB=a\\sqrt2 \\). Ta có \\( AC=a\\sqrt2 \\).
+
+Dễ thấy \\( AC^2+CB^2=2a^2+2a^2=4a^2=AB^2 \\Rightarrow \\triangle ACB \\) vuông tại C \\( \\Rightarrow BC\\perp AC \\).
+
+Mà \\( BC\\perp SA \\Rightarrow BC\\perp(SAC)\\Rightarrow(SBC)\\perp(SAC) \\).
+
+Trong (SAC), kẻ \\( AH\\perp SC \\Rightarrow AH\\perp(SBC) \\).
+
+Xét \\( \\triangle SAC \\) vuông tại A: \\( AC=a\\sqrt2,\\ SA=a\\Rightarrow SC=a\\sqrt3 \\). \\( AH=\\dfrac{SA\\cdot AC}{SC}=\\dfrac{a\\sqrt6}{3} \\).
+
+Bước 3: Tính góc giữa hai mặt phẳng.
+
+Góc \\( \\alpha \\) chính là góc giữa AH và AK \\( \\Rightarrow \\cos\\alpha=|\\cos\\widehat{HAK}| \\).
+
+Ta có \\( SH=\\sqrt{SA^2-AH^2}=\\sqrt{a^2-\\dfrac{6a^2}{9}}=\\dfrac{a\\sqrt3}{3} \\).
+
+Trong \\( \\triangle SCD \\): \\( CD=a,\\ SD=a\\sqrt2,\\ SC=a\\sqrt3\\Rightarrow SC^2=SD^2+CD^2\\Rightarrow \\triangle SCD \\) vuông tại D.
+
+\\( \\cos\\widehat{CSD} = \\dfrac{SD}{SC} = \\dfrac{\\sqrt6}{3} \\).
+
+Áp dụng định lý cosin cho \\( \\triangle SHK \\):
+
+\\( HK^2 = SH^2+SK^2-2\\cdot SH\\cdot SK\\cdot\\cos\\widehat{CSD} = \\dfrac{a^2}{3}+\\dfrac{a^2}{2}-2\\cdot\\dfrac{a\\sqrt3}{3}\\cdot\\dfrac{a\\sqrt2}{2}\\cdot\\dfrac{\\sqrt6}{3} = \\dfrac{a^2}{6} \\)
+
+Áp dụng định lý cosin cho \\( \\triangle AHK \\):
+
+\\( \\cos\\widehat{HAK} = \\dfrac{AH^2+AK^2-HK^2}{2\\cdot AH\\cdot AK} = \\dfrac{\\frac{2a^2}{3}+\\frac{a^2}{2}-\\frac{a^2}{6}}{2\\cdot\\frac{a\\sqrt6}{3}\\cdot\\frac{a\\sqrt2}{2}} = \\dfrac{a^2}{\\frac{a^2\\sqrt{12}}{3}} = \\dfrac{3}{2\\sqrt3} = \\dfrac{\\sqrt3}{2} \\)
+
+Vậy \\( \\cos\\alpha = \\dfrac{\\sqrt3}{2} \\). Chọn đáp án A.""",
+},
+
+# ---------------- ĐÚNG / SAI (truefalse) ----------------
+{
+    "id": 'de11_tf_22',
+    "type": 'truefalse',
+    "content": """Cho hình lăng trụ đứng ABC.A'B'C' có đáy ABC là tam giác vuông cân tại B và \\( AC=a\\sqrt2 \\). Biết góc giữa mặt phẳng (A'BC) và mặt phẳng đáy (ABC) bằng 60°. Xét tính đúng/sai của các mệnh đề sau (dựa trên các kết quả tính toán liên quan đến lăng trụ này):""",
+    "statements": [
+        {"text": "Khoảng cách từ điểm A đến mặt phẳng (A'BC) bằng \\( \\dfrac{a\\sqrt{3}}{2} \\).", "correct": True},
+        {"text": "Khoảng cách giữa hai đường thẳng chéo nhau A'B và B'C bằng \\( \\dfrac{a\\sqrt{21}}{7} \\).", "correct": True},
+        {"text": "Côsin của góc giữa hai mặt phẳng (A'BC) và (A'AC) bằng \\( \\dfrac{\\sqrt{2}}{2} \\).", "correct": False},
+        {"text": "Chiều cao của lăng trụ (cạnh bên AA') bằng \\( a\\sqrt{3} \\).", "correct": True},
+    ],
+    "points": 1,
+    "explanation_image": 'https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/loigiai_cau22_de11.PNG',
+    "explanation": """Đáy ABC vuông cân tại B, \\( AC=a\\sqrt2 \\Rightarrow AB=BC=a \\).
+
+Lăng trụ đứng \\( \\Rightarrow BB'\\perp(ABC)\\Rightarrow BB'\\perp BC \\). Mà \\( BC\\perp AB \\Rightarrow BC\\perp(ABB'A')\\Rightarrow BC\\perp A'B \\).
+
+Giao tuyến của (A'BC) và (ABC) là BC. Do \\( A'B\\perp BC \\) và \\( AB\\perp BC \\), góc giữa (A'BC) và (ABC) là \\( \\widehat{A'BA}=60^\\circ \\).
+
+d) ĐÚNG: Chiều cao lăng trụ \\( AA' = AB\\tan60^\\circ = a\\sqrt3 \\).
+
+a) ĐÚNG: Trong mặt phẳng (ABB'A'), kẻ \\( AH\\perp A'B \\) tại H. Vì \\( BC\\perp(ABB'A')\\Rightarrow BC\\perp AH \\). Do đó \\( AH\\perp(A'BC) \\).
+
+Khoảng cách \\( d(A,(A'BC)) = AH = \\dfrac{AA'\\cdot AB}{\\sqrt{AA'^2+AB^2}} = \\dfrac{a\\sqrt3\\cdot a}{2a} = \\dfrac{a\\sqrt3}{2} \\).
+
+b) ĐÚNG: Mở rộng lăng trụ thành hình hộp chữ nhật ABCD.A'B'C'D'. Ta có \\( B'C\\parallel A'D \\Rightarrow B'C\\parallel(A'BD) \\). Khi đó (A'BD) chứa A'B và song song với B'C.
+
+\\( d(A'B,B'C) = d(B'C,(A'BD)) = d(C,(A'BD)) \\). Do AC cắt BD tại trung điểm O nên \\( d(C,(A'BD))=d(A,(A'BD)) \\).
+
+Tứ diện A.A'BD có ba cạnh AA', AB, AD đôi một vuông góc tại A. Gọi \\( h=d(A,(A'BD)) \\):
+
+\\( \\dfrac{1}{h^2} = \\dfrac{1}{AA'^2}+\\dfrac{1}{AB^2}+\\dfrac{1}{AD^2} = \\dfrac{1}{3a^2}+\\dfrac{1}{a^2}+\\dfrac{1}{a^2} = \\dfrac{7}{3a^2} \\Rightarrow h=\\dfrac{a\\sqrt{21}}{7} \\).
+
+c) SAI: Góc giữa (A'BC) và (A'AC) có giao tuyến là A'C. Trong mặt phẳng đáy (ABC), kẻ \\( BK\\perp AC \\) tại K. Do \\( \\triangle ABC \\) vuông cân tại B nên K là trung điểm AC và \\( BK=\\dfrac{a\\sqrt2}{2} \\).
+
+Vì lăng trụ đứng \\( AA'\\perp(ABC)\\Rightarrow AA'\\perp BK \\). Kết hợp \\( BK\\perp AC\\Rightarrow BK\\perp(A'AC) \\).
+
+Trong mặt phẳng (A'AC), kẻ \\( KE\\perp A'C \\) tại E. Theo định lý ba đường vuông góc, \\( BE\\perp A'C \\). Góc giữa hai mặt phẳng (A'BC) và (A'AC) chính là góc \\( \\widehat{BEK} \\).
+
+Ta có \\( A'B=\\sqrt{AA'^2+AB^2}=2a \\). Xét \\( \\triangle A'BC \\) vuông tại B (vì \\( BC\\perp(ABB'A') \\)), đường cao BE:
+
+\\( BE = \\dfrac{A'B\\cdot BC}{\\sqrt{A'B^2+BC^2}} = \\dfrac{2a\\cdot a}{\\sqrt{4a^2+a^2}} = \\dfrac{2a}{\\sqrt5} \\).
+
+Trong \\( \\triangle BKE \\) vuông tại K, tính được \\( \\cos\\widehat{BEK} = \\dfrac{\\sqrt6}{4} \\), không phải \\( \\dfrac{\\sqrt2}{2} \\).""",
+},
+
+
+
+
+                
 ], # Đóng danh sách questions của Đề 11
     }, # Đóng dictionary của Đề 11          
 
