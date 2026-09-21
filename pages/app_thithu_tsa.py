@@ -11435,6 +11435,188 @@ Bình phương khoảng cách: \\( d^2=\\dfrac{a^2}{3} \\).
 
 Vậy giá trị của biểu thức \\( T=\\dfrac{81}{a^2}\\cdot\\dfrac{a^2}{3}=27 \\).""",
 },
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de11_sh_28',
+    "type": 'short',
+    "content": """Cho hình chóp tứ giác đều \\( S.ABCD \\) có cạnh đáy bằng \\( a \\), góc giữa mặt bên và mặt đáy bằng \\( 60^\\circ \\). Gọi \\( M \\) là điểm thuộc cạnh bên \\( SA \\) sao cho \\( SM = 2MA \\). Gọi \\( d \\) là khoảng cách từ điểm \\( M \\) đến mặt phẳng \\( (SCD) \\). Tính giá trị của biểu thức \\( T = \\dfrac{81 \\cdot d^2}{a^2} \\).""",
+        "blanks": [
+        {"label": "T =", "answers": ["27"]}
+    ],
+    "points": 1,
+    "explanation_image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau28_de11loigai.PNG",
+    "explanation": """Gọi \\( O \\) là tâm của hình vuông \\( ABCD \\), khi đó \\( SO \\perp (ABCD) \\).
+
+Gọi \\( E \\) là trung điểm \\( CD \\), suy ra \\( OE \\perp CD \\). Theo định lý ba đường vuông góc thì \\( SE \\perp CD \\), do đó góc giữa \\( (SCD) \\) và \\( (ABCD) \\) chính là góc \\( \\widehat{SEO} = 60^\\circ \\).
+
+Xét tam giác vuông \\( SOE \\) có \\( OE = \\dfrac{a}{2} \\), suy ra:
+
+\\( SO = OE\\cdot\\tan 60^\\circ = \\dfrac{a\\sqrt{3}}{2} \\)
+
+Từ \\( O \\), kẻ \\( OK \\perp SE \\) tại \\( K \\). Vì \\( CD \\perp (SOE) \\) nên \\( CD \\perp OK \\), suy ra \\( OK \\perp (SCD) \\), tức là \\( d(O,(SCD)) = OK \\).
+
+Trong tam giác vuông \\( SOE \\):
+
+\\( OK = \\dfrac{SO\\cdot OE}{\\sqrt{SO^2+OE^2}} = \\dfrac{\\frac{a\\sqrt{3}}{2}\\cdot\\frac{a}{2}}{\\sqrt{\\frac{3a^2}{4}+\\frac{a^2}{4}}} = \\dfrac{a\\sqrt{3}}{4} \\)
+
+Vì \\( A \\) và \\( O \\) cùng nằm trên đường thẳng \\( AC \\), mà \\( AC \\) cắt mặt phẳng \\( (SCD) \\) tại \\( C \\) với tỉ số \\( \\dfrac{AC}{OC}=2 \\), nên:
+
+\\( d(A,(SCD)) = 2\\cdot d(O,(SCD)) = 2\\cdot\\dfrac{a\\sqrt{3}}{4} = \\dfrac{a\\sqrt{3}}{2} \\)
+
+Điểm \\( M \\) thuộc đoạn \\( SA \\) và \\( SM = 2MA \\), suy ra \\( \\dfrac{SM}{SA} = \\dfrac{2}{3} \\). Vì đường thẳng \\( SA \\) cắt mặt phẳng \\( (SCD) \\) tại đúng điểm \\( S \\), nên tỉ số khoảng cách từ một điểm trên \\( SA \\) đến \\( (SCD) \\) tỉ lệ với khoảng cách từ điểm đó đến \\( S \\):
+
+\\( d = d(M,(SCD)) = \\dfrac{SM}{SA}\\cdot d(A,(SCD)) = \\dfrac{2}{3}\\cdot\\dfrac{a\\sqrt{3}}{2} = \\dfrac{a\\sqrt{3}}{3} \\)
+
+Suy ra \\( d^2 = \\dfrac{a^2}{3} \\).
+
+Vậy giá trị biểu thức \\( T = \\dfrac{81}{a^2}\\cdot\\dfrac{a^2}{3} = 27 \\).""",
+},
+
+# ---------------- KÉO THẢ (dragdrop) ----------------
+{
+    "id": 'de11_dd_29',
+    "type": 'dragdrop',
+    "content": """Cho hình lăng trụ đứng \\( ABC.A'B'C' \\) có đáy \\( ABC \\) là tam giác vuông cân tại \\( B \\) và \\( AC = a\\sqrt{2} \\). Biết góc giữa mặt phẳng \\( (A'BC) \\) và mặt phẳng đáy \\( (ABC) \\) bằng \\( 60^\\circ \\). Kéo thả các giá trị cho sẵn dưới đây vào các mệnh đề tương ứng sao cho thích hợp:
+
+1. Khoảng cách từ điểm \\( A \\) đến mặt phẳng \\( (A'BC) \\) bằng (1).
+
+2. Khoảng cách giữa hai đường thẳng chéo nhau \\( A'B \\) và \\( B'C \\) bằng (2).
+
+3. Côsin của góc giữa hai mặt phẳng \\( (A'BC) \\) và \\( (A'AC) \\) bằng (3).""",
+        "options_pool": [
+        '$\\dfrac{a\\sqrt{3}}{2}$',
+        '$\\dfrac{a\\sqrt{21}}{7}$',
+        '$\\dfrac{\\sqrt{6}}{4}$',
+        '$\\dfrac{a\\sqrt{2}}{2}$'
+    ],
+    "blanks": [
+        {"label": "(1) =", "answer": "$\\dfrac{a\\sqrt{3}}{2}$"},
+        {"label": "(2) =", "answer": "$\\dfrac{a\\sqrt{21}}{7}$"},
+        {"label": "(3) =", "answer": "$\\dfrac{\\sqrt{6}}{4}$"},
+    ],
+    "points": 1,
+    "explanation_image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau29_de11.PNG",
+    "explanation": """Vì đáy \\( ABC \\) vuông cân tại \\( B \\) và \\( AC = a\\sqrt{2} \\) nên \\( AB = BC = a \\).
+
+Lăng trụ đứng nên \\( BB' \\perp (ABC) \\Rightarrow BB' \\perp BC \\). Mà \\( BC \\perp AB \\) (giả thiết vuông cân tại B), suy ra \\( BC \\perp (ABB'A') \\Rightarrow BC \\perp A'B \\).
+
+Giao tuyến của \\( (A'BC) \\) và \\( (ABC) \\) là \\( BC \\). Vì \\( A'B \\perp BC \\) và \\( AB \\perp BC \\), góc giữa hai mặt phẳng này là \\( \\widehat{A'BA} = 60^\\circ \\). Từ đó tính được chiều cao lăng trụ: \\( AA' = AB\\cdot\\tan 60^\\circ = a\\sqrt{3} \\).
+
+Ý 1: Trong mặt phẳng \\( (ABB'A') \\), kẻ \\( AH \\perp A'B \\) tại \\( H \\). Vì \\( BC \\perp (ABB'A') \\) nên \\( BC \\perp AH \\), do đó \\( AH \\perp (A'BC) \\). Vậy:
+
+\\( d(A,(A'BC)) = AH = \\dfrac{AA'\\cdot AB}{\\sqrt{AA'^2+AB^2}} = \\dfrac{a\\sqrt{3}\\cdot a}{2a} = \\dfrac{a\\sqrt{3}}{2} \\)
+
+Điền \\( \\dfrac{a\\sqrt{3}}{2} \\) vào ý 1.
+
+Ý 2: Mở rộng lăng trụ thành hình hộp chữ nhật \\( ABCD.A'B'C'D' \\). Vì \\( B'C \\parallel A'D \\) nên \\( B'C \\parallel (A'BD) \\), do đó:
+
+\\( d(A'B,B'C) = d(B'C,(A'BD)) = d(C,(A'BD)) \\)
+
+Vì \\( AC \\) cắt \\( BD \\) tại trung điểm nên \\( d(C,(A'BD)) = d(A,(A'BD)) \\). Tứ diện \\( A.A'BD \\) có ba cạnh \\( AA', AB, AD \\) đôi một vuông góc tại \\( A \\), gọi \\( h = d(A,(A'BD)) \\):
+
+\\( \\dfrac{1}{h^2} = \\dfrac{1}{AA'^2}+\\dfrac{1}{AB^2}+\\dfrac{1}{AD^2} = \\dfrac{1}{3a^2}+\\dfrac{1}{a^2}+\\dfrac{1}{a^2} = \\dfrac{7}{3a^2} \\Rightarrow h = \\dfrac{a\\sqrt{21}}{7} \\)
+
+Điền \\( \\dfrac{a\\sqrt{21}}{7} \\) vào ý 2.
+
+Ý 3: Góc giữa \\( (A'BC) \\) và \\( (A'AC) \\) có giao tuyến \\( A'C \\). Trong \\( (ABC) \\), kẻ \\( BK \\perp AC \\) tại \\( K \\); do tam giác vuông cân tại \\( B \\) nên \\( K \\) là trung điểm \\( AC \\) và \\( BK = \\dfrac{a\\sqrt{2}}{2} \\).
+
+Vì \\( AA' \\perp (ABC) \\) nên \\( AA' \\perp BK \\), kết hợp \\( BK \\perp AC \\) suy ra \\( BK \\perp (A'AC) \\). Trong \\( (A'AC) \\), kẻ \\( KE \\perp A'C \\) tại \\( E \\); theo định lý ba đường vuông góc thì \\( BE \\perp A'C \\). Vậy góc giữa hai mặt phẳng chính là góc \\( \\widehat{BEK} \\).
+
+Ta có \\( A'B = \\sqrt{AA'^2+AB^2} = 2a \\). Xét \\( \\triangle A'BC \\) vuông tại \\( B \\), đường cao \\( BE \\):
+
+\\( BE = \\dfrac{A'B\\cdot BC}{\\sqrt{A'B^2+BC^2}} = \\dfrac{2a\\cdot a}{\\sqrt{4a^2+a^2}} = \\dfrac{2a}{\\sqrt{5}} \\)
+
+Trong tam giác vuông \\( BKE \\) tại \\( K \\):
+
+\\( \\cos\\widehat{BEK} = \\dfrac{KE}{BE} = \\dfrac{\\sqrt{BE^2-BK^2}}{BE} = \\sqrt{1-\\dfrac{BK^2}{BE^2}} = \\sqrt{1-\\dfrac{a^2/2}{4a^2/5}} = \\sqrt{\\dfrac{3}{8}} = \\dfrac{\\sqrt{6}}{4} \\)
+
+Điền \\( \\dfrac{\\sqrt{6}}{4} \\) vào ý 3.""",
+},
+
+# ---------------- TRẮC NGHIỆM 4 LỰA CHỌN (mc4) ----------------
+{
+    "id": 'de11_mc_30',
+    "type": 'mc4',
+    "content": """Cho hình chóp \\( S.ABC \\) có đáy \\( ABC \\) là tam giác đều cạnh \\( a \\). Hai mặt phẳng \\( (SAB) \\) và \\( (SAC) \\) cùng vuông góc với mặt phẳng đáy. Gọi \\( M \\) là trung điểm của \\( BC \\), biết góc giữa mặt phẳng \\( (SBC) \\) và mặt phẳng \\( (ABC) \\) bằng \\( 45^\\circ \\). Khoảng cách từ trọng tâm \\( G \\) của tam giác \\( ABC \\) đến mặt phẳng \\( (SBC) \\) bằng bao nhiêu?""",
+        "options": {
+        'A': '$\\dfrac{a\\sqrt{6}}{12}$',
+        'B': '$\\dfrac{a\\sqrt{6}}{4}$',
+        'C': '$\\dfrac{a\\sqrt{2}}{12}$',
+        'D': '$\\dfrac{a\\sqrt{3}}{6}$',
+    },
+    "correct": 'A',
+    "points": 1,
+    "explanation_image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/cau30_de11.PNG",
+    "explanation": """Hai mặt phẳng \\( (SAB) \\) và \\( (SAC) \\) cùng vuông góc với mặt đáy \\( (ABC) \\) và cắt nhau theo giao tuyến \\( SA \\), do đó \\( SA \\perp (ABC) \\).
+
+Gọi \\( M \\) là trung điểm \\( BC \\). Vì tam giác \\( ABC \\) đều nên \\( AM \\perp BC \\). Mặt khác \\( SA \\perp BC \\) (do \\( SA \\perp (ABC) \\)), suy ra \\( BC \\perp (SAM) \\Rightarrow BC \\perp SM \\).
+
+Do đó góc giữa \\( (SBC) \\) và \\( (ABC) \\) chính là góc \\( \\widehat{SMA} = 45^\\circ \\).
+
+Trong tam giác đều \\( ABC \\) cạnh \\( a \\), đường trung tuyến \\( AM = \\dfrac{a\\sqrt{3}}{2} \\).
+
+Xét tam giác vuông \\( SAM \\) (vuông tại \\( A \\)) có \\( \\widehat{SMA}=45^\\circ \\), suy ra tam giác này vuông cân tại \\( A \\), nên:
+
+\\( SA = AM = \\dfrac{a\\sqrt{3}}{2} \\)
+
+Trong mặt phẳng \\( (SAM) \\), kẻ đường cao \\( AH \\perp SM \\) tại \\( H \\). Vì \\( BC \\perp (SAM) \\) nên \\( BC \\perp AH \\), suy ra \\( AH \\perp (SBC) \\), tức là \\( d(A,(SBC)) = AH \\).
+
+Tính \\( AH = AM\\cdot\\sin 45^\\circ = \\dfrac{a\\sqrt{3}}{2}\\cdot\\dfrac{\\sqrt{2}}{2} = \\dfrac{a\\sqrt{6}}{4} \\)
+
+Vì \\( G \\) là trọng tâm tam giác \\( ABC \\) nên \\( G \\) nằm trên \\( AM \\) và \\( \\dfrac{MG}{MA} = \\dfrac{1}{3} \\). Đường thẳng \\( AM \\) cắt mặt phẳng \\( (SBC) \\) tại \\( M \\), nên:
+
+\\( d(G,(SBC)) = \\dfrac{1}{3}d(A,(SBC)) = \\dfrac{1}{3}\\cdot\\dfrac{a\\sqrt{6}}{4} = \\dfrac{a\\sqrt{6}}{12} \\)
+
+Chọn đáp án A.""",
+},
+
+# ---------------- TRẢ LỜI NGẮN (short) ----------------
+{
+    "id": 'de11_sh_31',
+    "type": 'short',
+    "content": """Một chiếc lều bạt có dạng hình chóp tứ giác đều \\( S.ABCD \\). Vật liệu dùng để làm tất cả các mặt của lều (bao gồm 4 mặt bên và mặt đáy) có tổng diện tích bề mặt là \\( 36 \\text{ m}^2 \\). Hỏi thể tích lớn nhất của không gian bên trong chiếc lều bằng bao nhiêu \\( \\text{m}^3 \\)? Biết kết quả thể tích lớn nhất có dạng \\( a\\sqrt{b} \\) (với \\( a, b \\in \\mathbb{N}^* \\) và \\( b \\) là số nguyên tố). Tính giá trị tổng \\( a+b \\).""",
+    "blanks": [
+        {"label": "a + b =", "answers": ["11"]}
+    ],
+    "points": 1,
+    "explanation": """Gọi độ dài cạnh đáy của chiếc lều là \\( x \\) (\\( x>0 \\)) và chiều cao của lều là \\( h \\) (\\( h>0 \\)).
+
+Diện tích mặt đáy là \\( S_{đáy} = x^2 \\). Khoảng cách từ chân đường cao đến một cạnh đáy là \\( \\dfrac{x}{2} \\), nên độ dài trung đoạn (đường cao mặt bên) là \\( l = \\sqrt{h^2+\\dfrac{x^2}{4}} \\).
+
+Diện tích xung quanh của lều là \\( S_{xq} = 4\\cdot\\dfrac{1}{2}\\cdot x\\cdot l = 2x\\sqrt{h^2+\\dfrac{x^2}{4}} \\).
+
+Theo giả thiết, tổng diện tích toàn phần bằng 36, ta có:
+
+\\( x^2 + 2x\\sqrt{h^2+\\dfrac{x^2}{4}} = 36 \\Leftrightarrow 2x\\sqrt{h^2+\\dfrac{x^2}{4}} = 36-x^2 \\)
+
+Bình phương hai vế (với điều kiện \\( x^2<36 \\)):
+
+\\( 4x^2\\left(h^2+\\dfrac{x^2}{4}\\right) = (36-x^2)^2 \\Leftrightarrow 4x^2h^2+x^4 = 1296-72x^2+x^4 \\)
+
+Suy ra \\( h^2 = \\dfrac{1296-72x^2}{4x^2} = \\dfrac{324-18x^2}{x^2} \\).
+
+Thể tích của lều là:
+
+\\( V = \\dfrac{1}{3}S_{đáy}\\cdot h = \\dfrac{1}{3}x^2\\sqrt{\\dfrac{324-18x^2}{x^2}} = \\dfrac{1}{3}\\sqrt{x^2(324-18x^2)} \\)
+
+Để \\( V \\) lớn nhất, ta cần tìm giá trị lớn nhất của biểu thức \\( f(x) = x^2(324-18x^2) = \\dfrac{1}{18}\\cdot 18x^2(324-18x^2) \\).
+
+Áp dụng bất đẳng thức AM–GM cho hai số dương \\( 18x^2 \\) và \\( 324-18x^2 \\):
+
+\\( 18x^2(324-18x^2) \\le \\left(\\dfrac{18x^2+324-18x^2}{2}\\right)^2 = 162^2 = 26244 \\)
+
+Dấu bằng xảy ra khi \\( 18x^2 = 324-18x^2 \\Leftrightarrow 36x^2=324 \\Leftrightarrow x^2=9 \\Rightarrow x=3 \\).
+
+Khi đó:
+
+\\( \\max V = \\dfrac{1}{3}\\sqrt{\\dfrac{26244}{18}} = \\dfrac{1}{3}\\sqrt{1458} = \\dfrac{1}{3}\\cdot 27\\sqrt{2} = 9\\sqrt{2} \\)
+
+Vậy thể tích lớn nhất có dạng \\( a\\sqrt{b} \\) với \\( a=9 \\), \\( b=2 \\) (thỏa mãn \\( b \\) là số nguyên tố).
+
+Vậy tổng \\( a+b = 9+2 = 11 \\).""",
+},
+                
                 
 ], # Đóng danh sách questions của Đề 11
     }, # Đóng dictionary của Đề 11          
