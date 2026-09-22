@@ -1442,7 +1442,7 @@ def get_exam_by_id(exam_id):
         if e["id"] == exam_id:
             return e
     return None
-
+ 
 
 def make_shuffled_order(exam):
     """Tạo thứ tự hiển thị MỚI cho một lượt làm bài: xáo ngẫu nhiên câu hỏi
