@@ -1403,7 +1403,6 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     ],
     "explanation": "Mình tính đạo hàm của hàm số:<br>$$y' = 3x^2 - 8x + 5$$<br><br>Giải phương trình $y' = 0$:<br>$$3x^2 - 8x + 5 = 0 \\Leftrightarrow (x-1)(3x-5) = 0 \\Leftrightarrow x = 1 \\text{ hoặc } x = \\dfrac{5}{3}$$<br><br>Vì hệ số của $x^3$ là $1 > 0$ nên đồ thị có dạng đi lên - xuống - lên. Do đó nghiệm nhỏ hơn là điểm cực đại, nghiệm lớn hơn là điểm cực tiểu:<br>• Điểm cực đại: $x_1 = 1$<br>• Điểm cực tiểu: $x_2 = \\dfrac{5}{3}$<br><br>Tính giá trị biểu thức:<br>$$A = x_1 - 3x_2 = 1 - 3 \\cdot \\dfrac{5}{3} = 1 - 5 = -4$$<br><br>Vậy $A = -4$."
   },
-
   {
     "id": "de5_sh_04",
     "part": 3,
@@ -1478,7 +1477,7 @@ Kiểm tra lại bằng cách khai triển: \\((x-2)^2(x-9) = (x^2-4x+4)(x-9) = 
 Cho \\( (x-2)^2(x-9) = 0 \\Leftrightarrow x = 2 \\) (nghiệm kép) hoặc \\( x = 9 \\).<br><br>
 Đối chiếu điều kiện \\( 0 < x < 5 \\), ta loại \\( x = 9 \\), chỉ nhận \\( x = 2 \\).<br><br>
 Vậy \\( x = 2 \\) (cm)."
-  },
+  }
   
 
     ],  #hết đề 5
