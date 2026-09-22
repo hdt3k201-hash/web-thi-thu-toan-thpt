@@ -1432,7 +1432,7 @@ Vậy \\( 2026a - 2027b = 2026(1) - 2027(-1) = 2026 + 2027 = 4053 \\)."
     "svg": "<svg viewBox='0 0 420 260' xmlns='http://www.w3.org/2000/svg'><polygon points='60,200 260,200 220,80 60,80' fill='none' stroke='black' stroke-width='2'/><line x1='60' y1='200' x2='60' y2='40' stroke='black' stroke-width='2'/><line x1='60' y1='40' x2='260' y2='200' stroke='#333' stroke-width='2'/><line x1='60' y1='40' x2='60' y2='80' stroke='#333' stroke-width='2'/><line x1='60' y1='40' x2='220' y2='80' stroke='#333' stroke-width='2'/><text x='40' y='205' font-size='14'>A</text><text x='265' y='205' font-size='14'>B</text><text x='225' y='75' font-size='14'>C</text><text x='40' y='75' font-size='14'>D</text><text x='40' y='35' font-size='14'>S</text><text x='30' y='120' font-size='12'>3a</text><text x='55' y='95' font-size='12'>a</text></svg>",
     "answers": ["5"],
     "explanation": "Vì \\(SA \\perp (ABCD)\\) nên hình chiếu vuông góc của \\(SD\\) lên mặt đáy là \\(AD\\).<br><br>
-    <img src='https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de5_cau5_loigiai.PNG' style='max-width:100%;'/><br><br>
+    <img src='https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de5_cau51_loigiai.PNG' style='max-width:100%;'/><br><br>
 Do đó góc giữa \\(SD\\) và \\((ABCD)\\) chính là góc \\(\\widehat{SDA} = 60^\\circ\\).<br><br>
 Xét tam giác vuông \\(SAD\\) tại \\(A\\): \\( \\tan 60^\\circ = \\dfrac{SA}{AD} \\Rightarrow SA = AD\\sqrt{3} \\) &nbsp; (1)<br><br>
 Vì đáy là hình thang vuông tại \\(A, D\\) nên \\(AB \\parallel CD\\), suy ra \\(AB \\parallel (SCD)\\).<br>
@@ -1452,7 +1452,7 @@ So sánh với \\( \\dfrac{m}{n}a^3\\sqrt3 \\), ta có \\( m = 2, n = 3 \\) (đ�
 Vậy \\( m + n = 2 + 3 = 5 \\)."
   },
   {
-    "id": "de6_sh_06",
+    "id": "de5_sh_06",
     "part": 3,
     "type": "short",
     "content": "Cho một tấm bìa hình chữ nhật có kích thước \\(10\\ \\text{cm} \\times 16\\ \\text{cm}\\). Từ tấm bìa đó, người ta cắt bỏ bốn hình vuông bằng nhau ở bốn góc (hình vuông bị cắt bỏ có độ dài cạnh là \\(x\\ \\text{cm}\\)) rồi gập lại thành một chiếc hộp có dạng hình hộp chữ nhật không có nắp. Biết thể tích của chiếc hộp đó bằng \\(144\\ \\text{cm}^3\\). Tìm \\(x\\).",
