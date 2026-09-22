@@ -1597,7 +1597,7 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
       "D": "$y=x+4$."
     },
     "correct": "D",
-    "explanation": "Để tìm tiệm cận xiên, ta chia đa thức tử cho đa thức mẫu để tách phần nguyên và phần phân thức.<br><br>Thực hiện phép chia $x^2+2x-2$ cho $x-2$:<br>$$x^2+2x-2 = (x-2)(x+4)+6.$$<br><br>(Kiểm tra lại: $(x-2)(x+4)=x^2+4x-2x-8=x^2+2x-8$, cộng thêm $6$ ta được $x^2+2x-2$. Đúng.)<br><br>Do đó:<br>$$y=\\dfrac{x^2+2x-2}{x-2}=x+4+\\dfrac{6}{x-2}.$$<br><br>Khi $x\\to+\\infty$ hoặc $x\\to-\\infty$ thì $\\dfrac{6}{x-2}\\to 0$, nghĩa là đồ thị hàm số càng ngày càng tiến sát tới đường thẳng $y=x+4$.<br><br>Vậy đường tiệm cận xiên của đồ thị là $y=x+4$. Chọn đáp án D."
+    "explanation": "Để tìm tiệm cận xiên, ta chia đa thức tử cho đa thức mẫu để tách phần nguyên và phần phân thức.<br><br>Thực hiện phép chia $x^2+2x-2$ cho $x-2$:<br>$$x^2+2x-2 = (x-2)(x+4)+6.$$<br><br>Do đó:<br>$$y=\\dfrac{x^2+2x-2}{x-2}=x+4+\\dfrac{6}{x-2}.$$<br><br>Khi $x\\to+\\infty$ hoặc $x\\to-\\infty$ thì $\\dfrac{6}{x-2}\\to 0$, nghĩa là đồ thị hàm số càng ngày càng tiến sát tới đường thẳng $y=x+4$.<br><br>Vậy đường tiệm cận xiên của đồ thị là $y=x+4$. Chọn đáp án D."
   },
   {
     "id": "de6_mc_12",
@@ -1614,6 +1614,34 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     "explanation": "Mặt phẳng $(Oxy)$ là tập hợp các điểm có tọa độ $z=0$. Ta cần tìm điểm thuộc đường thẳng $AB$ mà có tọa độ $z=0$.<br><br>Ta có $\\overrightarrow{AB}=(1-(-3);\\,-5-1;\\,2-(-4))=(4;-6;6)$.<br><br>Gọi $I$ là điểm cần tìm trên đường thẳng $AB$, ta viết $I = A + t\\cdot\\overrightarrow{AB}$ với $t$ là một số thực nào đó, tức là:<br>$$I = (-3+4t;\\ 1-6t;\\ -4+6t).$$<br><br>Vì $I$ thuộc $(Oxy)$ nên tọa độ $z$ của $I$ bằng $0$:<br>$$-4+6t=0 \\Rightarrow t=\\dfrac{2}{3}.$$<br><br>Thay $t=\\dfrac{2}{3}$ vào tọa độ $x$ và $y$ của $I$:<br>$$x_I=-3+4\\cdot\\dfrac{2}{3}=-3+\\dfrac{8}{3}=-\\dfrac{1}{3}.$$<br>$$y_I=1-6\\cdot\\dfrac{2}{3}=1-4=-3.$$<br><br>Vậy điểm cần tìm là $I\\left(-\\dfrac{1}{3};-3;0\\right)$. Chọn đáp án A."
   },
 
+  {
+    "id": "de6_tf_01",
+    "part": 2,
+    "type": "truefalse",
+    "content": "Hàm số $y=f(x)$ liên tục trên $\\mathbb{R}$ và có bảng biến thiên như sau:",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de6_tf1_bbt.PNG",
+    "statements": [
+      {"text": "Đồ thị hàm số đã cho có hai đường tiệm cận ngang.", "correct": True},
+      {"text": "Giá trị nhỏ nhất của hàm số trên $(-\\infty;+\\infty)$ bằng $8$.", "correct": True},
+      {"text": "Hàm số đồng biến trên $(8;38)$.", "correct": False},
+      {"text": "Giá trị lớn nhất của hàm số trên $\\mathbb{R}$ bằng $142$.", "correct": False}
+    ],
+    "explanation": "<img src='https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de6_tf1_bbt.PNG' style='max-width:100%;'/><br><br>Nhìn vào bảng biến thiên ta đọc được: khi $x\\to-\\infty$ thì $y\\to 142$; hàm số nghịch biến trên $(-\\infty;-1)$ xuống giá trị $y(-1)=8$; rồi đồng biến trên $(-1;1)$ lên giá trị $y(1)=38$; rồi nghịch biến trên $(1;+\\infty)$ và khi $x\\to+\\infty$ thì $y\\to 14$.<br><br><b>a)</b> Vì $\\lim\\limits_{x\\to-\\infty}f(x)=142$ (hữu hạn) nên đường thẳng $y=142$ là một tiệm cận ngang. Vì $\\lim\\limits_{x\\to+\\infty}f(x)=14$ (hữu hạn) nên đường thẳng $y=14$ cũng là một tiệm cận ngang. Vậy đồ thị có hai đường tiệm cận ngang. Ý a) <b>ĐÚNG</b>.<br><br><b>b)</b> Để ý: trên $(-\\infty;-1)$, hàm số nghịch biến từ giá trị (không đạt được) $142$ xuống đến $f(-1)=8$, nên mọi giá trị của $f$ trên khoảng này đều lớn hơn $8$. Trên $(-1;1)$ hàm đồng biến từ $8$ lên $38$, giá trị luôn $\\ge 8$. Trên $(1;+\\infty)$ hàm nghịch biến từ $38$ xuống dần tới (không đạt được) $14$, nên các giá trị ở đây luôn lớn hơn $14>8$. Vậy trên toàn bộ $\\mathbb{R}$, giá trị nhỏ nhất mà hàm số đạt được chính là $f(-1)=8$ (đạt được tại $x=-1$). Ý b) <b>ĐÚNG</b>.<br><br><b>c)</b> Khoảng $(8;38)$ ở đây là các con số nằm trên trục $y$ (giá trị của hàm số), không phải là một khoảng của biến $x$ thuộc miền xác định. Khi nói hàm số \"đồng biến trên một khoảng\" thì khoảng đó phải là khoảng của $x$, chứ không phải khoảng giá trị $y$. Ở đây hàm số thực sự đồng biến trên khoảng $x\\in(-1;1)$ (khoảng biến $x$) chứ không phải trên $(8;38)$. Do đó phát biểu này viết sai kí hiệu/sai bản chất. Ý c) <b>SAI</b>.<br><br><b>d)</b> Giá trị $142$ chỉ là giới hạn khi $x\\to-\\infty$, tức là hàm số tiến gần đến $142$ nhưng \nkhông bao giờ đạt được đúng giá trị $142$ (vì trên $(-\\infty;-1)$ hàm nghịch biến nên mọi giá trị đều nhỏ hơn $142$ thực sự). Vậy $142$ không phải là giá trị lớn nhất đạt được. Giá trị lớn nhất mà hàm số thực sự đạt được (tại một điểm cụ thể) chính là $f(1)=38$ (vì các đoạn còn lại đều cho giá trị nhỏ hơn $38$). Vậy GTLN của hàm số trên $\\mathbb{R}$ là $38$, không phải $142$. Ý d) <b>SAI</b>."
+  },
+  {
+    "id": "de6_tf_02",
+    "part": 2,
+    "type": "truefalse",
+    "content": "Xét tam giác $ABC$ có $AC = 2AB$ và $BC = 10$ cm. Trên cạnh $AC$ lấy điểm $D$ sao cho $AD=\\dfrac{1}{4}AC$, trên cạnh $AB$ lấy điểm $E$ sao cho $AE=\\dfrac{1}{4}AB$, trên cạnh $AD$ lấy điểm $F$ sao cho $AF=\\dfrac{1}{4}AD$ và tiếp tục lấy các điểm $G, H, I, J,\\dots$ (vô hạn lần) theo quy luật đó.",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de6_tf2_tamgiac.PNG",
+    "statements": [
+      {"text": "$\\dfrac{AB}{AC} = \\dfrac{AD}{AB}$.", "correct": True},
+      {"text": "Tam giác $ABD$ đồng dạng với tam giác $ABC$.", "correct": False},
+      {"text": "$BD = 5$ cm; $DE = 3$ cm.", "correct": False},
+      {"text": "Độ dài đường gấp khúc $CBDEFGH\\dots$ bằng $20$ cm.", "correct": True}
+    ],
+    "explanation": "<img src='https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de6_tf2_tamgiac.PNG' style='max-width:100%;'/><br><br>Đặt $AB=x$, suy ra $AC=2x$. Vì $AD=\\dfrac14 AC$ nên $AD=\\dfrac{x}{2}$; vì $AE=\\dfrac14AB$ nên $AE=\\dfrac{x}{4}$.<br><br><b>a)</b> Ta có $\\dfrac{AB}{AC}=\\dfrac{x}{2x}=\\dfrac12$ và $\\dfrac{AD}{AB}=\\dfrac{x/2}{x}=\\dfrac12$. Hai tỉ số này bằng nhau. Ý a) <b>ĐÚNG</b>.<br><br><b>b)</b> Xét tam giác $ABD$ và tam giác $ACB$ (chú ý thứ tự đỉnh): hai tam giác này có góc $A$ chung, và theo câu a) ta có $\\dfrac{AB}{AC}=\\dfrac{AD}{AB}$ — đây chính là điều kiện đồng dạng cạnh–góc–cạnh với sự tương ứng đỉnh $A\\leftrightarrow A,\\ B\\leftrightarrow C,\\ D\\leftrightarrow B$. Do đó tam giác $ABD$ đồng dạng với tam giác $\\mathbf{ACB}$ (chứ không phải tam giác $ABC$ theo đúng thứ tự đỉnh $A,B,C$ như phát biểu đã nêu). Vì nêu sai thứ tự tương ứng đỉnh (phải là $ACB$ chứ không phải $ABC$), ý b) <b>SAI</b>.<br><br><b>c)</b> Từ sự đồng dạng $\\triangle ABD \\sim \\triangle ACB$ (tỉ số đồng dạng $k=\\dfrac12$), cạnh $BD$ (đối diện đỉnh $A$ trong $\\triangle ABD$) tương ứng với cạnh $CB$ (đối diện đỉnh $A$ trong $\\triangle ACB$), nên $BD=\\dfrac12 \\cdot CB=\\dfrac12\\cdot10=5$ cm — phần này đúng.<br>Tiếp theo, xét $D$ trên $AC$ và $E$ trên $AB$ với cùng tỉ lệ $\\dfrac{AD}{AC}=\\dfrac{AE}{AB}=\\dfrac14$. Theo định lí Ta-lét (đường thẳng chia hai cạnh theo cùng một tỉ số thì song song và tỉ lệ với cạnh còn lại), ta có $DE \\parallel BC$ và $\\dfrac{DE}{BC}=\\dfrac14$, suy ra $DE=\\dfrac14\\cdot10=2{,}5$ cm, chứ không phải $3$ cm. Vì $DE=3$ cm là sai nên toàn bộ ý c) <b>SAI</b>.<br><br><b>d)</b> Nhận xét: phép \"co\" từ $A$ với tỉ số $\\dfrac14$ biến $C\\to D$ (vì $AD=\\dfrac14AC$) và biến $B\\to E$ (vì $AE=\\dfrac14AB$); cùng phép co đó lại biến $D\\to F$ (vì $AF=\\dfrac14AD$) và biến $E\\to G$ (vì $AG=\\dfrac14AE$), cứ thế tiếp diễn. Một phép co (vị tự) tỉ số $\\dfrac14$ tại tâm $A$ sẽ làm mọi đoạn thẳng tương ứng co lại đúng $\\dfrac14$ lần. Do đó:<br>$DE = \\dfrac14 CB,\\quad EF=\\dfrac14 BD,\\quad FG=\\dfrac14 DE,\\quad GH = \\dfrac14 EF,\\ \\dots$<br>Từ $CB=10$ và $BD=5$ ta tính được: $DE=2{,}5$; $EF=\\dfrac14\\cdot5=1{,}25$; $FG=\\dfrac14\\cdot2{,}5=0{,}625$; ... Quan sát dãy độ dài: $10;\\ 5;\\ 2{,}5;\\ 1{,}25;\\ 0{,}625;\\dots$ đây chính là một <b>cấp số nhân lùi vô hạn</b> với số hạng đầu $u_1=10$ và công bội $q=\\dfrac12$ (vì $\\dfrac{5}{10}=\\dfrac{2{,}5}{5}=\\dfrac{1{,}25}{2{,}5}=\\dfrac12$).<br><br>Tổng độ dài đường gấp khúc (vô hạn đoạn) chính là tổng của cấp số nhân lùi vô hạn này:<br>$$S=\\dfrac{u_1}{1-q}=\\dfrac{10}{1-\\frac12}=\\dfrac{10}{\\frac12}=20\\ \\text{(cm)}.$$<br><br>Vậy độ dài đường gấp khúc $CBDEFGH\\ldots$ bằng $20$ cm. Ý d) <b>ĐÚNG</b>."
+  },
 
 ],  #hết đề 6
 },    #hết đề 6 
