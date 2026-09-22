@@ -1141,16 +1141,246 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
   "explanation": "Gọi $A$, $B$, $C$, $D$ lần lượt là các điểm mà chất điểm đi qua, với $A \\in (P)$, $B, C \\in (d)$ và $D \\in (C)$.<br>Theo đề bài ta có $BC = 1$. Tổng quãng đường chất điểm di chuyển là:<br>$$L = AB + BC + CD = AB + 1 + CD$$<br>Để $L$ nhỏ nhất, ta cần tìm giá trị nhỏ nhất của tổng $AB + CD$.<br><br>Thực hiện phép tịnh tiến điểm $D$ theo véctơ $\\overrightarrow{CB}$. Gọi $D'$ là ảnh của $D$, ta có $\\overrightarrow{DD'} = \\overrightarrow{CB} \\Leftrightarrow \\overrightarrow{CD} = \\overrightarrow{BD'}$.<br>Khi đó $AB + CD = AB + BD' \\ge AD'$ (do bất đẳng thức tam giác).<br><br>Do $D$ thuộc đường tròn $(C)$ nên $D'$ thuộc đường tròn $(C')$ là ảnh của $(C)$ qua phép tịnh tiến theo véctơ $\\overrightarrow{u} = \\overrightarrow{CB}$.<br>Đường tròn $(C)$ có phương trình $(x+4)^2 + y^2 = 4$, suy ra tâm $I(-4; 0)$ và bán kính $R=2$.<br>Vì $B, C \\in (d): x - y = 0$ và $BC = 1$ nên $\\overrightarrow{CB}$ là véctơ chỉ phương của $(d)$ có độ dài bằng $1$. Có hai véctơ thỏa mãn là:<br>$$\\overrightarrow{u}_1 = \\left(\\dfrac{\\sqrt{2}}{2}; \\dfrac{\\sqrt{2}}{2}\\right) \\quad \\text{và} \\quad \\overrightarrow{u}_2 = \\left(-\\dfrac{\\sqrt{2}}{2}; -\\dfrac{\\sqrt{2}}{2}\\right)$$<br><br>Ta có hai trường hợp cho đường tròn $(C')$:<br>- **Trường hợp 1:** Tịnh tiến theo $\\overrightarrow{u}_1$, $(C')$ có tâm $I_1 = I + \\overrightarrow{u}_1 = \\left(-4 + \\dfrac{\\sqrt{2}}{2}; \\dfrac{\\sqrt{2}}{2}\\right)$.<br>- **Trường hợp 2:** Tịnh tiến theo $\\overrightarrow{u}_2$, $(C')$ có tâm $I_2 = I + \\overrightarrow{u}_2 = \\left(-4 - \\dfrac{\\sqrt{2}}{2}; -\\dfrac{\\sqrt{2}}{2}\\right)$.<br><br>Ta cần tìm khoảng cách ngắn nhất từ một điểm $A(a; -a^2-2) \\in (P)$ đến các tâm $I_1$ và $I_2$.<br>- Xét khoảng cách $AI_1$:<br>$$AI_1^2 = \\left(a - \\left(-4 + \\dfrac{\\sqrt{2}}{2}\\right)\\right)^2 + \\left(-a^2-2 - \\dfrac{\\sqrt{2}}{2}\\right)^2$$<br>Sử dụng đạo hàm để khảo sát hàm số, ta tìm được giá trị nhỏ nhất đạt tại $a \\approx -0,479$. Khi đó $AI_1 \\approx 4,067$.<br><br>- Xét khoảng cách $AI_2$:<br>$$AI_2^2 = \\left(a - \\left(-4 - \\dfrac{\\sqrt{2}}{2}\\right)\\right)^2 + \\left(-a^2-2 + \\dfrac{\\sqrt{2}}{2}\\right)^2$$<br>Tương tự khảo sát hàm số, ta tìm được giá trị nhỏ nhất đạt tại $a \\approx -0,901$. Khi đó $AI_2 \\approx 4,349$.<br><br>So sánh hai trường hợp, khoảng cách ngắn nhất từ $A$ đến tâm $I'$ của $(C')$ là $AI_1 \\approx 4,067$. (Lưu ý rằng $A$ và $I_1$ nằm về hai phía so với đường thẳng $(d)$ nên đoạn thẳng $AI_1$ luôn cắt $(d)$ tại một điểm $B$ hợp lệ).<br>Khoảng cách ngắn nhất từ $A$ đến đường tròn $(C')$ là $AD' \\ge AI_1 - R \\approx 4,067 - 2 = 2,067$.<br><br>Vậy tổng quãng đường ngắn nhất là:<br>$$L_{\\min} = AD' + 1 \\approx 2,067 + 1 = 3,067$$<br>Làm tròn kết quả đến hàng phần chục, ta được $3,1$."
 }
 
-
-
-
-
-
-
-
-
     ],  #hết đề 4
 },    #hết đề 4
+
+{
+  "id": "de4",
+  "name": "Đề số 5 - ĐÁNH GIÁ ĐỊNH KỲ THÁNG 8 - TRƯỜNG TẠ QUANG BỬU HÀ NỘI- 2026 - 2027.",
+  "description": "22 câu hỏi: 12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn.",
+  "questions": [
+  {
+    "id": "de5_mc_01",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho hình chóp $S.ABC$ có $SA$ vuông góc với mặt phẳng đáy, đáy $ABC$ là tam giác vuông tại $B$. Biết $AB = a$ và $SA = 2a$. Khoảng cách từ điểm $A$ đến mặt phẳng $(SBC)$ bằng:",
+    "options": {
+      "A": "$\\dfrac{2\\sqrt{2}a}{3}$.",
+      "B": "$\\dfrac{\\sqrt{5}a}{3}$.",
+      "C": "$\\dfrac{\\sqrt{5}a}{5}$.",
+      "D": "$\\dfrac{2\\sqrt{5}a}{5}$."
+    },
+    "correct": "D",
+    "explanation": "Vì $SA \\perp (ABC)$ nên $SA \\perp BC$. Mặt khác đáy $ABC$ vuông tại $B$ nên $AB \\perp BC$. Từ đó $BC \\perp (SAB)$.<br><br>Kẻ $AH \\perp SB$ tại $H$ ($H \\in SB$). Vì $BC \\perp (SAB)$ nên $BC \\perp AH$, suy ra $AH \\perp (SBC)$.<br><br>Do đó $d(A,(SBC)) = AH$. Trong tam giác vuông $SAB$ tại $A$:<br>$$\\dfrac{1}{AH^2} = \\dfrac{1}{SA^2} + \\dfrac{1}{AB^2} = \\dfrac{1}{(2a)^2} + \\dfrac{1}{a^2} = \\dfrac{5}{4a^2}$$<br>$$\\Rightarrow AH^2 = \\dfrac{4a^2}{5} \\Rightarrow AH = \\dfrac{2a}{\\sqrt{5}} = \\dfrac{2\\sqrt{5}a}{5}$$<br><br>Chọn đáp án D."
+  },
+  {
+    "id": "de5_mc_02",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho hàm số $f(x)$ có đạo hàm $f'(x) = (x-1)^2(2-x)$. Hàm số $f(x)$ đồng biến trên khoảng nào?",
+    "options": {
+      "A": "$(-1;3)$.",
+      "B": "$(2;+\\infty)$.",
+      "C": "$(-\\infty;2)$.",
+      "D": "$(2;5)$."
+    },
+    "correct": "C",
+    "explanation": "Vì $(x-1)^2 \\geq 0$ với mọi $x \\in \\mathbb{R}$ nên dấu của $f'(x)$ phụ thuộc vào dấu của $(2-x)$.<br><br>Ta có $f'(x) \\geq 0 \\Leftrightarrow 2 - x \\geq 0 \\Leftrightarrow x \\leq 2$.<br><br>Dấu bằng chỉ xảy ra tại các điểm rời rạc $x=1$ và $x=2$, do đó hàm số đồng biến trên khoảng $(-\\infty;2)$.<br><br>Chọn đáp án C."
+  },
+  {
+    "id": "de5_mc_03",
+    "part": 1,
+    "type": "mc4",
+    "content": "Một xạ thủ lần lượt bắn hai viên đạn vào một bia. Xác suất trúng đích của viên đạn thứ nhất và thứ hai lần lượt là $0,8$ và $0,7$. Biết rằng kết quả các lần bắn là độc lập với nhau. Xác suất của biến cố \"Cả hai lần bắn đều không trúng đích\" là:",
+    "options": {
+      "A": "$0,14$.",
+      "B": "$0,56$.",
+      "C": "$0,06$.",
+      "D": "$0,6$."
+    },
+    "correct": "C",
+    "explanation": "Gọi $A_1$, $A_2$ lần lượt là biến cố người đó bắn trúng đích ở lần thứ nhất và lần thứ hai.<br><br>Xác suất bắn trượt lần lượt là: $P(\\overline{A_1}) = 1 - 0,8 = 0,2$ và $P(\\overline{A_2}) = 1 - 0,7 = 0,3$.<br><br>Vì hai lần bắn độc lập, xác suất để cả hai lần đều không trúng đích là:<br>$$P(\\overline{A_1} \\cap \\overline{A_2}) = P(\\overline{A_1}) \\cdot P(\\overline{A_2}) = 0,2 \\times 0,3 = 0,06$$<br><br>Chọn đáp án C."
+  },
+  {
+    "id": "de5_mc_04",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho hàm số $y = f(x)$ xác định trên tập $\\mathbb{R}$ và có đồ thị như hình bên. Mệnh đề nào dưới đây đúng?",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de5_cau4tn.PNG",
+    "options": {
+      "A": "Hàm số đạt cực đại tại $x = 0$ và đạt cực tiểu tại $x = 2$.",
+      "B": "Hàm số có giá trị lớn nhất bằng $2$ và giá trị nhỏ nhất bằng $-2$.",
+      "C": "Hàm số có giá trị cực tiểu bằng $2$.",
+      "D": "Hàm số có ba điểm cực trị."
+    },
+    "correct": "A",
+    "explanation": "Quan sát đồ thị hàm số, ta thấy điểm cực đại có tọa độ $(0;2)$ và điểm cực tiểu có tọa độ $(2;-2)$.<br><br>Do đó, hàm số đạt cực đại tại $x = 0$ và đạt cực tiểu tại $x = 2$.<br><br>Phương án B sai vì đồ thị đi ra $+\\infty$ và $-\\infty$ nên hàm số không có giá trị lớn nhất, nhỏ nhất trên $\\mathbb{R}$. Phương án C sai vì giá trị cực tiểu là $-2$ chứ không phải $2$. Phương án D sai vì hàm số chỉ có hai điểm cực trị.<br><br>Chọn đáp án A."
+  },
+  {
+    "id": "de5_mc_05",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh $a$. Cạnh bên $SA = a\\sqrt{3}$ và vuông góc với mặt đáy $(ABC)$. Gọi $\\varphi$ là góc nhị diện $[S,BC,A]$. Tính $\\tan\\varphi$.",
+    "options": {
+      "A": "$\\tan\\varphi = \\sqrt{3}$.",
+      "B": "$\\tan\\varphi = \\dfrac{1}{2}$.",
+      "C": "$\\tan\\varphi = \\dfrac{1}{\\sqrt{3}}$.",
+      "D": "$\\tan\\varphi = 2$."
+    },
+    "correct": "D",
+    "explanation": "Gọi $M$ là trung điểm cạnh $BC$. Do $\\triangle ABC$ đều cạnh $a$ nên $AM \\perp BC$ và $AM = \\dfrac{a\\sqrt{3}}{2}$.<br><br>Vì $SA \\perp (ABC) \\Rightarrow SA \\perp BC$, kết hợp với $AM \\perp BC$ suy ra $BC \\perp (SAM)$, do đó $SM \\perp BC$.<br><br>Suy ra góc nhị diện $[S,BC,A]$ chính là góc phẳng $\\widehat{SMA} = \\varphi$.<br><br>Xét tam giác vuông $SAM$ tại $A$:<br>$$\\tan\\varphi = \\dfrac{SA}{AM} = \\dfrac{a\\sqrt{3}}{\\dfrac{a\\sqrt{3}}{2}} = 2$$<br><br>Chọn đáp án D."
+  },
+  {
+    "id": "de5_mc_06",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho hàm số $f(x)$ có bảng biến thiên như sau. Hàm số đã cho đạt cực tiểu tại điểm",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de5_cau6tn.PNG",
+    "options": {
+      "A": "$x = 3$.",
+      "B": "$x = 2$.",
+      "C": "$x = 1$.",
+      "D": "$x = -2$."
+    },
+    "correct": "A",
+    "explanation": "Dựa vào bảng biến thiên: $f'(x) > 0$ trên $(-\\infty;1)$, $f'(x) < 0$ trên $(1;3)$, $f'(x) > 0$ trên $(3;+\\infty)$.<br><br>Vậy đạo hàm $f'(x)$ đổi dấu từ âm sang dương khi qua điểm $x = 3$ (giá trị hàm số tại đó là $-2$, thấp nhất cục bộ).<br><br>Vậy hàm số đạt cực tiểu tại điểm $x = 3$.<br><br>Chọn đáp án A."
+  },
+  {
+    "id": "de5_mc_07",
+    "part": 1,
+    "type": "mc4",
+    "content": "Đạo hàm của hàm số $y = \\sin x + \\cos 2x$ là:",
+    "options": {
+      "A": "$y' = -\\cos x + 2\\sin 2x$.",
+      "B": "$y' = 2\\cos 2x$.",
+      "C": "$y' = \\cos x - 2\\sin 2x$.",
+      "D": "$y' = \\cos x + 2\\sin 2x$."
+    },
+    "correct": "C",
+    "explanation": "Ta có: $(\\sin x + \\cos 2x)' = (\\sin x)' + (\\cos 2x)'$<br><br>$= \\cos x + (-2\\sin 2x) = \\cos x - 2\\sin 2x$<br><br>Chọn đáp án C."
+  },
+  {
+    "id": "de5_mc_08",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho hình lập phương $ABCD.A'B'C'D'$ có $AC = a\\sqrt{2}$. Thể tích khối lập phương đó bằng:",
+    "options": {
+      "A": "$\\dfrac{2a^3\\sqrt{2}}{3}$.",
+      "B": "$\\dfrac{a^3}{3}$.",
+      "C": "$2a^3\\sqrt{2}$.",
+      "D": "$a^3$."
+    },
+    "correct": "D",
+    "explanation": "Gọi độ dài cạnh của hình lập phương là $x$.<br><br>Đáy $ABCD$ là hình vuông cạnh $x$ nên $AC = x\\sqrt{2} = a\\sqrt{2} \\Rightarrow x = a$.<br><br>Thể tích khối lập phương: $V = x^3 = a^3$.<br><br>Chọn đáp án D."
+  },
+  {
+    "id": "de5_mc_09",
+    "part": 1,
+    "type": "mc4",
+    "content": "Giá trị lớn nhất của hàm số $y = x^3 - 3x + 2$ trên đoạn $[0;2]$ bằng:",
+    "options": {
+      "A": "$4$.",
+      "B": "$2$.",
+      "C": "$0$.",
+      "D": "$5$."
+    },
+    "correct": "A",
+    "explanation": "Đạo hàm: $y' = 3x^2 - 3 = 0 \\Leftrightarrow x = \\pm 1$.<br><br>Xét trên đoạn $[0;2]$, ta nhận $x = 1$. Tính các giá trị:<br>$y(0) = 2$, $y(1) = 0$, $y(2) = 4$.<br><br>Vậy giá trị lớn nhất của hàm số trên $[0;2]$ là $\\max\\limits_{[0;2]} y = 4$ tại $x = 2$.<br><br>Chọn đáp án A."
+  },
+  {
+    "id": "de5_mc_10",
+    "part": 1,
+    "type": "mc4",
+    "content": "Phương trình tiếp tuyến của đồ thị $y = x^3 + x$ tại điểm $M(1;2)$ là:",
+    "options": {
+      "A": "$y = -4x + 2$.",
+      "B": "$y = 4x - 2$.",
+      "C": "$y = -4x + 6$.",
+      "D": "$y = 4x + 2$."
+    },
+    "correct": "B",
+    "explanation": "Ta có $y' = 3x^2 + 1$. Hệ số góc của tiếp tuyến tại $M(1;2)$ là:<br>$$k = y'(1) = 3(1)^2 + 1 = 4$$<br><br>Phương trình tiếp tuyến:<br>$$y - 2 = 4(x-1) \\Leftrightarrow y = 4x - 2$$<br><br>Chọn đáp án B."
+  },
+  {
+    "id": "de5_mc_11",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho hàm số $y = \\dfrac{2x+3}{x-1}$. Khẳng định nào đúng.",
+    "options": {
+      "A": "Hàm số nghịch biến trên các khoảng $(-\\infty;1); (1;+\\infty)$.",
+      "B": "Hàm số nghịch biến trên khoảng $(-\\infty;1) \\cup (1;+\\infty)$.",
+      "C": "Hàm số nghịch biến trên $\\mathbb{R} \\setminus \\{1\\}$.",
+      "D": "Hàm số đồng biến trên $\\mathbb{R} \\setminus \\{1\\}$."
+    },
+    "correct": "A",
+    "explanation": "Tập xác định: $D = \\mathbb{R} \\setminus \\{1\\}$.<br><br>Đạo hàm:<br>$$y' = \\dfrac{2(x-1) - 3(1)}{(x-1)^2} = \\dfrac{-5}{(x-1)^2} < 0, \\forall x \\neq 1$$<br><br>Vậy hàm số nghịch biến trên từng khoảng xác định $(-\\infty;1)$ và $(1;+\\infty)$.<br><br>Các phương án B, C sai vì hàm số không xác định tại $x=1$ nên không thể nói nghịch biến trên hợp hai khoảng hay trên $\\mathbb{R}\\setminus\\{1\\}$ như một khoảng liên tục.<br><br>Chọn đáp án A."
+  },
+  {
+    "id": "de5_mc_12",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho $A$ và $B$ là hai biến cố xung khắc liên quan đến một phép thử. Biết $P(A) = \\dfrac{1}{2}$, $P(B) = \\dfrac{1}{3}$, tính $P(A \\cup B)$.",
+    "options": {
+      "A": "$\\dfrac{5}{6}$.",
+      "B": "$\\dfrac{1}{6}$.",
+      "C": "$1$.",
+      "D": "$\\dfrac{2}{3}$."
+    },
+    "correct": "A",
+    "explanation": "Do $A$ và $B$ là hai biến cố xung khắc nên $P(A \\cap B) = 0$.<br><br>Áp dụng quy tắc cộng xác suất:<br>$$P(A \\cup B) = P(A) + P(B) = \\dfrac{1}{2} + \\dfrac{1}{3} = \\dfrac{5}{6}$$<br><br>Chọn đáp án A."
+  },
+
+  {
+    "id": "de5_tf_01",
+    "part": 2,
+    "type": "truefalse",
+    "content": "Cho hàm số $y = f(x) = 2x - 4 + \\dfrac{2}{x+1}$.",
+    "statements": [
+      {"text": "Hàm số có đạo hàm $f'(x) = \\dfrac{2(x^2+2x)}{(x+1)^2}$.", "correct": true},
+      {"text": "Giá trị nhỏ nhất của hàm số trên khoảng $(-1;+\\infty)$ bằng $-2$.", "correct": true},
+      {"text": "Điểm cực đại của đồ thị hàm số có tọa độ $(0;-2)$.", "correct": false},
+      {"text": "Hàm số $y = f(x)$ có tập xác định là $D = \\mathbb{R} \\setminus \\{-1\\}$.", "correct": true}
+    ],
+    "explanation": "a) Mình đạo hàm hàm số $y = 2x - 4 + \\dfrac{2}{x+1}$:<br>$$y' = 2 - \\dfrac{2}{(x+1)^2} = \\dfrac{2(x+1)^2 - 2}{(x+1)^2} = \\dfrac{2(x^2+2x)}{(x+1)^2}$$<br>Đúng như đề cho nên ý a) ĐÚNG.<br><br>b) Xét trên khoảng $(-1;+\\infty)$, giải $f'(x) = 0$:<br>$$\\dfrac{2x(x+2)}{(x+1)^2} = 0 \\Leftrightarrow x = 0 \\text{ hoặc } x = -2 \\text{ (loại vì } -2 < -1\\text{)}$$<br>Vậy trên $(-1;+\\infty)$ chỉ có nghiệm $x=0$. Lập bảng xét dấu ta thấy $f'(x) < 0$ khi $-1 < x < 0$ và $f'(x) > 0$ khi $x > 0$, nên $x=0$ là điểm cực tiểu, đồng thời là điểm nhỏ nhất trên cả khoảng này.<br>$$f(0) = 2(0) - 4 + \\dfrac{2}{0+1} = -4 + 2 = -2$$<br>Vậy giá trị nhỏ nhất bằng $-2$, ý b) ĐÚNG.<br><br>c) Từ câu b) mình vừa lập luận: tại $x=0$ đạo hàm đổi dấu từ âm sang dương, nên đó là điểm CỰC TIỂU chứ không phải cực đại. Vậy điểm $(0;-2)$ là điểm cực tiểu của đồ thị, đề nói \"cực đại\" là SAI.<br><br>d) Hàm số xác định khi $x + 1 \\neq 0 \\Leftrightarrow x \\neq -1$, nên $D = \\mathbb{R}\\setminus\\{-1\\}$. Ý d) ĐÚNG."
+  },
+  {
+    "id": "de5_tf_02",
+    "part": 2,
+    "type": "truefalse",
+    "content": "Cho hình chóp $S.ABCD$ có $SA \\perp (ABCD)$, đáy $ABCD$ là hình chữ nhật. Biết $AB = a$, $AD = a\\sqrt{2}$ và $SA = a\\sqrt{3}$.",
+    "statements": [
+      {"text": "Thể tích khối chóp $S.ACD$ bằng $\\dfrac{a^3\\sqrt{6}}{6}$.", "correct": true},
+      {"text": "Khoảng cách từ điểm $A$ đến mặt phẳng $(SBC)$ là $\\dfrac{a\\sqrt{30}}{6}$.", "correct": false},
+      {"text": "Góc giữa hai mặt phẳng $(SCD)$ và $(ABCD)$ là góc $\\widehat{SDA}$.", "correct": true},
+      {"text": "$BC \\perp (SAB)$.", "correct": true}
+    ],
+    "explanation": "<img src='https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de5_tf2_hinhchop.PNG' style='max-width:100%;'/><br><br>a) Vì $ABCD$ là hình chữ nhật nên tam giác $ACD$ vuông tại $D$, diện tích:<br>$$S_{ACD} = \\dfrac{1}{2}\\cdot AD \\cdot DC = \\dfrac{1}{2}\\cdot a\\sqrt{2}\\cdot a = \\dfrac{a^2\\sqrt{2}}{2}$$<br>(vì $DC = AB = a$). Thể tích khối chóp $S.ACD$:<br>$$V = \\dfrac{1}{3}\\cdot SA \\cdot S_{ACD} = \\dfrac{1}{3}\\cdot a\\sqrt{3}\\cdot \\dfrac{a^2\\sqrt{2}}{2} = \\dfrac{a^3\\sqrt{6}}{6}$$<br>Vậy ý a) ĐÚNG.<br><br>b) Vì $ABCD$ là hình chữ nhật nên $BC \\perp AB$. Lại có $SA \\perp (ABCD) \\Rightarrow SA \\perp BC$, suy ra $BC \\perp (SAB)$.<br>Kẻ $AK \\perp SB$ tại $K$ ($K \\in SB$), do $BC \\perp (SAB)$ nên $BC \\perp AK$, suy ra $AK \\perp (SBC)$, vậy $d(A,(SBC)) = AK$.<br>Xét tam giác vuông $SAB$ tại $A$, với $SA = a\\sqrt{3}$, $AB = a$:<br>$$AK = \\dfrac{SA \\cdot AB}{\\sqrt{SA^2+AB^2}} = \\dfrac{a\\sqrt{3}\\cdot a}{\\sqrt{3a^2+a^2}} = \\dfrac{a^2\\sqrt{3}}{2a} = \\dfrac{a\\sqrt{3}}{2}$$<br>Giá trị này khác với $\\dfrac{a\\sqrt{30}}{6}$ mà đề đưa ra, nên ý b) SAI.<br><br>c) Ta có $CD \\perp AD$ (hình chữ nhật) và $CD \\perp SA$ (vì $SA \\perp (ABCD)$), suy ra $CD \\perp (SAD)$, do đó $CD \\perp SD$.<br>Giao tuyến của $(SCD)$ và $(ABCD)$ là $CD$, mà $SD \\perp CD$ trong $(SCD)$ và $AD \\perp CD$ trong $(ABCD)$, nên góc giữa hai mặt phẳng chính là góc $\\widehat{SDA}$. Ý c) ĐÚNG.<br><br>d) Đây chính là bước mình dùng ở câu b): $BC \\perp AB$ và $BC \\perp SA$ nên $BC \\perp (SAB)$. Ý d) ĐÚNG."
+  },
+  {
+    "id": "de5_tf_03",
+    "part": 2,
+    "type": "truefalse",
+    "content": "Một tổ có 16 bạn học sinh gồm 7 nam, 9 nữ. Chọn ngẫu nhiên từ tổ ra 6 bạn bất kì.",
+    "statements": [
+      {"text": "Xác suất để 6 bạn được chọn có ít nhất 1 nam là $\\dfrac{9}{11}$.", "correct": false},
+      {"text": "Số phần tử của không gian mẫu là $n(\\Omega) = C_{16}^6$.", "correct": true},
+      {"text": "Xác suất để 6 bạn được chọn có đúng 2 nữ là $\\dfrac{45}{286}$.", "correct": true},
+      {"text": "Xác suất để 6 bạn được chọn toàn nam là $\\dfrac{1}{114}$.", "correct": false}
+    ],
+    "explanation": "b) Chọn ngẫu nhiên 6 bạn trong 16 bạn thì số phần tử không gian mẫu là $n(\\Omega) = C_{16}^6 = 8008$. Ý b) ĐÚNG (mình dùng kết quả này cho các câu sau).<br><br>a) Mình tính bằng biến cố đối: \"6 bạn được chọn toàn là nữ\" (không có nam nào).<br>Số cách chọn 6 nữ trong 9 nữ: $C_9^6 = 84$.<br>Xác suất \"không có nam nào\" là $\\dfrac{84}{8008} = \\dfrac{3}{286}$.<br>Vậy xác suất \"có ít nhất 1 nam\" là:<br>$$1 - \\dfrac{3}{286} = \\dfrac{283}{286}$$<br>Giá trị này khác $\\dfrac{9}{11}$ mà đề cho, nên ý a) SAI.<br><br>c) Chọn đúng 2 nữ nghĩa là chọn 2 trong 9 nữ và 4 trong 7 nam:<br>$$C_9^2 \\cdot C_7^4 = 36 \\cdot 35 = 1260$$<br>Xác suất: $\\dfrac{1260}{8008} = \\dfrac{45}{286}$. Đúng như đề, ý c) ĐÚNG.<br><br>d) Chọn 6 bạn toàn nam nghĩa là chọn cả 6 trong 7 nam:<br>$$C_7^6 = 7$$<br>Xác suất: $\\dfrac{7}{8008} = \\dfrac{1}{1144}$.<br>Giá trị này khác $\\dfrac{1}{114}$ mà đề đưa ra (đề bị lệch 1 chữ số 0), nên ý d) SAI."
+  },
+  {
+    "id": "de5_tf_04",
+    "part": 2,
+    "type": "truefalse",
+    "content": "Một người đang lái xe máy trên đường hẹp thì phát hiện phía trước có vật cản cách đó 50 mét. Ngay tại thời điểm này, người lái xe bắt đầu đạp phanh. Trong quá trình đạp phanh, xe máy chuyển động theo phương trình $s(t) = -5t^2 + 30t$, trong đó $s$ (đơn vị mét) là độ dài quãng đường đi được sau khi đạp phanh, $t$ (đơn vị giây) là thời gian tính từ lúc bắt đầu đạp phanh.",
+    "statements": [
+      {"text": "Tại thời điểm bắt đầu phanh, tốc độ xe máy là 30 m/s.", "correct": true},
+      {"text": "Khi xe dừng hẳn, người đó còn cách vật cản 3m.", "correct": false},
+      {"text": "Kể từ lúc đạp phanh, vận tốc của xe máy giảm dần theo phương trình $v(t) = -10t + 30$.", "correct": true},
+      {"text": "Kể từ lúc đạp phanh, xe dừng hẳn sau 2s.", "correct": false}
+    ],
+    "explanation": "Vận tốc là đạo hàm của quãng đường: $v(t) = s'(t) = -10t + 30$ (m/s), với $t \\geq 0$.<br><br>a) Tại thời điểm bắt đầu phanh ($t=0$): $v(0) = -10(0) + 30 = 30$ m/s. Ý a) ĐÚNG.<br><br>c) Từ công thức đạo hàm ở trên, đúng là $v(t) = -10t + 30$, và vì hệ số của $t$ âm nên vận tốc giảm dần theo thời gian. Ý c) ĐÚNG.<br><br>d) Xe dừng hẳn khi $v(t) = 0$:<br>$$-10t + 30 = 0 \\Leftrightarrow t = 3 \\text{ (giây)}$$<br>Vậy xe dừng sau 3 giây chứ không phải 2 giây như đề nói. Ý d) SAI.<br><br>b) Quãng đường xe đi được tính đến lúc dừng hẳn (tại $t=3$):<br>$$s(3) = -5(3)^2 + 30(3) = -45 + 90 = 45 \\text{ m}$$<br>Khoảng cách còn lại đến vật cản là:<br>$$50 - 45 = 5 \\text{ m}$$<br>Khác với 3m mà đề đưa ra, nên ý b) SAI."
+  },
+
+
+
+
+
+
+    ],  #hết đề 5
+},    #hết đề 5
+    
 ]
 
 def get_exam_by_id(exam_id):
