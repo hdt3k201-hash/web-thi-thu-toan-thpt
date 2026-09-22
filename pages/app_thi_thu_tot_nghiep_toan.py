@@ -1528,6 +1528,91 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     "explanation": "Vì mặt trên của hộp không có nắp nên con kiến không cần đi vòng quanh các mặt bên hết cỡ như hộp kín, mà có thể: bò trên mặt ngoài của một vách hộp (vách chứa đỉnh $A$) đi lên đến mép trên, \"vòng qua\" mép trên (chỗ không có nắp) để sang mặt trong của chính vách đó, rồi bò tiếp trên mặt trong xuống đáy và đi vào trong đến điểm $O$.<br><br>Để tìm quãng đường ngắn nhất, ta trải phẳng các mặt mà con kiến đi qua ra thành một mặt phẳng, theo đúng thứ tự: mặt ngoài vách (cao 12 cm) — mặt trong vách (cao thêm 12 cm) — mặt đáy bên trong (kéo dài thêm bằng khoảng cách từ vách vào đến $O$).<br><br><img src='https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de6_mc06_trainphang.PNG' style='max-width:100%;'/><br><br>Chọn trục ngang là phương dọc theo cạnh đáy chứa $A$ (điểm $A$ ứng với vị trí $0$ trên trục này), trục dọc là \"chiều dài quãng đường bò\" tính từ đáy hộp:<br>- Bò từ đáy lên hết mặt ngoài vách: đi được $12$ cm (hết cạnh hộp).<br>- Vòng qua mép trên, bò tiếp xuống hết mặt trong của vách đó: đi thêm $12$ cm nữa (tổng cộng $24$ cm theo phương dọc).<br>- Bò tiếp vào phía trong đáy để tới $O$: vì $O$ là tâm đáy nên $O$ cách vách một khoảng đúng bằng nửa cạnh đáy, tức $12:2=6$ cm. Vậy đi thêm $6$ cm nữa (tổng cộng $30$ cm theo phương dọc).<br><br>Trên trục ngang, điểm $O$ cũng cách $A$ đúng $6$ cm (vì $O$ là tâm hình vuông đáy).<br><br>Vậy trên hình trải phẳng, điểm xuất phát ứng với $A(0;0)$, điểm đến ứng với $O(6;30)$. Quãng đường ngắn nhất chính là đoạn thẳng nối hai điểm này:<br>$$d=\\sqrt{6^2+30^2}=\\sqrt{36+900}=\\sqrt{936}\\approx 30,59\\ \\text{(cm)}.$$<br><br>Vậy chọn đáp án D."
   },
 
+  {
+    "id": "de6_mc_07",
+    "part": 1,
+    "type": "mc4",
+    "content": "Giá trị nhỏ nhất của hàm số $f(x) = x^4 - 8x^2 + a,\\ (a \\in \\mathbb{R})$ trên đoạn $[-1;3]$ bằng",
+    "options": {
+      "A": "$-6$.",
+      "B": "$a$.",
+      "C": "$-16+a$.",
+      "D": "$9+a$."
+    },
+    "correct": "C",
+    "explanation": "Ta có $f(x)=x^4-8x^2+a$, suy ra:<br>$$f'(x)=4x^3-16x=4x(x^2-4)=4x(x-2)(x+2).$$<br><br>Cho $f'(x)=0 \\Leftrightarrow x=0$ hoặc $x=2$ hoặc $x=-2$.<br><br>Vì ta đang xét trên đoạn $[-1;3]$ nên chỉ nhận hai điểm $x=0$ và $x=2$ thuộc đoạn này (điểm $x=-2$ loại vì nằm ngoài đoạn).<br><br>Tính giá trị của hàm số tại hai đầu mút và hai điểm vừa tìm được:<br>$$f(-1)=(-1)^4-8(-1)^2+a=1-8+a=-7+a.$$<br>$$f(0)=0-0+a=a.$$<br>$$f(2)=2^4-8\\cdot2^2+a=16-32+a=-16+a.$$<br>$$f(3)=3^4-8\\cdot3^2+a=81-72+a=9+a.$$<br><br>So sánh các giá trị: $-16+a$ là giá trị nhỏ nhất trong bốn giá trị trên (vì $-16$ là số nhỏ nhất).<br><br>Vậy $\\min\\limits_{[-1;3]}f(x)=-16+a$. Chọn đáp án C."
+  },
+  {
+    "id": "de6_mc_08",
+    "part": 1,
+    "type": "mc4",
+    "content": "Hàm số $y = f(x)$ xác định trên đoạn $[-1;5]$ và có đồ thị như hình vẽ. Tập giá trị của hàm số $y=f(x)$ trên đoạn $[-1;5]$ là",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de6_mc08_dothi.PNG",
+    "options": {
+      "A": "$[-1;5]$.",
+      "B": "$[1;3]$.",
+      "C": "$[-1;3]$.",
+      "D": "$[1;5]$."
+    },
+    "correct": "C",
+    "explanation": "<img src='https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de6_mc08_dothi.PNG' style='max-width:100%;'/><br><br>Tập giá trị của hàm số chính là tập hợp tất cả các giá trị $y$ mà đồ thị \"quét\" qua khi $x$ chạy trên đoạn $[-1;5]$, hay nói cách khác là đoạn từ giá trị nhỏ nhất đến giá trị lớn nhất của $y$ trên đồ thị.<br><br>Quan sát đồ thị ta thấy: điểm thấp nhất của đồ thị có tung độ bằng $-1$ (tại $x=-1$), điểm cao nhất của đồ thị có tung độ bằng $3$ (tại $x=1$). Đồ thị là đường liền nét nên nó nhận đủ mọi giá trị trung gian giữa $-1$ và $3$.<br><br>Vậy tập giá trị của hàm số là $[-1;3]$. Chọn đáp án C."
+  },
+  {
+    "id": "de6_mc_09",
+    "part": 1,
+    "type": "mc4",
+    "content": "Mỗi ngày bác Bình đều đi bộ để rèn luyện sức khoẻ. Quãng đường đi bộ mỗi ngày (đơn vị: km) của bác Bình trong 20 ngày được thống kê lại ở bảng sau:<br><br><table border='1' style='border-collapse:collapse;text-align:center;'><tr><td>Quãng đường</td><td>[2,7; 3,0)</td><td>[3,0; 3,3)</td><td>[3,3; 3,6)</td><td>[3,6; 3,9)</td><td>[3,9; 4,2)</td></tr><tr><td>Số ngày</td><td>3</td><td>6</td><td>5</td><td>4</td><td>2</td></tr></table><br>Khoảng biến thiên của mẫu số liệu ghép nhóm trên bằng",
+    "options": {
+      "A": "$1,2$.",
+      "B": "$0,362$.",
+      "C": "$3,39$.",
+      "D": "$1,5$."
+    },
+    "correct": "D",
+    "explanation": "Với mẫu số liệu ghép nhóm, khoảng biến thiên được tính bằng hiệu của đầu mút phải của nhóm cuối cùng và đầu mút trái của nhóm đầu tiên.<br><br>Nhóm đầu tiên là $[2,7; 3,0)$ nên đầu mút trái là $2,7$.<br>Nhóm cuối cùng là $[3,9; 4,2)$ nên đầu mút phải là $4,2$.<br><br>Vậy khoảng biến thiên là:<br>$$R = 4,2 - 2,7 = 1,5.$$<br><br>Chọn đáp án D."
+  },
+  {
+    "id": "de6_mc_10",
+    "part": 1,
+    "type": "mc4",
+    "content": "Trong không gian $Oxyz$, cho hai điểm $A(1;1;2)$ và $B(3;1;0)$. Trung điểm của đoạn thẳng $AB$ có toạ độ là",
+    "options": {
+      "A": "$(2;1;1)$.",
+      "B": "$(4;2;2)$.",
+      "C": "$(2;0;-2)$.",
+      "D": "$(1;0;-1)$."
+    },
+    "correct": "A",
+    "explanation": "Gọi $M$ là trung điểm của đoạn thẳng $AB$. Áp dụng công thức tọa độ trung điểm: mỗi tọa độ của $M$ bằng trung bình cộng của tọa độ tương ứng của hai điểm $A$ và $B$.<br><br>$$x_M=\\dfrac{x_A+x_B}{2}=\\dfrac{1+3}{2}=2.$$<br>$$y_M=\\dfrac{y_A+y_B}{2}=\\dfrac{1+1}{2}=1.$$<br>$$z_M=\\dfrac{z_A+z_B}{2}=\\dfrac{2+0}{2}=1.$$<br><br>Vậy $M(2;1;1)$. Chọn đáp án A."
+  },
+  {
+    "id": "de6_mc_11",
+    "part": 1,
+    "type": "mc4",
+    "content": "Đường tiệm cận xiên của đồ thị hàm số $y = \\dfrac{x^2+2x-2}{x-2}$ là",
+    "options": {
+      "A": "$y=-x+3$.",
+      "B": "$y=x+3$.",
+      "C": "$y=x-3$.",
+      "D": "$y=x+4$."
+    },
+    "correct": "D",
+    "explanation": "Để tìm tiệm cận xiên, ta chia đa thức tử cho đa thức mẫu để tách phần nguyên và phần phân thức.<br><br>Thực hiện phép chia $x^2+2x-2$ cho $x-2$:<br>$$x^2+2x-2 = (x-2)(x+4)+6.$$<br><br>(Kiểm tra lại: $(x-2)(x+4)=x^2+4x-2x-8=x^2+2x-8$, cộng thêm $6$ ta được $x^2+2x-2$. Đúng.)<br><br>Do đó:<br>$$y=\\dfrac{x^2+2x-2}{x-2}=x+4+\\dfrac{6}{x-2}.$$<br><br>Khi $x\\to+\\infty$ hoặc $x\\to-\\infty$ thì $\\dfrac{6}{x-2}\\to 0$, nghĩa là đồ thị hàm số càng ngày càng tiến sát tới đường thẳng $y=x+4$.<br><br>Vậy đường tiệm cận xiên của đồ thị là $y=x+4$. Chọn đáp án D."
+  },
+  {
+    "id": "de6_mc_12",
+    "part": 1,
+    "type": "mc4",
+    "content": "Trong không gian $Oxyz$, cho điểm $A(-3;1;-4)$, $B(1;-5;2)$. Đường thẳng $AB$ cắt mặt phẳng $(Oxy)$ tại điểm",
+    "options": {
+      "A": "$M\\left(-\\dfrac{1}{3}; -3; 0\\right)$.",
+      "B": "$N\\left(\\dfrac{1}{3}; 3; 0\\right)$.",
+      "C": "$P(0; 3; 1)$.",
+      "D": "$Q(-3; 1; 0)$."
+    },
+    "correct": "A",
+    "explanation": "Mặt phẳng $(Oxy)$ là tập hợp các điểm có tọa độ $z=0$. Ta cần tìm điểm thuộc đường thẳng $AB$ mà có tọa độ $z=0$.<br><br>Ta có $\\overrightarrow{AB}=(1-(-3);\\,-5-1;\\,2-(-4))=(4;-6;6)$.<br><br>Gọi $I$ là điểm cần tìm trên đường thẳng $AB$, ta viết $I = A + t\\cdot\\overrightarrow{AB}$ với $t$ là một số thực nào đó, tức là:<br>$$I = (-3+4t;\\ 1-6t;\\ -4+6t).$$<br><br>Vì $I$ thuộc $(Oxy)$ nên tọa độ $z$ của $I$ bằng $0$:<br>$$-4+6t=0 \\Rightarrow t=\\dfrac{2}{3}.$$<br><br>Thay $t=\\dfrac{2}{3}$ vào tọa độ $x$ và $y$ của $I$:<br>$$x_I=-3+4\\cdot\\dfrac{2}{3}=-3+\\dfrac{8}{3}=-\\dfrac{1}{3}.$$<br>$$y_I=1-6\\cdot\\dfrac{2}{3}=1-4=-3.$$<br><br>Vậy điểm cần tìm là $I\\left(-\\dfrac{1}{3};-3;0\\right)$. Chọn đáp án A."
+  },
 
 
 ],  #hết đề 6
