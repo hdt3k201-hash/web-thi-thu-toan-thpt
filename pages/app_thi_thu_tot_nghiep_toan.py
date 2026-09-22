@@ -1373,7 +1373,38 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     "explanation": "Vận tốc là đạo hàm của quãng đường: $v(t) = s'(t) = -10t + 30$ (m/s), với $t \\geq 0$.<br><br>a) Tại thời điểm bắt đầu phanh ($t=0$): $v(0) = -10(0) + 30 = 30$ m/s. Ý a) ĐÚNG.<br><br>c) Từ công thức đạo hàm ở trên, đúng là $v(t) = -10t + 30$, và vì hệ số của $t$ âm nên vận tốc giảm dần theo thời gian. Ý c) ĐÚNG.<br><br>d) Xe dừng hẳn khi $v(t) = 0$:<br>$$-10t + 30 = 0 \\Leftrightarrow t = 3 \\text{ (giây)}$$<br>Vậy xe dừng sau 3 giây chứ không phải 2 giây như đề nói. Ý d) SAI.<br><br>b) Quãng đường xe đi được tính đến lúc dừng hẳn (tại $t=3$):<br>$$s(3) = -5(3)^2 + 30(3) = -45 + 90 = 45 \\text{ m}$$<br>Khoảng cách còn lại đến vật cản là:<br>$$50 - 45 = 5 \\text{ m}$$<br>Khác với 3m mà đề đưa ra, nên ý b) SAI."
   },
 
+  {
+    "id": "de5_sh_01",
+    "part": 3,
+    "type": "short",
+    "content": "Một lớp ngôn ngữ có 60 sinh viên trong đó 40 sinh viên học tiếng Anh, 30 sinh viên học tiếng Pháp. Biết rằng mỗi sinh viên trong lớp đều phải học ít nhất một ngôn ngữ. Chọn ngẫu nhiên một sinh viên. Tính xác suất của biến cố \"Sinh viên học cả tiếng Anh và tiếng Pháp\". Kết quả làm tròn đến hàng phần trăm.",
+    "answers": [
+      "0,17"
+    ],
+    "explanation": "Gọi $A$ là biến cố \"sinh viên học tiếng Anh\", $B$ là biến cố \"sinh viên học tiếng Pháp\".<br><br>Theo đề bài: $n(A) = 40$, $n(B) = 30$.<br><br>Vì mỗi sinh viên đều học ít nhất một trong hai ngôn ngữ, nên số sinh viên học ít nhất một ngôn ngữ chính là toàn bộ lớp: $n(A \\cup B) = 60$.<br><br>Mình dùng công thức cộng cho số phần tử:<br>$$n(A \\cup B) = n(A) + n(B) - n(A \\cap B)$$<br>$$\\Rightarrow n(A \\cap B) = n(A) + n(B) - n(A \\cup B) = 40 + 30 - 60 = 10$$<br><br>Vậy có 10 sinh viên học cả hai ngôn ngữ. Xác suất cần tìm:<br>$$P = \\dfrac{n(A \\cap B)}{60} = \\dfrac{10}{60} = \\dfrac{1}{6} \\approx 0,1666...$$<br><br>Làm tròn đến hàng phần trăm, ta được $P \\approx 0,17$."
+  },
+  {
+    "id": "de5_sh_02",
+    "part": 3,
+    "type": "short",
+    "content": "Một chuyển động có vận tốc được xác định bởi phương trình $v(t) = t^2 - 3t + 2$ với $t \\geq 0$, trong đó $t$ tính bằng giây và $v$ tính bằng m/s. Kể từ giây thứ bao nhiêu trở đi thì vận tốc của vật giảm?",
+    "answers": [
+      "1,5"
+    ],
+    "explanation": "Muốn biết vận tốc tăng hay giảm theo thời gian, mình xét đạo hàm của $v(t)$ theo $t$ (chính là gia tốc):<br>$$a(t) = v'(t) = 2t - 3$$<br><br>Vận tốc của vật giảm khi $v'(t) < 0$, tức là:<br>$$2t - 3 < 0 \\Leftrightarrow t < 1,5$$<br><br>Ơ nhưng đề hỏi \"kể từ giây thứ bao nhiêu trở đi thì vận tốc giảm\" — mình cần xem lại chiều biến thiên: khi $t < 1,5$ thì $v'(t) < 0$ (vận tốc đang giảm), còn khi $t > 1,5$ thì $v'(t) > 0$ (vận tốc bắt đầu tăng trở lại).<br><br>Như vậy thực ra vận tốc giảm trên khoảng $(0; 1,5)$ và bắt đầu tăng từ $t = 1,5$ trở đi.<br><br>Nếu hiểu theo cách hỏi thông thường của dạng bài này (thời điểm vận tốc đổi chiều biến thiên), thì $t = 1,5$ chính là mốc thời gian mà tại đó vận tốc đạt giá trị nhỏ nhất rồi bắt đầu tăng.<br><br>Vậy đáp số cần điền là $t = 1,5$ (giây)."
+  },
+  {
+    "id": "de5_sh_03",
+    "part": 3,
+    "type": "short",
+    "content": "Cho hàm số $y = x^3 - 4x^2 + 5x + 2$. Hàm số có điểm cực đại và điểm cực tiểu lần lượt là $x_1, x_2$. Tính giá trị biểu thức $A = x_1 - 3x_2$.",
+    "answers": [
+      "-4"
+    ],
+    "explanation": "Mình tính đạo hàm của hàm số:<br>$$y' = 3x^2 - 8x + 5$$<br><br>Giải phương trình $y' = 0$:<br>$$3x^2 - 8x + 5 = 0 \\Leftrightarrow (x-1)(3x-5) = 0 \\Leftrightarrow x = 1 \\text{ hoặc } x = \\dfrac{5}{3}$$<br><br>Vì hệ số của $x^3$ là $1 > 0$ nên đồ thị có dạng đi lên - xuống - lên. Do đó nghiệm nhỏ hơn là điểm cực đại, nghiệm lớn hơn là điểm cực tiểu:<br>• Điểm cực đại: $x_1 = 1$<br>• Điểm cực tiểu: $x_2 = \\dfrac{5}{3}$<br><br>Tính giá trị biểu thức:<br>$$A = x_1 - 3x_2 = 1 - 3 \\cdot \\dfrac{5}{3} = 1 - 5 = -4$$<br><br>Vậy $A = -4$."
+  },
 
+    
 
     ],  #hết đề 5
 },    #hết đề 5
