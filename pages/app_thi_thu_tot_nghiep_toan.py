@@ -1434,6 +1434,104 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
 
     ],  #hết đề 5
 },    #hết đề 5
+
+  {
+  "id": "de6",
+  "name": "Đề số 6 - ĐÁNH GIÁ ĐỊNH KỲ THÁNG 9 - TRƯỜNG NGUYỄN KHUYẾN LÊ THÁNH TÔNG HCM- 2026 - 2027.",
+  "description": "22 câu hỏi: 12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn.",
+  "questions": [
+
+  {
+    "id": "de6_mc_01",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho hàm số $y = f(x)$ có đạo hàm trên $\\mathbb{R}$ thỏa $f'(x) < 0,\\ \\forall x \\in (1;2)$ và $f'(x) > 0,\\ \\forall x \\in (2;3)$. Phát biểu nào sau đây là đúng?",
+    "options": {
+      "A": "Hàm số $y=f(x)$ đồng biến trên cả hai khoảng $(1;2)$ và $(2;3)$.",
+      "B": "Hàm số $y=f(x)$ nghịch biến trên cả hai khoảng $(1;2)$ và $(2;3)$.",
+      "C": "Hàm số $y=f(x)$ đồng biến trên khoảng $(1;2)$ và nghịch biến trên khoảng $(2;3)$.",
+      "D": "Hàm số $y=f(x)$ nghịch biến trên khoảng $(1;2)$ và đồng biến trên khoảng $(2;3)$."
+    },
+    "correct": "D",
+    "explanation": "Ta nhớ lại mối liên hệ giữa dấu của đạo hàm và tính đơn điệu của hàm số: trên khoảng nào $f'(x)>0$ thì hàm số đồng biến trên khoảng đó, còn trên khoảng nào $f'(x)<0$ thì hàm số nghịch biến trên khoảng đó.<br><br>Theo đề bài: $f'(x)<0,\\ \\forall x\\in(1;2)$ nên hàm số <b>nghịch biến</b> trên $(1;2)$.<br>$f'(x)>0,\\ \\forall x\\in(2;3)$ nên hàm số <b>đồng biến</b> trên $(2;3)$.<br><br>Vậy chọn đáp án D."
+  },
+  {
+    "id": "de6_mc_02",
+    "part": 1,
+    "type": "mc4",
+    "content": "Giá trị cực đại của hàm số $f(x) = 2x^3 - 9x^2 - 24x + 1$ là",
+    "options": {
+      "A": "$-1$.",
+      "B": "$14$.",
+      "C": "$4$.",
+      "D": "$-111$."
+    },
+    "correct": "B",
+    "explanation": "Ta có $f(x)=2x^3-9x^2-24x+1$, suy ra:<br>$$f'(x)=6x^2-18x-24=6(x^2-3x-4)=6(x-4)(x+1).$$<br><br>Cho $f'(x)=0 \\Leftrightarrow x=-1$ hoặc $x=4$.<br><br>Xét dấu $f'(x)$ (dựa vào dấu của tam thức $(x-4)(x+1)$):<br>- Với $x<-1$: $f'(x)>0$ (hàm số đồng biến).<br>- Với $-1<x<4$: $f'(x)<0$ (hàm số nghịch biến).<br>- Với $x>4$: $f'(x)>0$ (hàm số đồng biến).<br><br>Vì $f'(x)$ đổi dấu từ dương sang âm khi qua $x=-1$ nên hàm số đạt <b>cực đại</b> tại $x=-1$.<br><br>Giá trị cực đại: $f(-1)=2(-1)^3-9(-1)^2-24(-1)+1=-2-9+24+1=14.$<br><br>Vậy chọn đáp án B."
+  },
+  {
+    "id": "de6_mc_03",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho lăng trụ $ABC.A'B'C'$. Khẳng định nào sau đây đúng?",
+    "options": {
+      "A": "$\\overrightarrow{BA} + \\overrightarrow{A'C'} = \\overrightarrow{BC}$.",
+      "B": "$\\overrightarrow{BA} + \\overrightarrow{A'C'} = \\overrightarrow{BC'}$.",
+      "C": "$\\overrightarrow{BA} + \\overrightarrow{A'C'} = \\overrightarrow{C'B}$.",
+      "D": "$\\overrightarrow{BA} + \\overrightarrow{A'C'} = \\overrightarrow{B'C}$."
+    },
+    "correct": "A",
+    "explanation": "Vì $ABC.A'B'C'$ là lăng trụ nên mặt đáy $A'B'C'$ chính là mặt đáy $ABC$ \"dịch chuyển\" lên theo véc-tơ $\\overrightarrow{AA'}$ (hai đáy song song và bằng nhau từng đôi một). Do đó các cặp véc-tơ tương ứng bằng nhau, đặc biệt: $\\overrightarrow{A'C'}=\\overrightarrow{AC}$ (cùng hướng, cùng độ dài với $\\overrightarrow{AC}$).<br><br>Áp dụng quy tắc ba điểm cho ba điểm $B, A, C$: $\\overrightarrow{BA}+\\overrightarrow{AC}=\\overrightarrow{BC}.$<br><br>Thay $\\overrightarrow{A'C'}=\\overrightarrow{AC}$ vào, ta được: $\\overrightarrow{BA}+\\overrightarrow{A'C'}=\\overrightarrow{BC}.$<br><br>Vậy chọn đáp án A."
+  },
+  {
+    "id": "de6_mc_04",
+    "part": 1,
+    "type": "mc4",
+    "content": "Hàm số $y = f(x)$ xác định trên đoạn $[-1;6]$ và có đồ thị như hình vẽ. Hàm số đã cho nghịch biến trên khoảng nào sau đây?",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de6_mc04_dothi.PNG",
+    "options": {
+      "A": "$(-1;2)$.",
+      "B": "$(0;2)$.",
+      "C": "$(2;6)$.",
+      "D": "$(-2;0)$."
+    },
+    "correct": "B",
+    "explanation": "<img src='https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de6_mc04_dothi.PNG' style='max-width:100%;'/><br><br>Quan sát đồ thị theo chiều từ trái sang phải:<br>- Trên khoảng $(-1;0)$: đồ thị đi lên $\\Rightarrow$ hàm số đồng biến.<br>- Trên khoảng $(0;2)$: đồ thị đi xuống $\\Rightarrow$ hàm số nghịch biến.<br>- Trên khoảng $(2;6)$: đồ thị đi lên trở lại $\\Rightarrow$ hàm số đồng biến.<br><br>Vậy hàm số nghịch biến trên khoảng $(0;2)$. Chọn đáp án B."
+  },
+  {
+    "id": "de6_mc_05",
+    "part": 1,
+    "type": "mc4",
+    "content": "Cho tứ diện $ABCD$. Lấy $G$ là trọng tâm của tam giác $ABC$. Phát biểu nào sau đây là sai?",
+    "options": {
+      "A": "$\\overrightarrow{GA} + \\overrightarrow{GB} + \\overrightarrow{GC} = \\vec{0}$.",
+      "B": "$\\overrightarrow{GA} + \\overrightarrow{GB} + \\overrightarrow{GC} + \\overrightarrow{GD} = \\vec{0}$.",
+      "C": "$\\overrightarrow{GD} - \\overrightarrow{GA} = \\overrightarrow{AD}$.",
+      "D": "$\\overrightarrow{DA} + \\overrightarrow{DB} + \\overrightarrow{DC} = 3\\overrightarrow{DG}$."
+    },
+    "correct": "B",
+    "explanation": "Xét từng đáp án:<br><br><b>Đáp án A:</b> Vì $G$ là trọng tâm tam giác $ABC$ nên theo tính chất trọng tâm, ta luôn có $\\overrightarrow{GA}+\\overrightarrow{GB}+\\overrightarrow{GC}=\\vec{0}$. Đây là mệnh đề <b>đúng</b>.<br><br><b>Đáp án B:</b> Đề bài chỉ cho $G$ là trọng tâm tam giác $ABC$ chứ không phải là điểm đặc biệt của cả tứ diện $ABCD$. Nếu đẳng thức này đúng thì kết hợp với $\\overrightarrow{GA}+\\overrightarrow{GB}+\\overrightarrow{GC}=\\vec 0$ ở trên, ta suy ra $\\overrightarrow{GD}=\\vec 0$, tức là $G$ trùng với $D$ — điều này nói chung không xảy ra (vì $G$ nằm trong mặt phẳng $(ABC)$ còn $D$ thì không). Đây là mệnh đề <b>sai</b>.<br><br><b>Đáp án C:</b> Với ba điểm bất kì $G, A, D$, theo quy tắc ba điểm ta luôn có $\\overrightarrow{AD}=\\overrightarrow{AG}+\\overrightarrow{GD}=\\overrightarrow{GD}-\\overrightarrow{GA}$. Đẳng thức này đúng với mọi vị trí của $G$, nên đây là mệnh đề <b>đúng</b>.<br><br><b>Đáp án D:</b> Vì $G$ là trọng tâm tam giác $ABC$ nên với điểm $D$ bất kì, ta có công thức quen thuộc $\\overrightarrow{DA}+\\overrightarrow{DB}+\\overrightarrow{DC}=3\\overrightarrow{DG}$. Đây là mệnh đề <b>đúng</b>.<br><br>Vậy mệnh đề sai là đáp án B."
+  },
+  {
+    "id": "de6_mc_06",
+    "part": 1,
+    "type": "mc4",
+    "content": "Một chiếc hộp hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $12$ cm, mặt trên $A'B'C'D'$ không nắp. Có một con kiến ở đỉnh $A$ bên ngoài hộp và một miếng mồi của kiến tại điểm $O$ là tâm đáy $ABCD$ ở bên trong hộp. Quãng đường ngắn nhất mà con kiến tìm đến miếng mồi (làm tròn đến hai chữ số thập phân) là",
+    "image": "https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de6_mc06_hophopchu.PNG",
+    "options": {
+      "A": "$32,49$ (cm).",
+      "B": "$36,29$ (cm).",
+      "C": "$12$ (cm).",
+      "D": "$30,59$ (cm)."
+    },
+    "correct": "D",
+    "explanation": "Vì mặt trên của hộp không có nắp nên con kiến không cần đi vòng quanh các mặt bên hết cỡ như hộp kín, mà có thể: bò trên mặt ngoài của một vách hộp (vách chứa đỉnh $A$) đi lên đến mép trên, \"vòng qua\" mép trên (chỗ không có nắp) để sang mặt trong của chính vách đó, rồi bò tiếp trên mặt trong xuống đáy và đi vào trong đến điểm $O$.<br><br>Để tìm quãng đường ngắn nhất, ta trải phẳng các mặt mà con kiến đi qua ra thành một mặt phẳng, theo đúng thứ tự: mặt ngoài vách (cao 12 cm) — mặt trong vách (cao thêm 12 cm) — mặt đáy bên trong (kéo dài thêm bằng khoảng cách từ vách vào đến $O$).<br><br><img src='https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de6_mc06_trainphang.PNG' style='max-width:100%;'/><br><br>Chọn trục ngang là phương dọc theo cạnh đáy chứa $A$ (điểm $A$ ứng với vị trí $0$ trên trục này), trục dọc là \"chiều dài quãng đường bò\" tính từ đáy hộp:<br>- Bò từ đáy lên hết mặt ngoài vách: đi được $12$ cm (hết cạnh hộp).<br>- Vòng qua mép trên, bò tiếp xuống hết mặt trong của vách đó: đi thêm $12$ cm nữa (tổng cộng $24$ cm theo phương dọc).<br>- Bò tiếp vào phía trong đáy để tới $O$: vì $O$ là tâm đáy nên $O$ cách vách một khoảng đúng bằng nửa cạnh đáy, tức $12:2=6$ cm. Vậy đi thêm $6$ cm nữa (tổng cộng $30$ cm theo phương dọc).<br><br>Trên trục ngang, điểm $O$ cũng cách $A$ đúng $6$ cm (vì $O$ là tâm hình vuông đáy).<br><br>Vậy trên hình trải phẳng, điểm xuất phát ứng với $A(0;0)$, điểm đến ứng với $O(6;30)$. Quãng đường ngắn nhất chính là đoạn thẳng nối hai điểm này:<br>$$d=\\sqrt{6^2+30^2}=\\sqrt{36+900}=\\sqrt{936}\\approx 30,59\\ \\text{(cm)}.$$<br><br>Vậy chọn đáp án D."
+  },
+
+
+
+],  #hết đề 6
+},    #hết đề 6 
     
 ]
 
