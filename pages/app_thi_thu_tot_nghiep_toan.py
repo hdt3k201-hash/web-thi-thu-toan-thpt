@@ -1145,7 +1145,7 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
 },    #hết đề 4
 
 {
-  "id": "de4",
+  "id": "de5",
   "name": "Đề số 5 - ĐÁNH GIÁ ĐỊNH KỲ THÁNG 8 - TRƯỜNG TẠ QUANG BỬU HÀ NỘI- 2026 - 2027.",
   "description": "22 câu hỏi: 12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn.",
   "questions": [
@@ -1372,9 +1372,6 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     ],
     "explanation": "Vận tốc là đạo hàm của quãng đường: $v(t) = s'(t) = -10t + 30$ (m/s), với $t \\geq 0$.<br><br>a) Tại thời điểm bắt đầu phanh ($t=0$): $v(0) = -10(0) + 30 = 30$ m/s. Ý a) ĐÚNG.<br><br>c) Từ công thức đạo hàm ở trên, đúng là $v(t) = -10t + 30$, và vì hệ số của $t$ âm nên vận tốc giảm dần theo thời gian. Ý c) ĐÚNG.<br><br>d) Xe dừng hẳn khi $v(t) = 0$:<br>$$-10t + 30 = 0 \\Leftrightarrow t = 3 \\text{ (giây)}$$<br>Vậy xe dừng sau 3 giây chứ không phải 2 giây như đề nói. Ý d) SAI.<br><br>b) Quãng đường xe đi được tính đến lúc dừng hẳn (tại $t=3$):<br>$$s(3) = -5(3)^2 + 30(3) = -45 + 90 = 45 \\text{ m}$$<br>Khoảng cách còn lại đến vật cản là:<br>$$50 - 45 = 5 \\text{ m}$$<br>Khác với 3m mà đề đưa ra, nên ý b) SAI."
   },
-
-
-
 
 
 
