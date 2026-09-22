@@ -1326,10 +1326,10 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     "type": "truefalse",
     "content": "Cho hàm số $y = f(x) = 2x - 4 + \\dfrac{2}{x+1}$.",
     "statements": [
-      {"text": "Hàm số có đạo hàm $f'(x) = \\dfrac{2(x^2+2x)}{(x+1)^2}$.", "correct": true},
-      {"text": "Giá trị nhỏ nhất của hàm số trên khoảng $(-1;+\\infty)$ bằng $-2$.", "correct": true},
-      {"text": "Điểm cực đại của đồ thị hàm số có tọa độ $(0;-2)$.", "correct": false},
-      {"text": "Hàm số $y = f(x)$ có tập xác định là $D = \\mathbb{R} \\setminus \\{-1\\}$.", "correct": true}
+      {"text": "Hàm số có đạo hàm $f'(x) = \\dfrac{2(x^2+2x)}{(x+1)^2}$.", "correct": True},
+      {"text": "Giá trị nhỏ nhất của hàm số trên khoảng $(-1;+\\infty)$ bằng $-2$.", "correct": True},
+      {"text": "Điểm cực đại của đồ thị hàm số có tọa độ $(0;-2)$.", "correct": False},
+      {"text": "Hàm số $y = f(x)$ có tập xác định là $D = \\mathbb{R} \\setminus \\{-1\\}$.", "correct": True}
     ],
     "explanation": "a) Mình đạo hàm hàm số $y = 2x - 4 + \\dfrac{2}{x+1}$:<br>$$y' = 2 - \\dfrac{2}{(x+1)^2} = \\dfrac{2(x+1)^2 - 2}{(x+1)^2} = \\dfrac{2(x^2+2x)}{(x+1)^2}$$<br>Đúng như đề cho nên ý a) ĐÚNG.<br><br>b) Xét trên khoảng $(-1;+\\infty)$, giải $f'(x) = 0$:<br>$$\\dfrac{2x(x+2)}{(x+1)^2} = 0 \\Leftrightarrow x = 0 \\text{ hoặc } x = -2 \\text{ (loại vì } -2 < -1\\text{)}$$<br>Vậy trên $(-1;+\\infty)$ chỉ có nghiệm $x=0$. Lập bảng xét dấu ta thấy $f'(x) < 0$ khi $-1 < x < 0$ và $f'(x) > 0$ khi $x > 0$, nên $x=0$ là điểm cực tiểu, đồng thời là điểm nhỏ nhất trên cả khoảng này.<br>$$f(0) = 2(0) - 4 + \\dfrac{2}{0+1} = -4 + 2 = -2$$<br>Vậy giá trị nhỏ nhất bằng $-2$, ý b) ĐÚNG.<br><br>c) Từ câu b) mình vừa lập luận: tại $x=0$ đạo hàm đổi dấu từ âm sang dương, nên đó là điểm CỰC TIỂU chứ không phải cực đại. Vậy điểm $(0;-2)$ là điểm cực tiểu của đồ thị, đề nói \"cực đại\" là SAI.<br><br>d) Hàm số xác định khi $x + 1 \\neq 0 \\Leftrightarrow x \\neq -1$, nên $D = \\mathbb{R}\\setminus\\{-1\\}$. Ý d) ĐÚNG."
   },
@@ -1339,10 +1339,10 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     "type": "truefalse",
     "content": "Cho hình chóp $S.ABCD$ có $SA \\perp (ABCD)$, đáy $ABCD$ là hình chữ nhật. Biết $AB = a$, $AD = a\\sqrt{2}$ và $SA = a\\sqrt{3}$.",
     "statements": [
-      {"text": "Thể tích khối chóp $S.ACD$ bằng $\\dfrac{a^3\\sqrt{6}}{6}$.", "correct": true},
-      {"text": "Khoảng cách từ điểm $A$ đến mặt phẳng $(SBC)$ là $\\dfrac{a\\sqrt{30}}{6}$.", "correct": false},
-      {"text": "Góc giữa hai mặt phẳng $(SCD)$ và $(ABCD)$ là góc $\\widehat{SDA}$.", "correct": true},
-      {"text": "$BC \\perp (SAB)$.", "correct": true}
+      {"text": "Thể tích khối chóp $S.ACD$ bằng $\\dfrac{a^3\\sqrt{6}}{6}$.", "correct": True},
+      {"text": "Khoảng cách từ điểm $A$ đến mặt phẳng $(SBC)$ là $\\dfrac{a\\sqrt{30}}{6}$.", "correct": False},
+      {"text": "Góc giữa hai mặt phẳng $(SCD)$ và $(ABCD)$ là góc $\\widehat{SDA}$.", "correct": True},
+      {"text": "$BC \\perp (SAB)$.", "correct": True}
     ],
     "explanation": "<img src='https://raw.githubusercontent.com/hdt3k201-hash/web-thi-thu-toan-thpt/main/images/de5_tf2_hinhchop.PNG' style='max-width:100%;'/><br><br>a) Vì $ABCD$ là hình chữ nhật nên tam giác $ACD$ vuông tại $D$, diện tích:<br>$$S_{ACD} = \\dfrac{1}{2}\\cdot AD \\cdot DC = \\dfrac{1}{2}\\cdot a\\sqrt{2}\\cdot a = \\dfrac{a^2\\sqrt{2}}{2}$$<br>(vì $DC = AB = a$). Thể tích khối chóp $S.ACD$:<br>$$V = \\dfrac{1}{3}\\cdot SA \\cdot S_{ACD} = \\dfrac{1}{3}\\cdot a\\sqrt{3}\\cdot \\dfrac{a^2\\sqrt{2}}{2} = \\dfrac{a^3\\sqrt{6}}{6}$$<br>Vậy ý a) ĐÚNG.<br><br>b) Vì $ABCD$ là hình chữ nhật nên $BC \\perp AB$. Lại có $SA \\perp (ABCD) \\Rightarrow SA \\perp BC$, suy ra $BC \\perp (SAB)$.<br>Kẻ $AK \\perp SB$ tại $K$ ($K \\in SB$), do $BC \\perp (SAB)$ nên $BC \\perp AK$, suy ra $AK \\perp (SBC)$, vậy $d(A,(SBC)) = AK$.<br>Xét tam giác vuông $SAB$ tại $A$, với $SA = a\\sqrt{3}$, $AB = a$:<br>$$AK = \\dfrac{SA \\cdot AB}{\\sqrt{SA^2+AB^2}} = \\dfrac{a\\sqrt{3}\\cdot a}{\\sqrt{3a^2+a^2}} = \\dfrac{a^2\\sqrt{3}}{2a} = \\dfrac{a\\sqrt{3}}{2}$$<br>Giá trị này khác với $\\dfrac{a\\sqrt{30}}{6}$ mà đề đưa ra, nên ý b) SAI.<br><br>c) Ta có $CD \\perp AD$ (hình chữ nhật) và $CD \\perp SA$ (vì $SA \\perp (ABCD)$), suy ra $CD \\perp (SAD)$, do đó $CD \\perp SD$.<br>Giao tuyến của $(SCD)$ và $(ABCD)$ là $CD$, mà $SD \\perp CD$ trong $(SCD)$ và $AD \\perp CD$ trong $(ABCD)$, nên góc giữa hai mặt phẳng chính là góc $\\widehat{SDA}$. Ý c) ĐÚNG.<br><br>d) Đây chính là bước mình dùng ở câu b): $BC \\perp AB$ và $BC \\perp SA$ nên $BC \\perp (SAB)$. Ý d) ĐÚNG."
   },
@@ -1352,10 +1352,10 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     "type": "truefalse",
     "content": "Một tổ có 16 bạn học sinh gồm 7 nam, 9 nữ. Chọn ngẫu nhiên từ tổ ra 6 bạn bất kì.",
     "statements": [
-      {"text": "Xác suất để 6 bạn được chọn có ít nhất 1 nam là $\\dfrac{9}{11}$.", "correct": false},
-      {"text": "Số phần tử của không gian mẫu là $n(\\Omega) = C_{16}^6$.", "correct": true},
-      {"text": "Xác suất để 6 bạn được chọn có đúng 2 nữ là $\\dfrac{45}{286}$.", "correct": true},
-      {"text": "Xác suất để 6 bạn được chọn toàn nam là $\\dfrac{1}{114}$.", "correct": false}
+      {"text": "Xác suất để 6 bạn được chọn có ít nhất 1 nam là $\\dfrac{9}{11}$.", "correct": False},
+      {"text": "Số phần tử của không gian mẫu là $n(\\Omega) = C_{16}^6$.", "correct": True},
+      {"text": "Xác suất để 6 bạn được chọn có đúng 2 nữ là $\\dfrac{45}{286}$.", "correct": True},
+      {"text": "Xác suất để 6 bạn được chọn toàn nam là $\\dfrac{1}{114}$.", "correct": False}
     ],
     "explanation": "b) Chọn ngẫu nhiên 6 bạn trong 16 bạn thì số phần tử không gian mẫu là $n(\\Omega) = C_{16}^6 = 8008$. Ý b) ĐÚNG (mình dùng kết quả này cho các câu sau).<br><br>a) Mình tính bằng biến cố đối: \"6 bạn được chọn toàn là nữ\" (không có nam nào).<br>Số cách chọn 6 nữ trong 9 nữ: $C_9^6 = 84$.<br>Xác suất \"không có nam nào\" là $\\dfrac{84}{8008} = \\dfrac{3}{286}$.<br>Vậy xác suất \"có ít nhất 1 nam\" là:<br>$$1 - \\dfrac{3}{286} = \\dfrac{283}{286}$$<br>Giá trị này khác $\\dfrac{9}{11}$ mà đề cho, nên ý a) SAI.<br><br>c) Chọn đúng 2 nữ nghĩa là chọn 2 trong 9 nữ và 4 trong 7 nam:<br>$$C_9^2 \\cdot C_7^4 = 36 \\cdot 35 = 1260$$<br>Xác suất: $\\dfrac{1260}{8008} = \\dfrac{45}{286}$. Đúng như đề, ý c) ĐÚNG.<br><br>d) Chọn 6 bạn toàn nam nghĩa là chọn cả 6 trong 7 nam:<br>$$C_7^6 = 7$$<br>Xác suất: $\\dfrac{7}{8008} = \\dfrac{1}{1144}$.<br>Giá trị này khác $\\dfrac{1}{114}$ mà đề đưa ra (đề bị lệch 1 chữ số 0), nên ý d) SAI."
   },
@@ -1365,18 +1365,18 @@ Do đó \\( a+2b+3c = 1+2\\cdot 5+3\\cdot 0 = 1+10+0 = 11 \\)."""},
     "type": "truefalse",
     "content": "Một người đang lái xe máy trên đường hẹp thì phát hiện phía trước có vật cản cách đó 50 mét. Ngay tại thời điểm này, người lái xe bắt đầu đạp phanh. Trong quá trình đạp phanh, xe máy chuyển động theo phương trình $s(t) = -5t^2 + 30t$, trong đó $s$ (đơn vị mét) là độ dài quãng đường đi được sau khi đạp phanh, $t$ (đơn vị giây) là thời gian tính từ lúc bắt đầu đạp phanh.",
     "statements": [
-      {"text": "Tại thời điểm bắt đầu phanh, tốc độ xe máy là 30 m/s.", "correct": true},
-      {"text": "Khi xe dừng hẳn, người đó còn cách vật cản 3m.", "correct": false},
-      {"text": "Kể từ lúc đạp phanh, vận tốc của xe máy giảm dần theo phương trình $v(t) = -10t + 30$.", "correct": true},
-      {"text": "Kể từ lúc đạp phanh, xe dừng hẳn sau 2s.", "correct": false}
+      {"text": "Tại thời điểm bắt đầu phanh, tốc độ xe máy là 30 m/s.", "correct": True},
+      {"text": "Khi xe dừng hẳn, người đó còn cách vật cản 3m.", "correct": False},
+      {"text": "Kể từ lúc đạp phanh, vận tốc của xe máy giảm dần theo phương trình $v(t) = -10t + 30$.", "correct": True},
+      {"text": "Kể từ lúc đạp phanh, xe dừng hẳn sau 2s.", "correct": False}
     ],
     "explanation": "Vận tốc là đạo hàm của quãng đường: $v(t) = s'(t) = -10t + 30$ (m/s), với $t \\geq 0$.<br><br>a) Tại thời điểm bắt đầu phanh ($t=0$): $v(0) = -10(0) + 30 = 30$ m/s. Ý a) ĐÚNG.<br><br>c) Từ công thức đạo hàm ở trên, đúng là $v(t) = -10t + 30$, và vì hệ số của $t$ âm nên vận tốc giảm dần theo thời gian. Ý c) ĐÚNG.<br><br>d) Xe dừng hẳn khi $v(t) = 0$:<br>$$-10t + 30 = 0 \\Leftrightarrow t = 3 \\text{ (giây)}$$<br>Vậy xe dừng sau 3 giây chứ không phải 2 giây như đề nói. Ý d) SAI.<br><br>b) Quãng đường xe đi được tính đến lúc dừng hẳn (tại $t=3$):<br>$$s(3) = -5(3)^2 + 30(3) = -45 + 90 = 45 \\text{ m}$$<br>Khoảng cách còn lại đến vật cản là:<br>$$50 - 45 = 5 \\text{ m}$$<br>Khác với 3m mà đề đưa ra, nên ý b) SAI."
   },
 
 
 
-    ]  #hết đề 5
-}    #hết đề 5
+    ],  #hết đề 5
+},    #hết đề 5
     
 ]
 
