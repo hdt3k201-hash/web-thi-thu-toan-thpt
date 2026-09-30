@@ -14,6 +14,9 @@ import os
 import random
 import time
 import uuid
+import hmac
+import hashlib
+import base64
 
 from flask import (
     Flask, render_template_string, request, redirect,
@@ -36,6 +39,32 @@ EXAM_SUBJECT_NAME = "Toán học & Logic, Phân tích số liệu"
 def format_minutes_vn(minutes):
     """Định dạng số phút kiểu Việt Nam (dùng dấu phẩy thay dấu chấm)."""
     return f"{minutes:g}".replace(".", ",")
+
+# =======================================================================
+# SSO VỚI WORDPRESS
+# =======================================================================
+WP_SSO_SECRET = "FocusEdu2026-Sso-Xk9mQp3vLr7z"
+WP_TOKEN_MAX_AGE = 900  # Token chỉ có hiệu lực 15 phút
+
+def verify_wp_token(token):
+    if not token:
+        return None
+    try:
+        padded_token = token + '=' * (-len(token) % 4)
+        raw = base64.urlsafe_b64decode(padded_token.encode("utf-8")).decode("utf-8")
+        name, ts_str, sig = raw.rsplit("|", 2)
+    except Exception:
+        return None
+
+    expected_sig = hmac.new(
+        WP_SSO_SECRET.encode("utf-8"), f"{name}|{ts_str}".encode("utf-8"), hashlib.sha256
+    ).hexdigest()
+
+    if not hmac.compare_digest(sig, expected_sig):
+        return None
+    if time.time() - int(ts_str) > WP_TOKEN_MAX_AGE:
+        return None
+    return name
 
 
 # =======================================================================
@@ -738,14 +767,19 @@ TPL_ANSWER_DETAIL = BASE_HEAD + """
 @app.route("/", methods=["GET", "POST"])
 @app.route("/thong-tin", methods=["GET", "POST"])
 def info():
-    if request.method == "POST":
-        session["student"] = {
-            "full_name": request.form.get("full_name", "").strip(),
-            "sbd": request.form.get("sbd", "").strip(),
-        }
-        return redirect(url_for("exam_list"))
-    student = session.get("student", {})
-    return render_template_string(TPL_INFO, title="Nhập thông tin thí sinh", student=student)
+    token = request.args.get("wp_token")
+    if token:
+        student_name = verify_wp_token(token)
+        if student_name:
+            session["student"] = {
+                "full_name": student_name,
+                "sbd": "WP-" + student_name.replace(" ", "")[:5].upper()
+            }
+            return redirect(url_for("exam_list"))
+        else:
+            return "<h1>Lỗi bảo mật: Token không hợp lệ hoặc đã hết hạn. Vui lòng tải lại trang web.</h1>", 403
+    
+    return "<h1>Vui lòng đăng nhập trên website chính thức để làm bài thi.</h1>", 403
 
 
 @app.route("/de-thi")
